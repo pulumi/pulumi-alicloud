@@ -76,7 +76,7 @@ public class CustomProperty extends com.pulumi.resources.CustomResource {
      * The Custom attribute key.
      * 
      */
-    @Export(name="propertyKey", type=String.class, parameters={})
+    @Export(name="propertyKey", refs={String.class}, tree="[0]")
     private Output<String> propertyKey;
 
     /**
@@ -90,7 +90,7 @@ public class CustomProperty extends com.pulumi.resources.CustomResource {
      * Custom attribute sets the value of. See `property_values` below.
      * 
      */
-    @Export(name="propertyValues", type=List.class, parameters={CustomPropertyPropertyValue.class})
+    @Export(name="propertyValues", refs={List.class,CustomPropertyPropertyValue.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CustomPropertyPropertyValue>> propertyValues;
 
     /**

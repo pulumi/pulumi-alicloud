@@ -78,7 +78,7 @@ public class Kv extends com.pulumi.resources.CustomResource {
      * The name of the key to Put, the longest 512, cannot contain spaces.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -92,7 +92,7 @@ public class Kv extends com.pulumi.resources.CustomResource {
      * The name specified when the customer calls PutDcdnKvNamespace.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -106,7 +106,7 @@ public class Kv extends com.pulumi.resources.CustomResource {
      * The content of key, up to 2M(2*1000*1000).
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

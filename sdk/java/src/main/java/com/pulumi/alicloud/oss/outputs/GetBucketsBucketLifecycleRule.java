@@ -105,12 +105,12 @@ public final class GetBucketsBucketLifecycleRule {
             return this;
         }
         public GetBucketsBucketLifecycleRule build() {
-            final var o = new GetBucketsBucketLifecycleRule();
-            o.enabled = enabled;
-            o.expiration = expiration;
-            o.id = id;
-            o.prefix = prefix;
-            return o;
+            final var _resultValue = new GetBucketsBucketLifecycleRule();
+            _resultValue.enabled = enabled;
+            _resultValue.expiration = expiration;
+            _resultValue.id = id;
+            _resultValue.prefix = prefix;
+            return _resultValue;
         }
     }
 }

@@ -121,7 +121,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The Contents of the Script to Base64 Encoded Transmission.
      * 
      */
-    @Export(name="commandContent", type=String.class, parameters={})
+    @Export(name="commandContent", refs={String.class}, tree="[0]")
     private Output<String> commandContent;
 
     /**
@@ -135,7 +135,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
      * 
      */
-    @Export(name="commandType", type=String.class, parameters={})
+    @Export(name="commandType", refs={String.class}, tree="[0]")
     private Output<String> commandType;
 
     /**
@@ -149,7 +149,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
      * 
      */
-    @Export(name="contentEncoding", type=String.class, parameters={})
+    @Export(name="contentEncoding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentEncoding;
 
     /**
@@ -163,7 +163,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The desktop id of the Desktop.
      * 
      */
-    @Export(name="desktopId", type=String.class, parameters={})
+    @Export(name="desktopId", refs={String.class}, tree="[0]")
     private Output<String> desktopId;
 
     /**
@@ -177,7 +177,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -191,7 +191,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The timeout period for script execution the unit is seconds. Default to: `60`.
      * 
      */
-    @Export(name="timeout", type=String.class, parameters={})
+    @Export(name="timeout", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeout;
 
     /**

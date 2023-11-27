@@ -217,18 +217,18 @@ public final class GetEnterpriseUsersUser {
             return this;
         }
         public GetEnterpriseUsersUser build() {
-            final var o = new GetEnterpriseUsersUser();
-            o.id = id;
-            o.mobile = mobile;
-            o.nickName = nickName;
-            o.parentUid = parentUid;
-            o.roleIds = roleIds;
-            o.roleNames = roleNames;
-            o.status = status;
-            o.uid = uid;
-            o.userId = userId;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetEnterpriseUsersUser();
+            _resultValue.id = id;
+            _resultValue.mobile = mobile;
+            _resultValue.nickName = nickName;
+            _resultValue.parentUid = parentUid;
+            _resultValue.roleIds = roleIds;
+            _resultValue.roleNames = roleNames;
+            _resultValue.status = status;
+            _resultValue.uid = uid;
+            _resultValue.userId = userId;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

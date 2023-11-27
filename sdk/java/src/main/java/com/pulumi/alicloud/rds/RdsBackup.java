@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a RDS Backup resource.
  * 
- * For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createbackup).
+ * For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createbackup).
  * 
  * &gt; **NOTE:** Available since v1.149.0.
  * 
@@ -80,7 +80,7 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
      * The backup id.
      * 
      */
-    @Export(name="backupId", type=String.class, parameters={})
+    @Export(name="backupId", refs={String.class}, tree="[0]")
     private Output<String> backupId;
 
     /**
@@ -94,7 +94,7 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
      * The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
      * 
      */
-    @Export(name="backupMethod", type=String.class, parameters={})
+    @Export(name="backupMethod", refs={String.class}, tree="[0]")
     private Output<String> backupMethod;
 
     /**
@@ -110,7 +110,7 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
      * * **instance**: specifies to perform an instance-level backup.
      * 
      */
-    @Export(name="backupStrategy", type=String.class, parameters={})
+    @Export(name="backupStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupStrategy;
 
     /**
@@ -128,7 +128,7 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
      * * **FullBackup**: specifies to perform a full backup.
      * 
      */
-    @Export(name="backupType", type=String.class, parameters={})
+    @Export(name="backupType", refs={String.class}, tree="[0]")
     private Output<String> backupType;
 
     /**
@@ -144,7 +144,7 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
      * The db instance id.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -158,7 +158,7 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
      * The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
      * 
      */
-    @Export(name="dbName", type=String.class, parameters={})
+    @Export(name="dbName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbName;
 
     /**
@@ -172,7 +172,7 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
      * Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
      * 
      */
-    @Export(name="removeFromState", type=Boolean.class, parameters={})
+    @Export(name="removeFromState", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> removeFromState;
 
     /**
@@ -186,7 +186,7 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
      * Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
      * 
      */
-    @Export(name="storeStatus", type=String.class, parameters={})
+    @Export(name="storeStatus", refs={String.class}, tree="[0]")
     private Output<String> storeStatus;
 
     /**

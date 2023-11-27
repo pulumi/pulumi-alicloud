@@ -87,11 +87,11 @@ public final class ContainerGroupContainerReadinessProbeHttpGet {
             return this;
         }
         public ContainerGroupContainerReadinessProbeHttpGet build() {
-            final var o = new ContainerGroupContainerReadinessProbeHttpGet();
-            o.path = path;
-            o.port = port;
-            o.scheme = scheme;
-            return o;
+            final var _resultValue = new ContainerGroupContainerReadinessProbeHttpGet();
+            _resultValue.path = path;
+            _resultValue.port = port;
+            _resultValue.scheme = scheme;
+            return _resultValue;
         }
     }
 }

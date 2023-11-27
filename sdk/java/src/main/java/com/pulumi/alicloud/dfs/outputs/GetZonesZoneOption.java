@@ -65,10 +65,10 @@ public final class GetZonesZoneOption {
             return this;
         }
         public GetZonesZoneOption build() {
-            final var o = new GetZonesZoneOption();
-            o.protocolType = protocolType;
-            o.storageType = storageType;
-            return o;
+            final var _resultValue = new GetZonesZoneOption();
+            _resultValue.protocolType = protocolType;
+            _resultValue.storageType = storageType;
+            return _resultValue;
         }
     }
 }

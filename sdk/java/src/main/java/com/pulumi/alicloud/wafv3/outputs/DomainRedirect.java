@@ -314,21 +314,21 @@ public final class DomainRedirect {
             return this;
         }
         public DomainRedirect build() {
-            final var o = new DomainRedirect();
-            o.backends = backends;
-            o.connectTimeout = connectTimeout;
-            o.focusHttpBackend = focusHttpBackend;
-            o.keepalive = keepalive;
-            o.keepaliveRequests = keepaliveRequests;
-            o.keepaliveTimeout = keepaliveTimeout;
-            o.loadbalance = loadbalance;
-            o.readTimeout = readTimeout;
-            o.requestHeaders = requestHeaders;
-            o.retry = retry;
-            o.sniEnabled = sniEnabled;
-            o.sniHost = sniHost;
-            o.writeTimeout = writeTimeout;
-            return o;
+            final var _resultValue = new DomainRedirect();
+            _resultValue.backends = backends;
+            _resultValue.connectTimeout = connectTimeout;
+            _resultValue.focusHttpBackend = focusHttpBackend;
+            _resultValue.keepalive = keepalive;
+            _resultValue.keepaliveRequests = keepaliveRequests;
+            _resultValue.keepaliveTimeout = keepaliveTimeout;
+            _resultValue.loadbalance = loadbalance;
+            _resultValue.readTimeout = readTimeout;
+            _resultValue.requestHeaders = requestHeaders;
+            _resultValue.retry = retry;
+            _resultValue.sniEnabled = sniEnabled;
+            _resultValue.sniHost = sniHost;
+            _resultValue.writeTimeout = writeTimeout;
+            return _resultValue;
         }
     }
 }

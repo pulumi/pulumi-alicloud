@@ -115,21 +115,21 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The abbreviation of the service name.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
-    private Output<String> category;
+    @Export(name="category", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> category;
 
     /**
      * @return The abbreviation of the service name.
      * 
      */
-    public Output<String> category() {
-        return this.category;
+    public Output<Optional<String>> category() {
+        return Codegen.optional(this.category);
     }
     /**
      * Alarm contact group.
      * 
      */
-    @Export(name="contactGroups", type=String.class, parameters={})
+    @Export(name="contactGroups", refs={String.class}, tree="[0]")
     private Output<String> contactGroups;
 
     /**
@@ -143,7 +143,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The dimensions that specify the resources to be associated with the alert rule.
      * 
      */
-    @Export(name="dimensions", type=String.class, parameters={})
+    @Export(name="dimensions", refs={String.class}, tree="[0]")
     private Output<String> dimensions;
 
     /**
@@ -157,7 +157,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The time period during which the alert rule is effective.
      * 
      */
-    @Export(name="effectiveInterval", type=String.class, parameters={})
+    @Export(name="effectiveInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveInterval;
 
     /**
@@ -168,14 +168,14 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.effectiveInterval);
     }
     /**
-     * The subject of the alert notification email.                                         .
+     * The subject of the alert notification email.
      * 
      */
-    @Export(name="emailSubject", type=String.class, parameters={})
+    @Export(name="emailSubject", refs={String.class}, tree="[0]")
     private Output<String> emailSubject;
 
     /**
-     * @return The subject of the alert notification email.                                         .
+     * @return The subject of the alert notification email.
      * 
      */
     public Output<String> emailSubject() {
@@ -185,7 +185,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * Alarm level. See `escalations` below.
      * 
      */
-    @Export(name="escalations", type=GroupMetricRuleEscalations.class, parameters={})
+    @Export(name="escalations", refs={GroupMetricRuleEscalations.class}, tree="[0]")
     private Output<GroupMetricRuleEscalations> escalations;
 
     /**
@@ -199,7 +199,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The ID of the application group.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -213,7 +213,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The name of the alert rule.
      * 
      */
-    @Export(name="groupMetricRuleName", type=String.class, parameters={})
+    @Export(name="groupMetricRuleName", refs={String.class}, tree="[0]")
     private Output<String> groupMetricRuleName;
 
     /**
@@ -227,7 +227,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
      * 
      */
-    @Export(name="interval", type=String.class, parameters={})
+    @Export(name="interval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interval;
 
     /**
@@ -241,7 +241,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The name of the metric.
      * 
      */
-    @Export(name="metricName", type=String.class, parameters={})
+    @Export(name="metricName", refs={String.class}, tree="[0]")
     private Output<String> metricName;
 
     /**
@@ -255,7 +255,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The namespace of the service.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -269,7 +269,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The time period during which the alert rule is ineffective.
      * 
      */
-    @Export(name="noEffectiveInterval", type=String.class, parameters={})
+    @Export(name="noEffectiveInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> noEffectiveInterval;
 
     /**
@@ -283,7 +283,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
@@ -297,7 +297,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The ID of the alert rule.
      * 
      */
-    @Export(name="ruleId", type=String.class, parameters={})
+    @Export(name="ruleId", refs={String.class}, tree="[0]")
     private Output<String> ruleId;
 
     /**
@@ -311,21 +311,21 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
      * 
      */
-    @Export(name="silenceTime", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> silenceTime;
+    @Export(name="silenceTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> silenceTime;
 
     /**
      * @return The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
      * 
      */
-    public Output<Optional<Integer>> silenceTime() {
-        return Codegen.optional(this.silenceTime);
+    public Output<Integer> silenceTime() {
+        return this.silenceTime;
     }
     /**
      * The status of Group Metric Rule.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -339,7 +339,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The information about the resource for which alerts are triggered. See `targets` below.
      * 
      */
-    @Export(name="targets", type=List.class, parameters={GroupMetricRuleTarget.class})
+    @Export(name="targets", refs={List.class,GroupMetricRuleTarget.class}, tree="[0,1]")
     private Output<List<GroupMetricRuleTarget>> targets;
 
     /**
@@ -353,7 +353,7 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * The callback URL.
      * 
      */
-    @Export(name="webhook", type=String.class, parameters={})
+    @Export(name="webhook", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> webhook;
 
     /**

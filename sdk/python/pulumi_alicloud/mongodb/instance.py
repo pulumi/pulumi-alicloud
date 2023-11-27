@@ -21,8 +21,13 @@ class InstanceArgs:
                  engine_version: pulumi.Input[str],
                  account_password: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
+                 backup_interval: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
+                 cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryptor_name: Optional[pulumi.Input[str]] = None,
                  hidden_zone_id: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -37,9 +42,11 @@ class InstanceArgs:
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 snapshot_backup_type: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
@@ -56,36 +63,38 @@ class InstanceArgs:
                - 10-GB increments.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
-        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, true of false. Default is false.
+        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
                > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        :param pulumi.Input[str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
+        :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
-        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-               * UPGRADE: The specifications are upgraded.
-               * DOWNGRADE: The specifications are downgraded.
-               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
-        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
-        :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        :param pulumi.Input[str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
+        :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -98,10 +107,20 @@ class InstanceArgs:
             pulumi.set(__self__, "account_password", account_password)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
+        if backup_interval is not None:
+            pulumi.set(__self__, "backup_interval", backup_interval)
         if backup_periods is not None:
             pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
+        if cloud_disk_encryption_key is not None:
+            pulumi.set(__self__, "cloud_disk_encryption_key", cloud_disk_encryption_key)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryptor_name is not None:
+            pulumi.set(__self__, "encryptor_name", encryptor_name)
         if hidden_zone_id is not None:
             pulumi.set(__self__, "hidden_zone_id", hidden_zone_id)
         if instance_charge_type is not None:
@@ -130,12 +149,16 @@ class InstanceArgs:
             pulumi.set(__self__, "replication_factor", replication_factor)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
         if secondary_zone_id is not None:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+        if snapshot_backup_type is not None:
+            pulumi.set(__self__, "snapshot_backup_type", snapshot_backup_type)
         if ssl_action is not None:
             pulumi.set(__self__, "ssl_action", ssl_action)
         if storage_engine is not None:
@@ -207,7 +230,7 @@ class InstanceArgs:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Auto renew for prepaid, true of false. Default is false.
+        Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         """
         return pulumi.get(self, "auto_renew")
@@ -215,6 +238,18 @@ class InstanceArgs:
     @auto_renew.setter
     def auto_renew(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="backupInterval")
+    def backup_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+        """
+        return pulumi.get(self, "backup_interval")
+
+    @backup_interval.setter
+    def backup_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_interval", value)
 
     @property
     @pulumi.getter(name="backupPeriods")
@@ -241,6 +276,51 @@ class InstanceArgs:
         pulumi.set(self, "backup_time", value)
 
     @property
+    @pulumi.getter(name="cloudDiskEncryptionKey")
+    def cloud_disk_encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the encryption key.
+        """
+        return pulumi.get(self, "cloud_disk_encryption_key")
+
+    @cloud_disk_encryption_key.setter
+    def cloud_disk_encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_disk_encryption_key", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="encryptorName")
+    def encryptor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        """
+        return pulumi.get(self, "encryptor_name")
+
+    @encryptor_name.setter
+    def encryptor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryptor_name", value)
+
+    @property
     @pulumi.getter(name="hiddenZoneId")
     def hidden_zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -256,7 +336,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -328,7 +408,7 @@ class InstanceArgs:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        The network type of the instance. Valid values:`Classic`, `VPC`.
         """
         return pulumi.get(self, "network_type")
 
@@ -340,10 +420,7 @@ class InstanceArgs:
     @pulumi.getter(name="orderType")
     def order_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-        * UPGRADE: The specifications are upgraded.
-        * DOWNGRADE: The specifications are downgraded.
-        **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         """
         return pulumi.get(self, "order_type")
 
@@ -367,7 +444,7 @@ class InstanceArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 
@@ -391,7 +468,7 @@ class InstanceArgs:
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         """
         return pulumi.get(self, "replication_factor")
 
@@ -410,6 +487,15 @@ class InstanceArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
 
     @property
     @pulumi.getter(name="secondaryZoneId")
@@ -448,10 +534,22 @@ class InstanceArgs:
         pulumi.set(self, "security_ip_lists", value)
 
     @property
+    @pulumi.getter(name="snapshotBackupType")
+    def snapshot_backup_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The snapshot backup type. Default value: `Standard`. Valid values:
+        """
+        return pulumi.get(self, "snapshot_backup_type")
+
+    @snapshot_backup_type.setter
+    def snapshot_backup_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_backup_type", value)
+
+    @property
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        Actions performed on SSL functions. Valid values:
         """
         return pulumi.get(self, "ssl_action")
 
@@ -463,7 +561,7 @@ class InstanceArgs:
     @pulumi.getter(name="storageEngine")
     def storage_engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         """
         return pulumi.get(self, "storage_engine")
 
@@ -499,7 +597,7 @@ class InstanceArgs:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The TDE(Transparent Data Encryption) status.
+        The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         """
         return pulumi.get(self, "tde_status")
 
@@ -511,7 +609,7 @@ class InstanceArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -551,10 +649,15 @@ class _InstanceState:
     def __init__(__self__, *,
                  account_password: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
+                 backup_interval: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
+                 cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryptor_name: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  hidden_zone_id: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -573,9 +676,11 @@ class _InstanceState:
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 snapshot_backup_type: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  ssl_status: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
@@ -588,45 +693,47 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
-        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, true of false. Default is false.
+        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
                > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        :param pulumi.Input[str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
                - 10-GB increments.
+        :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
         :param pulumi.Input[str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
-        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-               * UPGRADE: The specifications are upgraded.
-               * DOWNGRADE: The specifications are downgraded.
-               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
-        :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
-        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        :param pulumi.Input[str] replica_set_name: The name of the mongo replica set.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]] replica_sets: Replica set instance information.
+        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
-        :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
+        :param pulumi.Input[int] retention_period: Instance data backup retention days. Available since v1.42.0.
         :param pulumi.Input[str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
-        :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
-        :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        :param pulumi.Input[str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
+        :param pulumi.Input[str] ssl_status: Status of the SSL feature.
+        :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -636,14 +743,24 @@ class _InstanceState:
             pulumi.set(__self__, "account_password", account_password)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
+        if backup_interval is not None:
+            pulumi.set(__self__, "backup_interval", backup_interval)
         if backup_periods is not None:
             pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
+        if cloud_disk_encryption_key is not None:
+            pulumi.set(__self__, "cloud_disk_encryption_key", cloud_disk_encryption_key)
         if db_instance_class is not None:
             pulumi.set(__self__, "db_instance_class", db_instance_class)
         if db_instance_storage is not None:
             pulumi.set(__self__, "db_instance_storage", db_instance_storage)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryptor_name is not None:
+            pulumi.set(__self__, "encryptor_name", encryptor_name)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
         if hidden_zone_id is not None:
@@ -680,12 +797,16 @@ class _InstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_period is not None:
             pulumi.set(__self__, "retention_period", retention_period)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
         if secondary_zone_id is not None:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+        if snapshot_backup_type is not None:
+            pulumi.set(__self__, "snapshot_backup_type", snapshot_backup_type)
         if ssl_action is not None:
             pulumi.set(__self__, "ssl_action", ssl_action)
         if ssl_status is not None:
@@ -721,7 +842,7 @@ class _InstanceState:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Auto renew for prepaid, true of false. Default is false.
+        Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         """
         return pulumi.get(self, "auto_renew")
@@ -729,6 +850,18 @@ class _InstanceState:
     @auto_renew.setter
     def auto_renew(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="backupInterval")
+    def backup_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+        """
+        return pulumi.get(self, "backup_interval")
+
+    @backup_interval.setter
+    def backup_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_interval", value)
 
     @property
     @pulumi.getter(name="backupPeriods")
@@ -755,6 +888,18 @@ class _InstanceState:
         pulumi.set(self, "backup_time", value)
 
     @property
+    @pulumi.getter(name="cloudDiskEncryptionKey")
+    def cloud_disk_encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the encryption key.
+        """
+        return pulumi.get(self, "cloud_disk_encryption_key")
+
+    @cloud_disk_encryption_key.setter
+    def cloud_disk_encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_disk_encryption_key", value)
+
+    @property
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> Optional[pulumi.Input[str]]:
         """
@@ -779,6 +924,39 @@ class _InstanceState:
     @db_instance_storage.setter
     def db_instance_storage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "db_instance_storage", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="encryptorName")
+    def encryptor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        """
+        return pulumi.get(self, "encryptor_name")
+
+    @encryptor_name.setter
+    def encryptor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryptor_name", value)
 
     @property
     @pulumi.getter(name="engineVersion")
@@ -808,7 +986,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -880,7 +1058,7 @@ class _InstanceState:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        The network type of the instance. Valid values:`Classic`, `VPC`.
         """
         return pulumi.get(self, "network_type")
 
@@ -892,10 +1070,7 @@ class _InstanceState:
     @pulumi.getter(name="orderType")
     def order_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-        * UPGRADE: The specifications are upgraded.
-        * DOWNGRADE: The specifications are downgraded.
-        **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         """
         return pulumi.get(self, "order_type")
 
@@ -919,7 +1094,7 @@ class _InstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 
@@ -943,7 +1118,7 @@ class _InstanceState:
     @pulumi.getter(name="replicaSetName")
     def replica_set_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the mongo replica set
+        The name of the mongo replica set.
         """
         return pulumi.get(self, "replica_set_name")
 
@@ -955,7 +1130,7 @@ class _InstanceState:
     @pulumi.getter(name="replicaSets")
     def replica_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]]]:
         """
-        Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+        Replica set instance information.
         """
         return pulumi.get(self, "replica_sets")
 
@@ -967,7 +1142,7 @@ class _InstanceState:
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         """
         return pulumi.get(self, "replication_factor")
 
@@ -991,13 +1166,22 @@ class _InstanceState:
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Instance log backup retention days. Available in 1.42.0+.
+        Instance data backup retention days. Available since v1.42.0.
         """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
     def retention_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_period", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
 
     @property
     @pulumi.getter(name="secondaryZoneId")
@@ -1036,10 +1220,22 @@ class _InstanceState:
         pulumi.set(self, "security_ip_lists", value)
 
     @property
+    @pulumi.getter(name="snapshotBackupType")
+    def snapshot_backup_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The snapshot backup type. Default value: `Standard`. Valid values:
+        """
+        return pulumi.get(self, "snapshot_backup_type")
+
+    @snapshot_backup_type.setter
+    def snapshot_backup_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_backup_type", value)
+
+    @property
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        Actions performed on SSL functions. Valid values:
         """
         return pulumi.get(self, "ssl_action")
 
@@ -1051,7 +1247,7 @@ class _InstanceState:
     @pulumi.getter(name="sslStatus")
     def ssl_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+        Status of the SSL feature.
         """
         return pulumi.get(self, "ssl_status")
 
@@ -1063,7 +1259,7 @@ class _InstanceState:
     @pulumi.getter(name="storageEngine")
     def storage_engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         """
         return pulumi.get(self, "storage_engine")
 
@@ -1099,7 +1295,7 @@ class _InstanceState:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The TDE(Transparent Data Encryption) status.
+        The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         """
         return pulumi.get(self, "tde_status")
 
@@ -1111,7 +1307,7 @@ class _InstanceState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1153,10 +1349,15 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
+                 backup_interval: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
+                 cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryptor_name: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  hidden_zone_id: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1172,9 +1373,11 @@ class Instance(pulumi.CustomResource):
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 snapshot_backup_type: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
@@ -1248,41 +1451,43 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
-        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, true of false. Default is false.
+        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
                > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        :param pulumi.Input[str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
                - 10-GB increments.
+        :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
         :param pulumi.Input[str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
-        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-               * UPGRADE: The specifications are upgraded.
-               * DOWNGRADE: The specifications are downgraded.
-               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
-        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
-        :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        :param pulumi.Input[str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
+        :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -1372,10 +1577,15 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
+                 backup_interval: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
+                 cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryptor_name: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  hidden_zone_id: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1391,9 +1601,11 @@ class Instance(pulumi.CustomResource):
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 snapshot_backup_type: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
@@ -1413,14 +1625,19 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["backup_interval"] = backup_interval
             __props__.__dict__["backup_periods"] = backup_periods
             __props__.__dict__["backup_time"] = backup_time
+            __props__.__dict__["cloud_disk_encryption_key"] = cloud_disk_encryption_key
             if db_instance_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_instance_class'")
             __props__.__dict__["db_instance_class"] = db_instance_class
             if db_instance_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'db_instance_storage'")
             __props__.__dict__["db_instance_storage"] = db_instance_storage
+            __props__.__dict__["encrypted"] = encrypted
+            __props__.__dict__["encryption_key"] = encryption_key
+            __props__.__dict__["encryptor_name"] = encryptor_name
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
@@ -1438,9 +1655,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["readonly_replicas"] = readonly_replicas
             __props__.__dict__["replication_factor"] = replication_factor
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["role_arn"] = role_arn
             __props__.__dict__["secondary_zone_id"] = secondary_zone_id
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_ip_lists"] = security_ip_lists
+            __props__.__dict__["snapshot_backup_type"] = snapshot_backup_type
             __props__.__dict__["ssl_action"] = ssl_action
             __props__.__dict__["storage_engine"] = storage_engine
             __props__.__dict__["storage_type"] = storage_type
@@ -1467,10 +1686,15 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_password: Optional[pulumi.Input[str]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
+            backup_interval: Optional[pulumi.Input[str]] = None,
             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             backup_time: Optional[pulumi.Input[str]] = None,
+            cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
             db_instance_class: Optional[pulumi.Input[str]] = None,
             db_instance_storage: Optional[pulumi.Input[int]] = None,
+            encrypted: Optional[pulumi.Input[bool]] = None,
+            encryption_key: Optional[pulumi.Input[str]] = None,
+            encryptor_name: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             hidden_zone_id: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1489,9 +1713,11 @@ class Instance(pulumi.CustomResource):
             replication_factor: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retention_period: Optional[pulumi.Input[int]] = None,
+            role_arn: Optional[pulumi.Input[str]] = None,
             secondary_zone_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            snapshot_backup_type: Optional[pulumi.Input[str]] = None,
             ssl_action: Optional[pulumi.Input[str]] = None,
             ssl_status: Optional[pulumi.Input[str]] = None,
             storage_engine: Optional[pulumi.Input[str]] = None,
@@ -1509,45 +1735,47 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
-        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, true of false. Default is false.
+        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
                > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        :param pulumi.Input[str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
                - 10-GB increments.
+        :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
         :param pulumi.Input[str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
-        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-               * UPGRADE: The specifications are upgraded.
-               * DOWNGRADE: The specifications are downgraded.
-               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
+        :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
-        :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
-        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        :param pulumi.Input[str] replica_set_name: The name of the mongo replica set.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]] replica_sets: Replica set instance information.
+        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
-        :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
+        :param pulumi.Input[int] retention_period: Instance data backup retention days. Available since v1.42.0.
         :param pulumi.Input[str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
-        :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
-        :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        :param pulumi.Input[str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
+        :param pulumi.Input[str] ssl_status: Status of the SSL feature.
+        :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -1559,10 +1787,15 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["account_password"] = account_password
         __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["backup_interval"] = backup_interval
         __props__.__dict__["backup_periods"] = backup_periods
         __props__.__dict__["backup_time"] = backup_time
+        __props__.__dict__["cloud_disk_encryption_key"] = cloud_disk_encryption_key
         __props__.__dict__["db_instance_class"] = db_instance_class
         __props__.__dict__["db_instance_storage"] = db_instance_storage
+        __props__.__dict__["encrypted"] = encrypted
+        __props__.__dict__["encryption_key"] = encryption_key
+        __props__.__dict__["encryptor_name"] = encryptor_name
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["hidden_zone_id"] = hidden_zone_id
         __props__.__dict__["instance_charge_type"] = instance_charge_type
@@ -1581,9 +1814,11 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["replication_factor"] = replication_factor
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retention_period"] = retention_period
+        __props__.__dict__["role_arn"] = role_arn
         __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_ip_lists"] = security_ip_lists
+        __props__.__dict__["snapshot_backup_type"] = snapshot_backup_type
         __props__.__dict__["ssl_action"] = ssl_action
         __props__.__dict__["ssl_status"] = ssl_status
         __props__.__dict__["storage_engine"] = storage_engine
@@ -1607,10 +1842,18 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
-        Auto renew for prepaid, true of false. Default is false.
+        Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         """
         return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="backupInterval")
+    def backup_interval(self) -> pulumi.Output[str]:
+        """
+        The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+        """
+        return pulumi.get(self, "backup_interval")
 
     @property
     @pulumi.getter(name="backupPeriods")
@@ -1627,6 +1870,14 @@ class Instance(pulumi.CustomResource):
         MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         """
         return pulumi.get(self, "backup_time")
+
+    @property
+    @pulumi.getter(name="cloudDiskEncryptionKey")
+    def cloud_disk_encryption_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the encryption key.
+        """
+        return pulumi.get(self, "cloud_disk_encryption_key")
 
     @property
     @pulumi.getter(name="dbInstanceClass")
@@ -1647,6 +1898,27 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "db_instance_storage")
 
     @property
+    @pulumi.getter
+    def encrypted(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="encryptorName")
+    def encryptor_name(self) -> pulumi.Output[str]:
+        """
+        The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        """
+        return pulumi.get(self, "encryptor_name")
+
+    @property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[str]:
         """
@@ -1664,9 +1936,9 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
+    def instance_charge_type(self) -> pulumi.Output[str]:
         """
-        Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -1714,7 +1986,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[str]:
         """
-        The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        The network type of the instance. Valid values:`Classic`, `VPC`.
         """
         return pulumi.get(self, "network_type")
 
@@ -1722,10 +1994,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="orderType")
     def order_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-        * UPGRADE: The specifications are upgraded.
-        * DOWNGRADE: The specifications are downgraded.
-        **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         """
         return pulumi.get(self, "order_type")
 
@@ -1741,7 +2010,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[int]:
         """
-        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 
@@ -1757,7 +2026,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="replicaSetName")
     def replica_set_name(self) -> pulumi.Output[str]:
         """
-        The name of the mongo replica set
+        The name of the mongo replica set.
         """
         return pulumi.get(self, "replica_set_name")
 
@@ -1765,7 +2034,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="replicaSets")
     def replica_sets(self) -> pulumi.Output[Sequence['outputs.InstanceReplicaSet']]:
         """
-        Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+        Replica set instance information.
         """
         return pulumi.get(self, "replica_sets")
 
@@ -1773,7 +2042,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> pulumi.Output[int]:
         """
-        Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         """
         return pulumi.get(self, "replication_factor")
 
@@ -1789,9 +2058,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[int]:
         """
-        Instance log backup retention days. Available in 1.42.0+.
+        Instance data backup retention days. Available since v1.42.0.
         """
         return pulumi.get(self, "retention_period")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secondaryZoneId")
@@ -1803,7 +2077,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> pulumi.Output[str]:
+    def security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Security Group ID of ECS.
         """
@@ -1818,10 +2092,18 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "security_ip_lists")
 
     @property
-    @pulumi.getter(name="sslAction")
-    def ssl_action(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="snapshotBackupType")
+    def snapshot_backup_type(self) -> pulumi.Output[str]:
         """
-        Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        The snapshot backup type. Default value: `Standard`. Valid values:
+        """
+        return pulumi.get(self, "snapshot_backup_type")
+
+    @property
+    @pulumi.getter(name="sslAction")
+    def ssl_action(self) -> pulumi.Output[Optional[str]]:
+        """
+        Actions performed on SSL functions. Valid values:
         """
         return pulumi.get(self, "ssl_action")
 
@@ -1829,7 +2111,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sslStatus")
     def ssl_status(self) -> pulumi.Output[str]:
         """
-        Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+        Status of the SSL feature.
         """
         return pulumi.get(self, "ssl_status")
 
@@ -1837,7 +2119,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="storageEngine")
     def storage_engine(self) -> pulumi.Output[str]:
         """
-        Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         """
         return pulumi.get(self, "storage_engine")
 
@@ -1859,9 +2141,9 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tdeStatus")
-    def tde_status(self) -> pulumi.Output[Optional[str]]:
+    def tde_status(self) -> pulumi.Output[str]:
         """
-        The TDE(Transparent Data Encryption) status.
+        The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         """
         return pulumi.get(self, "tde_status")
 
@@ -1869,7 +2151,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         """
         return pulumi.get(self, "vpc_id")
 

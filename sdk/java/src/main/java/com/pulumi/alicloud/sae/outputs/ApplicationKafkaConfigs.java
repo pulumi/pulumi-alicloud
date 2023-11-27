@@ -91,11 +91,11 @@ public final class ApplicationKafkaConfigs {
             return this;
         }
         public ApplicationKafkaConfigs build() {
-            final var o = new ApplicationKafkaConfigs();
-            o.kafkaConfigs = kafkaConfigs;
-            o.kafkaEndpoint = kafkaEndpoint;
-            o.kafkaInstanceId = kafkaInstanceId;
-            return o;
+            final var _resultValue = new ApplicationKafkaConfigs();
+            _resultValue.kafkaConfigs = kafkaConfigs;
+            _resultValue.kafkaEndpoint = kafkaEndpoint;
+            _resultValue.kafkaInstanceId = kafkaInstanceId;
+            return _resultValue;
         }
     }
 }

@@ -84,11 +84,11 @@ public final class GetAccountDeletionCheckTaskNotAllowReason {
             return this;
         }
         public GetAccountDeletionCheckTaskNotAllowReason build() {
-            final var o = new GetAccountDeletionCheckTaskNotAllowReason();
-            o.checkId = checkId;
-            o.checkName = checkName;
-            o.description = description;
-            return o;
+            final var _resultValue = new GetAccountDeletionCheckTaskNotAllowReason();
+            _resultValue.checkId = checkId;
+            _resultValue.checkName = checkName;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

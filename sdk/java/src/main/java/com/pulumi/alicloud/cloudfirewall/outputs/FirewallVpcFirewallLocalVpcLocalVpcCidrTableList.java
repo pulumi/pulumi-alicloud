@@ -70,10 +70,10 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
             return this;
         }
         public FirewallVpcFirewallLocalVpcLocalVpcCidrTableList build() {
-            final var o = new FirewallVpcFirewallLocalVpcLocalVpcCidrTableList();
-            o.localRouteEntryLists = localRouteEntryLists;
-            o.localRouteTableId = localRouteTableId;
-            return o;
+            final var _resultValue = new FirewallVpcFirewallLocalVpcLocalVpcCidrTableList();
+            _resultValue.localRouteEntryLists = localRouteEntryLists;
+            _resultValue.localRouteTableId = localRouteTableId;
+            return _resultValue;
         }
     }
 }

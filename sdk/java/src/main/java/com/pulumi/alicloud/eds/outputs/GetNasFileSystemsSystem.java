@@ -332,24 +332,24 @@ public final class GetNasFileSystemsSystem {
             return this;
         }
         public GetNasFileSystemsSystem build() {
-            final var o = new GetNasFileSystemsSystem();
-            o.capacity = capacity;
-            o.createTime = createTime;
-            o.description = description;
-            o.fileSystemId = fileSystemId;
-            o.fileSystemType = fileSystemType;
-            o.id = id;
-            o.meteredSize = meteredSize;
-            o.mountTargetDomain = mountTargetDomain;
-            o.mountTargetStatus = mountTargetStatus;
-            o.nasFileSystemName = nasFileSystemName;
-            o.officeSiteId = officeSiteId;
-            o.officeSiteName = officeSiteName;
-            o.status = status;
-            o.storageType = storageType;
-            o.supportAcl = supportAcl;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetNasFileSystemsSystem();
+            _resultValue.capacity = capacity;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.fileSystemType = fileSystemType;
+            _resultValue.id = id;
+            _resultValue.meteredSize = meteredSize;
+            _resultValue.mountTargetDomain = mountTargetDomain;
+            _resultValue.mountTargetStatus = mountTargetStatus;
+            _resultValue.nasFileSystemName = nasFileSystemName;
+            _resultValue.officeSiteId = officeSiteId;
+            _resultValue.officeSiteName = officeSiteName;
+            _resultValue.status = status;
+            _resultValue.storageType = storageType;
+            _resultValue.supportAcl = supportAcl;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

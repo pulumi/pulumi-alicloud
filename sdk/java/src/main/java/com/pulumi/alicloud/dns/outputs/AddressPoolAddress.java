@@ -125,13 +125,13 @@ public final class AddressPoolAddress {
             return this;
         }
         public AddressPoolAddress build() {
-            final var o = new AddressPoolAddress();
-            o.address = address;
-            o.attributeInfo = attributeInfo;
-            o.lbaWeight = lbaWeight;
-            o.mode = mode;
-            o.remark = remark;
-            return o;
+            final var _resultValue = new AddressPoolAddress();
+            _resultValue.address = address;
+            _resultValue.attributeInfo = attributeInfo;
+            _resultValue.lbaWeight = lbaWeight;
+            _resultValue.mode = mode;
+            _resultValue.remark = remark;
+            return _resultValue;
         }
     }
 }

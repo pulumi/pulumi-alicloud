@@ -336,24 +336,24 @@ public final class GetDesktopsDesktop {
             return this;
         }
         public GetDesktopsDesktop build() {
-            final var o = new GetDesktopsDesktop();
-            o.cpu = cpu;
-            o.createTime = createTime;
-            o.desktopId = desktopId;
-            o.desktopName = desktopName;
-            o.desktopType = desktopType;
-            o.directoryId = directoryId;
-            o.endUserIds = endUserIds;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.imageId = imageId;
-            o.memory = memory;
-            o.networkInterfaceId = networkInterfaceId;
-            o.paymentType = paymentType;
-            o.policyGroupId = policyGroupId;
-            o.status = status;
-            o.systemDiskSize = systemDiskSize;
-            return o;
+            final var _resultValue = new GetDesktopsDesktop();
+            _resultValue.cpu = cpu;
+            _resultValue.createTime = createTime;
+            _resultValue.desktopId = desktopId;
+            _resultValue.desktopName = desktopName;
+            _resultValue.desktopType = desktopType;
+            _resultValue.directoryId = directoryId;
+            _resultValue.endUserIds = endUserIds;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.memory = memory;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.paymentType = paymentType;
+            _resultValue.policyGroupId = policyGroupId;
+            _resultValue.status = status;
+            _resultValue.systemDiskSize = systemDiskSize;
+            return _resultValue;
         }
     }
 }

@@ -84,11 +84,11 @@ public final class ClusterMetaStoreConf {
             return this;
         }
         public ClusterMetaStoreConf build() {
-            final var o = new ClusterMetaStoreConf();
-            o.dbPassword = dbPassword;
-            o.dbUrl = dbUrl;
-            o.dbUserName = dbUserName;
-            return o;
+            final var _resultValue = new ClusterMetaStoreConf();
+            _resultValue.dbPassword = dbPassword;
+            _resultValue.dbUrl = dbUrl;
+            _resultValue.dbUserName = dbUserName;
+            return _resultValue;
         }
     }
 }

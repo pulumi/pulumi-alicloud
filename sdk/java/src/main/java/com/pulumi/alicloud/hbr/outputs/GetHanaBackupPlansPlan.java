@@ -228,19 +228,19 @@ public final class GetHanaBackupPlansPlan {
             return this;
         }
         public GetHanaBackupPlansPlan build() {
-            final var o = new GetHanaBackupPlansPlan();
-            o.backupPrefix = backupPrefix;
-            o.backupType = backupType;
-            o.clusterId = clusterId;
-            o.databaseName = databaseName;
-            o.id = id;
-            o.pageTotal = pageTotal;
-            o.planId = planId;
-            o.planName = planName;
-            o.schedule = schedule;
-            o.status = status;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetHanaBackupPlansPlan();
+            _resultValue.backupPrefix = backupPrefix;
+            _resultValue.backupType = backupType;
+            _resultValue.clusterId = clusterId;
+            _resultValue.databaseName = databaseName;
+            _resultValue.id = id;
+            _resultValue.pageTotal = pageTotal;
+            _resultValue.planId = planId;
+            _resultValue.planName = planName;
+            _resultValue.schedule = schedule;
+            _resultValue.status = status;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

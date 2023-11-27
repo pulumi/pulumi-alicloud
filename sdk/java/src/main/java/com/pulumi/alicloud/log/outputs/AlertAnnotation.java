@@ -65,10 +65,10 @@ public final class AlertAnnotation {
             return this;
         }
         public AlertAnnotation build() {
-            final var o = new AlertAnnotation();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new AlertAnnotation();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

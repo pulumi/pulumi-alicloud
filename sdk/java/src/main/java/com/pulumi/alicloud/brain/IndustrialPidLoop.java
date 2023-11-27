@@ -72,7 +72,7 @@ public class IndustrialPidLoop extends com.pulumi.resources.CustomResource {
      * The Pid Loop Configuration.
      * 
      */
-    @Export(name="pidLoopConfiguration", type=String.class, parameters={})
+    @Export(name="pidLoopConfiguration", refs={String.class}, tree="[0]")
     private Output<String> pidLoopConfiguration;
 
     /**
@@ -86,7 +86,7 @@ public class IndustrialPidLoop extends com.pulumi.resources.CustomResource {
      * The dcs type of Pid Loop. Valid values: `standard`.
      * 
      */
-    @Export(name="pidLoopDcsType", type=String.class, parameters={})
+    @Export(name="pidLoopDcsType", refs={String.class}, tree="[0]")
     private Output<String> pidLoopDcsType;
 
     /**
@@ -100,7 +100,7 @@ public class IndustrialPidLoop extends com.pulumi.resources.CustomResource {
      * The desc of Pid Loop.
      * 
      */
-    @Export(name="pidLoopDesc", type=String.class, parameters={})
+    @Export(name="pidLoopDesc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pidLoopDesc;
 
     /**
@@ -114,7 +114,7 @@ public class IndustrialPidLoop extends com.pulumi.resources.CustomResource {
      * Whether is crucial Pid Loop.
      * 
      */
-    @Export(name="pidLoopIsCrucial", type=Boolean.class, parameters={})
+    @Export(name="pidLoopIsCrucial", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pidLoopIsCrucial;
 
     /**
@@ -128,7 +128,7 @@ public class IndustrialPidLoop extends com.pulumi.resources.CustomResource {
      * The name of Pid Loop.
      * 
      */
-    @Export(name="pidLoopName", type=String.class, parameters={})
+    @Export(name="pidLoopName", refs={String.class}, tree="[0]")
     private Output<String> pidLoopName;
 
     /**
@@ -142,7 +142,7 @@ public class IndustrialPidLoop extends com.pulumi.resources.CustomResource {
      * The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
      * 
      */
-    @Export(name="pidLoopType", type=String.class, parameters={})
+    @Export(name="pidLoopType", refs={String.class}, tree="[0]")
     private Output<String> pidLoopType;
 
     /**
@@ -156,7 +156,7 @@ public class IndustrialPidLoop extends com.pulumi.resources.CustomResource {
      * The pid project id.
      * 
      */
-    @Export(name="pidProjectId", type=String.class, parameters={})
+    @Export(name="pidProjectId", refs={String.class}, tree="[0]")
     private Output<String> pidProjectId;
 
     /**
@@ -170,7 +170,7 @@ public class IndustrialPidLoop extends com.pulumi.resources.CustomResource {
      * The status of Pid Loop.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

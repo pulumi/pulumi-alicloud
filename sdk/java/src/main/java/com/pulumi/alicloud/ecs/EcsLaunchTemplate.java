@@ -179,7 +179,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      * 
      */
-    @Export(name="autoReleaseTime", type=String.class, parameters={})
+    @Export(name="autoReleaseTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoReleaseTime;
 
     /**
@@ -193,7 +193,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The list of data disks created with instance. See `data_disks` below.
      * 
      */
-    @Export(name="dataDisks", type=List.class, parameters={EcsLaunchTemplateDataDisk.class})
+    @Export(name="dataDisks", refs={List.class,EcsLaunchTemplateDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcsLaunchTemplateDataDisk>> dataDisks;
 
     /**
@@ -207,7 +207,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The Deployment Set Id.
      * 
      */
-    @Export(name="deploymentSetId", type=String.class, parameters={})
+    @Export(name="deploymentSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentSetId;
 
     /**
@@ -221,7 +221,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -235,7 +235,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Whether to enable the instance operating system configuration.
      * 
      */
-    @Export(name="enableVmOsConfig", type=Boolean.class, parameters={})
+    @Export(name="enableVmOsConfig", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableVmOsConfig;
 
     /**
@@ -249,7 +249,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     /**
@@ -263,7 +263,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The Image ID.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
@@ -277,7 +277,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `&#34;&#34;`. Default to: `&#34;&#34;`.
      * 
      */
-    @Export(name="imageOwnerAlias", type=String.class, parameters={})
+    @Export(name="imageOwnerAlias", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageOwnerAlias;
 
     /**
@@ -291,7 +291,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Billing methods. Valid values: `PostPaid`, `PrePaid`.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -305,7 +305,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -319,7 +319,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -333,7 +333,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
@@ -347,7 +347,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
      * 
      */
-    @Export(name="internetMaxBandwidthIn", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthIn", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthIn;
 
     /**
@@ -361,7 +361,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
      * 
      */
-    @Export(name="internetMaxBandwidthOut", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetMaxBandwidthOut;
 
     /**
@@ -375,7 +375,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Whether it is an I/O-optimized instance or not. Valid values: `none`, `optimized`.
      * 
      */
-    @Export(name="ioOptimized", type=String.class, parameters={})
+    @Export(name="ioOptimized", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ioOptimized;
 
     /**
@@ -391,7 +391,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
@@ -407,7 +407,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The name of Launch Template.
      * 
      */
-    @Export(name="launchTemplateName", type=String.class, parameters={})
+    @Export(name="launchTemplateName", refs={String.class}, tree="[0]")
     private Output<String> launchTemplateName;
 
     /**
@@ -425,7 +425,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -439,7 +439,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The list of network interfaces created with instance. See `network_interfaces` below.
      * 
      */
-    @Export(name="networkInterfaces", type=EcsLaunchTemplateNetworkInterfaces.class, parameters={})
+    @Export(name="networkInterfaces", refs={EcsLaunchTemplateNetworkInterfaces.class}, tree="[0]")
     private Output</* @Nullable */ EcsLaunchTemplateNetworkInterfaces> networkInterfaces;
 
     /**
@@ -453,7 +453,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Network type of the instance. Valid values: `classic`, `vpc`.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkType;
 
     /**
@@ -467,7 +467,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Whether to use the password preset by the mirror.
      * 
      */
-    @Export(name="passwordInherit", type=Boolean.class, parameters={})
+    @Export(name="passwordInherit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordInherit;
 
     /**
@@ -483,7 +483,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -499,7 +499,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The private IP address of the instance.
      * 
      */
-    @Export(name="privateIpAddress", type=String.class, parameters={})
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateIpAddress;
 
     /**
@@ -513,7 +513,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      * 
      */
-    @Export(name="ramRoleName", type=String.class, parameters={})
+    @Export(name="ramRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ramRoleName;
 
     /**
@@ -527,7 +527,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -541,7 +541,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
      * 
      */
-    @Export(name="securityEnhancementStrategy", type=String.class, parameters={})
+    @Export(name="securityEnhancementStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityEnhancementStrategy;
 
     /**
@@ -555,7 +555,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The security group ID.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
@@ -569,7 +569,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The ID of security group N to which to assign the instance.
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
     /**
@@ -583,7 +583,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
      * 
      */
-    @Export(name="spotDuration", type=String.class, parameters={})
+    @Export(name="spotDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotDuration;
 
     /**
@@ -597,7 +597,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
-    @Export(name="spotPriceLimit", type=Double.class, parameters={})
+    @Export(name="spotPriceLimit", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> spotPriceLimit;
 
     /**
@@ -611,7 +611,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
      * 
      */
-    @Export(name="spotStrategy", type=String.class, parameters={})
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotStrategy;
 
     /**
@@ -625,7 +625,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The System Disk. See `system_disk` below.
      * 
      */
-    @Export(name="systemDisk", type=EcsLaunchTemplateSystemDisk.class, parameters={})
+    @Export(name="systemDisk", refs={EcsLaunchTemplateSystemDisk.class}, tree="[0]")
     private Output<EcsLaunchTemplateSystemDisk> systemDisk;
 
     /**
@@ -643,7 +643,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
-    @Export(name="systemDiskCategory", type=String.class, parameters={})
+    @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
@@ -661,7 +661,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
-    @Export(name="systemDiskDescription", type=String.class, parameters={})
+    @Export(name="systemDiskDescription", refs={String.class}, tree="[0]")
     private Output<String> systemDiskDescription;
 
     /**
@@ -679,7 +679,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
-    @Export(name="systemDiskName", type=String.class, parameters={})
+    @Export(name="systemDiskName", refs={String.class}, tree="[0]")
     private Output<String> systemDiskName;
 
     /**
@@ -697,7 +697,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
-    @Export(name="systemDiskSize", type=Integer.class, parameters={})
+    @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> systemDiskSize;
 
     /**
@@ -713,7 +713,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -729,7 +729,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The template resource group id.
      * 
      */
-    @Export(name="templateResourceGroupId", type=String.class, parameters={})
+    @Export(name="templateResourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateResourceGroupId;
 
     /**
@@ -743,7 +743,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the launch template.
      * 
      */
-    @Export(name="templateTags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="templateTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> templateTags;
 
     /**
@@ -757,7 +757,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The User Data.
      * 
      */
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output<String> userData;
 
     /**
@@ -775,7 +775,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead. */
-    @Export(name="userdata", type=String.class, parameters={})
+    @Export(name="userdata", refs={String.class}, tree="[0]")
     private Output<String> userdata;
 
     /**
@@ -789,7 +789,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
-    @Export(name="versionDescription", type=String.class, parameters={})
+    @Export(name="versionDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> versionDescription;
 
     /**
@@ -803,7 +803,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The ID of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -817,7 +817,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -831,7 +831,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * The zone ID of the instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

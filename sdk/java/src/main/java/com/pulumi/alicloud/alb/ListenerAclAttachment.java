@@ -39,7 +39,7 @@ public class ListenerAclAttachment extends com.pulumi.resources.CustomResource {
      * The ID list of the access policy group bound by the listener.
      * 
      */
-    @Export(name="aclId", type=String.class, parameters={})
+    @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 
     /**
@@ -55,7 +55,7 @@ public class ListenerAclAttachment extends com.pulumi.resources.CustomResource {
      * - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
      * 
      */
-    @Export(name="aclType", type=String.class, parameters={})
+    @Export(name="aclType", refs={String.class}, tree="[0]")
     private Output<String> aclType;
 
     /**
@@ -71,7 +71,7 @@ public class ListenerAclAttachment extends com.pulumi.resources.CustomResource {
      * Listener instance ID.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -85,7 +85,7 @@ public class ListenerAclAttachment extends com.pulumi.resources.CustomResource {
      * Listener Status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

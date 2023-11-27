@@ -204,17 +204,17 @@ public final class GetQuotaAlarmsAlarm {
             return this;
         }
         public GetQuotaAlarmsAlarm build() {
-            final var o = new GetQuotaAlarmsAlarm();
-            o.alarmId = alarmId;
-            o.id = id;
-            o.productCode = productCode;
-            o.quotaActionCode = quotaActionCode;
-            o.quotaAlarmName = quotaAlarmName;
-            o.quotaDimensions = quotaDimensions;
-            o.threshold = threshold;
-            o.thresholdPercent = thresholdPercent;
-            o.webHook = webHook;
-            return o;
+            final var _resultValue = new GetQuotaAlarmsAlarm();
+            _resultValue.alarmId = alarmId;
+            _resultValue.id = id;
+            _resultValue.productCode = productCode;
+            _resultValue.quotaActionCode = quotaActionCode;
+            _resultValue.quotaAlarmName = quotaAlarmName;
+            _resultValue.quotaDimensions = quotaDimensions;
+            _resultValue.threshold = threshold;
+            _resultValue.thresholdPercent = thresholdPercent;
+            _resultValue.webHook = webHook;
+            return _resultValue;
         }
     }
 }

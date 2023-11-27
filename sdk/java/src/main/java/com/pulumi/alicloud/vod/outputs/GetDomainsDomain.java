@@ -222,18 +222,18 @@ public final class GetDomainsDomain {
             return this;
         }
         public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.cname = cname;
-            o.description = description;
-            o.domainName = domainName;
-            o.gmtCreated = gmtCreated;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.sandBox = sandBox;
-            o.sources = sources;
-            o.sslProtocol = sslProtocol;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDomainsDomain();
+            _resultValue.cname = cname;
+            _resultValue.description = description;
+            _resultValue.domainName = domainName;
+            _resultValue.gmtCreated = gmtCreated;
+            _resultValue.gmtModified = gmtModified;
+            _resultValue.id = id;
+            _resultValue.sandBox = sandBox;
+            _resultValue.sources = sources;
+            _resultValue.sslProtocol = sslProtocol;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

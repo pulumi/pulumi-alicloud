@@ -38,7 +38,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The description of user. The description can be up to `1024` characters long.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -52,7 +52,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The ID of the Directory.
      * 
      */
-    @Export(name="directoryId", type=String.class, parameters={})
+    @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output<String> directoryId;
 
     /**
@@ -66,7 +66,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The display name of user. The display name can be up to `256` characters long.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -80,7 +80,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The User&#39;s Contact Email Address. The email can be up to `128` characters long.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
@@ -94,7 +94,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The first name of user. The first_name can be up to `64` characters long.
      * 
      */
-    @Export(name="firstName", type=String.class, parameters={})
+    @Export(name="firstName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firstName;
 
     /**
@@ -108,7 +108,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The last name of user. The last_name can be up to `64` characters long.
      * 
      */
-    @Export(name="lastName", type=String.class, parameters={})
+    @Export(name="lastName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lastName;
 
     /**
@@ -122,7 +122,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The status of user. Valid values: `Disabled`, `Enabled`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -136,7 +136,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The User ID of the group.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
@@ -150,7 +150,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**

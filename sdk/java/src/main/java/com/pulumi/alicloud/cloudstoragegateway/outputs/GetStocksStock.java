@@ -69,10 +69,10 @@ public final class GetStocksStock {
             return this;
         }
         public GetStocksStock build() {
-            final var o = new GetStocksStock();
-            o.availableGatewayClasses = availableGatewayClasses;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetStocksStock();
+            _resultValue.availableGatewayClasses = availableGatewayClasses;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -91,11 +91,11 @@ public final class ServerlessKubernetesAddon {
             return this;
         }
         public ServerlessKubernetesAddon build() {
-            final var o = new ServerlessKubernetesAddon();
-            o.config = config;
-            o.disabled = disabled;
-            o.name = name;
-            return o;
+            final var _resultValue = new ServerlessKubernetesAddon();
+            _resultValue.config = config;
+            _resultValue.disabled = disabled;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

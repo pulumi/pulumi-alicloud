@@ -94,7 +94,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * The policy attachment count.
      * 
      */
-    @Export(name="attachmentCount", type=Integer.class, parameters={})
+    @Export(name="attachmentCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> attachmentCount;
 
     /**
@@ -108,7 +108,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * The default version of policy.
      * 
      */
-    @Export(name="defaultVersion", type=String.class, parameters={})
+    @Export(name="defaultVersion", refs={String.class}, tree="[0]")
     private Output<String> defaultVersion;
 
     /**
@@ -122,7 +122,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Description of the RAM policy. This name can have a string of 1 to 1024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -140,7 +140,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead. */
-    @Export(name="document", type=String.class, parameters={})
+    @Export(name="document", refs={String.class}, tree="[0]")
     private Output<String> document;
 
     /**
@@ -154,7 +154,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * This parameter is used for resource destroy. Default value is `false`.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -172,7 +172,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -186,7 +186,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Document of the RAM policy. It is required when the `statement` is not specified.
      * 
      */
-    @Export(name="policyDocument", type=String.class, parameters={})
+    @Export(name="policyDocument", refs={String.class}, tree="[0]")
     private Output<String> policyDocument;
 
     /**
@@ -200,7 +200,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="policyName", type=String.class, parameters={})
+    @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
@@ -214,7 +214,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
      * 
      */
-    @Export(name="rotateStrategy", type=String.class, parameters={})
+    @Export(name="rotateStrategy", refs={String.class}, tree="[0]")
     private Output<String> rotateStrategy;
 
     /**
@@ -232,7 +232,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
-    @Export(name="statements", type=List.class, parameters={PolicyStatement.class})
+    @Export(name="statements", refs={List.class,PolicyStatement.class}, tree="[0,1]")
     private Output<List<PolicyStatement>> statements;
 
     /**
@@ -246,7 +246,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * The policy type.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -264,7 +264,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> version;
 
     /**
@@ -278,7 +278,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * The ID of default version policy.
      * 
      */
-    @Export(name="versionId", type=String.class, parameters={})
+    @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**

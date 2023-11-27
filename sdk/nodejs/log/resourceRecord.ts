@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
  *
- * > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
+ * > **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
  *
  * ## Example Usage
  *
@@ -19,11 +19,40 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.log.ResourceRecord("example", {
- *     recordId: "user_tf_test_resource_1",
- *     resourceName: "user.tf.test_resource",
- *     tag: "test resource tag",
- *     value: "{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}",
+ * const exampleResource = new alicloud.log.Resource("exampleResource", {
+ *     type: "userdefine",
+ *     description: "user tf resource desc",
+ *     extInfo: "{}",
+ *     schema: `    {
+ *       "schema": [
+ *         {
+ *           "column": "col1",
+ *           "desc": "col1   desc",
+ *           "ext_info": {
+ *           },
+ *           "required": true,
+ *           "type": "string"
+ *         },
+ *         {
+ *           "column": "col2",
+ *           "desc": "col2   desc",
+ *           "ext_info": "optional",
+ *           "required": true,
+ *           "type": "string"
+ *         }
+ *       ]
+ *     }
+ * `,
+ * });
+ * const exampleResourceRecord = new alicloud.log.ResourceRecord("exampleResourceRecord", {
+ *     resourceName: exampleResource.id,
+ *     recordId: "user_tf_resource_1",
+ *     tag: "resource tag",
+ *     value: `    {
+ *       "col1": "this is col1 value",
+ *       "col2": "col2   value"
+ *     }
+ * `,
  * });
  * ```
  *
@@ -32,7 +61,7 @@ import * as utilities from "../utilities";
  * Log resource record can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/resourceRecord:ResourceRecord example user.tf.test_resource:user_tf_test_resource_1
+ *  $ pulumi import alicloud:log/resourceRecord:ResourceRecord example <resource_name>:<record_id>
  * ```
  */
 export class ResourceRecord extends pulumi.CustomResource {

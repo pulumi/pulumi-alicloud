@@ -217,19 +217,19 @@ public final class GetBasicEndpointsResult {
             return this;
         }
         public GetBasicEndpointsResult build() {
-            final var o = new GetBasicEndpointsResult();
-            o.endpointGroupId = endpointGroupId;
-            o.endpointId = endpointId;
-            o.endpointType = endpointType;
-            o.endpoints = endpoints;
-            o.id = id;
-            o.ids = ids;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBasicEndpointsResult();
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.endpointId = endpointId;
+            _resultValue.endpointType = endpointType;
+            _resultValue.endpoints = endpoints;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

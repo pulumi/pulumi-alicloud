@@ -153,7 +153,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the Basic GA instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -167,7 +167,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The name of the Basic Endpoint.
      * 
      */
-    @Export(name="basicEndpointName", type=String.class, parameters={})
+    @Export(name="basicEndpointName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> basicEndpointName;
 
     /**
@@ -181,7 +181,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The address of the Basic Endpoint.
      * 
      */
-    @Export(name="endpointAddress", type=String.class, parameters={})
+    @Export(name="endpointAddress", refs={String.class}, tree="[0]")
     private Output<String> endpointAddress;
 
     /**
@@ -195,7 +195,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the Basic Endpoint Group.
      * 
      */
-    @Export(name="endpointGroupId", type=String.class, parameters={})
+    @Export(name="endpointGroupId", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupId;
 
     /**
@@ -209,7 +209,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the Basic Endpoint.
      * 
      */
-    @Export(name="endpointId", type=String.class, parameters={})
+    @Export(name="endpointId", refs={String.class}, tree="[0]")
     private Output<String> endpointId;
 
     /**
@@ -223,7 +223,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The sub address of the Basic Endpoint.
      * 
      */
-    @Export(name="endpointSubAddress", type=String.class, parameters={})
+    @Export(name="endpointSubAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpointSubAddress;
 
     /**
@@ -237,7 +237,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
      * 
      */
-    @Export(name="endpointSubAddressType", type=String.class, parameters={})
+    @Export(name="endpointSubAddressType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpointSubAddressType;
 
     /**
@@ -251,7 +251,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
      * 
      */
-    @Export(name="endpointType", type=String.class, parameters={})
+    @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
@@ -265,7 +265,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The zone id of the Basic Endpoint.
      * 
      */
-    @Export(name="endpointZoneId", type=String.class, parameters={})
+    @Export(name="endpointZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpointZoneId;
 
     /**
@@ -279,7 +279,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * The status of the Basic Endpoint.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

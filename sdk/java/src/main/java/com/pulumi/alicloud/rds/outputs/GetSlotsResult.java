@@ -105,13 +105,13 @@ public final class GetSlotsResult {
             return slots(List.of(slots));
         }
         public GetSlotsResult build() {
-            final var o = new GetSlotsResult();
-            o.dbInstanceId = dbInstanceId;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.slots = slots;
-            return o;
+            final var _resultValue = new GetSlotsResult();
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.slots = slots;
+            return _resultValue;
         }
     }
 }

@@ -125,15 +125,15 @@ public final class GetChartRepositoriesResult {
             return repositories(List.of(repositories));
         }
         public GetChartRepositoriesResult build() {
-            final var o = new GetChartRepositoriesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.repositories = repositories;
-            return o;
+            final var _resultValue = new GetChartRepositoriesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.repositories = repositories;
+            return _resultValue;
         }
     }
 }

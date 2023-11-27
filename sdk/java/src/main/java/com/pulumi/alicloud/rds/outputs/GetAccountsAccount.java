@@ -165,15 +165,15 @@ public final class GetAccountsAccount {
             return this;
         }
         public GetAccountsAccount build() {
-            final var o = new GetAccountsAccount();
-            o.accountDescription = accountDescription;
-            o.accountName = accountName;
-            o.accountType = accountType;
-            o.databasePrivileges = databasePrivileges;
-            o.id = id;
-            o.privExceeded = privExceeded;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAccountsAccount();
+            _resultValue.accountDescription = accountDescription;
+            _resultValue.accountName = accountName;
+            _resultValue.accountType = accountType;
+            _resultValue.databasePrivileges = databasePrivileges;
+            _resultValue.id = id;
+            _resultValue.privExceeded = privExceeded;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

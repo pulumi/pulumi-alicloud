@@ -67,83 +67,123 @@ namespace Pulumi.AliCloud.PrivateLink
     /// Private Link Vpc Endpoint can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example &lt;endpoint_id&gt;
+    ///  $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpoint:VpcEndpoint")]
     public partial class VpcEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Bandwidth.
+        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The status of Connection.
+        /// The state of the endpoint connection.
         /// </summary>
         [Output("connectionStatus")]
         public Output<string> ConnectionStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The dry run. Default to: `false`.
+        /// The time when the endpoint was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The status of Endpoint Business.
+        /// The service state of the endpoint.
         /// </summary>
         [Output("endpointBusinessStatus")]
         public Output<string> EndpointBusinessStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+        /// The description of the endpoint.
         /// </summary>
         [Output("endpointDescription")]
         public Output<string?> EndpointDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The Endpoint Domain.
+        /// The domain name of the endpoint.
         /// </summary>
         [Output("endpointDomain")]
         public Output<string> EndpointDomain { get; private set; } = null!;
 
         /// <summary>
-        /// The security group associated with the terminal node network card.
+        /// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// </summary>
+        [Output("endpointType")]
+        public Output<string> EndpointType { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+        /// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+        /// - **false (default)**: disables user authentication.
+        /// </summary>
+        [Output("protectedEnabled")]
+        public Output<bool?> ProtectedEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource group ID.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// The terminal node service associated with the terminal node.
+        /// The ID of the endpoint service with which the endpoint is associated.
         /// </summary>
         [Output("serviceId")]
         public Output<string?> ServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the terminal node service associated with the terminal node.
+        /// The name of the endpoint service with which the endpoint is associated.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of Vpc Endpoint.
+        /// The state of the endpoint.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+        /// The list of tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the endpoint.
         /// </summary>
         [Output("vpcEndpointName")]
         public Output<string?> VpcEndpointName { get; private set; } = null!;
 
         /// <summary>
-        /// The private network to which the terminal node belongs.
+        /// The ID of the VPC to which the endpoint belongs.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+        /// </summary>
+        [Output("zonePrivateIpAddressCount")]
+        public Output<int> ZonePrivateIpAddressCount { get; private set; } = null!;
 
 
         /// <summary>
@@ -192,22 +232,44 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run. Default to: `false`.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+        /// The description of the endpoint.
         /// </summary>
         [Input("endpointDescription")]
         public Input<string>? EndpointDescription { get; set; }
+
+        /// <summary>
+        /// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// </summary>
+        [Input("endpointType")]
+        public Input<string>? EndpointType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+        /// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+        /// - **false (default)**: disables user authentication.
+        /// </summary>
+        [Input("protectedEnabled")]
+        public Input<bool>? ProtectedEnabled { get; set; }
+
+        /// <summary>
+        /// The resource group ID.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityGroupIds", required: true)]
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// The security group associated with the terminal node network card.
+        /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -216,28 +278,46 @@ namespace Pulumi.AliCloud.PrivateLink
         }
 
         /// <summary>
-        /// The terminal node service associated with the terminal node.
+        /// The ID of the endpoint service with which the endpoint is associated.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// The name of the terminal node service associated with the terminal node.
+        /// The name of the endpoint service with which the endpoint is associated.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
         /// <summary>
-        /// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+        /// The list of tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of the endpoint.
         /// </summary>
         [Input("vpcEndpointName")]
         public Input<string>? VpcEndpointName { get; set; }
 
         /// <summary>
-        /// The private network to which the terminal node belongs.
+        /// The ID of the VPC to which the endpoint belongs.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
+
+        /// <summary>
+        /// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+        /// </summary>
+        [Input("zonePrivateIpAddressCount")]
+        public Input<int>? ZonePrivateIpAddressCount { get; set; }
 
         public VpcEndpointArgs()
         {
@@ -248,46 +328,74 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Bandwidth.
+        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The status of Connection.
+        /// The state of the endpoint connection.
         /// </summary>
         [Input("connectionStatus")]
         public Input<string>? ConnectionStatus { get; set; }
 
         /// <summary>
-        /// The dry run. Default to: `false`.
+        /// The time when the endpoint was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The status of Endpoint Business.
+        /// The service state of the endpoint.
         /// </summary>
         [Input("endpointBusinessStatus")]
         public Input<string>? EndpointBusinessStatus { get; set; }
 
         /// <summary>
-        /// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+        /// The description of the endpoint.
         /// </summary>
         [Input("endpointDescription")]
         public Input<string>? EndpointDescription { get; set; }
 
         /// <summary>
-        /// The Endpoint Domain.
+        /// The domain name of the endpoint.
         /// </summary>
         [Input("endpointDomain")]
         public Input<string>? EndpointDomain { get; set; }
+
+        /// <summary>
+        /// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// </summary>
+        [Input("endpointType")]
+        public Input<string>? EndpointType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+        /// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+        /// - **false (default)**: disables user authentication.
+        /// </summary>
+        [Input("protectedEnabled")]
+        public Input<bool>? ProtectedEnabled { get; set; }
+
+        /// <summary>
+        /// The resource group ID.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// The security group associated with the terminal node network card.
+        /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -296,34 +404,52 @@ namespace Pulumi.AliCloud.PrivateLink
         }
 
         /// <summary>
-        /// The terminal node service associated with the terminal node.
+        /// The ID of the endpoint service with which the endpoint is associated.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// The name of the terminal node service associated with the terminal node.
+        /// The name of the endpoint service with which the endpoint is associated.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The status of Vpc Endpoint.
+        /// The state of the endpoint.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
         /// <summary>
-        /// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+        /// The list of tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of the endpoint.
         /// </summary>
         [Input("vpcEndpointName")]
         public Input<string>? VpcEndpointName { get; set; }
 
         /// <summary>
-        /// The private network to which the terminal node belongs.
+        /// The ID of the VPC to which the endpoint belongs.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+        /// </summary>
+        [Input("zonePrivateIpAddressCount")]
+        public Input<int>? ZonePrivateIpAddressCount { get; set; }
 
         public VpcEndpointState()
         {

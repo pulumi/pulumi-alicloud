@@ -87,11 +87,11 @@ public final class IngressDefaultRule {
             return this;
         }
         public IngressDefaultRule build() {
-            final var o = new IngressDefaultRule();
-            o.appId = appId;
-            o.appName = appName;
-            o.containerPort = containerPort;
-            return o;
+            final var _resultValue = new IngressDefaultRule();
+            _resultValue.appId = appId;
+            _resultValue.appName = appName;
+            _resultValue.containerPort = containerPort;
+            return _resultValue;
         }
     }
 }

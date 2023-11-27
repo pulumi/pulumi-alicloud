@@ -118,7 +118,7 @@ public class SwitchDasPro extends com.pulumi.resources.CustomResource {
      * The ID of the database instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -132,7 +132,7 @@ public class SwitchDasPro extends com.pulumi.resources.CustomResource {
      * The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
      * 
      */
-    @Export(name="sqlRetention", type=Integer.class, parameters={})
+    @Export(name="sqlRetention", refs={Integer.class}, tree="[0]")
     private Output<Integer> sqlRetention;
 
     /**
@@ -146,7 +146,7 @@ public class SwitchDasPro extends com.pulumi.resources.CustomResource {
      * Whether the database instance has DAS professional.
      * 
      */
-    @Export(name="status", type=Boolean.class, parameters={})
+    @Export(name="status", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> status;
 
     /**
@@ -160,7 +160,7 @@ public class SwitchDasPro extends com.pulumi.resources.CustomResource {
      * The ID of the Alibaba Cloud account that is used to create the database instance.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

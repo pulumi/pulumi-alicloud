@@ -65,10 +65,10 @@ public final class GetContainerGroupsGroupInitContainerEnvironmentVar {
             return this;
         }
         public GetContainerGroupsGroupInitContainerEnvironmentVar build() {
-            final var o = new GetContainerGroupsGroupInitContainerEnvironmentVar();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetContainerGroupsGroupInitContainerEnvironmentVar();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

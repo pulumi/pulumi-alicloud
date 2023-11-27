@@ -136,7 +136,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it. */
-    @Export(name="alicloudCertifacteId", type=String.class, parameters={})
+    @Export(name="alicloudCertifacteId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertifacteId;
 
     public Output<Optional<String>> alicloudCertifacteId() {
@@ -148,7 +148,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it. */
-    @Export(name="alicloudCertifacteName", type=String.class, parameters={})
+    @Export(name="alicloudCertifacteName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertifacteName;
 
     public Output<Optional<String>> alicloudCertifacteName() {
@@ -158,7 +158,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
      * 
      */
-    @Export(name="alicloudCertificateId", type=String.class, parameters={})
+    @Export(name="alicloudCertificateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertificateId;
 
     /**
@@ -172,7 +172,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
      * 
      */
-    @Export(name="alicloudCertificateName", type=String.class, parameters={})
+    @Export(name="alicloudCertificateName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertificateName;
 
     /**
@@ -186,7 +186,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
      * 
      */
-    @Export(name="alicloudCertificateRegionId", type=String.class, parameters={})
+    @Export(name="alicloudCertificateRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertificateRegionId;
 
     /**
@@ -200,7 +200,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * Name of the Server Certificate.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -214,7 +214,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
      * 
      */
-    @Export(name="privateKey", type=String.class, parameters={})
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**
@@ -228,7 +228,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the slb server certificate belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -242,7 +242,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
      * 
      */
-    @Export(name="serverCertificate", type=String.class, parameters={})
+    @Export(name="serverCertificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverCertificate;
 
     /**
@@ -256,7 +256,7 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

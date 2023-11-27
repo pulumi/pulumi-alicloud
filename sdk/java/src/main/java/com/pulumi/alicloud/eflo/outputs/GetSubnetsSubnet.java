@@ -261,20 +261,20 @@ public final class GetSubnetsSubnet {
             return this;
         }
         public GetSubnetsSubnet build() {
-            final var o = new GetSubnetsSubnet();
-            o.cidr = cidr;
-            o.createTime = createTime;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.message = message;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.subnetId = subnetId;
-            o.subnetName = subnetName;
-            o.type = type;
-            o.vpdId = vpdId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetSubnetsSubnet();
+            _resultValue.cidr = cidr;
+            _resultValue.createTime = createTime;
+            _resultValue.gmtModified = gmtModified;
+            _resultValue.id = id;
+            _resultValue.message = message;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.subnetId = subnetId;
+            _resultValue.subnetName = subnetName;
+            _resultValue.type = type;
+            _resultValue.vpdId = vpdId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

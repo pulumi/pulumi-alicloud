@@ -122,13 +122,13 @@ public final class GetTrafficMirrorFiltersFilter {
             return this;
         }
         public GetTrafficMirrorFiltersFilter build() {
-            final var o = new GetTrafficMirrorFiltersFilter();
-            o.id = id;
-            o.status = status;
-            o.trafficMirrorFilterDescription = trafficMirrorFilterDescription;
-            o.trafficMirrorFilterId = trafficMirrorFilterId;
-            o.trafficMirrorFilterName = trafficMirrorFilterName;
-            return o;
+            final var _resultValue = new GetTrafficMirrorFiltersFilter();
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.trafficMirrorFilterDescription = trafficMirrorFilterDescription;
+            _resultValue.trafficMirrorFilterId = trafficMirrorFilterId;
+            _resultValue.trafficMirrorFilterName = trafficMirrorFilterName;
+            return _resultValue;
         }
     }
 }

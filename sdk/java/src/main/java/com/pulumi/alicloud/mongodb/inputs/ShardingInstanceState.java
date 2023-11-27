@@ -270,14 +270,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+     * Instance data backup retention days. **NOTE:** Available in 1.42.0+.
      * 
      */
     @Import(name="retentionPeriod")
     private @Nullable Output<Integer> retentionPeriod;
 
     /**
-     * @return Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+     * @return Instance data backup retention days. **NOTE:** Available in 1.42.0+.
      * 
      */
     public Optional<Output<Integer>> retentionPeriod() {
@@ -843,7 +843,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param retentionPeriod Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+         * @param retentionPeriod Instance data backup retention days. **NOTE:** Available in 1.42.0+.
          * 
          * @return builder
          * 
@@ -854,7 +854,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param retentionPeriod Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+         * @param retentionPeriod Instance data backup retention days. **NOTE:** Available in 1.42.0+.
          * 
          * @return builder
          * 

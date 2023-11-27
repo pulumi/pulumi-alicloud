@@ -86,7 +86,7 @@ public class PublicIpAddressPoolCidrBlock extends com.pulumi.resources.CustomRes
      * The CIDR block.
      * 
      */
-    @Export(name="cidrBlock", type=String.class, parameters={})
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
@@ -100,7 +100,7 @@ public class PublicIpAddressPoolCidrBlock extends com.pulumi.resources.CustomRes
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -114,7 +114,7 @@ public class PublicIpAddressPoolCidrBlock extends com.pulumi.resources.CustomRes
      * The ID of the VPC Public IP address pool.
      * 
      */
-    @Export(name="publicIpAddressPoolId", type=String.class, parameters={})
+    @Export(name="publicIpAddressPoolId", refs={String.class}, tree="[0]")
     private Output<String> publicIpAddressPoolId;
 
     /**
@@ -128,7 +128,7 @@ public class PublicIpAddressPoolCidrBlock extends com.pulumi.resources.CustomRes
      * The status of the VPC Public Ip Address Pool Cidr Block.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

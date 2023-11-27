@@ -73,10 +73,10 @@ public final class V2FunctionCustomRuntimeConfig {
             return commands(List.of(commands));
         }
         public V2FunctionCustomRuntimeConfig build() {
-            final var o = new V2FunctionCustomRuntimeConfig();
-            o.args = args;
-            o.commands = commands;
-            return o;
+            final var _resultValue = new V2FunctionCustomRuntimeConfig();
+            _resultValue.args = args;
+            _resultValue.commands = commands;
+            return _resultValue;
         }
     }
 }

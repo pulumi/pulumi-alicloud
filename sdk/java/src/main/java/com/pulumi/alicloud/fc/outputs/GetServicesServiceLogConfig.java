@@ -65,10 +65,10 @@ public final class GetServicesServiceLogConfig {
             return this;
         }
         public GetServicesServiceLogConfig build() {
-            final var o = new GetServicesServiceLogConfig();
-            o.logstore = logstore;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetServicesServiceLogConfig();
+            _resultValue.logstore = logstore;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

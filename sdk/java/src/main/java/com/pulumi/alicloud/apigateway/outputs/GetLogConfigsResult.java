@@ -100,13 +100,13 @@ public final class GetLogConfigsResult {
             return this;
         }
         public GetLogConfigsResult build() {
-            final var o = new GetLogConfigsResult();
-            o.configs = configs;
-            o.id = id;
-            o.ids = ids;
-            o.logType = logType;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetLogConfigsResult();
+            _resultValue.configs = configs;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.logType = logType;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -86,11 +86,11 @@ public final class DbInstancePlanPlanConfigScaleOut {
             return this;
         }
         public DbInstancePlanPlanConfigScaleOut build() {
-            final var o = new DbInstancePlanPlanConfigScaleOut();
-            o.executeTime = executeTime;
-            o.planCronTime = planCronTime;
-            o.segmentNodeNum = segmentNodeNum;
-            return o;
+            final var _resultValue = new DbInstancePlanPlanConfigScaleOut();
+            _resultValue.executeTime = executeTime;
+            _resultValue.planCronTime = planCronTime;
+            _resultValue.segmentNodeNum = segmentNodeNum;
+            return _resultValue;
         }
     }
 }

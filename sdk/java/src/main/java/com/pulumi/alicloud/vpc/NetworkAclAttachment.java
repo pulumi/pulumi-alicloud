@@ -98,7 +98,7 @@ public class NetworkAclAttachment extends com.pulumi.resources.CustomResource {
      * The id of the network acl, the field can&#39;t be changed.
      * 
      */
-    @Export(name="networkAclId", type=String.class, parameters={})
+    @Export(name="networkAclId", refs={String.class}, tree="[0]")
     private Output<String> networkAclId;
 
     /**
@@ -112,7 +112,7 @@ public class NetworkAclAttachment extends com.pulumi.resources.CustomResource {
      * List of the resources associated with the network acl. The details see Block Resources.
      * 
      */
-    @Export(name="resources", type=List.class, parameters={NetworkAclAttachmentResource.class})
+    @Export(name="resources", refs={List.class,NetworkAclAttachmentResource.class}, tree="[0,1]")
     private Output<List<NetworkAclAttachmentResource>> resources;
 
     /**

@@ -335,25 +335,25 @@ public final class GetSwitchesResult {
             return this;
         }
         public GetSwitchesResult build() {
-            final var o = new GetSwitchesResult();
-            o.cidrBlock = cidrBlock;
-            o.dryRun = dryRun;
-            o.id = id;
-            o.ids = ids;
-            o.isDefault = isDefault;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.routeTableId = routeTableId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchName = vswitchName;
-            o.vswitchOwnerId = vswitchOwnerId;
-            o.vswitches = vswitches;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetSwitchesResult();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.dryRun = dryRun;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.isDefault = isDefault;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.routeTableId = routeTableId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchName = vswitchName;
+            _resultValue.vswitchOwnerId = vswitchOwnerId;
+            _resultValue.vswitches = vswitches;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class ClusterApplication {
             return this;
         }
         public ClusterApplication build() {
-            final var o = new ClusterApplication();
-            o.tag = tag;
-            return o;
+            final var _resultValue = new ClusterApplication();
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

@@ -32,7 +32,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -50,7 +50,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      * 
      */
-    @Export(name="cenBandwidthPackageName", type=String.class, parameters={})
+    @Export(name="cenBandwidthPackageName", refs={String.class}, tree="[0]")
     private Output<String> cenBandwidthPackageName;
 
     /**
@@ -72,7 +72,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead. */
-    @Export(name="chargeType", type=String.class, parameters={})
+    @Export(name="chargeType", refs={String.class}, tree="[0]")
     private Output<String> chargeType;
 
     /**
@@ -86,7 +86,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The description of the bandwidth package. Default to null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -100,7 +100,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The time of the bandwidth package to expire.
      * 
      */
-    @Export(name="expiredTime", type=String.class, parameters={})
+    @Export(name="expiredTime", refs={String.class}, tree="[0]")
     private Output<String> expiredTime;
 
     /**
@@ -114,7 +114,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
      * 
      */
-    @Export(name="geographicRegionAId", type=String.class, parameters={})
+    @Export(name="geographicRegionAId", refs={String.class}, tree="[0]")
     private Output<String> geographicRegionAId;
 
     /**
@@ -128,7 +128,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
      * 
      */
-    @Export(name="geographicRegionBId", type=String.class, parameters={})
+    @Export(name="geographicRegionBId", refs={String.class}, tree="[0]")
     private Output<String> geographicRegionBId;
 
     /**
@@ -146,7 +146,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead. */
-    @Export(name="geographicRegionIds", type=List.class, parameters={String.class})
+    @Export(name="geographicRegionIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> geographicRegionIds;
 
     /**
@@ -164,7 +164,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -178,7 +178,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -193,7 +193,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -208,7 +208,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The association status of the bandwidth package.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

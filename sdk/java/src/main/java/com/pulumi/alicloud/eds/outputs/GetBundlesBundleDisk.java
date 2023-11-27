@@ -65,10 +65,10 @@ public final class GetBundlesBundleDisk {
             return this;
         }
         public GetBundlesBundleDisk build() {
-            final var o = new GetBundlesBundleDisk();
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            return o;
+            final var _resultValue = new GetBundlesBundleDisk();
+            _resultValue.diskSize = diskSize;
+            _resultValue.diskType = diskType;
+            return _resultValue;
         }
     }
 }

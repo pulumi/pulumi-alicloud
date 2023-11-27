@@ -495,32 +495,32 @@ public final class GetVpcFirewallControlPoliciesPolicy {
             return this;
         }
         public GetVpcFirewallControlPoliciesPolicy build() {
-            final var o = new GetVpcFirewallControlPoliciesPolicy();
-            o.aclAction = aclAction;
-            o.aclUuid = aclUuid;
-            o.applicationId = applicationId;
-            o.applicationName = applicationName;
-            o.description = description;
-            o.destPort = destPort;
-            o.destPortGroup = destPortGroup;
-            o.destPortGroupPorts = destPortGroupPorts;
-            o.destPortType = destPortType;
-            o.destination = destination;
-            o.destinationGroupCidrs = destinationGroupCidrs;
-            o.destinationGroupType = destinationGroupType;
-            o.destinationType = destinationType;
-            o.hitTimes = hitTimes;
-            o.id = id;
-            o.memberUid = memberUid;
-            o.order = order;
-            o.proto = proto;
-            o.release = release;
-            o.source = source;
-            o.sourceGroupCidrs = sourceGroupCidrs;
-            o.sourceGroupType = sourceGroupType;
-            o.sourceType = sourceType;
-            o.vpcFirewallId = vpcFirewallId;
-            return o;
+            final var _resultValue = new GetVpcFirewallControlPoliciesPolicy();
+            _resultValue.aclAction = aclAction;
+            _resultValue.aclUuid = aclUuid;
+            _resultValue.applicationId = applicationId;
+            _resultValue.applicationName = applicationName;
+            _resultValue.description = description;
+            _resultValue.destPort = destPort;
+            _resultValue.destPortGroup = destPortGroup;
+            _resultValue.destPortGroupPorts = destPortGroupPorts;
+            _resultValue.destPortType = destPortType;
+            _resultValue.destination = destination;
+            _resultValue.destinationGroupCidrs = destinationGroupCidrs;
+            _resultValue.destinationGroupType = destinationGroupType;
+            _resultValue.destinationType = destinationType;
+            _resultValue.hitTimes = hitTimes;
+            _resultValue.id = id;
+            _resultValue.memberUid = memberUid;
+            _resultValue.order = order;
+            _resultValue.proto = proto;
+            _resultValue.release = release;
+            _resultValue.source = source;
+            _resultValue.sourceGroupCidrs = sourceGroupCidrs;
+            _resultValue.sourceGroupType = sourceGroupType;
+            _resultValue.sourceType = sourceType;
+            _resultValue.vpcFirewallId = vpcFirewallId;
+            return _resultValue;
         }
     }
 }

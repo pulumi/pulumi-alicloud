@@ -122,15 +122,15 @@ public final class GetBgpPeersResult {
             return this;
         }
         public GetBgpPeersResult build() {
-            final var o = new GetBgpPeersResult();
-            o.bgpGroupId = bgpGroupId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.peers = peers;
-            o.routerId = routerId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBgpPeersResult();
+            _resultValue.bgpGroupId = bgpGroupId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.peers = peers;
+            _resultValue.routerId = routerId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

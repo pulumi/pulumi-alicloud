@@ -65,10 +65,10 @@ public final class GetGroupsGroup {
             return this;
         }
         public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.comments = comments;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetGroupsGroup();
+            _resultValue.comments = comments;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

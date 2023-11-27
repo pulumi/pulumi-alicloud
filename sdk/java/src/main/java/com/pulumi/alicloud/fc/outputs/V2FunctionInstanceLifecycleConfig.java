@@ -68,10 +68,10 @@ public final class V2FunctionInstanceLifecycleConfig {
             return this;
         }
         public V2FunctionInstanceLifecycleConfig build() {
-            final var o = new V2FunctionInstanceLifecycleConfig();
-            o.preFreeze = preFreeze;
-            o.preStop = preStop;
-            return o;
+            final var _resultValue = new V2FunctionInstanceLifecycleConfig();
+            _resultValue.preFreeze = preFreeze;
+            _resultValue.preStop = preStop;
+            return _resultValue;
         }
     }
 }

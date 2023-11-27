@@ -24,6 +24,7 @@ class ServiceArgs:
                  nas_config: Optional[pulumi.Input['ServiceNasConfigArgs']] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
                  vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None):
         """
@@ -45,6 +46,8 @@ class ServiceArgs:
             pulumi.set(__self__, "publish", publish)
         if role is not None:
             pulumi.set(__self__, "role", role)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tracing_config is not None:
             pulumi.set(__self__, "tracing_config", tracing_config)
         if vpc_config is not None:
@@ -123,6 +126,15 @@ class ServiceArgs:
         pulumi.set(self, "role", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tracingConfig")
     def tracing_config(self) -> Optional[pulumi.Input['ServiceTracingConfigArgs']]:
         return pulumi.get(self, "tracing_config")
@@ -154,6 +166,7 @@ class _ServiceState:
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None):
@@ -180,6 +193,8 @@ class _ServiceState:
             pulumi.set(__self__, "role", role)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tracing_config is not None:
             pulumi.set(__self__, "tracing_config", tracing_config)
         if version is not None:
@@ -278,6 +293,15 @@ class _ServiceState:
         pulumi.set(self, "service_id", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tracingConfig")
     def tracing_config(self) -> Optional[pulumi.Input['ServiceTracingConfigArgs']]:
         return pulumi.get(self, "tracing_config")
@@ -318,6 +342,7 @@ class Service(pulumi.CustomResource):
                  nas_config: Optional[pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tracing_config: Optional[pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']]] = None,
                  vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None,
                  __props__=None):
@@ -357,6 +382,7 @@ class Service(pulumi.CustomResource):
                  nas_config: Optional[pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tracing_config: Optional[pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']]] = None,
                  vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None,
                  __props__=None):
@@ -376,6 +402,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["nas_config"] = nas_config
             __props__.__dict__["publish"] = publish
             __props__.__dict__["role"] = role
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tracing_config"] = tracing_config
             __props__.__dict__["vpc_config"] = vpc_config
             __props__.__dict__["last_modified"] = None
@@ -401,6 +428,7 @@ class Service(pulumi.CustomResource):
             publish: Optional[pulumi.Input[bool]] = None,
             role: Optional[pulumi.Input[str]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tracing_config: Optional[pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None) -> 'Service':
@@ -426,6 +454,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["publish"] = publish
         __props__.__dict__["role"] = role
         __props__.__dict__["service_id"] = service_id
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tracing_config"] = tracing_config
         __props__.__dict__["version"] = version
         __props__.__dict__["vpc_config"] = vpc_config
@@ -480,6 +509,11 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tracingConfig")

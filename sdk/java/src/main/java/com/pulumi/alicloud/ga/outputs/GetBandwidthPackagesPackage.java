@@ -256,20 +256,20 @@ public final class GetBandwidthPackagesPackage {
             return this;
         }
         public GetBandwidthPackagesPackage build() {
-            final var o = new GetBandwidthPackagesPackage();
-            o.bandwidth = bandwidth;
-            o.bandwidthPackageId = bandwidthPackageId;
-            o.bandwidthPackageName = bandwidthPackageName;
-            o.bandwidthType = bandwidthType;
-            o.cbnGeographicRegionIda = cbnGeographicRegionIda;
-            o.cbnGeographicRegionIdb = cbnGeographicRegionIdb;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.paymentType = paymentType;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetBandwidthPackagesPackage();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.bandwidthPackageId = bandwidthPackageId;
+            _resultValue.bandwidthPackageName = bandwidthPackageName;
+            _resultValue.bandwidthType = bandwidthType;
+            _resultValue.cbnGeographicRegionIda = cbnGeographicRegionIda;
+            _resultValue.cbnGeographicRegionIdb = cbnGeographicRegionIdb;
+            _resultValue.description = description;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.paymentType = paymentType;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

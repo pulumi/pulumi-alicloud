@@ -172,7 +172,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -188,7 +188,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable traffic mirror sessions. default to `false`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -202,7 +202,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * Maximum Transmission Unit (MTU).
      * 
      */
-    @Export(name="packetLength", type=Integer.class, parameters={})
+    @Export(name="packetLength", refs={Integer.class}, tree="[0]")
     private Output<Integer> packetLength;
 
     /**
@@ -216,7 +216,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -230,7 +230,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -244,7 +244,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -258,7 +258,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The tags of this resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -272,7 +272,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The ID of the filter.
      * 
      */
-    @Export(name="trafficMirrorFilterId", type=String.class, parameters={})
+    @Export(name="trafficMirrorFilterId", refs={String.class}, tree="[0]")
     private Output<String> trafficMirrorFilterId;
 
     /**
@@ -286,7 +286,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="trafficMirrorSessionDescription", type=String.class, parameters={})
+    @Export(name="trafficMirrorSessionDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficMirrorSessionDescription;
 
     /**
@@ -300,7 +300,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
-    @Export(name="trafficMirrorSessionName", type=String.class, parameters={})
+    @Export(name="trafficMirrorSessionName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficMirrorSessionName;
 
     /**
@@ -314,7 +314,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      * 
      */
-    @Export(name="trafficMirrorSourceIds", type=List.class, parameters={String.class})
+    @Export(name="trafficMirrorSourceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> trafficMirrorSourceIds;
 
     /**
@@ -328,7 +328,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
      * 
      */
-    @Export(name="trafficMirrorTargetId", type=String.class, parameters={})
+    @Export(name="trafficMirrorTargetId", refs={String.class}, tree="[0]")
     private Output<String> trafficMirrorTargetId;
 
     /**
@@ -342,7 +342,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      * 
      */
-    @Export(name="trafficMirrorTargetType", type=String.class, parameters={})
+    @Export(name="trafficMirrorTargetType", refs={String.class}, tree="[0]")
     private Output<String> trafficMirrorTargetType;
 
     /**
@@ -356,7 +356,7 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
      * The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
      * 
      */
-    @Export(name="virtualNetworkId", type=Integer.class, parameters={})
+    @Export(name="virtualNetworkId", refs={Integer.class}, tree="[0]")
     private Output<Integer> virtualNetworkId;
 
     /**

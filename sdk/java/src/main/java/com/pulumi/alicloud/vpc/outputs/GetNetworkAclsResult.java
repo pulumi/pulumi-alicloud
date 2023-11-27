@@ -169,19 +169,19 @@ public final class GetNetworkAclsResult {
             return this;
         }
         public GetNetworkAclsResult build() {
-            final var o = new GetNetworkAclsResult();
-            o.acls = acls;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.networkAclName = networkAclName;
-            o.outputFile = outputFile;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetNetworkAclsResult();
+            _resultValue.acls = acls;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.networkAclName = networkAclName;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

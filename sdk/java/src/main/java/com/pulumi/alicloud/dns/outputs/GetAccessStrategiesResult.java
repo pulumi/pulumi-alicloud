@@ -159,18 +159,18 @@ public final class GetAccessStrategiesResult {
             return this;
         }
         public GetAccessStrategiesResult build() {
-            final var o = new GetAccessStrategiesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.lang = lang;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.strategies = strategies;
-            o.strategyMode = strategyMode;
-            return o;
+            final var _resultValue = new GetAccessStrategiesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.lang = lang;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.strategies = strategies;
+            _resultValue.strategyMode = strategyMode;
+            return _resultValue;
         }
     }
 }

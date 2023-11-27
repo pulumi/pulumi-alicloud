@@ -50,6 +50,11 @@ public final class GetServiceMeshesMesh {
      */
     private String istioOperatorVersion;
     /**
+     * @return The content of Kube config.
+     * 
+     */
+    private String kubeConfig;
+    /**
      * @return The configuration of the Load Balancer.
      * 
      */
@@ -141,6 +146,13 @@ public final class GetServiceMeshesMesh {
         return this.istioOperatorVersion;
     }
     /**
+     * @return The content of Kube config.
+     * 
+     */
+    public String kubeConfig() {
+        return this.kubeConfig;
+    }
+    /**
      * @return The configuration of the Load Balancer.
      * 
      */
@@ -213,6 +225,7 @@ public final class GetServiceMeshesMesh {
         private String errorMessage;
         private String id;
         private String istioOperatorVersion;
+        private String kubeConfig;
         private List<GetServiceMeshesMeshLoadBalancer> loadBalancers;
         private List<GetServiceMeshesMeshMeshConfig> meshConfigs;
         private List<GetServiceMeshesMeshNetwork> networks;
@@ -231,6 +244,7 @@ public final class GetServiceMeshesMesh {
     	      this.errorMessage = defaults.errorMessage;
     	      this.id = defaults.id;
     	      this.istioOperatorVersion = defaults.istioOperatorVersion;
+    	      this.kubeConfig = defaults.kubeConfig;
     	      this.loadBalancers = defaults.loadBalancers;
     	      this.meshConfigs = defaults.meshConfigs;
     	      this.networks = defaults.networks;
@@ -283,6 +297,11 @@ public final class GetServiceMeshesMesh {
             return this;
         }
         @CustomType.Setter
+        public Builder kubeConfig(String kubeConfig) {
+            this.kubeConfig = Objects.requireNonNull(kubeConfig);
+            return this;
+        }
+        @CustomType.Setter
         public Builder loadBalancers(List<GetServiceMeshesMeshLoadBalancer> loadBalancers) {
             this.loadBalancers = Objects.requireNonNull(loadBalancers);
             return this;
@@ -332,23 +351,24 @@ public final class GetServiceMeshesMesh {
             return this;
         }
         public GetServiceMeshesMesh build() {
-            final var o = new GetServiceMeshesMesh();
-            o.clusters = clusters;
-            o.createTime = createTime;
-            o.edition = edition;
-            o.endpoints = endpoints;
-            o.errorMessage = errorMessage;
-            o.id = id;
-            o.istioOperatorVersion = istioOperatorVersion;
-            o.loadBalancers = loadBalancers;
-            o.meshConfigs = meshConfigs;
-            o.networks = networks;
-            o.serviceMeshId = serviceMeshId;
-            o.serviceMeshName = serviceMeshName;
-            o.sidecarVersion = sidecarVersion;
-            o.status = status;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetServiceMeshesMesh();
+            _resultValue.clusters = clusters;
+            _resultValue.createTime = createTime;
+            _resultValue.edition = edition;
+            _resultValue.endpoints = endpoints;
+            _resultValue.errorMessage = errorMessage;
+            _resultValue.id = id;
+            _resultValue.istioOperatorVersion = istioOperatorVersion;
+            _resultValue.kubeConfig = kubeConfig;
+            _resultValue.loadBalancers = loadBalancers;
+            _resultValue.meshConfigs = meshConfigs;
+            _resultValue.networks = networks;
+            _resultValue.serviceMeshId = serviceMeshId;
+            _resultValue.serviceMeshName = serviceMeshName;
+            _resultValue.sidecarVersion = sidecarVersion;
+            _resultValue.status = status;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -76,7 +76,7 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
      * The name of the Custom Line.
      * 
      */
-    @Export(name="customLineName", type=String.class, parameters={})
+    @Export(name="customLineName", refs={String.class}, tree="[0]")
     private Output<String> customLineName;
 
     /**
@@ -90,7 +90,7 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
      * The Domain name.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -104,7 +104,7 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
      * The IP segment list. See `ip_segment_list` below for details.
      * 
      */
-    @Export(name="ipSegmentLists", type=List.class, parameters={CustomLineIpSegmentList.class})
+    @Export(name="ipSegmentLists", refs={List.class,CustomLineIpSegmentList.class}, tree="[0,1]")
     private Output<List<CustomLineIpSegmentList>> ipSegmentLists;
 
     /**
@@ -118,7 +118,7 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
      * The lang.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**

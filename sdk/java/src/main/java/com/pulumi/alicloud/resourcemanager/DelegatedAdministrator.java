@@ -84,7 +84,7 @@ public class DelegatedAdministrator extends com.pulumi.resources.CustomResource 
      * The ID of the member account in the resource directory.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -98,7 +98,7 @@ public class DelegatedAdministrator extends com.pulumi.resources.CustomResource 
      * The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
      * 
      */
-    @Export(name="servicePrincipal", type=String.class, parameters={})
+    @Export(name="servicePrincipal", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipal;
 
     /**

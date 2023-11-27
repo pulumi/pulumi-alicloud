@@ -70,10 +70,10 @@ public final class GetDdosCooDomainResourcesResourceProxyType {
             return this;
         }
         public GetDdosCooDomainResourcesResourceProxyType build() {
-            final var o = new GetDdosCooDomainResourcesResourceProxyType();
-            o.proxyPorts = proxyPorts;
-            o.proxyType = proxyType;
-            return o;
+            final var _resultValue = new GetDdosCooDomainResourcesResourceProxyType();
+            _resultValue.proxyPorts = proxyPorts;
+            _resultValue.proxyType = proxyType;
+            return _resultValue;
         }
     }
 }

@@ -86,11 +86,11 @@ public final class ProvisionedProductOutput {
             return this;
         }
         public ProvisionedProductOutput build() {
-            final var o = new ProvisionedProductOutput();
-            o.description = description;
-            o.outputKey = outputKey;
-            o.outputValue = outputValue;
-            return o;
+            final var _resultValue = new ProvisionedProductOutput();
+            _resultValue.description = description;
+            _resultValue.outputKey = outputKey;
+            _resultValue.outputValue = outputValue;
+            return _resultValue;
         }
     }
 }

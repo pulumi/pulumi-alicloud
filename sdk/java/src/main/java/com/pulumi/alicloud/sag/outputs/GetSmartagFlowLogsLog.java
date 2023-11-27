@@ -332,24 +332,24 @@ public final class GetSmartagFlowLogsLog {
             return this;
         }
         public GetSmartagFlowLogsLog build() {
-            final var o = new GetSmartagFlowLogsLog();
-            o.activeAging = activeAging;
-            o.description = description;
-            o.flowLogId = flowLogId;
-            o.flowLogName = flowLogName;
-            o.id = id;
-            o.inactiveAging = inactiveAging;
-            o.logstoreName = logstoreName;
-            o.netflowServerIp = netflowServerIp;
-            o.netflowServerPort = netflowServerPort;
-            o.netflowVersion = netflowVersion;
-            o.outputType = outputType;
-            o.projectName = projectName;
-            o.resourceGroupId = resourceGroupId;
-            o.slsRegionId = slsRegionId;
-            o.status = status;
-            o.totalSagNum = totalSagNum;
-            return o;
+            final var _resultValue = new GetSmartagFlowLogsLog();
+            _resultValue.activeAging = activeAging;
+            _resultValue.description = description;
+            _resultValue.flowLogId = flowLogId;
+            _resultValue.flowLogName = flowLogName;
+            _resultValue.id = id;
+            _resultValue.inactiveAging = inactiveAging;
+            _resultValue.logstoreName = logstoreName;
+            _resultValue.netflowServerIp = netflowServerIp;
+            _resultValue.netflowServerPort = netflowServerPort;
+            _resultValue.netflowVersion = netflowVersion;
+            _resultValue.outputType = outputType;
+            _resultValue.projectName = projectName;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.slsRegionId = slsRegionId;
+            _resultValue.status = status;
+            _resultValue.totalSagNum = totalSagNum;
+            return _resultValue;
         }
     }
 }

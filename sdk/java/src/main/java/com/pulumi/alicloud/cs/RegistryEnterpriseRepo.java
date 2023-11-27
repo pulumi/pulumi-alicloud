@@ -95,7 +95,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * The repository specific information. MarkDown format is supported, and the length limit is 2000.
      * 
      */
-    @Export(name="detail", type=String.class, parameters={})
+    @Export(name="detail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detail;
 
     /**
@@ -109,7 +109,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * ID of Container Registry Enterprise Edition instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -123,7 +123,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -137,7 +137,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -151,7 +151,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * The uuid of Container Registry Enterprise Edition repository.
      * 
      */
-    @Export(name="repoId", type=String.class, parameters={})
+    @Export(name="repoId", refs={String.class}, tree="[0]")
     private Output<String> repoId;
 
     /**
@@ -165,7 +165,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * `PUBLIC` or `PRIVATE`, repo&#39;s visibility.
      * 
      */
-    @Export(name="repoType", type=String.class, parameters={})
+    @Export(name="repoType", refs={String.class}, tree="[0]")
     private Output<String> repoType;
 
     /**
@@ -179,7 +179,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * The repository general information. It can contain 1 to 100 characters.
      * 
      */
-    @Export(name="summary", type=String.class, parameters={})
+    @Export(name="summary", refs={String.class}, tree="[0]")
     private Output<String> summary;
 
     /**

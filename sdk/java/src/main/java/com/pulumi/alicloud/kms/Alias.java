@@ -69,7 +69,7 @@ public class Alias extends com.pulumi.resources.CustomResource {
      * The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
      * 
      */
-    @Export(name="aliasName", type=String.class, parameters={})
+    @Export(name="aliasName", refs={String.class}, tree="[0]")
     private Output<String> aliasName;
 
     /**
@@ -89,7 +89,7 @@ public class Alias extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
      * 
      */
-    @Export(name="keyId", type=String.class, parameters={})
+    @Export(name="keyId", refs={String.class}, tree="[0]")
     private Output<String> keyId;
 
     /**

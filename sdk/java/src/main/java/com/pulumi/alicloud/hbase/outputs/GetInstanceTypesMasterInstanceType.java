@@ -85,11 +85,11 @@ public final class GetInstanceTypesMasterInstanceType {
             return this;
         }
         public GetInstanceTypesMasterInstanceType build() {
-            final var o = new GetInstanceTypesMasterInstanceType();
-            o.cpuSize = cpuSize;
-            o.instanceType = instanceType;
-            o.memSize = memSize;
-            return o;
+            final var _resultValue = new GetInstanceTypesMasterInstanceType();
+            _resultValue.cpuSize = cpuSize;
+            _resultValue.instanceType = instanceType;
+            _resultValue.memSize = memSize;
+            return _resultValue;
         }
     }
 }

@@ -75,11 +75,11 @@ public final class GetZonesResult {
             return zones(List.of(zones));
         }
         public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetZonesResult();
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

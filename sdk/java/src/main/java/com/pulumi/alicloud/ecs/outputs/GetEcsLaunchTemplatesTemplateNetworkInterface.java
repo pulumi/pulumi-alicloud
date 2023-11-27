@@ -122,13 +122,13 @@ public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
             return this;
         }
         public GetEcsLaunchTemplatesTemplateNetworkInterface build() {
-            final var o = new GetEcsLaunchTemplatesTemplateNetworkInterface();
-            o.description = description;
-            o.name = name;
-            o.primaryIp = primaryIp;
-            o.securityGroupId = securityGroupId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetEcsLaunchTemplatesTemplateNetworkInterface();
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.primaryIp = primaryIp;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

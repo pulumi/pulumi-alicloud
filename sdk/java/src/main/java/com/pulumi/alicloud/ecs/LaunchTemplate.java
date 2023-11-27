@@ -131,7 +131,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      * 
      */
-    @Export(name="autoReleaseTime", type=String.class, parameters={})
+    @Export(name="autoReleaseTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoReleaseTime;
 
     /**
@@ -145,7 +145,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * The list of data disks created with instance.
      * 
      */
-    @Export(name="dataDisks", type=List.class, parameters={LaunchTemplateDataDisk.class})
+    @Export(name="dataDisks", refs={List.class,LaunchTemplateDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LaunchTemplateDataDisk>> dataDisks;
 
     /**
@@ -155,7 +155,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<LaunchTemplateDataDisk>>> dataDisks() {
         return Codegen.optional(this.dataDisks);
     }
-    @Export(name="deploymentSetId", type=String.class, parameters={})
+    @Export(name="deploymentSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentSetId;
 
     public Output<Optional<String>> deploymentSetId() {
@@ -165,7 +165,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * The description of the data disk.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -175,7 +175,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="enableVmOsConfig", type=Boolean.class, parameters={})
+    @Export(name="enableVmOsConfig", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableVmOsConfig;
 
     public Output<Optional<Boolean>> enableVmOsConfig() {
@@ -185,7 +185,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     /**
@@ -199,7 +199,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Image ID.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
@@ -209,7 +209,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
     }
-    @Export(name="imageOwnerAlias", type=String.class, parameters={})
+    @Export(name="imageOwnerAlias", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageOwnerAlias;
 
     public Output<Optional<String>> imageOwnerAlias() {
@@ -223,7 +223,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Default value: PostPaid.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -241,7 +241,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -255,7 +255,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -269,7 +269,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
@@ -283,7 +283,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
      * 
      */
-    @Export(name="internetMaxBandwidthIn", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthIn", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthIn;
 
     /**
@@ -297,7 +297,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
      * 
      */
-    @Export(name="internetMaxBandwidthOut", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetMaxBandwidthOut;
 
     /**
@@ -313,7 +313,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * - optimized
      * 
      */
-    @Export(name="ioOptimized", type=String.class, parameters={})
+    @Export(name="ioOptimized", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ioOptimized;
 
     /**
@@ -331,7 +331,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
@@ -343,7 +343,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> keyPairName() {
         return Codegen.optional(this.keyPairName);
     }
-    @Export(name="launchTemplateName", type=String.class, parameters={})
+    @Export(name="launchTemplateName", refs={String.class}, tree="[0]")
     private Output<String> launchTemplateName;
 
     public Output<String> launchTemplateName() {
@@ -357,7 +357,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -371,7 +371,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * The list of network interfaces created with instance.
      * 
      */
-    @Export(name="networkInterfaces", type=LaunchTemplateNetworkInterfaces.class, parameters={})
+    @Export(name="networkInterfaces", refs={LaunchTemplateNetworkInterfaces.class}, tree="[0]")
     private Output</* @Nullable */ LaunchTemplateNetworkInterfaces> networkInterfaces;
 
     /**
@@ -385,7 +385,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Network type of the instance. Value options: `classic` | `vpc`.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkType;
 
     /**
@@ -395,19 +395,19 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> networkType() {
         return Codegen.optional(this.networkType);
     }
-    @Export(name="passwordInherit", type=Boolean.class, parameters={})
+    @Export(name="passwordInherit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordInherit;
 
     public Output<Optional<Boolean>> passwordInherit() {
         return Codegen.optional(this.passwordInherit);
     }
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
-    @Export(name="privateIpAddress", type=String.class, parameters={})
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateIpAddress;
 
     public Output<Optional<String>> privateIpAddress() {
@@ -417,7 +417,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      * 
      */
-    @Export(name="ramRoleName", type=String.class, parameters={})
+    @Export(name="ramRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ramRoleName;
 
     /**
@@ -427,7 +427,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> ramRoleName() {
         return Codegen.optional(this.ramRoleName);
     }
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     public Output<Optional<String>> resourceGroupId() {
@@ -437,7 +437,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
      * 
      */
-    @Export(name="securityEnhancementStrategy", type=String.class, parameters={})
+    @Export(name="securityEnhancementStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityEnhancementStrategy;
 
     /**
@@ -451,7 +451,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * The security group ID must be one in the same VPC.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
@@ -461,13 +461,13 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> securityGroupId() {
         return Codegen.optional(this.securityGroupId);
     }
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
     public Output<Optional<List<String>>> securityGroupIds() {
         return Codegen.optional(this.securityGroupIds);
     }
-    @Export(name="spotDuration", type=String.class, parameters={})
+    @Export(name="spotDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotDuration;
 
     public Output<Optional<String>> spotDuration() {
@@ -477,7 +477,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
-    @Export(name="spotPriceLimit", type=Double.class, parameters={})
+    @Export(name="spotPriceLimit", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> spotPriceLimit;
 
     /**
@@ -494,7 +494,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
      * 
      */
-    @Export(name="spotStrategy", type=String.class, parameters={})
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotStrategy;
 
     /**
@@ -507,7 +507,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> spotStrategy() {
         return Codegen.optional(this.spotStrategy);
     }
-    @Export(name="systemDisk", type=LaunchTemplateSystemDisk.class, parameters={})
+    @Export(name="systemDisk", refs={LaunchTemplateSystemDisk.class}, tree="[0]")
     private Output<LaunchTemplateSystemDisk> systemDisk;
 
     public Output<LaunchTemplateSystemDisk> systemDisk() {
@@ -526,7 +526,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
-    @Export(name="systemDiskCategory", type=String.class, parameters={})
+    @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
@@ -549,7 +549,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
-    @Export(name="systemDiskDescription", type=String.class, parameters={})
+    @Export(name="systemDiskDescription", refs={String.class}, tree="[0]")
     private Output<String> systemDiskDescription;
 
     /**
@@ -567,7 +567,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
-    @Export(name="systemDiskName", type=String.class, parameters={})
+    @Export(name="systemDiskName", refs={String.class}, tree="[0]")
     private Output<String> systemDiskName;
 
     /**
@@ -585,7 +585,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
-    @Export(name="systemDiskSize", type=Integer.class, parameters={})
+    @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> systemDiskSize;
 
     /**
@@ -601,7 +601,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -613,19 +613,19 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="templateResourceGroupId", type=String.class, parameters={})
+    @Export(name="templateResourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateResourceGroupId;
 
     public Output<Optional<String>> templateResourceGroupId() {
         return Codegen.optional(this.templateResourceGroupId);
     }
-    @Export(name="templateTags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="templateTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> templateTags;
 
     public Output<Optional<Map<String,Object>>> templateTags() {
         return Codegen.optional(this.templateTags);
     }
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output<String> userData;
 
     public Output<String> userData() {
@@ -639,7 +639,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead. */
-    @Export(name="userdata", type=String.class, parameters={})
+    @Export(name="userdata", refs={String.class}, tree="[0]")
     private Output<String> userdata;
 
     /**
@@ -649,13 +649,13 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<String> userdata() {
         return this.userdata;
     }
-    @Export(name="versionDescription", type=String.class, parameters={})
+    @Export(name="versionDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> versionDescription;
 
     public Output<Optional<String>> versionDescription() {
         return Codegen.optional(this.versionDescription);
     }
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     public Output<String> vpcId() {
@@ -665,7 +665,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -679,7 +679,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * The zone ID of the instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

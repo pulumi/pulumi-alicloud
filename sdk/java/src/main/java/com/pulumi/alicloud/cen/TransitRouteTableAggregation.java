@@ -92,7 +92,7 @@ public class TransitRouteTableAggregation extends com.pulumi.resources.CustomRes
      * The status of the Transit Route Table Aggregation.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -106,7 +106,7 @@ public class TransitRouteTableAggregation extends com.pulumi.resources.CustomRes
      * The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
      * 
      */
-    @Export(name="transitRouteTableAggregationCidr", type=String.class, parameters={})
+    @Export(name="transitRouteTableAggregationCidr", refs={String.class}, tree="[0]")
     private Output<String> transitRouteTableAggregationCidr;
 
     /**
@@ -120,7 +120,7 @@ public class TransitRouteTableAggregation extends com.pulumi.resources.CustomRes
      * The description of the aggregate route.
      * 
      */
-    @Export(name="transitRouteTableAggregationDescription", type=String.class, parameters={})
+    @Export(name="transitRouteTableAggregationDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouteTableAggregationDescription;
 
     /**
@@ -134,7 +134,7 @@ public class TransitRouteTableAggregation extends com.pulumi.resources.CustomRes
      * The name of the aggregate route.
      * 
      */
-    @Export(name="transitRouteTableAggregationName", type=String.class, parameters={})
+    @Export(name="transitRouteTableAggregationName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouteTableAggregationName;
 
     /**
@@ -148,7 +148,7 @@ public class TransitRouteTableAggregation extends com.pulumi.resources.CustomRes
      * The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
      * 
      */
-    @Export(name="transitRouteTableAggregationScope", type=String.class, parameters={})
+    @Export(name="transitRouteTableAggregationScope", refs={String.class}, tree="[0]")
     private Output<String> transitRouteTableAggregationScope;
 
     /**
@@ -162,7 +162,7 @@ public class TransitRouteTableAggregation extends com.pulumi.resources.CustomRes
      * The ID of the route table of the Enterprise Edition transit router.
      * 
      */
-    @Export(name="transitRouteTableId", type=String.class, parameters={})
+    @Export(name="transitRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> transitRouteTableId;
 
     /**

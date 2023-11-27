@@ -132,11 +132,11 @@ public final class StoreEncryptConf {
             return this;
         }
         public StoreEncryptConf build() {
-            final var o = new StoreEncryptConf();
-            o.enable = enable;
-            o.encryptType = encryptType;
-            o.userCmkInfo = userCmkInfo;
-            return o;
+            final var _resultValue = new StoreEncryptConf();
+            _resultValue.enable = enable;
+            _resultValue.encryptType = encryptType;
+            _resultValue.userCmkInfo = userCmkInfo;
+            return _resultValue;
         }
     }
 }

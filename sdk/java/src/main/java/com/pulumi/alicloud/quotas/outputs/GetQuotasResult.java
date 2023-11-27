@@ -206,22 +206,22 @@ public final class GetQuotasResult {
             return this;
         }
         public GetQuotasResult build() {
-            final var o = new GetQuotasResult();
-            o.dimensions = dimensions;
-            o.groupCode = groupCode;
-            o.id = id;
-            o.ids = ids;
-            o.keyWord = keyWord;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.productCode = productCode;
-            o.quotaActionCode = quotaActionCode;
-            o.quotaCategory = quotaCategory;
-            o.quotas = quotas;
-            o.sortField = sortField;
-            o.sortOrder = sortOrder;
-            return o;
+            final var _resultValue = new GetQuotasResult();
+            _resultValue.dimensions = dimensions;
+            _resultValue.groupCode = groupCode;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyWord = keyWord;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.productCode = productCode;
+            _resultValue.quotaActionCode = quotaActionCode;
+            _resultValue.quotaCategory = quotaCategory;
+            _resultValue.quotas = quotas;
+            _resultValue.sortField = sortField;
+            _resultValue.sortOrder = sortOrder;
+            return _resultValue;
         }
     }
 }

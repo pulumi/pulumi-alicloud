@@ -83,7 +83,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      * 
      */
-    @Export(name="computeUnit", type=Integer.class, parameters={})
+    @Export(name="computeUnit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> computeUnit;
 
     /**
@@ -97,7 +97,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
      * 
      */
-    @Export(name="databaseCount", type=Integer.class, parameters={})
+    @Export(name="databaseCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> databaseCount;
 
     /**
@@ -111,7 +111,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      * 
      */
-    @Export(name="destinationEndpointEngineName", type=String.class, parameters={})
+    @Export(name="destinationEndpointEngineName", refs={String.class}, tree="[0]")
     private Output<String> destinationEndpointEngineName;
 
     /**
@@ -125,7 +125,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
      * 
      */
-    @Export(name="destinationEndpointRegion", type=String.class, parameters={})
+    @Export(name="destinationEndpointRegion", refs={String.class}, tree="[0]")
     private Output<String> destinationEndpointRegion;
 
     /**
@@ -139,7 +139,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The ID of the Migration Instance.
      * 
      */
-    @Export(name="dtsInstanceId", type=String.class, parameters={})
+    @Export(name="dtsInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dtsInstanceId;
 
     /**
@@ -153,7 +153,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The instance class. Valid values: `large`, `medium`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
@@ -167,7 +167,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The payment type of the resource. Valid values: `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -181,7 +181,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      * 
      */
-    @Export(name="sourceEndpointEngineName", type=String.class, parameters={})
+    @Export(name="sourceEndpointEngineName", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointEngineName;
 
     /**
@@ -195,7 +195,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The region of source instance.
      * 
      */
-    @Export(name="sourceEndpointRegion", type=String.class, parameters={})
+    @Export(name="sourceEndpointRegion", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointRegion;
 
     /**
@@ -209,7 +209,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -223,7 +223,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * The sync architecture. Valid values: `oneway`.
      * 
      */
-    @Export(name="syncArchitecture", type=String.class, parameters={})
+    @Export(name="syncArchitecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> syncArchitecture;
 
     /**
@@ -237,7 +237,7 @@ public class MigrationInstance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

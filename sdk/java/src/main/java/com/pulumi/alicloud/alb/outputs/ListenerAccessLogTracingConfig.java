@@ -100,11 +100,11 @@ public final class ListenerAccessLogTracingConfig {
             return this;
         }
         public ListenerAccessLogTracingConfig build() {
-            final var o = new ListenerAccessLogTracingConfig();
-            o.tracingEnabled = tracingEnabled;
-            o.tracingSample = tracingSample;
-            o.tracingType = tracingType;
-            return o;
+            final var _resultValue = new ListenerAccessLogTracingConfig();
+            _resultValue.tracingEnabled = tracingEnabled;
+            _resultValue.tracingSample = tracingSample;
+            _resultValue.tracingType = tracingType;
+            return _resultValue;
         }
     }
 }

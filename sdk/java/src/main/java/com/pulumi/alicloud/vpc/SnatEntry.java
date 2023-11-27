@@ -115,7 +115,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * The id of the snat entry on the server.
      * 
      */
-    @Export(name="snatEntryId", type=String.class, parameters={})
+    @Export(name="snatEntryId", refs={String.class}, tree="[0]")
     private Output<String> snatEntryId;
 
     /**
@@ -129,7 +129,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * The name of snat entry.
      * 
      */
-    @Export(name="snatEntryName", type=String.class, parameters={})
+    @Export(name="snatEntryName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snatEntryName;
 
     /**
@@ -143,7 +143,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
      * 
      */
-    @Export(name="snatIp", type=String.class, parameters={})
+    @Export(name="snatIp", refs={String.class}, tree="[0]")
     private Output<String> snatIp;
 
     /**
@@ -157,7 +157,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * The value can get from `alicloud.vpc.NatGateway` Attributes &#34;snat_table_ids&#34;.
      * 
      */
-    @Export(name="snatTableId", type=String.class, parameters={})
+    @Export(name="snatTableId", refs={String.class}, tree="[0]")
     private Output<String> snatTableId;
 
     /**
@@ -171,7 +171,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
      * 
      */
-    @Export(name="sourceCidr", type=String.class, parameters={})
+    @Export(name="sourceCidr", refs={String.class}, tree="[0]")
     private Output<String> sourceCidr;
 
     /**
@@ -185,7 +185,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * The vswitch ID.
      * 
      */
-    @Export(name="sourceVswitchId", type=String.class, parameters={})
+    @Export(name="sourceVswitchId", refs={String.class}, tree="[0]")
     private Output<String> sourceVswitchId;
 
     /**
@@ -199,7 +199,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * (Available since v1.119.1) The status of snat entry.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

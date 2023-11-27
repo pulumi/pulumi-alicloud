@@ -37,7 +37,7 @@ public class EcsNetworkInterfacePermission extends com.pulumi.resources.CustomRe
      * Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -51,7 +51,7 @@ public class EcsNetworkInterfacePermission extends com.pulumi.resources.CustomRe
      * Whether to force deletion of Network Interface Permission. Default value: `true`.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -65,7 +65,7 @@ public class EcsNetworkInterfacePermission extends com.pulumi.resources.CustomRe
      * The ID of the network interface.
      * 
      */
-    @Export(name="networkInterfaceId", type=String.class, parameters={})
+    @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceId;
 
     /**
@@ -79,7 +79,7 @@ public class EcsNetworkInterfacePermission extends com.pulumi.resources.CustomRe
      * The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
      * 
      */
-    @Export(name="permission", type=String.class, parameters={})
+    @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
@@ -93,7 +93,7 @@ public class EcsNetworkInterfacePermission extends com.pulumi.resources.CustomRe
      * The Status of the Network Interface Permissions. Valid values: `Pending`, `Granted`, `Revoking`, `Revoked`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -81,7 +81,7 @@ public class MonitorGroup extends com.pulumi.resources.CustomResource {
      * The alert group to which alert notifications will be sent.
      * 
      */
-    @Export(name="contactGroups", type=List.class, parameters={String.class})
+    @Export(name="contactGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> contactGroups;
 
     /**
@@ -95,7 +95,7 @@ public class MonitorGroup extends com.pulumi.resources.CustomResource {
      * The name of the application group.
      * 
      */
-    @Export(name="monitorGroupName", type=String.class, parameters={})
+    @Export(name="monitorGroupName", refs={String.class}, tree="[0]")
     private Output<String> monitorGroupName;
 
     /**
@@ -109,7 +109,7 @@ public class MonitorGroup extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -123,7 +123,7 @@ public class MonitorGroup extends com.pulumi.resources.CustomResource {
      * The name of the resource group.
      * 
      */
-    @Export(name="resourceGroupName", type=String.class, parameters={})
+    @Export(name="resourceGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupName;
 
     /**
@@ -137,7 +137,7 @@ public class MonitorGroup extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

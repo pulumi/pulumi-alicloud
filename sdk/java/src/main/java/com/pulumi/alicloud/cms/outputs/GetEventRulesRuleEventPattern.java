@@ -155,14 +155,14 @@ public final class GetEventRulesRuleEventPattern {
             return this;
         }
         public GetEventRulesRuleEventPattern build() {
-            final var o = new GetEventRulesRuleEventPattern();
-            o.eventTypeLists = eventTypeLists;
-            o.keywordFilters = keywordFilters;
-            o.levelLists = levelLists;
-            o.nameLists = nameLists;
-            o.product = product;
-            o.sqlFilter = sqlFilter;
-            return o;
+            final var _resultValue = new GetEventRulesRuleEventPattern();
+            _resultValue.eventTypeLists = eventTypeLists;
+            _resultValue.keywordFilters = keywordFilters;
+            _resultValue.levelLists = levelLists;
+            _resultValue.nameLists = nameLists;
+            _resultValue.product = product;
+            _resultValue.sqlFilter = sqlFilter;
+            return _resultValue;
         }
     }
 }

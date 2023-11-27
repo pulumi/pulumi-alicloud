@@ -90,11 +90,11 @@ public final class ErEnvConfPresetCanaryNeimenggu {
             return this;
         }
         public ErEnvConfPresetCanaryNeimenggu build() {
-            final var o = new ErEnvConfPresetCanaryNeimenggu();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfPresetCanaryNeimenggu();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

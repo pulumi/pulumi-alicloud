@@ -65,10 +65,10 @@ public final class GetAccessPointsPointAccessPointFeatureModel {
             return this;
         }
         public GetAccessPointsPointAccessPointFeatureModel build() {
-            final var o = new GetAccessPointsPointAccessPointFeatureModel();
-            o.featureKey = featureKey;
-            o.featureValue = featureValue;
-            return o;
+            final var _resultValue = new GetAccessPointsPointAccessPointFeatureModel();
+            _resultValue.featureKey = featureKey;
+            _resultValue.featureValue = featureValue;
+            return _resultValue;
         }
     }
 }

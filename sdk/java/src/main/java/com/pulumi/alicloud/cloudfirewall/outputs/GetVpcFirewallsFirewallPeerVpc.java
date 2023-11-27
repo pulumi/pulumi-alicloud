@@ -141,15 +141,15 @@ public final class GetVpcFirewallsFirewallPeerVpc {
             return this;
         }
         public GetVpcFirewallsFirewallPeerVpc build() {
-            final var o = new GetVpcFirewallsFirewallPeerVpc();
-            o.eniId = eniId;
-            o.eniPrivateIpAddress = eniPrivateIpAddress;
-            o.peerVpcCidrTableLists = peerVpcCidrTableLists;
-            o.regionNo = regionNo;
-            o.routerInterfaceId = routerInterfaceId;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            return o;
+            final var _resultValue = new GetVpcFirewallsFirewallPeerVpc();
+            _resultValue.eniId = eniId;
+            _resultValue.eniPrivateIpAddress = eniPrivateIpAddress;
+            _resultValue.peerVpcCidrTableLists = peerVpcCidrTableLists;
+            _resultValue.regionNo = regionNo;
+            _resultValue.routerInterfaceId = routerInterfaceId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcName = vpcName;
+            return _resultValue;
         }
     }
 }

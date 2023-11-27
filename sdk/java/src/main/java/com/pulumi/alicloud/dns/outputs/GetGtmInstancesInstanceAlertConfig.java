@@ -104,12 +104,12 @@ public final class GetGtmInstancesInstanceAlertConfig {
             return this;
         }
         public GetGtmInstancesInstanceAlertConfig build() {
-            final var o = new GetGtmInstancesInstanceAlertConfig();
-            o.dingtalkNotice = dingtalkNotice;
-            o.emailNotice = emailNotice;
-            o.noticeType = noticeType;
-            o.smsNotice = smsNotice;
-            return o;
+            final var _resultValue = new GetGtmInstancesInstanceAlertConfig();
+            _resultValue.dingtalkNotice = dingtalkNotice;
+            _resultValue.emailNotice = emailNotice;
+            _resultValue.noticeType = noticeType;
+            _resultValue.smsNotice = smsNotice;
+            return _resultValue;
         }
     }
 }

@@ -84,11 +84,11 @@ public final class GetAssetsAsset {
             return this;
         }
         public GetAssetsAsset build() {
-            final var o = new GetAssetsAsset();
-            o.createTime = createTime;
-            o.id = id;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetAssetsAsset();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

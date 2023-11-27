@@ -93,7 +93,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * The access mode of Layer Version.
      * 
      */
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output<String> acl;
 
     /**
@@ -107,7 +107,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * The arn of Layer Version.
      * 
      */
-    @Export(name="arn", type=String.class, parameters={})
+    @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
@@ -121,7 +121,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * The checksum of the layer code package.
      * 
      */
-    @Export(name="codeCheckSum", type=String.class, parameters={})
+    @Export(name="codeCheckSum", refs={String.class}, tree="[0]")
     private Output<String> codeCheckSum;
 
     /**
@@ -135,7 +135,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
      * 
      */
-    @Export(name="compatibleRuntimes", type=List.class, parameters={String.class})
+    @Export(name="compatibleRuntimes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> compatibleRuntimes;
 
     /**
@@ -149,7 +149,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * The description of the layer version.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -163,7 +163,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * The name of the layer.
      * 
      */
-    @Export(name="layerName", type=String.class, parameters={})
+    @Export(name="layerName", refs={String.class}, tree="[0]")
     private Output<String> layerName;
 
     /**
@@ -177,7 +177,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * The name of the OSS bucket that stores the ZIP package of the function code.
      * 
      */
-    @Export(name="ossBucketName", type=String.class, parameters={})
+    @Export(name="ossBucketName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossBucketName;
 
     /**
@@ -191,7 +191,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * The name of the OSS object (ZIP package) that contains the function code.
      * 
      */
-    @Export(name="ossObjectName", type=String.class, parameters={})
+    @Export(name="ossObjectName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossObjectName;
 
     /**
@@ -205,7 +205,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
      * 
      */
-    @Export(name="skipDestroy", type=Boolean.class, parameters={})
+    @Export(name="skipDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipDestroy;
 
     /**
@@ -219,7 +219,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * The version of Layer Version.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
@@ -235,7 +235,7 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
      * 
      */
-    @Export(name="zipFile", type=String.class, parameters={})
+    @Export(name="zipFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zipFile;
 
     /**

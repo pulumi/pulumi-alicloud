@@ -148,17 +148,17 @@ public final class GetDedicatedHostAccountsResult {
             return this;
         }
         public GetDedicatedHostAccountsResult build() {
-            final var o = new GetDedicatedHostAccountsResult();
-            o.accounts = accounts;
-            o.dedicatedHostId = dedicatedHostId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetDedicatedHostAccountsResult();
+            _resultValue.accounts = accounts;
+            _resultValue.dedicatedHostId = dedicatedHostId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

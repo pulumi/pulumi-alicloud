@@ -136,14 +136,14 @@ public final class GetAccountsResult {
             return this;
         }
         public GetAccountsResult build() {
-            final var o = new GetAccountsResult();
-            o.accounts = accounts;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAccountsResult();
+            _resultValue.accounts = accounts;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

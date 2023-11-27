@@ -146,17 +146,17 @@ public final class GetDBClusterLakeVersionsResult {
             return versions(List.of(versions));
         }
         public GetDBClusterLakeVersionsResult build() {
-            final var o = new GetDBClusterLakeVersionsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new GetDBClusterLakeVersionsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

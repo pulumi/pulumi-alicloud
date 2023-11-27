@@ -179,16 +179,16 @@ public final class GetRolesRole {
             return this;
         }
         public GetRolesRole build() {
-            final var o = new GetRolesRole();
-            o.arn = arn;
-            o.assumeRolePolicyDocument = assumeRolePolicyDocument;
-            o.createDate = createDate;
-            o.description = description;
-            o.document = document;
-            o.id = id;
-            o.name = name;
-            o.updateDate = updateDate;
-            return o;
+            final var _resultValue = new GetRolesRole();
+            _resultValue.arn = arn;
+            _resultValue.assumeRolePolicyDocument = assumeRolePolicyDocument;
+            _resultValue.createDate = createDate;
+            _resultValue.description = description;
+            _resultValue.document = document;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.updateDate = updateDate;
+            return _resultValue;
         }
     }
 }

@@ -136,16 +136,16 @@ public final class GetNasFileSystemsResult {
             return systems(List.of(systems));
         }
         public GetNasFileSystemsResult build() {
-            final var o = new GetNasFileSystemsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.officeSiteId = officeSiteId;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.systems = systems;
-            return o;
+            final var _resultValue = new GetNasFileSystemsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.officeSiteId = officeSiteId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.systems = systems;
+            return _resultValue;
         }
     }
 }

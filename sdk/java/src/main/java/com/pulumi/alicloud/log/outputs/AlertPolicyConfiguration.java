@@ -86,11 +86,11 @@ public final class AlertPolicyConfiguration {
             return this;
         }
         public AlertPolicyConfiguration build() {
-            final var o = new AlertPolicyConfiguration();
-            o.actionPolicyId = actionPolicyId;
-            o.alertPolicyId = alertPolicyId;
-            o.repeatInterval = repeatInterval;
-            return o;
+            final var _resultValue = new AlertPolicyConfiguration();
+            _resultValue.actionPolicyId = actionPolicyId;
+            _resultValue.alertPolicyId = alertPolicyId;
+            _resultValue.repeatInterval = repeatInterval;
+            return _resultValue;
         }
     }
 }

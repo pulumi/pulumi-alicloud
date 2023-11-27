@@ -285,6 +285,7 @@ class _EndpointGroupState:
                  accelerator_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]] = None,
+                 endpoint_group_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  endpoint_group_region: Optional[pulumi.Input[str]] = None,
                  endpoint_group_type: Optional[pulumi.Input[str]] = None,
                  endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
@@ -304,6 +305,7 @@ class _EndpointGroupState:
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[str] description: The description of the endpoint group.
         :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_group_ip_lists: (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
@@ -328,6 +330,8 @@ class _EndpointGroupState:
             pulumi.set(__self__, "description", description)
         if endpoint_configurations is not None:
             pulumi.set(__self__, "endpoint_configurations", endpoint_configurations)
+        if endpoint_group_ip_lists is not None:
+            pulumi.set(__self__, "endpoint_group_ip_lists", endpoint_group_ip_lists)
         if endpoint_group_region is not None:
             pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
         if endpoint_group_type is not None:
@@ -392,6 +396,18 @@ class _EndpointGroupState:
     @endpoint_configurations.setter
     def endpoint_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]]):
         pulumi.set(self, "endpoint_configurations", value)
+
+    @property
+    @pulumi.getter(name="endpointGroupIpLists")
+    def endpoint_group_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+        """
+        return pulumi.get(self, "endpoint_group_ip_lists")
+
+    @endpoint_group_ip_lists.setter
+    def endpoint_group_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "endpoint_group_ip_lists", value)
 
     @property
     @pulumi.getter(name="endpointGroupRegion")
@@ -841,6 +857,7 @@ class EndpointGroup(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["threshold_count"] = threshold_count
             __props__.__dict__["traffic_percentage"] = traffic_percentage
+            __props__.__dict__["endpoint_group_ip_lists"] = None
             __props__.__dict__["status"] = None
         super(EndpointGroup, __self__).__init__(
             'alicloud:ga/endpointGroup:EndpointGroup',
@@ -855,6 +872,7 @@ class EndpointGroup(pulumi.CustomResource):
             accelerator_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             endpoint_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]]] = None,
+            endpoint_group_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             endpoint_group_region: Optional[pulumi.Input[str]] = None,
             endpoint_group_type: Optional[pulumi.Input[str]] = None,
             endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
@@ -879,6 +897,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[str] description: The description of the endpoint group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_group_ip_lists: (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
@@ -904,6 +923,7 @@ class EndpointGroup(pulumi.CustomResource):
         __props__.__dict__["accelerator_id"] = accelerator_id
         __props__.__dict__["description"] = description
         __props__.__dict__["endpoint_configurations"] = endpoint_configurations
+        __props__.__dict__["endpoint_group_ip_lists"] = endpoint_group_ip_lists
         __props__.__dict__["endpoint_group_region"] = endpoint_group_region
         __props__.__dict__["endpoint_group_type"] = endpoint_group_type
         __props__.__dict__["endpoint_request_protocol"] = endpoint_request_protocol
@@ -943,6 +963,14 @@ class EndpointGroup(pulumi.CustomResource):
         The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         """
         return pulumi.get(self, "endpoint_configurations")
+
+    @property
+    @pulumi.getter(name="endpointGroupIpLists")
+    def endpoint_group_ip_lists(self) -> pulumi.Output[Sequence[str]]:
+        """
+        (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+        """
+        return pulumi.get(self, "endpoint_group_ip_lists")
 
     @property
     @pulumi.getter(name="endpointGroupRegion")

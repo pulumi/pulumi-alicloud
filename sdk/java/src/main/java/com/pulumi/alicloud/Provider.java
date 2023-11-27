@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * console.
      * 
      */
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKey;
 
     /**
@@ -43,7 +43,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Alibaba Cloud console.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -58,7 +58,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Use this to mark a terraform configuration file source.
      * 
      */
-    @Export(name="configurationSource", type=String.class, parameters={})
+    @Export(name="configurationSource", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configurationSource;
 
     /**
@@ -72,7 +72,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The URI of sidecar credentials service.
      * 
      */
-    @Export(name="credentialsUri", type=String.class, parameters={})
+    @Export(name="credentialsUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> credentialsUri;
 
     /**
@@ -87,7 +87,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * of the Alibaba Cloud console.
      * 
      */
-    @Export(name="ecsRoleName", type=String.class, parameters={})
+    @Export(name="ecsRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ecsRoleName;
 
     /**
@@ -104,7 +104,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead. */
-    @Export(name="fc", type=String.class, parameters={})
+    @Export(name="fc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fc;
 
     public Output<Optional<String>> fc() {
@@ -116,7 +116,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead. */
-    @Export(name="logEndpoint", type=String.class, parameters={})
+    @Export(name="logEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logEndpoint;
 
     public Output<Optional<String>> logEndpoint() {
@@ -128,7 +128,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead. */
-    @Export(name="mnsEndpoint", type=String.class, parameters={})
+    @Export(name="mnsEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mnsEndpoint;
 
     public Output<Optional<String>> mnsEndpoint() {
@@ -140,7 +140,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead. */
-    @Export(name="otsInstanceName", type=String.class, parameters={})
+    @Export(name="otsInstanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> otsInstanceName;
 
     public Output<Optional<String>> otsInstanceName() {
@@ -150,7 +150,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
      * 
      */
-    @Export(name="profile", type=String.class, parameters={})
+    @Export(name="profile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> profile;
 
     /**
@@ -160,7 +160,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> profile() {
         return Codegen.optional(this.profile);
     }
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protocol;
 
     public Output<Optional<String>> protocol() {
@@ -170,7 +170,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -185,7 +185,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * console.
      * 
      */
-    @Export(name="secretKey", type=String.class, parameters={})
+    @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretKey;
 
     /**
@@ -200,7 +200,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The security transport for the assume role invoking.
      * 
      */
-    @Export(name="secureTransport", type=String.class, parameters={})
+    @Export(name="secureTransport", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secureTransport;
 
     /**
@@ -214,7 +214,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * security token. A security token is only required if you are using Security Token Service.
      * 
      */
-    @Export(name="securityToken", type=String.class, parameters={})
+    @Export(name="securityToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityToken;
 
     /**
@@ -224,7 +224,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> securityToken() {
         return Codegen.optional(this.securityToken);
     }
-    @Export(name="securityTransport", type=String.class, parameters={})
+    @Export(name="securityTransport", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityTransport;
 
     public Output<Optional<String>> securityTransport() {
@@ -234,7 +234,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
      * 
      */
-    @Export(name="sharedCredentialsFile", type=String.class, parameters={})
+    @Export(name="sharedCredentialsFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sharedCredentialsFile;
 
     /**
@@ -248,7 +248,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The source ip for the assume role invoking.
      * 
      */
-    @Export(name="sourceIp", type=String.class, parameters={})
+    @Export(name="sourceIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceIp;
 
     /**

@@ -100,7 +100,7 @@ public class DeployGroup extends com.pulumi.resources.CustomResource {
      * The ID of the application that you want to deploy.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -114,7 +114,7 @@ public class DeployGroup extends com.pulumi.resources.CustomResource {
      * The name of the instance group that you want to create.
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
@@ -128,7 +128,7 @@ public class DeployGroup extends com.pulumi.resources.CustomResource {
      * The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
      * 
      */
-    @Export(name="groupType", type=Integer.class, parameters={})
+    @Export(name="groupType", refs={Integer.class}, tree="[0]")
     private Output<Integer> groupType;
 
     /**

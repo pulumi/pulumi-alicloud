@@ -37,7 +37,7 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * The description of the consistent replication group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -51,7 +51,7 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * The ID of the region to which the disaster recovery site belongs.
      * 
      */
-    @Export(name="destinationRegionId", type=String.class, parameters={})
+    @Export(name="destinationRegionId", refs={String.class}, tree="[0]")
     private Output<String> destinationRegionId;
 
     /**
@@ -65,7 +65,7 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * The ID of the zone to which the disaster recovery site belongs.
      * 
      */
-    @Export(name="destinationZoneId", type=String.class, parameters={})
+    @Export(name="destinationZoneId", refs={String.class}, tree="[0]")
     private Output<String> destinationZoneId;
 
     /**
@@ -79,7 +79,7 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * Consistent replication group name.
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupName;
 
     /**
@@ -93,7 +93,7 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
      * 
      */
-    @Export(name="rpo", type=Integer.class, parameters={})
+    @Export(name="rpo", refs={Integer.class}, tree="[0]")
     private Output<Integer> rpo;
 
     /**
@@ -107,7 +107,7 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * The ID of the region to which the production site belongs.
      * 
      */
-    @Export(name="sourceRegionId", type=String.class, parameters={})
+    @Export(name="sourceRegionId", refs={String.class}, tree="[0]")
     private Output<String> sourceRegionId;
 
     /**
@@ -121,7 +121,7 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * The ID of the zone to which the production site belongs.
      * 
      */
-    @Export(name="sourceZoneId", type=String.class, parameters={})
+    @Export(name="sourceZoneId", refs={String.class}, tree="[0]")
     private Output<String> sourceZoneId;
 
     /**
@@ -135,7 +135,7 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * The status of the consistent replication group.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -109,12 +109,12 @@ public final class GetOpenApiPricingModulesModuleValue {
             return this;
         }
         public GetOpenApiPricingModulesModuleValue build() {
-            final var o = new GetOpenApiPricingModulesModuleValue();
-            o.name = name;
-            o.remark = remark;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetOpenApiPricingModulesModuleValue();
+            _resultValue.name = name;
+            _resultValue.remark = remark;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

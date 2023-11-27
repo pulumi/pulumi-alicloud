@@ -65,10 +65,10 @@ public final class GetLoadBalancersBalancerAccessLogConfig {
             return this;
         }
         public GetLoadBalancersBalancerAccessLogConfig build() {
-            final var o = new GetLoadBalancersBalancerAccessLogConfig();
-            o.logProject = logProject;
-            o.logStore = logStore;
-            return o;
+            final var _resultValue = new GetLoadBalancersBalancerAccessLogConfig();
+            _resultValue.logProject = logProject;
+            _resultValue.logStore = logStore;
+            return _resultValue;
         }
     }
 }

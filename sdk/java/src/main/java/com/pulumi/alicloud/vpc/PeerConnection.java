@@ -114,7 +114,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
-    @Export(name="acceptingAliUid", type=Integer.class, parameters={})
+    @Export(name="acceptingAliUid", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> acceptingAliUid;
 
     /**
@@ -133,7 +133,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
      * 
      */
-    @Export(name="acceptingRegionId", type=String.class, parameters={})
+    @Export(name="acceptingRegionId", refs={String.class}, tree="[0]")
     private Output<String> acceptingRegionId;
 
     /**
@@ -149,7 +149,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The VPC ID of the receiving end of the VPC peer connection.
      * 
      */
-    @Export(name="acceptingVpcId", type=String.class, parameters={})
+    @Export(name="acceptingVpcId", refs={String.class}, tree="[0]")
     private Output<String> acceptingVpcId;
 
     /**
@@ -163,7 +163,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -177,7 +177,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -191,7 +191,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -207,7 +207,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -223,7 +223,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="peerConnectionName", type=String.class, parameters={})
+    @Export(name="peerConnectionName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerConnectionName;
 
     /**
@@ -237,7 +237,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -251,7 +251,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -265,7 +265,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The tags of PrefixList.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -279,7 +279,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

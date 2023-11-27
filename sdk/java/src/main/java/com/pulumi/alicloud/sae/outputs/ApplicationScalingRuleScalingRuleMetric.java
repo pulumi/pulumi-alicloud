@@ -131,13 +131,13 @@ public final class ApplicationScalingRuleScalingRuleMetric {
             return this;
         }
         public ApplicationScalingRuleScalingRuleMetric build() {
-            final var o = new ApplicationScalingRuleScalingRuleMetric();
-            o.maxReplicas = maxReplicas;
-            o.metrics = metrics;
-            o.minReplicas = minReplicas;
-            o.scaleDownRules = scaleDownRules;
-            o.scaleUpRules = scaleUpRules;
-            return o;
+            final var _resultValue = new ApplicationScalingRuleScalingRuleMetric();
+            _resultValue.maxReplicas = maxReplicas;
+            _resultValue.metrics = metrics;
+            _resultValue.minReplicas = minReplicas;
+            _resultValue.scaleDownRules = scaleDownRules;
+            _resultValue.scaleUpRules = scaleUpRules;
+            return _resultValue;
         }
     }
 }

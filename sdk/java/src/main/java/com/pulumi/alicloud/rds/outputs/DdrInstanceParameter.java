@@ -65,10 +65,10 @@ public final class DdrInstanceParameter {
             return this;
         }
         public DdrInstanceParameter build() {
-            final var o = new DdrInstanceParameter();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new DdrInstanceParameter();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

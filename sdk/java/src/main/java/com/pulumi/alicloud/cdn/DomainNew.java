@@ -85,7 +85,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      * Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
      * 
      */
-    @Export(name="cdnType", type=String.class, parameters={})
+    @Export(name="cdnType", refs={String.class}, tree="[0]")
     private Output<String> cdnType;
 
     /**
@@ -99,7 +99,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      * Certificate configuration. See `certificate_config` below.
      * 
      */
-    @Export(name="certificateConfig", type=DomainNewCertificateConfig.class, parameters={})
+    @Export(name="certificateConfig", refs={DomainNewCertificateConfig.class}, tree="[0]")
     private Output<DomainNewCertificateConfig> certificateConfig;
 
     /**
@@ -113,7 +113,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      * Health test URL.
      * 
      */
-    @Export(name="checkUrl", type=String.class, parameters={})
+    @Export(name="checkUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checkUrl;
 
     /**
@@ -127,7 +127,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      * The CNAME domain name corresponding to the accelerated domain name.
      * 
      */
-    @Export(name="cname", type=String.class, parameters={})
+    @Export(name="cname", refs={String.class}, tree="[0]")
     private Output<String> cname;
 
     /**
@@ -141,7 +141,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -155,7 +155,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -173,7 +173,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      *   The default value is **domestic**.
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**
@@ -191,7 +191,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      * The source address list of the accelerated domain. Defaults to null. See `sources` below.
      * 
      */
-    @Export(name="sources", type=List.class, parameters={DomainNewSource.class})
+    @Export(name="sources", refs={List.class,DomainNewSource.class}, tree="[0,1]")
     private Output<List<DomainNewSource>> sources;
 
     /**
@@ -205,7 +205,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -219,7 +219,7 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
      * The tag of the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

@@ -160,15 +160,15 @@ public final class GetTopicSubscriptionsSubscription {
             return this;
         }
         public GetTopicSubscriptionsSubscription build() {
-            final var o = new GetTopicSubscriptionsSubscription();
-            o.endpoint = endpoint;
-            o.filterTag = filterTag;
-            o.id = id;
-            o.name = name;
-            o.notifyContentFormat = notifyContentFormat;
-            o.notifyStrategy = notifyStrategy;
-            o.topicName = topicName;
-            return o;
+            final var _resultValue = new GetTopicSubscriptionsSubscription();
+            _resultValue.endpoint = endpoint;
+            _resultValue.filterTag = filterTag;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.notifyContentFormat = notifyContentFormat;
+            _resultValue.notifyStrategy = notifyStrategy;
+            _resultValue.topicName = topicName;
+            return _resultValue;
         }
     }
 }

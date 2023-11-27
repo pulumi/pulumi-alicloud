@@ -136,16 +136,16 @@ public final class GetNasBackupPlansResult {
             return this;
         }
         public GetNasBackupPlansResult build() {
-            final var o = new GetNasBackupPlansResult();
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.plans = plans;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetNasBackupPlansResult();
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.plans = plans;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

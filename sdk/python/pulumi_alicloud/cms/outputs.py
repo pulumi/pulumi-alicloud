@@ -1295,10 +1295,9 @@ class GroupMetricRuleTarget(dict):
                  level: Optional[str] = None):
         """
         :param str arn: The Alibaba Cloud Resource Name (ARN) of the resource.
+               > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         :param str id: The ID of the resource for which alerts are triggered.
         :param str json_params: The parameters of the alert callback. The parameters are in the JSON format.
-               
-               > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         :param str level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         """
         if arn is not None:
@@ -1315,6 +1314,7 @@ class GroupMetricRuleTarget(dict):
     def arn(self) -> Optional[str]:
         """
         The Alibaba Cloud Resource Name (ARN) of the resource.
+        > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         """
         return pulumi.get(self, "arn")
 
@@ -1331,8 +1331,6 @@ class GroupMetricRuleTarget(dict):
     def json_params(self) -> Optional[str]:
         """
         The parameters of the alert callback. The parameters are in the JSON format.
-
-        > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         """
         return pulumi.get(self, "json_params")
 

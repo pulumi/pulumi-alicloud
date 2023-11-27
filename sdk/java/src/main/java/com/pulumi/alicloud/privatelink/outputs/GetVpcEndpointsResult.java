@@ -181,20 +181,20 @@ public final class GetVpcEndpointsResult {
             return this;
         }
         public GetVpcEndpointsResult build() {
-            final var o = new GetVpcEndpointsResult();
-            o.connectionStatus = connectionStatus;
-            o.enableDetails = enableDetails;
-            o.endpoints = endpoints;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.serviceName = serviceName;
-            o.status = status;
-            o.vpcEndpointName = vpcEndpointName;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetVpcEndpointsResult();
+            _resultValue.connectionStatus = connectionStatus;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.endpoints = endpoints;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.serviceName = serviceName;
+            _resultValue.status = status;
+            _resultValue.vpcEndpointName = vpcEndpointName;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

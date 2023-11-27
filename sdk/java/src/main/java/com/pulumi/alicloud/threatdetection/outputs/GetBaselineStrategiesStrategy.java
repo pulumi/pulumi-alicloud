@@ -210,18 +210,18 @@ public final class GetBaselineStrategiesStrategy {
             return this;
         }
         public GetBaselineStrategiesStrategy build() {
-            final var o = new GetBaselineStrategiesStrategy();
-            o.baselineStrategyId = baselineStrategyId;
-            o.baselineStrategyName = baselineStrategyName;
-            o.customType = customType;
-            o.cycleDays = cycleDays;
-            o.cycleStartTime = cycleStartTime;
-            o.endTime = endTime;
-            o.id = id;
-            o.riskSubTypeName = riskSubTypeName;
-            o.startTime = startTime;
-            o.targetType = targetType;
-            return o;
+            final var _resultValue = new GetBaselineStrategiesStrategy();
+            _resultValue.baselineStrategyId = baselineStrategyId;
+            _resultValue.baselineStrategyName = baselineStrategyName;
+            _resultValue.customType = customType;
+            _resultValue.cycleDays = cycleDays;
+            _resultValue.cycleStartTime = cycleStartTime;
+            _resultValue.endTime = endTime;
+            _resultValue.id = id;
+            _resultValue.riskSubTypeName = riskSubTypeName;
+            _resultValue.startTime = startTime;
+            _resultValue.targetType = targetType;
+            return _resultValue;
         }
     }
 }

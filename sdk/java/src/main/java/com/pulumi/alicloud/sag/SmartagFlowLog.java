@@ -72,7 +72,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
      * 
      */
-    @Export(name="activeAging", type=Integer.class, parameters={})
+    @Export(name="activeAging", refs={Integer.class}, tree="[0]")
     private Output<Integer> activeAging;
 
     /**
@@ -86,7 +86,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The description of the flow log.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -100,7 +100,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The name of the flow log.
      * 
      */
-    @Export(name="flowLogName", type=String.class, parameters={})
+    @Export(name="flowLogName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> flowLogName;
 
     /**
@@ -114,7 +114,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The time interval at which log data of inactive connections is connected. Valid values: `10` to `600`. Default value: `15`. Unit: second.
      * 
      */
-    @Export(name="inactiveAging", type=Integer.class, parameters={})
+    @Export(name="inactiveAging", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveAging;
 
     /**
@@ -128,7 +128,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
      * 
      */
-    @Export(name="logstoreName", type=String.class, parameters={})
+    @Export(name="logstoreName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logstoreName;
 
     /**
@@ -142,7 +142,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
      * 
      */
-    @Export(name="netflowServerIp", type=String.class, parameters={})
+    @Export(name="netflowServerIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netflowServerIp;
 
     /**
@@ -156,7 +156,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
      * 
      */
-    @Export(name="netflowServerPort", type=Integer.class, parameters={})
+    @Export(name="netflowServerPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> netflowServerPort;
 
     /**
@@ -170,7 +170,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
      * 
      */
-    @Export(name="netflowVersion", type=String.class, parameters={})
+    @Export(name="netflowVersion", refs={String.class}, tree="[0]")
     private Output<String> netflowVersion;
 
     /**
@@ -184,7 +184,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The location where the flow log is stored. Valid values:
      * 
      */
-    @Export(name="outputType", type=String.class, parameters={})
+    @Export(name="outputType", refs={String.class}, tree="[0]")
     private Output<String> outputType;
 
     /**
@@ -198,7 +198,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectName;
 
     /**
@@ -212,7 +212,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
      * 
      */
-    @Export(name="slsRegionId", type=String.class, parameters={})
+    @Export(name="slsRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slsRegionId;
 
     /**
@@ -226,7 +226,7 @@ public class SmartagFlowLog extends com.pulumi.resources.CustomResource {
      * The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

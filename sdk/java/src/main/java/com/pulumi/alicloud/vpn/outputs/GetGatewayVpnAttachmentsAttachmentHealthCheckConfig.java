@@ -162,15 +162,15 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
             return this;
         }
         public GetGatewayVpnAttachmentsAttachmentHealthCheckConfig build() {
-            final var o = new GetGatewayVpnAttachmentsAttachmentHealthCheckConfig();
-            o.dip = dip;
-            o.enable = enable;
-            o.interval = interval;
-            o.policy = policy;
-            o.retry = retry;
-            o.sip = sip;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetGatewayVpnAttachmentsAttachmentHealthCheckConfig();
+            _resultValue.dip = dip;
+            _resultValue.enable = enable;
+            _resultValue.interval = interval;
+            _resultValue.policy = policy;
+            _resultValue.retry = retry;
+            _resultValue.sip = sip;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

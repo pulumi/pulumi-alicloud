@@ -38,9 +38,9 @@ public final class GetDisksDiskOperationLock {
             return this;
         }
         public GetDisksDiskOperationLock build() {
-            final var o = new GetDisksDiskOperationLock();
-            o.lockReason = lockReason;
-            return o;
+            final var _resultValue = new GetDisksDiskOperationLock();
+            _resultValue.lockReason = lockReason;
+            return _resultValue;
         }
     }
 }

@@ -84,11 +84,11 @@ public final class GetDatabasesDatabaseAccount {
             return this;
         }
         public GetDatabasesDatabaseAccount build() {
-            final var o = new GetDatabasesDatabaseAccount();
-            o.accountName = accountName;
-            o.accountStatus = accountStatus;
-            o.privilegeStatus = privilegeStatus;
-            return o;
+            final var _resultValue = new GetDatabasesDatabaseAccount();
+            _resultValue.accountName = accountName;
+            _resultValue.accountStatus = accountStatus;
+            _resultValue.privilegeStatus = privilegeStatus;
+            return _resultValue;
         }
     }
 }

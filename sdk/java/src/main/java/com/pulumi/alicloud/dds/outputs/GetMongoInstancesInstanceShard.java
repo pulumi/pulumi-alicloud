@@ -72,12 +72,12 @@ public final class GetMongoInstancesInstanceShard {
             return this;
         }
         public GetMongoInstancesInstanceShard build() {
-            final var o = new GetMongoInstancesInstanceShard();
-            o.class_ = class_;
-            o.description = description;
-            o.nodeId = nodeId;
-            o.storage = storage;
-            return o;
+            final var _resultValue = new GetMongoInstancesInstanceShard();
+            _resultValue.class_ = class_;
+            _resultValue.description = description;
+            _resultValue.nodeId = nodeId;
+            _resultValue.storage = storage;
+            return _resultValue;
         }
     }
 }

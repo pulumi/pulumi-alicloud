@@ -184,16 +184,16 @@ public final class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointT
             return portRanges(List.of(portRanges));
         }
         public GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy build() {
-            final var o = new GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy();
-            o.acceleratorId = acceleratorId;
-            o.address = address;
-            o.customRoutingEndpointTrafficPolicyId = customRoutingEndpointTrafficPolicyId;
-            o.endpointGroupId = endpointGroupId;
-            o.endpointId = endpointId;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.portRanges = portRanges;
-            return o;
+            final var _resultValue = new GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.address = address;
+            _resultValue.customRoutingEndpointTrafficPolicyId = customRoutingEndpointTrafficPolicyId;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.endpointId = endpointId;
+            _resultValue.id = id;
+            _resultValue.listenerId = listenerId;
+            _resultValue.portRanges = portRanges;
+            return _resultValue;
         }
     }
 }

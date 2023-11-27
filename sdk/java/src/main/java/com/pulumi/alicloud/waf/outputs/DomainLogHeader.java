@@ -51,10 +51,10 @@ public final class DomainLogHeader {
             return this;
         }
         public DomainLogHeader build() {
-            final var o = new DomainLogHeader();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new DomainLogHeader();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

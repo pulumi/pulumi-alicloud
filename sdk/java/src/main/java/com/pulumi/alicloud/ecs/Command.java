@@ -73,7 +73,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The Base64-encoded content of the command.
      * 
      */
-    @Export(name="commandContent", type=String.class, parameters={})
+    @Export(name="commandContent", refs={String.class}, tree="[0]")
     private Output<String> commandContent;
 
     /**
@@ -87,7 +87,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The description of command.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -101,7 +101,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * Specifies whether to use custom parameters in the command to be created. Default to: false.
      * 
      */
-    @Export(name="enableParameter", type=Boolean.class, parameters={})
+    @Export(name="enableParameter", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableParameter;
 
     /**
@@ -115,7 +115,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The name of the command, which supports all character sets. It can be up to 128 characters in length.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -129,7 +129,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
      * 
      */
-    @Export(name="timeout", type=Integer.class, parameters={})
+    @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeout;
 
     /**
@@ -143,7 +143,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -157,7 +157,7 @@ public class Command extends com.pulumi.resources.CustomResource {
      * The execution path of the command in the ECS instance.
      * 
      */
-    @Export(name="workingDir", type=String.class, parameters={})
+    @Export(name="workingDir", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workingDir;
 
     /**

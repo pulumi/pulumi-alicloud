@@ -131,13 +131,13 @@ public final class GetGreyTagRoutesRoute {
             return scRules(List.of(scRules));
         }
         public GetGreyTagRoutesRoute build() {
-            final var o = new GetGreyTagRoutesRoute();
-            o.description = description;
-            o.dubboRules = dubboRules;
-            o.greyTagRouteName = greyTagRouteName;
-            o.id = id;
-            o.scRules = scRules;
-            return o;
+            final var _resultValue = new GetGreyTagRoutesRoute();
+            _resultValue.description = description;
+            _resultValue.dubboRules = dubboRules;
+            _resultValue.greyTagRouteName = greyTagRouteName;
+            _resultValue.id = id;
+            _resultValue.scRules = scRules;
+            return _resultValue;
         }
     }
 }

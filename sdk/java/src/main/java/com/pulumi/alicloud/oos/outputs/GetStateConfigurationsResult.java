@@ -113,14 +113,14 @@ public final class GetStateConfigurationsResult {
             return this;
         }
         public GetStateConfigurationsResult build() {
-            final var o = new GetStateConfigurationsResult();
-            o.configurations = configurations;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetStateConfigurationsResult();
+            _resultValue.configurations = configurations;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

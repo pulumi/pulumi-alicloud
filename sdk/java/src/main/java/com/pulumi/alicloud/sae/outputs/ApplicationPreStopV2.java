@@ -48,9 +48,9 @@ public final class ApplicationPreStopV2 {
             return this;
         }
         public ApplicationPreStopV2 build() {
-            final var o = new ApplicationPreStopV2();
-            o.exec = exec;
-            return o;
+            final var _resultValue = new ApplicationPreStopV2();
+            _resultValue.exec = exec;
+            return _resultValue;
         }
     }
 }

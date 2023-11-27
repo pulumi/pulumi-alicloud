@@ -76,7 +76,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The ID of the global acceleration instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -90,7 +90,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -104,7 +104,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

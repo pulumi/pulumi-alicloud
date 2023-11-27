@@ -87,11 +87,11 @@ public final class ApplicationScalingRuleScalingRuleMetricScaleDownRules {
             return this;
         }
         public ApplicationScalingRuleScalingRuleMetricScaleDownRules build() {
-            final var o = new ApplicationScalingRuleScalingRuleMetricScaleDownRules();
-            o.disabled = disabled;
-            o.stabilizationWindowSeconds = stabilizationWindowSeconds;
-            o.step = step;
-            return o;
+            final var _resultValue = new ApplicationScalingRuleScalingRuleMetricScaleDownRules();
+            _resultValue.disabled = disabled;
+            _resultValue.stabilizationWindowSeconds = stabilizationWindowSeconds;
+            _resultValue.step = step;
+            return _resultValue;
         }
     }
 }

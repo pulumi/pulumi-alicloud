@@ -211,17 +211,17 @@ public final class GetNetworkAclsAcl {
             return this;
         }
         public GetNetworkAclsAcl build() {
-            final var o = new GetNetworkAclsAcl();
-            o.description = description;
-            o.egressAclEntries = egressAclEntries;
-            o.id = id;
-            o.ingressAclEntries = ingressAclEntries;
-            o.networkAclId = networkAclId;
-            o.networkAclName = networkAclName;
-            o.resources = resources;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetNetworkAclsAcl();
+            _resultValue.description = description;
+            _resultValue.egressAclEntries = egressAclEntries;
+            _resultValue.id = id;
+            _resultValue.ingressAclEntries = ingressAclEntries;
+            _resultValue.networkAclId = networkAclId;
+            _resultValue.networkAclName = networkAclName;
+            _resultValue.resources = resources;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

@@ -377,27 +377,27 @@ public final class GetEcsBackupPlansPlan {
             return this;
         }
         public GetEcsBackupPlansPlan build() {
-            final var o = new GetEcsBackupPlansPlan();
-            o.backupType = backupType;
-            o.createTime = createTime;
-            o.createdTime = createdTime;
-            o.detail = detail;
-            o.disabled = disabled;
-            o.ecsBackupPlanId = ecsBackupPlanId;
-            o.ecsBackupPlanName = ecsBackupPlanName;
-            o.exclude = exclude;
-            o.id = id;
-            o.include = include;
-            o.instanceId = instanceId;
-            o.options = options;
-            o.paths = paths;
-            o.retention = retention;
-            o.schedule = schedule;
-            o.sourceType = sourceType;
-            o.speedLimit = speedLimit;
-            o.updatedTime = updatedTime;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetEcsBackupPlansPlan();
+            _resultValue.backupType = backupType;
+            _resultValue.createTime = createTime;
+            _resultValue.createdTime = createdTime;
+            _resultValue.detail = detail;
+            _resultValue.disabled = disabled;
+            _resultValue.ecsBackupPlanId = ecsBackupPlanId;
+            _resultValue.ecsBackupPlanName = ecsBackupPlanName;
+            _resultValue.exclude = exclude;
+            _resultValue.id = id;
+            _resultValue.include = include;
+            _resultValue.instanceId = instanceId;
+            _resultValue.options = options;
+            _resultValue.paths = paths;
+            _resultValue.retention = retention;
+            _resultValue.schedule = schedule;
+            _resultValue.sourceType = sourceType;
+            _resultValue.speedLimit = speedLimit;
+            _resultValue.updatedTime = updatedTime;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

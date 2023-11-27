@@ -69,10 +69,10 @@ public final class GetRulesRuleRuleConditionHeaderConfig {
             return values(List.of(values));
         }
         public GetRulesRuleRuleConditionHeaderConfig build() {
-            final var o = new GetRulesRuleRuleConditionHeaderConfig();
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleConditionHeaderConfig();
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

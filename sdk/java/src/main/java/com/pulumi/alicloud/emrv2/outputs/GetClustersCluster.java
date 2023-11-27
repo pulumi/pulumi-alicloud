@@ -300,22 +300,22 @@ public final class GetClustersCluster {
             return tags(List.of(tags));
         }
         public GetClustersCluster build() {
-            final var o = new GetClustersCluster();
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.clusterState = clusterState;
-            o.clusterType = clusterType;
-            o.createTime = createTime;
-            o.emrDefaultRole = emrDefaultRole;
-            o.endTime = endTime;
-            o.expireTime = expireTime;
-            o.paymentType = paymentType;
-            o.readyTime = readyTime;
-            o.releaseVersion = releaseVersion;
-            o.resourceGroupId = resourceGroupId;
-            o.stateChangeReason = stateChangeReason;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetClustersCluster();
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterName = clusterName;
+            _resultValue.clusterState = clusterState;
+            _resultValue.clusterType = clusterType;
+            _resultValue.createTime = createTime;
+            _resultValue.emrDefaultRole = emrDefaultRole;
+            _resultValue.endTime = endTime;
+            _resultValue.expireTime = expireTime;
+            _resultValue.paymentType = paymentType;
+            _resultValue.readyTime = readyTime;
+            _resultValue.releaseVersion = releaseVersion;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.stateChangeReason = stateChangeReason;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

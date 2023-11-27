@@ -78,7 +78,7 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
      * The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
      * 
      */
-    @Export(name="delaySeconds", type=Integer.class, parameters={})
+    @Export(name="delaySeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> delaySeconds;
 
     /**
@@ -92,7 +92,7 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the log management feature. Default value: false. Valid values:
      * 
      */
-    @Export(name="loggingEnabled", type=Boolean.class, parameters={})
+    @Export(name="loggingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> loggingEnabled;
 
     /**
@@ -106,7 +106,7 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
      * The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
      * 
      */
-    @Export(name="maximumMessageSize", type=Integer.class, parameters={})
+    @Export(name="maximumMessageSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maximumMessageSize;
 
     /**
@@ -120,7 +120,7 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
      * The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
      * 
      */
-    @Export(name="messageRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="messageRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> messageRetentionPeriod;
 
     /**
@@ -134,7 +134,7 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
      * The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
      * 
      */
-    @Export(name="pollingWaitSeconds", type=Integer.class, parameters={})
+    @Export(name="pollingWaitSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> pollingWaitSeconds;
 
     /**
@@ -148,7 +148,7 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
      * Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
      * 
      */
-    @Export(name="queueName", type=String.class, parameters={})
+    @Export(name="queueName", refs={String.class}, tree="[0]")
     private Output<String> queueName;
 
     /**
@@ -162,7 +162,7 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
      * The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
      * 
      */
-    @Export(name="visibilityTimeout", type=Integer.class, parameters={})
+    @Export(name="visibilityTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> visibilityTimeout;
 
     /**

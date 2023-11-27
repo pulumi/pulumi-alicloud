@@ -84,11 +84,11 @@ public final class ApiSystemParameter {
             return this;
         }
         public ApiSystemParameter build() {
-            final var o = new ApiSystemParameter();
-            o.in = in;
-            o.name = name;
-            o.nameService = nameService;
-            return o;
+            final var _resultValue = new ApiSystemParameter();
+            _resultValue.in = in;
+            _resultValue.name = name;
+            _resultValue.nameService = nameService;
+            return _resultValue;
         }
     }
 }

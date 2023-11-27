@@ -199,17 +199,17 @@ public final class GetIpv4GatewaysGateway {
             return this;
         }
         public GetIpv4GatewaysGateway build() {
-            final var o = new GetIpv4GatewaysGateway();
-            o.createTime = createTime;
-            o.enabled = enabled;
-            o.id = id;
-            o.ipv4GatewayDescription = ipv4GatewayDescription;
-            o.ipv4GatewayId = ipv4GatewayId;
-            o.ipv4GatewayName = ipv4GatewayName;
-            o.ipv4GatewayRouteTableId = ipv4GatewayRouteTableId;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetIpv4GatewaysGateway();
+            _resultValue.createTime = createTime;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.ipv4GatewayDescription = ipv4GatewayDescription;
+            _resultValue.ipv4GatewayId = ipv4GatewayId;
+            _resultValue.ipv4GatewayName = ipv4GatewayName;
+            _resultValue.ipv4GatewayRouteTableId = ipv4GatewayRouteTableId;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

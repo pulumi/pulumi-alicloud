@@ -196,18 +196,18 @@ public final class GetGlobalDatabaseNetworksResult {
             return this;
         }
         public GetGlobalDatabaseNetworksResult build() {
-            final var o = new GetGlobalDatabaseNetworksResult();
-            o.dbClusterId = dbClusterId;
-            o.description = description;
-            o.gdnId = gdnId;
-            o.id = id;
-            o.ids = ids;
-            o.networks = networks;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetGlobalDatabaseNetworksResult();
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.description = description;
+            _resultValue.gdnId = gdnId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.networks = networks;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

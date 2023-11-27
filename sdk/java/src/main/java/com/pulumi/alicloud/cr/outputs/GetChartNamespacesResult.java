@@ -125,15 +125,15 @@ public final class GetChartNamespacesResult {
             return this;
         }
         public GetChartNamespacesResult build() {
-            final var o = new GetChartNamespacesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespaces = namespaces;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetChartNamespacesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.namespaces = namespaces;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

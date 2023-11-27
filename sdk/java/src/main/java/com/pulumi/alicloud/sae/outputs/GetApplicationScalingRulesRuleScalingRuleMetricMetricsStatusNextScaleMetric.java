@@ -85,11 +85,11 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusN
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric();
-            o.name = name;
-            o.nextScaleInAverageUtilization = nextScaleInAverageUtilization;
-            o.nextScaleOutAverageUtilization = nextScaleOutAverageUtilization;
-            return o;
+            final var _resultValue = new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric();
+            _resultValue.name = name;
+            _resultValue.nextScaleInAverageUtilization = nextScaleInAverageUtilization;
+            _resultValue.nextScaleOutAverageUtilization = nextScaleOutAverageUtilization;
+            return _resultValue;
         }
     }
 }

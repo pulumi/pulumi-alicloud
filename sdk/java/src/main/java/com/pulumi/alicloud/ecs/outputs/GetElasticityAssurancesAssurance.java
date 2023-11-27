@@ -340,24 +340,24 @@ public final class GetElasticityAssurancesAssurance {
             return this;
         }
         public GetElasticityAssurancesAssurance build() {
-            final var o = new GetElasticityAssurancesAssurance();
-            o.allocatedResources = allocatedResources;
-            o.description = description;
-            o.elasticityAssuranceId = elasticityAssuranceId;
-            o.endTime = endTime;
-            o.id = id;
-            o.instanceChargeType = instanceChargeType;
-            o.privatePoolOptionsId = privatePoolOptionsId;
-            o.privatePoolOptionsMatchCriteria = privatePoolOptionsMatchCriteria;
-            o.privatePoolOptionsName = privatePoolOptionsName;
-            o.resourceGroupId = resourceGroupId;
-            o.startTime = startTime;
-            o.startTimeType = startTimeType;
-            o.status = status;
-            o.tags = tags;
-            o.totalAssuranceTimes = totalAssuranceTimes;
-            o.usedAssuranceTimes = usedAssuranceTimes;
-            return o;
+            final var _resultValue = new GetElasticityAssurancesAssurance();
+            _resultValue.allocatedResources = allocatedResources;
+            _resultValue.description = description;
+            _resultValue.elasticityAssuranceId = elasticityAssuranceId;
+            _resultValue.endTime = endTime;
+            _resultValue.id = id;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.privatePoolOptionsId = privatePoolOptionsId;
+            _resultValue.privatePoolOptionsMatchCriteria = privatePoolOptionsMatchCriteria;
+            _resultValue.privatePoolOptionsName = privatePoolOptionsName;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.startTime = startTime;
+            _resultValue.startTimeType = startTimeType;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.totalAssuranceTimes = totalAssuranceTimes;
+            _resultValue.usedAssuranceTimes = usedAssuranceTimes;
+            return _resultValue;
         }
     }
 }

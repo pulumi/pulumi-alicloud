@@ -74,7 +74,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * DNS security level. Valid values: `no`, `basic`, `advanced`.
      * 
      */
-    @Export(name="dnsSecurity", type=String.class, parameters={})
+    @Export(name="dnsSecurity", refs={String.class}, tree="[0]")
     private Output<String> dnsSecurity;
 
     /**
@@ -88,7 +88,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Number of domain names bound.
      * 
      */
-    @Export(name="domainNumbers", type=String.class, parameters={})
+    @Export(name="domainNumbers", refs={String.class}, tree="[0]")
     private Output<String> domainNumbers;
 
     /**
@@ -98,7 +98,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> domainNumbers() {
         return this.domainNumbers;
     }
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     public Output<Optional<String>> paymentType() {
@@ -108,7 +108,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -122,7 +122,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
      * 
      */
-    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
@@ -136,7 +136,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
@@ -150,7 +150,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
      * 
      */
-    @Export(name="versionCode", type=String.class, parameters={})
+    @Export(name="versionCode", refs={String.class}, tree="[0]")
     private Output<String> versionCode;
 
     /**
@@ -164,7 +164,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Paid package version name.
      * 
      */
-    @Export(name="versionName", type=String.class, parameters={})
+    @Export(name="versionName", refs={String.class}, tree="[0]")
     private Output<String> versionName;
 
     /**

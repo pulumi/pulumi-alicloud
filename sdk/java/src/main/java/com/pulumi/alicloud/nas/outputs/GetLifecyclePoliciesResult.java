@@ -125,15 +125,15 @@ public final class GetLifecyclePoliciesResult {
             return policies(List.of(policies));
         }
         public GetLifecyclePoliciesResult build() {
-            final var o = new GetLifecyclePoliciesResult();
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            return o;
+            final var _resultValue = new GetLifecyclePoliciesResult();
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            return _resultValue;
         }
     }
 }

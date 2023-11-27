@@ -144,14 +144,14 @@ public final class GetKubernetesPermissionPermission {
             return this;
         }
         public GetKubernetesPermissionPermission build() {
-            final var o = new GetKubernetesPermissionPermission();
-            o.isOwner = isOwner;
-            o.isRamRole = isRamRole;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.roleName = roleName;
-            o.roleType = roleType;
-            return o;
+            final var _resultValue = new GetKubernetesPermissionPermission();
+            _resultValue.isOwner = isOwner;
+            _resultValue.isRamRole = isRamRole;
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            _resultValue.roleName = roleName;
+            _resultValue.roleType = roleType;
+            return _resultValue;
         }
     }
 }

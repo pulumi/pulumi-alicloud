@@ -75,7 +75,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The Alicloud Resource Name (ARN) of the secret.
      * 
      */
-    @Export(name="arn", type=String.class, parameters={})
+    @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
@@ -89,7 +89,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The description of the secret.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -103,7 +103,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The instance ID of the exclusive KMS instance.
      * 
      */
-    @Export(name="dkmsInstanceId", type=String.class, parameters={})
+    @Export(name="dkmsInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dkmsInstanceId;
 
     /**
@@ -117,7 +117,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Whether to enable automatic key rotation.
      * 
      */
-    @Export(name="enableAutomaticRotation", type=Boolean.class, parameters={})
+    @Export(name="enableAutomaticRotation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableAutomaticRotation;
 
     /**
@@ -131,7 +131,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
      * 
      */
-    @Export(name="encryptionKeyId", type=String.class, parameters={})
+    @Export(name="encryptionKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionKeyId;
 
     /**
@@ -145,7 +145,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
-    @Export(name="extendedConfig", type=String.class, parameters={})
+    @Export(name="extendedConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> extendedConfig;
 
     /**
@@ -159,7 +159,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
      * 
      */
-    @Export(name="forceDeleteWithoutRecovery", type=Boolean.class, parameters={})
+    @Export(name="forceDeleteWithoutRecovery", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDeleteWithoutRecovery;
 
     /**
@@ -173,7 +173,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The time when the secret is scheduled to be deleted.
      * 
      */
-    @Export(name="plannedDeleteTime", type=String.class, parameters={})
+    @Export(name="plannedDeleteTime", refs={String.class}, tree="[0]")
     private Output<String> plannedDeleteTime;
 
     /**
@@ -187,7 +187,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
      * 
      */
-    @Export(name="recoveryWindowInDays", type=Integer.class, parameters={})
+    @Export(name="recoveryWindowInDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> recoveryWindowInDays;
 
     /**
@@ -201,7 +201,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
      * 
      */
-    @Export(name="rotationInterval", type=String.class, parameters={})
+    @Export(name="rotationInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rotationInterval;
 
     /**
@@ -215,7 +215,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
      * 
      */
-    @Export(name="secretData", type=String.class, parameters={})
+    @Export(name="secretData", refs={String.class}, tree="[0]")
     private Output<String> secretData;
 
     /**
@@ -229,7 +229,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The type of the secret value. Valid values: text, binary. Default to &#34;text&#34;.
      * 
      */
-    @Export(name="secretDataType", type=String.class, parameters={})
+    @Export(name="secretDataType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretDataType;
 
     /**
@@ -243,7 +243,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The name of the secret.
      * 
      */
-    @Export(name="secretName", type=String.class, parameters={})
+    @Export(name="secretName", refs={String.class}, tree="[0]")
     private Output<String> secretName;
 
     /**
@@ -257,7 +257,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The type of the secret. Valid values:
      * 
      */
-    @Export(name="secretType", type=String.class, parameters={})
+    @Export(name="secretType", refs={String.class}, tree="[0]")
     private Output<String> secretType;
 
     /**
@@ -271,7 +271,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -285,7 +285,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The version number of the initial version. Version numbers are unique in each secret object.
      * 
      */
-    @Export(name="versionId", type=String.class, parameters={})
+    @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**
@@ -299,7 +299,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
      * 
      */
-    @Export(name="versionStages", type=List.class, parameters={String.class})
+    @Export(name="versionStages", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> versionStages;
 
     /**

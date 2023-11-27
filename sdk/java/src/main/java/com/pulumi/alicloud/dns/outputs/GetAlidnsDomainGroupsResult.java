@@ -138,14 +138,14 @@ public final class GetAlidnsDomainGroupsResult {
             return this;
         }
         public GetAlidnsDomainGroupsResult build() {
-            final var o = new GetAlidnsDomainGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetAlidnsDomainGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

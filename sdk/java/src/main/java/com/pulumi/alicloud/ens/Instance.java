@@ -35,7 +35,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -49,7 +49,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Operator, required for regional level scheduling, invalid for node level scheduling.
      * 
      */
-    @Export(name="carrier", type=String.class, parameters={})
+    @Export(name="carrier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> carrier;
 
     /**
@@ -63,7 +63,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Data disk specifications. See `data_disk` below.
      * 
      */
-    @Export(name="dataDisks", type=List.class, parameters={InstanceDataDisk.class})
+    @Export(name="dataDisks", refs={List.class,InstanceDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceDataDisk>> dataDisks;
 
     /**
@@ -77,7 +77,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
      * 
      */
-    @Export(name="ensRegionId", type=String.class, parameters={})
+    @Export(name="ensRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ensRegionId;
 
     /**
@@ -91,7 +91,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Host Name.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output<String> hostName;
 
     /**
@@ -105,7 +105,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
@@ -119,7 +119,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
      * 
      */
-    @Export(name="instanceChargeStrategy", type=String.class, parameters={})
+    @Export(name="instanceChargeStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeStrategy;
 
     /**
@@ -133,7 +133,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -147,7 +147,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance specifications type.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -161,7 +161,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
@@ -175,7 +175,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The maximum public network bandwidth.
      * 
      */
-    @Export(name="internetMaxBandwidthOut", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthOut;
 
     /**
@@ -189,7 +189,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Region code, required for regional level scheduling, invalid for node level scheduling.
      * 
      */
-    @Export(name="netDistrictCode", type=String.class, parameters={})
+    @Export(name="netDistrictCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netDistrictCode;
 
     /**
@@ -203,7 +203,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: &#39;&#39;&#39;()&#39;~! @#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;&#39;&#39;.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -217,7 +217,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
      * 
      */
-    @Export(name="passwordInherit", type=Boolean.class, parameters={})
+    @Export(name="passwordInherit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordInherit;
 
     /**
@@ -231,7 +231,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -245,7 +245,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -259,7 +259,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -273,7 +273,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
      * 
      */
-    @Export(name="publicIpIdentification", type=Boolean.class, parameters={})
+    @Export(name="publicIpIdentification", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> publicIpIdentification;
 
     /**
@@ -287,7 +287,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Number of instances.
      * 
      */
-    @Export(name="quantity", type=String.class, parameters={})
+    @Export(name="quantity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> quantity;
 
     /**
@@ -301,7 +301,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Scheduling level, which is used to perform node level or regional scheduling.
      * 
      */
-    @Export(name="scheduleAreaLevel", type=String.class, parameters={})
+    @Export(name="scheduleAreaLevel", refs={String.class}, tree="[0]")
     private Output<String> scheduleAreaLevel;
 
     /**
@@ -315,7 +315,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
      * 
      */
-    @Export(name="schedulingPriceStrategy", type=String.class, parameters={})
+    @Export(name="schedulingPriceStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedulingPriceStrategy;
 
     /**
@@ -329,7 +329,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
      * 
      */
-    @Export(name="schedulingStrategy", type=String.class, parameters={})
+    @Export(name="schedulingStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedulingStrategy;
 
     /**
@@ -343,7 +343,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * the status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -357,7 +357,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
      * 
      */
-    @Export(name="systemDisk", type=InstanceSystemDisk.class, parameters={})
+    @Export(name="systemDisk", refs={InstanceSystemDisk.class}, tree="[0]")
     private Output</* @Nullable */ InstanceSystemDisk> systemDisk;
 
     /**
@@ -371,7 +371,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
      * 
      */
-    @Export(name="uniqueSuffix", type=Boolean.class, parameters={})
+    @Export(name="uniqueSuffix", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> uniqueSuffix;
 
     /**
@@ -385,7 +385,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
      * 
      */
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     /**

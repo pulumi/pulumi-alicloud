@@ -417,28 +417,28 @@ public final class GetScalingConfigurationsConfiguration {
             return this;
         }
         public GetScalingConfigurationsConfiguration build() {
-            final var o = new GetScalingConfigurationsConfiguration();
-            o.creationTime = creationTime;
-            o.creditSpecification = creditSpecification;
-            o.dataDisks = dataDisks;
-            o.hostName = hostName;
-            o.id = id;
-            o.imageId = imageId;
-            o.instanceName = instanceName;
-            o.instanceType = instanceType;
-            o.internetChargeType = internetChargeType;
-            o.internetMaxBandwidthIn = internetMaxBandwidthIn;
-            o.internetMaxBandwidthOut = internetMaxBandwidthOut;
-            o.lifecycleState = lifecycleState;
-            o.name = name;
-            o.scalingGroupId = scalingGroupId;
-            o.securityGroupId = securityGroupId;
-            o.spotPriceLimits = spotPriceLimits;
-            o.spotStrategy = spotStrategy;
-            o.systemDiskCategory = systemDiskCategory;
-            o.systemDiskPerformanceLevel = systemDiskPerformanceLevel;
-            o.systemDiskSize = systemDiskSize;
-            return o;
+            final var _resultValue = new GetScalingConfigurationsConfiguration();
+            _resultValue.creationTime = creationTime;
+            _resultValue.creditSpecification = creditSpecification;
+            _resultValue.dataDisks = dataDisks;
+            _resultValue.hostName = hostName;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.instanceType = instanceType;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.internetMaxBandwidthIn = internetMaxBandwidthIn;
+            _resultValue.internetMaxBandwidthOut = internetMaxBandwidthOut;
+            _resultValue.lifecycleState = lifecycleState;
+            _resultValue.name = name;
+            _resultValue.scalingGroupId = scalingGroupId;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.spotPriceLimits = spotPriceLimits;
+            _resultValue.spotStrategy = spotStrategy;
+            _resultValue.systemDiskCategory = systemDiskCategory;
+            _resultValue.systemDiskPerformanceLevel = systemDiskPerformanceLevel;
+            _resultValue.systemDiskSize = systemDiskSize;
+            return _resultValue;
         }
     }
 }

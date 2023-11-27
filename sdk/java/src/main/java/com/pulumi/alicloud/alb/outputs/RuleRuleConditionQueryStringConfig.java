@@ -51,9 +51,9 @@ public final class RuleRuleConditionQueryStringConfig {
             return values(List.of(values));
         }
         public RuleRuleConditionQueryStringConfig build() {
-            final var o = new RuleRuleConditionQueryStringConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new RuleRuleConditionQueryStringConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

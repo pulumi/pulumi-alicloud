@@ -217,18 +217,18 @@ public final class GetWebLockConfigsConfig {
             return this;
         }
         public GetWebLockConfigsConfig build() {
-            final var o = new GetWebLockConfigsConfig();
-            o.defenceMode = defenceMode;
-            o.dir = dir;
-            o.exclusiveDir = exclusiveDir;
-            o.exclusiveFile = exclusiveFile;
-            o.exclusiveFileType = exclusiveFileType;
-            o.id = id;
-            o.inclusiveFileType = inclusiveFileType;
-            o.localBackupDir = localBackupDir;
-            o.mode = mode;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetWebLockConfigsConfig();
+            _resultValue.defenceMode = defenceMode;
+            _resultValue.dir = dir;
+            _resultValue.exclusiveDir = exclusiveDir;
+            _resultValue.exclusiveFile = exclusiveFile;
+            _resultValue.exclusiveFileType = exclusiveFileType;
+            _resultValue.id = id;
+            _resultValue.inclusiveFileType = inclusiveFileType;
+            _resultValue.localBackupDir = localBackupDir;
+            _resultValue.mode = mode;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

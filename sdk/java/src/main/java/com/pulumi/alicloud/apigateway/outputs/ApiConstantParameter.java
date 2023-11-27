@@ -105,12 +105,12 @@ public final class ApiConstantParameter {
             return this;
         }
         public ApiConstantParameter build() {
-            final var o = new ApiConstantParameter();
-            o.description = description;
-            o.in = in;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ApiConstantParameter();
+            _resultValue.description = description;
+            _resultValue.in = in;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

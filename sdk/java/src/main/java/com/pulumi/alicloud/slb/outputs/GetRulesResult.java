@@ -161,16 +161,16 @@ public final class GetRulesResult {
             return slbRules(List.of(slbRules));
         }
         public GetRulesResult build() {
-            final var o = new GetRulesResult();
-            o.frontendPort = frontendPort;
-            o.id = id;
-            o.ids = ids;
-            o.loadBalancerId = loadBalancerId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.slbRules = slbRules;
-            return o;
+            final var _resultValue = new GetRulesResult();
+            _resultValue.frontendPort = frontendPort;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.slbRules = slbRules;
+            return _resultValue;
         }
     }
 }

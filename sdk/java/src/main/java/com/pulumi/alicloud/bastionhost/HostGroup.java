@@ -112,7 +112,7 @@ public class HostGroup extends com.pulumi.resources.CustomResource {
      * Specify the New Host Group of Notes, Supports up to 500 Characters.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -126,7 +126,7 @@ public class HostGroup extends com.pulumi.resources.CustomResource {
      * Host Group ID.
      * 
      */
-    @Export(name="hostGroupId", type=String.class, parameters={})
+    @Export(name="hostGroupId", refs={String.class}, tree="[0]")
     private Output<String> hostGroupId;
 
     /**
@@ -140,7 +140,7 @@ public class HostGroup extends com.pulumi.resources.CustomResource {
      * Specify the New Host Group Name, Supports up to 128 Characters.
      * 
      */
-    @Export(name="hostGroupName", type=String.class, parameters={})
+    @Export(name="hostGroupName", refs={String.class}, tree="[0]")
     private Output<String> hostGroupName;
 
     /**
@@ -154,7 +154,7 @@ public class HostGroup extends com.pulumi.resources.CustomResource {
      * Specify the New Host Group Where the Bastion Host ID of.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**

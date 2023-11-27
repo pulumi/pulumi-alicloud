@@ -64,7 +64,7 @@ public class DomainGroup extends com.pulumi.resources.CustomResource {
      * The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
      * 
      */
-    @Export(name="domainGroupName", type=String.class, parameters={})
+    @Export(name="domainGroupName", refs={String.class}, tree="[0]")
     private Output<String> domainGroupName;
 
     /**
@@ -82,7 +82,7 @@ public class DomainGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead. */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
@@ -96,7 +96,7 @@ public class DomainGroup extends com.pulumi.resources.CustomResource {
      * User language.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**

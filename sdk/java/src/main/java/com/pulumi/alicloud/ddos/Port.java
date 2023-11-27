@@ -89,7 +89,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * The port of the origin server. Valid values: [1~65535].
      * 
      */
-    @Export(name="backendPort", type=String.class, parameters={})
+    @Export(name="backendPort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backendPort;
 
     /**
@@ -103,7 +103,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * The forwarding port. Valid values: [1~65535].
      * 
      */
-    @Export(name="frontendPort", type=String.class, parameters={})
+    @Export(name="frontendPort", refs={String.class}, tree="[0]")
     private Output<String> frontendPort;
 
     /**
@@ -117,7 +117,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * The forwarding protocol. Valid values `tcp` and `udp`.
      * 
      */
-    @Export(name="frontendProtocol", type=String.class, parameters={})
+    @Export(name="frontendProtocol", refs={String.class}, tree="[0]")
     private Output<String> frontendProtocol;
 
     /**
@@ -131,7 +131,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * The ID of Ddoscoo instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -145,7 +145,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * List of source IP addresses.
      * 
      */
-    @Export(name="realServers", type=List.class, parameters={String.class})
+    @Export(name="realServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> realServers;
 
     /**

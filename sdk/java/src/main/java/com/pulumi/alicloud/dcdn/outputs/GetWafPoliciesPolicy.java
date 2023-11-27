@@ -199,17 +199,17 @@ public final class GetWafPoliciesPolicy {
             return this;
         }
         public GetWafPoliciesPolicy build() {
-            final var o = new GetWafPoliciesPolicy();
-            o.dcdnWafPolicyId = dcdnWafPolicyId;
-            o.defenseScene = defenseScene;
-            o.domainCount = domainCount;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            o.ruleCount = ruleCount;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetWafPoliciesPolicy();
+            _resultValue.dcdnWafPolicyId = dcdnWafPolicyId;
+            _resultValue.defenseScene = defenseScene;
+            _resultValue.domainCount = domainCount;
+            _resultValue.gmtModified = gmtModified;
+            _resultValue.id = id;
+            _resultValue.policyName = policyName;
+            _resultValue.policyType = policyType;
+            _resultValue.ruleCount = ruleCount;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

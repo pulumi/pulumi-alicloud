@@ -122,13 +122,13 @@ public final class GetExtensionProvidersProvider {
             return this;
         }
         public GetExtensionProvidersProvider build() {
-            final var o = new GetExtensionProvidersProvider();
-            o.config = config;
-            o.extensionProviderName = extensionProviderName;
-            o.id = id;
-            o.serviceMeshId = serviceMeshId;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetExtensionProvidersProvider();
+            _resultValue.config = config;
+            _resultValue.extensionProviderName = extensionProviderName;
+            _resultValue.id = id;
+            _resultValue.serviceMeshId = serviceMeshId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -2105,42 +2105,52 @@ type GetControlPoliciesPolicy struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction string `pulumi:"aclAction"`
 	// The unique ID of the access control policy.
-	AclUuid       string `pulumi:"aclUuid"`
+	AclUuid string `pulumi:"aclUuid"`
+	// The application ID in the access control policy.
 	ApplicationId string `pulumi:"applicationId"`
-	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// The type of the application that the access control policy supports.
 	ApplicationName string `pulumi:"applicationName"`
 	// The description of the access control policy.
 	Description string `pulumi:"description"`
-	// The destination port defined in the access control policy.
+	// The destination port in the access control policy.
 	DestPort string `pulumi:"destPort"`
-	// The destination port address book defined in the access control policy.
-	DestPortGroup      string   `pulumi:"destPortGroup"`
+	// The name of the destination port address book in the access control policy.
+	DestPortGroup string `pulumi:"destPortGroup"`
+	// The ports in the destination port address book.
 	DestPortGroupPorts []string `pulumi:"destPortGroupPorts"`
-	// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+	// The type of the destination port in the access control policy.
 	DestPortType string `pulumi:"destPortType"`
 	// The destination address defined in the access control policy.
-	Destination           string   `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
+	// The CIDR blocks in the destination address book.
 	DestinationGroupCidrs []string `pulumi:"destinationGroupCidrs"`
-	DestinationGroupType  string   `pulumi:"destinationGroupType"`
-	// The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+	// The type of the destination address book in the access control policy.
+	DestinationGroupType string `pulumi:"destinationGroupType"`
+	// The type of the destination address in the access control policy.
 	DestinationType string `pulumi:"destinationType"`
-	// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
-	Direction     string `pulumi:"direction"`
-	DnsResult     string `pulumi:"dnsResult"`
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+	Direction string `pulumi:"direction"`
+	// The DNS resolution result.
+	DnsResult string `pulumi:"dnsResult"`
+	// The timestamp of the DNS resolution result.
 	DnsResultTime string `pulumi:"dnsResultTime"`
-	HitTimes      string `pulumi:"hitTimes"`
-	// The ID of the Control Policy.
-	Id    string `pulumi:"id"`
-	Order int    `pulumi:"order"`
-	// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+	// The number of hits for the access control policy.
+	HitTimes string `pulumi:"hitTimes"`
+	// The ID of the Control Policy. It formats as `<acl_uuid>:<direction>`.
+	Id string `pulumi:"id"`
+	// The priority of the access control policy.
+	Order int `pulumi:"order"`
+	// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto string `pulumi:"proto"`
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+	// Indicates whether the access control policy is enabled.
 	Release bool `pulumi:"release"`
-	// The source address defined in the access control policy.
-	Source           string   `pulumi:"source"`
+	// The source address in the access control policy.
+	Source string `pulumi:"source"`
+	// The CIDR blocks in the source address book.
 	SourceGroupCidrs []string `pulumi:"sourceGroupCidrs"`
-	SourceGroupType  string   `pulumi:"sourceGroupType"`
-	// The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+	// The type of the source address book in the access control policy.
+	SourceGroupType string `pulumi:"sourceGroupType"`
+	// The type of the source address in the access control policy.
 	SourceType string `pulumi:"sourceType"`
 }
 
@@ -2159,42 +2169,52 @@ type GetControlPoliciesPolicyArgs struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringInput `pulumi:"aclAction"`
 	// The unique ID of the access control policy.
-	AclUuid       pulumi.StringInput `pulumi:"aclUuid"`
+	AclUuid pulumi.StringInput `pulumi:"aclUuid"`
+	// The application ID in the access control policy.
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
-	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// The type of the application that the access control policy supports.
 	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
 	// The description of the access control policy.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The destination port defined in the access control policy.
+	// The destination port in the access control policy.
 	DestPort pulumi.StringInput `pulumi:"destPort"`
-	// The destination port address book defined in the access control policy.
-	DestPortGroup      pulumi.StringInput      `pulumi:"destPortGroup"`
+	// The name of the destination port address book in the access control policy.
+	DestPortGroup pulumi.StringInput `pulumi:"destPortGroup"`
+	// The ports in the destination port address book.
 	DestPortGroupPorts pulumi.StringArrayInput `pulumi:"destPortGroupPorts"`
-	// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+	// The type of the destination port in the access control policy.
 	DestPortType pulumi.StringInput `pulumi:"destPortType"`
 	// The destination address defined in the access control policy.
-	Destination           pulumi.StringInput      `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// The CIDR blocks in the destination address book.
 	DestinationGroupCidrs pulumi.StringArrayInput `pulumi:"destinationGroupCidrs"`
-	DestinationGroupType  pulumi.StringInput      `pulumi:"destinationGroupType"`
-	// The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+	// The type of the destination address book in the access control policy.
+	DestinationGroupType pulumi.StringInput `pulumi:"destinationGroupType"`
+	// The type of the destination address in the access control policy.
 	DestinationType pulumi.StringInput `pulumi:"destinationType"`
-	// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
-	Direction     pulumi.StringInput `pulumi:"direction"`
-	DnsResult     pulumi.StringInput `pulumi:"dnsResult"`
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// The DNS resolution result.
+	DnsResult pulumi.StringInput `pulumi:"dnsResult"`
+	// The timestamp of the DNS resolution result.
 	DnsResultTime pulumi.StringInput `pulumi:"dnsResultTime"`
-	HitTimes      pulumi.StringInput `pulumi:"hitTimes"`
-	// The ID of the Control Policy.
-	Id    pulumi.StringInput `pulumi:"id"`
-	Order pulumi.IntInput    `pulumi:"order"`
-	// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+	// The number of hits for the access control policy.
+	HitTimes pulumi.StringInput `pulumi:"hitTimes"`
+	// The ID of the Control Policy. It formats as `<acl_uuid>:<direction>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The priority of the access control policy.
+	Order pulumi.IntInput `pulumi:"order"`
+	// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto pulumi.StringInput `pulumi:"proto"`
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+	// Indicates whether the access control policy is enabled.
 	Release pulumi.BoolInput `pulumi:"release"`
-	// The source address defined in the access control policy.
-	Source           pulumi.StringInput      `pulumi:"source"`
+	// The source address in the access control policy.
+	Source pulumi.StringInput `pulumi:"source"`
+	// The CIDR blocks in the source address book.
 	SourceGroupCidrs pulumi.StringArrayInput `pulumi:"sourceGroupCidrs"`
-	SourceGroupType  pulumi.StringInput      `pulumi:"sourceGroupType"`
-	// The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+	// The type of the source address book in the access control policy.
+	SourceGroupType pulumi.StringInput `pulumi:"sourceGroupType"`
+	// The type of the source address in the access control policy.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
 }
 
@@ -2259,11 +2279,12 @@ func (o GetControlPoliciesPolicyOutput) AclUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.AclUuid }).(pulumi.StringOutput)
 }
 
+// The application ID in the access control policy.
 func (o GetControlPoliciesPolicyOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+// The type of the application that the access control policy supports.
 func (o GetControlPoliciesPolicyOutput) ApplicationName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.ApplicationName }).(pulumi.StringOutput)
 }
@@ -2273,21 +2294,22 @@ func (o GetControlPoliciesPolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The destination port defined in the access control policy.
+// The destination port in the access control policy.
 func (o GetControlPoliciesPolicyOutput) DestPort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.DestPort }).(pulumi.StringOutput)
 }
 
-// The destination port address book defined in the access control policy.
+// The name of the destination port address book in the access control policy.
 func (o GetControlPoliciesPolicyOutput) DestPortGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.DestPortGroup }).(pulumi.StringOutput)
 }
 
+// The ports in the destination port address book.
 func (o GetControlPoliciesPolicyOutput) DestPortGroupPorts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) []string { return v.DestPortGroupPorts }).(pulumi.StringArrayOutput)
 }
 
-// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+// The type of the destination port in the access control policy.
 func (o GetControlPoliciesPolicyOutput) DestPortType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.DestPortType }).(pulumi.StringOutput)
 }
@@ -2297,69 +2319,77 @@ func (o GetControlPoliciesPolicyOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.Destination }).(pulumi.StringOutput)
 }
 
+// The CIDR blocks in the destination address book.
 func (o GetControlPoliciesPolicyOutput) DestinationGroupCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) []string { return v.DestinationGroupCidrs }).(pulumi.StringArrayOutput)
 }
 
+// The type of the destination address book in the access control policy.
 func (o GetControlPoliciesPolicyOutput) DestinationGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.DestinationGroupType }).(pulumi.StringOutput)
 }
 
-// The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+// The type of the destination address in the access control policy.
 func (o GetControlPoliciesPolicyOutput) DestinationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.DestinationType }).(pulumi.StringOutput)
 }
 
-// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 func (o GetControlPoliciesPolicyOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.Direction }).(pulumi.StringOutput)
 }
 
+// The DNS resolution result.
 func (o GetControlPoliciesPolicyOutput) DnsResult() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.DnsResult }).(pulumi.StringOutput)
 }
 
+// The timestamp of the DNS resolution result.
 func (o GetControlPoliciesPolicyOutput) DnsResultTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.DnsResultTime }).(pulumi.StringOutput)
 }
 
+// The number of hits for the access control policy.
 func (o GetControlPoliciesPolicyOutput) HitTimes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.HitTimes }).(pulumi.StringOutput)
 }
 
-// The ID of the Control Policy.
+// The ID of the Control Policy. It formats as `<acl_uuid>:<direction>`.
 func (o GetControlPoliciesPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The priority of the access control policy.
 func (o GetControlPoliciesPolicyOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) int { return v.Order }).(pulumi.IntOutput)
 }
 
-// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
 func (o GetControlPoliciesPolicyOutput) Proto() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.Proto }).(pulumi.StringOutput)
 }
 
-// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+// Indicates whether the access control policy is enabled.
 func (o GetControlPoliciesPolicyOutput) Release() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) bool { return v.Release }).(pulumi.BoolOutput)
 }
 
-// The source address defined in the access control policy.
+// The source address in the access control policy.
 func (o GetControlPoliciesPolicyOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.Source }).(pulumi.StringOutput)
 }
 
+// The CIDR blocks in the source address book.
 func (o GetControlPoliciesPolicyOutput) SourceGroupCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) []string { return v.SourceGroupCidrs }).(pulumi.StringArrayOutput)
 }
 
+// The type of the source address book in the access control policy.
 func (o GetControlPoliciesPolicyOutput) SourceGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.SourceGroupType }).(pulumi.StringOutput)
 }
 
-// The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+// The type of the source address in the access control policy.
 func (o GetControlPoliciesPolicyOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.SourceType }).(pulumi.StringOutput)
 }

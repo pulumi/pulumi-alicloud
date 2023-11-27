@@ -62,11 +62,11 @@ public final class DomainPage404Config {
             return this;
         }
         public DomainPage404Config build() {
-            final var o = new DomainPage404Config();
-            o.customPageUrl = customPageUrl;
-            o.errorCode = errorCode;
-            o.pageType = pageType;
-            return o;
+            final var _resultValue = new DomainPage404Config();
+            _resultValue.customPageUrl = customPageUrl;
+            _resultValue.errorCode = errorCode;
+            _resultValue.pageType = pageType;
+            return _resultValue;
         }
     }
 }

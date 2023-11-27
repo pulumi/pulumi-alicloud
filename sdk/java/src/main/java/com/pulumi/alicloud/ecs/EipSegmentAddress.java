@@ -74,7 +74,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      * The peak bandwidth of the EIP. Unit: Mbps. When the value of instancargetype is PostPaid and the value of InternetChargeType is PayByBandwidth, the range of Bandwidth is 1 to 500. If the value of instancargetype is PostPaid and the value of InternetChargeType is PayByTraffic, the range of Bandwidth is 1 to 200. When instancargetype is set to PrePaid, the range of Bandwidth is 1 to 1000. The default value is 5 Mbps.
      * 
      */
-    @Export(name="bandwidth", type=String.class, parameters={})
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bandwidth;
 
     /**
@@ -88,7 +88,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      * The time when the contiguous Elastic IP address group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -102,7 +102,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      * Mask of consecutive EIPs. Value:28: For a single call, the system will allocate 16 consecutive EIPs.27: For a single call, the system will allocate 32 consecutive EIPs.26: For a single call, the system will allocate 64 consecutive EIPs.25: For a single call, the system will allocate 128 consecutive EIPs.24: For a single call, the system will allocate 256 consecutive EIPs.
      * 
      */
-    @Export(name="eipMask", type=String.class, parameters={})
+    @Export(name="eipMask", refs={String.class}, tree="[0]")
     private Output<String> eipMask;
 
     /**
@@ -118,7 +118,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      * - **PayByTraffic**: Billing by usage flow.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
@@ -145,7 +145,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      *   If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
      * 
      */
-    @Export(name="isp", type=String.class, parameters={})
+    @Export(name="isp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> isp;
 
     /**
@@ -170,7 +170,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      * The network type. Set the value to **public**.
      * 
      */
-    @Export(name="netmode", type=String.class, parameters={})
+    @Export(name="netmode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netmode;
 
     /**
@@ -184,7 +184,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly int NormalBandwidth;
         /// <summary>
-        /// A region of instance.
+        /// The instance's region.
         /// </summary>
         public readonly string Region;
         /// <summary>

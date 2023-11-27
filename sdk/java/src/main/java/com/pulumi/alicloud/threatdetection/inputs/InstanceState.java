@@ -33,29 +33,56 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Container Image security scan.
+     * Container Image security scan. Interval type, value interval:[0,200000].
+     * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+     * 
+     * @deprecated
+     * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
+    @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
     @Import(name="containerImageScan")
     private @Nullable Output<String> containerImageScan;
 
     /**
-     * @return Container Image security scan.
+     * @return Container Image security scan. Interval type, value interval:[0,200000].
+     * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+     * 
+     * @deprecated
+     * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
+    @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
     public Optional<Output<String>> containerImageScan() {
         return Optional.ofNullable(this.containerImageScan);
     }
 
     /**
-     * The creation time of the resource
+     * Container Image security scan. Interval type, value interval:[0,200000].
+     * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+     * 
+     */
+    @Import(name="containerImageScanNew")
+    private @Nullable Output<String> containerImageScanNew;
+
+    /**
+     * @return Container Image security scan. Interval type, value interval:[0,200000].
+     * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+     * 
+     */
+    public Optional<Output<String>> containerImageScanNew() {
+        return Optional.ofNullable(this.containerImageScanNew);
+    }
+
+    /**
+     * The creation time of the resource.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -63,14 +90,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud honeypot authorization number.
+     * Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+     * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
      * 
      */
     @Import(name="honeypot")
     private @Nullable Output<String> honeypot;
 
     /**
-     * @return Cloud honeypot authorization number.
+     * @return Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+     * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
      * 
      */
     public Optional<Output<String>> honeypot() {
@@ -78,33 +107,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud honeypot. Valid values: `1`, `2`.
+     * Cloud honeypot. Value:
+     * - 1: Yes.
+     * - 2: No.
      * 
      */
     @Import(name="honeypotSwitch")
     private @Nullable Output<String> honeypotSwitch;
 
     /**
-     * @return Cloud honeypot. Valid values: `1`, `2`.
+     * @return Cloud honeypot. Value:
+     * - 1: Yes.
+     * - 2: No.
      * 
      */
     public Optional<Output<String>> honeypotSwitch() {
         return Optional.ofNullable(this.honeypotSwitch);
-    }
-
-    /**
-     * The first ID of the resource
-     * 
-     */
-    @Import(name="instanceId")
-    private @Nullable Output<String> instanceId;
-
-    /**
-     * @return The first ID of the resource
-     * 
-     */
-    public Optional<Output<String>> instanceId() {
-        return Optional.ofNullable(this.instanceId);
     }
 
     /**
@@ -142,14 +160,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
+     * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
+     * @return Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -157,14 +177,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * Number of application protection licenses. Interval type, value interval:[1,100000000].
+     * 
+     */
+    @Import(name="raspCount")
+    private @Nullable Output<String> raspCount;
+
+    /**
+     * @return Number of application protection licenses. Interval type, value interval:[1,100000000].
+     * 
+     */
+    public Optional<Output<String>> raspCount() {
+        return Optional.ofNullable(this.raspCount);
+    }
+
+    /**
+     * Automatic renewal cycle, in months.
+     * &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
      * 
      */
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * @return Automatic renewal cycle, in months.
+     * &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
      * 
      */
     public Optional<Output<Integer>> renewPeriod() {
@@ -172,14 +209,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
+     * Automatic renewal period unit, value:
+     * - M: month.
+     * - Y: years.
+     * &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
      * 
      */
     @Import(name="renewalPeriodUnit")
     private @Nullable Output<String> renewalPeriodUnit;
 
     /**
-     * @return The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
+     * @return Automatic renewal period unit, value:
+     * - M: month.
+     * - Y: years.
+     * &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
      * 
      */
     public Optional<Output<String>> renewalPeriodUnit() {
@@ -187,14 +230,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal status, Default ManualRenewal. value:
+     * Automatic renewal status, default ManualRenewal, valid values:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
      * 
      */
     @Import(name="renewalStatus")
     private @Nullable Output<String> renewalStatus;
 
     /**
-     * @return Automatic renewal status, Default ManualRenewal. value:
+     * @return Automatic renewal status, default ManualRenewal, valid values:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
      * 
      */
     public Optional<Output<String>> renewalStatus() {
@@ -202,14 +249,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Anti-extortion.
+     * Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     @Import(name="sasAntiRansomware")
     private @Nullable Output<String> sasAntiRansomware;
 
     /**
-     * @return Anti-extortion.
+     * @return Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Optional<Output<String>> sasAntiRansomware() {
@@ -217,14 +266,54 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Large security screen.
+     * Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+     * 
+     */
+    @Import(name="sasCspm")
+    private @Nullable Output<String> sasCspm;
+
+    /**
+     * @return Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+     * 
+     */
+    public Optional<Output<String>> sasCspm() {
+        return Optional.ofNullable(this.sasCspm);
+    }
+
+    /**
+     * Cloud platform configuration check switch. Value:
+     * - 0: No.
+     * - 1: Yes.
+     * 
+     */
+    @Import(name="sasCspmSwitch")
+    private @Nullable Output<String> sasCspmSwitch;
+
+    /**
+     * @return Cloud platform configuration check switch. Value:
+     * - 0: No.
+     * - 1: Yes.
+     * 
+     */
+    public Optional<Output<String>> sasCspmSwitch() {
+        return Optional.ofNullable(this.sasCspmSwitch);
+    }
+
+    /**
+     * Security screen. Value:
+     * - true: Yes.
+     * - false: No.
      * 
      */
     @Import(name="sasSc")
     private @Nullable Output<Boolean> sasSc;
 
     /**
-     * @return Large security screen.
+     * @return Security screen. Value:
+     * - true: Yes.
+     * - false: No.
      * 
      */
     public Optional<Output<Boolean>> sasSc() {
@@ -232,14 +321,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of malicious file detections.
+     * Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+     * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     @Import(name="sasSdk")
     private @Nullable Output<String> sasSdk;
 
     /**
-     * @return Number of malicious file detections.
+     * @return Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+     * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Optional<Output<String>> sasSdk() {
@@ -247,14 +338,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Malicious file detection SDK. Valid values: `0`, `1`.
+     * Malicious file detection SDK.
      * 
      */
     @Import(name="sasSdkSwitch")
     private @Nullable Output<String> sasSdkSwitch;
 
     /**
-     * @return Malicious file detection SDK. Valid values: `0`, `1`.
+     * @return Malicious file detection SDK.
      * 
      */
     public Optional<Output<String>> sasSdkSwitch() {
@@ -262,14 +353,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Log analysis.
+     * Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     @Import(name="sasSlsStorage")
     private @Nullable Output<String> sasSlsStorage;
 
     /**
-     * @return Log analysis.
+     * @return Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Optional<Output<String>> sasSlsStorage() {
@@ -277,14 +370,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Web page tamper-proof.  Valid values: `0`, `1`.
+     * Web tamper-proof switch. Value:
+     * - 0: No.
+     * - 1: Yes.
      * 
      */
     @Import(name="sasWebguardBoolean")
     private @Nullable Output<String> sasWebguardBoolean;
 
     /**
-     * @return Web page tamper-proof.  Valid values: `0`, `1`.
+     * @return Web tamper-proof switch. Value:
+     * - 0: No.
+     * - 1: Yes.
      * 
      */
     public Optional<Output<String>> sasWebguardBoolean() {
@@ -292,14 +389,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of tamper-proof authorizations.
+     * Tamper-proof authorization number. Value:
+     * - 0: No
+     * - 1: Yes.
      * 
      */
     @Import(name="sasWebguardOrderNum")
     private @Nullable Output<String> sasWebguardOrderNum;
 
     /**
-     * @return Number of tamper-proof authorizations.
+     * @return Tamper-proof authorization number. Value:
+     * - 0: No
+     * - 1: Yes.
      * 
      */
     public Optional<Output<String>> sasWebguardOrderNum() {
@@ -307,14 +408,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -322,14 +423,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The amount of threat analysis log storage.
+     * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+     * &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     @Import(name="threatAnalysis")
     private @Nullable Output<String> threatAnalysis;
 
     /**
-     * @return The amount of threat analysis log storage.
+     * @return Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+     * &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Optional<Output<String>> threatAnalysis() {
@@ -337,14 +440,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Threat analysis.  Valid values: `0`, `1`.
+     * Threat analysis. Value:
+     * - 0: No.
+     * - 1: Yes.
      * 
      */
     @Import(name="threatAnalysisSwitch")
     private @Nullable Output<String> threatAnalysisSwitch;
 
     /**
-     * @return Threat analysis.  Valid values: `0`, `1`.
+     * @return Threat analysis. Value:
+     * - 0: No.
+     * - 1: Yes.
      * 
      */
     public Optional<Output<String>> threatAnalysisSwitch() {
@@ -367,18 +474,66 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+     * Select the security center version. Value:
+     * - level7: Antivirus Edition.
+     * - level3: Premium version.
+     * - level2: Enterprise Edition.
+     * - level8: Ultimate.
+     * - level10: Purchase value-added services only.
      * 
      */
     @Import(name="versionCode")
     private @Nullable Output<String> versionCode;
 
     /**
-     * @return Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+     * @return Select the security center version. Value:
+     * - level7: Antivirus Edition.
+     * - level3: Premium version.
+     * - level2: Enterprise Edition.
+     * - level8: Ultimate.
+     * - level10: Purchase value-added services only.
      * 
      */
     public Optional<Output<String>> versionCode() {
         return Optional.ofNullable(this.versionCode);
+    }
+
+    /**
+     * Vulnerability repair times, interval type, value range:[20,100000000].
+     * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+     * 
+     */
+    @Import(name="vulCount")
+    private @Nullable Output<String> vulCount;
+
+    /**
+     * @return Vulnerability repair times, interval type, value range:[20,100000000].
+     * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+     * 
+     */
+    public Optional<Output<String>> vulCount() {
+        return Optional.ofNullable(this.vulCount);
+    }
+
+    /**
+     * Vulnerability fix switch. Value:
+     * - 0: No.
+     * - 1: Yes.
+     * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+     * 
+     */
+    @Import(name="vulSwitch")
+    private @Nullable Output<String> vulSwitch;
+
+    /**
+     * @return Vulnerability fix switch. Value:
+     * - 0: No.
+     * - 1: Yes.
+     * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+     * 
+     */
+    public Optional<Output<String>> vulSwitch() {
+        return Optional.ofNullable(this.vulSwitch);
     }
 
     private InstanceState() {}
@@ -386,17 +541,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.buyNumber = $.buyNumber;
         this.containerImageScan = $.containerImageScan;
+        this.containerImageScanNew = $.containerImageScanNew;
         this.createTime = $.createTime;
         this.honeypot = $.honeypot;
         this.honeypotSwitch = $.honeypotSwitch;
-        this.instanceId = $.instanceId;
         this.modifyType = $.modifyType;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.raspCount = $.raspCount;
         this.renewPeriod = $.renewPeriod;
         this.renewalPeriodUnit = $.renewalPeriodUnit;
         this.renewalStatus = $.renewalStatus;
         this.sasAntiRansomware = $.sasAntiRansomware;
+        this.sasCspm = $.sasCspm;
+        this.sasCspmSwitch = $.sasCspmSwitch;
         this.sasSc = $.sasSc;
         this.sasSdk = $.sasSdk;
         this.sasSdkSwitch = $.sasSdkSwitch;
@@ -408,6 +566,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.threatAnalysisSwitch = $.threatAnalysisSwitch;
         this.vCore = $.vCore;
         this.versionCode = $.versionCode;
+        this.vulCount = $.vulCount;
+        this.vulSwitch = $.vulSwitch;
     }
 
     public static Builder builder() {
@@ -450,28 +610,61 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerImageScan Container Image security scan.
+         * @param containerImageScan Container Image security scan. Interval type, value interval:[0,200000].
+         * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
+         * 
          */
+        @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
         public Builder containerImageScan(@Nullable Output<String> containerImageScan) {
             $.containerImageScan = containerImageScan;
             return this;
         }
 
         /**
-         * @param containerImageScan Container Image security scan.
+         * @param containerImageScan Container Image security scan. Interval type, value interval:[0,200000].
+         * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
+         * 
          */
+        @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
         public Builder containerImageScan(String containerImageScan) {
             return containerImageScan(Output.of(containerImageScan));
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param containerImageScanNew Container Image security scan. Interval type, value interval:[0,200000].
+         * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerImageScanNew(@Nullable Output<String> containerImageScanNew) {
+            $.containerImageScanNew = containerImageScanNew;
+            return this;
+        }
+
+        /**
+         * @param containerImageScanNew Container Image security scan. Interval type, value interval:[0,200000].
+         * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerImageScanNew(String containerImageScanNew) {
+            return containerImageScanNew(Output.of(containerImageScanNew));
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 
@@ -482,7 +675,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 
@@ -492,7 +685,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypot Cloud honeypot authorization number.
+         * @param honeypot Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+         * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
          * 
          * @return builder
          * 
@@ -503,7 +697,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypot Cloud honeypot authorization number.
+         * @param honeypot Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+         * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
          * 
          * @return builder
          * 
@@ -513,7 +708,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotSwitch Cloud honeypot. Valid values: `1`, `2`.
+         * @param honeypotSwitch Cloud honeypot. Value:
+         * - 1: Yes.
+         * - 2: No.
          * 
          * @return builder
          * 
@@ -524,34 +721,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotSwitch Cloud honeypot. Valid values: `1`, `2`.
+         * @param honeypotSwitch Cloud honeypot. Value:
+         * - 1: Yes.
+         * - 2: No.
          * 
          * @return builder
          * 
          */
         public Builder honeypotSwitch(String honeypotSwitch) {
             return honeypotSwitch(Output.of(honeypotSwitch));
-        }
-
-        /**
-         * @param instanceId The first ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder instanceId(@Nullable Output<String> instanceId) {
-            $.instanceId = instanceId;
-            return this;
-        }
-
-        /**
-         * @param instanceId The first ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder instanceId(String instanceId) {
-            return instanceId(Output.of(instanceId));
         }
 
         /**
@@ -601,7 +779,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
+         * @param period Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+         * &gt; **NOTE:**  must be set when creating a prepaid instance.
          * 
          * @return builder
          * 
@@ -612,7 +791,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
+         * @param period Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+         * &gt; **NOTE:**  must be set when creating a prepaid instance.
          * 
          * @return builder
          * 
@@ -622,7 +802,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
+         * @param raspCount Number of application protection licenses. Interval type, value interval:[1,100000000].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder raspCount(@Nullable Output<String> raspCount) {
+            $.raspCount = raspCount;
+            return this;
+        }
+
+        /**
+         * @param raspCount Number of application protection licenses. Interval type, value interval:[1,100000000].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder raspCount(String raspCount) {
+            return raspCount(Output.of(raspCount));
+        }
+
+        /**
+         * @param renewPeriod Automatic renewal cycle, in months.
+         * &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
          * 
          * @return builder
          * 
@@ -633,7 +835,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
+         * @param renewPeriod Automatic renewal cycle, in months.
+         * &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
          * 
          * @return builder
          * 
@@ -643,7 +846,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalPeriodUnit The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
+         * @param renewalPeriodUnit Automatic renewal period unit, value:
+         * - M: month.
+         * - Y: years.
+         * &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
          * 
          * @return builder
          * 
@@ -654,7 +860,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalPeriodUnit The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
+         * @param renewalPeriodUnit Automatic renewal period unit, value:
+         * - M: month.
+         * - Y: years.
+         * &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
          * 
          * @return builder
          * 
@@ -664,7 +873,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Automatic renewal status, Default ManualRenewal. value:
+         * @param renewalStatus Automatic renewal status, default ManualRenewal, valid values:
+         * - AutoRenewal: automatic renewal.
+         * - ManualRenewal: manual renewal.
          * 
          * @return builder
          * 
@@ -675,7 +886,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Automatic renewal status, Default ManualRenewal. value:
+         * @param renewalStatus Automatic renewal status, default ManualRenewal, valid values:
+         * - AutoRenewal: automatic renewal.
+         * - ManualRenewal: manual renewal.
          * 
          * @return builder
          * 
@@ -685,7 +898,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasAntiRansomware Anti-extortion.
+         * @param sasAntiRansomware Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+         * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -696,7 +910,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasAntiRansomware Anti-extortion.
+         * @param sasAntiRansomware Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+         * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -706,7 +921,57 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasSc Large security screen.
+         * @param sasCspm Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+         * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sasCspm(@Nullable Output<String> sasCspm) {
+            $.sasCspm = sasCspm;
+            return this;
+        }
+
+        /**
+         * @param sasCspm Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+         * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sasCspm(String sasCspm) {
+            return sasCspm(Output.of(sasCspm));
+        }
+
+        /**
+         * @param sasCspmSwitch Cloud platform configuration check switch. Value:
+         * - 0: No.
+         * - 1: Yes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sasCspmSwitch(@Nullable Output<String> sasCspmSwitch) {
+            $.sasCspmSwitch = sasCspmSwitch;
+            return this;
+        }
+
+        /**
+         * @param sasCspmSwitch Cloud platform configuration check switch. Value:
+         * - 0: No.
+         * - 1: Yes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sasCspmSwitch(String sasCspmSwitch) {
+            return sasCspmSwitch(Output.of(sasCspmSwitch));
+        }
+
+        /**
+         * @param sasSc Security screen. Value:
+         * - true: Yes.
+         * - false: No.
          * 
          * @return builder
          * 
@@ -717,7 +982,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasSc Large security screen.
+         * @param sasSc Security screen. Value:
+         * - true: Yes.
+         * - false: No.
          * 
          * @return builder
          * 
@@ -727,7 +994,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasSdk Number of malicious file detections.
+         * @param sasSdk Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+         * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -738,7 +1006,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasSdk Number of malicious file detections.
+         * @param sasSdk Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+         * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -748,7 +1017,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasSdkSwitch Malicious file detection SDK. Valid values: `0`, `1`.
+         * @param sasSdkSwitch Malicious file detection SDK.
          * 
          * @return builder
          * 
@@ -759,7 +1028,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasSdkSwitch Malicious file detection SDK. Valid values: `0`, `1`.
+         * @param sasSdkSwitch Malicious file detection SDK.
          * 
          * @return builder
          * 
@@ -769,7 +1038,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasSlsStorage Log analysis.
+         * @param sasSlsStorage Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+         * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -780,7 +1050,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasSlsStorage Log analysis.
+         * @param sasSlsStorage Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+         * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -790,7 +1061,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasWebguardBoolean Web page tamper-proof.  Valid values: `0`, `1`.
+         * @param sasWebguardBoolean Web tamper-proof switch. Value:
+         * - 0: No.
+         * - 1: Yes.
          * 
          * @return builder
          * 
@@ -801,7 +1074,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasWebguardBoolean Web page tamper-proof.  Valid values: `0`, `1`.
+         * @param sasWebguardBoolean Web tamper-proof switch. Value:
+         * - 0: No.
+         * - 1: Yes.
          * 
          * @return builder
          * 
@@ -811,7 +1086,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasWebguardOrderNum Number of tamper-proof authorizations.
+         * @param sasWebguardOrderNum Tamper-proof authorization number. Value:
+         * - 0: No
+         * - 1: Yes.
          * 
          * @return builder
          * 
@@ -822,7 +1099,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sasWebguardOrderNum Number of tamper-proof authorizations.
+         * @param sasWebguardOrderNum Tamper-proof authorization number. Value:
+         * - 0: No
+         * - 1: Yes.
          * 
          * @return builder
          * 
@@ -832,7 +1111,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -843,7 +1122,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -853,7 +1132,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threatAnalysis The amount of threat analysis log storage.
+         * @param threatAnalysis Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+         * &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -864,7 +1144,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threatAnalysis The amount of threat analysis log storage.
+         * @param threatAnalysis Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+         * &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
          * 
          * @return builder
          * 
@@ -874,7 +1155,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threatAnalysisSwitch Threat analysis.  Valid values: `0`, `1`.
+         * @param threatAnalysisSwitch Threat analysis. Value:
+         * - 0: No.
+         * - 1: Yes.
          * 
          * @return builder
          * 
@@ -885,7 +1168,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threatAnalysisSwitch Threat analysis.  Valid values: `0`, `1`.
+         * @param threatAnalysisSwitch Threat analysis. Value:
+         * - 0: No.
+         * - 1: Yes.
          * 
          * @return builder
          * 
@@ -916,7 +1201,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionCode Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+         * @param versionCode Select the security center version. Value:
+         * - level7: Antivirus Edition.
+         * - level3: Premium version.
+         * - level2: Enterprise Edition.
+         * - level8: Ultimate.
+         * - level10: Purchase value-added services only.
          * 
          * @return builder
          * 
@@ -927,13 +1217,68 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionCode Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+         * @param versionCode Select the security center version. Value:
+         * - level7: Antivirus Edition.
+         * - level3: Premium version.
+         * - level2: Enterprise Edition.
+         * - level8: Ultimate.
+         * - level10: Purchase value-added services only.
          * 
          * @return builder
          * 
          */
         public Builder versionCode(String versionCode) {
             return versionCode(Output.of(versionCode));
+        }
+
+        /**
+         * @param vulCount Vulnerability repair times, interval type, value range:[20,100000000].
+         * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulCount(@Nullable Output<String> vulCount) {
+            $.vulCount = vulCount;
+            return this;
+        }
+
+        /**
+         * @param vulCount Vulnerability repair times, interval type, value range:[20,100000000].
+         * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulCount(String vulCount) {
+            return vulCount(Output.of(vulCount));
+        }
+
+        /**
+         * @param vulSwitch Vulnerability fix switch. Value:
+         * - 0: No.
+         * - 1: Yes.
+         * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulSwitch(@Nullable Output<String> vulSwitch) {
+            $.vulSwitch = vulSwitch;
+            return this;
+        }
+
+        /**
+         * @param vulSwitch Vulnerability fix switch. Value:
+         * - 0: No.
+         * - 1: Yes.
+         * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulSwitch(String vulSwitch) {
+            return vulSwitch(Output.of(vulSwitch));
         }
 
         public InstanceState build() {

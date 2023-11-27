@@ -122,7 +122,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * The name of the dispatch policy.
      * 
      */
-    @Export(name="dispatchRuleName", type=String.class, parameters={})
+    @Export(name="dispatchRuleName", refs={String.class}, tree="[0]")
     private Output<String> dispatchRuleName;
 
     /**
@@ -136,7 +136,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
      * 
      */
-    @Export(name="dispatchType", type=String.class, parameters={})
+    @Export(name="dispatchType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dispatchType;
 
     /**
@@ -150,7 +150,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
-    @Export(name="groupRules", type=List.class, parameters={DispatchRuleGroupRule.class})
+    @Export(name="groupRules", refs={List.class,DispatchRuleGroupRule.class}, tree="[0,1]")
     private Output<List<DispatchRuleGroupRule>> groupRules;
 
     /**
@@ -164,7 +164,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
      * 
      */
-    @Export(name="isRecover", type=Boolean.class, parameters={})
+    @Export(name="isRecover", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isRecover;
 
     /**
@@ -178,7 +178,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * Sets the dispatch rule. See `label_match_expression_grid` below.
      * 
      */
-    @Export(name="labelMatchExpressionGrids", type=List.class, parameters={DispatchRuleLabelMatchExpressionGrid.class})
+    @Export(name="labelMatchExpressionGrids", refs={List.class,DispatchRuleLabelMatchExpressionGrid.class}, tree="[0,1]")
     private Output<List<DispatchRuleLabelMatchExpressionGrid>> labelMatchExpressionGrids;
 
     /**
@@ -192,7 +192,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = &#34;DISCARD_ALERT&#34;`.
      * 
      */
-    @Export(name="notifyRules", type=List.class, parameters={DispatchRuleNotifyRule.class})
+    @Export(name="notifyRules", refs={List.class,DispatchRuleNotifyRule.class}, tree="[0,1]")
     private Output<List<DispatchRuleNotifyRule>> notifyRules;
 
     /**
@@ -206,7 +206,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * The resource status of Alert Dispatch Rule.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -188,16 +188,16 @@ public final class GetOpenApiPricingModulesModule {
             return values(List.of(values));
         }
         public GetOpenApiPricingModulesModule build() {
-            final var o = new GetOpenApiPricingModulesModule();
-            o.code = code;
-            o.id = id;
-            o.pricingModuleName = pricingModuleName;
-            o.productCode = productCode;
-            o.productType = productType;
-            o.subscriptionType = subscriptionType;
-            o.unit = unit;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetOpenApiPricingModulesModule();
+            _resultValue.code = code;
+            _resultValue.id = id;
+            _resultValue.pricingModuleName = pricingModuleName;
+            _resultValue.productCode = productCode;
+            _resultValue.productType = productType;
+            _resultValue.subscriptionType = subscriptionType;
+            _resultValue.unit = unit;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

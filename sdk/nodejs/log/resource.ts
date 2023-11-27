@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
  *
- * > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
+ * > **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
  *
  * ## Example Usage
  *
@@ -20,9 +20,29 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.log.Resource("example", {
- *     description: "user tf test resource desc",
+ *     description: "user tf resource desc",
  *     extInfo: "{}",
- *     schema: "{\"schema\":[{\"column\":\"col1\",\"desc\":\"col1 desc\",\"ext_info\":{},\"required\":true,\"type\":\"string\"},{\"column\":\"col2\",\"desc\":\"col2 desc\",\"ext_info\":\"optional\",\"required\":true,\"type\":\"string\"}]}",
+ *     schema: `    {
+ *       "schema": [
+ *         {
+ *           "column": "col1",
+ *           "desc": "col1   desc",
+ *           "ext_info": {
+ *           },
+ *           "required": true,
+ *           "type": "string"
+ *         },
+ *         {
+ *           "column": "col2",
+ *           "desc": "col2   desc",
+ *           "ext_info": "optional",
+ *           "required": true,
+ *           "type": "string"
+ *         }
+ *       ]
+ *     }
+ *   
+ * `,
  *     type: "userdefine",
  * });
  * ```
@@ -32,7 +52,7 @@ import * as utilities from "../utilities";
  * Log resource can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/resource:Resource example user.tf.test_resource
+ *  $ pulumi import alicloud:log/resource:Resource example <id>
  * ```
  */
 export class Resource extends pulumi.CustomResource {

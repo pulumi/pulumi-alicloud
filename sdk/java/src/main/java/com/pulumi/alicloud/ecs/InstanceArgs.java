@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
 import com.pulumi.alicloud.ecs.inputs.InstanceMaintenanceTimeArgs;
+import com.pulumi.alicloud.ecs.inputs.InstanceNetworkInterfacesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -132,40 +133,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-     * 
      */
     @Import(name="dedicatedHostId")
     private @Nullable Output<String> dedicatedHostId;
 
     /**
      * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-     * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Optional<Output<String>> dedicatedHostId() {
@@ -623,6 +596,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of network interfaces created with instance. See `network_interfaces` below.
+     * 
+     */
+    @Import(name="networkInterfaces")
+    private @Nullable Output<InstanceNetworkInterfacesArgs> networkInterfaces;
+
+    /**
+     * @return The list of network interfaces created with instance. See `network_interfaces` below.
+     * 
+     */
+    public Optional<Output<InstanceNetworkInterfacesArgs>> networkInterfaces() {
+        return Optional.ofNullable(this.networkInterfaces);
+    }
+
+    /**
      * The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
      * 
      */
@@ -1033,14 +1021,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+     * The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
      * 
      */
     @Import(name="systemDiskStorageClusterId")
     private @Nullable Output<String> systemDiskStorageClusterId;
 
     /**
-     * @return The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+     * @return The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
      * 
      */
     public Optional<Output<String>> systemDiskStorageClusterId() {
@@ -1145,6 +1133,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.maintenanceAction = $.maintenanceAction;
         this.maintenanceNotify = $.maintenanceNotify;
         this.maintenanceTime = $.maintenanceTime;
+        this.networkInterfaces = $.networkInterfaces;
         this.operatorType = $.operatorType;
         this.password = $.password;
         this.period = $.period;
@@ -1351,20 +1340,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
          * 
-         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-         * 
          * @return builder
          * 
          */
@@ -1375,20 +1350,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-         * 
-         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
@@ -2022,6 +1983,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param networkInterfaces The list of network interfaces created with instance. See `network_interfaces` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(@Nullable Output<InstanceNetworkInterfacesArgs> networkInterfaces) {
+            $.networkInterfaces = networkInterfaces;
+            return this;
+        }
+
+        /**
+         * @param networkInterfaces The list of network interfaces created with instance. See `network_interfaces` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(InstanceNetworkInterfacesArgs networkInterfaces) {
+            return networkInterfaces(Output.of(networkInterfaces));
+        }
+
+        /**
          * @param operatorType The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
          * 
          * @return builder
@@ -2608,7 +2590,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskStorageClusterId The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+         * @param systemDiskStorageClusterId The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
          * 
          * @return builder
          * 
@@ -2619,7 +2601,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskStorageClusterId The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+         * @param systemDiskStorageClusterId The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
          * 
          * @return builder
          * 

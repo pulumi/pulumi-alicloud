@@ -114,7 +114,7 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
      * 
      */
-    @Export(name="bfdMultiHop", type=Integer.class, parameters={})
+    @Export(name="bfdMultiHop", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bfdMultiHop;
 
     /**
@@ -128,7 +128,7 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * The ID of the BGP group.
      * 
      */
-    @Export(name="bgpGroupId", type=String.class, parameters={})
+    @Export(name="bgpGroupId", refs={String.class}, tree="[0]")
     private Output<String> bgpGroupId;
 
     /**
@@ -142,7 +142,7 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
      * 
      */
-    @Export(name="enableBfd", type=Boolean.class, parameters={})
+    @Export(name="enableBfd", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableBfd;
 
     /**
@@ -156,7 +156,7 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * The IP version.
      * 
      */
-    @Export(name="ipVersion", type=String.class, parameters={})
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
     private Output<String> ipVersion;
 
     /**
@@ -170,7 +170,7 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * The IP address of the BGP peer.
      * 
      */
-    @Export(name="peerIpAddress", type=String.class, parameters={})
+    @Export(name="peerIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerIpAddress;
 
     /**
@@ -184,7 +184,7 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * The status of the BGP peer.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

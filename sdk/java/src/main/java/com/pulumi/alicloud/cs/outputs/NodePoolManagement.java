@@ -125,13 +125,13 @@ public final class NodePoolManagement {
             return this;
         }
         public NodePoolManagement build() {
-            final var o = new NodePoolManagement();
-            o.autoRepair = autoRepair;
-            o.autoUpgrade = autoUpgrade;
-            o.maxUnavailable = maxUnavailable;
-            o.surge = surge;
-            o.surgePercentage = surgePercentage;
-            return o;
+            final var _resultValue = new NodePoolManagement();
+            _resultValue.autoRepair = autoRepair;
+            _resultValue.autoUpgrade = autoUpgrade;
+            _resultValue.maxUnavailable = maxUnavailable;
+            _resultValue.surge = surge;
+            _resultValue.surgePercentage = surgePercentage;
+            return _resultValue;
         }
     }
 }

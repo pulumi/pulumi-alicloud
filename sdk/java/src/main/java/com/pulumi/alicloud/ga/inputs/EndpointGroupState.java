@@ -67,6 +67,21 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+     * 
+     */
+    @Import(name="endpointGroupIpLists")
+    private @Nullable Output<List<String>> endpointGroupIpLists;
+
+    /**
+     * @return (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+     * 
+     */
+    public Optional<Output<List<String>>> endpointGroupIpLists() {
+        return Optional.ofNullable(this.endpointGroupIpLists);
+    }
+
+    /**
      * The ID of the region where the endpoint group is deployed.
      * 
      */
@@ -288,6 +303,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
         this.acceleratorId = $.acceleratorId;
         this.description = $.description;
         this.endpointConfigurations = $.endpointConfigurations;
+        this.endpointGroupIpLists = $.endpointGroupIpLists;
         this.endpointGroupRegion = $.endpointGroupRegion;
         this.endpointGroupType = $.endpointGroupType;
         this.endpointRequestProtocol = $.endpointRequestProtocol;
@@ -393,6 +409,37 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder endpointConfigurations(EndpointGroupEndpointConfigurationArgs... endpointConfigurations) {
             return endpointConfigurations(List.of(endpointConfigurations));
+        }
+
+        /**
+         * @param endpointGroupIpLists (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointGroupIpLists(@Nullable Output<List<String>> endpointGroupIpLists) {
+            $.endpointGroupIpLists = endpointGroupIpLists;
+            return this;
+        }
+
+        /**
+         * @param endpointGroupIpLists (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointGroupIpLists(List<String> endpointGroupIpLists) {
+            return endpointGroupIpLists(Output.of(endpointGroupIpLists));
+        }
+
+        /**
+         * @param endpointGroupIpLists (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointGroupIpLists(String... endpointGroupIpLists) {
+            return endpointGroupIpLists(List.of(endpointGroupIpLists));
         }
 
         /**

@@ -222,18 +222,18 @@ public final class GetNestServiceInstancesServiceInstanceService {
             return this;
         }
         public GetNestServiceInstancesServiceInstanceService build() {
-            final var o = new GetNestServiceInstancesServiceInstanceService();
-            o.deployType = deployType;
-            o.publishTime = publishTime;
-            o.serviceId = serviceId;
-            o.serviceInfos = serviceInfos;
-            o.serviceType = serviceType;
-            o.status = status;
-            o.supplierName = supplierName;
-            o.supplierUrl = supplierUrl;
-            o.version = version;
-            o.versionName = versionName;
-            return o;
+            final var _resultValue = new GetNestServiceInstancesServiceInstanceService();
+            _resultValue.deployType = deployType;
+            _resultValue.publishTime = publishTime;
+            _resultValue.serviceId = serviceId;
+            _resultValue.serviceInfos = serviceInfos;
+            _resultValue.serviceType = serviceType;
+            _resultValue.status = status;
+            _resultValue.supplierName = supplierName;
+            _resultValue.supplierUrl = supplierUrl;
+            _resultValue.version = version;
+            _resultValue.versionName = versionName;
+            return _resultValue;
         }
     }
 }

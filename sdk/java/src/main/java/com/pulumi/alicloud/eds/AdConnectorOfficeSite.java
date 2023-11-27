@@ -93,7 +93,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="adConnectorOfficeSiteName", type=String.class, parameters={})
+    @Export(name="adConnectorOfficeSiteName", refs={String.class}, tree="[0]")
     private Output<String> adConnectorOfficeSiteName;
 
     /**
@@ -107,7 +107,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The ad hostname.
      * 
      */
-    @Export(name="adHostname", type=String.class, parameters={})
+    @Export(name="adHostname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> adHostname;
 
     /**
@@ -121,7 +121,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bandwidth;
 
     /**
@@ -135,7 +135,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The ID of the CEN instance.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -149,7 +149,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The cen owner id.
      * 
      */
-    @Export(name="cenOwnerId", type=String.class, parameters={})
+    @Export(name="cenOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cenOwnerId;
 
     /**
@@ -163,7 +163,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      * 
      */
-    @Export(name="cidrBlock", type=String.class, parameters={})
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
@@ -177,7 +177,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
      * 
      */
-    @Export(name="desktopAccessType", type=String.class, parameters={})
+    @Export(name="desktopAccessType", refs={String.class}, tree="[0]")
     private Output<String> desktopAccessType;
 
     /**
@@ -191,7 +191,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
      * 
      */
-    @Export(name="dnsAddresses", type=List.class, parameters={String.class})
+    @Export(name="dnsAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsAddresses;
 
     /**
@@ -205,7 +205,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The domain name of the enterprise AD system. You can register each domain name only once.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -219,7 +219,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The password of the domain administrator. The password can be up to 64 characters in length.
      * 
      */
-    @Export(name="domainPassword", type=String.class, parameters={})
+    @Export(name="domainPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domainPassword;
 
     /**
@@ -233,7 +233,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The username of the domain administrator. The username can be up to 64 characters in length.
      * 
      */
-    @Export(name="domainUserName", type=String.class, parameters={})
+    @Export(name="domainUserName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domainUserName;
 
     /**
@@ -247,7 +247,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
      * 
      */
-    @Export(name="enableAdminAccess", type=Boolean.class, parameters={})
+    @Export(name="enableAdminAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableAdminAccess;
 
     /**
@@ -261,7 +261,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable Internet access.
      * 
      */
-    @Export(name="enableInternetAccess", type=Boolean.class, parameters={})
+    @Export(name="enableInternetAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableInternetAccess;
 
     /**
@@ -275,7 +275,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable multi-factor authentication (MFA).
      * 
      */
-    @Export(name="mfaEnabled", type=Boolean.class, parameters={})
+    @Export(name="mfaEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mfaEnabled;
 
     /**
@@ -289,7 +289,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The protocol type. Valid values: `ASP`, `HDX`.
      * 
      */
-    @Export(name="protocolType", type=String.class, parameters={})
+    @Export(name="protocolType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protocolType;
 
     /**
@@ -303,7 +303,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The AD Connector specifications. Valid values: `1`, `2`.
      * 
      */
-    @Export(name="specification", type=Integer.class, parameters={})
+    @Export(name="specification", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> specification;
 
     /**
@@ -317,7 +317,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The resource State.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -331,7 +331,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
      * 
      */
-    @Export(name="subDomainDnsAddresses", type=List.class, parameters={String.class})
+    @Export(name="subDomainDnsAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> subDomainDnsAddresses;
 
     /**
@@ -345,7 +345,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The domain name of the enterprise AD subdomain.
      * 
      */
-    @Export(name="subDomainName", type=String.class, parameters={})
+    @Export(name="subDomainName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subDomainName;
 
     /**
@@ -359,7 +359,7 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
      * The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
      * 
      */
-    @Export(name="verifyCode", type=String.class, parameters={})
+    @Export(name="verifyCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> verifyCode;
 
     /**

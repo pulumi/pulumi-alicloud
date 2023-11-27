@@ -70,11 +70,11 @@ public final class GetAccountAliasesResult {
             return this;
         }
         public GetAccountAliasesResult build() {
-            final var o = new GetAccountAliasesResult();
-            o.accountAlias = accountAlias;
-            o.id = id;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetAccountAliasesResult();
+            _resultValue.accountAlias = accountAlias;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

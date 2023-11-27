@@ -101,7 +101,7 @@ public class ControlPolicyAttachment extends com.pulumi.resources.CustomResource
      * The ID of control policy.
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**
@@ -115,7 +115,7 @@ public class ControlPolicyAttachment extends com.pulumi.resources.CustomResource
      * The ID of target.
      * 
      */
-    @Export(name="targetId", type=String.class, parameters={})
+    @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**

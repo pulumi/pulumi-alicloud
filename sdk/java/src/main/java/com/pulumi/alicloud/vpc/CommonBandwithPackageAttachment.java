@@ -82,7 +82,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
      * 
      */
-    @Export(name="bandwidthPackageBandwidth", type=String.class, parameters={})
+    @Export(name="bandwidthPackageBandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageBandwidth;
 
     /**
@@ -96,7 +96,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * The bandwidth_package_id of the common bandwidth package attachment, the field can&#39;t be changed.
      * 
      */
-    @Export(name="bandwidthPackageId", type=String.class, parameters={})
+    @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
@@ -110,7 +110,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
      * 
      */
-    @Export(name="cancelCommonBandwidthPackageIpBandwidth", type=Boolean.class, parameters={})
+    @Export(name="cancelCommonBandwidthPackageIpBandwidth", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cancelCommonBandwidthPackageIpBandwidth;
 
     /**
@@ -124,7 +124,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * The instance_id of the common bandwidth package attachment, the field can&#39;t be changed.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -138,7 +138,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
      * 
      */
-    @Export(name="ipType", type=String.class, parameters={})
+    @Export(name="ipType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipType;
 
     /**
@@ -152,7 +152,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * The status of the Internet Shared Bandwidth instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

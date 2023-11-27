@@ -210,7 +210,7 @@ public class MasterSlaveServerGroup extends com.pulumi.resources.CustomResource 
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      * 
      */
-    @Export(name="deleteProtectionValidation", type=Boolean.class, parameters={})
+    @Export(name="deleteProtectionValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteProtectionValidation;
 
     /**
@@ -224,7 +224,7 @@ public class MasterSlaveServerGroup extends com.pulumi.resources.CustomResource 
      * The Load Balancer ID which is used to launch a new master slave server group.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -238,7 +238,7 @@ public class MasterSlaveServerGroup extends com.pulumi.resources.CustomResource 
      * Name of the master slave server group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -252,7 +252,7 @@ public class MasterSlaveServerGroup extends com.pulumi.resources.CustomResource 
      * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
      * 
      */
-    @Export(name="servers", type=List.class, parameters={MasterSlaveServerGroupServer.class})
+    @Export(name="servers", refs={List.class,MasterSlaveServerGroupServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MasterSlaveServerGroupServer>> servers;
 
     /**

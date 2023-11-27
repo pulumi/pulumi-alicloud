@@ -136,14 +136,14 @@ public final class GetHandshakesResult {
             return this;
         }
         public GetHandshakesResult build() {
-            final var o = new GetHandshakesResult();
-            o.enableDetails = enableDetails;
-            o.handshakes = handshakes;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetHandshakesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.handshakes = handshakes;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

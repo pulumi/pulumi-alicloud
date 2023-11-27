@@ -83,7 +83,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'. */
-    @Export(name="aclEntries", type=List.class, parameters={AclAclEntry.class})
+    @Export(name="aclEntries", refs={List.class,AclAclEntry.class}, tree="[0,1]")
     private Output<List<AclAclEntry>> aclEntries;
 
     /**
@@ -98,7 +98,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      * 
      */
-    @Export(name="aclName", type=String.class, parameters={})
+    @Export(name="aclName", refs={String.class}, tree="[0]")
     private Output<String> aclName;
 
     /**
@@ -112,7 +112,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * Specifies whether to precheck the API request.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -126,7 +126,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -140,7 +140,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * The status of the ACL entry. Valid values:
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -154,7 +154,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

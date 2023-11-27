@@ -85,7 +85,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The ID of the ACL.
      * 
      */
-    @Export(name="aclId", type=String.class, parameters={})
+    @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 
     /**
@@ -99,7 +99,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The description of the ACL rule. It must be 1 to 512 characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -113,7 +113,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
      * 
      */
-    @Export(name="destCidr", type=String.class, parameters={})
+    @Export(name="destCidr", refs={String.class}, tree="[0]")
     private Output<String> destCidr;
 
     /**
@@ -127,7 +127,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The range of the destination port. Valid value: 80/80.
      * 
      */
-    @Export(name="destPortRange", type=String.class, parameters={})
+    @Export(name="destPortRange", refs={String.class}, tree="[0]")
     private Output<String> destPortRange;
 
     /**
@@ -141,7 +141,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The direction of the ACL rule. Valid values: in|out.
      * 
      */
-    @Export(name="direction", type=String.class, parameters={})
+    @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
@@ -155,7 +155,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The protocol used by the ACL rule. The value is not case sensitive.
      * 
      */
-    @Export(name="ipProtocol", type=String.class, parameters={})
+    @Export(name="ipProtocol", refs={String.class}, tree="[0]")
     private Output<String> ipProtocol;
 
     /**
@@ -169,7 +169,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The policy used by the ACL rule. Valid values: accept|drop.
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output<String> policy;
 
     /**
@@ -183,7 +183,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The priority of the ACL rule. Value range: 1 to 100.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -197,7 +197,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
      * 
      */
-    @Export(name="sourceCidr", type=String.class, parameters={})
+    @Export(name="sourceCidr", refs={String.class}, tree="[0]")
     private Output<String> sourceCidr;
 
     /**
@@ -211,7 +211,7 @@ public class AclRule extends com.pulumi.resources.CustomResource {
      * The range of the source port. Valid value: 80/80.
      * 
      */
-    @Export(name="sourcePortRange", type=String.class, parameters={})
+    @Export(name="sourcePortRange", refs={String.class}, tree="[0]")
     private Output<String> sourcePortRange;
 
     /**

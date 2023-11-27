@@ -13,6 +13,1206 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ConsumerGroupConsumeRetryPolicy struct {
+	// Maximum number of retries.
+	MaxRetryTimes *int `pulumi:"maxRetryTimes"`
+	// Consume retry policy.
+	RetryPolicy *string `pulumi:"retryPolicy"`
+}
+
+// ConsumerGroupConsumeRetryPolicyInput is an input type that accepts ConsumerGroupConsumeRetryPolicyArgs and ConsumerGroupConsumeRetryPolicyOutput values.
+// You can construct a concrete instance of `ConsumerGroupConsumeRetryPolicyInput` via:
+//
+//	ConsumerGroupConsumeRetryPolicyArgs{...}
+type ConsumerGroupConsumeRetryPolicyInput interface {
+	pulumi.Input
+
+	ToConsumerGroupConsumeRetryPolicyOutput() ConsumerGroupConsumeRetryPolicyOutput
+	ToConsumerGroupConsumeRetryPolicyOutputWithContext(context.Context) ConsumerGroupConsumeRetryPolicyOutput
+}
+
+type ConsumerGroupConsumeRetryPolicyArgs struct {
+	// Maximum number of retries.
+	MaxRetryTimes pulumi.IntPtrInput `pulumi:"maxRetryTimes"`
+	// Consume retry policy.
+	RetryPolicy pulumi.StringPtrInput `pulumi:"retryPolicy"`
+}
+
+func (ConsumerGroupConsumeRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerGroupConsumeRetryPolicy)(nil)).Elem()
+}
+
+func (i ConsumerGroupConsumeRetryPolicyArgs) ToConsumerGroupConsumeRetryPolicyOutput() ConsumerGroupConsumeRetryPolicyOutput {
+	return i.ToConsumerGroupConsumeRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i ConsumerGroupConsumeRetryPolicyArgs) ToConsumerGroupConsumeRetryPolicyOutputWithContext(ctx context.Context) ConsumerGroupConsumeRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupConsumeRetryPolicyOutput)
+}
+
+func (i ConsumerGroupConsumeRetryPolicyArgs) ToConsumerGroupConsumeRetryPolicyPtrOutput() ConsumerGroupConsumeRetryPolicyPtrOutput {
+	return i.ToConsumerGroupConsumeRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ConsumerGroupConsumeRetryPolicyArgs) ToConsumerGroupConsumeRetryPolicyPtrOutputWithContext(ctx context.Context) ConsumerGroupConsumeRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupConsumeRetryPolicyOutput).ToConsumerGroupConsumeRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// ConsumerGroupConsumeRetryPolicyPtrInput is an input type that accepts ConsumerGroupConsumeRetryPolicyArgs, ConsumerGroupConsumeRetryPolicyPtr and ConsumerGroupConsumeRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `ConsumerGroupConsumeRetryPolicyPtrInput` via:
+//
+//	        ConsumerGroupConsumeRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConsumerGroupConsumeRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToConsumerGroupConsumeRetryPolicyPtrOutput() ConsumerGroupConsumeRetryPolicyPtrOutput
+	ToConsumerGroupConsumeRetryPolicyPtrOutputWithContext(context.Context) ConsumerGroupConsumeRetryPolicyPtrOutput
+}
+
+type consumerGroupConsumeRetryPolicyPtrType ConsumerGroupConsumeRetryPolicyArgs
+
+func ConsumerGroupConsumeRetryPolicyPtr(v *ConsumerGroupConsumeRetryPolicyArgs) ConsumerGroupConsumeRetryPolicyPtrInput {
+	return (*consumerGroupConsumeRetryPolicyPtrType)(v)
+}
+
+func (*consumerGroupConsumeRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumerGroupConsumeRetryPolicy)(nil)).Elem()
+}
+
+func (i *consumerGroupConsumeRetryPolicyPtrType) ToConsumerGroupConsumeRetryPolicyPtrOutput() ConsumerGroupConsumeRetryPolicyPtrOutput {
+	return i.ToConsumerGroupConsumeRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *consumerGroupConsumeRetryPolicyPtrType) ToConsumerGroupConsumeRetryPolicyPtrOutputWithContext(ctx context.Context) ConsumerGroupConsumeRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupConsumeRetryPolicyPtrOutput)
+}
+
+type ConsumerGroupConsumeRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (ConsumerGroupConsumeRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerGroupConsumeRetryPolicy)(nil)).Elem()
+}
+
+func (o ConsumerGroupConsumeRetryPolicyOutput) ToConsumerGroupConsumeRetryPolicyOutput() ConsumerGroupConsumeRetryPolicyOutput {
+	return o
+}
+
+func (o ConsumerGroupConsumeRetryPolicyOutput) ToConsumerGroupConsumeRetryPolicyOutputWithContext(ctx context.Context) ConsumerGroupConsumeRetryPolicyOutput {
+	return o
+}
+
+func (o ConsumerGroupConsumeRetryPolicyOutput) ToConsumerGroupConsumeRetryPolicyPtrOutput() ConsumerGroupConsumeRetryPolicyPtrOutput {
+	return o.ToConsumerGroupConsumeRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ConsumerGroupConsumeRetryPolicyOutput) ToConsumerGroupConsumeRetryPolicyPtrOutputWithContext(ctx context.Context) ConsumerGroupConsumeRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsumerGroupConsumeRetryPolicy) *ConsumerGroupConsumeRetryPolicy {
+		return &v
+	}).(ConsumerGroupConsumeRetryPolicyPtrOutput)
+}
+
+// Maximum number of retries.
+func (o ConsumerGroupConsumeRetryPolicyOutput) MaxRetryTimes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConsumerGroupConsumeRetryPolicy) *int { return v.MaxRetryTimes }).(pulumi.IntPtrOutput)
+}
+
+// Consume retry policy.
+func (o ConsumerGroupConsumeRetryPolicyOutput) RetryPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConsumerGroupConsumeRetryPolicy) *string { return v.RetryPolicy }).(pulumi.StringPtrOutput)
+}
+
+type ConsumerGroupConsumeRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsumerGroupConsumeRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumerGroupConsumeRetryPolicy)(nil)).Elem()
+}
+
+func (o ConsumerGroupConsumeRetryPolicyPtrOutput) ToConsumerGroupConsumeRetryPolicyPtrOutput() ConsumerGroupConsumeRetryPolicyPtrOutput {
+	return o
+}
+
+func (o ConsumerGroupConsumeRetryPolicyPtrOutput) ToConsumerGroupConsumeRetryPolicyPtrOutputWithContext(ctx context.Context) ConsumerGroupConsumeRetryPolicyPtrOutput {
+	return o
+}
+
+func (o ConsumerGroupConsumeRetryPolicyPtrOutput) Elem() ConsumerGroupConsumeRetryPolicyOutput {
+	return o.ApplyT(func(v *ConsumerGroupConsumeRetryPolicy) ConsumerGroupConsumeRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ConsumerGroupConsumeRetryPolicy
+		return ret
+	}).(ConsumerGroupConsumeRetryPolicyOutput)
+}
+
+// Maximum number of retries.
+func (o ConsumerGroupConsumeRetryPolicyPtrOutput) MaxRetryTimes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConsumerGroupConsumeRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetryTimes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Consume retry policy.
+func (o ConsumerGroupConsumeRetryPolicyPtrOutput) RetryPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsumerGroupConsumeRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetryPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type RocketMQInstanceNetworkInfo struct {
+	// Access point list.
+	Endpoints []RocketMQInstanceNetworkInfoEndpoint `pulumi:"endpoints"`
+	// instance internet info. See `internetInfo` below.
+	InternetInfo RocketMQInstanceNetworkInfoInternetInfo `pulumi:"internetInfo"`
+	// Proprietary network information. See `vpcInfo` below.
+	VpcInfo RocketMQInstanceNetworkInfoVpcInfo `pulumi:"vpcInfo"`
+}
+
+// RocketMQInstanceNetworkInfoInput is an input type that accepts RocketMQInstanceNetworkInfoArgs and RocketMQInstanceNetworkInfoOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoInput` via:
+//
+//	RocketMQInstanceNetworkInfoArgs{...}
+type RocketMQInstanceNetworkInfoInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoOutput() RocketMQInstanceNetworkInfoOutput
+	ToRocketMQInstanceNetworkInfoOutputWithContext(context.Context) RocketMQInstanceNetworkInfoOutput
+}
+
+type RocketMQInstanceNetworkInfoArgs struct {
+	// Access point list.
+	Endpoints RocketMQInstanceNetworkInfoEndpointArrayInput `pulumi:"endpoints"`
+	// instance internet info. See `internetInfo` below.
+	InternetInfo RocketMQInstanceNetworkInfoInternetInfoInput `pulumi:"internetInfo"`
+	// Proprietary network information. See `vpcInfo` below.
+	VpcInfo RocketMQInstanceNetworkInfoVpcInfoInput `pulumi:"vpcInfo"`
+}
+
+func (RocketMQInstanceNetworkInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfo)(nil)).Elem()
+}
+
+func (i RocketMQInstanceNetworkInfoArgs) ToRocketMQInstanceNetworkInfoOutput() RocketMQInstanceNetworkInfoOutput {
+	return i.ToRocketMQInstanceNetworkInfoOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoArgs) ToRocketMQInstanceNetworkInfoOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoOutput)
+}
+
+func (i RocketMQInstanceNetworkInfoArgs) ToRocketMQInstanceNetworkInfoPtrOutput() RocketMQInstanceNetworkInfoPtrOutput {
+	return i.ToRocketMQInstanceNetworkInfoPtrOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoArgs) ToRocketMQInstanceNetworkInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoOutput).ToRocketMQInstanceNetworkInfoPtrOutputWithContext(ctx)
+}
+
+// RocketMQInstanceNetworkInfoPtrInput is an input type that accepts RocketMQInstanceNetworkInfoArgs, RocketMQInstanceNetworkInfoPtr and RocketMQInstanceNetworkInfoPtrOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoPtrInput` via:
+//
+//	        RocketMQInstanceNetworkInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type RocketMQInstanceNetworkInfoPtrInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoPtrOutput() RocketMQInstanceNetworkInfoPtrOutput
+	ToRocketMQInstanceNetworkInfoPtrOutputWithContext(context.Context) RocketMQInstanceNetworkInfoPtrOutput
+}
+
+type rocketMQInstanceNetworkInfoPtrType RocketMQInstanceNetworkInfoArgs
+
+func RocketMQInstanceNetworkInfoPtr(v *RocketMQInstanceNetworkInfoArgs) RocketMQInstanceNetworkInfoPtrInput {
+	return (*rocketMQInstanceNetworkInfoPtrType)(v)
+}
+
+func (*rocketMQInstanceNetworkInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceNetworkInfo)(nil)).Elem()
+}
+
+func (i *rocketMQInstanceNetworkInfoPtrType) ToRocketMQInstanceNetworkInfoPtrOutput() RocketMQInstanceNetworkInfoPtrOutput {
+	return i.ToRocketMQInstanceNetworkInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *rocketMQInstanceNetworkInfoPtrType) ToRocketMQInstanceNetworkInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoPtrOutput)
+}
+
+type RocketMQInstanceNetworkInfoOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoOutput) ToRocketMQInstanceNetworkInfoOutput() RocketMQInstanceNetworkInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoOutput) ToRocketMQInstanceNetworkInfoOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoOutput) ToRocketMQInstanceNetworkInfoPtrOutput() RocketMQInstanceNetworkInfoPtrOutput {
+	return o.ToRocketMQInstanceNetworkInfoPtrOutputWithContext(context.Background())
+}
+
+func (o RocketMQInstanceNetworkInfoOutput) ToRocketMQInstanceNetworkInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RocketMQInstanceNetworkInfo) *RocketMQInstanceNetworkInfo {
+		return &v
+	}).(RocketMQInstanceNetworkInfoPtrOutput)
+}
+
+// Access point list.
+func (o RocketMQInstanceNetworkInfoOutput) Endpoints() RocketMQInstanceNetworkInfoEndpointArrayOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfo) []RocketMQInstanceNetworkInfoEndpoint { return v.Endpoints }).(RocketMQInstanceNetworkInfoEndpointArrayOutput)
+}
+
+// instance internet info. See `internetInfo` below.
+func (o RocketMQInstanceNetworkInfoOutput) InternetInfo() RocketMQInstanceNetworkInfoInternetInfoOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfo) RocketMQInstanceNetworkInfoInternetInfo { return v.InternetInfo }).(RocketMQInstanceNetworkInfoInternetInfoOutput)
+}
+
+// Proprietary network information. See `vpcInfo` below.
+func (o RocketMQInstanceNetworkInfoOutput) VpcInfo() RocketMQInstanceNetworkInfoVpcInfoOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfo) RocketMQInstanceNetworkInfoVpcInfo { return v.VpcInfo }).(RocketMQInstanceNetworkInfoVpcInfoOutput)
+}
+
+type RocketMQInstanceNetworkInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceNetworkInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoPtrOutput) ToRocketMQInstanceNetworkInfoPtrOutput() RocketMQInstanceNetworkInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoPtrOutput) ToRocketMQInstanceNetworkInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoPtrOutput) Elem() RocketMQInstanceNetworkInfoOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfo) RocketMQInstanceNetworkInfo {
+		if v != nil {
+			return *v
+		}
+		var ret RocketMQInstanceNetworkInfo
+		return ret
+	}).(RocketMQInstanceNetworkInfoOutput)
+}
+
+// Access point list.
+func (o RocketMQInstanceNetworkInfoPtrOutput) Endpoints() RocketMQInstanceNetworkInfoEndpointArrayOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfo) []RocketMQInstanceNetworkInfoEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoints
+	}).(RocketMQInstanceNetworkInfoEndpointArrayOutput)
+}
+
+// instance internet info. See `internetInfo` below.
+func (o RocketMQInstanceNetworkInfoPtrOutput) InternetInfo() RocketMQInstanceNetworkInfoInternetInfoPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfo) *RocketMQInstanceNetworkInfoInternetInfo {
+		if v == nil {
+			return nil
+		}
+		return &v.InternetInfo
+	}).(RocketMQInstanceNetworkInfoInternetInfoPtrOutput)
+}
+
+// Proprietary network information. See `vpcInfo` below.
+func (o RocketMQInstanceNetworkInfoPtrOutput) VpcInfo() RocketMQInstanceNetworkInfoVpcInfoPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfo) *RocketMQInstanceNetworkInfoVpcInfo {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcInfo
+	}).(RocketMQInstanceNetworkInfoVpcInfoPtrOutput)
+}
+
+type RocketMQInstanceNetworkInfoEndpoint struct {
+	// Access point type.
+	EndpointType *string `pulumi:"endpointType"`
+	// Access point address.
+	EndpointUrl *string `pulumi:"endpointUrl"`
+	// White list of access addresses.
+	IpWhiteLists []string `pulumi:"ipWhiteLists"`
+}
+
+// RocketMQInstanceNetworkInfoEndpointInput is an input type that accepts RocketMQInstanceNetworkInfoEndpointArgs and RocketMQInstanceNetworkInfoEndpointOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoEndpointInput` via:
+//
+//	RocketMQInstanceNetworkInfoEndpointArgs{...}
+type RocketMQInstanceNetworkInfoEndpointInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoEndpointOutput() RocketMQInstanceNetworkInfoEndpointOutput
+	ToRocketMQInstanceNetworkInfoEndpointOutputWithContext(context.Context) RocketMQInstanceNetworkInfoEndpointOutput
+}
+
+type RocketMQInstanceNetworkInfoEndpointArgs struct {
+	// Access point type.
+	EndpointType pulumi.StringPtrInput `pulumi:"endpointType"`
+	// Access point address.
+	EndpointUrl pulumi.StringPtrInput `pulumi:"endpointUrl"`
+	// White list of access addresses.
+	IpWhiteLists pulumi.StringArrayInput `pulumi:"ipWhiteLists"`
+}
+
+func (RocketMQInstanceNetworkInfoEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfoEndpoint)(nil)).Elem()
+}
+
+func (i RocketMQInstanceNetworkInfoEndpointArgs) ToRocketMQInstanceNetworkInfoEndpointOutput() RocketMQInstanceNetworkInfoEndpointOutput {
+	return i.ToRocketMQInstanceNetworkInfoEndpointOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoEndpointArgs) ToRocketMQInstanceNetworkInfoEndpointOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoEndpointOutput)
+}
+
+// RocketMQInstanceNetworkInfoEndpointArrayInput is an input type that accepts RocketMQInstanceNetworkInfoEndpointArray and RocketMQInstanceNetworkInfoEndpointArrayOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoEndpointArrayInput` via:
+//
+//	RocketMQInstanceNetworkInfoEndpointArray{ RocketMQInstanceNetworkInfoEndpointArgs{...} }
+type RocketMQInstanceNetworkInfoEndpointArrayInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoEndpointArrayOutput() RocketMQInstanceNetworkInfoEndpointArrayOutput
+	ToRocketMQInstanceNetworkInfoEndpointArrayOutputWithContext(context.Context) RocketMQInstanceNetworkInfoEndpointArrayOutput
+}
+
+type RocketMQInstanceNetworkInfoEndpointArray []RocketMQInstanceNetworkInfoEndpointInput
+
+func (RocketMQInstanceNetworkInfoEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RocketMQInstanceNetworkInfoEndpoint)(nil)).Elem()
+}
+
+func (i RocketMQInstanceNetworkInfoEndpointArray) ToRocketMQInstanceNetworkInfoEndpointArrayOutput() RocketMQInstanceNetworkInfoEndpointArrayOutput {
+	return i.ToRocketMQInstanceNetworkInfoEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoEndpointArray) ToRocketMQInstanceNetworkInfoEndpointArrayOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoEndpointArrayOutput)
+}
+
+type RocketMQInstanceNetworkInfoEndpointOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfoEndpoint)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoEndpointOutput) ToRocketMQInstanceNetworkInfoEndpointOutput() RocketMQInstanceNetworkInfoEndpointOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoEndpointOutput) ToRocketMQInstanceNetworkInfoEndpointOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoEndpointOutput {
+	return o
+}
+
+// Access point type.
+func (o RocketMQInstanceNetworkInfoEndpointOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoEndpoint) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+// Access point address.
+func (o RocketMQInstanceNetworkInfoEndpointOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoEndpoint) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+// White list of access addresses.
+func (o RocketMQInstanceNetworkInfoEndpointOutput) IpWhiteLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoEndpoint) []string { return v.IpWhiteLists }).(pulumi.StringArrayOutput)
+}
+
+type RocketMQInstanceNetworkInfoEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RocketMQInstanceNetworkInfoEndpoint)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoEndpointArrayOutput) ToRocketMQInstanceNetworkInfoEndpointArrayOutput() RocketMQInstanceNetworkInfoEndpointArrayOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoEndpointArrayOutput) ToRocketMQInstanceNetworkInfoEndpointArrayOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoEndpointArrayOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoEndpointArrayOutput) Index(i pulumi.IntInput) RocketMQInstanceNetworkInfoEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RocketMQInstanceNetworkInfoEndpoint {
+		return vs[0].([]RocketMQInstanceNetworkInfoEndpoint)[vs[1].(int)]
+	}).(RocketMQInstanceNetworkInfoEndpointOutput)
+}
+
+type RocketMQInstanceNetworkInfoInternetInfo struct {
+	// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+	FlowOutBandwidth *int `pulumi:"flowOutBandwidth"`
+	// Public network billing type. The parameter values are as follows:
+	// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+	// - uninvolved: Not involved. Set this value when disabling public network access.
+	FlowOutType string `pulumi:"flowOutType"`
+	// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+	// - enable: Enable public network access
+	// - disable: Disable public network access
+	InternetSpec string `pulumi:"internetSpec"`
+	// internet ip whitelist.
+	IpWhitelists []string `pulumi:"ipWhitelists"`
+}
+
+// RocketMQInstanceNetworkInfoInternetInfoInput is an input type that accepts RocketMQInstanceNetworkInfoInternetInfoArgs and RocketMQInstanceNetworkInfoInternetInfoOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoInternetInfoInput` via:
+//
+//	RocketMQInstanceNetworkInfoInternetInfoArgs{...}
+type RocketMQInstanceNetworkInfoInternetInfoInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoInternetInfoOutput() RocketMQInstanceNetworkInfoInternetInfoOutput
+	ToRocketMQInstanceNetworkInfoInternetInfoOutputWithContext(context.Context) RocketMQInstanceNetworkInfoInternetInfoOutput
+}
+
+type RocketMQInstanceNetworkInfoInternetInfoArgs struct {
+	// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+	FlowOutBandwidth pulumi.IntPtrInput `pulumi:"flowOutBandwidth"`
+	// Public network billing type. The parameter values are as follows:
+	// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+	// - uninvolved: Not involved. Set this value when disabling public network access.
+	FlowOutType pulumi.StringInput `pulumi:"flowOutType"`
+	// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+	// - enable: Enable public network access
+	// - disable: Disable public network access
+	InternetSpec pulumi.StringInput `pulumi:"internetSpec"`
+	// internet ip whitelist.
+	IpWhitelists pulumi.StringArrayInput `pulumi:"ipWhitelists"`
+}
+
+func (RocketMQInstanceNetworkInfoInternetInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfoInternetInfo)(nil)).Elem()
+}
+
+func (i RocketMQInstanceNetworkInfoInternetInfoArgs) ToRocketMQInstanceNetworkInfoInternetInfoOutput() RocketMQInstanceNetworkInfoInternetInfoOutput {
+	return i.ToRocketMQInstanceNetworkInfoInternetInfoOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoInternetInfoArgs) ToRocketMQInstanceNetworkInfoInternetInfoOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoInternetInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoInternetInfoOutput)
+}
+
+func (i RocketMQInstanceNetworkInfoInternetInfoArgs) ToRocketMQInstanceNetworkInfoInternetInfoPtrOutput() RocketMQInstanceNetworkInfoInternetInfoPtrOutput {
+	return i.ToRocketMQInstanceNetworkInfoInternetInfoPtrOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoInternetInfoArgs) ToRocketMQInstanceNetworkInfoInternetInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoInternetInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoInternetInfoOutput).ToRocketMQInstanceNetworkInfoInternetInfoPtrOutputWithContext(ctx)
+}
+
+// RocketMQInstanceNetworkInfoInternetInfoPtrInput is an input type that accepts RocketMQInstanceNetworkInfoInternetInfoArgs, RocketMQInstanceNetworkInfoInternetInfoPtr and RocketMQInstanceNetworkInfoInternetInfoPtrOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoInternetInfoPtrInput` via:
+//
+//	        RocketMQInstanceNetworkInfoInternetInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type RocketMQInstanceNetworkInfoInternetInfoPtrInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoInternetInfoPtrOutput() RocketMQInstanceNetworkInfoInternetInfoPtrOutput
+	ToRocketMQInstanceNetworkInfoInternetInfoPtrOutputWithContext(context.Context) RocketMQInstanceNetworkInfoInternetInfoPtrOutput
+}
+
+type rocketMQInstanceNetworkInfoInternetInfoPtrType RocketMQInstanceNetworkInfoInternetInfoArgs
+
+func RocketMQInstanceNetworkInfoInternetInfoPtr(v *RocketMQInstanceNetworkInfoInternetInfoArgs) RocketMQInstanceNetworkInfoInternetInfoPtrInput {
+	return (*rocketMQInstanceNetworkInfoInternetInfoPtrType)(v)
+}
+
+func (*rocketMQInstanceNetworkInfoInternetInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceNetworkInfoInternetInfo)(nil)).Elem()
+}
+
+func (i *rocketMQInstanceNetworkInfoInternetInfoPtrType) ToRocketMQInstanceNetworkInfoInternetInfoPtrOutput() RocketMQInstanceNetworkInfoInternetInfoPtrOutput {
+	return i.ToRocketMQInstanceNetworkInfoInternetInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *rocketMQInstanceNetworkInfoInternetInfoPtrType) ToRocketMQInstanceNetworkInfoInternetInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoInternetInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoInternetInfoPtrOutput)
+}
+
+type RocketMQInstanceNetworkInfoInternetInfoOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoInternetInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfoInternetInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoInternetInfoOutput) ToRocketMQInstanceNetworkInfoInternetInfoOutput() RocketMQInstanceNetworkInfoInternetInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoInternetInfoOutput) ToRocketMQInstanceNetworkInfoInternetInfoOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoInternetInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoInternetInfoOutput) ToRocketMQInstanceNetworkInfoInternetInfoPtrOutput() RocketMQInstanceNetworkInfoInternetInfoPtrOutput {
+	return o.ToRocketMQInstanceNetworkInfoInternetInfoPtrOutputWithContext(context.Background())
+}
+
+func (o RocketMQInstanceNetworkInfoInternetInfoOutput) ToRocketMQInstanceNetworkInfoInternetInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoInternetInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RocketMQInstanceNetworkInfoInternetInfo) *RocketMQInstanceNetworkInfoInternetInfo {
+		return &v
+	}).(RocketMQInstanceNetworkInfoInternetInfoPtrOutput)
+}
+
+// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+func (o RocketMQInstanceNetworkInfoInternetInfoOutput) FlowOutBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) *int { return v.FlowOutBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// Public network billing type. The parameter values are as follows:
+// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+// - uninvolved: Not involved. Set this value when disabling public network access.
+func (o RocketMQInstanceNetworkInfoInternetInfoOutput) FlowOutType() pulumi.StringOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) string { return v.FlowOutType }).(pulumi.StringOutput)
+}
+
+// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+// - enable: Enable public network access
+// - disable: Disable public network access
+func (o RocketMQInstanceNetworkInfoInternetInfoOutput) InternetSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) string { return v.InternetSpec }).(pulumi.StringOutput)
+}
+
+// internet ip whitelist.
+func (o RocketMQInstanceNetworkInfoInternetInfoOutput) IpWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) []string { return v.IpWhitelists }).(pulumi.StringArrayOutput)
+}
+
+type RocketMQInstanceNetworkInfoInternetInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoInternetInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceNetworkInfoInternetInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) ToRocketMQInstanceNetworkInfoInternetInfoPtrOutput() RocketMQInstanceNetworkInfoInternetInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) ToRocketMQInstanceNetworkInfoInternetInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoInternetInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) Elem() RocketMQInstanceNetworkInfoInternetInfoOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) RocketMQInstanceNetworkInfoInternetInfo {
+		if v != nil {
+			return *v
+		}
+		var ret RocketMQInstanceNetworkInfoInternetInfo
+		return ret
+	}).(RocketMQInstanceNetworkInfoInternetInfoOutput)
+}
+
+// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FlowOutBandwidth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Public network billing type. The parameter values are as follows:
+// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+// - uninvolved: Not involved. Set this value when disabling public network access.
+func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FlowOutType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+// - enable: Enable public network access
+// - disable: Disable public network access
+func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) InternetSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InternetSpec
+	}).(pulumi.StringPtrOutput)
+}
+
+// internet ip whitelist.
+func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) IpWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpWhitelists
+	}).(pulumi.StringArrayOutput)
+}
+
+type RocketMQInstanceNetworkInfoVpcInfo struct {
+	// Proprietary Network.
+	VpcId string `pulumi:"vpcId"`
+	// VPC network switch.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// RocketMQInstanceNetworkInfoVpcInfoInput is an input type that accepts RocketMQInstanceNetworkInfoVpcInfoArgs and RocketMQInstanceNetworkInfoVpcInfoOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoVpcInfoInput` via:
+//
+//	RocketMQInstanceNetworkInfoVpcInfoArgs{...}
+type RocketMQInstanceNetworkInfoVpcInfoInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoVpcInfoOutput() RocketMQInstanceNetworkInfoVpcInfoOutput
+	ToRocketMQInstanceNetworkInfoVpcInfoOutputWithContext(context.Context) RocketMQInstanceNetworkInfoVpcInfoOutput
+}
+
+type RocketMQInstanceNetworkInfoVpcInfoArgs struct {
+	// Proprietary Network.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// VPC network switch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (RocketMQInstanceNetworkInfoVpcInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfo)(nil)).Elem()
+}
+
+func (i RocketMQInstanceNetworkInfoVpcInfoArgs) ToRocketMQInstanceNetworkInfoVpcInfoOutput() RocketMQInstanceNetworkInfoVpcInfoOutput {
+	return i.ToRocketMQInstanceNetworkInfoVpcInfoOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoVpcInfoArgs) ToRocketMQInstanceNetworkInfoVpcInfoOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoVpcInfoOutput)
+}
+
+func (i RocketMQInstanceNetworkInfoVpcInfoArgs) ToRocketMQInstanceNetworkInfoVpcInfoPtrOutput() RocketMQInstanceNetworkInfoVpcInfoPtrOutput {
+	return i.ToRocketMQInstanceNetworkInfoVpcInfoPtrOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoVpcInfoArgs) ToRocketMQInstanceNetworkInfoVpcInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoVpcInfoOutput).ToRocketMQInstanceNetworkInfoVpcInfoPtrOutputWithContext(ctx)
+}
+
+// RocketMQInstanceNetworkInfoVpcInfoPtrInput is an input type that accepts RocketMQInstanceNetworkInfoVpcInfoArgs, RocketMQInstanceNetworkInfoVpcInfoPtr and RocketMQInstanceNetworkInfoVpcInfoPtrOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoVpcInfoPtrInput` via:
+//
+//	        RocketMQInstanceNetworkInfoVpcInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type RocketMQInstanceNetworkInfoVpcInfoPtrInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoVpcInfoPtrOutput() RocketMQInstanceNetworkInfoVpcInfoPtrOutput
+	ToRocketMQInstanceNetworkInfoVpcInfoPtrOutputWithContext(context.Context) RocketMQInstanceNetworkInfoVpcInfoPtrOutput
+}
+
+type rocketMQInstanceNetworkInfoVpcInfoPtrType RocketMQInstanceNetworkInfoVpcInfoArgs
+
+func RocketMQInstanceNetworkInfoVpcInfoPtr(v *RocketMQInstanceNetworkInfoVpcInfoArgs) RocketMQInstanceNetworkInfoVpcInfoPtrInput {
+	return (*rocketMQInstanceNetworkInfoVpcInfoPtrType)(v)
+}
+
+func (*rocketMQInstanceNetworkInfoVpcInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceNetworkInfoVpcInfo)(nil)).Elem()
+}
+
+func (i *rocketMQInstanceNetworkInfoVpcInfoPtrType) ToRocketMQInstanceNetworkInfoVpcInfoPtrOutput() RocketMQInstanceNetworkInfoVpcInfoPtrOutput {
+	return i.ToRocketMQInstanceNetworkInfoVpcInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *rocketMQInstanceNetworkInfoVpcInfoPtrType) ToRocketMQInstanceNetworkInfoVpcInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoVpcInfoPtrOutput)
+}
+
+type RocketMQInstanceNetworkInfoVpcInfoOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoVpcInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoOutput) ToRocketMQInstanceNetworkInfoVpcInfoOutput() RocketMQInstanceNetworkInfoVpcInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoOutput) ToRocketMQInstanceNetworkInfoVpcInfoOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoOutput) ToRocketMQInstanceNetworkInfoVpcInfoPtrOutput() RocketMQInstanceNetworkInfoVpcInfoPtrOutput {
+	return o.ToRocketMQInstanceNetworkInfoVpcInfoPtrOutputWithContext(context.Background())
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoOutput) ToRocketMQInstanceNetworkInfoVpcInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RocketMQInstanceNetworkInfoVpcInfo) *RocketMQInstanceNetworkInfoVpcInfo {
+		return &v
+	}).(RocketMQInstanceNetworkInfoVpcInfoPtrOutput)
+}
+
+// Proprietary Network.
+func (o RocketMQInstanceNetworkInfoVpcInfoOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// VPC network switch.
+func (o RocketMQInstanceNetworkInfoVpcInfoOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type RocketMQInstanceNetworkInfoVpcInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoVpcInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceNetworkInfoVpcInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) ToRocketMQInstanceNetworkInfoVpcInfoPtrOutput() RocketMQInstanceNetworkInfoVpcInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) ToRocketMQInstanceNetworkInfoVpcInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) Elem() RocketMQInstanceNetworkInfoVpcInfoOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) RocketMQInstanceNetworkInfoVpcInfo {
+		if v != nil {
+			return *v
+		}
+		var ret RocketMQInstanceNetworkInfoVpcInfo
+		return ret
+	}).(RocketMQInstanceNetworkInfoVpcInfoOutput)
+}
+
+// Proprietary Network.
+func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// VPC network switch.
+func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VswitchId
+	}).(pulumi.StringPtrOutput)
+}
+
+type RocketMQInstanceProductInfo struct {
+	// is open auto scaling.
+	AutoScaling *bool `pulumi:"autoScaling"`
+	// Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+	MessageRetentionTime *int `pulumi:"messageRetentionTime"`
+	// Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
+	MsgProcessSpec string `pulumi:"msgProcessSpec"`
+	// message send receive ratio.Value range: [0.2, 0.5].
+	SendReceiveRatio *float64 `pulumi:"sendReceiveRatio"`
+	// is support auto scaling.
+	SupportAutoScaling *bool `pulumi:"supportAutoScaling"`
+}
+
+// RocketMQInstanceProductInfoInput is an input type that accepts RocketMQInstanceProductInfoArgs and RocketMQInstanceProductInfoOutput values.
+// You can construct a concrete instance of `RocketMQInstanceProductInfoInput` via:
+//
+//	RocketMQInstanceProductInfoArgs{...}
+type RocketMQInstanceProductInfoInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceProductInfoOutput() RocketMQInstanceProductInfoOutput
+	ToRocketMQInstanceProductInfoOutputWithContext(context.Context) RocketMQInstanceProductInfoOutput
+}
+
+type RocketMQInstanceProductInfoArgs struct {
+	// is open auto scaling.
+	AutoScaling pulumi.BoolPtrInput `pulumi:"autoScaling"`
+	// Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+	MessageRetentionTime pulumi.IntPtrInput `pulumi:"messageRetentionTime"`
+	// Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
+	MsgProcessSpec pulumi.StringInput `pulumi:"msgProcessSpec"`
+	// message send receive ratio.Value range: [0.2, 0.5].
+	SendReceiveRatio pulumi.Float64PtrInput `pulumi:"sendReceiveRatio"`
+	// is support auto scaling.
+	SupportAutoScaling pulumi.BoolPtrInput `pulumi:"supportAutoScaling"`
+}
+
+func (RocketMQInstanceProductInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceProductInfo)(nil)).Elem()
+}
+
+func (i RocketMQInstanceProductInfoArgs) ToRocketMQInstanceProductInfoOutput() RocketMQInstanceProductInfoOutput {
+	return i.ToRocketMQInstanceProductInfoOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceProductInfoArgs) ToRocketMQInstanceProductInfoOutputWithContext(ctx context.Context) RocketMQInstanceProductInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceProductInfoOutput)
+}
+
+func (i RocketMQInstanceProductInfoArgs) ToRocketMQInstanceProductInfoPtrOutput() RocketMQInstanceProductInfoPtrOutput {
+	return i.ToRocketMQInstanceProductInfoPtrOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceProductInfoArgs) ToRocketMQInstanceProductInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceProductInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceProductInfoOutput).ToRocketMQInstanceProductInfoPtrOutputWithContext(ctx)
+}
+
+// RocketMQInstanceProductInfoPtrInput is an input type that accepts RocketMQInstanceProductInfoArgs, RocketMQInstanceProductInfoPtr and RocketMQInstanceProductInfoPtrOutput values.
+// You can construct a concrete instance of `RocketMQInstanceProductInfoPtrInput` via:
+//
+//	        RocketMQInstanceProductInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type RocketMQInstanceProductInfoPtrInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceProductInfoPtrOutput() RocketMQInstanceProductInfoPtrOutput
+	ToRocketMQInstanceProductInfoPtrOutputWithContext(context.Context) RocketMQInstanceProductInfoPtrOutput
+}
+
+type rocketMQInstanceProductInfoPtrType RocketMQInstanceProductInfoArgs
+
+func RocketMQInstanceProductInfoPtr(v *RocketMQInstanceProductInfoArgs) RocketMQInstanceProductInfoPtrInput {
+	return (*rocketMQInstanceProductInfoPtrType)(v)
+}
+
+func (*rocketMQInstanceProductInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceProductInfo)(nil)).Elem()
+}
+
+func (i *rocketMQInstanceProductInfoPtrType) ToRocketMQInstanceProductInfoPtrOutput() RocketMQInstanceProductInfoPtrOutput {
+	return i.ToRocketMQInstanceProductInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *rocketMQInstanceProductInfoPtrType) ToRocketMQInstanceProductInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceProductInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceProductInfoPtrOutput)
+}
+
+type RocketMQInstanceProductInfoOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceProductInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceProductInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceProductInfoOutput) ToRocketMQInstanceProductInfoOutput() RocketMQInstanceProductInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceProductInfoOutput) ToRocketMQInstanceProductInfoOutputWithContext(ctx context.Context) RocketMQInstanceProductInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceProductInfoOutput) ToRocketMQInstanceProductInfoPtrOutput() RocketMQInstanceProductInfoPtrOutput {
+	return o.ToRocketMQInstanceProductInfoPtrOutputWithContext(context.Background())
+}
+
+func (o RocketMQInstanceProductInfoOutput) ToRocketMQInstanceProductInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceProductInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RocketMQInstanceProductInfo) *RocketMQInstanceProductInfo {
+		return &v
+	}).(RocketMQInstanceProductInfoPtrOutput)
+}
+
+// is open auto scaling.
+func (o RocketMQInstanceProductInfoOutput) AutoScaling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceProductInfo) *bool { return v.AutoScaling }).(pulumi.BoolPtrOutput)
+}
+
+// Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+func (o RocketMQInstanceProductInfoOutput) MessageRetentionTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceProductInfo) *int { return v.MessageRetentionTime }).(pulumi.IntPtrOutput)
+}
+
+// Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
+func (o RocketMQInstanceProductInfoOutput) MsgProcessSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v RocketMQInstanceProductInfo) string { return v.MsgProcessSpec }).(pulumi.StringOutput)
+}
+
+// message send receive ratio.Value range: [0.2, 0.5].
+func (o RocketMQInstanceProductInfoOutput) SendReceiveRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceProductInfo) *float64 { return v.SendReceiveRatio }).(pulumi.Float64PtrOutput)
+}
+
+// is support auto scaling.
+func (o RocketMQInstanceProductInfoOutput) SupportAutoScaling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceProductInfo) *bool { return v.SupportAutoScaling }).(pulumi.BoolPtrOutput)
+}
+
+type RocketMQInstanceProductInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceProductInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceProductInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceProductInfoPtrOutput) ToRocketMQInstanceProductInfoPtrOutput() RocketMQInstanceProductInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceProductInfoPtrOutput) ToRocketMQInstanceProductInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceProductInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceProductInfoPtrOutput) Elem() RocketMQInstanceProductInfoOutput {
+	return o.ApplyT(func(v *RocketMQInstanceProductInfo) RocketMQInstanceProductInfo {
+		if v != nil {
+			return *v
+		}
+		var ret RocketMQInstanceProductInfo
+		return ret
+	}).(RocketMQInstanceProductInfoOutput)
+}
+
+// is open auto scaling.
+func (o RocketMQInstanceProductInfoPtrOutput) AutoScaling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScaling
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+func (o RocketMQInstanceProductInfoPtrOutput) MessageRetentionTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MessageRetentionTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
+func (o RocketMQInstanceProductInfoPtrOutput) MsgProcessSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MsgProcessSpec
+	}).(pulumi.StringPtrOutput)
+}
+
+// message send receive ratio.Value range: [0.2, 0.5].
+func (o RocketMQInstanceProductInfoPtrOutput) SendReceiveRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SendReceiveRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// is support auto scaling.
+func (o RocketMQInstanceProductInfoPtrOutput) SupportAutoScaling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SupportAutoScaling
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RocketMQInstanceSoftware struct {
+	// Upgrade time period.
+	MaintainTime *string `pulumi:"maintainTime"`
+	// Software version.
+	SoftwareVersion *string `pulumi:"softwareVersion"`
+	// Upgrade method.
+	UpgradeMethod *string `pulumi:"upgradeMethod"`
+}
+
+// RocketMQInstanceSoftwareInput is an input type that accepts RocketMQInstanceSoftwareArgs and RocketMQInstanceSoftwareOutput values.
+// You can construct a concrete instance of `RocketMQInstanceSoftwareInput` via:
+//
+//	RocketMQInstanceSoftwareArgs{...}
+type RocketMQInstanceSoftwareInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceSoftwareOutput() RocketMQInstanceSoftwareOutput
+	ToRocketMQInstanceSoftwareOutputWithContext(context.Context) RocketMQInstanceSoftwareOutput
+}
+
+type RocketMQInstanceSoftwareArgs struct {
+	// Upgrade time period.
+	MaintainTime pulumi.StringPtrInput `pulumi:"maintainTime"`
+	// Software version.
+	SoftwareVersion pulumi.StringPtrInput `pulumi:"softwareVersion"`
+	// Upgrade method.
+	UpgradeMethod pulumi.StringPtrInput `pulumi:"upgradeMethod"`
+}
+
+func (RocketMQInstanceSoftwareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceSoftware)(nil)).Elem()
+}
+
+func (i RocketMQInstanceSoftwareArgs) ToRocketMQInstanceSoftwareOutput() RocketMQInstanceSoftwareOutput {
+	return i.ToRocketMQInstanceSoftwareOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceSoftwareArgs) ToRocketMQInstanceSoftwareOutputWithContext(ctx context.Context) RocketMQInstanceSoftwareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceSoftwareOutput)
+}
+
+func (i RocketMQInstanceSoftwareArgs) ToRocketMQInstanceSoftwarePtrOutput() RocketMQInstanceSoftwarePtrOutput {
+	return i.ToRocketMQInstanceSoftwarePtrOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceSoftwareArgs) ToRocketMQInstanceSoftwarePtrOutputWithContext(ctx context.Context) RocketMQInstanceSoftwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceSoftwareOutput).ToRocketMQInstanceSoftwarePtrOutputWithContext(ctx)
+}
+
+// RocketMQInstanceSoftwarePtrInput is an input type that accepts RocketMQInstanceSoftwareArgs, RocketMQInstanceSoftwarePtr and RocketMQInstanceSoftwarePtrOutput values.
+// You can construct a concrete instance of `RocketMQInstanceSoftwarePtrInput` via:
+//
+//	        RocketMQInstanceSoftwareArgs{...}
+//
+//	or:
+//
+//	        nil
+type RocketMQInstanceSoftwarePtrInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceSoftwarePtrOutput() RocketMQInstanceSoftwarePtrOutput
+	ToRocketMQInstanceSoftwarePtrOutputWithContext(context.Context) RocketMQInstanceSoftwarePtrOutput
+}
+
+type rocketMQInstanceSoftwarePtrType RocketMQInstanceSoftwareArgs
+
+func RocketMQInstanceSoftwarePtr(v *RocketMQInstanceSoftwareArgs) RocketMQInstanceSoftwarePtrInput {
+	return (*rocketMQInstanceSoftwarePtrType)(v)
+}
+
+func (*rocketMQInstanceSoftwarePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceSoftware)(nil)).Elem()
+}
+
+func (i *rocketMQInstanceSoftwarePtrType) ToRocketMQInstanceSoftwarePtrOutput() RocketMQInstanceSoftwarePtrOutput {
+	return i.ToRocketMQInstanceSoftwarePtrOutputWithContext(context.Background())
+}
+
+func (i *rocketMQInstanceSoftwarePtrType) ToRocketMQInstanceSoftwarePtrOutputWithContext(ctx context.Context) RocketMQInstanceSoftwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceSoftwarePtrOutput)
+}
+
+type RocketMQInstanceSoftwareOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceSoftwareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceSoftware)(nil)).Elem()
+}
+
+func (o RocketMQInstanceSoftwareOutput) ToRocketMQInstanceSoftwareOutput() RocketMQInstanceSoftwareOutput {
+	return o
+}
+
+func (o RocketMQInstanceSoftwareOutput) ToRocketMQInstanceSoftwareOutputWithContext(ctx context.Context) RocketMQInstanceSoftwareOutput {
+	return o
+}
+
+func (o RocketMQInstanceSoftwareOutput) ToRocketMQInstanceSoftwarePtrOutput() RocketMQInstanceSoftwarePtrOutput {
+	return o.ToRocketMQInstanceSoftwarePtrOutputWithContext(context.Background())
+}
+
+func (o RocketMQInstanceSoftwareOutput) ToRocketMQInstanceSoftwarePtrOutputWithContext(ctx context.Context) RocketMQInstanceSoftwarePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RocketMQInstanceSoftware) *RocketMQInstanceSoftware {
+		return &v
+	}).(RocketMQInstanceSoftwarePtrOutput)
+}
+
+// Upgrade time period.
+func (o RocketMQInstanceSoftwareOutput) MaintainTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceSoftware) *string { return v.MaintainTime }).(pulumi.StringPtrOutput)
+}
+
+// Software version.
+func (o RocketMQInstanceSoftwareOutput) SoftwareVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceSoftware) *string { return v.SoftwareVersion }).(pulumi.StringPtrOutput)
+}
+
+// Upgrade method.
+func (o RocketMQInstanceSoftwareOutput) UpgradeMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceSoftware) *string { return v.UpgradeMethod }).(pulumi.StringPtrOutput)
+}
+
+type RocketMQInstanceSoftwarePtrOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceSoftwarePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceSoftware)(nil)).Elem()
+}
+
+func (o RocketMQInstanceSoftwarePtrOutput) ToRocketMQInstanceSoftwarePtrOutput() RocketMQInstanceSoftwarePtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceSoftwarePtrOutput) ToRocketMQInstanceSoftwarePtrOutputWithContext(ctx context.Context) RocketMQInstanceSoftwarePtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceSoftwarePtrOutput) Elem() RocketMQInstanceSoftwareOutput {
+	return o.ApplyT(func(v *RocketMQInstanceSoftware) RocketMQInstanceSoftware {
+		if v != nil {
+			return *v
+		}
+		var ret RocketMQInstanceSoftware
+		return ret
+	}).(RocketMQInstanceSoftwareOutput)
+}
+
+// Upgrade time period.
+func (o RocketMQInstanceSoftwarePtrOutput) MaintainTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceSoftware) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaintainTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Software version.
+func (o RocketMQInstanceSoftwarePtrOutput) SoftwareVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceSoftware) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SoftwareVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Upgrade method.
+func (o RocketMQInstanceSoftwarePtrOutput) UpgradeMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceSoftware) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpgradeMethod
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetGroupsGroup struct {
 	// The name of the group.
 	GroupName string `pulumi:"groupName"`
@@ -584,12 +1784,40 @@ func (o GetTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetTopicsTopicOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerGroupConsumeRetryPolicyInput)(nil)).Elem(), ConsumerGroupConsumeRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerGroupConsumeRetryPolicyPtrInput)(nil)).Elem(), ConsumerGroupConsumeRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoInput)(nil)).Elem(), RocketMQInstanceNetworkInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoPtrInput)(nil)).Elem(), RocketMQInstanceNetworkInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoEndpointInput)(nil)).Elem(), RocketMQInstanceNetworkInfoEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoEndpointArrayInput)(nil)).Elem(), RocketMQInstanceNetworkInfoEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoInternetInfoInput)(nil)).Elem(), RocketMQInstanceNetworkInfoInternetInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoInternetInfoPtrInput)(nil)).Elem(), RocketMQInstanceNetworkInfoInternetInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfoInput)(nil)).Elem(), RocketMQInstanceNetworkInfoVpcInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfoPtrInput)(nil)).Elem(), RocketMQInstanceNetworkInfoVpcInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceProductInfoInput)(nil)).Elem(), RocketMQInstanceProductInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceProductInfoPtrInput)(nil)).Elem(), RocketMQInstanceProductInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceSoftwareInput)(nil)).Elem(), RocketMQInstanceSoftwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceSoftwarePtrInput)(nil)).Elem(), RocketMQInstanceSoftwareArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicsTopicInput)(nil)).Elem(), GetTopicsTopicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicsTopicArrayInput)(nil)).Elem(), GetTopicsTopicArray{})
+	pulumi.RegisterOutputType(ConsumerGroupConsumeRetryPolicyOutput{})
+	pulumi.RegisterOutputType(ConsumerGroupConsumeRetryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoPtrOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoEndpointOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoEndpointArrayOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoInternetInfoOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoInternetInfoPtrOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoVpcInfoOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoVpcInfoPtrOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceProductInfoOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceProductInfoPtrOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceSoftwareOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceSoftwarePtrOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

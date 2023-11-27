@@ -198,17 +198,17 @@ public final class GetServerSnapshotsSnapshot {
             return this;
         }
         public GetServerSnapshotsSnapshot build() {
-            final var o = new GetServerSnapshotsSnapshot();
-            o.createTime = createTime;
-            o.diskId = diskId;
-            o.id = id;
-            o.progress = progress;
-            o.remark = remark;
-            o.snapshotId = snapshotId;
-            o.snapshotName = snapshotName;
-            o.sourceDiskType = sourceDiskType;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetServerSnapshotsSnapshot();
+            _resultValue.createTime = createTime;
+            _resultValue.diskId = diskId;
+            _resultValue.id = id;
+            _resultValue.progress = progress;
+            _resultValue.remark = remark;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.snapshotName = snapshotName;
+            _resultValue.sourceDiskType = sourceDiskType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -145,14 +145,14 @@ public final class GetDdosCooPortsPort {
             return realServers(List.of(realServers));
         }
         public GetDdosCooPortsPort build() {
-            final var o = new GetDdosCooPortsPort();
-            o.backendPort = backendPort;
-            o.frontendPort = frontendPort;
-            o.frontendProtocol = frontendProtocol;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.realServers = realServers;
-            return o;
+            final var _resultValue = new GetDdosCooPortsPort();
+            _resultValue.backendPort = backendPort;
+            _resultValue.frontendPort = frontendPort;
+            _resultValue.frontendProtocol = frontendProtocol;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.realServers = realServers;
+            return _resultValue;
         }
     }
 }

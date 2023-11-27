@@ -85,11 +85,11 @@ public final class GetTlsCipherPoliciesPolicyRelateListener {
             return this;
         }
         public GetTlsCipherPoliciesPolicyRelateListener build() {
-            final var o = new GetTlsCipherPoliciesPolicyRelateListener();
-            o.loadBalancerId = loadBalancerId;
-            o.port = port;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new GetTlsCipherPoliciesPolicyRelateListener();
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

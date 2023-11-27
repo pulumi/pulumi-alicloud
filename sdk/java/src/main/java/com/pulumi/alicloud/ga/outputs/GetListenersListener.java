@@ -207,17 +207,17 @@ public final class GetListenersListener {
             return this;
         }
         public GetListenersListener build() {
-            final var o = new GetListenersListener();
-            o.certificates = certificates;
-            o.clientAffinity = clientAffinity;
-            o.description = description;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.name = name;
-            o.portRanges = portRanges;
-            o.protocol = protocol;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetListenersListener();
+            _resultValue.certificates = certificates;
+            _resultValue.clientAffinity = clientAffinity;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.listenerId = listenerId;
+            _resultValue.name = name;
+            _resultValue.portRanges = portRanges;
+            _resultValue.protocol = protocol;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

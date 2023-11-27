@@ -67,10 +67,10 @@ public final class ConnectionAuthParametersOauthParametersClientParameters {
             return this;
         }
         public ConnectionAuthParametersOauthParametersClientParameters build() {
-            final var o = new ConnectionAuthParametersOauthParametersClientParameters();
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            return o;
+            final var _resultValue = new ConnectionAuthParametersOauthParametersClientParameters();
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            return _resultValue;
         }
     }
 }

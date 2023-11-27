@@ -93,7 +93,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The name of Project.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -107,7 +107,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `alicloud.ram.Role`.
      * 
      */
-    @Export(name="serviceRole", type=String.class, parameters={})
+    @Export(name="serviceRole", refs={String.class}, tree="[0]")
     private Output<String> serviceRole;
 
     /**

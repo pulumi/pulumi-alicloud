@@ -67,10 +67,10 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpress {
             return this;
         }
         public HybridMonitorSlsTaskSlsProcessConfigExpress build() {
-            final var o = new HybridMonitorSlsTaskSlsProcessConfigExpress();
-            o.alias = alias;
-            o.express = express;
-            return o;
+            final var _resultValue = new HybridMonitorSlsTaskSlsProcessConfigExpress();
+            _resultValue.alias = alias;
+            _resultValue.express = express;
+            return _resultValue;
         }
     }
 }

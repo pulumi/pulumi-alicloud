@@ -145,17 +145,17 @@ public final class GetDeviceGroupsResult {
             return this;
         }
         public GetDeviceGroupsResult build() {
-            final var o = new GetDeviceGroupsResult();
-            o.enableDetails = enableDetails;
-            o.groupName = groupName;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.iotInstanceId = iotInstanceId;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.superGroupId = superGroupId;
-            return o;
+            final var _resultValue = new GetDeviceGroupsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.groupName = groupName;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.iotInstanceId = iotInstanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.outputFile = outputFile;
+            _resultValue.superGroupId = superGroupId;
+            return _resultValue;
         }
     }
 }

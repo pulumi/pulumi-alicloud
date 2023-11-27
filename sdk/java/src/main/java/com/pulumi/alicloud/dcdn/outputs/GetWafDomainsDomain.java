@@ -108,12 +108,12 @@ public final class GetWafDomainsDomain {
             return this;
         }
         public GetWafDomainsDomain build() {
-            final var o = new GetWafDomainsDomain();
-            o.clientIpTag = clientIpTag;
-            o.defenseScenes = defenseScenes;
-            o.domainName = domainName;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetWafDomainsDomain();
+            _resultValue.clientIpTag = clientIpTag;
+            _resultValue.defenseScenes = defenseScenes;
+            _resultValue.domainName = domainName;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

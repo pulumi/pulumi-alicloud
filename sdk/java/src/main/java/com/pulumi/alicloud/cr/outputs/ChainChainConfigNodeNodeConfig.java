@@ -51,9 +51,9 @@ public final class ChainChainConfigNodeNodeConfig {
             return denyPolicies(List.of(denyPolicies));
         }
         public ChainChainConfigNodeNodeConfig build() {
-            final var o = new ChainChainConfigNodeNodeConfig();
-            o.denyPolicies = denyPolicies;
-            return o;
+            final var _resultValue = new ChainChainConfigNodeNodeConfig();
+            _resultValue.denyPolicies = denyPolicies;
+            return _resultValue;
         }
     }
 }

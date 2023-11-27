@@ -37,7 +37,7 @@ public class ScimServerCredential extends com.pulumi.resources.CustomResource {
      * The CredentialId of the resource.
      * 
      */
-    @Export(name="credentialId", type=String.class, parameters={})
+    @Export(name="credentialId", refs={String.class}, tree="[0]")
     private Output<String> credentialId;
 
     /**
@@ -51,7 +51,7 @@ public class ScimServerCredential extends com.pulumi.resources.CustomResource {
      * The ID of the Directory.
      * 
      */
-    @Export(name="directoryId", type=String.class, parameters={})
+    @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output<String> directoryId;
 
     /**
@@ -65,7 +65,7 @@ public class ScimServerCredential extends com.pulumi.resources.CustomResource {
      * The Status of the resource. Valid values: `Disabled`, `Enabled`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -148,14 +148,14 @@ public final class K8sSlbAttachmentSlbConfig {
             return this;
         }
         public K8sSlbAttachmentSlbConfig build() {
-            final var o = new K8sSlbAttachmentSlbConfig();
-            o.name = name;
-            o.portMappings = portMappings;
-            o.scheduler = scheduler;
-            o.slbId = slbId;
-            o.specification = specification;
-            o.type = type;
-            return o;
+            final var _resultValue = new K8sSlbAttachmentSlbConfig();
+            _resultValue.name = name;
+            _resultValue.portMappings = portMappings;
+            _resultValue.scheduler = scheduler;
+            _resultValue.slbId = slbId;
+            _resultValue.specification = specification;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

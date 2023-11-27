@@ -73,7 +73,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * The destination CIDR block.
      * 
      */
-    @Export(name="cidrBlock", type=String.class, parameters={})
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
@@ -87,7 +87,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * The ID of the SAG instance.
      * 
      */
-    @Export(name="sagId", type=String.class, parameters={})
+    @Export(name="sagId", refs={String.class}, tree="[0]")
     private Output<String> sagId;
 
     /**
@@ -101,7 +101,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * The public IP address.
      * 
      */
-    @Export(name="snatIp", type=String.class, parameters={})
+    @Export(name="snatIp", refs={String.class}, tree="[0]")
     private Output<String> snatIp;
 
     /**

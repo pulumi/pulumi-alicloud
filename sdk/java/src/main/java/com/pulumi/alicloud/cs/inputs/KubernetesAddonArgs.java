@@ -65,12 +65,28 @@ public final class KubernetesAddonArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The version of the component.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return The version of the component.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private KubernetesAddonArgs() {}
 
     private KubernetesAddonArgs(KubernetesAddonArgs $) {
         this.config = $.config;
         this.disabled = $.disabled;
         this.name = $.name;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -156,6 +172,27 @@ public final class KubernetesAddonArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param version The version of the component.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version The version of the component.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public KubernetesAddonArgs build() {

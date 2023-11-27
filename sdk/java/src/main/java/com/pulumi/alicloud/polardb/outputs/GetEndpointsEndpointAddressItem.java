@@ -141,14 +141,14 @@ public final class GetEndpointsEndpointAddressItem {
             return this;
         }
         public GetEndpointsEndpointAddressItem build() {
-            final var o = new GetEndpointsEndpointAddressItem();
-            o.connectionString = connectionString;
-            o.ipAddress = ipAddress;
-            o.netType = netType;
-            o.port = port;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetEndpointsEndpointAddressItem();
+            _resultValue.connectionString = connectionString;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.netType = netType;
+            _resultValue.port = port;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

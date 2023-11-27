@@ -48,9 +48,9 @@ public final class ContainerGroupContainerLivenessProbeTcpSocket {
             return this;
         }
         public ContainerGroupContainerLivenessProbeTcpSocket build() {
-            final var o = new ContainerGroupContainerLivenessProbeTcpSocket();
-            o.port = port;
-            return o;
+            final var _resultValue = new ContainerGroupContainerLivenessProbeTcpSocket();
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

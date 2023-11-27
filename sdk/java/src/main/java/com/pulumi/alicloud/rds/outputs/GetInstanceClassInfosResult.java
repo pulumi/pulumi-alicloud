@@ -138,15 +138,15 @@ public final class GetInstanceClassInfosResult {
             return this;
         }
         public GetInstanceClassInfosResult build() {
-            final var o = new GetInstanceClassInfosResult();
-            o.commodityCode = commodityCode;
-            o.dbInstanceId = dbInstanceId;
-            o.id = id;
-            o.ids = ids;
-            o.infos = infos;
-            o.orderType = orderType;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetInstanceClassInfosResult();
+            _resultValue.commodityCode = commodityCode;
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.infos = infos;
+            _resultValue.orderType = orderType;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

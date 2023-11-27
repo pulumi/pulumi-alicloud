@@ -122,13 +122,13 @@ public final class GetUserGroupsGroup {
             return this;
         }
         public GetUserGroupsGroup build() {
-            final var o = new GetUserGroupsGroup();
-            o.comment = comment;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.userGroupId = userGroupId;
-            o.userGroupName = userGroupName;
-            return o;
+            final var _resultValue = new GetUserGroupsGroup();
+            _resultValue.comment = comment;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.userGroupId = userGroupId;
+            _resultValue.userGroupName = userGroupName;
+            return _resultValue;
         }
     }
 }

@@ -146,14 +146,14 @@ public final class GetHoneypotPresetsPreset {
             return this;
         }
         public GetHoneypotPresetsPreset build() {
-            final var o = new GetHoneypotPresetsPreset();
-            o.honeypotImageName = honeypotImageName;
-            o.honeypotPresetId = honeypotPresetId;
-            o.id = id;
-            o.metas = metas;
-            o.nodeId = nodeId;
-            o.presetName = presetName;
-            return o;
+            final var _resultValue = new GetHoneypotPresetsPreset();
+            _resultValue.honeypotImageName = honeypotImageName;
+            _resultValue.honeypotPresetId = honeypotPresetId;
+            _resultValue.id = id;
+            _resultValue.metas = metas;
+            _resultValue.nodeId = nodeId;
+            _resultValue.presetName = presetName;
+            return _resultValue;
         }
     }
 }

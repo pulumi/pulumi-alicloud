@@ -60,11 +60,11 @@ public final class GetInstanceTypesInstanceTypeLocalStorage {
             return this;
         }
         public GetInstanceTypesInstanceTypeLocalStorage build() {
-            final var o = new GetInstanceTypesInstanceTypeLocalStorage();
-            o.amount = amount;
-            o.capacity = capacity;
-            o.category = category;
-            return o;
+            final var _resultValue = new GetInstanceTypesInstanceTypeLocalStorage();
+            _resultValue.amount = amount;
+            _resultValue.capacity = capacity;
+            _resultValue.category = category;
+            return _resultValue;
         }
     }
 }

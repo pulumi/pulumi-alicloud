@@ -69,10 +69,10 @@ public final class GetZonesZone {
             return multiZoneIds(List.of(multiZoneIds));
         }
         public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.id = id;
-            o.multiZoneIds = multiZoneIds;
-            return o;
+            final var _resultValue = new GetZonesZone();
+            _resultValue.id = id;
+            _resultValue.multiZoneIds = multiZoneIds;
+            return _resultValue;
         }
     }
 }

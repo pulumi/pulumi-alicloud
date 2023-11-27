@@ -84,11 +84,11 @@ public final class ClusterNodeGroupCostOptimizedConfig {
             return this;
         }
         public ClusterNodeGroupCostOptimizedConfig build() {
-            final var o = new ClusterNodeGroupCostOptimizedConfig();
-            o.onDemandBaseCapacity = onDemandBaseCapacity;
-            o.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
-            o.spotInstancePools = spotInstancePools;
-            return o;
+            final var _resultValue = new ClusterNodeGroupCostOptimizedConfig();
+            _resultValue.onDemandBaseCapacity = onDemandBaseCapacity;
+            _resultValue.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
+            _resultValue.spotInstancePools = spotInstancePools;
+            return _resultValue;
         }
     }
 }

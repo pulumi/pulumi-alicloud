@@ -163,15 +163,15 @@ public final class SearchIndexSchemaFieldSchema {
             return this;
         }
         public SearchIndexSchemaFieldSchema build() {
-            final var o = new SearchIndexSchemaFieldSchema();
-            o.analyzer = analyzer;
-            o.enableSortAndAgg = enableSortAndAgg;
-            o.fieldName = fieldName;
-            o.fieldType = fieldType;
-            o.index = index;
-            o.isArray = isArray;
-            o.store = store;
-            return o;
+            final var _resultValue = new SearchIndexSchemaFieldSchema();
+            _resultValue.analyzer = analyzer;
+            _resultValue.enableSortAndAgg = enableSortAndAgg;
+            _resultValue.fieldName = fieldName;
+            _resultValue.fieldType = fieldType;
+            _resultValue.index = index;
+            _resultValue.isArray = isArray;
+            _resultValue.store = store;
+            return _resultValue;
         }
     }
 }

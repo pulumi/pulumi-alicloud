@@ -65,10 +65,10 @@ public final class GetMetricRuleBlackListsListMetric {
             return this;
         }
         public GetMetricRuleBlackListsListMetric build() {
-            final var o = new GetMetricRuleBlackListsListMetric();
-            o.metricName = metricName;
-            o.resource = resource;
-            return o;
+            final var _resultValue = new GetMetricRuleBlackListsListMetric();
+            _resultValue.metricName = metricName;
+            _resultValue.resource = resource;
+            return _resultValue;
         }
     }
 }

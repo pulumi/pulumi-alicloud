@@ -95,7 +95,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Name of your EDAS application. Only letters &#39;-&#39; &#39;_&#39; and numbers are allowed. The length cannot exceed 36 characters.
      * 
      */
-    @Export(name="applicationName", type=String.class, parameters={})
+    @Export(name="applicationName", refs={String.class}, tree="[0]")
     private Output<String> applicationName;
 
     /**
@@ -109,7 +109,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the &#34;Pack ID&#34; column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
      * 
      */
-    @Export(name="buildPackId", type=Integer.class, parameters={})
+    @Export(name="buildPackId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> buildPackId;
 
     /**
@@ -123,7 +123,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -137,7 +137,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The description of the application that you want to create.
      * 
      */
-    @Export(name="descriotion", type=String.class, parameters={})
+    @Export(name="descriotion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> descriotion;
 
     /**
@@ -151,7 +151,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
      * 
      */
-    @Export(name="ecuInfos", type=List.class, parameters={String.class})
+    @Export(name="ecuInfos", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ecuInfos;
 
     /**
@@ -165,7 +165,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupId;
 
     /**
@@ -179,7 +179,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The URL for health checking of the application.
      * 
      */
-    @Export(name="healthCheckUrl", type=String.class, parameters={})
+    @Export(name="healthCheckUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckUrl;
 
     /**
@@ -193,7 +193,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
      * 
      */
-    @Export(name="logicalRegionId", type=String.class, parameters={})
+    @Export(name="logicalRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logicalRegionId;
 
     /**
@@ -207,7 +207,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
      * 
      */
-    @Export(name="packageType", type=String.class, parameters={})
+    @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
@@ -221,7 +221,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
      * 
      */
-    @Export(name="packageVersion", type=String.class, parameters={})
+    @Export(name="packageVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> packageVersion;
 
     /**
@@ -235,7 +235,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
      * 
      */
-    @Export(name="warUrl", type=String.class, parameters={})
+    @Export(name="warUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warUrl;
 
     /**

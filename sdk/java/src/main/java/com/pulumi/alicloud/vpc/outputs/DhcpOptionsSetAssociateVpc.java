@@ -67,10 +67,10 @@ public final class DhcpOptionsSetAssociateVpc {
             return this;
         }
         public DhcpOptionsSetAssociateVpc build() {
-            final var o = new DhcpOptionsSetAssociateVpc();
-            o.associateStatus = associateStatus;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new DhcpOptionsSetAssociateVpc();
+            _resultValue.associateStatus = associateStatus;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

@@ -104,7 +104,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
      * 
      */
-    @Export(name="customImageName", type=String.class, parameters={})
+    @Export(name="customImageName", refs={String.class}, tree="[0]")
     private Output<String> customImageName;
 
     /**
@@ -118,7 +118,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * The description of the Custom Image.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -132,7 +132,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -148,7 +148,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -164,7 +164,7 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
      * The ID of the system snapshot.
      * 
      */
-    @Export(name="systemSnapshotId", type=String.class, parameters={})
+    @Export(name="systemSnapshotId", refs={String.class}, tree="[0]")
     private Output<String> systemSnapshotId;
 
     /**

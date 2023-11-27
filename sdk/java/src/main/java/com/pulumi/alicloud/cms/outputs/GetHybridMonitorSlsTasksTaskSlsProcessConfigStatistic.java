@@ -122,13 +122,13 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
             return this;
         }
         public GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic build() {
-            final var o = new GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic();
-            o.alias = alias;
-            o.function = function;
-            o.parameterOne = parameterOne;
-            o.parameterTwo = parameterTwo;
-            o.slsKeyName = slsKeyName;
-            return o;
+            final var _resultValue = new GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic();
+            _resultValue.alias = alias;
+            _resultValue.function = function;
+            _resultValue.parameterOne = parameterOne;
+            _resultValue.parameterTwo = parameterTwo;
+            _resultValue.slsKeyName = slsKeyName;
+            return _resultValue;
         }
     }
 }

@@ -237,19 +237,19 @@ public final class GetServerDisksDisk {
             return this;
         }
         public GetServerDisksDisk build() {
-            final var o = new GetServerDisksDisk();
-            o.category = category;
-            o.createTime = createTime;
-            o.device = device;
-            o.diskId = diskId;
-            o.diskName = diskName;
-            o.diskType = diskType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.paymentType = paymentType;
-            o.size = size;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetServerDisksDisk();
+            _resultValue.category = category;
+            _resultValue.createTime = createTime;
+            _resultValue.device = device;
+            _resultValue.diskId = diskId;
+            _resultValue.diskName = diskName;
+            _resultValue.diskType = diskType;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.paymentType = paymentType;
+            _resultValue.size = size;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -181,7 +181,7 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
      * The ID of the consumer group.
      * 
      */
-    @Export(name="consumerGroupId", type=String.class, parameters={})
+    @Export(name="consumerGroupId", refs={String.class}, tree="[0]")
     private Output<String> consumerGroupId;
 
     /**
@@ -195,7 +195,7 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
      * The name of the consumer group.
      * 
      */
-    @Export(name="consumerGroupName", type=String.class, parameters={})
+    @Export(name="consumerGroupName", refs={String.class}, tree="[0]")
     private Output<String> consumerGroupName;
 
     /**
@@ -209,7 +209,7 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
      * The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
      * 
      */
-    @Export(name="consumerGroupPassword", type=String.class, parameters={})
+    @Export(name="consumerGroupPassword", refs={String.class}, tree="[0]")
     private Output<String> consumerGroupPassword;
 
     /**
@@ -223,7 +223,7 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
      * The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
      * 
      */
-    @Export(name="consumerGroupUserName", type=String.class, parameters={})
+    @Export(name="consumerGroupUserName", refs={String.class}, tree="[0]")
     private Output<String> consumerGroupUserName;
 
     /**
@@ -237,7 +237,7 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
      * The ID of the subscription instance.
      * 
      */
-    @Export(name="dtsInstanceId", type=String.class, parameters={})
+    @Export(name="dtsInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dtsInstanceId;
 
     /**

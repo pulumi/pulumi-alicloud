@@ -215,20 +215,20 @@ public final class GetEcsKeyPairsPairInstance {
             return this;
         }
         public GetEcsKeyPairsPairInstance build() {
-            final var o = new GetEcsKeyPairsPairInstance();
-            o.availabilityZone = availabilityZone;
-            o.description = description;
-            o.imageId = imageId;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.instanceType = instanceType;
-            o.keyName = keyName;
-            o.privateIp = privateIp;
-            o.publicIp = publicIp;
-            o.regionId = regionId;
-            o.status = status;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetEcsKeyPairsPairInstance();
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.description = description;
+            _resultValue.imageId = imageId;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.instanceType = instanceType;
+            _resultValue.keyName = keyName;
+            _resultValue.privateIp = privateIp;
+            _resultValue.publicIp = publicIp;
+            _resultValue.regionId = regionId;
+            _resultValue.status = status;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

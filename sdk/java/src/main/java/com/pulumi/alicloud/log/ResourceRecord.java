@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
  * 
- * &gt; **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
+ * &gt; **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
  * 
  * ## Example Usage
  * 
@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Resource;
+ * import com.pulumi.alicloud.log.ResourceArgs;
  * import com.pulumi.alicloud.log.ResourceRecord;
  * import com.pulumi.alicloud.log.ResourceRecordArgs;
  * import java.util.List;
@@ -44,11 +46,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ResourceRecord(&#34;example&#34;, ResourceRecordArgs.builder()        
- *             .recordId(&#34;user_tf_test_resource_1&#34;)
- *             .resourceName(&#34;user.tf.test_resource&#34;)
- *             .tag(&#34;test resource tag&#34;)
- *             .value(&#34;{\&#34;col1\&#34;: \&#34;this is col1 value\&#34;, \&#34;col2\&#34;: \&#34;col2 value\&#34;}&#34;)
+ *         var exampleResource = new Resource(&#34;exampleResource&#34;, ResourceArgs.builder()        
+ *             .type(&#34;userdefine&#34;)
+ *             .description(&#34;user tf resource desc&#34;)
+ *             .extInfo(&#34;{}&#34;)
+ *             .schema(&#34;&#34;&#34;
+ *     {
+ *       &#34;schema&#34;: [
+ *         {
+ *           &#34;column&#34;: &#34;col1&#34;,
+ *           &#34;desc&#34;: &#34;col1   desc&#34;,
+ *           &#34;ext_info&#34;: {
+ *           },
+ *           &#34;required&#34;: true,
+ *           &#34;type&#34;: &#34;string&#34;
+ *         },
+ *         {
+ *           &#34;column&#34;: &#34;col2&#34;,
+ *           &#34;desc&#34;: &#34;col2   desc&#34;,
+ *           &#34;ext_info&#34;: &#34;optional&#34;,
+ *           &#34;required&#34;: true,
+ *           &#34;type&#34;: &#34;string&#34;
+ *         }
+ *       ]
+ *     }
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var exampleResourceRecord = new ResourceRecord(&#34;exampleResourceRecord&#34;, ResourceRecordArgs.builder()        
+ *             .resourceName(exampleResource.id())
+ *             .recordId(&#34;user_tf_resource_1&#34;)
+ *             .tag(&#34;resource tag&#34;)
+ *             .value(&#34;&#34;&#34;
+ *     {
+ *       &#34;col1&#34;: &#34;this is col1 value&#34;,
+ *       &#34;col2&#34;: &#34;col2   value&#34;
+ *     }
+ *             &#34;&#34;&#34;)
  *             .build());
  * 
  *     }
@@ -60,7 +94,7 @@ import javax.annotation.Nullable;
  * Log resource record can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:log/resourceRecord:ResourceRecord example user.tf.test_resource:user_tf_test_resource_1
+ *  $ pulumi import alicloud:log/resourceRecord:ResourceRecord example &lt;resource_name&gt;:&lt;record_id&gt;
  * ```
  * 
  */
@@ -70,7 +104,7 @@ public class ResourceRecord extends com.pulumi.resources.CustomResource {
      * The record&#39;s id, should be unique.
      * 
      */
-    @Export(name="recordId", type=String.class, parameters={})
+    @Export(name="recordId", refs={String.class}, tree="[0]")
     private Output<String> recordId;
 
     /**
@@ -84,7 +118,7 @@ public class ResourceRecord extends com.pulumi.resources.CustomResource {
      * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
      * 
      */
-    @Export(name="resourceName", type=String.class, parameters={})
+    @Export(name="resourceName", refs={String.class}, tree="[0]")
     private Output<String> resourceName;
 
     /**
@@ -98,7 +132,7 @@ public class ResourceRecord extends com.pulumi.resources.CustomResource {
      * The record&#39;s tag, can be used for search.
      * 
      */
-    @Export(name="tag", type=String.class, parameters={})
+    @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
@@ -112,7 +146,7 @@ public class ResourceRecord extends com.pulumi.resources.CustomResource {
      * The json value of record.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

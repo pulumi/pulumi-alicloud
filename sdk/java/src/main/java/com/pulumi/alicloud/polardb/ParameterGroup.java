@@ -77,7 +77,7 @@ public class ParameterGroup extends com.pulumi.resources.CustomResource {
      * The type of the database engine. Only `MySQL` is supported.
      * 
      */
-    @Export(name="dbType", type=String.class, parameters={})
+    @Export(name="dbType", refs={String.class}, tree="[0]")
     private Output<String> dbType;
 
     /**
@@ -91,7 +91,7 @@ public class ParameterGroup extends com.pulumi.resources.CustomResource {
      * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      * 
      */
-    @Export(name="dbVersion", type=String.class, parameters={})
+    @Export(name="dbVersion", refs={String.class}, tree="[0]")
     private Output<String> dbVersion;
 
     /**
@@ -105,7 +105,7 @@ public class ParameterGroup extends com.pulumi.resources.CustomResource {
      * The description of the parameter template. It must be 0 to 200 characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -119,7 +119,7 @@ public class ParameterGroup extends com.pulumi.resources.CustomResource {
      * The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -133,7 +133,7 @@ public class ParameterGroup extends com.pulumi.resources.CustomResource {
      * The parameter template. See the following `Block parameters`.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={ParameterGroupParameter.class})
+    @Export(name="parameters", refs={List.class,ParameterGroupParameter.class}, tree="[0,1]")
     private Output<List<ParameterGroupParameter>> parameters;
 
     /**

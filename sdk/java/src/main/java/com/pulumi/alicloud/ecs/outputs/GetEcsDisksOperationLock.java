@@ -40,9 +40,9 @@ public final class GetEcsDisksOperationLock {
             return this;
         }
         public GetEcsDisksOperationLock build() {
-            final var o = new GetEcsDisksOperationLock();
-            o.lockReason = lockReason;
-            return o;
+            final var _resultValue = new GetEcsDisksOperationLock();
+            _resultValue.lockReason = lockReason;
+            return _resultValue;
         }
     }
 }

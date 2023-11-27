@@ -76,7 +76,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The description of the template. The description can be up to 256 characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -90,7 +90,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -104,7 +104,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
      * 
      */
-    @Export(name="templateBody", type=String.class, parameters={})
+    @Export(name="templateBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateBody;
 
     /**
@@ -118,7 +118,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      * 
      */
-    @Export(name="templateName", type=String.class, parameters={})
+    @Export(name="templateName", refs={String.class}, tree="[0]")
     private Output<String> templateName;
 
     /**
@@ -132,7 +132,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The template url.
      * 
      */
-    @Export(name="templateUrl", type=String.class, parameters={})
+    @Export(name="templateUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateUrl;
 
     /**

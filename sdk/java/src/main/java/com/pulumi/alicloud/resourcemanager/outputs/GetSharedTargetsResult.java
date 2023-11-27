@@ -135,14 +135,14 @@ public final class GetSharedTargetsResult {
             return targets(List.of(targets));
         }
         public GetSharedTargetsResult build() {
-            final var o = new GetSharedTargetsResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.resourceShareId = resourceShareId;
-            o.status = status;
-            o.targets = targets;
-            return o;
+            final var _resultValue = new GetSharedTargetsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceShareId = resourceShareId;
+            _resultValue.status = status;
+            _resultValue.targets = targets;
+            return _resultValue;
         }
     }
 }

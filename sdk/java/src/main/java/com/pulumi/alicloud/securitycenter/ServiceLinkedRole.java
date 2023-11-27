@@ -64,7 +64,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
      * 
      */
-    @Export(name="status", type=Boolean.class, parameters={})
+    @Export(name="status", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> status;
 
     /**

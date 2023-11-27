@@ -179,16 +179,16 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.createTime = createTime;
-            o.endTime = endTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.paymentType = paymentType;
-            o.renewalDurationUnit = renewalDurationUnit;
-            o.renewalStatus = renewalStatus;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.createTime = createTime;
+            _resultValue.endTime = endTime;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.paymentType = paymentType;
+            _resultValue.renewalDurationUnit = renewalDurationUnit;
+            _resultValue.renewalStatus = renewalStatus;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

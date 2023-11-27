@@ -116,13 +116,13 @@ public final class GetQueuesResult {
             return queues(List.of(queues));
         }
         public GetQueuesResult build() {
-            final var o = new GetQueuesResult();
-            o.id = id;
-            o.namePrefix = namePrefix;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.queues = queues;
-            return o;
+            final var _resultValue = new GetQueuesResult();
+            _resultValue.id = id;
+            _resultValue.namePrefix = namePrefix;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.queues = queues;
+            return _resultValue;
         }
     }
 }

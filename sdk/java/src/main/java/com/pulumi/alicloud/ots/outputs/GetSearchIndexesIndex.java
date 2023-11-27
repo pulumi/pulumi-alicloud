@@ -275,21 +275,21 @@ public final class GetSearchIndexesIndex {
             return this;
         }
         public GetSearchIndexesIndex build() {
-            final var o = new GetSearchIndexesIndex();
-            o.createTime = createTime;
-            o.currentSyncTimestamp = currentSyncTimestamp;
-            o.id = id;
-            o.indexName = indexName;
-            o.instanceName = instanceName;
-            o.meteringLastUpdateTime = meteringLastUpdateTime;
-            o.reservedReadCu = reservedReadCu;
-            o.rowCount = rowCount;
-            o.schema = schema;
-            o.storageSize = storageSize;
-            o.syncPhase = syncPhase;
-            o.tableName = tableName;
-            o.timeToLive = timeToLive;
-            return o;
+            final var _resultValue = new GetSearchIndexesIndex();
+            _resultValue.createTime = createTime;
+            _resultValue.currentSyncTimestamp = currentSyncTimestamp;
+            _resultValue.id = id;
+            _resultValue.indexName = indexName;
+            _resultValue.instanceName = instanceName;
+            _resultValue.meteringLastUpdateTime = meteringLastUpdateTime;
+            _resultValue.reservedReadCu = reservedReadCu;
+            _resultValue.rowCount = rowCount;
+            _resultValue.schema = schema;
+            _resultValue.storageSize = storageSize;
+            _resultValue.syncPhase = syncPhase;
+            _resultValue.tableName = tableName;
+            _resultValue.timeToLive = timeToLive;
+            return _resultValue;
         }
     }
 }

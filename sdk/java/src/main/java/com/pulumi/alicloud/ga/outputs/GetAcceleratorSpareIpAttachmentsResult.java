@@ -111,14 +111,14 @@ public final class GetAcceleratorSpareIpAttachmentsResult {
             return this;
         }
         public GetAcceleratorSpareIpAttachmentsResult build() {
-            final var o = new GetAcceleratorSpareIpAttachmentsResult();
-            o.acceleratorId = acceleratorId;
-            o.attachments = attachments;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAcceleratorSpareIpAttachmentsResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.attachments = attachments;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -83,6 +83,8 @@ export class NetworkInterface extends pulumi.CustomResource {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly ipv4PrefixCount!: pulumi.Output<number>;
+    public readonly ipv4Prefixes!: pulumi.Output<string[]>;
     public readonly ipv6AddressCount!: pulumi.Output<number>;
     public readonly ipv6Addresses!: pulumi.Output<string[]>;
     /**
@@ -153,6 +155,8 @@ export class NetworkInterface extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NetworkInterfaceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipv4PrefixCount"] = state ? state.ipv4PrefixCount : undefined;
+            resourceInputs["ipv4Prefixes"] = state ? state.ipv4Prefixes : undefined;
             resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
             resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
             resourceInputs["mac"] = state ? state.mac : undefined;
@@ -177,6 +181,8 @@ export class NetworkInterface extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipv4PrefixCount"] = args ? args.ipv4PrefixCount : undefined;
+            resourceInputs["ipv4Prefixes"] = args ? args.ipv4Prefixes : undefined;
             resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
             resourceInputs["ipv6Addresses"] = args ? args.ipv6Addresses : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -209,6 +215,8 @@ export interface NetworkInterfaceState {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
+    ipv4PrefixCount?: pulumi.Input<number>;
+    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     ipv6AddressCount?: pulumi.Input<number>;
     ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -274,6 +282,8 @@ export interface NetworkInterfaceArgs {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
+    ipv4PrefixCount?: pulumi.Input<number>;
+    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     ipv6AddressCount?: pulumi.Input<number>;
     ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**

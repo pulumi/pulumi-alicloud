@@ -85,11 +85,11 @@ public final class GetWafRulesWafRuleRateLimitStatus {
             return this;
         }
         public GetWafRulesWafRuleRateLimitStatus build() {
-            final var o = new GetWafRulesWafRuleRateLimitStatus();
-            o.code = code;
-            o.count = count;
-            o.ratio = ratio;
-            return o;
+            final var _resultValue = new GetWafRulesWafRuleRateLimitStatus();
+            _resultValue.code = code;
+            _resultValue.count = count;
+            _resultValue.ratio = ratio;
+            return _resultValue;
         }
     }
 }

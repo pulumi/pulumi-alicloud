@@ -131,7 +131,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountPassword;
 
     /**
@@ -145,7 +145,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * Auto renew for prepaid, true of false. Default is false.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -159,7 +159,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      * 
      */
-    @Export(name="backupPeriods", type=List.class, parameters={String.class})
+    @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
     /**
@@ -173,7 +173,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
-    @Export(name="backupTime", type=String.class, parameters={})
+    @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
     /**
@@ -187,7 +187,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The node information list of config server. See `config_server_list` below.
      * 
      */
-    @Export(name="configServerLists", type=List.class, parameters={ShardingInstanceConfigServerList.class})
+    @Export(name="configServerLists", refs={List.class,ShardingInstanceConfigServerList.class}, tree="[0,1]")
     private Output<List<ShardingInstanceConfigServerList>> configServerLists;
 
     /**
@@ -201,7 +201,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -215,7 +215,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
@@ -229,7 +229,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -243,7 +243,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -257,7 +257,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
      * 
      */
-    @Export(name="mongoLists", type=List.class, parameters={ShardingInstanceMongoList.class})
+    @Export(name="mongoLists", refs={List.class,ShardingInstanceMongoList.class}, tree="[0,1]")
     private Output<List<ShardingInstanceMongoList>> mongoLists;
 
     /**
@@ -271,7 +271,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The name of DB instance. It a string of 2 to 256 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -285,7 +285,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
@@ -302,7 +302,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
      * 
      */
-    @Export(name="orderType", type=String.class, parameters={})
+    @Export(name="orderType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orderType;
 
     /**
@@ -319,7 +319,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
@@ -333,7 +333,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
      * 
      */
-    @Export(name="protocolType", type=String.class, parameters={})
+    @Export(name="protocolType", refs={String.class}, tree="[0]")
     private Output<String> protocolType;
 
     /**
@@ -347,7 +347,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The ID of the Resource Group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -358,14 +358,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+     * Instance data backup retention days. **NOTE:** Available in 1.42.0+.
      * 
      */
-    @Export(name="retentionPeriod", type=Integer.class, parameters={})
+    @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionPeriod;
 
     /**
-     * @return Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+     * @return Instance data backup retention days. **NOTE:** Available in 1.42.0+.
      * 
      */
     public Output<Integer> retentionPeriod() {
@@ -375,7 +375,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The Security Group ID of ECS.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -389,7 +389,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
      * 
      */
-    @Export(name="securityIpLists", type=List.class, parameters={String.class})
+    @Export(name="securityIpLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityIpLists;
 
     /**
@@ -403,7 +403,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
      * 
      */
-    @Export(name="shardLists", type=List.class, parameters={ShardingInstanceShardList.class})
+    @Export(name="shardLists", refs={List.class,ShardingInstanceShardList.class}, tree="[0,1]")
     private Output<List<ShardingInstanceShardList>> shardLists;
 
     /**
@@ -417,7 +417,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      * 
      */
-    @Export(name="storageEngine", type=String.class, parameters={})
+    @Export(name="storageEngine", refs={String.class}, tree="[0]")
     private Output<String> storageEngine;
 
     /**
@@ -431,7 +431,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -445,7 +445,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
      * 
      */
-    @Export(name="tdeStatus", type=String.class, parameters={})
+    @Export(name="tdeStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tdeStatus;
 
     /**
@@ -459,7 +459,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -473,7 +473,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * The virtual switch ID to launch DB instances in one VPC.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -488,7 +488,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**

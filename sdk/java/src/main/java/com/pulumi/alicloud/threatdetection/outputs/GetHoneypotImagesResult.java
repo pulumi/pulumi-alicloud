@@ -149,15 +149,15 @@ public final class GetHoneypotImagesResult {
             return this;
         }
         public GetHoneypotImagesResult build() {
-            final var o = new GetHoneypotImagesResult();
-            o.id = id;
-            o.ids = ids;
-            o.images = images;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.nodeId = nodeId;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetHoneypotImagesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.images = images;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.nodeId = nodeId;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

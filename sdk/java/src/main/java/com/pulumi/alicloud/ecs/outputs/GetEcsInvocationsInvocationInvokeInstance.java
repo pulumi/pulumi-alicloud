@@ -302,23 +302,23 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
             return this;
         }
         public GetEcsInvocationsInvocationInvokeInstance build() {
-            final var o = new GetEcsInvocationsInvocationInvokeInstance();
-            o.creationTime = creationTime;
-            o.dropped = dropped;
-            o.errorCode = errorCode;
-            o.errorInfo = errorInfo;
-            o.exitCode = exitCode;
-            o.finishTime = finishTime;
-            o.instanceId = instanceId;
-            o.instanceInvokeStatus = instanceInvokeStatus;
-            o.invocationStatus = invocationStatus;
-            o.output = output;
-            o.repeats = repeats;
-            o.startTime = startTime;
-            o.stopTime = stopTime;
-            o.timed = timed;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetEcsInvocationsInvocationInvokeInstance();
+            _resultValue.creationTime = creationTime;
+            _resultValue.dropped = dropped;
+            _resultValue.errorCode = errorCode;
+            _resultValue.errorInfo = errorInfo;
+            _resultValue.exitCode = exitCode;
+            _resultValue.finishTime = finishTime;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceInvokeStatus = instanceInvokeStatus;
+            _resultValue.invocationStatus = invocationStatus;
+            _resultValue.output = output;
+            _resultValue.repeats = repeats;
+            _resultValue.startTime = startTime;
+            _resultValue.stopTime = stopTime;
+            _resultValue.timed = timed;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

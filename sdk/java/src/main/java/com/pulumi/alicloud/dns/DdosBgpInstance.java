@@ -43,7 +43,7 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -57,7 +57,7 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
      * Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
      * 
      */
-    @Export(name="baseBandwidth", type=Integer.class, parameters={})
+    @Export(name="baseBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> baseBandwidth;
 
     /**
@@ -71,7 +71,7 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
      * IP count of the instance. Valid values: 100.
      * 
      */
-    @Export(name="ipCount", type=Integer.class, parameters={})
+    @Export(name="ipCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipCount;
 
     /**
@@ -85,7 +85,7 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
      * IP version of the instance. Valid values: IPv4,IPv6.
      * 
      */
-    @Export(name="ipType", type=String.class, parameters={})
+    @Export(name="ipType", refs={String.class}, tree="[0]")
     private Output<String> ipType;
 
     /**
@@ -99,7 +99,7 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
      * Name of the instance. This name can have a string of 1 to 63 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -113,7 +113,7 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
      * Normal defend bandwidth of the instance. The unit is Gbps.
      * 
      */
-    @Export(name="normalBandwidth", type=Integer.class, parameters={})
+    @Export(name="normalBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> normalBandwidth;
 
     /**
@@ -127,7 +127,7 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
      * The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify &#34;period&#34;.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -141,7 +141,7 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
      * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

@@ -35,6 +35,36 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+     * 
+     */
+    @Import(name="ipv4PrefixCount")
+    private @Nullable Output<Integer> ipv4PrefixCount;
+
+    /**
+     * @return The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+     * 
+     */
+    public Optional<Output<Integer>> ipv4PrefixCount() {
+        return Optional.ofNullable(this.ipv4PrefixCount);
+    }
+
+    /**
+     * A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+     * 
+     */
+    @Import(name="ipv4Prefixes")
+    private @Nullable Output<List<String>> ipv4Prefixes;
+
+    /**
+     * @return A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+     * 
+     */
+    public Optional<Output<List<String>>> ipv4Prefixes() {
+        return Optional.ofNullable(this.ipv4Prefixes);
+    }
+
+    /**
      * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
      * 
      */
@@ -348,6 +378,8 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
 
     private EcsNetworkInterfaceState(EcsNetworkInterfaceState $) {
         this.description = $.description;
+        this.ipv4PrefixCount = $.ipv4PrefixCount;
+        this.ipv4Prefixes = $.ipv4Prefixes;
         this.ipv6AddressCount = $.ipv6AddressCount;
         this.ipv6Addresses = $.ipv6Addresses;
         this.mac = $.mac;
@@ -405,6 +437,58 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param ipv4PrefixCount The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4PrefixCount(@Nullable Output<Integer> ipv4PrefixCount) {
+            $.ipv4PrefixCount = ipv4PrefixCount;
+            return this;
+        }
+
+        /**
+         * @param ipv4PrefixCount The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4PrefixCount(Integer ipv4PrefixCount) {
+            return ipv4PrefixCount(Output.of(ipv4PrefixCount));
+        }
+
+        /**
+         * @param ipv4Prefixes A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4Prefixes(@Nullable Output<List<String>> ipv4Prefixes) {
+            $.ipv4Prefixes = ipv4Prefixes;
+            return this;
+        }
+
+        /**
+         * @param ipv4Prefixes A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4Prefixes(List<String> ipv4Prefixes) {
+            return ipv4Prefixes(Output.of(ipv4Prefixes));
+        }
+
+        /**
+         * @param ipv4Prefixes A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4Prefixes(String... ipv4Prefixes) {
+            return ipv4Prefixes(List.of(ipv4Prefixes));
         }
 
         /**

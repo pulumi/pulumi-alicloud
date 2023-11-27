@@ -46,7 +46,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
      * 
      */
-    @Export(name="checkpoint", type=String.class, parameters={})
+    @Export(name="checkpoint", refs={String.class}, tree="[0]")
     private Output<String> checkpoint;
 
     /**
@@ -60,7 +60,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="dataInitialization", type=Boolean.class, parameters={})
+    @Export(name="dataInitialization", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dataInitialization;
 
     /**
@@ -74,7 +74,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="dataSynchronization", type=Boolean.class, parameters={})
+    @Export(name="dataSynchronization", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dataSynchronization;
 
     /**
@@ -88,7 +88,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
      * 
      */
-    @Export(name="dbList", type=String.class, parameters={})
+    @Export(name="dbList", refs={String.class}, tree="[0]")
     private Output<String> dbList;
 
     /**
@@ -102,7 +102,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The delay notice. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="delayNotice", type=Boolean.class, parameters={})
+    @Export(name="delayNotice", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> delayNotice;
 
     /**
@@ -116,7 +116,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      * 
      */
-    @Export(name="delayPhone", type=String.class, parameters={})
+    @Export(name="delayPhone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> delayPhone;
 
     /**
@@ -130,7 +130,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      * 
      */
-    @Export(name="delayRuleTime", type=String.class, parameters={})
+    @Export(name="delayRuleTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> delayRuleTime;
 
     /**
@@ -144,7 +144,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="destinationEndpointDatabaseName", type=String.class, parameters={})
+    @Export(name="destinationEndpointDatabaseName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointDatabaseName;
 
     /**
@@ -158,7 +158,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
      * 
      */
-    @Export(name="destinationEndpointEngineName", type=String.class, parameters={})
+    @Export(name="destinationEndpointEngineName", refs={String.class}, tree="[0]")
     private Output<String> destinationEndpointEngineName;
 
     /**
@@ -175,7 +175,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
      * 
      */
-    @Export(name="destinationEndpointInstanceId", type=String.class, parameters={})
+    @Export(name="destinationEndpointInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointInstanceId;
 
     /**
@@ -192,7 +192,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      * 
      */
-    @Export(name="destinationEndpointInstanceType", type=String.class, parameters={})
+    @Export(name="destinationEndpointInstanceType", refs={String.class}, tree="[0]")
     private Output<String> destinationEndpointInstanceType;
 
     /**
@@ -206,7 +206,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="destinationEndpointIp", type=String.class, parameters={})
+    @Export(name="destinationEndpointIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointIp;
 
     /**
@@ -220,7 +220,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="destinationEndpointOracleSid", type=String.class, parameters={})
+    @Export(name="destinationEndpointOracleSid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointOracleSid;
 
     /**
@@ -234,7 +234,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The password of database account.
      * 
      */
-    @Export(name="destinationEndpointPassword", type=String.class, parameters={})
+    @Export(name="destinationEndpointPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointPassword;
 
     /**
@@ -248,7 +248,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="destinationEndpointPort", type=String.class, parameters={})
+    @Export(name="destinationEndpointPort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointPort;
 
     /**
@@ -262,7 +262,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
      * 
      */
-    @Export(name="destinationEndpointRegion", type=String.class, parameters={})
+    @Export(name="destinationEndpointRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointRegion;
 
     /**
@@ -276,7 +276,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      * 
      */
-    @Export(name="destinationEndpointUserName", type=String.class, parameters={})
+    @Export(name="destinationEndpointUserName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointUserName;
 
     /**
@@ -290,7 +290,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
      * 
      */
-    @Export(name="dtsInstanceId", type=String.class, parameters={})
+    @Export(name="dtsInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dtsInstanceId;
 
     /**
@@ -304,7 +304,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The name of synchronization job.
      * 
      */
-    @Export(name="dtsJobName", type=String.class, parameters={})
+    @Export(name="dtsJobName", refs={String.class}, tree="[0]")
     private Output<String> dtsJobName;
 
     /**
@@ -318,7 +318,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The error notice. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="errorNotice", type=Boolean.class, parameters={})
+    @Export(name="errorNotice", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> errorNotice;
 
     /**
@@ -332,7 +332,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      * 
      */
-    @Export(name="errorPhone", type=String.class, parameters={})
+    @Export(name="errorPhone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> errorPhone;
 
     /**
@@ -346,7 +346,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
@@ -360,7 +360,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
      * 
      */
-    @Export(name="reserve", type=String.class, parameters={})
+    @Export(name="reserve", refs={String.class}, tree="[0]")
     private Output<String> reserve;
 
     /**
@@ -374,7 +374,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
      * 
      */
-    @Export(name="sourceEndpointDatabaseName", type=String.class, parameters={})
+    @Export(name="sourceEndpointDatabaseName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointDatabaseName;
 
     /**
@@ -388,7 +388,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
      * 
      */
-    @Export(name="sourceEndpointEngineName", type=String.class, parameters={})
+    @Export(name="sourceEndpointEngineName", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointEngineName;
 
     /**
@@ -405,7 +405,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
      * 
      */
-    @Export(name="sourceEndpointInstanceId", type=String.class, parameters={})
+    @Export(name="sourceEndpointInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointInstanceId;
 
     /**
@@ -422,7 +422,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      * 
      */
-    @Export(name="sourceEndpointInstanceType", type=String.class, parameters={})
+    @Export(name="sourceEndpointInstanceType", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointInstanceType;
 
     /**
@@ -436,7 +436,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The IP of source endpoint. When `source_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="sourceEndpointIp", type=String.class, parameters={})
+    @Export(name="sourceEndpointIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointIp;
 
     /**
@@ -450,7 +450,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The SID of Oracle database. When the value of SourceEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="sourceEndpointOracleSid", type=String.class, parameters={})
+    @Export(name="sourceEndpointOracleSid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointOracleSid;
 
     /**
@@ -464,7 +464,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `source_endpoint_role` parameter.
      * 
      */
-    @Export(name="sourceEndpointOwnerId", type=String.class, parameters={})
+    @Export(name="sourceEndpointOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointOwnerId;
 
     /**
@@ -478,7 +478,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The password of database account.
      * 
      */
-    @Export(name="sourceEndpointPassword", type=String.class, parameters={})
+    @Export(name="sourceEndpointPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointPassword;
 
     /**
@@ -492,7 +492,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The port of source endpoint. When the source instance is a self-built database, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="sourceEndpointPort", type=String.class, parameters={})
+    @Export(name="sourceEndpointPort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointPort;
 
     /**
@@ -506,7 +506,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * Source instance area, please refer to the [list of supported areas](https://help.aliyun.com/document_detail/141033.htm) for details. Note if the source is an Alibaba Cloud database, this parameter must be passed in.
      * 
      */
-    @Export(name="sourceEndpointRegion", type=String.class, parameters={})
+    @Export(name="sourceEndpointRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointRegion;
 
     /**
@@ -520,7 +520,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
      * 
      */
-    @Export(name="sourceEndpointRole", type=String.class, parameters={})
+    @Export(name="sourceEndpointRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointRole;
 
     /**
@@ -534,7 +534,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      * 
      */
-    @Export(name="sourceEndpointUserName", type=String.class, parameters={})
+    @Export(name="sourceEndpointUserName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointUserName;
 
     /**
@@ -552,7 +552,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it&#39;s instance to keep them consistent.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -570,7 +570,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="structureInitialization", type=Boolean.class, parameters={})
+    @Export(name="structureInitialization", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> structureInitialization;
 
     /**
@@ -584,7 +584,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
      * 
      */
-    @Export(name="synchronizationDirection", type=String.class, parameters={})
+    @Export(name="synchronizationDirection", refs={String.class}, tree="[0]")
     private Output<String> synchronizationDirection;
 
     /**

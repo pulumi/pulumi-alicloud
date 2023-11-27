@@ -122,13 +122,13 @@ public final class GetHostGroupsGroup {
             return this;
         }
         public GetHostGroupsGroup build() {
-            final var o = new GetHostGroupsGroup();
-            o.comment = comment;
-            o.hostGroupId = hostGroupId;
-            o.hostGroupName = hostGroupName;
-            o.id = id;
-            o.instanceId = instanceId;
-            return o;
+            final var _resultValue = new GetHostGroupsGroup();
+            _resultValue.comment = comment;
+            _resultValue.hostGroupId = hostGroupId;
+            _resultValue.hostGroupName = hostGroupName;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            return _resultValue;
         }
     }
 }

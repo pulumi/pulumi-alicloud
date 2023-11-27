@@ -79,10 +79,10 @@ public final class EcsPrefixListEntry {
             return this;
         }
         public EcsPrefixListEntry build() {
-            final var o = new EcsPrefixListEntry();
-            o.cidr = cidr;
-            o.description = description;
-            return o;
+            final var _resultValue = new EcsPrefixListEntry();
+            _resultValue.cidr = cidr;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

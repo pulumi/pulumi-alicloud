@@ -105,7 +105,7 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
      * The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
      * 
      */
-    @Export(name="nextHop", type=String.class, parameters={})
+    @Export(name="nextHop", refs={String.class}, tree="[0]")
     private Output<String> nextHop;
 
     /**
@@ -119,7 +119,7 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
      * The type of the next hop. Valid values:
      * 
      */
-    @Export(name="nextHopType", type=String.class, parameters={})
+    @Export(name="nextHopType", refs={String.class}, tree="[0]")
     private Output<String> nextHopType;
 
     /**
@@ -133,7 +133,7 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
      * The ID of the Alibaba Cloud account to which the prefix list belongs.
      * 
      */
-    @Export(name="ownerUid", type=Integer.class, parameters={})
+    @Export(name="ownerUid", refs={Integer.class}, tree="[0]")
     private Output<Integer> ownerUid;
 
     /**
@@ -147,7 +147,7 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
      * The ID of the prefix list.
      * 
      */
-    @Export(name="prefixListId", type=String.class, parameters={})
+    @Export(name="prefixListId", refs={String.class}, tree="[0]")
     private Output<String> prefixListId;
 
     /**
@@ -161,7 +161,7 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
      * The status of the prefix list.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -175,7 +175,7 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
      * The ID of the transit router.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
@@ -189,7 +189,7 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
      * The ID of the route table of the transit router.
      * 
      */
-    @Export(name="transitRouterTableId", type=String.class, parameters={})
+    @Export(name="transitRouterTableId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterTableId;
 
     /**

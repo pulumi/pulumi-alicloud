@@ -284,21 +284,21 @@ public final class AlertQueryList {
             return this;
         }
         public AlertQueryList build() {
-            final var o = new AlertQueryList();
-            o.chartTitle = chartTitle;
-            o.dashboardId = dashboardId;
-            o.end = end;
-            o.logstore = logstore;
-            o.powerSqlMode = powerSqlMode;
-            o.project = project;
-            o.query = query;
-            o.region = region;
-            o.roleArn = roleArn;
-            o.start = start;
-            o.store = store;
-            o.storeType = storeType;
-            o.timeSpanType = timeSpanType;
-            return o;
+            final var _resultValue = new AlertQueryList();
+            _resultValue.chartTitle = chartTitle;
+            _resultValue.dashboardId = dashboardId;
+            _resultValue.end = end;
+            _resultValue.logstore = logstore;
+            _resultValue.powerSqlMode = powerSqlMode;
+            _resultValue.project = project;
+            _resultValue.query = query;
+            _resultValue.region = region;
+            _resultValue.roleArn = roleArn;
+            _resultValue.start = start;
+            _resultValue.store = store;
+            _resultValue.storeType = storeType;
+            _resultValue.timeSpanType = timeSpanType;
+            return _resultValue;
         }
     }
 }

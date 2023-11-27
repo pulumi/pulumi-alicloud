@@ -112,7 +112,7 @@ public class AuditPolicy extends com.pulumi.resources.CustomResource {
      * The status of the audit log. Valid values: `disabled`, `enable`.
      * 
      */
-    @Export(name="auditStatus", type=String.class, parameters={})
+    @Export(name="auditStatus", refs={String.class}, tree="[0]")
     private Output<String> auditStatus;
 
     /**
@@ -126,7 +126,7 @@ public class AuditPolicy extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -140,7 +140,7 @@ public class AuditPolicy extends com.pulumi.resources.CustomResource {
      * The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
      * 
      */
-    @Export(name="storagePeriod", type=Integer.class, parameters={})
+    @Export(name="storagePeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> storagePeriod;
 
     /**

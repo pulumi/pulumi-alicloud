@@ -181,16 +181,16 @@ public final class ClusterApplicationConfig {
             return this;
         }
         public ClusterApplicationConfig build() {
-            final var o = new ClusterApplicationConfig();
-            o.applicationName = applicationName;
-            o.configDescription = configDescription;
-            o.configFileName = configFileName;
-            o.configItemKey = configItemKey;
-            o.configItemValue = configItemValue;
-            o.configScope = configScope;
-            o.nodeGroupId = nodeGroupId;
-            o.nodeGroupName = nodeGroupName;
-            return o;
+            final var _resultValue = new ClusterApplicationConfig();
+            _resultValue.applicationName = applicationName;
+            _resultValue.configDescription = configDescription;
+            _resultValue.configFileName = configFileName;
+            _resultValue.configItemKey = configItemKey;
+            _resultValue.configItemValue = configItemValue;
+            _resultValue.configScope = configScope;
+            _resultValue.nodeGroupId = nodeGroupId;
+            _resultValue.nodeGroupName = nodeGroupName;
+            return _resultValue;
         }
     }
 }

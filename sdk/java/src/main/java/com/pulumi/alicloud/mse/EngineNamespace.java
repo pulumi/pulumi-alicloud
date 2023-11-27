@@ -108,7 +108,7 @@ public class EngineNamespace extends com.pulumi.resources.CustomResource {
      * The language type of the returned information. Valid values: `zh`, `en`.
      * 
      */
-    @Export(name="acceptLanguage", type=String.class, parameters={})
+    @Export(name="acceptLanguage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acceptLanguage;
 
     /**
@@ -122,7 +122,7 @@ public class EngineNamespace extends com.pulumi.resources.CustomResource {
      * The id of the cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -136,7 +136,7 @@ public class EngineNamespace extends com.pulumi.resources.CustomResource {
      * The id of Namespace.
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output<String> namespaceId;
 
     /**
@@ -150,7 +150,7 @@ public class EngineNamespace extends com.pulumi.resources.CustomResource {
      * The name of the Engine Namespace.
      * 
      */
-    @Export(name="namespaceShowName", type=String.class, parameters={})
+    @Export(name="namespaceShowName", refs={String.class}, tree="[0]")
     private Output<String> namespaceShowName;
 
     /**

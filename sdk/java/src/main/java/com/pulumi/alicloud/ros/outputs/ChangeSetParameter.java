@@ -65,10 +65,10 @@ public final class ChangeSetParameter {
             return this;
         }
         public ChangeSetParameter build() {
-            final var o = new ChangeSetParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new ChangeSetParameter();
+            _resultValue.parameterKey = parameterKey;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

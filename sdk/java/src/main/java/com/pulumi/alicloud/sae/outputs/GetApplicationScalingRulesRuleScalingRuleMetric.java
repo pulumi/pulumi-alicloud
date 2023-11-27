@@ -158,14 +158,14 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
             return scaleUpRules(List.of(scaleUpRules));
         }
         public GetApplicationScalingRulesRuleScalingRuleMetric build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleMetric();
-            o.maxReplicas = maxReplicas;
-            o.metrics = metrics;
-            o.metricsStatuses = metricsStatuses;
-            o.minReplicas = minReplicas;
-            o.scaleDownRules = scaleDownRules;
-            o.scaleUpRules = scaleUpRules;
-            return o;
+            final var _resultValue = new GetApplicationScalingRulesRuleScalingRuleMetric();
+            _resultValue.maxReplicas = maxReplicas;
+            _resultValue.metrics = metrics;
+            _resultValue.metricsStatuses = metricsStatuses;
+            _resultValue.minReplicas = minReplicas;
+            _resultValue.scaleDownRules = scaleDownRules;
+            _resultValue.scaleUpRules = scaleUpRules;
+            return _resultValue;
         }
     }
 }

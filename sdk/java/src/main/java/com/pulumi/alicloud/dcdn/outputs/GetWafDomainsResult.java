@@ -112,14 +112,14 @@ public final class GetWafDomainsResult {
             return this;
         }
         public GetWafDomainsResult build() {
-            final var o = new GetWafDomainsResult();
-            o.domains = domains;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.queryArgs = queryArgs;
-            return o;
+            final var _resultValue = new GetWafDomainsResult();
+            _resultValue.domains = domains;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.queryArgs = queryArgs;
+            return _resultValue;
         }
     }
 }

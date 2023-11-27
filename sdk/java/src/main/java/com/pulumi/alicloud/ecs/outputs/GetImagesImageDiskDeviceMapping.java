@@ -84,11 +84,11 @@ public final class GetImagesImageDiskDeviceMapping {
             return this;
         }
         public GetImagesImageDiskDeviceMapping build() {
-            final var o = new GetImagesImageDiskDeviceMapping();
-            o.device = device;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            return o;
+            final var _resultValue = new GetImagesImageDiskDeviceMapping();
+            _resultValue.device = device;
+            _resultValue.size = size;
+            _resultValue.snapshotId = snapshotId;
+            return _resultValue;
         }
     }
 }

@@ -60,11 +60,11 @@ public final class GetMongoInstancesInstanceMongo {
             return this;
         }
         public GetMongoInstancesInstanceMongo build() {
-            final var o = new GetMongoInstancesInstanceMongo();
-            o.class_ = class_;
-            o.description = description;
-            o.nodeId = nodeId;
-            return o;
+            final var _resultValue = new GetMongoInstancesInstanceMongo();
+            _resultValue.class_ = class_;
+            _resultValue.description = description;
+            _resultValue.nodeId = nodeId;
+            return _resultValue;
         }
     }
 }

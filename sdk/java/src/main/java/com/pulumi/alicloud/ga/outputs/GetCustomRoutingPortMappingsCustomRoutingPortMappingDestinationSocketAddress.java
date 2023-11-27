@@ -66,10 +66,10 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinati
             return this;
         }
         public GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress build() {
-            final var o = new GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress();
-            o.ipAddress = ipAddress;
-            o.port = port;
-            return o;
+            final var _resultValue = new GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

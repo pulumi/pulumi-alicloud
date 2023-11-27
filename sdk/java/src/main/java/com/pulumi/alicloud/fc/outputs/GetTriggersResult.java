@@ -160,16 +160,16 @@ public final class GetTriggersResult {
             return triggers(List.of(triggers));
         }
         public GetTriggersResult build() {
-            final var o = new GetTriggersResult();
-            o.functionName = functionName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.serviceName = serviceName;
-            o.triggers = triggers;
-            return o;
+            final var _resultValue = new GetTriggersResult();
+            _resultValue.functionName = functionName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.serviceName = serviceName;
+            _resultValue.triggers = triggers;
+            return _resultValue;
         }
     }
 }

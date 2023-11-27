@@ -86,11 +86,11 @@ public final class ApplicationConfigMapMountDescV2 {
             return this;
         }
         public ApplicationConfigMapMountDescV2 build() {
-            final var o = new ApplicationConfigMapMountDescV2();
-            o.configMapId = configMapId;
-            o.key = key;
-            o.mountPath = mountPath;
-            return o;
+            final var _resultValue = new ApplicationConfigMapMountDescV2();
+            _resultValue.configMapId = configMapId;
+            _resultValue.key = key;
+            _resultValue.mountPath = mountPath;
+            return _resultValue;
         }
     }
 }

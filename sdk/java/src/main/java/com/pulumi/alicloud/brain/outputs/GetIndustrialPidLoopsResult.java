@@ -159,18 +159,18 @@ public final class GetIndustrialPidLoopsResult {
             return this;
         }
         public GetIndustrialPidLoopsResult build() {
-            final var o = new GetIndustrialPidLoopsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.loops = loops;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pidLoopName = pidLoopName;
-            o.pidProjectId = pidProjectId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetIndustrialPidLoopsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.loops = loops;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pidLoopName = pidLoopName;
+            _resultValue.pidProjectId = pidProjectId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -519,34 +519,34 @@ public final class GetAppGroupsGroup {
             return this;
         }
         public GetAppGroupsGroup build() {
-            final var o = new GetAppGroupsGroup();
-            o.appGroupId = appGroupId;
-            o.appGroupName = appGroupName;
-            o.chargeWay = chargeWay;
-            o.commodityCode = commodityCode;
-            o.createTime = createTime;
-            o.currentVersion = currentVersion;
-            o.description = description;
-            o.domain = domain;
-            o.expireOn = expireOn;
-            o.firstRankAlgoDeploymentId = firstRankAlgoDeploymentId;
-            o.hasPendingQuotaReviewTask = hasPendingQuotaReviewTask;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.lockMode = lockMode;
-            o.lockedByExpiration = lockedByExpiration;
-            o.paymentType = paymentType;
-            o.pendingSecondRankAlgoDeploymentId = pendingSecondRankAlgoDeploymentId;
-            o.processingOrderId = processingOrderId;
-            o.produced = produced;
-            o.projectId = projectId;
-            o.quotas = quotas;
-            o.resourceGroupId = resourceGroupId;
-            o.secondRankAlgoDeploymentId = secondRankAlgoDeploymentId;
-            o.status = status;
-            o.switchedTime = switchedTime;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAppGroupsGroup();
+            _resultValue.appGroupId = appGroupId;
+            _resultValue.appGroupName = appGroupName;
+            _resultValue.chargeWay = chargeWay;
+            _resultValue.commodityCode = commodityCode;
+            _resultValue.createTime = createTime;
+            _resultValue.currentVersion = currentVersion;
+            _resultValue.description = description;
+            _resultValue.domain = domain;
+            _resultValue.expireOn = expireOn;
+            _resultValue.firstRankAlgoDeploymentId = firstRankAlgoDeploymentId;
+            _resultValue.hasPendingQuotaReviewTask = hasPendingQuotaReviewTask;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.lockMode = lockMode;
+            _resultValue.lockedByExpiration = lockedByExpiration;
+            _resultValue.paymentType = paymentType;
+            _resultValue.pendingSecondRankAlgoDeploymentId = pendingSecondRankAlgoDeploymentId;
+            _resultValue.processingOrderId = processingOrderId;
+            _resultValue.produced = produced;
+            _resultValue.projectId = projectId;
+            _resultValue.quotas = quotas;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.secondRankAlgoDeploymentId = secondRankAlgoDeploymentId;
+            _resultValue.status = status;
+            _resultValue.switchedTime = switchedTime;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

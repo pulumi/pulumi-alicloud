@@ -15,7 +15,7 @@ import (
 // The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
 // [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
 //
-// > **NOTE:** Available in 1.86.0, parameter "action" in charList is supported since 1.164.0+.
+// > **NOTE:** Available since v1.86.0.
 //
 // ## Example Usage
 //
@@ -60,7 +60,8 @@ import (
 //			_, err = log.NewDashboard(ctx, "exampleDashboard", &log.DashboardArgs{
 //				ProjectName:   exampleProject.Name,
 //				DashboardName: pulumi.String("terraform-example"),
-//				Attribute:     pulumi.String("{\"type\":\"grid\"}"),
+//				DisplayName:   pulumi.String("terraform-example"),
+//				Attribute:     pulumi.String("  {\n    \"type\":\"grid\"\n  }\n"),
 //				CharList: pulumi.String(`  [
 //	    {
 //	      "action": {},
@@ -103,11 +104,11 @@ import (
 //
 // ## Import
 //
-// Log Dashboard can be imported using the id or name, e.g.
+// Log Dashboard can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+//	$ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
 //
 // ```
 type Dashboard struct {
@@ -116,6 +117,7 @@ type Dashboard struct {
 	// Dashboard attribute.
 	Attribute pulumi.StringOutput `pulumi:"attribute"`
 	// Configuration of charts in the dashboard.
+	// **Note:** From version 1.164.0, `charList` can set parameter "action".
 	CharList pulumi.StringOutput `pulumi:"charList"`
 	// The name of the Log Dashboard.
 	DashboardName pulumi.StringOutput `pulumi:"dashboardName"`
@@ -167,6 +169,7 @@ type dashboardState struct {
 	// Dashboard attribute.
 	Attribute *string `pulumi:"attribute"`
 	// Configuration of charts in the dashboard.
+	// **Note:** From version 1.164.0, `charList` can set parameter "action".
 	CharList *string `pulumi:"charList"`
 	// The name of the Log Dashboard.
 	DashboardName *string `pulumi:"dashboardName"`
@@ -180,6 +183,7 @@ type DashboardState struct {
 	// Dashboard attribute.
 	Attribute pulumi.StringPtrInput
 	// Configuration of charts in the dashboard.
+	// **Note:** From version 1.164.0, `charList` can set parameter "action".
 	CharList pulumi.StringPtrInput
 	// The name of the Log Dashboard.
 	DashboardName pulumi.StringPtrInput
@@ -197,6 +201,7 @@ type dashboardArgs struct {
 	// Dashboard attribute.
 	Attribute *string `pulumi:"attribute"`
 	// Configuration of charts in the dashboard.
+	// **Note:** From version 1.164.0, `charList` can set parameter "action".
 	CharList string `pulumi:"charList"`
 	// The name of the Log Dashboard.
 	DashboardName string `pulumi:"dashboardName"`
@@ -211,6 +216,7 @@ type DashboardArgs struct {
 	// Dashboard attribute.
 	Attribute pulumi.StringPtrInput
 	// Configuration of charts in the dashboard.
+	// **Note:** From version 1.164.0, `charList` can set parameter "action".
 	CharList pulumi.StringInput
 	// The name of the Log Dashboard.
 	DashboardName pulumi.StringInput
@@ -313,6 +319,7 @@ func (o DashboardOutput) Attribute() pulumi.StringOutput {
 }
 
 // Configuration of charts in the dashboard.
+// **Note:** From version 1.164.0, `charList` can set parameter "action".
 func (o DashboardOutput) CharList() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.CharList }).(pulumi.StringOutput)
 }

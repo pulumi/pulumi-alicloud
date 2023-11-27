@@ -88,7 +88,7 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
      * The ID of the command.
      * 
      */
-    @Export(name="commandId", type=String.class, parameters={})
+    @Export(name="commandId", refs={String.class}, tree="[0]")
     private Output<String> commandId;
 
     /**
@@ -105,7 +105,7 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
      * * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
      * 
      */
-    @Export(name="frequency", type=String.class, parameters={})
+    @Export(name="frequency", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> frequency;
 
     /**
@@ -122,7 +122,7 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
      * The list of instances to execute the command. You can specify up to 50 instance IDs.
      * 
      */
-    @Export(name="instanceIds", type=List.class, parameters={String.class})
+    @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceIds;
 
     /**
@@ -136,7 +136,7 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
      * The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
      * 
      */
-    @Export(name="parameters", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="parameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> parameters;
 
     /**
@@ -150,7 +150,7 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
      * Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
      * 
      */
-    @Export(name="repeatMode", type=String.class, parameters={})
+    @Export(name="repeatMode", refs={String.class}, tree="[0]")
     private Output<String> repeatMode;
 
     /**
@@ -164,7 +164,7 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -178,7 +178,7 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
      * Specifies whether to periodically run the command. Default value: `false`.
      * 
      */
-    @Export(name="timed", type=Boolean.class, parameters={})
+    @Export(name="timed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> timed;
 
     /**
@@ -195,7 +195,7 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
      * * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
@@ -212,7 +212,7 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
      * The name of the password used to run the command on a Windows instance.
      * 
      */
-    @Export(name="windowsPasswordName", type=String.class, parameters={})
+    @Export(name="windowsPasswordName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> windowsPasswordName;
 
     /**

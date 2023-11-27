@@ -286,23 +286,23 @@ public final class GetSubnetsResult {
             return this;
         }
         public GetSubnetsResult build() {
-            final var o = new GetSubnetsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.subnetId = subnetId;
-            o.subnetName = subnetName;
-            o.subnets = subnets;
-            o.type = type;
-            o.vpdId = vpdId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetSubnetsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.subnetId = subnetId;
+            _resultValue.subnetName = subnetName;
+            _resultValue.subnets = subnets;
+            _resultValue.type = type;
+            _resultValue.vpdId = vpdId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

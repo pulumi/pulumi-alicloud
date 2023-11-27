@@ -39,7 +39,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
      * 
      */
-    @Export(name="backupGatewayId", type=String.class, parameters={})
+    @Export(name="backupGatewayId", refs={String.class}, tree="[0]")
     private Output<String> backupGatewayId;
 
     /**
@@ -53,7 +53,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The backup log interval seconds.
      * 
      */
-    @Export(name="backupLogIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="backupLogIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> backupLogIntervalSeconds;
 
     /**
@@ -67,7 +67,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Backup method. Valid values: `duplication`, `logical`, `physical`.
      * 
      */
-    @Export(name="backupMethod", type=String.class, parameters={})
+    @Export(name="backupMethod", refs={String.class}, tree="[0]")
     private Output<String> backupMethod;
 
     /**
@@ -81,7 +81,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The backup object.
      * 
      */
-    @Export(name="backupObjects", type=String.class, parameters={})
+    @Export(name="backupObjects", refs={String.class}, tree="[0]")
     private Output<String> backupObjects;
 
     /**
@@ -95,7 +95,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Full backup cycle, Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. supports the selection of multiple fetch values, separated by English commas (,).
      * 
      */
-    @Export(name="backupPeriod", type=String.class, parameters={})
+    @Export(name="backupPeriod", refs={String.class}, tree="[0]")
     private Output<String> backupPeriod;
 
     /**
@@ -109,7 +109,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="backupPlanName", type=String.class, parameters={})
+    @Export(name="backupPlanName", refs={String.class}, tree="[0]")
     private Output<String> backupPlanName;
 
     /**
@@ -123,7 +123,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The backup rate limit.
      * 
      */
-    @Export(name="backupRateLimit", type=String.class, parameters={})
+    @Export(name="backupRateLimit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupRateLimit;
 
     /**
@@ -137,7 +137,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The retention time of backup data. Valid values: 0 to 1825. Default value: 730 days.
      * 
      */
-    @Export(name="backupRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="backupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> backupRetentionPeriod;
 
     /**
@@ -151,7 +151,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The backup speed limit.
      * 
      */
-    @Export(name="backupSpeedLimit", type=String.class, parameters={})
+    @Export(name="backupSpeedLimit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupSpeedLimit;
 
     /**
@@ -165,7 +165,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The start time of full Backup. The format is `&lt;I&gt; HH:mm&lt;/I&gt;` Z(UTC time).
      * 
      */
-    @Export(name="backupStartTime", type=String.class, parameters={})
+    @Export(name="backupStartTime", refs={String.class}, tree="[0]")
     private Output<String> backupStartTime;
 
     /**
@@ -179,7 +179,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Built-in storage type, Valid values: `system`.
      * 
      */
-    @Export(name="backupStorageType", type=String.class, parameters={})
+    @Export(name="backupStorageType", refs={String.class}, tree="[0]")
     private Output<String> backupStorageType;
 
     /**
@@ -193,7 +193,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The backup strategy type. Valid values: `simple`, `manual`.
      * 
      */
-    @Export(name="backupStrategyType", type=String.class, parameters={})
+    @Export(name="backupStrategyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupStrategyType;
 
     /**
@@ -207,7 +207,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The UID that is backed up across Alibaba cloud accounts.
      * 
      */
-    @Export(name="crossAliyunId", type=String.class, parameters={})
+    @Export(name="crossAliyunId", refs={String.class}, tree="[0]")
     private Output<String> crossAliyunId;
 
     /**
@@ -221,7 +221,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The name of the RAM role that is backed up across Alibaba cloud accounts.
      * 
      */
-    @Export(name="crossRoleName", type=String.class, parameters={})
+    @Export(name="crossRoleName", refs={String.class}, tree="[0]")
     private Output<String> crossRoleName;
 
     /**
@@ -235,7 +235,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The database region.
      * 
      */
-    @Export(name="databaseRegion", type=String.class, parameters={})
+    @Export(name="databaseRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> databaseRegion;
 
     /**
@@ -249,7 +249,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Database type. Valid values: `DRDS`, `FIle`, `MSSQL`, `MariaDB`, `MongoDB`, `MySQL`, `Oracle`, `PPAS`, `PostgreSQL`, `Redis`.
      * 
      */
-    @Export(name="databaseType", type=String.class, parameters={})
+    @Export(name="databaseType", refs={String.class}, tree="[0]")
     private Output<String> databaseType;
 
     /**
@@ -263,7 +263,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The storage time for conversion to archive cold standby is 365 days by default.
      * 
      */
-    @Export(name="duplicationArchivePeriod", type=Integer.class, parameters={})
+    @Export(name="duplicationArchivePeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> duplicationArchivePeriod;
 
     /**
@@ -277,7 +277,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The storage time is converted to low-frequency access. The default time is 180 days.
      * 
      */
-    @Export(name="duplicationInfrequentAccessPeriod", type=Integer.class, parameters={})
+    @Export(name="duplicationInfrequentAccessPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> duplicationInfrequentAccessPeriod;
 
     /**
@@ -291,7 +291,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Whether to enable incremental log Backup.
      * 
      */
-    @Export(name="enableBackupLog", type=Boolean.class, parameters={})
+    @Export(name="enableBackupLog", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableBackupLog;
 
     /**
@@ -305,7 +305,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
@@ -319,7 +319,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The instance type. Valid values: `RDS`, `PolarDB`, `DDS`, `Kvstore`, `Other`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -333,7 +333,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The OSS Bucket name. The system automatically generates a new name by default.
      * 
      */
-    @Export(name="ossBucketName", type=String.class, parameters={})
+    @Export(name="ossBucketName", refs={String.class}, tree="[0]")
     private Output<String> ossBucketName;
 
     /**
@@ -347,7 +347,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -361,7 +361,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Specify that the prepaid instance is of the package year or monthly type. Valid values: `Month`, `Year`.
      * 
      */
-    @Export(name="period", type=String.class, parameters={})
+    @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
@@ -375,7 +375,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -389,7 +389,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
      * 
      */
-    @Export(name="sourceEndpointDatabaseName", type=String.class, parameters={})
+    @Export(name="sourceEndpointDatabaseName", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointDatabaseName;
 
     /**
@@ -403,7 +403,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
      * 
      */
-    @Export(name="sourceEndpointInstanceId", type=String.class, parameters={})
+    @Export(name="sourceEndpointInstanceId", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointInstanceId;
 
     /**
@@ -417,7 +417,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The location of the database. Valid values: `RDS`, `ECS`, `Express`, `Agent`, `DDS`, `Other`.
      * 
      */
-    @Export(name="sourceEndpointInstanceType", type=String.class, parameters={})
+    @Export(name="sourceEndpointInstanceType", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointInstanceType;
 
     /**
@@ -431,7 +431,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The source endpoint ip.
      * 
      */
-    @Export(name="sourceEndpointIp", type=String.class, parameters={})
+    @Export(name="sourceEndpointIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointIp;
 
     /**
@@ -445,7 +445,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
      * 
      */
-    @Export(name="sourceEndpointOracleSid", type=String.class, parameters={})
+    @Export(name="sourceEndpointOracleSid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointOracleSid;
 
     /**
@@ -459,7 +459,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
-    @Export(name="sourceEndpointPassword", type=String.class, parameters={})
+    @Export(name="sourceEndpointPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointPassword;
 
     /**
@@ -473,7 +473,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The source endpoint port.
      * 
      */
-    @Export(name="sourceEndpointPort", type=Integer.class, parameters={})
+    @Export(name="sourceEndpointPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sourceEndpointPort;
 
     /**
@@ -487,7 +487,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
      * 
      */
-    @Export(name="sourceEndpointRegion", type=String.class, parameters={})
+    @Export(name="sourceEndpointRegion", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointRegion;
 
     /**
@@ -501,7 +501,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
      * 
      */
-    @Export(name="sourceEndpointSid", type=String.class, parameters={})
+    @Export(name="sourceEndpointSid", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointSid;
 
     /**
@@ -515,7 +515,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
      * 
      */
-    @Export(name="sourceEndpointUserName", type=String.class, parameters={})
+    @Export(name="sourceEndpointUserName", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointUserName;
 
     /**
@@ -529,7 +529,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `pause`, `running`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -543,7 +543,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The storage region.
      * 
      */
-    @Export(name="storageRegion", type=String.class, parameters={})
+    @Export(name="storageRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRegion;
 
     /**
@@ -557,7 +557,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
      * 
      */
-    @Export(name="usedTime", type=Integer.class, parameters={})
+    @Export(name="usedTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> usedTime;
 
     /**

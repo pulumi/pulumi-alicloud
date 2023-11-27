@@ -51,10 +51,10 @@ public final class GetApplicationInfosDimension {
             return this;
         }
         public GetApplicationInfosDimension build() {
-            final var o = new GetApplicationInfosDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetApplicationInfosDimension();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

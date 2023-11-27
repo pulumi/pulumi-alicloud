@@ -22,17 +22,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfig {
     /**
-     * @return The access logging configuration. See `mesh_config-access_log` below.
+     * @return The access logging configuration. See `access_log` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigAccessLog accessLog;
     /**
-     * @return Audit information. See `mesh_config-audit` below.
+     * @return Audit information. See `audit` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigAudit audit;
     /**
-     * @return Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+     * @return Control plane log collection configuration. See `control_plane_log` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog;
@@ -52,12 +52,12 @@ public final class ServiceMeshMeshConfig {
      */
     private @Nullable String includeIpRanges;
     /**
-     * @return Kiali configuration. See `mesh_config-kiali` below.
+     * @return Kiali configuration. See `kiali` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigKiali kiali;
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigOpa opa;
@@ -67,7 +67,7 @@ public final class ServiceMeshMeshConfig {
      */
     private @Nullable String outboundTrafficPolicy;
     /**
-     * @return Link trace sampling information. See `mesh_config-pilot` below.
+     * @return Link trace sampling information. See `pilot` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigPilot pilot;
@@ -77,12 +77,12 @@ public final class ServiceMeshMeshConfig {
      */
     private @Nullable ServiceMeshMeshConfigPrometheus prometheus;
     /**
-     * @return Proxy configuration. See `mesh_config-proxy` below.
+     * @return Proxy configuration. See `proxy` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigProxy proxy;
     /**
-     * @return Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+     * @return Sidecar injector configuration. See `sidecar_injector` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector;
@@ -99,21 +99,21 @@ public final class ServiceMeshMeshConfig {
 
     private ServiceMeshMeshConfig() {}
     /**
-     * @return The access logging configuration. See `mesh_config-access_log` below.
+     * @return The access logging configuration. See `access_log` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigAccessLog> accessLog() {
         return Optional.ofNullable(this.accessLog);
     }
     /**
-     * @return Audit information. See `mesh_config-audit` below.
+     * @return Audit information. See `audit` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigAudit> audit() {
         return Optional.ofNullable(this.audit);
     }
     /**
-     * @return Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+     * @return Control plane log collection configuration. See `control_plane_log` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigControlPlaneLog> controlPlaneLog() {
@@ -141,14 +141,14 @@ public final class ServiceMeshMeshConfig {
         return Optional.ofNullable(this.includeIpRanges);
     }
     /**
-     * @return Kiali configuration. See `mesh_config-kiali` below.
+     * @return Kiali configuration. See `kiali` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigKiali> kiali() {
         return Optional.ofNullable(this.kiali);
     }
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigOpa> opa() {
@@ -162,7 +162,7 @@ public final class ServiceMeshMeshConfig {
         return Optional.ofNullable(this.outboundTrafficPolicy);
     }
     /**
-     * @return Link trace sampling information. See `mesh_config-pilot` below.
+     * @return Link trace sampling information. See `pilot` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigPilot> pilot() {
@@ -176,14 +176,14 @@ public final class ServiceMeshMeshConfig {
         return Optional.ofNullable(this.prometheus);
     }
     /**
-     * @return Proxy configuration. See `mesh_config-proxy` below.
+     * @return Proxy configuration. See `proxy` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigProxy> proxy() {
         return Optional.ofNullable(this.proxy);
     }
     /**
-     * @return Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+     * @return Sidecar injector configuration. See `sidecar_injector` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigSidecarInjector> sidecarInjector() {
@@ -324,23 +324,23 @@ public final class ServiceMeshMeshConfig {
             return this;
         }
         public ServiceMeshMeshConfig build() {
-            final var o = new ServiceMeshMeshConfig();
-            o.accessLog = accessLog;
-            o.audit = audit;
-            o.controlPlaneLog = controlPlaneLog;
-            o.customizedZipkin = customizedZipkin;
-            o.enableLocalityLb = enableLocalityLb;
-            o.includeIpRanges = includeIpRanges;
-            o.kiali = kiali;
-            o.opa = opa;
-            o.outboundTrafficPolicy = outboundTrafficPolicy;
-            o.pilot = pilot;
-            o.prometheus = prometheus;
-            o.proxy = proxy;
-            o.sidecarInjector = sidecarInjector;
-            o.telemetry = telemetry;
-            o.tracing = tracing;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfig();
+            _resultValue.accessLog = accessLog;
+            _resultValue.audit = audit;
+            _resultValue.controlPlaneLog = controlPlaneLog;
+            _resultValue.customizedZipkin = customizedZipkin;
+            _resultValue.enableLocalityLb = enableLocalityLb;
+            _resultValue.includeIpRanges = includeIpRanges;
+            _resultValue.kiali = kiali;
+            _resultValue.opa = opa;
+            _resultValue.outboundTrafficPolicy = outboundTrafficPolicy;
+            _resultValue.pilot = pilot;
+            _resultValue.prometheus = prometheus;
+            _resultValue.proxy = proxy;
+            _resultValue.sidecarInjector = sidecarInjector;
+            _resultValue.telemetry = telemetry;
+            _resultValue.tracing = tracing;
+            return _resultValue;
         }
     }
 }

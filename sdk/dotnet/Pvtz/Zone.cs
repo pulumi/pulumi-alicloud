@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// {
     ///     var foo = new AliCloud.Pvtz.Zone("foo", new()
     ///     {
-    ///         ZoneName = "foo.test.com",
+    ///         ZoneName = "foo.example.com",
     ///     });
     /// 
     /// });
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The Id of resource group which the Private Zone belongs.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
@@ -93,13 +93,19 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string?> SyncStatus { get; private set; } = null!;
 
         /// <summary>
+        /// The tags of the Private Zone.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The IP address of the client.
         /// </summary>
         [Output("userClientIp")]
         public Output<string?> UserClientIp { get; private set; } = null!;
 
         /// <summary>
-        /// The user information of the host synchronization task. The details see Block `user_info`.
+        /// The user information of the host synchronization task. See `user_info` below.
         /// </summary>
         [Output("userInfos")]
         public Output<ImmutableArray<Outputs.ZoneUserInfo>> UserInfos { get; private set; } = null!;
@@ -195,6 +201,18 @@ namespace Pulumi.AliCloud.Pvtz
         [Input("syncStatus")]
         public Input<string>? SyncStatus { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of the Private Zone.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The IP address of the client.
         /// </summary>
@@ -205,7 +223,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.ZoneUserInfoArgs>? _userInfos;
 
         /// <summary>
-        /// The user information of the host synchronization task. The details see Block `user_info`.
+        /// The user information of the host synchronization task. See `user_info` below.
         /// </summary>
         public InputList<Inputs.ZoneUserInfoArgs> UserInfos
         {
@@ -278,6 +296,18 @@ namespace Pulumi.AliCloud.Pvtz
         [Input("syncStatus")]
         public Input<string>? SyncStatus { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of the Private Zone.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The IP address of the client.
         /// </summary>
@@ -288,7 +318,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.ZoneUserInfoGetArgs>? _userInfos;
 
         /// <summary>
-        /// The user information of the host synchronization task. The details see Block `user_info`.
+        /// The user information of the host synchronization task. See `user_info` below.
         /// </summary>
         public InputList<Inputs.ZoneUserInfoGetArgs> UserInfos
         {

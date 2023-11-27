@@ -194,20 +194,20 @@ public final class GetZonesResult {
             return zones(List.of(zones));
         }
         public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.category = category;
-            o.dbInstanceClass = dbInstanceClass;
-            o.dbInstanceStorageType = dbInstanceStorageType;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.multi = multi;
-            o.multiZone = multiZone;
-            o.outputFile = outputFile;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetZonesResult();
+            _resultValue.category = category;
+            _resultValue.dbInstanceClass = dbInstanceClass;
+            _resultValue.dbInstanceStorageType = dbInstanceStorageType;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.multi = multi;
+            _resultValue.multiZone = multiZone;
+            _resultValue.outputFile = outputFile;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

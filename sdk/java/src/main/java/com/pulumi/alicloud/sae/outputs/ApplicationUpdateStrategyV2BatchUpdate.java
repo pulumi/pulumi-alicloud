@@ -87,11 +87,11 @@ public final class ApplicationUpdateStrategyV2BatchUpdate {
             return this;
         }
         public ApplicationUpdateStrategyV2BatchUpdate build() {
-            final var o = new ApplicationUpdateStrategyV2BatchUpdate();
-            o.batch = batch;
-            o.batchWaitTime = batchWaitTime;
-            o.releaseType = releaseType;
-            return o;
+            final var _resultValue = new ApplicationUpdateStrategyV2BatchUpdate();
+            _resultValue.batch = batch;
+            _resultValue.batchWaitTime = batchWaitTime;
+            _resultValue.releaseType = releaseType;
+            return _resultValue;
         }
     }
 }

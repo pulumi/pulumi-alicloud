@@ -65,10 +65,10 @@ public final class GetTemplateScratchesScratchPreferenceParameter {
             return this;
         }
         public GetTemplateScratchesScratchPreferenceParameter build() {
-            final var o = new GetTemplateScratchesScratchPreferenceParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new GetTemplateScratchesScratchPreferenceParameter();
+            _resultValue.parameterKey = parameterKey;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

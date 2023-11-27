@@ -40,9 +40,9 @@ public final class GetDisksOperationLock {
             return this;
         }
         public GetDisksOperationLock build() {
-            final var o = new GetDisksOperationLock();
-            o.lockReason = lockReason;
-            return o;
+            final var _resultValue = new GetDisksOperationLock();
+            _resultValue.lockReason = lockReason;
+            return _resultValue;
         }
     }
 }

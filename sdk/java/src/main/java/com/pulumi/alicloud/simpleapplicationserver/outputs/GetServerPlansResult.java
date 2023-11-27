@@ -156,18 +156,18 @@ public final class GetServerPlansResult {
             return this;
         }
         public GetServerPlansResult build() {
-            final var o = new GetServerPlansResult();
-            o.bandwidth = bandwidth;
-            o.core = core;
-            o.diskSize = diskSize;
-            o.flow = flow;
-            o.id = id;
-            o.ids = ids;
-            o.memory = memory;
-            o.outputFile = outputFile;
-            o.plans = plans;
-            o.platform = platform;
-            return o;
+            final var _resultValue = new GetServerPlansResult();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.core = core;
+            _resultValue.diskSize = diskSize;
+            _resultValue.flow = flow;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.memory = memory;
+            _resultValue.outputFile = outputFile;
+            _resultValue.plans = plans;
+            _resultValue.platform = platform;
+            return _resultValue;
         }
     }
 }

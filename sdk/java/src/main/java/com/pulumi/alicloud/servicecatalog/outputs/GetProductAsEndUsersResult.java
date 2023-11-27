@@ -138,15 +138,15 @@ public final class GetProductAsEndUsersResult {
             return users(List.of(users));
         }
         public GetProductAsEndUsersResult build() {
-            final var o = new GetProductAsEndUsersResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.sortBy = sortBy;
-            o.sortOrder = sortOrder;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetProductAsEndUsersResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sortBy = sortBy;
+            _resultValue.sortOrder = sortOrder;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

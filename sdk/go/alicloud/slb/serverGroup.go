@@ -15,6 +15,8 @@ import (
 // A virtual server group contains several ECS instances. The virtual server group can help you to define multiple listening dimension,
 // and to meet the personalized requirements of domain name and URL forwarding.
 //
+// > **NOTE:** Available since v1.6.0.
+//
 // > **NOTE:** One ECS instance can be added into multiple virtual server groups.
 //
 // > **NOTE:** One virtual server group can be attached with multiple listeners in one load balancer.
@@ -90,14 +92,6 @@ import (
 //	}
 //
 // ```
-// ## Block servers
-//
-// The servers mapping supports the following:
-//
-// * `serverIds` - (Required) A list backend server ID (ECS instance ID).
-// * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
-// * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
-// * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
 //
 // ## Import
 //
@@ -117,7 +111,7 @@ type ServerGroup struct {
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
 	// Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
 	//
 	// Deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
@@ -162,7 +156,7 @@ type serverGroupState struct {
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
 	// Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
 	Name *string `pulumi:"name"`
-	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
 	//
 	// Deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
 	Servers []ServerGroupServer `pulumi:"servers"`
@@ -175,7 +169,7 @@ type ServerGroupState struct {
 	LoadBalancerId pulumi.StringPtrInput
 	// Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
 	Name pulumi.StringPtrInput
-	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
 	//
 	// Deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
 	Servers ServerGroupServerArrayInput
@@ -192,7 +186,7 @@ type serverGroupArgs struct {
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
 	Name *string `pulumi:"name"`
-	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
 	//
 	// Deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
 	Servers []ServerGroupServer `pulumi:"servers"`
@@ -206,7 +200,7 @@ type ServerGroupArgs struct {
 	LoadBalancerId pulumi.StringInput
 	// Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
 	Name pulumi.StringPtrInput
-	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+	// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
 	//
 	// Deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
 	Servers ServerGroupServerArrayInput
@@ -314,7 +308,7 @@ func (o ServerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+// A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
 //
 // Deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
 func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {

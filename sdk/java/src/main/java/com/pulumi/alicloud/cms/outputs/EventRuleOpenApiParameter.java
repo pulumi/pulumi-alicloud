@@ -162,15 +162,15 @@ public final class EventRuleOpenApiParameter {
             return this;
         }
         public EventRuleOpenApiParameter build() {
-            final var o = new EventRuleOpenApiParameter();
-            o.action = action;
-            o.arn = arn;
-            o.openApiParametersId = openApiParametersId;
-            o.product = product;
-            o.region = region;
-            o.role = role;
-            o.version = version;
-            return o;
+            final var _resultValue = new EventRuleOpenApiParameter();
+            _resultValue.action = action;
+            _resultValue.arn = arn;
+            _resultValue.openApiParametersId = openApiParametersId;
+            _resultValue.product = product;
+            _resultValue.region = region;
+            _resultValue.role = role;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

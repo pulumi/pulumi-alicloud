@@ -11,8 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The project is the resource management unit in Log Service and is used to isolate and control resources.
-// You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
+// Provides a SLS Project resource.
+//
+// For information about SLS Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/sls/developer-reference/api-createproject).
 //
 // > **NOTE:** Available since v1.9.5.
 //
@@ -118,25 +119,35 @@ import (
 //
 // ## Import
 //
-// Log project can be imported using the id or name, e.g.
+// SLS Project can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:log/project:Project example tf-log
+//	$ pulumi import alicloud:log/project:Project example <id>
 //
 // ```
 type Project struct {
 	pulumi.CustomResourceState
 
+	// CreateTime.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the log project.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the log project. It is the only in one Alicloud account.
+	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Log project policy, used to set a policy for a project.
 	Policy pulumi.StringPtrOutput `pulumi:"policy"`
-	// Log project tags.
-	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// The name of the log project. It is the only in one Alicloud account.
+	ProjectName pulumi.StringOutput `pulumi:"projectName"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// Tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
@@ -170,28 +181,48 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
+	// CreateTime.
+	CreateTime *string `pulumi:"createTime"`
 	// Description of the log project.
 	Description *string `pulumi:"description"`
-	// The name of the log project. It is the only in one Alicloud account.
+	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
 	Name *string `pulumi:"name"`
 	// Log project policy, used to set a policy for a project.
 	Policy *string `pulumi:"policy"`
-	// Log project tags.
-	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// The name of the log project. It is the only in one Alicloud account.
+	ProjectName *string `pulumi:"projectName"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// Tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type ProjectState struct {
+	// CreateTime.
+	CreateTime pulumi.StringPtrInput
 	// Description of the log project.
 	Description pulumi.StringPtrInput
-	// The name of the log project. It is the only in one Alicloud account.
+	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
 	Name pulumi.StringPtrInput
 	// Log project policy, used to set a policy for a project.
 	Policy pulumi.StringPtrInput
-	// Log project tags.
-	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// The name of the log project. It is the only in one Alicloud account.
+	ProjectName pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// The status of the resource.
+	Status pulumi.StringPtrInput
+	// Tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.MapInput
 }
 
@@ -202,13 +233,19 @@ func (ProjectState) ElementType() reflect.Type {
 type projectArgs struct {
 	// Description of the log project.
 	Description *string `pulumi:"description"`
-	// The name of the log project. It is the only in one Alicloud account.
+	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
 	Name *string `pulumi:"name"`
 	// Log project policy, used to set a policy for a project.
 	Policy *string `pulumi:"policy"`
-	// Log project tags.
-	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// The name of the log project. It is the only in one Alicloud account.
+	ProjectName *string `pulumi:"projectName"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -216,13 +253,19 @@ type projectArgs struct {
 type ProjectArgs struct {
 	// Description of the log project.
 	Description pulumi.StringPtrInput
-	// The name of the log project. It is the only in one Alicloud account.
+	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
 	Name pulumi.StringPtrInput
 	// Log project policy, used to set a policy for a project.
 	Policy pulumi.StringPtrInput
-	// Log project tags.
-	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
-	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// The name of the log project. It is the only in one Alicloud account.
+	ProjectName pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// Tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.MapInput
 }
 
@@ -313,12 +356,19 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// CreateTime.
+func (o ProjectOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // Description of the log project.
 func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the log project. It is the only in one Alicloud account.
+// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+//
+// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -328,9 +378,24 @@ func (o ProjectOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// Log project tags.
-// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
-// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+// The name of the log project. It is the only in one Alicloud account.
+func (o ProjectOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o ProjectOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o ProjectOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tag.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ProjectOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

@@ -191,18 +191,18 @@ public final class GetChainsResult {
             return this;
         }
         public GetChainsResult build() {
-            final var o = new GetChainsResult();
-            o.chains = chains;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.repoName = repoName;
-            o.repoNamespaceName = repoNamespaceName;
-            return o;
+            final var _resultValue = new GetChainsResult();
+            _resultValue.chains = chains;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.repoName = repoName;
+            _resultValue.repoNamespaceName = repoNamespaceName;
+            return _resultValue;
         }
     }
 }

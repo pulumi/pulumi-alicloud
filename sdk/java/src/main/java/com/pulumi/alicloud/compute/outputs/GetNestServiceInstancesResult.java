@@ -185,17 +185,17 @@ public final class GetNestServiceInstancesResult {
             return this;
         }
         public GetNestServiceInstancesResult build() {
-            final var o = new GetNestServiceInstancesResult();
-            o.filters = filters;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.serviceInstances = serviceInstances;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetNestServiceInstancesResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.serviceInstances = serviceInstances;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

@@ -180,16 +180,16 @@ public final class GetApisResult {
             return this;
         }
         public GetApisResult build() {
-            final var o = new GetApisResult();
-            o.apiId = apiId;
-            o.apis = apis;
-            o.groupId = groupId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetApisResult();
+            _resultValue.apiId = apiId;
+            _resultValue.apis = apis;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

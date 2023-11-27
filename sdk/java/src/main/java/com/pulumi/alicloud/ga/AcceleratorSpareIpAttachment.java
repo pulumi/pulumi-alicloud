@@ -101,7 +101,7 @@ public class AcceleratorSpareIpAttachment extends com.pulumi.resources.CustomRes
      * The ID of the global acceleration instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -115,7 +115,7 @@ public class AcceleratorSpareIpAttachment extends com.pulumi.resources.CustomRes
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -129,7 +129,7 @@ public class AcceleratorSpareIpAttachment extends com.pulumi.resources.CustomRes
      * The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
      * 
      */
-    @Export(name="spareIp", type=String.class, parameters={})
+    @Export(name="spareIp", refs={String.class}, tree="[0]")
     private Output<String> spareIp;
 
     /**
@@ -143,7 +143,7 @@ public class AcceleratorSpareIpAttachment extends com.pulumi.resources.CustomRes
      * The status of the standby CNAME IP address.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -201,16 +201,16 @@ public final class GetForwardingRulesForwardingRule {
             return ruleConditions(List.of(ruleConditions));
         }
         public GetForwardingRulesForwardingRule build() {
-            final var o = new GetForwardingRulesForwardingRule();
-            o.forwardingRuleId = forwardingRuleId;
-            o.forwardingRuleName = forwardingRuleName;
-            o.forwardingRuleStatus = forwardingRuleStatus;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.priority = priority;
-            o.ruleActions = ruleActions;
-            o.ruleConditions = ruleConditions;
-            return o;
+            final var _resultValue = new GetForwardingRulesForwardingRule();
+            _resultValue.forwardingRuleId = forwardingRuleId;
+            _resultValue.forwardingRuleName = forwardingRuleName;
+            _resultValue.forwardingRuleStatus = forwardingRuleStatus;
+            _resultValue.id = id;
+            _resultValue.listenerId = listenerId;
+            _resultValue.priority = priority;
+            _resultValue.ruleActions = ruleActions;
+            _resultValue.ruleConditions = ruleConditions;
+            return _resultValue;
         }
     }
 }

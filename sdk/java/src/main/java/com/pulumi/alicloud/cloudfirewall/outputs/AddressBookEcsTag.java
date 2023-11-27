@@ -67,10 +67,10 @@ public final class AddressBookEcsTag {
             return this;
         }
         public AddressBookEcsTag build() {
-            final var o = new AddressBookEcsTag();
-            o.tagKey = tagKey;
-            o.tagValue = tagValue;
-            return o;
+            final var _resultValue = new AddressBookEcsTag();
+            _resultValue.tagKey = tagKey;
+            _resultValue.tagValue = tagValue;
+            return _resultValue;
         }
     }
 }

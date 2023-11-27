@@ -87,7 +87,7 @@ public class TransitRouterMulticastDomain extends com.pulumi.resources.CustomRes
      * The status of the Transit Router Multicast Domain.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -101,7 +101,7 @@ public class TransitRouterMulticastDomain extends com.pulumi.resources.CustomRes
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -115,7 +115,7 @@ public class TransitRouterMulticastDomain extends com.pulumi.resources.CustomRes
      * The ID of the transit router.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
@@ -129,7 +129,7 @@ public class TransitRouterMulticastDomain extends com.pulumi.resources.CustomRes
      * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="transitRouterMulticastDomainDescription", type=String.class, parameters={})
+    @Export(name="transitRouterMulticastDomainDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterMulticastDomainDescription;
 
     /**
@@ -143,7 +143,7 @@ public class TransitRouterMulticastDomain extends com.pulumi.resources.CustomRes
      * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="transitRouterMulticastDomainName", type=String.class, parameters={})
+    @Export(name="transitRouterMulticastDomainName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterMulticastDomainName;
 
     /**

@@ -86,11 +86,11 @@ public final class V2FunctionCode {
             return this;
         }
         public V2FunctionCode build() {
-            final var o = new V2FunctionCode();
-            o.ossBucketName = ossBucketName;
-            o.ossObjectName = ossObjectName;
-            o.zipFile = zipFile;
-            return o;
+            final var _resultValue = new V2FunctionCode();
+            _resultValue.ossBucketName = ossBucketName;
+            _resultValue.ossObjectName = ossObjectName;
+            _resultValue.zipFile = zipFile;
+            return _resultValue;
         }
     }
 }

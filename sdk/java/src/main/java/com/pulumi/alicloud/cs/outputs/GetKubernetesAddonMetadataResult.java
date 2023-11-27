@@ -98,13 +98,13 @@ public final class GetKubernetesAddonMetadataResult {
             return this;
         }
         public GetKubernetesAddonMetadataResult build() {
-            final var o = new GetKubernetesAddonMetadataResult();
-            o.clusterId = clusterId;
-            o.configSchema = configSchema;
-            o.id = id;
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetKubernetesAddonMetadataResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.configSchema = configSchema;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

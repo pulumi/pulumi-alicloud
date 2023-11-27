@@ -144,17 +144,17 @@ public final class GetRdsBackupsResult {
             return this;
         }
         public GetRdsBackupsResult build() {
-            final var o = new GetRdsBackupsResult();
-            o.backupMode = backupMode;
-            o.backupStatus = backupStatus;
-            o.backups = backups;
-            o.dbInstanceId = dbInstanceId;
-            o.endTime = endTime;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new GetRdsBackupsResult();
+            _resultValue.backupMode = backupMode;
+            _resultValue.backupStatus = backupStatus;
+            _resultValue.backups = backups;
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.endTime = endTime;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

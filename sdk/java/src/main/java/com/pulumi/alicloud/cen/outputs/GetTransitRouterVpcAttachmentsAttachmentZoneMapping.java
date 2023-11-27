@@ -65,10 +65,10 @@ public final class GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
             return this;
         }
         public GetTransitRouterVpcAttachmentsAttachmentZoneMapping build() {
-            final var o = new GetTransitRouterVpcAttachmentsAttachmentZoneMapping();
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetTransitRouterVpcAttachmentsAttachmentZoneMapping();
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

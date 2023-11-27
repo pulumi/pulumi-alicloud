@@ -84,11 +84,11 @@ public final class GetClusterCredentialCertificateAuthority {
             return this;
         }
         public GetClusterCredentialCertificateAuthority build() {
-            final var o = new GetClusterCredentialCertificateAuthority();
-            o.clientCert = clientCert;
-            o.clientKey = clientKey;
-            o.clusterCert = clusterCert;
-            return o;
+            final var _resultValue = new GetClusterCredentialCertificateAuthority();
+            _resultValue.clientCert = clientCert;
+            _resultValue.clientKey = clientKey;
+            _resultValue.clusterCert = clusterCert;
+            return _resultValue;
         }
     }
 }

@@ -332,24 +332,24 @@ public final class GetDdosCooInstancesInstance {
             return this;
         }
         public GetDdosCooInstancesInstance build() {
-            final var o = new GetDdosCooInstancesInstance();
-            o.bandwidth = bandwidth;
-            o.baseBandwidth = baseBandwidth;
-            o.createTime = createTime;
-            o.debtStatus = debtStatus;
-            o.domainCount = domainCount;
-            o.edition = edition;
-            o.enabled = enabled;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.ipMode = ipMode;
-            o.ipVersion = ipVersion;
-            o.name = name;
-            o.portCount = portCount;
-            o.remark = remark;
-            o.serviceBandwidth = serviceBandwidth;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDdosCooInstancesInstance();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.baseBandwidth = baseBandwidth;
+            _resultValue.createTime = createTime;
+            _resultValue.debtStatus = debtStatus;
+            _resultValue.domainCount = domainCount;
+            _resultValue.edition = edition;
+            _resultValue.enabled = enabled;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.ipMode = ipMode;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.name = name;
+            _resultValue.portCount = portCount;
+            _resultValue.remark = remark;
+            _resultValue.serviceBandwidth = serviceBandwidth;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

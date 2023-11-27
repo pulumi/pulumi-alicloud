@@ -65,10 +65,10 @@ public final class DomainConfigFunctionArg {
             return this;
         }
         public DomainConfigFunctionArg build() {
-            final var o = new DomainConfigFunctionArg();
-            o.argName = argName;
-            o.argValue = argValue;
-            return o;
+            final var _resultValue = new DomainConfigFunctionArg();
+            _resultValue.argName = argName;
+            _resultValue.argValue = argValue;
+            return _resultValue;
         }
     }
 }

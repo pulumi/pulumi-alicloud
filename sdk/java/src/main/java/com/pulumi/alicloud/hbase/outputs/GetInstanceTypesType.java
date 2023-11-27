@@ -85,11 +85,11 @@ public final class GetInstanceTypesType {
             return this;
         }
         public GetInstanceTypesType build() {
-            final var o = new GetInstanceTypesType();
-            o.cpuSize = cpuSize;
-            o.memSize = memSize;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetInstanceTypesType();
+            _resultValue.cpuSize = cpuSize;
+            _resultValue.memSize = memSize;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

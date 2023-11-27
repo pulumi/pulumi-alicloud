@@ -199,17 +199,17 @@ public final class GetNatIpCidrsCidr {
             return this;
         }
         public GetNatIpCidrsCidr build() {
-            final var o = new GetNatIpCidrsCidr();
-            o.createTime = createTime;
-            o.id = id;
-            o.isDefault = isDefault;
-            o.natGatewayId = natGatewayId;
-            o.natIpCidr = natIpCidr;
-            o.natIpCidrDescription = natIpCidrDescription;
-            o.natIpCidrId = natIpCidrId;
-            o.natIpCidrName = natIpCidrName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetNatIpCidrsCidr();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
+            _resultValue.natGatewayId = natGatewayId;
+            _resultValue.natIpCidr = natIpCidr;
+            _resultValue.natIpCidrDescription = natIpCidrDescription;
+            _resultValue.natIpCidrId = natIpCidrId;
+            _resultValue.natIpCidrName = natIpCidrName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

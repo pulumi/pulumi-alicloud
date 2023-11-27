@@ -153,15 +153,15 @@ public final class GetInstanceMembersMember {
             return this;
         }
         public GetInstanceMembersMember build() {
-            final var o = new GetInstanceMembersMember();
-            o.createTime = createTime;
-            o.id = id;
-            o.memberDesc = memberDesc;
-            o.memberDisplayName = memberDisplayName;
-            o.memberUid = memberUid;
-            o.modifyTime = modifyTime;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstanceMembersMember();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.memberDesc = memberDesc;
+            _resultValue.memberDisplayName = memberDisplayName;
+            _resultValue.memberUid = memberUid;
+            _resultValue.modifyTime = modifyTime;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

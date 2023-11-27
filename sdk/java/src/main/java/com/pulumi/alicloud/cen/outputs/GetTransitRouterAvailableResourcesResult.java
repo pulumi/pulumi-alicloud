@@ -75,11 +75,11 @@ public final class GetTransitRouterAvailableResourcesResult {
             return resources(List.of(resources));
         }
         public GetTransitRouterAvailableResourcesResult build() {
-            final var o = new GetTransitRouterAvailableResourcesResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.resources = resources;
-            return o;
+            final var _resultValue = new GetTransitRouterAvailableResourcesResult();
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resources = resources;
+            return _resultValue;
         }
     }
 }

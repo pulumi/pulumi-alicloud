@@ -67,10 +67,10 @@ public final class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
             return this;
         }
         public HybridMonitorSlsTaskSlsProcessConfigGroupBy build() {
-            final var o = new HybridMonitorSlsTaskSlsProcessConfigGroupBy();
-            o.alias = alias;
-            o.slsKeyName = slsKeyName;
-            return o;
+            final var _resultValue = new HybridMonitorSlsTaskSlsProcessConfigGroupBy();
+            _resultValue.alias = alias;
+            _resultValue.slsKeyName = slsKeyName;
+            return _resultValue;
         }
     }
 }

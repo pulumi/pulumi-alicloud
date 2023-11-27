@@ -62,10 +62,10 @@ public final class GetHoneypotProbesProbeHoneypotBindList {
             return this;
         }
         public GetHoneypotProbesProbeHoneypotBindList build() {
-            final var o = new GetHoneypotProbesProbeHoneypotBindList();
-            o.bindPortLists = bindPortLists;
-            o.honeypotId = honeypotId;
-            return o;
+            final var _resultValue = new GetHoneypotProbesProbeHoneypotBindList();
+            _resultValue.bindPortLists = bindPortLists;
+            _resultValue.honeypotId = honeypotId;
+            return _resultValue;
         }
     }
 }

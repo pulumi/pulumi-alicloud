@@ -142,14 +142,14 @@ public final class GetInstancesInstanceDiskDeviceMapping {
             return this;
         }
         public GetInstancesInstanceDiskDeviceMapping build() {
-            final var o = new GetInstancesInstanceDiskDeviceMapping();
-            o.category = category;
-            o.device = device;
-            o.diskId = diskId;
-            o.diskName = diskName;
-            o.size = size;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetInstancesInstanceDiskDeviceMapping();
+            _resultValue.category = category;
+            _resultValue.device = device;
+            _resultValue.diskId = diskId;
+            _resultValue.diskName = diskName;
+            _resultValue.size = size;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

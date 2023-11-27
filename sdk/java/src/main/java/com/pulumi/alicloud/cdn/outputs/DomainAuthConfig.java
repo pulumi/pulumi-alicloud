@@ -74,12 +74,12 @@ public final class DomainAuthConfig {
             return this;
         }
         public DomainAuthConfig build() {
-            final var o = new DomainAuthConfig();
-            o.authType = authType;
-            o.masterKey = masterKey;
-            o.slaveKey = slaveKey;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new DomainAuthConfig();
+            _resultValue.authType = authType;
+            _resultValue.masterKey = masterKey;
+            _resultValue.slaveKey = slaveKey;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

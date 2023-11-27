@@ -87,7 +87,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Indicates the name of the certificate if the HTTPS protocol is enabled.
      * 
      */
-    @Export(name="certName", type=String.class, parameters={})
+    @Export(name="certName", refs={String.class}, tree="[0]")
     private Output<String> certName;
 
     /**
@@ -104,7 +104,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * `upload`: a user uploaded certificate.
      * 
      */
-    @Export(name="certType", type=String.class, parameters={})
+    @Export(name="certType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certType;
 
     /**
@@ -121,7 +121,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The URL that is used to test the accessibility of the origin.
      * 
      */
-    @Export(name="checkUrl", type=String.class, parameters={})
+    @Export(name="checkUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checkUrl;
 
     /**
@@ -135,7 +135,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
      * 
      */
-    @Export(name="cname", type=String.class, parameters={})
+    @Export(name="cname", refs={String.class}, tree="[0]")
     private Output<String> cname;
 
     /**
@@ -149,7 +149,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The name of the accelerated domain.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -163,7 +163,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
      * 
      */
-    @Export(name="forceSet", type=String.class, parameters={})
+    @Export(name="forceSet", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> forceSet;
 
     /**
@@ -177,7 +177,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -191,7 +191,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The acceleration region.
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scope;
 
     /**
@@ -205,7 +205,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The top-level domain name.
      * 
      */
-    @Export(name="securityToken", type=String.class, parameters={})
+    @Export(name="securityToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityToken;
 
     /**
@@ -219,7 +219,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The origin information. See `sources` below.
      * 
      */
-    @Export(name="sources", type=List.class, parameters={DomainSource.class})
+    @Export(name="sources", refs={List.class,DomainSource.class}, tree="[0,1]")
     private Output<List<DomainSource>> sources;
 
     /**
@@ -233,7 +233,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The private key. Specify this parameter only if you enable the SSL certificate.
      * 
      */
-    @Export(name="sslPri", type=String.class, parameters={})
+    @Export(name="sslPri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslPri;
 
     /**
@@ -247,7 +247,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
      * 
      */
-    @Export(name="sslProtocol", type=String.class, parameters={})
+    @Export(name="sslProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslProtocol;
 
     /**
@@ -261,7 +261,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Indicates the public key of the certificate if the HTTPS protocol is enabled.
      * 
      */
-    @Export(name="sslPub", type=String.class, parameters={})
+    @Export(name="sslPub", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslPub;
 
     /**
@@ -275,7 +275,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -289,7 +289,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -303,7 +303,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The top-level domain name.
      * 
      */
-    @Export(name="topLevelDomain", type=String.class, parameters={})
+    @Export(name="topLevelDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> topLevelDomain;
 
     /**

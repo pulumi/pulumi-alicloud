@@ -122,13 +122,13 @@ public final class GetRulesSlbRule {
             return this;
         }
         public GetRulesSlbRule build() {
-            final var o = new GetRulesSlbRule();
-            o.domain = domain;
-            o.id = id;
-            o.name = name;
-            o.serverGroupId = serverGroupId;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetRulesSlbRule();
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.serverGroupId = serverGroupId;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

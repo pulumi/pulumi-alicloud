@@ -176,16 +176,16 @@ public final class GetTunnelsResult {
             return tunnels(List.of(tunnels));
         }
         public GetTunnelsResult build() {
-            final var o = new GetTunnelsResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceName = instanceName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.tableName = tableName;
-            o.tunnels = tunnels;
-            return o;
+            final var _resultValue = new GetTunnelsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceName = instanceName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.tableName = tableName;
+            _resultValue.tunnels = tunnels;
+            return _resultValue;
         }
     }
 }

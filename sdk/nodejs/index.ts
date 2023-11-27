@@ -72,6 +72,7 @@ utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 
 // Export sub-modules:
+import * as ackone from "./ackone";
 import * as actiontrail from "./actiontrail";
 import * as adb from "./adb";
 import * as alb from "./alb";
@@ -141,6 +142,7 @@ import * as gpdb from "./gpdb";
 import * as graphdatabase from "./graphdatabase";
 import * as hbase from "./hbase";
 import * as hbr from "./hbr";
+import * as hologram from "./hologram";
 import * as imm from "./imm";
 import * as imp from "./imp";
 import * as ims from "./ims";
@@ -199,6 +201,7 @@ import * as wafv3 from "./wafv3";
 import * as yundun from "./yundun";
 
 export {
+    ackone,
     actiontrail,
     adb,
     alb,
@@ -268,6 +271,7 @@ export {
     graphdatabase,
     hbase,
     hbr,
+    hologram,
     imm,
     imp,
     ims,

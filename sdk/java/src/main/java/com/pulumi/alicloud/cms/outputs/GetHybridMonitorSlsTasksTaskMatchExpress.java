@@ -84,11 +84,11 @@ public final class GetHybridMonitorSlsTasksTaskMatchExpress {
             return this;
         }
         public GetHybridMonitorSlsTasksTaskMatchExpress build() {
-            final var o = new GetHybridMonitorSlsTasksTaskMatchExpress();
-            o.function = function;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetHybridMonitorSlsTasksTaskMatchExpress();
+            _resultValue.function = function;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -78,7 +78,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Certificate file content.
      * 
      */
-    @Export(name="certificate", type=String.class, parameters={})
+    @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificate;
 
     /**
@@ -92,7 +92,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The certificate id is automatically generated when you upload your certificate content.**NOTE:** you can also use Certificate ID saved in SSL.
      * 
      */
-    @Export(name="certificateId", type=String.class, parameters={})
+    @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output<String> certificateId;
 
     /**
@@ -106,7 +106,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Certificate file name.
      * 
      */
-    @Export(name="certificateName", type=String.class, parameters={})
+    @Export(name="certificateName", refs={String.class}, tree="[0]")
     private Output<String> certificateName;
 
     /**
@@ -120,7 +120,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The domain that you want to add to WAF.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -134,7 +134,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The ID of the WAF instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -148,7 +148,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The private key.
      * 
      */
-    @Export(name="privateKey", type=String.class, parameters={})
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**

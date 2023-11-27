@@ -134,13 +134,13 @@ public final class EventRuleEventPattern {
             return this;
         }
         public EventRuleEventPattern build() {
-            final var o = new EventRuleEventPattern();
-            o.eventTypeLists = eventTypeLists;
-            o.levelLists = levelLists;
-            o.nameLists = nameLists;
-            o.product = product;
-            o.sqlFilter = sqlFilter;
-            return o;
+            final var _resultValue = new EventRuleEventPattern();
+            _resultValue.eventTypeLists = eventTypeLists;
+            _resultValue.levelLists = levelLists;
+            _resultValue.nameLists = nameLists;
+            _resultValue.product = product;
+            _resultValue.sqlFilter = sqlFilter;
+            return _resultValue;
         }
     }
 }

@@ -199,17 +199,17 @@ public final class GetDeployGroupsGroup {
             return this;
         }
         public GetDeployGroupsGroup build() {
-            final var o = new GetDeployGroupsGroup();
-            o.appId = appId;
-            o.appVersionId = appVersionId;
-            o.clusterId = clusterId;
-            o.createTime = createTime;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.groupType = groupType;
-            o.packageVersionId = packageVersionId;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetDeployGroupsGroup();
+            _resultValue.appId = appId;
+            _resultValue.appVersionId = appVersionId;
+            _resultValue.clusterId = clusterId;
+            _resultValue.createTime = createTime;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            _resultValue.groupType = groupType;
+            _resultValue.packageVersionId = packageVersionId;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

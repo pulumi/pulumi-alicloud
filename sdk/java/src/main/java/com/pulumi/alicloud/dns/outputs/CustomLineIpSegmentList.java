@@ -65,10 +65,10 @@ public final class CustomLineIpSegmentList {
             return this;
         }
         public CustomLineIpSegmentList build() {
-            final var o = new CustomLineIpSegmentList();
-            o.endIp = endIp;
-            o.startIp = startIp;
-            return o;
+            final var _resultValue = new CustomLineIpSegmentList();
+            _resultValue.endIp = endIp;
+            _resultValue.startIp = startIp;
+            return _resultValue;
         }
     }
 }

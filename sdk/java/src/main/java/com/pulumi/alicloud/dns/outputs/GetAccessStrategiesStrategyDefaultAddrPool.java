@@ -104,12 +104,12 @@ public final class GetAccessStrategiesStrategyDefaultAddrPool {
             return this;
         }
         public GetAccessStrategiesStrategyDefaultAddrPool build() {
-            final var o = new GetAccessStrategiesStrategyDefaultAddrPool();
-            o.addrCount = addrCount;
-            o.addrPoolId = addrPoolId;
-            o.lbaWeight = lbaWeight;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAccessStrategiesStrategyDefaultAddrPool();
+            _resultValue.addrCount = addrCount;
+            _resultValue.addrPoolId = addrPoolId;
+            _resultValue.lbaWeight = lbaWeight;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

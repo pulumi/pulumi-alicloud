@@ -72,10 +72,10 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilter {
             return this;
         }
         public HybridMonitorSlsTaskSlsProcessConfigFilter build() {
-            final var o = new HybridMonitorSlsTaskSlsProcessConfigFilter();
-            o.filters = filters;
-            o.relation = relation;
-            return o;
+            final var _resultValue = new HybridMonitorSlsTaskSlsProcessConfigFilter();
+            _resultValue.filters = filters;
+            _resultValue.relation = relation;
+            return _resultValue;
         }
     }
 }

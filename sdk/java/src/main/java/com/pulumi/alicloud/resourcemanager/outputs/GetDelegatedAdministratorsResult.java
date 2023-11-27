@@ -123,15 +123,15 @@ public final class GetDelegatedAdministratorsResult {
             return this;
         }
         public GetDelegatedAdministratorsResult build() {
-            final var o = new GetDelegatedAdministratorsResult();
-            o.administrators = administrators;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.servicePrincipal = servicePrincipal;
-            return o;
+            final var _resultValue = new GetDelegatedAdministratorsResult();
+            _resultValue.administrators = administrators;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.servicePrincipal = servicePrincipal;
+            return _resultValue;
         }
     }
 }

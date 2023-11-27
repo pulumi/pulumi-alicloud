@@ -126,7 +126,7 @@ public class InstanceGrant extends com.pulumi.resources.CustomResource {
      * The ID of the CEN.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -140,7 +140,7 @@ public class InstanceGrant extends com.pulumi.resources.CustomResource {
      * The owner UID of the  CEN which the child instance granted to.
      * 
      */
-    @Export(name="cenOwnerId", type=String.class, parameters={})
+    @Export(name="cenOwnerId", refs={String.class}, tree="[0]")
     private Output<String> cenOwnerId;
 
     /**
@@ -154,7 +154,7 @@ public class InstanceGrant extends com.pulumi.resources.CustomResource {
      * The ID of the child instance to grant.
      * 
      */
-    @Export(name="childInstanceId", type=String.class, parameters={})
+    @Export(name="childInstanceId", refs={String.class}, tree="[0]")
     private Output<String> childInstanceId;
 
     /**

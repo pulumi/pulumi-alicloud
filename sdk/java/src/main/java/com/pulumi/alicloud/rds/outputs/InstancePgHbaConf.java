@@ -192,16 +192,16 @@ public final class InstancePgHbaConf {
             return this;
         }
         public InstancePgHbaConf build() {
-            final var o = new InstancePgHbaConf();
-            o.address = address;
-            o.database = database;
-            o.mask = mask;
-            o.method = method;
-            o.option = option;
-            o.priorityId = priorityId;
-            o.type = type;
-            o.user = user;
-            return o;
+            final var _resultValue = new InstancePgHbaConf();
+            _resultValue.address = address;
+            _resultValue.database = database;
+            _resultValue.mask = mask;
+            _resultValue.method = method;
+            _resultValue.option = option;
+            _resultValue.priorityId = priorityId;
+            _resultValue.type = type;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

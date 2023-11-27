@@ -22,12 +22,12 @@ public final class InstanceReplicaSet {
      */
     private @Nullable String connectionPort;
     /**
-     * @return The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * @return The network type of the instance. Valid values:`Classic`, `VPC`.
      * 
      */
     private @Nullable String networkType;
     /**
-     * @return The role of the node. Valid values: `Primary`,`Secondary`.
+     * @return The role of the node.
      * 
      */
     private @Nullable String replicaSetRole;
@@ -37,7 +37,7 @@ public final class InstanceReplicaSet {
      */
     private @Nullable String vpcCloudInstanceId;
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     private @Nullable String vpcId;
@@ -63,14 +63,14 @@ public final class InstanceReplicaSet {
         return Optional.ofNullable(this.connectionPort);
     }
     /**
-     * @return The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * @return The network type of the instance. Valid values:`Classic`, `VPC`.
      * 
      */
     public Optional<String> networkType() {
         return Optional.ofNullable(this.networkType);
     }
     /**
-     * @return The role of the node. Valid values: `Primary`,`Secondary`.
+     * @return The role of the node.
      * 
      */
     public Optional<String> replicaSetRole() {
@@ -84,7 +84,7 @@ public final class InstanceReplicaSet {
         return Optional.ofNullable(this.vpcCloudInstanceId);
     }
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     public Optional<String> vpcId() {
@@ -162,15 +162,15 @@ public final class InstanceReplicaSet {
             return this;
         }
         public InstanceReplicaSet build() {
-            final var o = new InstanceReplicaSet();
-            o.connectionDomain = connectionDomain;
-            o.connectionPort = connectionPort;
-            o.networkType = networkType;
-            o.replicaSetRole = replicaSetRole;
-            o.vpcCloudInstanceId = vpcCloudInstanceId;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new InstanceReplicaSet();
+            _resultValue.connectionDomain = connectionDomain;
+            _resultValue.connectionPort = connectionPort;
+            _resultValue.networkType = networkType;
+            _resultValue.replicaSetRole = replicaSetRole;
+            _resultValue.vpcCloudInstanceId = vpcCloudInstanceId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

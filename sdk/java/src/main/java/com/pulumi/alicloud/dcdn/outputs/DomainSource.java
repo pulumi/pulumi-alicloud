@@ -131,13 +131,13 @@ public final class DomainSource {
             return this;
         }
         public DomainSource build() {
-            final var o = new DomainSource();
-            o.content = content;
-            o.port = port;
-            o.priority = priority;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new DomainSource();
+            _resultValue.content = content;
+            _resultValue.port = port;
+            _resultValue.priority = priority;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

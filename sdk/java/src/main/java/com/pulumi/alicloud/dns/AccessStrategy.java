@@ -41,7 +41,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
      * 
      */
-    @Export(name="accessMode", type=String.class, parameters={})
+    @Export(name="accessMode", refs={String.class}, tree="[0]")
     private Output<String> accessMode;
 
     /**
@@ -55,7 +55,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      * 
      */
-    @Export(name="defaultAddrPoolType", type=String.class, parameters={})
+    @Export(name="defaultAddrPoolType", refs={String.class}, tree="[0]")
     private Output<String> defaultAddrPoolType;
 
     /**
@@ -69,7 +69,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * List of primary address pool collections. See `default_addr_pools` below for details.
      * 
      */
-    @Export(name="defaultAddrPools", type=List.class, parameters={AccessStrategyDefaultAddrPool.class})
+    @Export(name="defaultAddrPools", refs={List.class,AccessStrategyDefaultAddrPool.class}, tree="[0,1]")
     private Output<List<AccessStrategyDefaultAddrPool>> defaultAddrPools;
 
     /**
@@ -83,7 +83,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
      * 
      */
-    @Export(name="defaultLatencyOptimization", type=String.class, parameters={})
+    @Export(name="defaultLatencyOptimization", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultLatencyOptimization;
 
     /**
@@ -97,7 +97,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
      * 
      */
-    @Export(name="defaultLbaStrategy", type=String.class, parameters={})
+    @Export(name="defaultLbaStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultLbaStrategy;
 
     /**
@@ -111,7 +111,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
      * 
      */
-    @Export(name="defaultMaxReturnAddrNum", type=Integer.class, parameters={})
+    @Export(name="defaultMaxReturnAddrNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> defaultMaxReturnAddrNum;
 
     /**
@@ -125,7 +125,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The minimum number of available addresses for the primary address pool set.
      * 
      */
-    @Export(name="defaultMinAvailableAddrNum", type=Integer.class, parameters={})
+    @Export(name="defaultMinAvailableAddrNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultMinAvailableAddrNum;
 
     /**
@@ -139,7 +139,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      * 
      */
-    @Export(name="failoverAddrPoolType", type=String.class, parameters={})
+    @Export(name="failoverAddrPoolType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> failoverAddrPoolType;
 
     /**
@@ -153,7 +153,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * List of backup address pool sets. See `failover_addr_pools` below for details.
      * 
      */
-    @Export(name="failoverAddrPools", type=List.class, parameters={AccessStrategyFailoverAddrPool.class})
+    @Export(name="failoverAddrPools", refs={List.class,AccessStrategyFailoverAddrPool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessStrategyFailoverAddrPool>> failoverAddrPools;
 
     /**
@@ -167,7 +167,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
      * 
      */
-    @Export(name="failoverLatencyOptimization", type=String.class, parameters={})
+    @Export(name="failoverLatencyOptimization", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> failoverLatencyOptimization;
 
     /**
@@ -181,7 +181,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
      * 
      */
-    @Export(name="failoverLbaStrategy", type=String.class, parameters={})
+    @Export(name="failoverLbaStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> failoverLbaStrategy;
 
     /**
@@ -195,7 +195,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The maximum number of returned addresses in the standby address pool.
      * 
      */
-    @Export(name="failoverMaxReturnAddrNum", type=Integer.class, parameters={})
+    @Export(name="failoverMaxReturnAddrNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> failoverMaxReturnAddrNum;
 
     /**
@@ -209,7 +209,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The minimum number of available addresses in the standby address pool.
      * 
      */
-    @Export(name="failoverMinAvailableAddrNum", type=Integer.class, parameters={})
+    @Export(name="failoverMinAvailableAddrNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> failoverMinAvailableAddrNum;
 
     /**
@@ -223,7 +223,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The Id of the associated instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -237,7 +237,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The lang.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -251,7 +251,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
      * 
      */
-    @Export(name="lines", type=List.class, parameters={AccessStrategyLine.class})
+    @Export(name="lines", refs={List.class,AccessStrategyLine.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessStrategyLine>> lines;
 
     /**
@@ -265,7 +265,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
      * 
      */
-    @Export(name="strategyMode", type=String.class, parameters={})
+    @Export(name="strategyMode", refs={String.class}, tree="[0]")
     private Output<String> strategyMode;
 
     /**
@@ -279,7 +279,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * The name of the access policy.
      * 
      */
-    @Export(name="strategyName", type=String.class, parameters={})
+    @Export(name="strategyName", refs={String.class}, tree="[0]")
     private Output<String> strategyName;
 
     /**

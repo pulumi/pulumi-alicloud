@@ -160,15 +160,15 @@ public final class GetSnatEntriesEntry {
             return this;
         }
         public GetSnatEntriesEntry build() {
-            final var o = new GetSnatEntriesEntry();
-            o.id = id;
-            o.snatEntryId = snatEntryId;
-            o.snatEntryName = snatEntryName;
-            o.snatIp = snatIp;
-            o.sourceCidr = sourceCidr;
-            o.sourceVswitchId = sourceVswitchId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSnatEntriesEntry();
+            _resultValue.id = id;
+            _resultValue.snatEntryId = snatEntryId;
+            _resultValue.snatEntryName = snatEntryName;
+            _resultValue.snatIp = snatIp;
+            _resultValue.sourceCidr = sourceCidr;
+            _resultValue.sourceVswitchId = sourceVswitchId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

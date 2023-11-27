@@ -134,16 +134,16 @@ public final class GetHybridMonitorSlsTasksResult {
             return tasks(List.of(tasks));
         }
         public GetHybridMonitorSlsTasksResult build() {
-            final var o = new GetHybridMonitorSlsTasksResult();
-            o.id = id;
-            o.ids = ids;
-            o.keyword = keyword;
-            o.namespace = namespace;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.tasks = tasks;
-            return o;
+            final var _resultValue = new GetHybridMonitorSlsTasksResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyword = keyword;
+            _resultValue.namespace = namespace;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.tasks = tasks;
+            return _resultValue;
         }
     }
 }

@@ -322,25 +322,25 @@ public final class GetVpcFirewallCensCenLocalVpc {
             return this;
         }
         public GetVpcFirewallCensCenLocalVpc build() {
-            final var o = new GetVpcFirewallCensCenLocalVpc();
-            o.attachmentId = attachmentId;
-            o.attachmentName = attachmentName;
-            o.defendCidrLists = defendCidrLists;
-            o.eniLists = eniLists;
-            o.manualVswitchId = manualVswitchId;
-            o.networkInstanceId = networkInstanceId;
-            o.networkInstanceName = networkInstanceName;
-            o.networkInstanceType = networkInstanceType;
-            o.ownerId = ownerId;
-            o.regionNo = regionNo;
-            o.routeMode = routeMode;
-            o.supportManualMode = supportManualMode;
-            o.transitRouterId = transitRouterId;
-            o.transitRouterType = transitRouterType;
-            o.vpcCidrTableLists = vpcCidrTableLists;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            return o;
+            final var _resultValue = new GetVpcFirewallCensCenLocalVpc();
+            _resultValue.attachmentId = attachmentId;
+            _resultValue.attachmentName = attachmentName;
+            _resultValue.defendCidrLists = defendCidrLists;
+            _resultValue.eniLists = eniLists;
+            _resultValue.manualVswitchId = manualVswitchId;
+            _resultValue.networkInstanceId = networkInstanceId;
+            _resultValue.networkInstanceName = networkInstanceName;
+            _resultValue.networkInstanceType = networkInstanceType;
+            _resultValue.ownerId = ownerId;
+            _resultValue.regionNo = regionNo;
+            _resultValue.routeMode = routeMode;
+            _resultValue.supportManualMode = supportManualMode;
+            _resultValue.transitRouterId = transitRouterId;
+            _resultValue.transitRouterType = transitRouterType;
+            _resultValue.vpcCidrTableLists = vpcCidrTableLists;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcName = vpcName;
+            return _resultValue;
         }
     }
 }

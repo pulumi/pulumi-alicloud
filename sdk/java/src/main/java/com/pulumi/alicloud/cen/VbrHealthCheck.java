@@ -127,7 +127,7 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
      * The ID of the CEN instance.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -141,7 +141,7 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
      * Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
      * 
      */
-    @Export(name="healthCheckInterval", type=Integer.class, parameters={})
+    @Export(name="healthCheckInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckInterval;
 
     /**
@@ -155,7 +155,7 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
      * The source IP address of health checks.
      * 
      */
-    @Export(name="healthCheckSourceIp", type=String.class, parameters={})
+    @Export(name="healthCheckSourceIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckSourceIp;
 
     /**
@@ -169,7 +169,7 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
      * The destination IP address of health checks.
      * 
      */
-    @Export(name="healthCheckTargetIp", type=String.class, parameters={})
+    @Export(name="healthCheckTargetIp", refs={String.class}, tree="[0]")
     private Output<String> healthCheckTargetIp;
 
     /**
@@ -183,7 +183,7 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
      * Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
      * 
      */
-    @Export(name="healthyThreshold", type=Integer.class, parameters={})
+    @Export(name="healthyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthyThreshold;
 
     /**
@@ -197,7 +197,7 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
      * The ID of the VBR.
      * 
      */
-    @Export(name="vbrInstanceId", type=String.class, parameters={})
+    @Export(name="vbrInstanceId", refs={String.class}, tree="[0]")
     private Output<String> vbrInstanceId;
 
     /**
@@ -211,7 +211,7 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
      * The ID of the account to which the VBR belongs.
      * 
      */
-    @Export(name="vbrInstanceOwnerId", type=Integer.class, parameters={})
+    @Export(name="vbrInstanceOwnerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vbrInstanceOwnerId;
 
     /**
@@ -227,7 +227,7 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
      * -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
      * 
      */
-    @Export(name="vbrInstanceRegionId", type=String.class, parameters={})
+    @Export(name="vbrInstanceRegionId", refs={String.class}, tree="[0]")
     private Output<String> vbrInstanceRegionId;
 
     /**

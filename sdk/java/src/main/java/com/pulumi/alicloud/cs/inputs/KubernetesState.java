@@ -8,9 +8,6 @@ import com.pulumi.alicloud.cs.inputs.KubernetesCertificateAuthorityArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesConnectionsArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesMasterNodeArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesRuntimeArgs;
-import com.pulumi.alicloud.cs.inputs.KubernetesTaintArgs;
-import com.pulumi.alicloud.cs.inputs.KubernetesWorkerDataDiskArgs;
-import com.pulumi.alicloud.cs.inputs.KubernetesWorkerNodeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -31,12 +28,16 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     /**
      * The addon you want to install in cluster. See `addons` below.
      * 
+     * *Network params*
+     * 
      */
     @Import(name="addons")
     private @Nullable Output<List<KubernetesAddonArgs>> addons;
 
     /**
      * @return The addon you want to install in cluster. See `addons` below.
+     * 
+     * *Network params*
      * 
      */
     public Optional<Output<List<KubernetesAddonArgs>>> addons() {
@@ -59,33 +60,14 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch&#39;s zone.
-     * 
-     * *Removed params*
-     * 
-     */
-    @Import(name="availabilityZone")
-    private @Nullable Output<String> availabilityZone;
-
-    /**
-     * @return The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch&#39;s zone.
-     * 
-     * *Removed params*
-     * 
-     */
-    public Optional<Output<String>> availabilityZone() {
-        return Optional.ofNullable(this.availabilityZone);
-    }
-
-    /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<KubernetesCertificateAuthorityArgs> certificateAuthority;
 
     /**
-     * @return Nested attribute containing certificate authority data for your cluster.
+     * @return (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     public Optional<Output<KubernetesCertificateAuthorityArgs>> certificateAuthority() {
@@ -125,12 +107,16 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      * 
+     * *Removed params*
+     * 
      */
     @Import(name="clusterCaCert")
     private @Nullable Output<String> clusterCaCert;
 
     /**
      * @return The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+     * 
+     * *Removed params*
      * 
      */
     public Optional<Output<String>> clusterCaCert() {
@@ -153,41 +139,18 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      * 
      */
     @Import(name="connections")
     private @Nullable Output<KubernetesConnectionsArgs> connections;
 
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return (Map) Map of kubernetes cluster connection information.
      * 
      */
     public Optional<Output<KubernetesConnectionsArgs>> connections() {
         return Optional.ofNullable(this.connections);
-    }
-
-    /**
-     * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
-     * 
-     * @deprecated
-     * Field &#39;cpu_policy&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;cpu_policy&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it */
-    @Import(name="cpuPolicy")
-    private @Nullable Output<String> cpuPolicy;
-
-    /**
-     * @return Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
-     * 
-     * @deprecated
-     * Field &#39;cpu_policy&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;cpu_policy&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it */
-    public Optional<Output<String>> cpuPolicy() {
-        return Optional.ofNullable(this.cpuPolicy);
     }
 
     /**
@@ -233,29 +196,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableSsh() {
         return Optional.ofNullable(this.enableSsh);
-    }
-
-    /**
-     * Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
-     * 
-     * @deprecated
-     * Field &#39;exclude_autoscaler_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-     * 
-     */
-    @Deprecated /* Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-    @Import(name="excludeAutoscalerNodes")
-    private @Nullable Output<Boolean> excludeAutoscalerNodes;
-
-    /**
-     * @return Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
-     * 
-     * @deprecated
-     * Field &#39;exclude_autoscaler_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-     * 
-     */
-    @Deprecated /* Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-    public Optional<Output<Boolean>> excludeAutoscalerNodes() {
-        return Optional.ofNullable(this.excludeAutoscalerNodes);
     }
 
     /**
@@ -346,29 +286,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,Object>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
-    }
-
-    /**
-     * The path of kube config, like `~/.kube/config`.
-     * 
-     * @deprecated
-     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
-     * 
-     */
-    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
-    @Import(name="kubeConfig")
-    private @Nullable Output<String> kubeConfig;
-
-    /**
-     * @return The path of kube config, like `~/.kube/config`.
-     * 
-     * @deprecated
-     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
-     * 
-     */
-    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
-    public Optional<Output<String>> kubeConfig() {
-        return Optional.ofNullable(this.kubeConfig);
     }
 
     /**
@@ -464,7 +381,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     /**
      * Master node system disk auto snapshot policy.
      * 
-     * *Worker params*
+     * *Computed params*
      * 
      */
     @Import(name="masterDiskSnapshotPolicyId")
@@ -473,7 +390,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Master node system disk auto snapshot policy.
      * 
-     * *Worker params*
+     * *Computed params*
      * 
      */
     public Optional<Output<String>> masterDiskSnapshotPolicyId() {
@@ -511,18 +428,14 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The master nodes. See `master_nodes` below.
-     * 
-     * *Network params*
+     * (Optional) The master nodes. See `master_nodes` below.
      * 
      */
     @Import(name="masterNodes")
     private @Nullable Output<List<KubernetesMasterNodeArgs>> masterNodes;
 
     /**
-     * @return The master nodes. See `master_nodes` below.
-     * 
-     * *Network params*
+     * @return (Optional) The master nodes. See `master_nodes` below.
      * 
      */
     public Optional<Output<List<KubernetesMasterNodeArgs>>> masterNodes() {
@@ -666,29 +579,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> nodeNameMode() {
         return Optional.ofNullable(this.nodeNameMode);
-    }
-
-    /**
-     * The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
-     * 
-     * @deprecated
-     * Field &#39;node_port_range&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-     * 
-     */
-    @Deprecated /* Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-    @Import(name="nodePortRange")
-    private @Nullable Output<String> nodePortRange;
-
-    /**
-     * @return The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
-     * 
-     * @deprecated
-     * Field &#39;node_port_range&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-     * 
-     */
-    @Deprecated /* Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-    public Optional<Output<String>> nodePortRange() {
-        return Optional.ofNullable(this.nodePortRange);
     }
 
     /**
@@ -879,7 +769,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of load balancer.
+     * (Deprecated) The ID of load balancer.
      * 
      * @deprecated
      * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
@@ -890,7 +780,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> slbId;
 
     /**
-     * @return The ID of load balancer.
+     * @return (Deprecated) The ID of load balancer.
      * 
      * @deprecated
      * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
@@ -972,29 +862,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
-     * 
-     * @deprecated
-     * Field &#39;taints&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;taints&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it */
-    @Import(name="taints")
-    private @Nullable Output<List<KubernetesTaintArgs>> taints;
-
-    /**
-     * @return Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
-     * 
-     * @deprecated
-     * Field &#39;taints&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;taints&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it */
-    public Optional<Output<List<KubernetesTaintArgs>>> taints() {
-        return Optional.ofNullable(this.taints);
-    }
-
-    /**
      * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
      * 
      */
@@ -1022,29 +889,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> userCa() {
         return Optional.ofNullable(this.userCa);
-    }
-
-    /**
-     * Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
-     * 
-     * @deprecated
-     * Field &#39;user_data&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;user_data&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it */
-    @Import(name="userData")
-    private @Nullable Output<String> userData;
-
-    /**
-     * @return Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
-     * 
-     * @deprecated
-     * Field &#39;user_data&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;user_data&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it */
-    public Optional<Output<String>> userData() {
-        return Optional.ofNullable(this.userData);
     }
 
     /**
@@ -1078,359 +922,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable worker payment auto-renew, defaults to false.
-     * 
-     * @deprecated
-     * Field &#39;worker_auto_renew&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it */
-    @Import(name="workerAutoRenew")
-    private @Nullable Output<Boolean> workerAutoRenew;
-
-    /**
-     * @return Enable worker payment auto-renew, defaults to false.
-     * 
-     * @deprecated
-     * Field &#39;worker_auto_renew&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it */
-    public Optional<Output<Boolean>> workerAutoRenew() {
-        return Optional.ofNullable(this.workerAutoRenew);
-    }
-
-    /**
-     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-     * 
-     * @deprecated
-     * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew_period&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it */
-    @Import(name="workerAutoRenewPeriod")
-    private @Nullable Output<Integer> workerAutoRenewPeriod;
-
-    /**
-     * @return Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-     * 
-     * @deprecated
-     * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew_period&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it */
-    public Optional<Output<Integer>> workerAutoRenewPeriod() {
-        return Optional.ofNullable(this.workerAutoRenewPeriod);
-    }
-
-    /**
-     * The data disk category of worker, use `worker_data_disks` to instead it.
-     * 
-     * @deprecated
-     * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.category&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it */
-    @Import(name="workerDataDiskCategory")
-    private @Nullable Output<String> workerDataDiskCategory;
-
-    /**
-     * @return The data disk category of worker, use `worker_data_disks` to instead it.
-     * 
-     * @deprecated
-     * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.category&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it */
-    public Optional<Output<String>> workerDataDiskCategory() {
-        return Optional.ofNullable(this.workerDataDiskCategory);
-    }
-
-    /**
-     * The data disk size of worker, use `worker_data_disks` to instead it.
-     * 
-     * @deprecated
-     * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.size&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it */
-    @Import(name="workerDataDiskSize")
-    private @Nullable Output<Integer> workerDataDiskSize;
-
-    /**
-     * @return The data disk size of worker, use `worker_data_disks` to instead it.
-     * 
-     * @deprecated
-     * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.size&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it */
-    public Optional<Output<Integer>> workerDataDiskSize() {
-        return Optional.ofNullable(this.workerDataDiskSize);
-    }
-
-    /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
-     * 
-     * @deprecated
-     * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it */
-    @Import(name="workerDataDisks")
-    private @Nullable Output<List<KubernetesWorkerDataDiskArgs>> workerDataDisks;
-
-    /**
-     * @return The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
-     * 
-     * @deprecated
-     * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it */
-    public Optional<Output<List<KubernetesWorkerDataDiskArgs>>> workerDataDisks() {
-        return Optional.ofNullable(this.workerDataDisks);
-    }
-
-    /**
-     * The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_category&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it */
-    @Import(name="workerDiskCategory")
-    private @Nullable Output<String> workerDiskCategory;
-
-    /**
-     * @return The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_category&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it */
-    public Optional<Output<String>> workerDiskCategory() {
-        return Optional.ofNullable(this.workerDiskCategory);
-    }
-
-    /**
-     * Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_performance_level&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_performance_level&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it */
-    @Import(name="workerDiskPerformanceLevel")
-    private @Nullable Output<String> workerDiskPerformanceLevel;
-
-    /**
-     * @return Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_performance_level&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_performance_level&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it */
-    public Optional<Output<String>> workerDiskPerformanceLevel() {
-        return Optional.ofNullable(this.workerDiskPerformanceLevel);
-    }
-
-    /**
-     * The system disk size of worker node. Its valid value range [40~500] in GB.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_size&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it */
-    @Import(name="workerDiskSize")
-    private @Nullable Output<Integer> workerDiskSize;
-
-    /**
-     * @return The system disk size of worker node. Its valid value range [40~500] in GB.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_size&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it */
-    public Optional<Output<Integer>> workerDiskSize() {
-        return Optional.ofNullable(this.workerDiskSize);
-    }
-
-    /**
-     * Worker node system disk auto snapshot policy.
-     * 
-     * *Computed params*
-     * 
-     * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_snapshot_policy_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_snapshot_policy_id&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it */
-    @Import(name="workerDiskSnapshotPolicyId")
-    private @Nullable Output<String> workerDiskSnapshotPolicyId;
-
-    /**
-     * @return Worker node system disk auto snapshot policy.
-     * 
-     * *Computed params*
-     * 
-     * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_snapshot_policy_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_snapshot_policy_id&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it */
-    public Optional<Output<String>> workerDiskSnapshotPolicyId() {
-        return Optional.ofNullable(this.workerDiskSnapshotPolicyId);
-    }
-
-    /**
-     * Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
-     * 
-     * @deprecated
-     * Field &#39;worker_instance_charge_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_charge_type&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it */
-    @Import(name="workerInstanceChargeType")
-    private @Nullable Output<String> workerInstanceChargeType;
-
-    /**
-     * @return Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
-     * 
-     * @deprecated
-     * Field &#39;worker_instance_charge_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_charge_type&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it */
-    public Optional<Output<String>> workerInstanceChargeType() {
-        return Optional.ofNullable(this.workerInstanceChargeType);
-    }
-
-    /**
-     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-     * 
-     * @deprecated
-     * Field &#39;worker_instance_types&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_types&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it */
-    @Import(name="workerInstanceTypes")
-    private @Nullable Output<List<String>> workerInstanceTypes;
-
-    /**
-     * @return The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-     * 
-     * @deprecated
-     * Field &#39;worker_instance_types&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_types&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it */
-    public Optional<Output<List<String>>> workerInstanceTypes() {
-        return Optional.ofNullable(this.workerInstanceTypes);
-    }
-
-    /**
-     * List of cluster worker nodes. See `worker_nodes` below.
-     * 
-     * @deprecated
-     * Field &#39;worker_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-     * 
-     */
-    @Deprecated /* Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-    @Import(name="workerNodes")
-    private @Nullable Output<List<KubernetesWorkerNodeArgs>> workerNodes;
-
-    /**
-     * @return List of cluster worker nodes. See `worker_nodes` below.
-     * 
-     * @deprecated
-     * Field &#39;worker_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-     * 
-     */
-    @Deprecated /* Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-    public Optional<Output<List<KubernetesWorkerNodeArgs>>> workerNodes() {
-        return Optional.ofNullable(this.workerNodes);
-    }
-
-    /**
-     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-     * 
-     * @deprecated
-     * Field &#39;worker_number&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;desired_size&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it */
-    @Import(name="workerNumber")
-    private @Nullable Output<Integer> workerNumber;
-
-    /**
-     * @return The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-     * 
-     * @deprecated
-     * Field &#39;worker_number&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;desired_size&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it */
-    public Optional<Output<Integer>> workerNumber() {
-        return Optional.ofNullable(this.workerNumber);
-    }
-
-    /**
-     * Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-     * 
-     * @deprecated
-     * Field &#39;worker_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;period&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it */
-    @Import(name="workerPeriod")
-    private @Nullable Output<Integer> workerPeriod;
-
-    /**
-     * @return Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-     * 
-     * @deprecated
-     * Field &#39;worker_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;period&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it */
-    public Optional<Output<Integer>> workerPeriod() {
-        return Optional.ofNullable(this.workerPeriod);
-    }
-
-    /**
-     * Worker payment period unit, the valid value is `Month`.
-     * 
-     * @deprecated
-     * Field &#39;worker_period_unit&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;period_unit&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it */
-    @Import(name="workerPeriodUnit")
-    private @Nullable Output<String> workerPeriodUnit;
-
-    /**
-     * @return Worker payment period unit, the valid value is `Month`.
-     * 
-     * @deprecated
-     * Field &#39;worker_period_unit&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;period_unit&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it */
-    public Optional<Output<String>> workerPeriodUnit() {
-        return Optional.ofNullable(this.workerPeriodUnit);
-    }
-
-    /**
      * The RamRole Name attached to worker node.
      * 
      */
@@ -1445,53 +936,26 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.workerRamRoleName);
     }
 
-    /**
-     * The vswitches used by workers.
-     * 
-     * @deprecated
-     * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;vswitch_ids&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it */
-    @Import(name="workerVswitchIds")
-    private @Nullable Output<List<String>> workerVswitchIds;
-
-    /**
-     * @return The vswitches used by workers.
-     * 
-     * @deprecated
-     * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;vswitch_ids&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it */
-    public Optional<Output<List<String>>> workerVswitchIds() {
-        return Optional.ofNullable(this.workerVswitchIds);
-    }
-
     private KubernetesState() {}
 
     private KubernetesState(KubernetesState $) {
         this.addons = $.addons;
         this.apiAudiences = $.apiAudiences;
-        this.availabilityZone = $.availabilityZone;
         this.certificateAuthority = $.certificateAuthority;
         this.clientCert = $.clientCert;
         this.clientKey = $.clientKey;
         this.clusterCaCert = $.clusterCaCert;
         this.clusterDomain = $.clusterDomain;
         this.connections = $.connections;
-        this.cpuPolicy = $.cpuPolicy;
         this.customSan = $.customSan;
         this.deletionProtection = $.deletionProtection;
         this.enableSsh = $.enableSsh;
-        this.excludeAutoscalerNodes = $.excludeAutoscalerNodes;
         this.imageId = $.imageId;
         this.installCloudMonitor = $.installCloudMonitor;
         this.isEnterpriseSecurityGroup = $.isEnterpriseSecurityGroup;
         this.keyName = $.keyName;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
-        this.kubeConfig = $.kubeConfig;
         this.loadBalancerSpec = $.loadBalancerSpec;
         this.masterAutoRenew = $.masterAutoRenew;
         this.masterAutoRenewPeriod = $.masterAutoRenewPeriod;
@@ -1511,7 +975,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         this.newNatGateway = $.newNatGateway;
         this.nodeCidrMask = $.nodeCidrMask;
         this.nodeNameMode = $.nodeNameMode;
-        this.nodePortRange = $.nodePortRange;
         this.osType = $.osType;
         this.password = $.password;
         this.platform = $.platform;
@@ -1530,29 +993,11 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         this.slbInternetEnabled = $.slbInternetEnabled;
         this.slbIntranet = $.slbIntranet;
         this.tags = $.tags;
-        this.taints = $.taints;
         this.timezone = $.timezone;
         this.userCa = $.userCa;
-        this.userData = $.userData;
         this.version = $.version;
         this.vpcId = $.vpcId;
-        this.workerAutoRenew = $.workerAutoRenew;
-        this.workerAutoRenewPeriod = $.workerAutoRenewPeriod;
-        this.workerDataDiskCategory = $.workerDataDiskCategory;
-        this.workerDataDiskSize = $.workerDataDiskSize;
-        this.workerDataDisks = $.workerDataDisks;
-        this.workerDiskCategory = $.workerDiskCategory;
-        this.workerDiskPerformanceLevel = $.workerDiskPerformanceLevel;
-        this.workerDiskSize = $.workerDiskSize;
-        this.workerDiskSnapshotPolicyId = $.workerDiskSnapshotPolicyId;
-        this.workerInstanceChargeType = $.workerInstanceChargeType;
-        this.workerInstanceTypes = $.workerInstanceTypes;
-        this.workerNodes = $.workerNodes;
-        this.workerNumber = $.workerNumber;
-        this.workerPeriod = $.workerPeriod;
-        this.workerPeriodUnit = $.workerPeriodUnit;
         this.workerRamRoleName = $.workerRamRoleName;
-        this.workerVswitchIds = $.workerVswitchIds;
     }
 
     public static Builder builder() {
@@ -1576,6 +1021,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param addons The addon you want to install in cluster. See `addons` below.
          * 
+         * *Network params*
+         * 
          * @return builder
          * 
          */
@@ -1587,6 +1034,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param addons The addon you want to install in cluster. See `addons` below.
          * 
+         * *Network params*
+         * 
          * @return builder
          * 
          */
@@ -1596,6 +1045,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param addons The addon you want to install in cluster. See `addons` below.
+         * 
+         * *Network params*
          * 
          * @return builder
          * 
@@ -1636,32 +1087,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch&#39;s zone.
-         * 
-         * *Removed params*
-         * 
-         * @return builder
-         * 
-         */
-        public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
-            $.availabilityZone = availabilityZone;
-            return this;
-        }
-
-        /**
-         * @param availabilityZone The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch&#39;s zone.
-         * 
-         * *Removed params*
-         * 
-         * @return builder
-         * 
-         */
-        public Builder availabilityZone(String availabilityZone) {
-            return availabilityZone(Output.of(availabilityZone));
-        }
-
-        /**
-         * @param certificateAuthority Nested attribute containing certificate authority data for your cluster.
+         * @param certificateAuthority (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
          * 
          * @return builder
          * 
@@ -1672,7 +1098,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority Nested attribute containing certificate authority data for your cluster.
+         * @param certificateAuthority (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
          * 
          * @return builder
          * 
@@ -1726,6 +1152,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param clusterCaCert The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
          * 
+         * *Removed params*
+         * 
          * @return builder
          * 
          */
@@ -1736,6 +1164,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param clusterCaCert The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+         * 
+         * *Removed params*
          * 
          * @return builder
          * 
@@ -1766,7 +1196,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections (Map) Map of kubernetes cluster connection information.
          * 
          * @return builder
          * 
@@ -1777,42 +1207,13 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections (Map) Map of kubernetes cluster connection information.
          * 
          * @return builder
          * 
          */
         public Builder connections(KubernetesConnectionsArgs connections) {
             return connections(Output.of(connections));
-        }
-
-        /**
-         * @param cpuPolicy Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;cpu_policy&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;cpu_policy&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it */
-        public Builder cpuPolicy(@Nullable Output<String> cpuPolicy) {
-            $.cpuPolicy = cpuPolicy;
-            return this;
-        }
-
-        /**
-         * @param cpuPolicy Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;cpu_policy&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;cpu_policy&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it */
-        public Builder cpuPolicy(String cpuPolicy) {
-            return cpuPolicy(Output.of(cpuPolicy));
         }
 
         /**
@@ -1876,35 +1277,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableSsh(Boolean enableSsh) {
             return enableSsh(Output.of(enableSsh));
-        }
-
-        /**
-         * @param excludeAutoscalerNodes Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;exclude_autoscaler_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-         * 
-         */
-        @Deprecated /* Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-        public Builder excludeAutoscalerNodes(@Nullable Output<Boolean> excludeAutoscalerNodes) {
-            $.excludeAutoscalerNodes = excludeAutoscalerNodes;
-            return this;
-        }
-
-        /**
-         * @param excludeAutoscalerNodes Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;exclude_autoscaler_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-         * 
-         */
-        @Deprecated /* Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-        public Builder excludeAutoscalerNodes(Boolean excludeAutoscalerNodes) {
-            return excludeAutoscalerNodes(Output.of(excludeAutoscalerNodes));
         }
 
         /**
@@ -2031,35 +1403,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsEncryptionContext(Map<String,Object> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
-        }
-
-        /**
-         * @param kubeConfig The path of kube config, like `~/.kube/config`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
-         * 
-         */
-        @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
-        public Builder kubeConfig(@Nullable Output<String> kubeConfig) {
-            $.kubeConfig = kubeConfig;
-            return this;
-        }
-
-        /**
-         * @param kubeConfig The path of kube config, like `~/.kube/config`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
-         * 
-         */
-        @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
-        public Builder kubeConfig(String kubeConfig) {
-            return kubeConfig(Output.of(kubeConfig));
         }
 
         /**
@@ -2191,7 +1534,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param masterDiskSnapshotPolicyId Master node system disk auto snapshot policy.
          * 
-         * *Worker params*
+         * *Computed params*
          * 
          * @return builder
          * 
@@ -2204,7 +1547,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param masterDiskSnapshotPolicyId Master node system disk auto snapshot policy.
          * 
-         * *Worker params*
+         * *Computed params*
          * 
          * @return builder
          * 
@@ -2266,9 +1609,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterNodes The master nodes. See `master_nodes` below.
-         * 
-         * *Network params*
+         * @param masterNodes (Optional) The master nodes. See `master_nodes` below.
          * 
          * @return builder
          * 
@@ -2279,9 +1620,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterNodes The master nodes. See `master_nodes` below.
-         * 
-         * *Network params*
+         * @param masterNodes (Optional) The master nodes. See `master_nodes` below.
          * 
          * @return builder
          * 
@@ -2291,9 +1630,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterNodes The master nodes. See `master_nodes` below.
-         * 
-         * *Network params*
+         * @param masterNodes (Optional) The master nodes. See `master_nodes` below.
          * 
          * @return builder
          * 
@@ -2503,35 +1840,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodeNameMode(String nodeNameMode) {
             return nodeNameMode(Output.of(nodeNameMode));
-        }
-
-        /**
-         * @param nodePortRange The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;node_port_range&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-         * 
-         */
-        @Deprecated /* Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-        public Builder nodePortRange(@Nullable Output<String> nodePortRange) {
-            $.nodePortRange = nodePortRange;
-            return this;
-        }
-
-        /**
-         * @param nodePortRange The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;node_port_range&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-         * 
-         */
-        @Deprecated /* Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-        public Builder nodePortRange(String nodePortRange) {
-            return nodePortRange(Output.of(nodePortRange));
         }
 
         /**
@@ -2820,7 +2128,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbId The ID of load balancer.
+         * @param slbId (Deprecated) The ID of load balancer.
          * 
          * @return builder
          * 
@@ -2835,7 +2143,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbId The ID of load balancer.
+         * @param slbId (Deprecated) The ID of load balancer.
          * 
          * @return builder
          * 
@@ -2943,49 +2251,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;taints&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;taints&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it */
-        public Builder taints(@Nullable Output<List<KubernetesTaintArgs>> taints) {
-            $.taints = taints;
-            return this;
-        }
-
-        /**
-         * @param taints Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;taints&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;taints&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it */
-        public Builder taints(List<KubernetesTaintArgs> taints) {
-            return taints(Output.of(taints));
-        }
-
-        /**
-         * @param taints Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;taints&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;taints&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it */
-        public Builder taints(KubernetesTaintArgs... taints) {
-            return taints(List.of(taints));
-        }
-
-        /**
          * @param timezone When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
          * 
          * @return builder
@@ -3025,35 +2290,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder userCa(String userCa) {
             return userCa(Output.of(userCa));
-        }
-
-        /**
-         * @param userData Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;user_data&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;user_data&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it */
-        public Builder userData(@Nullable Output<String> userData) {
-            $.userData = userData;
-            return this;
-        }
-
-        /**
-         * @param userData Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;user_data&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;user_data&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it */
-        public Builder userData(String userData) {
-            return userData(Output.of(userData));
         }
 
         /**
@@ -3099,491 +2335,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerAutoRenew Enable worker payment auto-renew, defaults to false.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_auto_renew&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it */
-        public Builder workerAutoRenew(@Nullable Output<Boolean> workerAutoRenew) {
-            $.workerAutoRenew = workerAutoRenew;
-            return this;
-        }
-
-        /**
-         * @param workerAutoRenew Enable worker payment auto-renew, defaults to false.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_auto_renew&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it */
-        public Builder workerAutoRenew(Boolean workerAutoRenew) {
-            return workerAutoRenew(Output.of(workerAutoRenew));
-        }
-
-        /**
-         * @param workerAutoRenewPeriod Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew_period&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it */
-        public Builder workerAutoRenewPeriod(@Nullable Output<Integer> workerAutoRenewPeriod) {
-            $.workerAutoRenewPeriod = workerAutoRenewPeriod;
-            return this;
-        }
-
-        /**
-         * @param workerAutoRenewPeriod Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew_period&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it */
-        public Builder workerAutoRenewPeriod(Integer workerAutoRenewPeriod) {
-            return workerAutoRenewPeriod(Output.of(workerAutoRenewPeriod));
-        }
-
-        /**
-         * @param workerDataDiskCategory The data disk category of worker, use `worker_data_disks` to instead it.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.category&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it */
-        public Builder workerDataDiskCategory(@Nullable Output<String> workerDataDiskCategory) {
-            $.workerDataDiskCategory = workerDataDiskCategory;
-            return this;
-        }
-
-        /**
-         * @param workerDataDiskCategory The data disk category of worker, use `worker_data_disks` to instead it.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.category&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it */
-        public Builder workerDataDiskCategory(String workerDataDiskCategory) {
-            return workerDataDiskCategory(Output.of(workerDataDiskCategory));
-        }
-
-        /**
-         * @param workerDataDiskSize The data disk size of worker, use `worker_data_disks` to instead it.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.size&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it */
-        public Builder workerDataDiskSize(@Nullable Output<Integer> workerDataDiskSize) {
-            $.workerDataDiskSize = workerDataDiskSize;
-            return this;
-        }
-
-        /**
-         * @param workerDataDiskSize The data disk size of worker, use `worker_data_disks` to instead it.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.size&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it */
-        public Builder workerDataDiskSize(Integer workerDataDiskSize) {
-            return workerDataDiskSize(Output.of(workerDataDiskSize));
-        }
-
-        /**
-         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it */
-        public Builder workerDataDisks(@Nullable Output<List<KubernetesWorkerDataDiskArgs>> workerDataDisks) {
-            $.workerDataDisks = workerDataDisks;
-            return this;
-        }
-
-        /**
-         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it */
-        public Builder workerDataDisks(List<KubernetesWorkerDataDiskArgs> workerDataDisks) {
-            return workerDataDisks(Output.of(workerDataDisks));
-        }
-
-        /**
-         * @param workerDataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it */
-        public Builder workerDataDisks(KubernetesWorkerDataDiskArgs... workerDataDisks) {
-            return workerDataDisks(List.of(workerDataDisks));
-        }
-
-        /**
-         * @param workerDiskCategory The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_category&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it */
-        public Builder workerDiskCategory(@Nullable Output<String> workerDiskCategory) {
-            $.workerDiskCategory = workerDiskCategory;
-            return this;
-        }
-
-        /**
-         * @param workerDiskCategory The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_category&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it */
-        public Builder workerDiskCategory(String workerDiskCategory) {
-            return workerDiskCategory(Output.of(workerDiskCategory));
-        }
-
-        /**
-         * @param workerDiskPerformanceLevel Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_disk_performance_level&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_performance_level&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it */
-        public Builder workerDiskPerformanceLevel(@Nullable Output<String> workerDiskPerformanceLevel) {
-            $.workerDiskPerformanceLevel = workerDiskPerformanceLevel;
-            return this;
-        }
-
-        /**
-         * @param workerDiskPerformanceLevel Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_disk_performance_level&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_performance_level&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it */
-        public Builder workerDiskPerformanceLevel(String workerDiskPerformanceLevel) {
-            return workerDiskPerformanceLevel(Output.of(workerDiskPerformanceLevel));
-        }
-
-        /**
-         * @param workerDiskSize The system disk size of worker node. Its valid value range [40~500] in GB.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_size&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it */
-        public Builder workerDiskSize(@Nullable Output<Integer> workerDiskSize) {
-            $.workerDiskSize = workerDiskSize;
-            return this;
-        }
-
-        /**
-         * @param workerDiskSize The system disk size of worker node. Its valid value range [40~500] in GB.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_size&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it */
-        public Builder workerDiskSize(Integer workerDiskSize) {
-            return workerDiskSize(Output.of(workerDiskSize));
-        }
-
-        /**
-         * @param workerDiskSnapshotPolicyId Worker node system disk auto snapshot policy.
-         * 
-         * *Computed params*
-         * 
-         * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_disk_snapshot_policy_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_snapshot_policy_id&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it */
-        public Builder workerDiskSnapshotPolicyId(@Nullable Output<String> workerDiskSnapshotPolicyId) {
-            $.workerDiskSnapshotPolicyId = workerDiskSnapshotPolicyId;
-            return this;
-        }
-
-        /**
-         * @param workerDiskSnapshotPolicyId Worker node system disk auto snapshot policy.
-         * 
-         * *Computed params*
-         * 
-         * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_disk_snapshot_policy_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;system_disk_snapshot_policy_id&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it */
-        public Builder workerDiskSnapshotPolicyId(String workerDiskSnapshotPolicyId) {
-            return workerDiskSnapshotPolicyId(Output.of(workerDiskSnapshotPolicyId));
-        }
-
-        /**
-         * @param workerInstanceChargeType Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_instance_charge_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_charge_type&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it */
-        public Builder workerInstanceChargeType(@Nullable Output<String> workerInstanceChargeType) {
-            $.workerInstanceChargeType = workerInstanceChargeType;
-            return this;
-        }
-
-        /**
-         * @param workerInstanceChargeType Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_instance_charge_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_charge_type&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it */
-        public Builder workerInstanceChargeType(String workerInstanceChargeType) {
-            return workerInstanceChargeType(Output.of(workerInstanceChargeType));
-        }
-
-        /**
-         * @param workerInstanceTypes The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_instance_types&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_types&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it */
-        public Builder workerInstanceTypes(@Nullable Output<List<String>> workerInstanceTypes) {
-            $.workerInstanceTypes = workerInstanceTypes;
-            return this;
-        }
-
-        /**
-         * @param workerInstanceTypes The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_instance_types&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_types&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it */
-        public Builder workerInstanceTypes(List<String> workerInstanceTypes) {
-            return workerInstanceTypes(Output.of(workerInstanceTypes));
-        }
-
-        /**
-         * @param workerInstanceTypes The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_instance_types&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_types&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it */
-        public Builder workerInstanceTypes(String... workerInstanceTypes) {
-            return workerInstanceTypes(List.of(workerInstanceTypes));
-        }
-
-        /**
-         * @param workerNodes List of cluster worker nodes. See `worker_nodes` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-         * 
-         */
-        @Deprecated /* Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-        public Builder workerNodes(@Nullable Output<List<KubernetesWorkerNodeArgs>> workerNodes) {
-            $.workerNodes = workerNodes;
-            return this;
-        }
-
-        /**
-         * @param workerNodes List of cluster worker nodes. See `worker_nodes` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-         * 
-         */
-        @Deprecated /* Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-        public Builder workerNodes(List<KubernetesWorkerNodeArgs> workerNodes) {
-            return workerNodes(Output.of(workerNodes));
-        }
-
-        /**
-         * @param workerNodes List of cluster worker nodes. See `worker_nodes` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
-         * 
-         */
-        @Deprecated /* Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes. */
-        public Builder workerNodes(KubernetesWorkerNodeArgs... workerNodes) {
-            return workerNodes(List.of(workerNodes));
-        }
-
-        /**
-         * @param workerNumber The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_number&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;desired_size&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it */
-        public Builder workerNumber(@Nullable Output<Integer> workerNumber) {
-            $.workerNumber = workerNumber;
-            return this;
-        }
-
-        /**
-         * @param workerNumber The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_number&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;desired_size&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it */
-        public Builder workerNumber(Integer workerNumber) {
-            return workerNumber(Output.of(workerNumber));
-        }
-
-        /**
-         * @param workerPeriod Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;period&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it */
-        public Builder workerPeriod(@Nullable Output<Integer> workerPeriod) {
-            $.workerPeriod = workerPeriod;
-            return this;
-        }
-
-        /**
-         * @param workerPeriod Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;period&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it */
-        public Builder workerPeriod(Integer workerPeriod) {
-            return workerPeriod(Output.of(workerPeriod));
-        }
-
-        /**
-         * @param workerPeriodUnit Worker payment period unit, the valid value is `Month`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_period_unit&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;period_unit&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it */
-        public Builder workerPeriodUnit(@Nullable Output<String> workerPeriodUnit) {
-            $.workerPeriodUnit = workerPeriodUnit;
-            return this;
-        }
-
-        /**
-         * @param workerPeriodUnit Worker payment period unit, the valid value is `Month`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_period_unit&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;period_unit&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it */
-        public Builder workerPeriodUnit(String workerPeriodUnit) {
-            return workerPeriodUnit(Output.of(workerPeriodUnit));
-        }
-
-        /**
          * @param workerRamRoleName The RamRole Name attached to worker node.
          * 
          * @return builder
@@ -3602,49 +2353,6 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder workerRamRoleName(String workerRamRoleName) {
             return workerRamRoleName(Output.of(workerRamRoleName));
-        }
-
-        /**
-         * @param workerVswitchIds The vswitches used by workers.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;vswitch_ids&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it */
-        public Builder workerVswitchIds(@Nullable Output<List<String>> workerVswitchIds) {
-            $.workerVswitchIds = workerVswitchIds;
-            return this;
-        }
-
-        /**
-         * @param workerVswitchIds The vswitches used by workers.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;vswitch_ids&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it */
-        public Builder workerVswitchIds(List<String> workerVswitchIds) {
-            return workerVswitchIds(Output.of(workerVswitchIds));
-        }
-
-        /**
-         * @param workerVswitchIds The vswitches used by workers.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;vswitch_ids&#39; to replace it
-         * 
-         */
-        @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it */
-        public Builder workerVswitchIds(String... workerVswitchIds) {
-            return workerVswitchIds(List.of(workerVswitchIds));
         }
 
         public KubernetesState build() {

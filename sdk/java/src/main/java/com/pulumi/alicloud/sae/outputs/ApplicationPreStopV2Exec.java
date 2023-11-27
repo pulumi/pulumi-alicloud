@@ -51,9 +51,9 @@ public final class ApplicationPreStopV2Exec {
             return commands(List.of(commands));
         }
         public ApplicationPreStopV2Exec build() {
-            final var o = new ApplicationPreStopV2Exec();
-            o.commands = commands;
-            return o;
+            final var _resultValue = new ApplicationPreStopV2Exec();
+            _resultValue.commands = commands;
+            return _resultValue;
         }
     }
 }

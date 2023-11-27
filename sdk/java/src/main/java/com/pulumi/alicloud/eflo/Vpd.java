@@ -76,7 +76,7 @@ public class Vpd extends com.pulumi.resources.CustomResource {
      * CIDR network segment.
      * 
      */
-    @Export(name="cidr", type=String.class, parameters={})
+    @Export(name="cidr", refs={String.class}, tree="[0]")
     private Output<String> cidr;
 
     /**
@@ -90,7 +90,7 @@ public class Vpd extends com.pulumi.resources.CustomResource {
      * The creation time of the resource
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -104,7 +104,7 @@ public class Vpd extends com.pulumi.resources.CustomResource {
      * Modification time
      * 
      */
-    @Export(name="gmtModified", type=String.class, parameters={})
+    @Export(name="gmtModified", refs={String.class}, tree="[0]")
     private Output<String> gmtModified;
 
     /**
@@ -118,7 +118,7 @@ public class Vpd extends com.pulumi.resources.CustomResource {
      * The Resource group id.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -132,7 +132,7 @@ public class Vpd extends com.pulumi.resources.CustomResource {
      * The Vpd status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -146,7 +146,7 @@ public class Vpd extends com.pulumi.resources.CustomResource {
      * The Name of the VPD.
      * 
      */
-    @Export(name="vpdName", type=String.class, parameters={})
+    @Export(name="vpdName", refs={String.class}, tree="[0]")
     private Output<String> vpdName;
 
     /**

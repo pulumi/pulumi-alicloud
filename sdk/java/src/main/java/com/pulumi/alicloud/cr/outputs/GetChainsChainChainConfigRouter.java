@@ -73,10 +73,10 @@ public final class GetChainsChainChainConfigRouter {
             return tos(List.of(tos));
         }
         public GetChainsChainChainConfigRouter build() {
-            final var o = new GetChainsChainChainConfigRouter();
-            o.froms = froms;
-            o.tos = tos;
-            return o;
+            final var _resultValue = new GetChainsChainChainConfigRouter();
+            _resultValue.froms = froms;
+            _resultValue.tos = tos;
+            return _resultValue;
         }
     }
 }

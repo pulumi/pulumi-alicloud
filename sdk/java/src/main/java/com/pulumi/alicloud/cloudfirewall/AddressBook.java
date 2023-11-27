@@ -80,7 +80,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * The list of addresses.
      * 
      */
-    @Export(name="addressLists", type=List.class, parameters={String.class})
+    @Export(name="addressLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> addressLists;
 
     /**
@@ -94,7 +94,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
      * 
      */
-    @Export(name="autoAddTagEcs", type=Integer.class, parameters={})
+    @Export(name="autoAddTagEcs", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoAddTagEcs;
 
     /**
@@ -108,7 +108,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * The description of the Address Book.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -122,7 +122,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * A list of ECS tags. See `ecs_tags` below.
      * 
      */
-    @Export(name="ecsTags", type=List.class, parameters={AddressBookEcsTag.class})
+    @Export(name="ecsTags", refs={List.class,AddressBookEcsTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AddressBookEcsTag>> ecsTags;
 
     /**
@@ -136,7 +136,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * The name of the Address Book.
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
@@ -150,7 +150,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * The type of the Address Book. Valid values: `ip`, `tag`.
      * 
      */
-    @Export(name="groupType", type=String.class, parameters={})
+    @Export(name="groupType", refs={String.class}, tree="[0]")
     private Output<String> groupType;
 
     /**
@@ -164,7 +164,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -178,7 +178,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      * 
      */
-    @Export(name="tagRelation", type=String.class, parameters={})
+    @Export(name="tagRelation", refs={String.class}, tree="[0]")
     private Output<String> tagRelation;
 
     /**

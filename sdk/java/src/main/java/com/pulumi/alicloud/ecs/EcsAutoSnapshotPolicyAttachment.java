@@ -37,7 +37,7 @@ public class EcsAutoSnapshotPolicyAttachment extends com.pulumi.resources.Custom
      * The auto snapshot policy id.
      * 
      */
-    @Export(name="autoSnapshotPolicyId", type=String.class, parameters={})
+    @Export(name="autoSnapshotPolicyId", refs={String.class}, tree="[0]")
     private Output<String> autoSnapshotPolicyId;
 
     /**
@@ -51,7 +51,7 @@ public class EcsAutoSnapshotPolicyAttachment extends com.pulumi.resources.Custom
      * The disk id.
      * 
      */
-    @Export(name="diskId", type=String.class, parameters={})
+    @Export(name="diskId", refs={String.class}, tree="[0]")
     private Output<String> diskId;
 
     /**

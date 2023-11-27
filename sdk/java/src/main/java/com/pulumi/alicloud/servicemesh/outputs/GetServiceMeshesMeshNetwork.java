@@ -88,11 +88,11 @@ public final class GetServiceMeshesMeshNetwork {
             return vswitcheLists(List.of(vswitcheLists));
         }
         public GetServiceMeshesMeshNetwork build() {
-            final var o = new GetServiceMeshesMeshNetwork();
-            o.securityGroupId = securityGroupId;
-            o.vpcId = vpcId;
-            o.vswitcheLists = vswitcheLists;
-            return o;
+            final var _resultValue = new GetServiceMeshesMeshNetwork();
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitcheLists = vswitcheLists;
+            return _resultValue;
         }
     }
 }

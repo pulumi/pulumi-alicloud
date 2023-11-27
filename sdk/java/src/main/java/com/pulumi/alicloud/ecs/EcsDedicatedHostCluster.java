@@ -81,7 +81,7 @@ public class EcsDedicatedHostCluster extends com.pulumi.resources.CustomResource
      * The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
      * 
      */
-    @Export(name="dedicatedHostClusterName", type=String.class, parameters={})
+    @Export(name="dedicatedHostClusterName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostClusterName;
 
     /**
@@ -95,7 +95,7 @@ public class EcsDedicatedHostCluster extends com.pulumi.resources.CustomResource
      * The description of the dedicated host cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -109,7 +109,7 @@ public class EcsDedicatedHostCluster extends com.pulumi.resources.CustomResource
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -123,7 +123,7 @@ public class EcsDedicatedHostCluster extends com.pulumi.resources.CustomResource
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -137,7 +137,7 @@ public class EcsDedicatedHostCluster extends com.pulumi.resources.CustomResource
      * The ID of the zone in which to create the dedicated host cluster.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

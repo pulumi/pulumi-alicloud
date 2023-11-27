@@ -465,31 +465,31 @@ public final class GetRulesRule {
             return this;
         }
         public GetRulesRule build() {
-            final var o = new GetRulesRule();
-            o.category = category;
-            o.categoryName = categoryName;
-            o.content = content;
-            o.contentCategory = contentCategory;
-            o.createTime = createTime;
-            o.customType = customType;
-            o.description = description;
-            o.displayName = displayName;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.loginName = loginName;
-            o.majorKey = majorKey;
-            o.name = name;
-            o.productCode = productCode;
-            o.productId = productId;
-            o.riskLevelId = riskLevelId;
-            o.riskLevelName = riskLevelName;
-            o.ruleId = ruleId;
-            o.statExpress = statExpress;
-            o.status = status;
-            o.target = target;
-            o.userId = userId;
-            o.warnLevel = warnLevel;
-            return o;
+            final var _resultValue = new GetRulesRule();
+            _resultValue.category = category;
+            _resultValue.categoryName = categoryName;
+            _resultValue.content = content;
+            _resultValue.contentCategory = contentCategory;
+            _resultValue.createTime = createTime;
+            _resultValue.customType = customType;
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.gmtModified = gmtModified;
+            _resultValue.id = id;
+            _resultValue.loginName = loginName;
+            _resultValue.majorKey = majorKey;
+            _resultValue.name = name;
+            _resultValue.productCode = productCode;
+            _resultValue.productId = productId;
+            _resultValue.riskLevelId = riskLevelId;
+            _resultValue.riskLevelName = riskLevelName;
+            _resultValue.ruleId = ruleId;
+            _resultValue.statExpress = statExpress;
+            _resultValue.status = status;
+            _resultValue.target = target;
+            _resultValue.userId = userId;
+            _resultValue.warnLevel = warnLevel;
+            return _resultValue;
         }
     }
 }

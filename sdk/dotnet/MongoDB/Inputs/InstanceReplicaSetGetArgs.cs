@@ -25,13 +25,13 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? ConnectionPort { get; set; }
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// The network type of the instance. Valid values:`Classic`, `VPC`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
         /// <summary>
-        /// The role of the node. Valid values: `Primary`,`Secondary`.
+        /// The role of the node.
         /// </summary>
         [Input("replicaSetRole")]
         public Input<string>? ReplicaSetRole { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? VpcCloudInstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

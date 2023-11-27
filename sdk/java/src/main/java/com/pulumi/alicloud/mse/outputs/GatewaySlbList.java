@@ -181,16 +181,16 @@ public final class GatewaySlbList {
             return this;
         }
         public GatewaySlbList build() {
-            final var o = new GatewaySlbList();
-            o.associateId = associateId;
-            o.gatewaySlbMode = gatewaySlbMode;
-            o.gatewaySlbStatus = gatewaySlbStatus;
-            o.gmtCreate = gmtCreate;
-            o.slbId = slbId;
-            o.slbIp = slbIp;
-            o.slbPort = slbPort;
-            o.type = type;
-            return o;
+            final var _resultValue = new GatewaySlbList();
+            _resultValue.associateId = associateId;
+            _resultValue.gatewaySlbMode = gatewaySlbMode;
+            _resultValue.gatewaySlbStatus = gatewaySlbStatus;
+            _resultValue.gmtCreate = gmtCreate;
+            _resultValue.slbId = slbId;
+            _resultValue.slbIp = slbIp;
+            _resultValue.slbPort = slbPort;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

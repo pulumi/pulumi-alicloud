@@ -181,16 +181,16 @@ public final class GetBackupPlansPlan {
             return this;
         }
         public GetBackupPlansPlan build() {
-            final var o = new GetBackupPlansPlan();
-            o.active = active;
-            o.backupPeriod = backupPeriod;
-            o.backupTime = backupTime;
-            o.clusterId = clusterId;
-            o.createTime = createTime;
-            o.dataCenterId = dataCenterId;
-            o.id = id;
-            o.retentionPeriod = retentionPeriod;
-            return o;
+            final var _resultValue = new GetBackupPlansPlan();
+            _resultValue.active = active;
+            _resultValue.backupPeriod = backupPeriod;
+            _resultValue.backupTime = backupTime;
+            _resultValue.clusterId = clusterId;
+            _resultValue.createTime = createTime;
+            _resultValue.dataCenterId = dataCenterId;
+            _resultValue.id = id;
+            _resultValue.retentionPeriod = retentionPeriod;
+            return _resultValue;
         }
     }
 }

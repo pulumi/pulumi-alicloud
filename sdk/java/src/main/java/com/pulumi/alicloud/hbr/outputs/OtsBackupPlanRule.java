@@ -125,13 +125,13 @@ public final class OtsBackupPlanRule {
             return this;
         }
         public OtsBackupPlanRule build() {
-            final var o = new OtsBackupPlanRule();
-            o.backupType = backupType;
-            o.disabled = disabled;
-            o.retention = retention;
-            o.ruleName = ruleName;
-            o.schedule = schedule;
-            return o;
+            final var _resultValue = new OtsBackupPlanRule();
+            _resultValue.backupType = backupType;
+            _resultValue.disabled = disabled;
+            _resultValue.retention = retention;
+            _resultValue.ruleName = ruleName;
+            _resultValue.schedule = schedule;
+            return _resultValue;
         }
     }
 }

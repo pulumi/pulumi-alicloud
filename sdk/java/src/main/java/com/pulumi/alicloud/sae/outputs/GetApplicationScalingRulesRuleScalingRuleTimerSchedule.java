@@ -104,12 +104,12 @@ public final class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleTimerSchedule build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleTimerSchedule();
-            o.atTime = atTime;
-            o.maxReplicas = maxReplicas;
-            o.minReplicas = minReplicas;
-            o.targetReplicas = targetReplicas;
-            return o;
+            final var _resultValue = new GetApplicationScalingRulesRuleScalingRuleTimerSchedule();
+            _resultValue.atTime = atTime;
+            _resultValue.maxReplicas = maxReplicas;
+            _resultValue.minReplicas = minReplicas;
+            _resultValue.targetReplicas = targetReplicas;
+            return _resultValue;
         }
     }
 }

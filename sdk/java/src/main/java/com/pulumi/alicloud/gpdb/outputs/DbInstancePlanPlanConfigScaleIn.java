@@ -86,11 +86,11 @@ public final class DbInstancePlanPlanConfigScaleIn {
             return this;
         }
         public DbInstancePlanPlanConfigScaleIn build() {
-            final var o = new DbInstancePlanPlanConfigScaleIn();
-            o.executeTime = executeTime;
-            o.planCronTime = planCronTime;
-            o.segmentNodeNum = segmentNodeNum;
-            return o;
+            final var _resultValue = new DbInstancePlanPlanConfigScaleIn();
+            _resultValue.executeTime = executeTime;
+            _resultValue.planCronTime = planCronTime;
+            _resultValue.segmentNodeNum = segmentNodeNum;
+            return _resultValue;
         }
     }
 }

@@ -97,13 +97,13 @@ public final class GetRealTimeLogDeliveriesResult {
             return this;
         }
         public GetRealTimeLogDeliveriesResult build() {
-            final var o = new GetRealTimeLogDeliveriesResult();
-            o.deliveries = deliveries;
-            o.domain = domain;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRealTimeLogDeliveriesResult();
+            _resultValue.deliveries = deliveries;
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

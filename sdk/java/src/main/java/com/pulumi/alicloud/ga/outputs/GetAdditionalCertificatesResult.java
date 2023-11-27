@@ -111,14 +111,14 @@ public final class GetAdditionalCertificatesResult {
             return this;
         }
         public GetAdditionalCertificatesResult build() {
-            final var o = new GetAdditionalCertificatesResult();
-            o.acceleratorId = acceleratorId;
-            o.certificates = certificates;
-            o.id = id;
-            o.ids = ids;
-            o.listenerId = listenerId;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetAdditionalCertificatesResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.certificates = certificates;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerId = listenerId;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

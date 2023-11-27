@@ -165,7 +165,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
      * 
      */
-    @Export(name="caPort", type=Integer.class, parameters={})
+    @Export(name="caPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> caPort;
 
     /**
@@ -180,7 +180,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
      * 
      */
-    @Export(name="codeChecksum", type=String.class, parameters={})
+    @Export(name="codeChecksum", refs={String.class}, tree="[0]")
     private Output<String> codeChecksum;
 
     /**
@@ -195,7 +195,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The configuration for custom container runtime.See `custom_container_config` below.
      * 
      */
-    @Export(name="customContainerConfig", type=FunctionCustomContainerConfig.class, parameters={})
+    @Export(name="customContainerConfig", refs={FunctionCustomContainerConfig.class}, tree="[0]")
     private Output</* @Nullable */ FunctionCustomContainerConfig> customContainerConfig;
 
     /**
@@ -209,7 +209,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The Function Compute function description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -223,7 +223,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A map that defines environment variables for the function.
      * 
      */
-    @Export(name="environmentVariables", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="environmentVariables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> environmentVariables;
 
     /**
@@ -237,7 +237,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The path to the function&#39;s deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
      * 
      */
-    @Export(name="filename", type=String.class, parameters={})
+    @Export(name="filename", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filename;
 
     /**
@@ -251,7 +251,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The Function Compute service ID.
      * 
      */
-    @Export(name="functionId", type=String.class, parameters={})
+    @Export(name="functionId", refs={String.class}, tree="[0]")
     private Output<String> functionId;
 
     /**
@@ -265,7 +265,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
      * 
      */
-    @Export(name="handler", type=String.class, parameters={})
+    @Export(name="handler", refs={String.class}, tree="[0]")
     private Output<String> handler;
 
     /**
@@ -279,7 +279,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The maximum length of time, in seconds, that the function&#39;s initialization should be run for.
      * 
      */
-    @Export(name="initializationTimeout", type=Integer.class, parameters={})
+    @Export(name="initializationTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> initializationTimeout;
 
     /**
@@ -293,7 +293,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The entry point of the function&#39;s [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
      * 
      */
-    @Export(name="initializer", type=String.class, parameters={})
+    @Export(name="initializer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initializer;
 
     /**
@@ -307,7 +307,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The maximum number of requests can be executed concurrently within the single function instance.
      * 
      */
-    @Export(name="instanceConcurrency", type=Integer.class, parameters={})
+    @Export(name="instanceConcurrency", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instanceConcurrency;
 
     /**
@@ -321,7 +321,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The instance type of the function.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -335,7 +335,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The date this resource was last modified.
      * 
      */
-    @Export(name="lastModified", type=String.class, parameters={})
+    @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 
     /**
@@ -349,7 +349,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The configuration for layers.
      * 
      */
-    @Export(name="layers", type=List.class, parameters={String.class})
+    @Export(name="layers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> layers;
 
     /**
@@ -363,7 +363,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      * 
      */
-    @Export(name="memorySize", type=Integer.class, parameters={})
+    @Export(name="memorySize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memorySize;
 
     /**
@@ -377,7 +377,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The Function Compute function name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -391,7 +391,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Setting a prefix to get a only function name. It is conflict with &#34;name&#34;.
      * 
      */
-    @Export(name="namePrefix", type=String.class, parameters={})
+    @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namePrefix;
 
     /**
@@ -405,7 +405,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The OSS bucket location containing the function&#39;s deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
      * 
      */
-    @Export(name="ossBucket", type=String.class, parameters={})
+    @Export(name="ossBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossBucket;
 
     /**
@@ -419,7 +419,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The OSS key of an object containing the function&#39;s deployment package. Conflicts with `filename`.
      * 
      */
-    @Export(name="ossKey", type=String.class, parameters={})
+    @Export(name="ossKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossKey;
 
     /**
@@ -433,7 +433,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
      * 
      */
-    @Export(name="runtime", type=String.class, parameters={})
+    @Export(name="runtime", refs={String.class}, tree="[0]")
     private Output<String> runtime;
 
     /**
@@ -447,7 +447,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The Function Compute service name.
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
@@ -461,7 +461,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The amount of time your function has to run in seconds.
      * 
      */
-    @Export(name="timeout", type=Integer.class, parameters={})
+    @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeout;
 
     /**

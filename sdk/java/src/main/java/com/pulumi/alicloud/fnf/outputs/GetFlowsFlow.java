@@ -179,16 +179,16 @@ public final class GetFlowsFlow {
             return this;
         }
         public GetFlowsFlow build() {
-            final var o = new GetFlowsFlow();
-            o.definition = definition;
-            o.description = description;
-            o.flowId = flowId;
-            o.id = id;
-            o.lastModifiedTime = lastModifiedTime;
-            o.name = name;
-            o.roleArn = roleArn;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetFlowsFlow();
+            _resultValue.definition = definition;
+            _resultValue.description = description;
+            _resultValue.flowId = flowId;
+            _resultValue.id = id;
+            _resultValue.lastModifiedTime = lastModifiedTime;
+            _resultValue.name = name;
+            _resultValue.roleArn = roleArn;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

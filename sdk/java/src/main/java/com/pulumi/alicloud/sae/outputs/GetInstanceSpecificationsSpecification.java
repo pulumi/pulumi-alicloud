@@ -162,15 +162,15 @@ public final class GetInstanceSpecificationsSpecification {
             return this;
         }
         public GetInstanceSpecificationsSpecification build() {
-            final var o = new GetInstanceSpecificationsSpecification();
-            o.cpu = cpu;
-            o.enable = enable;
-            o.id = id;
-            o.instanceSpecificationId = instanceSpecificationId;
-            o.memory = memory;
-            o.specInfo = specInfo;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetInstanceSpecificationsSpecification();
+            _resultValue.cpu = cpu;
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.instanceSpecificationId = instanceSpecificationId;
+            _resultValue.memory = memory;
+            _resultValue.specInfo = specInfo;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -141,14 +141,14 @@ public final class GetControlPolicyAttachmentsAttachment {
             return this;
         }
         public GetControlPolicyAttachmentsAttachment build() {
-            final var o = new GetControlPolicyAttachmentsAttachment();
-            o.attachDate = attachDate;
-            o.description = description;
-            o.id = id;
-            o.policyId = policyId;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            return o;
+            final var _resultValue = new GetControlPolicyAttachmentsAttachment();
+            _resultValue.attachDate = attachDate;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.policyId = policyId;
+            _resultValue.policyName = policyName;
+            _resultValue.policyType = policyType;
+            return _resultValue;
         }
     }
 }

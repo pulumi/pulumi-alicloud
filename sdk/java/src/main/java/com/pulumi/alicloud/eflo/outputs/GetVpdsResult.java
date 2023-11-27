@@ -249,21 +249,21 @@ public final class GetVpdsResult {
             return vpds(List.of(vpds));
         }
         public GetVpdsResult build() {
-            final var o = new GetVpdsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.vpdId = vpdId;
-            o.vpdName = vpdName;
-            o.vpds = vpds;
-            return o;
+            final var _resultValue = new GetVpdsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.vpdId = vpdId;
+            _resultValue.vpdName = vpdName;
+            _resultValue.vpds = vpds;
+            return _resultValue;
         }
     }
 }

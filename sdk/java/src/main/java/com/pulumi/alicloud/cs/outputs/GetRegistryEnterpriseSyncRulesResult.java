@@ -214,18 +214,18 @@ public final class GetRegistryEnterpriseSyncRulesResult {
             return this;
         }
         public GetRegistryEnterpriseSyncRulesResult build() {
-            final var o = new GetRegistryEnterpriseSyncRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespaceName = namespaceName;
-            o.outputFile = outputFile;
-            o.repoName = repoName;
-            o.rules = rules;
-            o.targetInstanceId = targetInstanceId;
-            return o;
+            final var _resultValue = new GetRegistryEnterpriseSyncRulesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.namespaceName = namespaceName;
+            _resultValue.outputFile = outputFile;
+            _resultValue.repoName = repoName;
+            _resultValue.rules = rules;
+            _resultValue.targetInstanceId = targetInstanceId;
+            return _resultValue;
         }
     }
 }

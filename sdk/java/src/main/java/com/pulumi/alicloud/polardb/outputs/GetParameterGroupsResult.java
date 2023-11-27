@@ -168,16 +168,16 @@ public final class GetParameterGroupsResult {
             return this;
         }
         public GetParameterGroupsResult build() {
-            final var o = new GetParameterGroupsResult();
-            o.dbType = dbType;
-            o.dbVersion = dbVersion;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetParameterGroupsResult();
+            _resultValue.dbType = dbType;
+            _resultValue.dbVersion = dbVersion;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -125,13 +125,13 @@ public final class V2FunctionCustomContainerConfig {
             return this;
         }
         public V2FunctionCustomContainerConfig build() {
-            final var o = new V2FunctionCustomContainerConfig();
-            o.accelerationType = accelerationType;
-            o.args = args;
-            o.command = command;
-            o.image = image;
-            o.webServerMode = webServerMode;
-            return o;
+            final var _resultValue = new V2FunctionCustomContainerConfig();
+            _resultValue.accelerationType = accelerationType;
+            _resultValue.args = args;
+            _resultValue.command = command;
+            _resultValue.image = image;
+            _resultValue.webServerMode = webServerMode;
+            return _resultValue;
         }
     }
 }

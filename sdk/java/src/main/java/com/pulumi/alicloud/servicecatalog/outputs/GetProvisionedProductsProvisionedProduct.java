@@ -444,31 +444,31 @@ public final class GetProvisionedProductsProvisionedProduct {
             return this;
         }
         public GetProvisionedProductsProvisionedProduct build() {
-            final var o = new GetProvisionedProductsProvisionedProduct();
-            o.createTime = createTime;
-            o.id = id;
-            o.lastProvisioningTaskId = lastProvisioningTaskId;
-            o.lastSuccessfulProvisioningTaskId = lastSuccessfulProvisioningTaskId;
-            o.lastTaskId = lastTaskId;
-            o.outputs = outputs;
-            o.ownerPrincipalId = ownerPrincipalId;
-            o.ownerPrincipalType = ownerPrincipalType;
-            o.parameters = parameters;
-            o.portfolioId = portfolioId;
-            o.productId = productId;
-            o.productName = productName;
-            o.productVersionId = productVersionId;
-            o.productVersionName = productVersionName;
-            o.provisionedProductArn = provisionedProductArn;
-            o.provisionedProductId = provisionedProductId;
-            o.provisionedProductName = provisionedProductName;
-            o.provisionedProductType = provisionedProductType;
-            o.stackId = stackId;
-            o.stackRegionId = stackRegionId;
-            o.status = status;
-            o.statusMessage = statusMessage;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetProvisionedProductsProvisionedProduct();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.lastProvisioningTaskId = lastProvisioningTaskId;
+            _resultValue.lastSuccessfulProvisioningTaskId = lastSuccessfulProvisioningTaskId;
+            _resultValue.lastTaskId = lastTaskId;
+            _resultValue.outputs = outputs;
+            _resultValue.ownerPrincipalId = ownerPrincipalId;
+            _resultValue.ownerPrincipalType = ownerPrincipalType;
+            _resultValue.parameters = parameters;
+            _resultValue.portfolioId = portfolioId;
+            _resultValue.productId = productId;
+            _resultValue.productName = productName;
+            _resultValue.productVersionId = productVersionId;
+            _resultValue.productVersionName = productVersionName;
+            _resultValue.provisionedProductArn = provisionedProductArn;
+            _resultValue.provisionedProductId = provisionedProductId;
+            _resultValue.provisionedProductName = provisionedProductName;
+            _resultValue.provisionedProductType = provisionedProductType;
+            _resultValue.stackId = stackId;
+            _resultValue.stackRegionId = stackRegionId;
+            _resultValue.status = status;
+            _resultValue.statusMessage = statusMessage;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

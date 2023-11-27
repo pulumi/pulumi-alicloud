@@ -388,26 +388,26 @@ public final class GetDdosCooDomainResourcesResource {
             return whiteLists(List.of(whiteLists));
         }
         public GetDdosCooDomainResourcesResource build() {
-            final var o = new GetDdosCooDomainResourcesResource();
-            o.blackLists = blackLists;
-            o.ccEnabled = ccEnabled;
-            o.ccRuleEnabled = ccRuleEnabled;
-            o.ccTemplate = ccTemplate;
-            o.certName = certName;
-            o.domain = domain;
-            o.http2Enable = http2Enable;
-            o.httpsExt = httpsExt;
-            o.id = id;
-            o.instanceIds = instanceIds;
-            o.policyMode = policyMode;
-            o.proxyEnabled = proxyEnabled;
-            o.proxyTypes = proxyTypes;
-            o.realServers = realServers;
-            o.rsType = rsType;
-            o.sslCiphers = sslCiphers;
-            o.sslProtocols = sslProtocols;
-            o.whiteLists = whiteLists;
-            return o;
+            final var _resultValue = new GetDdosCooDomainResourcesResource();
+            _resultValue.blackLists = blackLists;
+            _resultValue.ccEnabled = ccEnabled;
+            _resultValue.ccRuleEnabled = ccRuleEnabled;
+            _resultValue.ccTemplate = ccTemplate;
+            _resultValue.certName = certName;
+            _resultValue.domain = domain;
+            _resultValue.http2Enable = http2Enable;
+            _resultValue.httpsExt = httpsExt;
+            _resultValue.id = id;
+            _resultValue.instanceIds = instanceIds;
+            _resultValue.policyMode = policyMode;
+            _resultValue.proxyEnabled = proxyEnabled;
+            _resultValue.proxyTypes = proxyTypes;
+            _resultValue.realServers = realServers;
+            _resultValue.rsType = rsType;
+            _resultValue.sslCiphers = sslCiphers;
+            _resultValue.sslProtocols = sslProtocols;
+            _resultValue.whiteLists = whiteLists;
+            return _resultValue;
         }
     }
 }

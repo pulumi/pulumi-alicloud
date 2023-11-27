@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
  * 
- * &gt; **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
+ * &gt; **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
  * 
  * ## Example Usage
  * 
@@ -46,9 +46,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Resource(&#34;example&#34;, ResourceArgs.builder()        
- *             .description(&#34;user tf test resource desc&#34;)
+ *             .description(&#34;user tf resource desc&#34;)
  *             .extInfo(&#34;{}&#34;)
- *             .schema(&#34;{\&#34;schema\&#34;:[{\&#34;column\&#34;:\&#34;col1\&#34;,\&#34;desc\&#34;:\&#34;col1 desc\&#34;,\&#34;ext_info\&#34;:{},\&#34;required\&#34;:true,\&#34;type\&#34;:\&#34;string\&#34;},{\&#34;column\&#34;:\&#34;col2\&#34;,\&#34;desc\&#34;:\&#34;col2 desc\&#34;,\&#34;ext_info\&#34;:\&#34;optional\&#34;,\&#34;required\&#34;:true,\&#34;type\&#34;:\&#34;string\&#34;}]}&#34;)
+ *             .schema(&#34;&#34;&#34;
+ *     {
+ *       &#34;schema&#34;: [
+ *         {
+ *           &#34;column&#34;: &#34;col1&#34;,
+ *           &#34;desc&#34;: &#34;col1   desc&#34;,
+ *           &#34;ext_info&#34;: {
+ *           },
+ *           &#34;required&#34;: true,
+ *           &#34;type&#34;: &#34;string&#34;
+ *         },
+ *         {
+ *           &#34;column&#34;: &#34;col2&#34;,
+ *           &#34;desc&#34;: &#34;col2   desc&#34;,
+ *           &#34;ext_info&#34;: &#34;optional&#34;,
+ *           &#34;required&#34;: true,
+ *           &#34;type&#34;: &#34;string&#34;
+ *         }
+ *       ]
+ *     }
+ *   
+ *             &#34;&#34;&#34;)
  *             .type(&#34;userdefine&#34;)
  *             .build());
  * 
@@ -61,7 +82,7 @@ import javax.annotation.Nullable;
  * Log resource can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:log/resource:Resource example user.tf.test_resource
+ *  $ pulumi import alicloud:log/resource:Resource example &lt;id&gt;
  * ```
  * 
  */
@@ -71,7 +92,7 @@ public class Resource extends com.pulumi.resources.CustomResource {
      * The meta store&#39;s description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -85,7 +106,7 @@ public class Resource extends com.pulumi.resources.CustomResource {
      * The ext info of meta store.
      * 
      */
-    @Export(name="extInfo", type=String.class, parameters={})
+    @Export(name="extInfo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> extInfo;
 
     /**
@@ -99,7 +120,7 @@ public class Resource extends com.pulumi.resources.CustomResource {
      * The meta store&#39;s name, can be used as table name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -113,7 +134,7 @@ public class Resource extends com.pulumi.resources.CustomResource {
      * The meta store&#39;s schema info, which is json string format, used to define table&#39;s fields.
      * 
      */
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output<String> schema;
 
     /**
@@ -127,7 +148,7 @@ public class Resource extends com.pulumi.resources.CustomResource {
      * The meta store&#39;s type, userdefine e.g.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

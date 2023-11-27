@@ -104,11 +104,11 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
             return this;
         }
         public DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression build() {
-            final var o = new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression();
-            o.key = key;
-            o.operator = operator;
-            o.value = value;
-            return o;
+            final var _resultValue = new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

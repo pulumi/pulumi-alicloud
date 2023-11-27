@@ -65,10 +65,10 @@ public final class GetDedicatedHostsHostNetworkAttribute {
             return this;
         }
         public GetDedicatedHostsHostNetworkAttribute build() {
-            final var o = new GetDedicatedHostsHostNetworkAttribute();
-            o.slbUdpTimeout = slbUdpTimeout;
-            o.udpTimeout = udpTimeout;
-            return o;
+            final var _resultValue = new GetDedicatedHostsHostNetworkAttribute();
+            _resultValue.slbUdpTimeout = slbUdpTimeout;
+            _resultValue.udpTimeout = udpTimeout;
+            return _resultValue;
         }
     }
 }

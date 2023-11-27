@@ -34,6 +34,8 @@ import com.pulumi.alicloud.ga.inputs.GetCustomRoutingPortMappingsArgs;
 import com.pulumi.alicloud.ga.inputs.GetCustomRoutingPortMappingsPlainArgs;
 import com.pulumi.alicloud.ga.inputs.GetDomainsArgs;
 import com.pulumi.alicloud.ga.inputs.GetDomainsPlainArgs;
+import com.pulumi.alicloud.ga.inputs.GetEndpointGroupIpAddressCidrBlocksArgs;
+import com.pulumi.alicloud.ga.inputs.GetEndpointGroupIpAddressCidrBlocksPlainArgs;
 import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
 import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsPlainArgs;
 import com.pulumi.alicloud.ga.inputs.GetForwardingRulesArgs;
@@ -57,6 +59,7 @@ import com.pulumi.alicloud.ga.outputs.GetCustomRoutingEndpointTrafficPoliciesRes
 import com.pulumi.alicloud.ga.outputs.GetCustomRoutingEndpointsResult;
 import com.pulumi.alicloud.ga.outputs.GetCustomRoutingPortMappingsResult;
 import com.pulumi.alicloud.ga.outputs.GetDomainsResult;
+import com.pulumi.alicloud.ga.outputs.GetEndpointGroupIpAddressCidrBlocksResult;
 import com.pulumi.alicloud.ga.outputs.GetEndpointGroupsResult;
 import com.pulumi.alicloud.ga.outputs.GetForwardingRulesResult;
 import com.pulumi.alicloud.ga.outputs.GetIpSetsResult;
@@ -2973,6 +2976,174 @@ public final class GaFunctions {
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Endpoint Group Ip Address Cidr Blocks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.213.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupIpAddressCidrBlocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs.builder()
+     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion&#34;, default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs args) {
+        return getEndpointGroupIpAddressCidrBlocks(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Endpoint Group Ip Address Cidr Blocks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.213.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupIpAddressCidrBlocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs.builder()
+     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion&#34;, default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocksPlain(GetEndpointGroupIpAddressCidrBlocksPlainArgs args) {
+        return getEndpointGroupIpAddressCidrBlocksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Endpoint Group Ip Address Cidr Blocks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.213.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupIpAddressCidrBlocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs.builder()
+     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion&#34;, default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", TypeShape.of(GetEndpointGroupIpAddressCidrBlocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Endpoint Group Ip Address Cidr Blocks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.213.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupIpAddressCidrBlocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs.builder()
+     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion&#34;, default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocksPlain(GetEndpointGroupIpAddressCidrBlocksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", TypeShape.of(GetEndpointGroupIpAddressCidrBlocksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.

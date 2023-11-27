@@ -180,16 +180,16 @@ public final class GetSchedulesSchedule {
             return this;
         }
         public GetSchedulesSchedule build() {
-            final var o = new GetSchedulesSchedule();
-            o.cronExpression = cronExpression;
-            o.description = description;
-            o.enable = enable;
-            o.id = id;
-            o.lastModifiedTime = lastModifiedTime;
-            o.payload = payload;
-            o.scheduleId = scheduleId;
-            o.scheduleName = scheduleName;
-            return o;
+            final var _resultValue = new GetSchedulesSchedule();
+            _resultValue.cronExpression = cronExpression;
+            _resultValue.description = description;
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.lastModifiedTime = lastModifiedTime;
+            _resultValue.payload = payload;
+            _resultValue.scheduleId = scheduleId;
+            _resultValue.scheduleName = scheduleName;
+            return _resultValue;
         }
     }
 }

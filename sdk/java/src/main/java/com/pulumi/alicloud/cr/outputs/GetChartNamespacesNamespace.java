@@ -142,14 +142,14 @@ public final class GetChartNamespacesNamespace {
             return this;
         }
         public GetChartNamespacesNamespace build() {
-            final var o = new GetChartNamespacesNamespace();
-            o.autoCreateRepo = autoCreateRepo;
-            o.chartNamespaceId = chartNamespaceId;
-            o.defaultRepoType = defaultRepoType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.namespaceName = namespaceName;
-            return o;
+            final var _resultValue = new GetChartNamespacesNamespace();
+            _resultValue.autoCreateRepo = autoCreateRepo;
+            _resultValue.chartNamespaceId = chartNamespaceId;
+            _resultValue.defaultRepoType = defaultRepoType;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.namespaceName = namespaceName;
+            return _resultValue;
         }
     }
 }

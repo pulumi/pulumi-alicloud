@@ -50,9 +50,9 @@ public final class ForwardingRuleRuleActionForwardGroupConfig {
             return serverGroupTuples(List.of(serverGroupTuples));
         }
         public ForwardingRuleRuleActionForwardGroupConfig build() {
-            final var o = new ForwardingRuleRuleActionForwardGroupConfig();
-            o.serverGroupTuples = serverGroupTuples;
-            return o;
+            final var _resultValue = new ForwardingRuleRuleActionForwardGroupConfig();
+            _resultValue.serverGroupTuples = serverGroupTuples;
+            return _resultValue;
         }
     }
 }

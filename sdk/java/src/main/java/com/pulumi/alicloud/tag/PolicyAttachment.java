@@ -85,7 +85,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the tag policy.
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**
@@ -99,7 +99,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the object.
      * 
      */
-    @Export(name="targetId", type=String.class, parameters={})
+    @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**
@@ -113,7 +113,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
      * 
      */
-    @Export(name="targetType", type=String.class, parameters={})
+    @Export(name="targetType", refs={String.class}, tree="[0]")
     private Output<String> targetType;
 
     /**

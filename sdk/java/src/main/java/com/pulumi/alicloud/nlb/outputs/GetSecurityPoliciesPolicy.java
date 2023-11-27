@@ -169,15 +169,15 @@ public final class GetSecurityPoliciesPolicy {
             return tlsVersions(List.of(tlsVersions));
         }
         public GetSecurityPoliciesPolicy build() {
-            final var o = new GetSecurityPoliciesPolicy();
-            o.ciphers = ciphers;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.securityPolicyName = securityPolicyName;
-            o.status = status;
-            o.tags = tags;
-            o.tlsVersions = tlsVersions;
-            return o;
+            final var _resultValue = new GetSecurityPoliciesPolicy();
+            _resultValue.ciphers = ciphers;
+            _resultValue.id = id;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityPolicyName = securityPolicyName;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.tlsVersions = tlsVersions;
+            return _resultValue;
         }
     }
 }

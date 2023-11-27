@@ -93,7 +93,7 @@ public class GatewayEndpointRouteTableAttachment extends com.pulumi.resources.Cu
      * The ID of the gateway endpoint instance to which you want to associate the route table.
      * 
      */
-    @Export(name="gatewayEndpointId", type=String.class, parameters={})
+    @Export(name="gatewayEndpointId", refs={String.class}, tree="[0]")
     private Output<String> gatewayEndpointId;
 
     /**
@@ -107,7 +107,7 @@ public class GatewayEndpointRouteTableAttachment extends com.pulumi.resources.Cu
      * Routing table ID.
      * 
      */
-    @Export(name="routeTableId", type=String.class, parameters={})
+    @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**
@@ -121,7 +121,7 @@ public class GatewayEndpointRouteTableAttachment extends com.pulumi.resources.Cu
      * Status of the gateway endpoint.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

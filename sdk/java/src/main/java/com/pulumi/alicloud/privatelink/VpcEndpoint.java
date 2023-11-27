@@ -12,8 +12,10 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -87,179 +89,271 @@ import javax.annotation.Nullable;
  * Private Link Vpc Endpoint can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example &lt;endpoint_id&gt;
+ *  $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:privatelink/vpcEndpoint:VpcEndpoint")
 public class VpcEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * The Bandwidth.
+     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
-     * @return The Bandwidth.
+     * @return The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
     public Output<Integer> bandwidth() {
         return this.bandwidth;
     }
     /**
-     * The status of Connection.
+     * The state of the endpoint connection.
      * 
      */
-    @Export(name="connectionStatus", type=String.class, parameters={})
+    @Export(name="connectionStatus", refs={String.class}, tree="[0]")
     private Output<String> connectionStatus;
 
     /**
-     * @return The status of Connection.
+     * @return The state of the endpoint connection.
      * 
      */
     public Output<String> connectionStatus() {
         return this.connectionStatus;
     }
     /**
-     * The dry run. Default to: `false`.
+     * The time when the endpoint was created.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The time when the endpoint was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+     * 
+     */
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run. Default to: `false`.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The status of Endpoint Business.
+     * The service state of the endpoint.
      * 
      */
-    @Export(name="endpointBusinessStatus", type=String.class, parameters={})
+    @Export(name="endpointBusinessStatus", refs={String.class}, tree="[0]")
     private Output<String> endpointBusinessStatus;
 
     /**
-     * @return The status of Endpoint Business.
+     * @return The service state of the endpoint.
      * 
      */
     public Output<String> endpointBusinessStatus() {
         return this.endpointBusinessStatus;
     }
     /**
-     * The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+     * The description of the endpoint.
      * 
      */
-    @Export(name="endpointDescription", type=String.class, parameters={})
+    @Export(name="endpointDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpointDescription;
 
     /**
-     * @return The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+     * @return The description of the endpoint.
      * 
      */
     public Output<Optional<String>> endpointDescription() {
         return Codegen.optional(this.endpointDescription);
     }
     /**
-     * The Endpoint Domain.
+     * The domain name of the endpoint.
      * 
      */
-    @Export(name="endpointDomain", type=String.class, parameters={})
+    @Export(name="endpointDomain", refs={String.class}, tree="[0]")
     private Output<String> endpointDomain;
 
     /**
-     * @return The Endpoint Domain.
+     * @return The domain name of the endpoint.
      * 
      */
     public Output<String> endpointDomain() {
         return this.endpointDomain;
     }
     /**
-     * The security group associated with the terminal node network card.
+     * The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="endpointType", refs={String.class}, tree="[0]")
+    private Output<String> endpointType;
+
+    /**
+     * @return The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * 
+     */
+    public Output<String> endpointType() {
+        return this.endpointType;
+    }
+    /**
+     * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+     * - **false (default)**: disables user authentication.
+     * 
+     */
+    @Export(name="protectedEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> protectedEnabled;
+
+    /**
+     * @return Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+     * - **false (default)**: disables user authentication.
+     * 
+     */
+    public Output<Optional<Boolean>> protectedEnabled() {
+        return Codegen.optional(this.protectedEnabled);
+    }
+    /**
+     * The resource group ID.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group ID.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+     * 
+     */
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
     /**
-     * @return The security group associated with the terminal node network card.
+     * @return The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
      * 
      */
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
     }
     /**
-     * The terminal node service associated with the terminal node.
+     * The ID of the endpoint service with which the endpoint is associated.
      * 
      */
-    @Export(name="serviceId", type=String.class, parameters={})
+    @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceId;
 
     /**
-     * @return The terminal node service associated with the terminal node.
+     * @return The ID of the endpoint service with which the endpoint is associated.
      * 
      */
     public Output<Optional<String>> serviceId() {
         return Codegen.optional(this.serviceId);
     }
     /**
-     * The name of the terminal node service associated with the terminal node.
+     * The name of the endpoint service with which the endpoint is associated.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the terminal node service associated with the terminal node.
+     * @return The name of the endpoint service with which the endpoint is associated.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * The status of Vpc Endpoint.
+     * The state of the endpoint.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of Vpc Endpoint.
+     * @return The state of the endpoint.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+     * The list of tags.
      * 
      */
-    @Export(name="vpcEndpointName", type=String.class, parameters={})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The list of tags.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The name of the endpoint.
+     * 
+     */
+    @Export(name="vpcEndpointName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcEndpointName;
 
     /**
-     * @return The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+     * @return The name of the endpoint.
      * 
      */
     public Output<Optional<String>> vpcEndpointName() {
         return Codegen.optional(this.vpcEndpointName);
     }
     /**
-     * The private network to which the terminal node belongs.
+     * The ID of the VPC to which the endpoint belongs.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The private network to which the terminal node belongs.
+     * @return The ID of the VPC to which the endpoint belongs.
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
+    }
+    /**
+     * The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+     * 
+     */
+    @Export(name="zonePrivateIpAddressCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> zonePrivateIpAddressCount;
+
+    /**
+     * @return The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+     * 
+     */
+    public Output<Integer> zonePrivateIpAddressCount() {
+        return this.zonePrivateIpAddressCount;
     }
 
     /**

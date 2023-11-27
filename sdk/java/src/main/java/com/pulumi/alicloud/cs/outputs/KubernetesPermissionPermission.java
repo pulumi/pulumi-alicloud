@@ -144,14 +144,14 @@ public final class KubernetesPermissionPermission {
             return this;
         }
         public KubernetesPermissionPermission build() {
-            final var o = new KubernetesPermissionPermission();
-            o.cluster = cluster;
-            o.isCustom = isCustom;
-            o.isRamRole = isRamRole;
-            o.namespace = namespace;
-            o.roleName = roleName;
-            o.roleType = roleType;
-            return o;
+            final var _resultValue = new KubernetesPermissionPermission();
+            _resultValue.cluster = cluster;
+            _resultValue.isCustom = isCustom;
+            _resultValue.isRamRole = isRamRole;
+            _resultValue.namespace = namespace;
+            _resultValue.roleName = roleName;
+            _resultValue.roleType = roleType;
+            return _resultValue;
         }
     }
 }

@@ -202,19 +202,19 @@ public final class GetStudioApplicationsResult {
             return this;
         }
         public GetStudioApplicationsResult build() {
-            final var o = new GetStudioApplicationsResult();
-            o.applications = applications;
-            o.id = id;
-            o.ids = ids;
-            o.keyword = keyword;
-            o.maxResults = maxResults;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.orderType = orderType;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetStudioApplicationsResult();
+            _resultValue.applications = applications;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyword = keyword;
+            _resultValue.maxResults = maxResults;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.orderType = orderType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

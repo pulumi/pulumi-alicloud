@@ -89,12 +89,12 @@ public final class GetDiskReplicaGroupsResult {
             return this;
         }
         public GetDiskReplicaGroupsResult build() {
-            final var o = new GetDiskReplicaGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetDiskReplicaGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

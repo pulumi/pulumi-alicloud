@@ -128,7 +128,7 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      * Specifies the user group to add the user&#39;s bastion host ID of.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -142,7 +142,7 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      * Specifies the user group to which you want to add the user ID.
      * 
      */
-    @Export(name="userGroupId", type=String.class, parameters={})
+    @Export(name="userGroupId", refs={String.class}, tree="[0]")
     private Output<String> userGroupId;
 
     /**
@@ -156,7 +156,7 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      * Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

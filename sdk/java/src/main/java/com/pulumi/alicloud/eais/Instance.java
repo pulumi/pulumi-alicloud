@@ -104,7 +104,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -118,7 +118,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the instance.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -132,7 +132,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -146,7 +146,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the security group.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -160,7 +160,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -174,7 +174,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the vswitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

@@ -50,9 +50,9 @@ public final class GetClustersClusterAccessInfo {
             return zkLinks(List.of(zkLinks));
         }
         public GetClustersClusterAccessInfo build() {
-            final var o = new GetClustersClusterAccessInfo();
-            o.zkLinks = zkLinks;
-            return o;
+            final var _resultValue = new GetClustersClusterAccessInfo();
+            _resultValue.zkLinks = zkLinks;
+            return _resultValue;
         }
     }
 }

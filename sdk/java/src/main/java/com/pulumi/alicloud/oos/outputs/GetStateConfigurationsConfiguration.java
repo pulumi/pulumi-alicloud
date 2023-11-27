@@ -314,23 +314,23 @@ public final class GetStateConfigurationsConfiguration {
             return this;
         }
         public GetStateConfigurationsConfiguration build() {
-            final var o = new GetStateConfigurationsConfiguration();
-            o.configureMode = configureMode;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.parameters = parameters;
-            o.resourceGroupId = resourceGroupId;
-            o.scheduleExpression = scheduleExpression;
-            o.scheduleType = scheduleType;
-            o.stateConfigurationId = stateConfigurationId;
-            o.tags = tags;
-            o.targets = targets;
-            o.templateId = templateId;
-            o.templateName = templateName;
-            o.templateVersion = templateVersion;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetStateConfigurationsConfiguration();
+            _resultValue.configureMode = configureMode;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.parameters = parameters;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.scheduleExpression = scheduleExpression;
+            _resultValue.scheduleType = scheduleType;
+            _resultValue.stateConfigurationId = stateConfigurationId;
+            _resultValue.tags = tags;
+            _resultValue.targets = targets;
+            _resultValue.templateId = templateId;
+            _resultValue.templateName = templateName;
+            _resultValue.templateVersion = templateVersion;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

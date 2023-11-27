@@ -34,7 +34,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      * 
      */
-    @Export(name="policyName", type=String.class, parameters={})
+    @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
@@ -48,7 +48,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * The type of the policy. Valid values: `Custom`, `System`.
      * 
      */
-    @Export(name="policyType", type=String.class, parameters={})
+    @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
@@ -62,7 +62,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * The name of the object to which you want to attach the policy.
      * 
      */
-    @Export(name="principalName", type=String.class, parameters={})
+    @Export(name="principalName", refs={String.class}, tree="[0]")
     private Output<String> principalName;
 
     /**
@@ -76,7 +76,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
      * 
      */
-    @Export(name="principalType", type=String.class, parameters={})
+    @Export(name="principalType", refs={String.class}, tree="[0]")
     private Output<String> principalType;
 
     /**
@@ -90,7 +90,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**

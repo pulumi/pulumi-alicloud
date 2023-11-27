@@ -71,7 +71,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * A list of the dns server name.
      * 
      */
-    @Export(name="dnsServers", type=List.class, parameters={String.class})
+    @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsServers;
 
     /**
@@ -85,7 +85,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The domain ID.
      * 
      */
-    @Export(name="domainId", type=String.class, parameters={})
+    @Export(name="domainId", refs={String.class}, tree="[0]")
     private Output<String> domainId;
 
     /**
@@ -99,7 +99,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Id of the group in which the domain will add. If not supplied, then use default group.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupId;
 
     /**
@@ -113,7 +113,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -127,7 +127,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the dns belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**

@@ -32,7 +32,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * The id of kubernetes cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 
     /**
@@ -46,7 +46,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
      * 
      */
-    @Export(name="coolDownDuration", type=String.class, parameters={})
+    @Export(name="coolDownDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coolDownDuration;
 
     /**
@@ -60,7 +60,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * If true DaemonSet pods will be  terminated from nodes. Default is `false`.
      * 
      */
-    @Export(name="daemonsetEvictionForNodes", type=Boolean.class, parameters={})
+    @Export(name="daemonsetEvictionForNodes", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> daemonsetEvictionForNodes;
 
     /**
@@ -74,7 +74,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
      * 
      */
-    @Export(name="expander", type=String.class, parameters={})
+    @Export(name="expander", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expander;
 
     /**
@@ -88,7 +88,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * The scale-in threshold for GPU instance. Default is `0.5`.
      * 
      */
-    @Export(name="gpuUtilizationThreshold", type=String.class, parameters={})
+    @Export(name="gpuUtilizationThreshold", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gpuUtilizationThreshold;
 
     /**
@@ -102,7 +102,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
      * 
      */
-    @Export(name="maxGracefulTerminationSec", type=Integer.class, parameters={})
+    @Export(name="maxGracefulTerminationSec", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxGracefulTerminationSec;
 
     /**
@@ -116,7 +116,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
      * 
      */
-    @Export(name="minReplicaCount", type=Integer.class, parameters={})
+    @Export(name="minReplicaCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minReplicaCount;
 
     /**
@@ -130,7 +130,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
      * 
      */
-    @Export(name="recycleNodeDeletionEnabled", type=Boolean.class, parameters={})
+    @Export(name="recycleNodeDeletionEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> recycleNodeDeletionEnabled;
 
     /**
@@ -144,7 +144,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * Specify whether to allow the scale-in of nodes. Default is `true`.
      * 
      */
-    @Export(name="scaleDownEnabled", type=Boolean.class, parameters={})
+    @Export(name="scaleDownEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> scaleDownEnabled;
 
     /**
@@ -158,7 +158,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * Should CA scale up when there 0 ready nodes. Default is `true`.
      * 
      */
-    @Export(name="scaleUpFromZero", type=Boolean.class, parameters={})
+    @Export(name="scaleUpFromZero", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> scaleUpFromZero;
 
     /**
@@ -172,7 +172,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      * 
      */
-    @Export(name="scanInterval", type=String.class, parameters={})
+    @Export(name="scanInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scanInterval;
 
     /**
@@ -186,7 +186,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
      * 
      */
-    @Export(name="skipNodesWithLocalStorage", type=Boolean.class, parameters={})
+    @Export(name="skipNodesWithLocalStorage", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipNodesWithLocalStorage;
 
     /**
@@ -200,7 +200,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
      * 
      */
-    @Export(name="skipNodesWithSystemPods", type=Boolean.class, parameters={})
+    @Export(name="skipNodesWithSystemPods", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipNodesWithSystemPods;
 
     /**
@@ -214,7 +214,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * The unneeded duration. Default is `10m`.
      * 
      */
-    @Export(name="unneededDuration", type=String.class, parameters={})
+    @Export(name="unneededDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unneededDuration;
 
     /**
@@ -228,7 +228,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * The scale-in threshold. Default is `0.5`.
      * 
      */
-    @Export(name="utilizationThreshold", type=String.class, parameters={})
+    @Export(name="utilizationThreshold", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> utilizationThreshold;
 
     /**

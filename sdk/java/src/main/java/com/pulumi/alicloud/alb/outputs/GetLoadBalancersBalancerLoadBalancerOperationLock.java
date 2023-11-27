@@ -65,10 +65,10 @@ public final class GetLoadBalancersBalancerLoadBalancerOperationLock {
             return this;
         }
         public GetLoadBalancersBalancerLoadBalancerOperationLock build() {
-            final var o = new GetLoadBalancersBalancerLoadBalancerOperationLock();
-            o.lockReason = lockReason;
-            o.lockType = lockType;
-            return o;
+            final var _resultValue = new GetLoadBalancersBalancerLoadBalancerOperationLock();
+            _resultValue.lockReason = lockReason;
+            _resultValue.lockType = lockType;
+            return _resultValue;
         }
     }
 }

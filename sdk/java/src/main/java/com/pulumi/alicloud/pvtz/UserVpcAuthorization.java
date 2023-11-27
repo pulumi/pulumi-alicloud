@@ -69,7 +69,7 @@ public class UserVpcAuthorization extends com.pulumi.resources.CustomResource {
      * The auth channel. Valid values: `RESOURCE_DIRECTORY`.
      * 
      */
-    @Export(name="authChannel", type=String.class, parameters={})
+    @Export(name="authChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authChannel;
 
     /**
@@ -83,7 +83,7 @@ public class UserVpcAuthorization extends com.pulumi.resources.CustomResource {
      * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
      * 
      */
-    @Export(name="authType", type=String.class, parameters={})
+    @Export(name="authType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authType;
 
     /**
@@ -97,7 +97,7 @@ public class UserVpcAuthorization extends com.pulumi.resources.CustomResource {
      * The primary account ID of the user who authorizes the resource.
      * 
      */
-    @Export(name="authorizedUserId", type=String.class, parameters={})
+    @Export(name="authorizedUserId", refs={String.class}, tree="[0]")
     private Output<String> authorizedUserId;
 
     /**

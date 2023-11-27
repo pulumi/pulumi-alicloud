@@ -138,7 +138,7 @@ public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomReso
      * The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
      * 
      */
-    @Export(name="interRegionTrafficQosPolicyDescription", type=String.class, parameters={})
+    @Export(name="interRegionTrafficQosPolicyDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interRegionTrafficQosPolicyDescription;
 
     /**
@@ -152,7 +152,7 @@ public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomReso
      * The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
-    @Export(name="interRegionTrafficQosPolicyName", type=String.class, parameters={})
+    @Export(name="interRegionTrafficQosPolicyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interRegionTrafficQosPolicyName;
 
     /**
@@ -166,7 +166,7 @@ public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomReso
      * The status of the Inter Region Traffic Qos Policy.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -180,7 +180,7 @@ public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomReso
      * The ID of the inter-region connection.
      * 
      */
-    @Export(name="transitRouterAttachmentId", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
@@ -194,7 +194,7 @@ public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomReso
      * The ID of the transit router.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**

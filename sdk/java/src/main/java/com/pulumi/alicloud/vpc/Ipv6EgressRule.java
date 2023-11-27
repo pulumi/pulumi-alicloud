@@ -158,7 +158,7 @@ public class Ipv6EgressRule extends com.pulumi.resources.CustomResource {
      * The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -172,7 +172,7 @@ public class Ipv6EgressRule extends com.pulumi.resources.CustomResource {
      * The ID of the IPv6 address to which you want to apply the egress-only rule.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -186,7 +186,7 @@ public class Ipv6EgressRule extends com.pulumi.resources.CustomResource {
      * The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -200,7 +200,7 @@ public class Ipv6EgressRule extends com.pulumi.resources.CustomResource {
      * The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="ipv6EgressRuleName", type=String.class, parameters={})
+    @Export(name="ipv6EgressRuleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv6EgressRuleName;
 
     /**
@@ -214,7 +214,7 @@ public class Ipv6EgressRule extends com.pulumi.resources.CustomResource {
      * The ID of the IPv6 gateway.
      * 
      */
-    @Export(name="ipv6GatewayId", type=String.class, parameters={})
+    @Export(name="ipv6GatewayId", refs={String.class}, tree="[0]")
     private Output<String> ipv6GatewayId;
 
     /**
@@ -228,7 +228,7 @@ public class Ipv6EgressRule extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

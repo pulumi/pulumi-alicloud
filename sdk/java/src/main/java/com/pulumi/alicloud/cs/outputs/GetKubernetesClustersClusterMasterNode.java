@@ -84,11 +84,11 @@ public final class GetKubernetesClustersClusterMasterNode {
             return this;
         }
         public GetKubernetesClustersClusterMasterNode build() {
-            final var o = new GetKubernetesClustersClusterMasterNode();
-            o.id = id;
-            o.name = name;
-            o.privateIp = privateIp;
-            return o;
+            final var _resultValue = new GetKubernetesClustersClusterMasterNode();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.privateIp = privateIp;
+            return _resultValue;
         }
     }
 }

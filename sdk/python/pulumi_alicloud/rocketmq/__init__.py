@@ -8,6 +8,7 @@ import typing
 from .acl import *
 from .acl_rule import *
 from .client_user import *
+from .consumer_group import *
 from .dnat_entry import *
 from .get_groups import *
 from .get_instances import *
@@ -18,6 +19,9 @@ from .instance import *
 from .qos import *
 from .qos_car import *
 from .qos_policy import *
+from .rocket_mq_instance import *
+from .rocket_mq_topic import *
 from .snat_entry import *
 from .topic import *
+from ._inputs import *
 from . import outputs

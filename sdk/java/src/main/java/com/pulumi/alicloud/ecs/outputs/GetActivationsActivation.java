@@ -238,19 +238,19 @@ public final class GetActivationsActivation {
             return this;
         }
         public GetActivationsActivation build() {
-            final var o = new GetActivationsActivation();
-            o.activationId = activationId;
-            o.createTime = createTime;
-            o.deregisteredCount = deregisteredCount;
-            o.description = description;
-            o.disabled = disabled;
-            o.id = id;
-            o.instanceCount = instanceCount;
-            o.instanceName = instanceName;
-            o.ipAddressRange = ipAddressRange;
-            o.registeredCount = registeredCount;
-            o.timeToLiveInHours = timeToLiveInHours;
-            return o;
+            final var _resultValue = new GetActivationsActivation();
+            _resultValue.activationId = activationId;
+            _resultValue.createTime = createTime;
+            _resultValue.deregisteredCount = deregisteredCount;
+            _resultValue.description = description;
+            _resultValue.disabled = disabled;
+            _resultValue.id = id;
+            _resultValue.instanceCount = instanceCount;
+            _resultValue.instanceName = instanceName;
+            _resultValue.ipAddressRange = ipAddressRange;
+            _resultValue.registeredCount = registeredCount;
+            _resultValue.timeToLiveInHours = timeToLiveInHours;
+            return _resultValue;
         }
     }
 }

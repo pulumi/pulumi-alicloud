@@ -116,13 +116,13 @@ public final class GetStaticAccountsResult {
             return this;
         }
         public GetStaticAccountsResult build() {
-            final var o = new GetStaticAccountsResult();
-            o.accounts = accounts;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetStaticAccountsResult();
+            _resultValue.accounts = accounts;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

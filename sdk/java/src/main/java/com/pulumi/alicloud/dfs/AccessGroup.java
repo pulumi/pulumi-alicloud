@@ -71,7 +71,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
      * 
      */
-    @Export(name="accessGroupName", type=String.class, parameters={})
+    @Export(name="accessGroupName", refs={String.class}, tree="[0]")
     private Output<String> accessGroupName;
 
     /**
@@ -85,7 +85,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * The Description of Access Group. The length of `description` does not exceed 100 bytes.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -99,7 +99,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * The NetworkType of Access Group. Valid values: `VPC`.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**

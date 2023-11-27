@@ -544,10 +544,14 @@ func (o MasterSlaveServerGroupServerArrayOutput) Index(i pulumi.IntInput) Master
 }
 
 type ServerGroupServer struct {
-	Port      int      `pulumi:"port"`
+	// The port used by the backend server. Valid value range: [1-65535].
+	Port int `pulumi:"port"`
+	// A list backend server ID (ECS instance ID).
 	ServerIds []string `pulumi:"serverIds"`
-	Type      *string  `pulumi:"type"`
-	Weight    *int     `pulumi:"weight"`
+	// Type of the backend server. Valid value ecs, eni. Default to eni.
+	Type *string `pulumi:"type"`
+	// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+	Weight *int `pulumi:"weight"`
 }
 
 // ServerGroupServerInput is an input type that accepts ServerGroupServerArgs and ServerGroupServerOutput values.
@@ -562,10 +566,14 @@ type ServerGroupServerInput interface {
 }
 
 type ServerGroupServerArgs struct {
-	Port      pulumi.IntInput         `pulumi:"port"`
+	// The port used by the backend server. Valid value range: [1-65535].
+	Port pulumi.IntInput `pulumi:"port"`
+	// A list backend server ID (ECS instance ID).
 	ServerIds pulumi.StringArrayInput `pulumi:"serverIds"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
-	Weight    pulumi.IntPtrInput      `pulumi:"weight"`
+	// Type of the backend server. Valid value ecs, eni. Default to eni.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
 func (ServerGroupServerArgs) ElementType() reflect.Type {
@@ -619,18 +627,22 @@ func (o ServerGroupServerOutput) ToServerGroupServerOutputWithContext(ctx contex
 	return o
 }
 
+// The port used by the backend server. Valid value range: [1-65535].
 func (o ServerGroupServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ServerGroupServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// A list backend server ID (ECS instance ID).
 func (o ServerGroupServerOutput) ServerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerGroupServer) []string { return v.ServerIds }).(pulumi.StringArrayOutput)
 }
 
+// Type of the backend server. Valid value ecs, eni. Default to eni.
 func (o ServerGroupServerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Weight of the backend server. Valid value range: [0-100]. Default to 100.
 func (o ServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }

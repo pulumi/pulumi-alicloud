@@ -103,12 +103,12 @@ public final class ClusterConfig {
             return this;
         }
         public ClusterConfig build() {
-            final var o = new ClusterConfig();
-            o.configKey = configKey;
-            o.configValue = configValue;
-            o.fileName = fileName;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new ClusterConfig();
+            _resultValue.configKey = configKey;
+            _resultValue.configValue = configValue;
+            _resultValue.fileName = fileName;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

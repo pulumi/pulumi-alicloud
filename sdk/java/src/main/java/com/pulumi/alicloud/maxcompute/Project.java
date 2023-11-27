@@ -68,7 +68,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Comments of project
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -82,7 +82,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Default Computing Resource Group
      * 
      */
-    @Export(name="defaultQuota", type=String.class, parameters={})
+    @Export(name="defaultQuota", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultQuota;
 
     /**
@@ -96,7 +96,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * IP whitelist. See `ip_white_list` below.
      * 
      */
-    @Export(name="ipWhiteList", type=ProjectIpWhiteList.class, parameters={})
+    @Export(name="ipWhiteList", refs={ProjectIpWhiteList.class}, tree="[0]")
     private Output</* @Nullable */ ProjectIpWhiteList> ipWhiteList;
 
     /**
@@ -110,7 +110,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Project owner
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -124,7 +124,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
      * 
      */
-    @Export(name="productType", type=String.class, parameters={})
+    @Export(name="productType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productType;
 
     /**
@@ -138,7 +138,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The name of the project
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
@@ -152,7 +152,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Project base attributes. See `properties` below.
      * 
      */
-    @Export(name="properties", type=ProjectProperties.class, parameters={})
+    @Export(name="properties", refs={ProjectProperties.class}, tree="[0]")
     private Output<ProjectProperties> properties;
 
     /**
@@ -166,7 +166,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Security-related attributes. See `security_properties` below.
      * 
      */
-    @Export(name="securityProperties", type=ProjectSecurityProperties.class, parameters={})
+    @Export(name="securityProperties", refs={ProjectSecurityProperties.class}, tree="[0]")
     private Output<ProjectSecurityProperties> securityProperties;
 
     /**
@@ -180,7 +180,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -194,7 +194,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Life cycle type.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

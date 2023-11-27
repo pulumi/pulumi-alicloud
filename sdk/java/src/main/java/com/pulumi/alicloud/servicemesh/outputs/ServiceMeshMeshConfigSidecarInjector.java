@@ -24,7 +24,7 @@ public final class ServiceMeshMeshConfigSidecarInjector {
      */
     private @Nullable Boolean enableNamespacesByDefault;
     /**
-     * @return CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+     * @return CNI configuration. See `init_cni_configuration` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration initCniConfiguration;
@@ -70,7 +70,7 @@ public final class ServiceMeshMeshConfigSidecarInjector {
         return Optional.ofNullable(this.enableNamespacesByDefault);
     }
     /**
-     * @return CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+     * @return CNI configuration. See `init_cni_configuration` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfiguration() {
@@ -183,16 +183,16 @@ public final class ServiceMeshMeshConfigSidecarInjector {
             return this;
         }
         public ServiceMeshMeshConfigSidecarInjector build() {
-            final var o = new ServiceMeshMeshConfigSidecarInjector();
-            o.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
-            o.enableNamespacesByDefault = enableNamespacesByDefault;
-            o.initCniConfiguration = initCniConfiguration;
-            o.limitCpu = limitCpu;
-            o.limitMemory = limitMemory;
-            o.requestCpu = requestCpu;
-            o.requestMemory = requestMemory;
-            o.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfigSidecarInjector();
+            _resultValue.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
+            _resultValue.enableNamespacesByDefault = enableNamespacesByDefault;
+            _resultValue.initCniConfiguration = initCniConfiguration;
+            _resultValue.limitCpu = limitCpu;
+            _resultValue.limitMemory = limitMemory;
+            _resultValue.requestCpu = requestCpu;
+            _resultValue.requestMemory = requestMemory;
+            _resultValue.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
+            return _resultValue;
         }
     }
 }

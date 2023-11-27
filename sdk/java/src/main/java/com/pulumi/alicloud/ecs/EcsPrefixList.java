@@ -79,7 +79,7 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
      * The IP address family. Valid values: `IPv4`,`IPv6`.
      * 
      */
-    @Export(name="addressFamily", type=String.class, parameters={})
+    @Export(name="addressFamily", refs={String.class}, tree="[0]")
     private Output<String> addressFamily;
 
     /**
@@ -93,7 +93,7 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
      * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -107,7 +107,7 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
      * The Entry. The details see Block `entry`.
      * 
      */
-    @Export(name="entries", type=List.class, parameters={EcsPrefixListEntry.class})
+    @Export(name="entries", refs={List.class,EcsPrefixListEntry.class}, tree="[0,1]")
     private Output<List<EcsPrefixListEntry>> entries;
 
     /**
@@ -121,7 +121,7 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
      * The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
      * 
      */
-    @Export(name="maxEntries", type=Integer.class, parameters={})
+    @Export(name="maxEntries", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxEntries;
 
     /**
@@ -135,7 +135,7 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
      * The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      * 
      */
-    @Export(name="prefixListName", type=String.class, parameters={})
+    @Export(name="prefixListName", refs={String.class}, tree="[0]")
     private Output<String> prefixListName;
 
     /**

@@ -82,7 +82,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The description of the File system.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The name of the File system.
      * 
      */
-    @Export(name="fileSystemName", type=String.class, parameters={})
+    @Export(name="fileSystemName", refs={String.class}, tree="[0]")
     private Output<String> fileSystemName;
 
     /**
@@ -110,7 +110,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The protocol type. Valid values: `HDFS`.
      * 
      */
-    @Export(name="protocolType", type=String.class, parameters={})
+    @Export(name="protocolType", refs={String.class}, tree="[0]")
     private Output<String> protocolType;
 
     /**
@@ -124,7 +124,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
      * 
      */
-    @Export(name="provisionedThroughputInMiBps", type=Integer.class, parameters={})
+    @Export(name="provisionedThroughputInMiBps", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> provisionedThroughputInMiBps;
 
     /**
@@ -138,7 +138,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
      * 
      */
-    @Export(name="spaceCapacity", type=Integer.class, parameters={})
+    @Export(name="spaceCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> spaceCapacity;
 
     /**
@@ -152,7 +152,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
      * 
      */
-    @Export(name="storageType", type=String.class, parameters={})
+    @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
@@ -166,7 +166,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
      * 
      */
-    @Export(name="throughputMode", type=String.class, parameters={})
+    @Export(name="throughputMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> throughputMode;
 
     /**
@@ -180,7 +180,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The zone ID of the File system.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

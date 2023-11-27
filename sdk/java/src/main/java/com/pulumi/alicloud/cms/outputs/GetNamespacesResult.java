@@ -123,15 +123,15 @@ public final class GetNamespacesResult {
             return this;
         }
         public GetNamespacesResult build() {
-            final var o = new GetNamespacesResult();
-            o.id = id;
-            o.ids = ids;
-            o.keyword = keyword;
-            o.namespaces = namespaces;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetNamespacesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyword = keyword;
+            _resultValue.namespaces = namespaces;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

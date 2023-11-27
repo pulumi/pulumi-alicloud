@@ -94,11 +94,11 @@ public final class ClusterDbClusterIpArray {
             return securityIps(List.of(securityIps));
         }
         public ClusterDbClusterIpArray build() {
-            final var o = new ClusterDbClusterIpArray();
-            o.dbClusterIpArrayName = dbClusterIpArrayName;
-            o.modifyMode = modifyMode;
-            o.securityIps = securityIps;
-            return o;
+            final var _resultValue = new ClusterDbClusterIpArray();
+            _resultValue.dbClusterIpArrayName = dbClusterIpArrayName;
+            _resultValue.modifyMode = modifyMode;
+            _resultValue.securityIps = securityIps;
+            return _resultValue;
         }
     }
 }

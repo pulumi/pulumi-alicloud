@@ -75,11 +75,11 @@ public final class GetReplicationVaultRegionsResult {
             return regions(List.of(regions));
         }
         public GetReplicationVaultRegionsResult build() {
-            final var o = new GetReplicationVaultRegionsResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.regions = regions;
-            return o;
+            final var _resultValue = new GetReplicationVaultRegionsResult();
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.regions = regions;
+            return _resultValue;
         }
     }
 }

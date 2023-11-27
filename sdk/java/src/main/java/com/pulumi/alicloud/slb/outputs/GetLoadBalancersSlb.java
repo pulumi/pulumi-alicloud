@@ -339,21 +339,21 @@ public final class GetLoadBalancersSlb {
             return this;
         }
         public GetLoadBalancersSlb build() {
-            final var o = new GetLoadBalancersSlb();
-            o.address = address;
-            o.creationTime = creationTime;
-            o.id = id;
-            o.internet = internet;
-            o.masterAvailabilityZone = masterAvailabilityZone;
-            o.name = name;
-            o.networkType = networkType;
-            o.regionId = regionId;
-            o.slaveAvailabilityZone = slaveAvailabilityZone;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetLoadBalancersSlb();
+            _resultValue.address = address;
+            _resultValue.creationTime = creationTime;
+            _resultValue.id = id;
+            _resultValue.internet = internet;
+            _resultValue.masterAvailabilityZone = masterAvailabilityZone;
+            _resultValue.name = name;
+            _resultValue.networkType = networkType;
+            _resultValue.regionId = regionId;
+            _resultValue.slaveAvailabilityZone = slaveAvailabilityZone;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

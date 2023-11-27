@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DiskArgs, DiskState } from "./disk";
+export type Disk = import("./disk").Disk;
+export const Disk: typeof import("./disk").Disk = null as any;
+utilities.lazyLoad(exports, ["Disk"], () => require("./disk"));
+
+export { EipArgs, EipState } from "./eip";
+export type Eip = import("./eip").Eip;
+export const Eip: typeof import("./eip").Eip = null as any;
+utilities.lazyLoad(exports, ["Eip"], () => require("./eip"));
+
 export { GetKeyPairsArgs, GetKeyPairsResult, GetKeyPairsOutputArgs } from "./getKeyPairs";
 export const getKeyPairs: typeof import("./getKeyPairs").getKeyPairs = null as any;
 export const getKeyPairsOutput: typeof import("./getKeyPairs").getKeyPairsOutput = null as any;
@@ -20,19 +30,65 @@ export type KeyPair = import("./keyPair").KeyPair;
 export const KeyPair: typeof import("./keyPair").KeyPair = null as any;
 utilities.lazyLoad(exports, ["KeyPair"], () => require("./keyPair"));
 
+export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
+export type LoadBalancer = import("./loadBalancer").LoadBalancer;
+export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
+utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
+
+export { NetworkArgs, NetworkState } from "./network";
+export type Network = import("./network").Network;
+export const Network: typeof import("./network").Network = null as any;
+utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+
+export { SecurityGroupArgs, SecurityGroupState } from "./securityGroup";
+export type SecurityGroup = import("./securityGroup").SecurityGroup;
+export const SecurityGroup: typeof import("./securityGroup").SecurityGroup = null as any;
+utilities.lazyLoad(exports, ["SecurityGroup"], () => require("./securityGroup"));
+
+export { SnapshotArgs, SnapshotState } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+
+export { VswitchArgs, VswitchState } from "./vswitch";
+export type Vswitch = import("./vswitch").Vswitch;
+export const Vswitch: typeof import("./vswitch").Vswitch = null as any;
+utilities.lazyLoad(exports, ["Vswitch"], () => require("./vswitch"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:ens/disk:Disk":
+                return new Disk(name, <any>undefined, { urn })
+            case "alicloud:ens/eip:Eip":
+                return new Eip(name, <any>undefined, { urn })
             case "alicloud:ens/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:ens/keyPair:KeyPair":
                 return new KeyPair(name, <any>undefined, { urn })
+            case "alicloud:ens/loadBalancer:LoadBalancer":
+                return new LoadBalancer(name, <any>undefined, { urn })
+            case "alicloud:ens/network:Network":
+                return new Network(name, <any>undefined, { urn })
+            case "alicloud:ens/securityGroup:SecurityGroup":
+                return new SecurityGroup(name, <any>undefined, { urn })
+            case "alicloud:ens/snapshot:Snapshot":
+                return new Snapshot(name, <any>undefined, { urn })
+            case "alicloud:ens/vswitch:Vswitch":
+                return new Vswitch(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "ens/disk", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/eip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/keyPair", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/loadBalancer", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/network", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/securityGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/snapshot", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/vswitch", _module)

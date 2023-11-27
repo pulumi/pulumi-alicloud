@@ -68,10 +68,10 @@ public final class AccessStrategyDefaultAddrPool {
             return this;
         }
         public AccessStrategyDefaultAddrPool build() {
-            final var o = new AccessStrategyDefaultAddrPool();
-            o.addrPoolId = addrPoolId;
-            o.lbaWeight = lbaWeight;
-            return o;
+            final var _resultValue = new AccessStrategyDefaultAddrPool();
+            _resultValue.addrPoolId = addrPoolId;
+            _resultValue.lbaWeight = lbaWeight;
+            return _resultValue;
         }
     }
 }

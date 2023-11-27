@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
         /// </summary>
         [Output("edition")]
-        public Output<string?> Edition { get; private set; } = null!;
+        public Output<string> Edition { get; private set; } = null!;
 
         /// <summary>
         /// Data plane KubeAPI access capability. See `extra_configuration` below.
@@ -77,13 +77,13 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// Load balancing information. See `load_balancer` below.
         /// </summary>
         [Output("loadBalancer")]
-        public Output<Outputs.ServiceMeshLoadBalancer?> LoadBalancer { get; private set; } = null!;
+        public Output<Outputs.ServiceMeshLoadBalancer> LoadBalancer { get; private set; } = null!;
 
         /// <summary>
         /// Service grid configuration information. See `mesh_config` below.
         /// </summary>
         [Output("meshConfig")]
-        public Output<Outputs.ServiceMeshMeshConfig?> MeshConfig { get; private set; } = null!;
+        public Output<Outputs.ServiceMeshMeshConfig> MeshConfig { get; private set; } = null!;
 
         /// <summary>
         /// Service grid network configuration information. See `network` below.
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
         /// </summary>
         [Output("version")]
-        public Output<string?> Version { get; private set; } = null!;
+        public Output<string> Version { get; private set; } = null!;
 
 
         /// <summary>

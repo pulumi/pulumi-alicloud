@@ -140,7 +140,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Delivery target logstore access key id.
      * 
      */
-    @Export(name="accessKeyId", type=String.class, parameters={})
+    @Export(name="accessKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKeyId;
 
     /**
@@ -154,7 +154,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Delivery target logstore access key secret.
      * 
      */
-    @Export(name="accessKeySecret", type=String.class, parameters={})
+    @Export(name="accessKeySecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKeySecret;
 
     /**
@@ -168,7 +168,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * The etl job create time.
      * 
      */
-    @Export(name="createTime", type=Integer.class, parameters={})
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
@@ -182,7 +182,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Description of the log etl job.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -196,7 +196,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Log service etl job alias.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -210,7 +210,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * The name of the log etl job.
      * 
      */
-    @Export(name="etlName", type=String.class, parameters={})
+    @Export(name="etlName", refs={String.class}, tree="[0]")
     private Output<String> etlName;
 
     /**
@@ -224,7 +224,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Target logstore configuration for delivery after data processing.
      * 
      */
-    @Export(name="etlSinks", type=List.class, parameters={EtlEtlSink.class})
+    @Export(name="etlSinks", refs={List.class,EtlEtlSink.class}, tree="[0,1]")
     private Output<List<EtlEtlSink>> etlSinks;
 
     /**
@@ -238,7 +238,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Log service etl type, the default value is `ETL`.
      * 
      */
-    @Export(name="etlType", type=String.class, parameters={})
+    @Export(name="etlType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> etlType;
 
     /**
@@ -252,7 +252,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
      * 
      */
-    @Export(name="fromTime", type=Integer.class, parameters={})
+    @Export(name="fromTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> fromTime;
 
     /**
@@ -266,7 +266,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedAccessKeyId", type=String.class, parameters={})
+    @Export(name="kmsEncryptedAccessKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedAccessKeyId;
 
     /**
@@ -280,7 +280,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedAccessKeySecret", type=String.class, parameters={})
+    @Export(name="kmsEncryptedAccessKeySecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedAccessKeySecret;
 
     /**
@@ -294,7 +294,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="kmsEncryptionAccessKeyIdContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionAccessKeyIdContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionAccessKeyIdContext;
 
     /**
@@ -308,7 +308,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="kmsEncryptionAccessKeySecretContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionAccessKeySecretContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionAccessKeySecretContext;
 
     /**
@@ -322,7 +322,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * ETL job last modified time.
      * 
      */
-    @Export(name="lastModifiedTime", type=Integer.class, parameters={})
+    @Export(name="lastModifiedTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> lastModifiedTime;
 
     /**
@@ -336,7 +336,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Delivery target logstore.
      * 
      */
-    @Export(name="logstore", type=String.class, parameters={})
+    @Export(name="logstore", refs={String.class}, tree="[0]")
     private Output<String> logstore;
 
     /**
@@ -350,7 +350,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Advanced parameter configuration of processing operations.
      * 
      */
-    @Export(name="parameters", type=Map.class, parameters={String.class, String.class})
+    @Export(name="parameters", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> parameters;
 
     /**
@@ -364,7 +364,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * The project where the target logstore is delivered.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -378,7 +378,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
-    @Export(name="roleArn", type=String.class, parameters={})
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleArn;
 
     /**
@@ -392,7 +392,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Job scheduling type, the default value is Resident.
      * 
      */
-    @Export(name="schedule", type=String.class, parameters={})
+    @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedule;
 
     /**
@@ -406,7 +406,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Processing operation grammar.
      * 
      */
-    @Export(name="script", type=String.class, parameters={})
+    @Export(name="script", refs={String.class}, tree="[0]")
     private Output<String> script;
 
     /**
@@ -420,7 +420,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -434,7 +434,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
      * 
      */
-    @Export(name="toTime", type=Integer.class, parameters={})
+    @Export(name="toTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> toTime;
 
     /**
@@ -448,7 +448,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * Log etl job version. the default value is `2`.
      * 
      */
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> version;
 
     /**

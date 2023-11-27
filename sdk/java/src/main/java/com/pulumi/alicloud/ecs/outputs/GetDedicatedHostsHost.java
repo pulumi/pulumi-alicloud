@@ -566,35 +566,35 @@ public final class GetDedicatedHostsHost {
             return this;
         }
         public GetDedicatedHostsHost build() {
-            final var o = new GetDedicatedHostsHost();
-            o.actionOnMaintenance = actionOnMaintenance;
-            o.autoPlacement = autoPlacement;
-            o.autoReleaseTime = autoReleaseTime;
-            o.capacities = capacities;
-            o.cores = cores;
-            o.cpuOverCommitRatio = cpuOverCommitRatio;
-            o.dedicatedHostId = dedicatedHostId;
-            o.dedicatedHostName = dedicatedHostName;
-            o.dedicatedHostType = dedicatedHostType;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.gpuSpec = gpuSpec;
-            o.id = id;
-            o.machineId = machineId;
-            o.networkAttributes = networkAttributes;
-            o.operationLocks = operationLocks;
-            o.paymentType = paymentType;
-            o.physicalGpus = physicalGpus;
-            o.resourceGroupId = resourceGroupId;
-            o.saleCycle = saleCycle;
-            o.sockets = sockets;
-            o.status = status;
-            o.supportedCustomInstanceTypeFamilies = supportedCustomInstanceTypeFamilies;
-            o.supportedInstanceTypeFamilies = supportedInstanceTypeFamilies;
-            o.supportedInstanceTypesLists = supportedInstanceTypesLists;
-            o.tags = tags;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetDedicatedHostsHost();
+            _resultValue.actionOnMaintenance = actionOnMaintenance;
+            _resultValue.autoPlacement = autoPlacement;
+            _resultValue.autoReleaseTime = autoReleaseTime;
+            _resultValue.capacities = capacities;
+            _resultValue.cores = cores;
+            _resultValue.cpuOverCommitRatio = cpuOverCommitRatio;
+            _resultValue.dedicatedHostId = dedicatedHostId;
+            _resultValue.dedicatedHostName = dedicatedHostName;
+            _resultValue.dedicatedHostType = dedicatedHostType;
+            _resultValue.description = description;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.gpuSpec = gpuSpec;
+            _resultValue.id = id;
+            _resultValue.machineId = machineId;
+            _resultValue.networkAttributes = networkAttributes;
+            _resultValue.operationLocks = operationLocks;
+            _resultValue.paymentType = paymentType;
+            _resultValue.physicalGpus = physicalGpus;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.saleCycle = saleCycle;
+            _resultValue.sockets = sockets;
+            _resultValue.status = status;
+            _resultValue.supportedCustomInstanceTypeFamilies = supportedCustomInstanceTypeFamilies;
+            _resultValue.supportedInstanceTypeFamilies = supportedInstanceTypeFamilies;
+            _resultValue.supportedInstanceTypesLists = supportedInstanceTypesLists;
+            _resultValue.tags = tags;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

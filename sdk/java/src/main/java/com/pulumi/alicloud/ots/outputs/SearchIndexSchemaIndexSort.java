@@ -50,9 +50,9 @@ public final class SearchIndexSchemaIndexSort {
             return sorters(List.of(sorters));
         }
         public SearchIndexSchemaIndexSort build() {
-            final var o = new SearchIndexSchemaIndexSort();
-            o.sorters = sorters;
-            return o;
+            final var _resultValue = new SearchIndexSchemaIndexSort();
+            _resultValue.sorters = sorters;
+            return _resultValue;
         }
     }
 }

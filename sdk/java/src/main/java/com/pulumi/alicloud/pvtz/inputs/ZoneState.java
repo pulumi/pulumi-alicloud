@@ -8,8 +8,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -154,6 +156,21 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The tags of the Private Zone.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tags of the Private Zone.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The IP address of the client.
      * 
      */
@@ -169,14 +186,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user information of the host synchronization task. The details see Block `user_info`.
+     * The user information of the host synchronization task. See `user_info` below.
      * 
      */
     @Import(name="userInfos")
     private @Nullable Output<List<ZoneUserInfoArgs>> userInfos;
 
     /**
-     * @return The user information of the host synchronization task. The details see Block `user_info`.
+     * @return The user information of the host synchronization task. See `user_info` below.
      * 
      */
     public Optional<Output<List<ZoneUserInfoArgs>>> userInfos() {
@@ -209,6 +226,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         this.remark = $.remark;
         this.resourceGroupId = $.resourceGroupId;
         this.syncStatus = $.syncStatus;
+        this.tags = $.tags;
         this.userClientIp = $.userClientIp;
         this.userInfos = $.userInfos;
         this.zoneName = $.zoneName;
@@ -415,6 +433,27 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param tags The tags of the Private Zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags of the Private Zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
          * @param userClientIp The IP address of the client.
          * 
          * @return builder
@@ -436,7 +475,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userInfos The user information of the host synchronization task. The details see Block `user_info`.
+         * @param userInfos The user information of the host synchronization task. See `user_info` below.
          * 
          * @return builder
          * 
@@ -447,7 +486,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userInfos The user information of the host synchronization task. The details see Block `user_info`.
+         * @param userInfos The user information of the host synchronization task. See `user_info` below.
          * 
          * @return builder
          * 
@@ -457,7 +496,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userInfos The user information of the host synchronization task. The details see Block `user_info`.
+         * @param userInfos The user information of the host synchronization task. See `user_info` below.
          * 
          * @return builder
          * 

@@ -69,10 +69,10 @@ public final class EcsInstanceSetExcludeInstanceFilter {
             return values(List.of(values));
         }
         public EcsInstanceSetExcludeInstanceFilter build() {
-            final var o = new EcsInstanceSetExcludeInstanceFilter();
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new EcsInstanceSetExcludeInstanceFilter();
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

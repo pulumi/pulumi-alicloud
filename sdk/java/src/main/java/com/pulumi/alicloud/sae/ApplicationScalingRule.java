@@ -190,7 +190,7 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
      * Application ID.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -204,7 +204,7 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
      * The min ready instance ratio.
      * 
      */
-    @Export(name="minReadyInstanceRatio", type=Integer.class, parameters={})
+    @Export(name="minReadyInstanceRatio", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minReadyInstanceRatio;
 
     /**
@@ -218,7 +218,7 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
      * The min ready instances.
      * 
      */
-    @Export(name="minReadyInstances", type=Integer.class, parameters={})
+    @Export(name="minReadyInstances", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minReadyInstances;
 
     /**
@@ -232,7 +232,7 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
      * True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
      * 
      */
-    @Export(name="scalingRuleEnable", type=Boolean.class, parameters={})
+    @Export(name="scalingRuleEnable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> scalingRuleEnable;
 
     /**
@@ -246,7 +246,7 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
      * Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
      * 
      */
-    @Export(name="scalingRuleMetric", type=ApplicationScalingRuleScalingRuleMetric.class, parameters={})
+    @Export(name="scalingRuleMetric", refs={ApplicationScalingRuleScalingRuleMetric.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationScalingRuleScalingRuleMetric> scalingRuleMetric;
 
     /**
@@ -260,7 +260,7 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
      * The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
      * 
      */
-    @Export(name="scalingRuleName", type=String.class, parameters={})
+    @Export(name="scalingRuleName", refs={String.class}, tree="[0]")
     private Output<String> scalingRuleName;
 
     /**
@@ -274,7 +274,7 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
      * Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
      * 
      */
-    @Export(name="scalingRuleTimer", type=ApplicationScalingRuleScalingRuleTimer.class, parameters={})
+    @Export(name="scalingRuleTimer", refs={ApplicationScalingRuleScalingRuleTimer.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationScalingRuleScalingRuleTimer> scalingRuleTimer;
 
     /**
@@ -288,7 +288,7 @@ public class ApplicationScalingRule extends com.pulumi.resources.CustomResource 
      * Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
      * 
      */
-    @Export(name="scalingRuleType", type=String.class, parameters={})
+    @Export(name="scalingRuleType", refs={String.class}, tree="[0]")
     private Output<String> scalingRuleType;
 
     /**

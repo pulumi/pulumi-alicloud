@@ -123,13 +123,13 @@ public final class GetBandwidthLimitsLimit {
             return this;
         }
         public GetBandwidthLimitsLimit build() {
-            final var o = new GetBandwidthLimitsLimit();
-            o.bandwidthLimit = bandwidthLimit;
-            o.instanceId = instanceId;
-            o.localRegionId = localRegionId;
-            o.oppositeRegionId = oppositeRegionId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBandwidthLimitsLimit();
+            _resultValue.bandwidthLimit = bandwidthLimit;
+            _resultValue.instanceId = instanceId;
+            _resultValue.localRegionId = localRegionId;
+            _resultValue.oppositeRegionId = oppositeRegionId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

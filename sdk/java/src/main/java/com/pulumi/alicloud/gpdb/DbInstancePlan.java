@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a GPDB DB Instance Plan resource.
  * 
- * For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/createdbinstanceplan).
+ * For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
  * 
  * &gt; **NOTE:** Available since v1.189.0.
  * 
@@ -37,7 +37,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * The ID of the Database instance.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -51,7 +51,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * The name of the Plan.
      * 
      */
-    @Export(name="dbInstancePlanName", type=String.class, parameters={})
+    @Export(name="dbInstancePlanName", refs={String.class}, tree="[0]")
     private Output<String> dbInstancePlanName;
 
     /**
@@ -65,7 +65,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * The plan config. See `plan_config` below.
      * 
      */
-    @Export(name="planConfigs", type=List.class, parameters={DbInstancePlanPlanConfig.class})
+    @Export(name="planConfigs", refs={List.class,DbInstancePlanPlanConfig.class}, tree="[0,1]")
     private Output<List<DbInstancePlanPlanConfig>> planConfigs;
 
     /**
@@ -79,7 +79,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * The description of the Plan.
      * 
      */
-    @Export(name="planDesc", type=String.class, parameters={})
+    @Export(name="planDesc", refs={String.class}, tree="[0]")
     private Output<String> planDesc;
 
     /**
@@ -93,7 +93,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * The end time of the Plan.
      * 
      */
-    @Export(name="planEndDate", type=String.class, parameters={})
+    @Export(name="planEndDate", refs={String.class}, tree="[0]")
     private Output<String> planEndDate;
 
     /**
@@ -107,7 +107,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * The ID of DB Instance Plan.
      * 
      */
-    @Export(name="planId", type=String.class, parameters={})
+    @Export(name="planId", refs={String.class}, tree="[0]")
     private Output<String> planId;
 
     /**
@@ -121,7 +121,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * Plan scheduling type. Valid values: `Postpone`, `Regular`.
      * 
      */
-    @Export(name="planScheduleType", type=String.class, parameters={})
+    @Export(name="planScheduleType", refs={String.class}, tree="[0]")
     private Output<String> planScheduleType;
 
     /**
@@ -135,7 +135,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * The start time of the Plan.
      * 
      */
-    @Export(name="planStartDate", type=String.class, parameters={})
+    @Export(name="planStartDate", refs={String.class}, tree="[0]")
     private Output<String> planStartDate;
 
     /**
@@ -149,7 +149,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * The type of the Plan. Valid values: `PauseResume`, `Resize`.
      * 
      */
-    @Export(name="planType", type=String.class, parameters={})
+    @Export(name="planType", refs={String.class}, tree="[0]")
     private Output<String> planType;
 
     /**
@@ -163,7 +163,7 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * The Status of the Plan. Valid values: `active`, `cancel`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -46,9 +46,9 @@ public final class GetRulesRuleRuleActionTrafficLimitConfig {
             return this;
         }
         public GetRulesRuleRuleActionTrafficLimitConfig build() {
-            final var o = new GetRulesRuleRuleActionTrafficLimitConfig();
-            o.qps = qps;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleActionTrafficLimitConfig();
+            _resultValue.qps = qps;
+            return _resultValue;
         }
     }
 }

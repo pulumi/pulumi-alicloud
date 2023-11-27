@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.DatabaseFilesystem
 {
     /// <summary>
-    /// Provides a DBFS Instance resource.
+    /// Provides a DBFS Dbfs Instance resource. An instance of a database file system is equivalent to a file system and can store data of file types.
     /// 
-    /// For information about DBFS Instance and how to use it.
+    /// For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
     /// 
     /// &gt; **NOTE:** Available since v1.136.0.
     /// 
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var example = new AliCloud.DatabaseFilesystem.Instance("example", new()
     ///     {
     ///         Category = "standard",
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// ## Import
     /// 
-    /// DBFS Instance can be imported using the id, e.g.
+    /// DBFS Dbfs Instance can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:databasefilesystem/instance:Instance example &lt;id&gt;
@@ -54,73 +54,104 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the Database file system. Valid values: `standard`.
+        /// The number of CPU cores and the upper limit of memory used by the database file storage instance.
+        /// </summary>
+        [Output("advancedFeatures")]
+        public Output<string> AdvancedFeatures { get; private set; } = null!;
+
+        /// <summary>
+        /// Category of database file system.
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+        /// The creation time of the resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to delete the original snapshot after creating DBFS using the snapshot.
         /// </summary>
         [Output("deleteSnapshot")]
         public Output<bool?> DeleteSnapshot { get; private set; } = null!;
 
         /// <summary>
-        /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         /// </summary>
         [Output("ecsLists")]
         public Output<ImmutableArray<Outputs.InstanceEcsList>> EcsLists { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+        /// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         /// </summary>
         [Output("enableRaid")]
         public Output<bool?> EnableRaid { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to encrypt the database file system. Valid values: `true` and `false`.
+        /// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         /// </summary>
         [Output("encryption")]
         public Output<bool?> Encryption { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Database file system.
+        /// Database file system name.
+        /// </summary>
+        [Output("fsName")]
+        public Output<string> FsName { get; private set; } = null!;
+
+        /// <summary>
+        /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+        /// Instance type. Value range:
+        /// - dbfs.small
+        /// - dbfs.medium
+        /// - dbfs.large (default)
+        /// </summary>
+        [Output("instanceType")]
+        public Output<string?> InstanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the KMS key used by DBFS.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+        /// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+        /// - PL0: single disk maximum random read-write IOPS 10000
+        /// - PL1: highest random read-write IOPS 50000 per disk (default)
+        /// - PL2: single disk maximum random read-write IOPS 100000
+        /// - PL3: single disk maximum random read-write IOPS 1 million.
         /// </summary>
         [Output("performanceLevel")]
         public Output<string> PerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+        /// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         /// </summary>
         [Output("raidStripeUnitNumber")]
-        public Output<string?> RaidStripeUnitNumber { get; private set; } = null!;
+        public Output<int?> RaidStripeUnitNumber { get; private set; } = null!;
 
         /// <summary>
-        /// The size Of the Database file system. Unit: GiB.
+        /// Size of database file system, unit GiB.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The snapshot id of the Database file system.
+        /// The ID of the snapshot used to create the DBFS instance.
         /// </summary>
         [Output("snapshotId")]
-        public Output<string?> SnapshotId { get; private set; } = null!;
+        public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -132,7 +163,16 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone ID of the Database file system.
+        /// The usage scenario of DBFS. Value range:
+        /// - MySQL 5.7
+        /// - PostgreSQL
+        /// - MongoDB.
+        /// </summary>
+        [Output("usedScene")]
+        public Output<string?> UsedScene { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the zone to which the database file system belongs.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -184,13 +224,19 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the Database file system. Valid values: `standard`.
+        /// The number of CPU cores and the upper limit of memory used by the database file storage instance.
         /// </summary>
-        [Input("category")]
-        public Input<string>? Category { get; set; }
+        [Input("advancedFeatures")]
+        public Input<string>? AdvancedFeatures { get; set; }
 
         /// <summary>
-        /// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+        /// Category of database file system.
+        /// </summary>
+        [Input("category", required: true)]
+        public Input<string> Category { get; set; } = null!;
+
+        /// <summary>
+        /// Whether to delete the original snapshot after creating DBFS using the snapshot.
         /// </summary>
         [Input("deleteSnapshot")]
         public Input<bool>? DeleteSnapshot { get; set; }
@@ -199,7 +245,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         private InputList<Inputs.InstanceEcsListArgs>? _ecsLists;
 
         /// <summary>
-        /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         /// </summary>
         [Obsolete(@"Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.")]
         public InputList<Inputs.InstanceEcsListArgs> EcsLists
@@ -209,49 +255,68 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         }
 
         /// <summary>
-        /// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+        /// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         /// </summary>
         [Input("enableRaid")]
         public Input<bool>? EnableRaid { get; set; }
 
         /// <summary>
-        /// Whether to encrypt the database file system. Valid values: `true` and `false`.
+        /// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         /// </summary>
         [Input("encryption")]
         public Input<bool>? Encryption { get; set; }
 
         /// <summary>
-        /// The name of the Database file system.
+        /// Database file system name.
         /// </summary>
-        [Input("instanceName", required: true)]
-        public Input<string> InstanceName { get; set; } = null!;
+        [Input("fsName")]
+        public Input<string>? FsName { get; set; }
 
         /// <summary>
-        /// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+        /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
+        /// Instance type. Value range:
+        /// - dbfs.small
+        /// - dbfs.medium
+        /// - dbfs.large (default)
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// The ID of the KMS key used by DBFS.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+        /// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+        /// - PL0: single disk maximum random read-write IOPS 10000
+        /// - PL1: highest random read-write IOPS 50000 per disk (default)
+        /// - PL2: single disk maximum random read-write IOPS 100000
+        /// - PL3: single disk maximum random read-write IOPS 1 million.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+        /// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         /// </summary>
         [Input("raidStripeUnitNumber")]
-        public Input<string>? RaidStripeUnitNumber { get; set; }
+        public Input<int>? RaidStripeUnitNumber { get; set; }
 
         /// <summary>
-        /// The size Of the Database file system. Unit: GiB.
+        /// Size of database file system, unit GiB.
         /// </summary>
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
 
         /// <summary>
-        /// The snapshot id of the Database file system.
+        /// The ID of the snapshot used to create the DBFS instance.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
@@ -269,7 +334,16 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         }
 
         /// <summary>
-        /// The Zone ID of the Database file system.
+        /// The usage scenario of DBFS. Value range:
+        /// - MySQL 5.7
+        /// - PostgreSQL
+        /// - MongoDB.
+        /// </summary>
+        [Input("usedScene")]
+        public Input<string>? UsedScene { get; set; }
+
+        /// <summary>
+        /// The ID of the zone to which the database file system belongs.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -283,13 +357,25 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the Database file system. Valid values: `standard`.
+        /// The number of CPU cores and the upper limit of memory used by the database file storage instance.
+        /// </summary>
+        [Input("advancedFeatures")]
+        public Input<string>? AdvancedFeatures { get; set; }
+
+        /// <summary>
+        /// Category of database file system.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+        /// The creation time of the resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether to delete the original snapshot after creating DBFS using the snapshot.
         /// </summary>
         [Input("deleteSnapshot")]
         public Input<bool>? DeleteSnapshot { get; set; }
@@ -298,7 +384,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         private InputList<Inputs.InstanceEcsListGetArgs>? _ecsLists;
 
         /// <summary>
-        /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         /// </summary>
         [Obsolete(@"Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.")]
         public InputList<Inputs.InstanceEcsListGetArgs> EcsLists
@@ -308,55 +394,74 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         }
 
         /// <summary>
-        /// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+        /// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         /// </summary>
         [Input("enableRaid")]
         public Input<bool>? EnableRaid { get; set; }
 
         /// <summary>
-        /// Whether to encrypt the database file system. Valid values: `true` and `false`.
+        /// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         /// </summary>
         [Input("encryption")]
         public Input<bool>? Encryption { get; set; }
 
         /// <summary>
-        /// The name of the Database file system.
+        /// Database file system name.
+        /// </summary>
+        [Input("fsName")]
+        public Input<string>? FsName { get; set; }
+
+        /// <summary>
+        /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+        /// Instance type. Value range:
+        /// - dbfs.small
+        /// - dbfs.medium
+        /// - dbfs.large (default)
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// The ID of the KMS key used by DBFS.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+        /// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+        /// - PL0: single disk maximum random read-write IOPS 10000
+        /// - PL1: highest random read-write IOPS 50000 per disk (default)
+        /// - PL2: single disk maximum random read-write IOPS 100000
+        /// - PL3: single disk maximum random read-write IOPS 1 million.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+        /// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         /// </summary>
         [Input("raidStripeUnitNumber")]
-        public Input<string>? RaidStripeUnitNumber { get; set; }
+        public Input<int>? RaidStripeUnitNumber { get; set; }
 
         /// <summary>
-        /// The size Of the Database file system. Unit: GiB.
+        /// Size of database file system, unit GiB.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The snapshot id of the Database file system.
+        /// The ID of the snapshot used to create the DBFS instance.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -374,7 +479,16 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         }
 
         /// <summary>
-        /// The Zone ID of the Database file system.
+        /// The usage scenario of DBFS. Value range:
+        /// - MySQL 5.7
+        /// - PostgreSQL
+        /// - MongoDB.
+        /// </summary>
+        [Input("usedScene")]
+        public Input<string>? UsedScene { get; set; }
+
+        /// <summary>
+        /// The ID of the zone to which the database file system belongs.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

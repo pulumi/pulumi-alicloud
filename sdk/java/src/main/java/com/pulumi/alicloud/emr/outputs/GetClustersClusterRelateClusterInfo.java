@@ -103,12 +103,12 @@ public final class GetClustersClusterRelateClusterInfo {
             return this;
         }
         public GetClustersClusterRelateClusterInfo build() {
-            final var o = new GetClustersClusterRelateClusterInfo();
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.clusterType = clusterType;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetClustersClusterRelateClusterInfo();
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterName = clusterName;
+            _resultValue.clusterType = clusterType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

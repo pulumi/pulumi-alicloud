@@ -144,7 +144,7 @@ public class HostAccountUserAttachment extends com.pulumi.resources.CustomResour
      * A list IDs of the host account.
      * 
      */
-    @Export(name="hostAccountIds", type=List.class, parameters={String.class})
+    @Export(name="hostAccountIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> hostAccountIds;
 
     /**
@@ -158,7 +158,7 @@ public class HostAccountUserAttachment extends com.pulumi.resources.CustomResour
      * The ID of the host.
      * 
      */
-    @Export(name="hostId", type=String.class, parameters={})
+    @Export(name="hostId", refs={String.class}, tree="[0]")
     private Output<String> hostId;
 
     /**
@@ -172,7 +172,7 @@ public class HostAccountUserAttachment extends com.pulumi.resources.CustomResour
      * The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -186,7 +186,7 @@ public class HostAccountUserAttachment extends com.pulumi.resources.CustomResour
      * The ID of the user that you want to authorize to manage the specified hosts and host accounts.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

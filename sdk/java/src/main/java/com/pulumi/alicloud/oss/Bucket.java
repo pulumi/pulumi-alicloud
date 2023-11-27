@@ -49,7 +49,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A access monitor status of a bucket. See `access_monitor` below.
      * 
      */
-    @Export(name="accessMonitor", type=BucketAccessMonitor.class, parameters={})
+    @Export(name="accessMonitor", refs={BucketAccessMonitor.class}, tree="[0]")
     private Output<BucketAccessMonitor> accessMonitor;
 
     /**
@@ -63,7 +63,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
      * 
      */
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acl;
 
     /**
@@ -73,7 +73,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> acl() {
         return Codegen.optional(this.acl);
     }
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bucket;
 
     public Output<Optional<String>> bucket() {
@@ -83,7 +83,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
      * 
      */
-    @Export(name="corsRules", type=List.class, parameters={BucketCorsRule.class})
+    @Export(name="corsRules", refs={List.class,BucketCorsRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BucketCorsRule>> corsRules;
 
     /**
@@ -97,7 +97,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * The creation date of the bucket.
      * 
      */
-    @Export(name="creationDate", type=String.class, parameters={})
+    @Export(name="creationDate", refs={String.class}, tree="[0]")
     private Output<String> creationDate;
 
     /**
@@ -111,7 +111,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * The extranet access endpoint of the bucket.
      * 
      */
-    @Export(name="extranetEndpoint", type=String.class, parameters={})
+    @Export(name="extranetEndpoint", refs={String.class}, tree="[0]")
     private Output<String> extranetEndpoint;
 
     /**
@@ -125,7 +125,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to &#34;false&#34;.
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -139,7 +139,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * The intranet access endpoint of the bucket.
      * 
      */
-    @Export(name="intranetEndpoint", type=String.class, parameters={})
+    @Export(name="intranetEndpoint", refs={String.class}, tree="[0]")
     private Output<String> intranetEndpoint;
 
     /**
@@ -153,7 +153,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A boolean that indicates lifecycle rules allow prefix overlap.
      * 
      */
-    @Export(name="lifecycleRuleAllowSameActionOverlap", type=Boolean.class, parameters={})
+    @Export(name="lifecycleRuleAllowSameActionOverlap", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> lifecycleRuleAllowSameActionOverlap;
 
     /**
@@ -167,7 +167,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
      * 
      */
-    @Export(name="lifecycleRules", type=List.class, parameters={BucketLifecycleRule.class})
+    @Export(name="lifecycleRules", refs={List.class,BucketLifecycleRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BucketLifecycleRule>> lifecycleRules;
 
     /**
@@ -181,7 +181,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * The location of the bucket.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -195,7 +195,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
      * 
      */
-    @Export(name="logging", type=BucketLogging.class, parameters={})
+    @Export(name="logging", refs={BucketLogging.class}, tree="[0]")
     private Output</* @Nullable */ BucketLogging> logging;
 
     /**
@@ -213,7 +213,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able. */
-    @Export(name="loggingIsenable", type=Boolean.class, parameters={})
+    @Export(name="loggingIsenable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> loggingIsenable;
 
     /**
@@ -227,7 +227,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * The bucket owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -241,7 +241,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policy;
 
     /**
@@ -255,7 +255,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be &#34;LRS&#34;, and &#34;ZRS&#34;. Defaults to &#34;LRS&#34;.
      * 
      */
-    @Export(name="redundancyType", type=String.class, parameters={})
+    @Export(name="redundancyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> redundancyType;
 
     /**
@@ -269,7 +269,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
      * 
      */
-    @Export(name="refererConfig", type=BucketRefererConfig.class, parameters={})
+    @Export(name="refererConfig", refs={BucketRefererConfig.class}, tree="[0]")
     private Output</* @Nullable */ BucketRefererConfig> refererConfig;
 
     /**
@@ -283,7 +283,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A configuration of server-side encryption. See `server_side_encryption_rule` below.
      * 
      */
-    @Export(name="serverSideEncryptionRule", type=BucketServerSideEncryptionRule.class, parameters={})
+    @Export(name="serverSideEncryptionRule", refs={BucketServerSideEncryptionRule.class}, tree="[0]")
     private Output</* @Nullable */ BucketServerSideEncryptionRule> serverSideEncryptionRule;
 
     /**
@@ -297,7 +297,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34;, &#34;ColdArchive&#34; and &#34;DeepColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0. &#34;DeepColdArchive&#34; is available since 1.209.0.
      * 
      */
-    @Export(name="storageClass", type=String.class, parameters={})
+    @Export(name="storageClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageClass;
 
     /**
@@ -311,7 +311,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -325,7 +325,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A transfer acceleration status of a bucket. See `transfer_acceleration` below.
      * 
      */
-    @Export(name="transferAcceleration", type=BucketTransferAcceleration.class, parameters={})
+    @Export(name="transferAcceleration", refs={BucketTransferAcceleration.class}, tree="[0]")
     private Output</* @Nullable */ BucketTransferAcceleration> transferAcceleration;
 
     /**
@@ -339,7 +339,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A state of versioning. See `versioning` below.
      * 
      */
-    @Export(name="versioning", type=BucketVersioning.class, parameters={})
+    @Export(name="versioning", refs={BucketVersioning.class}, tree="[0]")
     private Output</* @Nullable */ BucketVersioning> versioning;
 
     /**
@@ -353,7 +353,7 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * A website configuration. See `website` below.
      * 
      */
-    @Export(name="website", type=BucketWebsite.class, parameters={})
+    @Export(name="website", refs={BucketWebsite.class}, tree="[0]")
     private Output</* @Nullable */ BucketWebsite> website;
 
     /**

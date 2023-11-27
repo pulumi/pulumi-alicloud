@@ -65,10 +65,10 @@ public final class GetHybridMonitorDatasDataValue {
             return this;
         }
         public GetHybridMonitorDatasDataValue build() {
-            final var o = new GetHybridMonitorDatasDataValue();
-            o.ts = ts;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetHybridMonitorDatasDataValue();
+            _resultValue.ts = ts;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

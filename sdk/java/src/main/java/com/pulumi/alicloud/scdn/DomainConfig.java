@@ -93,7 +93,7 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
      * The SCDN domain config id.
      * 
      */
-    @Export(name="configId", type=String.class, parameters={})
+    @Export(name="configId", refs={String.class}, tree="[0]")
     private Output<String> configId;
 
     /**
@@ -107,7 +107,7 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -121,7 +121,7 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
      * The args of the domain config.
      * 
      */
-    @Export(name="functionArgs", type=List.class, parameters={DomainConfigFunctionArg.class})
+    @Export(name="functionArgs", refs={List.class,DomainConfigFunctionArg.class}, tree="[0,1]")
     private Output<List<DomainConfigFunctionArg>> functionArgs;
 
     /**
@@ -135,7 +135,7 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
      * The name of the domain config.
      * 
      */
-    @Export(name="functionName", type=String.class, parameters={})
+    @Export(name="functionName", refs={String.class}, tree="[0]")
     private Output<String> functionName;
 
     /**
@@ -149,7 +149,7 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
      * The status of this resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

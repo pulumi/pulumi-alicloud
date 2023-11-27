@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Edas.Outputs
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
-        /// The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+        /// The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
         /// </summary>
         public readonly int ClusterType;
         /// <summary>

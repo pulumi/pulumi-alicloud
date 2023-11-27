@@ -77,7 +77,7 @@ public class Model extends com.pulumi.resources.CustomResource {
      * The description of the model.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -91,7 +91,7 @@ public class Model extends com.pulumi.resources.CustomResource {
      * The group of the model belongs to.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -105,7 +105,7 @@ public class Model extends com.pulumi.resources.CustomResource {
      * The name of the model.
      * 
      */
-    @Export(name="modelName", type=String.class, parameters={})
+    @Export(name="modelName", refs={String.class}, tree="[0]")
     private Output<String> modelName;
 
     /**
@@ -119,7 +119,7 @@ public class Model extends com.pulumi.resources.CustomResource {
      * The schema of the model.
      * 
      */
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output<String> schema;
 
     /**

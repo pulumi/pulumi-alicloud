@@ -67,10 +67,10 @@ public final class ApplicationCustomHostAliasV2 {
             return this;
         }
         public ApplicationCustomHostAliasV2 build() {
-            final var o = new ApplicationCustomHostAliasV2();
-            o.hostName = hostName;
-            o.ip = ip;
-            return o;
+            final var _resultValue = new ApplicationCustomHostAliasV2();
+            _resultValue.hostName = hostName;
+            _resultValue.ip = ip;
+            return _resultValue;
         }
     }
 }

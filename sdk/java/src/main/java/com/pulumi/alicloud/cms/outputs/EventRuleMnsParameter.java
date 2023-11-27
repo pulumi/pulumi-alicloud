@@ -124,13 +124,13 @@ public final class EventRuleMnsParameter {
             return this;
         }
         public EventRuleMnsParameter build() {
-            final var o = new EventRuleMnsParameter();
-            o.arn = arn;
-            o.mnsParametersId = mnsParametersId;
-            o.queue = queue;
-            o.region = region;
-            o.topic = topic;
-            return o;
+            final var _resultValue = new EventRuleMnsParameter();
+            _resultValue.arn = arn;
+            _resultValue.mnsParametersId = mnsParametersId;
+            _resultValue.queue = queue;
+            _resultValue.region = region;
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

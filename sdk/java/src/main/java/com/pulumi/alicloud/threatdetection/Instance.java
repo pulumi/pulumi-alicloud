@@ -17,61 +17,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Threat Detection Instance resource.
- * 
- * For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
- * 
- * &gt; **NOTE:** Available in v1.199.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.threatdetection.Instance;
- * import com.pulumi.alicloud.threatdetection.InstanceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .buyNumber(&#34;30&#34;)
- *             .containerImageScan(&#34;100&#34;)
- *             .honeypot(&#34;32&#34;)
- *             .honeypotSwitch(&#34;1&#34;)
- *             .paymentType(&#34;Subscription&#34;)
- *             .period(12)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .sasAntiRansomware(&#34;100&#34;)
- *             .sasSc(&#34;true&#34;)
- *             .sasSdk(&#34;1000&#34;)
- *             .sasSdkSwitch(&#34;1&#34;)
- *             .sasSlsStorage(&#34;100&#34;)
- *             .sasWebguardOrderNum(&#34;100&#34;)
- *             .vCore(&#34;100&#34;)
- *             .versionCode(&#34;level2&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
- * Threat Detection Instance do not support import.
+ * Threat Detection Instance can be imported using the id, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import alicloud:threatdetection/instance:Instance example &lt;id&gt;
+ * ```
  * 
  */
 @ResourceType(type="alicloud:threatdetection/instance:Instance")
@@ -80,7 +32,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Number of servers.
      * 
      */
-    @Export(name="buyNumber", type=String.class, parameters={})
+    @Export(name="buyNumber", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> buyNumber;
 
     /**
@@ -91,74 +43,88 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.buyNumber);
     }
     /**
-     * Container Image security scan.
+     * Container Image security scan. Interval type, value interval:[0,200000].
+     * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+     * 
+     * @deprecated
+     * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
-    @Export(name="containerImageScan", type=String.class, parameters={})
+    @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
+    @Export(name="containerImageScan", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerImageScan;
 
     /**
-     * @return Container Image security scan.
+     * @return Container Image security scan. Interval type, value interval:[0,200000].
+     * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
     public Output<Optional<String>> containerImageScan() {
         return Codegen.optional(this.containerImageScan);
     }
     /**
-     * The creation time of the resource
+     * Container Image security scan. Interval type, value interval:[0,200000].
+     * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="containerImageScanNew", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> containerImageScanNew;
+
+    /**
+     * @return Container Image security scan. Interval type, value interval:[0,200000].
+     * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+     * 
+     */
+    public Output<Optional<String>> containerImageScanNew() {
+        return Codegen.optional(this.containerImageScanNew);
+    }
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Cloud honeypot authorization number.
+     * Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+     * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
      * 
      */
-    @Export(name="honeypot", type=String.class, parameters={})
+    @Export(name="honeypot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> honeypot;
 
     /**
-     * @return Cloud honeypot authorization number.
+     * @return Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+     * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
      * 
      */
     public Output<Optional<String>> honeypot() {
         return Codegen.optional(this.honeypot);
     }
     /**
-     * Cloud honeypot. Valid values: `1`, `2`.
+     * Cloud honeypot. Value:
+     * - 1: Yes.
+     * - 2: No.
      * 
      */
-    @Export(name="honeypotSwitch", type=String.class, parameters={})
-    private Output</* @Nullable */ String> honeypotSwitch;
+    @Export(name="honeypotSwitch", refs={String.class}, tree="[0]")
+    private Output<String> honeypotSwitch;
 
     /**
-     * @return Cloud honeypot. Valid values: `1`, `2`.
+     * @return Cloud honeypot. Value:
+     * - 1: Yes.
+     * - 2: No.
      * 
      */
-    public Output<Optional<String>> honeypotSwitch() {
-        return Codegen.optional(this.honeypotSwitch);
-    }
-    /**
-     * The first ID of the resource
-     * 
-     */
-    @Export(name="instanceId", type=String.class, parameters={})
-    private Output<String> instanceId;
-
-    /**
-     * @return The first ID of the resource
-     * 
-     */
-    public Output<String> instanceId() {
-        return this.instanceId;
+    public Output<String> honeypotSwitch() {
+        return this.honeypotSwitch;
     }
     /**
      * Change configuration type, value
@@ -166,7 +132,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Downgrade: Downgrade.
      * 
      */
-    @Export(name="modifyType", type=String.class, parameters={})
+    @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
@@ -182,7 +148,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The payment type of the resource.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -193,206 +159,292 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
+     * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
+     * @return Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * Number of application protection licenses. Interval type, value interval:[1,100000000].
      * 
      */
-    @Export(name="renewPeriod", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> renewPeriod;
+    @Export(name="raspCount", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> raspCount;
 
     /**
-     * @return Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * @return Number of application protection licenses. Interval type, value interval:[1,100000000].
      * 
      */
-    public Output<Optional<Integer>> renewPeriod() {
-        return Codegen.optional(this.renewPeriod);
+    public Output<Optional<String>> raspCount() {
+        return Codegen.optional(this.raspCount);
     }
     /**
-     * The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
+     * Automatic renewal cycle, in months.
+     * &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
      * 
      */
-    @Export(name="renewalPeriodUnit", type=String.class, parameters={})
+    @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> renewPeriod;
+
+    /**
+     * @return Automatic renewal cycle, in months.
+     * &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+     * 
+     */
+    public Output<Integer> renewPeriod() {
+        return this.renewPeriod;
+    }
+    /**
+     * Automatic renewal period unit, value:
+     * - M: month.
+     * - Y: years.
+     * &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
+     * 
+     */
+    @Export(name="renewalPeriodUnit", refs={String.class}, tree="[0]")
     private Output<String> renewalPeriodUnit;
 
     /**
-     * @return The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
+     * @return Automatic renewal period unit, value:
+     * - M: month.
+     * - Y: years.
+     * &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
      * 
      */
     public Output<String> renewalPeriodUnit() {
         return this.renewalPeriodUnit;
     }
     /**
-     * Automatic renewal status, Default ManualRenewal. value:
+     * Automatic renewal status, default ManualRenewal, valid values:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
-    private Output<String> renewalStatus;
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> renewalStatus;
 
     /**
-     * @return Automatic renewal status, Default ManualRenewal. value:
+     * @return Automatic renewal status, default ManualRenewal, valid values:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
      * 
      */
-    public Output<String> renewalStatus() {
-        return this.renewalStatus;
+    public Output<Optional<String>> renewalStatus() {
+        return Codegen.optional(this.renewalStatus);
     }
     /**
-     * Anti-extortion.
+     * Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
-    @Export(name="sasAntiRansomware", type=String.class, parameters={})
+    @Export(name="sasAntiRansomware", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sasAntiRansomware;
 
     /**
-     * @return Anti-extortion.
+     * @return Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Output<Optional<String>> sasAntiRansomware() {
         return Codegen.optional(this.sasAntiRansomware);
     }
     /**
-     * Large security screen.
+     * Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
      * 
      */
-    @Export(name="sasSc", type=Boolean.class, parameters={})
+    @Export(name="sasCspm", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sasCspm;
+
+    /**
+     * @return Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+     * 
+     */
+    public Output<Optional<String>> sasCspm() {
+        return Codegen.optional(this.sasCspm);
+    }
+    /**
+     * Cloud platform configuration check switch. Value:
+     * - 0: No.
+     * - 1: Yes.
+     * 
+     */
+    @Export(name="sasCspmSwitch", refs={String.class}, tree="[0]")
+    private Output<String> sasCspmSwitch;
+
+    /**
+     * @return Cloud platform configuration check switch. Value:
+     * - 0: No.
+     * - 1: Yes.
+     * 
+     */
+    public Output<String> sasCspmSwitch() {
+        return this.sasCspmSwitch;
+    }
+    /**
+     * Security screen. Value:
+     * - true: Yes.
+     * - false: No.
+     * 
+     */
+    @Export(name="sasSc", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sasSc;
 
     /**
-     * @return Large security screen.
+     * @return Security screen. Value:
+     * - true: Yes.
+     * - false: No.
      * 
      */
     public Output<Optional<Boolean>> sasSc() {
         return Codegen.optional(this.sasSc);
     }
     /**
-     * Number of malicious file detections.
+     * Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+     * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
-    @Export(name="sasSdk", type=String.class, parameters={})
+    @Export(name="sasSdk", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sasSdk;
 
     /**
-     * @return Number of malicious file detections.
+     * @return Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+     * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Output<Optional<String>> sasSdk() {
         return Codegen.optional(this.sasSdk);
     }
     /**
-     * Malicious file detection SDK. Valid values: `0`, `1`.
+     * Malicious file detection SDK.
      * 
      */
-    @Export(name="sasSdkSwitch", type=String.class, parameters={})
-    private Output</* @Nullable */ String> sasSdkSwitch;
+    @Export(name="sasSdkSwitch", refs={String.class}, tree="[0]")
+    private Output<String> sasSdkSwitch;
 
     /**
-     * @return Malicious file detection SDK. Valid values: `0`, `1`.
+     * @return Malicious file detection SDK.
      * 
      */
-    public Output<Optional<String>> sasSdkSwitch() {
-        return Codegen.optional(this.sasSdkSwitch);
+    public Output<String> sasSdkSwitch() {
+        return this.sasSdkSwitch;
     }
     /**
-     * Log analysis.
+     * Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
-    @Export(name="sasSlsStorage", type=String.class, parameters={})
+    @Export(name="sasSlsStorage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sasSlsStorage;
 
     /**
-     * @return Log analysis.
+     * @return Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Output<Optional<String>> sasSlsStorage() {
         return Codegen.optional(this.sasSlsStorage);
     }
     /**
-     * Web page tamper-proof.  Valid values: `0`, `1`.
+     * Web tamper-proof switch. Value:
+     * - 0: No.
+     * - 1: Yes.
      * 
      */
-    @Export(name="sasWebguardBoolean", type=String.class, parameters={})
-    private Output</* @Nullable */ String> sasWebguardBoolean;
+    @Export(name="sasWebguardBoolean", refs={String.class}, tree="[0]")
+    private Output<String> sasWebguardBoolean;
 
     /**
-     * @return Web page tamper-proof.  Valid values: `0`, `1`.
+     * @return Web tamper-proof switch. Value:
+     * - 0: No.
+     * - 1: Yes.
      * 
      */
-    public Output<Optional<String>> sasWebguardBoolean() {
-        return Codegen.optional(this.sasWebguardBoolean);
+    public Output<String> sasWebguardBoolean() {
+        return this.sasWebguardBoolean;
     }
     /**
-     * Number of tamper-proof authorizations.
+     * Tamper-proof authorization number. Value:
+     * - 0: No
+     * - 1: Yes.
      * 
      */
-    @Export(name="sasWebguardOrderNum", type=String.class, parameters={})
+    @Export(name="sasWebguardOrderNum", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sasWebguardOrderNum;
 
     /**
-     * @return Number of tamper-proof authorizations.
+     * @return Tamper-proof authorization number. Value:
+     * - 0: No
+     * - 1: Yes.
      * 
      */
     public Output<Optional<String>> sasWebguardOrderNum() {
         return Codegen.optional(this.sasWebguardOrderNum);
     }
     /**
-     * The status of the resource
+     * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The amount of threat analysis log storage.
+     * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+     * &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
-    @Export(name="threatAnalysis", type=String.class, parameters={})
+    @Export(name="threatAnalysis", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> threatAnalysis;
 
     /**
-     * @return The amount of threat analysis log storage.
+     * @return Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+     * &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Output<Optional<String>> threatAnalysis() {
         return Codegen.optional(this.threatAnalysis);
     }
     /**
-     * Threat analysis.  Valid values: `0`, `1`.
+     * Threat analysis. Value:
+     * - 0: No.
+     * - 1: Yes.
      * 
      */
-    @Export(name="threatAnalysisSwitch", type=String.class, parameters={})
-    private Output</* @Nullable */ String> threatAnalysisSwitch;
+    @Export(name="threatAnalysisSwitch", refs={String.class}, tree="[0]")
+    private Output<String> threatAnalysisSwitch;
 
     /**
-     * @return Threat analysis.  Valid values: `0`, `1`.
+     * @return Threat analysis. Value:
+     * - 0: No.
+     * - 1: Yes.
      * 
      */
-    public Output<Optional<String>> threatAnalysisSwitch() {
-        return Codegen.optional(this.threatAnalysisSwitch);
+    public Output<String> threatAnalysisSwitch() {
+        return this.threatAnalysisSwitch;
     }
     /**
      * Number of cores.
      * 
      */
-    @Export(name="vCore", type=String.class, parameters={})
+    @Export(name="vCore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vCore;
 
     /**
@@ -403,18 +455,64 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vCore);
     }
     /**
-     * Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+     * Select the security center version. Value:
+     * - level7: Antivirus Edition.
+     * - level3: Premium version.
+     * - level2: Enterprise Edition.
+     * - level8: Ultimate.
+     * - level10: Purchase value-added services only.
      * 
      */
-    @Export(name="versionCode", type=String.class, parameters={})
+    @Export(name="versionCode", refs={String.class}, tree="[0]")
     private Output<String> versionCode;
 
     /**
-     * @return Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+     * @return Select the security center version. Value:
+     * - level7: Antivirus Edition.
+     * - level3: Premium version.
+     * - level2: Enterprise Edition.
+     * - level8: Ultimate.
+     * - level10: Purchase value-added services only.
      * 
      */
     public Output<String> versionCode() {
         return this.versionCode;
+    }
+    /**
+     * Vulnerability repair times, interval type, value range:[20,100000000].
+     * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+     * 
+     */
+    @Export(name="vulCount", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vulCount;
+
+    /**
+     * @return Vulnerability repair times, interval type, value range:[20,100000000].
+     * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+     * 
+     */
+    public Output<Optional<String>> vulCount() {
+        return Codegen.optional(this.vulCount);
+    }
+    /**
+     * Vulnerability fix switch. Value:
+     * - 0: No.
+     * - 1: Yes.
+     * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+     * 
+     */
+    @Export(name="vulSwitch", refs={String.class}, tree="[0]")
+    private Output<String> vulSwitch;
+
+    /**
+     * @return Vulnerability fix switch. Value:
+     * - 0: No.
+     * - 1: Yes.
+     * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+     * 
+     */
+    public Output<String> vulSwitch() {
+        return this.vulSwitch;
     }
 
     /**

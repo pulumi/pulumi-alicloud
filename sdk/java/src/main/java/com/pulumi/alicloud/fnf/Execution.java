@@ -109,7 +109,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The name of the execution.
      * 
      */
-    @Export(name="executionName", type=String.class, parameters={})
+    @Export(name="executionName", refs={String.class}, tree="[0]")
     private Output<String> executionName;
 
     /**
@@ -123,7 +123,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The name of the flow.
      * 
      */
-    @Export(name="flowName", type=String.class, parameters={})
+    @Export(name="flowName", refs={String.class}, tree="[0]")
     private Output<String> flowName;
 
     /**
@@ -137,7 +137,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The Input information for this execution.
      * 
      */
-    @Export(name="input", type=String.class, parameters={})
+    @Export(name="input", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> input;
 
     /**
@@ -151,7 +151,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `Stopped`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

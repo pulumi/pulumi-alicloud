@@ -202,19 +202,19 @@ public final class GetPoliciesResult {
             return this;
         }
         public GetPoliciesResult build() {
-            final var o = new GetPoliciesResult();
-            o.enableDetails = enableDetails;
-            o.groupName = groupName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.roleName = roleName;
-            o.type = type;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetPoliciesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            _resultValue.roleName = roleName;
+            _resultValue.type = type;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

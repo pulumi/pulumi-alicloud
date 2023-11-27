@@ -107,12 +107,12 @@ public final class GatewayVpnAttachmentBgpConfig {
             return this;
         }
         public GatewayVpnAttachmentBgpConfig build() {
-            final var o = new GatewayVpnAttachmentBgpConfig();
-            o.enable = enable;
-            o.localAsn = localAsn;
-            o.localBgpIp = localBgpIp;
-            o.tunnelCidr = tunnelCidr;
-            return o;
+            final var _resultValue = new GatewayVpnAttachmentBgpConfig();
+            _resultValue.enable = enable;
+            _resultValue.localAsn = localAsn;
+            _resultValue.localBgpIp = localBgpIp;
+            _resultValue.tunnelCidr = tunnelCidr;
+            return _resultValue;
         }
     }
 }

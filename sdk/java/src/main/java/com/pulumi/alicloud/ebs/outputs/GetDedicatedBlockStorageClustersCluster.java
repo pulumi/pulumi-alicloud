@@ -342,25 +342,25 @@ public final class GetDedicatedBlockStorageClustersCluster {
             return this;
         }
         public GetDedicatedBlockStorageClustersCluster build() {
-            final var o = new GetDedicatedBlockStorageClustersCluster();
-            o.availableCapacity = availableCapacity;
-            o.category = category;
-            o.createTime = createTime;
-            o.dedicatedBlockStorageClusterId = dedicatedBlockStorageClusterId;
-            o.dedicatedBlockStorageClusterName = dedicatedBlockStorageClusterName;
-            o.deliveryCapacity = deliveryCapacity;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.performanceLevel = performanceLevel;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.supportedCategory = supportedCategory;
-            o.totalCapacity = totalCapacity;
-            o.type = type;
-            o.usedCapacity = usedCapacity;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetDedicatedBlockStorageClustersCluster();
+            _resultValue.availableCapacity = availableCapacity;
+            _resultValue.category = category;
+            _resultValue.createTime = createTime;
+            _resultValue.dedicatedBlockStorageClusterId = dedicatedBlockStorageClusterId;
+            _resultValue.dedicatedBlockStorageClusterName = dedicatedBlockStorageClusterName;
+            _resultValue.deliveryCapacity = deliveryCapacity;
+            _resultValue.description = description;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.performanceLevel = performanceLevel;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.supportedCategory = supportedCategory;
+            _resultValue.totalCapacity = totalCapacity;
+            _resultValue.type = type;
+            _resultValue.usedCapacity = usedCapacity;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

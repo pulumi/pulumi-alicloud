@@ -306,7 +306,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * The ID of the Anycast EIP instance.
      * 
      */
-    @Export(name="anycastId", type=String.class, parameters={})
+    @Export(name="anycastId", refs={String.class}, tree="[0]")
     private Output<String> anycastId;
 
     /**
@@ -322,7 +322,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
      * 
      */
-    @Export(name="associationMode", type=String.class, parameters={})
+    @Export(name="associationMode", refs={String.class}, tree="[0]")
     private Output<String> associationMode;
 
     /**
@@ -338,7 +338,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * The ID of the cloud resource instance to be bound.
      * 
      */
-    @Export(name="bindInstanceId", type=String.class, parameters={})
+    @Export(name="bindInstanceId", refs={String.class}, tree="[0]")
     private Output<String> bindInstanceId;
 
     /**
@@ -352,7 +352,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
      * 
      */
-    @Export(name="bindInstanceRegionId", type=String.class, parameters={})
+    @Export(name="bindInstanceRegionId", refs={String.class}, tree="[0]")
     private Output<String> bindInstanceRegionId;
 
     /**
@@ -368,7 +368,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * - **NetworkInterface**: ENI.
      * 
      */
-    @Export(name="bindInstanceType", type=String.class, parameters={})
+    @Export(name="bindInstanceType", refs={String.class}, tree="[0]")
     private Output<String> bindInstanceType;
 
     /**
@@ -384,7 +384,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: &#39;YYYY-MM-DDThh:mm:ssZ&#39;.
      * 
      */
-    @Export(name="bindTime", type=String.class, parameters={})
+    @Export(name="bindTime", refs={String.class}, tree="[0]")
     private Output<String> bindTime;
 
     /**
@@ -398,7 +398,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
      * 
      */
-    @Export(name="popLocations", type=List.class, parameters={AnycastEipAddressAttachmentPopLocation.class})
+    @Export(name="popLocations", refs={List.class,AnycastEipAddressAttachmentPopLocation.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AnycastEipAddressAttachmentPopLocation>> popLocations;
 
     /**
@@ -412,7 +412,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
      * 
      */
-    @Export(name="privateIpAddress", type=String.class, parameters={})
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateIpAddress;
 
     /**
@@ -426,7 +426,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

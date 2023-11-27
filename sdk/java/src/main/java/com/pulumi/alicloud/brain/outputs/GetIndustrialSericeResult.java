@@ -78,11 +78,11 @@ public final class GetIndustrialSericeResult {
             return this;
         }
         public GetIndustrialSericeResult build() {
-            final var o = new GetIndustrialSericeResult();
-            o.enable = enable;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetIndustrialSericeResult();
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

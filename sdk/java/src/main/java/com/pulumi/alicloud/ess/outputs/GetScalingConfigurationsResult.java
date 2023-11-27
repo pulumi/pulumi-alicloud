@@ -157,15 +157,15 @@ public final class GetScalingConfigurationsResult {
             return this;
         }
         public GetScalingConfigurationsResult build() {
-            final var o = new GetScalingConfigurationsResult();
-            o.configurations = configurations;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.scalingGroupId = scalingGroupId;
-            return o;
+            final var _resultValue = new GetScalingConfigurationsResult();
+            _resultValue.configurations = configurations;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.scalingGroupId = scalingGroupId;
+            return _resultValue;
         }
     }
 }

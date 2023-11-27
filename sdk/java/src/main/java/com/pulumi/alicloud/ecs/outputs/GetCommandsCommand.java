@@ -223,18 +223,18 @@ public final class GetCommandsCommand {
             return this;
         }
         public GetCommandsCommand build() {
-            final var o = new GetCommandsCommand();
-            o.commandContent = commandContent;
-            o.commandId = commandId;
-            o.description = description;
-            o.enableParameter = enableParameter;
-            o.id = id;
-            o.name = name;
-            o.parameterNames = parameterNames;
-            o.timeout = timeout;
-            o.type = type;
-            o.workingDir = workingDir;
-            return o;
+            final var _resultValue = new GetCommandsCommand();
+            _resultValue.commandContent = commandContent;
+            _resultValue.commandId = commandId;
+            _resultValue.description = description;
+            _resultValue.enableParameter = enableParameter;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.parameterNames = parameterNames;
+            _resultValue.timeout = timeout;
+            _resultValue.type = type;
+            _resultValue.workingDir = workingDir;
+            return _resultValue;
         }
     }
 }

@@ -184,16 +184,16 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
             return this;
         }
         public GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination build() {
-            final var o = new GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination();
-            o.acceleratorId = acceleratorId;
-            o.customRoutingEndpointGroupDestinationId = customRoutingEndpointGroupDestinationId;
-            o.endpointGroupId = endpointGroupId;
-            o.fromPort = fromPort;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.protocols = protocols;
-            o.toPort = toPort;
-            return o;
+            final var _resultValue = new GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.customRoutingEndpointGroupDestinationId = customRoutingEndpointGroupDestinationId;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.fromPort = fromPort;
+            _resultValue.id = id;
+            _resultValue.listenerId = listenerId;
+            _resultValue.protocols = protocols;
+            _resultValue.toPort = toPort;
+            return _resultValue;
         }
     }
 }

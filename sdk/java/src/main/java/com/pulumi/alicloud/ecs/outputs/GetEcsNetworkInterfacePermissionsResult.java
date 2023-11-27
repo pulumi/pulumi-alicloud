@@ -145,17 +145,17 @@ public final class GetEcsNetworkInterfacePermissionsResult {
             return this;
         }
         public GetEcsNetworkInterfacePermissionsResult build() {
-            final var o = new GetEcsNetworkInterfacePermissionsResult();
-            o.id = id;
-            o.ids = ids;
-            o.networkInterfaceId = networkInterfaceId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.permissions = permissions;
-            o.status = status;
-            o.totalCount = totalCount;
-            return o;
+            final var _resultValue = new GetEcsNetworkInterfacePermissionsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.permissions = permissions;
+            _resultValue.status = status;
+            _resultValue.totalCount = totalCount;
+            return _resultValue;
         }
     }
 }

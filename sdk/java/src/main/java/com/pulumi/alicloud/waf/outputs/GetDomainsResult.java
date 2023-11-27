@@ -180,17 +180,17 @@ public final class GetDomainsResult {
             return this;
         }
         public GetDomainsResult build() {
-            final var o = new GetDomainsResult();
-            o.domains = domains;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            return o;
+            final var _resultValue = new GetDomainsResult();
+            _resultValue.domains = domains;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            return _resultValue;
         }
     }
 }

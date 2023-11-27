@@ -189,17 +189,17 @@ public final class GetZonesResult {
             return zones(List.of(zones));
         }
         public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
-            o.availableSlbAddressType = availableSlbAddressType;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.masterZoneId = masterZoneId;
-            o.outputFile = outputFile;
-            o.slaveZoneId = slaveZoneId;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetZonesResult();
+            _resultValue.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
+            _resultValue.availableSlbAddressType = availableSlbAddressType;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.masterZoneId = masterZoneId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.slaveZoneId = slaveZoneId;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

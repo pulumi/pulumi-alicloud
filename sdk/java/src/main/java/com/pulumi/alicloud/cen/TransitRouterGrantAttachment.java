@@ -88,7 +88,7 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
      * The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -102,7 +102,7 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
      * The ID of the Alibaba Cloud account to which the CEN instance belongs.
      * 
      */
-    @Export(name="cenOwnerId", type=String.class, parameters={})
+    @Export(name="cenOwnerId", refs={String.class}, tree="[0]")
     private Output<String> cenOwnerId;
 
     /**
@@ -116,7 +116,7 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
      * The ID of the network instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -130,7 +130,7 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
      * The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -144,7 +144,7 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
      * The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
      * 
      */
-    @Export(name="orderType", type=String.class, parameters={})
+    @Export(name="orderType", refs={String.class}, tree="[0]")
     private Output<String> orderType;
 
     /**

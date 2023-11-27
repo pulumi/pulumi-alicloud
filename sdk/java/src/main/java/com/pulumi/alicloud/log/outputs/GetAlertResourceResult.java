@@ -81,12 +81,12 @@ public final class GetAlertResourceResult {
             return this;
         }
         public GetAlertResourceResult build() {
-            final var o = new GetAlertResourceResult();
-            o.id = id;
-            o.lang = lang;
-            o.project = project;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAlertResourceResult();
+            _resultValue.id = id;
+            _resultValue.lang = lang;
+            _resultValue.project = project;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

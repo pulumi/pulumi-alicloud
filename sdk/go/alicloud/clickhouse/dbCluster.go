@@ -14,7 +14,7 @@ import (
 
 // Provides a Click House DBCluster resource.
 //
-// For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
+// For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/zh/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
 //
 // > **NOTE:** Available since v1.134.0.
 //

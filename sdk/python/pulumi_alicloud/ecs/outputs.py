@@ -24,6 +24,7 @@ __all__ = [
     'ImageImportDiskDeviceMapping',
     'InstanceDataDisk',
     'InstanceMaintenanceTime',
+    'InstanceNetworkInterfaces',
     'LaunchTemplateDataDisk',
     'LaunchTemplateNetworkInterfaces',
     'LaunchTemplateSystemDisk',
@@ -1268,6 +1269,42 @@ class InstanceMaintenanceTime(dict):
         The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class InstanceNetworkInterfaces(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkInterfaceId":
+            suggest = "network_interface_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkInterfaces. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetworkInterfaces.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetworkInterfaces.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_interface_id: Optional[str] = None):
+        """
+        :param str network_interface_id: The ID of the secondary ENI.
+        """
+        if network_interface_id is not None:
+            pulumi.set(__self__, "network_interface_id", network_interface_id)
+
+    @property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> Optional[str]:
+        """
+        The ID of the secondary ENI.
+        """
+        return pulumi.get(self, "network_interface_id")
 
 
 @pulumi.output_type

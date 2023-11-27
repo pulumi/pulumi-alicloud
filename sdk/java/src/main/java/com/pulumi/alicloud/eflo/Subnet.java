@@ -89,7 +89,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * CIDR network segment.
      * 
      */
-    @Export(name="cidr", type=String.class, parameters={})
+    @Export(name="cidr", refs={String.class}, tree="[0]")
     private Output<String> cidr;
 
     /**
@@ -103,7 +103,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -117,7 +117,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * Modification time.
      * 
      */
-    @Export(name="gmtModified", type=String.class, parameters={})
+    @Export(name="gmtModified", refs={String.class}, tree="[0]")
     private Output<String> gmtModified;
 
     /**
@@ -131,7 +131,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * Error message.
      * 
      */
-    @Export(name="message", type=String.class, parameters={})
+    @Export(name="message", refs={String.class}, tree="[0]")
     private Output<String> message;
 
     /**
@@ -145,7 +145,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * Resource Group ID.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -159,7 +159,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -173,7 +173,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The id of the subnet.
      * 
      */
-    @Export(name="subnetId", type=String.class, parameters={})
+    @Export(name="subnetId", refs={String.class}, tree="[0]")
     private Output<String> subnetId;
 
     /**
@@ -187,7 +187,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The Subnet name.
      * 
      */
-    @Export(name="subnetName", type=String.class, parameters={})
+    @Export(name="subnetName", refs={String.class}, tree="[0]")
     private Output<String> subnetName;
 
     /**
@@ -204,7 +204,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * - LB: LB type
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -221,7 +221,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The Eflo VPD ID.
      * 
      */
-    @Export(name="vpdId", type=String.class, parameters={})
+    @Export(name="vpdId", refs={String.class}, tree="[0]")
     private Output<String> vpdId;
 
     /**
@@ -235,7 +235,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The zone ID  of the resource.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

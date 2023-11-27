@@ -187,16 +187,16 @@ public final class StoreIndexFieldSearch {
             return this;
         }
         public StoreIndexFieldSearch build() {
-            final var o = new StoreIndexFieldSearch();
-            o.alias = alias;
-            o.caseSensitive = caseSensitive;
-            o.enableAnalytics = enableAnalytics;
-            o.includeChinese = includeChinese;
-            o.jsonKeys = jsonKeys;
-            o.name = name;
-            o.token = token;
-            o.type = type;
-            return o;
+            final var _resultValue = new StoreIndexFieldSearch();
+            _resultValue.alias = alias;
+            _resultValue.caseSensitive = caseSensitive;
+            _resultValue.enableAnalytics = enableAnalytics;
+            _resultValue.includeChinese = includeChinese;
+            _resultValue.jsonKeys = jsonKeys;
+            _resultValue.name = name;
+            _resultValue.token = token;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -98,7 +98,7 @@ public class ProtectionModule extends com.pulumi.resources.CustomResource {
      * The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
      * 
      */
-    @Export(name="defenseType", type=String.class, parameters={})
+    @Export(name="defenseType", refs={String.class}, tree="[0]")
     private Output<String> defenseType;
 
     /**
@@ -112,7 +112,7 @@ public class ProtectionModule extends com.pulumi.resources.CustomResource {
      * The domain name that is added to WAF.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -126,7 +126,7 @@ public class ProtectionModule extends com.pulumi.resources.CustomResource {
      * The ID of the WAF instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -145,7 +145,7 @@ public class ProtectionModule extends com.pulumi.resources.CustomResource {
      * * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
      * 
      */
-    @Export(name="mode", type=Integer.class, parameters={})
+    @Export(name="mode", refs={Integer.class}, tree="[0]")
     private Output<Integer> mode;
 
     /**
@@ -164,7 +164,7 @@ public class ProtectionModule extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `0`, `1`.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> status;
 
     /**

@@ -201,17 +201,17 @@ public final class NodePoolDataDisk {
             return this;
         }
         public NodePoolDataDisk build() {
-            final var o = new NodePoolDataDisk();
-            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
-            o.category = category;
-            o.device = device;
-            o.encrypted = encrypted;
-            o.kmsKeyId = kmsKeyId;
-            o.name = name;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            return o;
+            final var _resultValue = new NodePoolDataDisk();
+            _resultValue.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            _resultValue.category = category;
+            _resultValue.device = device;
+            _resultValue.encrypted = encrypted;
+            _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.name = name;
+            _resultValue.performanceLevel = performanceLevel;
+            _resultValue.size = size;
+            _resultValue.snapshotId = snapshotId;
+            return _resultValue;
         }
     }
 }

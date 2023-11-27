@@ -147,17 +147,17 @@ public final class GetResourceSharesResult {
             return this;
         }
         public GetResourceSharesResult build() {
-            final var o = new GetResourceSharesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceShareName = resourceShareName;
-            o.resourceShareOwner = resourceShareOwner;
-            o.shares = shares;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetResourceSharesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceShareName = resourceShareName;
+            _resultValue.resourceShareOwner = resourceShareOwner;
+            _resultValue.shares = shares;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

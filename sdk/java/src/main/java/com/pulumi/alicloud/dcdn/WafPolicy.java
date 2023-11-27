@@ -72,7 +72,7 @@ public class WafPolicy extends com.pulumi.resources.CustomResource {
      * The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
      * 
      */
-    @Export(name="defenseScene", type=String.class, parameters={})
+    @Export(name="defenseScene", refs={String.class}, tree="[0]")
     private Output<String> defenseScene;
 
     /**
@@ -86,7 +86,7 @@ public class WafPolicy extends com.pulumi.resources.CustomResource {
      * The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
      * 
      */
-    @Export(name="policyName", type=String.class, parameters={})
+    @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
@@ -100,7 +100,7 @@ public class WafPolicy extends com.pulumi.resources.CustomResource {
      * The type of the protection policy. Valid values: `default`, `custom`.
      * 
      */
-    @Export(name="policyType", type=String.class, parameters={})
+    @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
@@ -114,7 +114,7 @@ public class WafPolicy extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `on`, `off`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

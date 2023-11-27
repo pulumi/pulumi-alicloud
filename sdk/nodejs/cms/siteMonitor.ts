@@ -27,6 +27,23 @@ import * as utilities from "../utilities";
  *         city: "546",
  *         isp: "465",
  *     }],
+ *     optionsJson: `{
+ *     "http_method": "get",
+ *     "waitTime_after_completion": null,
+ *     "ipv6_task": false,
+ *     "diagnosis_ping": false,
+ *     "diagnosis_mtr": false,
+ *     "assertions": [
+ *         {
+ *             "operator": "lessThan",
+ *             "type": "response_time",
+ *             "target": 1000
+ *         }
+ *     ],
+ *     "time_out": 30000
+ * }
+ *
+ * `,
  *     taskName: "tf-example",
  *     taskType: "HTTP",
  * });
@@ -89,7 +106,7 @@ export class SiteMonitor extends pulumi.CustomResource {
      */
     public readonly ispCities!: pulumi.Output<outputs.cms.SiteMonitorIspCity[] | undefined>;
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
      */
     public readonly optionsJson!: pulumi.Output<string | undefined>;
     /**
@@ -184,7 +201,7 @@ export interface SiteMonitorState {
      */
     ispCities?: pulumi.Input<pulumi.Input<inputs.cms.SiteMonitorIspCity>[]>;
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
      */
     optionsJson?: pulumi.Input<string>;
     /**
@@ -226,7 +243,7 @@ export interface SiteMonitorArgs {
      */
     ispCities?: pulumi.Input<pulumi.Input<inputs.cms.SiteMonitorIspCity>[]>;
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
      */
     optionsJson?: pulumi.Input<string>;
     /**

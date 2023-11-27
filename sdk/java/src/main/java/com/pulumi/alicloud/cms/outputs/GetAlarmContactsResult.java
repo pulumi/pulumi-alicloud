@@ -160,16 +160,16 @@ public final class GetAlarmContactsResult {
             return this;
         }
         public GetAlarmContactsResult build() {
-            final var o = new GetAlarmContactsResult();
-            o.chanelType = chanelType;
-            o.chanelValue = chanelValue;
-            o.contacts = contacts;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetAlarmContactsResult();
+            _resultValue.chanelType = chanelType;
+            _resultValue.chanelValue = chanelValue;
+            _resultValue.contacts = contacts;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -72,10 +72,10 @@ public final class TemplateScratchSourceTag {
             return resourceTypeFilters(List.of(resourceTypeFilters));
         }
         public TemplateScratchSourceTag build() {
-            final var o = new TemplateScratchSourceTag();
-            o.resourceTags = resourceTags;
-            o.resourceTypeFilters = resourceTypeFilters;
-            return o;
+            final var _resultValue = new TemplateScratchSourceTag();
+            _resultValue.resourceTags = resourceTags;
+            _resultValue.resourceTypeFilters = resourceTypeFilters;
+            return _resultValue;
         }
     }
 }

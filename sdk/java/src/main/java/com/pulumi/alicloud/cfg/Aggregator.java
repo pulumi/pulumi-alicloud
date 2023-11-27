@@ -85,7 +85,7 @@ public class Aggregator extends com.pulumi.resources.CustomResource {
      * The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
      * 
      */
-    @Export(name="aggregatorAccounts", type=List.class, parameters={AggregatorAggregatorAccount.class})
+    @Export(name="aggregatorAccounts", refs={List.class,AggregatorAggregatorAccount.class}, tree="[0,1]")
     private Output<List<AggregatorAggregatorAccount>> aggregatorAccounts;
 
     /**
@@ -99,7 +99,7 @@ public class Aggregator extends com.pulumi.resources.CustomResource {
      * The name of aggregator.
      * 
      */
-    @Export(name="aggregatorName", type=String.class, parameters={})
+    @Export(name="aggregatorName", refs={String.class}, tree="[0]")
     private Output<String> aggregatorName;
 
     /**
@@ -113,7 +113,7 @@ public class Aggregator extends com.pulumi.resources.CustomResource {
      * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
      * 
      */
-    @Export(name="aggregatorType", type=String.class, parameters={})
+    @Export(name="aggregatorType", refs={String.class}, tree="[0]")
     private Output<String> aggregatorType;
 
     /**
@@ -127,7 +127,7 @@ public class Aggregator extends com.pulumi.resources.CustomResource {
      * The description of aggregator.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -141,7 +141,7 @@ public class Aggregator extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

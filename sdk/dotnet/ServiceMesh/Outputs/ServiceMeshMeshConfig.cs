@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfig
     {
         /// <summary>
-        /// The access logging configuration. See `mesh_config-access_log` below.
+        /// The access logging configuration. See `access_log` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAccessLog? AccessLog;
         /// <summary>
-        /// Audit information. See `mesh_config-audit` below.
+        /// Audit information. See `audit` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAudit? Audit;
         /// <summary>
-        /// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+        /// Control plane log collection configuration. See `control_plane_log` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigControlPlaneLog? ControlPlaneLog;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string? IncludeIpRanges;
         /// <summary>
-        /// Kiali configuration. See `mesh_config-kiali` below.
+        /// Kiali configuration. See `kiali` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigKiali? Kiali;
         /// <summary>
-        /// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+        /// The open-door policy of agent (OPA) plug-in information. See `opa` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigOpa? Opa;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string? OutboundTrafficPolicy;
         /// <summary>
-        /// Link trace sampling information. See `mesh_config-pilot` below.
+        /// Link trace sampling information. See `pilot` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigPilot? Pilot;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigPrometheus? Prometheus;
         /// <summary>
-        /// Proxy configuration. See `mesh_config-proxy` below.
+        /// Proxy configuration. See `proxy` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigProxy? Proxy;
         /// <summary>
-        /// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+        /// Sidecar injector configuration. See `sidecar_injector` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigSidecarInjector? SidecarInjector;
         /// <summary>

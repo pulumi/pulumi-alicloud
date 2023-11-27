@@ -141,14 +141,14 @@ public final class GetServerFirewallRulesRule {
             return this;
         }
         public GetServerFirewallRulesRule build() {
-            final var o = new GetServerFirewallRulesRule();
-            o.firewallRuleId = firewallRuleId;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.port = port;
-            o.remark = remark;
-            o.ruleProtocol = ruleProtocol;
-            return o;
+            final var _resultValue = new GetServerFirewallRulesRule();
+            _resultValue.firewallRuleId = firewallRuleId;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.port = port;
+            _resultValue.remark = remark;
+            _resultValue.ruleProtocol = ruleProtocol;
+            return _resultValue;
         }
     }
 }

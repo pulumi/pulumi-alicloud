@@ -184,17 +184,17 @@ public final class GetHoneyPotsResult {
             return pots(List.of(pots));
         }
         public GetHoneyPotsResult build() {
-            final var o = new GetHoneyPotsResult();
-            o.honeypotId = honeypotId;
-            o.honeypotName = honeypotName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.nodeId = nodeId;
-            o.nodeName = nodeName;
-            o.outputFile = outputFile;
-            o.pots = pots;
-            return o;
+            final var _resultValue = new GetHoneyPotsResult();
+            _resultValue.honeypotId = honeypotId;
+            _resultValue.honeypotName = honeypotName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.nodeId = nodeId;
+            _resultValue.nodeName = nodeName;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pots = pots;
+            return _resultValue;
         }
     }
 }

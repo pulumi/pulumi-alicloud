@@ -135,14 +135,14 @@ public final class GetResourceGroupsResult {
             return this;
         }
         public GetResourceGroupsResult build() {
-            final var o = new GetResourceGroupsResult();
-            o.dbClusterId = dbClusterId;
-            o.groupName = groupName;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetResourceGroupsResult();
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.groupName = groupName;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

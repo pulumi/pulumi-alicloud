@@ -150,15 +150,15 @@ public final class GetEdgeKubernetesClustersResult {
             return this;
         }
         public GetEdgeKubernetesClustersResult build() {
-            final var o = new GetEdgeKubernetesClustersResult();
-            o.clusters = clusters;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetEdgeKubernetesClustersResult();
+            _resultValue.clusters = clusters;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

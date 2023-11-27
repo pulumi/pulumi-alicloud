@@ -105,12 +105,12 @@ public final class ListenerXForwardedFor {
             return this;
         }
         public ListenerXForwardedFor build() {
-            final var o = new ListenerXForwardedFor();
-            o.retriveClientIp = retriveClientIp;
-            o.retriveSlbId = retriveSlbId;
-            o.retriveSlbIp = retriveSlbIp;
-            o.retriveSlbProto = retriveSlbProto;
-            return o;
+            final var _resultValue = new ListenerXForwardedFor();
+            _resultValue.retriveClientIp = retriveClientIp;
+            _resultValue.retriveSlbId = retriveSlbId;
+            _resultValue.retriveSlbIp = retriveSlbIp;
+            _resultValue.retriveSlbProto = retriveSlbProto;
+            return _resultValue;
         }
     }
 }

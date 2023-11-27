@@ -36,7 +36,7 @@ public class JobMonitorRule extends com.pulumi.resources.CustomResource {
      * Trigger delay alarm threshold, which is measured in seconds.
      * 
      */
-    @Export(name="delayRuleTime", type=String.class, parameters={})
+    @Export(name="delayRuleTime", refs={String.class}, tree="[0]")
     private Output<String> delayRuleTime;
 
     /**
@@ -50,7 +50,7 @@ public class JobMonitorRule extends com.pulumi.resources.CustomResource {
      * Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
      * 
      */
-    @Export(name="dtsJobId", type=String.class, parameters={})
+    @Export(name="dtsJobId", refs={String.class}, tree="[0]")
     private Output<String> dtsJobId;
 
     /**
@@ -64,7 +64,7 @@ public class JobMonitorRule extends com.pulumi.resources.CustomResource {
      * The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
      * 
      */
-    @Export(name="phone", type=String.class, parameters={})
+    @Export(name="phone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> phone;
 
     /**
@@ -78,7 +78,7 @@ public class JobMonitorRule extends com.pulumi.resources.CustomResource {
      * Whether to enable monitoring rules, valid values: `Y`, `N`.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -92,7 +92,7 @@ public class JobMonitorRule extends com.pulumi.resources.CustomResource {
      * Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

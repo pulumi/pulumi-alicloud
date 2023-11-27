@@ -105,12 +105,12 @@ public final class EdgeKubernetesConnections {
             return this;
         }
         public EdgeKubernetesConnections build() {
-            final var o = new EdgeKubernetesConnections();
-            o.apiServerInternet = apiServerInternet;
-            o.apiServerIntranet = apiServerIntranet;
-            o.masterPublicIp = masterPublicIp;
-            o.serviceDomain = serviceDomain;
-            return o;
+            final var _resultValue = new EdgeKubernetesConnections();
+            _resultValue.apiServerInternet = apiServerInternet;
+            _resultValue.apiServerIntranet = apiServerIntranet;
+            _resultValue.masterPublicIp = masterPublicIp;
+            _resultValue.serviceDomain = serviceDomain;
+            return _resultValue;
         }
     }
 }

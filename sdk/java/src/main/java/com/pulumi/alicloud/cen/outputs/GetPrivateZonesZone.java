@@ -160,15 +160,15 @@ public final class GetPrivateZonesZone {
             return this;
         }
         public GetPrivateZonesZone build() {
-            final var o = new GetPrivateZonesZone();
-            o.accessRegionId = accessRegionId;
-            o.cenId = cenId;
-            o.hostRegionId = hostRegionId;
-            o.hostVpcId = hostVpcId;
-            o.id = id;
-            o.privateZoneDnsServers = privateZoneDnsServers;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetPrivateZonesZone();
+            _resultValue.accessRegionId = accessRegionId;
+            _resultValue.cenId = cenId;
+            _resultValue.hostRegionId = hostRegionId;
+            _resultValue.hostVpcId = hostVpcId;
+            _resultValue.id = id;
+            _resultValue.privateZoneDnsServers = privateZoneDnsServers;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

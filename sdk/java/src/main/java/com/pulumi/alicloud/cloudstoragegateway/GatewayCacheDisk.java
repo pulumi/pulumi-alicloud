@@ -36,7 +36,7 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      * The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
      * 
      */
-    @Export(name="cacheDiskCategory", type=String.class, parameters={})
+    @Export(name="cacheDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> cacheDiskCategory;
 
     /**
@@ -50,7 +50,7 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      * size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
      * 
      */
-    @Export(name="cacheDiskSizeInGb", type=Integer.class, parameters={})
+    @Export(name="cacheDiskSizeInGb", refs={Integer.class}, tree="[0]")
     private Output<Integer> cacheDiskSizeInGb;
 
     /**
@@ -64,7 +64,7 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      * The ID of the cache.
      * 
      */
-    @Export(name="cacheId", type=String.class, parameters={})
+    @Export(name="cacheId", refs={String.class}, tree="[0]")
     private Output<String> cacheId;
 
     /**
@@ -78,7 +78,7 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      * The ID of the gateway.
      * 
      */
-    @Export(name="gatewayId", type=String.class, parameters={})
+    @Export(name="gatewayId", refs={String.class}, tree="[0]")
     private Output<String> gatewayId;
 
     /**
@@ -92,7 +92,7 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      * The cache disk inside the device name.
      * 
      */
-    @Export(name="localFilePath", type=String.class, parameters={})
+    @Export(name="localFilePath", refs={String.class}, tree="[0]")
     private Output<String> localFilePath;
 
     /**
@@ -106,7 +106,7 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**

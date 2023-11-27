@@ -370,26 +370,26 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.autoRenew = autoRenew;
-            o.cpuNumber = cpuNumber;
-            o.diskCategory = diskCategory;
-            o.engineType = engineType;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.instanceAlias = instanceAlias;
-            o.instanceClass = instanceClass;
-            o.instanceId = instanceId;
-            o.instanceStorage = instanceStorage;
-            o.memorySize = memorySize;
-            o.networkType = networkType;
-            o.paymentType = paymentType;
-            o.status = status;
-            o.vpcConnectionAddress = vpcConnectionAddress;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.autoRenew = autoRenew;
+            _resultValue.cpuNumber = cpuNumber;
+            _resultValue.diskCategory = diskCategory;
+            _resultValue.engineType = engineType;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.instanceAlias = instanceAlias;
+            _resultValue.instanceClass = instanceClass;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceStorage = instanceStorage;
+            _resultValue.memorySize = memorySize;
+            _resultValue.networkType = networkType;
+            _resultValue.paymentType = paymentType;
+            _resultValue.status = status;
+            _resultValue.vpcConnectionAddress = vpcConnectionAddress;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

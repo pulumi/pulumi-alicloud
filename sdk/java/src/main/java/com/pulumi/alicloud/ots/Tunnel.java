@@ -41,7 +41,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The channels of OTS tunnel. Each element contains the following attributes:
      * 
      */
-    @Export(name="channels", type=List.class, parameters={TunnelChannel.class})
+    @Export(name="channels", refs={List.class,TunnelChannel.class}, tree="[0,1]")
     private Output<List<TunnelChannel>> channels;
 
     /**
@@ -55,7 +55,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The creation time of the Tunnel.
      * 
      */
-    @Export(name="createTime", type=Integer.class, parameters={})
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
@@ -69,7 +69,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * Whether the tunnel has expired.
      * 
      */
-    @Export(name="expired", type=Boolean.class, parameters={})
+    @Export(name="expired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> expired;
 
     /**
@@ -83,7 +83,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The name of the OTS instance in which table will located.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -97,7 +97,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The name of the OTS table. If changed, a new table would be created.
      * 
      */
-    @Export(name="tableName", type=String.class, parameters={})
+    @Export(name="tableName", refs={String.class}, tree="[0]")
     private Output<String> tableName;
 
     /**
@@ -111,7 +111,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The tunnel id of the OTS which could not be changed.
      * 
      */
-    @Export(name="tunnelId", type=String.class, parameters={})
+    @Export(name="tunnelId", refs={String.class}, tree="[0]")
     private Output<String> tunnelId;
 
     /**
@@ -125,7 +125,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The name of the OTS tunnel. If changed, a new tunnel would be created.
      * 
      */
-    @Export(name="tunnelName", type=String.class, parameters={})
+    @Export(name="tunnelName", refs={String.class}, tree="[0]")
     private Output<String> tunnelName;
 
     /**
@@ -139,7 +139,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The latest consumption time of the tunnel, unix time in nanosecond.
      * 
      */
-    @Export(name="tunnelRpo", type=Integer.class, parameters={})
+    @Export(name="tunnelRpo", refs={Integer.class}, tree="[0]")
     private Output<Integer> tunnelRpo;
 
     /**
@@ -153,7 +153,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
      * 
      */
-    @Export(name="tunnelStage", type=String.class, parameters={})
+    @Export(name="tunnelStage", refs={String.class}, tree="[0]")
     private Output<String> tunnelStage;
 
     /**
@@ -167,7 +167,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
      * 
      */
-    @Export(name="tunnelType", type=String.class, parameters={})
+    @Export(name="tunnelType", refs={String.class}, tree="[0]")
     private Output<String> tunnelType;
 
     /**

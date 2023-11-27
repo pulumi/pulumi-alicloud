@@ -106,12 +106,12 @@ public final class ServiceLogConfig {
             return this;
         }
         public ServiceLogConfig build() {
-            final var o = new ServiceLogConfig();
-            o.enableInstanceMetrics = enableInstanceMetrics;
-            o.enableRequestMetrics = enableRequestMetrics;
-            o.logstore = logstore;
-            o.project = project;
-            return o;
+            final var _resultValue = new ServiceLogConfig();
+            _resultValue.enableInstanceMetrics = enableInstanceMetrics;
+            _resultValue.enableRequestMetrics = enableRequestMetrics;
+            _resultValue.logstore = logstore;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

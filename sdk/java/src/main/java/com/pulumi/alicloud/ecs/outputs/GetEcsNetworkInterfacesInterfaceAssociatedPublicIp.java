@@ -46,9 +46,9 @@ public final class GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
             return this;
         }
         public GetEcsNetworkInterfacesInterfaceAssociatedPublicIp build() {
-            final var o = new GetEcsNetworkInterfacesInterfaceAssociatedPublicIp();
-            o.publicIpAddress = publicIpAddress;
-            return o;
+            final var _resultValue = new GetEcsNetworkInterfacesInterfaceAssociatedPublicIp();
+            _resultValue.publicIpAddress = publicIpAddress;
+            return _resultValue;
         }
     }
 }

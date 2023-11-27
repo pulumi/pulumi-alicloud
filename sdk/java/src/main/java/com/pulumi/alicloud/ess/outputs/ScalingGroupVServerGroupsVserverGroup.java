@@ -70,10 +70,10 @@ public final class ScalingGroupVServerGroupsVserverGroup {
             return vserverAttributes(List.of(vserverAttributes));
         }
         public ScalingGroupVServerGroupsVserverGroup build() {
-            final var o = new ScalingGroupVServerGroupsVserverGroup();
-            o.loadbalancerId = loadbalancerId;
-            o.vserverAttributes = vserverAttributes;
-            return o;
+            final var _resultValue = new ScalingGroupVServerGroupsVserverGroup();
+            _resultValue.loadbalancerId = loadbalancerId;
+            _resultValue.vserverAttributes = vserverAttributes;
+            return _resultValue;
         }
     }
 }

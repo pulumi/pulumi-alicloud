@@ -276,20 +276,20 @@ public final class GetTemplateScratchesScratch {
             return this;
         }
         public GetTemplateScratchesScratch build() {
-            final var o = new GetTemplateScratchesScratch();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.logicalIdStrategy = logicalIdStrategy;
-            o.preferenceParameters = preferenceParameters;
-            o.sourceResourceGroups = sourceResourceGroups;
-            o.sourceResources = sourceResources;
-            o.sourceTags = sourceTags;
-            o.stacks = stacks;
-            o.status = status;
-            o.templateScratchId = templateScratchId;
-            o.templateScratchType = templateScratchType;
-            return o;
+            final var _resultValue = new GetTemplateScratchesScratch();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.logicalIdStrategy = logicalIdStrategy;
+            _resultValue.preferenceParameters = preferenceParameters;
+            _resultValue.sourceResourceGroups = sourceResourceGroups;
+            _resultValue.sourceResources = sourceResources;
+            _resultValue.sourceTags = sourceTags;
+            _resultValue.stacks = stacks;
+            _resultValue.status = status;
+            _resultValue.templateScratchId = templateScratchId;
+            _resultValue.templateScratchType = templateScratchType;
+            return _resultValue;
         }
     }
 }

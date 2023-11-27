@@ -91,7 +91,7 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
      * Honeypot mirror name
      * 
      */
-    @Export(name="honeypotImageName", type=String.class, parameters={})
+    @Export(name="honeypotImageName", refs={String.class}, tree="[0]")
     private Output<String> honeypotImageName;
 
     /**
@@ -105,7 +105,7 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
      * Unique ID of honeypot Template
      * 
      */
-    @Export(name="honeypotPresetId", type=String.class, parameters={})
+    @Export(name="honeypotPresetId", refs={String.class}, tree="[0]")
     private Output<String> honeypotPresetId;
 
     /**
@@ -119,7 +119,7 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
      * Honeypot template custom parameters. See `meta` below.
      * 
      */
-    @Export(name="meta", type=HoneypotPresetMeta.class, parameters={})
+    @Export(name="meta", refs={HoneypotPresetMeta.class}, tree="[0]")
     private Output<HoneypotPresetMeta> meta;
 
     /**
@@ -133,7 +133,7 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
      * Unique id of management node
      * 
      */
-    @Export(name="nodeId", type=String.class, parameters={})
+    @Export(name="nodeId", refs={String.class}, tree="[0]")
     private Output<String> nodeId;
 
     /**
@@ -147,7 +147,7 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
      * Honeypot template custom name
      * 
      */
-    @Export(name="presetName", type=String.class, parameters={})
+    @Export(name="presetName", refs={String.class}, tree="[0]")
     private Output<String> presetName;
 
     /**

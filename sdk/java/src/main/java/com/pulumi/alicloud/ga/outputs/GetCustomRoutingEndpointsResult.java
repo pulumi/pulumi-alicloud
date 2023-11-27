@@ -177,17 +177,17 @@ public final class GetCustomRoutingEndpointsResult {
             return this;
         }
         public GetCustomRoutingEndpointsResult build() {
-            final var o = new GetCustomRoutingEndpointsResult();
-            o.acceleratorId = acceleratorId;
-            o.customRoutingEndpoints = customRoutingEndpoints;
-            o.endpointGroupId = endpointGroupId;
-            o.id = id;
-            o.ids = ids;
-            o.listenerId = listenerId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetCustomRoutingEndpointsResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.customRoutingEndpoints = customRoutingEndpoints;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerId = listenerId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

@@ -98,7 +98,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
      * 
      */
-    @Export(name="aclEntryLists", type=List.class, parameters={String.class})
+    @Export(name="aclEntryLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> aclEntryLists;
 
     /**
@@ -112,7 +112,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Available in v1.205.0+) The application version.
      * 
      */
-    @Export(name="appVersion", type=String.class, parameters={})
+    @Export(name="appVersion", refs={String.class}, tree="[0]")
     private Output<String> appVersion;
 
     /**
@@ -126,7 +126,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The alias of MSE Cluster.
      * 
      */
-    @Export(name="clusterAliasName", type=String.class, parameters={})
+    @Export(name="clusterAliasName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterAliasName;
 
     /**
@@ -140,7 +140,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Available in v1.162.0+) The id of Cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -154,7 +154,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
      * 
      */
-    @Export(name="clusterSpecification", type=String.class, parameters={})
+    @Export(name="clusterSpecification", refs={String.class}, tree="[0]")
     private Output<String> clusterSpecification;
 
     /**
@@ -168,7 +168,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of MSE Cluster.
      * 
      */
-    @Export(name="clusterType", type=String.class, parameters={})
+    @Export(name="clusterType", refs={String.class}, tree="[0]")
     private Output<String> clusterType;
 
     /**
@@ -182,7 +182,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
      * 
      */
-    @Export(name="clusterVersion", type=String.class, parameters={})
+    @Export(name="clusterVersion", refs={String.class}, tree="[0]")
     private Output<String> clusterVersion;
 
     /**
@@ -196,7 +196,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The connection type. Valid values: `slb`.
      * 
      */
-    @Export(name="connectionType", type=String.class, parameters={})
+    @Export(name="connectionType", refs={String.class}, tree="[0]")
     private Output<String> connectionType;
 
     /**
@@ -210,7 +210,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of Disk.
      * 
      */
-    @Export(name="diskType", type=String.class, parameters={})
+    @Export(name="diskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskType;
 
     /**
@@ -224,7 +224,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
      * 
      */
-    @Export(name="instanceCount", type=Integer.class, parameters={})
+    @Export(name="instanceCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceCount;
 
     /**
@@ -238,7 +238,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The version of MSE. Valid values: `mse_dev` or `mse_pro`.
      * 
      */
-    @Export(name="mseVersion", type=String.class, parameters={})
+    @Export(name="mseVersion", refs={String.class}, tree="[0]")
     private Output<String> mseVersion;
 
     /**
@@ -252,7 +252,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of network. Valid values: &#34;privatenet&#34; and &#34;pubnet&#34;.
      * 
      */
-    @Export(name="netType", type=String.class, parameters={})
+    @Export(name="netType", refs={String.class}, tree="[0]")
     private Output<String> netType;
 
     /**
@@ -266,7 +266,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The specification of private network SLB.
      * 
      */
-    @Export(name="privateSlbSpecification", type=String.class, parameters={})
+    @Export(name="privateSlbSpecification", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateSlbSpecification;
 
     /**
@@ -280,7 +280,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The public network bandwidth. `0` means no access to the public network.
      * 
      */
-    @Export(name="pubNetworkFlow", type=String.class, parameters={})
+    @Export(name="pubNetworkFlow", refs={String.class}, tree="[0]")
     private Output<String> pubNetworkFlow;
 
     /**
@@ -294,7 +294,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The specification of public network SLB.
      * 
      */
-    @Export(name="pubSlbSpecification", type=String.class, parameters={})
+    @Export(name="pubSlbSpecification", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pubSlbSpecification;
 
     /**
@@ -308,7 +308,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The extended request parameters in the JSON format.
      * 
      */
-    @Export(name="requestPars", type=String.class, parameters={})
+    @Export(name="requestPars", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> requestPars;
 
     /**
@@ -322,7 +322,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The status of MSE Cluster.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -336,7 +336,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The id of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -350,7 +350,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The id of VSwitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**

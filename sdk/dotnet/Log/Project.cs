@@ -10,8 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log
 {
     /// <summary>
-    /// The project is the resource management unit in Log Service and is used to isolate and control resources.
-    /// You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
+    /// Provides a SLS Project resource.
+    /// 
+    /// For information about SLS Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/sls/developer-reference/api-createproject).
     /// 
     /// &gt; **NOTE:** Available since v1.9.5.
     /// 
@@ -99,15 +100,21 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// ## Import
     /// 
-    /// Log project can be imported using the id or name, e.g.
+    /// SLS Project can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/project:Project example tf-log
+    ///  $ pulumi import alicloud:log/project:Project example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// CreateTime.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// Description of the log project.
         /// </summary>
@@ -115,7 +122,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the log project. It is the only in one Alicloud account.
+        /// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -127,9 +134,27 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> Policy { get; private set; } = null!;
 
         /// <summary>
-        /// Log project tags.
-        /// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
-        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+        /// The name of the log project. It is the only in one Alicloud account.
+        /// </summary>
+        [Output("projectName")]
+        public Output<string> ProjectName { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Tag.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -187,7 +212,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the log project. It is the only in one Alicloud account.
+        /// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -198,13 +223,25 @@ namespace Pulumi.AliCloud.Log
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
+        /// <summary>
+        /// The name of the log project. It is the only in one Alicloud account.
+        /// </summary>
+        [Input("projectName")]
+        public Input<string>? ProjectName { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Log project tags.
-        /// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
-        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+        /// Tag.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputMap<object> Tags
         {
@@ -221,13 +258,19 @@ namespace Pulumi.AliCloud.Log
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// CreateTime.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// Description of the log project.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the log project. It is the only in one Alicloud account.
+        /// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -238,13 +281,31 @@ namespace Pulumi.AliCloud.Log
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
+        /// <summary>
+        /// The name of the log project. It is the only in one Alicloud account.
+        /// </summary>
+        [Input("projectName")]
+        public Input<string>? ProjectName { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Log project tags.
-        /// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
-        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+        /// Tag.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputMap<object> Tags
         {

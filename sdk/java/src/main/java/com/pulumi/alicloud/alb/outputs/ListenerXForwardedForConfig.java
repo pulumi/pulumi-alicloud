@@ -277,21 +277,21 @@ public final class ListenerXForwardedForConfig {
             return this;
         }
         public ListenerXForwardedForConfig build() {
-            final var o = new ListenerXForwardedForConfig();
-            o.xForwardedForClientCertClientVerifyAlias = xForwardedForClientCertClientVerifyAlias;
-            o.xForwardedForClientCertClientVerifyEnabled = xForwardedForClientCertClientVerifyEnabled;
-            o.xForwardedForClientCertFingerPrintAlias = xForwardedForClientCertFingerPrintAlias;
-            o.xForwardedForClientCertFingerPrintEnabled = xForwardedForClientCertFingerPrintEnabled;
-            o.xForwardedForClientCertIssuerDnAlias = xForwardedForClientCertIssuerDnAlias;
-            o.xForwardedForClientCertIssuerDnEnabled = xForwardedForClientCertIssuerDnEnabled;
-            o.xForwardedForClientCertSubjectDnAlias = xForwardedForClientCertSubjectDnAlias;
-            o.xForwardedForClientCertSubjectDnEnabled = xForwardedForClientCertSubjectDnEnabled;
-            o.xForwardedForClientSrcPortEnabled = xForwardedForClientSrcPortEnabled;
-            o.xForwardedForEnabled = xForwardedForEnabled;
-            o.xForwardedForProtoEnabled = xForwardedForProtoEnabled;
-            o.xForwardedForSlbIdEnabled = xForwardedForSlbIdEnabled;
-            o.xForwardedForSlbPortEnabled = xForwardedForSlbPortEnabled;
-            return o;
+            final var _resultValue = new ListenerXForwardedForConfig();
+            _resultValue.xForwardedForClientCertClientVerifyAlias = xForwardedForClientCertClientVerifyAlias;
+            _resultValue.xForwardedForClientCertClientVerifyEnabled = xForwardedForClientCertClientVerifyEnabled;
+            _resultValue.xForwardedForClientCertFingerPrintAlias = xForwardedForClientCertFingerPrintAlias;
+            _resultValue.xForwardedForClientCertFingerPrintEnabled = xForwardedForClientCertFingerPrintEnabled;
+            _resultValue.xForwardedForClientCertIssuerDnAlias = xForwardedForClientCertIssuerDnAlias;
+            _resultValue.xForwardedForClientCertIssuerDnEnabled = xForwardedForClientCertIssuerDnEnabled;
+            _resultValue.xForwardedForClientCertSubjectDnAlias = xForwardedForClientCertSubjectDnAlias;
+            _resultValue.xForwardedForClientCertSubjectDnEnabled = xForwardedForClientCertSubjectDnEnabled;
+            _resultValue.xForwardedForClientSrcPortEnabled = xForwardedForClientSrcPortEnabled;
+            _resultValue.xForwardedForEnabled = xForwardedForEnabled;
+            _resultValue.xForwardedForProtoEnabled = xForwardedForProtoEnabled;
+            _resultValue.xForwardedForSlbIdEnabled = xForwardedForSlbIdEnabled;
+            _resultValue.xForwardedForSlbPortEnabled = xForwardedForSlbPortEnabled;
+            return _resultValue;
         }
     }
 }

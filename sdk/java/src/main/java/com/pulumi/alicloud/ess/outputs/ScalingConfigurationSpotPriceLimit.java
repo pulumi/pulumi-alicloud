@@ -68,10 +68,10 @@ public final class ScalingConfigurationSpotPriceLimit {
             return this;
         }
         public ScalingConfigurationSpotPriceLimit build() {
-            final var o = new ScalingConfigurationSpotPriceLimit();
-            o.instanceType = instanceType;
-            o.priceLimit = priceLimit;
-            return o;
+            final var _resultValue = new ScalingConfigurationSpotPriceLimit();
+            _resultValue.instanceType = instanceType;
+            _resultValue.priceLimit = priceLimit;
+            return _resultValue;
         }
     }
 }

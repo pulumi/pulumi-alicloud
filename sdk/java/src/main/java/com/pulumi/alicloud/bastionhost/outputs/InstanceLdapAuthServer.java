@@ -259,20 +259,20 @@ public final class InstanceLdapAuthServer {
             return this;
         }
         public InstanceLdapAuthServer build() {
-            final var o = new InstanceLdapAuthServer();
-            o.account = account;
-            o.baseDn = baseDn;
-            o.emailMapping = emailMapping;
-            o.filter = filter;
-            o.isSsl = isSsl;
-            o.loginNameMapping = loginNameMapping;
-            o.mobileMapping = mobileMapping;
-            o.nameMapping = nameMapping;
-            o.password = password;
-            o.port = port;
-            o.server = server;
-            o.standbyServer = standbyServer;
-            return o;
+            final var _resultValue = new InstanceLdapAuthServer();
+            _resultValue.account = account;
+            _resultValue.baseDn = baseDn;
+            _resultValue.emailMapping = emailMapping;
+            _resultValue.filter = filter;
+            _resultValue.isSsl = isSsl;
+            _resultValue.loginNameMapping = loginNameMapping;
+            _resultValue.mobileMapping = mobileMapping;
+            _resultValue.nameMapping = nameMapping;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.server = server;
+            _resultValue.standbyServer = standbyServer;
+            return _resultValue;
         }
     }
 }

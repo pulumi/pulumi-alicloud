@@ -95,7 +95,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * The next hop of the policy-based route.
      * 
      */
-    @Export(name="nextHop", type=String.class, parameters={})
+    @Export(name="nextHop", refs={String.class}, tree="[0]")
     private Output<String> nextHop;
 
     /**
@@ -109,7 +109,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * Whether to issue the destination route to the VPC.
      * 
      */
-    @Export(name="publishVpc", type=Boolean.class, parameters={})
+    @Export(name="publishVpc", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> publishVpc;
 
     /**
@@ -123,7 +123,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * The destination CIDR block of the policy-based route.
      * 
      */
-    @Export(name="routeDest", type=String.class, parameters={})
+    @Export(name="routeDest", refs={String.class}, tree="[0]")
     private Output<String> routeDest;
 
     /**
@@ -137,7 +137,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * The source CIDR block of the policy-based route.
      * 
      */
-    @Export(name="routeSource", type=String.class, parameters={})
+    @Export(name="routeSource", refs={String.class}, tree="[0]")
     private Output<String> routeSource;
 
     /**
@@ -151,7 +151,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * The status of the vpn pbr route entry.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -165,7 +165,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * The ID of the vpn gateway.
      * 
      */
-    @Export(name="vpnGatewayId", type=String.class, parameters={})
+    @Export(name="vpnGatewayId", refs={String.class}, tree="[0]")
     private Output<String> vpnGatewayId;
 
     /**
@@ -179,7 +179,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * The weight of the policy-based route. Valid values: 0 and 100.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**

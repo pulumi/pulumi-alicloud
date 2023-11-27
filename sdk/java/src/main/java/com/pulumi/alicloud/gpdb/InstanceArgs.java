@@ -311,16 +311,39 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+     * The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
      * 
      */
+    @Import(name="masterCu")
+    private @Nullable Output<Integer> masterCu;
+
+    /**
+     * @return The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+     * 
+     */
+    public Optional<Output<Integer>> masterCu() {
+        return Optional.ofNullable(this.masterCu);
+    }
+
+    /**
+     * The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+     * 
+     * @deprecated
+     * Field `master_node_num` has been deprecated from provider version 1.213.0.
+     * 
+     */
+    @Deprecated /* Field `master_node_num` has been deprecated from provider version 1.213.0. */
     @Import(name="masterNodeNum")
     private @Nullable Output<Integer> masterNodeNum;
 
     /**
-     * @return The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+     * @return The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+     * 
+     * @deprecated
+     * Field `master_node_num` has been deprecated from provider version 1.213.0.
      * 
      */
+    @Deprecated /* Field `master_node_num` has been deprecated from provider version 1.213.0. */
     public Optional<Output<Integer>> masterNodeNum() {
         return Optional.ofNullable(this.masterNodeNum);
     }
@@ -356,16 +379,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The private ip address.
+     * The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+     * 
+     * @deprecated
+     * Field `private_ip_address` has been deprecated from provider version 1.213.0.
      * 
      */
+    @Deprecated /* Field `private_ip_address` has been deprecated from provider version 1.213.0. */
     @Import(name="privateIpAddress")
     private @Nullable Output<String> privateIpAddress;
 
     /**
-     * @return The private ip address.
+     * @return The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+     * 
+     * @deprecated
+     * Field `private_ip_address` has been deprecated from provider version 1.213.0.
      * 
      */
+    @Deprecated /* Field `private_ip_address` has been deprecated from provider version 1.213.0. */
     public Optional<Output<String>> privateIpAddress() {
         return Optional.ofNullable(this.privateIpAddress);
     }
@@ -584,6 +615,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.ipWhitelists = $.ipWhitelists;
         this.maintainEndTime = $.maintainEndTime;
         this.maintainStartTime = $.maintainStartTime;
+        this.masterCu = $.masterCu;
         this.masterNodeNum = $.masterNodeNum;
         this.paymentType = $.paymentType;
         this.period = $.period;
@@ -1023,22 +1055,51 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterNodeNum The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+         * @param masterCu The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
          * 
          * @return builder
          * 
          */
+        public Builder masterCu(@Nullable Output<Integer> masterCu) {
+            $.masterCu = masterCu;
+            return this;
+        }
+
+        /**
+         * @param masterCu The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterCu(Integer masterCu) {
+            return masterCu(Output.of(masterCu));
+        }
+
+        /**
+         * @param masterNodeNum The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `master_node_num` has been deprecated from provider version 1.213.0.
+         * 
+         */
+        @Deprecated /* Field `master_node_num` has been deprecated from provider version 1.213.0. */
         public Builder masterNodeNum(@Nullable Output<Integer> masterNodeNum) {
             $.masterNodeNum = masterNodeNum;
             return this;
         }
 
         /**
-         * @param masterNodeNum The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+         * @param masterNodeNum The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `master_node_num` has been deprecated from provider version 1.213.0.
+         * 
          */
+        @Deprecated /* Field `master_node_num` has been deprecated from provider version 1.213.0. */
         public Builder masterNodeNum(Integer masterNodeNum) {
             return masterNodeNum(Output.of(masterNodeNum));
         }
@@ -1086,22 +1147,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateIpAddress The private ip address.
+         * @param privateIpAddress The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `private_ip_address` has been deprecated from provider version 1.213.0.
+         * 
          */
+        @Deprecated /* Field `private_ip_address` has been deprecated from provider version 1.213.0. */
         public Builder privateIpAddress(@Nullable Output<String> privateIpAddress) {
             $.privateIpAddress = privateIpAddress;
             return this;
         }
 
         /**
-         * @param privateIpAddress The private ip address.
+         * @param privateIpAddress The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `private_ip_address` has been deprecated from provider version 1.213.0.
+         * 
          */
+        @Deprecated /* Field `private_ip_address` has been deprecated from provider version 1.213.0. */
         public Builder privateIpAddress(String privateIpAddress) {
             return privateIpAddress(Output.of(privateIpAddress));
         }

@@ -49,10 +49,10 @@ public final class GetRdsParameterGroupsGroupParamDetail {
             return this;
         }
         public GetRdsParameterGroupsGroupParamDetail build() {
-            final var o = new GetRdsParameterGroupsGroupParamDetail();
-            o.paramName = paramName;
-            o.paramValue = paramValue;
-            return o;
+            final var _resultValue = new GetRdsParameterGroupsGroupParamDetail();
+            _resultValue.paramName = paramName;
+            _resultValue.paramValue = paramValue;
+            return _resultValue;
         }
     }
 }

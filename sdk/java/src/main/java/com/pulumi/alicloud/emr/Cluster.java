@@ -48,7 +48,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Boot action parameters.
      * 
      */
-    @Export(name="bootstrapActions", type=List.class, parameters={ClusterBootstrapAction.class})
+    @Export(name="bootstrapActions", refs={List.class,ClusterBootstrapAction.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterBootstrapAction>> bootstrapActions;
 
     /**
@@ -62,7 +62,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
-    @Export(name="chargeType", type=String.class, parameters={})
+    @Export(name="chargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> chargeType;
 
     /**
@@ -76,7 +76,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported &#39;GATEWAY&#39; available in 1.61.0+.
      * 
      */
-    @Export(name="clusterType", type=String.class, parameters={})
+    @Export(name="clusterType", refs={String.class}, tree="[0]")
     private Output<String> clusterType;
 
     /**
@@ -90,7 +90,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The custom configurations of emr-cluster service.
      * 
      */
-    @Export(name="configs", type=List.class, parameters={ClusterConfig.class})
+    @Export(name="configs", refs={List.class,ClusterConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterConfig>> configs;
 
     /**
@@ -104,7 +104,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
      * 
      */
-    @Export(name="depositType", type=String.class, parameters={})
+    @Export(name="depositType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> depositType;
 
     /**
@@ -118,7 +118,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * High security cluster (true) or not. Default value is false.
      * 
      */
-    @Export(name="easEnable", type=Boolean.class, parameters={})
+    @Export(name="easEnable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> easEnable;
 
     /**
@@ -132,7 +132,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
      * 
      */
-    @Export(name="emrVer", type=String.class, parameters={})
+    @Export(name="emrVer", refs={String.class}, tree="[0]")
     private Output<String> emrVer;
 
     /**
@@ -146,7 +146,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
      * 
      */
-    @Export(name="highAvailabilityEnable", type=Boolean.class, parameters={})
+    @Export(name="highAvailabilityEnable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> highAvailabilityEnable;
 
     /**
@@ -160,7 +160,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      * 
      */
-    @Export(name="hostGroups", type=List.class, parameters={ClusterHostGroup.class})
+    @Export(name="hostGroups", refs={List.class,ClusterHostGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterHostGroup>> hostGroups;
 
     /**
@@ -174,7 +174,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Whether the MASTER node has a public IP address enabled. Default value is false.
      * 
      */
-    @Export(name="isOpenPublicIp", type=Boolean.class, parameters={})
+    @Export(name="isOpenPublicIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOpenPublicIp;
 
     /**
@@ -188,7 +188,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Ssh key pair.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
@@ -202,7 +202,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Master ssh password.
      * 
      */
-    @Export(name="masterPwd", type=String.class, parameters={})
+    @Export(name="masterPwd", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterPwd;
 
     /**
@@ -216,7 +216,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
      * 
      */
-    @Export(name="metaStoreConf", type=ClusterMetaStoreConf.class, parameters={})
+    @Export(name="metaStoreConf", refs={ClusterMetaStoreConf.class}, tree="[0]")
     private Output</* @Nullable */ ClusterMetaStoreConf> metaStoreConf;
 
     /**
@@ -230,7 +230,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
      * 
      */
-    @Export(name="metaStoreType", type=String.class, parameters={})
+    @Export(name="metaStoreType", refs={String.class}, tree="[0]")
     private Output<String> metaStoreType;
 
     /**
@@ -244,7 +244,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The configurations of emr-cluster service modification after cluster created.
      * 
      */
-    @Export(name="modifyClusterServiceConfig", type=ClusterModifyClusterServiceConfig.class, parameters={})
+    @Export(name="modifyClusterServiceConfig", refs={ClusterModifyClusterServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterModifyClusterServiceConfig> modifyClusterServiceConfig;
 
     /**
@@ -258,7 +258,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -272,7 +272,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Optional software list.
      * 
      */
-    @Export(name="optionSoftwareLists", type=List.class, parameters={String.class})
+    @Export(name="optionSoftwareLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> optionSoftwareLists;
 
     /**
@@ -286,7 +286,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -300,7 +300,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * This specify the related cluster id, if this cluster is a Gateway.
      * 
      */
-    @Export(name="relatedClusterId", type=String.class, parameters={})
+    @Export(name="relatedClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> relatedClusterId;
 
     /**
@@ -314,7 +314,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the emr-cluster belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -328,7 +328,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Security Group ID for Cluster, you can also specify this key for each host group.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
@@ -342,7 +342,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * If this is set true, we can ssh into cluster. Default value is false.
      * 
      */
-    @Export(name="sshEnable", type=Boolean.class, parameters={})
+    @Export(name="sshEnable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sshEnable;
 
     /**
@@ -356,7 +356,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> tags;
 
     /**
@@ -370,7 +370,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Use local metadb. Default is false.
      * 
      */
-    @Export(name="useLocalMetadb", type=Boolean.class, parameters={})
+    @Export(name="useLocalMetadb", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useLocalMetadb;
 
     /**
@@ -384,7 +384,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
      * 
      */
-    @Export(name="userDefinedEmrEcsRole", type=String.class, parameters={})
+    @Export(name="userDefinedEmrEcsRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userDefinedEmrEcsRole;
 
     /**
@@ -398,7 +398,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Global vswitch id, you can also specify it in host group.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -412,7 +412,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Zone ID, e.g. cn-huhehaote-a
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

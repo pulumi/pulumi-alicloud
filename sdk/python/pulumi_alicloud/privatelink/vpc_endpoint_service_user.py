@@ -19,9 +19,11 @@ class VpcEndpointServiceUserArgs:
                  dry_run: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a VpcEndpointServiceUser resource.
-        :param pulumi.Input[str] service_id: The Id of Vpc Endpoint Service.
-        :param pulumi.Input[str] user_id: The Id of Ram User.
-        :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] service_id: The endpoint service ID.
+        :param pulumi.Input[str] user_id: The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "user_id", user_id)
@@ -32,7 +34,7 @@ class VpcEndpointServiceUserArgs:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[str]:
         """
-        The Id of Vpc Endpoint Service.
+        The endpoint service ID.
         """
         return pulumi.get(self, "service_id")
 
@@ -44,7 +46,7 @@ class VpcEndpointServiceUserArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[str]:
         """
-        The Id of Ram User.
+        The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         """
         return pulumi.get(self, "user_id")
 
@@ -56,7 +58,9 @@ class VpcEndpointServiceUserArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -73,9 +77,11 @@ class _VpcEndpointServiceUserState:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointServiceUser resources.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] service_id: The Id of Vpc Endpoint Service.
-        :param pulumi.Input[str] user_id: The Id of Ram User.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] service_id: The endpoint service ID.
+        :param pulumi.Input[str] user_id: The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -88,7 +94,9 @@ class _VpcEndpointServiceUserState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -100,7 +108,7 @@ class _VpcEndpointServiceUserState:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of Vpc Endpoint Service.
+        The endpoint service ID.
         """
         return pulumi.get(self, "service_id")
 
@@ -112,7 +120,7 @@ class _VpcEndpointServiceUserState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of Ram User.
+        The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         """
         return pulumi.get(self, "user_id")
 
@@ -131,7 +139,7 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Private Link Vpc Endpoint Service User resource.
+        Provides a Private Link Vpc Endpoint Service User resource. Endpoint service user whitelist.
 
         For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
 
@@ -173,9 +181,11 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] service_id: The Id of Vpc Endpoint Service.
-        :param pulumi.Input[str] user_id: The Id of Ram User.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] service_id: The endpoint service ID.
+        :param pulumi.Input[str] user_id: The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         """
         ...
     @overload
@@ -184,7 +194,7 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
                  args: VpcEndpointServiceUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Private Link Vpc Endpoint Service User resource.
+        Provides a Private Link Vpc Endpoint Service User resource. Endpoint service user whitelist.
 
         For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
 
@@ -278,9 +288,11 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] service_id: The Id of Vpc Endpoint Service.
-        :param pulumi.Input[str] user_id: The Id of Ram User.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] service_id: The endpoint service ID.
+        :param pulumi.Input[str] user_id: The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -295,7 +307,9 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        The dry run.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -303,7 +317,7 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[str]:
         """
-        The Id of Vpc Endpoint Service.
+        The endpoint service ID.
         """
         return pulumi.get(self, "service_id")
 
@@ -311,7 +325,7 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        The Id of Ram User.
+        The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         """
         return pulumi.get(self, "user_id")
 

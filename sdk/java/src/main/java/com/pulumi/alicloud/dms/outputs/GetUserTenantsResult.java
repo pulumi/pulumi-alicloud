@@ -146,14 +146,14 @@ public final class GetUserTenantsResult {
             return tenants(List.of(tenants));
         }
         public GetUserTenantsResult build() {
-            final var o = new GetUserTenantsResult();
-            o.id = id;
-            o.ids = ids;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.tenants = tenants;
-            return o;
+            final var _resultValue = new GetUserTenantsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.tenants = tenants;
+            return _resultValue;
         }
     }
 }

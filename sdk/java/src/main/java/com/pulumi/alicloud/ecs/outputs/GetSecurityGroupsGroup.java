@@ -264,17 +264,17 @@ public final class GetSecurityGroupsGroup {
             return this;
         }
         public GetSecurityGroupsGroup build() {
-            final var o = new GetSecurityGroupsGroup();
-            o.creationTime = creationTime;
-            o.description = description;
-            o.id = id;
-            o.innerAccess = innerAccess;
-            o.name = name;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupType = securityGroupType;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetSecurityGroupsGroup();
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.innerAccess = innerAccess;
+            _resultValue.name = name;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityGroupType = securityGroupType;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

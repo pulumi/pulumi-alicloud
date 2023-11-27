@@ -104,7 +104,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -118,7 +118,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The port used by the backend server. Valid values: 1 to 65535.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -132,7 +132,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The ID of the server group.
      * 
      */
-    @Export(name="serverGroupId", type=String.class, parameters={})
+    @Export(name="serverGroupId", refs={String.class}, tree="[0]")
     private Output<String> serverGroupId;
 
     /**
@@ -148,7 +148,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * - If the server group type is Ip, set the ServerId parameter to an IP address.
      * 
      */
-    @Export(name="serverId", type=String.class, parameters={})
+    @Export(name="serverId", refs={String.class}, tree="[0]")
     private Output<String> serverId;
 
     /**
@@ -164,7 +164,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
      * 
      */
-    @Export(name="serverIp", type=String.class, parameters={})
+    @Export(name="serverIp", refs={String.class}, tree="[0]")
     private Output<String> serverIp;
 
     /**
@@ -178,7 +178,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
      * 
      */
-    @Export(name="serverType", type=String.class, parameters={})
+    @Export(name="serverType", refs={String.class}, tree="[0]")
     private Output<String> serverType;
 
     /**
@@ -192,7 +192,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * Status of the server.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -206,7 +206,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**
@@ -220,7 +220,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The zoneId of the server.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

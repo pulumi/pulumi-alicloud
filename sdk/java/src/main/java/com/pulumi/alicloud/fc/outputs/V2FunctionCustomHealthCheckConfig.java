@@ -144,14 +144,14 @@ public final class V2FunctionCustomHealthCheckConfig {
             return this;
         }
         public V2FunctionCustomHealthCheckConfig build() {
-            final var o = new V2FunctionCustomHealthCheckConfig();
-            o.failureThreshold = failureThreshold;
-            o.httpGetUrl = httpGetUrl;
-            o.initialDelaySeconds = initialDelaySeconds;
-            o.periodSeconds = periodSeconds;
-            o.successThreshold = successThreshold;
-            o.timeoutSeconds = timeoutSeconds;
-            return o;
+            final var _resultValue = new V2FunctionCustomHealthCheckConfig();
+            _resultValue.failureThreshold = failureThreshold;
+            _resultValue.httpGetUrl = httpGetUrl;
+            _resultValue.initialDelaySeconds = initialDelaySeconds;
+            _resultValue.periodSeconds = periodSeconds;
+            _resultValue.successThreshold = successThreshold;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            return _resultValue;
         }
     }
 }

@@ -126,7 +126,7 @@ public class DbNode extends com.pulumi.resources.CustomResource {
      * The specification information of the node.
      * 
      */
-    @Export(name="classCode", type=String.class, parameters={})
+    @Export(name="classCode", refs={String.class}, tree="[0]")
     private Output<String> classCode;
 
     /**
@@ -140,7 +140,7 @@ public class DbNode extends com.pulumi.resources.CustomResource {
      * The Id of instance that can run database.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -154,7 +154,7 @@ public class DbNode extends com.pulumi.resources.CustomResource {
      * The ID of the node.
      * 
      */
-    @Export(name="nodeId", type=String.class, parameters={})
+    @Export(name="nodeId", refs={String.class}, tree="[0]")
     private Output<String> nodeId;
 
     /**
@@ -168,7 +168,7 @@ public class DbNode extends com.pulumi.resources.CustomResource {
      * The region ID of the node.
      * 
      */
-    @Export(name="nodeRegionId", type=String.class, parameters={})
+    @Export(name="nodeRegionId", refs={String.class}, tree="[0]")
     private Output<String> nodeRegionId;
 
     /**
@@ -182,7 +182,7 @@ public class DbNode extends com.pulumi.resources.CustomResource {
      * The role of node.
      * 
      */
-    @Export(name="nodeRole", type=String.class, parameters={})
+    @Export(name="nodeRole", refs={String.class}, tree="[0]")
     private Output<String> nodeRole;
 
     /**
@@ -196,7 +196,7 @@ public class DbNode extends com.pulumi.resources.CustomResource {
      * The zone ID of the node.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

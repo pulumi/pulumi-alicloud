@@ -32,7 +32,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      * 
      */
-    @Export(name="backupFrequency", type=String.class, parameters={})
+    @Export(name="backupFrequency", refs={String.class}, tree="[0]")
     private Output<String> backupFrequency;
 
     /**
@@ -46,7 +46,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Cluster backup retention days, Fixed for 7 days, not modified.
      * 
      */
-    @Export(name="backupRetentionPeriod", type=String.class, parameters={})
+    @Export(name="backupRetentionPeriod", refs={String.class}, tree="[0]")
     private Output<String> backupRetentionPeriod;
 
     /**
@@ -60,7 +60,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
      * 
      */
-    @Export(name="backupRetentionPolicyOnClusterDeletion", type=String.class, parameters={})
+    @Export(name="backupRetentionPolicyOnClusterDeletion", refs={String.class}, tree="[0]")
     private Output<String> backupRetentionPolicyOnClusterDeletion;
 
     /**
@@ -74,7 +74,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      * 
      */
-    @Export(name="dataLevel1BackupFrequency", type=String.class, parameters={})
+    @Export(name="dataLevel1BackupFrequency", refs={String.class}, tree="[0]")
     private Output<String> dataLevel1BackupFrequency;
 
     /**
@@ -89,7 +89,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
-    @Export(name="dataLevel1BackupPeriods", type=List.class, parameters={String.class})
+    @Export(name="dataLevel1BackupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dataLevel1BackupPeriods;
 
     /**
@@ -104,7 +104,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
      * 
      */
-    @Export(name="dataLevel1BackupRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="dataLevel1BackupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> dataLevel1BackupRetentionPeriod;
 
     /**
@@ -118,7 +118,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
      * 
      */
-    @Export(name="dataLevel1BackupTime", type=String.class, parameters={})
+    @Export(name="dataLevel1BackupTime", refs={String.class}, tree="[0]")
     private Output<String> dataLevel1BackupTime;
 
     /**
@@ -132,7 +132,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * PolarDB Cluster of level-2 backup is a cross regional backup area.
      * 
      */
-    @Export(name="dataLevel2BackupAnotherRegionRegion", type=String.class, parameters={})
+    @Export(name="dataLevel2BackupAnotherRegionRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataLevel2BackupAnotherRegionRegion;
 
     /**
@@ -146,7 +146,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
      * 
      */
-    @Export(name="dataLevel2BackupAnotherRegionRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="dataLevel2BackupAnotherRegionRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> dataLevel2BackupAnotherRegionRetentionPeriod;
 
     /**
@@ -161,7 +161,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
-    @Export(name="dataLevel2BackupPeriods", type=List.class, parameters={String.class})
+    @Export(name="dataLevel2BackupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dataLevel2BackupPeriods;
 
     /**
@@ -176,7 +176,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
      * 
      */
-    @Export(name="dataLevel2BackupRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="dataLevel2BackupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> dataLevel2BackupRetentionPeriod;
 
     /**
@@ -190,7 +190,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The Id of cluster that can run database.
      * 
      */
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
@@ -204,7 +204,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
      * 
      */
-    @Export(name="enableBackupLog", type=Integer.class, parameters={})
+    @Export(name="enableBackupLog", refs={Integer.class}, tree="[0]")
     private Output<Integer> enableBackupLog;
 
     /**
@@ -218,7 +218,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
      * 
      */
-    @Export(name="logBackupAnotherRegionRegion", type=String.class, parameters={})
+    @Export(name="logBackupAnotherRegionRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logBackupAnotherRegionRegion;
 
     /**
@@ -233,7 +233,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      * 
      */
-    @Export(name="logBackupAnotherRegionRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="logBackupAnotherRegionRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> logBackupAnotherRegionRetentionPeriod;
 
     /**
@@ -248,7 +248,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
      * 
      */
-    @Export(name="logBackupRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="logBackupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> logBackupRetentionPeriod;
 
     /**
@@ -262,7 +262,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * PolarDB Cluster backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;]. Default to [&#34;Tuesday&#34;, &#34;Thursday&#34;, &#34;Saturday&#34;].
      * 
      */
-    @Export(name="preferredBackupPeriods", type=List.class, parameters={String.class})
+    @Export(name="preferredBackupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> preferredBackupPeriods;
 
     /**
@@ -276,7 +276,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to &#34;02:00Z-03:00Z&#34;. China time is 8 hours behind it.
      * 
      */
-    @Export(name="preferredBackupTime", type=String.class, parameters={})
+    @Export(name="preferredBackupTime", refs={String.class}, tree="[0]")
     private Output<String> preferredBackupTime;
 
     /**

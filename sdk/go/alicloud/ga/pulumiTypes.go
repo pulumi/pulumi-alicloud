@@ -4963,6 +4963,125 @@ func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOu
 	}).(GetDomainsDomainOutput)
 }
 
+type GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock struct {
+	// The region ID of the endpoint group.
+	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
+	// The CIDR blocks.
+	IpAddressCidrBlocks []string `pulumi:"ipAddressCidrBlocks"`
+	// The status of the list of endpoint group ip address cidr blocks.
+	Status string `pulumi:"status"`
+}
+
+// GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockInput is an input type that accepts GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArgs and GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput values.
+// You can construct a concrete instance of `GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockInput` via:
+//
+//	GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArgs{...}
+type GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockInput interface {
+	pulumi.Input
+
+	ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput() GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput
+	ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutputWithContext(context.Context) GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput
+}
+
+type GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArgs struct {
+	// The region ID of the endpoint group.
+	EndpointGroupRegion pulumi.StringInput `pulumi:"endpointGroupRegion"`
+	// The CIDR blocks.
+	IpAddressCidrBlocks pulumi.StringArrayInput `pulumi:"ipAddressCidrBlocks"`
+	// The status of the list of endpoint group ip address cidr blocks.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock)(nil)).Elem()
+}
+
+func (i GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArgs) ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput() GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput {
+	return i.ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutputWithContext(context.Background())
+}
+
+func (i GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArgs) ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutputWithContext(ctx context.Context) GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput)
+}
+
+// GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayInput is an input type that accepts GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArray and GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput values.
+// You can construct a concrete instance of `GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayInput` via:
+//
+//	GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArray{ GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArgs{...} }
+type GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayInput interface {
+	pulumi.Input
+
+	ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput() GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput
+	ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutputWithContext(context.Context) GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput
+}
+
+type GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArray []GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockInput
+
+func (GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock)(nil)).Elem()
+}
+
+func (i GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArray) ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput() GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput {
+	return i.ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutputWithContext(context.Background())
+}
+
+func (i GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArray) ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutputWithContext(ctx context.Context) GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput)
+}
+
+type GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock)(nil)).Elem()
+}
+
+func (o GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput) ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput() GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput {
+	return o
+}
+
+func (o GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput) ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutputWithContext(ctx context.Context) GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput {
+	return o
+}
+
+// The region ID of the endpoint group.
+func (o GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput) EndpointGroupRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock) string {
+		return v.EndpointGroupRegion
+	}).(pulumi.StringOutput)
+}
+
+// The CIDR blocks.
+func (o GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput) IpAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock) []string {
+		return v.IpAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+// The status of the list of endpoint group ip address cidr blocks.
+func (o GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock)(nil)).Elem()
+}
+
+func (o GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput) ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput() GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput {
+	return o
+}
+
+func (o GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput) ToGetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutputWithContext(ctx context.Context) GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput {
+	return o
+}
+
+func (o GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput) Index(i pulumi.IntInput) GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock {
+		return vs[0].([]GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock)[vs[1].(int)]
+	}).(GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput)
+}
+
 type GetEndpointGroupsGroup struct {
 	// The description of the endpoint group.
 	Description string `pulumi:"description"`
@@ -6828,6 +6947,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayInput)(nil)).Elem(), GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockInput)(nil)).Elem(), GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayInput)(nil)).Elem(), GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupInput)(nil)).Elem(), GetEndpointGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupArrayInput)(nil)).Elem(), GetEndpointGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupEndpointConfigurationInput)(nil)).Elem(), GetEndpointGroupsGroupEndpointConfigurationArgs{})
@@ -6926,6 +7047,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockOutput{})
+	pulumi.RegisterOutputType(GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupEndpointConfigurationOutput{})

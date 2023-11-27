@@ -190,6 +190,11 @@ export const getDomains: typeof import("./getDomains").getDomains = null as any;
 export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
 utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
 
+export { GetEndpointGroupIpAddressCidrBlocksArgs, GetEndpointGroupIpAddressCidrBlocksResult, GetEndpointGroupIpAddressCidrBlocksOutputArgs } from "./getEndpointGroupIpAddressCidrBlocks";
+export const getEndpointGroupIpAddressCidrBlocks: typeof import("./getEndpointGroupIpAddressCidrBlocks").getEndpointGroupIpAddressCidrBlocks = null as any;
+export const getEndpointGroupIpAddressCidrBlocksOutput: typeof import("./getEndpointGroupIpAddressCidrBlocks").getEndpointGroupIpAddressCidrBlocksOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointGroupIpAddressCidrBlocks","getEndpointGroupIpAddressCidrBlocksOutput"], () => require("./getEndpointGroupIpAddressCidrBlocks"));
+
 export { GetEndpointGroupsArgs, GetEndpointGroupsResult, GetEndpointGroupsOutputArgs } from "./getEndpointGroups";
 export const getEndpointGroups: typeof import("./getEndpointGroups").getEndpointGroups = null as any;
 export const getEndpointGroupsOutput: typeof import("./getEndpointGroups").getEndpointGroupsOutput = null as any;

@@ -180,7 +180,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The cookie configured on the server. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;server&#34;. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      * 
      */
-    @Export(name="cookie", type=String.class, parameters={})
+    @Export(name="cookie", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cookie;
 
     /**
@@ -194,7 +194,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Cookie timeout. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;insert&#34;. Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
      * 
      */
-    @Export(name="cookieTimeout", type=Integer.class, parameters={})
+    @Export(name="cookieTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cookieTimeout;
 
     /**
@@ -208,7 +208,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      * 
      */
-    @Export(name="deleteProtectionValidation", type=Boolean.class, parameters={})
+    @Export(name="deleteProtectionValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteProtectionValidation;
 
     /**
@@ -225,7 +225,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domain;
 
     /**
@@ -242,7 +242,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
      * 
      */
-    @Export(name="frontendPort", type=Integer.class, parameters={})
+    @Export(name="frontendPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> frontendPort;
 
     /**
@@ -256,7 +256,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener&#39;s HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
      * 
      */
-    @Export(name="healthCheck", type=String.class, parameters={})
+    @Export(name="healthCheck", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheck;
 
     /**
@@ -270,7 +270,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Port used for health check. Valid value range: [1-65535]. Default to &#34;None&#34; means the backend server port is used.
      * 
      */
-    @Export(name="healthCheckConnectPort", type=Integer.class, parameters={})
+    @Export(name="healthCheckConnectPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> healthCheckConnectPort;
 
     /**
@@ -284,7 +284,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
      * 
      */
-    @Export(name="healthCheckDomain", type=String.class, parameters={})
+    @Export(name="healthCheckDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckDomain;
 
     /**
@@ -298,7 +298,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
      * 
      */
-    @Export(name="healthCheckHttpCode", type=String.class, parameters={})
+    @Export(name="healthCheckHttpCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckHttpCode;
 
     /**
@@ -312,7 +312,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
      * 
      */
-    @Export(name="healthCheckInterval", type=Integer.class, parameters={})
+    @Export(name="healthCheckInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckInterval;
 
     /**
@@ -326,7 +326,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
      * 
      */
-    @Export(name="healthCheckTimeout", type=Integer.class, parameters={})
+    @Export(name="healthCheckTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckTimeout;
 
     /**
@@ -340,7 +340,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
-    @Export(name="healthCheckUri", type=String.class, parameters={})
+    @Export(name="healthCheckUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckUri;
 
     /**
@@ -354,7 +354,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
      * 
      */
-    @Export(name="healthyThreshold", type=Integer.class, parameters={})
+    @Export(name="healthyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthyThreshold;
 
     /**
@@ -368,7 +368,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
      * 
      */
-    @Export(name="listenerSync", type=String.class, parameters={})
+    @Export(name="listenerSync", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> listenerSync;
 
     /**
@@ -382,7 +382,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The Load Balancer ID which is used to launch the new forwarding rule.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -396,7 +396,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Name of the forwarding rule. Our plugin provides a default name: &#34;tf-slb-rule&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -410,7 +410,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to &#34;wrr&#34;. This parameter is required  and takes effect only when ListenerSync is set to off.
      * 
      */
-    @Export(name="scheduler", type=String.class, parameters={})
+    @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheduler;
 
     /**
@@ -424,7 +424,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * ID of a virtual server group that will be forwarded.
      * 
      */
-    @Export(name="serverGroupId", type=String.class, parameters={})
+    @Export(name="serverGroupId", refs={String.class}, tree="[0]")
     private Output<String> serverGroupId;
 
     /**
@@ -438,7 +438,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
      * 
      */
-    @Export(name="stickySession", type=String.class, parameters={})
+    @Export(name="stickySession", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stickySession;
 
     /**
@@ -452,7 +452,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Mode for handling the cookie. If `sticky_session` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
      * 
      */
-    @Export(name="stickySessionType", type=String.class, parameters={})
+    @Export(name="stickySessionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stickySessionType;
 
     /**
@@ -466,7 +466,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
      * 
      */
-    @Export(name="unhealthyThreshold", type=Integer.class, parameters={})
+    @Export(name="unhealthyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> unhealthyThreshold;
 
     /**
@@ -481,7 +481,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%&#39; &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> url;
 
     /**

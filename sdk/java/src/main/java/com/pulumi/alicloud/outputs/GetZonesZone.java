@@ -184,15 +184,15 @@ public final class GetZonesZone {
             return slbSlaveZoneIds(List.of(slbSlaveZoneIds));
         }
         public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.availableDiskCategories = availableDiskCategories;
-            o.availableInstanceTypes = availableInstanceTypes;
-            o.availableResourceCreations = availableResourceCreations;
-            o.id = id;
-            o.localName = localName;
-            o.multiZoneIds = multiZoneIds;
-            o.slbSlaveZoneIds = slbSlaveZoneIds;
-            return o;
+            final var _resultValue = new GetZonesZone();
+            _resultValue.availableDiskCategories = availableDiskCategories;
+            _resultValue.availableInstanceTypes = availableInstanceTypes;
+            _resultValue.availableResourceCreations = availableResourceCreations;
+            _resultValue.id = id;
+            _resultValue.localName = localName;
+            _resultValue.multiZoneIds = multiZoneIds;
+            _resultValue.slbSlaveZoneIds = slbSlaveZoneIds;
+            return _resultValue;
         }
     }
 }

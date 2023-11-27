@@ -130,7 +130,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the ECS instance.
      * 
      */
-    @Export(name="ecsId", type=String.class, parameters={})
+    @Export(name="ecsId", refs={String.class}, tree="[0]")
     private Output<String> ecsId;
 
     /**
@@ -144,7 +144,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the database file system.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -158,7 +158,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

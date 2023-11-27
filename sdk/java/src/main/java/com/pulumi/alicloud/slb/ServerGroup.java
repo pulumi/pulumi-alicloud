@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * A virtual server group contains several ECS instances. The virtual server group can help you to define multiple listening dimension,
  * and to meet the personalized requirements of domain name and URL forwarding.
  * 
+ * &gt; **NOTE:** Available since v1.6.0.
+ * 
  * &gt; **NOTE:** One ECS instance can be added into multiple virtual server groups.
  * 
  * &gt; **NOTE:** One virtual server group can be attached with multiple listeners in one load balancer.
@@ -94,14 +96,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Block servers
- * 
- * The servers mapping supports the following:
- * 
- * * `server_ids` - (Required) A list backend server ID (ECS instance ID).
- * * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
- * * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
- * * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
  * 
  * ## Import
  * 
@@ -118,7 +112,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      * 
      */
-    @Export(name="deleteProtectionValidation", type=Boolean.class, parameters={})
+    @Export(name="deleteProtectionValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteProtectionValidation;
 
     /**
@@ -132,7 +126,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The Load Balancer ID which is used to launch a new virtual server group.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -146,7 +140,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * Name of the virtual server group. Our plugin provides a default name: &#34;tf-server-group&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -157,18 +151,18 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+     * A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
      * 
      * @deprecated
      * Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;.
      * 
      */
     @Deprecated /* Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. */
-    @Export(name="servers", type=List.class, parameters={ServerGroupServer.class})
+    @Export(name="servers", refs={List.class,ServerGroupServer.class}, tree="[0,1]")
     private Output<List<ServerGroupServer>> servers;
 
     /**
-     * @return A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+     * @return A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
      * 
      */
     public Output<List<ServerGroupServer>> servers() {

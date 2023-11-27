@@ -108,12 +108,12 @@ public final class GetLaunchOptionsOption {
             return this;
         }
         public GetLaunchOptionsOption build() {
-            final var o = new GetLaunchOptionsOption();
-            o.constraintSummaries = constraintSummaries;
-            o.id = id;
-            o.portfolioId = portfolioId;
-            o.portfolioName = portfolioName;
-            return o;
+            final var _resultValue = new GetLaunchOptionsOption();
+            _resultValue.constraintSummaries = constraintSummaries;
+            _resultValue.id = id;
+            _resultValue.portfolioId = portfolioId;
+            _resultValue.portfolioName = portfolioName;
+            return _resultValue;
         }
     }
 }

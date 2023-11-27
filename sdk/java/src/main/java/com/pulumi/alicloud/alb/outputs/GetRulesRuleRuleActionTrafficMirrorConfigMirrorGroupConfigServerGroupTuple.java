@@ -46,9 +46,9 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigSer
             return this;
         }
         public GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple build() {
-            final var o = new GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple();
-            o.serverGroupId = serverGroupId;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple();
+            _resultValue.serverGroupId = serverGroupId;
+            return _resultValue;
         }
     }
 }

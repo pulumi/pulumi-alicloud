@@ -168,16 +168,16 @@ public final class GetScheduledTasksResult {
             return tasks(List.of(tasks));
         }
         public GetScheduledTasksResult build() {
-            final var o = new GetScheduledTasksResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.scheduledAction = scheduledAction;
-            o.scheduledTaskId = scheduledTaskId;
-            o.tasks = tasks;
-            return o;
+            final var _resultValue = new GetScheduledTasksResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.scheduledAction = scheduledAction;
+            _resultValue.scheduledTaskId = scheduledTaskId;
+            _resultValue.tasks = tasks;
+            return _resultValue;
         }
     }
 }

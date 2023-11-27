@@ -314,23 +314,23 @@ public final class GetServiceQueuesQueue {
             return this;
         }
         public GetServiceQueuesQueue build() {
-            final var o = new GetServiceQueuesQueue();
-            o.activeMessages = activeMessages;
-            o.createTime = createTime;
-            o.delayMessages = delayMessages;
-            o.delaySeconds = delaySeconds;
-            o.id = id;
-            o.inactiveMessages = inactiveMessages;
-            o.lastModifyTime = lastModifyTime;
-            o.loggingEnabled = loggingEnabled;
-            o.maximumMessageSize = maximumMessageSize;
-            o.messageRetentionPeriod = messageRetentionPeriod;
-            o.pollingWaitSeconds = pollingWaitSeconds;
-            o.queueInternalUrl = queueInternalUrl;
-            o.queueName = queueName;
-            o.queueUrl = queueUrl;
-            o.visibilityTimeout = visibilityTimeout;
-            return o;
+            final var _resultValue = new GetServiceQueuesQueue();
+            _resultValue.activeMessages = activeMessages;
+            _resultValue.createTime = createTime;
+            _resultValue.delayMessages = delayMessages;
+            _resultValue.delaySeconds = delaySeconds;
+            _resultValue.id = id;
+            _resultValue.inactiveMessages = inactiveMessages;
+            _resultValue.lastModifyTime = lastModifyTime;
+            _resultValue.loggingEnabled = loggingEnabled;
+            _resultValue.maximumMessageSize = maximumMessageSize;
+            _resultValue.messageRetentionPeriod = messageRetentionPeriod;
+            _resultValue.pollingWaitSeconds = pollingWaitSeconds;
+            _resultValue.queueInternalUrl = queueInternalUrl;
+            _resultValue.queueName = queueName;
+            _resultValue.queueUrl = queueUrl;
+            _resultValue.visibilityTimeout = visibilityTimeout;
+            return _resultValue;
         }
     }
 }

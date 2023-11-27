@@ -238,19 +238,19 @@ public final class GetPrometheisPromethei {
             return this;
         }
         public GetPrometheisPromethei build() {
-            final var o = new GetPrometheisPromethei();
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.clusterType = clusterType;
-            o.grafanaInstanceId = grafanaInstanceId;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupId = securityGroupId;
-            o.subClustersJson = subClustersJson;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetPrometheisPromethei();
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterName = clusterName;
+            _resultValue.clusterType = clusterType;
+            _resultValue.grafanaInstanceId = grafanaInstanceId;
+            _resultValue.id = id;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.subClustersJson = subClustersJson;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

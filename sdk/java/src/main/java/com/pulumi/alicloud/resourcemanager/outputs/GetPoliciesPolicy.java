@@ -161,15 +161,15 @@ public final class GetPoliciesPolicy {
             return this;
         }
         public GetPoliciesPolicy build() {
-            final var o = new GetPoliciesPolicy();
-            o.attachmentCount = attachmentCount;
-            o.defaultVersion = defaultVersion;
-            o.description = description;
-            o.id = id;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            o.updateDate = updateDate;
-            return o;
+            final var _resultValue = new GetPoliciesPolicy();
+            _resultValue.attachmentCount = attachmentCount;
+            _resultValue.defaultVersion = defaultVersion;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.policyName = policyName;
+            _resultValue.policyType = policyType;
+            _resultValue.updateDate = updateDate;
+            return _resultValue;
         }
     }
 }

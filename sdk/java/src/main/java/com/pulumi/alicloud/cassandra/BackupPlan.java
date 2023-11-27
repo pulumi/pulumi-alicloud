@@ -37,7 +37,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> active;
 
     /**
@@ -51,7 +51,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
      * 
      */
-    @Export(name="backupPeriod", type=String.class, parameters={})
+    @Export(name="backupPeriod", refs={String.class}, tree="[0]")
     private Output<String> backupPeriod;
 
     /**
@@ -65,7 +65,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
      * 
      */
-    @Export(name="backupTime", type=String.class, parameters={})
+    @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
     /**
@@ -79,7 +79,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of the cluster for the backup.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -93,7 +93,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of the data center for the backup in the cluster.
      * 
      */
-    @Export(name="dataCenterId", type=String.class, parameters={})
+    @Export(name="dataCenterId", refs={String.class}, tree="[0]")
     private Output<String> dataCenterId;
 
     /**
@@ -107,7 +107,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
      * 
      */
-    @Export(name="retentionPeriod", type=Integer.class, parameters={})
+    @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionPeriod;
 
     /**

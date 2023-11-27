@@ -50,9 +50,9 @@ public final class GetRulesRuleRuleConditionHostConfig {
             return values(List.of(values));
         }
         public GetRulesRuleRuleConditionHostConfig build() {
-            final var o = new GetRulesRuleRuleConditionHostConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleConditionHostConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

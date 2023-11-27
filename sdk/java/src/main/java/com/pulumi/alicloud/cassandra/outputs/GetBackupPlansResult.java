@@ -100,13 +100,13 @@ public final class GetBackupPlansResult {
             return plans(List.of(plans));
         }
         public GetBackupPlansResult build() {
-            final var o = new GetBackupPlansResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.plans = plans;
-            return o;
+            final var _resultValue = new GetBackupPlansResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.plans = plans;
+            return _resultValue;
         }
     }
 }

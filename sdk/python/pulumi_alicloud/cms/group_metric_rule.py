@@ -16,13 +16,13 @@ __all__ = ['GroupMetricRuleArgs', 'GroupMetricRule']
 @pulumi.input_type
 class GroupMetricRuleArgs:
     def __init__(__self__, *,
-                 category: pulumi.Input[str],
                  escalations: pulumi.Input['GroupMetricRuleEscalationsArgs'],
                  group_id: pulumi.Input[str],
                  group_metric_rule_name: pulumi.Input[str],
                  metric_name: pulumi.Input[str],
                  namespace: pulumi.Input[str],
                  rule_id: pulumi.Input[str],
+                 category: Optional[pulumi.Input[str]] = None,
                  contact_groups: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[str]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
@@ -35,17 +35,17 @@ class GroupMetricRuleArgs:
                  webhook: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GroupMetricRule resource.
-        :param pulumi.Input[str] category: The abbreviation of the service name.
         :param pulumi.Input['GroupMetricRuleEscalationsArgs'] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] group_metric_rule_name: The name of the alert rule.
         :param pulumi.Input[str] metric_name: The name of the metric.
         :param pulumi.Input[str] namespace: The namespace of the service.
         :param pulumi.Input[str] rule_id: The ID of the alert rule.
+        :param pulumi.Input[str] category: The abbreviation of the service name.
         :param pulumi.Input[str] contact_groups: Alarm contact group.
         :param pulumi.Input[str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param pulumi.Input[str] effective_interval: The time period during which the alert rule is effective.
-        :param pulumi.Input[str] email_subject: The subject of the alert notification email.                                         .
+        :param pulumi.Input[str] email_subject: The subject of the alert notification email.
         :param pulumi.Input[str] interval: The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
         :param pulumi.Input[str] no_effective_interval: The time period during which the alert rule is ineffective.
         :param pulumi.Input[int] period: The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
@@ -53,13 +53,14 @@ class GroupMetricRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The callback URL.
         """
-        pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "escalations", escalations)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "group_metric_rule_name", group_metric_rule_name)
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "rule_id", rule_id)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
         if contact_groups is not None:
             pulumi.set(__self__, "contact_groups", contact_groups)
         if dimensions is not None:
@@ -80,18 +81,6 @@ class GroupMetricRuleArgs:
             pulumi.set(__self__, "targets", targets)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
-
-    @property
-    @pulumi.getter
-    def category(self) -> pulumi.Input[str]:
-        """
-        The abbreviation of the service name.
-        """
-        return pulumi.get(self, "category")
-
-    @category.setter
-    def category(self, value: pulumi.Input[str]):
-        pulumi.set(self, "category", value)
 
     @property
     @pulumi.getter
@@ -166,6 +155,18 @@ class GroupMetricRuleArgs:
         pulumi.set(self, "rule_id", value)
 
     @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The abbreviation of the service name.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
     @pulumi.getter(name="contactGroups")
     def contact_groups(self) -> Optional[pulumi.Input[str]]:
         """
@@ -205,7 +206,7 @@ class GroupMetricRuleArgs:
     @pulumi.getter(name="emailSubject")
     def email_subject(self) -> Optional[pulumi.Input[str]]:
         """
-        The subject of the alert notification email.                                         .
+        The subject of the alert notification email.
         """
         return pulumi.get(self, "email_subject")
 
@@ -313,7 +314,7 @@ class _GroupMetricRuleState:
         :param pulumi.Input[str] contact_groups: Alarm contact group.
         :param pulumi.Input[str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param pulumi.Input[str] effective_interval: The time period during which the alert rule is effective.
-        :param pulumi.Input[str] email_subject: The subject of the alert notification email.                                         .
+        :param pulumi.Input[str] email_subject: The subject of the alert notification email.
         :param pulumi.Input['GroupMetricRuleEscalationsArgs'] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] group_metric_rule_name: The name of the alert rule.
@@ -417,7 +418,7 @@ class _GroupMetricRuleState:
     @pulumi.getter(name="emailSubject")
     def email_subject(self) -> Optional[pulumi.Input[str]]:
         """
-        The subject of the alert notification email.                                         .
+        The subject of the alert notification email.
         """
         return pulumi.get(self, "email_subject")
 
@@ -672,7 +673,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[str] contact_groups: Alarm contact group.
         :param pulumi.Input[str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param pulumi.Input[str] effective_interval: The time period during which the alert rule is effective.
-        :param pulumi.Input[str] email_subject: The subject of the alert notification email.                                         .
+        :param pulumi.Input[str] email_subject: The subject of the alert notification email.
         :param pulumi.Input[pulumi.InputType['GroupMetricRuleEscalationsArgs']] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] group_metric_rule_name: The name of the alert rule.
@@ -794,8 +795,6 @@ class GroupMetricRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupMetricRuleArgs.__new__(GroupMetricRuleArgs)
 
-            if category is None and not opts.urn:
-                raise TypeError("Missing required property 'category'")
             __props__.__dict__["category"] = category
             __props__.__dict__["contact_groups"] = contact_groups
             __props__.__dict__["dimensions"] = dimensions
@@ -865,7 +864,7 @@ class GroupMetricRule(pulumi.CustomResource):
         :param pulumi.Input[str] contact_groups: Alarm contact group.
         :param pulumi.Input[str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param pulumi.Input[str] effective_interval: The time period during which the alert rule is effective.
-        :param pulumi.Input[str] email_subject: The subject of the alert notification email.                                         .
+        :param pulumi.Input[str] email_subject: The subject of the alert notification email.
         :param pulumi.Input[pulumi.InputType['GroupMetricRuleEscalationsArgs']] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] group_metric_rule_name: The name of the alert rule.
@@ -906,7 +905,7 @@ class GroupMetricRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def category(self) -> pulumi.Output[str]:
+    def category(self) -> pulumi.Output[Optional[str]]:
         """
         The abbreviation of the service name.
         """
@@ -940,7 +939,7 @@ class GroupMetricRule(pulumi.CustomResource):
     @pulumi.getter(name="emailSubject")
     def email_subject(self) -> pulumi.Output[str]:
         """
-        The subject of the alert notification email.                                         .
+        The subject of the alert notification email.
         """
         return pulumi.get(self, "email_subject")
 
@@ -1018,7 +1017,7 @@ class GroupMetricRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> pulumi.Output[Optional[int]]:
+    def silence_time(self) -> pulumi.Output[int]:
         """
         The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
         """

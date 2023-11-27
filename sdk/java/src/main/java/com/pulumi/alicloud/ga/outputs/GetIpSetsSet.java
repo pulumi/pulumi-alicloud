@@ -165,15 +165,15 @@ public final class GetIpSetsSet {
             return this;
         }
         public GetIpSetsSet build() {
-            final var o = new GetIpSetsSet();
-            o.accelerateRegionId = accelerateRegionId;
-            o.bandwidth = bandwidth;
-            o.id = id;
-            o.ipAddressLists = ipAddressLists;
-            o.ipSetId = ipSetId;
-            o.ipVersion = ipVersion;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetIpSetsSet();
+            _resultValue.accelerateRegionId = accelerateRegionId;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.id = id;
+            _resultValue.ipAddressLists = ipAddressLists;
+            _resultValue.ipSetId = ipSetId;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

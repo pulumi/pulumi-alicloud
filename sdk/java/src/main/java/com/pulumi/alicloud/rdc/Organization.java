@@ -70,7 +70,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * The desired member count.
      * 
      */
-    @Export(name="desiredMemberCount", type=Integer.class, parameters={})
+    @Export(name="desiredMemberCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> desiredMemberCount;
 
     /**
@@ -84,7 +84,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Company name.
      * 
      */
-    @Export(name="organizationName", type=String.class, parameters={})
+    @Export(name="organizationName", refs={String.class}, tree="[0]")
     private Output<String> organizationName;
 
     /**
@@ -98,7 +98,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
      * 
      */
-    @Export(name="realPk", type=String.class, parameters={})
+    @Export(name="realPk", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> realPk;
 
     /**
@@ -112,7 +112,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * This is organization source information
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     /**

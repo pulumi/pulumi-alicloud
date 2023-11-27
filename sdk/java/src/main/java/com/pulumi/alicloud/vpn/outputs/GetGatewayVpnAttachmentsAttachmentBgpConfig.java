@@ -103,12 +103,12 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
             return this;
         }
         public GetGatewayVpnAttachmentsAttachmentBgpConfig build() {
-            final var o = new GetGatewayVpnAttachmentsAttachmentBgpConfig();
-            o.localAsn = localAsn;
-            o.localBgpIp = localBgpIp;
-            o.status = status;
-            o.tunnelCidr = tunnelCidr;
-            return o;
+            final var _resultValue = new GetGatewayVpnAttachmentsAttachmentBgpConfig();
+            _resultValue.localAsn = localAsn;
+            _resultValue.localBgpIp = localBgpIp;
+            _resultValue.status = status;
+            _resultValue.tunnelCidr = tunnelCidr;
+            return _resultValue;
         }
     }
 }

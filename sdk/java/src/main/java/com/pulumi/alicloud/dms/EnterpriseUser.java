@@ -80,7 +80,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
      * Maximum number of inquiries on the day.
      * 
      */
-    @Export(name="maxExecuteCount", type=Integer.class, parameters={})
+    @Export(name="maxExecuteCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxExecuteCount;
 
     /**
@@ -94,7 +94,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
      * Query the maximum number of rows on the day.
      * 
      */
-    @Export(name="maxResultCount", type=Integer.class, parameters={})
+    @Export(name="maxResultCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxResultCount;
 
     /**
@@ -108,7 +108,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
      * The DingTalk number or mobile number of the user.
      * 
      */
-    @Export(name="mobile", type=String.class, parameters={})
+    @Export(name="mobile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mobile;
 
     /**
@@ -126,7 +126,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead. */
-    @Export(name="nickName", type=String.class, parameters={})
+    @Export(name="nickName", refs={String.class}, tree="[0]")
     private Output<String> nickName;
 
     /**
@@ -140,7 +140,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
      * The roles that the user plays.
      * 
      */
-    @Export(name="roleNames", type=List.class, parameters={String.class})
+    @Export(name="roleNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> roleNames;
 
     /**
@@ -154,7 +154,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
      * The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -168,7 +168,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
      * The tenant ID.
      * 
      */
-    @Export(name="tid", type=Integer.class, parameters={})
+    @Export(name="tid", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> tid;
 
     /**
@@ -182,7 +182,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
      * The Alibaba Cloud unique ID (UID) of the user to add.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -196,7 +196,7 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
      * The nickname of the user.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**

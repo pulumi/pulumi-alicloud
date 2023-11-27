@@ -138,14 +138,14 @@ public final class GetServicesResult {
             return services(List.of(services));
         }
         public GetServicesResult build() {
-            final var o = new GetServicesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.services = services;
-            return o;
+            final var _resultValue = new GetServicesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.services = services;
+            return _resultValue;
         }
     }
 }

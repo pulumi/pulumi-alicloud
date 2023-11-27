@@ -123,13 +123,13 @@ public final class GetAddressPoolsPoolAddress {
             return this;
         }
         public GetAddressPoolsPoolAddress build() {
-            final var o = new GetAddressPoolsPoolAddress();
-            o.address = address;
-            o.attributeInfo = attributeInfo;
-            o.lbaWeight = lbaWeight;
-            o.mode = mode;
-            o.remark = remark;
-            return o;
+            final var _resultValue = new GetAddressPoolsPoolAddress();
+            _resultValue.address = address;
+            _resultValue.attributeInfo = attributeInfo;
+            _resultValue.lbaWeight = lbaWeight;
+            _resultValue.mode = mode;
+            _resultValue.remark = remark;
+            return _resultValue;
         }
     }
 }

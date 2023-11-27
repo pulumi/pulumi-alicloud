@@ -279,21 +279,21 @@ public final class GetAddressPoolsPool {
             return this;
         }
         public GetAddressPoolsPool build() {
-            final var o = new GetAddressPoolsPool();
-            o.addressPoolId = addressPoolId;
-            o.addressPoolName = addressPoolName;
-            o.addresses = addresses;
-            o.createTime = createTime;
-            o.createTimestamp = createTimestamp;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.lbaStrategy = lbaStrategy;
-            o.monitorConfigId = monitorConfigId;
-            o.monitorStatus = monitorStatus;
-            o.type = type;
-            o.updateTime = updateTime;
-            o.updateTimestamp = updateTimestamp;
-            return o;
+            final var _resultValue = new GetAddressPoolsPool();
+            _resultValue.addressPoolId = addressPoolId;
+            _resultValue.addressPoolName = addressPoolName;
+            _resultValue.addresses = addresses;
+            _resultValue.createTime = createTime;
+            _resultValue.createTimestamp = createTimestamp;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.lbaStrategy = lbaStrategy;
+            _resultValue.monitorConfigId = monitorConfigId;
+            _resultValue.monitorStatus = monitorStatus;
+            _resultValue.type = type;
+            _resultValue.updateTime = updateTime;
+            _resultValue.updateTimestamp = updateTimestamp;
+            return _resultValue;
         }
     }
 }

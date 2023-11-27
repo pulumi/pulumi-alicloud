@@ -41,6 +41,8 @@ class InstanceEcsList(dict):
                  ecs_id: Optional[str] = None):
         """
         :param str ecs_id: The ID of the ECS instance.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if ecs_id is not None:
             pulumi.set(__self__, "ecs_id", ecs_id)
@@ -50,6 +52,8 @@ class InstanceEcsList(dict):
     def ecs_id(self) -> Optional[str]:
         """
         The ID of the ECS instance.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "ecs_id")
 

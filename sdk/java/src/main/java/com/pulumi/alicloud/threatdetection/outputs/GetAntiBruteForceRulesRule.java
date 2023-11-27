@@ -185,16 +185,16 @@ public final class GetAntiBruteForceRulesRule {
             return uuidLists(List.of(uuidLists));
         }
         public GetAntiBruteForceRulesRule build() {
-            final var o = new GetAntiBruteForceRulesRule();
-            o.antiBruteForceRuleId = antiBruteForceRuleId;
-            o.antiBruteForceRuleName = antiBruteForceRuleName;
-            o.defaultRule = defaultRule;
-            o.failCount = failCount;
-            o.forbiddenTime = forbiddenTime;
-            o.id = id;
-            o.span = span;
-            o.uuidLists = uuidLists;
-            return o;
+            final var _resultValue = new GetAntiBruteForceRulesRule();
+            _resultValue.antiBruteForceRuleId = antiBruteForceRuleId;
+            _resultValue.antiBruteForceRuleName = antiBruteForceRuleName;
+            _resultValue.defaultRule = defaultRule;
+            _resultValue.failCount = failCount;
+            _resultValue.forbiddenTime = forbiddenTime;
+            _resultValue.id = id;
+            _resultValue.span = span;
+            _resultValue.uuidLists = uuidLists;
+            return _resultValue;
         }
     }
 }

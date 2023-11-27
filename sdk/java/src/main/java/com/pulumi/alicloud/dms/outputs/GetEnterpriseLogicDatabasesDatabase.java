@@ -247,19 +247,19 @@ public final class GetEnterpriseLogicDatabasesDatabase {
             return this;
         }
         public GetEnterpriseLogicDatabasesDatabase build() {
-            final var o = new GetEnterpriseLogicDatabasesDatabase();
-            o.alias = alias;
-            o.databaseIds = databaseIds;
-            o.dbType = dbType;
-            o.envType = envType;
-            o.id = id;
-            o.logic = logic;
-            o.logicDatabaseId = logicDatabaseId;
-            o.ownerIdLists = ownerIdLists;
-            o.ownerNameLists = ownerNameLists;
-            o.schemaName = schemaName;
-            o.searchName = searchName;
-            return o;
+            final var _resultValue = new GetEnterpriseLogicDatabasesDatabase();
+            _resultValue.alias = alias;
+            _resultValue.databaseIds = databaseIds;
+            _resultValue.dbType = dbType;
+            _resultValue.envType = envType;
+            _resultValue.id = id;
+            _resultValue.logic = logic;
+            _resultValue.logicDatabaseId = logicDatabaseId;
+            _resultValue.ownerIdLists = ownerIdLists;
+            _resultValue.ownerNameLists = ownerNameLists;
+            _resultValue.schemaName = schemaName;
+            _resultValue.searchName = searchName;
+            return _resultValue;
         }
     }
 }

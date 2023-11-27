@@ -78,11 +78,11 @@ public final class GetTrafficMirrorServiceResult {
             return this;
         }
         public GetTrafficMirrorServiceResult build() {
-            final var o = new GetTrafficMirrorServiceResult();
-            o.enable = enable;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetTrafficMirrorServiceResult();
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

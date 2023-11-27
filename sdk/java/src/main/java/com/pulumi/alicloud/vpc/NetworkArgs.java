@@ -166,44 +166,6 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The route table ID of the router created by default on VPC creation.
-     * 
-     */
-    @Import(name="routeTableId")
-    private @Nullable Output<String> routeTableId;
-
-    /**
-     * @return The route table ID of the router created by default on VPC creation.
-     * 
-     */
-    public Optional<Output<String>> routeTableId() {
-        return Optional.ofNullable(this.routeTableId);
-    }
-
-    /**
-     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-     * 
-     * @deprecated
-     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-     * 
-     */
-    @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
-    @Import(name="routerTableId")
-    private @Nullable Output<String> routerTableId;
-
-    /**
-     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-     * 
-     * @deprecated
-     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-     * 
-     */
-    @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
-    public Optional<Output<String>> routerTableId() {
-        return Optional.ofNullable(this.routerTableId);
-    }
-
-    /**
      * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      * @deprecated
@@ -286,8 +248,6 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         this.ipv6Isp = $.ipv6Isp;
         this.name = $.name;
         this.resourceGroupId = $.resourceGroupId;
-        this.routeTableId = $.routeTableId;
-        this.routerTableId = $.routerTableId;
         this.secondaryCidrBlocks = $.secondaryCidrBlocks;
         this.tags = $.tags;
         this.userCidrs = $.userCidrs;
@@ -504,56 +464,6 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
-        }
-
-        /**
-         * @param routeTableId The route table ID of the router created by default on VPC creation.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeTableId(@Nullable Output<String> routeTableId) {
-            $.routeTableId = routeTableId;
-            return this;
-        }
-
-        /**
-         * @param routeTableId The route table ID of the router created by default on VPC creation.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeTableId(String routeTableId) {
-            return routeTableId(Output.of(routeTableId));
-        }
-
-        /**
-         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-         * 
-         */
-        @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
-        public Builder routerTableId(@Nullable Output<String> routerTableId) {
-            $.routerTableId = routerTableId;
-            return this;
-        }
-
-        /**
-         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-         * 
-         */
-        @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
-        public Builder routerTableId(String routerTableId) {
-            return routerTableId(Output.of(routerTableId));
         }
 
         /**

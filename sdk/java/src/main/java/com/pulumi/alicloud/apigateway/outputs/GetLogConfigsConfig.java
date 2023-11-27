@@ -122,13 +122,13 @@ public final class GetLogConfigsConfig {
             return this;
         }
         public GetLogConfigsConfig build() {
-            final var o = new GetLogConfigsConfig();
-            o.id = id;
-            o.logType = logType;
-            o.regionId = regionId;
-            o.slsLogStore = slsLogStore;
-            o.slsProject = slsProject;
-            return o;
+            final var _resultValue = new GetLogConfigsConfig();
+            _resultValue.id = id;
+            _resultValue.logType = logType;
+            _resultValue.regionId = regionId;
+            _resultValue.slsLogStore = slsLogStore;
+            _resultValue.slsProject = slsProject;
+            return _resultValue;
         }
     }
 }

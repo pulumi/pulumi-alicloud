@@ -120,7 +120,7 @@ public class IntegrationExporter extends com.pulumi.resources.CustomResource {
      * The ID of the Prometheus instance.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -134,7 +134,7 @@ public class IntegrationExporter extends com.pulumi.resources.CustomResource {
      * The ID of the Integration Exporter instance.
      * 
      */
-    @Export(name="instanceId", type=Integer.class, parameters={})
+    @Export(name="instanceId", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceId;
 
     /**
@@ -148,7 +148,7 @@ public class IntegrationExporter extends com.pulumi.resources.CustomResource {
      * The type of prometheus integration.
      * 
      */
-    @Export(name="integrationType", type=String.class, parameters={})
+    @Export(name="integrationType", refs={String.class}, tree="[0]")
     private Output<String> integrationType;
 
     /**
@@ -162,7 +162,7 @@ public class IntegrationExporter extends com.pulumi.resources.CustomResource {
      * Exporter configuration parameter json string.
      * 
      */
-    @Export(name="param", type=String.class, parameters={})
+    @Export(name="param", refs={String.class}, tree="[0]")
     private Output<String> param;
 
     /**

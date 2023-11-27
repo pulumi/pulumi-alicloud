@@ -38,7 +38,7 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * The ID of the Data flow.
      * 
      */
-    @Export(name="dataFlowId", type=String.class, parameters={})
+    @Export(name="dataFlowId", refs={String.class}, tree="[0]")
     private Output<String> dataFlowId;
 
     /**
@@ -52,7 +52,7 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * The Description of the data flow. Restrictions:
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -66,7 +66,7 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -80,7 +80,7 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * The ID of the file system.
      * 
      */
-    @Export(name="fileSystemId", type=String.class, parameters={})
+    @Export(name="fileSystemId", refs={String.class}, tree="[0]")
     private Output<String> fileSystemId;
 
     /**
@@ -94,7 +94,7 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * The ID of the Fileset.
      * 
      */
-    @Export(name="fsetId", type=String.class, parameters={})
+    @Export(name="fsetId", refs={String.class}, tree="[0]")
     private Output<String> fsetId;
 
     /**
@@ -108,7 +108,7 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
      * 
      */
-    @Export(name="sourceSecurityType", type=String.class, parameters={})
+    @Export(name="sourceSecurityType", refs={String.class}, tree="[0]")
     private Output<String> sourceSecurityType;
 
     /**
@@ -125,7 +125,7 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
      * 
      */
-    @Export(name="sourceStorage", type=String.class, parameters={})
+    @Export(name="sourceStorage", refs={String.class}, tree="[0]")
     private Output<String> sourceStorage;
 
     /**
@@ -142,7 +142,7 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * The status of the Data flow. Valid values: `Running`, `Stopped`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -156,7 +156,7 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
      * 
      */
-    @Export(name="throughput", type=Integer.class, parameters={})
+    @Export(name="throughput", refs={Integer.class}, tree="[0]")
     private Output<Integer> throughput;
 
     /**

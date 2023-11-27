@@ -151,7 +151,7 @@ type ShardingInstance struct {
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+	// Instance data backup retention days. **NOTE:** Available in 1.42.0+.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -255,7 +255,7 @@ type shardingInstanceState struct {
 	ProtocolType *string `pulumi:"protocolType"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+	// Instance data backup retention days. **NOTE:** Available in 1.42.0+.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -314,7 +314,7 @@ type ShardingInstanceState struct {
 	ProtocolType pulumi.StringPtrInput
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+	// Instance data backup retention days. **NOTE:** Available in 1.42.0+.
 	RetentionPeriod pulumi.IntPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
@@ -622,7 +622,7 @@ func (o ShardingInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+// Instance data backup retention days. **NOTE:** Available in 1.42.0+.
 func (o ShardingInstanceOutput) RetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.RetentionPeriod }).(pulumi.IntOutput)
 }

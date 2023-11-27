@@ -105,7 +105,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      * 
      */
-    @Export(name="accountDescription", type=String.class, parameters={})
+    @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountDescription;
 
     /**
@@ -119,7 +119,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -133,7 +133,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
@@ -147,7 +147,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
      * 
      */
-    @Export(name="accountType", type=String.class, parameters={})
+    @Export(name="accountType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountType;
 
     /**
@@ -161,7 +161,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The Id of cluster in which account belongs.
      * 
      */
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
@@ -175,7 +175,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -189,7 +189,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**

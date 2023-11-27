@@ -29,38 +29,9 @@ public final class DdosFunctions {
     /**
      * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.183.0+ .
+     * &gt; **NOTE:** Available in v1.183.0+ .
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetDdosBgpInstancesResult> getDdosBgpInstances() {
@@ -69,38 +40,9 @@ public final class DdosFunctions {
     /**
      * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.183.0+ .
+     * &gt; **NOTE:** Available in v1.183.0+ .
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain() {
@@ -109,38 +51,9 @@ public final class DdosFunctions {
     /**
      * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.183.0+ .
+     * &gt; **NOTE:** Available in v1.183.0+ .
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetDdosBgpInstancesResult> getDdosBgpInstances(GetDdosBgpInstancesArgs args) {
@@ -149,38 +62,9 @@ public final class DdosFunctions {
     /**
      * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.183.0+ .
+     * &gt; **NOTE:** Available in v1.183.0+ .
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain(GetDdosBgpInstancesPlainArgs args) {
@@ -189,38 +73,9 @@ public final class DdosFunctions {
     /**
      * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.183.0+ .
+     * &gt; **NOTE:** Available in v1.183.0+ .
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetDdosBgpInstancesResult> getDdosBgpInstances(GetDdosBgpInstancesArgs args, InvokeOptions options) {
@@ -229,38 +84,9 @@ public final class DdosFunctions {
     /**
      * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.183.0+ .
+     * &gt; **NOTE:** Available in v1.183.0+ .
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddosbgp_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain(GetDdosBgpInstancesPlainArgs args, InvokeOptions options) {

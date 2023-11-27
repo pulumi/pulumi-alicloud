@@ -122,13 +122,13 @@ public final class GetVulWhitelistsWhitelist {
             return this;
         }
         public GetVulWhitelistsWhitelist build() {
-            final var o = new GetVulWhitelistsWhitelist();
-            o.id = id;
-            o.reason = reason;
-            o.targetInfo = targetInfo;
-            o.vulWhitelistId = vulWhitelistId;
-            o.whitelist = whitelist;
-            return o;
+            final var _resultValue = new GetVulWhitelistsWhitelist();
+            _resultValue.id = id;
+            _resultValue.reason = reason;
+            _resultValue.targetInfo = targetInfo;
+            _resultValue.vulWhitelistId = vulWhitelistId;
+            _resultValue.whitelist = whitelist;
+            return _resultValue;
         }
     }
 }

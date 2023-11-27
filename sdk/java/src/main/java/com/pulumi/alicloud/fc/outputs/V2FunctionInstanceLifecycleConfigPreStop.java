@@ -68,10 +68,10 @@ public final class V2FunctionInstanceLifecycleConfigPreStop {
             return this;
         }
         public V2FunctionInstanceLifecycleConfigPreStop build() {
-            final var o = new V2FunctionInstanceLifecycleConfigPreStop();
-            o.handler = handler;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new V2FunctionInstanceLifecycleConfigPreStop();
+            _resultValue.handler = handler;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

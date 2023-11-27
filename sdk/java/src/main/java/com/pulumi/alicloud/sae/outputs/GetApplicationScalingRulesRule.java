@@ -189,16 +189,16 @@ public final class GetApplicationScalingRulesRule {
             return this;
         }
         public GetApplicationScalingRulesRule build() {
-            final var o = new GetApplicationScalingRulesRule();
-            o.appId = appId;
-            o.createTime = createTime;
-            o.id = id;
-            o.scalingRuleEnable = scalingRuleEnable;
-            o.scalingRuleMetrics = scalingRuleMetrics;
-            o.scalingRuleName = scalingRuleName;
-            o.scalingRuleTimers = scalingRuleTimers;
-            o.scalingRuleType = scalingRuleType;
-            return o;
+            final var _resultValue = new GetApplicationScalingRulesRule();
+            _resultValue.appId = appId;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.scalingRuleEnable = scalingRuleEnable;
+            _resultValue.scalingRuleMetrics = scalingRuleMetrics;
+            _resultValue.scalingRuleName = scalingRuleName;
+            _resultValue.scalingRuleTimers = scalingRuleTimers;
+            _resultValue.scalingRuleType = scalingRuleType;
+            return _resultValue;
         }
     }
 }

@@ -136,16 +136,16 @@ public final class GetWafPoliciesResult {
             return this;
         }
         public GetWafPoliciesResult build() {
-            final var o = new GetWafPoliciesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.queryArgs = queryArgs;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetWafPoliciesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            _resultValue.queryArgs = queryArgs;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

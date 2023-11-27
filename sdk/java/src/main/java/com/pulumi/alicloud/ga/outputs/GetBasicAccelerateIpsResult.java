@@ -173,16 +173,16 @@ public final class GetBasicAccelerateIpsResult {
             return this;
         }
         public GetBasicAccelerateIpsResult build() {
-            final var o = new GetBasicAccelerateIpsResult();
-            o.accelerateIpAddress = accelerateIpAddress;
-            o.accelerateIpId = accelerateIpId;
-            o.id = id;
-            o.ids = ids;
-            o.ipSetId = ipSetId;
-            o.ips = ips;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBasicAccelerateIpsResult();
+            _resultValue.accelerateIpAddress = accelerateIpAddress;
+            _resultValue.accelerateIpId = accelerateIpId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ipSetId = ipSetId;
+            _resultValue.ips = ips;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

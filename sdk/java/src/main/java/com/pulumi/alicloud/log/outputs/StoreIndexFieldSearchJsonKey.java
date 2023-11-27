@@ -110,12 +110,12 @@ public final class StoreIndexFieldSearchJsonKey {
             return this;
         }
         public StoreIndexFieldSearchJsonKey build() {
-            final var o = new StoreIndexFieldSearchJsonKey();
-            o.alias = alias;
-            o.docValue = docValue;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new StoreIndexFieldSearchJsonKey();
+            _resultValue.alias = alias;
+            _resultValue.docValue = docValue;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

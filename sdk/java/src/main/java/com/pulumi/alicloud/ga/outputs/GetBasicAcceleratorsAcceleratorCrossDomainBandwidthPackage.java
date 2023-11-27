@@ -66,10 +66,10 @@ public final class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage {
             return this;
         }
         public GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage build() {
-            final var o = new GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage();
-            o.bandwidth = bandwidth;
-            o.instanceId = instanceId;
-            return o;
+            final var _resultValue = new GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.instanceId = instanceId;
+            return _resultValue;
         }
     }
 }

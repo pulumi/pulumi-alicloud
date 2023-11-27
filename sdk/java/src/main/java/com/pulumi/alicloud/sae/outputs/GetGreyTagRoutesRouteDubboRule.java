@@ -146,14 +146,14 @@ public final class GetGreyTagRoutesRouteDubboRule {
             return this;
         }
         public GetGreyTagRoutesRouteDubboRule build() {
-            final var o = new GetGreyTagRoutesRouteDubboRule();
-            o.condition = condition;
-            o.group = group;
-            o.items = items;
-            o.methodName = methodName;
-            o.serviceName = serviceName;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetGreyTagRoutesRouteDubboRule();
+            _resultValue.condition = condition;
+            _resultValue.group = group;
+            _resultValue.items = items;
+            _resultValue.methodName = methodName;
+            _resultValue.serviceName = serviceName;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

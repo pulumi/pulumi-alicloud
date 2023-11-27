@@ -158,17 +158,17 @@ public final class GetTransitRouterRouteEntriesEntry {
             return this;
         }
         public GetTransitRouterRouteEntriesEntry build() {
-            final var o = new GetTransitRouterRouteEntriesEntry();
-            o.id = id;
-            o.status = status;
-            o.transitRouterRouteEntryDescription = transitRouterRouteEntryDescription;
-            o.transitRouterRouteEntryDestinationCidrBlock = transitRouterRouteEntryDestinationCidrBlock;
-            o.transitRouterRouteEntryId = transitRouterRouteEntryId;
-            o.transitRouterRouteEntryName = transitRouterRouteEntryName;
-            o.transitRouterRouteEntryNextHopId = transitRouterRouteEntryNextHopId;
-            o.transitRouterRouteEntryNextHopType = transitRouterRouteEntryNextHopType;
-            o.transitRouterRouteEntryType = transitRouterRouteEntryType;
-            return o;
+            final var _resultValue = new GetTransitRouterRouteEntriesEntry();
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.transitRouterRouteEntryDescription = transitRouterRouteEntryDescription;
+            _resultValue.transitRouterRouteEntryDestinationCidrBlock = transitRouterRouteEntryDestinationCidrBlock;
+            _resultValue.transitRouterRouteEntryId = transitRouterRouteEntryId;
+            _resultValue.transitRouterRouteEntryName = transitRouterRouteEntryName;
+            _resultValue.transitRouterRouteEntryNextHopId = transitRouterRouteEntryNextHopId;
+            _resultValue.transitRouterRouteEntryNextHopType = transitRouterRouteEntryNextHopType;
+            _resultValue.transitRouterRouteEntryType = transitRouterRouteEntryType;
+            return _resultValue;
         }
     }
 }

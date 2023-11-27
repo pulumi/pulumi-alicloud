@@ -85,7 +85,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute biz_name has been deprecated and suggest removing it from your template. */
-    @Export(name="bizName", type=String.class, parameters={})
+    @Export(name="bizName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bizName;
 
     /**
@@ -99,7 +99,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Certificate Information. See the following `Block cert_infos`.
      * 
      */
-    @Export(name="certInfos", type=List.class, parameters={DomainCertInfo.class})
+    @Export(name="certInfos", refs={List.class,DomainCertInfo.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DomainCertInfo>> certInfos;
 
     /**
@@ -113,7 +113,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The health check url.
      * 
      */
-    @Export(name="checkUrl", type=String.class, parameters={})
+    @Export(name="checkUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checkUrl;
 
     /**
@@ -127,7 +127,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The name of domain.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -141,7 +141,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Whether to set certificate forcibly.
      * 
      */
-    @Export(name="forceSet", type=String.class, parameters={})
+    @Export(name="forceSet", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> forceSet;
 
     /**
@@ -155,7 +155,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The resource group id.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -169,7 +169,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * the Origin Server Information. See the following `Block sources`.
      * 
      */
-    @Export(name="sources", type=List.class, parameters={DomainSource.class})
+    @Export(name="sources", refs={List.class,DomainSource.class}, tree="[0,1]")
     private Output<List<DomainSource>> sources;
 
     /**
@@ -183,7 +183,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `offline`, `online`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

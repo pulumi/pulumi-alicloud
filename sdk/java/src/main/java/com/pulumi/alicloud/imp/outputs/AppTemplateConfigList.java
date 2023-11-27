@@ -71,10 +71,10 @@ public final class AppTemplateConfigList {
             return this;
         }
         public AppTemplateConfigList build() {
-            final var o = new AppTemplateConfigList();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new AppTemplateConfigList();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

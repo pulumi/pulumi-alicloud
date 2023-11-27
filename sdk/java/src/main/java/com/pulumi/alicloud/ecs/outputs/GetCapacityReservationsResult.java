@@ -268,21 +268,21 @@ public final class GetCapacityReservationsResult {
             return this;
         }
         public GetCapacityReservationsResult build() {
-            final var o = new GetCapacityReservationsResult();
-            o.capacityReservationIds = capacityReservationIds;
-            o.id = id;
-            o.ids = ids;
-            o.instanceType = instanceType;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.paymentType = paymentType;
-            o.platform = platform;
-            o.reservations = reservations;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetCapacityReservationsResult();
+            _resultValue.capacityReservationIds = capacityReservationIds;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceType = instanceType;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.paymentType = paymentType;
+            _resultValue.platform = platform;
+            _resultValue.reservations = reservations;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

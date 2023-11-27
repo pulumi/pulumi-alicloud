@@ -237,19 +237,19 @@ public final class GetDataLimitsLimit {
             return this;
         }
         public GetDataLimitsLimit build() {
-            final var o = new GetDataLimitsLimit();
-            o.auditStatus = auditStatus;
-            o.checkStatus = checkStatus;
-            o.dataLimitId = dataLimitId;
-            o.engineType = engineType;
-            o.id = id;
-            o.localName = localName;
-            o.logStoreDay = logStoreDay;
-            o.parentId = parentId;
-            o.port = port;
-            o.resourceType = resourceType;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetDataLimitsLimit();
+            _resultValue.auditStatus = auditStatus;
+            _resultValue.checkStatus = checkStatus;
+            _resultValue.dataLimitId = dataLimitId;
+            _resultValue.engineType = engineType;
+            _resultValue.id = id;
+            _resultValue.localName = localName;
+            _resultValue.logStoreDay = logStoreDay;
+            _resultValue.parentId = parentId;
+            _resultValue.port = port;
+            _resultValue.resourceType = resourceType;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class RdsCloneDbInstanceParameter {
             return this;
         }
         public RdsCloneDbInstanceParameter build() {
-            final var o = new RdsCloneDbInstanceParameter();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new RdsCloneDbInstanceParameter();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

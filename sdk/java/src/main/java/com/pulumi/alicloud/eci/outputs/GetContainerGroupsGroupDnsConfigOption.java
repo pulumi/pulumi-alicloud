@@ -65,10 +65,10 @@ public final class GetContainerGroupsGroupDnsConfigOption {
             return this;
         }
         public GetContainerGroupsGroupDnsConfigOption build() {
-            final var o = new GetContainerGroupsGroupDnsConfigOption();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetContainerGroupsGroupDnsConfigOption();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

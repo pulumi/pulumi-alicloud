@@ -147,17 +147,17 @@ public final class GetIpv6AddressesResult {
             return this;
         }
         public GetIpv6AddressesResult build() {
-            final var o = new GetIpv6AddressesResult();
-            o.addresses = addresses;
-            o.associatedInstanceId = associatedInstanceId;
-            o.id = id;
-            o.ids = ids;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetIpv6AddressesResult();
+            _resultValue.addresses = addresses;
+            _resultValue.associatedInstanceId = associatedInstanceId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

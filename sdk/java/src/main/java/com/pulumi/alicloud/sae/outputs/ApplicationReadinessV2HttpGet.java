@@ -126,13 +126,13 @@ public final class ApplicationReadinessV2HttpGet {
             return this;
         }
         public ApplicationReadinessV2HttpGet build() {
-            final var o = new ApplicationReadinessV2HttpGet();
-            o.isContainKeyWord = isContainKeyWord;
-            o.keyWord = keyWord;
-            o.path = path;
-            o.port = port;
-            o.scheme = scheme;
-            return o;
+            final var _resultValue = new ApplicationReadinessV2HttpGet();
+            _resultValue.isContainKeyWord = isContainKeyWord;
+            _resultValue.keyWord = keyWord;
+            _resultValue.path = path;
+            _resultValue.port = port;
+            _resultValue.scheme = scheme;
+            return _resultValue;
         }
     }
 }

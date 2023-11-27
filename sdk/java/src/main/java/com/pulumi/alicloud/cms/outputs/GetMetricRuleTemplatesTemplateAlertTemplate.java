@@ -157,15 +157,15 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplate {
             return this;
         }
         public GetMetricRuleTemplatesTemplateAlertTemplate build() {
-            final var o = new GetMetricRuleTemplatesTemplateAlertTemplate();
-            o.category = category;
-            o.escalations = escalations;
-            o.metricName = metricName;
-            o.namespace = namespace;
-            o.ruleName = ruleName;
-            o.selector = selector;
-            o.webhook = webhook;
-            return o;
+            final var _resultValue = new GetMetricRuleTemplatesTemplateAlertTemplate();
+            _resultValue.category = category;
+            _resultValue.escalations = escalations;
+            _resultValue.metricName = metricName;
+            _resultValue.namespace = namespace;
+            _resultValue.ruleName = ruleName;
+            _resultValue.selector = selector;
+            _resultValue.webhook = webhook;
+            return _resultValue;
         }
     }
 }

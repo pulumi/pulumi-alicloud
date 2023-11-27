@@ -122,15 +122,15 @@ public final class GetControlPolicyAttachmentsResult {
             return this;
         }
         public GetControlPolicyAttachmentsResult build() {
-            final var o = new GetControlPolicyAttachmentsResult();
-            o.attachments = attachments;
-            o.id = id;
-            o.ids = ids;
-            o.language = language;
-            o.outputFile = outputFile;
-            o.policyType = policyType;
-            o.targetId = targetId;
-            return o;
+            final var _resultValue = new GetControlPolicyAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.language = language;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policyType = policyType;
+            _resultValue.targetId = targetId;
+            return _resultValue;
         }
     }
 }

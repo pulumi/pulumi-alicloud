@@ -447,31 +447,31 @@ public final class GetDomainsDomain {
             return this;
         }
         public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.aliDomain = aliDomain;
-            o.availableTtls = availableTtls;
-            o.dnsServers = dnsServers;
-            o.domainId = domainId;
-            o.domainName = domainName;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            o.inBlackHole = inBlackHole;
-            o.inClean = inClean;
-            o.instanceId = instanceId;
-            o.lineType = lineType;
-            o.minTtl = minTtl;
-            o.punyCode = punyCode;
-            o.recordLineTreeJson = recordLineTreeJson;
-            o.recordLines = recordLines;
-            o.regionLines = regionLines;
-            o.remark = remark;
-            o.resourceGroupId = resourceGroupId;
-            o.slaveDns = slaveDns;
-            o.tags = tags;
-            o.versionCode = versionCode;
-            o.versionName = versionName;
-            return o;
+            final var _resultValue = new GetDomainsDomain();
+            _resultValue.aliDomain = aliDomain;
+            _resultValue.availableTtls = availableTtls;
+            _resultValue.dnsServers = dnsServers;
+            _resultValue.domainId = domainId;
+            _resultValue.domainName = domainName;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            _resultValue.inBlackHole = inBlackHole;
+            _resultValue.inClean = inClean;
+            _resultValue.instanceId = instanceId;
+            _resultValue.lineType = lineType;
+            _resultValue.minTtl = minTtl;
+            _resultValue.punyCode = punyCode;
+            _resultValue.recordLineTreeJson = recordLineTreeJson;
+            _resultValue.recordLines = recordLines;
+            _resultValue.regionLines = regionLines;
+            _resultValue.remark = remark;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.slaveDns = slaveDns;
+            _resultValue.tags = tags;
+            _resultValue.versionCode = versionCode;
+            _resultValue.versionName = versionName;
+            return _resultValue;
         }
     }
 }

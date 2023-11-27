@@ -137,16 +137,16 @@ public final class GetAddressPoolsResult {
             return pools(List.of(pools));
         }
         public GetAddressPoolsResult build() {
-            final var o = new GetAddressPoolsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pools = pools;
-            return o;
+            final var _resultValue = new GetAddressPoolsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pools = pools;
+            return _resultValue;
         }
     }
 }

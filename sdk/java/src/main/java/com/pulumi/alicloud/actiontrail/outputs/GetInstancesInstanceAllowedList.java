@@ -93,11 +93,11 @@ public final class GetInstancesInstanceAllowedList {
             return vpcLists(List.of(vpcLists));
         }
         public GetInstancesInstanceAllowedList build() {
-            final var o = new GetInstancesInstanceAllowedList();
-            o.deployType = deployType;
-            o.internetLists = internetLists;
-            o.vpcLists = vpcLists;
-            return o;
+            final var _resultValue = new GetInstancesInstanceAllowedList();
+            _resultValue.deployType = deployType;
+            _resultValue.internetLists = internetLists;
+            _resultValue.vpcLists = vpcLists;
+            return _resultValue;
         }
     }
 }

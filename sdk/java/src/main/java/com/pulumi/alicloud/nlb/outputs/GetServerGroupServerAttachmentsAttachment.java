@@ -218,18 +218,18 @@ public final class GetServerGroupServerAttachmentsAttachment {
             return this;
         }
         public GetServerGroupServerAttachmentsAttachment build() {
-            final var o = new GetServerGroupServerAttachmentsAttachment();
-            o.description = description;
-            o.id = id;
-            o.port = port;
-            o.serverGroupId = serverGroupId;
-            o.serverId = serverId;
-            o.serverIp = serverIp;
-            o.serverType = serverType;
-            o.status = status;
-            o.weight = weight;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetServerGroupServerAttachmentsAttachment();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.port = port;
+            _resultValue.serverGroupId = serverGroupId;
+            _resultValue.serverId = serverId;
+            _resultValue.serverIp = serverIp;
+            _resultValue.serverType = serverType;
+            _resultValue.status = status;
+            _resultValue.weight = weight;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

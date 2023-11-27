@@ -84,11 +84,11 @@ public final class GetBlockedRegionsRegion {
             return this;
         }
         public GetBlockedRegionsRegion build() {
-            final var o = new GetBlockedRegionsRegion();
-            o.continent = continent;
-            o.countriesAndRegions = countriesAndRegions;
-            o.countriesAndRegionsName = countriesAndRegionsName;
-            return o;
+            final var _resultValue = new GetBlockedRegionsRegion();
+            _resultValue.continent = continent;
+            _resultValue.countriesAndRegions = countriesAndRegions;
+            _resultValue.countriesAndRegionsName = countriesAndRegionsName;
+            return _resultValue;
         }
     }
 }

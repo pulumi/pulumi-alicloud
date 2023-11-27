@@ -314,23 +314,23 @@ public final class GetAggregateDeliveriesDelivery {
             return this;
         }
         public GetAggregateDeliveriesDelivery build() {
-            final var o = new GetAggregateDeliveriesDelivery();
-            o.accountId = accountId;
-            o.aggregatorId = aggregatorId;
-            o.configurationItemChangeNotification = configurationItemChangeNotification;
-            o.configurationSnapshot = configurationSnapshot;
-            o.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
-            o.deliveryChannelCondition = deliveryChannelCondition;
-            o.deliveryChannelId = deliveryChannelId;
-            o.deliveryChannelName = deliveryChannelName;
-            o.deliveryChannelTargetArn = deliveryChannelTargetArn;
-            o.deliveryChannelType = deliveryChannelType;
-            o.description = description;
-            o.id = id;
-            o.nonCompliantNotification = nonCompliantNotification;
-            o.oversizedDataOssTargetArn = oversizedDataOssTargetArn;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAggregateDeliveriesDelivery();
+            _resultValue.accountId = accountId;
+            _resultValue.aggregatorId = aggregatorId;
+            _resultValue.configurationItemChangeNotification = configurationItemChangeNotification;
+            _resultValue.configurationSnapshot = configurationSnapshot;
+            _resultValue.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
+            _resultValue.deliveryChannelCondition = deliveryChannelCondition;
+            _resultValue.deliveryChannelId = deliveryChannelId;
+            _resultValue.deliveryChannelName = deliveryChannelName;
+            _resultValue.deliveryChannelTargetArn = deliveryChannelTargetArn;
+            _resultValue.deliveryChannelType = deliveryChannelType;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.nonCompliantNotification = nonCompliantNotification;
+            _resultValue.oversizedDataOssTargetArn = oversizedDataOssTargetArn;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

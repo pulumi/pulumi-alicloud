@@ -243,21 +243,21 @@ public final class GetSecurityGroupsResult {
             return this;
         }
         public GetSecurityGroupsResult build() {
-            final var o = new GetSecurityGroupsResult();
-            o.enableDetails = enableDetails;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetSecurityGroupsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            _resultValue.totalCount = totalCount;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

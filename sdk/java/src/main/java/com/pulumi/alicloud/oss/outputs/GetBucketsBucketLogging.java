@@ -65,10 +65,10 @@ public final class GetBucketsBucketLogging {
             return this;
         }
         public GetBucketsBucketLogging build() {
-            final var o = new GetBucketsBucketLogging();
-            o.targetBucket = targetBucket;
-            o.targetPrefix = targetPrefix;
-            return o;
+            final var _resultValue = new GetBucketsBucketLogging();
+            _resultValue.targetBucket = targetBucket;
+            _resultValue.targetPrefix = targetPrefix;
+            return _resultValue;
         }
     }
 }

@@ -160,17 +160,17 @@ public final class GetDiskTypesResult {
             return this;
         }
         public GetDiskTypesResult build() {
-            final var o = new GetDiskTypesResult();
-            o.clusterType = clusterType;
-            o.destinationResource = destinationResource;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceType = instanceType;
-            o.outputFile = outputFile;
-            o.types = types;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetDiskTypesResult();
+            _resultValue.clusterType = clusterType;
+            _resultValue.destinationResource = destinationResource;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.instanceType = instanceType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.types = types;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

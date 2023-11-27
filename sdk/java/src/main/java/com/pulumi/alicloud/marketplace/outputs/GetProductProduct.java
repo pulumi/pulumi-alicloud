@@ -108,12 +108,12 @@ public final class GetProductProduct {
             return skuses(List.of(skuses));
         }
         public GetProductProduct build() {
-            final var o = new GetProductProduct();
-            o.code = code;
-            o.description = description;
-            o.name = name;
-            o.skuses = skuses;
-            return o;
+            final var _resultValue = new GetProductProduct();
+            _resultValue.code = code;
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.skuses = skuses;
+            return _resultValue;
         }
     }
 }

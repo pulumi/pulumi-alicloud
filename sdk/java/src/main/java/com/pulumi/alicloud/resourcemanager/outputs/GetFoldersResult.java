@@ -180,17 +180,17 @@ public final class GetFoldersResult {
             return this;
         }
         public GetFoldersResult build() {
-            final var o = new GetFoldersResult();
-            o.enableDetails = enableDetails;
-            o.folders = folders;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.parentFolderId = parentFolderId;
-            o.queryKeyword = queryKeyword;
-            return o;
+            final var _resultValue = new GetFoldersResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.folders = folders;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.parentFolderId = parentFolderId;
+            _resultValue.queryKeyword = queryKeyword;
+            return _resultValue;
         }
     }
 }

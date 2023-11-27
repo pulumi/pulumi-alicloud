@@ -80,14 +80,14 @@ public final class GroupMetricRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The subject of the alert notification email.                                         .
+     * The subject of the alert notification email.
      * 
      */
     @Import(name="emailSubject")
     private @Nullable Output<String> emailSubject;
 
     /**
-     * @return The subject of the alert notification email.                                         .
+     * @return The subject of the alert notification email.
      * 
      */
     public Optional<Output<String>> emailSubject() {
@@ -415,7 +415,7 @@ public final class GroupMetricRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param emailSubject The subject of the alert notification email.                                         .
+         * @param emailSubject The subject of the alert notification email.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class GroupMetricRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param emailSubject The subject of the alert notification email.                                         .
+         * @param emailSubject The subject of the alert notification email.
          * 
          * @return builder
          * 

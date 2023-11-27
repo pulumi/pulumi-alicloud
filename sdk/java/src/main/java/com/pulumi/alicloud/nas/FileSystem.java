@@ -180,7 +180,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * Unit: gib; **Note**: The minimum value is 100.
      * 
      */
-    @Export(name="capacity", type=Integer.class, parameters={})
+    @Export(name="capacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacity;
 
     /**
@@ -195,7 +195,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The File System description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -210,7 +210,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * * Valid values:
      * 
      */
-    @Export(name="encryptType", type=Integer.class, parameters={})
+    @Export(name="encryptType", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> encryptType;
 
     /**
@@ -229,7 +229,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * `cpfs`.
      * 
      */
-    @Export(name="fileSystemType", type=String.class, parameters={})
+    @Export(name="fileSystemType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fileSystemType;
 
     /**
@@ -247,7 +247,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
      * 
      */
-    @Export(name="kmsKeyId", type=String.class, parameters={})
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output<String> kmsKeyId;
 
     /**
@@ -265,7 +265,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * `cpfs` (Available when the `file_system_type` is `cpfs`).
      * 
      */
-    @Export(name="protocolType", type=String.class, parameters={})
+    @Export(name="protocolType", refs={String.class}, tree="[0]")
     private Output<String> protocolType;
 
     /**
@@ -284,7 +284,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * * Valid values:
      * 
      */
-    @Export(name="storageType", type=String.class, parameters={})
+    @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
@@ -299,7 +299,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -313,7 +313,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
@@ -327,7 +327,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -341,7 +341,7 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

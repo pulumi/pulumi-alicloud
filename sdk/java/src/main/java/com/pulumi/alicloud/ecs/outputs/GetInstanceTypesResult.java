@@ -308,28 +308,28 @@ public final class GetInstanceTypesResult {
             return this;
         }
         public GetInstanceTypesResult build() {
-            final var o = new GetInstanceTypesResult();
-            o.availabilityZone = availabilityZone;
-            o.cpuCoreCount = cpuCoreCount;
-            o.eniAmount = eniAmount;
-            o.gpuAmount = gpuAmount;
-            o.gpuSpec = gpuSpec;
-            o.id = id;
-            o.ids = ids;
-            o.imageId = imageId;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceTypeFamily = instanceTypeFamily;
-            o.instanceTypes = instanceTypes;
-            o.isOutdated = isOutdated;
-            o.kubernetesNodeRole = kubernetesNodeRole;
-            o.memorySize = memorySize;
-            o.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.sortedBy = sortedBy;
-            o.spotStrategy = spotStrategy;
-            o.systemDiskCategory = systemDiskCategory;
-            return o;
+            final var _resultValue = new GetInstanceTypesResult();
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.cpuCoreCount = cpuCoreCount;
+            _resultValue.eniAmount = eniAmount;
+            _resultValue.gpuAmount = gpuAmount;
+            _resultValue.gpuSpec = gpuSpec;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.imageId = imageId;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.instanceTypeFamily = instanceTypeFamily;
+            _resultValue.instanceTypes = instanceTypes;
+            _resultValue.isOutdated = isOutdated;
+            _resultValue.kubernetesNodeRole = kubernetesNodeRole;
+            _resultValue.memorySize = memorySize;
+            _resultValue.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
+            _resultValue.networkType = networkType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sortedBy = sortedBy;
+            _resultValue.spotStrategy = spotStrategy;
+            _resultValue.systemDiskCategory = systemDiskCategory;
+            return _resultValue;
         }
     }
 }

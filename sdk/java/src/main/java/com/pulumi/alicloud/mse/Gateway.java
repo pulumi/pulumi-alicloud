@@ -40,7 +40,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The backup vswitch id.
      * 
      */
-    @Export(name="backupVswitchId", type=String.class, parameters={})
+    @Export(name="backupVswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupVswitchId;
 
     /**
@@ -54,7 +54,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Whether to delete the SLB purchased on behalf of the gateway at the same time.
      * 
      */
-    @Export(name="deleteSlb", type=Boolean.class, parameters={})
+    @Export(name="deleteSlb", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteSlb;
 
     /**
@@ -68,7 +68,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Whether the enterprise security group type.
      * 
      */
-    @Export(name="enterpriseSecurityGroup", type=Boolean.class, parameters={})
+    @Export(name="enterpriseSecurityGroup", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enterpriseSecurityGroup;
 
     /**
@@ -82,7 +82,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The name of the Gateway .
      * 
      */
-    @Export(name="gatewayName", type=String.class, parameters={})
+    @Export(name="gatewayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayName;
 
     /**
@@ -96,7 +96,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Public network SLB specifications.
      * 
      */
-    @Export(name="internetSlbSpec", type=String.class, parameters={})
+    @Export(name="internetSlbSpec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetSlbSpec;
 
     /**
@@ -110,7 +110,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Number of Gateway Nodes.
      * 
      */
-    @Export(name="replica", type=Integer.class, parameters={})
+    @Export(name="replica", refs={Integer.class}, tree="[0]")
     private Output<Integer> replica;
 
     /**
@@ -124,7 +124,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * A list of gateway Slb.
      * 
      */
-    @Export(name="slbLists", type=List.class, parameters={GatewaySlbList.class})
+    @Export(name="slbLists", refs={List.class,GatewaySlbList.class}, tree="[0,1]")
     private Output<List<GatewaySlbList>> slbLists;
 
     /**
@@ -138,7 +138,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Private network SLB specifications.
      * 
      */
-    @Export(name="slbSpec", type=String.class, parameters={})
+    @Export(name="slbSpec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slbSpec;
 
     /**
@@ -152,7 +152,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
      * 
      */
-    @Export(name="spec", type=String.class, parameters={})
+    @Export(name="spec", refs={String.class}, tree="[0]")
     private Output<String> spec;
 
     /**
@@ -166,7 +166,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The status of the gateway.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -180,7 +180,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The ID of the vpc.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -194,7 +194,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The ID of the vswitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

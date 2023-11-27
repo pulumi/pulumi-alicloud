@@ -567,36 +567,36 @@ public final class GetSubscriptionJobsJob {
             return this;
         }
         public GetSubscriptionJobsJob build() {
-            final var o = new GetSubscriptionJobsJob();
-            o.checkpoint = checkpoint;
-            o.createTime = createTime;
-            o.dbList = dbList;
-            o.dtsInstanceId = dtsInstanceId;
-            o.dtsJobId = dtsJobId;
-            o.dtsJobName = dtsJobName;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.paymentType = paymentType;
-            o.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
-            o.sourceEndpointEngineName = sourceEndpointEngineName;
-            o.sourceEndpointInstanceId = sourceEndpointInstanceId;
-            o.sourceEndpointInstanceType = sourceEndpointInstanceType;
-            o.sourceEndpointIp = sourceEndpointIp;
-            o.sourceEndpointOracleSid = sourceEndpointOracleSid;
-            o.sourceEndpointOwnerId = sourceEndpointOwnerId;
-            o.sourceEndpointPort = sourceEndpointPort;
-            o.sourceEndpointRegion = sourceEndpointRegion;
-            o.sourceEndpointRole = sourceEndpointRole;
-            o.sourceEndpointUserName = sourceEndpointUserName;
-            o.status = status;
-            o.subscriptionDataTypeDdl = subscriptionDataTypeDdl;
-            o.subscriptionDataTypeDml = subscriptionDataTypeDml;
-            o.subscriptionHosts = subscriptionHosts;
-            o.subscriptionInstanceNetworkType = subscriptionInstanceNetworkType;
-            o.subscriptionInstanceVpcId = subscriptionInstanceVpcId;
-            o.subscriptionInstanceVswitchId = subscriptionInstanceVswitchId;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetSubscriptionJobsJob();
+            _resultValue.checkpoint = checkpoint;
+            _resultValue.createTime = createTime;
+            _resultValue.dbList = dbList;
+            _resultValue.dtsInstanceId = dtsInstanceId;
+            _resultValue.dtsJobId = dtsJobId;
+            _resultValue.dtsJobName = dtsJobName;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.paymentType = paymentType;
+            _resultValue.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
+            _resultValue.sourceEndpointEngineName = sourceEndpointEngineName;
+            _resultValue.sourceEndpointInstanceId = sourceEndpointInstanceId;
+            _resultValue.sourceEndpointInstanceType = sourceEndpointInstanceType;
+            _resultValue.sourceEndpointIp = sourceEndpointIp;
+            _resultValue.sourceEndpointOracleSid = sourceEndpointOracleSid;
+            _resultValue.sourceEndpointOwnerId = sourceEndpointOwnerId;
+            _resultValue.sourceEndpointPort = sourceEndpointPort;
+            _resultValue.sourceEndpointRegion = sourceEndpointRegion;
+            _resultValue.sourceEndpointRole = sourceEndpointRole;
+            _resultValue.sourceEndpointUserName = sourceEndpointUserName;
+            _resultValue.status = status;
+            _resultValue.subscriptionDataTypeDdl = subscriptionDataTypeDdl;
+            _resultValue.subscriptionDataTypeDml = subscriptionDataTypeDml;
+            _resultValue.subscriptionHosts = subscriptionHosts;
+            _resultValue.subscriptionInstanceNetworkType = subscriptionInstanceNetworkType;
+            _resultValue.subscriptionInstanceVpcId = subscriptionInstanceVpcId;
+            _resultValue.subscriptionInstanceVswitchId = subscriptionInstanceVswitchId;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

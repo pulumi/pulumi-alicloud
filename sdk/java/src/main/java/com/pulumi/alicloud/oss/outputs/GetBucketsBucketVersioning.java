@@ -46,9 +46,9 @@ public final class GetBucketsBucketVersioning {
             return this;
         }
         public GetBucketsBucketVersioning build() {
-            final var o = new GetBucketsBucketVersioning();
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBucketsBucketVersioning();
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

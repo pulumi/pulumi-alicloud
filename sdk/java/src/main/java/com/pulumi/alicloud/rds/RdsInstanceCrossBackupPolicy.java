@@ -122,7 +122,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * - Enable
      * 
      */
-    @Export(name="backupEnabled", type=String.class, parameters={})
+    @Export(name="backupEnabled", refs={String.class}, tree="[0]")
     private Output<String> backupEnabled;
 
     /**
@@ -138,7 +138,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * The time when cross-region backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    @Export(name="backupEnabledTime", type=String.class, parameters={})
+    @Export(name="backupEnabledTime", refs={String.class}, tree="[0]")
     private Output<String> backupEnabledTime;
 
     /**
@@ -152,7 +152,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * The ID of the destination region where the cross-region backup files of the instance are stored.
      * 
      */
-    @Export(name="crossBackupRegion", type=String.class, parameters={})
+    @Export(name="crossBackupRegion", refs={String.class}, tree="[0]")
     private Output<String> crossBackupRegion;
 
     /**
@@ -166,7 +166,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * The policy that is used to save cross-region backups of the instance. Default value: 1. The default value 1 indicates that all cross-region backups are saved.
      * 
      */
-    @Export(name="crossBackupType", type=String.class, parameters={})
+    @Export(name="crossBackupType", refs={String.class}, tree="[0]")
     private Output<String> crossBackupType;
 
     /**
@@ -180,7 +180,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * The state of the instance. For more information, see Instance status.
      * 
      */
-    @Export(name="dbInstanceStatus", type=String.class, parameters={})
+    @Export(name="dbInstanceStatus", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceStatus;
 
     /**
@@ -194,7 +194,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -213,7 +213,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * - LockByDiskQuota: The instance is automatically locked because its storage space is exhausted. In this situation, the instance is inaccessible.
      * 
      */
-    @Export(name="lockMode", type=String.class, parameters={})
+    @Export(name="lockMode", refs={String.class}, tree="[0]")
     private Output<String> lockMode;
 
     /**
@@ -234,7 +234,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * - Disabled: Disables the feature.
      * 
      */
-    @Export(name="logBackupEnabled", type=String.class, parameters={})
+    @Export(name="logBackupEnabled", refs={String.class}, tree="[0]")
     private Output<String> logBackupEnabled;
 
     /**
@@ -250,7 +250,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * The time when cross-region log backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    @Export(name="logBackupEnabledTime", type=String.class, parameters={})
+    @Export(name="logBackupEnabledTime", refs={String.class}, tree="[0]")
     private Output<String> logBackupEnabledTime;
 
     /**
@@ -264,7 +264,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * The policy that is used to retain cross-region backups of the instance. Default value: 1. The default value 1 indicate that cross-region backups are retained based on the specified retention period.
      * 
      */
-    @Export(name="retentType", type=String.class, parameters={})
+    @Export(name="retentType", refs={String.class}, tree="[0]")
     private Output<String> retentType;
 
     /**
@@ -278,7 +278,7 @@ public class RdsInstanceCrossBackupPolicy extends com.pulumi.resources.CustomRes
      * The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
      * 
      */
-    @Export(name="retention", type=Integer.class, parameters={})
+    @Export(name="retention", refs={Integer.class}, tree="[0]")
     private Output<Integer> retention;
 
     /**

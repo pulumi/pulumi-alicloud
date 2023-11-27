@@ -163,15 +163,15 @@ public final class ClusterNodeAttribute {
             return this;
         }
         public ClusterNodeAttribute build() {
-            final var o = new ClusterNodeAttribute();
-            o.dataDiskEncrypted = dataDiskEncrypted;
-            o.dataDiskKmsKeyId = dataDiskKmsKeyId;
-            o.keyPairName = keyPairName;
-            o.ramRole = ramRole;
-            o.securityGroupId = securityGroupId;
-            o.vpcId = vpcId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new ClusterNodeAttribute();
+            _resultValue.dataDiskEncrypted = dataDiskEncrypted;
+            _resultValue.dataDiskKmsKeyId = dataDiskKmsKeyId;
+            _resultValue.keyPairName = keyPairName;
+            _resultValue.ramRole = ramRole;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

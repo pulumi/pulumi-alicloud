@@ -208,16 +208,16 @@ public final class GetRulesRuleRuleCondition {
             return this;
         }
         public GetRulesRuleRuleCondition build() {
-            final var o = new GetRulesRuleRuleCondition();
-            o.cookieConfigs = cookieConfigs;
-            o.headerConfigs = headerConfigs;
-            o.hostConfigs = hostConfigs;
-            o.methodConfigs = methodConfigs;
-            o.pathConfigs = pathConfigs;
-            o.queryStringConfigs = queryStringConfigs;
-            o.sourceIpConfigs = sourceIpConfigs;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleCondition();
+            _resultValue.cookieConfigs = cookieConfigs;
+            _resultValue.headerConfigs = headerConfigs;
+            _resultValue.hostConfigs = hostConfigs;
+            _resultValue.methodConfigs = methodConfigs;
+            _resultValue.pathConfigs = pathConfigs;
+            _resultValue.queryStringConfigs = queryStringConfigs;
+            _resultValue.sourceIpConfigs = sourceIpConfigs;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

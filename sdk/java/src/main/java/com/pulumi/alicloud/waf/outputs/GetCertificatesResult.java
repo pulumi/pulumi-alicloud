@@ -136,16 +136,16 @@ public final class GetCertificatesResult {
             return this;
         }
         public GetCertificatesResult build() {
-            final var o = new GetCertificatesResult();
-            o.certificates = certificates;
-            o.domain = domain;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetCertificatesResult();
+            _resultValue.certificates = certificates;
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

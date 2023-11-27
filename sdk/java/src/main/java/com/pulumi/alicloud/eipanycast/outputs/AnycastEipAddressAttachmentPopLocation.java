@@ -48,9 +48,9 @@ public final class AnycastEipAddressAttachmentPopLocation {
             return this;
         }
         public AnycastEipAddressAttachmentPopLocation build() {
-            final var o = new AnycastEipAddressAttachmentPopLocation();
-            o.popLocation = popLocation;
-            return o;
+            final var _resultValue = new AnycastEipAddressAttachmentPopLocation();
+            _resultValue.popLocation = popLocation;
+            return _resultValue;
         }
     }
 }

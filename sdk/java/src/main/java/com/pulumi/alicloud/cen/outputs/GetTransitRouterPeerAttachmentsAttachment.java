@@ -295,22 +295,22 @@ public final class GetTransitRouterPeerAttachmentsAttachment {
             return this;
         }
         public GetTransitRouterPeerAttachmentsAttachment build() {
-            final var o = new GetTransitRouterPeerAttachmentsAttachment();
-            o.autoPublishRouteEnabled = autoPublishRouteEnabled;
-            o.bandwidth = bandwidth;
-            o.cenBandwidthPackageId = cenBandwidthPackageId;
-            o.geographicSpanId = geographicSpanId;
-            o.id = id;
-            o.peerTransitRouterId = peerTransitRouterId;
-            o.peerTransitRouterOwnerId = peerTransitRouterOwnerId;
-            o.peerTransitRouterRegionId = peerTransitRouterRegionId;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterAttachmentName = transitRouterAttachmentName;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetTransitRouterPeerAttachmentsAttachment();
+            _resultValue.autoPublishRouteEnabled = autoPublishRouteEnabled;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.cenBandwidthPackageId = cenBandwidthPackageId;
+            _resultValue.geographicSpanId = geographicSpanId;
+            _resultValue.id = id;
+            _resultValue.peerTransitRouterId = peerTransitRouterId;
+            _resultValue.peerTransitRouterOwnerId = peerTransitRouterOwnerId;
+            _resultValue.peerTransitRouterRegionId = peerTransitRouterRegionId;
+            _resultValue.resourceType = resourceType;
+            _resultValue.status = status;
+            _resultValue.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterAttachmentName = transitRouterAttachmentName;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

@@ -79,7 +79,7 @@ public class AlertContactGroup extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="alertContactGroupName", type=String.class, parameters={})
+    @Export(name="alertContactGroupName", refs={String.class}, tree="[0]")
     private Output<String> alertContactGroupName;
 
     /**
@@ -93,7 +93,7 @@ public class AlertContactGroup extends com.pulumi.resources.CustomResource {
      * The list id of alert contact.
      * 
      */
-    @Export(name="contactIds", type=List.class, parameters={String.class})
+    @Export(name="contactIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> contactIds;
 
     /**

@@ -108,12 +108,12 @@ public final class ConnectionAuthParameters {
             return this;
         }
         public ConnectionAuthParameters build() {
-            final var o = new ConnectionAuthParameters();
-            o.apiKeyAuthParameters = apiKeyAuthParameters;
-            o.authorizationType = authorizationType;
-            o.basicAuthParameters = basicAuthParameters;
-            o.oauthParameters = oauthParameters;
-            return o;
+            final var _resultValue = new ConnectionAuthParameters();
+            _resultValue.apiKeyAuthParameters = apiKeyAuthParameters;
+            _resultValue.authorizationType = authorizationType;
+            _resultValue.basicAuthParameters = basicAuthParameters;
+            _resultValue.oauthParameters = oauthParameters;
+            return _resultValue;
         }
     }
 }

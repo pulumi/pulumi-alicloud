@@ -103,12 +103,12 @@ public final class GetNamespacesNamespace {
             return this;
         }
         public GetNamespacesNamespace build() {
-            final var o = new GetNamespacesNamespace();
-            o.description = description;
-            o.id = id;
-            o.namespaceId = namespaceId;
-            o.namespaceName = namespaceName;
-            return o;
+            final var _resultValue = new GetNamespacesNamespace();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.namespaceName = namespaceName;
+            return _resultValue;
         }
     }
 }

@@ -103,12 +103,12 @@ public final class GetAgentsAgent {
             return this;
         }
         public GetAgentsAgent build() {
-            final var o = new GetAgentsAgent();
-            o.agentId = agentId;
-            o.agentKey = agentKey;
-            o.agentName = agentName;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetAgentsAgent();
+            _resultValue.agentId = agentId;
+            _resultValue.agentKey = agentKey;
+            _resultValue.agentName = agentName;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

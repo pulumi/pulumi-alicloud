@@ -84,7 +84,7 @@ public class DynamicTagGroup extends com.pulumi.resources.CustomResource {
      * Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
      * 
      */
-    @Export(name="contactGroupLists", type=List.class, parameters={String.class})
+    @Export(name="contactGroupLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> contactGroupLists;
 
     /**
@@ -98,7 +98,7 @@ public class DynamicTagGroup extends com.pulumi.resources.CustomResource {
      * The relationship between conditional expressions. Valid values: `and`, `or`.
      * 
      */
-    @Export(name="matchExpressFilterRelation", type=String.class, parameters={})
+    @Export(name="matchExpressFilterRelation", refs={String.class}, tree="[0]")
     private Output<String> matchExpressFilterRelation;
 
     /**
@@ -112,7 +112,7 @@ public class DynamicTagGroup extends com.pulumi.resources.CustomResource {
      * The label generates a matching expression that applies the grouping. See `match_express` below.
      * 
      */
-    @Export(name="matchExpresses", type=List.class, parameters={DynamicTagGroupMatchExpress.class})
+    @Export(name="matchExpresses", refs={List.class,DynamicTagGroupMatchExpress.class}, tree="[0,1]")
     private Output<List<DynamicTagGroupMatchExpress>> matchExpresses;
 
     /**
@@ -126,7 +126,7 @@ public class DynamicTagGroup extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `RUNNING`, `FINISH`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -140,7 +140,7 @@ public class DynamicTagGroup extends com.pulumi.resources.CustomResource {
      * The tag key of the tag.
      * 
      */
-    @Export(name="tagKey", type=String.class, parameters={})
+    @Export(name="tagKey", refs={String.class}, tree="[0]")
     private Output<String> tagKey;
 
     /**
@@ -154,7 +154,7 @@ public class DynamicTagGroup extends com.pulumi.resources.CustomResource {
      * Alarm template ID list.
      * 
      */
-    @Export(name="templateIdLists", type=List.class, parameters={String.class})
+    @Export(name="templateIdLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> templateIdLists;
 
     /**

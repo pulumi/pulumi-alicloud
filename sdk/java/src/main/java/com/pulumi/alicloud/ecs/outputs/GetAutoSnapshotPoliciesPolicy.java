@@ -288,21 +288,21 @@ public final class GetAutoSnapshotPoliciesPolicy {
             return this;
         }
         public GetAutoSnapshotPoliciesPolicy build() {
-            final var o = new GetAutoSnapshotPoliciesPolicy();
-            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
-            o.copiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
-            o.diskNums = diskNums;
-            o.enableCrossRegionCopy = enableCrossRegionCopy;
-            o.id = id;
-            o.name = name;
-            o.repeatWeekdays = repeatWeekdays;
-            o.retentionDays = retentionDays;
-            o.status = status;
-            o.tags = tags;
-            o.targetCopyRegions = targetCopyRegions;
-            o.timePoints = timePoints;
-            o.volumeNums = volumeNums;
-            return o;
+            final var _resultValue = new GetAutoSnapshotPoliciesPolicy();
+            _resultValue.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            _resultValue.copiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
+            _resultValue.diskNums = diskNums;
+            _resultValue.enableCrossRegionCopy = enableCrossRegionCopy;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.repeatWeekdays = repeatWeekdays;
+            _resultValue.retentionDays = retentionDays;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.targetCopyRegions = targetCopyRegions;
+            _resultValue.timePoints = timePoints;
+            _resultValue.volumeNums = volumeNums;
+            return _resultValue;
         }
     }
 }

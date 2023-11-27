@@ -78,11 +78,11 @@ public final class GetPermissionResult {
             return this;
         }
         public GetPermissionResult build() {
-            final var o = new GetPermissionResult();
-            o.enable = enable;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetPermissionResult();
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

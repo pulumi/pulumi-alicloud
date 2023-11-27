@@ -36,7 +36,7 @@ public class ExpressSync extends com.pulumi.resources.CustomResource {
      * The name of the OSS Bucket.
      * 
      */
-    @Export(name="bucketName", type=String.class, parameters={})
+    @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
     /**
@@ -50,7 +50,7 @@ public class ExpressSync extends com.pulumi.resources.CustomResource {
      * The prefix of the OSS Bucket.
      * 
      */
-    @Export(name="bucketPrefix", type=String.class, parameters={})
+    @Export(name="bucketPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bucketPrefix;
 
     /**
@@ -64,7 +64,7 @@ public class ExpressSync extends com.pulumi.resources.CustomResource {
      * The region of the OSS Bucket.
      * 
      */
-    @Export(name="bucketRegion", type=String.class, parameters={})
+    @Export(name="bucketRegion", refs={String.class}, tree="[0]")
     private Output<String> bucketRegion;
 
     /**
@@ -78,7 +78,7 @@ public class ExpressSync extends com.pulumi.resources.CustomResource {
      * The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -92,7 +92,7 @@ public class ExpressSync extends com.pulumi.resources.CustomResource {
      * The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
      * 
      */
-    @Export(name="expressSyncName", type=String.class, parameters={})
+    @Export(name="expressSyncName", refs={String.class}, tree="[0]")
     private Output<String> expressSyncName;
 
     /**

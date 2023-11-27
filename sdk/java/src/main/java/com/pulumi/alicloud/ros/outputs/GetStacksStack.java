@@ -378,26 +378,26 @@ public final class GetStacksStack {
             return this;
         }
         public GetStacksStack build() {
-            final var o = new GetStacksStack();
-            o.deletionProtection = deletionProtection;
-            o.description = description;
-            o.disableRollback = disableRollback;
-            o.driftDetectionTime = driftDetectionTime;
-            o.id = id;
-            o.parameters = parameters;
-            o.parentStackId = parentStackId;
-            o.ramRoleName = ramRoleName;
-            o.rootStackId = rootStackId;
-            o.stackDriftStatus = stackDriftStatus;
-            o.stackId = stackId;
-            o.stackName = stackName;
-            o.stackPolicyBody = stackPolicyBody;
-            o.status = status;
-            o.statusReason = statusReason;
-            o.tags = tags;
-            o.templateDescription = templateDescription;
-            o.timeoutInMinutes = timeoutInMinutes;
-            return o;
+            final var _resultValue = new GetStacksStack();
+            _resultValue.deletionProtection = deletionProtection;
+            _resultValue.description = description;
+            _resultValue.disableRollback = disableRollback;
+            _resultValue.driftDetectionTime = driftDetectionTime;
+            _resultValue.id = id;
+            _resultValue.parameters = parameters;
+            _resultValue.parentStackId = parentStackId;
+            _resultValue.ramRoleName = ramRoleName;
+            _resultValue.rootStackId = rootStackId;
+            _resultValue.stackDriftStatus = stackDriftStatus;
+            _resultValue.stackId = stackId;
+            _resultValue.stackName = stackName;
+            _resultValue.stackPolicyBody = stackPolicyBody;
+            _resultValue.status = status;
+            _resultValue.statusReason = statusReason;
+            _resultValue.tags = tags;
+            _resultValue.templateDescription = templateDescription;
+            _resultValue.timeoutInMinutes = timeoutInMinutes;
+            return _resultValue;
         }
     }
 }

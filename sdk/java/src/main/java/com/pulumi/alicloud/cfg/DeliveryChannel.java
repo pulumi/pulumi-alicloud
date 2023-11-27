@@ -30,7 +30,7 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
      * The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
      * 
      */
-    @Export(name="deliveryChannelAssumeRoleArn", type=String.class, parameters={})
+    @Export(name="deliveryChannelAssumeRoleArn", refs={String.class}, tree="[0]")
     private Output<String> deliveryChannelAssumeRoleArn;
 
     /**
@@ -44,7 +44,7 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
      * The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
      * 
      */
-    @Export(name="deliveryChannelCondition", type=String.class, parameters={})
+    @Export(name="deliveryChannelCondition", refs={String.class}, tree="[0]")
     private Output<String> deliveryChannelCondition;
 
     /**
@@ -58,7 +58,7 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
      * The name of the delivery channel.
      * 
      */
-    @Export(name="deliveryChannelName", type=String.class, parameters={})
+    @Export(name="deliveryChannelName", refs={String.class}, tree="[0]")
     private Output<String> deliveryChannelName;
 
     /**
@@ -75,7 +75,7 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
      * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      * 
      */
-    @Export(name="deliveryChannelTargetArn", type=String.class, parameters={})
+    @Export(name="deliveryChannelTargetArn", refs={String.class}, tree="[0]")
     private Output<String> deliveryChannelTargetArn;
 
     /**
@@ -92,7 +92,7 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
      * The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
      * 
      */
-    @Export(name="deliveryChannelType", type=String.class, parameters={})
+    @Export(name="deliveryChannelType", refs={String.class}, tree="[0]")
     private Output<String> deliveryChannelType;
 
     /**
@@ -106,7 +106,7 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
      * The description of the delivery method.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -120,7 +120,7 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
      * The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**

@@ -104,12 +104,12 @@ public final class GetInstancesInstanceShard {
             return this;
         }
         public GetInstancesInstanceShard build() {
-            final var o = new GetInstancesInstanceShard();
-            o.class_ = class_;
-            o.description = description;
-            o.nodeId = nodeId;
-            o.storage = storage;
-            return o;
+            final var _resultValue = new GetInstancesInstanceShard();
+            _resultValue.class_ = class_;
+            _resultValue.description = description;
+            _resultValue.nodeId = nodeId;
+            _resultValue.storage = storage;
+            return _resultValue;
         }
     }
 }

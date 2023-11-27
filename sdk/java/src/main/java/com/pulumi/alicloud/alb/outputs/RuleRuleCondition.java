@@ -188,16 +188,16 @@ public final class RuleRuleCondition {
             return this;
         }
         public RuleRuleCondition build() {
-            final var o = new RuleRuleCondition();
-            o.cookieConfig = cookieConfig;
-            o.headerConfig = headerConfig;
-            o.hostConfig = hostConfig;
-            o.methodConfig = methodConfig;
-            o.pathConfig = pathConfig;
-            o.queryStringConfig = queryStringConfig;
-            o.sourceIpConfig = sourceIpConfig;
-            o.type = type;
-            return o;
+            final var _resultValue = new RuleRuleCondition();
+            _resultValue.cookieConfig = cookieConfig;
+            _resultValue.headerConfig = headerConfig;
+            _resultValue.hostConfig = hostConfig;
+            _resultValue.methodConfig = methodConfig;
+            _resultValue.pathConfig = pathConfig;
+            _resultValue.queryStringConfig = queryStringConfig;
+            _resultValue.sourceIpConfig = sourceIpConfig;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

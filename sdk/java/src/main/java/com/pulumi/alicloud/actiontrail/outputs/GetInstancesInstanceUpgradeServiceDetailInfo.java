@@ -46,9 +46,9 @@ public final class GetInstancesInstanceUpgradeServiceDetailInfo {
             return this;
         }
         public GetInstancesInstanceUpgradeServiceDetailInfo build() {
-            final var o = new GetInstancesInstanceUpgradeServiceDetailInfo();
-            o.current2OpenSourceVersion = current2OpenSourceVersion;
-            return o;
+            final var _resultValue = new GetInstancesInstanceUpgradeServiceDetailInfo();
+            _resultValue.current2OpenSourceVersion = current2OpenSourceVersion;
+            return _resultValue;
         }
     }
 }

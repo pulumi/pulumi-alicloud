@@ -81,7 +81,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * Permission group name.
      * 
      */
-    @Export(name="accessGroupName", type=String.class, parameters={})
+    @Export(name="accessGroupName", refs={String.class}, tree="[0]")
     private Output<String> accessGroupName;
 
     /**
@@ -95,7 +95,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The nas access rule ID.
      * 
      */
-    @Export(name="accessRuleId", type=String.class, parameters={})
+    @Export(name="accessRuleId", refs={String.class}, tree="[0]")
     private Output<String> accessRuleId;
 
     /**
@@ -109,7 +109,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * Priority level. Range: 1-100. Default value: `1`.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -123,7 +123,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * Read-write permission type: `RDWR` (default), `RDONLY`.
      * 
      */
-    @Export(name="rwAccessType", type=String.class, parameters={})
+    @Export(name="rwAccessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rwAccessType;
 
     /**
@@ -137,7 +137,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * Address or address segment.
      * 
      */
-    @Export(name="sourceCidrIp", type=String.class, parameters={})
+    @Export(name="sourceCidrIp", refs={String.class}, tree="[0]")
     private Output<String> sourceCidrIp;
 
     /**
@@ -151,7 +151,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * User permission type: `no_squash` (default), `root_squash`, `all_squash`.
      * 
      */
-    @Export(name="userAccessType", type=String.class, parameters={})
+    @Export(name="userAccessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userAccessType;
 
     /**

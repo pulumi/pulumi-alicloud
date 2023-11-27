@@ -194,21 +194,21 @@ public final class GetMonitorGroupsResult {
             return this;
         }
         public GetMonitorGroupsResult build() {
-            final var o = new GetMonitorGroupsResult();
-            o.dynamicTagRuleId = dynamicTagRuleId;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.includeTemplateHistory = includeTemplateHistory;
-            o.keyword = keyword;
-            o.monitorGroupName = monitorGroupName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.selectContactGroups = selectContactGroups;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetMonitorGroupsResult();
+            _resultValue.dynamicTagRuleId = dynamicTagRuleId;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.includeTemplateHistory = includeTemplateHistory;
+            _resultValue.keyword = keyword;
+            _resultValue.monitorGroupName = monitorGroupName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.selectContactGroups = selectContactGroups;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -187,17 +187,17 @@ public final class GetTransitRouteTableAggregationsResult {
             return this;
         }
         public GetTransitRouteTableAggregationsResult build() {
-            final var o = new GetTransitRouteTableAggregationsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
-            o.transitRouteTableAggregations = transitRouteTableAggregations;
-            o.transitRouteTableId = transitRouteTableId;
-            return o;
+            final var _resultValue = new GetTransitRouteTableAggregationsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
+            _resultValue.transitRouteTableAggregations = transitRouteTableAggregations;
+            _resultValue.transitRouteTableId = transitRouteTableId;
+            return _resultValue;
         }
     }
 }

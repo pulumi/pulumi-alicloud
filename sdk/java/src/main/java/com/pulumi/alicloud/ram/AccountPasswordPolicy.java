@@ -97,7 +97,7 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
      * Specifies if a password can expire in a hard way. Default to false.
      * 
      */
-    @Export(name="hardExpiry", type=Boolean.class, parameters={})
+    @Export(name="hardExpiry", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hardExpiry;
 
     /**
@@ -111,7 +111,7 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
      * Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
      * 
      */
-    @Export(name="maxLoginAttempts", type=Integer.class, parameters={})
+    @Export(name="maxLoginAttempts", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxLoginAttempts;
 
     /**
@@ -125,7 +125,7 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
      * The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
      * 
      */
-    @Export(name="maxPasswordAge", type=Integer.class, parameters={})
+    @Export(name="maxPasswordAge", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxPasswordAge;
 
     /**
@@ -139,7 +139,7 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
      * Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
      * 
      */
-    @Export(name="minimumPasswordLength", type=Integer.class, parameters={})
+    @Export(name="minimumPasswordLength", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minimumPasswordLength;
 
     /**
@@ -153,7 +153,7 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
      * User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
      * 
      */
-    @Export(name="passwordReusePrevention", type=Integer.class, parameters={})
+    @Export(name="passwordReusePrevention", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> passwordReusePrevention;
 
     /**
@@ -167,7 +167,7 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
      * Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
      * 
      */
-    @Export(name="requireLowercaseCharacters", type=Boolean.class, parameters={})
+    @Export(name="requireLowercaseCharacters", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> requireLowercaseCharacters;
 
     /**
@@ -181,7 +181,7 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
      * Specifies if the occurrence of a number in the password is mandatory. Default to true.
      * 
      */
-    @Export(name="requireNumbers", type=Boolean.class, parameters={})
+    @Export(name="requireNumbers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> requireNumbers;
 
     /**
@@ -195,7 +195,7 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
      * Specifies if the occurrence of a special character in the password is mandatory. Default to true.
      * 
      */
-    @Export(name="requireSymbols", type=Boolean.class, parameters={})
+    @Export(name="requireSymbols", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> requireSymbols;
 
     /**
@@ -209,7 +209,7 @@ public class AccountPasswordPolicy extends com.pulumi.resources.CustomResource {
      * Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
      * 
      */
-    @Export(name="requireUppercaseCharacters", type=Boolean.class, parameters={})
+    @Export(name="requireUppercaseCharacters", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> requireUppercaseCharacters;
 
     /**

@@ -90,11 +90,11 @@ public final class ErEnvConfPresetCanaryOverseas {
             return this;
         }
         public ErEnvConfPresetCanaryOverseas build() {
-            final var o = new ErEnvConfPresetCanaryOverseas();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfPresetCanaryOverseas();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

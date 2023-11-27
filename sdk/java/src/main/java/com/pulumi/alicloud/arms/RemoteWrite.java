@@ -129,7 +129,7 @@ public class RemoteWrite extends com.pulumi.resources.CustomResource {
      * The ID of the Prometheus instance.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -143,7 +143,7 @@ public class RemoteWrite extends com.pulumi.resources.CustomResource {
      * The name of the Remote Write configuration item.
      * 
      */
-    @Export(name="remoteWriteName", type=String.class, parameters={})
+    @Export(name="remoteWriteName", refs={String.class}, tree="[0]")
     private Output<String> remoteWriteName;
 
     /**
@@ -157,7 +157,7 @@ public class RemoteWrite extends com.pulumi.resources.CustomResource {
      * The details of the Remote Write configuration item. Specify the value in the YAML format.
      * 
      */
-    @Export(name="remoteWriteYaml", type=String.class, parameters={})
+    @Export(name="remoteWriteYaml", refs={String.class}, tree="[0]")
     private Output<String> remoteWriteYaml;
 
     /**

@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.183.0+ .
+// > **NOTE:** Available in v1.183.0+ .
 //
 // ## Example Usage
 //
@@ -24,19 +24,38 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ddos.GetDdosBgpInstances(ctx, &ddos.GetDdosBgpInstancesArgs{
-//				NameRegex: pulumi.StringRef("^ddosbgp"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := ddos.NewDdosBgpInstance(ctx, "instanceDdosBgpInstance", &ddos.DdosBgpInstanceArgs{
+//				BaseBandwidth:   pulumi.Int(20),
+//				Bandwidth:       -1,
+//				IpCount:         pulumi.Int(100),
+//				IpType:          pulumi.String("IPv4"),
+//				NormalBandwidth: pulumi.Int(100),
+//				Type:            pulumi.String("Enterprise"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instanceDdosBgpInstances, err := ddos.GetDdosBgpInstances(ctx, &ddos.GetDdosBgpInstancesArgs{
+//				NameRegex: pulumi.StringRef("ddosbgp"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			var splat0 []interface{}
-//			for _, val0 := range alicloud_ddosbgp_instances.Instance {
+//			var splat0 []*string
+//			for _, val0 := range []ddos.GetDdosBgpInstancesResult{
+//				instanceDdosBgpInstances,
+//			} {
 //				splat0 = append(splat0, val0.Id)
 //			}
 //			ctx.Export("instance", splat0)

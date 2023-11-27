@@ -105,12 +105,12 @@ public final class EventRuleWebhookParameter {
             return this;
         }
         public EventRuleWebhookParameter build() {
-            final var o = new EventRuleWebhookParameter();
-            o.method = method;
-            o.protocol = protocol;
-            o.url = url;
-            o.webhookParametersId = webhookParametersId;
-            return o;
+            final var _resultValue = new EventRuleWebhookParameter();
+            _resultValue.method = method;
+            _resultValue.protocol = protocol;
+            _resultValue.url = url;
+            _resultValue.webhookParametersId = webhookParametersId;
+            return _resultValue;
         }
     }
 }

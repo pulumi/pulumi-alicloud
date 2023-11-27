@@ -65,7 +65,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Is logging enabled? true or false. Default value to false.
      * 
      */
-    @Export(name="loggingEnabled", type=Boolean.class, parameters={})
+    @Export(name="loggingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> loggingEnabled;
 
     /**
@@ -79,7 +79,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
      * 
      */
-    @Export(name="maximumMessageSize", type=Integer.class, parameters={})
+    @Export(name="maximumMessageSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maximumMessageSize;
 
     /**
@@ -93,7 +93,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

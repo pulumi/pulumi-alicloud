@@ -68,10 +68,10 @@ public final class EciScalingConfigurationInitContainerPort {
             return this;
         }
         public EciScalingConfigurationInitContainerPort build() {
-            final var o = new EciScalingConfigurationInitContainerPort();
-            o.port = port;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new EciScalingConfigurationInitContainerPort();
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

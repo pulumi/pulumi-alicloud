@@ -88,7 +88,7 @@ public class BandwidthPackageAttachment extends com.pulumi.resources.CustomResou
      * The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -102,7 +102,7 @@ public class BandwidthPackageAttachment extends com.pulumi.resources.CustomResou
      * Accelerators bound with current Bandwidth Package.
      * 
      */
-    @Export(name="accelerators", type=List.class, parameters={String.class})
+    @Export(name="accelerators", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> accelerators;
 
     /**
@@ -116,7 +116,7 @@ public class BandwidthPackageAttachment extends com.pulumi.resources.CustomResou
      * The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
      * 
      */
-    @Export(name="bandwidthPackageId", type=String.class, parameters={})
+    @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
@@ -130,7 +130,7 @@ public class BandwidthPackageAttachment extends com.pulumi.resources.CustomResou
      * State of Bandwidth Package.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

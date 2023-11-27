@@ -243,22 +243,22 @@ public final class GetDomainsResult {
             return this;
         }
         public GetDomainsResult build() {
-            final var o = new GetDomainsResult();
-            o.changeEndTime = changeEndTime;
-            o.changeStartTime = changeStartTime;
-            o.checkDomainShow = checkDomainShow;
-            o.domainSearchType = domainSearchType;
-            o.domains = domains;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.securityToken = securityToken;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDomainsResult();
+            _resultValue.changeEndTime = changeEndTime;
+            _resultValue.changeStartTime = changeStartTime;
+            _resultValue.checkDomainShow = checkDomainShow;
+            _resultValue.domainSearchType = domainSearchType;
+            _resultValue.domains = domains;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityToken = securityToken;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

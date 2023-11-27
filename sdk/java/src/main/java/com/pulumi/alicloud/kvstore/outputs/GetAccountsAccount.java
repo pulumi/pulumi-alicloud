@@ -160,15 +160,15 @@ public final class GetAccountsAccount {
             return this;
         }
         public GetAccountsAccount build() {
-            final var o = new GetAccountsAccount();
-            o.accountName = accountName;
-            o.accountPrivilege = accountPrivilege;
-            o.accountType = accountType;
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAccountsAccount();
+            _resultValue.accountName = accountName;
+            _resultValue.accountPrivilege = accountPrivilege;
+            _resultValue.accountType = accountType;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

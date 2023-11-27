@@ -73,7 +73,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Alibaba Cloud account ID.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -87,7 +87,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * An Alibaba Cloud account, Alibaba Cloud name.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -101,7 +101,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether it is the administrator. Valid values: `true` and `false`.
      * 
      */
-    @Export(name="adminUser", type=Boolean.class, parameters={})
+    @Export(name="adminUser", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> adminUser;
 
     /**
@@ -115,7 +115,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether this is a permissions administrator. Valid values: `false`, `true`.
      * 
      */
-    @Export(name="authAdminUser", type=Boolean.class, parameters={})
+    @Export(name="authAdminUser", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> authAdminUser;
 
     /**
@@ -129,7 +129,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The nickname of the user.
      * 
      */
-    @Export(name="nickName", type=String.class, parameters={})
+    @Export(name="nickName", refs={String.class}, tree="[0]")
     private Output<String> nickName;
 
     /**
@@ -143,7 +143,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
      * 
      */
-    @Export(name="userType", type=String.class, parameters={})
+    @Export(name="userType", refs={String.class}, tree="[0]")
     private Output<String> userType;
 
     /**

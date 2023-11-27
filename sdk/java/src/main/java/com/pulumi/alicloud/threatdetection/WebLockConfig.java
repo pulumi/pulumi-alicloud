@@ -79,7 +79,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * Protection mode. Value:-**block**: Intercept-**audit**: Alarm
      * 
      */
-    @Export(name="defenceMode", type=String.class, parameters={})
+    @Export(name="defenceMode", refs={String.class}, tree="[0]")
     private Output<String> defenceMode;
 
     /**
@@ -93,7 +93,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * Specify the protection directory.
      * 
      */
-    @Export(name="dir", type=String.class, parameters={})
+    @Export(name="dir", refs={String.class}, tree="[0]")
     private Output<String> dir;
 
     /**
@@ -107,7 +107,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
-    @Export(name="exclusiveDir", type=String.class, parameters={})
+    @Export(name="exclusiveDir", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> exclusiveDir;
 
     /**
@@ -121,7 +121,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
-    @Export(name="exclusiveFile", type=String.class, parameters={})
+    @Export(name="exclusiveFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> exclusiveFile;
 
     /**
@@ -135,7 +135,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
-    @Export(name="exclusiveFileType", type=String.class, parameters={})
+    @Export(name="exclusiveFileType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> exclusiveFileType;
 
     /**
@@ -149,7 +149,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
      * 
      */
-    @Export(name="inclusiveFileType", type=String.class, parameters={})
+    @Export(name="inclusiveFileType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> inclusiveFileType;
 
     /**
@@ -163,7 +163,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * The local backup path is used to protect the safe backup of the Directory.
      * 
      */
-    @Export(name="localBackupDir", type=String.class, parameters={})
+    @Export(name="localBackupDir", refs={String.class}, tree="[0]")
     private Output<String> localBackupDir;
 
     /**
@@ -177,7 +177,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
      * 
      */
-    @Export(name="mode", type=String.class, parameters={})
+    @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
@@ -191,7 +191,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * Specify the UUID of the server to which you want to add a protection directory.&gt; You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
      * 
      */
-    @Export(name="uuid", type=String.class, parameters={})
+    @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**

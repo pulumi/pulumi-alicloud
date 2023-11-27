@@ -106,12 +106,12 @@ public final class ClusterNodeGroupDataDisk {
             return this;
         }
         public ClusterNodeGroupDataDisk build() {
-            final var o = new ClusterNodeGroupDataDisk();
-            o.category = category;
-            o.count = count;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            return o;
+            final var _resultValue = new ClusterNodeGroupDataDisk();
+            _resultValue.category = category;
+            _resultValue.count = count;
+            _resultValue.performanceLevel = performanceLevel;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

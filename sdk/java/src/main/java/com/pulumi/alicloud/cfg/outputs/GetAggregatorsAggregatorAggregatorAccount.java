@@ -84,11 +84,11 @@ public final class GetAggregatorsAggregatorAggregatorAccount {
             return this;
         }
         public GetAggregatorsAggregatorAggregatorAccount build() {
-            final var o = new GetAggregatorsAggregatorAggregatorAccount();
-            o.accountId = accountId;
-            o.accountName = accountName;
-            o.accountType = accountType;
-            return o;
+            final var _resultValue = new GetAggregatorsAggregatorAggregatorAccount();
+            _resultValue.accountId = accountId;
+            _resultValue.accountName = accountName;
+            _resultValue.accountType = accountType;
+            return _resultValue;
         }
     }
 }

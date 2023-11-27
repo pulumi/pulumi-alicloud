@@ -246,19 +246,19 @@ public final class ServerGroupHealthCheck {
             return this;
         }
         public ServerGroupHealthCheck build() {
-            final var o = new ServerGroupHealthCheck();
-            o.healthCheckConnectPort = healthCheckConnectPort;
-            o.healthCheckConnectTimeout = healthCheckConnectTimeout;
-            o.healthCheckDomain = healthCheckDomain;
-            o.healthCheckEnabled = healthCheckEnabled;
-            o.healthCheckHttpCodes = healthCheckHttpCodes;
-            o.healthCheckInterval = healthCheckInterval;
-            o.healthCheckType = healthCheckType;
-            o.healthCheckUrl = healthCheckUrl;
-            o.healthyThreshold = healthyThreshold;
-            o.httpCheckMethod = httpCheckMethod;
-            o.unhealthyThreshold = unhealthyThreshold;
-            return o;
+            final var _resultValue = new ServerGroupHealthCheck();
+            _resultValue.healthCheckConnectPort = healthCheckConnectPort;
+            _resultValue.healthCheckConnectTimeout = healthCheckConnectTimeout;
+            _resultValue.healthCheckDomain = healthCheckDomain;
+            _resultValue.healthCheckEnabled = healthCheckEnabled;
+            _resultValue.healthCheckHttpCodes = healthCheckHttpCodes;
+            _resultValue.healthCheckInterval = healthCheckInterval;
+            _resultValue.healthCheckType = healthCheckType;
+            _resultValue.healthCheckUrl = healthCheckUrl;
+            _resultValue.healthyThreshold = healthyThreshold;
+            _resultValue.httpCheckMethod = httpCheckMethod;
+            _resultValue.unhealthyThreshold = unhealthyThreshold;
+            return _resultValue;
         }
     }
 }

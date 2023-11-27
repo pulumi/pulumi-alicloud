@@ -73,12 +73,12 @@ public final class ApplicationService {
             return this;
         }
         public ApplicationService build() {
-            final var o = new ApplicationService();
-            o.id = id;
-            o.name = name;
-            o.status = status;
-            o.version = version;
-            return o;
+            final var _resultValue = new ApplicationService();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.status = status;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -270,21 +270,21 @@ public final class GetAlarmContactsContact {
             return this;
         }
         public GetAlarmContactsContact build() {
-            final var o = new GetAlarmContactsContact();
-            o.alarmContactName = alarmContactName;
-            o.channelsAliim = channelsAliim;
-            o.channelsDingWebHook = channelsDingWebHook;
-            o.channelsMail = channelsMail;
-            o.channelsSms = channelsSms;
-            o.channelsStateAliim = channelsStateAliim;
-            o.channelsStateDingWebHook = channelsStateDingWebHook;
-            o.channelsStateMail = channelsStateMail;
-            o.channelsStatusSms = channelsStatusSms;
-            o.contactGroups = contactGroups;
-            o.describe = describe;
-            o.id = id;
-            o.lang = lang;
-            return o;
+            final var _resultValue = new GetAlarmContactsContact();
+            _resultValue.alarmContactName = alarmContactName;
+            _resultValue.channelsAliim = channelsAliim;
+            _resultValue.channelsDingWebHook = channelsDingWebHook;
+            _resultValue.channelsMail = channelsMail;
+            _resultValue.channelsSms = channelsSms;
+            _resultValue.channelsStateAliim = channelsStateAliim;
+            _resultValue.channelsStateDingWebHook = channelsStateDingWebHook;
+            _resultValue.channelsStateMail = channelsStateMail;
+            _resultValue.channelsStatusSms = channelsStatusSms;
+            _resultValue.contactGroups = contactGroups;
+            _resultValue.describe = describe;
+            _resultValue.id = id;
+            _resultValue.lang = lang;
+            return _resultValue;
         }
     }
 }

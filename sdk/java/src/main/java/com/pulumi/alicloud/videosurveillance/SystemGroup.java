@@ -74,7 +74,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
      * 
      */
-    @Export(name="callback", type=String.class, parameters={})
+    @Export(name="callback", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> callback;
 
     /**
@@ -88,7 +88,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The capture image.
      * 
      */
-    @Export(name="captureImage", type=Integer.class, parameters={})
+    @Export(name="captureImage", refs={Integer.class}, tree="[0]")
     private Output<Integer> captureImage;
 
     /**
@@ -102,7 +102,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The capture interval.
      * 
      */
-    @Export(name="captureInterval", type=Integer.class, parameters={})
+    @Export(name="captureInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> captureInterval;
 
     /**
@@ -116,7 +116,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The capture oss bucket.
      * 
      */
-    @Export(name="captureOssBucket", type=String.class, parameters={})
+    @Export(name="captureOssBucket", refs={String.class}, tree="[0]")
     private Output<String> captureOssBucket;
 
     /**
@@ -130,7 +130,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The capture oss path.
      * 
      */
-    @Export(name="captureOssPath", type=String.class, parameters={})
+    @Export(name="captureOssPath", refs={String.class}, tree="[0]")
     private Output<String> captureOssPath;
 
     /**
@@ -144,7 +144,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The capture video.
      * 
      */
-    @Export(name="captureVideo", type=Integer.class, parameters={})
+    @Export(name="captureVideo", refs={Integer.class}, tree="[0]")
     private Output<Integer> captureVideo;
 
     /**
@@ -158,7 +158,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The description of Group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -172,7 +172,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * Whether to open Group.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -186,7 +186,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The Group Name.
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
@@ -200,7 +200,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      * 
      */
-    @Export(name="inProtocol", type=String.class, parameters={})
+    @Export(name="inProtocol", refs={String.class}, tree="[0]")
     private Output<String> inProtocol;
 
     /**
@@ -214,7 +214,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * Whether to enable on-demand streaming. Default value:`false`.
      * 
      */
-    @Export(name="lazyPull", type=Boolean.class, parameters={})
+    @Export(name="lazyPull", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> lazyPull;
 
     /**
@@ -228,7 +228,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
      * 
      */
-    @Export(name="outProtocol", type=String.class, parameters={})
+    @Export(name="outProtocol", refs={String.class}, tree="[0]")
     private Output<String> outProtocol;
 
     /**
@@ -242,7 +242,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The domain name of plan streaming used by the group.
      * 
      */
-    @Export(name="playDomain", type=String.class, parameters={})
+    @Export(name="playDomain", refs={String.class}, tree="[0]")
     private Output<String> playDomain;
 
     /**
@@ -256,7 +256,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * The domain name of push streaming used by the group.
      * 
      */
-    @Export(name="pushDomain", type=String.class, parameters={})
+    @Export(name="pushDomain", refs={String.class}, tree="[0]")
     private Output<String> pushDomain;
 
     /**
@@ -270,7 +270,7 @@ public class SystemGroup extends com.pulumi.resources.CustomResource {
      * Whether to open Group. Valid values: `on`,`off`.
      * 
      */
-    @Export(name="status", type=Boolean.class, parameters={})
+    @Export(name="status", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> status;
 
     /**

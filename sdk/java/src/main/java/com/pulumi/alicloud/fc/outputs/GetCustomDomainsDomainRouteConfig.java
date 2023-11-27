@@ -126,13 +126,13 @@ public final class GetCustomDomainsDomainRouteConfig {
             return this;
         }
         public GetCustomDomainsDomainRouteConfig build() {
-            final var o = new GetCustomDomainsDomainRouteConfig();
-            o.functionName = functionName;
-            o.methods = methods;
-            o.path = path;
-            o.qualifier = qualifier;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetCustomDomainsDomainRouteConfig();
+            _resultValue.functionName = functionName;
+            _resultValue.methods = methods;
+            _resultValue.path = path;
+            _resultValue.qualifier = qualifier;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

@@ -149,15 +149,15 @@ public final class GetRemoteWritesResult {
             return remoteWrites(List.of(remoteWrites));
         }
         public GetRemoteWritesResult build() {
-            final var o = new GetRemoteWritesResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.remoteWrites = remoteWrites;
-            return o;
+            final var _resultValue = new GetRemoteWritesResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.remoteWrites = remoteWrites;
+            return _resultValue;
         }
     }
 }

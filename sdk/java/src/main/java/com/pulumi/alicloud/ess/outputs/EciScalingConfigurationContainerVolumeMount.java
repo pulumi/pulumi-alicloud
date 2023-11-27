@@ -89,11 +89,11 @@ public final class EciScalingConfigurationContainerVolumeMount {
             return this;
         }
         public EciScalingConfigurationContainerVolumeMount build() {
-            final var o = new EciScalingConfigurationContainerVolumeMount();
-            o.mountPath = mountPath;
-            o.name = name;
-            o.readOnly = readOnly;
-            return o;
+            final var _resultValue = new EciScalingConfigurationContainerVolumeMount();
+            _resultValue.mountPath = mountPath;
+            _resultValue.name = name;
+            _resultValue.readOnly = readOnly;
+            return _resultValue;
         }
     }
 }

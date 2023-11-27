@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.183.0+ .
+        /// &gt; **NOTE:** Available in v1.183.0+ .
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -28,14 +28,29 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var instanceDdosBgpInstance = new AliCloud.Ddos.DdosBgpInstance("instanceDdosBgpInstance", new()
+        ///     {
+        ///         BaseBandwidth = 20,
+        ///         Bandwidth = -1,
+        ///         IpCount = 100,
+        ///         IpType = "IPv4",
+        ///         NormalBandwidth = 100,
+        ///         Type = "Enterprise",
+        ///     });
+        /// 
         ///     var instanceDdosBgpInstances = AliCloud.Ddos.GetDdosBgpInstances.Invoke(new()
         ///     {
-        ///         NameRegex = "^ddosbgp",
+        ///         NameRegex = "ddosbgp",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instance"] = alicloud_ddosbgp_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///         ["instance"] = new[]
+        ///         {
+        ///             instanceDdosBgpInstances,
+        ///         }.Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -48,7 +63,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.183.0+ .
+        /// &gt; **NOTE:** Available in v1.183.0+ .
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -62,14 +77,29 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var instanceDdosBgpInstance = new AliCloud.Ddos.DdosBgpInstance("instanceDdosBgpInstance", new()
+        ///     {
+        ///         BaseBandwidth = 20,
+        ///         Bandwidth = -1,
+        ///         IpCount = 100,
+        ///         IpType = "IPv4",
+        ///         NormalBandwidth = 100,
+        ///         Type = "Enterprise",
+        ///     });
+        /// 
         ///     var instanceDdosBgpInstances = AliCloud.Ddos.GetDdosBgpInstances.Invoke(new()
         ///     {
-        ///         NameRegex = "^ddosbgp",
+        ///         NameRegex = "ddosbgp",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instance"] = alicloud_ddosbgp_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///         ["instance"] = new[]
+        ///         {
+        ///             instanceDdosBgpInstances,
+        ///         }.Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```

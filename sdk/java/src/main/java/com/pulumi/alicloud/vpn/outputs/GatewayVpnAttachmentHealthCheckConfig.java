@@ -145,14 +145,14 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
             return this;
         }
         public GatewayVpnAttachmentHealthCheckConfig build() {
-            final var o = new GatewayVpnAttachmentHealthCheckConfig();
-            o.dip = dip;
-            o.enable = enable;
-            o.interval = interval;
-            o.policy = policy;
-            o.retry = retry;
-            o.sip = sip;
-            return o;
+            final var _resultValue = new GatewayVpnAttachmentHealthCheckConfig();
+            _resultValue.dip = dip;
+            _resultValue.enable = enable;
+            _resultValue.interval = interval;
+            _resultValue.policy = policy;
+            _resultValue.retry = retry;
+            _resultValue.sip = sip;
+            return _resultValue;
         }
     }
 }

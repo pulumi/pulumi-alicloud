@@ -59,30 +59,55 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example <service_id>
+//	$ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example <id>
 //
 // ```
 type VpcEndpointService struct {
 	pulumi.CustomResourceState
 
-	// Whether to automatically accept terminal node connections.
+	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+	// - **true**
+	// - **false**.
 	AutoAcceptConnection pulumi.BoolPtrOutput `pulumi:"autoAcceptConnection"`
-	// The connection bandwidth.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
 	ConnectBandwidth pulumi.IntOutput `pulumi:"connectBandwidth"`
-	// Whether to pre-check this request only. Default to: `false`
+	// The time when the endpoint service was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to perform only a dry run, without performing the actual request.
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
-	Payer pulumi.StringPtrOutput `pulumi:"payer"`
-	// The business status of Vpc Endpoint Service.
+	// The payer of the endpoint service. Valid values:
+	// - **Endpoint**: the service consumer.
+	// - **EndpointService**: the service provider.
+	Payer pulumi.StringOutput `pulumi:"payer"`
+	// The resource group ID.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The service state of the endpoint service.
 	ServiceBusinessStatus pulumi.StringOutput `pulumi:"serviceBusinessStatus"`
-	// The description of the terminal node service.
-	//
-	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+	// The description of the endpoint service.
 	ServiceDescription pulumi.StringPtrOutput `pulumi:"serviceDescription"`
-	// Service Domain.
+	// The domain name of the endpoint service.
 	ServiceDomain pulumi.StringOutput `pulumi:"serviceDomain"`
-	// The status of Vpc Endpoint Service.
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+	ServiceResourceType pulumi.StringOutput `pulumi:"serviceResourceType"`
+	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ServiceSupportIpv6 pulumi.BoolOutput `pulumi:"serviceSupportIpv6"`
+	// The state of the endpoint service.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The list of tags.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The name of the endpoint service.
+	VpcEndpointServiceName pulumi.StringOutput `pulumi:"vpcEndpointServiceName"`
+	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ZoneAffinityEnabled pulumi.BoolOutput `pulumi:"zoneAffinityEnabled"`
 }
 
 // NewVpcEndpointService registers a new resource with the given unique name, arguments, and options.
@@ -115,45 +140,95 @@ func GetVpcEndpointService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcEndpointService resources.
 type vpcEndpointServiceState struct {
-	// Whether to automatically accept terminal node connections.
+	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+	// - **true**
+	// - **false**.
 	AutoAcceptConnection *bool `pulumi:"autoAcceptConnection"`
-	// The connection bandwidth.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
 	ConnectBandwidth *int `pulumi:"connectBandwidth"`
-	// Whether to pre-check this request only. Default to: `false`
+	// The time when the endpoint service was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Specifies whether to perform only a dry run, without performing the actual request.
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
-	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+	// The payer of the endpoint service. Valid values:
+	// - **Endpoint**: the service consumer.
+	// - **EndpointService**: the service provider.
 	Payer *string `pulumi:"payer"`
-	// The business status of Vpc Endpoint Service.
+	// The resource group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The service state of the endpoint service.
 	ServiceBusinessStatus *string `pulumi:"serviceBusinessStatus"`
-	// The description of the terminal node service.
-	//
-	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+	// The description of the endpoint service.
 	ServiceDescription *string `pulumi:"serviceDescription"`
-	// Service Domain.
+	// The domain name of the endpoint service.
 	ServiceDomain *string `pulumi:"serviceDomain"`
-	// The status of Vpc Endpoint Service.
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+	ServiceResourceType *string `pulumi:"serviceResourceType"`
+	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ServiceSupportIpv6 *bool `pulumi:"serviceSupportIpv6"`
+	// The state of the endpoint service.
 	Status *string `pulumi:"status"`
+	// The list of tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The name of the endpoint service.
+	VpcEndpointServiceName *string `pulumi:"vpcEndpointServiceName"`
+	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ZoneAffinityEnabled *bool `pulumi:"zoneAffinityEnabled"`
 }
 
 type VpcEndpointServiceState struct {
-	// Whether to automatically accept terminal node connections.
+	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+	// - **true**
+	// - **false**.
 	AutoAcceptConnection pulumi.BoolPtrInput
-	// The connection bandwidth.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
 	ConnectBandwidth pulumi.IntPtrInput
-	// Whether to pre-check this request only. Default to: `false`
+	// The time when the endpoint service was created.
+	CreateTime pulumi.StringPtrInput
+	// Specifies whether to perform only a dry run, without performing the actual request.
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
-	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+	// The payer of the endpoint service. Valid values:
+	// - **Endpoint**: the service consumer.
+	// - **EndpointService**: the service provider.
 	Payer pulumi.StringPtrInput
-	// The business status of Vpc Endpoint Service.
+	// The resource group ID.
+	ResourceGroupId pulumi.StringPtrInput
+	// The service state of the endpoint service.
 	ServiceBusinessStatus pulumi.StringPtrInput
-	// The description of the terminal node service.
-	//
-	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+	// The description of the endpoint service.
 	ServiceDescription pulumi.StringPtrInput
-	// Service Domain.
+	// The domain name of the endpoint service.
 	ServiceDomain pulumi.StringPtrInput
-	// The status of Vpc Endpoint Service.
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+	ServiceResourceType pulumi.StringPtrInput
+	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ServiceSupportIpv6 pulumi.BoolPtrInput
+	// The state of the endpoint service.
 	Status pulumi.StringPtrInput
+	// The list of tags.
+	Tags pulumi.MapInput
+	// The name of the endpoint service.
+	VpcEndpointServiceName pulumi.StringPtrInput
+	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ZoneAffinityEnabled pulumi.BoolPtrInput
 }
 
 func (VpcEndpointServiceState) ElementType() reflect.Type {
@@ -161,34 +236,76 @@ func (VpcEndpointServiceState) ElementType() reflect.Type {
 }
 
 type vpcEndpointServiceArgs struct {
-	// Whether to automatically accept terminal node connections.
+	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+	// - **true**
+	// - **false**.
 	AutoAcceptConnection *bool `pulumi:"autoAcceptConnection"`
-	// The connection bandwidth.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
 	ConnectBandwidth *int `pulumi:"connectBandwidth"`
-	// Whether to pre-check this request only. Default to: `false`
+	// Specifies whether to perform only a dry run, without performing the actual request.
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
-	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+	// The payer of the endpoint service. Valid values:
+	// - **Endpoint**: the service consumer.
+	// - **EndpointService**: the service provider.
 	Payer *string `pulumi:"payer"`
-	// The description of the terminal node service.
-	//
-	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+	// The resource group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The description of the endpoint service.
 	ServiceDescription *string `pulumi:"serviceDescription"`
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+	ServiceResourceType *string `pulumi:"serviceResourceType"`
+	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ServiceSupportIpv6 *bool `pulumi:"serviceSupportIpv6"`
+	// The list of tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ZoneAffinityEnabled *bool `pulumi:"zoneAffinityEnabled"`
 }
 
 // The set of arguments for constructing a VpcEndpointService resource.
 type VpcEndpointServiceArgs struct {
-	// Whether to automatically accept terminal node connections.
+	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+	// - **true**
+	// - **false**.
 	AutoAcceptConnection pulumi.BoolPtrInput
-	// The connection bandwidth.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
 	ConnectBandwidth pulumi.IntPtrInput
-	// Whether to pre-check this request only. Default to: `false`
+	// Specifies whether to perform only a dry run, without performing the actual request.
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
-	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+	// The payer of the endpoint service. Valid values:
+	// - **Endpoint**: the service consumer.
+	// - **EndpointService**: the service provider.
 	Payer pulumi.StringPtrInput
-	// The description of the terminal node service.
-	//
-	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+	// The resource group ID.
+	ResourceGroupId pulumi.StringPtrInput
+	// The description of the endpoint service.
 	ServiceDescription pulumi.StringPtrInput
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+	ServiceResourceType pulumi.StringPtrInput
+	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ServiceSupportIpv6 pulumi.BoolPtrInput
+	// The list of tags.
+	Tags pulumi.MapInput
+	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+	// - **true**
+	// - **false (default)**.
+	ZoneAffinityEnabled pulumi.BoolPtrInput
 }
 
 func (VpcEndpointServiceArgs) ElementType() reflect.Type {
@@ -278,46 +395,92 @@ func (o VpcEndpointServiceOutput) ToVpcEndpointServiceOutputWithContext(ctx cont
 	return o
 }
 
-// Whether to automatically accept terminal node connections.
+// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+// - **true**
+// - **false**.
 func (o VpcEndpointServiceOutput) AutoAcceptConnection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.BoolPtrOutput { return v.AutoAcceptConnection }).(pulumi.BoolPtrOutput)
 }
 
-// The connection bandwidth.
+// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
 func (o VpcEndpointServiceOutput) ConnectBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.IntOutput { return v.ConnectBandwidth }).(pulumi.IntOutput)
 }
 
-// Whether to pre-check this request only. Default to: `false`
+// The time when the endpoint service was created.
+func (o VpcEndpointServiceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether to perform only a dry run, without performing the actual request.
+// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 func (o VpcEndpointServiceOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
-func (o VpcEndpointServiceOutput) Payer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringPtrOutput { return v.Payer }).(pulumi.StringPtrOutput)
+// The payer of the endpoint service. Valid values:
+// - **Endpoint**: the service consumer.
+// - **EndpointService**: the service provider.
+func (o VpcEndpointServiceOutput) Payer() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.Payer }).(pulumi.StringOutput)
 }
 
-// The business status of Vpc Endpoint Service.
+// The resource group ID.
+func (o VpcEndpointServiceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The service state of the endpoint service.
 func (o VpcEndpointServiceOutput) ServiceBusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.ServiceBusinessStatus }).(pulumi.StringOutput)
 }
 
-// The description of the terminal node service.
-//
-// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+// The description of the endpoint service.
 func (o VpcEndpointServiceOutput) ServiceDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringPtrOutput { return v.ServiceDescription }).(pulumi.StringPtrOutput)
 }
 
-// Service Domain.
+// The domain name of the endpoint service.
 func (o VpcEndpointServiceOutput) ServiceDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.ServiceDomain }).(pulumi.StringOutput)
 }
 
-// The status of Vpc Endpoint Service.
+// Service resource type, value:
+// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+func (o VpcEndpointServiceOutput) ServiceResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.ServiceResourceType }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+// - **true**
+// - **false (default)**.
+func (o VpcEndpointServiceOutput) ServiceSupportIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.BoolOutput { return v.ServiceSupportIpv6 }).(pulumi.BoolOutput)
+}
+
+// The state of the endpoint service.
 func (o VpcEndpointServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The list of tags.
+func (o VpcEndpointServiceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The name of the endpoint service.
+func (o VpcEndpointServiceOutput) VpcEndpointServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.VpcEndpointServiceName }).(pulumi.StringOutput)
+}
+
+// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+// - **true**
+// - **false (default)**.
+func (o VpcEndpointServiceOutput) ZoneAffinityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.BoolOutput { return v.ZoneAffinityEnabled }).(pulumi.BoolOutput)
 }
 
 type VpcEndpointServiceArrayOutput struct{ *pulumi.OutputState }

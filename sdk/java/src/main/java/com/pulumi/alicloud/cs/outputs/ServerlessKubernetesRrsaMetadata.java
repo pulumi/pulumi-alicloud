@@ -106,12 +106,12 @@ public final class ServerlessKubernetesRrsaMetadata {
             return this;
         }
         public ServerlessKubernetesRrsaMetadata build() {
-            final var o = new ServerlessKubernetesRrsaMetadata();
-            o.enabled = enabled;
-            o.ramOidcProviderArn = ramOidcProviderArn;
-            o.ramOidcProviderName = ramOidcProviderName;
-            o.rrsaOidcIssuerUrl = rrsaOidcIssuerUrl;
-            return o;
+            final var _resultValue = new ServerlessKubernetesRrsaMetadata();
+            _resultValue.enabled = enabled;
+            _resultValue.ramOidcProviderArn = ramOidcProviderArn;
+            _resultValue.ramOidcProviderName = ramOidcProviderName;
+            _resultValue.rrsaOidcIssuerUrl = rrsaOidcIssuerUrl;
+            return _resultValue;
         }
     }
 }

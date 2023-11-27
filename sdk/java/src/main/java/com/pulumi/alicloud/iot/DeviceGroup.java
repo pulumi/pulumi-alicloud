@@ -70,7 +70,7 @@ public class DeviceGroup extends com.pulumi.resources.CustomResource {
      * The GroupDesc of the device group.
      * 
      */
-    @Export(name="groupDesc", type=String.class, parameters={})
+    @Export(name="groupDesc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupDesc;
 
     /**
@@ -84,7 +84,7 @@ public class DeviceGroup extends com.pulumi.resources.CustomResource {
      * The GroupName of the device group.
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
@@ -98,7 +98,7 @@ public class DeviceGroup extends com.pulumi.resources.CustomResource {
      * The id of the Iot Instance.
      * 
      */
-    @Export(name="iotInstanceId", type=String.class, parameters={})
+    @Export(name="iotInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> iotInstanceId;
 
     /**
@@ -112,7 +112,7 @@ public class DeviceGroup extends com.pulumi.resources.CustomResource {
      * The id of the SuperGroup.
      * 
      */
-    @Export(name="superGroupId", type=String.class, parameters={})
+    @Export(name="superGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> superGroupId;
 
     /**

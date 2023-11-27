@@ -146,14 +146,14 @@ public final class GetAccountsAccount {
             return databasePrivileges(List.of(databasePrivileges));
         }
         public GetAccountsAccount build() {
-            final var o = new GetAccountsAccount();
-            o.accountDescription = accountDescription;
-            o.accountLockState = accountLockState;
-            o.accountName = accountName;
-            o.accountStatus = accountStatus;
-            o.accountType = accountType;
-            o.databasePrivileges = databasePrivileges;
-            return o;
+            final var _resultValue = new GetAccountsAccount();
+            _resultValue.accountDescription = accountDescription;
+            _resultValue.accountLockState = accountLockState;
+            _resultValue.accountName = accountName;
+            _resultValue.accountStatus = accountStatus;
+            _resultValue.accountType = accountType;
+            _resultValue.databasePrivileges = databasePrivileges;
+            return _resultValue;
         }
     }
 }

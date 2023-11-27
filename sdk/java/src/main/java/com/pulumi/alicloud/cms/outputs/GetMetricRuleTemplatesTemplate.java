@@ -169,15 +169,15 @@ public final class GetMetricRuleTemplatesTemplate {
             return this;
         }
         public GetMetricRuleTemplatesTemplate build() {
-            final var o = new GetMetricRuleTemplatesTemplate();
-            o.alertTemplates = alertTemplates;
-            o.description = description;
-            o.groupId = groupId;
-            o.id = id;
-            o.metricRuleTemplateName = metricRuleTemplateName;
-            o.restVersion = restVersion;
-            o.templateId = templateId;
-            return o;
+            final var _resultValue = new GetMetricRuleTemplatesTemplate();
+            _resultValue.alertTemplates = alertTemplates;
+            _resultValue.description = description;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.metricRuleTemplateName = metricRuleTemplateName;
+            _resultValue.restVersion = restVersion;
+            _resultValue.templateId = templateId;
+            return _resultValue;
         }
     }
 }

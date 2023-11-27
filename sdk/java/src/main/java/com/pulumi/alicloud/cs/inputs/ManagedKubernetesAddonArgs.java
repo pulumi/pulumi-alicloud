@@ -34,7 +34,7 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
     /**
      * It specifies whether to disable automatic installation.
      * 
-     * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+     * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
      * 
      * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
      * 
@@ -53,7 +53,7 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
     /**
      * @return It specifies whether to disable automatic installation.
      * 
-     * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+     * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
      * 
      * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
      * 
@@ -85,12 +85,28 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * It specifies the version of the component.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return It specifies the version of the component.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private ManagedKubernetesAddonArgs() {}
 
     private ManagedKubernetesAddonArgs(ManagedKubernetesAddonArgs $) {
         this.config = $.config;
         this.disabled = $.disabled;
         this.name = $.name;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -135,7 +151,7 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
         /**
          * @param disabled It specifies whether to disable automatic installation.
          * 
-         * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+         * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
          * 
          * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
          * 
@@ -158,7 +174,7 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
         /**
          * @param disabled It specifies whether to disable automatic installation.
          * 
-         * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+         * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
          * 
          * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
          * 
@@ -196,6 +212,27 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param version It specifies the version of the component.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version It specifies the version of the component.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public ManagedKubernetesAddonArgs build() {

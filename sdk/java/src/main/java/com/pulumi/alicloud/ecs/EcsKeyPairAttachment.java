@@ -131,7 +131,7 @@ public class EcsKeyPairAttachment extends com.pulumi.resources.CustomResource {
      * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -145,7 +145,7 @@ public class EcsKeyPairAttachment extends com.pulumi.resources.CustomResource {
      * The list of ECS instance&#39;s IDs.
      * 
      */
-    @Export(name="instanceIds", type=List.class, parameters={String.class})
+    @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceIds;
 
     /**
@@ -161,7 +161,7 @@ public class EcsKeyPairAttachment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
-    @Export(name="keyName", type=String.class, parameters={})
+    @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
     public Output<String> keyName() {
@@ -171,7 +171,7 @@ public class EcsKeyPairAttachment extends com.pulumi.resources.CustomResource {
      * The name of key pair used to bind.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output<String> keyPairName;
 
     /**

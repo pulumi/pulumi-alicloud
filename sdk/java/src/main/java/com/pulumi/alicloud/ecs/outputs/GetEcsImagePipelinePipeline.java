@@ -381,26 +381,26 @@ public final class GetEcsImagePipelinePipeline {
             return this;
         }
         public GetEcsImagePipelinePipeline build() {
-            final var o = new GetEcsImagePipelinePipeline();
-            o.addAccounts = addAccounts;
-            o.baseImage = baseImage;
-            o.baseImageType = baseImageType;
-            o.buildContent = buildContent;
-            o.creationTime = creationTime;
-            o.deleteInstanceOnFailure = deleteInstanceOnFailure;
-            o.description = description;
-            o.id = id;
-            o.imageName = imageName;
-            o.imagePipelineId = imagePipelineId;
-            o.instanceType = instanceType;
-            o.internetMaxBandwidthOut = internetMaxBandwidthOut;
-            o.name = name;
-            o.resourceGroupId = resourceGroupId;
-            o.systemDiskSize = systemDiskSize;
-            o.tags = tags;
-            o.toRegionIds = toRegionIds;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetEcsImagePipelinePipeline();
+            _resultValue.addAccounts = addAccounts;
+            _resultValue.baseImage = baseImage;
+            _resultValue.baseImageType = baseImageType;
+            _resultValue.buildContent = buildContent;
+            _resultValue.creationTime = creationTime;
+            _resultValue.deleteInstanceOnFailure = deleteInstanceOnFailure;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.imageName = imageName;
+            _resultValue.imagePipelineId = imagePipelineId;
+            _resultValue.instanceType = instanceType;
+            _resultValue.internetMaxBandwidthOut = internetMaxBandwidthOut;
+            _resultValue.name = name;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.systemDiskSize = systemDiskSize;
+            _resultValue.tags = tags;
+            _resultValue.toRegionIds = toRegionIds;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

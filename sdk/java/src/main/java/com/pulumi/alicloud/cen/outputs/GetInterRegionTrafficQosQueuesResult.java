@@ -157,15 +157,15 @@ public final class GetInterRegionTrafficQosQueuesResult {
             return this;
         }
         public GetInterRegionTrafficQosQueuesResult build() {
-            final var o = new GetInterRegionTrafficQosQueuesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.queues = queues;
-            o.trafficQosPolicyId = trafficQosPolicyId;
-            return o;
+            final var _resultValue = new GetInterRegionTrafficQosQueuesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.queues = queues;
+            _resultValue.trafficQosPolicyId = trafficQosPolicyId;
+            return _resultValue;
         }
     }
 }

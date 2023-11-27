@@ -111,14 +111,14 @@ public final class GetScimServerCredentialsResult {
             return this;
         }
         public GetScimServerCredentialsResult build() {
-            final var o = new GetScimServerCredentialsResult();
-            o.credentials = credentials;
-            o.directoryId = directoryId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetScimServerCredentialsResult();
+            _resultValue.credentials = credentials;
+            _resultValue.directoryId = directoryId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

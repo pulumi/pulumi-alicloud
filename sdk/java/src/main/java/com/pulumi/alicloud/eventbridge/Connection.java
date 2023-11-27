@@ -149,7 +149,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The parameters that are configured for authentication. See `auth_parameters` below.
      * 
      */
-    @Export(name="authParameters", type=ConnectionAuthParameters.class, parameters={})
+    @Export(name="authParameters", refs={ConnectionAuthParameters.class}, tree="[0]")
     private Output</* @Nullable */ ConnectionAuthParameters> authParameters;
 
     /**
@@ -163,7 +163,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The name of the connection.
      * 
      */
-    @Export(name="connectionName", type=String.class, parameters={})
+    @Export(name="connectionName", refs={String.class}, tree="[0]")
     private Output<String> connectionName;
 
     /**
@@ -177,7 +177,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The creation time of the Connection.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -191,7 +191,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The description of the connection.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -205,7 +205,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The parameters that are configured for the network. See `network_parameters` below.
      * 
      */
-    @Export(name="networkParameters", type=ConnectionNetworkParameters.class, parameters={})
+    @Export(name="networkParameters", refs={ConnectionNetworkParameters.class}, tree="[0]")
     private Output<ConnectionNetworkParameters> networkParameters;
 
     /**

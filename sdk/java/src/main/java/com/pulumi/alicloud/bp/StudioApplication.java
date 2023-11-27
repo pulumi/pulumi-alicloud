@@ -83,7 +83,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The name of the application.
      * 
      */
-    @Export(name="applicationName", type=String.class, parameters={})
+    @Export(name="applicationName", refs={String.class}, tree="[0]")
     private Output<String> applicationName;
 
     /**
@@ -97,7 +97,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The id of the area.
      * 
      */
-    @Export(name="areaId", type=String.class, parameters={})
+    @Export(name="areaId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> areaId;
 
     /**
@@ -111,7 +111,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The configuration of the application.
      * 
      */
-    @Export(name="configuration", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="configuration", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> configuration;
 
     /**
@@ -125,7 +125,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
      * 
      */
-    @Export(name="instances", type=List.class, parameters={StudioApplicationInstance.class})
+    @Export(name="instances", refs={List.class,StudioApplicationInstance.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StudioApplicationInstance>> instances;
 
     /**
@@ -139,7 +139,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The id of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -153,7 +153,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The status of the Application.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -167,7 +167,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The id of the template.
      * 
      */
-    @Export(name="templateId", type=String.class, parameters={})
+    @Export(name="templateId", refs={String.class}, tree="[0]")
     private Output<String> templateId;
 
     /**
@@ -181,7 +181,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The variables of the application.
      * 
      */
-    @Export(name="variables", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="variables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> variables;
 
     /**

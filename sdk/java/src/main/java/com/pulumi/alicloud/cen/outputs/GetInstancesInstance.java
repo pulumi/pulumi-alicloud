@@ -223,18 +223,18 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.cenBandwidthPackageIds = cenBandwidthPackageIds;
-            o.cenId = cenId;
-            o.cenInstanceName = cenInstanceName;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.protectionLevel = protectionLevel;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.cenBandwidthPackageIds = cenBandwidthPackageIds;
+            _resultValue.cenId = cenId;
+            _resultValue.cenInstanceName = cenInstanceName;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.protectionLevel = protectionLevel;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

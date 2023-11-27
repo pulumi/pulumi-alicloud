@@ -37,7 +37,7 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      * The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -51,7 +51,7 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -65,7 +65,7 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      * The ID of the other VBR in the VBR failover group.
      * 
      */
-    @Export(name="peerVbrId", type=String.class, parameters={})
+    @Export(name="peerVbrId", refs={String.class}, tree="[0]")
     private Output<String> peerVbrId;
 
     /**
@@ -79,7 +79,7 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      * The state of the VBR failover group.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -93,7 +93,7 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      * The name of the VBR failover group.
      * 
      */
-    @Export(name="vbrHaName", type=String.class, parameters={})
+    @Export(name="vbrHaName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vbrHaName;
 
     /**
@@ -107,7 +107,7 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      * The ID of the VBR instance.
      * 
      */
-    @Export(name="vbrId", type=String.class, parameters={})
+    @Export(name="vbrId", refs={String.class}, tree="[0]")
     private Output<String> vbrId;
 
     /**

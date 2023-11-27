@@ -8,6 +8,7 @@ import com.pulumi.alicloud.ecs.InstanceArgs;
 import com.pulumi.alicloud.ecs.inputs.InstanceState;
 import com.pulumi.alicloud.ecs.outputs.InstanceDataDisk;
 import com.pulumi.alicloud.ecs.outputs.InstanceMaintenanceTime;
+import com.pulumi.alicloud.ecs.outputs.InstanceNetworkInterfaces;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -138,7 +139,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance. */
-    @Export(name="allocatePublicIp", type=Boolean.class, parameters={})
+    @Export(name="allocatePublicIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allocatePublicIp;
 
     /**
@@ -154,7 +155,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
      * 
      */
-    @Export(name="autoReleaseTime", type=String.class, parameters={})
+    @Export(name="autoReleaseTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoReleaseTime;
 
     /**
@@ -172,7 +173,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - [1, 2, 3] when `period_unit` in &#34;Week&#34;
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -188,7 +189,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
      * 
      */
-    @Export(name="availabilityZone", type=String.class, parameters={})
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
     /**
@@ -202,7 +203,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of vCPUs.
      * 
      */
-    @Export(name="cpu", type=Integer.class, parameters={})
+    @Export(name="cpu", refs={Integer.class}, tree="[0]")
     private Output<Integer> cpu;
 
     /**
@@ -216,7 +217,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
      * 
      */
-    @Export(name="creditSpecification", type=String.class, parameters={})
+    @Export(name="creditSpecification", refs={String.class}, tree="[0]")
     private Output<String> creditSpecification;
 
     /**
@@ -230,7 +231,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The list of data disks created with instance. See `data_disks` below.
      * 
      */
-    @Export(name="dataDisks", type=List.class, parameters={InstanceDataDisk.class})
+    @Export(name="dataDisks", refs={List.class,InstanceDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceDataDisk>> dataDisks;
 
     /**
@@ -243,40 +244,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-     * 
      */
-    @Export(name="dedicatedHostId", type=String.class, parameters={})
+    @Export(name="dedicatedHostId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostId;
 
     /**
      * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-     * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Output<Optional<String>> dedicatedHostId() {
@@ -288,7 +261,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - false: Disable deletion protection.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -304,7 +277,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The group number of the instance in a deployment set when the deployment set is use.
      * 
      */
-    @Export(name="deploymentSetGroupNo", type=String.class, parameters={})
+    @Export(name="deploymentSetGroupNo", refs={String.class}, tree="[0]")
     private Output<String> deploymentSetGroupNo;
 
     /**
@@ -318,7 +291,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance&#39;s deploymentSetId can be removed when &#39;deployment_set_id&#39; = &#34;&#34;.
      * 
      */
-    @Export(name="deploymentSetId", type=String.class, parameters={})
+    @Export(name="deploymentSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentSetId;
 
     /**
@@ -332,7 +305,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -348,7 +321,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - false: A request is sent. If the validation succeeds, the instance is created.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -365,7 +338,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that &#34;Don&#39;t modify instance charge type frequentlly in one month&#34;.
      * 
      */
-    @Export(name="forceDelete", type=Boolean.class, parameters={})
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
@@ -381,7 +354,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output<String> hostName;
 
     /**
@@ -396,7 +369,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
      * 
      */
-    @Export(name="hpcClusterId", type=String.class, parameters={})
+    @Export(name="hpcClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hpcClusterId;
 
     /**
@@ -410,7 +383,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
      * 
      */
-    @Export(name="httpEndpoint", type=String.class, parameters={})
+    @Export(name="httpEndpoint", refs={String.class}, tree="[0]")
     private Output<String> httpEndpoint;
 
     /**
@@ -424,7 +397,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
      * 
      */
-    @Export(name="httpPutResponseHopLimit", type=Integer.class, parameters={})
+    @Export(name="httpPutResponseHopLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> httpPutResponseHopLimit;
 
     /**
@@ -440,7 +413,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
      * 
      */
-    @Export(name="httpTokens", type=String.class, parameters={})
+    @Export(name="httpTokens", refs={String.class}, tree="[0]")
     private Output<String> httpTokens;
 
     /**
@@ -456,7 +429,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -470,7 +443,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to change instance disks charge type when changing instance charge type.
      * 
      */
-    @Export(name="includeDataDisks", type=Boolean.class, parameters={})
+    @Export(name="includeDataDisks", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> includeDataDisks;
 
     /**
@@ -487,7 +460,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -500,7 +473,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> instanceChargeType() {
         return Codegen.optional(this.instanceChargeType);
     }
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     public Output<Optional<String>> instanceName() {
@@ -510,7 +483,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -524,7 +497,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
@@ -542,7 +515,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
-    @Export(name="internetMaxBandwidthIn", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthIn", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthIn;
 
     /**
@@ -556,7 +529,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
      * 
      */
-    @Export(name="internetMaxBandwidthOut", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetMaxBandwidthOut;
 
     /**
@@ -574,7 +547,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
-    @Export(name="ioOptimized", type=String.class, parameters={})
+    @Export(name="ioOptimized", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ioOptimized;
 
     /**
@@ -588,7 +561,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
      * 
      */
-    @Export(name="ipv6AddressCount", type=Integer.class, parameters={})
+    @Export(name="ipv6AddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv6AddressCount;
 
     /**
@@ -602,7 +575,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
      * 
      */
-    @Export(name="ipv6Addresses", type=List.class, parameters={String.class})
+    @Export(name="ipv6Addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv6Addresses;
 
     /**
@@ -616,7 +589,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to use outdated instance type. Default to false.
      * 
      */
-    @Export(name="isOutdated", type=Boolean.class, parameters={})
+    @Export(name="isOutdated", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOutdated;
 
     /**
@@ -630,7 +603,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
      * 
      */
-    @Export(name="keyName", type=String.class, parameters={})
+    @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
     /**
@@ -644,7 +617,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -658,7 +631,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -672,7 +645,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
      * 
      */
-    @Export(name="maintenanceAction", type=String.class, parameters={})
+    @Export(name="maintenanceAction", refs={String.class}, tree="[0]")
     private Output<String> maintenanceAction;
 
     /**
@@ -686,7 +659,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
      * 
      */
-    @Export(name="maintenanceNotify", type=Boolean.class, parameters={})
+    @Export(name="maintenanceNotify", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> maintenanceNotify;
 
     /**
@@ -700,7 +673,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The time of maintenance. See `maintenance_time` below.
      * 
      */
-    @Export(name="maintenanceTime", type=InstanceMaintenanceTime.class, parameters={})
+    @Export(name="maintenanceTime", refs={InstanceMaintenanceTime.class}, tree="[0]")
     private Output</* @Nullable */ InstanceMaintenanceTime> maintenanceTime;
 
     /**
@@ -714,7 +687,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The memory size of the instance. Unit: MiB.
      * 
      */
-    @Export(name="memory", type=Integer.class, parameters={})
+    @Export(name="memory", refs={Integer.class}, tree="[0]")
     private Output<Integer> memory;
 
     /**
@@ -725,24 +698,38 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.memory;
     }
     /**
-     * The ID of the ENI.
+     * The ID of the secondary ENI.
      * 
      */
-    @Export(name="networkInterfaceId", type=String.class, parameters={})
+    @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceId;
 
     /**
-     * @return The ID of the ENI.
+     * @return The ID of the secondary ENI.
      * 
      */
     public Output<String> networkInterfaceId() {
         return this.networkInterfaceId;
     }
     /**
+     * The list of network interfaces created with instance. See `network_interfaces` below.
+     * 
+     */
+    @Export(name="networkInterfaces", refs={InstanceNetworkInterfaces.class}, tree="[0]")
+    private Output<InstanceNetworkInterfaces> networkInterfaces;
+
+    /**
+     * @return The list of network interfaces created with instance. See `network_interfaces` below.
+     * 
+     */
+    public Output<InstanceNetworkInterfaces> networkInterfaces() {
+        return this.networkInterfaces;
+    }
+    /**
      * The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
      * 
      */
-    @Export(name="operatorType", type=String.class, parameters={})
+    @Export(name="operatorType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> operatorType;
 
     /**
@@ -756,7 +743,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the operating system of the instance.
      * 
      */
-    @Export(name="osName", type=String.class, parameters={})
+    @Export(name="osName", refs={String.class}, tree="[0]")
     private Output<String> osName;
 
     /**
@@ -770,7 +757,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The type of the operating system of the instance.
      * 
      */
-    @Export(name="osType", type=String.class, parameters={})
+    @Export(name="osType", refs={String.class}, tree="[0]")
     private Output<String> osType;
 
     /**
@@ -784,7 +771,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -801,7 +788,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -818,7 +805,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: [&#34;Week&#34;, &#34;Month&#34;]. Default to &#34;Month&#34;.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -832,7 +819,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The primary private IP address of the ENI.
      * 
      */
-    @Export(name="primaryIpAddress", type=String.class, parameters={})
+    @Export(name="primaryIpAddress", refs={String.class}, tree="[0]")
     private Output<String> primaryIpAddress;
 
     /**
@@ -846,7 +833,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="privateIp", type=String.class, parameters={})
+    @Export(name="privateIp", refs={String.class}, tree="[0]")
     private Output<String> privateIp;
 
     /**
@@ -860,7 +847,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The instance public ip.
      * 
      */
-    @Export(name="publicIp", type=String.class, parameters={})
+    @Export(name="publicIp", refs={String.class}, tree="[0]")
     private Output<String> publicIp;
 
     /**
@@ -874,7 +861,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalStatus;
 
     /**
@@ -888,7 +875,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -902,7 +889,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      * 
      */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
@@ -916,7 +903,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
      * 
      */
-    @Export(name="secondaryPrivateIpAddressCount", type=Integer.class, parameters={})
+    @Export(name="secondaryPrivateIpAddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> secondaryPrivateIpAddressCount;
 
     /**
@@ -930,7 +917,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
      * 
      */
-    @Export(name="secondaryPrivateIps", type=List.class, parameters={String.class})
+    @Export(name="secondaryPrivateIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> secondaryPrivateIps;
 
     /**
@@ -946,7 +933,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Deactive: Disable security enhancement strategy, it works on all images.
      * 
      */
-    @Export(name="securityEnhancementStrategy", type=String.class, parameters={})
+    @Export(name="securityEnhancementStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityEnhancementStrategy;
 
     /**
@@ -962,7 +949,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A list of security group ids to associate with.
      * 
      */
-    @Export(name="securityGroups", type=List.class, parameters={String.class})
+    @Export(name="securityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroups;
 
     /**
@@ -976,7 +963,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
      * 
      */
-    @Export(name="spotDuration", type=Integer.class, parameters={})
+    @Export(name="spotDuration", refs={Integer.class}, tree="[0]")
     private Output<Integer> spotDuration;
 
     /**
@@ -990,7 +977,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
      * 
      */
-    @Export(name="spotPriceLimit", type=Double.class, parameters={})
+    @Export(name="spotPriceLimit", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> spotPriceLimit;
 
     /**
@@ -1009,7 +996,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
      * 
      */
-    @Export(name="spotStrategy", type=String.class, parameters={})
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
     private Output<String> spotStrategy;
 
     /**
@@ -1028,7 +1015,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The instance status. Valid values: [&#34;Running&#34;, &#34;Stopped&#34;]. You can control the instance start and stop through this parameter. Default to `Running`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -1042,7 +1029,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      * 
      */
-    @Export(name="stoppedMode", type=String.class, parameters={})
+    @Export(name="stoppedMode", refs={String.class}, tree="[0]")
     private Output<String> stoppedMode;
 
     /**
@@ -1056,7 +1043,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the automatic snapshot policy applied to the system disk.
      * 
      */
-    @Export(name="systemDiskAutoSnapshotPolicyId", type=String.class, parameters={})
+    @Export(name="systemDiskAutoSnapshotPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskAutoSnapshotPolicyId;
 
     /**
@@ -1070,7 +1057,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
      * 
      */
-    @Export(name="systemDiskCategory", type=String.class, parameters={})
+    @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskCategory;
 
     /**
@@ -1084,7 +1071,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
-    @Export(name="systemDiskDescription", type=String.class, parameters={})
+    @Export(name="systemDiskDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskDescription;
 
     /**
@@ -1098,7 +1085,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
      * 
      */
-    @Export(name="systemDiskEncryptAlgorithm", type=String.class, parameters={})
+    @Export(name="systemDiskEncryptAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskEncryptAlgorithm;
 
     /**
@@ -1112,7 +1099,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
      * 
      */
-    @Export(name="systemDiskEncrypted", type=Boolean.class, parameters={})
+    @Export(name="systemDiskEncrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> systemDiskEncrypted;
 
     /**
@@ -1126,7 +1113,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available since v1.210.0) The ID of system disk.
      * 
      */
-    @Export(name="systemDiskId", type=String.class, parameters={})
+    @Export(name="systemDiskId", refs={String.class}, tree="[0]")
     private Output<String> systemDiskId;
 
     /**
@@ -1140,7 +1127,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the Key Management Service (KMS) key to be used for the system disk.
      * 
      */
-    @Export(name="systemDiskKmsKeyId", type=String.class, parameters={})
+    @Export(name="systemDiskKmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskKmsKeyId;
 
     /**
@@ -1154,7 +1141,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      * 
      */
-    @Export(name="systemDiskName", type=String.class, parameters={})
+    @Export(name="systemDiskName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskName;
 
     /**
@@ -1168,7 +1155,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
      * 
      */
-    @Export(name="systemDiskPerformanceLevel", type=String.class, parameters={})
+    @Export(name="systemDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output<String> systemDiskPerformanceLevel;
 
     /**
@@ -1182,7 +1169,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      * 
      */
-    @Export(name="systemDiskSize", type=Integer.class, parameters={})
+    @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> systemDiskSize;
 
     /**
@@ -1193,14 +1180,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskSize);
     }
     /**
-     * The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+     * The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
      * 
      */
-    @Export(name="systemDiskStorageClusterId", type=String.class, parameters={})
+    @Export(name="systemDiskStorageClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskStorageClusterId;
 
     /**
-     * @return The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+     * @return The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
      * 
      */
     public Output<Optional<String>> systemDiskStorageClusterId() {
@@ -1212,7 +1199,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, String.class})
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
@@ -1224,7 +1211,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     public Output<Optional<String>> userData() {
@@ -1236,7 +1223,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="volumeTags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="volumeTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> volumeTags;
 
     /**
@@ -1252,7 +1239,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**

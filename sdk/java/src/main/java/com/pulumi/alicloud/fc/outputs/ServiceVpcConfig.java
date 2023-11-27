@@ -90,11 +90,11 @@ public final class ServiceVpcConfig {
             return vswitchIds(List.of(vswitchIds));
         }
         public ServiceVpcConfig build() {
-            final var o = new ServiceVpcConfig();
-            o.securityGroupId = securityGroupId;
-            o.vpcId = vpcId;
-            o.vswitchIds = vswitchIds;
-            return o;
+            final var _resultValue = new ServiceVpcConfig();
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchIds = vswitchIds;
+            return _resultValue;
         }
     }
 }

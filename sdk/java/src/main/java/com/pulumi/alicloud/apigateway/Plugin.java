@@ -77,7 +77,7 @@ public class Plugin extends com.pulumi.resources.CustomResource {
      * The description of the plug-in, which cannot exceed 200 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -91,7 +91,7 @@ public class Plugin extends com.pulumi.resources.CustomResource {
      * The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
      * 
      */
-    @Export(name="pluginData", type=String.class, parameters={})
+    @Export(name="pluginData", refs={String.class}, tree="[0]")
     private Output<String> pluginData;
 
     /**
@@ -105,7 +105,7 @@ public class Plugin extends com.pulumi.resources.CustomResource {
      * The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
      * 
      */
-    @Export(name="pluginName", type=String.class, parameters={})
+    @Export(name="pluginName", refs={String.class}, tree="[0]")
     private Output<String> pluginName;
 
     /**
@@ -125,7 +125,7 @@ public class Plugin extends com.pulumi.resources.CustomResource {
      * - caching: indicates caching.
      * 
      */
-    @Export(name="pluginType", type=String.class, parameters={})
+    @Export(name="pluginType", refs={String.class}, tree="[0]")
     private Output<String> pluginType;
 
     /**
@@ -145,7 +145,7 @@ public class Plugin extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

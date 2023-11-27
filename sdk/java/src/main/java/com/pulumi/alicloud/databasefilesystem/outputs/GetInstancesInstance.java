@@ -357,25 +357,25 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.attachNodeNumber = attachNodeNumber;
-            o.category = category;
-            o.createTime = createTime;
-            o.dbfsClusterId = dbfsClusterId;
-            o.ecsLists = ecsLists;
-            o.enableRaid = enableRaid;
-            o.encryption = encryption;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.kmsKeyId = kmsKeyId;
-            o.paymentType = paymentType;
-            o.performanceLevel = performanceLevel;
-            o.raidStripeUnitNumber = raidStripeUnitNumber;
-            o.size = size;
-            o.status = status;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.attachNodeNumber = attachNodeNumber;
+            _resultValue.category = category;
+            _resultValue.createTime = createTime;
+            _resultValue.dbfsClusterId = dbfsClusterId;
+            _resultValue.ecsLists = ecsLists;
+            _resultValue.enableRaid = enableRaid;
+            _resultValue.encryption = encryption;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.paymentType = paymentType;
+            _resultValue.performanceLevel = performanceLevel;
+            _resultValue.raidStripeUnitNumber = raidStripeUnitNumber;
+            _resultValue.size = size;
+            _resultValue.status = status;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

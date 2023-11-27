@@ -136,16 +136,16 @@ public final class GetEcsDeploymentSetsResult {
             return this;
         }
         public GetEcsDeploymentSetsResult build() {
-            final var o = new GetEcsDeploymentSetsResult();
-            o.deploymentSetName = deploymentSetName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.sets = sets;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new GetEcsDeploymentSetsResult();
+            _resultValue.deploymentSetName = deploymentSetName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sets = sets;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

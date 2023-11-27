@@ -191,18 +191,18 @@ public final class GetModelsResult {
             return this;
         }
         public GetModelsResult build() {
-            final var o = new GetModelsResult();
-            o.groupId = groupId;
-            o.id = id;
-            o.ids = ids;
-            o.modelName = modelName;
-            o.models = models;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetModelsResult();
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.modelName = modelName;
+            _resultValue.models = models;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

@@ -97,7 +97,7 @@ public class BgpNetwork extends com.pulumi.resources.CustomResource {
      * The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
      * 
      */
-    @Export(name="dstCidrBlock", type=String.class, parameters={})
+    @Export(name="dstCidrBlock", refs={String.class}, tree="[0]")
     private Output<String> dstCidrBlock;
 
     /**
@@ -111,7 +111,7 @@ public class BgpNetwork extends com.pulumi.resources.CustomResource {
      * The ID of the vRouter associated with the router interface.
      * 
      */
-    @Export(name="routerId", type=String.class, parameters={})
+    @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
@@ -125,7 +125,7 @@ public class BgpNetwork extends com.pulumi.resources.CustomResource {
      * The state of the advertised BGP network.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

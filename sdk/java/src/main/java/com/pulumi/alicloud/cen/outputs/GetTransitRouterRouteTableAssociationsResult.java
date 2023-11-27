@@ -184,17 +184,17 @@ public final class GetTransitRouterRouteTableAssociationsResult {
             return this;
         }
         public GetTransitRouterRouteTableAssociationsResult build() {
-            final var o = new GetTransitRouterRouteTableAssociationsResult();
-            o.associations = associations;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterAttachmentResourceId = transitRouterAttachmentResourceId;
-            o.transitRouterAttachmentResourceType = transitRouterAttachmentResourceType;
-            o.transitRouterRouteTableId = transitRouterRouteTableId;
-            return o;
+            final var _resultValue = new GetTransitRouterRouteTableAssociationsResult();
+            _resultValue.associations = associations;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterAttachmentResourceId = transitRouterAttachmentResourceId;
+            _resultValue.transitRouterAttachmentResourceType = transitRouterAttachmentResourceType;
+            _resultValue.transitRouterRouteTableId = transitRouterRouteTableId;
+            return _resultValue;
         }
     }
 }

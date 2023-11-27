@@ -105,13 +105,13 @@ public final class GetKubernetesVersionResult {
             return this;
         }
         public GetKubernetesVersionResult build() {
-            final var o = new GetKubernetesVersionResult();
-            o.clusterType = clusterType;
-            o.id = id;
-            o.kubernetesVersion = kubernetesVersion;
-            o.metadatas = metadatas;
-            o.profile = profile;
-            return o;
+            final var _resultValue = new GetKubernetesVersionResult();
+            _resultValue.clusterType = clusterType;
+            _resultValue.id = id;
+            _resultValue.kubernetesVersion = kubernetesVersion;
+            _resultValue.metadatas = metadatas;
+            _resultValue.profile = profile;
+            return _resultValue;
         }
     }
 }

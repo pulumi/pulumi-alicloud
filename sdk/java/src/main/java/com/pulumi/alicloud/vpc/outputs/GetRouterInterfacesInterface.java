@@ -371,26 +371,26 @@ public final class GetRouterInterfacesInterface {
             return this;
         }
         public GetRouterInterfacesInterface build() {
-            final var o = new GetRouterInterfacesInterface();
-            o.accessPointId = accessPointId;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.healthCheckSourceIp = healthCheckSourceIp;
-            o.healthCheckTargetIp = healthCheckTargetIp;
-            o.id = id;
-            o.name = name;
-            o.oppositeInterfaceId = oppositeInterfaceId;
-            o.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
-            o.oppositeRegionId = oppositeRegionId;
-            o.oppositeRouterId = oppositeRouterId;
-            o.oppositeRouterType = oppositeRouterType;
-            o.role = role;
-            o.routerId = routerId;
-            o.routerType = routerType;
-            o.specification = specification;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetRouterInterfacesInterface();
+            _resultValue.accessPointId = accessPointId;
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.healthCheckSourceIp = healthCheckSourceIp;
+            _resultValue.healthCheckTargetIp = healthCheckTargetIp;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.oppositeInterfaceId = oppositeInterfaceId;
+            _resultValue.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
+            _resultValue.oppositeRegionId = oppositeRegionId;
+            _resultValue.oppositeRouterId = oppositeRouterId;
+            _resultValue.oppositeRouterType = oppositeRouterType;
+            _resultValue.role = role;
+            _resultValue.routerId = routerId;
+            _resultValue.routerType = routerType;
+            _resultValue.specification = specification;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

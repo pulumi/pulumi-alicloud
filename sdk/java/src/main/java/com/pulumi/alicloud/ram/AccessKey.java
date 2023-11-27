@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ram/accessKey:AccessKey")
 public class AccessKey extends com.pulumi.resources.CustomResource {
-    @Export(name="encryptedSecret", type=String.class, parameters={})
+    @Export(name="encryptedSecret", refs={String.class}, tree="[0]")
     private Output<String> encryptedSecret;
 
     public Output<String> encryptedSecret() {
@@ -122,7 +122,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
      * The fingerprint of the PGP key used to encrypt the secret
      * 
      */
-    @Export(name="keyFingerprint", type=String.class, parameters={})
+    @Export(name="keyFingerprint", refs={String.class}, tree="[0]")
     private Output<String> keyFingerprint;
 
     /**
@@ -136,7 +136,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
      * 
      */
-    @Export(name="pgpKey", type=String.class, parameters={})
+    @Export(name="pgpKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pgpKey;
 
     /**
@@ -153,7 +153,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
      * at the cost of preventing the use of the secret key in automation.
      * 
      */
-    @Export(name="secret", type=String.class, parameters={})
+    @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**
@@ -170,7 +170,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn&#39;t get its secret ever.
      * 
      */
-    @Export(name="secretFile", type=String.class, parameters={})
+    @Export(name="secretFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretFile;
 
     /**
@@ -184,7 +184,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
      * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -198,7 +198,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userName;
 
     /**

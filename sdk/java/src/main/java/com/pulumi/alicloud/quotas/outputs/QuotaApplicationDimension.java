@@ -67,10 +67,10 @@ public final class QuotaApplicationDimension {
             return this;
         }
         public QuotaApplicationDimension build() {
-            final var o = new QuotaApplicationDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new QuotaApplicationDimension();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

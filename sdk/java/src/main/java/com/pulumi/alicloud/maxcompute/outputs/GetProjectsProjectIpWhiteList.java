@@ -65,10 +65,10 @@ public final class GetProjectsProjectIpWhiteList {
             return this;
         }
         public GetProjectsProjectIpWhiteList build() {
-            final var o = new GetProjectsProjectIpWhiteList();
-            o.ipList = ipList;
-            o.vpcIpList = vpcIpList;
-            return o;
+            final var _resultValue = new GetProjectsProjectIpWhiteList();
+            _resultValue.ipList = ipList;
+            _resultValue.vpcIpList = vpcIpList;
+            return _resultValue;
         }
     }
 }

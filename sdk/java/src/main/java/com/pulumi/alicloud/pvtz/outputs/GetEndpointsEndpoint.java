@@ -195,17 +195,17 @@ public final class GetEndpointsEndpoint {
             return this;
         }
         public GetEndpointsEndpoint build() {
-            final var o = new GetEndpointsEndpoint();
-            o.createTime = createTime;
-            o.endpointName = endpointName;
-            o.id = id;
-            o.ipConfigs = ipConfigs;
-            o.securityGroupId = securityGroupId;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            o.vpcRegionId = vpcRegionId;
-            return o;
+            final var _resultValue = new GetEndpointsEndpoint();
+            _resultValue.createTime = createTime;
+            _resultValue.endpointName = endpointName;
+            _resultValue.id = id;
+            _resultValue.ipConfigs = ipConfigs;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcName = vpcName;
+            _resultValue.vpcRegionId = vpcRegionId;
+            return _resultValue;
         }
     }
 }

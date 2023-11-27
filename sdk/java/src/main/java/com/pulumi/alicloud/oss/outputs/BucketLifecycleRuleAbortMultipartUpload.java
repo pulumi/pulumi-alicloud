@@ -68,10 +68,10 @@ public final class BucketLifecycleRuleAbortMultipartUpload {
             return this;
         }
         public BucketLifecycleRuleAbortMultipartUpload build() {
-            final var o = new BucketLifecycleRuleAbortMultipartUpload();
-            o.createdBeforeDate = createdBeforeDate;
-            o.days = days;
-            return o;
+            final var _resultValue = new BucketLifecycleRuleAbortMultipartUpload();
+            _resultValue.createdBeforeDate = createdBeforeDate;
+            _resultValue.days = days;
+            return _resultValue;
         }
     }
 }

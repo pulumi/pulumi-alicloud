@@ -112,14 +112,14 @@ public final class GetIngressesResult {
             return this;
         }
         public GetIngressesResult build() {
-            final var o = new GetIngressesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.ingresses = ingresses;
-            o.namespaceId = namespaceId;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetIngressesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ingresses = ingresses;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

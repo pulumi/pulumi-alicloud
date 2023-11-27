@@ -591,37 +591,37 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.allowedLists = allowedLists;
-            o.config = config;
-            o.createTime = createTime;
-            o.deployType = deployType;
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            o.domainEndpoint = domainEndpoint;
-            o.eipMax = eipMax;
-            o.endPoint = endPoint;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.ioMax = ioMax;
-            o.msgRetain = msgRetain;
-            o.name = name;
-            o.paidType = paidType;
-            o.partitionNum = partitionNum;
-            o.saslDomainEndpoint = saslDomainEndpoint;
-            o.securityGroup = securityGroup;
-            o.serviceStatus = serviceStatus;
-            o.serviceVersion = serviceVersion;
-            o.specType = specType;
-            o.sslDomainEndpoint = sslDomainEndpoint;
-            o.sslEndPoint = sslEndPoint;
-            o.tags = tags;
-            o.topicQuota = topicQuota;
-            o.upgradeServiceDetailInfos = upgradeServiceDetailInfos;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.allowedLists = allowedLists;
+            _resultValue.config = config;
+            _resultValue.createTime = createTime;
+            _resultValue.deployType = deployType;
+            _resultValue.diskSize = diskSize;
+            _resultValue.diskType = diskType;
+            _resultValue.domainEndpoint = domainEndpoint;
+            _resultValue.eipMax = eipMax;
+            _resultValue.endPoint = endPoint;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.ioMax = ioMax;
+            _resultValue.msgRetain = msgRetain;
+            _resultValue.name = name;
+            _resultValue.paidType = paidType;
+            _resultValue.partitionNum = partitionNum;
+            _resultValue.saslDomainEndpoint = saslDomainEndpoint;
+            _resultValue.securityGroup = securityGroup;
+            _resultValue.serviceStatus = serviceStatus;
+            _resultValue.serviceVersion = serviceVersion;
+            _resultValue.specType = specType;
+            _resultValue.sslDomainEndpoint = sslDomainEndpoint;
+            _resultValue.sslEndPoint = sslEndPoint;
+            _resultValue.tags = tags;
+            _resultValue.topicQuota = topicQuota;
+            _resultValue.upgradeServiceDetailInfos = upgradeServiceDetailInfos;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

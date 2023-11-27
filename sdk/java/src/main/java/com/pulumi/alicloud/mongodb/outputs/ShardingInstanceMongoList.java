@@ -106,12 +106,12 @@ public final class ShardingInstanceMongoList {
             return this;
         }
         public ShardingInstanceMongoList build() {
-            final var o = new ShardingInstanceMongoList();
-            o.connectString = connectString;
-            o.nodeClass = nodeClass;
-            o.nodeId = nodeId;
-            o.port = port;
-            return o;
+            final var _resultValue = new ShardingInstanceMongoList();
+            _resultValue.connectString = connectString;
+            _resultValue.nodeClass = nodeClass;
+            _resultValue.nodeId = nodeId;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

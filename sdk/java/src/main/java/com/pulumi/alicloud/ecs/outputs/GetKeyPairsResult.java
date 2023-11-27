@@ -212,18 +212,18 @@ public final class GetKeyPairsResult {
             return this;
         }
         public GetKeyPairsResult build() {
-            final var o = new GetKeyPairsResult();
-            o.fingerPrint = fingerPrint;
-            o.id = id;
-            o.ids = ids;
-            o.keyPairs = keyPairs;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pairs = pairs;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetKeyPairsResult();
+            _resultValue.fingerPrint = fingerPrint;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyPairs = keyPairs;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pairs = pairs;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

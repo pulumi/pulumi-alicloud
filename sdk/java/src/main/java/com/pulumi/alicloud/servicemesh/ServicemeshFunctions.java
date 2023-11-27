@@ -227,51 +227,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
-     * import com.pulumi.alicloud.servicemesh.inputs.GetServiceMeshesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId1&#34;, ids.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var nameRegex = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMesh&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId2&#34;, nameRegex.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var status = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;running&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId3&#34;, status.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      */
     public static Output<GetServiceMeshesResult> getServiceMeshes() {
@@ -280,51 +236,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
-     * import com.pulumi.alicloud.servicemesh.inputs.GetServiceMeshesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId1&#34;, ids.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var nameRegex = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMesh&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId2&#34;, nameRegex.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var status = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;running&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId3&#34;, status.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      */
     public static CompletableFuture<GetServiceMeshesResult> getServiceMeshesPlain() {
@@ -333,51 +245,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
-     * import com.pulumi.alicloud.servicemesh.inputs.GetServiceMeshesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId1&#34;, ids.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var nameRegex = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMesh&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId2&#34;, nameRegex.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var status = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;running&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId3&#34;, status.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      */
     public static Output<GetServiceMeshesResult> getServiceMeshes(GetServiceMeshesArgs args) {
@@ -386,51 +254,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
-     * import com.pulumi.alicloud.servicemesh.inputs.GetServiceMeshesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId1&#34;, ids.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var nameRegex = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMesh&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId2&#34;, nameRegex.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var status = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;running&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId3&#34;, status.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      */
     public static CompletableFuture<GetServiceMeshesResult> getServiceMeshesPlain(GetServiceMeshesPlainArgs args) {
@@ -439,51 +263,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
-     * import com.pulumi.alicloud.servicemesh.inputs.GetServiceMeshesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId1&#34;, ids.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var nameRegex = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMesh&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId2&#34;, nameRegex.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var status = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;running&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId3&#34;, status.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      */
     public static Output<GetServiceMeshesResult> getServiceMeshes(GetServiceMeshesArgs args, InvokeOptions options) {
@@ -492,51 +272,7 @@ public final class ServicemeshFunctions {
     /**
      * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
-     * import com.pulumi.alicloud.servicemesh.inputs.GetServiceMeshesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId1&#34;, ids.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var nameRegex = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMesh&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId2&#34;, nameRegex.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *         final var status = ServicemeshFunctions.getServiceMeshes(GetServiceMeshesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;running&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;serviceMeshServiceMeshId3&#34;, status.applyValue(getServiceMeshesResult -&gt; getServiceMeshesResult.meshes()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      */
     public static CompletableFuture<GetServiceMeshesResult> getServiceMeshesPlain(GetServiceMeshesPlainArgs args, InvokeOptions options) {

@@ -103,12 +103,12 @@ public final class GetHpcClustersCluster {
             return this;
         }
         public GetHpcClustersCluster build() {
-            final var o = new GetHpcClustersCluster();
-            o.description = description;
-            o.hpcClusterId = hpcClusterId;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetHpcClustersCluster();
+            _resultValue.description = description;
+            _resultValue.hpcClusterId = hpcClusterId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

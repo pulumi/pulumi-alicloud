@@ -178,16 +178,16 @@ public final class GetElasticityAssurancesResult {
             return this;
         }
         public GetElasticityAssurancesResult build() {
-            final var o = new GetElasticityAssurancesResult();
-            o.assurances = assurances;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.privatePoolOptionsIds = privatePoolOptionsIds;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetElasticityAssurancesResult();
+            _resultValue.assurances = assurances;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.privatePoolOptionsIds = privatePoolOptionsIds;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

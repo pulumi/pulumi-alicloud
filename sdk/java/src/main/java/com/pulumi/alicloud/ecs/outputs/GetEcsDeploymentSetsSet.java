@@ -222,18 +222,18 @@ public final class GetEcsDeploymentSetsSet {
             return this;
         }
         public GetEcsDeploymentSetsSet build() {
-            final var o = new GetEcsDeploymentSetsSet();
-            o.createTime = createTime;
-            o.deploymentSetId = deploymentSetId;
-            o.deploymentSetName = deploymentSetName;
-            o.description = description;
-            o.domain = domain;
-            o.granularity = granularity;
-            o.id = id;
-            o.instanceAmount = instanceAmount;
-            o.instanceIds = instanceIds;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new GetEcsDeploymentSetsSet();
+            _resultValue.createTime = createTime;
+            _resultValue.deploymentSetId = deploymentSetId;
+            _resultValue.deploymentSetName = deploymentSetName;
+            _resultValue.description = description;
+            _resultValue.domain = domain;
+            _resultValue.granularity = granularity;
+            _resultValue.id = id;
+            _resultValue.instanceAmount = instanceAmount;
+            _resultValue.instanceIds = instanceIds;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

@@ -90,11 +90,11 @@ public final class ErEnvConfPresetCanaryNingxia {
             return this;
         }
         public ErEnvConfPresetCanaryNingxia build() {
-            final var o = new ErEnvConfPresetCanaryNingxia();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfPresetCanaryNingxia();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

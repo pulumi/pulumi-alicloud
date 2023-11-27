@@ -61,7 +61,7 @@ public class GlobalEventsStorageRegion extends com.pulumi.resources.CustomResour
      * Global Events Storage Region.
      * 
      */
-    @Export(name="storageRegion", type=String.class, parameters={})
+    @Export(name="storageRegion", refs={String.class}, tree="[0]")
     private Output<String> storageRegion;
 
     /**

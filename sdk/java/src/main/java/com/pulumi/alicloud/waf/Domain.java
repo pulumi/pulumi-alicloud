@@ -86,7 +86,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
      * 
      */
-    @Export(name="clusterType", type=String.class, parameters={})
+    @Export(name="clusterType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterType;
 
     /**
@@ -100,7 +100,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The CNAME record assigned by the WAF instance to the specified domain.
      * 
      */
-    @Export(name="cname", type=String.class, parameters={})
+    @Export(name="cname", refs={String.class}, tree="[0]")
     private Output<String> cname;
 
     /**
@@ -114,7 +114,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The connection timeout for WAF exclusive clusters. Unit: seconds.
      * 
      */
-    @Export(name="connectionTime", type=Integer.class, parameters={})
+    @Export(name="connectionTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> connectionTime;
 
     /**
@@ -132,7 +132,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead. */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -146,7 +146,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -160,7 +160,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * List of the HTTP 2.0 ports.
      * 
      */
-    @Export(name="http2Ports", type=List.class, parameters={String.class})
+    @Export(name="http2Ports", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> http2Ports;
 
     /**
@@ -174,7 +174,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * List of the HTTP ports.
      * 
      */
-    @Export(name="httpPorts", type=List.class, parameters={String.class})
+    @Export(name="httpPorts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> httpPorts;
 
     /**
@@ -189,7 +189,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      * 
      */
-    @Export(name="httpToUserIp", type=String.class, parameters={})
+    @Export(name="httpToUserIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> httpToUserIp;
 
     /**
@@ -204,7 +204,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * List of the HTTPS ports.
      * 
      */
-    @Export(name="httpsPorts", type=List.class, parameters={String.class})
+    @Export(name="httpsPorts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> httpsPorts;
 
     /**
@@ -218,7 +218,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: &#34;On&#34; and `Off`. Default to `Off`.
      * 
      */
-    @Export(name="httpsRedirect", type=String.class, parameters={})
+    @Export(name="httpsRedirect", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> httpsRedirect;
 
     /**
@@ -232,7 +232,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The ID of the WAF instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -246,7 +246,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
      * 
      */
-    @Export(name="isAccessProduct", type=String.class, parameters={})
+    @Export(name="isAccessProduct", refs={String.class}, tree="[0]")
     private Output<String> isAccessProduct;
 
     /**
@@ -260,7 +260,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
      * 
      */
-    @Export(name="loadBalancing", type=String.class, parameters={})
+    @Export(name="loadBalancing", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loadBalancing;
 
     /**
@@ -276,7 +276,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * * value: The value of label
      * 
      */
-    @Export(name="logHeaders", type=List.class, parameters={DomainLogHeader.class})
+    @Export(name="logHeaders", refs={List.class,DomainLogHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DomainLogHeader>> logHeaders;
 
     /**
@@ -292,7 +292,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The read timeout of a WAF exclusive cluster. Unit: seconds.
      * 
      */
-    @Export(name="readTime", type=Integer.class, parameters={})
+    @Export(name="readTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> readTime;
 
     /**
@@ -306,7 +306,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -320,7 +320,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * List of the IP address or domain of the origin server to which the specified domain points.
      * 
      */
-    @Export(name="sourceIps", type=List.class, parameters={String.class})
+    @Export(name="sourceIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sourceIps;
 
     /**
@@ -334,7 +334,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
      * 
      */
-    @Export(name="writeTime", type=Integer.class, parameters={})
+    @Export(name="writeTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> writeTime;
 
     /**

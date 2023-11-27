@@ -118,12 +118,12 @@ public final class HybridMonitorSlsTaskSlsProcessConfig {
             return statistics(List.of(statistics));
         }
         public HybridMonitorSlsTaskSlsProcessConfig build() {
-            final var o = new HybridMonitorSlsTaskSlsProcessConfig();
-            o.expresses = expresses;
-            o.filter = filter;
-            o.groupBies = groupBies;
-            o.statistics = statistics;
-            return o;
+            final var _resultValue = new HybridMonitorSlsTaskSlsProcessConfig();
+            _resultValue.expresses = expresses;
+            _resultValue.filter = filter;
+            _resultValue.groupBies = groupBies;
+            _resultValue.statistics = statistics;
+            return _resultValue;
         }
     }
 }

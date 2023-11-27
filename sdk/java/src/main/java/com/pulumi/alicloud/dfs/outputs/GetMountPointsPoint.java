@@ -236,19 +236,19 @@ public final class GetMountPointsPoint {
             return this;
         }
         public GetMountPointsPoint build() {
-            final var o = new GetMountPointsPoint();
-            o.accessGroupId = accessGroupId;
-            o.createTime = createTime;
-            o.description = description;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.mountPointDomain = mountPointDomain;
-            o.mountPointId = mountPointId;
-            o.networkType = networkType;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetMountPointsPoint();
+            _resultValue.accessGroupId = accessGroupId;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.mountPointDomain = mountPointDomain;
+            _resultValue.mountPointId = mountPointId;
+            _resultValue.networkType = networkType;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

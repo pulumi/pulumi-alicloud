@@ -18,16 +18,37 @@ class VpcEndpointServiceArgs:
                  connect_bandwidth: Optional[pulumi.Input[int]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  payer: Optional[pulumi.Input[str]] = None,
-                 service_description: Optional[pulumi.Input[str]] = None):
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 service_description: Optional[pulumi.Input[str]] = None,
+                 service_resource_type: Optional[pulumi.Input[str]] = None,
+                 service_support_ipv6: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone_affinity_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a VpcEndpointService resource.
-        :param pulumi.Input[bool] auto_accept_connection: Whether to automatically accept terminal node connections.
-        :param pulumi.Input[int] connect_bandwidth: The connection bandwidth.
-        :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
-        :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
-        :param pulumi.Input[str] service_description: The description of the terminal node service.
-               
-               > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+        :param pulumi.Input[bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+               - **true**
+               - **false**.
+        :param pulumi.Input[int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] payer: The payer of the endpoint service. Valid values:
+               - **Endpoint**: the service consumer.
+               - **EndpointService**: the service provider.
+        :param pulumi.Input[str] resource_group_id: The resource group ID.
+        :param pulumi.Input[str] service_description: The description of the endpoint service.
+        :param pulumi.Input[str] service_resource_type: Service resource type, value:
+               - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+               - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+               - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        :param pulumi.Input[bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
+               - **true**
+               - **false (default)**.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+               - **true**
+               - **false (default)**.
         """
         if auto_accept_connection is not None:
             pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
@@ -37,14 +58,26 @@ class VpcEndpointServiceArgs:
             pulumi.set(__self__, "dry_run", dry_run)
         if payer is not None:
             pulumi.set(__self__, "payer", payer)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if service_description is not None:
             pulumi.set(__self__, "service_description", service_description)
+        if service_resource_type is not None:
+            pulumi.set(__self__, "service_resource_type", service_resource_type)
+        if service_support_ipv6 is not None:
+            pulumi.set(__self__, "service_support_ipv6", service_support_ipv6)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if zone_affinity_enabled is not None:
+            pulumi.set(__self__, "zone_affinity_enabled", zone_affinity_enabled)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
     def auto_accept_connection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to automatically accept terminal node connections.
+        Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+        - **true**
+        - **false**.
         """
         return pulumi.get(self, "auto_accept_connection")
 
@@ -56,7 +89,7 @@ class VpcEndpointServiceArgs:
     @pulumi.getter(name="connectBandwidth")
     def connect_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The connection bandwidth.
+        The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         """
         return pulumi.get(self, "connect_bandwidth")
 
@@ -68,7 +101,9 @@ class VpcEndpointServiceArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to pre-check this request only. Default to: `false`
+        Specifies whether to perform only a dry run, without performing the actual request.
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -80,7 +115,9 @@ class VpcEndpointServiceArgs:
     @pulumi.getter
     def payer(self) -> Optional[pulumi.Input[str]]:
         """
-        The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        The payer of the endpoint service. Valid values:
+        - **Endpoint**: the service consumer.
+        - **EndpointService**: the service provider.
         """
         return pulumi.get(self, "payer")
 
@@ -89,12 +126,22 @@ class VpcEndpointServiceArgs:
         pulumi.set(self, "payer", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="serviceDescription")
     def service_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the terminal node service.
-
-        > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+        The description of the endpoint service.
         """
         return pulumi.get(self, "service_description")
 
@@ -102,53 +149,149 @@ class VpcEndpointServiceArgs:
     def service_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_description", value)
 
+    @property
+    @pulumi.getter(name="serviceResourceType")
+    def service_resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service resource type, value:
+        - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        """
+        return pulumi.get(self, "service_resource_type")
+
+    @service_resource_type.setter
+    def service_resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_resource_type", value)
+
+    @property
+    @pulumi.getter(name="serviceSupportIpv6")
+    def service_support_ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable IPv6 for the endpoint service. Valid values:
+        - **true**
+        - **false (default)**.
+        """
+        return pulumi.get(self, "service_support_ipv6")
+
+    @service_support_ipv6.setter
+    def service_support_ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_support_ipv6", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="zoneAffinityEnabled")
+    def zone_affinity_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+        - **true**
+        - **false (default)**.
+        """
+        return pulumi.get(self, "zone_affinity_enabled")
+
+    @zone_affinity_enabled.setter
+    def zone_affinity_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "zone_affinity_enabled", value)
+
 
 @pulumi.input_type
 class _VpcEndpointServiceState:
     def __init__(__self__, *,
                  auto_accept_connection: Optional[pulumi.Input[bool]] = None,
                  connect_bandwidth: Optional[pulumi.Input[int]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  payer: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_business_status: Optional[pulumi.Input[str]] = None,
                  service_description: Optional[pulumi.Input[str]] = None,
                  service_domain: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 service_resource_type: Optional[pulumi.Input[str]] = None,
+                 service_support_ipv6: Optional[pulumi.Input[bool]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_endpoint_service_name: Optional[pulumi.Input[str]] = None,
+                 zone_affinity_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointService resources.
-        :param pulumi.Input[bool] auto_accept_connection: Whether to automatically accept terminal node connections.
-        :param pulumi.Input[int] connect_bandwidth: The connection bandwidth.
-        :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
-        :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
-        :param pulumi.Input[str] service_business_status: The business status of Vpc Endpoint Service.
-        :param pulumi.Input[str] service_description: The description of the terminal node service.
-               
-               > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
-        :param pulumi.Input[str] service_domain: Service Domain.
-        :param pulumi.Input[str] status: The status of Vpc Endpoint Service.
+        :param pulumi.Input[bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+               - **true**
+               - **false**.
+        :param pulumi.Input[int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        :param pulumi.Input[str] create_time: The time when the endpoint service was created.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] payer: The payer of the endpoint service. Valid values:
+               - **Endpoint**: the service consumer.
+               - **EndpointService**: the service provider.
+        :param pulumi.Input[str] resource_group_id: The resource group ID.
+        :param pulumi.Input[str] service_business_status: The service state of the endpoint service.
+        :param pulumi.Input[str] service_description: The description of the endpoint service.
+        :param pulumi.Input[str] service_domain: The domain name of the endpoint service.
+        :param pulumi.Input[str] service_resource_type: Service resource type, value:
+               - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+               - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+               - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        :param pulumi.Input[bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
+               - **true**
+               - **false (default)**.
+        :param pulumi.Input[str] status: The state of the endpoint service.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[str] vpc_endpoint_service_name: The name of the endpoint service.
+        :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+               - **true**
+               - **false (default)**.
         """
         if auto_accept_connection is not None:
             pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
         if connect_bandwidth is not None:
             pulumi.set(__self__, "connect_bandwidth", connect_bandwidth)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if payer is not None:
             pulumi.set(__self__, "payer", payer)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if service_business_status is not None:
             pulumi.set(__self__, "service_business_status", service_business_status)
         if service_description is not None:
             pulumi.set(__self__, "service_description", service_description)
         if service_domain is not None:
             pulumi.set(__self__, "service_domain", service_domain)
+        if service_resource_type is not None:
+            pulumi.set(__self__, "service_resource_type", service_resource_type)
+        if service_support_ipv6 is not None:
+            pulumi.set(__self__, "service_support_ipv6", service_support_ipv6)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vpc_endpoint_service_name is not None:
+            pulumi.set(__self__, "vpc_endpoint_service_name", vpc_endpoint_service_name)
+        if zone_affinity_enabled is not None:
+            pulumi.set(__self__, "zone_affinity_enabled", zone_affinity_enabled)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
     def auto_accept_connection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to automatically accept terminal node connections.
+        Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+        - **true**
+        - **false**.
         """
         return pulumi.get(self, "auto_accept_connection")
 
@@ -160,7 +303,7 @@ class _VpcEndpointServiceState:
     @pulumi.getter(name="connectBandwidth")
     def connect_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The connection bandwidth.
+        The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         """
         return pulumi.get(self, "connect_bandwidth")
 
@@ -169,10 +312,24 @@ class _VpcEndpointServiceState:
         pulumi.set(self, "connect_bandwidth", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the endpoint service was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to pre-check this request only. Default to: `false`
+        Specifies whether to perform only a dry run, without performing the actual request.
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -184,7 +341,9 @@ class _VpcEndpointServiceState:
     @pulumi.getter
     def payer(self) -> Optional[pulumi.Input[str]]:
         """
-        The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        The payer of the endpoint service. Valid values:
+        - **Endpoint**: the service consumer.
+        - **EndpointService**: the service provider.
         """
         return pulumi.get(self, "payer")
 
@@ -193,10 +352,22 @@ class _VpcEndpointServiceState:
         pulumi.set(self, "payer", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="serviceBusinessStatus")
     def service_business_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The business status of Vpc Endpoint Service.
+        The service state of the endpoint service.
         """
         return pulumi.get(self, "service_business_status")
 
@@ -208,9 +379,7 @@ class _VpcEndpointServiceState:
     @pulumi.getter(name="serviceDescription")
     def service_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the terminal node service.
-
-        > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+        The description of the endpoint service.
         """
         return pulumi.get(self, "service_description")
 
@@ -222,7 +391,7 @@ class _VpcEndpointServiceState:
     @pulumi.getter(name="serviceDomain")
     def service_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Service Domain.
+        The domain name of the endpoint service.
         """
         return pulumi.get(self, "service_domain")
 
@@ -231,16 +400,83 @@ class _VpcEndpointServiceState:
         pulumi.set(self, "service_domain", value)
 
     @property
+    @pulumi.getter(name="serviceResourceType")
+    def service_resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service resource type, value:
+        - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        """
+        return pulumi.get(self, "service_resource_type")
+
+    @service_resource_type.setter
+    def service_resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_resource_type", value)
+
+    @property
+    @pulumi.getter(name="serviceSupportIpv6")
+    def service_support_ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable IPv6 for the endpoint service. Valid values:
+        - **true**
+        - **false (default)**.
+        """
+        return pulumi.get(self, "service_support_ipv6")
+
+    @service_support_ipv6.setter
+    def service_support_ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_support_ipv6", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Vpc Endpoint Service.
+        The state of the endpoint service.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vpcEndpointServiceName")
+    def vpc_endpoint_service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the endpoint service.
+        """
+        return pulumi.get(self, "vpc_endpoint_service_name")
+
+    @vpc_endpoint_service_name.setter
+    def vpc_endpoint_service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_endpoint_service_name", value)
+
+    @property
+    @pulumi.getter(name="zoneAffinityEnabled")
+    def zone_affinity_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+        - **true**
+        - **false (default)**.
+        """
+        return pulumi.get(self, "zone_affinity_enabled")
+
+    @zone_affinity_enabled.setter
+    def zone_affinity_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "zone_affinity_enabled", value)
 
 
 class VpcEndpointService(pulumi.CustomResource):
@@ -252,7 +488,12 @@ class VpcEndpointService(pulumi.CustomResource):
                  connect_bandwidth: Optional[pulumi.Input[int]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  payer: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_description: Optional[pulumi.Input[str]] = None,
+                 service_resource_type: Optional[pulumi.Input[str]] = None,
+                 service_support_ipv6: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone_affinity_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Provides a Private Link Vpc Endpoint Service resource.
@@ -284,18 +525,34 @@ class VpcEndpointService(pulumi.CustomResource):
         Private Link Vpc Endpoint Service can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example <service_id>
+         $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_accept_connection: Whether to automatically accept terminal node connections.
-        :param pulumi.Input[int] connect_bandwidth: The connection bandwidth.
-        :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
-        :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
-        :param pulumi.Input[str] service_description: The description of the terminal node service.
-               
-               > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+        :param pulumi.Input[bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+               - **true**
+               - **false**.
+        :param pulumi.Input[int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] payer: The payer of the endpoint service. Valid values:
+               - **Endpoint**: the service consumer.
+               - **EndpointService**: the service provider.
+        :param pulumi.Input[str] resource_group_id: The resource group ID.
+        :param pulumi.Input[str] service_description: The description of the endpoint service.
+        :param pulumi.Input[str] service_resource_type: Service resource type, value:
+               - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+               - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+               - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        :param pulumi.Input[bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
+               - **true**
+               - **false (default)**.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+               - **true**
+               - **false (default)**.
         """
         ...
     @overload
@@ -333,7 +590,7 @@ class VpcEndpointService(pulumi.CustomResource):
         Private Link Vpc Endpoint Service can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example <service_id>
+         $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -355,7 +612,12 @@ class VpcEndpointService(pulumi.CustomResource):
                  connect_bandwidth: Optional[pulumi.Input[int]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  payer: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_description: Optional[pulumi.Input[str]] = None,
+                 service_resource_type: Optional[pulumi.Input[str]] = None,
+                 service_support_ipv6: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone_affinity_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -369,10 +631,17 @@ class VpcEndpointService(pulumi.CustomResource):
             __props__.__dict__["connect_bandwidth"] = connect_bandwidth
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["payer"] = payer
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["service_description"] = service_description
+            __props__.__dict__["service_resource_type"] = service_resource_type
+            __props__.__dict__["service_support_ipv6"] = service_support_ipv6
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["zone_affinity_enabled"] = zone_affinity_enabled
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["service_business_status"] = None
             __props__.__dict__["service_domain"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["vpc_endpoint_service_name"] = None
         super(VpcEndpointService, __self__).__init__(
             'alicloud:privatelink/vpcEndpointService:VpcEndpointService',
             resource_name,
@@ -385,12 +654,19 @@ class VpcEndpointService(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_accept_connection: Optional[pulumi.Input[bool]] = None,
             connect_bandwidth: Optional[pulumi.Input[int]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             payer: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             service_business_status: Optional[pulumi.Input[str]] = None,
             service_description: Optional[pulumi.Input[str]] = None,
             service_domain: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'VpcEndpointService':
+            service_resource_type: Optional[pulumi.Input[str]] = None,
+            service_support_ipv6: Optional[pulumi.Input[bool]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            vpc_endpoint_service_name: Optional[pulumi.Input[str]] = None,
+            zone_affinity_enabled: Optional[pulumi.Input[bool]] = None) -> 'VpcEndpointService':
         """
         Get an existing VpcEndpointService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -398,16 +674,34 @@ class VpcEndpointService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_accept_connection: Whether to automatically accept terminal node connections.
-        :param pulumi.Input[int] connect_bandwidth: The connection bandwidth.
-        :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
-        :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
-        :param pulumi.Input[str] service_business_status: The business status of Vpc Endpoint Service.
-        :param pulumi.Input[str] service_description: The description of the terminal node service.
-               
-               > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
-        :param pulumi.Input[str] service_domain: Service Domain.
-        :param pulumi.Input[str] status: The status of Vpc Endpoint Service.
+        :param pulumi.Input[bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+               - **true**
+               - **false**.
+        :param pulumi.Input[int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        :param pulumi.Input[str] create_time: The time when the endpoint service was created.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] payer: The payer of the endpoint service. Valid values:
+               - **Endpoint**: the service consumer.
+               - **EndpointService**: the service provider.
+        :param pulumi.Input[str] resource_group_id: The resource group ID.
+        :param pulumi.Input[str] service_business_status: The service state of the endpoint service.
+        :param pulumi.Input[str] service_description: The description of the endpoint service.
+        :param pulumi.Input[str] service_domain: The domain name of the endpoint service.
+        :param pulumi.Input[str] service_resource_type: Service resource type, value:
+               - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+               - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+               - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        :param pulumi.Input[bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
+               - **true**
+               - **false (default)**.
+        :param pulumi.Input[str] status: The state of the endpoint service.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[str] vpc_endpoint_service_name: The name of the endpoint service.
+        :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+               - **true**
+               - **false (default)**.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -415,19 +709,28 @@ class VpcEndpointService(pulumi.CustomResource):
 
         __props__.__dict__["auto_accept_connection"] = auto_accept_connection
         __props__.__dict__["connect_bandwidth"] = connect_bandwidth
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["payer"] = payer
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["service_business_status"] = service_business_status
         __props__.__dict__["service_description"] = service_description
         __props__.__dict__["service_domain"] = service_domain
+        __props__.__dict__["service_resource_type"] = service_resource_type
+        __props__.__dict__["service_support_ipv6"] = service_support_ipv6
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["vpc_endpoint_service_name"] = vpc_endpoint_service_name
+        __props__.__dict__["zone_affinity_enabled"] = zone_affinity_enabled
         return VpcEndpointService(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
     def auto_accept_connection(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to automatically accept terminal node connections.
+        Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+        - **true**
+        - **false**.
         """
         return pulumi.get(self, "auto_accept_connection")
 
@@ -435,31 +738,51 @@ class VpcEndpointService(pulumi.CustomResource):
     @pulumi.getter(name="connectBandwidth")
     def connect_bandwidth(self) -> pulumi.Output[int]:
         """
-        The connection bandwidth.
+        The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         """
         return pulumi.get(self, "connect_bandwidth")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the endpoint service was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to pre-check this request only. Default to: `false`
+        Specifies whether to perform only a dry run, without performing the actual request.
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
     @property
     @pulumi.getter
-    def payer(self) -> pulumi.Output[Optional[str]]:
+    def payer(self) -> pulumi.Output[str]:
         """
-        The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        The payer of the endpoint service. Valid values:
+        - **Endpoint**: the service consumer.
+        - **EndpointService**: the service provider.
         """
         return pulumi.get(self, "payer")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="serviceBusinessStatus")
     def service_business_status(self) -> pulumi.Output[str]:
         """
-        The business status of Vpc Endpoint Service.
+        The service state of the endpoint service.
         """
         return pulumi.get(self, "service_business_status")
 
@@ -467,9 +790,7 @@ class VpcEndpointService(pulumi.CustomResource):
     @pulumi.getter(name="serviceDescription")
     def service_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the terminal node service.
-
-        > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+        The description of the endpoint service.
         """
         return pulumi.get(self, "service_description")
 
@@ -477,15 +798,62 @@ class VpcEndpointService(pulumi.CustomResource):
     @pulumi.getter(name="serviceDomain")
     def service_domain(self) -> pulumi.Output[str]:
         """
-        Service Domain.
+        The domain name of the endpoint service.
         """
         return pulumi.get(self, "service_domain")
+
+    @property
+    @pulumi.getter(name="serviceResourceType")
+    def service_resource_type(self) -> pulumi.Output[str]:
+        """
+        Service resource type, value:
+        - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        """
+        return pulumi.get(self, "service_resource_type")
+
+    @property
+    @pulumi.getter(name="serviceSupportIpv6")
+    def service_support_ipv6(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether to enable IPv6 for the endpoint service. Valid values:
+        - **true**
+        - **false (default)**.
+        """
+        return pulumi.get(self, "service_support_ipv6")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of Vpc Endpoint Service.
+        The state of the endpoint service.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The list of tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcEndpointServiceName")
+    def vpc_endpoint_service_name(self) -> pulumi.Output[str]:
+        """
+        The name of the endpoint service.
+        """
+        return pulumi.get(self, "vpc_endpoint_service_name")
+
+    @property
+    @pulumi.getter(name="zoneAffinityEnabled")
+    def zone_affinity_enabled(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+        - **true**
+        - **false (default)**.
+        """
+        return pulumi.get(self, "zone_affinity_enabled")
 

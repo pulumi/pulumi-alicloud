@@ -279,21 +279,21 @@ public final class GetVpcEndpointsEndpoint {
             return this;
         }
         public GetVpcEndpointsEndpoint build() {
-            final var o = new GetVpcEndpointsEndpoint();
-            o.bandwidth = bandwidth;
-            o.connectionStatus = connectionStatus;
-            o.endpointBusinessStatus = endpointBusinessStatus;
-            o.endpointDescription = endpointDescription;
-            o.endpointDomain = endpointDomain;
-            o.endpointId = endpointId;
-            o.id = id;
-            o.securityGroupIds = securityGroupIds;
-            o.serviceId = serviceId;
-            o.serviceName = serviceName;
-            o.status = status;
-            o.vpcEndpointName = vpcEndpointName;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetVpcEndpointsEndpoint();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.connectionStatus = connectionStatus;
+            _resultValue.endpointBusinessStatus = endpointBusinessStatus;
+            _resultValue.endpointDescription = endpointDescription;
+            _resultValue.endpointDomain = endpointDomain;
+            _resultValue.endpointId = endpointId;
+            _resultValue.id = id;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.serviceId = serviceId;
+            _resultValue.serviceName = serviceName;
+            _resultValue.status = status;
+            _resultValue.vpcEndpointName = vpcEndpointName;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

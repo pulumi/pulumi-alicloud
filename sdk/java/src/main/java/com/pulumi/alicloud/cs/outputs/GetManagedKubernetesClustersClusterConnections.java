@@ -103,12 +103,12 @@ public final class GetManagedKubernetesClustersClusterConnections {
             return this;
         }
         public GetManagedKubernetesClustersClusterConnections build() {
-            final var o = new GetManagedKubernetesClustersClusterConnections();
-            o.apiServerInternet = apiServerInternet;
-            o.apiServerIntranet = apiServerIntranet;
-            o.masterPublicIp = masterPublicIp;
-            o.serviceDomain = serviceDomain;
-            return o;
+            final var _resultValue = new GetManagedKubernetesClustersClusterConnections();
+            _resultValue.apiServerInternet = apiServerInternet;
+            _resultValue.apiServerIntranet = apiServerIntranet;
+            _resultValue.masterPublicIp = masterPublicIp;
+            _resultValue.serviceDomain = serviceDomain;
+            return _resultValue;
         }
     }
 }

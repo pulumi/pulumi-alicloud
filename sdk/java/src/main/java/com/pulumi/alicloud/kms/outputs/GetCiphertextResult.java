@@ -100,13 +100,13 @@ public final class GetCiphertextResult {
             return this;
         }
         public GetCiphertextResult build() {
-            final var o = new GetCiphertextResult();
-            o.ciphertextBlob = ciphertextBlob;
-            o.encryptionContext = encryptionContext;
-            o.id = id;
-            o.keyId = keyId;
-            o.plaintext = plaintext;
-            return o;
+            final var _resultValue = new GetCiphertextResult();
+            _resultValue.ciphertextBlob = ciphertextBlob;
+            _resultValue.encryptionContext = encryptionContext;
+            _resultValue.id = id;
+            _resultValue.keyId = keyId;
+            _resultValue.plaintext = plaintext;
+            return _resultValue;
         }
     }
 }

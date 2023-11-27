@@ -182,7 +182,7 @@ public class DomainExtension extends com.pulumi.resources.CustomResource {
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      * 
      */
-    @Export(name="deleteProtectionValidation", type=Boolean.class, parameters={})
+    @Export(name="deleteProtectionValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteProtectionValidation;
 
     /**
@@ -196,7 +196,7 @@ public class DomainExtension extends com.pulumi.resources.CustomResource {
      * The domain name.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -210,7 +210,7 @@ public class DomainExtension extends com.pulumi.resources.CustomResource {
      * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
      * 
      */
-    @Export(name="frontendPort", type=Integer.class, parameters={})
+    @Export(name="frontendPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> frontendPort;
 
     /**
@@ -224,7 +224,7 @@ public class DomainExtension extends com.pulumi.resources.CustomResource {
      * The ID of the SLB instance.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -238,7 +238,7 @@ public class DomainExtension extends com.pulumi.resources.CustomResource {
      * The ID of the certificate used by the domain name.
      * 
      */
-    @Export(name="serverCertificateId", type=String.class, parameters={})
+    @Export(name="serverCertificateId", refs={String.class}, tree="[0]")
     private Output<String> serverCertificateId;
 
     /**

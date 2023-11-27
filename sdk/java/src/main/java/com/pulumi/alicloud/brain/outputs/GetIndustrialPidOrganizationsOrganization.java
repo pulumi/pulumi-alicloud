@@ -123,13 +123,13 @@ public final class GetIndustrialPidOrganizationsOrganization {
             return this;
         }
         public GetIndustrialPidOrganizationsOrganization build() {
-            final var o = new GetIndustrialPidOrganizationsOrganization();
-            o.id = id;
-            o.parentPidOrganizationId = parentPidOrganizationId;
-            o.pidOrganizationId = pidOrganizationId;
-            o.pidOrganizationLevel = pidOrganizationLevel;
-            o.pidOrganizationName = pidOrganizationName;
-            return o;
+            final var _resultValue = new GetIndustrialPidOrganizationsOrganization();
+            _resultValue.id = id;
+            _resultValue.parentPidOrganizationId = parentPidOrganizationId;
+            _resultValue.pidOrganizationId = pidOrganizationId;
+            _resultValue.pidOrganizationLevel = pidOrganizationLevel;
+            _resultValue.pidOrganizationName = pidOrganizationName;
+            return _resultValue;
         }
     }
 }

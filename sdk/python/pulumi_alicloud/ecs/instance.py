@@ -52,6 +52,7 @@ class InstanceArgs:
                  maintenance_action: Optional[pulumi.Input[str]] = None,
                  maintenance_notify: Optional[pulumi.Input[bool]] = None,
                  maintenance_time: Optional[pulumi.Input['InstanceMaintenanceTimeArgs']] = None,
+                 network_interfaces: Optional[pulumi.Input['InstanceNetworkInterfacesArgs']] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -98,20 +99,6 @@ class InstanceArgs:
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -148,6 +135,7 @@ class InstanceArgs:
         :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See `maintenance_time` below.
+        :param pulumi.Input['InstanceNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
@@ -183,7 +171,7 @@ class InstanceArgs:
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
-        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -270,6 +258,8 @@ class InstanceArgs:
             pulumi.set(__self__, "maintenance_notify", maintenance_notify)
         if maintenance_time is not None:
             pulumi.set(__self__, "maintenance_time", maintenance_time)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if operator_type is not None:
             pulumi.set(__self__, "operator_type", operator_type)
         if password is not None:
@@ -451,20 +441,6 @@ class InstanceArgs:
     def dedicated_host_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "dedicated_host_id")
 
@@ -799,6 +775,18 @@ class InstanceArgs:
         pulumi.set(self, "maintenance_time", value)
 
     @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input['InstanceNetworkInterfacesArgs']]:
+        """
+        The list of network interfaces created with instance. See `network_interfaces` below.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input['InstanceNetworkInterfacesArgs']]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
     @pulumi.getter(name="operatorType")
     def operator_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1112,7 +1100,7 @@ class InstanceArgs:
     @pulumi.getter(name="systemDiskStorageClusterId")
     def system_disk_storage_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         """
         return pulumi.get(self, "system_disk_storage_cluster_id")
 
@@ -1212,6 +1200,7 @@ class _InstanceState:
                  maintenance_time: Optional[pulumi.Input['InstanceMaintenanceTimeArgs']] = None,
                  memory: Optional[pulumi.Input[int]] = None,
                  network_interface_id: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input['InstanceNetworkInterfacesArgs']] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  os_name: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
@@ -1262,20 +1251,6 @@ class _InstanceState:
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -1316,7 +1291,8 @@ class _InstanceState:
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[int] memory: The memory size of the instance. Unit: MiB.
-        :param pulumi.Input[str] network_interface_id: The ID of the ENI.
+        :param pulumi.Input[str] network_interface_id: The ID of the secondary ENI.
+        :param pulumi.Input['InstanceNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] os_name: The name of the operating system of the instance.
         :param pulumi.Input[str] os_type: The type of the operating system of the instance.
@@ -1358,7 +1334,7 @@ class _InstanceState:
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
-        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1454,6 +1430,8 @@ class _InstanceState:
             pulumi.set(__self__, "memory", memory)
         if network_interface_id is not None:
             pulumi.set(__self__, "network_interface_id", network_interface_id)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if operator_type is not None:
             pulumi.set(__self__, "operator_type", operator_type)
         if os_name is not None:
@@ -1623,20 +1601,6 @@ class _InstanceState:
     def dedicated_host_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "dedicated_host_id")
 
@@ -2022,13 +1986,25 @@ class _InstanceState:
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the ENI.
+        The ID of the secondary ENI.
         """
         return pulumi.get(self, "network_interface_id")
 
     @network_interface_id.setter
     def network_interface_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_interface_id", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input['InstanceNetworkInterfacesArgs']]:
+        """
+        The list of network interfaces created with instance. See `network_interfaces` below.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input['InstanceNetworkInterfacesArgs']]):
+        pulumi.set(self, "network_interfaces", value)
 
     @property
     @pulumi.getter(name="operatorType")
@@ -2416,7 +2392,7 @@ class _InstanceState:
     @pulumi.getter(name="systemDiskStorageClusterId")
     def system_disk_storage_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         """
         return pulumi.get(self, "system_disk_storage_cluster_id")
 
@@ -2514,6 +2490,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_action: Optional[pulumi.Input[str]] = None,
                  maintenance_notify: Optional[pulumi.Input[bool]] = None,
                  maintenance_time: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkInterfacesArgs']]] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -2626,20 +2603,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -2678,6 +2641,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']] maintenance_time: The time of maintenance. See `maintenance_time` below.
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
@@ -2714,7 +2678,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
-        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -2846,6 +2810,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_action: Optional[pulumi.Input[str]] = None,
                  maintenance_notify: Optional[pulumi.Input[bool]] = None,
                  maintenance_time: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkInterfacesArgs']]] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -2925,6 +2890,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintenance_action"] = maintenance_action
             __props__.__dict__["maintenance_notify"] = maintenance_notify
             __props__.__dict__["maintenance_time"] = maintenance_time
+            __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["operator_type"] = operator_type
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["period"] = period
@@ -3018,6 +2984,7 @@ class Instance(pulumi.CustomResource):
             maintenance_time: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']]] = None,
             memory: Optional[pulumi.Input[int]] = None,
             network_interface_id: Optional[pulumi.Input[str]] = None,
+            network_interfaces: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkInterfacesArgs']]] = None,
             operator_type: Optional[pulumi.Input[str]] = None,
             os_name: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
@@ -3073,20 +3040,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -3127,7 +3080,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[int] memory: The memory size of the instance. Unit: MiB.
-        :param pulumi.Input[str] network_interface_id: The ID of the ENI.
+        :param pulumi.Input[str] network_interface_id: The ID of the secondary ENI.
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] os_name: The name of the operating system of the instance.
         :param pulumi.Input[str] os_type: The type of the operating system of the instance.
@@ -3169,7 +3123,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
-        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -3221,6 +3175,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintenance_time"] = maintenance_time
         __props__.__dict__["memory"] = memory
         __props__.__dict__["network_interface_id"] = network_interface_id
+        __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["operator_type"] = operator_type
         __props__.__dict__["os_name"] = os_name
         __props__.__dict__["os_type"] = os_type
@@ -3327,20 +3282,6 @@ class Instance(pulumi.CustomResource):
     def dedicated_host_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "dedicated_host_id")
 
@@ -3602,9 +3543,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> pulumi.Output[str]:
         """
-        The ID of the ENI.
+        The ID of the secondary ENI.
         """
         return pulumi.get(self, "network_interface_id")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> pulumi.Output['outputs.InstanceNetworkInterfaces']:
+        """
+        The list of network interfaces created with instance. See `network_interfaces` below.
+        """
+        return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter(name="operatorType")
@@ -3868,7 +3817,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskStorageClusterId")
     def system_disk_storage_cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
         """
         return pulumi.get(self, "system_disk_storage_cluster_id")
 

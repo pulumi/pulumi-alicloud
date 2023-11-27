@@ -71,10 +71,10 @@ public final class ZoneUserInfo {
             return this;
         }
         public ZoneUserInfo build() {
-            final var o = new ZoneUserInfo();
-            o.regionIds = regionIds;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new ZoneUserInfo();
+            _resultValue.regionIds = regionIds;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

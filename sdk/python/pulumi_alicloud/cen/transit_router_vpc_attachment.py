@@ -34,14 +34,14 @@ class TransitRouterVpcAttachmentArgs:
         The set of arguments for constructing a TransitRouterVpcAttachment resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
         :param pulumi.Input[bool] auto_publish_route_enabled: Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
-        :param pulumi.Input[str] resource_type: The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
@@ -60,13 +60,13 @@ class TransitRouterVpcAttachmentArgs:
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
-            warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
-            pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
+            warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""")
         if route_table_association_enabled is not None:
             pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
         if route_table_propagation_enabled is not None:
-            warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
-            pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
+            warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""")
         if route_table_propagation_enabled is not None:
             pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
         if tags is not None:
@@ -108,8 +108,8 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]:
         """
-        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -145,7 +145,7 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`.
+        The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -157,7 +157,7 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+        The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -169,10 +169,10 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="routeTableAssociationEnabled")
     def route_table_association_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
-        warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
+        warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""")
 
         return pulumi.get(self, "route_table_association_enabled")
 
@@ -184,10 +184,10 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="routeTablePropagationEnabled")
     def route_table_propagation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
-        warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
+        warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""")
 
         return pulumi.get(self, "route_table_propagation_enabled")
 
@@ -280,20 +280,20 @@ class _TransitRouterVpcAttachmentState:
         :param pulumi.Input[bool] auto_publish_route_enabled: Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
-        :param pulumi.Input[str] resource_type: The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         :param pulumi.Input[str] status: The associating status of the network.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID of transit router attachment.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID of the Transit Router Attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
         """
         if auto_publish_route_enabled is not None:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
@@ -306,13 +306,13 @@ class _TransitRouterVpcAttachmentState:
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
-            warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
-            pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
+            warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""")
         if route_table_association_enabled is not None:
             pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
         if route_table_propagation_enabled is not None:
-            warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
-            pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
+            warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""")
         if route_table_propagation_enabled is not None:
             pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
         if status is not None:
@@ -374,7 +374,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`.
+        The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -386,7 +386,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+        The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -398,10 +398,10 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="routeTableAssociationEnabled")
     def route_table_association_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
-        warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
+        warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""")
 
         return pulumi.get(self, "route_table_association_enabled")
 
@@ -413,10 +413,10 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="routeTablePropagationEnabled")
     def route_table_propagation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
-        warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
+        warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""")
 
         return pulumi.get(self, "route_table_propagation_enabled")
 
@@ -464,7 +464,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of transit router attachment.
+        The ID of the Transit Router Attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -524,8 +524,8 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]]:
         """
-        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -555,7 +555,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+        Provides a CEN Transit Router VPC Attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -613,10 +613,10 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN instance can be imported using the id, e.g.
+        CEN Transit Router VPC Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example tr-********:tr-attach-********
+         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -624,18 +624,18 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_publish_route_enabled: Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
-        :param pulumi.Input[str] resource_type: The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
         """
         ...
     @overload
@@ -644,7 +644,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  args: TransitRouterVpcAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+        Provides a CEN Transit Router VPC Attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -702,10 +702,10 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN instance can be imported using the id, e.g.
+        CEN Transit Router VPC Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example tr-********:tr-attach-********
+         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -804,20 +804,20 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_publish_route_enabled: Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
-        :param pulumi.Input[str] resource_type: The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
+        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         :param pulumi.Input[str] status: The associating status of the network.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID of transit router attachment.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID of the Transit Router Attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -843,7 +843,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
-    def auto_publish_route_enabled(self) -> pulumi.Output[bool]:
+    def auto_publish_route_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
         """
@@ -869,15 +869,15 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`.
+        The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> pulumi.Output[Optional[str]]:
+    def resource_type(self) -> pulumi.Output[str]:
         """
-        The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+        The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -885,10 +885,10 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="routeTableAssociationEnabled")
     def route_table_association_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
-        warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
+        warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.""")
 
         return pulumi.get(self, "route_table_association_enabled")
 
@@ -896,10 +896,10 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="routeTablePropagationEnabled")
     def route_table_propagation_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
-        warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
+        warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""", DeprecationWarning)
+        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.""")
 
         return pulumi.get(self, "route_table_propagation_enabled")
 
@@ -931,7 +931,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> pulumi.Output[str]:
         """
-        The ID of transit router attachment.
+        The ID of the Transit Router Attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -945,7 +945,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> pulumi.Output[Optional[str]]:
+    def transit_router_id(self) -> pulumi.Output[str]:
         """
         The ID of the transit router.
         """
@@ -971,8 +971,8 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Output[Sequence['outputs.TransitRouterVpcAttachmentZoneMapping']]:
         """
-        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
         """
         return pulumi.get(self, "zone_mappings")
 

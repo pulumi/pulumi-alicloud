@@ -125,13 +125,13 @@ public final class ApplicationTomcatConfigV2 {
             return this;
         }
         public ApplicationTomcatConfigV2 build() {
-            final var o = new ApplicationTomcatConfigV2();
-            o.contextPath = contextPath;
-            o.maxThreads = maxThreads;
-            o.port = port;
-            o.uriEncoding = uriEncoding;
-            o.useBodyEncodingForUri = useBodyEncodingForUri;
-            return o;
+            final var _resultValue = new ApplicationTomcatConfigV2();
+            _resultValue.contextPath = contextPath;
+            _resultValue.maxThreads = maxThreads;
+            _resultValue.port = port;
+            _resultValue.uriEncoding = uriEncoding;
+            _resultValue.useBodyEncodingForUri = useBodyEncodingForUri;
+            return _resultValue;
         }
     }
 }

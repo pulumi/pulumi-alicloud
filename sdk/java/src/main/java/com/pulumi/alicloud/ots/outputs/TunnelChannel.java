@@ -125,13 +125,13 @@ public final class TunnelChannel {
             return this;
         }
         public TunnelChannel build() {
-            final var o = new TunnelChannel();
-            o.channelId = channelId;
-            o.channelRpo = channelRpo;
-            o.channelStatus = channelStatus;
-            o.channelType = channelType;
-            o.clientId = clientId;
-            return o;
+            final var _resultValue = new TunnelChannel();
+            _resultValue.channelId = channelId;
+            _resultValue.channelRpo = channelRpo;
+            _resultValue.channelStatus = channelStatus;
+            _resultValue.channelType = channelType;
+            _resultValue.clientId = clientId;
+            return _resultValue;
         }
     }
 }

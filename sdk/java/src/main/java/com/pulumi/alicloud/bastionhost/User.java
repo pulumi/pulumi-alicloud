@@ -136,7 +136,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -150,7 +150,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Specify the New Created the User&#39;s Display Name. Supports up to 128 Characters.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -164,7 +164,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Specify the New User&#39;s Mailbox.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
@@ -178,7 +178,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * You Want to Query the User the Bastion Host ID of.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -192,7 +192,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Specify the New of the User That Created a Different Mobile Phone Number from Your.
      * 
      */
-    @Export(name="mobile", type=String.class, parameters={})
+    @Export(name="mobile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mobile;
 
     /**
@@ -225,7 +225,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * * SE: Sweden (+46)
      * 
      */
-    @Export(name="mobileCountryCode", type=String.class, parameters={})
+    @Export(name="mobileCountryCode", refs={String.class}, tree="[0]")
     private Output<String> mobileCountryCode;
 
     /**
@@ -258,7 +258,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Specify the New User&#39;s Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -277,7 +277,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     /**
@@ -296,7 +296,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User&#39;s Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
      * 
      */
-    @Export(name="sourceUserId", type=String.class, parameters={})
+    @Export(name="sourceUserId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceUserId;
 
     /**
@@ -310,7 +310,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `Frozen`, `Normal`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -324,7 +324,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The User ID.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
@@ -338,7 +338,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**

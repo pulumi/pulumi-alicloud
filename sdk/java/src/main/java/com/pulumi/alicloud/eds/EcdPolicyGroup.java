@@ -91,7 +91,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The rule of authorize access rule. See `authorize_access_policy_rules` below.
      * 
      */
-    @Export(name="authorizeAccessPolicyRules", type=List.class, parameters={EcdPolicyGroupAuthorizeAccessPolicyRule.class})
+    @Export(name="authorizeAccessPolicyRules", refs={List.class,EcdPolicyGroupAuthorizeAccessPolicyRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcdPolicyGroupAuthorizeAccessPolicyRule>> authorizeAccessPolicyRules;
 
     /**
@@ -105,7 +105,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The policy rule. See `authorize_security_policy_rules` below.
      * 
      */
-    @Export(name="authorizeSecurityPolicyRules", type=List.class, parameters={EcdPolicyGroupAuthorizeSecurityPolicyRule.class})
+    @Export(name="authorizeSecurityPolicyRules", refs={List.class,EcdPolicyGroupAuthorizeSecurityPolicyRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcdPolicyGroupAuthorizeSecurityPolicyRule>> authorizeSecurityPolicyRules;
 
     /**
@@ -119,7 +119,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * Whether to enable local camera redirection. Valid values: `on`, `off`.
      * 
      */
-    @Export(name="cameraRedirect", type=String.class, parameters={})
+    @Export(name="cameraRedirect", refs={String.class}, tree="[0]")
     private Output<String> cameraRedirect;
 
     /**
@@ -133,7 +133,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      * 
      */
-    @Export(name="clipboard", type=String.class, parameters={})
+    @Export(name="clipboard", refs={String.class}, tree="[0]")
     private Output<String> clipboard;
 
     /**
@@ -147,7 +147,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The list of domain.
      * 
      */
-    @Export(name="domainList", type=String.class, parameters={})
+    @Export(name="domainList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domainList;
 
     /**
@@ -161,7 +161,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The access of html5. Valid values: `off`, `on`.
      * 
      */
-    @Export(name="htmlAccess", type=String.class, parameters={})
+    @Export(name="htmlAccess", refs={String.class}, tree="[0]")
     private Output<String> htmlAccess;
 
     /**
@@ -175,7 +175,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
      * 
      */
-    @Export(name="htmlFileTransfer", type=String.class, parameters={})
+    @Export(name="htmlFileTransfer", refs={String.class}, tree="[0]")
     private Output<String> htmlFileTransfer;
 
     /**
@@ -189,7 +189,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
      * 
      */
-    @Export(name="localDrive", type=String.class, parameters={})
+    @Export(name="localDrive", refs={String.class}, tree="[0]")
     private Output<String> localDrive;
 
     /**
@@ -203,7 +203,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The name of policy group.
      * 
      */
-    @Export(name="policyGroupName", type=String.class, parameters={})
+    @Export(name="policyGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyGroupName;
 
     /**
@@ -217,7 +217,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      * 
      */
-    @Export(name="recording", type=String.class, parameters={})
+    @Export(name="recording", refs={String.class}, tree="[0]")
     private Output<String> recording;
 
     /**
@@ -231,7 +231,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      * 
      */
-    @Export(name="recordingEndTime", type=String.class, parameters={})
+    @Export(name="recordingEndTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> recordingEndTime;
 
     /**
@@ -245,7 +245,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      * 
      */
-    @Export(name="recordingExpires", type=Integer.class, parameters={})
+    @Export(name="recordingExpires", refs={Integer.class}, tree="[0]")
     private Output<Integer> recordingExpires;
 
     /**
@@ -259,7 +259,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      * 
      */
-    @Export(name="recordingFps", type=Integer.class, parameters={})
+    @Export(name="recordingFps", refs={Integer.class}, tree="[0]")
     private Output<Integer> recordingFps;
 
     /**
@@ -273,7 +273,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      * 
      */
-    @Export(name="recordingStartTime", type=String.class, parameters={})
+    @Export(name="recordingStartTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> recordingStartTime;
 
     /**
@@ -287,7 +287,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The status of policy.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -301,7 +301,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The usb redirect policy. Valid values: `off`, `on`.
      * 
      */
-    @Export(name="usbRedirect", type=String.class, parameters={})
+    @Export(name="usbRedirect", refs={String.class}, tree="[0]")
     private Output<String> usbRedirect;
 
     /**
@@ -315,7 +315,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
      * 
      */
-    @Export(name="visualQuality", type=String.class, parameters={})
+    @Export(name="visualQuality", refs={String.class}, tree="[0]")
     private Output<String> visualQuality;
 
     /**
@@ -329,7 +329,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The watermark policy. Valid values: `off`, `on`.
      * 
      */
-    @Export(name="watermark", type=String.class, parameters={})
+    @Export(name="watermark", refs={String.class}, tree="[0]")
     private Output<String> watermark;
 
     /**
@@ -343,7 +343,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
      * 
      */
-    @Export(name="watermarkTransparency", type=String.class, parameters={})
+    @Export(name="watermarkTransparency", refs={String.class}, tree="[0]")
     private Output<String> watermarkTransparency;
 
     /**
@@ -357,7 +357,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * The type of watemark. Valid values: `EndUserId`, `HostName`.
      * 
      */
-    @Export(name="watermarkType", type=String.class, parameters={})
+    @Export(name="watermarkType", refs={String.class}, tree="[0]")
     private Output<String> watermarkType;
 
     /**

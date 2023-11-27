@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { EnterpriseAuthorityTemplateArgs, EnterpriseAuthorityTemplateState } from "./enterpriseAuthorityTemplate";
+export type EnterpriseAuthorityTemplate = import("./enterpriseAuthorityTemplate").EnterpriseAuthorityTemplate;
+export const EnterpriseAuthorityTemplate: typeof import("./enterpriseAuthorityTemplate").EnterpriseAuthorityTemplate = null as any;
+utilities.lazyLoad(exports, ["EnterpriseAuthorityTemplate"], () => require("./enterpriseAuthorityTemplate"));
+
 export { EnterpriseInstanceArgs, EnterpriseInstanceState } from "./enterpriseInstance";
 export type EnterpriseInstance = import("./enterpriseInstance").EnterpriseInstance;
 export const EnterpriseInstance: typeof import("./enterpriseInstance").EnterpriseInstance = null as any;
@@ -70,6 +75,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate":
+                return new EnterpriseAuthorityTemplate(name, <any>undefined, { urn })
             case "alicloud:dms/enterpriseInstance:EnterpriseInstance":
                 return new EnterpriseInstance(name, <any>undefined, { urn })
             case "alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase":
@@ -85,6 +92,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseAuthorityTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseLogicDatabase", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseProxy", _module)

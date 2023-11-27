@@ -141,14 +141,14 @@ public final class GetSamlProvidersProvider {
             return this;
         }
         public GetSamlProvidersProvider build() {
-            final var o = new GetSamlProvidersProvider();
-            o.arn = arn;
-            o.description = description;
-            o.encodedsamlMetadataDocument = encodedsamlMetadataDocument;
-            o.id = id;
-            o.samlProviderName = samlProviderName;
-            o.updateDate = updateDate;
-            return o;
+            final var _resultValue = new GetSamlProvidersProvider();
+            _resultValue.arn = arn;
+            _resultValue.description = description;
+            _resultValue.encodedsamlMetadataDocument = encodedsamlMetadataDocument;
+            _resultValue.id = id;
+            _resultValue.samlProviderName = samlProviderName;
+            _resultValue.updateDate = updateDate;
+            return _resultValue;
         }
     }
 }

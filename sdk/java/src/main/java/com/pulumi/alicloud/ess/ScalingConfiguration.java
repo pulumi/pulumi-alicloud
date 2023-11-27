@@ -154,7 +154,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Whether active current scaling configuration in the specified scaling group. Default to `false`.
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> active;
 
     /**
@@ -168,7 +168,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
      * 
      */
-    @Export(name="creditSpecification", type=String.class, parameters={})
+    @Export(name="creditSpecification", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> creditSpecification;
 
     /**
@@ -182,7 +182,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
      * 
      */
-    @Export(name="dataDisks", type=List.class, parameters={ScalingConfigurationDataDisk.class})
+    @Export(name="dataDisks", refs={List.class,ScalingConfigurationDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingConfigurationDataDisk>> dataDisks;
 
     /**
@@ -196,7 +196,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
      * 
      */
-    @Export(name="enable", type=Boolean.class, parameters={})
+    @Export(name="enable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enable;
 
     /**
@@ -210,7 +210,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
      * 
      */
-    @Export(name="forceDelete", type=Boolean.class, parameters={})
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
@@ -224,7 +224,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Hostname of an ECS instance.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     /**
@@ -238,7 +238,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
@@ -252,7 +252,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Name of an image file, indicating the image resource selected when an instance is enabled.
      * 
      */
-    @Export(name="imageName", type=String.class, parameters={})
+    @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageName;
 
     /**
@@ -270,7 +270,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it. */
-    @Export(name="instanceIds", type=List.class, parameters={String.class})
+    @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> instanceIds;
 
     /**
@@ -284,7 +284,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Name of an ECS instance. Default to &#34;ESS-Instance&#34;. It is valid from version 1.7.1.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -298,7 +298,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
      * 
      */
-    @Export(name="instancePatternInfos", type=List.class, parameters={ScalingConfigurationInstancePatternInfo.class})
+    @Export(name="instancePatternInfos", refs={List.class,ScalingConfigurationInstancePatternInfo.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingConfigurationInstancePatternInfo>> instancePatternInfos;
 
     /**
@@ -312,7 +312,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Resource type of an ECS instance.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -326,7 +326,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Resource types of an ECS instance.
      * 
      */
-    @Export(name="instanceTypes", type=List.class, parameters={String.class})
+    @Export(name="instanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> instanceTypes;
 
     /**
@@ -340,7 +340,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
@@ -354,7 +354,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
      * 
      */
-    @Export(name="internetMaxBandwidthIn", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthIn", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthIn;
 
     /**
@@ -368,7 +368,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
      * 
      */
-    @Export(name="internetMaxBandwidthOut", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetMaxBandwidthOut;
 
     /**
@@ -386,7 +386,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
-    @Export(name="ioOptimized", type=String.class, parameters={})
+    @Export(name="ioOptimized", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ioOptimized;
 
     /**
@@ -400,7 +400,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Whether to use outdated instance type. Default to false.
      * 
      */
-    @Export(name="isOutdated", type=Boolean.class, parameters={})
+    @Export(name="isOutdated", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOutdated;
 
     /**
@@ -414,7 +414,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
      * 
      */
-    @Export(name="keyName", type=String.class, parameters={})
+    @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyName;
 
     /**
@@ -428,7 +428,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -442,7 +442,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -456,7 +456,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Indicates whether to overwrite the existing data. Default to false.
      * 
      */
-    @Export(name="override", type=Boolean.class, parameters={})
+    @Export(name="override", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> override;
 
     /**
@@ -470,7 +470,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -484,7 +484,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
      * 
      */
-    @Export(name="passwordInherit", type=Boolean.class, parameters={})
+    @Export(name="passwordInherit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordInherit;
 
     /**
@@ -498,7 +498,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * ID of resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -512,7 +512,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      * 
      */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleName;
 
     /**
@@ -526,7 +526,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
      * 
      */
-    @Export(name="scalingConfigurationName", type=String.class, parameters={})
+    @Export(name="scalingConfigurationName", refs={String.class}, tree="[0]")
     private Output<String> scalingConfigurationName;
 
     /**
@@ -540,7 +540,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * ID of the scaling group of a scaling configuration.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**
@@ -554,7 +554,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * ID of the security group used to create new instance. It is conflict with `security_group_ids`.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
@@ -568,7 +568,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
     /**
@@ -596,7 +596,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
      * 
      */
-    @Export(name="spotPriceLimits", type=List.class, parameters={ScalingConfigurationSpotPriceLimit.class})
+    @Export(name="spotPriceLimits", refs={List.class,ScalingConfigurationSpotPriceLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingConfigurationSpotPriceLimit>> spotPriceLimits;
 
     /**
@@ -624,7 +624,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
      * 
      */
-    @Export(name="spotStrategy", type=String.class, parameters={})
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotStrategy;
 
     /**
@@ -638,7 +638,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * The another scaling configuration which will be active automatically and replace current configuration when setting `active` to &#39;false&#39;. It is invalid when `active` is &#39;true&#39;.
      * 
      */
-    @Export(name="substitute", type=String.class, parameters={})
+    @Export(name="substitute", refs={String.class}, tree="[0]")
     private Output<String> substitute;
 
     /**
@@ -652,7 +652,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * The id of auto snapshot policy for system disk.
      * 
      */
-    @Export(name="systemDiskAutoSnapshotPolicyId", type=String.class, parameters={})
+    @Export(name="systemDiskAutoSnapshotPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskAutoSnapshotPolicyId;
 
     /**
@@ -666,7 +666,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
      * 
      */
-    @Export(name="systemDiskCategory", type=String.class, parameters={})
+    @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskCategory;
 
     /**
@@ -680,7 +680,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
-    @Export(name="systemDiskDescription", type=String.class, parameters={})
+    @Export(name="systemDiskDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskDescription;
 
     /**
@@ -694,7 +694,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Whether to encrypt the system disk.
      * 
      */
-    @Export(name="systemDiskEncrypted", type=Boolean.class, parameters={})
+    @Export(name="systemDiskEncrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> systemDiskEncrypted;
 
     /**
@@ -708,7 +708,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      * 
      */
-    @Export(name="systemDiskName", type=String.class, parameters={})
+    @Export(name="systemDiskName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskName;
 
     /**
@@ -722,7 +722,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * The performance level of the ESSD used as the system disk.
      * 
      */
-    @Export(name="systemDiskPerformanceLevel", type=String.class, parameters={})
+    @Export(name="systemDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskPerformanceLevel;
 
     /**
@@ -736,7 +736,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      * 
      */
-    @Export(name="systemDiskSize", type=Integer.class, parameters={})
+    @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> systemDiskSize;
 
     /**
@@ -752,7 +752,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;http://&#34;, or &#34;https://&#34; It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -768,7 +768,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
      * 
      */
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     /**

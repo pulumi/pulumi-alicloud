@@ -148,17 +148,17 @@ public final class GetExecutionsResult {
             return this;
         }
         public GetExecutionsResult build() {
-            final var o = new GetExecutionsResult();
-            o.enableDetails = enableDetails;
-            o.executions = executions;
-            o.flowName = flowName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetExecutionsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.executions = executions;
+            _resultValue.flowName = flowName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

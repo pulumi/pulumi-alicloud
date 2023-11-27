@@ -124,13 +124,13 @@ public final class EcsLaunchTemplateNetworkInterfaces {
             return this;
         }
         public EcsLaunchTemplateNetworkInterfaces build() {
-            final var o = new EcsLaunchTemplateNetworkInterfaces();
-            o.description = description;
-            o.name = name;
-            o.primaryIp = primaryIp;
-            o.securityGroupId = securityGroupId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new EcsLaunchTemplateNetworkInterfaces();
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.primaryIp = primaryIp;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

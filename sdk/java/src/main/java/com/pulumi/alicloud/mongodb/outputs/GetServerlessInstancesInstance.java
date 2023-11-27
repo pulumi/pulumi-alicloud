@@ -568,36 +568,36 @@ public final class GetServerlessInstancesInstance {
             return this;
         }
         public GetServerlessInstancesInstance build() {
-            final var o = new GetServerlessInstancesInstance();
-            o.capacityUnit = capacityUnit;
-            o.dbInstanceClass = dbInstanceClass;
-            o.dbInstanceDescription = dbInstanceDescription;
-            o.dbInstanceId = dbInstanceId;
-            o.dbInstanceReleaseProtection = dbInstanceReleaseProtection;
-            o.dbInstanceStorage = dbInstanceStorage;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.kindCode = kindCode;
-            o.lockMode = lockMode;
-            o.maintainEndTime = maintainEndTime;
-            o.maintainStartTime = maintainStartTime;
-            o.maxConnections = maxConnections;
-            o.maxIops = maxIops;
-            o.networkType = networkType;
-            o.paymentType = paymentType;
-            o.protocolType = protocolType;
-            o.resourceGroupId = resourceGroupId;
-            o.securityIpGroups = securityIpGroups;
-            o.status = status;
-            o.storageEngine = storageEngine;
-            o.tags = tags;
-            o.vpcAuthMode = vpcAuthMode;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetServerlessInstancesInstance();
+            _resultValue.capacityUnit = capacityUnit;
+            _resultValue.dbInstanceClass = dbInstanceClass;
+            _resultValue.dbInstanceDescription = dbInstanceDescription;
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.dbInstanceReleaseProtection = dbInstanceReleaseProtection;
+            _resultValue.dbInstanceStorage = dbInstanceStorage;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.kindCode = kindCode;
+            _resultValue.lockMode = lockMode;
+            _resultValue.maintainEndTime = maintainEndTime;
+            _resultValue.maintainStartTime = maintainStartTime;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.maxIops = maxIops;
+            _resultValue.networkType = networkType;
+            _resultValue.paymentType = paymentType;
+            _resultValue.protocolType = protocolType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityIpGroups = securityIpGroups;
+            _resultValue.status = status;
+            _resultValue.storageEngine = storageEngine;
+            _resultValue.tags = tags;
+            _resultValue.vpcAuthMode = vpcAuthMode;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -85,11 +85,11 @@ public final class GetAcceleratorsAcceleratorBasicBandwidthPackage {
             return this;
         }
         public GetAcceleratorsAcceleratorBasicBandwidthPackage build() {
-            final var o = new GetAcceleratorsAcceleratorBasicBandwidthPackage();
-            o.bandwidth = bandwidth;
-            o.bandwidthType = bandwidthType;
-            o.instanceId = instanceId;
-            return o;
+            final var _resultValue = new GetAcceleratorsAcceleratorBasicBandwidthPackage();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.bandwidthType = bandwidthType;
+            _resultValue.instanceId = instanceId;
+            return _resultValue;
         }
     }
 }

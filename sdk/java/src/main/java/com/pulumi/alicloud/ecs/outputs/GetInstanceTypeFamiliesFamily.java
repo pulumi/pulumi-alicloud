@@ -88,11 +88,11 @@ public final class GetInstanceTypeFamiliesFamily {
             return zoneIds(List.of(zoneIds));
         }
         public GetInstanceTypeFamiliesFamily build() {
-            final var o = new GetInstanceTypeFamiliesFamily();
-            o.generation = generation;
-            o.id = id;
-            o.zoneIds = zoneIds;
-            return o;
+            final var _resultValue = new GetInstanceTypeFamiliesFamily();
+            _resultValue.generation = generation;
+            _resultValue.id = id;
+            _resultValue.zoneIds = zoneIds;
+            return _resultValue;
         }
     }
 }

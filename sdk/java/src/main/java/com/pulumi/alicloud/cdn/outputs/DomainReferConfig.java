@@ -66,11 +66,11 @@ public final class DomainReferConfig {
             return this;
         }
         public DomainReferConfig build() {
-            final var o = new DomainReferConfig();
-            o.allowEmpty = allowEmpty;
-            o.referLists = referLists;
-            o.referType = referType;
-            return o;
+            final var _resultValue = new DomainReferConfig();
+            _resultValue.allowEmpty = allowEmpty;
+            _resultValue.referLists = referLists;
+            _resultValue.referType = referType;
+            return _resultValue;
         }
     }
 }

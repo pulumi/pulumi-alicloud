@@ -106,7 +106,7 @@ def get_ddos_bgp_instances(ids: Optional[Sequence[str]] = None,
     """
     This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.183.0+ .
+    > **NOTE:** Available in v1.183.0+ .
 
     ## Example Usage
 
@@ -114,8 +114,19 @@ def get_ddos_bgp_instances(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    instance_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances(name_regex="^ddosbgp")
-    pulumi.export("instance", [__item["id"] for __item in alicloud_ddosbgp_instances["instance"]])
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    instance_ddos_bgp_instance = alicloud.ddos.DdosBgpInstance("instanceDdosBgpInstance",
+        base_bandwidth=20,
+        bandwidth=-1,
+        ip_count=100,
+        ip_type="IPv4",
+        normal_bandwidth=100,
+        type="Enterprise")
+    instance_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances(name_regex="ddosbgp")
+    pulumi.export("instance", [__item.id for __item in [instance_ddos_bgp_instances]])
     ```
 
 
@@ -147,7 +158,7 @@ def get_ddos_bgp_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     """
     This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.183.0+ .
+    > **NOTE:** Available in v1.183.0+ .
 
     ## Example Usage
 
@@ -155,8 +166,19 @@ def get_ddos_bgp_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     import pulumi
     import pulumi_alicloud as alicloud
 
-    instance_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances(name_regex="^ddosbgp")
-    pulumi.export("instance", [__item["id"] for __item in alicloud_ddosbgp_instances["instance"]])
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    instance_ddos_bgp_instance = alicloud.ddos.DdosBgpInstance("instanceDdosBgpInstance",
+        base_bandwidth=20,
+        bandwidth=-1,
+        ip_count=100,
+        ip_type="IPv4",
+        normal_bandwidth=100,
+        type="Enterprise")
+    instance_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances(name_regex="ddosbgp")
+    pulumi.export("instance", [__item.id for __item in [instance_ddos_bgp_instances]])
     ```
 
 

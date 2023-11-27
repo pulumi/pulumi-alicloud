@@ -94,7 +94,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The status of the IPv6 gateway.
      * 
      */
-    @Export(name="businessStatus", type=String.class, parameters={})
+    @Export(name="businessStatus", refs={String.class}, tree="[0]")
     private Output<String> businessStatus;
 
     /**
@@ -108,7 +108,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -122,7 +122,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -136,7 +136,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The expiration time of IPv6 gateway.
      * 
      */
-    @Export(name="expiredTime", type=String.class, parameters={})
+    @Export(name="expiredTime", refs={String.class}, tree="[0]")
     private Output<String> expiredTime;
 
     /**
@@ -150,7 +150,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The charge type of IPv6 gateway.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
@@ -164,7 +164,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * Resource primary key attribute field.
      * 
      */
-    @Export(name="ipv6GatewayId", type=String.class, parameters={})
+    @Export(name="ipv6GatewayId", refs={String.class}, tree="[0]")
     private Output<String> ipv6GatewayId;
 
     /**
@@ -178,7 +178,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      * 
      */
-    @Export(name="ipv6GatewayName", type=String.class, parameters={})
+    @Export(name="ipv6GatewayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv6GatewayName;
 
     /**
@@ -192,7 +192,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -210,7 +210,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
-    @Export(name="spec", type=String.class, parameters={})
+    @Export(name="spec", refs={String.class}, tree="[0]")
     private Output<String> spec;
 
     /**
@@ -224,7 +224,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: Available, Pending and Deleting.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -238,7 +238,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The tags for the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -252,7 +252,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

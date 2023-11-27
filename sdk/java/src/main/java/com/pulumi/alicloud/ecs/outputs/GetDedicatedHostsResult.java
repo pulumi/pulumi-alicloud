@@ -280,22 +280,22 @@ public final class GetDedicatedHostsResult {
             return this;
         }
         public GetDedicatedHostsResult build() {
-            final var o = new GetDedicatedHostsResult();
-            o.dedicatedHostId = dedicatedHostId;
-            o.dedicatedHostName = dedicatedHostName;
-            o.dedicatedHostType = dedicatedHostType;
-            o.hosts = hosts;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.operationLocks = operationLocks;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetDedicatedHostsResult();
+            _resultValue.dedicatedHostId = dedicatedHostId;
+            _resultValue.dedicatedHostName = dedicatedHostName;
+            _resultValue.dedicatedHostType = dedicatedHostType;
+            _resultValue.hosts = hosts;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.operationLocks = operationLocks;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

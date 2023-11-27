@@ -149,7 +149,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The ID of the Global Accelerator instance to which the endpoint group will be added.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -163,7 +163,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The description of the endpoint group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -177,7 +177,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
      * 
      */
-    @Export(name="endpointConfigurations", type=List.class, parameters={EndpointGroupEndpointConfiguration.class})
+    @Export(name="endpointConfigurations", refs={List.class,EndpointGroupEndpointConfiguration.class}, tree="[0,1]")
     private Output<List<EndpointGroupEndpointConfiguration>> endpointConfigurations;
 
     /**
@@ -188,10 +188,24 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return this.endpointConfigurations;
     }
     /**
+     * (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+     * 
+     */
+    @Export(name="endpointGroupIpLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> endpointGroupIpLists;
+
+    /**
+     * @return (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+     * 
+     */
+    public Output<List<String>> endpointGroupIpLists() {
+        return this.endpointGroupIpLists;
+    }
+    /**
      * The ID of the region where the endpoint group is deployed.
      * 
      */
-    @Export(name="endpointGroupRegion", type=String.class, parameters={})
+    @Export(name="endpointGroupRegion", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupRegion;
 
     /**
@@ -206,7 +220,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      * 
      */
-    @Export(name="endpointGroupType", type=String.class, parameters={})
+    @Export(name="endpointGroupType", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupType;
 
     /**
@@ -222,7 +236,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      * 
      */
-    @Export(name="endpointRequestProtocol", type=String.class, parameters={})
+    @Export(name="endpointRequestProtocol", refs={String.class}, tree="[0]")
     private Output<String> endpointRequestProtocol;
 
     /**
@@ -237,7 +251,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The interval between two consecutive health checks. Unit: seconds.
      * 
      */
-    @Export(name="healthCheckIntervalSeconds", type=Integer.class, parameters={})
+    @Export(name="healthCheckIntervalSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckIntervalSeconds;
 
     /**
@@ -251,7 +265,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The path specified as the destination of the targets for health checks.
      * 
      */
-    @Export(name="healthCheckPath", type=String.class, parameters={})
+    @Export(name="healthCheckPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckPath;
 
     /**
@@ -265,7 +279,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The port that is used for health checks.
      * 
      */
-    @Export(name="healthCheckPort", type=Integer.class, parameters={})
+    @Export(name="healthCheckPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckPort;
 
     /**
@@ -279,7 +293,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
      * 
      */
-    @Export(name="healthCheckProtocol", type=String.class, parameters={})
+    @Export(name="healthCheckProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckProtocol;
 
     /**
@@ -293,7 +307,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The ID of the listener that is associated with the endpoint group.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -307,7 +321,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The name of the endpoint group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -322,7 +336,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */
-    @Export(name="portOverrides", type=EndpointGroupPortOverrides.class, parameters={})
+    @Export(name="portOverrides", refs={EndpointGroupPortOverrides.class}, tree="[0]")
     private Output</* @Nullable */ EndpointGroupPortOverrides> portOverrides;
 
     /**
@@ -337,7 +351,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The status of the endpoint group.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -351,7 +365,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -365,7 +379,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      * 
      */
-    @Export(name="thresholdCount", type=Integer.class, parameters={})
+    @Export(name="thresholdCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> thresholdCount;
 
     /**
@@ -379,7 +393,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
      * 
      */
-    @Export(name="trafficPercentage", type=Integer.class, parameters={})
+    @Export(name="trafficPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> trafficPercentage;
 
     /**

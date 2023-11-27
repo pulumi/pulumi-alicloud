@@ -201,17 +201,17 @@ public final class GetConnectionsConnectionIkeConfig {
             return this;
         }
         public GetConnectionsConnectionIkeConfig build() {
-            final var o = new GetConnectionsConnectionIkeConfig();
-            o.ikeAuthAlg = ikeAuthAlg;
-            o.ikeEncAlg = ikeEncAlg;
-            o.ikeLifetime = ikeLifetime;
-            o.ikeLocalId = ikeLocalId;
-            o.ikeMode = ikeMode;
-            o.ikePfs = ikePfs;
-            o.ikeRemoteId = ikeRemoteId;
-            o.ikeVersion = ikeVersion;
-            o.psk = psk;
-            return o;
+            final var _resultValue = new GetConnectionsConnectionIkeConfig();
+            _resultValue.ikeAuthAlg = ikeAuthAlg;
+            _resultValue.ikeEncAlg = ikeEncAlg;
+            _resultValue.ikeLifetime = ikeLifetime;
+            _resultValue.ikeLocalId = ikeLocalId;
+            _resultValue.ikeMode = ikeMode;
+            _resultValue.ikePfs = ikePfs;
+            _resultValue.ikeRemoteId = ikeRemoteId;
+            _resultValue.ikeVersion = ikeVersion;
+            _resultValue.psk = psk;
+            return _resultValue;
         }
     }
 }

@@ -116,7 +116,7 @@ public class HostShareKey extends com.pulumi.resources.CustomResource {
      * The first ID of the resource.
      * 
      */
-    @Export(name="hostShareKeyId", type=String.class, parameters={})
+    @Export(name="hostShareKeyId", refs={String.class}, tree="[0]")
     private Output<String> hostShareKeyId;
 
     /**
@@ -130,7 +130,7 @@ public class HostShareKey extends com.pulumi.resources.CustomResource {
      * The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
      * 
      */
-    @Export(name="hostShareKeyName", type=String.class, parameters={})
+    @Export(name="hostShareKeyName", refs={String.class}, tree="[0]")
     private Output<String> hostShareKeyName;
 
     /**
@@ -144,7 +144,7 @@ public class HostShareKey extends com.pulumi.resources.CustomResource {
      * The ID of the Bastion instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -158,7 +158,7 @@ public class HostShareKey extends com.pulumi.resources.CustomResource {
      * The password of the private key. The value is a Base64-encoded string.
      * 
      */
-    @Export(name="passPhrase", type=String.class, parameters={})
+    @Export(name="passPhrase", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passPhrase;
 
     /**
@@ -172,7 +172,7 @@ public class HostShareKey extends com.pulumi.resources.CustomResource {
      * The private key. The value is a Base64-encoded string.
      * 
      */
-    @Export(name="privateKey", type=String.class, parameters={})
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output<String> privateKey;
 
     /**
@@ -186,7 +186,7 @@ public class HostShareKey extends com.pulumi.resources.CustomResource {
      * The fingerprint of the private key.
      * 
      */
-    @Export(name="privateKeyFingerPrint", type=String.class, parameters={})
+    @Export(name="privateKeyFingerPrint", refs={String.class}, tree="[0]")
     private Output<String> privateKeyFingerPrint;
 
     /**

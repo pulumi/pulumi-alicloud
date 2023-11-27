@@ -179,16 +179,16 @@ public final class GetExecutionsExecution {
             return this;
         }
         public GetExecutionsExecution build() {
-            final var o = new GetExecutionsExecution();
-            o.executionName = executionName;
-            o.flowName = flowName;
-            o.id = id;
-            o.input = input;
-            o.output = output;
-            o.startedTime = startedTime;
-            o.status = status;
-            o.stoppedTime = stoppedTime;
-            return o;
+            final var _resultValue = new GetExecutionsExecution();
+            _resultValue.executionName = executionName;
+            _resultValue.flowName = flowName;
+            _resultValue.id = id;
+            _resultValue.input = input;
+            _resultValue.output = output;
+            _resultValue.startedTime = startedTime;
+            _resultValue.status = status;
+            _resultValue.stoppedTime = stoppedTime;
+            return _resultValue;
         }
     }
 }

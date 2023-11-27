@@ -66,7 +66,7 @@ public class IndustrialPidOrganization extends com.pulumi.resources.CustomResour
      * The ID of parent pid organization.
      * 
      */
-    @Export(name="parentPidOrganizationId", type=String.class, parameters={})
+    @Export(name="parentPidOrganizationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentPidOrganizationId;
 
     /**
@@ -80,7 +80,7 @@ public class IndustrialPidOrganization extends com.pulumi.resources.CustomResour
      * The name of pid organization.
      * 
      */
-    @Export(name="pidOrganizationName", type=String.class, parameters={})
+    @Export(name="pidOrganizationName", refs={String.class}, tree="[0]")
     private Output<String> pidOrganizationName;
 
     /**

@@ -80,7 +80,7 @@ public class VirtualHost extends com.pulumi.resources.CustomResource {
      * InstanceId.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -94,7 +94,7 @@ public class VirtualHost extends com.pulumi.resources.CustomResource {
      * VirtualHostName.
      * 
      */
-    @Export(name="virtualHostName", type=String.class, parameters={})
+    @Export(name="virtualHostName", refs={String.class}, tree="[0]")
     private Output<String> virtualHostName;
 
     /**

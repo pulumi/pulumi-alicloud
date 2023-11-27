@@ -65,10 +65,10 @@ public final class ApiDestinationHttpApiParameters {
             return this;
         }
         public ApiDestinationHttpApiParameters build() {
-            final var o = new ApiDestinationHttpApiParameters();
-            o.endpoint = endpoint;
-            o.method = method;
-            return o;
+            final var _resultValue = new ApiDestinationHttpApiParameters();
+            _resultValue.endpoint = endpoint;
+            _resultValue.method = method;
+            return _resultValue;
         }
     }
 }

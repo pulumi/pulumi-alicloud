@@ -86,11 +86,11 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersHea
             return this;
         }
         public ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter build() {
-            final var o = new ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter();
-            o.isValueSecret = isValueSecret;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter();
+            _resultValue.isValueSecret = isValueSecret;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -88,7 +88,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * to get check ids and set them.
      * 
      */
-    @Export(name="abandonAbleCheckIds", type=List.class, parameters={String.class})
+    @Export(name="abandonAbleCheckIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> abandonAbleCheckIds;
 
     /**
@@ -104,7 +104,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The name prefix of account.
      * 
      */
-    @Export(name="accountNamePrefix", type=String.class, parameters={})
+    @Export(name="accountNamePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountNamePrefix;
 
     /**
@@ -118,7 +118,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -132,7 +132,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The ID of the parent folder.
      * 
      */
-    @Export(name="folderId", type=String.class, parameters={})
+    @Export(name="folderId", refs={String.class}, tree="[0]")
     private Output<String> folderId;
 
     /**
@@ -146,7 +146,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Ways for members to join the resource directory. Valid values: `invited`, `created`.
      * 
      */
-    @Export(name="joinMethod", type=String.class, parameters={})
+    @Export(name="joinMethod", refs={String.class}, tree="[0]")
     private Output<String> joinMethod;
 
     /**
@@ -160,7 +160,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The time when the member joined the resource directory.
      * 
      */
-    @Export(name="joinTime", type=String.class, parameters={})
+    @Export(name="joinTime", refs={String.class}, tree="[0]")
     private Output<String> joinTime;
 
     /**
@@ -174,7 +174,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The modification time of the invitation.
      * 
      */
-    @Export(name="modifyTime", type=String.class, parameters={})
+    @Export(name="modifyTime", refs={String.class}, tree="[0]")
     private Output<String> modifyTime;
 
     /**
@@ -188,7 +188,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
      * 
      */
-    @Export(name="payerAccountId", type=String.class, parameters={})
+    @Export(name="payerAccountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payerAccountId;
 
     /**
@@ -202,7 +202,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Resource directory ID.
      * 
      */
-    @Export(name="resourceDirectoryId", type=String.class, parameters={})
+    @Export(name="resourceDirectoryId", refs={String.class}, tree="[0]")
     private Output<String> resourceDirectoryId;
 
     /**
@@ -216,7 +216,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -232,7 +232,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The member name must be unique within the resource directory.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -248,7 +248,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Member type. The value of `ResourceAccount` indicates the resource account.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

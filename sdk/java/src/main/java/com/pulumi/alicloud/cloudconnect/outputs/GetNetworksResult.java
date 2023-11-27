@@ -138,14 +138,14 @@ public final class GetNetworksResult {
             return this;
         }
         public GetNetworksResult build() {
-            final var o = new GetNetworksResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.networks = networks;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetNetworksResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.networks = networks;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -76,14 +76,14 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     @Import(name="direction", required=true)
     private Output<String> direction;
 
     /**
-     * @return The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * @return The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     public Output<String> direction() {
@@ -91,14 +91,14 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The ip version.
+     * The IP version of the address in the access control policy.
      * 
      */
     @Import(name="ipVersion")
     private @Nullable Output<String> ipVersion;
 
     /**
-     * @return The ip version.
+     * @return The IP version of the address in the access control policy.
      * 
      */
     public Optional<Output<String>> ipVersion() {
@@ -106,14 +106,14 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * DestPortGroupPorts. Valid values: `en`, `zh`.
+     * The language of the content within the response. Valid values: `en`, `zh`.
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return DestPortGroupPorts. Valid values: `en`, `zh`.
+     * @return The language of the content within the response. Valid values: `en`, `zh`.
      * 
      */
     public Optional<Output<String>> lang() {
@@ -136,14 +136,14 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      * 
      */
     @Import(name="proto")
     private @Nullable Output<String> proto;
 
     /**
-     * @return The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * @return The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      * 
      */
     public Optional<Output<String>> proto() {
@@ -151,33 +151,18 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The source address defined in the access control policy.
+     * The source address in the access control policy.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return The source address defined in the access control policy.
+     * @return The source address in the access control policy.
      * 
      */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
-    }
-
-    /**
-     * The source IP address of the request.
-     * 
-     */
-    @Import(name="sourceIp")
-    private @Nullable Output<String> sourceIp;
-
-    /**
-     * @return The source IP address of the request.
-     * 
-     */
-    public Optional<Output<String>> sourceIp() {
-        return Optional.ofNullable(this.sourceIp);
     }
 
     private GetControlPoliciesArgs() {}
@@ -193,7 +178,6 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         this.outputFile = $.outputFile;
         this.proto = $.proto;
         this.source = $.source;
-        this.sourceIp = $.sourceIp;
     }
 
     public static Builder builder() {
@@ -299,7 +283,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param direction The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+         * @param direction The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
          * 
          * @return builder
          * 
@@ -310,7 +294,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param direction The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+         * @param direction The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
          * 
          * @return builder
          * 
@@ -320,7 +304,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ipVersion The ip version.
+         * @param ipVersion The IP version of the address in the access control policy.
          * 
          * @return builder
          * 
@@ -331,7 +315,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ipVersion The ip version.
+         * @param ipVersion The IP version of the address in the access control policy.
          * 
          * @return builder
          * 
@@ -341,7 +325,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param lang DestPortGroupPorts. Valid values: `en`, `zh`.
+         * @param lang The language of the content within the response. Valid values: `en`, `zh`.
          * 
          * @return builder
          * 
@@ -352,7 +336,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param lang DestPortGroupPorts. Valid values: `en`, `zh`.
+         * @param lang The language of the content within the response. Valid values: `en`, `zh`.
          * 
          * @return builder
          * 
@@ -383,7 +367,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param proto The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+         * @param proto The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
          * 
          * @return builder
          * 
@@ -394,7 +378,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param proto The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+         * @param proto The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
          * 
          * @return builder
          * 
@@ -404,7 +388,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param source The source address defined in the access control policy.
+         * @param source The source address in the access control policy.
          * 
          * @return builder
          * 
@@ -415,34 +399,13 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param source The source address defined in the access control policy.
+         * @param source The source address in the access control policy.
          * 
          * @return builder
          * 
          */
         public Builder source(String source) {
             return source(Output.of(source));
-        }
-
-        /**
-         * @param sourceIp The source IP address of the request.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sourceIp(@Nullable Output<String> sourceIp) {
-            $.sourceIp = sourceIp;
-            return this;
-        }
-
-        /**
-         * @param sourceIp The source IP address of the request.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sourceIp(String sourceIp) {
-            return sourceIp(Output.of(sourceIp));
         }
 
         public GetControlPoliciesArgs build() {

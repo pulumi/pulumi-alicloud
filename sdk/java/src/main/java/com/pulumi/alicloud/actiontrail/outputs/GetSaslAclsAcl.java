@@ -141,14 +141,14 @@ public final class GetSaslAclsAcl {
             return this;
         }
         public GetSaslAclsAcl build() {
-            final var o = new GetSaslAclsAcl();
-            o.aclOperationType = aclOperationType;
-            o.aclResourceName = aclResourceName;
-            o.aclResourcePatternType = aclResourcePatternType;
-            o.aclResourceType = aclResourceType;
-            o.host = host;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetSaslAclsAcl();
+            _resultValue.aclOperationType = aclOperationType;
+            _resultValue.aclResourceName = aclResourceName;
+            _resultValue.aclResourcePatternType = aclResourcePatternType;
+            _resultValue.aclResourceType = aclResourceType;
+            _resultValue.host = host;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

@@ -91,11 +91,11 @@ public final class EdgeKubernetesAddon {
             return this;
         }
         public EdgeKubernetesAddon build() {
-            final var o = new EdgeKubernetesAddon();
-            o.config = config;
-            o.disabled = disabled;
-            o.name = name;
-            return o;
+            final var _resultValue = new EdgeKubernetesAddon();
+            _resultValue.config = config;
+            _resultValue.disabled = disabled;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

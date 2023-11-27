@@ -94,7 +94,7 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * The name of the bundle.
      * 
      */
-    @Export(name="bundleName", type=String.class, parameters={})
+    @Export(name="bundleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bundleName;
 
     /**
@@ -108,7 +108,7 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * The description of the bundle.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -122,7 +122,7 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * The desktop type. You can call `alicloud.eds.getDesktopTypes` to query desktop type.
      * 
      */
-    @Export(name="desktopType", type=String.class, parameters={})
+    @Export(name="desktopType", refs={String.class}, tree="[0]")
     private Output<String> desktopType;
 
     /**
@@ -136,7 +136,7 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * The ID of the image.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -150,7 +150,7 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
      * 
      */
-    @Export(name="language", type=String.class, parameters={})
+    @Export(name="language", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> language;
 
     /**
@@ -164,7 +164,7 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      * 
      */
-    @Export(name="rootDiskPerformanceLevel", type=String.class, parameters={})
+    @Export(name="rootDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output<String> rootDiskPerformanceLevel;
 
     /**
@@ -178,7 +178,7 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * The root disk size gib.
      * 
      */
-    @Export(name="rootDiskSizeGib", type=Integer.class, parameters={})
+    @Export(name="rootDiskSizeGib", refs={Integer.class}, tree="[0]")
     private Output<Integer> rootDiskSizeGib;
 
     /**
@@ -192,7 +192,7 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      * 
      */
-    @Export(name="userDiskPerformanceLevel", type=String.class, parameters={})
+    @Export(name="userDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output<String> userDiskPerformanceLevel;
 
     /**
@@ -208,7 +208,7 @@ public class Bundle extends com.pulumi.resources.CustomResource {
      * - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
      * 
      */
-    @Export(name="userDiskSizeGibs", type=List.class, parameters={Integer.class})
+    @Export(name="userDiskSizeGibs", refs={List.class,Integer.class}, tree="[0,1]")
     private Output<List<Integer>> userDiskSizeGibs;
 
     /**

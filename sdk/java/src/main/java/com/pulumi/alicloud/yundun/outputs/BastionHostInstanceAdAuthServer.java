@@ -163,20 +163,20 @@ public final class BastionHostInstanceAdAuthServer {
             return this;
         }
         public BastionHostInstanceAdAuthServer build() {
-            final var o = new BastionHostInstanceAdAuthServer();
-            o.account = account;
-            o.baseDn = baseDn;
-            o.domain = domain;
-            o.emailMapping = emailMapping;
-            o.filter = filter;
-            o.isSsl = isSsl;
-            o.mobileMapping = mobileMapping;
-            o.nameMapping = nameMapping;
-            o.password = password;
-            o.port = port;
-            o.server = server;
-            o.standbyServer = standbyServer;
-            return o;
+            final var _resultValue = new BastionHostInstanceAdAuthServer();
+            _resultValue.account = account;
+            _resultValue.baseDn = baseDn;
+            _resultValue.domain = domain;
+            _resultValue.emailMapping = emailMapping;
+            _resultValue.filter = filter;
+            _resultValue.isSsl = isSsl;
+            _resultValue.mobileMapping = mobileMapping;
+            _resultValue.nameMapping = nameMapping;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.server = server;
+            _resultValue.standbyServer = standbyServer;
+            return _resultValue;
         }
     }
 }

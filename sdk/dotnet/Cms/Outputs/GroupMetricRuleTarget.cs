@@ -15,6 +15,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
     {
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the resource.
+        /// &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         /// </summary>
         public readonly string? Arn;
         /// <summary>
@@ -23,8 +24,6 @@ namespace Pulumi.AliCloud.Cms.Outputs
         public readonly string? Id;
         /// <summary>
         /// The parameters of the alert callback. The parameters are in the JSON format.
-        /// 
-        /// &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         /// </summary>
         public readonly string? JsonParams;
         /// <summary>

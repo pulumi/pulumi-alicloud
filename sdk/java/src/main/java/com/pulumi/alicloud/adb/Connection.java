@@ -118,7 +118,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `&lt;db_cluster_id&gt; + tf`.
      * 
      */
-    @Export(name="connectionPrefix", type=String.class, parameters={})
+    @Export(name="connectionPrefix", refs={String.class}, tree="[0]")
     private Output<String> connectionPrefix;
 
     /**
@@ -132,7 +132,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Connection cluster string.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -146,7 +146,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The Id of cluster that can run database.
      * 
      */
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
@@ -160,7 +160,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The ip address of connection string.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -174,7 +174,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Connection cluster port.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**

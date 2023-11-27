@@ -74,7 +74,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      * 
      */
-    @Export(name="eventRw", type=String.class, parameters={})
+    @Export(name="eventRw", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eventRw;
 
     /**
@@ -84,7 +84,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> eventRw() {
         return Codegen.optional(this.eventRw);
     }
-    @Export(name="isOrganizationTrail", type=Boolean.class, parameters={})
+    @Export(name="isOrganizationTrail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOrganizationTrail;
 
     public Output<Optional<Boolean>> isOrganizationTrail() {
@@ -96,7 +96,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'mns_topic_arn' has been deprecated from version 1.118.0 */
-    @Export(name="mnsTopicArn", type=String.class, parameters={})
+    @Export(name="mnsTopicArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mnsTopicArn;
 
     public Output<Optional<String>> mnsTopicArn() {
@@ -110,7 +110,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -124,7 +124,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
      * 
      */
-    @Export(name="ossBucketName", type=String.class, parameters={})
+    @Export(name="ossBucketName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossBucketName;
 
     /**
@@ -138,7 +138,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      * 
      */
-    @Export(name="ossKeyPrefix", type=String.class, parameters={})
+    @Export(name="ossKeyPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossKeyPrefix;
 
     /**
@@ -148,7 +148,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> ossKeyPrefix() {
         return Codegen.optional(this.ossKeyPrefix);
     }
-    @Export(name="ossWriteRoleArn", type=String.class, parameters={})
+    @Export(name="ossWriteRoleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossWriteRoleArn;
 
     public Output<Optional<String>> ossWriteRoleArn() {
@@ -162,7 +162,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'role_name' has been deprecated from version 1.118.0 */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
@@ -176,7 +176,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * The unique ARN of the Log Service project.
      * 
      */
-    @Export(name="slsProjectArn", type=String.class, parameters={})
+    @Export(name="slsProjectArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slsProjectArn;
 
     /**
@@ -192,7 +192,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
      * 
      */
-    @Export(name="slsWriteRoleArn", type=String.class, parameters={})
+    @Export(name="slsWriteRoleArn", refs={String.class}, tree="[0]")
     private Output<String> slsWriteRoleArn;
 
     /**
@@ -204,19 +204,19 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     public Output<String> slsWriteRoleArn() {
         return this.slsWriteRoleArn;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     public Output<Optional<String>> status() {
         return Codegen.optional(this.status);
     }
-    @Export(name="trailName", type=String.class, parameters={})
+    @Export(name="trailName", refs={String.class}, tree="[0]")
     private Output<String> trailName;
 
     public Output<String> trailName() {
         return this.trailName;
     }
-    @Export(name="trailRegion", type=String.class, parameters={})
+    @Export(name="trailRegion", refs={String.class}, tree="[0]")
     private Output<String> trailRegion;
 
     public Output<String> trailRegion() {

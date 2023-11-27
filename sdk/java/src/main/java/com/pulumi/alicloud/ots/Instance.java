@@ -74,7 +74,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The network limitation of accessing instance. Valid values:
      * 
      */
-    @Export(name="accessedBy", type=String.class, parameters={})
+    @Export(name="accessedBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessedBy;
 
     /**
@@ -88,7 +88,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The description of the instance. Currently, it does not support modifying.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -102,7 +102,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The type of instance. Valid values are &#34;Capacity&#34; and &#34;HighPerformance&#34;. Default to &#34;HighPerformance&#34;.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -116,7 +116,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the instance.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -130,7 +130,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the instance.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

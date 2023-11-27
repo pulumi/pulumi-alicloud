@@ -139,16 +139,16 @@ public final class GetBundlesResult {
             return this;
         }
         public GetBundlesResult build() {
-            final var o = new GetBundlesResult();
-            o.bundleIds = bundleIds;
-            o.bundleType = bundleType;
-            o.bundles = bundles;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetBundlesResult();
+            _resultValue.bundleIds = bundleIds;
+            _resultValue.bundleType = bundleType;
+            _resultValue.bundles = bundles;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

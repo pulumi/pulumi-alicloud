@@ -67,10 +67,10 @@ public final class PrefixListEntry {
             return this;
         }
         public PrefixListEntry build() {
-            final var o = new PrefixListEntry();
-            o.cidr = cidr;
-            o.description = description;
-            return o;
+            final var _resultValue = new PrefixListEntry();
+            _resultValue.cidr = cidr;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

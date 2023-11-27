@@ -86,11 +86,11 @@ public final class InstanceSlbConnAddr {
             return this;
         }
         public InstanceSlbConnAddr build() {
-            final var o = new InstanceSlbConnAddr();
-            o.connAddr = connAddr;
-            o.connAddrPort = connAddrPort;
-            o.netType = netType;
-            return o;
+            final var _resultValue = new InstanceSlbConnAddr();
+            _resultValue.connAddr = connAddr;
+            _resultValue.connAddrPort = connAddrPort;
+            _resultValue.netType = netType;
+            return _resultValue;
         }
     }
 }

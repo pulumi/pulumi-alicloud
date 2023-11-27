@@ -67,10 +67,10 @@ public final class BucketReplicationProgress {
             return this;
         }
         public BucketReplicationProgress build() {
-            final var o = new BucketReplicationProgress();
-            o.historicalObject = historicalObject;
-            o.newObject = newObject;
-            return o;
+            final var _resultValue = new BucketReplicationProgress();
+            _resultValue.historicalObject = historicalObject;
+            _resultValue.newObject = newObject;
+            return _resultValue;
         }
     }
 }

@@ -178,20 +178,20 @@ public final class GetApplicationsResult {
             return this;
         }
         public GetApplicationsResult build() {
-            final var o = new GetApplicationsResult();
-            o.appName = appName;
-            o.applications = applications;
-            o.enableDetails = enableDetails;
-            o.fieldType = fieldType;
-            o.fieldValue = fieldValue;
-            o.id = id;
-            o.ids = ids;
-            o.namespaceId = namespaceId;
-            o.orderBy = orderBy;
-            o.outputFile = outputFile;
-            o.reverse = reverse;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetApplicationsResult();
+            _resultValue.appName = appName;
+            _resultValue.applications = applications;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.fieldType = fieldType;
+            _resultValue.fieldValue = fieldValue;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.orderBy = orderBy;
+            _resultValue.outputFile = outputFile;
+            _resultValue.reverse = reverse;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

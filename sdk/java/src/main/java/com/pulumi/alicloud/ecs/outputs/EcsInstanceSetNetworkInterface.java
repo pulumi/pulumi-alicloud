@@ -124,13 +124,13 @@ public final class EcsInstanceSetNetworkInterface {
             return this;
         }
         public EcsInstanceSetNetworkInterface build() {
-            final var o = new EcsInstanceSetNetworkInterface();
-            o.description = description;
-            o.networkInterfaceName = networkInterfaceName;
-            o.primaryIpAddress = primaryIpAddress;
-            o.securityGroupId = securityGroupId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new EcsInstanceSetNetworkInterface();
+            _resultValue.description = description;
+            _resultValue.networkInterfaceName = networkInterfaceName;
+            _resultValue.primaryIpAddress = primaryIpAddress;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

@@ -104,12 +104,12 @@ public final class GetApplicationsApplicationOssMountDetail {
             return this;
         }
         public GetApplicationsApplicationOssMountDetail build() {
-            final var o = new GetApplicationsApplicationOssMountDetail();
-            o.bucketName = bucketName;
-            o.bucketPath = bucketPath;
-            o.mountPath = mountPath;
-            o.readOnly = readOnly;
-            return o;
+            final var _resultValue = new GetApplicationsApplicationOssMountDetail();
+            _resultValue.bucketName = bucketName;
+            _resultValue.bucketPath = bucketPath;
+            _resultValue.mountPath = mountPath;
+            _resultValue.readOnly = readOnly;
+            return _resultValue;
         }
     }
 }

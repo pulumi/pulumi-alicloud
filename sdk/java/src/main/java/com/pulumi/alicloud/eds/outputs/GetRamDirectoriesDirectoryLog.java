@@ -103,12 +103,12 @@ public final class GetRamDirectoriesDirectoryLog {
             return this;
         }
         public GetRamDirectoriesDirectoryLog build() {
-            final var o = new GetRamDirectoriesDirectoryLog();
-            o.level = level;
-            o.message = message;
-            o.step = step;
-            o.timeStamp = timeStamp;
-            return o;
+            final var _resultValue = new GetRamDirectoriesDirectoryLog();
+            _resultValue.level = level;
+            _resultValue.message = message;
+            _resultValue.step = step;
+            _resultValue.timeStamp = timeStamp;
+            return _resultValue;
         }
     }
 }

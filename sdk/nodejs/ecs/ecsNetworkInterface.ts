@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Network Interface and how to use it, see [What is Network Interface](https://www.alibabacloud.com/help/en/doc-detail/58504.htm).
  *
- * > **NOTE:** Available in v1.123.1+.
+ * > **NOTE:** Available since v1.123.1.
  *
  * > **NOTE** Only one of `privateIpAddresses` or `secondaryPrivateIpAddressCount` can be specified when assign private IPs.
  *
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAcc";
+ * const name = config.get("name") || "tf-example";
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/24",
@@ -94,6 +94,14 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
+     */
+    public readonly ipv4PrefixCount!: pulumi.Output<number>;
+    /**
+     * A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+     */
+    public readonly ipv4Prefixes!: pulumi.Output<string[]>;
     /**
      * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      */
@@ -191,6 +199,8 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfaceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipv4PrefixCount"] = state ? state.ipv4PrefixCount : undefined;
+            resourceInputs["ipv4Prefixes"] = state ? state.ipv4Prefixes : undefined;
             resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
             resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
             resourceInputs["mac"] = state ? state.mac : undefined;
@@ -215,6 +225,8 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipv4PrefixCount"] = args ? args.ipv4PrefixCount : undefined;
+            resourceInputs["ipv4Prefixes"] = args ? args.ipv4Prefixes : undefined;
             resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
             resourceInputs["ipv6Addresses"] = args ? args.ipv6Addresses : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -247,6 +259,14 @@ export interface EcsNetworkInterfaceState {
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
+     */
+    ipv4PrefixCount?: pulumi.Input<number>;
+    /**
+     * A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+     */
+    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      */
@@ -339,6 +359,14 @@ export interface EcsNetworkInterfaceArgs {
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
+     */
+    ipv4PrefixCount?: pulumi.Input<number>;
+    /**
+     * A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+     */
+    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      */

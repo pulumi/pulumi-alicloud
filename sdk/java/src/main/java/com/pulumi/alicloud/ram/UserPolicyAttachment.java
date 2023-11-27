@@ -98,7 +98,7 @@ public class UserPolicyAttachment extends com.pulumi.resources.CustomResource {
      * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="policyName", type=String.class, parameters={})
+    @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
@@ -112,7 +112,7 @@ public class UserPolicyAttachment extends com.pulumi.resources.CustomResource {
      * Type of the RAM policy. It must be `Custom` or `System`.
      * 
      */
-    @Export(name="policyType", type=String.class, parameters={})
+    @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
@@ -126,7 +126,7 @@ public class UserPolicyAttachment extends com.pulumi.resources.CustomResource {
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**

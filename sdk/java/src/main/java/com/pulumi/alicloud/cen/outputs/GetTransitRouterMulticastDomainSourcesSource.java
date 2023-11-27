@@ -141,14 +141,14 @@ public final class GetTransitRouterMulticastDomainSourcesSource {
             return this;
         }
         public GetTransitRouterMulticastDomainSourcesSource build() {
-            final var o = new GetTransitRouterMulticastDomainSourcesSource();
-            o.groupIpAddress = groupIpAddress;
-            o.id = id;
-            o.networkInterfaceId = networkInterfaceId;
-            o.status = status;
-            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetTransitRouterMulticastDomainSourcesSource();
+            _resultValue.groupIpAddress = groupIpAddress;
+            _resultValue.id = id;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.status = status;
+            _resultValue.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

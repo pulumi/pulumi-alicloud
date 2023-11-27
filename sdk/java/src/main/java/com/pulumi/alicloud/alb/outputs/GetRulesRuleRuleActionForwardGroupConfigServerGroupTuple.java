@@ -66,10 +66,10 @@ public final class GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple {
             return this;
         }
         public GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple build() {
-            final var o = new GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple();
-            o.serverGroupId = serverGroupId;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple();
+            _resultValue.serverGroupId = serverGroupId;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

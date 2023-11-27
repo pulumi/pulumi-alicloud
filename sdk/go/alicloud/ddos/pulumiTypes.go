@@ -294,7 +294,7 @@ type GetDdosBgpInstancesInstance struct {
 	Name string `pulumi:"name"`
 	// Normal defend bandwidth of the instance. The unit is Gbps.
 	NormalBandwidth int `pulumi:"normalBandwidth"`
-	// A region of instance.
+	// The instance's region.
 	Region string `pulumi:"region"`
 	// The instance's type.
 	Type string `pulumi:"type"`
@@ -326,7 +326,7 @@ type GetDdosBgpInstancesInstanceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Normal defend bandwidth of the instance. The unit is Gbps.
 	NormalBandwidth pulumi.IntInput `pulumi:"normalBandwidth"`
-	// A region of instance.
+	// The instance's region.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The instance's type.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -418,7 +418,7 @@ func (o GetDdosBgpInstancesInstanceOutput) NormalBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDdosBgpInstancesInstance) int { return v.NormalBandwidth }).(pulumi.IntOutput)
 }
 
-// A region of instance.
+// The instance's region.
 func (o GetDdosBgpInstancesInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosBgpInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
 }

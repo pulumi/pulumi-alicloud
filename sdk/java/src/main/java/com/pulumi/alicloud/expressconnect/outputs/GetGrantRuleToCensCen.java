@@ -104,12 +104,12 @@ public final class GetGrantRuleToCensCen {
             return this;
         }
         public GetGrantRuleToCensCen build() {
-            final var o = new GetGrantRuleToCensCen();
-            o.cenId = cenId;
-            o.cenOwnerId = cenOwnerId;
-            o.createTime = createTime;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetGrantRuleToCensCen();
+            _resultValue.cenId = cenId;
+            _resultValue.cenOwnerId = cenOwnerId;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

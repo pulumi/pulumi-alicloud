@@ -70,10 +70,10 @@ public final class GetRegionsRegion {
             return zones(List.of(zones));
         }
         public GetRegionsRegion build() {
-            final var o = new GetRegionsRegion();
-            o.regionId = regionId;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetRegionsRegion();
+            _resultValue.regionId = regionId;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

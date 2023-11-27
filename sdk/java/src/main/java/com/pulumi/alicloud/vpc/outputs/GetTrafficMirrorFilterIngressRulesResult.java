@@ -111,14 +111,14 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
             return this;
         }
         public GetTrafficMirrorFilterIngressRulesResult build() {
-            final var o = new GetTrafficMirrorFilterIngressRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            o.status = status;
-            o.trafficMirrorFilterId = trafficMirrorFilterId;
-            return o;
+            final var _resultValue = new GetTrafficMirrorFilterIngressRulesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            _resultValue.status = status;
+            _resultValue.trafficMirrorFilterId = trafficMirrorFilterId;
+            return _resultValue;
         }
     }
 }

@@ -125,7 +125,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -142,7 +142,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountPassword;
 
     /**
@@ -156,7 +156,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The privilege of account access database. Default value: `RoleReadWrite`
      * 
      */
-    @Export(name="accountPrivilege", type=String.class, parameters={})
+    @Export(name="accountPrivilege", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountPrivilege;
 
     /**
@@ -172,7 +172,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      *   Default to Normal.
      * 
      */
-    @Export(name="accountType", type=String.class, parameters={})
+    @Export(name="accountType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountType;
 
     /**
@@ -188,7 +188,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -202,7 +202,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -216,7 +216,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -230,7 +230,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -244,7 +244,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The status of KVStore Account.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

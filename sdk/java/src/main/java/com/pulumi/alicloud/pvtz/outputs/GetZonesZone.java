@@ -303,23 +303,23 @@ public final class GetZonesZone {
             return this;
         }
         public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.bindVpcs = bindVpcs;
-            o.createTimestamp = createTimestamp;
-            o.creationTime = creationTime;
-            o.id = id;
-            o.isPtr = isPtr;
-            o.name = name;
-            o.proxyPattern = proxyPattern;
-            o.recordCount = recordCount;
-            o.remark = remark;
-            o.resourceGroupId = resourceGroupId;
-            o.slaveDns = slaveDns;
-            o.updateTime = updateTime;
-            o.updateTimestamp = updateTimestamp;
-            o.zoneId = zoneId;
-            o.zoneName = zoneName;
-            return o;
+            final var _resultValue = new GetZonesZone();
+            _resultValue.bindVpcs = bindVpcs;
+            _resultValue.createTimestamp = createTimestamp;
+            _resultValue.creationTime = creationTime;
+            _resultValue.id = id;
+            _resultValue.isPtr = isPtr;
+            _resultValue.name = name;
+            _resultValue.proxyPattern = proxyPattern;
+            _resultValue.recordCount = recordCount;
+            _resultValue.remark = remark;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.slaveDns = slaveDns;
+            _resultValue.updateTime = updateTime;
+            _resultValue.updateTimestamp = updateTimestamp;
+            _resultValue.zoneId = zoneId;
+            _resultValue.zoneName = zoneName;
+            return _resultValue;
         }
     }
 }

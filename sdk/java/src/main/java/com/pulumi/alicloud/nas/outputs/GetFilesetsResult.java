@@ -111,14 +111,14 @@ public final class GetFilesetsResult {
             return this;
         }
         public GetFilesetsResult build() {
-            final var o = new GetFilesetsResult();
-            o.fileSystemId = fileSystemId;
-            o.filesets = filesets;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetFilesetsResult();
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.filesets = filesets;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

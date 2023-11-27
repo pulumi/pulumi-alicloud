@@ -81,7 +81,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * AppName.
      * 
      */
-    @Export(name="appName", type=String.class, parameters={})
+    @Export(name="appName", refs={String.class}, tree="[0]")
     private Output<String> appName;
 
     /**
@@ -95,7 +95,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
      * 
      */
-    @Export(name="bundleId", type=String.class, parameters={})
+    @Export(name="bundleId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bundleId;
 
     /**
@@ -109,7 +109,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Base64 string of picture.
      * 
      */
-    @Export(name="encodedIcon", type=String.class, parameters={})
+    @Export(name="encodedIcon", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encodedIcon;
 
     /**
@@ -123,7 +123,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
      * 
      */
-    @Export(name="industryId", type=String.class, parameters={})
+    @Export(name="industryId", refs={String.class}, tree="[0]")
     private Output<String> industryId;
 
     /**
@@ -137,7 +137,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
      * 
      */
-    @Export(name="packageName", type=String.class, parameters={})
+    @Export(name="packageName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> packageName;
 
     /**
@@ -151,7 +151,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The ID of the Product.
      * 
      */
-    @Export(name="productId", type=String.class, parameters={})
+    @Export(name="productId", refs={String.class}, tree="[0]")
     private Output<String> productId;
 
     /**
@@ -165,7 +165,7 @@ public class App extends com.pulumi.resources.CustomResource {
      * The type of the Product. Valid values: `Android` and `iOS`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

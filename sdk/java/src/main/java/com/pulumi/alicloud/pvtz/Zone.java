@@ -13,8 +13,10 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -44,7 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new Zone(&#34;foo&#34;, ZoneArgs.builder()        
- *             .zoneName(&#34;foo.test.com&#34;)
+ *             .zoneName(&#34;foo.example.com&#34;)
  *             .build());
  * 
  *     }
@@ -66,7 +68,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Whether the Private Zone is ptr.
      * 
      */
-    @Export(name="isPtr", type=Boolean.class, parameters={})
+    @Export(name="isPtr", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isPtr;
 
     /**
@@ -80,7 +82,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The language. Valid values: &#34;zh&#34;, &#34;en&#34;, &#34;jp&#34;.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -98,7 +100,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -115,7 +117,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      *   Default to &#34;ZONE&#34;.
      * 
      */
-    @Export(name="proxyPattern", type=String.class, parameters={})
+    @Export(name="proxyPattern", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyPattern;
 
     /**
@@ -132,7 +134,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The count of the Private Zone Record.
      * 
      */
-    @Export(name="recordCount", type=Integer.class, parameters={})
+    @Export(name="recordCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> recordCount;
 
     /**
@@ -146,7 +148,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The remark of the Private Zone.
      * 
      */
-    @Export(name="remark", type=String.class, parameters={})
+    @Export(name="remark", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> remark;
 
     /**
@@ -160,21 +162,21 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the Private Zone belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> resourceGroupId;
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
 
     /**
      * @return The Id of resource group which the Private Zone belongs.
      * 
      */
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
      * 
      */
-    @Export(name="syncStatus", type=String.class, parameters={})
+    @Export(name="syncStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> syncStatus;
 
     /**
@@ -185,10 +187,24 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.syncStatus);
     }
     /**
+     * The tags of the Private Zone.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tags of the Private Zone.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
      * The IP address of the client.
      * 
      */
-    @Export(name="userClientIp", type=String.class, parameters={})
+    @Export(name="userClientIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userClientIp;
 
     /**
@@ -199,14 +215,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.userClientIp);
     }
     /**
-     * The user information of the host synchronization task. The details see Block `user_info`.
+     * The user information of the host synchronization task. See `user_info` below.
      * 
      */
-    @Export(name="userInfos", type=List.class, parameters={ZoneUserInfo.class})
+    @Export(name="userInfos", refs={List.class,ZoneUserInfo.class}, tree="[0,1]")
     private Output<List<ZoneUserInfo>> userInfos;
 
     /**
-     * @return The user information of the host synchronization task. The details see Block `user_info`.
+     * @return The user information of the host synchronization task. See `user_info` below.
      * 
      */
     public Output<List<ZoneUserInfo>> userInfos() {
@@ -216,7 +232,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
      * 
      */
-    @Export(name="zoneName", type=String.class, parameters={})
+    @Export(name="zoneName", refs={String.class}, tree="[0]")
     private Output<String> zoneName;
 
     /**

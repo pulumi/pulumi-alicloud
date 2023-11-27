@@ -108,12 +108,12 @@ public final class GetCustomPropertiesProperty {
             return propertyValues(List.of(propertyValues));
         }
         public GetCustomPropertiesProperty build() {
-            final var o = new GetCustomPropertiesProperty();
-            o.customPropertyId = customPropertyId;
-            o.id = id;
-            o.propertyKey = propertyKey;
-            o.propertyValues = propertyValues;
-            return o;
+            final var _resultValue = new GetCustomPropertiesProperty();
+            _resultValue.customPropertyId = customPropertyId;
+            _resultValue.id = id;
+            _resultValue.propertyKey = propertyKey;
+            _resultValue.propertyValues = propertyValues;
+            return _resultValue;
         }
     }
 }

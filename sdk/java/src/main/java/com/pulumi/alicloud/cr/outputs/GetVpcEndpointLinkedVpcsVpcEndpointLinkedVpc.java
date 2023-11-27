@@ -180,16 +180,16 @@ public final class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
             return this;
         }
         public GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc build() {
-            final var o = new GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc();
-            o.defaultAccess = defaultAccess;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.ip = ip;
-            o.moduleName = moduleName;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc();
+            _resultValue.defaultAccess = defaultAccess;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.ip = ip;
+            _resultValue.moduleName = moduleName;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

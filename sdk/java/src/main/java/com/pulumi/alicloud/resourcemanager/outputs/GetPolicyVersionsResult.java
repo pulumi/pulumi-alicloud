@@ -139,15 +139,15 @@ public final class GetPolicyVersionsResult {
             return versions(List.of(versions));
         }
         public GetPolicyVersionsResult build() {
-            final var o = new GetPolicyVersionsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new GetPolicyVersionsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policyName = policyName;
+            _resultValue.policyType = policyType;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

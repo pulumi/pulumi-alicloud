@@ -46,14 +46,14 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * The network type of the instance. Valid values:`Classic`, `VPC`.
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * @return The network type of the instance. Valid values:`Classic`, `VPC`.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -61,14 +61,14 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The role of the node. Valid values: `Primary`,`Secondary`.
+     * The role of the node.
      * 
      */
     @Import(name="replicaSetRole")
     private @Nullable Output<String> replicaSetRole;
 
     /**
-     * @return The role of the node. Valid values: `Primary`,`Secondary`.
+     * @return The role of the node.
      * 
      */
     public Optional<Output<String>> replicaSetRole() {
@@ -91,14 +91,14 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -193,7 +193,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkType The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+         * @param networkType The network type of the instance. Valid values:`Classic`, `VPC`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkType The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+         * @param networkType The network type of the instance. Valid values:`Classic`, `VPC`.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param replicaSetRole The role of the node. Valid values: `Primary`,`Secondary`.
+         * @param replicaSetRole The role of the node.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param replicaSetRole The role of the node. Valid values: `Primary`,`Secondary`.
+         * @param replicaSetRole The role of the node.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
          * 
          * @return builder
          * 

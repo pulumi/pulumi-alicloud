@@ -102,7 +102,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * ADB PG instance connection string.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -116,7 +116,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
      * 
      */
-    @Export(name="dbInstanceCategory", type=String.class, parameters={})
+    @Export(name="dbInstanceCategory", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceCategory;
 
     /**
@@ -130,7 +130,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The description of ADB PG instance. It is a string of 2 to 256 characters.
      * 
      */
-    @Export(name="dbInstanceDescription", type=String.class, parameters={})
+    @Export(name="dbInstanceDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbInstanceDescription;
 
     /**
@@ -144,7 +144,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
      * 
      */
-    @Export(name="encryptionKey", type=String.class, parameters={})
+    @Export(name="encryptionKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionKey;
 
     /**
@@ -158,7 +158,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
      * 
      */
-    @Export(name="encryptionType", type=String.class, parameters={})
+    @Export(name="encryptionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionType;
 
     /**
@@ -172,7 +172,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * Database engine: `gpdb`.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -186,7 +186,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * Database version. Valid value is `6.0`.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -200,7 +200,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The network type of ADB PG instance. Only `VPC` supported now.
      * 
      */
-    @Export(name="instanceNetworkType", type=String.class, parameters={})
+    @Export(name="instanceNetworkType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceNetworkType;
 
     /**
@@ -216,7 +216,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * 
      */
-    @Export(name="instanceSpec", type=String.class, parameters={})
+    @Export(name="instanceSpec", refs={String.class}, tree="[0]")
     private Output<String> instanceSpec;
 
     /**
@@ -233,7 +233,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
-    @Export(name="paymentDuration", type=Integer.class, parameters={})
+    @Export(name="paymentDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> paymentDuration;
 
     /**
@@ -249,7 +249,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
-    @Export(name="paymentDurationUnit", type=String.class, parameters={})
+    @Export(name="paymentDurationUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentDurationUnit;
 
     /**
@@ -264,7 +264,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
@@ -278,7 +278,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * (Available in 1.196.0+) The connection port of the instance.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -292,7 +292,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      * 
      */
-    @Export(name="securityIpLists", type=List.class, parameters={String.class})
+    @Export(name="securityIpLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityIpLists;
 
     /**
@@ -306,7 +306,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
      * 
      */
-    @Export(name="segNodeNum", type=Integer.class, parameters={})
+    @Export(name="segNodeNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> segNodeNum;
 
     /**
@@ -320,7 +320,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
      * 
      */
-    @Export(name="segStorageType", type=String.class, parameters={})
+    @Export(name="segStorageType", refs={String.class}, tree="[0]")
     private Output<String> segStorageType;
 
     /**
@@ -334,7 +334,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * Instance status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -348,7 +348,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
      * 
      */
-    @Export(name="storageSize", type=Integer.class, parameters={})
+    @Export(name="storageSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> storageSize;
 
     /**
@@ -362,7 +362,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -376,7 +376,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The virtual switch ID to launch ADB PG instances in one VPC.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -390,7 +390,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      * The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

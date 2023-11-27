@@ -499,33 +499,33 @@ public final class GetVaultsVault {
             return this;
         }
         public GetVaultsVault build() {
-            final var o = new GetVaultsVault();
-            o.bucketName = bucketName;
-            o.bytesDone = bytesDone;
-            o.createdTime = createdTime;
-            o.dedup = dedup;
-            o.description = description;
-            o.id = id;
-            o.indexAvailable = indexAvailable;
-            o.indexLevel = indexLevel;
-            o.indexUpdateTime = indexUpdateTime;
-            o.latestReplicationTime = latestReplicationTime;
-            o.paymentType = paymentType;
-            o.replication = replication;
-            o.replicationSourceRegionId = replicationSourceRegionId;
-            o.replicationSourceVaultId = replicationSourceVaultId;
-            o.retention = retention;
-            o.searchEnabled = searchEnabled;
-            o.sourceTypes = sourceTypes;
-            o.status = status;
-            o.storageSize = storageSize;
-            o.updatedTime = updatedTime;
-            o.vaultId = vaultId;
-            o.vaultName = vaultName;
-            o.vaultStatusMessage = vaultStatusMessage;
-            o.vaultStorageClass = vaultStorageClass;
-            o.vaultType = vaultType;
-            return o;
+            final var _resultValue = new GetVaultsVault();
+            _resultValue.bucketName = bucketName;
+            _resultValue.bytesDone = bytesDone;
+            _resultValue.createdTime = createdTime;
+            _resultValue.dedup = dedup;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.indexAvailable = indexAvailable;
+            _resultValue.indexLevel = indexLevel;
+            _resultValue.indexUpdateTime = indexUpdateTime;
+            _resultValue.latestReplicationTime = latestReplicationTime;
+            _resultValue.paymentType = paymentType;
+            _resultValue.replication = replication;
+            _resultValue.replicationSourceRegionId = replicationSourceRegionId;
+            _resultValue.replicationSourceVaultId = replicationSourceVaultId;
+            _resultValue.retention = retention;
+            _resultValue.searchEnabled = searchEnabled;
+            _resultValue.sourceTypes = sourceTypes;
+            _resultValue.status = status;
+            _resultValue.storageSize = storageSize;
+            _resultValue.updatedTime = updatedTime;
+            _resultValue.vaultId = vaultId;
+            _resultValue.vaultName = vaultName;
+            _resultValue.vaultStatusMessage = vaultStatusMessage;
+            _resultValue.vaultStorageClass = vaultStorageClass;
+            _resultValue.vaultType = vaultType;
+            return _resultValue;
         }
     }
 }

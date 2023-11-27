@@ -70,7 +70,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * GroupId.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -84,7 +84,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * GroupName.
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupName;
 
     /**

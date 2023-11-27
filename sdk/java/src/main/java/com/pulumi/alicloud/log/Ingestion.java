@@ -127,7 +127,7 @@ public class Ingestion extends com.pulumi.resources.CustomResource {
      * Ingestion job description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -141,7 +141,7 @@ public class Ingestion extends com.pulumi.resources.CustomResource {
      * The name displayed on the web page.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -155,7 +155,7 @@ public class Ingestion extends com.pulumi.resources.CustomResource {
      * Ingestion job name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      * 
      */
-    @Export(name="ingestionName", type=String.class, parameters={})
+    @Export(name="ingestionName", refs={String.class}, tree="[0]")
     private Output<String> ingestionName;
 
     /**
@@ -169,7 +169,7 @@ public class Ingestion extends com.pulumi.resources.CustomResource {
      * Task execution interval, support minute `m`, hour `h`, day `d`, for example 30 minutes `30m`.
      * 
      */
-    @Export(name="interval", type=String.class, parameters={})
+    @Export(name="interval", refs={String.class}, tree="[0]")
     private Output<String> interval;
 
     /**
@@ -183,7 +183,7 @@ public class Ingestion extends com.pulumi.resources.CustomResource {
      * The name of the target logstore.
      * 
      */
-    @Export(name="logstore", type=String.class, parameters={})
+    @Export(name="logstore", refs={String.class}, tree="[0]")
     private Output<String> logstore;
 
     /**
@@ -197,7 +197,7 @@ public class Ingestion extends com.pulumi.resources.CustomResource {
      * The name of the log project. It is the only in one Alicloud account.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -211,7 +211,7 @@ public class Ingestion extends com.pulumi.resources.CustomResource {
      * Whether to run the ingestion job immediately, if false, wait for an interval before starting the ingestion.
      * 
      */
-    @Export(name="runImmediately", type=Boolean.class, parameters={})
+    @Export(name="runImmediately", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> runImmediately;
 
     /**
@@ -225,7 +225,7 @@ public class Ingestion extends com.pulumi.resources.CustomResource {
      * Data source and data format details. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     /**
@@ -239,7 +239,7 @@ public class Ingestion extends com.pulumi.resources.CustomResource {
      * Which time zone is the log time imported in, e.g. `+0800`.
      * 
      */
-    @Export(name="timeZone", type=String.class, parameters={})
+    @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeZone;
 
     /**

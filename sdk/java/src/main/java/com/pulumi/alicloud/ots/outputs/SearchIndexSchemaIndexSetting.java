@@ -51,9 +51,9 @@ public final class SearchIndexSchemaIndexSetting {
             return routingFields(List.of(routingFields));
         }
         public SearchIndexSchemaIndexSetting build() {
-            final var o = new SearchIndexSchemaIndexSetting();
-            o.routingFields = routingFields;
-            return o;
+            final var _resultValue = new SearchIndexSchemaIndexSetting();
+            _resultValue.routingFields = routingFields;
+            return _resultValue;
         }
     }
 }

@@ -78,7 +78,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable automatic payment. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="autoPay", type=Boolean.class, parameters={})
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
@@ -92,7 +92,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -106,7 +106,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
      * 
      */
-    @Export(name="autoRenewDuration", type=Integer.class, parameters={})
+    @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewDuration;
 
     /**
@@ -120,7 +120,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
      * 
      */
-    @Export(name="autoUseCoupon", type=String.class, parameters={})
+    @Export(name="autoUseCoupon", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoUseCoupon;
 
     /**
@@ -134,7 +134,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
      * 
      */
-    @Export(name="bandwidthBillingType", type=String.class, parameters={})
+    @Export(name="bandwidthBillingType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bandwidthBillingType;
 
     /**
@@ -148,7 +148,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * The name of the Global Accelerator Basic Accelerator instance.
      * 
      */
-    @Export(name="basicAcceleratorName", type=String.class, parameters={})
+    @Export(name="basicAcceleratorName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> basicAcceleratorName;
 
     /**
@@ -162,7 +162,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="crossBorderStatus", type=Boolean.class, parameters={})
+    @Export(name="crossBorderStatus", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> crossBorderStatus;
 
     /**
@@ -176,7 +176,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * The description of the Global Accelerator Basic Accelerator instance.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -192,7 +192,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
      * 
      */
-    @Export(name="duration", type=Integer.class, parameters={})
+    @Export(name="duration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> duration;
 
     /**
@@ -208,7 +208,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -222,7 +222,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      * 
      */
-    @Export(name="pricingCycle", type=String.class, parameters={})
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pricingCycle;
 
     /**
@@ -236,7 +236,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
-    @Export(name="promotionOptionNo", type=String.class, parameters={})
+    @Export(name="promotionOptionNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> promotionOptionNo;
 
     /**
@@ -250,7 +250,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * The status of the Basic Accelerator instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -264,7 +264,7 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

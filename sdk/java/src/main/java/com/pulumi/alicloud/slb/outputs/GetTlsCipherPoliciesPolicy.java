@@ -190,16 +190,16 @@ public final class GetTlsCipherPoliciesPolicy {
             return tlsVersions(List.of(tlsVersions));
         }
         public GetTlsCipherPoliciesPolicy build() {
-            final var o = new GetTlsCipherPoliciesPolicy();
-            o.ciphers = ciphers;
-            o.createTime = createTime;
-            o.id = id;
-            o.relateListeners = relateListeners;
-            o.status = status;
-            o.tlsCipherPolicyId = tlsCipherPolicyId;
-            o.tlsCipherPolicyName = tlsCipherPolicyName;
-            o.tlsVersions = tlsVersions;
-            return o;
+            final var _resultValue = new GetTlsCipherPoliciesPolicy();
+            _resultValue.ciphers = ciphers;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.relateListeners = relateListeners;
+            _resultValue.status = status;
+            _resultValue.tlsCipherPolicyId = tlsCipherPolicyId;
+            _resultValue.tlsCipherPolicyName = tlsCipherPolicyName;
+            _resultValue.tlsVersions = tlsVersions;
+            return _resultValue;
         }
     }
 }

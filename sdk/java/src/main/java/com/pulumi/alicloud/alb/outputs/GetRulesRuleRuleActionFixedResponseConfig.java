@@ -84,11 +84,11 @@ public final class GetRulesRuleRuleActionFixedResponseConfig {
             return this;
         }
         public GetRulesRuleRuleActionFixedResponseConfig build() {
-            final var o = new GetRulesRuleRuleActionFixedResponseConfig();
-            o.content = content;
-            o.contentType = contentType;
-            o.httpCode = httpCode;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleActionFixedResponseConfig();
+            _resultValue.content = content;
+            _resultValue.contentType = contentType;
+            _resultValue.httpCode = httpCode;
+            return _resultValue;
         }
     }
 }

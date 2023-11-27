@@ -97,12 +97,12 @@ public final class GetBandwidthLimitsResult {
             return this;
         }
         public GetBandwidthLimitsResult build() {
-            final var o = new GetBandwidthLimitsResult();
-            o.id = id;
-            o.instanceIds = instanceIds;
-            o.limits = limits;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetBandwidthLimitsResult();
+            _resultValue.id = id;
+            _resultValue.instanceIds = instanceIds;
+            _resultValue.limits = limits;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

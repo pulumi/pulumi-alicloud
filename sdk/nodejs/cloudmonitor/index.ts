@@ -5,21 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ServiceGroupMonitoringAgentProcessArgs, ServiceGroupMonitoringAgentProcessState } from "./serviceGroupMonitoringAgentProcess";
+export type ServiceGroupMonitoringAgentProcess = import("./serviceGroupMonitoringAgentProcess").ServiceGroupMonitoringAgentProcess;
+export const ServiceGroupMonitoringAgentProcess: typeof import("./serviceGroupMonitoringAgentProcess").ServiceGroupMonitoringAgentProcess = null as any;
+utilities.lazyLoad(exports, ["ServiceGroupMonitoringAgentProcess"], () => require("./serviceGroupMonitoringAgentProcess"));
+
 export { ServiceHybridDoubleWriteArgs, ServiceHybridDoubleWriteState } from "./serviceHybridDoubleWrite";
 export type ServiceHybridDoubleWrite = import("./serviceHybridDoubleWrite").ServiceHybridDoubleWrite;
 export const ServiceHybridDoubleWrite: typeof import("./serviceHybridDoubleWrite").ServiceHybridDoubleWrite = null as any;
 utilities.lazyLoad(exports, ["ServiceHybridDoubleWrite"], () => require("./serviceHybridDoubleWrite"));
+
+export { ServiceMonitoringAgentProcessArgs, ServiceMonitoringAgentProcessState } from "./serviceMonitoringAgentProcess";
+export type ServiceMonitoringAgentProcess = import("./serviceMonitoringAgentProcess").ServiceMonitoringAgentProcess;
+export const ServiceMonitoringAgentProcess: typeof import("./serviceMonitoringAgentProcess").ServiceMonitoringAgentProcess = null as any;
+utilities.lazyLoad(exports, ["ServiceMonitoringAgentProcess"], () => require("./serviceMonitoringAgentProcess"));
 
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess":
+                return new ServiceGroupMonitoringAgentProcess(name, <any>undefined, { urn })
             case "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite":
                 return new ServiceHybridDoubleWrite(name, <any>undefined, { urn })
+            case "alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess":
+                return new ServiceMonitoringAgentProcess(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceGroupMonitoringAgentProcess", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceHybridDoubleWrite", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceMonitoringAgentProcess", _module)

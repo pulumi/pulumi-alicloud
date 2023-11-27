@@ -149,15 +149,15 @@ public final class GetMasterSlaveServerGroupsResult {
             return this;
         }
         public GetMasterSlaveServerGroupsResult build() {
-            final var o = new GetMasterSlaveServerGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.loadBalancerId = loadBalancerId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetMasterSlaveServerGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -225,18 +225,18 @@ public final class GetImageCachesCach {
             return this;
         }
         public GetImageCachesCach build() {
-            final var o = new GetImageCachesCach();
-            o.containerGroupId = containerGroupId;
-            o.events = events;
-            o.expireDateTime = expireDateTime;
-            o.id = id;
-            o.imageCacheId = imageCacheId;
-            o.imageCacheName = imageCacheName;
-            o.images = images;
-            o.progress = progress;
-            o.snapshotId = snapshotId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetImageCachesCach();
+            _resultValue.containerGroupId = containerGroupId;
+            _resultValue.events = events;
+            _resultValue.expireDateTime = expireDateTime;
+            _resultValue.id = id;
+            _resultValue.imageCacheId = imageCacheId;
+            _resultValue.imageCacheName = imageCacheName;
+            _resultValue.images = images;
+            _resultValue.progress = progress;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

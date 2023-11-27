@@ -67,7 +67,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
      * 
      */
-    @Export(name="comments", type=String.class, parameters={})
+    @Export(name="comments", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comments;
 
     /**
@@ -81,7 +81,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * This parameter is used for resource destroy. Default value is `false`.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -95,7 +95,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

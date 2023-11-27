@@ -12,7 +12,9 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -64,127 +66,247 @@ import javax.annotation.Nullable;
  * Private Link Vpc Endpoint Service can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example &lt;service_id&gt;
+ *  $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:privatelink/vpcEndpointService:VpcEndpointService")
 public class VpcEndpointService extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to automatically accept terminal node connections.
+     * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+     * - **true**
+     * - **false**.
      * 
      */
-    @Export(name="autoAcceptConnection", type=Boolean.class, parameters={})
+    @Export(name="autoAcceptConnection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoAcceptConnection;
 
     /**
-     * @return Whether to automatically accept terminal node connections.
+     * @return Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+     * - **true**
+     * - **false**.
      * 
      */
     public Output<Optional<Boolean>> autoAcceptConnection() {
         return Codegen.optional(this.autoAcceptConnection);
     }
     /**
-     * The connection bandwidth.
+     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
      * 
      */
-    @Export(name="connectBandwidth", type=Integer.class, parameters={})
+    @Export(name="connectBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectBandwidth;
 
     /**
-     * @return The connection bandwidth.
+     * @return The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
      * 
      */
     public Output<Integer> connectBandwidth() {
         return this.connectBandwidth;
     }
     /**
-     * Whether to pre-check this request only. Default to: `false`
+     * The time when the endpoint service was created.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The time when the endpoint service was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Specifies whether to perform only a dry run, without performing the actual request.
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+     * 
+     */
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to pre-check this request only. Default to: `false`
+     * @return Specifies whether to perform only a dry run, without performing the actual request.
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+     * The payer of the endpoint service. Valid values:
+     * - **Endpoint**: the service consumer.
+     * - **EndpointService**: the service provider.
      * 
      */
-    @Export(name="payer", type=String.class, parameters={})
-    private Output</* @Nullable */ String> payer;
+    @Export(name="payer", refs={String.class}, tree="[0]")
+    private Output<String> payer;
 
     /**
-     * @return The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+     * @return The payer of the endpoint service. Valid values:
+     * - **Endpoint**: the service consumer.
+     * - **EndpointService**: the service provider.
      * 
      */
-    public Output<Optional<String>> payer() {
-        return Codegen.optional(this.payer);
+    public Output<String> payer() {
+        return this.payer;
     }
     /**
-     * The business status of Vpc Endpoint Service.
+     * The resource group ID.
      * 
      */
-    @Export(name="serviceBusinessStatus", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group ID.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The service state of the endpoint service.
+     * 
+     */
+    @Export(name="serviceBusinessStatus", refs={String.class}, tree="[0]")
     private Output<String> serviceBusinessStatus;
 
     /**
-     * @return The business status of Vpc Endpoint Service.
+     * @return The service state of the endpoint service.
      * 
      */
     public Output<String> serviceBusinessStatus() {
         return this.serviceBusinessStatus;
     }
     /**
-     * The description of the terminal node service.
-     * 
-     * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+     * The description of the endpoint service.
      * 
      */
-    @Export(name="serviceDescription", type=String.class, parameters={})
+    @Export(name="serviceDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceDescription;
 
     /**
-     * @return The description of the terminal node service.
-     * 
-     * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+     * @return The description of the endpoint service.
      * 
      */
     public Output<Optional<String>> serviceDescription() {
         return Codegen.optional(this.serviceDescription);
     }
     /**
-     * Service Domain.
+     * The domain name of the endpoint service.
      * 
      */
-    @Export(name="serviceDomain", type=String.class, parameters={})
+    @Export(name="serviceDomain", refs={String.class}, tree="[0]")
     private Output<String> serviceDomain;
 
     /**
-     * @return Service Domain.
+     * @return The domain name of the endpoint service.
      * 
      */
     public Output<String> serviceDomain() {
         return this.serviceDomain;
     }
     /**
-     * The status of Vpc Endpoint Service.
+     * Service resource type, value:
+     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="serviceResourceType", refs={String.class}, tree="[0]")
+    private Output<String> serviceResourceType;
+
+    /**
+     * @return Service resource type, value:
+     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+     * 
+     */
+    public Output<String> serviceResourceType() {
+        return this.serviceResourceType;
+    }
+    /**
+     * Specifies whether to enable IPv6 for the endpoint service. Valid values:
+     * - **true**
+     * - **false (default)**.
+     * 
+     */
+    @Export(name="serviceSupportIpv6", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> serviceSupportIpv6;
+
+    /**
+     * @return Specifies whether to enable IPv6 for the endpoint service. Valid values:
+     * - **true**
+     * - **false (default)**.
+     * 
+     */
+    public Output<Boolean> serviceSupportIpv6() {
+        return this.serviceSupportIpv6;
+    }
+    /**
+     * The state of the endpoint service.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of Vpc Endpoint Service.
+     * @return The state of the endpoint service.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The list of tags.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The list of tags.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The name of the endpoint service.
+     * 
+     */
+    @Export(name="vpcEndpointServiceName", refs={String.class}, tree="[0]")
+    private Output<String> vpcEndpointServiceName;
+
+    /**
+     * @return The name of the endpoint service.
+     * 
+     */
+    public Output<String> vpcEndpointServiceName() {
+        return this.vpcEndpointServiceName;
+    }
+    /**
+     * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+     * - **true**
+     * - **false (default)**.
+     * 
+     */
+    @Export(name="zoneAffinityEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> zoneAffinityEnabled;
+
+    /**
+     * @return Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+     * - **true**
+     * - **false (default)**.
+     * 
+     */
+    public Output<Boolean> zoneAffinityEnabled() {
+        return this.zoneAffinityEnabled;
     }
 
     /**

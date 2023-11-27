@@ -86,12 +86,12 @@ public final class GetStocksResult {
             return stocks(List.of(stocks));
         }
         public GetStocksResult build() {
-            final var o = new GetStocksResult();
-            o.gatewayClass = gatewayClass;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.stocks = stocks;
-            return o;
+            final var _resultValue = new GetStocksResult();
+            _resultValue.gatewayClass = gatewayClass;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.stocks = stocks;
+            return _resultValue;
         }
     }
 }

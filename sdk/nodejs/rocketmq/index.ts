@@ -20,6 +20,11 @@ export type ClientUser = import("./clientUser").ClientUser;
 export const ClientUser: typeof import("./clientUser").ClientUser = null as any;
 utilities.lazyLoad(exports, ["ClientUser"], () => require("./clientUser"));
 
+export { ConsumerGroupArgs, ConsumerGroupState } from "./consumerGroup";
+export type ConsumerGroup = import("./consumerGroup").ConsumerGroup;
+export const ConsumerGroup: typeof import("./consumerGroup").ConsumerGroup = null as any;
+utilities.lazyLoad(exports, ["ConsumerGroup"], () => require("./consumerGroup"));
+
 export { DnatEntryArgs, DnatEntryState } from "./dnatEntry";
 export type DnatEntry = import("./dnatEntry").DnatEntry;
 export const DnatEntry: typeof import("./dnatEntry").DnatEntry = null as any;
@@ -70,6 +75,16 @@ export type QosPolicy = import("./qosPolicy").QosPolicy;
 export const QosPolicy: typeof import("./qosPolicy").QosPolicy = null as any;
 utilities.lazyLoad(exports, ["QosPolicy"], () => require("./qosPolicy"));
 
+export { RocketMQInstanceArgs, RocketMQInstanceState } from "./rocketMQInstance";
+export type RocketMQInstance = import("./rocketMQInstance").RocketMQInstance;
+export const RocketMQInstance: typeof import("./rocketMQInstance").RocketMQInstance = null as any;
+utilities.lazyLoad(exports, ["RocketMQInstance"], () => require("./rocketMQInstance"));
+
+export { RocketMQTopicArgs, RocketMQTopicState } from "./rocketMQTopic";
+export type RocketMQTopic = import("./rocketMQTopic").RocketMQTopic;
+export const RocketMQTopic: typeof import("./rocketMQTopic").RocketMQTopic = null as any;
+utilities.lazyLoad(exports, ["RocketMQTopic"], () => require("./rocketMQTopic"));
+
 export { SnatEntryArgs, SnatEntryState } from "./snatEntry";
 export type SnatEntry = import("./snatEntry").SnatEntry;
 export const SnatEntry: typeof import("./snatEntry").SnatEntry = null as any;
@@ -91,6 +106,8 @@ const _module = {
                 return new AclRule(name, <any>undefined, { urn })
             case "alicloud:rocketmq/clientUser:ClientUser":
                 return new ClientUser(name, <any>undefined, { urn })
+            case "alicloud:rocketmq/consumerGroup:ConsumerGroup":
+                return new ConsumerGroup(name, <any>undefined, { urn })
             case "alicloud:rocketmq/dnatEntry:DnatEntry":
                 return new DnatEntry(name, <any>undefined, { urn })
             case "alicloud:rocketmq/group:Group":
@@ -103,6 +120,10 @@ const _module = {
                 return new QosCar(name, <any>undefined, { urn })
             case "alicloud:rocketmq/qosPolicy:QosPolicy":
                 return new QosPolicy(name, <any>undefined, { urn })
+            case "alicloud:rocketmq/rocketMQInstance:RocketMQInstance":
+                return new RocketMQInstance(name, <any>undefined, { urn })
+            case "alicloud:rocketmq/rocketMQTopic:RocketMQTopic":
+                return new RocketMQTopic(name, <any>undefined, { urn })
             case "alicloud:rocketmq/snatEntry:SnatEntry":
                 return new SnatEntry(name, <any>undefined, { urn })
             case "alicloud:rocketmq/topic:Topic":
@@ -115,11 +136,14 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/acl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/aclRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/clientUser", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rocketmq/consumerGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/dnatEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/group", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/qos", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/qosCar", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/qosPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rocketmq/rocketMQInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rocketmq/rocketMQTopic", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/snatEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/topic", _module)

@@ -137,7 +137,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * You can specific network plugin,log component,ingress component and so on. See `addons` below.
      * 
      */
-    @Export(name="addons", type=List.class, parameters={ServerlessKubernetesAddon.class})
+    @Export(name="addons", refs={List.class,ServerlessKubernetesAddon.class}, tree="[0,1]")
     private Output<List<ServerlessKubernetesAddon>> addons;
 
     /**
@@ -151,7 +151,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      * 
      */
-    @Export(name="clientCert", type=String.class, parameters={})
+    @Export(name="clientCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCert;
 
     /**
@@ -165,7 +165,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The path of client key, like `~/.kube/client-key.pem`.
      * 
      */
-    @Export(name="clientKey", type=String.class, parameters={})
+    @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
     /**
@@ -179,7 +179,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      * 
      */
-    @Export(name="clusterCaCert", type=String.class, parameters={})
+    @Export(name="clusterCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterCaCert;
 
     /**
@@ -195,7 +195,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * - ack.pro.small: Professional serverless clusters.
      * 
      */
-    @Export(name="clusterSpec", type=String.class, parameters={})
+    @Export(name="clusterSpec", refs={String.class}, tree="[0]")
     private Output<String> clusterSpec;
 
     /**
@@ -213,7 +213,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * *Removed params*
      * 
      */
-    @Export(name="createV2Cluster", type=Boolean.class, parameters={})
+    @Export(name="createV2Cluster", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> createV2Cluster;
 
     /**
@@ -231,7 +231,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * - false: Disable deletion protection.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -247,7 +247,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
-    @Export(name="enableRrsa", type=Boolean.class, parameters={})
+    @Export(name="enableRrsa", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableRrsa;
 
     /**
@@ -261,7 +261,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Whether to create internet  eip for API Server. Default to false.
      * 
      */
-    @Export(name="endpointPublicAccessEnabled", type=Boolean.class, parameters={})
+    @Export(name="endpointPublicAccessEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> endpointPublicAccessEnabled;
 
     /**
@@ -275,7 +275,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
      * 
      */
-    @Export(name="forceUpdate", type=Boolean.class, parameters={})
+    @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpdate;
 
     /**
@@ -293,7 +293,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
-    @Export(name="kubeConfig", type=String.class, parameters={})
+    @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kubeConfig;
 
     /**
@@ -307,7 +307,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * 
      */
-    @Export(name="loadBalancerSpec", type=String.class, parameters={})
+    @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerSpec;
 
     /**
@@ -321,7 +321,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Enable log service, Valid value `SLS`.
      * 
      */
-    @Export(name="loggingType", type=String.class, parameters={})
+    @Export(name="loggingType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loggingType;
 
     /**
@@ -335,7 +335,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The kubernetes cluster&#39;s name. It is the only in one Alicloud account.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -345,7 +345,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="namePrefix", type=String.class, parameters={})
+    @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namePrefix;
 
     public Output<Optional<String>> namePrefix() {
@@ -355,7 +355,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      * 
      */
-    @Export(name="newNatGateway", type=Boolean.class, parameters={})
+    @Export(name="newNatGateway", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> newNatGateway;
 
     /**
@@ -373,7 +373,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it. */
-    @Export(name="privateZone", type=Boolean.class, parameters={})
+    @Export(name="privateZone", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> privateZone;
 
     /**
@@ -387,7 +387,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -397,7 +397,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
-    @Export(name="retainResources", type=List.class, parameters={String.class})
+    @Export(name="retainResources", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> retainResources;
 
     public Output<Optional<List<String>>> retainResources() {
@@ -407,7 +407,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
      * 
      */
-    @Export(name="rrsaMetadata", type=ServerlessKubernetesRrsaMetadata.class, parameters={})
+    @Export(name="rrsaMetadata", refs={ServerlessKubernetesRrsaMetadata.class}, tree="[0]")
     private Output<ServerlessKubernetesRrsaMetadata> rrsaMetadata;
 
     /**
@@ -421,7 +421,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -435,7 +435,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
      * 
      */
-    @Export(name="serviceCidr", type=String.class, parameters={})
+    @Export(name="serviceCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceCidr;
 
     /**
@@ -449,7 +449,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      * 
      */
-    @Export(name="serviceDiscoveryTypes", type=List.class, parameters={String.class})
+    @Export(name="serviceDiscoveryTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> serviceDiscoveryTypes;
 
     /**
@@ -463,7 +463,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * If you use an existing SLS project, you must specify `sls_project_name`.
      * 
      */
-    @Export(name="slsProjectName", type=String.class, parameters={})
+    @Export(name="slsProjectName", refs={String.class}, tree="[0]")
     private Output<String> slsProjectName;
 
     /**
@@ -477,7 +477,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -491,7 +491,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The time zone of the cluster.
      * 
      */
-    @Export(name="timeZone", type=String.class, parameters={})
+    @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output<String> timeZone;
 
     /**
@@ -505,7 +505,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
@@ -519,7 +519,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The vpc where new kubernetes cluster will be located. Specify one vpc&#39;s id, if it is not specified, a new VPC  will be built.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -537,7 +537,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it. */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -551,7 +551,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * The vswitches where new kubernetes cluster will be located.
      * 
      */
-    @Export(name="vswitchIds", type=List.class, parameters={String.class})
+    @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vswitchIds;
 
     /**
@@ -565,7 +565,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**

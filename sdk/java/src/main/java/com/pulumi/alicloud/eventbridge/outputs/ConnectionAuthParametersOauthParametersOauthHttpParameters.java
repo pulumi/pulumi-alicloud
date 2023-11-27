@@ -97,11 +97,11 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParameters {
             return queryStringParameters(List.of(queryStringParameters));
         }
         public ConnectionAuthParametersOauthParametersOauthHttpParameters build() {
-            final var o = new ConnectionAuthParametersOauthParametersOauthHttpParameters();
-            o.bodyParameters = bodyParameters;
-            o.headerParameters = headerParameters;
-            o.queryStringParameters = queryStringParameters;
-            return o;
+            final var _resultValue = new ConnectionAuthParametersOauthParametersOauthHttpParameters();
+            _resultValue.bodyParameters = bodyParameters;
+            _resultValue.headerParameters = headerParameters;
+            _resultValue.queryStringParameters = queryStringParameters;
+            return _resultValue;
         }
     }
 }

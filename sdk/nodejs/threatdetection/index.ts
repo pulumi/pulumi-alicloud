@@ -20,6 +20,21 @@ export type BaselineStrategy = import("./baselineStrategy").BaselineStrategy;
 export const BaselineStrategy: typeof import("./baselineStrategy").BaselineStrategy = null as any;
 utilities.lazyLoad(exports, ["BaselineStrategy"], () => require("./baselineStrategy"));
 
+export { ClientFileProtectArgs, ClientFileProtectState } from "./clientFileProtect";
+export type ClientFileProtect = import("./clientFileProtect").ClientFileProtect;
+export const ClientFileProtect: typeof import("./clientFileProtect").ClientFileProtect = null as any;
+utilities.lazyLoad(exports, ["ClientFileProtect"], () => require("./clientFileProtect"));
+
+export { ClientUserDefineRuleArgs, ClientUserDefineRuleState } from "./clientUserDefineRule";
+export type ClientUserDefineRule = import("./clientUserDefineRule").ClientUserDefineRule;
+export const ClientUserDefineRule: typeof import("./clientUserDefineRule").ClientUserDefineRule = null as any;
+utilities.lazyLoad(exports, ["ClientUserDefineRule"], () => require("./clientUserDefineRule"));
+
+export { FileUploadLimitArgs, FileUploadLimitState } from "./fileUploadLimit";
+export type FileUploadLimit = import("./fileUploadLimit").FileUploadLimit;
+export const FileUploadLimit: typeof import("./fileUploadLimit").FileUploadLimit = null as any;
+utilities.lazyLoad(exports, ["FileUploadLimit"], () => require("./fileUploadLimit"));
+
 export { GetAntiBruteForceRulesArgs, GetAntiBruteForceRulesResult, GetAntiBruteForceRulesOutputArgs } from "./getAntiBruteForceRules";
 export const getAntiBruteForceRules: typeof import("./getAntiBruteForceRules").getAntiBruteForceRules = null as any;
 export const getAntiBruteForceRulesOutput: typeof import("./getAntiBruteForceRules").getAntiBruteForceRulesOutput = null as any;
@@ -105,10 +120,20 @@ export type HoneypotProbe = import("./honeypotProbe").HoneypotProbe;
 export const HoneypotProbe: typeof import("./honeypotProbe").HoneypotProbe = null as any;
 utilities.lazyLoad(exports, ["HoneypotProbe"], () => require("./honeypotProbe"));
 
+export { ImageEventOperationArgs, ImageEventOperationState } from "./imageEventOperation";
+export type ImageEventOperation = import("./imageEventOperation").ImageEventOperation;
+export const ImageEventOperation: typeof import("./imageEventOperation").ImageEventOperation = null as any;
+utilities.lazyLoad(exports, ["ImageEventOperation"], () => require("./imageEventOperation"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { SasTrailArgs, SasTrailState } from "./sasTrail";
+export type SasTrail = import("./sasTrail").SasTrail;
+export const SasTrail: typeof import("./sasTrail").SasTrail = null as any;
+utilities.lazyLoad(exports, ["SasTrail"], () => require("./sasTrail"));
 
 export { VulWhitelistArgs, VulWhitelistState } from "./vulWhitelist";
 export type VulWhitelist = import("./vulWhitelist").VulWhitelist;
@@ -131,6 +156,12 @@ const _module = {
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
                 return new BaselineStrategy(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/clientFileProtect:ClientFileProtect":
+                return new ClientFileProtect(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule":
+                return new ClientUserDefineRule(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/fileUploadLimit:FileUploadLimit":
+                return new FileUploadLimit(name, <any>undefined, { urn })
             case "alicloud:threatdetection/honeyPot:HoneyPot":
                 return new HoneyPot(name, <any>undefined, { urn })
             case "alicloud:threatdetection/honeypotNode:HoneypotNode":
@@ -139,8 +170,12 @@ const _module = {
                 return new HoneypotPreset(name, <any>undefined, { urn })
             case "alicloud:threatdetection/honeypotProbe:HoneypotProbe":
                 return new HoneypotProbe(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/imageEventOperation:ImageEventOperation":
+                return new ImageEventOperation(name, <any>undefined, { urn })
             case "alicloud:threatdetection/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/sasTrail:SasTrail":
+                return new SasTrail(name, <any>undefined, { urn })
             case "alicloud:threatdetection/vulWhitelist:VulWhitelist":
                 return new VulWhitelist(name, <any>undefined, { urn })
             case "alicloud:threatdetection/webLockConfig:WebLockConfig":
@@ -153,10 +188,15 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/antiBruteForceRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/baselineStrategy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/clientFileProtect", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/clientUserDefineRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/fileUploadLimit", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeyPot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotNode", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotPreset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotProbe", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/imageEventOperation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/sasTrail", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/vulWhitelist", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/webLockConfig", _module)

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+ * Provides a CEN Transit Router VPC Attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
  *
  * > **NOTE:** Available since v1.126.0.
  *
@@ -69,10 +69,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CEN instance can be imported using the id, e.g.
+ * CEN Transit Router VPC Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example tr-********:tr-attach-********
+ *  $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
  * ```
  */
 export class TransitRouterVpcAttachment extends pulumi.CustomResource {
@@ -106,7 +106,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
     /**
      * Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
      */
-    public readonly autoPublishRouteEnabled!: pulumi.Output<boolean>;
+    public readonly autoPublishRouteEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the CEN.
      */
@@ -116,23 +116,23 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+     * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      */
-    public readonly resourceType!: pulumi.Output<string | undefined>;
+    public readonly resourceType!: pulumi.Output<string>;
     /**
-     * Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+     * Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
      *
-     * @deprecated Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.
+     * @deprecated Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.
      */
     public readonly routeTableAssociationEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+     * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
-     * @deprecated Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.
+     * @deprecated Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.
      */
     public readonly routeTablePropagationEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -148,7 +148,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     public readonly transitRouterAttachmentDescription!: pulumi.Output<string | undefined>;
     /**
-     * The ID of transit router attachment.
+     * The ID of the Transit Router Attachment.
      */
     public /*out*/ readonly transitRouterAttachmentId!: pulumi.Output<string>;
     /**
@@ -158,7 +158,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
     /**
      * The ID of the transit router.
      */
-    public readonly transitRouterId!: pulumi.Output<string | undefined>;
+    public readonly transitRouterId!: pulumi.Output<string>;
     /**
      * The ID of the VPC.
      */
@@ -168,8 +168,8 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     public readonly vpcOwnerId!: pulumi.Output<string>;
     /**
-     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
-     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * The list of zone mapping of the VPC. See `zoneMappings` below. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
      */
     public readonly zoneMappings!: pulumi.Output<outputs.cen.TransitRouterVpcAttachmentZoneMapping[]>;
 
@@ -252,23 +252,23 @@ export interface TransitRouterVpcAttachmentState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+     * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+     * Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
      *
-     * @deprecated Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.
+     * @deprecated Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.
      */
     routeTableAssociationEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+     * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
-     * @deprecated Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.
+     * @deprecated Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.
      */
     routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
@@ -284,7 +284,7 @@ export interface TransitRouterVpcAttachmentState {
      */
     transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
-     * The ID of transit router attachment.
+     * The ID of the Transit Router Attachment.
      */
     transitRouterAttachmentId?: pulumi.Input<string>;
     /**
@@ -304,8 +304,8 @@ export interface TransitRouterVpcAttachmentState {
      */
     vpcOwnerId?: pulumi.Input<string>;
     /**
-     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
-     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * The list of zone mapping of the VPC. See `zoneMappings` below. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
      */
     zoneMappings?: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }
@@ -327,23 +327,23 @@ export interface TransitRouterVpcAttachmentArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+     * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+     * Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
      *
-     * @deprecated Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.
+     * @deprecated Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.
      */
     routeTableAssociationEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+     * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
-     * @deprecated Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.
+     * @deprecated Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.
      */
     routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
@@ -371,8 +371,8 @@ export interface TransitRouterVpcAttachmentArgs {
      */
     vpcOwnerId?: pulumi.Input<string>;
     /**
-     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
-     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * The list of zone mapping of the VPC. See `zoneMappings` below. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
      */
     zoneMappings: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }

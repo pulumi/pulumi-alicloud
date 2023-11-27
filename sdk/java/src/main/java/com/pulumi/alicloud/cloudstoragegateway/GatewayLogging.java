@@ -35,7 +35,7 @@ public class GatewayLogging extends com.pulumi.resources.CustomResource {
      * The ID of the Gateway.
      * 
      */
-    @Export(name="gatewayId", type=String.class, parameters={})
+    @Export(name="gatewayId", refs={String.class}, tree="[0]")
     private Output<String> gatewayId;
 
     /**
@@ -49,7 +49,7 @@ public class GatewayLogging extends com.pulumi.resources.CustomResource {
      * The name of the Log Store.
      * 
      */
-    @Export(name="slsLogstore", type=String.class, parameters={})
+    @Export(name="slsLogstore", refs={String.class}, tree="[0]")
     private Output<String> slsLogstore;
 
     /**
@@ -63,7 +63,7 @@ public class GatewayLogging extends com.pulumi.resources.CustomResource {
      * The name of the Project.
      * 
      */
-    @Export(name="slsProject", type=String.class, parameters={})
+    @Export(name="slsProject", refs={String.class}, tree="[0]")
     private Output<String> slsProject;
 
     /**
@@ -77,7 +77,7 @@ public class GatewayLogging extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `Enabled`, `Disable`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

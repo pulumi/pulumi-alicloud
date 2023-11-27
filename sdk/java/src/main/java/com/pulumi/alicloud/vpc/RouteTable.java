@@ -81,7 +81,7 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
      * - **Gateway**:IPv4 Gateway.
      * 
      */
-    @Export(name="associateType", type=String.class, parameters={})
+    @Export(name="associateType", refs={String.class}, tree="[0]")
     private Output<String> associateType;
 
     /**
@@ -97,7 +97,7 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
      * The creation time of the routing table.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -111,7 +111,7 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
      * Description of the routing table.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -129,7 +129,7 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -143,7 +143,7 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
      * Resource group ID.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -157,7 +157,7 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
      * The name of the routing table.
      * 
      */
-    @Export(name="routeTableName", type=String.class, parameters={})
+    @Export(name="routeTableName", refs={String.class}, tree="[0]")
     private Output<String> routeTableName;
 
     /**
@@ -171,7 +171,7 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
      * Routing table state.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -185,7 +185,7 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
      * The tag.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -201,7 +201,7 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

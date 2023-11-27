@@ -116,7 +116,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="accountDescription", type=String.class, parameters={})
+    @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountDescription;
 
     /**
@@ -132,7 +132,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The name of the account. Valid values: `root`.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -148,7 +148,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * * The password must be `8` to `32` characters in length.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
@@ -164,7 +164,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -178,7 +178,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The status of the account. Valid values: `Unavailable`, `Available`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

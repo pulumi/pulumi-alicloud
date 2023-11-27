@@ -87,11 +87,11 @@ public final class WafRuleRateLimitStatus {
             return this;
         }
         public WafRuleRateLimitStatus build() {
-            final var o = new WafRuleRateLimitStatus();
-            o.code = code;
-            o.count = count;
-            o.ratio = ratio;
-            return o;
+            final var _resultValue = new WafRuleRateLimitStatus();
+            _resultValue.code = code;
+            _resultValue.count = count;
+            _resultValue.ratio = ratio;
+            return _resultValue;
         }
     }
 }

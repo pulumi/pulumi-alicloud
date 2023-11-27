@@ -138,14 +138,14 @@ public final class GetCustomerGatewaysResult {
             return this;
         }
         public GetCustomerGatewaysResult build() {
-            final var o = new GetCustomerGatewaysResult();
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetCustomerGatewaysResult();
+            _resultValue.gateways = gateways;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -85,11 +85,11 @@ public final class ScalingGroupVServerGroupsVserverGroupVserverAttribute {
             return this;
         }
         public ScalingGroupVServerGroupsVserverGroupVserverAttribute build() {
-            final var o = new ScalingGroupVServerGroupsVserverGroupVserverAttribute();
-            o.port = port;
-            o.vserverGroupId = vserverGroupId;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new ScalingGroupVServerGroupsVserverGroupVserverAttribute();
+            _resultValue.port = port;
+            _resultValue.vserverGroupId = vserverGroupId;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

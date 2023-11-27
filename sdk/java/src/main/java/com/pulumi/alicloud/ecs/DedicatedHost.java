@@ -37,7 +37,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
      * 
      */
-    @Export(name="actionOnMaintenance", type=String.class, parameters={})
+    @Export(name="actionOnMaintenance", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> actionOnMaintenance;
 
     /**
@@ -51,7 +51,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
      * 
      */
-    @Export(name="autoPlacement", type=String.class, parameters={})
+    @Export(name="autoPlacement", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoPlacement;
 
     /**
@@ -65,7 +65,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
      * 
      */
-    @Export(name="autoReleaseTime", type=String.class, parameters={})
+    @Export(name="autoReleaseTime", refs={String.class}, tree="[0]")
     private Output<String> autoReleaseTime;
 
     /**
@@ -79,7 +79,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * Specifies whether to automatically renew the subscription dedicated host.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -93,7 +93,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -107,7 +107,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
      * 
      */
-    @Export(name="cpuOverCommitRatio", type=Double.class, parameters={})
+    @Export(name="cpuOverCommitRatio", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> cpuOverCommitRatio;
 
     /**
@@ -121,7 +121,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The dedicated host cluster ID to which the dedicated host belongs.
      * 
      */
-    @Export(name="dedicatedHostClusterId", type=String.class, parameters={})
+    @Export(name="dedicatedHostClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostClusterId;
 
     /**
@@ -135,7 +135,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="dedicatedHostName", type=String.class, parameters={})
+    @Export(name="dedicatedHostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostName;
 
     /**
@@ -149,7 +149,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
      * 
      */
-    @Export(name="dedicatedHostType", type=String.class, parameters={})
+    @Export(name="dedicatedHostType", refs={String.class}, tree="[0]")
     private Output<String> dedicatedHostType;
 
     /**
@@ -163,7 +163,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -177,7 +177,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
      * 
      */
-    @Export(name="detailFee", type=Boolean.class, parameters={})
+    @Export(name="detailFee", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> detailFee;
 
     /**
@@ -191,7 +191,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * Specifies whether to only validate the request. Default: `false`.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -205,7 +205,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
      * 
      */
-    @Export(name="expiredTime", type=String.class, parameters={})
+    @Export(name="expiredTime", refs={String.class}, tree="[0]")
     private Output<String> expiredTime;
 
     /**
@@ -219,7 +219,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * Specify the minimum purchase quantity of a dedicated host.
      * 
      */
-    @Export(name="minQuantity", type=Integer.class, parameters={})
+    @Export(name="minQuantity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minQuantity;
 
     /**
@@ -233,7 +233,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * dedicated host network parameters. contains the following attributes:
      * 
      */
-    @Export(name="networkAttributes", type=List.class, parameters={DedicatedHostNetworkAttribute.class})
+    @Export(name="networkAttributes", refs={List.class,DedicatedHostNetworkAttribute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DedicatedHostNetworkAttribute>> networkAttributes;
 
     /**
@@ -247,7 +247,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -261,7 +261,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the dedicated host belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -275,7 +275,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The unit of the subscription period of the dedicated host.
      * 
      */
-    @Export(name="saleCycle", type=String.class, parameters={})
+    @Export(name="saleCycle", refs={String.class}, tree="[0]")
     private Output<String> saleCycle;
 
     /**
@@ -289,7 +289,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The status of the dedicated host.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -303,7 +303,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -317,7 +317,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

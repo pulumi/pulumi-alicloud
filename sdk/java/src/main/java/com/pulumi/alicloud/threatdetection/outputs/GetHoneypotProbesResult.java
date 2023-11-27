@@ -177,17 +177,17 @@ public final class GetHoneypotProbesResult {
             return probes(List.of(probes));
         }
         public GetHoneypotProbesResult build() {
-            final var o = new GetHoneypotProbesResult();
-            o.displayName = displayName;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.probeStatus = probeStatus;
-            o.probeType = probeType;
-            o.probes = probes;
-            return o;
+            final var _resultValue = new GetHoneypotProbesResult();
+            _resultValue.displayName = displayName;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.outputFile = outputFile;
+            _resultValue.probeStatus = probeStatus;
+            _resultValue.probeType = probeType;
+            _resultValue.probes = probes;
+            return _resultValue;
         }
     }
 }

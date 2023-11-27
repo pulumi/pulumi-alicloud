@@ -132,12 +132,12 @@ public final class RdsCloneDbInstanceServerlessConfig {
             return this;
         }
         public RdsCloneDbInstanceServerlessConfig build() {
-            final var o = new RdsCloneDbInstanceServerlessConfig();
-            o.autoPause = autoPause;
-            o.maxCapacity = maxCapacity;
-            o.minCapacity = minCapacity;
-            o.switchForce = switchForce;
-            return o;
+            final var _resultValue = new RdsCloneDbInstanceServerlessConfig();
+            _resultValue.autoPause = autoPause;
+            _resultValue.maxCapacity = maxCapacity;
+            _resultValue.minCapacity = minCapacity;
+            _resultValue.switchForce = switchForce;
+            return _resultValue;
         }
     }
 }

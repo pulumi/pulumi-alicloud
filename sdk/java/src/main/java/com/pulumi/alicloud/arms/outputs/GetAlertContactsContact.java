@@ -199,17 +199,17 @@ public final class GetAlertContactsContact {
             return this;
         }
         public GetAlertContactsContact build() {
-            final var o = new GetAlertContactsContact();
-            o.alertContactId = alertContactId;
-            o.alertContactName = alertContactName;
-            o.createTime = createTime;
-            o.dingRobotWebhookUrl = dingRobotWebhookUrl;
-            o.email = email;
-            o.id = id;
-            o.phoneNum = phoneNum;
-            o.systemNoc = systemNoc;
-            o.webhook = webhook;
-            return o;
+            final var _resultValue = new GetAlertContactsContact();
+            _resultValue.alertContactId = alertContactId;
+            _resultValue.alertContactName = alertContactName;
+            _resultValue.createTime = createTime;
+            _resultValue.dingRobotWebhookUrl = dingRobotWebhookUrl;
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.phoneNum = phoneNum;
+            _resultValue.systemNoc = systemNoc;
+            _resultValue.webhook = webhook;
+            return _resultValue;
         }
     }
 }

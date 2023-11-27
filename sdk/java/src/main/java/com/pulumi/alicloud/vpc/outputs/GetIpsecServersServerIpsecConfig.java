@@ -104,12 +104,12 @@ public final class GetIpsecServersServerIpsecConfig {
             return this;
         }
         public GetIpsecServersServerIpsecConfig build() {
-            final var o = new GetIpsecServersServerIpsecConfig();
-            o.ipsecAuthAlg = ipsecAuthAlg;
-            o.ipsecEncAlg = ipsecEncAlg;
-            o.ipsecLifetime = ipsecLifetime;
-            o.ipsecPfs = ipsecPfs;
-            return o;
+            final var _resultValue = new GetIpsecServersServerIpsecConfig();
+            _resultValue.ipsecAuthAlg = ipsecAuthAlg;
+            _resultValue.ipsecEncAlg = ipsecEncAlg;
+            _resultValue.ipsecLifetime = ipsecLifetime;
+            _resultValue.ipsecPfs = ipsecPfs;
+            return _resultValue;
         }
     }
 }

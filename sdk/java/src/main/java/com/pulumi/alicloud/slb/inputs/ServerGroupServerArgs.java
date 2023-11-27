@@ -17,30 +17,62 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
     public static final ServerGroupServerArgs Empty = new ServerGroupServerArgs();
 
+    /**
+     * The port used by the backend server. Valid value range: [1-65535].
+     * 
+     */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
+    /**
+     * @return The port used by the backend server. Valid value range: [1-65535].
+     * 
+     */
     public Output<Integer> port() {
         return this.port;
     }
 
+    /**
+     * A list backend server ID (ECS instance ID).
+     * 
+     */
     @Import(name="serverIds", required=true)
     private Output<List<String>> serverIds;
 
+    /**
+     * @return A list backend server ID (ECS instance ID).
+     * 
+     */
     public Output<List<String>> serverIds() {
         return this.serverIds;
     }
 
+    /**
+     * Type of the backend server. Valid value ecs, eni. Default to eni.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Type of the backend server. Valid value ecs, eni. Default to eni.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * 
+     */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
+    /**
+     * @return Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * 
+     */
     public Optional<Output<Integer>> weight() {
         return Optional.ofNullable(this.weight);
     }
@@ -72,42 +104,96 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
             $ = new ServerGroupServerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param port The port used by the backend server. Valid value range: [1-65535].
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port The port used by the backend server. Valid value range: [1-65535].
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param serverIds A list backend server ID (ECS instance ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverIds(Output<List<String>> serverIds) {
             $.serverIds = serverIds;
             return this;
         }
 
+        /**
+         * @param serverIds A list backend server ID (ECS instance ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverIds(List<String> serverIds) {
             return serverIds(Output.of(serverIds));
         }
 
+        /**
+         * @param serverIds A list backend server ID (ECS instance ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverIds(String... serverIds) {
             return serverIds(List.of(serverIds));
         }
 
+        /**
+         * @param type Type of the backend server. Valid value ecs, eni. Default to eni.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Type of the backend server. Valid value ecs, eni. Default to eni.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
+        /**
+         * @param weight Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(@Nullable Output<Integer> weight) {
             $.weight = weight;
             return this;
         }
 
+        /**
+         * @param weight Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(Integer weight) {
             return weight(Output.of(weight));
         }

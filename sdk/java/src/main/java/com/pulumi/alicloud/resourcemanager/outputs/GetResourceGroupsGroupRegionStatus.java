@@ -65,10 +65,10 @@ public final class GetResourceGroupsGroupRegionStatus {
             return this;
         }
         public GetResourceGroupsGroupRegionStatus build() {
-            final var o = new GetResourceGroupsGroupRegionStatus();
-            o.regionId = regionId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetResourceGroupsGroupRegionStatus();
+            _resultValue.regionId = regionId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

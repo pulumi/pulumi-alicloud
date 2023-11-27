@@ -111,14 +111,14 @@ public final class GetFoldersResult {
             return this;
         }
         public GetFoldersResult build() {
-            final var o = new GetFoldersResult();
-            o.folders = folders;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.parentFolderPath = parentFolderPath;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new GetFoldersResult();
+            _resultValue.folders = folders;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.parentFolderPath = parentFolderPath;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

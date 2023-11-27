@@ -151,17 +151,17 @@ public final class GetListenersResult {
             return this;
         }
         public GetListenersResult build() {
-            final var o = new GetListenersResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.listenerIds = listenerIds;
-            o.listenerProtocol = listenerProtocol;
-            o.listeners = listeners;
-            o.loadBalancerIds = loadBalancerIds;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetListenersResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerIds = listenerIds;
+            _resultValue.listenerProtocol = listenerProtocol;
+            _resultValue.listeners = listeners;
+            _resultValue.loadBalancerIds = loadBalancerIds;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

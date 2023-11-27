@@ -80,7 +80,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable remote debugging.
      * 
      */
-    @Export(name="debugEnable", type=Boolean.class, parameters={})
+    @Export(name="debugEnable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> debugEnable;
 
     /**
@@ -94,7 +94,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The description of the namespace, The description can be up to `128` characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -110,7 +110,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * - The ID of the default namespace is in the `region ID` format. An example is cn-beijing.
      * 
      */
-    @Export(name="namespaceLogicalId", type=String.class, parameters={})
+    @Export(name="namespaceLogicalId", refs={String.class}, tree="[0]")
     private Output<String> namespaceLogicalId;
 
     /**
@@ -126,7 +126,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The name of the namespace, The name can be up to `63` characters in length.
      * 
      */
-    @Export(name="namespaceName", type=String.class, parameters={})
+    @Export(name="namespaceName", refs={String.class}, tree="[0]")
     private Output<String> namespaceName;
 
     /**

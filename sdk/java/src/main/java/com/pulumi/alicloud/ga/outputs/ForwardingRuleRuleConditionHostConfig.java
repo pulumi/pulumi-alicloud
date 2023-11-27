@@ -51,9 +51,9 @@ public final class ForwardingRuleRuleConditionHostConfig {
             return values(List.of(values));
         }
         public ForwardingRuleRuleConditionHostConfig build() {
-            final var o = new ForwardingRuleRuleConditionHostConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new ForwardingRuleRuleConditionHostConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

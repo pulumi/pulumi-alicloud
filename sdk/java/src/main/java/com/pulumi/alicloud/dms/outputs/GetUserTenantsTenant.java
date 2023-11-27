@@ -103,12 +103,12 @@ public final class GetUserTenantsTenant {
             return this;
         }
         public GetUserTenantsTenant build() {
-            final var o = new GetUserTenantsTenant();
-            o.id = id;
-            o.status = status;
-            o.tenantName = tenantName;
-            o.tid = tid;
-            return o;
+            final var _resultValue = new GetUserTenantsTenant();
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.tenantName = tenantName;
+            _resultValue.tid = tid;
+            return _resultValue;
         }
     }
 }

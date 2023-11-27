@@ -67,10 +67,10 @@ public final class ListenerAclConfigAclRelation {
             return this;
         }
         public ListenerAclConfigAclRelation build() {
-            final var o = new ListenerAclConfigAclRelation();
-            o.aclId = aclId;
-            o.status = status;
-            return o;
+            final var _resultValue = new ListenerAclConfigAclRelation();
+            _resultValue.aclId = aclId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

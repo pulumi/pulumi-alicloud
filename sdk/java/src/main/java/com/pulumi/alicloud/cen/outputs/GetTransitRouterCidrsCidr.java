@@ -180,16 +180,16 @@ public final class GetTransitRouterCidrsCidr {
             return this;
         }
         public GetTransitRouterCidrsCidr build() {
-            final var o = new GetTransitRouterCidrsCidr();
-            o.cidr = cidr;
-            o.description = description;
-            o.family = family;
-            o.id = id;
-            o.publishCidrRoute = publishCidrRoute;
-            o.transitRouterCidrId = transitRouterCidrId;
-            o.transitRouterCidrName = transitRouterCidrName;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetTransitRouterCidrsCidr();
+            _resultValue.cidr = cidr;
+            _resultValue.description = description;
+            _resultValue.family = family;
+            _resultValue.id = id;
+            _resultValue.publishCidrRoute = publishCidrRoute;
+            _resultValue.transitRouterCidrId = transitRouterCidrId;
+            _resultValue.transitRouterCidrName = transitRouterCidrName;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

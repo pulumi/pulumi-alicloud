@@ -103,12 +103,12 @@ public final class MonitorGroupInstancesInstance {
             return this;
         }
         public MonitorGroupInstancesInstance build() {
-            final var o = new MonitorGroupInstancesInstance();
-            o.category = category;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new MonitorGroupInstancesInstance();
+            _resultValue.category = category;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }

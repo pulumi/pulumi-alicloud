@@ -148,17 +148,17 @@ public final class GetControlPoliciesResult {
             return this;
         }
         public GetControlPoliciesResult build() {
-            final var o = new GetControlPoliciesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.language = language;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.policyType = policyType;
-            return o;
+            final var _resultValue = new GetControlPoliciesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.language = language;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            _resultValue.policyType = policyType;
+            return _resultValue;
         }
     }
 }

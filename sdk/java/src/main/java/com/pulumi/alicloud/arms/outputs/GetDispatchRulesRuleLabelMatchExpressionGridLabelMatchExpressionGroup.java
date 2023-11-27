@@ -50,9 +50,9 @@ public final class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpress
             return labelMatchExpressions(List.of(labelMatchExpressions));
         }
         public GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup build() {
-            final var o = new GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup();
-            o.labelMatchExpressions = labelMatchExpressions;
-            return o;
+            final var _resultValue = new GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup();
+            _resultValue.labelMatchExpressions = labelMatchExpressions;
+            return _resultValue;
         }
     }
 }

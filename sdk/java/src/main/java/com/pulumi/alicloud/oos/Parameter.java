@@ -82,7 +82,7 @@ public class Parameter extends com.pulumi.resources.CustomResource {
      * The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
      * 
      */
-    @Export(name="constraints", type=String.class, parameters={})
+    @Export(name="constraints", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> constraints;
 
     /**
@@ -96,7 +96,7 @@ public class Parameter extends com.pulumi.resources.CustomResource {
      * The description of the common parameter. The description must be `1` to `200` characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -110,7 +110,7 @@ public class Parameter extends com.pulumi.resources.CustomResource {
      * The name of the common parameter. The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
      * 
      */
-    @Export(name="parameterName", type=String.class, parameters={})
+    @Export(name="parameterName", refs={String.class}, tree="[0]")
     private Output<String> parameterName;
 
     /**
@@ -124,7 +124,7 @@ public class Parameter extends com.pulumi.resources.CustomResource {
      * The ID of the Resource Group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -138,7 +138,7 @@ public class Parameter extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -152,7 +152,7 @@ public class Parameter extends com.pulumi.resources.CustomResource {
      * The data type of the common parameter. Valid values: `String` and `StringList`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -166,7 +166,7 @@ public class Parameter extends com.pulumi.resources.CustomResource {
      * The value of the common parameter. The value must be `1` to `4096` characters in length.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

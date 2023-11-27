@@ -51,9 +51,9 @@ public final class ApplicationReadinessV2Exec {
             return commands(List.of(commands));
         }
         public ApplicationReadinessV2Exec build() {
-            final var o = new ApplicationReadinessV2Exec();
-            o.commands = commands;
-            return o;
+            final var _resultValue = new ApplicationReadinessV2Exec();
+            _resultValue.commands = commands;
+            return _resultValue;
         }
     }
 }

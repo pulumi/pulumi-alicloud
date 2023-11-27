@@ -86,12 +86,12 @@ public final class GetBackupPoliciesResult {
             return policies(List.of(policies));
         }
         public GetBackupPoliciesResult build() {
-            final var o = new GetBackupPoliciesResult();
-            o.dbClusterId = dbClusterId;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            return o;
+            final var _resultValue = new GetBackupPoliciesResult();
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            return _resultValue;
         }
     }
 }

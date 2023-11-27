@@ -112,15 +112,15 @@ public final class GetIpInfoResult {
             return this;
         }
         public GetIpInfoResult build() {
-            final var o = new GetIpInfoResult();
-            o.cdnIp = cdnIp;
-            o.id = id;
-            o.ip = ip;
-            o.isp = isp;
-            o.ispEname = ispEname;
-            o.region = region;
-            o.regionEname = regionEname;
-            return o;
+            final var _resultValue = new GetIpInfoResult();
+            _resultValue.cdnIp = cdnIp;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.isp = isp;
+            _resultValue.ispEname = ispEname;
+            _resultValue.region = region;
+            _resultValue.regionEname = regionEname;
+            return _resultValue;
         }
     }
 }

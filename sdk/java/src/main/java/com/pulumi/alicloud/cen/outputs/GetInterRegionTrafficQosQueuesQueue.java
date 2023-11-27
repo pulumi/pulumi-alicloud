@@ -176,16 +176,16 @@ public final class GetInterRegionTrafficQosQueuesQueue {
             return this;
         }
         public GetInterRegionTrafficQosQueuesQueue build() {
-            final var o = new GetInterRegionTrafficQosQueuesQueue();
-            o.dscps = dscps;
-            o.id = id;
-            o.interRegionTrafficQosQueueDescription = interRegionTrafficQosQueueDescription;
-            o.interRegionTrafficQosQueueId = interRegionTrafficQosQueueId;
-            o.interRegionTrafficQosQueueName = interRegionTrafficQosQueueName;
-            o.remainBandwidthPercent = remainBandwidthPercent;
-            o.status = status;
-            o.trafficQosPolicyId = trafficQosPolicyId;
-            return o;
+            final var _resultValue = new GetInterRegionTrafficQosQueuesQueue();
+            _resultValue.dscps = dscps;
+            _resultValue.id = id;
+            _resultValue.interRegionTrafficQosQueueDescription = interRegionTrafficQosQueueDescription;
+            _resultValue.interRegionTrafficQosQueueId = interRegionTrafficQosQueueId;
+            _resultValue.interRegionTrafficQosQueueName = interRegionTrafficQosQueueName;
+            _resultValue.remainBandwidthPercent = remainBandwidthPercent;
+            _resultValue.status = status;
+            _resultValue.trafficQosPolicyId = trafficQosPolicyId;
+            return _resultValue;
         }
     }
 }

@@ -115,13 +115,13 @@ public final class GetNetworksNetwork {
             return this;
         }
         public GetNetworksNetwork build() {
-            final var o = new GetNetworksNetwork();
-            o.cidrBlock = cidrBlock;
-            o.description = description;
-            o.id = id;
-            o.isDefault = isDefault;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetNetworksNetwork();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

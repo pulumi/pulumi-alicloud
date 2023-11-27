@@ -122,13 +122,13 @@ public final class GetGreyTagRoutesRouteScRuleItem {
             return this;
         }
         public GetGreyTagRoutesRouteScRuleItem build() {
-            final var o = new GetGreyTagRoutesRouteScRuleItem();
-            o.cond = cond;
-            o.name = name;
-            o.operator = operator;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetGreyTagRoutesRouteScRuleItem();
+            _resultValue.cond = cond;
+            _resultValue.name = name;
+            _resultValue.operator = operator;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

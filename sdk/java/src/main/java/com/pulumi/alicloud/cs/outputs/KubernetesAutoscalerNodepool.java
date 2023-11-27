@@ -86,11 +86,11 @@ public final class KubernetesAutoscalerNodepool {
             return this;
         }
         public KubernetesAutoscalerNodepool build() {
-            final var o = new KubernetesAutoscalerNodepool();
-            o.id = id;
-            o.labels = labels;
-            o.taints = taints;
-            return o;
+            final var _resultValue = new KubernetesAutoscalerNodepool();
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.taints = taints;
+            return _resultValue;
         }
     }
 }

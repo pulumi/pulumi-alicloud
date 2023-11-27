@@ -119,7 +119,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountPassword;
 
     /**
@@ -130,15 +130,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountPassword);
     }
     /**
-     * Auto renew for prepaid, true of false. Default is false.
+     * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Auto renew for prepaid, true of false. Default is false.
+     * @return Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
@@ -146,10 +146,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenew);
     }
     /**
+     * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     * 
+     */
+    @Export(name="backupInterval", refs={String.class}, tree="[0]")
+    private Output<String> backupInterval;
+
+    /**
+     * @return The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     * 
+     */
+    public Output<String> backupInterval() {
+        return this.backupInterval;
+    }
+    /**
      * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      * 
      */
-    @Export(name="backupPeriods", type=List.class, parameters={String.class})
+    @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
     /**
@@ -163,7 +177,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
-    @Export(name="backupTime", type=String.class, parameters={})
+    @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
     /**
@@ -174,10 +188,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.backupTime;
     }
     /**
+     * The ID of the encryption key.
+     * 
+     */
+    @Export(name="cloudDiskEncryptionKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cloudDiskEncryptionKey;
+
+    /**
+     * @return The ID of the encryption key.
+     * 
+     */
+    public Output<Optional<String>> cloudDiskEncryptionKey() {
+        return Codegen.optional(this.cloudDiskEncryptionKey);
+    }
+    /**
      * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
-    @Export(name="dbInstanceClass", type=String.class, parameters={})
+    @Export(name="dbInstanceClass", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceClass;
 
     /**
@@ -193,7 +221,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - 10-GB increments.
      * 
      */
-    @Export(name="dbInstanceStorage", type=Integer.class, parameters={})
+    @Export(name="dbInstanceStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbInstanceStorage;
 
     /**
@@ -206,10 +234,44 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dbInstanceStorage;
     }
     /**
+     * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> encrypted;
+
+    /**
+     * @return Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> encrypted() {
+        return Codegen.optional(this.encrypted);
+    }
+    @Export(name="encryptionKey", refs={String.class}, tree="[0]")
+    private Output<String> encryptionKey;
+
+    public Output<String> encryptionKey() {
+        return this.encryptionKey;
+    }
+    /**
+     * The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * 
+     */
+    @Export(name="encryptorName", refs={String.class}, tree="[0]")
+    private Output<String> encryptorName;
+
+    /**
+     * @return The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * 
+     */
+    public Output<String> encryptorName() {
+        return this.encryptorName;
+    }
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -223,7 +285,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
      * 
      */
-    @Export(name="hiddenZoneId", type=String.class, parameters={})
+    @Export(name="hiddenZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hiddenZoneId;
 
     /**
@@ -234,24 +296,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.hiddenZoneId);
     }
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> instanceChargeType;
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
+    private Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * @return The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      * 
      */
-    public Output<Optional<String>> instanceChargeType() {
-        return Codegen.optional(this.instanceChargeType);
+    public Output<String> instanceChargeType() {
+        return this.instanceChargeType;
     }
     /**
      * An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -265,7 +327,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -279,7 +341,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      * 
      */
-    @Export(name="maintainEndTime", type=String.class, parameters={})
+    @Export(name="maintainEndTime", refs={String.class}, tree="[0]")
     private Output<String> maintainEndTime;
 
     /**
@@ -293,7 +355,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      * 
      */
-    @Export(name="maintainStartTime", type=String.class, parameters={})
+    @Export(name="maintainStartTime", refs={String.class}, tree="[0]")
     private Output<String> maintainStartTime;
 
     /**
@@ -307,7 +369,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of DB instance. It a string of 2 to 256 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -318,34 +380,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * The network type of the instance. Valid values:`Classic`, `VPC`.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
-     * @return The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * @return The network type of the instance. Valid values:`Classic`, `VPC`.
      * 
      */
     public Output<String> networkType() {
         return this.networkType;
     }
     /**
-     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * 
      */
-    @Export(name="orderType", type=String.class, parameters={})
+    @Export(name="orderType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orderType;
 
     /**
-     * @return The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * 
      */
     public Output<Optional<String>> orderType() {
@@ -355,7 +411,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={InstanceParameter.class})
+    @Export(name="parameters", refs={List.class,InstanceParameter.class}, tree="[0,1]")
     private Output<List<InstanceParameter>> parameters;
 
     /**
@@ -366,14 +422,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.parameters;
     }
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Output<Integer> period() {
@@ -383,7 +439,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
      * 
      */
-    @Export(name="readonlyReplicas", type=Integer.class, parameters={})
+    @Export(name="readonlyReplicas", refs={Integer.class}, tree="[0]")
     private Output<Integer> readonlyReplicas;
 
     /**
@@ -394,42 +450,42 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.readonlyReplicas;
     }
     /**
-     * The name of the mongo replica set
+     * The name of the mongo replica set.
      * 
      */
-    @Export(name="replicaSetName", type=String.class, parameters={})
+    @Export(name="replicaSetName", refs={String.class}, tree="[0]")
     private Output<String> replicaSetName;
 
     /**
-     * @return The name of the mongo replica set
+     * @return The name of the mongo replica set.
      * 
      */
     public Output<String> replicaSetName() {
         return this.replicaSetName;
     }
     /**
-     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+     * Replica set instance information.
      * 
      */
-    @Export(name="replicaSets", type=List.class, parameters={InstanceReplicaSet.class})
+    @Export(name="replicaSets", refs={List.class,InstanceReplicaSet.class}, tree="[0,1]")
     private Output<List<InstanceReplicaSet>> replicaSets;
 
     /**
-     * @return Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+     * @return Replica set instance information.
      * 
      */
     public Output<List<InstanceReplicaSet>> replicaSets() {
         return this.replicaSets;
     }
     /**
-     * Number of replica set nodes. Valid values: [1, 3, 5, 7]
+     * Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
      * 
      */
-    @Export(name="replicationFactor", type=Integer.class, parameters={})
+    @Export(name="replicationFactor", refs={Integer.class}, tree="[0]")
     private Output<Integer> replicationFactor;
 
     /**
-     * @return Number of replica set nodes. Valid values: [1, 3, 5, 7]
+     * @return Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
      * 
      */
     public Output<Integer> replicationFactor() {
@@ -439,7 +495,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the Resource Group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -450,24 +506,30 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Instance log backup retention days. Available in 1.42.0+.
+     * Instance data backup retention days. Available since v1.42.0.
      * 
      */
-    @Export(name="retentionPeriod", type=Integer.class, parameters={})
+    @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionPeriod;
 
     /**
-     * @return Instance log backup retention days. Available in 1.42.0+.
+     * @return Instance data backup retention days. Available since v1.42.0.
      * 
      */
     public Output<Integer> retentionPeriod() {
         return this.retentionPeriod;
     }
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
+    private Output<String> roleArn;
+
+    public Output<String> roleArn() {
+        return this.roleArn;
+    }
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
      * 
      */
-    @Export(name="secondaryZoneId", type=String.class, parameters={})
+    @Export(name="secondaryZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryZoneId;
 
     /**
@@ -481,21 +543,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Security Group ID of ECS.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
-    private Output<String> securityGroupId;
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securityGroupId;
 
     /**
      * @return The Security Group ID of ECS.
      * 
      */
-    public Output<String> securityGroupId() {
-        return this.securityGroupId;
+    public Output<Optional<String>> securityGroupId() {
+        return Codegen.optional(this.securityGroupId);
     }
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      * 
      */
-    @Export(name="securityIpLists", type=List.class, parameters={String.class})
+    @Export(name="securityIpLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityIpLists;
 
     /**
@@ -506,42 +568,56 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityIpLists;
     }
     /**
-     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     * The snapshot backup type. Default value: `Standard`. Valid values:
      * 
      */
-    @Export(name="sslAction", type=String.class, parameters={})
-    private Output<String> sslAction;
+    @Export(name="snapshotBackupType", refs={String.class}, tree="[0]")
+    private Output<String> snapshotBackupType;
 
     /**
-     * @return Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     * @return The snapshot backup type. Default value: `Standard`. Valid values:
      * 
      */
-    public Output<String> sslAction() {
-        return this.sslAction;
+    public Output<String> snapshotBackupType() {
+        return this.snapshotBackupType;
     }
     /**
-     * Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+     * Actions performed on SSL functions. Valid values:
      * 
      */
-    @Export(name="sslStatus", type=String.class, parameters={})
+    @Export(name="sslAction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sslAction;
+
+    /**
+     * @return Actions performed on SSL functions. Valid values:
+     * 
+     */
+    public Output<Optional<String>> sslAction() {
+        return Codegen.optional(this.sslAction);
+    }
+    /**
+     * Status of the SSL feature.
+     * 
+     */
+    @Export(name="sslStatus", refs={String.class}, tree="[0]")
     private Output<String> sslStatus;
 
     /**
-     * @return Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+     * @return Status of the SSL feature.
      * 
      */
     public Output<String> sslStatus() {
         return this.sslStatus;
     }
     /**
-     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      * 
      */
-    @Export(name="storageEngine", type=String.class, parameters={})
+    @Export(name="storageEngine", refs={String.class}, tree="[0]")
     private Output<String> storageEngine;
 
     /**
-     * @return Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * @return The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      * 
      */
     public Output<String> storageEngine() {
@@ -551,7 +627,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
      * 
      */
-    @Export(name="storageType", type=String.class, parameters={})
+    @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
@@ -565,7 +641,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -576,28 +652,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The TDE(Transparent Data Encryption) status.
+     * The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
      * 
      */
-    @Export(name="tdeStatus", type=String.class, parameters={})
-    private Output</* @Nullable */ String> tdeStatus;
+    @Export(name="tdeStatus", refs={String.class}, tree="[0]")
+    private Output<String> tdeStatus;
 
     /**
-     * @return The TDE(Transparent Data Encryption) status.
+     * @return The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
      * 
      */
-    public Output<Optional<String>> tdeStatus() {
-        return Codegen.optional(this.tdeStatus);
+    public Output<String> tdeStatus() {
+        return this.tdeStatus;
     }
     /**
-     * The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     public Output<String> vpcId() {
@@ -607,7 +683,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The virtual switch ID to launch DB instances in one VPC.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -623,7 +699,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

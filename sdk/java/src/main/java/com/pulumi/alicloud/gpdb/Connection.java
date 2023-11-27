@@ -120,7 +120,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + &#39;-tf&#39;.
      * 
      */
-    @Export(name="connectionPrefix", type=String.class, parameters={})
+    @Export(name="connectionPrefix", refs={String.class}, tree="[0]")
     private Output<String> connectionPrefix;
 
     /**
@@ -134,7 +134,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Connection instance string.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -148,7 +148,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The Id of instance that can run database.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -162,7 +162,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The ip address of connection string.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -176,7 +176,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Internet connection port. Valid value: [3200-3999]. Default to 3306.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> port;
 
     /**

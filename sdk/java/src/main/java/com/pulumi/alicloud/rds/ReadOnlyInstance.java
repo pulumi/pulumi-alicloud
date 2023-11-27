@@ -126,7 +126,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      * 
      */
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output<String> acl;
 
     /**
@@ -144,7 +144,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -158,7 +158,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -174,7 +174,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - custom: a custom certificate
      * 
      */
-    @Export(name="caType", type=String.class, parameters={})
+    @Export(name="caType", refs={String.class}, tree="[0]")
     private Output<String> caType;
 
     /**
@@ -190,7 +190,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
      * 
      */
-    @Export(name="clientCaCert", type=String.class, parameters={})
+    @Export(name="clientCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCaCert;
 
     /**
@@ -206,7 +206,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - 0: disables the public key
      * 
      */
-    @Export(name="clientCaEnabled", type=Integer.class, parameters={})
+    @Export(name="clientCaEnabled", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> clientCaEnabled;
 
     /**
@@ -222,7 +222,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
      * 
      */
-    @Export(name="clientCertRevocationList", type=String.class, parameters={})
+    @Export(name="clientCertRevocationList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCertRevocationList;
 
     /**
@@ -238,7 +238,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - 0: disables the CRL
      * 
      */
-    @Export(name="clientCrlEnabled", type=Integer.class, parameters={})
+    @Export(name="clientCrlEnabled", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> clientCrlEnabled;
 
     /**
@@ -254,7 +254,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * RDS database connection string.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -270,7 +270,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      * 
      */
-    @Export(name="dbInstanceIpArrayAttribute", type=String.class, parameters={})
+    @Export(name="dbInstanceIpArrayAttribute", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbInstanceIpArrayAttribute;
 
     /**
@@ -288,7 +288,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      * 
      */
-    @Export(name="dbInstanceIpArrayName", type=String.class, parameters={})
+    @Export(name="dbInstanceIpArrayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbInstanceIpArrayName;
 
     /**
@@ -309,7 +309,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
      * 
      */
-    @Export(name="dbInstanceStorageType", type=String.class, parameters={})
+    @Export(name="dbInstanceStorageType", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceStorageType;
 
     /**
@@ -330,7 +330,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - false: no delete protect.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -350,7 +350,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - Serverless
      * 
      */
-    @Export(name="direction", type=String.class, parameters={})
+    @Export(name="direction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> direction;
 
     /**
@@ -370,7 +370,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
      */
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
@@ -386,7 +386,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * Database type.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -400,7 +400,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -414,7 +414,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      * 
      */
-    @Export(name="forceRestart", type=Boolean.class, parameters={})
+    @Export(name="forceRestart", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceRestart;
 
     /**
@@ -428,7 +428,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -442,7 +442,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The name of DB instance. It a string of 2 to 256 characters.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -456,7 +456,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      * 
      */
-    @Export(name="instanceStorage", type=Integer.class, parameters={})
+    @Export(name="instanceStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceStorage;
 
     /**
@@ -470,7 +470,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -484,7 +484,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * ID of the master instance.
      * 
      */
-    @Export(name="masterDbInstanceId", type=String.class, parameters={})
+    @Export(name="masterDbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> masterDbInstanceId;
 
     /**
@@ -501,7 +501,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
      * 
      */
-    @Export(name="modifyMode", type=String.class, parameters={})
+    @Export(name="modifyMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyMode;
 
     /**
@@ -518,7 +518,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={ReadOnlyInstanceParameter.class})
+    @Export(name="parameters", refs={List.class,ReadOnlyInstanceParameter.class}, tree="[0,1]")
     private Output<List<ReadOnlyInstanceParameter>> parameters;
 
     /**
@@ -532,7 +532,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -546,7 +546,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * RDS database connection port.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -565,7 +565,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      * 
      */
-    @Export(name="replicationAcl", type=String.class, parameters={})
+    @Export(name="replicationAcl", refs={String.class}, tree="[0]")
     private Output<String> replicationAcl;
 
     /**
@@ -584,7 +584,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The ID of resource group which the DB read-only instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -598,7 +598,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The type of IP address in the IP address whitelist.
      * 
      */
-    @Export(name="securityIpType", type=String.class, parameters={})
+    @Export(name="securityIpType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityIpType;
 
     /**
@@ -612,7 +612,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      * 
      */
-    @Export(name="securityIps", type=List.class, parameters={String.class})
+    @Export(name="securityIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityIps;
 
     /**
@@ -626,7 +626,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
      * 
      */
-    @Export(name="serverCert", type=String.class, parameters={})
+    @Export(name="serverCert", refs={String.class}, tree="[0]")
     private Output<String> serverCert;
 
     /**
@@ -640,7 +640,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
      * 
      */
-    @Export(name="serverKey", type=String.class, parameters={})
+    @Export(name="serverKey", refs={String.class}, tree="[0]")
     private Output<String> serverKey;
 
     /**
@@ -656,7 +656,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - 0: disables SSL encryption
      * 
      */
-    @Export(name="sslEnabled", type=Integer.class, parameters={})
+    @Export(name="sslEnabled", refs={Integer.class}, tree="[0]")
     private Output<Integer> sslEnabled;
 
     /**
@@ -674,7 +674,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
      */
-    @Export(name="switchTime", type=String.class, parameters={})
+    @Export(name="switchTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> switchTime;
 
     /**
@@ -692,7 +692,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -716,7 +716,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      * 
      */
-    @Export(name="targetMinorVersion", type=String.class, parameters={})
+    @Export(name="targetMinorVersion", refs={String.class}, tree="[0]")
     private Output<String> targetMinorVersion;
 
     /**
@@ -740,7 +740,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - false: not to upgrade
      * 
      */
-    @Export(name="upgradeDbInstanceKernelVersion", type=Boolean.class, parameters={})
+    @Export(name="upgradeDbInstanceKernelVersion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> upgradeDbInstanceKernelVersion;
 
     /**
@@ -759,7 +759,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
      * 
      */
-    @Export(name="upgradeTime", type=String.class, parameters={})
+    @Export(name="upgradeTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> upgradeTime;
 
     /**
@@ -776,7 +776,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The virtual switch ID to launch DB instances in one VPC.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -794,7 +794,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      * 
      */
-    @Export(name="whitelistNetworkType", type=String.class, parameters={})
+    @Export(name="whitelistNetworkType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> whitelistNetworkType;
 
     /**
@@ -812,7 +812,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * The Zone to launch the DB instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

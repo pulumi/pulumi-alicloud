@@ -443,30 +443,30 @@ public final class GetBandwidthPackagesPackage {
             return this;
         }
         public GetBandwidthPackagesPackage build() {
-            final var o = new GetBandwidthPackagesPackage();
-            o.bandwidth = bandwidth;
-            o.bandwidthPackageChargeType = bandwidthPackageChargeType;
-            o.businessStatus = businessStatus;
-            o.cenBandwidthPackageId = cenBandwidthPackageId;
-            o.cenBandwidthPackageName = cenBandwidthPackageName;
-            o.cenIds = cenIds;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.geographicRegionAId = geographicRegionAId;
-            o.geographicRegionBId = geographicRegionBId;
-            o.geographicSpanId = geographicSpanId;
-            o.hasReservationData = hasReservationData;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.isCrossBorder = isCrossBorder;
-            o.name = name;
-            o.paymentType = paymentType;
-            o.reservationActiveTime = reservationActiveTime;
-            o.reservationBandwidth = reservationBandwidth;
-            o.reservationInternetChargeType = reservationInternetChargeType;
-            o.reservationOrderType = reservationOrderType;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBandwidthPackagesPackage();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.bandwidthPackageChargeType = bandwidthPackageChargeType;
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.cenBandwidthPackageId = cenBandwidthPackageId;
+            _resultValue.cenBandwidthPackageName = cenBandwidthPackageName;
+            _resultValue.cenIds = cenIds;
+            _resultValue.description = description;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.geographicRegionAId = geographicRegionAId;
+            _resultValue.geographicRegionBId = geographicRegionBId;
+            _resultValue.geographicSpanId = geographicSpanId;
+            _resultValue.hasReservationData = hasReservationData;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.isCrossBorder = isCrossBorder;
+            _resultValue.name = name;
+            _resultValue.paymentType = paymentType;
+            _resultValue.reservationActiveTime = reservationActiveTime;
+            _resultValue.reservationBandwidth = reservationBandwidth;
+            _resultValue.reservationInternetChargeType = reservationInternetChargeType;
+            _resultValue.reservationOrderType = reservationOrderType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

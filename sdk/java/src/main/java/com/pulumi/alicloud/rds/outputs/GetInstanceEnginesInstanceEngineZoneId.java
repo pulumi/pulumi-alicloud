@@ -69,10 +69,10 @@ public final class GetInstanceEnginesInstanceEngineZoneId {
             return subZoneIds(List.of(subZoneIds));
         }
         public GetInstanceEnginesInstanceEngineZoneId build() {
-            final var o = new GetInstanceEnginesInstanceEngineZoneId();
-            o.id = id;
-            o.subZoneIds = subZoneIds;
-            return o;
+            final var _resultValue = new GetInstanceEnginesInstanceEngineZoneId();
+            _resultValue.id = id;
+            _resultValue.subZoneIds = subZoneIds;
+            return _resultValue;
         }
     }
 }

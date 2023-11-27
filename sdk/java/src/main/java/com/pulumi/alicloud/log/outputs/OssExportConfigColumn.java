@@ -65,10 +65,10 @@ public final class OssExportConfigColumn {
             return this;
         }
         public OssExportConfigColumn build() {
-            final var o = new OssExportConfigColumn();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new OssExportConfigColumn();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

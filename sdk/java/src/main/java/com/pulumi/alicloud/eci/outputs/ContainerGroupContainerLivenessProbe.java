@@ -194,16 +194,16 @@ public final class ContainerGroupContainerLivenessProbe {
             return this;
         }
         public ContainerGroupContainerLivenessProbe build() {
-            final var o = new ContainerGroupContainerLivenessProbe();
-            o.execs = execs;
-            o.failureThreshold = failureThreshold;
-            o.httpGets = httpGets;
-            o.initialDelaySeconds = initialDelaySeconds;
-            o.periodSeconds = periodSeconds;
-            o.successThreshold = successThreshold;
-            o.tcpSockets = tcpSockets;
-            o.timeoutSeconds = timeoutSeconds;
-            return o;
+            final var _resultValue = new ContainerGroupContainerLivenessProbe();
+            _resultValue.execs = execs;
+            _resultValue.failureThreshold = failureThreshold;
+            _resultValue.httpGets = httpGets;
+            _resultValue.initialDelaySeconds = initialDelaySeconds;
+            _resultValue.periodSeconds = periodSeconds;
+            _resultValue.successThreshold = successThreshold;
+            _resultValue.tcpSockets = tcpSockets;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            return _resultValue;
         }
     }
 }

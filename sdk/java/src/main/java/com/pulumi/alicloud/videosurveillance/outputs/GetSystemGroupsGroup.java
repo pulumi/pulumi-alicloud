@@ -318,23 +318,23 @@ public final class GetSystemGroupsGroup {
             return stats(List.of(stats));
         }
         public GetSystemGroupsGroup build() {
-            final var o = new GetSystemGroupsGroup();
-            o.app = app;
-            o.callback = callback;
-            o.createTime = createTime;
-            o.description = description;
-            o.enabled = enabled;
-            o.gbId = gbId;
-            o.gbIp = gbIp;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            o.inProtocol = inProtocol;
-            o.outProtocol = outProtocol;
-            o.playDomain = playDomain;
-            o.pushDomain = pushDomain;
-            o.stats = stats;
-            return o;
+            final var _resultValue = new GetSystemGroupsGroup();
+            _resultValue.app = app;
+            _resultValue.callback = callback;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.enabled = enabled;
+            _resultValue.gbId = gbId;
+            _resultValue.gbIp = gbIp;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            _resultValue.inProtocol = inProtocol;
+            _resultValue.outProtocol = outProtocol;
+            _resultValue.playDomain = playDomain;
+            _resultValue.pushDomain = pushDomain;
+            _resultValue.stats = stats;
+            return _resultValue;
         }
     }
 }

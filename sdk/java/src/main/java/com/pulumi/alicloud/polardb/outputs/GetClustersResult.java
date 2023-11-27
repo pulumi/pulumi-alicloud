@@ -189,17 +189,17 @@ public final class GetClustersResult {
             return this;
         }
         public GetClustersResult build() {
-            final var o = new GetClustersResult();
-            o.clusters = clusters;
-            o.dbType = dbType;
-            o.descriptionRegex = descriptionRegex;
-            o.descriptions = descriptions;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetClustersResult();
+            _resultValue.clusters = clusters;
+            _resultValue.dbType = dbType;
+            _resultValue.descriptionRegex = descriptionRegex;
+            _resultValue.descriptions = descriptions;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

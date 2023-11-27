@@ -103,7 +103,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The alert notification methods. See `alert_config` below for details.
      * 
      */
-    @Export(name="alertConfigs", type=List.class, parameters={GtmInstanceAlertConfig.class})
+    @Export(name="alertConfigs", refs={List.class,GtmInstanceAlertConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GtmInstanceAlertConfig>> alertConfigs;
 
     /**
@@ -117,7 +117,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The alert group.
      * 
      */
-    @Export(name="alertGroups", type=List.class, parameters={String.class})
+    @Export(name="alertGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> alertGroups;
 
     /**
@@ -131,7 +131,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The access type of the CNAME domain name. Valid value: `PUBLIC`.
      * 
      */
-    @Export(name="cnameType", type=String.class, parameters={})
+    @Export(name="cnameType", refs={String.class}, tree="[0]")
     private Output<String> cnameType;
 
     /**
@@ -145,7 +145,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The force update.
      * 
      */
-    @Export(name="forceUpdate", type=Boolean.class, parameters={})
+    @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpdate;
 
     /**
@@ -159,7 +159,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The quota of detection tasks.
      * 
      */
-    @Export(name="healthCheckTaskCount", type=Integer.class, parameters={})
+    @Export(name="healthCheckTaskCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> healthCheckTaskCount;
 
     /**
@@ -173,7 +173,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The name of the instance.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -187,7 +187,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The lang.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -201,7 +201,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * Paid package version. Valid values: `ultimate`, `standard`.
      * 
      */
-    @Export(name="packageEdition", type=String.class, parameters={})
+    @Export(name="packageEdition", refs={String.class}, tree="[0]")
     private Output<String> packageEdition;
 
     /**
@@ -215,7 +215,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The Payment Type of the resource. Valid value: `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -229,7 +229,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
@@ -243,7 +243,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The Public Network domain name access method. Valid values: `CUSTOM`, `SYSTEM_ASSIGN`.
      * 
      */
-    @Export(name="publicCnameMode", type=String.class, parameters={})
+    @Export(name="publicCnameMode", refs={String.class}, tree="[0]")
     private Output<String> publicCnameMode;
 
     /**
@@ -257,7 +257,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The CNAME access domain name.
      * 
      */
-    @Export(name="publicRr", type=String.class, parameters={})
+    @Export(name="publicRr", refs={String.class}, tree="[0]")
     private Output<String> publicRr;
 
     /**
@@ -271,7 +271,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The website domain name that the user uses on the Internet.
      * 
      */
-    @Export(name="publicUserDomainName", type=String.class, parameters={})
+    @Export(name="publicUserDomainName", refs={String.class}, tree="[0]")
     private Output<String> publicUserDomainName;
 
     /**
@@ -285,7 +285,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The domain name that is used to access GTM over the Internet.
      * 
      */
-    @Export(name="publicZoneName", type=String.class, parameters={})
+    @Export(name="publicZoneName", refs={String.class}, tree="[0]")
     private Output<String> publicZoneName;
 
     /**
@@ -299,7 +299,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
      * 
      */
-    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
@@ -313,7 +313,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
@@ -327,7 +327,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -341,7 +341,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The quota of SMS notifications.
      * 
      */
-    @Export(name="smsNotificationCount", type=Integer.class, parameters={})
+    @Export(name="smsNotificationCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> smsNotificationCount;
 
     /**
@@ -355,7 +355,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The type of the access policy. Valid values: `GEO`, `LATENCY`.
      * 
      */
-    @Export(name="strategyMode", type=String.class, parameters={})
+    @Export(name="strategyMode", refs={String.class}, tree="[0]")
     private Output<String> strategyMode;
 
     /**
@@ -369,7 +369,7 @@ public class GtmInstance extends com.pulumi.resources.CustomResource {
      * The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ttl;
 
     /**

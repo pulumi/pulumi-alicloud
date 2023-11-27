@@ -136,16 +136,16 @@ public final class GetHostGroupsResult {
             return this;
         }
         public GetHostGroupsResult build() {
-            final var o = new GetHostGroupsResult();
-            o.groups = groups;
-            o.hostGroupName = hostGroupName;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetHostGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.hostGroupName = hostGroupName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -298,22 +298,22 @@ public final class GetHealthCheckTemplatesTemplate {
             return this;
         }
         public GetHealthCheckTemplatesTemplate build() {
-            final var o = new GetHealthCheckTemplatesTemplate();
-            o.healthCheckCodes = healthCheckCodes;
-            o.healthCheckConnectPort = healthCheckConnectPort;
-            o.healthCheckHost = healthCheckHost;
-            o.healthCheckHttpVersion = healthCheckHttpVersion;
-            o.healthCheckInterval = healthCheckInterval;
-            o.healthCheckMethod = healthCheckMethod;
-            o.healthCheckPath = healthCheckPath;
-            o.healthCheckProtocol = healthCheckProtocol;
-            o.healthCheckTemplateId = healthCheckTemplateId;
-            o.healthCheckTemplateName = healthCheckTemplateName;
-            o.healthCheckTimeout = healthCheckTimeout;
-            o.healthyThreshold = healthyThreshold;
-            o.id = id;
-            o.unhealthyThreshold = unhealthyThreshold;
-            return o;
+            final var _resultValue = new GetHealthCheckTemplatesTemplate();
+            _resultValue.healthCheckCodes = healthCheckCodes;
+            _resultValue.healthCheckConnectPort = healthCheckConnectPort;
+            _resultValue.healthCheckHost = healthCheckHost;
+            _resultValue.healthCheckHttpVersion = healthCheckHttpVersion;
+            _resultValue.healthCheckInterval = healthCheckInterval;
+            _resultValue.healthCheckMethod = healthCheckMethod;
+            _resultValue.healthCheckPath = healthCheckPath;
+            _resultValue.healthCheckProtocol = healthCheckProtocol;
+            _resultValue.healthCheckTemplateId = healthCheckTemplateId;
+            _resultValue.healthCheckTemplateName = healthCheckTemplateName;
+            _resultValue.healthCheckTimeout = healthCheckTimeout;
+            _resultValue.healthyThreshold = healthyThreshold;
+            _resultValue.id = id;
+            _resultValue.unhealthyThreshold = unhealthyThreshold;
+            return _resultValue;
         }
     }
 }

@@ -84,11 +84,11 @@ public final class GetMetaTagsTag {
             return this;
         }
         public GetMetaTagsTag build() {
-            final var o = new GetMetaTagsTag();
-            o.category = category;
-            o.keyName = keyName;
-            o.valueName = valueName;
-            return o;
+            final var _resultValue = new GetMetaTagsTag();
+            _resultValue.category = category;
+            _resultValue.keyName = keyName;
+            _resultValue.valueName = valueName;
+            return _resultValue;
         }
     }
 }

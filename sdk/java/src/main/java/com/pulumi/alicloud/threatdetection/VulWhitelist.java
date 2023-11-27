@@ -70,7 +70,7 @@ public class VulWhitelist extends com.pulumi.resources.CustomResource {
      * Reason for adding whitelist.
      * 
      */
-    @Export(name="reason", type=String.class, parameters={})
+    @Export(name="reason", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reason;
 
     /**
@@ -84,7 +84,7 @@ public class VulWhitelist extends com.pulumi.resources.CustomResource {
      * Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
-    @Export(name="targetInfo", type=String.class, parameters={})
+    @Export(name="targetInfo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetInfo;
 
     /**
@@ -98,7 +98,7 @@ public class VulWhitelist extends com.pulumi.resources.CustomResource {
      * Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
-    @Export(name="whitelist", type=String.class, parameters={})
+    @Export(name="whitelist", refs={String.class}, tree="[0]")
     private Output<String> whitelist;
 
     /**

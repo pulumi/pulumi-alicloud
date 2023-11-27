@@ -129,13 +129,13 @@ public final class ImageImportDiskDeviceMapping {
             return this;
         }
         public ImageImportDiskDeviceMapping build() {
-            final var o = new ImageImportDiskDeviceMapping();
-            o.device = device;
-            o.diskImageSize = diskImageSize;
-            o.format = format;
-            o.ossBucket = ossBucket;
-            o.ossObject = ossObject;
-            return o;
+            final var _resultValue = new ImageImportDiskDeviceMapping();
+            _resultValue.device = device;
+            _resultValue.diskImageSize = diskImageSize;
+            _resultValue.format = format;
+            _resultValue.ossBucket = ossBucket;
+            _resultValue.ossObject = ossObject;
+            return _resultValue;
         }
     }
 }

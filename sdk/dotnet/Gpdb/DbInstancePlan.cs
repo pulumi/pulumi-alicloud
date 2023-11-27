@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// <summary>
     /// Provides a GPDB DB Instance Plan resource.
     /// 
-    /// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/createdbinstanceplan).
+    /// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
     /// 
     /// &gt; **NOTE:** Available since v1.189.0.
     /// 

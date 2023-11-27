@@ -139,16 +139,16 @@ public final class GetHealthCheckTemplatesResult {
             return templates(List.of(templates));
         }
         public GetHealthCheckTemplatesResult build() {
-            final var o = new GetHealthCheckTemplatesResult();
-            o.healthCheckTemplateIds = healthCheckTemplateIds;
-            o.healthCheckTemplateName = healthCheckTemplateName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.templates = templates;
-            return o;
+            final var _resultValue = new GetHealthCheckTemplatesResult();
+            _resultValue.healthCheckTemplateIds = healthCheckTemplateIds;
+            _resultValue.healthCheckTemplateName = healthCheckTemplateName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.templates = templates;
+            return _resultValue;
         }
     }
 }

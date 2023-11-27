@@ -103,12 +103,12 @@ public final class GetSlsGroupsGroupSlsGroupConfig {
             return this;
         }
         public GetSlsGroupsGroupSlsGroupConfig build() {
-            final var o = new GetSlsGroupsGroupSlsGroupConfig();
-            o.slsLogstore = slsLogstore;
-            o.slsProject = slsProject;
-            o.slsRegion = slsRegion;
-            o.slsUserId = slsUserId;
-            return o;
+            final var _resultValue = new GetSlsGroupsGroupSlsGroupConfig();
+            _resultValue.slsLogstore = slsLogstore;
+            _resultValue.slsProject = slsProject;
+            _resultValue.slsRegion = slsRegion;
+            _resultValue.slsUserId = slsUserId;
+            return _resultValue;
         }
     }
 }

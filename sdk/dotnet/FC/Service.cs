@@ -42,6 +42,9 @@ namespace Pulumi.AliCloud.FC
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
         [Output("tracingConfig")]
         public Output<Outputs.ServiceTracingConfig?> TracingConfig { get; private set; } = null!;
 
@@ -121,6 +124,14 @@ namespace Pulumi.AliCloud.FC
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         [Input("tracingConfig")]
         public Input<Inputs.ServiceTracingConfigArgs>? TracingConfig { get; set; }
 
@@ -164,6 +175,14 @@ namespace Pulumi.AliCloud.FC
 
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         [Input("tracingConfig")]
         public Input<Inputs.ServiceTracingConfigGetArgs>? TracingConfig { get; set; }

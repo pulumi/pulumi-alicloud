@@ -103,12 +103,12 @@ public final class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
             return this;
         }
         public GetAnycastEipAddressesAddressAnycastEipBindInfoList build() {
-            final var o = new GetAnycastEipAddressesAddressAnycastEipBindInfoList();
-            o.bindInstanceId = bindInstanceId;
-            o.bindInstanceRegionId = bindInstanceRegionId;
-            o.bindInstanceType = bindInstanceType;
-            o.bindTime = bindTime;
-            return o;
+            final var _resultValue = new GetAnycastEipAddressesAddressAnycastEipBindInfoList();
+            _resultValue.bindInstanceId = bindInstanceId;
+            _resultValue.bindInstanceRegionId = bindInstanceRegionId;
+            _resultValue.bindInstanceType = bindInstanceType;
+            _resultValue.bindTime = bindTime;
+            return _resultValue;
         }
     }
 }

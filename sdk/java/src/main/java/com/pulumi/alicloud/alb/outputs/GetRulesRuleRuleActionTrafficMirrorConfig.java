@@ -70,10 +70,10 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfig {
             return this;
         }
         public GetRulesRuleRuleActionTrafficMirrorConfig build() {
-            final var o = new GetRulesRuleRuleActionTrafficMirrorConfig();
-            o.mirrorGroupConfigs = mirrorGroupConfigs;
-            o.targetType = targetType;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleActionTrafficMirrorConfig();
+            _resultValue.mirrorGroupConfigs = mirrorGroupConfigs;
+            _resultValue.targetType = targetType;
+            return _resultValue;
         }
     }
 }

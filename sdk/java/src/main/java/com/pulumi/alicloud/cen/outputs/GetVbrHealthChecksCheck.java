@@ -180,16 +180,16 @@ public final class GetVbrHealthChecksCheck {
             return this;
         }
         public GetVbrHealthChecksCheck build() {
-            final var o = new GetVbrHealthChecksCheck();
-            o.cenId = cenId;
-            o.healthCheckInterval = healthCheckInterval;
-            o.healthCheckSourceIp = healthCheckSourceIp;
-            o.healthCheckTargetIp = healthCheckTargetIp;
-            o.healthyThreshold = healthyThreshold;
-            o.id = id;
-            o.vbrInstanceId = vbrInstanceId;
-            o.vbrInstanceRegionId = vbrInstanceRegionId;
-            return o;
+            final var _resultValue = new GetVbrHealthChecksCheck();
+            _resultValue.cenId = cenId;
+            _resultValue.healthCheckInterval = healthCheckInterval;
+            _resultValue.healthCheckSourceIp = healthCheckSourceIp;
+            _resultValue.healthCheckTargetIp = healthCheckTargetIp;
+            _resultValue.healthyThreshold = healthyThreshold;
+            _resultValue.id = id;
+            _resultValue.vbrInstanceId = vbrInstanceId;
+            _resultValue.vbrInstanceRegionId = vbrInstanceRegionId;
+            return _resultValue;
         }
     }
 }

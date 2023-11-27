@@ -65,10 +65,10 @@ public final class GetChangeSetsSetParameter {
             return this;
         }
         public GetChangeSetsSetParameter build() {
-            final var o = new GetChangeSetsSetParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new GetChangeSetsSetParameter();
+            _resultValue.parameterKey = parameterKey;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

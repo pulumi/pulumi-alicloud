@@ -99,7 +99,7 @@ export class GroupMetricRule extends pulumi.CustomResource {
     /**
      * The abbreviation of the service name.
      */
-    public readonly category!: pulumi.Output<string>;
+    public readonly category!: pulumi.Output<string | undefined>;
     /**
      * Alarm contact group.
      */
@@ -113,7 +113,7 @@ export class GroupMetricRule extends pulumi.CustomResource {
      */
     public readonly effectiveInterval!: pulumi.Output<string | undefined>;
     /**
-     * The subject of the alert notification email.                                         .
+     * The subject of the alert notification email.
      */
     public readonly emailSubject!: pulumi.Output<string>;
     /**
@@ -155,7 +155,7 @@ export class GroupMetricRule extends pulumi.CustomResource {
     /**
      * The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
      */
-    public readonly silenceTime!: pulumi.Output<number | undefined>;
+    public readonly silenceTime!: pulumi.Output<number>;
     /**
      * The status of Group Metric Rule.
      */
@@ -202,9 +202,6 @@ export class GroupMetricRule extends pulumi.CustomResource {
             resourceInputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as GroupMetricRuleArgs | undefined;
-            if ((!args || args.category === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'category'");
-            }
             if ((!args || args.escalations === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'escalations'");
             }
@@ -268,7 +265,7 @@ export interface GroupMetricRuleState {
      */
     effectiveInterval?: pulumi.Input<string>;
     /**
-     * The subject of the alert notification email.                                         .
+     * The subject of the alert notification email.
      */
     emailSubject?: pulumi.Input<string>;
     /**
@@ -332,7 +329,7 @@ export interface GroupMetricRuleArgs {
     /**
      * The abbreviation of the service name.
      */
-    category: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * Alarm contact group.
      */
@@ -346,7 +343,7 @@ export interface GroupMetricRuleArgs {
      */
     effectiveInterval?: pulumi.Input<string>;
     /**
-     * The subject of the alert notification email.                                         .
+     * The subject of the alert notification email.
      */
     emailSubject?: pulumi.Input<string>;
     /**

@@ -167,16 +167,16 @@ public final class GetClusterCredentialResult {
             return this;
         }
         public GetClusterCredentialResult build() {
-            final var o = new GetClusterCredentialResult();
-            o.certificateAuthority = certificateAuthority;
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.expiration = expiration;
-            o.id = id;
-            o.kubeConfig = kubeConfig;
-            o.outputFile = outputFile;
-            o.temporaryDurationMinutes = temporaryDurationMinutes;
-            return o;
+            final var _resultValue = new GetClusterCredentialResult();
+            _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterName = clusterName;
+            _resultValue.expiration = expiration;
+            _resultValue.id = id;
+            _resultValue.kubeConfig = kubeConfig;
+            _resultValue.outputFile = outputFile;
+            _resultValue.temporaryDurationMinutes = temporaryDurationMinutes;
+            return _resultValue;
         }
     }
 }

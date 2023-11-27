@@ -86,11 +86,11 @@ public final class AclAclEntry {
             return this;
         }
         public AclAclEntry build() {
-            final var o = new AclAclEntry();
-            o.description = description;
-            o.entry = entry;
-            o.status = status;
-            return o;
+            final var _resultValue = new AclAclEntry();
+            _resultValue.description = description;
+            _resultValue.entry = entry;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

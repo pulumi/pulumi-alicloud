@@ -96,11 +96,11 @@ public final class ContainerGroupDnsConfig {
             return searches(List.of(searches));
         }
         public ContainerGroupDnsConfig build() {
-            final var o = new ContainerGroupDnsConfig();
-            o.nameServers = nameServers;
-            o.options = options;
-            o.searches = searches;
-            return o;
+            final var _resultValue = new ContainerGroupDnsConfig();
+            _resultValue.nameServers = nameServers;
+            _resultValue.options = options;
+            _resultValue.searches = searches;
+            return _resultValue;
         }
     }
 }

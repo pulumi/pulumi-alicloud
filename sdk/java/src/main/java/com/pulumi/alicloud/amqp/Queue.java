@@ -105,7 +105,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * * false: The Auto Delete attribute is not configured.
      * 
      */
-    @Export(name="autoDeleteState", type=Boolean.class, parameters={})
+    @Export(name="autoDeleteState", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoDeleteState;
 
     /**
@@ -122,7 +122,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * If the queue is not accessed within a specified period of time, it is automatically deleted.
      * 
      */
-    @Export(name="autoExpireState", type=String.class, parameters={})
+    @Export(name="autoExpireState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoExpireState;
 
     /**
@@ -139,7 +139,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
      * 
      */
-    @Export(name="deadLetterExchange", type=String.class, parameters={})
+    @Export(name="deadLetterExchange", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deadLetterExchange;
 
     /**
@@ -155,7 +155,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * The dead letter routing key.
      * 
      */
-    @Export(name="deadLetterRoutingKey", type=String.class, parameters={})
+    @Export(name="deadLetterRoutingKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deadLetterRoutingKey;
 
     /**
@@ -171,7 +171,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * * false: The queue is not an exclusive queue.
      * 
      */
-    @Export(name="exclusiveState", type=Boolean.class, parameters={})
+    @Export(name="exclusiveState", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> exclusiveState;
 
     /**
@@ -187,7 +187,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -202,7 +202,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
      * 
      */
-    @Export(name="maxLength", type=String.class, parameters={})
+    @Export(name="maxLength", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maxLength;
 
     /**
@@ -218,7 +218,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * Valid values: 0 to 255. Recommended values: 1 to 10
      * 
      */
-    @Export(name="maximumPriority", type=Integer.class, parameters={})
+    @Export(name="maximumPriority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maximumPriority;
 
     /**
@@ -236,7 +236,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
      * 
      */
-    @Export(name="messageTtl", type=String.class, parameters={})
+    @Export(name="messageTtl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> messageTtl;
 
     /**
@@ -254,7 +254,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
      * 
      */
-    @Export(name="queueName", type=String.class, parameters={})
+    @Export(name="queueName", refs={String.class}, tree="[0]")
     private Output<String> queueName;
 
     /**
@@ -269,7 +269,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * The name of the virtual host.
      * 
      */
-    @Export(name="virtualHostName", type=String.class, parameters={})
+    @Export(name="virtualHostName", refs={String.class}, tree="[0]")
     private Output<String> virtualHostName;
 
     /**

@@ -125,13 +125,13 @@ public final class AlertTemplateConfiguration {
             return this;
         }
         public AlertTemplateConfiguration build() {
-            final var o = new AlertTemplateConfiguration();
-            o.annotations = annotations;
-            o.id = id;
-            o.lang = lang;
-            o.tokens = tokens;
-            o.type = type;
-            return o;
+            final var _resultValue = new AlertTemplateConfiguration();
+            _resultValue.annotations = annotations;
+            _resultValue.id = id;
+            _resultValue.lang = lang;
+            _resultValue.tokens = tokens;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

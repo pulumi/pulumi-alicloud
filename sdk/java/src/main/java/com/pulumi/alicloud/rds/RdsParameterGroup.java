@@ -85,7 +85,7 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
      * The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -99,7 +99,7 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
      * The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -113,7 +113,7 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
      * Parameter list. See `param_detail` below.
      * 
      */
-    @Export(name="paramDetails", type=List.class, parameters={RdsParameterGroupParamDetail.class})
+    @Export(name="paramDetails", refs={List.class,RdsParameterGroupParamDetail.class}, tree="[0,1]")
     private Output<List<RdsParameterGroupParamDetail>> paramDetails;
 
     /**
@@ -127,7 +127,7 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
      * The description of the parameter template.
      * 
      */
-    @Export(name="parameterGroupDesc", type=String.class, parameters={})
+    @Export(name="parameterGroupDesc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parameterGroupDesc;
 
     /**
@@ -141,7 +141,7 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
      * The name of the parameter template.
      * 
      */
-    @Export(name="parameterGroupName", type=String.class, parameters={})
+    @Export(name="parameterGroupName", refs={String.class}, tree="[0]")
     private Output<String> parameterGroupName;
 
     /**

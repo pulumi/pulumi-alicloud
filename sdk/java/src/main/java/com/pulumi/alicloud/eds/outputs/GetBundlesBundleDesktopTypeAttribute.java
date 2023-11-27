@@ -104,12 +104,12 @@ public final class GetBundlesBundleDesktopTypeAttribute {
             return this;
         }
         public GetBundlesBundleDesktopTypeAttribute build() {
-            final var o = new GetBundlesBundleDesktopTypeAttribute();
-            o.cpuCount = cpuCount;
-            o.gpuCount = gpuCount;
-            o.gpuSpec = gpuSpec;
-            o.memorySize = memorySize;
-            return o;
+            final var _resultValue = new GetBundlesBundleDesktopTypeAttribute();
+            _resultValue.cpuCount = cpuCount;
+            _resultValue.gpuCount = gpuCount;
+            _resultValue.gpuSpec = gpuSpec;
+            _resultValue.memorySize = memorySize;
+            return _resultValue;
         }
     }
 }

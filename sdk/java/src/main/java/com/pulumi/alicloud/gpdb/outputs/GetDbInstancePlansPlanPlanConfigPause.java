@@ -84,11 +84,11 @@ public final class GetDbInstancePlansPlanPlanConfigPause {
             return this;
         }
         public GetDbInstancePlansPlanPlanConfigPause build() {
-            final var o = new GetDbInstancePlansPlanPlanConfigPause();
-            o.executeTime = executeTime;
-            o.planCronTime = planCronTime;
-            o.planTaskStatus = planTaskStatus;
-            return o;
+            final var _resultValue = new GetDbInstancePlansPlanPlanConfigPause();
+            _resultValue.executeTime = executeTime;
+            _resultValue.planCronTime = planCronTime;
+            _resultValue.planTaskStatus = planTaskStatus;
+            return _resultValue;
         }
     }
 }

@@ -191,18 +191,18 @@ public final class GetClustersResult {
             return this;
         }
         public GetClustersResult build() {
-            final var o = new GetClustersResult();
-            o.clusterAliasName = clusterAliasName;
-            o.clusters = clusters;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.requestPars = requestPars;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetClustersResult();
+            _resultValue.clusterAliasName = clusterAliasName;
+            _resultValue.clusters = clusters;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.requestPars = requestPars;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

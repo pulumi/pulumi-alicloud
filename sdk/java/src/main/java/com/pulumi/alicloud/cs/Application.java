@@ -21,67 +21,67 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:cs/application:Application")
 public class Application extends com.pulumi.resources.CustomResource {
-    @Export(name="blueGreen", type=Boolean.class, parameters={})
+    @Export(name="blueGreen", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blueGreen;
 
     public Output<Optional<Boolean>> blueGreen() {
         return Codegen.optional(this.blueGreen);
     }
-    @Export(name="blueGreenConfirm", type=Boolean.class, parameters={})
+    @Export(name="blueGreenConfirm", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blueGreenConfirm;
 
     public Output<Optional<Boolean>> blueGreenConfirm() {
         return Codegen.optional(this.blueGreenConfirm);
     }
-    @Export(name="clusterName", type=String.class, parameters={})
+    @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     public Output<String> clusterName() {
         return this.clusterName;
     }
-    @Export(name="defaultDomain", type=String.class, parameters={})
+    @Export(name="defaultDomain", refs={String.class}, tree="[0]")
     private Output<String> defaultDomain;
 
     public Output<String> defaultDomain() {
         return this.defaultDomain;
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="environment", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="environment", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> environment;
 
     public Output<Optional<Map<String,Object>>> environment() {
         return Codegen.optional(this.environment);
     }
-    @Export(name="latestImage", type=Boolean.class, parameters={})
+    @Export(name="latestImage", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> latestImage;
 
     public Output<Optional<Boolean>> latestImage() {
         return Codegen.optional(this.latestImage);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="services", type=List.class, parameters={ApplicationService.class})
+    @Export(name="services", refs={List.class,ApplicationService.class}, tree="[0,1]")
     private Output<List<ApplicationService>> services;
 
     public Output<List<ApplicationService>> services() {
         return this.services;
     }
-    @Export(name="template", type=String.class, parameters={})
+    @Export(name="template", refs={String.class}, tree="[0]")
     private Output<String> template;
 
     public Output<String> template() {
         return this.template;
     }
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> version;
 
     public Output<Optional<String>> version() {

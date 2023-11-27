@@ -66,10 +66,10 @@ public final class GetAggregateConfigRulesRuleCompliance {
             return this;
         }
         public GetAggregateConfigRulesRuleCompliance build() {
-            final var o = new GetAggregateConfigRulesRuleCompliance();
-            o.complianceType = complianceType;
-            o.count = count;
-            return o;
+            final var _resultValue = new GetAggregateConfigRulesRuleCompliance();
+            _resultValue.complianceType = complianceType;
+            _resultValue.count = count;
+            return _resultValue;
         }
     }
 }

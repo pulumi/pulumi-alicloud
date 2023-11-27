@@ -142,7 +142,7 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the GA instance with which the endpoint is associated.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -156,7 +156,7 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the Custom Routing Endpoint.
      * 
      */
-    @Export(name="customRoutingEndpointId", type=String.class, parameters={})
+    @Export(name="customRoutingEndpointId", refs={String.class}, tree="[0]")
     private Output<String> customRoutingEndpointId;
 
     /**
@@ -170,7 +170,7 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the endpoint (vSwitch).
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -184,7 +184,7 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the endpoint group in which to create endpoints.
      * 
      */
-    @Export(name="endpointGroupId", type=String.class, parameters={})
+    @Export(name="endpointGroupId", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupId;
 
     /**
@@ -198,7 +198,7 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the listener with which the endpoint is associated.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -212,7 +212,7 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
      * The status of the Custom Routing Endpoint.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -226,7 +226,7 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
      * The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
      * 
      */
-    @Export(name="trafficToEndpointPolicy", type=String.class, parameters={})
+    @Export(name="trafficToEndpointPolicy", refs={String.class}, tree="[0]")
     private Output<String> trafficToEndpointPolicy;
 
     /**
@@ -240,7 +240,7 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
      * The backend service type of the endpoint. Valid values: `PrivateSubNet`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

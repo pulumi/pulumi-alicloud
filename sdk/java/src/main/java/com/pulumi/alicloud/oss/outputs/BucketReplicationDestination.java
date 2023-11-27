@@ -82,11 +82,11 @@ public final class BucketReplicationDestination {
             return this;
         }
         public BucketReplicationDestination build() {
-            final var o = new BucketReplicationDestination();
-            o.bucket = bucket;
-            o.location = location;
-            o.transferType = transferType;
-            return o;
+            final var _resultValue = new BucketReplicationDestination();
+            _resultValue.bucket = bucket;
+            _resultValue.location = location;
+            _resultValue.transferType = transferType;
+            return _resultValue;
         }
     }
 }

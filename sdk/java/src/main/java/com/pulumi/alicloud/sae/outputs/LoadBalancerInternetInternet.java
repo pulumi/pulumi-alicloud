@@ -106,12 +106,12 @@ public final class LoadBalancerInternetInternet {
             return this;
         }
         public LoadBalancerInternetInternet build() {
-            final var o = new LoadBalancerInternetInternet();
-            o.httpsCertId = httpsCertId;
-            o.port = port;
-            o.protocol = protocol;
-            o.targetPort = targetPort;
-            return o;
+            final var _resultValue = new LoadBalancerInternetInternet();
+            _resultValue.httpsCertId = httpsCertId;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.targetPort = targetPort;
+            return _resultValue;
         }
     }
 }

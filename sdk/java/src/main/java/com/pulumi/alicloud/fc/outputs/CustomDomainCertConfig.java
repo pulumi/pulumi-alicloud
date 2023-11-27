@@ -84,11 +84,11 @@ public final class CustomDomainCertConfig {
             return this;
         }
         public CustomDomainCertConfig build() {
-            final var o = new CustomDomainCertConfig();
-            o.certName = certName;
-            o.certificate = certificate;
-            o.privateKey = privateKey;
-            return o;
+            final var _resultValue = new CustomDomainCertConfig();
+            _resultValue.certName = certName;
+            _resultValue.certificate = certificate;
+            _resultValue.privateKey = privateKey;
+            return _resultValue;
         }
     }
 }

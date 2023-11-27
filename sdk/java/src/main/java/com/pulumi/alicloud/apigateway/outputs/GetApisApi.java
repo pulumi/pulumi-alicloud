@@ -141,14 +141,14 @@ public final class GetApisApi {
             return this;
         }
         public GetApisApi build() {
-            final var o = new GetApisApi();
-            o.description = description;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            o.name = name;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new GetApisApi();
+            _resultValue.description = description;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }

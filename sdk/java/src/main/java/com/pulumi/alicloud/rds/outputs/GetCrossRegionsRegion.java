@@ -46,9 +46,9 @@ public final class GetCrossRegionsRegion {
             return this;
         }
         public GetCrossRegionsRegion build() {
-            final var o = new GetCrossRegionsRegion();
-            o.id = id;
-            return o;
+            final var _resultValue = new GetCrossRegionsRegion();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

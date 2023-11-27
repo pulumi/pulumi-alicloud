@@ -95,7 +95,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
      * 
      */
-    @Export(name="alertSetting", type=String.class, parameters={})
+    @Export(name="alertSetting", refs={String.class}, tree="[0]")
     private Output<String> alertSetting;
 
     /**
@@ -109,7 +109,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
      * 
      */
-    @Export(name="ecsInstanceIds", type=List.class, parameters={String.class})
+    @Export(name="ecsInstanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ecsInstanceIds;
 
     /**
@@ -123,7 +123,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The id of the Hana Instance.
      * 
      */
-    @Export(name="hanaInstanceId", type=String.class, parameters={})
+    @Export(name="hanaInstanceId", refs={String.class}, tree="[0]")
     private Output<String> hanaInstanceId;
 
     /**
@@ -137,7 +137,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The name of the SAP HANA instance.
      * 
      */
-    @Export(name="hanaName", type=String.class, parameters={})
+    @Export(name="hanaName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hanaName;
 
     /**
@@ -151,7 +151,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     /**
@@ -165,7 +165,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The instance number of the SAP HANA system.
      * 
      */
-    @Export(name="instanceNumber", type=Integer.class, parameters={})
+    @Export(name="instanceNumber", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instanceNumber;
 
     /**
@@ -179,7 +179,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The password that is used to connect with the SAP HANA database.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -193,7 +193,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -207,7 +207,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The security identifier (SID) of the SAP HANA database.
      * 
      */
-    @Export(name="sid", type=String.class, parameters={})
+    @Export(name="sid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sid;
 
     /**
@@ -221,7 +221,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -235,7 +235,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
      * 
      */
-    @Export(name="useSsl", type=Boolean.class, parameters={})
+    @Export(name="useSsl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useSsl;
 
     /**
@@ -249,7 +249,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The username of the SYSTEMDB database.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userName;
 
     /**
@@ -263,7 +263,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * Specifies whether to verify the SSL certificate of the SAP HANA database.
      * 
      */
-    @Export(name="validateCertificate", type=Boolean.class, parameters={})
+    @Export(name="validateCertificate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> validateCertificate;
 
     /**
@@ -277,7 +277,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * The ID of the backup vault.
      * 
      */
-    @Export(name="vaultId", type=String.class, parameters={})
+    @Export(name="vaultId", refs={String.class}, tree="[0]")
     private Output<String> vaultId;
 
     /**

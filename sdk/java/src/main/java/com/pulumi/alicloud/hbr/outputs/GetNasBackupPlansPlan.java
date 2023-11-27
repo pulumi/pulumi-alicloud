@@ -298,22 +298,22 @@ public final class GetNasBackupPlansPlan {
             return this;
         }
         public GetNasBackupPlansPlan build() {
-            final var o = new GetNasBackupPlansPlan();
-            o.backupType = backupType;
-            o.createTime = createTime;
-            o.createdTime = createdTime;
-            o.disabled = disabled;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.nasBackupPlanId = nasBackupPlanId;
-            o.nasBackupPlanName = nasBackupPlanName;
-            o.options = options;
-            o.paths = paths;
-            o.retention = retention;
-            o.schedule = schedule;
-            o.updatedTime = updatedTime;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetNasBackupPlansPlan();
+            _resultValue.backupType = backupType;
+            _resultValue.createTime = createTime;
+            _resultValue.createdTime = createdTime;
+            _resultValue.disabled = disabled;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.nasBackupPlanId = nasBackupPlanId;
+            _resultValue.nasBackupPlanName = nasBackupPlanName;
+            _resultValue.options = options;
+            _resultValue.paths = paths;
+            _resultValue.retention = retention;
+            _resultValue.schedule = schedule;
+            _resultValue.updatedTime = updatedTime;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

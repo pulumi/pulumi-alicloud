@@ -103,12 +103,12 @@ public final class GetBgpNetworksNetwork {
             return this;
         }
         public GetBgpNetworksNetwork build() {
-            final var o = new GetBgpNetworksNetwork();
-            o.dstCidrBlock = dstCidrBlock;
-            o.id = id;
-            o.routerId = routerId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBgpNetworksNetwork();
+            _resultValue.dstCidrBlock = dstCidrBlock;
+            _resultValue.id = id;
+            _resultValue.routerId = routerId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

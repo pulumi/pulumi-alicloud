@@ -123,15 +123,15 @@ public final class GetHybridMonitorFcTasksResult {
             return tasks(List.of(tasks));
         }
         public GetHybridMonitorFcTasksResult build() {
-            final var o = new GetHybridMonitorFcTasksResult();
-            o.id = id;
-            o.ids = ids;
-            o.namespace = namespace;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.tasks = tasks;
-            return o;
+            final var _resultValue = new GetHybridMonitorFcTasksResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.namespace = namespace;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.tasks = tasks;
+            return _resultValue;
         }
     }
 }

@@ -13,38 +13,93 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetControlPoliciesResult {
+    /**
+     * @return The action that Cloud Firewall performs on the traffic.
+     * 
+     */
     private @Nullable String aclAction;
+    /**
+     * @return The unique ID of the access control policy.
+     * 
+     */
     private @Nullable String aclUuid;
+    /**
+     * @return The description of the access control policy.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return The destination address in the access control policy.
+     * 
+     */
     private @Nullable String destination;
+    /**
+     * @return The direction of the traffic to which the access control policy applies.
+     * 
+     */
     private String direction;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Control Policy IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String ipVersion;
     private @Nullable String lang;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Cloud Firewall Control Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetControlPoliciesPolicy> policies;
+    /**
+     * @return The type of the protocol in the access control policy.
+     * 
+     */
     private @Nullable String proto;
+    /**
+     * @return The source address in the access control policy.
+     * 
+     */
     private @Nullable String source;
-    private @Nullable String sourceIp;
 
     private GetControlPoliciesResult() {}
+    /**
+     * @return The action that Cloud Firewall performs on the traffic.
+     * 
+     */
     public Optional<String> aclAction() {
         return Optional.ofNullable(this.aclAction);
     }
+    /**
+     * @return The unique ID of the access control policy.
+     * 
+     */
     public Optional<String> aclUuid() {
         return Optional.ofNullable(this.aclUuid);
     }
+    /**
+     * @return The description of the access control policy.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The destination address in the access control policy.
+     * 
+     */
     public Optional<String> destination() {
         return Optional.ofNullable(this.destination);
     }
+    /**
+     * @return The direction of the traffic to which the access control policy applies.
+     * 
+     */
     public String direction() {
         return this.direction;
     }
@@ -55,6 +110,10 @@ public final class GetControlPoliciesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Control Policy IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
@@ -67,17 +126,26 @@ public final class GetControlPoliciesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Cloud Firewall Control Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetControlPoliciesPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return The type of the protocol in the access control policy.
+     * 
+     */
     public Optional<String> proto() {
         return Optional.ofNullable(this.proto);
     }
+    /**
+     * @return The source address in the access control policy.
+     * 
+     */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
-    }
-    public Optional<String> sourceIp() {
-        return Optional.ofNullable(this.sourceIp);
     }
 
     public static Builder builder() {
@@ -102,7 +170,6 @@ public final class GetControlPoliciesResult {
         private List<GetControlPoliciesPolicy> policies;
         private @Nullable String proto;
         private @Nullable String source;
-        private @Nullable String sourceIp;
         public Builder() {}
         public Builder(GetControlPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -119,7 +186,6 @@ public final class GetControlPoliciesResult {
     	      this.policies = defaults.policies;
     	      this.proto = defaults.proto;
     	      this.source = defaults.source;
-    	      this.sourceIp = defaults.sourceIp;
         }
 
         @CustomType.Setter
@@ -193,28 +259,22 @@ public final class GetControlPoliciesResult {
             this.source = source;
             return this;
         }
-        @CustomType.Setter
-        public Builder sourceIp(@Nullable String sourceIp) {
-            this.sourceIp = sourceIp;
-            return this;
-        }
         public GetControlPoliciesResult build() {
-            final var o = new GetControlPoliciesResult();
-            o.aclAction = aclAction;
-            o.aclUuid = aclUuid;
-            o.description = description;
-            o.destination = destination;
-            o.direction = direction;
-            o.id = id;
-            o.ids = ids;
-            o.ipVersion = ipVersion;
-            o.lang = lang;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.proto = proto;
-            o.source = source;
-            o.sourceIp = sourceIp;
-            return o;
+            final var _resultValue = new GetControlPoliciesResult();
+            _resultValue.aclAction = aclAction;
+            _resultValue.aclUuid = aclUuid;
+            _resultValue.description = description;
+            _resultValue.destination = destination;
+            _resultValue.direction = direction;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.lang = lang;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            _resultValue.proto = proto;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

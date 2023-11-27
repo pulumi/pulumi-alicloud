@@ -75,7 +75,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * The CidrBlock of the CCN instance. Defaults to null.
      * 
      */
-    @Export(name="cidrBlock", type=String.class, parameters={})
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cidrBlock;
 
     /**
@@ -89,7 +89,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -103,7 +103,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
      * 
      */
-    @Export(name="isDefault", type=Boolean.class, parameters={})
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isDefault;
 
     /**
@@ -117,7 +117,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

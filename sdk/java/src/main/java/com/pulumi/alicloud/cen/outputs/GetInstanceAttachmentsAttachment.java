@@ -180,16 +180,16 @@ public final class GetInstanceAttachmentsAttachment {
             return this;
         }
         public GetInstanceAttachmentsAttachment build() {
-            final var o = new GetInstanceAttachmentsAttachment();
-            o.childInstanceAttachTime = childInstanceAttachTime;
-            o.childInstanceId = childInstanceId;
-            o.childInstanceOwnerId = childInstanceOwnerId;
-            o.childInstanceRegionId = childInstanceRegionId;
-            o.childInstanceType = childInstanceType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstanceAttachmentsAttachment();
+            _resultValue.childInstanceAttachTime = childInstanceAttachTime;
+            _resultValue.childInstanceId = childInstanceId;
+            _resultValue.childInstanceOwnerId = childInstanceOwnerId;
+            _resultValue.childInstanceRegionId = childInstanceRegionId;
+            _resultValue.childInstanceType = childInstanceType;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

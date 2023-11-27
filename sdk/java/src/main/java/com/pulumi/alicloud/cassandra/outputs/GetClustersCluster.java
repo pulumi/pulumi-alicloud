@@ -251,20 +251,20 @@ public final class GetClustersCluster {
             return this;
         }
         public GetClustersCluster build() {
-            final var o = new GetClustersCluster();
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.createdTime = createdTime;
-            o.dataCenterCount = dataCenterCount;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.lockMode = lockMode;
-            o.majorVersion = majorVersion;
-            o.minorVersion = minorVersion;
-            o.payType = payType;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetClustersCluster();
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterName = clusterName;
+            _resultValue.createdTime = createdTime;
+            _resultValue.dataCenterCount = dataCenterCount;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.lockMode = lockMode;
+            _resultValue.majorVersion = majorVersion;
+            _resultValue.minorVersion = minorVersion;
+            _resultValue.payType = payType;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

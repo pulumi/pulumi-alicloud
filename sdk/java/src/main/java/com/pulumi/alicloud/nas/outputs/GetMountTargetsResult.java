@@ -265,20 +265,20 @@ public final class GetMountTargetsResult {
             return this;
         }
         public GetMountTargetsResult build() {
-            final var o = new GetMountTargetsResult();
-            o.accessGroupName = accessGroupName;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.ids = ids;
-            o.mountTargetDomain = mountTargetDomain;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.targets = targets;
-            o.type = type;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetMountTargetsResult();
+            _resultValue.accessGroupName = accessGroupName;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.mountTargetDomain = mountTargetDomain;
+            _resultValue.networkType = networkType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.targets = targets;
+            _resultValue.type = type;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

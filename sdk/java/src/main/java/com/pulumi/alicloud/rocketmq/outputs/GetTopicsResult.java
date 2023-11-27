@@ -174,17 +174,17 @@ public final class GetTopicsResult {
             return topics(List.of(topics));
         }
         public GetTopicsResult build() {
-            final var o = new GetTopicsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.tags = tags;
-            o.topics = topics;
-            return o;
+            final var _resultValue = new GetTopicsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.tags = tags;
+            _resultValue.topics = topics;
+            return _resultValue;
         }
     }
 }

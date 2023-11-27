@@ -143,14 +143,14 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
             return this;
         }
         public GetEndpointGroupsGroupEndpointConfiguration build() {
-            final var o = new GetEndpointGroupsGroupEndpointConfiguration();
-            o.enableClientipPreservation = enableClientipPreservation;
-            o.endpoint = endpoint;
-            o.probePort = probePort;
-            o.probeProtocol = probeProtocol;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetEndpointGroupsGroupEndpointConfiguration();
+            _resultValue.enableClientipPreservation = enableClientipPreservation;
+            _resultValue.endpoint = endpoint;
+            _resultValue.probePort = probePort;
+            _resultValue.probeProtocol = probeProtocol;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

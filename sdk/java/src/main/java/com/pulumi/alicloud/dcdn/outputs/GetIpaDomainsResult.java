@@ -137,16 +137,16 @@ public final class GetIpaDomainsResult {
             return this;
         }
         public GetIpaDomainsResult build() {
-            final var o = new GetIpaDomainsResult();
-            o.domainName = domainName;
-            o.domains = domains;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetIpaDomainsResult();
+            _resultValue.domainName = domainName;
+            _resultValue.domains = domains;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

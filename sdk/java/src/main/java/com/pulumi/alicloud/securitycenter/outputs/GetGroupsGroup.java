@@ -104,12 +104,12 @@ public final class GetGroupsGroup {
             return this;
         }
         public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.groupFlag = groupFlag;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetGroupsGroup();
+            _resultValue.groupFlag = groupFlag;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

@@ -208,17 +208,17 @@ public final class GetVpcFirewallsFirewall {
             return this;
         }
         public GetVpcFirewallsFirewall build() {
-            final var o = new GetVpcFirewallsFirewall();
-            o.bandwidth = bandwidth;
-            o.connectType = connectType;
-            o.id = id;
-            o.localVpcs = localVpcs;
-            o.peerVpcs = peerVpcs;
-            o.regionStatus = regionStatus;
-            o.status = status;
-            o.vpcFirewallId = vpcFirewallId;
-            o.vpcFirewallName = vpcFirewallName;
-            return o;
+            final var _resultValue = new GetVpcFirewallsFirewall();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.connectType = connectType;
+            _resultValue.id = id;
+            _resultValue.localVpcs = localVpcs;
+            _resultValue.peerVpcs = peerVpcs;
+            _resultValue.regionStatus = regionStatus;
+            _resultValue.status = status;
+            _resultValue.vpcFirewallId = vpcFirewallId;
+            _resultValue.vpcFirewallName = vpcFirewallName;
+            return _resultValue;
         }
     }
 }

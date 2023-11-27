@@ -71,7 +71,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
      * 
      */
-    @Export(name="autoCreate", type=Boolean.class, parameters={})
+    @Export(name="autoCreate", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoCreate;
 
     /**
@@ -85,7 +85,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
      * 
      */
-    @Export(name="defaultVisibility", type=String.class, parameters={})
+    @Export(name="defaultVisibility", refs={String.class}, tree="[0]")
     private Output<String> defaultVisibility;
 
     /**
@@ -99,7 +99,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Name of Container Registry namespace.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

@@ -24,16 +24,13 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf-example";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultZones = alicloud.gpdb.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
- * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
+ * }));
  * const defaultInstance = new alicloud.gpdb.Instance("defaultInstance", {
  *     dbInstanceCategory: "HighAvailability",
  *     dbInstanceClass: "gpdb.group.segsdx1",
@@ -44,14 +41,12 @@ import * as utilities from "../utilities";
  *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
  *     instanceNetworkType: "VPC",
  *     instanceSpec: "2C16G",
- *     masterNodeNum: 1,
  *     paymentType: "PayAsYouGo",
- *     privateIpAddress: "1.1.1.1",
  *     segStorageType: "cloud_essd",
  *     segNodeNum: 4,
  *     storageSize: 50,
- *     vpcId: defaultNetwork.id,
- *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     ipWhitelists: [{
  *         securityIpList: "127.0.0.1",
  *     }],
@@ -180,7 +175,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly maintainStartTime!: pulumi.Output<string>;
     /**
-     * The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+     * The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+     */
+    public readonly masterCu!: pulumi.Output<number>;
+    /**
+     * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+     *
+     * @deprecated Field `master_node_num` has been deprecated from provider version 1.213.0.
      */
     public readonly masterNodeNum!: pulumi.Output<number | undefined>;
     /**
@@ -196,19 +197,21 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
-     * The private ip address.
+     * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+     *
+     * @deprecated Field `private_ip_address` has been deprecated from provider version 1.213.0.
      */
     public readonly privateIpAddress!: pulumi.Output<string | undefined>;
     /**
      * The ID of the enterprise resource group to which the instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      *
      * @deprecated Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
      */
-    public readonly securityIpLists!: pulumi.Output<string[]>;
+    public readonly securityIpLists!: pulumi.Output<string[] | undefined>;
     /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
@@ -288,6 +291,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipWhitelists"] = state ? state.ipWhitelists : undefined;
             resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
             resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
+            resourceInputs["masterCu"] = state ? state.masterCu : undefined;
             resourceInputs["masterNodeNum"] = state ? state.masterNodeNum : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
@@ -337,6 +341,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipWhitelists"] = args ? args.ipWhitelists : undefined;
             resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
             resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
+            resourceInputs["masterCu"] = args ? args.masterCu : undefined;
             resourceInputs["masterNodeNum"] = args ? args.masterNodeNum : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
@@ -452,7 +457,13 @@ export interface InstanceState {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+     * The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+     */
+    masterCu?: pulumi.Input<number>;
+    /**
+     * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+     *
+     * @deprecated Field `master_node_num` has been deprecated from provider version 1.213.0.
      */
     masterNodeNum?: pulumi.Input<number>;
     /**
@@ -468,7 +479,9 @@ export interface InstanceState {
      */
     port?: pulumi.Input<string>;
     /**
-     * The private ip address.
+     * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+     *
+     * @deprecated Field `private_ip_address` has been deprecated from provider version 1.213.0.
      */
     privateIpAddress?: pulumi.Input<string>;
     /**
@@ -616,7 +629,13 @@ export interface InstanceArgs {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+     * The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+     */
+    masterCu?: pulumi.Input<number>;
+    /**
+     * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+     *
+     * @deprecated Field `master_node_num` has been deprecated from provider version 1.213.0.
      */
     masterNodeNum?: pulumi.Input<number>;
     /**
@@ -628,7 +647,9 @@ export interface InstanceArgs {
      */
     period?: pulumi.Input<string>;
     /**
-     * The private ip address.
+     * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+     *
+     * @deprecated Field `private_ip_address` has been deprecated from provider version 1.213.0.
      */
     privateIpAddress?: pulumi.Input<string>;
     /**

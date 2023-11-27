@@ -241,19 +241,19 @@ public final class GetGatewaysGateway {
             return this;
         }
         public GetGatewaysGateway build() {
-            final var o = new GetGatewaysGateway();
-            o.backupVswitchId = backupVswitchId;
-            o.gatewayName = gatewayName;
-            o.gatewayUniqueId = gatewayUniqueId;
-            o.id = id;
-            o.paymentType = paymentType;
-            o.replica = replica;
-            o.slbLists = slbLists;
-            o.spec = spec;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetGatewaysGateway();
+            _resultValue.backupVswitchId = backupVswitchId;
+            _resultValue.gatewayName = gatewayName;
+            _resultValue.gatewayUniqueId = gatewayUniqueId;
+            _resultValue.id = id;
+            _resultValue.paymentType = paymentType;
+            _resultValue.replica = replica;
+            _resultValue.slbLists = slbLists;
+            _resultValue.spec = spec;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

@@ -218,18 +218,18 @@ public final class GetDesktopTypesType {
             return this;
         }
         public GetDesktopTypesType build() {
-            final var o = new GetDesktopTypesType();
-            o.cpuCount = cpuCount;
-            o.dataDiskSize = dataDiskSize;
-            o.desktopTypeId = desktopTypeId;
-            o.gpuCount = gpuCount;
-            o.gpuSpec = gpuSpec;
-            o.id = id;
-            o.instanceTypeFamily = instanceTypeFamily;
-            o.memorySize = memorySize;
-            o.status = status;
-            o.systemDiskSize = systemDiskSize;
-            return o;
+            final var _resultValue = new GetDesktopTypesType();
+            _resultValue.cpuCount = cpuCount;
+            _resultValue.dataDiskSize = dataDiskSize;
+            _resultValue.desktopTypeId = desktopTypeId;
+            _resultValue.gpuCount = gpuCount;
+            _resultValue.gpuSpec = gpuSpec;
+            _resultValue.id = id;
+            _resultValue.instanceTypeFamily = instanceTypeFamily;
+            _resultValue.memorySize = memorySize;
+            _resultValue.status = status;
+            _resultValue.systemDiskSize = systemDiskSize;
+            return _resultValue;
         }
     }
 }

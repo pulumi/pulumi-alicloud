@@ -493,34 +493,34 @@ public final class GetEcsSnapshotsSnapshot {
             return this;
         }
         public GetEcsSnapshotsSnapshot build() {
-            final var o = new GetEcsSnapshotsSnapshot();
-            o.category = category;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.diskId = diskId;
-            o.encrypted = encrypted;
-            o.id = id;
-            o.instantAccess = instantAccess;
-            o.instantAccessRetentionDays = instantAccessRetentionDays;
-            o.name = name;
-            o.productCode = productCode;
-            o.progress = progress;
-            o.remainTime = remainTime;
-            o.resourceGroupId = resourceGroupId;
-            o.retentionDays = retentionDays;
-            o.snapshotId = snapshotId;
-            o.snapshotName = snapshotName;
-            o.snapshotSn = snapshotSn;
-            o.snapshotType = snapshotType;
-            o.sourceDiskId = sourceDiskId;
-            o.sourceDiskSize = sourceDiskSize;
-            o.sourceDiskType = sourceDiskType;
-            o.sourceStorageType = sourceStorageType;
-            o.status = status;
-            o.tags = tags;
-            o.type = type;
-            o.usage = usage;
-            return o;
+            final var _resultValue = new GetEcsSnapshotsSnapshot();
+            _resultValue.category = category;
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.diskId = diskId;
+            _resultValue.encrypted = encrypted;
+            _resultValue.id = id;
+            _resultValue.instantAccess = instantAccess;
+            _resultValue.instantAccessRetentionDays = instantAccessRetentionDays;
+            _resultValue.name = name;
+            _resultValue.productCode = productCode;
+            _resultValue.progress = progress;
+            _resultValue.remainTime = remainTime;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.retentionDays = retentionDays;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.snapshotName = snapshotName;
+            _resultValue.snapshotSn = snapshotSn;
+            _resultValue.snapshotType = snapshotType;
+            _resultValue.sourceDiskId = sourceDiskId;
+            _resultValue.sourceDiskSize = sourceDiskSize;
+            _resultValue.sourceDiskType = sourceDiskType;
+            _resultValue.sourceStorageType = sourceStorageType;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            _resultValue.usage = usage;
+            return _resultValue;
         }
     }
 }

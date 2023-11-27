@@ -107,12 +107,12 @@ public final class ScalingConfigurationInstancePatternInfo {
             return this;
         }
         public ScalingConfigurationInstancePatternInfo build() {
-            final var o = new ScalingConfigurationInstancePatternInfo();
-            o.cores = cores;
-            o.instanceFamilyLevel = instanceFamilyLevel;
-            o.maxPrice = maxPrice;
-            o.memory = memory;
-            return o;
+            final var _resultValue = new ScalingConfigurationInstancePatternInfo();
+            _resultValue.cores = cores;
+            _resultValue.instanceFamilyLevel = instanceFamilyLevel;
+            _resultValue.maxPrice = maxPrice;
+            _resultValue.memory = memory;
+            return _resultValue;
         }
     }
 }

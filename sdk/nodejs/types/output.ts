@@ -177,6 +177,24 @@ export interface GetZonesZone {
     slbSlaveZoneIds: string[];
 }
 
+export namespace ackone {
+    export interface ClusterNetwork {
+        /**
+         * Security group to which the cluster belongs.
+         */
+        securityGroupIds: string[];
+        /**
+         * VpcId to which the cluster belongs.
+         */
+        vpcId: string;
+        /**
+         * Switch to which the cluster belongs.
+         */
+        vswitches: string[];
+    }
+
+}
+
 export namespace actiontrail {
     export interface GetConsumerGroupsGroup {
         /**
@@ -7902,9 +7920,12 @@ export namespace cloudfirewall {
          * The unique ID of the access control policy.
          */
         aclUuid: string;
+        /**
+         * The application ID in the access control policy.
+         */
         applicationId: string;
         /**
-         * The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+         * The type of the application that the access control policy supports.
          */
         applicationName: string;
         /**
@@ -7912,56 +7933,83 @@ export namespace cloudfirewall {
          */
         description: string;
         /**
-         * The destination port defined in the access control policy.
+         * The destination port in the access control policy.
          */
         destPort: string;
         /**
-         * The destination port address book defined in the access control policy.
+         * The name of the destination port address book in the access control policy.
          */
         destPortGroup: string;
+        /**
+         * The ports in the destination port address book.
+         */
         destPortGroupPorts: string[];
         /**
-         * The destination port type defined in the access control policy. Valid values: `group`, `port`.
+         * The type of the destination port in the access control policy.
          */
         destPortType: string;
         /**
          * The destination address defined in the access control policy.
          */
         destination: string;
+        /**
+         * The CIDR blocks in the destination address book.
+         */
         destinationGroupCidrs: string[];
+        /**
+         * The type of the destination address book in the access control policy.
+         */
         destinationGroupType: string;
         /**
-         * The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+         * The type of the destination address in the access control policy.
          */
         destinationType: string;
         /**
-         * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+         * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
          */
         direction: string;
+        /**
+         * The DNS resolution result.
+         */
         dnsResult: string;
+        /**
+         * The timestamp of the DNS resolution result.
+         */
         dnsResultTime: string;
+        /**
+         * The number of hits for the access control policy.
+         */
         hitTimes: string;
         /**
-         * The ID of the Control Policy.
+         * The ID of the Control Policy. It formats as `<acl_uuid>:<direction>`.
          */
         id: string;
+        /**
+         * The priority of the access control policy.
+         */
         order: number;
         /**
-         * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+         * The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
          */
         proto: string;
         /**
-         * Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+         * Indicates whether the access control policy is enabled.
          */
         release: boolean;
         /**
-         * The source address defined in the access control policy.
+         * The source address in the access control policy.
          */
         source: string;
+        /**
+         * The CIDR blocks in the source address book.
+         */
         sourceGroupCidrs: string[];
+        /**
+         * The type of the source address book in the access control policy.
+         */
         sourceGroupType: string;
         /**
-         * The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+         * The type of the source address in the access control policy.
          */
         sourceType: string;
     }
@@ -8371,6 +8419,82 @@ export namespace cloudfirewall {
          * The ID of the next-hop instance in the peer VPC.
          */
         peerNextHopInstanceId: string;
+    }
+
+}
+
+export namespace cloudmonitor {
+    export interface ServiceGroupMonitoringAgentProcessAlertConfig {
+        /**
+         * The operator that is used to compare the metric value with the threshold. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         */
+        comparisonOperator: string;
+        /**
+         * The time period during which the alert rule is effective.
+         */
+        effectiveInterval?: string;
+        /**
+         * The alert level. Valid values: `critical`, `warn`, `info`.
+         */
+        escalationsLevel: string;
+        /**
+         * The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds.
+         */
+        silenceTime?: number;
+        /**
+         * The statistical method for alerts. Valid values: `Average`.
+         */
+        statistics: string;
+        /**
+         * The alert triggers. See `targetList` below.
+         */
+        targetLists?: outputs.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfigTargetList[];
+        /**
+         * The alert threshold.
+         */
+        threshold: string;
+        /**
+         * The number of times for which the threshold can be consecutively exceeded.
+         */
+        times: string;
+        /**
+         * The callback URL.
+         */
+        webhook?: string;
+    }
+
+    export interface ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the resource.
+         */
+        arn?: string;
+        /**
+         * The parameters of the alert callback. Specify the parameters in the JSON format.
+         */
+        jsonParams?: string;
+        /**
+         * The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
+         */
+        level?: string;
+        /**
+         * The ID of the resource for which alerts are triggered.
+         */
+        targetListId?: string;
+    }
+
+    export interface ServiceGroupMonitoringAgentProcessMatchExpress {
+        /**
+         * The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
+         */
+        function: string;
+        /**
+         * The criteria based on which the instances are matched.
+         */
+        name: string;
+        /**
+         * The keyword used to match the instance name.
+         */
+        value: string;
     }
 
 }
@@ -10634,6 +10758,7 @@ export namespace cms {
     export interface GroupMetricRuleTarget {
         /**
          * The Alibaba Cloud Resource Name (ARN) of the resource.
+         * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          */
         arn?: string;
         /**
@@ -10642,8 +10767,6 @@ export namespace cms {
         id?: string;
         /**
          * The parameters of the alert callback. The parameters are in the JSON format.
-         *
-         * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          */
         jsonParams?: string;
         /**
@@ -12497,6 +12620,10 @@ export namespace cs {
          * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: string;
+        /**
+         * The version of the component.
+         */
+        version?: string;
     }
 
     export interface KubernetesAutoscalerNodepool {
@@ -12550,15 +12677,15 @@ export namespace cs {
 
     export interface KubernetesMasterNode {
         /**
-         * The id of a node.
+         * ID of the node.
          */
         id: string;
         /**
-         * The name of a node.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name: string;
         /**
-         * The private ip of a node.
+         * The private IP address of node.
          */
         privateIp: string;
     }
@@ -12601,75 +12728,6 @@ export namespace cs {
         version?: string;
     }
 
-    export interface KubernetesTaint {
-        /**
-         * The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
-         */
-        effect?: string;
-        /**
-         * The key of a taint.
-         */
-        key?: string;
-        /**
-         * The key of a taint.
-         */
-        value?: string;
-    }
-
-    export interface KubernetesWorkerDataDisk {
-        /**
-         * Worker node data disk auto snapshot policy.
-         */
-        autoSnapshotPolicyId?: string;
-        /**
-         * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-         */
-        category?: string;
-        /**
-         * The device of the data disks.
-         */
-        device?: string;
-        /**
-         * Specifies whether to encrypt data disks. Valid values: true and false.
-         */
-        encrypted?: string;
-        /**
-         * The id of the kms key.
-         */
-        kmsKeyId?: string;
-        /**
-         * The name of the data disks.
-         */
-        name?: string;
-        /**
-         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-         */
-        performanceLevel?: string;
-        /**
-         * The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-         */
-        size?: string;
-        /**
-         * The id of snapshot.
-         */
-        snapshotId?: string;
-    }
-
-    export interface KubernetesWorkerNode {
-        /**
-         * ID of the node.
-         */
-        id: string;
-        /**
-         * Node name.
-         */
-        name: string;
-        /**
-         * The private IP address of node.
-         */
-        privateIp: string;
-    }
-
     export interface ManagedKubernetesAddon {
         /**
          * If this parameter is left empty, no configurations are required.
@@ -12678,7 +12736,7 @@ export namespace cs {
         /**
          * It specifies whether to disable automatic installation. 
          *
-         * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+         * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
          *
          * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
          *
@@ -12696,6 +12754,10 @@ export namespace cs {
          * This parameter specifies the name of the component.
          */
         name?: string;
+        /**
+         * It specifies the version of the component.
+         */
+        version?: string;
     }
 
     export interface ManagedKubernetesCertificateAuthority {
@@ -12773,106 +12835,6 @@ export namespace cs {
          * The issuer URL of RRSA OIDC Token.
          */
         rrsaOidcIssuerUrl: string;
-    }
-
-    export interface ManagedKubernetesRuntime {
-        /**
-         * This parameter specifies the name of the component.
-         */
-        name?: string;
-        /**
-         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-         */
-        version?: string;
-    }
-
-    export interface ManagedKubernetesTaint {
-        /**
-         * The taint effect.
-         *
-         * The following example is the definition of taints block:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * import * as alicloud from "@pulumi/alicloud";
-         *
-         * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {taints: [
-         *     {
-         *         effect: "NoSchedule",
-         *         key: "key-a",
-         *         value: "value-a",
-         *     },
-         *     {
-         *         effect: "NoSchedule",
-         *         key: "key-b",
-         *         value: "value-b",
-         *     },
-         * ]});
-         * ```
-         */
-        effect?: string;
-        /**
-         * The taint key.
-         */
-        key?: string;
-        /**
-         * The taint value.
-         */
-        value?: string;
-    }
-
-    export interface ManagedKubernetesWorkerDataDisk {
-        /**
-         * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
-         */
-        autoSnapshotPolicyId?: string;
-        /**
-         * (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-         */
-        category?: string;
-        /**
-         * The mount point of data disk N.
-         */
-        device?: string;
-        /**
-         * (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-         */
-        encrypted?: string;
-        /**
-         * The ID of the Key Management Service (KMS) key to use for data disk N.
-         */
-        kmsKeyId?: string;
-        /**
-         * The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
-         */
-        name?: string;
-        /**
-         * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-         */
-        performanceLevel?: string;
-        /**
-         * (Optional)The size of a data disk, at least 40. Unit: GiB.
-         */
-        size?: string;
-        /**
-         * The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
-         */
-        snapshotId?: string;
-    }
-
-    export interface ManagedKubernetesWorkerNode {
-        /**
-         * (Deprecated from version 1.177.0) ID of the node.
-         */
-        id: string;
-        /**
-         * This parameter specifies the name of the component.
-         */
-        name: string;
-        /**
-         * (Deprecated from version 1.177.0) The private IP address of node.
-         */
-        privateIp: string;
     }
 
     export interface NodePoolDataDisk {
@@ -13304,6 +13266,8 @@ export namespace databasefilesystem {
     export interface InstanceEcsList {
         /**
          * The ID of the ECS instance.
+         *
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          */
         ecsId?: string;
     }
@@ -14762,7 +14726,7 @@ export namespace ddos {
          */
         normalBandwidth: number;
         /**
-         * A region of instance.
+         * The instance's region.
          */
         region: string;
         /**
@@ -21930,6 +21894,13 @@ export namespace ecs {
         startTime?: string;
     }
 
+    export interface InstanceNetworkInterfaces {
+        /**
+         * The ID of the secondary ENI.
+         */
+        networkInterfaceId: string;
+    }
+
     export interface LaunchTemplateDataDisk {
         /**
          * The category of the disk:
@@ -22078,7 +22049,7 @@ export namespace edas {
          */
         clusterId: string;
         /**
-         * The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+         * The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
          */
         clusterType: number;
         /**
@@ -22097,7 +22068,7 @@ export namespace edas {
          */
         clusterName: string;
         /**
-         * The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+         * The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
          */
         clusterType: number;
         /**
@@ -28460,6 +28431,21 @@ export namespace ga {
         status: string;
     }
 
+    export interface GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock {
+        /**
+         * The region ID of the endpoint group.
+         */
+        endpointGroupRegion: string;
+        /**
+         * The CIDR blocks.
+         */
+        ipAddressCidrBlocks: string[];
+        /**
+         * The status of the list of endpoint group ip address cidr blocks.
+         */
+        status: string;
+    }
+
     export interface GetEndpointGroupsGroup {
         /**
          * The description of the endpoint group.
@@ -30783,6 +30769,40 @@ export namespace hbr {
          * Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
          */
         timeoutInSeconds?: number;
+    }
+
+}
+
+export namespace hologram {
+    export interface InstanceEndpoint {
+        /**
+         * Some old instances have both AnyTunnel and SingleTunnel enabled. When switching from AnyTunnel to SingleTunnel, the endpoints of both are retained. Therefore, one more field is required to store the Endpoint.
+         */
+        alternativeEndpoints: string;
+        /**
+         * Whether to turn on the network.
+         */
+        enabled: boolean;
+        /**
+         * Domain name.
+         */
+        endpoint: string;
+        /**
+         * The network type.
+         */
+        type: string;
+        /**
+         * VPC primary key.
+         */
+        vpcId: string;
+        /**
+         * The vpc instance ID.
+         */
+        vpcInstanceId: string;
+        /**
+         * The ID of the virtual switch.
+         */
+        vswitchId: string;
     }
 
 }
@@ -33156,11 +33176,11 @@ export namespace mongodb {
          */
         connectionPort: string;
         /**
-         * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+         * The network type of the instance. Valid values:`Classic`, `VPC`.
          */
         networkType: string;
         /**
-         * The role of the node. Valid values: `Primary`,`Secondary`.
+         * The role of the node.
          */
         replicaSetRole: string;
         /**
@@ -33168,7 +33188,7 @@ export namespace mongodb {
          */
         vpcCloudInstanceId: string;
         /**
-         * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+         * The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
          */
         vpcId: string;
         /**
@@ -39437,6 +39457,17 @@ export namespace resourcemanager {
 }
 
 export namespace rocketmq {
+    export interface ConsumerGroupConsumeRetryPolicy {
+        /**
+         * Maximum number of retries.
+         */
+        maxRetryTimes?: number;
+        /**
+         * Consume retry policy.
+         */
+        retryPolicy?: string;
+    }
+
     export interface GetGroupsGroup {
         /**
          * The name of the group.
@@ -39580,6 +39611,108 @@ export namespace rocketmq {
          * The name of the topic.
          */
         topicName: string;
+    }
+
+    export interface RocketMQInstanceNetworkInfo {
+        /**
+         * Access point list.
+         */
+        endpoints: outputs.rocketmq.RocketMQInstanceNetworkInfoEndpoint[];
+        /**
+         * instance internet info. See `internetInfo` below.
+         */
+        internetInfo: outputs.rocketmq.RocketMQInstanceNetworkInfoInternetInfo;
+        /**
+         * Proprietary network information. See `vpcInfo` below.
+         */
+        vpcInfo: outputs.rocketmq.RocketMQInstanceNetworkInfoVpcInfo;
+    }
+
+    export interface RocketMQInstanceNetworkInfoEndpoint {
+        /**
+         * Access point type.
+         */
+        endpointType: string;
+        /**
+         * Access point address.
+         */
+        endpointUrl: string;
+        /**
+         * White list of access addresses.
+         */
+        ipWhiteLists: string[];
+    }
+
+    export interface RocketMQInstanceNetworkInfoInternetInfo {
+        /**
+         * Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+         */
+        flowOutBandwidth?: number;
+        /**
+         * Public network billing type. The parameter values are as follows:
+         * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+         * - uninvolved: Not involved. Set this value when disabling public network access.
+         */
+        flowOutType: string;
+        /**
+         * Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+         * - enable: Enable public network access
+         * - disable: Disable public network access
+         */
+        internetSpec: string;
+        /**
+         * internet ip whitelist.
+         */
+        ipWhitelists?: string[];
+    }
+
+    export interface RocketMQInstanceNetworkInfoVpcInfo {
+        /**
+         * Proprietary Network.
+         */
+        vpcId: string;
+        /**
+         * VPC network switch.
+         */
+        vswitchId: string;
+    }
+
+    export interface RocketMQInstanceProductInfo {
+        /**
+         * is open auto scaling.
+         */
+        autoScaling?: boolean;
+        /**
+         * Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+         */
+        messageRetentionTime?: number;
+        /**
+         * Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
+         */
+        msgProcessSpec: string;
+        /**
+         * message send receive ratio.Value range: [0.2, 0.5].
+         */
+        sendReceiveRatio?: number;
+        /**
+         * is support auto scaling.
+         */
+        supportAutoScaling: boolean;
+    }
+
+    export interface RocketMQInstanceSoftware {
+        /**
+         * Upgrade time period.
+         */
+        maintainTime: string;
+        /**
+         * Software version.
+         */
+        softwareVersion: string;
+        /**
+         * Upgrade method.
+         */
+        upgradeMethod: string;
     }
 
 }
@@ -42411,6 +42544,10 @@ export namespace servicemesh {
          */
         istioOperatorVersion: string;
         /**
+         * The content of Kube config.
+         */
+        kubeConfig: string;
+        /**
          * The configuration of the Load Balancer.
          */
         loadBalancers: outputs.servicemesh.GetServiceMeshesMeshLoadBalancer[];
@@ -42765,21 +42902,21 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfig {
         /**
-         * The access logging configuration. See `mesh_config-access_log` below.
+         * The access logging configuration. See `accessLog` below.
          */
-        accessLog?: outputs.servicemesh.ServiceMeshMeshConfigAccessLog;
+        accessLog: outputs.servicemesh.ServiceMeshMeshConfigAccessLog;
         /**
-         * Audit information. See `mesh_config-audit` below.
+         * Audit information. See `audit` below.
          */
         audit: outputs.servicemesh.ServiceMeshMeshConfigAudit;
         /**
-         * Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+         * Control plane log collection configuration. See `controlPlaneLog` below.
          */
-        controlPlaneLog?: outputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog;
+        controlPlaneLog: outputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog;
         /**
          * Whether or not to enable the use of a custom zipkin.
          */
-        customizedZipkin?: boolean;
+        customizedZipkin: boolean;
         /**
          * Whether to enable service can access the service through the nearest node access.
          */
@@ -42789,11 +42926,11 @@ export namespace servicemesh {
          */
         includeIpRanges: string;
         /**
-         * Kiali configuration. See `mesh_config-kiali` below.
+         * Kiali configuration. See `kiali` below.
          */
-        kiali?: outputs.servicemesh.ServiceMeshMeshConfigKiali;
+        kiali: outputs.servicemesh.ServiceMeshMeshConfigKiali;
         /**
-         * The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+         * The open-door policy of agent (OPA) plug-in information. See `opa` below.
          */
         opa?: outputs.servicemesh.ServiceMeshMeshConfigOpa;
         /**
@@ -42801,21 +42938,21 @@ export namespace servicemesh {
          */
         outboundTrafficPolicy?: string;
         /**
-         * Link trace sampling information. See `mesh_config-pilot` below.
+         * Link trace sampling information. See `pilot` below.
          */
-        pilot?: outputs.servicemesh.ServiceMeshMeshConfigPilot;
+        pilot: outputs.servicemesh.ServiceMeshMeshConfigPilot;
         /**
          * Prometheus configuration.
          */
         prometheus: outputs.servicemesh.ServiceMeshMeshConfigPrometheus;
         /**
-         * Proxy configuration. See `mesh_config-proxy` below.
+         * Proxy configuration. See `proxy` below.
          */
         proxy?: outputs.servicemesh.ServiceMeshMeshConfigProxy;
         /**
-         * Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+         * Sidecar injector configuration. See `sidecarInjector` below.
          */
-        sidecarInjector?: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjector;
+        sidecarInjector: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjector;
         /**
          * Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
          */
@@ -42830,11 +42967,11 @@ export namespace servicemesh {
         /**
          * Enable CNI.
          */
-        enabled?: boolean;
+        enabled: boolean;
         /**
          * The name of the SLS Project to which the control plane logs are collected.
          */
-        project?: string;
+        project: string;
     }
 
     export interface ServiceMeshMeshConfigAudit {
@@ -42852,11 +42989,11 @@ export namespace servicemesh {
         /**
          * Enable CNI.
          */
-        enabled?: boolean;
+        enabled: boolean;
         /**
          * The name of the SLS Project to which the control plane logs are collected.
          */
-        project?: string;
+        project: string;
     }
 
     export interface ServiceMeshMeshConfigKiali {
@@ -42901,7 +43038,7 @@ export namespace servicemesh {
         /**
          * Whether to support the HTTP1.0.
          */
-        http10Enabled?: boolean;
+        http10Enabled: boolean;
         /**
          * Link trace sampling percentage.
          */
@@ -42946,31 +43083,31 @@ export namespace servicemesh {
         /**
          * Whether to enable by Pod Annotations automatic injection Sidecar.
          */
-        autoInjectionPolicyEnabled?: boolean;
+        autoInjectionPolicyEnabled: boolean;
         /**
          * Whether it is the all namespaces you turn on the auto injection capabilities.
          */
         enableNamespacesByDefault?: boolean;
         /**
-         * CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+         * CNI configuration. See `initCniConfiguration` below.
          */
         initCniConfiguration: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration;
         /**
          * Sidecar injector Pods on the throttle.
          */
-        limitCpu?: string;
+        limitCpu: string;
         /**
          * Sidecar injector Pods on the throttle.
          */
-        limitMemory?: string;
+        limitMemory: string;
         /**
          * Sidecar injector Pods on the requested resource.
          */
-        requestCpu?: string;
+        requestCpu: string;
         /**
          * Sidecar injector Pods on the requested resource.
          */
-        requestMemory?: string;
+        requestMemory: string;
         /**
          * Other configurations of automatically injected sidecar (in YAML format).
          */
@@ -44227,9 +44364,21 @@ export namespace slb {
     }
 
     export interface ServerGroupServer {
+        /**
+         * The port used by the backend server. Valid value range: [1-65535].
+         */
         port: number;
+        /**
+         * A list backend server ID (ECS instance ID).
+         */
         serverIds: string[];
+        /**
+         * Type of the backend server. Valid value ecs, eni. Default to eni.
+         */
         type?: string;
+        /**
+         * Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         */
         weight?: number;
     }
 
@@ -44748,6 +44897,19 @@ export namespace threatdetection {
          * Destination port.
          */
         targetPort: number;
+    }
+
+    export interface SasTrailServiceTrail {
+        /**
+         * Service tracking on status. The value is:
+         * - **on:** Open
+         * - **off:** off.
+         */
+        config: string;
+        /**
+         * The timestamp of the last service update. Unit: milliseconds.
+         */
+        updateTime: number;
     }
 
 }

@@ -137,16 +137,16 @@ public final class GetBackendsResult {
             return this;
         }
         public GetBackendsResult build() {
-            final var o = new GetBackendsResult();
-            o.backends = backends;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetBackendsResult();
+            _resultValue.backends = backends;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

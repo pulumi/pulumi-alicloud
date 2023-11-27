@@ -148,17 +148,17 @@ public final class GetCustomLinesResult {
             return this;
         }
         public GetCustomLinesResult build() {
-            final var o = new GetCustomLinesResult();
-            o.domainName = domainName;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.lines = lines;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetCustomLinesResult();
+            _resultValue.domainName = domainName;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lang = lang;
+            _resultValue.lines = lines;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

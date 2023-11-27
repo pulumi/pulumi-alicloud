@@ -111,14 +111,14 @@ public final class GetGtmInstancesResult {
             return this;
         }
         public GetGtmInstancesResult build() {
-            final var o = new GetGtmInstancesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.lang = lang;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            return o;
+            final var _resultValue = new GetGtmInstancesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instances = instances;
+            _resultValue.lang = lang;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            return _resultValue;
         }
     }
 }

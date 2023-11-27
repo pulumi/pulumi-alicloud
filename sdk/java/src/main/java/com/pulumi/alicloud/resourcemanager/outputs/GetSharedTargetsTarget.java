@@ -103,12 +103,12 @@ public final class GetSharedTargetsTarget {
             return this;
         }
         public GetSharedTargetsTarget build() {
-            final var o = new GetSharedTargetsTarget();
-            o.id = id;
-            o.resourceShareId = resourceShareId;
-            o.status = status;
-            o.targetId = targetId;
-            return o;
+            final var _resultValue = new GetSharedTargetsTarget();
+            _resultValue.id = id;
+            _resultValue.resourceShareId = resourceShareId;
+            _resultValue.status = status;
+            _resultValue.targetId = targetId;
+            return _resultValue;
         }
     }
 }

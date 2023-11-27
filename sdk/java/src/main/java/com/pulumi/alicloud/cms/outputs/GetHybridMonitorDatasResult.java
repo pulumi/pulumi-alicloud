@@ -130,16 +130,16 @@ public final class GetHybridMonitorDatasResult {
             return this;
         }
         public GetHybridMonitorDatasResult build() {
-            final var o = new GetHybridMonitorDatasResult();
-            o.datas = datas;
-            o.end = end;
-            o.id = id;
-            o.namespace = namespace;
-            o.outputFile = outputFile;
-            o.period = period;
-            o.promSql = promSql;
-            o.start = start;
-            return o;
+            final var _resultValue = new GetHybridMonitorDatasResult();
+            _resultValue.datas = datas;
+            _resultValue.end = end;
+            _resultValue.id = id;
+            _resultValue.namespace = namespace;
+            _resultValue.outputFile = outputFile;
+            _resultValue.period = period;
+            _resultValue.promSql = promSql;
+            _resultValue.start = start;
+            return _resultValue;
         }
     }
 }

@@ -106,12 +106,12 @@ public final class ConnectionBgpConfig {
             return this;
         }
         public ConnectionBgpConfig build() {
-            final var o = new ConnectionBgpConfig();
-            o.enable = enable;
-            o.localAsn = localAsn;
-            o.localBgpIp = localBgpIp;
-            o.tunnelCidr = tunnelCidr;
-            return o;
+            final var _resultValue = new ConnectionBgpConfig();
+            _resultValue.enable = enable;
+            _resultValue.localAsn = localAsn;
+            _resultValue.localBgpIp = localBgpIp;
+            _resultValue.tunnelCidr = tunnelCidr;
+            return _resultValue;
         }
     }
 }

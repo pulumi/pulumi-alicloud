@@ -122,7 +122,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The description of the Snapshot.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -136,7 +136,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The ID of the Desktop.
      * 
      */
-    @Export(name="desktopId", type=String.class, parameters={})
+    @Export(name="desktopId", refs={String.class}, tree="[0]")
     private Output<String> desktopId;
 
     /**
@@ -150,7 +150,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The name of the Snapshot.
      * 
      */
-    @Export(name="snapshotName", type=String.class, parameters={})
+    @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output<String> snapshotName;
 
     /**
@@ -164,7 +164,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
      * 
      */
-    @Export(name="sourceDiskType", type=String.class, parameters={})
+    @Export(name="sourceDiskType", refs={String.class}, tree="[0]")
     private Output<String> sourceDiskType;
 
     /**
@@ -178,7 +178,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The status of the snapshot.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -12,9 +12,11 @@ namespace Pulumi.AliCloud.CloudAuth
     /// <summary>
     /// Provides a Cloudauth Face Config resource.
     /// 
-    /// For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://www.alibabacloud.com/help/en/document_detail/99173.html).
+    /// For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://help.aliyun.com/zh/id-verification/cloudauth/product-overview/end-of-integration-announcement-on-id-verification).
     /// 
     /// &gt; **NOTE:** Available since v1.137.0.
+    /// 
+    /// &gt; **NOTE:** In order to provide you with more perfect product capabilities, the real person certification service has stopped access, it is recommended that you use the upgraded version of the [real person certification financial real person certification service](https://help.aliyun.com/zh/id-verification/product-overview/what-is-id-verification-for-financial-services). Users that have access to real person authentication are not affected.
     /// 
     /// ## Import
     /// 

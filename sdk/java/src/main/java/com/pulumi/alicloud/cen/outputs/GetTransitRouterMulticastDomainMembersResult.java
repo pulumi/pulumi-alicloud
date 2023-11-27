@@ -135,14 +135,14 @@ public final class GetTransitRouterMulticastDomainMembersResult {
             return this;
         }
         public GetTransitRouterMulticastDomainMembersResult build() {
-            final var o = new GetTransitRouterMulticastDomainMembersResult();
-            o.id = id;
-            o.ids = ids;
-            o.members = members;
-            o.networkInterfaceId = networkInterfaceId;
-            o.outputFile = outputFile;
-            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-            return o;
+            final var _resultValue = new GetTransitRouterMulticastDomainMembersResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.members = members;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            return _resultValue;
         }
     }
 }

@@ -43,7 +43,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * Backup type. Valid values: `COMPLETE`.
      * 
      */
-    @Export(name="backupType", type=String.class, parameters={})
+    @Export(name="backupType", refs={String.class}, tree="[0]")
     private Output<String> backupType;
 
     /**
@@ -57,7 +57,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      * 
      */
-    @Export(name="crossAccountRoleName", type=String.class, parameters={})
+    @Export(name="crossAccountRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> crossAccountRoleName;
 
     /**
@@ -71,7 +71,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      * 
      */
-    @Export(name="crossAccountType", type=String.class, parameters={})
+    @Export(name="crossAccountType", refs={String.class}, tree="[0]")
     private Output<String> crossAccountType;
 
     /**
@@ -85,7 +85,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * The original account ID of the cross account backup managed by the current account.
      * 
      */
-    @Export(name="crossAccountUserId", type=Integer.class, parameters={})
+    @Export(name="crossAccountUserId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> crossAccountUserId;
 
     /**
@@ -99,7 +99,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disabled;
 
     /**
@@ -113,7 +113,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -127,7 +127,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      * 
      */
-    @Export(name="otsBackupPlanName", type=String.class, parameters={})
+    @Export(name="otsBackupPlanName", refs={String.class}, tree="[0]")
     private Output<String> otsBackupPlanName;
 
     /**
@@ -141,7 +141,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
-    @Export(name="otsDetails", type=List.class, parameters={OtsBackupPlanOtsDetail.class})
+    @Export(name="otsDetails", refs={List.class,OtsBackupPlanOtsDetail.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OtsBackupPlanOtsDetail>> otsDetails;
 
     /**
@@ -155,7 +155,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * Backup retention days, the minimum is 1.
      * 
      */
-    @Export(name="retention", type=String.class, parameters={})
+    @Export(name="retention", refs={String.class}, tree="[0]")
     private Output<String> retention;
 
     /**
@@ -169,7 +169,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={OtsBackupPlanRule.class})
+    @Export(name="rules", refs={List.class,OtsBackupPlanRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OtsBackupPlanRule>> rules;
 
     /**
@@ -187,7 +187,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead. */
-    @Export(name="schedule", type=String.class, parameters={})
+    @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedule;
 
     /**
@@ -201,7 +201,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of backup vault.
      * 
      */
-    @Export(name="vaultId", type=String.class, parameters={})
+    @Export(name="vaultId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vaultId;
 
     /**

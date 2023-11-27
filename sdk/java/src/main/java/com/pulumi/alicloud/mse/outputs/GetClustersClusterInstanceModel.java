@@ -123,16 +123,16 @@ public final class GetClustersClusterInstanceModel {
             return this;
         }
         public GetClustersClusterInstanceModel build() {
-            final var o = new GetClustersClusterInstanceModel();
-            o.healthStatus = healthStatus;
-            o.instanceType = instanceType;
-            o.internetIp = internetIp;
-            o.ip = ip;
-            o.podName = podName;
-            o.role = role;
-            o.singleTunnelVip = singleTunnelVip;
-            o.vip = vip;
-            return o;
+            final var _resultValue = new GetClustersClusterInstanceModel();
+            _resultValue.healthStatus = healthStatus;
+            _resultValue.instanceType = instanceType;
+            _resultValue.internetIp = internetIp;
+            _resultValue.ip = ip;
+            _resultValue.podName = podName;
+            _resultValue.role = role;
+            _resultValue.singleTunnelVip = singleTunnelVip;
+            _resultValue.vip = vip;
+            return _resultValue;
         }
     }
 }

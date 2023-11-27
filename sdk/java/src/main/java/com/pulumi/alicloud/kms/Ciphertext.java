@@ -62,7 +62,7 @@ public class Ciphertext extends com.pulumi.resources.CustomResource {
      * The ciphertext of the data key encrypted with the primary CMK version.
      * 
      */
-    @Export(name="ciphertextBlob", type=String.class, parameters={})
+    @Export(name="ciphertextBlob", refs={String.class}, tree="[0]")
     private Output<String> ciphertextBlob;
 
     /**
@@ -76,7 +76,7 @@ public class Ciphertext extends com.pulumi.resources.CustomResource {
      * The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
-    @Export(name="encryptionContext", type=Map.class, parameters={String.class, String.class})
+    @Export(name="encryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> encryptionContext;
 
     /**
@@ -90,7 +90,7 @@ public class Ciphertext extends com.pulumi.resources.CustomResource {
      * The globally unique ID of the CMK.
      * 
      */
-    @Export(name="keyId", type=String.class, parameters={})
+    @Export(name="keyId", refs={String.class}, tree="[0]")
     private Output<String> keyId;
 
     /**
@@ -104,7 +104,7 @@ public class Ciphertext extends com.pulumi.resources.CustomResource {
      * The plaintext to be encrypted which must be encoded in Base64.
      * 
      */
-    @Export(name="plaintext", type=String.class, parameters={})
+    @Export(name="plaintext", refs={String.class}, tree="[0]")
     private Output<String> plaintext;
 
     /**

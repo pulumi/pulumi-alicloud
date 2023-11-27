@@ -125,15 +125,15 @@ public final class GetConfigMapsResult {
             return this;
         }
         public GetConfigMapsResult build() {
-            final var o = new GetConfigMapsResult();
-            o.id = id;
-            o.ids = ids;
-            o.maps = maps;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespaceId = namespaceId;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetConfigMapsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.maps = maps;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

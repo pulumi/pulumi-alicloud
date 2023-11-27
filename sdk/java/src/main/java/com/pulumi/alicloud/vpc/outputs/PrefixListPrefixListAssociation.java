@@ -181,16 +181,16 @@ public final class PrefixListPrefixListAssociation {
             return this;
         }
         public PrefixListPrefixListAssociation build() {
-            final var o = new PrefixListPrefixListAssociation();
-            o.ownerId = ownerId;
-            o.prefixListId = prefixListId;
-            o.reason = reason;
-            o.regionId = regionId;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.resourceUid = resourceUid;
-            o.status = status;
-            return o;
+            final var _resultValue = new PrefixListPrefixListAssociation();
+            _resultValue.ownerId = ownerId;
+            _resultValue.prefixListId = prefixListId;
+            _resultValue.reason = reason;
+            _resultValue.regionId = regionId;
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            _resultValue.resourceUid = resourceUid;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

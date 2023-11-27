@@ -104,12 +104,12 @@ public final class GetAccessStrategiesStrategyFailoverAddrPool {
             return this;
         }
         public GetAccessStrategiesStrategyFailoverAddrPool build() {
-            final var o = new GetAccessStrategiesStrategyFailoverAddrPool();
-            o.addrCount = addrCount;
-            o.addrPoolId = addrPoolId;
-            o.lbaWeight = lbaWeight;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAccessStrategiesStrategyFailoverAddrPool();
+            _resultValue.addrCount = addrCount;
+            _resultValue.addrPoolId = addrPoolId;
+            _resultValue.lbaWeight = lbaWeight;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

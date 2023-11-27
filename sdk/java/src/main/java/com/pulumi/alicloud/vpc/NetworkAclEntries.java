@@ -126,7 +126,7 @@ public class NetworkAclEntries extends com.pulumi.resources.CustomResource {
      * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
      * 
      */
-    @Export(name="egresses", type=List.class, parameters={NetworkAclEntriesEgress.class})
+    @Export(name="egresses", refs={List.class,NetworkAclEntriesEgress.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkAclEntriesEgress>> egresses;
 
     /**
@@ -140,7 +140,7 @@ public class NetworkAclEntries extends com.pulumi.resources.CustomResource {
      * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
      * 
      */
-    @Export(name="ingresses", type=List.class, parameters={NetworkAclEntriesIngress.class})
+    @Export(name="ingresses", refs={List.class,NetworkAclEntriesIngress.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkAclEntriesIngress>> ingresses;
 
     /**
@@ -154,7 +154,7 @@ public class NetworkAclEntries extends com.pulumi.resources.CustomResource {
      * The id of the network acl, the field can&#39;t be changed.
      * 
      */
-    @Export(name="networkAclId", type=String.class, parameters={})
+    @Export(name="networkAclId", refs={String.class}, tree="[0]")
     private Output<String> networkAclId;
 
     /**

@@ -35,7 +35,7 @@ public class ExtensionProvider extends com.pulumi.resources.CustomResource {
      * The config of the Service Mesh Extension Provider. The `config` format is json.
      * 
      */
-    @Export(name="config", type=String.class, parameters={})
+    @Export(name="config", refs={String.class}, tree="[0]")
     private Output<String> config;
 
     /**
@@ -49,7 +49,7 @@ public class ExtensionProvider extends com.pulumi.resources.CustomResource {
      * The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
      * 
      */
-    @Export(name="extensionProviderName", type=String.class, parameters={})
+    @Export(name="extensionProviderName", refs={String.class}, tree="[0]")
     private Output<String> extensionProviderName;
 
     /**
@@ -63,7 +63,7 @@ public class ExtensionProvider extends com.pulumi.resources.CustomResource {
      * The ID of the Service Mesh.
      * 
      */
-    @Export(name="serviceMeshId", type=String.class, parameters={})
+    @Export(name="serviceMeshId", refs={String.class}, tree="[0]")
     private Output<String> serviceMeshId;
 
     /**
@@ -77,7 +77,7 @@ public class ExtensionProvider extends com.pulumi.resources.CustomResource {
      * The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

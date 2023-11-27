@@ -21,7 +21,7 @@ public final class GetClustersCluster {
      */
     private String clusterName;
     /**
-     * @return The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+     * @return The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
      * 
      */
     private Integer clusterType;
@@ -92,7 +92,7 @@ public final class GetClustersCluster {
         return this.clusterName;
     }
     /**
-     * @return The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+     * @return The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
      * 
      */
     public Integer clusterType() {
@@ -275,21 +275,21 @@ public final class GetClustersCluster {
             return this;
         }
         public GetClustersCluster build() {
-            final var o = new GetClustersCluster();
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.clusterType = clusterType;
-            o.cpu = cpu;
-            o.cpuUsed = cpuUsed;
-            o.createTime = createTime;
-            o.mem = mem;
-            o.memUsed = memUsed;
-            o.networkMode = networkMode;
-            o.nodeNum = nodeNum;
-            o.regionId = regionId;
-            o.updateTime = updateTime;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetClustersCluster();
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterName = clusterName;
+            _resultValue.clusterType = clusterType;
+            _resultValue.cpu = cpu;
+            _resultValue.cpuUsed = cpuUsed;
+            _resultValue.createTime = createTime;
+            _resultValue.mem = mem;
+            _resultValue.memUsed = memUsed;
+            _resultValue.networkMode = networkMode;
+            _resultValue.nodeNum = nodeNum;
+            _resultValue.regionId = regionId;
+            _resultValue.updateTime = updateTime;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

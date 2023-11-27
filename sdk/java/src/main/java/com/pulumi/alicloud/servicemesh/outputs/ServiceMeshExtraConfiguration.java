@@ -48,9 +48,9 @@ public final class ServiceMeshExtraConfiguration {
             return this;
         }
         public ServiceMeshExtraConfiguration build() {
-            final var o = new ServiceMeshExtraConfiguration();
-            o.crAggregationEnabled = crAggregationEnabled;
-            return o;
+            final var _resultValue = new ServiceMeshExtraConfiguration();
+            _resultValue.crAggregationEnabled = crAggregationEnabled;
+            return _resultValue;
         }
     }
 }

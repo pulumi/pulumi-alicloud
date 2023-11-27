@@ -191,21 +191,21 @@ public final class GetUsersResult {
             return users(List.of(users));
         }
         public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.displayName = displayName;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.mobile = mobile;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.source = source;
-            o.sourceUserId = sourceUserId;
-            o.status = status;
-            o.userName = userName;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetUsersResult();
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.mobile = mobile;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.source = source;
+            _resultValue.sourceUserId = sourceUserId;
+            _resultValue.status = status;
+            _resultValue.userName = userName;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

@@ -218,20 +218,20 @@ public final class GetProductsResult {
             return this;
         }
         public GetProductsResult build() {
-            final var o = new GetProductsResult();
-            o.categoryId = categoryId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.productType = productType;
-            o.products = products;
-            o.searchTerm = searchTerm;
-            o.sort = sort;
-            o.suggestedPrice = suggestedPrice;
-            o.supplierId = supplierId;
-            o.supplierNameKeyword = supplierNameKeyword;
-            return o;
+            final var _resultValue = new GetProductsResult();
+            _resultValue.categoryId = categoryId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.outputFile = outputFile;
+            _resultValue.productType = productType;
+            _resultValue.products = products;
+            _resultValue.searchTerm = searchTerm;
+            _resultValue.sort = sort;
+            _resultValue.suggestedPrice = suggestedPrice;
+            _resultValue.supplierId = supplierId;
+            _resultValue.supplierNameKeyword = supplierNameKeyword;
+            return _resultValue;
         }
     }
 }

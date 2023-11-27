@@ -243,19 +243,19 @@ public final class GetHavipsHavip {
             return this;
         }
         public GetHavipsHavip build() {
-            final var o = new GetHavipsHavip();
-            o.associatedEipAddresses = associatedEipAddresses;
-            o.associatedInstances = associatedInstances;
-            o.description = description;
-            o.havipId = havipId;
-            o.havipName = havipName;
-            o.id = id;
-            o.ipAddress = ipAddress;
-            o.masterInstanceId = masterInstanceId;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetHavipsHavip();
+            _resultValue.associatedEipAddresses = associatedEipAddresses;
+            _resultValue.associatedInstances = associatedInstances;
+            _resultValue.description = description;
+            _resultValue.havipId = havipId;
+            _resultValue.havipName = havipName;
+            _resultValue.id = id;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.masterInstanceId = masterInstanceId;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

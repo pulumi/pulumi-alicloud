@@ -361,25 +361,25 @@ public final class GetIpsecServersServer {
             return this;
         }
         public GetIpsecServersServer build() {
-            final var o = new GetIpsecServersServer();
-            o.clientIpPool = clientIpPool;
-            o.createTime = createTime;
-            o.effectImmediately = effectImmediately;
-            o.id = id;
-            o.idaasInstanceId = idaasInstanceId;
-            o.ikeConfigs = ikeConfigs;
-            o.internetIp = internetIp;
-            o.ipsecConfigs = ipsecConfigs;
-            o.ipsecServerId = ipsecServerId;
-            o.ipsecServerName = ipsecServerName;
-            o.localSubnet = localSubnet;
-            o.maxConnections = maxConnections;
-            o.multiFactorAuthEnabled = multiFactorAuthEnabled;
-            o.onlineClientCount = onlineClientCount;
-            o.psk = psk;
-            o.pskEnabled = pskEnabled;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+            final var _resultValue = new GetIpsecServersServer();
+            _resultValue.clientIpPool = clientIpPool;
+            _resultValue.createTime = createTime;
+            _resultValue.effectImmediately = effectImmediately;
+            _resultValue.id = id;
+            _resultValue.idaasInstanceId = idaasInstanceId;
+            _resultValue.ikeConfigs = ikeConfigs;
+            _resultValue.internetIp = internetIp;
+            _resultValue.ipsecConfigs = ipsecConfigs;
+            _resultValue.ipsecServerId = ipsecServerId;
+            _resultValue.ipsecServerName = ipsecServerName;
+            _resultValue.localSubnet = localSubnet;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.multiFactorAuthEnabled = multiFactorAuthEnabled;
+            _resultValue.onlineClientCount = onlineClientCount;
+            _resultValue.psk = psk;
+            _resultValue.pskEnabled = pskEnabled;
+            _resultValue.vpnGatewayId = vpnGatewayId;
+            return _resultValue;
         }
     }
 }

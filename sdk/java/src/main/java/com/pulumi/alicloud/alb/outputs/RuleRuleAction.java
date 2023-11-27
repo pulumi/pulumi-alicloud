@@ -234,18 +234,18 @@ public final class RuleRuleAction {
             return this;
         }
         public RuleRuleAction build() {
-            final var o = new RuleRuleAction();
-            o.corsConfig = corsConfig;
-            o.fixedResponseConfig = fixedResponseConfig;
-            o.forwardGroupConfig = forwardGroupConfig;
-            o.insertHeaderConfig = insertHeaderConfig;
-            o.order = order;
-            o.redirectConfig = redirectConfig;
-            o.rewriteConfig = rewriteConfig;
-            o.trafficLimitConfig = trafficLimitConfig;
-            o.trafficMirrorConfig = trafficMirrorConfig;
-            o.type = type;
-            return o;
+            final var _resultValue = new RuleRuleAction();
+            _resultValue.corsConfig = corsConfig;
+            _resultValue.fixedResponseConfig = fixedResponseConfig;
+            _resultValue.forwardGroupConfig = forwardGroupConfig;
+            _resultValue.insertHeaderConfig = insertHeaderConfig;
+            _resultValue.order = order;
+            _resultValue.redirectConfig = redirectConfig;
+            _resultValue.rewriteConfig = rewriteConfig;
+            _resultValue.trafficLimitConfig = trafficLimitConfig;
+            _resultValue.trafficMirrorConfig = trafficMirrorConfig;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

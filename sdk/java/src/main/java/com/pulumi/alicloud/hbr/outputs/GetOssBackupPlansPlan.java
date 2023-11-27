@@ -256,20 +256,20 @@ public final class GetOssBackupPlansPlan {
             return this;
         }
         public GetOssBackupPlansPlan build() {
-            final var o = new GetOssBackupPlansPlan();
-            o.backupType = backupType;
-            o.bucket = bucket;
-            o.createdTime = createdTime;
-            o.disabled = disabled;
-            o.id = id;
-            o.ossBackupPlanId = ossBackupPlanId;
-            o.ossBackupPlanName = ossBackupPlanName;
-            o.prefix = prefix;
-            o.retention = retention;
-            o.schedule = schedule;
-            o.updatedTime = updatedTime;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetOssBackupPlansPlan();
+            _resultValue.backupType = backupType;
+            _resultValue.bucket = bucket;
+            _resultValue.createdTime = createdTime;
+            _resultValue.disabled = disabled;
+            _resultValue.id = id;
+            _resultValue.ossBackupPlanId = ossBackupPlanId;
+            _resultValue.ossBackupPlanName = ossBackupPlanName;
+            _resultValue.prefix = prefix;
+            _resultValue.retention = retention;
+            _resultValue.schedule = schedule;
+            _resultValue.updatedTime = updatedTime;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

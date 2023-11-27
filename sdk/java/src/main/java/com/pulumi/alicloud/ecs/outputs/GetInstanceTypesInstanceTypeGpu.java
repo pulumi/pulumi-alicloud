@@ -49,10 +49,10 @@ public final class GetInstanceTypesInstanceTypeGpu {
             return this;
         }
         public GetInstanceTypesInstanceTypeGpu build() {
-            final var o = new GetInstanceTypesInstanceTypeGpu();
-            o.amount = amount;
-            o.category = category;
-            return o;
+            final var _resultValue = new GetInstanceTypesInstanceTypeGpu();
+            _resultValue.amount = amount;
+            _resultValue.category = category;
+            return _resultValue;
         }
     }
 }

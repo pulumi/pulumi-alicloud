@@ -111,7 +111,7 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
      * The security group description. Defaults to null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -129,7 +129,7 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it. */
-    @Export(name="innerAccess", type=Boolean.class, parameters={})
+    @Export(name="innerAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> innerAccess;
 
     /**
@@ -143,7 +143,7 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
      * Whether to allow both machines to access each other on all ports in the same security group. Valid values: [&#34;Accept&#34;, &#34;Drop&#34;]
      * 
      */
-    @Export(name="innerAccessPolicy", type=String.class, parameters={})
+    @Export(name="innerAccessPolicy", refs={String.class}, tree="[0]")
     private Output<String> innerAccessPolicy;
 
     /**
@@ -157,7 +157,7 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
      * The name of the security group. Defaults to null.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -171,7 +171,7 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the security_group belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -187,7 +187,7 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
      * `enterprise`: advanced security group For more information.
      * 
      */
-    @Export(name="securityGroupType", type=String.class, parameters={})
+    @Export(name="securityGroupType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupType;
 
     /**
@@ -205,7 +205,7 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
      * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -221,7 +221,7 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
      * The VPC ID.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**

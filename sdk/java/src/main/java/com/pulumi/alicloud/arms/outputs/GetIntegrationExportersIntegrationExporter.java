@@ -199,17 +199,17 @@ public final class GetIntegrationExportersIntegrationExporter {
             return this;
         }
         public GetIntegrationExportersIntegrationExporter build() {
-            final var o = new GetIntegrationExportersIntegrationExporter();
-            o.clusterId = clusterId;
-            o.exporterType = exporterType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.integrationType = integrationType;
-            o.param = param;
-            o.target = target;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetIntegrationExportersIntegrationExporter();
+            _resultValue.clusterId = clusterId;
+            _resultValue.exporterType = exporterType;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.integrationType = integrationType;
+            _resultValue.param = param;
+            _resultValue.target = target;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -94,7 +94,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The ID of the access point of the physical connection.
      * 
      */
-    @Export(name="accessPointId", type=String.class, parameters={})
+    @Export(name="accessPointId", refs={String.class}, tree="[0]")
     private Output<String> accessPointId;
 
     /**
@@ -108,7 +108,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The physical location where the physical connection access device is located.
      * 
      */
-    @Export(name="adLocation", type=String.class, parameters={})
+    @Export(name="adLocation", refs={String.class}, tree="[0]")
     private Output<String> adLocation;
 
     /**
@@ -122,7 +122,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The bandwidth of the physical connection. Unit: Mbps.
      * 
      */
-    @Export(name="bandwidth", type=String.class, parameters={})
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
@@ -136,7 +136,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The commercial status of the physical line. Value:-**Normal**: activated.-**Financialized**: Arrears locked.-**SecurityLocked**: locked for security reasons.
      * 
      */
-    @Export(name="businessStatus", type=String.class, parameters={})
+    @Export(name="businessStatus", refs={String.class}, tree="[0]")
     private Output<String> businessStatus;
 
     /**
@@ -150,7 +150,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The circuit code provided by the operator for the physical connection.
      * 
      */
-    @Export(name="circuitCode", type=String.class, parameters={})
+    @Export(name="circuitCode", refs={String.class}, tree="[0]")
     private Output<String> circuitCode;
 
     /**
@@ -164,7 +164,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The creation time of the resource
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -178,7 +178,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The description of the physical connection.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -192,7 +192,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * Specifies whether to precheck the API request. Valid values: `true` and `false`.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -206,7 +206,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The opening time of the physical connection.
      * 
      */
-    @Export(name="enabledTime", type=String.class, parameters={})
+    @Export(name="enabledTime", refs={String.class}, tree="[0]")
     private Output<String> enabledTime;
 
     /**
@@ -220,7 +220,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
      * 
      */
-    @Export(name="endTime", type=String.class, parameters={})
+    @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
@@ -234,7 +234,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The estimated bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
      * 
      */
-    @Export(name="expectSpec", type=String.class, parameters={})
+    @Export(name="expectSpec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expectSpec;
 
     /**
@@ -248,7 +248,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
      * 
      */
-    @Export(name="lineOperator", type=String.class, parameters={})
+    @Export(name="lineOperator", refs={String.class}, tree="[0]")
     private Output<String> lineOperator;
 
     /**
@@ -262,7 +262,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
      * 
      */
-    @Export(name="loaStatus", type=String.class, parameters={})
+    @Export(name="loaStatus", refs={String.class}, tree="[0]")
     private Output<String> loaStatus;
 
     /**
@@ -278,7 +278,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * - **PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
      * 
      */
-    @Export(name="orderMode", type=String.class, parameters={})
+    @Export(name="orderMode", refs={String.class}, tree="[0]")
     private Output<String> orderMode;
 
     /**
@@ -294,7 +294,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
      * 
      */
-    @Export(name="parentPhysicalConnectionAliUid", type=String.class, parameters={})
+    @Export(name="parentPhysicalConnectionAliUid", refs={String.class}, tree="[0]")
     private Output<String> parentPhysicalConnectionAliUid;
 
     /**
@@ -308,7 +308,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The ID of the instance of the physical connection.
      * 
      */
-    @Export(name="parentPhysicalConnectionId", type=String.class, parameters={})
+    @Export(name="parentPhysicalConnectionId", refs={String.class}, tree="[0]")
     private Output<String> parentPhysicalConnectionId;
 
     /**
@@ -322,7 +322,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The geographic location of the local data center.
      * 
      */
-    @Export(name="peerLocation", type=String.class, parameters={})
+    @Export(name="peerLocation", refs={String.class}, tree="[0]")
     private Output<String> peerLocation;
 
     /**
@@ -336,7 +336,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The port number of the physical connection device.
      * 
      */
-    @Export(name="portNumber", type=String.class, parameters={})
+    @Export(name="portNumber", refs={String.class}, tree="[0]")
     private Output<String> portNumber;
 
     /**
@@ -350,7 +350,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
      * 
      */
-    @Export(name="portType", type=String.class, parameters={})
+    @Export(name="portType", refs={String.class}, tree="[0]")
     private Output<String> portType;
 
     /**
@@ -364,7 +364,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The ID of the redundant physical connection.
      * 
      */
-    @Export(name="redundantPhysicalConnectionId", type=String.class, parameters={})
+    @Export(name="redundantPhysicalConnectionId", refs={String.class}, tree="[0]")
     private Output<String> redundantPhysicalConnectionId;
 
     /**
@@ -378,7 +378,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The resource group id.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -392,7 +392,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
      * 
      */
-    @Export(name="spec", type=String.class, parameters={})
+    @Export(name="spec", refs={String.class}, tree="[0]")
     private Output<String> spec;
 
     /**
@@ -406,7 +406,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -420,7 +420,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The name of the physical connection.
      * 
      */
-    @Export(name="virtualPhysicalConnectionName", type=String.class, parameters={})
+    @Export(name="virtualPhysicalConnectionName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> virtualPhysicalConnectionName;
 
     /**
@@ -434,7 +434,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The business status of the shared line. Value:-**Confirmed**: The shared line has been Confirmed to receive.-**UnConfirmed**: The shared line has not been confirmed to be received.-**Deleted**: The shared line has been Deleted.
      * 
      */
-    @Export(name="virtualPhysicalConnectionStatus", type=String.class, parameters={})
+    @Export(name="virtualPhysicalConnectionStatus", refs={String.class}, tree="[0]")
     private Output<String> virtualPhysicalConnectionStatus;
 
     /**
@@ -448,7 +448,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The VLAN ID of the shared leased line. Valid values: `0` to `2999`.
      * 
      */
-    @Export(name="vlanId", type=Integer.class, parameters={})
+    @Export(name="vlanId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vlanId;
 
     /**
@@ -462,7 +462,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      * 
      */
-    @Export(name="vpconnAliUid", type=String.class, parameters={})
+    @Export(name="vpconnAliUid", refs={String.class}, tree="[0]")
     private Output<String> vpconnAliUid;
 
     /**

@@ -198,16 +198,16 @@ public final class DedicatedPropreHostEcsClassList {
             return this;
         }
         public DedicatedPropreHostEcsClassList build() {
-            final var o = new DedicatedPropreHostEcsClassList();
-            o.dataDiskPerformanceLevel = dataDiskPerformanceLevel;
-            o.diskCapacity = diskCapacity;
-            o.diskCount = diskCount;
-            o.diskType = diskType;
-            o.instanceType = instanceType;
-            o.sysDiskCapacity = sysDiskCapacity;
-            o.sysDiskType = sysDiskType;
-            o.systemDiskPerformanceLevel = systemDiskPerformanceLevel;
-            return o;
+            final var _resultValue = new DedicatedPropreHostEcsClassList();
+            _resultValue.dataDiskPerformanceLevel = dataDiskPerformanceLevel;
+            _resultValue.diskCapacity = diskCapacity;
+            _resultValue.diskCount = diskCount;
+            _resultValue.diskType = diskType;
+            _resultValue.instanceType = instanceType;
+            _resultValue.sysDiskCapacity = sysDiskCapacity;
+            _resultValue.sysDiskType = sysDiskType;
+            _resultValue.systemDiskPerformanceLevel = systemDiskPerformanceLevel;
+            return _resultValue;
         }
     }
 }

@@ -85,7 +85,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0. */
-    @Export(name="accessPointId", type=String.class, parameters={})
+    @Export(name="accessPointId", refs={String.class}, tree="[0]")
     private Output<String> accessPointId;
 
     /**
@@ -99,7 +99,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -113,7 +113,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
      * 
      */
-    @Export(name="healthCheckSourceIp", type=String.class, parameters={})
+    @Export(name="healthCheckSourceIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckSourceIp;
 
     /**
@@ -127,7 +127,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
      * 
      */
-    @Export(name="healthCheckTargetIp", type=String.class, parameters={})
+    @Export(name="healthCheckTargetIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckTargetIp;
 
     /**
@@ -141,7 +141,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The billing method of the router interface. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;. Router Interface doesn&#39;t support &#34;PrePaid&#34; when region and opposite_region are the same.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -156,7 +156,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -175,7 +175,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0. */
-    @Export(name="oppositeAccessPointId", type=String.class, parameters={})
+    @Export(name="oppositeAccessPointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeAccessPointId;
 
     /**
@@ -193,7 +193,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead. */
-    @Export(name="oppositeInterfaceId", type=String.class, parameters={})
+    @Export(name="oppositeInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceId;
 
     /**
@@ -211,7 +211,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead. */
-    @Export(name="oppositeInterfaceOwnerId", type=String.class, parameters={})
+    @Export(name="oppositeInterfaceOwnerId", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceOwnerId;
 
     /**
@@ -225,7 +225,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The Region of peer side.
      * 
      */
-    @Export(name="oppositeRegion", type=String.class, parameters={})
+    @Export(name="oppositeRegion", refs={String.class}, tree="[0]")
     private Output<String> oppositeRegion;
 
     /**
@@ -243,7 +243,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead. */
-    @Export(name="oppositeRouterId", type=String.class, parameters={})
+    @Export(name="oppositeRouterId", refs={String.class}, tree="[0]")
     private Output<String> oppositeRouterId;
 
     /**
@@ -261,7 +261,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead. */
-    @Export(name="oppositeRouterType", type=String.class, parameters={})
+    @Export(name="oppositeRouterType", refs={String.class}, tree="[0]")
     private Output<String> oppositeRouterType;
 
     /**
@@ -276,7 +276,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -291,7 +291,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -305,7 +305,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The Router ID.
      * 
      */
-    @Export(name="routerId", type=String.class, parameters={})
+    @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
@@ -319,7 +319,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
      * 
      */
-    @Export(name="routerType", type=String.class, parameters={})
+    @Export(name="routerType", refs={String.class}, tree="[0]")
     private Output<String> routerType;
 
     /**
@@ -333,7 +333,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side&#39;s role is default to set as &#39;Negative&#39;. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
      * 
      */
-    @Export(name="specification", type=String.class, parameters={})
+    @Export(name="specification", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> specification;
 
     /**

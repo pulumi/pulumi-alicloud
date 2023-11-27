@@ -130,15 +130,15 @@ public final class GetDomainTxtGuidResult {
             return this;
         }
         public GetDomainTxtGuidResult build() {
-            final var o = new GetDomainTxtGuidResult();
-            o.domainName = domainName;
-            o.id = id;
-            o.lang = lang;
-            o.outputFile = outputFile;
-            o.rr = rr;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetDomainTxtGuidResult();
+            _resultValue.domainName = domainName;
+            _resultValue.id = id;
+            _resultValue.lang = lang;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rr = rr;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

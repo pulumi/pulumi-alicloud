@@ -185,16 +185,16 @@ public final class GetEdgeKubernetesClustersCluster {
             return workerNodes(List.of(workerNodes));
         }
         public GetEdgeKubernetesClustersCluster build() {
-            final var o = new GetEdgeKubernetesClustersCluster();
-            o.availabilityZone = availabilityZone;
-            o.connections = connections;
-            o.id = id;
-            o.name = name;
-            o.natGatewayId = natGatewayId;
-            o.securityGroupId = securityGroupId;
-            o.vpcId = vpcId;
-            o.workerNodes = workerNodes;
-            return o;
+            final var _resultValue = new GetEdgeKubernetesClustersCluster();
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.connections = connections;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.natGatewayId = natGatewayId;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.workerNodes = workerNodes;
+            return _resultValue;
         }
     }
 }

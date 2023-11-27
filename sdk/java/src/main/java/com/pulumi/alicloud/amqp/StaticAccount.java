@@ -87,7 +87,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * Access key.
      * 
      */
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
@@ -101,7 +101,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * Create time stamp. Unix timestamp, to millisecond level.
      * 
      */
-    @Export(name="createTime", type=Integer.class, parameters={})
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
@@ -115,7 +115,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * Amqp instance ID.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -129,7 +129,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * The ID of the user&#39;s primary account.
      * 
      */
-    @Export(name="masterUid", type=String.class, parameters={})
+    @Export(name="masterUid", refs={String.class}, tree="[0]")
     private Output<String> masterUid;
 
     /**
@@ -143,7 +143,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * Static password.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -157,7 +157,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * Secret key.
      * 
      */
-    @Export(name="secretKey", type=String.class, parameters={})
+    @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output<String> secretKey;
 
     /**
@@ -171,7 +171,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * Static user name.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**

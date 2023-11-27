@@ -163,16 +163,16 @@ public final class GetConsumerGroupsResult {
             return this;
         }
         public GetConsumerGroupsResult build() {
-            final var o = new GetConsumerGroupsResult();
-            o.consumerIdRegex = consumerIdRegex;
-            o.consumerIds = consumerIds;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetConsumerGroupsResult();
+            _resultValue.consumerIdRegex = consumerIdRegex;
+            _resultValue.consumerIds = consumerIds;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

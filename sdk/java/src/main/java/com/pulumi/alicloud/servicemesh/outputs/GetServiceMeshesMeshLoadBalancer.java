@@ -104,12 +104,12 @@ public final class GetServiceMeshesMeshLoadBalancer {
             return this;
         }
         public GetServiceMeshesMeshLoadBalancer build() {
-            final var o = new GetServiceMeshesMeshLoadBalancer();
-            o.apiServerLoadbalancerId = apiServerLoadbalancerId;
-            o.apiServerPublicEip = apiServerPublicEip;
-            o.pilotPublicEip = pilotPublicEip;
-            o.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
-            return o;
+            final var _resultValue = new GetServiceMeshesMeshLoadBalancer();
+            _resultValue.apiServerLoadbalancerId = apiServerLoadbalancerId;
+            _resultValue.apiServerPublicEip = apiServerPublicEip;
+            _resultValue.pilotPublicEip = pilotPublicEip;
+            _resultValue.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
+            return _resultValue;
         }
     }
 }

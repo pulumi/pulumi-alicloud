@@ -71,12 +71,12 @@ public final class GetMonitorGroupInstancesInstanceInstance {
             return this;
         }
         public GetMonitorGroupInstancesInstanceInstance build() {
-            final var o = new GetMonitorGroupInstancesInstanceInstance();
-            o.category = category;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new GetMonitorGroupInstancesInstanceInstance();
+            _resultValue.category = category;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }

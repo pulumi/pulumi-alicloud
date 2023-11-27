@@ -48,9 +48,9 @@ public final class NodePoolRolloutPolicy {
             return this;
         }
         public NodePoolRolloutPolicy build() {
-            final var o = new NodePoolRolloutPolicy();
-            o.maxUnavailable = maxUnavailable;
-            return o;
+            final var _resultValue = new NodePoolRolloutPolicy();
+            _resultValue.maxUnavailable = maxUnavailable;
+            return _resultValue;
         }
     }
 }

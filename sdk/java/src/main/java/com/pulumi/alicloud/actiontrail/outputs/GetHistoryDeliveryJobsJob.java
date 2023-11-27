@@ -215,18 +215,18 @@ public final class GetHistoryDeliveryJobsJob {
             return this;
         }
         public GetHistoryDeliveryJobsJob build() {
-            final var o = new GetHistoryDeliveryJobsJob();
-            o.createTime = createTime;
-            o.endTime = endTime;
-            o.historyDeliveryJobId = historyDeliveryJobId;
-            o.homeRegion = homeRegion;
-            o.id = id;
-            o.jobStatuses = jobStatuses;
-            o.startTime = startTime;
-            o.status = status;
-            o.trailName = trailName;
-            o.updatedTime = updatedTime;
-            return o;
+            final var _resultValue = new GetHistoryDeliveryJobsJob();
+            _resultValue.createTime = createTime;
+            _resultValue.endTime = endTime;
+            _resultValue.historyDeliveryJobId = historyDeliveryJobId;
+            _resultValue.homeRegion = homeRegion;
+            _resultValue.id = id;
+            _resultValue.jobStatuses = jobStatuses;
+            _resultValue.startTime = startTime;
+            _resultValue.status = status;
+            _resultValue.trailName = trailName;
+            _resultValue.updatedTime = updatedTime;
+            return _resultValue;
         }
     }
 }

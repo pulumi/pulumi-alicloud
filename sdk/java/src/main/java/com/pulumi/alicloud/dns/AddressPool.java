@@ -118,7 +118,7 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
      * The name of the address pool.
      * 
      */
-    @Export(name="addressPoolName", type=String.class, parameters={})
+    @Export(name="addressPoolName", refs={String.class}, tree="[0]")
     private Output<String> addressPoolName;
 
     /**
@@ -132,7 +132,7 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
      * The address lists of the Address Pool. See `address` below for details.
      * 
      */
-    @Export(name="addresses", type=List.class, parameters={AddressPoolAddress.class})
+    @Export(name="addresses", refs={List.class,AddressPoolAddress.class}, tree="[0,1]")
     private Output<List<AddressPoolAddress>> addresses;
 
     /**
@@ -146,7 +146,7 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -160,7 +160,7 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
      * The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
      * 
      */
-    @Export(name="lbaStrategy", type=String.class, parameters={})
+    @Export(name="lbaStrategy", refs={String.class}, tree="[0]")
     private Output<String> lbaStrategy;
 
     /**
@@ -174,7 +174,7 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
      * The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

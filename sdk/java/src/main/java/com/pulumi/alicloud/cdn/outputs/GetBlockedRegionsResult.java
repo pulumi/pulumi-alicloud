@@ -73,11 +73,11 @@ public final class GetBlockedRegionsResult {
             return regions(List.of(regions));
         }
         public GetBlockedRegionsResult build() {
-            final var o = new GetBlockedRegionsResult();
-            o.id = id;
-            o.language = language;
-            o.regions = regions;
-            return o;
+            final var _resultValue = new GetBlockedRegionsResult();
+            _resultValue.id = id;
+            _resultValue.language = language;
+            _resultValue.regions = regions;
+            return _resultValue;
         }
     }
 }

@@ -102,10 +102,10 @@ class InstanceReplicaSet(dict):
         """
         :param str connection_domain: The connection address of the node.
         :param str connection_port: The connection port of the node.
-        :param str network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
-        :param str replica_set_role: The role of the node. Valid values: `Primary`,`Secondary`.
+        :param str network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
+        :param str replica_set_role: The role of the node.
         :param str vpc_cloud_instance_id: VPC instance ID.
-        :param str vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        :param str vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         :param str vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         """
         if connection_domain is not None:
@@ -143,7 +143,7 @@ class InstanceReplicaSet(dict):
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[str]:
         """
-        The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        The network type of the instance. Valid values:`Classic`, `VPC`.
         """
         return pulumi.get(self, "network_type")
 
@@ -151,7 +151,7 @@ class InstanceReplicaSet(dict):
     @pulumi.getter(name="replicaSetRole")
     def replica_set_role(self) -> Optional[str]:
         """
-        The role of the node. Valid values: `Primary`,`Secondary`.
+        The role of the node.
         """
         return pulumi.get(self, "replica_set_role")
 
@@ -167,7 +167,7 @@ class InstanceReplicaSet(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         """
-        The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         """
         return pulumi.get(self, "vpc_id")
 

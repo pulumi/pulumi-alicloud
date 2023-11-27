@@ -219,19 +219,19 @@ public final class GetAggregateConfigRulesResult {
             return this;
         }
         public GetAggregateConfigRulesResult build() {
-            final var o = new GetAggregateConfigRulesResult();
-            o.aggregateConfigRuleName = aggregateConfigRuleName;
-            o.aggregatorId = aggregatorId;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.riskLevel = riskLevel;
-            o.rules = rules;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAggregateConfigRulesResult();
+            _resultValue.aggregateConfigRuleName = aggregateConfigRuleName;
+            _resultValue.aggregatorId = aggregatorId;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.riskLevel = riskLevel;
+            _resultValue.rules = rules;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

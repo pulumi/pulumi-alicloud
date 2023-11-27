@@ -68,10 +68,10 @@ public final class ServiceMeshMeshConfigKiali {
             return this;
         }
         public ServiceMeshMeshConfigKiali build() {
-            final var o = new ServiceMeshMeshConfigKiali();
-            o.enabled = enabled;
-            o.url = url;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfigKiali();
+            _resultValue.enabled = enabled;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

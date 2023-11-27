@@ -301,22 +301,22 @@ public final class GetNestServiceInstancesServiceInstance {
             return this;
         }
         public GetNestServiceInstancesServiceInstance build() {
-            final var o = new GetNestServiceInstancesServiceInstance();
-            o.enableInstanceOps = enableInstanceOps;
-            o.id = id;
-            o.operatedServiceInstanceId = operatedServiceInstanceId;
-            o.operationEndTime = operationEndTime;
-            o.operationStartTime = operationStartTime;
-            o.parameters = parameters;
-            o.resources = resources;
-            o.serviceInstanceId = serviceInstanceId;
-            o.serviceInstanceName = serviceInstanceName;
-            o.services = services;
-            o.source = source;
-            o.status = status;
-            o.tags = tags;
-            o.templateName = templateName;
-            return o;
+            final var _resultValue = new GetNestServiceInstancesServiceInstance();
+            _resultValue.enableInstanceOps = enableInstanceOps;
+            _resultValue.id = id;
+            _resultValue.operatedServiceInstanceId = operatedServiceInstanceId;
+            _resultValue.operationEndTime = operationEndTime;
+            _resultValue.operationStartTime = operationStartTime;
+            _resultValue.parameters = parameters;
+            _resultValue.resources = resources;
+            _resultValue.serviceInstanceId = serviceInstanceId;
+            _resultValue.serviceInstanceName = serviceInstanceName;
+            _resultValue.services = services;
+            _resultValue.source = source;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.templateName = templateName;
+            return _resultValue;
         }
     }
 }

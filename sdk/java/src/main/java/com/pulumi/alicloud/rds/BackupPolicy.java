@@ -105,7 +105,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
      * 
      */
-    @Export(name="archiveBackupKeepCount", type=Integer.class, parameters={})
+    @Export(name="archiveBackupKeepCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> archiveBackupKeepCount;
 
     /**
@@ -119,7 +119,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
      * 
      */
-    @Export(name="archiveBackupKeepPolicy", type=String.class, parameters={})
+    @Export(name="archiveBackupKeepPolicy", refs={String.class}, tree="[0]")
     private Output<String> archiveBackupKeepPolicy;
 
     /**
@@ -133,7 +133,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
      * 
      */
-    @Export(name="archiveBackupRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="archiveBackupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> archiveBackupRetentionPeriod;
 
     /**
@@ -157,7 +157,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
      * 
      */
-    @Export(name="backupInterval", type=String.class, parameters={})
+    @Export(name="backupInterval", refs={String.class}, tree="[0]")
     private Output<String> backupInterval;
 
     /**
@@ -185,7 +185,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead */
-    @Export(name="backupPeriods", type=List.class, parameters={String.class})
+    @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
     /**
@@ -199,7 +199,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
      * 
      */
-    @Export(name="backupRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="backupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> backupRetentionPeriod;
 
     /**
@@ -217,7 +217,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead */
-    @Export(name="backupTime", type=String.class, parameters={})
+    @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
     /**
@@ -232,7 +232,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output<String> category;
 
     /**
@@ -247,7 +247,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The compress type of instance policy. Valid values are `1`, `4`, `8`.
      * 
      */
-    @Export(name="compressType", type=String.class, parameters={})
+    @Export(name="compressType", refs={String.class}, tree="[0]")
     private Output<String> compressType;
 
     /**
@@ -261,7 +261,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The &#39;Basic Edition&#39; category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
      * 
      */
-    @Export(name="enableBackupLog", type=Boolean.class, parameters={})
+    @Export(name="enableBackupLog", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableBackupLog;
 
     /**
@@ -275,7 +275,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
      * 
      */
-    @Export(name="highSpaceUsageProtection", type=String.class, parameters={})
+    @Export(name="highSpaceUsageProtection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> highSpaceUsageProtection;
 
     /**
@@ -289,7 +289,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The Id of instance that can run database.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -303,7 +303,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
      * 
      */
-    @Export(name="localLogRetentionHours", type=Integer.class, parameters={})
+    @Export(name="localLogRetentionHours", refs={Integer.class}, tree="[0]")
     private Output<Integer> localLogRetentionHours;
 
     /**
@@ -317,7 +317,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
      * 
      */
-    @Export(name="localLogRetentionSpace", type=Integer.class, parameters={})
+    @Export(name="localLogRetentionSpace", refs={Integer.class}, tree="[0]")
     private Output<Integer> localLogRetentionSpace;
 
     /**
@@ -335,7 +335,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead */
-    @Export(name="logBackup", type=Boolean.class, parameters={})
+    @Export(name="logBackup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> logBackup;
 
     /**
@@ -349,7 +349,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
      * 
      */
-    @Export(name="logBackupFrequency", type=String.class, parameters={})
+    @Export(name="logBackupFrequency", refs={String.class}, tree="[0]")
     private Output<String> logBackupFrequency;
 
     /**
@@ -363,7 +363,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
      * 
      */
-    @Export(name="logBackupRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="logBackupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> logBackupRetentionPeriod;
 
     /**
@@ -381,7 +381,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead */
-    @Export(name="logRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="logRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> logRetentionPeriod;
 
     /**
@@ -395,7 +395,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
-    @Export(name="preferredBackupPeriods", type=List.class, parameters={String.class})
+    @Export(name="preferredBackupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> preferredBackupPeriods;
 
     /**
@@ -409,7 +409,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to &#34;02:00Z-03:00Z&#34;. China time is 8 hours behind it.
      * 
      */
-    @Export(name="preferredBackupTime", type=String.class, parameters={})
+    @Export(name="preferredBackupTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> preferredBackupTime;
 
     /**
@@ -426,7 +426,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * * **All**: All archived backup files are retained.
      * 
      */
-    @Export(name="releasedKeepPolicy", type=String.class, parameters={})
+    @Export(name="releasedKeepPolicy", refs={String.class}, tree="[0]")
     private Output<String> releasedKeepPolicy;
 
     /**
@@ -447,7 +447,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead */
-    @Export(name="retentionPeriod", type=Integer.class, parameters={})
+    @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionPeriod;
 
     /**

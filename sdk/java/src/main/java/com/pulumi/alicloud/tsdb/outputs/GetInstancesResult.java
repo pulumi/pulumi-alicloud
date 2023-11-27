@@ -156,18 +156,18 @@ public final class GetInstancesResult {
             return this;
         }
         public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.appKey = appKey;
-            o.enableDetails = enableDetails;
-            o.engineType = engineType;
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.outputFile = outputFile;
-            o.queryStr = queryStr;
-            o.status = status;
-            o.statusList = statusList;
-            return o;
+            final var _resultValue = new GetInstancesResult();
+            _resultValue.appKey = appKey;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.engineType = engineType;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instances = instances;
+            _resultValue.outputFile = outputFile;
+            _resultValue.queryStr = queryStr;
+            _resultValue.status = status;
+            _resultValue.statusList = statusList;
+            return _resultValue;
         }
     }
 }

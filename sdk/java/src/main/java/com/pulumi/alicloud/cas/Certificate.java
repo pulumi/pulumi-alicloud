@@ -67,7 +67,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Cert of the Certificate in which the Certificate will add.
      * 
      */
-    @Export(name="cert", type=String.class, parameters={})
+    @Export(name="cert", refs={String.class}, tree="[0]")
     private Output<String> cert;
 
     /**
@@ -77,7 +77,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     public Output<String> cert() {
         return this.cert;
     }
-    @Export(name="certificateName", type=String.class, parameters={})
+    @Export(name="certificateName", refs={String.class}, tree="[0]")
     private Output<String> certificateName;
 
     public Output<String> certificateName() {
@@ -87,7 +87,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Key of the Certificate in which the Certificate will add.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -97,7 +97,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     public Output<String> key() {
         return this.key;
     }
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     public Output<Optional<String>> lang() {
@@ -111,7 +111,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

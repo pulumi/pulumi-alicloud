@@ -65,10 +65,10 @@ public final class RdsParameterGroupParamDetail {
             return this;
         }
         public RdsParameterGroupParamDetail build() {
-            final var o = new RdsParameterGroupParamDetail();
-            o.paramName = paramName;
-            o.paramValue = paramValue;
-            return o;
+            final var _resultValue = new RdsParameterGroupParamDetail();
+            _resultValue.paramName = paramName;
+            _resultValue.paramValue = paramValue;
+            return _resultValue;
         }
     }
 }

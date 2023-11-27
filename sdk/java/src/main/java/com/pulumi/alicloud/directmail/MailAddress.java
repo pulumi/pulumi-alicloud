@@ -36,7 +36,7 @@ public class MailAddress extends com.pulumi.resources.CustomResource {
      * The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -50,7 +50,7 @@ public class MailAddress extends com.pulumi.resources.CustomResource {
      * Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -64,7 +64,7 @@ public class MailAddress extends com.pulumi.resources.CustomResource {
      * Return address.
      * 
      */
-    @Export(name="replyAddress", type=String.class, parameters={})
+    @Export(name="replyAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> replyAddress;
 
     /**
@@ -78,7 +78,7 @@ public class MailAddress extends com.pulumi.resources.CustomResource {
      * Account type. Valid values: `batch`, `trigger`.
      * 
      */
-    @Export(name="sendtype", type=String.class, parameters={})
+    @Export(name="sendtype", refs={String.class}, tree="[0]")
     private Output<String> sendtype;
 
     /**
@@ -92,7 +92,7 @@ public class MailAddress extends com.pulumi.resources.CustomResource {
      * Account Status freeze: 1, normal: 0.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

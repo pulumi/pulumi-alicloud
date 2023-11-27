@@ -521,34 +521,34 @@ public final class GetPhysicalConnectionsConnection {
             return this;
         }
         public GetPhysicalConnectionsConnection build() {
-            final var o = new GetPhysicalConnectionsConnection();
-            o.accessPointId = accessPointId;
-            o.adLocation = adLocation;
-            o.bandwidth = bandwidth;
-            o.businessStatus = businessStatus;
-            o.circuitCode = circuitCode;
-            o.createTime = createTime;
-            o.description = description;
-            o.enabledTime = enabledTime;
-            o.endTime = endTime;
-            o.hasReservationData = hasReservationData;
-            o.id = id;
-            o.lineOperator = lineOperator;
-            o.loaStatus = loaStatus;
-            o.paymentType = paymentType;
-            o.peerLocation = peerLocation;
-            o.physicalConnectionId = physicalConnectionId;
-            o.physicalConnectionName = physicalConnectionName;
-            o.portNumber = portNumber;
-            o.portType = portType;
-            o.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
-            o.reservationActiveTime = reservationActiveTime;
-            o.reservationInternetChargeType = reservationInternetChargeType;
-            o.reservationOrderType = reservationOrderType;
-            o.spec = spec;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetPhysicalConnectionsConnection();
+            _resultValue.accessPointId = accessPointId;
+            _resultValue.adLocation = adLocation;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.circuitCode = circuitCode;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.enabledTime = enabledTime;
+            _resultValue.endTime = endTime;
+            _resultValue.hasReservationData = hasReservationData;
+            _resultValue.id = id;
+            _resultValue.lineOperator = lineOperator;
+            _resultValue.loaStatus = loaStatus;
+            _resultValue.paymentType = paymentType;
+            _resultValue.peerLocation = peerLocation;
+            _resultValue.physicalConnectionId = physicalConnectionId;
+            _resultValue.physicalConnectionName = physicalConnectionName;
+            _resultValue.portNumber = portNumber;
+            _resultValue.portType = portType;
+            _resultValue.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
+            _resultValue.reservationActiveTime = reservationActiveTime;
+            _resultValue.reservationInternetChargeType = reservationInternetChargeType;
+            _resultValue.reservationOrderType = reservationOrderType;
+            _resultValue.spec = spec;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

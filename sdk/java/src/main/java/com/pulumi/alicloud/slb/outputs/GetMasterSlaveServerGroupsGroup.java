@@ -89,11 +89,11 @@ public final class GetMasterSlaveServerGroupsGroup {
             return servers(List.of(servers));
         }
         public GetMasterSlaveServerGroupsGroup build() {
-            final var o = new GetMasterSlaveServerGroupsGroup();
-            o.id = id;
-            o.name = name;
-            o.servers = servers;
-            return o;
+            final var _resultValue = new GetMasterSlaveServerGroupsGroup();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.servers = servers;
+            return _resultValue;
         }
     }
 }

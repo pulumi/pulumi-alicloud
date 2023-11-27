@@ -70,7 +70,7 @@ public class MscSubContract extends com.pulumi.resources.CustomResource {
      * The User&#39;s Contact Name. **Note:** The name must be 2 to 12 characters in length.
      * 
      */
-    @Export(name="contactName", type=String.class, parameters={})
+    @Export(name="contactName", refs={String.class}, tree="[0]")
     private Output<String> contactName;
 
     /**
@@ -84,7 +84,7 @@ public class MscSubContract extends com.pulumi.resources.CustomResource {
      * The User&#39;s Contact Email Address.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -98,7 +98,7 @@ public class MscSubContract extends com.pulumi.resources.CustomResource {
      * The User&#39;s Telephone.
      * 
      */
-    @Export(name="mobile", type=String.class, parameters={})
+    @Export(name="mobile", refs={String.class}, tree="[0]")
     private Output<String> mobile;
 
     /**
@@ -114,7 +114,7 @@ public class MscSubContract extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      * 
      */
-    @Export(name="position", type=String.class, parameters={})
+    @Export(name="position", refs={String.class}, tree="[0]")
     private Output<String> position;
 
     /**

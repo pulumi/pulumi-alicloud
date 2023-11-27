@@ -180,16 +180,16 @@ public final class GetAccessRulesRule {
             return this;
         }
         public GetAccessRulesRule build() {
-            final var o = new GetAccessRulesRule();
-            o.accessGroupId = accessGroupId;
-            o.accessRuleId = accessRuleId;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.networkSegment = networkSegment;
-            o.priority = priority;
-            o.rwAccessType = rwAccessType;
-            return o;
+            final var _resultValue = new GetAccessRulesRule();
+            _resultValue.accessGroupId = accessGroupId;
+            _resultValue.accessRuleId = accessRuleId;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.networkSegment = networkSegment;
+            _resultValue.priority = priority;
+            _resultValue.rwAccessType = rwAccessType;
+            return _resultValue;
         }
     }
 }

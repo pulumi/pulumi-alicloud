@@ -37,7 +37,7 @@ public class Receivers extends com.pulumi.resources.CustomResource {
      * The description of receivers and 1-50 characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -51,7 +51,7 @@ public class Receivers extends com.pulumi.resources.CustomResource {
      * The alias of receivers. Must email address and less than 30 characters in length.
      * 
      */
-    @Export(name="receiversAlias", type=String.class, parameters={})
+    @Export(name="receiversAlias", refs={String.class}, tree="[0]")
     private Output<String> receiversAlias;
 
     /**
@@ -65,7 +65,7 @@ public class Receivers extends com.pulumi.resources.CustomResource {
      * The name of the resource. The length that cannot be repeated is 1-30 characters.
      * 
      */
-    @Export(name="receiversName", type=String.class, parameters={})
+    @Export(name="receiversName", refs={String.class}, tree="[0]")
     private Output<String> receiversName;
 
     /**
@@ -79,7 +79,7 @@ public class Receivers extends com.pulumi.resources.CustomResource {
      * The status of the resource. `0` means uploading, `1` means upload completed.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**

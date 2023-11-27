@@ -76,7 +76,7 @@ public class NetworkRule extends com.pulumi.resources.CustomResource {
      * Description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -90,7 +90,7 @@ public class NetworkRule extends com.pulumi.resources.CustomResource {
      * Network Rule Name.
      * 
      */
-    @Export(name="networkRuleName", type=String.class, parameters={})
+    @Export(name="networkRuleName", refs={String.class}, tree="[0]")
     private Output<String> networkRuleName;
 
     /**
@@ -104,7 +104,7 @@ public class NetworkRule extends com.pulumi.resources.CustomResource {
      * Allowed private network addresses.
      * 
      */
-    @Export(name="sourcePrivateIps", type=List.class, parameters={String.class})
+    @Export(name="sourcePrivateIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> sourcePrivateIps;
 
     /**

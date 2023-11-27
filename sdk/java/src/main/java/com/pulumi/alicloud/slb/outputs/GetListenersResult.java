@@ -144,15 +144,15 @@ public final class GetListenersResult {
             return slbListeners(List.of(slbListeners));
         }
         public GetListenersResult build() {
-            final var o = new GetListenersResult();
-            o.descriptionRegex = descriptionRegex;
-            o.frontendPort = frontendPort;
-            o.id = id;
-            o.loadBalancerId = loadBalancerId;
-            o.outputFile = outputFile;
-            o.protocol = protocol;
-            o.slbListeners = slbListeners;
-            return o;
+            final var _resultValue = new GetListenersResult();
+            _resultValue.descriptionRegex = descriptionRegex;
+            _resultValue.frontendPort = frontendPort;
+            _resultValue.id = id;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.protocol = protocol;
+            _resultValue.slbListeners = slbListeners;
+            return _resultValue;
         }
     }
 }

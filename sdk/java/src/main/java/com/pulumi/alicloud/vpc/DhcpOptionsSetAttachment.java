@@ -88,7 +88,7 @@ public class DhcpOptionsSetAttachment extends com.pulumi.resources.CustomResourc
      * The ID of the DHCP options set.
      * 
      */
-    @Export(name="dhcpOptionsSetId", type=String.class, parameters={})
+    @Export(name="dhcpOptionsSetId", refs={String.class}, tree="[0]")
     private Output<String> dhcpOptionsSetId;
 
     /**
@@ -102,7 +102,7 @@ public class DhcpOptionsSetAttachment extends com.pulumi.resources.CustomResourc
      * Specifies whether to precheck this request only. Default values: `false`. Valid values:
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -116,7 +116,7 @@ public class DhcpOptionsSetAttachment extends com.pulumi.resources.CustomResourc
      * The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -130,7 +130,7 @@ public class DhcpOptionsSetAttachment extends com.pulumi.resources.CustomResourc
      * The ID of the VPC network that is to be associated with the DHCP options set..
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

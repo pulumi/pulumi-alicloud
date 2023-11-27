@@ -149,15 +149,15 @@ public final class GetServerGroupsResult {
             return slbServerGroups(List.of(slbServerGroups));
         }
         public GetServerGroupsResult build() {
-            final var o = new GetServerGroupsResult();
-            o.id = id;
-            o.ids = ids;
-            o.loadBalancerId = loadBalancerId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.slbServerGroups = slbServerGroups;
-            return o;
+            final var _resultValue = new GetServerGroupsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.slbServerGroups = slbServerGroups;
+            return _resultValue;
         }
     }
 }

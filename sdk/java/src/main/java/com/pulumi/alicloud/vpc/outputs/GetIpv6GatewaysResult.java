@@ -147,17 +147,17 @@ public final class GetIpv6GatewaysResult {
             return this;
         }
         public GetIpv6GatewaysResult build() {
-            final var o = new GetIpv6GatewaysResult();
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.ipv6GatewayName = ipv6GatewayName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetIpv6GatewaysResult();
+            _resultValue.gateways = gateways;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ipv6GatewayName = ipv6GatewayName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

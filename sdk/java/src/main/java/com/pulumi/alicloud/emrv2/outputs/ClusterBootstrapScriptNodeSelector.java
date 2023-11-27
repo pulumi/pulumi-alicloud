@@ -131,13 +131,13 @@ public final class ClusterBootstrapScriptNodeSelector {
             return this;
         }
         public ClusterBootstrapScriptNodeSelector build() {
-            final var o = new ClusterBootstrapScriptNodeSelector();
-            o.nodeGroupId = nodeGroupId;
-            o.nodeGroupName = nodeGroupName;
-            o.nodeGroupTypes = nodeGroupTypes;
-            o.nodeNames = nodeNames;
-            o.nodeSelectType = nodeSelectType;
-            return o;
+            final var _resultValue = new ClusterBootstrapScriptNodeSelector();
+            _resultValue.nodeGroupId = nodeGroupId;
+            _resultValue.nodeGroupName = nodeGroupName;
+            _resultValue.nodeGroupTypes = nodeGroupTypes;
+            _resultValue.nodeNames = nodeNames;
+            _resultValue.nodeSelectType = nodeSelectType;
+            return _resultValue;
         }
     }
 }

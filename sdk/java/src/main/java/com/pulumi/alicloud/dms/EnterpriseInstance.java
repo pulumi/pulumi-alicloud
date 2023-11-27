@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultEnterpriseInstance = new EnterpriseInstance(&#34;defaultEnterpriseInstance&#34;, EnterpriseInstanceArgs.builder()        
  *             .tid(defaultUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
- *             .instanceType(&#34;MySQL&#34;)
+ *             .instanceType(&#34;mysql&#34;)
  *             .instanceSource(&#34;RDS&#34;)
  *             .networkType(&#34;VPC&#34;)
  *             .envType(&#34;dev&#34;)
@@ -144,7 +144,8 @@ import javax.annotation.Nullable;
  *             .databasePassword(defaultAccount.accountPassword())
  *             .instanceName(name)
  *             .dbaUid(current.applyValue(getAccountResult -&gt; getAccountResult.id()))
- *             .safeRule(&#34;自由操作&#34;)
+ *             .safeRule(&#34;904496&#34;)
+ *             .useDsql(1)
  *             .queryTimeout(60)
  *             .exportTimeout(600)
  *             .ecsRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
@@ -169,7 +170,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Cross-database query datalink name.
      * 
      */
-    @Export(name="dataLinkName", type=String.class, parameters={})
+    @Export(name="dataLinkName", refs={String.class}, tree="[0]")
     private Output<String> dataLinkName;
 
     /**
@@ -183,7 +184,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Database access password.
      * 
      */
-    @Export(name="databasePassword", type=String.class, parameters={})
+    @Export(name="databasePassword", refs={String.class}, tree="[0]")
     private Output<String> databasePassword;
 
     /**
@@ -197,7 +198,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Database access account.
      * 
      */
-    @Export(name="databaseUser", type=String.class, parameters={})
+    @Export(name="databaseUser", refs={String.class}, tree="[0]")
     private Output<String> databaseUser;
 
     /**
@@ -211,7 +212,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The dba id of the database instance.
      * 
      */
-    @Export(name="dbaId", type=String.class, parameters={})
+    @Export(name="dbaId", refs={String.class}, tree="[0]")
     private Output<String> dbaId;
 
     /**
@@ -225,7 +226,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The instance dba nickname.
      * 
      */
-    @Export(name="dbaNickName", type=String.class, parameters={})
+    @Export(name="dbaNickName", refs={String.class}, tree="[0]")
     private Output<String> dbaNickName;
 
     /**
@@ -239,7 +240,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
      * 
      */
-    @Export(name="dbaUid", type=Integer.class, parameters={})
+    @Export(name="dbaUid", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbaUid;
 
     /**
@@ -253,7 +254,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
      * 
      */
-    @Export(name="ddlOnline", type=Integer.class, parameters={})
+    @Export(name="ddlOnline", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ddlOnline;
 
     /**
@@ -267,7 +268,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
      * 
      */
-    @Export(name="ecsInstanceId", type=String.class, parameters={})
+    @Export(name="ecsInstanceId", refs={String.class}, tree="[0]")
     private Output<String> ecsInstanceId;
 
     /**
@@ -281,7 +282,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
      * 
      */
-    @Export(name="ecsRegion", type=String.class, parameters={})
+    @Export(name="ecsRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ecsRegion;
 
     /**
@@ -295,7 +296,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
      * 
      */
-    @Export(name="envType", type=String.class, parameters={})
+    @Export(name="envType", refs={String.class}, tree="[0]")
     private Output<String> envType;
 
     /**
@@ -309,7 +310,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Export timeout, unit: s (seconds).
      * 
      */
-    @Export(name="exportTimeout", type=Integer.class, parameters={})
+    @Export(name="exportTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> exportTimeout;
 
     /**
@@ -323,7 +324,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Host address of the target database.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -341,7 +342,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead. */
-    @Export(name="instanceAlias", type=String.class, parameters={})
+    @Export(name="instanceAlias", refs={String.class}, tree="[0]")
     private Output<String> instanceAlias;
 
     /**
@@ -355,7 +356,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The instance id of the database instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -369,7 +370,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Instance name, to help users quickly distinguish positioning.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -383,7 +384,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
      * 
      */
-    @Export(name="instanceSource", type=String.class, parameters={})
+    @Export(name="instanceSource", refs={String.class}, tree="[0]")
     private Output<String> instanceSource;
 
     /**
@@ -397,7 +398,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -411,7 +412,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Network type. Valid values: `CLASSIC`, `VPC`.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
@@ -425,7 +426,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Access port of the target database.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -439,7 +440,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Query timeout time, unit: s (seconds).
      * 
      */
-    @Export(name="queryTimeout", type=Integer.class, parameters={})
+    @Export(name="queryTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> queryTimeout;
 
     /**
@@ -453,7 +454,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The security rule of the instance is passed into the name of the security rule in the enterprise.
      * 
      */
-    @Export(name="safeRule", type=String.class, parameters={})
+    @Export(name="safeRule", refs={String.class}, tree="[0]")
     private Output<String> safeRule;
 
     /**
@@ -467,7 +468,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The safe rule id of the database instance.
      * 
      */
-    @Export(name="safeRuleId", type=String.class, parameters={})
+    @Export(name="safeRuleId", refs={String.class}, tree="[0]")
     private Output<String> safeRuleId;
 
     /**
@@ -481,7 +482,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      * 
      */
-    @Export(name="sid", type=String.class, parameters={})
+    @Export(name="sid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sid;
 
     /**
@@ -495,7 +496,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Whether the instance ignores test connectivity. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="skipTest", type=Boolean.class, parameters={})
+    @Export(name="skipTest", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipTest;
 
     /**
@@ -513,7 +514,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'state' has been deprecated from version 1.100.0. Use 'status' instead. */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -527,7 +528,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The instance status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -541,7 +542,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * The tenant ID.
      * 
      */
-    @Export(name="tid", type=Integer.class, parameters={})
+    @Export(name="tid", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> tid;
 
     /**
@@ -555,7 +556,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
      * 
      */
-    @Export(name="useDsql", type=Integer.class, parameters={})
+    @Export(name="useDsql", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> useDsql;
 
     /**
@@ -569,7 +570,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**

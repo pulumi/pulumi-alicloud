@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -104,19 +104,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? Destination { get; set; }
 
         /// <summary>
-        /// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         /// </summary>
         [Input("direction", required: true)]
         public string Direction { get; set; } = null!;
 
         /// <summary>
-        /// The ip version.
+        /// The IP version of the address in the access control policy.
         /// </summary>
         [Input("ipVersion")]
         public string? IpVersion { get; set; }
 
         /// <summary>
-        /// DestPortGroupPorts. Valid values: `en`, `zh`.
+        /// The language of the content within the response. Valid values: `en`, `zh`.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
@@ -128,22 +128,16 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        /// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto")]
         public string? Proto { get; set; }
 
         /// <summary>
-        /// The source address defined in the access control policy.
+        /// The source address in the access control policy.
         /// </summary>
         [Input("source")]
         public string? Source { get; set; }
-
-        /// <summary>
-        /// The source IP address of the request.
-        /// </summary>
-        [Input("sourceIp")]
-        public string? SourceIp { get; set; }
 
         public GetControlPoliciesArgs()
         {
@@ -178,19 +172,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Destination { get; set; }
 
         /// <summary>
-        /// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
-        /// The ip version.
+        /// The IP version of the address in the access control policy.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// DestPortGroupPorts. Valid values: `en`, `zh`.
+        /// The language of the content within the response. Valid values: `en`, `zh`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -202,22 +196,16 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        /// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto")]
         public Input<string>? Proto { get; set; }
 
         /// <summary>
-        /// The source address defined in the access control policy.
+        /// The source address in the access control policy.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
-
-        /// <summary>
-        /// The source IP address of the request.
-        /// </summary>
-        [Input("sourceIp")]
-        public Input<string>? SourceIp { get; set; }
 
         public GetControlPoliciesInvokeArgs()
         {
@@ -229,23 +217,49 @@ namespace Pulumi.AliCloud.CloudFirewall
     [OutputType]
     public sealed class GetControlPoliciesResult
     {
+        /// <summary>
+        /// The action that Cloud Firewall performs on the traffic.
+        /// </summary>
         public readonly string? AclAction;
+        /// <summary>
+        /// The unique ID of the access control policy.
+        /// </summary>
         public readonly string? AclUuid;
+        /// <summary>
+        /// The description of the access control policy.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The destination address in the access control policy.
+        /// </summary>
         public readonly string? Destination;
+        /// <summary>
+        /// The direction of the traffic to which the access control policy applies.
+        /// </summary>
         public readonly string Direction;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Control Policy IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? IpVersion;
         public readonly string? Lang;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Cloud Firewall Control Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetControlPoliciesPolicyResult> Policies;
+        /// <summary>
+        /// The type of the protocol in the access control policy.
+        /// </summary>
         public readonly string? Proto;
+        /// <summary>
+        /// The source address in the access control policy.
+        /// </summary>
         public readonly string? Source;
-        public readonly string? SourceIp;
 
         [OutputConstructor]
         private GetControlPoliciesResult(
@@ -273,9 +287,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
             string? proto,
 
-            string? source,
-
-            string? sourceIp)
+            string? source)
         {
             AclAction = aclAction;
             AclUuid = aclUuid;
@@ -290,7 +302,6 @@ namespace Pulumi.AliCloud.CloudFirewall
             Policies = policies;
             Proto = proto;
             Source = source;
-            SourceIp = sourceIp;
         }
     }
 }

@@ -93,7 +93,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The associated physical connections.
      * 
      */
-    @Export(name="associatedPhysicalConnections", type=String.class, parameters={})
+    @Export(name="associatedPhysicalConnections", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> associatedPhysicalConnections;
 
     /**
@@ -107,7 +107,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The bandwidth.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -121,7 +121,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Operators for physical connection circuit provided coding.
      * 
      */
-    @Export(name="circuitCode", type=String.class, parameters={})
+    @Export(name="circuitCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> circuitCode;
 
     /**
@@ -135,7 +135,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -149,7 +149,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
      * 
      */
-    @Export(name="detectMultiplier", type=Integer.class, parameters={})
+    @Export(name="detectMultiplier", refs={Integer.class}, tree="[0]")
     private Output<Integer> detectMultiplier;
 
     /**
@@ -163,7 +163,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Whether to Enable IPv6. Valid values: `false`, `true`.
      * 
      */
-    @Export(name="enableIpv6", type=Boolean.class, parameters={})
+    @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableIpv6;
 
     /**
@@ -177,7 +177,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
      * 
      */
-    @Export(name="includeCrossAccountVbr", type=Boolean.class, parameters={})
+    @Export(name="includeCrossAccountVbr", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> includeCrossAccountVbr;
 
     /**
@@ -191,7 +191,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Alibaba Cloud-Connected IPv4 address.
      * 
      */
-    @Export(name="localGatewayIp", type=String.class, parameters={})
+    @Export(name="localGatewayIp", refs={String.class}, tree="[0]")
     private Output<String> localGatewayIp;
 
     /**
@@ -205,7 +205,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Alibaba Cloud-Connected IPv6 Address.
      * 
      */
-    @Export(name="localIpv6GatewayIp", type=String.class, parameters={})
+    @Export(name="localIpv6GatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localIpv6GatewayIp;
 
     /**
@@ -219,7 +219,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Configure BFD packet reception interval of values include: 200~1000, unit: ms.
      * 
      */
-    @Export(name="minRxInterval", type=Integer.class, parameters={})
+    @Export(name="minRxInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> minRxInterval;
 
     /**
@@ -233,7 +233,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
      * 
      */
-    @Export(name="minTxInterval", type=Integer.class, parameters={})
+    @Export(name="minTxInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> minTxInterval;
 
     /**
@@ -247,7 +247,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The Client-Side Interconnection IPv4 Address.
      * 
      */
-    @Export(name="peerGatewayIp", type=String.class, parameters={})
+    @Export(name="peerGatewayIp", refs={String.class}, tree="[0]")
     private Output<String> peerGatewayIp;
 
     /**
@@ -261,7 +261,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The Client-Side Interconnection IPv6 Address.
      * 
      */
-    @Export(name="peerIpv6GatewayIp", type=String.class, parameters={})
+    @Export(name="peerIpv6GatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerIpv6GatewayIp;
 
     /**
@@ -275,7 +275,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
      * 
      */
-    @Export(name="peeringIpv6SubnetMask", type=String.class, parameters={})
+    @Export(name="peeringIpv6SubnetMask", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peeringIpv6SubnetMask;
 
     /**
@@ -289,7 +289,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
      * 
      */
-    @Export(name="peeringSubnetMask", type=String.class, parameters={})
+    @Export(name="peeringSubnetMask", refs={String.class}, tree="[0]")
     private Output<String> peeringSubnetMask;
 
     /**
@@ -303,7 +303,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The ID of the Physical Connection to Which the ID.
      * 
      */
-    @Export(name="physicalConnectionId", type=String.class, parameters={})
+    @Export(name="physicalConnectionId", refs={String.class}, tree="[0]")
     private Output<String> physicalConnectionId;
 
     /**
@@ -317,7 +317,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
      * 
      */
-    @Export(name="routeTableId", type=String.class, parameters={})
+    @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**
@@ -331,7 +331,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -345,7 +345,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The vbr owner id.
      * 
      */
-    @Export(name="vbrOwnerId", type=String.class, parameters={})
+    @Export(name="vbrOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vbrOwnerId;
 
     /**
@@ -359,7 +359,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
      * 
      */
-    @Export(name="virtualBorderRouterName", type=String.class, parameters={})
+    @Export(name="virtualBorderRouterName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> virtualBorderRouterName;
 
     /**
@@ -373,7 +373,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * The VLAN ID of the VBR. Value range: 0~2999.
      * 
      */
-    @Export(name="vlanId", type=Integer.class, parameters={})
+    @Export(name="vlanId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vlanId;
 
     /**

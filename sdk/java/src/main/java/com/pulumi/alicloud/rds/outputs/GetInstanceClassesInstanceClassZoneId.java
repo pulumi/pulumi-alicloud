@@ -69,10 +69,10 @@ public final class GetInstanceClassesInstanceClassZoneId {
             return subZoneIds(List.of(subZoneIds));
         }
         public GetInstanceClassesInstanceClassZoneId build() {
-            final var o = new GetInstanceClassesInstanceClassZoneId();
-            o.id = id;
-            o.subZoneIds = subZoneIds;
-            return o;
+            final var _resultValue = new GetInstanceClassesInstanceClassZoneId();
+            _resultValue.id = id;
+            _resultValue.subZoneIds = subZoneIds;
+            return _resultValue;
         }
     }
 }

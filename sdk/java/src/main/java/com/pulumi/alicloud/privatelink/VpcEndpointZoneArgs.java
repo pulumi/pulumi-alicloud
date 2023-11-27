@@ -17,14 +17,18 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
     public static final VpcEndpointZoneArgs Empty = new VpcEndpointZoneArgs();
 
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -32,14 +36,14 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the Vpc Endpoint.
+     * The endpoint ID.
      * 
      */
     @Import(name="endpointId", required=true)
     private Output<String> endpointId;
 
     /**
-     * @return The ID of the Vpc Endpoint.
+     * @return The endpoint ID.
      * 
      */
     public Output<String> endpointId() {
@@ -47,14 +51,29 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The VSwitch id.
+     * The IP address of the endpoint ENI.
+     * 
+     */
+    @Import(name="eniIp")
+    private @Nullable Output<String> eniIp;
+
+    /**
+     * @return The IP address of the endpoint ENI.
+     * 
+     */
+    public Optional<Output<String>> eniIp() {
+        return Optional.ofNullable(this.eniIp);
+    }
+
+    /**
+     * The ID of the vSwitch in the zone. .
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The VSwitch id.
+     * @return The ID of the vSwitch in the zone. .
      * 
      */
     public Output<String> vswitchId() {
@@ -62,14 +81,14 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The Zone Id.
+     * The zone ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone Id.
+     * @return The zone ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -81,6 +100,7 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
     private VpcEndpointZoneArgs(VpcEndpointZoneArgs $) {
         this.dryRun = $.dryRun;
         this.endpointId = $.endpointId;
+        this.eniIp = $.eniIp;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
     }
@@ -104,7 +124,9 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -115,7 +137,9 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -125,7 +149,7 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param endpointId The ID of the Vpc Endpoint.
+         * @param endpointId The endpoint ID.
          * 
          * @return builder
          * 
@@ -136,7 +160,7 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param endpointId The ID of the Vpc Endpoint.
+         * @param endpointId The endpoint ID.
          * 
          * @return builder
          * 
@@ -146,7 +170,28 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vswitchId The VSwitch id.
+         * @param eniIp The IP address of the endpoint ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eniIp(@Nullable Output<String> eniIp) {
+            $.eniIp = eniIp;
+            return this;
+        }
+
+        /**
+         * @param eniIp The IP address of the endpoint ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eniIp(String eniIp) {
+            return eniIp(Output.of(eniIp));
+        }
+
+        /**
+         * @param vswitchId The ID of the vSwitch in the zone. .
          * 
          * @return builder
          * 
@@ -157,7 +202,7 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vswitchId The VSwitch id.
+         * @param vswitchId The ID of the vSwitch in the zone. .
          * 
          * @return builder
          * 
@@ -167,7 +212,7 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zoneId The Zone Id.
+         * @param zoneId The zone ID.
          * 
          * @return builder
          * 
@@ -178,7 +223,7 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zoneId The Zone Id.
+         * @param zoneId The zone ID.
          * 
          * @return builder
          * 

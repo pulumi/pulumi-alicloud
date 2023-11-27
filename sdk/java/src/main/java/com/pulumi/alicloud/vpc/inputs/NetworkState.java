@@ -242,7 +242,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
@@ -253,7 +253,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> routerTableId;
 
     /**
-     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * @return (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
@@ -703,7 +703,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+         * @param routerTableId (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          * @return builder
          * 
@@ -718,7 +718,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+         * @param routerTableId (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          * @return builder
          * 

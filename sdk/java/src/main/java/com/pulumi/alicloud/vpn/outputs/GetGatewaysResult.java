@@ -234,19 +234,19 @@ public final class GetGatewaysResult {
             return this;
         }
         public GetGatewaysResult build() {
-            final var o = new GetGatewaysResult();
-            o.businessStatus = businessStatus;
-            o.enableIpsec = enableIpsec;
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.includeReservationData = includeReservationData;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetGatewaysResult();
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.enableIpsec = enableIpsec;
+            _resultValue.gateways = gateways;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.includeReservationData = includeReservationData;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

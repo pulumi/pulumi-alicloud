@@ -84,11 +84,11 @@ public final class GetDedicatedHostAccountsAccount {
             return this;
         }
         public GetDedicatedHostAccountsAccount build() {
-            final var o = new GetDedicatedHostAccountsAccount();
-            o.accountName = accountName;
-            o.dedicatedHostId = dedicatedHostId;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetDedicatedHostAccountsAccount();
+            _resultValue.accountName = accountName;
+            _resultValue.dedicatedHostId = dedicatedHostId;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

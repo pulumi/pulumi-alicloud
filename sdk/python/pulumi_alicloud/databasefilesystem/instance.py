@@ -16,40 +16,58 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 instance_name: pulumi.Input[str],
+                 category: pulumi.Input[str],
                  size: pulumi.Input[int],
                  zone_id: pulumi.Input[str],
-                 category: Optional[pulumi.Input[str]] = None,
+                 advanced_features: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
                  ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
                  enable_raid: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[bool]] = None,
+                 fs_name: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
-                 raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
+                 raid_stripe_unit_number: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 used_scene: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_name: The name of the Database file system.
-        :param pulumi.Input[int] size: The size Of the Database file system. Unit: GiB.
-        :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
-        :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
-        :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
-        :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
-        :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
-        :param pulumi.Input[str] kms_key_id: The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
-        :param pulumi.Input[str] performance_level: The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
-        :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
+        :param pulumi.Input[str] category: Category of database file system.
+        :param pulumi.Input[int] size: Size of database file system, unit GiB.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the database file system belongs.
+        :param pulumi.Input[str] advanced_features: The number of CPU cores and the upper limit of memory used by the database file storage instance.
+        :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after creating DBFS using the snapshot.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
+        :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
+        :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
+        :param pulumi.Input[str] fs_name: Database file system name.
+        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        :param pulumi.Input[str] instance_type: Instance type. Value range:
+               - dbfs.small
+               - dbfs.medium
+               - dbfs.large (default)
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS key used by DBFS.
+        :param pulumi.Input[str] performance_level: When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+               - PL0: single disk maximum random read-write IOPS 10000
+               - PL1: highest random read-write IOPS 50000 per disk (default)
+               - PL2: single disk maximum random read-write IOPS 100000
+               - PL3: single disk maximum random read-write IOPS 1 million.
+        :param pulumi.Input[int] raid_stripe_unit_number: Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
+               - MySQL 5.7
+               - PostgreSQL
+               - MongoDB.
         """
-        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "zone_id", zone_id)
-        if category is not None:
-            pulumi.set(__self__, "category", category)
+        if advanced_features is not None:
+            pulumi.set(__self__, "advanced_features", advanced_features)
         if delete_snapshot is not None:
             pulumi.set(__self__, "delete_snapshot", delete_snapshot)
         if ecs_lists is not None:
@@ -61,6 +79,15 @@ class InstanceArgs:
             pulumi.set(__self__, "enable_raid", enable_raid)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
+        if fs_name is not None:
+            pulumi.set(__self__, "fs_name", fs_name)
+        if instance_name is not None:
+            warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if performance_level is not None:
@@ -71,24 +98,26 @@ class InstanceArgs:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if used_scene is not None:
+            pulumi.set(__self__, "used_scene", used_scene)
 
     @property
-    @pulumi.getter(name="instanceName")
-    def instance_name(self) -> pulumi.Input[str]:
+    @pulumi.getter
+    def category(self) -> pulumi.Input[str]:
         """
-        The name of the Database file system.
+        Category of database file system.
         """
-        return pulumi.get(self, "instance_name")
+        return pulumi.get(self, "category")
 
-    @instance_name.setter
-    def instance_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_name", value)
+    @category.setter
+    def category(self, value: pulumi.Input[str]):
+        pulumi.set(self, "category", value)
 
     @property
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
         """
-        The size Of the Database file system. Unit: GiB.
+        Size of database file system, unit GiB.
         """
         return pulumi.get(self, "size")
 
@@ -100,7 +129,7 @@ class InstanceArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The Zone ID of the Database file system.
+        The ID of the zone to which the database file system belongs.
         """
         return pulumi.get(self, "zone_id")
 
@@ -109,22 +138,22 @@ class InstanceArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
-    @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="advancedFeatures")
+    def advanced_features(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the Database file system. Valid values: `standard`.
+        The number of CPU cores and the upper limit of memory used by the database file storage instance.
         """
-        return pulumi.get(self, "category")
+        return pulumi.get(self, "advanced_features")
 
-    @category.setter
-    def category(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "category", value)
+    @advanced_features.setter
+    def advanced_features(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "advanced_features", value)
 
     @property
     @pulumi.getter(name="deleteSnapshot")
     def delete_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+        Whether to delete the original snapshot after creating DBFS using the snapshot.
         """
         return pulumi.get(self, "delete_snapshot")
 
@@ -136,7 +165,7 @@ class InstanceArgs:
     @pulumi.getter(name="ecsLists")
     def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
-        The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         """
         warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
         pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
@@ -151,7 +180,7 @@ class InstanceArgs:
     @pulumi.getter(name="enableRaid")
     def enable_raid(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+        Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "enable_raid")
 
@@ -163,7 +192,7 @@ class InstanceArgs:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to encrypt the database file system. Valid values: `true` and `false`.
+        Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "encryption")
 
@@ -172,10 +201,52 @@ class InstanceArgs:
         pulumi.set(self, "encryption", value)
 
     @property
+    @pulumi.getter(name="fsName")
+    def fs_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database file system name.
+        """
+        return pulumi.get(self, "fs_name")
+
+    @fs_name.setter
+    def fs_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_name", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        """
+        warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
+
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance type. Value range:
+        - dbfs.small
+        - dbfs.medium
+        - dbfs.large (default)
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+        The ID of the KMS key used by DBFS.
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -187,7 +258,11 @@ class InstanceArgs:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+        When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+        - PL0: single disk maximum random read-write IOPS 10000
+        - PL1: highest random read-write IOPS 50000 per disk (default)
+        - PL2: single disk maximum random read-write IOPS 100000
+        - PL3: single disk maximum random read-write IOPS 1 million.
         """
         return pulumi.get(self, "performance_level")
 
@@ -197,21 +272,21 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="raidStripeUnitNumber")
-    def raid_stripe_unit_number(self) -> Optional[pulumi.Input[str]]:
+    def raid_stripe_unit_number(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+        Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         """
         return pulumi.get(self, "raid_stripe_unit_number")
 
     @raid_stripe_unit_number.setter
-    def raid_stripe_unit_number(self, value: Optional[pulumi.Input[str]]):
+    def raid_stripe_unit_number(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "raid_stripe_unit_number", value)
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The snapshot id of the Database file system.
+        The ID of the snapshot used to create the DBFS instance.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -231,43 +306,82 @@ class InstanceArgs:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="usedScene")
+    def used_scene(self) -> Optional[pulumi.Input[str]]:
+        """
+        The usage scenario of DBFS. Value range:
+        - MySQL 5.7
+        - PostgreSQL
+        - MongoDB.
+        """
+        return pulumi.get(self, "used_scene")
+
+    @used_scene.setter
+    def used_scene(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "used_scene", value)
+
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 advanced_features: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
                  ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
                  enable_raid: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[bool]] = None,
+                 fs_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
-                 raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
+                 raid_stripe_unit_number: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 used_scene: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
-        :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
-        :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
-        :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
-        :param pulumi.Input[str] instance_name: The name of the Database file system.
-        :param pulumi.Input[str] kms_key_id: The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
-        :param pulumi.Input[str] performance_level: The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
-        :param pulumi.Input[int] size: The size Of the Database file system. Unit: GiB.
-        :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
-        :param pulumi.Input[str] status: The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        :param pulumi.Input[str] advanced_features: The number of CPU cores and the upper limit of memory used by the database file storage instance.
+        :param pulumi.Input[str] category: Category of database file system.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after creating DBFS using the snapshot.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
+        :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
+        :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
+        :param pulumi.Input[str] fs_name: Database file system name.
+        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        :param pulumi.Input[str] instance_type: Instance type. Value range:
+               - dbfs.small
+               - dbfs.medium
+               - dbfs.large (default)
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS key used by DBFS.
+        :param pulumi.Input[str] performance_level: When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+               - PL0: single disk maximum random read-write IOPS 10000
+               - PL1: highest random read-write IOPS 50000 per disk (default)
+               - PL2: single disk maximum random read-write IOPS 100000
+               - PL3: single disk maximum random read-write IOPS 1 million.
+        :param pulumi.Input[int] raid_stripe_unit_number: Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+        :param pulumi.Input[int] size: Size of database file system, unit GiB.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
+        :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
+        :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
+               - MySQL 5.7
+               - PostgreSQL
+               - MongoDB.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the database file system belongs.
         """
+        if advanced_features is not None:
+            pulumi.set(__self__, "advanced_features", advanced_features)
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if delete_snapshot is not None:
             pulumi.set(__self__, "delete_snapshot", delete_snapshot)
         if ecs_lists is not None:
@@ -279,8 +393,15 @@ class _InstanceState:
             pulumi.set(__self__, "enable_raid", enable_raid)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
+        if fs_name is not None:
+            pulumi.set(__self__, "fs_name", fs_name)
+        if instance_name is not None:
+            warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if performance_level is not None:
@@ -295,14 +416,28 @@ class _InstanceState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if used_scene is not None:
+            pulumi.set(__self__, "used_scene", used_scene)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="advancedFeatures")
+    def advanced_features(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of CPU cores and the upper limit of memory used by the database file storage instance.
+        """
+        return pulumi.get(self, "advanced_features")
+
+    @advanced_features.setter
+    def advanced_features(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "advanced_features", value)
 
     @property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the Database file system. Valid values: `standard`.
+        Category of database file system.
         """
         return pulumi.get(self, "category")
 
@@ -311,10 +446,22 @@ class _InstanceState:
         pulumi.set(self, "category", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="deleteSnapshot")
     def delete_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+        Whether to delete the original snapshot after creating DBFS using the snapshot.
         """
         return pulumi.get(self, "delete_snapshot")
 
@@ -326,7 +473,7 @@ class _InstanceState:
     @pulumi.getter(name="ecsLists")
     def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
-        The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         """
         warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
         pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
@@ -341,7 +488,7 @@ class _InstanceState:
     @pulumi.getter(name="enableRaid")
     def enable_raid(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+        Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "enable_raid")
 
@@ -353,7 +500,7 @@ class _InstanceState:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to encrypt the database file system. Valid values: `true` and `false`.
+        Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "encryption")
 
@@ -362,11 +509,26 @@ class _InstanceState:
         pulumi.set(self, "encryption", value)
 
     @property
+    @pulumi.getter(name="fsName")
+    def fs_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database file system name.
+        """
+        return pulumi.get(self, "fs_name")
+
+    @fs_name.setter
+    def fs_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fs_name", value)
+
+    @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Database file system.
+        . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         """
+        warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
+
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -374,10 +536,25 @@ class _InstanceState:
         pulumi.set(self, "instance_name", value)
 
     @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance type. Value range:
+        - dbfs.small
+        - dbfs.medium
+        - dbfs.large (default)
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+        The ID of the KMS key used by DBFS.
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -389,7 +566,11 @@ class _InstanceState:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+        When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+        - PL0: single disk maximum random read-write IOPS 10000
+        - PL1: highest random read-write IOPS 50000 per disk (default)
+        - PL2: single disk maximum random read-write IOPS 100000
+        - PL3: single disk maximum random read-write IOPS 1 million.
         """
         return pulumi.get(self, "performance_level")
 
@@ -399,21 +580,21 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="raidStripeUnitNumber")
-    def raid_stripe_unit_number(self) -> Optional[pulumi.Input[str]]:
+    def raid_stripe_unit_number(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+        Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         """
         return pulumi.get(self, "raid_stripe_unit_number")
 
     @raid_stripe_unit_number.setter
-    def raid_stripe_unit_number(self, value: Optional[pulumi.Input[str]]):
+    def raid_stripe_unit_number(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "raid_stripe_unit_number", value)
 
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        The size Of the Database file system. Unit: GiB.
+        Size of database file system, unit GiB.
         """
         return pulumi.get(self, "size")
 
@@ -425,7 +606,7 @@ class _InstanceState:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The snapshot id of the Database file system.
+        The ID of the snapshot used to create the DBFS instance.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -437,7 +618,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -458,10 +639,25 @@ class _InstanceState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="usedScene")
+    def used_scene(self) -> Optional[pulumi.Input[str]]:
+        """
+        The usage scenario of DBFS. Value range:
+        - MySQL 5.7
+        - PostgreSQL
+        - MongoDB.
+        """
+        return pulumi.get(self, "used_scene")
+
+    @used_scene.setter
+    def used_scene(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "used_scene", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Zone ID of the Database file system.
+        The ID of the zone to which the database file system belongs.
         """
         return pulumi.get(self, "zone_id")
 
@@ -475,24 +671,28 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_features: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
                  ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]]] = None,
                  enable_raid: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[bool]] = None,
+                 fs_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
-                 raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
+                 raid_stripe_unit_number: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 used_scene: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a DBFS Instance resource.
+        Provides a DBFS Dbfs Instance resource. An instance of a database file system is equivalent to a file system and can store data of file types.
 
-        For information about DBFS Instance and how to use it.
+        For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
 
         > **NOTE:** Available since v1.136.0.
 
@@ -507,7 +707,7 @@ class Instance(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         example = alicloud.databasefilesystem.Instance("example",
             category="standard",
             zone_id="cn-hangzhou-i",
@@ -518,7 +718,7 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        DBFS Instance can be imported using the id, e.g.
+        DBFS Dbfs Instance can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
@@ -526,19 +726,33 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
-        :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
-        :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
-        :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
-        :param pulumi.Input[str] instance_name: The name of the Database file system.
-        :param pulumi.Input[str] kms_key_id: The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
-        :param pulumi.Input[str] performance_level: The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
-        :param pulumi.Input[int] size: The size Of the Database file system. Unit: GiB.
-        :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
+        :param pulumi.Input[str] advanced_features: The number of CPU cores and the upper limit of memory used by the database file storage instance.
+        :param pulumi.Input[str] category: Category of database file system.
+        :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after creating DBFS using the snapshot.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
+        :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
+        :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
+        :param pulumi.Input[str] fs_name: Database file system name.
+        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        :param pulumi.Input[str] instance_type: Instance type. Value range:
+               - dbfs.small
+               - dbfs.medium
+               - dbfs.large (default)
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS key used by DBFS.
+        :param pulumi.Input[str] performance_level: When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+               - PL0: single disk maximum random read-write IOPS 10000
+               - PL1: highest random read-write IOPS 50000 per disk (default)
+               - PL2: single disk maximum random read-write IOPS 100000
+               - PL3: single disk maximum random read-write IOPS 1 million.
+        :param pulumi.Input[int] raid_stripe_unit_number: Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+        :param pulumi.Input[int] size: Size of database file system, unit GiB.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
+        :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
+               - MySQL 5.7
+               - PostgreSQL
+               - MongoDB.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the database file system belongs.
         """
         ...
     @overload
@@ -547,9 +761,9 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a DBFS Instance resource.
+        Provides a DBFS Dbfs Instance resource. An instance of a database file system is equivalent to a file system and can store data of file types.
 
-        For information about DBFS Instance and how to use it.
+        For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
 
         > **NOTE:** Available since v1.136.0.
 
@@ -564,7 +778,7 @@ class Instance(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         example = alicloud.databasefilesystem.Instance("example",
             category="standard",
             zone_id="cn-hangzhou-i",
@@ -575,7 +789,7 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        DBFS Instance can be imported using the id, e.g.
+        DBFS Dbfs Instance can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
@@ -596,18 +810,22 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_features: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
                  ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]]] = None,
                  enable_raid: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[bool]] = None,
+                 fs_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
-                 raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
+                 raid_stripe_unit_number: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 used_scene: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -618,14 +836,17 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["advanced_features"] = advanced_features
+            if category is None and not opts.urn:
+                raise TypeError("Missing required property 'category'")
             __props__.__dict__["category"] = category
             __props__.__dict__["delete_snapshot"] = delete_snapshot
             __props__.__dict__["ecs_lists"] = ecs_lists
             __props__.__dict__["enable_raid"] = enable_raid
             __props__.__dict__["encryption"] = encryption
-            if instance_name is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_name'")
+            __props__.__dict__["fs_name"] = fs_name
             __props__.__dict__["instance_name"] = instance_name
+            __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["performance_level"] = performance_level
             __props__.__dict__["raid_stripe_unit_number"] = raid_stripe_unit_number
@@ -634,9 +855,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot_id"] = snapshot_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["used_scene"] = used_scene
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:databasefilesystem/instance:Instance',
@@ -648,19 +871,24 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_features: Optional[pulumi.Input[str]] = None,
             category: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             delete_snapshot: Optional[pulumi.Input[bool]] = None,
             ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]]] = None,
             enable_raid: Optional[pulumi.Input[bool]] = None,
             encryption: Optional[pulumi.Input[bool]] = None,
+            fs_name: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
+            instance_type: Optional[pulumi.Input[str]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
             performance_level: Optional[pulumi.Input[str]] = None,
-            raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
+            raid_stripe_unit_number: Optional[pulumi.Input[int]] = None,
             size: Optional[pulumi.Input[int]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            used_scene: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -669,31 +897,50 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
-        :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
-        :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
-        :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
-        :param pulumi.Input[str] instance_name: The name of the Database file system.
-        :param pulumi.Input[str] kms_key_id: The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
-        :param pulumi.Input[str] performance_level: The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
-        :param pulumi.Input[int] size: The size Of the Database file system. Unit: GiB.
-        :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
-        :param pulumi.Input[str] status: The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        :param pulumi.Input[str] advanced_features: The number of CPU cores and the upper limit of memory used by the database file storage instance.
+        :param pulumi.Input[str] category: Category of database file system.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after creating DBFS using the snapshot.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
+        :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
+        :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
+        :param pulumi.Input[str] fs_name: Database file system name.
+        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        :param pulumi.Input[str] instance_type: Instance type. Value range:
+               - dbfs.small
+               - dbfs.medium
+               - dbfs.large (default)
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS key used by DBFS.
+        :param pulumi.Input[str] performance_level: When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+               - PL0: single disk maximum random read-write IOPS 10000
+               - PL1: highest random read-write IOPS 50000 per disk (default)
+               - PL2: single disk maximum random read-write IOPS 100000
+               - PL3: single disk maximum random read-write IOPS 1 million.
+        :param pulumi.Input[int] raid_stripe_unit_number: Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+        :param pulumi.Input[int] size: Size of database file system, unit GiB.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
+        :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
+        :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
+               - MySQL 5.7
+               - PostgreSQL
+               - MongoDB.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the database file system belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["advanced_features"] = advanced_features
         __props__.__dict__["category"] = category
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_snapshot"] = delete_snapshot
         __props__.__dict__["ecs_lists"] = ecs_lists
         __props__.__dict__["enable_raid"] = enable_raid
         __props__.__dict__["encryption"] = encryption
+        __props__.__dict__["fs_name"] = fs_name
         __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["performance_level"] = performance_level
         __props__.__dict__["raid_stripe_unit_number"] = raid_stripe_unit_number
@@ -701,22 +948,39 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["snapshot_id"] = snapshot_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["used_scene"] = used_scene
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedFeatures")
+    def advanced_features(self) -> pulumi.Output[str]:
+        """
+        The number of CPU cores and the upper limit of memory used by the database file storage instance.
+        """
+        return pulumi.get(self, "advanced_features")
 
     @property
     @pulumi.getter
     def category(self) -> pulumi.Output[str]:
         """
-        The type of the Database file system. Valid values: `standard`.
+        Category of database file system.
         """
         return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="deleteSnapshot")
     def delete_snapshot(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+        Whether to delete the original snapshot after creating DBFS using the snapshot.
         """
         return pulumi.get(self, "delete_snapshot")
 
@@ -724,7 +988,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="ecsLists")
     def ecs_lists(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceEcsList']]]:
         """
-        The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+        The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         """
         warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
         pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
@@ -735,7 +999,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enableRaid")
     def enable_raid(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+        Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "enable_raid")
 
@@ -743,23 +1007,45 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def encryption(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to encrypt the database file system. Valid values: `true` and `false`.
+        Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter(name="fsName")
+    def fs_name(self) -> pulumi.Output[str]:
+        """
+        Database file system name.
+        """
+        return pulumi.get(self, "fs_name")
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[str]:
         """
-        The name of the Database file system.
+        . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         """
+        warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
+
         return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Instance type. Value range:
+        - dbfs.small
+        - dbfs.medium
+        - dbfs.large (default)
+        """
+        return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+        The ID of the KMS key used by DBFS.
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -767,15 +1053,19 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> pulumi.Output[str]:
         """
-        The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+        When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+        - PL0: single disk maximum random read-write IOPS 10000
+        - PL1: highest random read-write IOPS 50000 per disk (default)
+        - PL2: single disk maximum random read-write IOPS 100000
+        - PL3: single disk maximum random read-write IOPS 1 million.
         """
         return pulumi.get(self, "performance_level")
 
     @property
     @pulumi.getter(name="raidStripeUnitNumber")
-    def raid_stripe_unit_number(self) -> pulumi.Output[Optional[str]]:
+    def raid_stripe_unit_number(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+        Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         """
         return pulumi.get(self, "raid_stripe_unit_number")
 
@@ -783,15 +1073,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
         """
-        The size Of the Database file system. Unit: GiB.
+        Size of database file system, unit GiB.
         """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
+    def snapshot_id(self) -> pulumi.Output[str]:
         """
-        The snapshot id of the Database file system.
+        The ID of the snapshot used to create the DBFS instance.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -799,7 +1089,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -812,10 +1102,21 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="usedScene")
+    def used_scene(self) -> pulumi.Output[Optional[str]]:
+        """
+        The usage scenario of DBFS. Value range:
+        - MySQL 5.7
+        - PostgreSQL
+        - MongoDB.
+        """
+        return pulumi.get(self, "used_scene")
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The Zone ID of the Database file system.
+        The ID of the zone to which the database file system belongs.
         """
         return pulumi.get(self, "zone_id")
 

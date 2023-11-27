@@ -68,7 +68,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -82,7 +82,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="namespaceName", type=String.class, parameters={})
+    @Export(name="namespaceName", refs={String.class}, tree="[0]")
     private Output<String> namespaceName;
 
     /**

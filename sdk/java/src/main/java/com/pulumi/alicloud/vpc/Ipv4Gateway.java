@@ -95,7 +95,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -109,7 +109,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -123,7 +123,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -137,7 +137,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
      * 
      */
-    @Export(name="ipv4GatewayDescription", type=String.class, parameters={})
+    @Export(name="ipv4GatewayDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv4GatewayDescription;
 
     /**
@@ -151,7 +151,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * Resource primary key field.
      * 
      */
-    @Export(name="ipv4GatewayId", type=String.class, parameters={})
+    @Export(name="ipv4GatewayId", refs={String.class}, tree="[0]")
     private Output<String> ipv4GatewayId;
 
     /**
@@ -165,7 +165,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
-    @Export(name="ipv4GatewayName", type=String.class, parameters={})
+    @Export(name="ipv4GatewayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv4GatewayName;
 
     /**
@@ -179,7 +179,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * ID of the route table associated with IPv4 Gateway.
      * 
      */
-    @Export(name="ipv4GatewayRouteTableId", type=String.class, parameters={})
+    @Export(name="ipv4GatewayRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> ipv4GatewayRouteTableId;
 
     /**
@@ -193,7 +193,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -207,7 +207,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -221,7 +221,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * The tags of the current resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -235,7 +235,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

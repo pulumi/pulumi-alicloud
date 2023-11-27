@@ -16,6 +16,8 @@ class EcsNetworkInterfaceArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,6 +37,8 @@ class EcsNetworkInterfaceArgs:
         The set of arguments for constructing a EcsNetworkInterface resource.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_prefixes: A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
@@ -54,6 +58,10 @@ class EcsNetworkInterfaceArgs:
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv4_prefix_count is not None:
+            pulumi.set(__self__, "ipv4_prefix_count", ipv4_prefix_count)
+        if ipv4_prefixes is not None:
+            pulumi.set(__self__, "ipv4_prefixes", ipv4_prefixes)
         if ipv6_address_count is not None:
             pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
         if ipv6_addresses is not None:
@@ -123,6 +131,30 @@ class EcsNetworkInterfaceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipv4PrefixCount")
+    def ipv4_prefix_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        """
+        return pulumi.get(self, "ipv4_prefix_count")
+
+    @ipv4_prefix_count.setter
+    def ipv4_prefix_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv4_prefix_count", value)
+
+    @property
+    @pulumi.getter(name="ipv4Prefixes")
+    def ipv4_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+        """
+        return pulumi.get(self, "ipv4_prefixes")
+
+    @ipv4_prefixes.setter
+    def ipv4_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4_prefixes", value)
 
     @property
     @pulumi.getter(name="ipv6AddressCount")
@@ -324,6 +356,8 @@ class EcsNetworkInterfaceArgs:
 class _EcsNetworkInterfaceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mac: Optional[pulumi.Input[str]] = None,
@@ -345,6 +379,8 @@ class _EcsNetworkInterfaceState:
         """
         Input properties used for looking up and filtering EcsNetworkInterface resources.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_prefixes: A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] mac: The MAC address of the ENI.
@@ -366,6 +402,10 @@ class _EcsNetworkInterfaceState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv4_prefix_count is not None:
+            pulumi.set(__self__, "ipv4_prefix_count", ipv4_prefix_count)
+        if ipv4_prefixes is not None:
+            pulumi.set(__self__, "ipv4_prefixes", ipv4_prefixes)
         if ipv6_address_count is not None:
             pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
         if ipv6_addresses is not None:
@@ -429,6 +469,30 @@ class _EcsNetworkInterfaceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipv4PrefixCount")
+    def ipv4_prefix_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        """
+        return pulumi.get(self, "ipv4_prefix_count")
+
+    @ipv4_prefix_count.setter
+    def ipv4_prefix_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv4_prefix_count", value)
+
+    @property
+    @pulumi.getter(name="ipv4Prefixes")
+    def ipv4_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+        """
+        return pulumi.get(self, "ipv4_prefixes")
+
+    @ipv4_prefixes.setter
+    def ipv4_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4_prefixes", value)
 
     @property
     @pulumi.getter(name="ipv6AddressCount")
@@ -668,6 +732,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -690,7 +756,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
 
         For information about ECS Network Interface and how to use it, see [What is Network Interface](https://www.alibabacloud.com/help/en/doc-detail/58504.htm).
 
-        > **NOTE:** Available in v1.123.1+.
+        > **NOTE:** Available since v1.123.1.
 
         > **NOTE** Only one of `private_ip_addresses` or `secondary_private_ip_address_count` can be specified when assign private IPs.
 
@@ -705,7 +771,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAcc"
+            name = "tf-example"
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="192.168.0.0/24")
@@ -741,6 +807,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_prefixes: A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
@@ -769,7 +837,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
 
         For information about ECS Network Interface and how to use it, see [What is Network Interface](https://www.alibabacloud.com/help/en/doc-detail/58504.htm).
 
-        > **NOTE:** Available in v1.123.1+.
+        > **NOTE:** Available since v1.123.1.
 
         > **NOTE** Only one of `private_ip_addresses` or `secondary_private_ip_address_count` can be specified when assign private IPs.
 
@@ -784,7 +852,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAcc"
+            name = "tf-example"
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="192.168.0.0/24")
@@ -833,6 +901,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -859,6 +929,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
             __props__ = EcsNetworkInterfaceArgs.__new__(EcsNetworkInterfaceArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
+            __props__.__dict__["ipv4_prefixes"] = ipv4_prefixes
             __props__.__dict__["ipv6_address_count"] = ipv6_address_count
             __props__.__dict__["ipv6_addresses"] = ipv6_addresses
             __props__.__dict__["name"] = name
@@ -890,6 +962,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+            ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_address_count: Optional[pulumi.Input[int]] = None,
             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             mac: Optional[pulumi.Input[str]] = None,
@@ -916,6 +990,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_prefixes: A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] mac: The MAC address of the ENI.
@@ -940,6 +1016,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
         __props__ = _EcsNetworkInterfaceState.__new__(_EcsNetworkInterfaceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
+        __props__.__dict__["ipv4_prefixes"] = ipv4_prefixes
         __props__.__dict__["ipv6_address_count"] = ipv6_address_count
         __props__.__dict__["ipv6_addresses"] = ipv6_addresses
         __props__.__dict__["mac"] = mac
@@ -967,6 +1045,22 @@ class EcsNetworkInterface(pulumi.CustomResource):
         The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ipv4PrefixCount")
+    def ipv4_prefix_count(self) -> pulumi.Output[int]:
+        """
+        The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        """
+        return pulumi.get(self, "ipv4_prefix_count")
+
+    @property
+    @pulumi.getter(name="ipv4Prefixes")
+    def ipv4_prefixes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+        """
+        return pulumi.get(self, "ipv4_prefixes")
 
     @property
     @pulumi.getter(name="ipv6AddressCount")

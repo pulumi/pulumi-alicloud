@@ -88,11 +88,11 @@ public final class GetPolicyDocumentStatementCondition {
             return this;
         }
         public GetPolicyDocumentStatementCondition build() {
-            final var o = new GetPolicyDocumentStatementCondition();
-            o.operator = operator;
-            o.values = values;
-            o.variable = variable;
-            return o;
+            final var _resultValue = new GetPolicyDocumentStatementCondition();
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            _resultValue.variable = variable;
+            return _resultValue;
         }
     }
 }

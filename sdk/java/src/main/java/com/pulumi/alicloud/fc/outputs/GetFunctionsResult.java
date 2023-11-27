@@ -149,15 +149,15 @@ public final class GetFunctionsResult {
             return this;
         }
         public GetFunctionsResult build() {
-            final var o = new GetFunctionsResult();
-            o.functions = functions;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetFunctionsResult();
+            _resultValue.functions = functions;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

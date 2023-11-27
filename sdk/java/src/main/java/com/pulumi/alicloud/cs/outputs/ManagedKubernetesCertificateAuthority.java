@@ -86,11 +86,11 @@ public final class ManagedKubernetesCertificateAuthority {
             return this;
         }
         public ManagedKubernetesCertificateAuthority build() {
-            final var o = new ManagedKubernetesCertificateAuthority();
-            o.clientCert = clientCert;
-            o.clientKey = clientKey;
-            o.clusterCert = clusterCert;
-            return o;
+            final var _resultValue = new ManagedKubernetesCertificateAuthority();
+            _resultValue.clientCert = clientCert;
+            _resultValue.clientKey = clientKey;
+            _resultValue.clusterCert = clusterCert;
+            return _resultValue;
         }
     }
 }

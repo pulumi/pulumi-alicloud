@@ -369,26 +369,26 @@ public final class GetVirtualNodesNode {
             return this;
         }
         public GetVirtualNodesNode build() {
-            final var o = new GetVirtualNodesNode();
-            o.cpu = cpu;
-            o.createTime = createTime;
-            o.eniInstanceId = eniInstanceId;
-            o.events = events;
-            o.id = id;
-            o.internetIp = internetIp;
-            o.intranetIp = intranetIp;
-            o.memory = memory;
-            o.ramRoleName = ramRoleName;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupId = securityGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.virtualNodeId = virtualNodeId;
-            o.virtualNodeName = virtualNodeName;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetVirtualNodesNode();
+            _resultValue.cpu = cpu;
+            _resultValue.createTime = createTime;
+            _resultValue.eniInstanceId = eniInstanceId;
+            _resultValue.events = events;
+            _resultValue.id = id;
+            _resultValue.internetIp = internetIp;
+            _resultValue.intranetIp = intranetIp;
+            _resultValue.memory = memory;
+            _resultValue.ramRoleName = ramRoleName;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.virtualNodeId = virtualNodeId;
+            _resultValue.virtualNodeName = virtualNodeName;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

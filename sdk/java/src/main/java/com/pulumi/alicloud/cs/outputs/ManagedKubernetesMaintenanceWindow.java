@@ -152,12 +152,12 @@ public final class ManagedKubernetesMaintenanceWindow {
             return this;
         }
         public ManagedKubernetesMaintenanceWindow build() {
-            final var o = new ManagedKubernetesMaintenanceWindow();
-            o.duration = duration;
-            o.enable = enable;
-            o.maintenanceTime = maintenanceTime;
-            o.weeklyPeriod = weeklyPeriod;
-            return o;
+            final var _resultValue = new ManagedKubernetesMaintenanceWindow();
+            _resultValue.duration = duration;
+            _resultValue.enable = enable;
+            _resultValue.maintenanceTime = maintenanceTime;
+            _resultValue.weeklyPeriod = weeklyPeriod;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class ConnectionAuthParametersApiKeyAuthParameters {
             return this;
         }
         public ConnectionAuthParametersApiKeyAuthParameters build() {
-            final var o = new ConnectionAuthParametersApiKeyAuthParameters();
-            o.apiKeyName = apiKeyName;
-            o.apiKeyValue = apiKeyValue;
-            return o;
+            final var _resultValue = new ConnectionAuthParametersApiKeyAuthParameters();
+            _resultValue.apiKeyName = apiKeyName;
+            _resultValue.apiKeyValue = apiKeyValue;
+            return _resultValue;
         }
     }
 }

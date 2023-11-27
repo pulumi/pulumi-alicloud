@@ -65,7 +65,7 @@ public class AccountAlias extends com.pulumi.resources.CustomResource {
      * Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="accountAlias", type=String.class, parameters={})
+    @Export(name="accountAlias", refs={String.class}, tree="[0]")
     private Output<String> accountAlias;
 
     /**

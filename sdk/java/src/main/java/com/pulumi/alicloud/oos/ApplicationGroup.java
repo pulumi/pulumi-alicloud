@@ -94,7 +94,7 @@ public class ApplicationGroup extends com.pulumi.resources.CustomResource {
      * The name of the Application group.
      * 
      */
-    @Export(name="applicationGroupName", type=String.class, parameters={})
+    @Export(name="applicationGroupName", refs={String.class}, tree="[0]")
     private Output<String> applicationGroupName;
 
     /**
@@ -108,7 +108,7 @@ public class ApplicationGroup extends com.pulumi.resources.CustomResource {
      * The name of the Application.
      * 
      */
-    @Export(name="applicationName", type=String.class, parameters={})
+    @Export(name="applicationName", refs={String.class}, tree="[0]")
     private Output<String> applicationName;
 
     /**
@@ -122,7 +122,7 @@ public class ApplicationGroup extends com.pulumi.resources.CustomResource {
      * The region ID of the deployment.
      * 
      */
-    @Export(name="deployRegionId", type=String.class, parameters={})
+    @Export(name="deployRegionId", refs={String.class}, tree="[0]")
     private Output<String> deployRegionId;
 
     /**
@@ -136,7 +136,7 @@ public class ApplicationGroup extends com.pulumi.resources.CustomResource {
      * Application group description information.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -150,7 +150,7 @@ public class ApplicationGroup extends com.pulumi.resources.CustomResource {
      * The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
      * 
      */
-    @Export(name="importTagKey", type=String.class, parameters={})
+    @Export(name="importTagKey", refs={String.class}, tree="[0]")
     private Output<String> importTagKey;
 
     /**
@@ -165,7 +165,7 @@ public class ApplicationGroup extends com.pulumi.resources.CustomResource {
      * .
      * 
      */
-    @Export(name="importTagValue", type=String.class, parameters={})
+    @Export(name="importTagValue", refs={String.class}, tree="[0]")
     private Output<String> importTagValue;
 
     /**

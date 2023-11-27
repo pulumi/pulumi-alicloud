@@ -141,14 +141,14 @@ public final class GetAccountsAccount {
             return this;
         }
         public GetAccountsAccount build() {
-            final var o = new GetAccountsAccount();
-            o.accountDescription = accountDescription;
-            o.accountName = accountName;
-            o.characterType = characterType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAccountsAccount();
+            _resultValue.accountDescription = accountDescription;
+            _resultValue.accountName = accountName;
+            _resultValue.characterType = characterType;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

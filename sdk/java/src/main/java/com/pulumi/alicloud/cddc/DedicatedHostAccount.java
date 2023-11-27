@@ -132,7 +132,7 @@ public class DedicatedHostAccount extends com.pulumi.resources.CustomResource {
      * The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -146,7 +146,7 @@ public class DedicatedHostAccount extends com.pulumi.resources.CustomResource {
      * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
@@ -160,7 +160,7 @@ public class DedicatedHostAccount extends com.pulumi.resources.CustomResource {
      * The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
      * 
      */
-    @Export(name="accountType", type=String.class, parameters={})
+    @Export(name="accountType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountType;
 
     /**
@@ -174,7 +174,7 @@ public class DedicatedHostAccount extends com.pulumi.resources.CustomResource {
      * The ID of Dedicated the host.
      * 
      */
-    @Export(name="dedicatedHostId", type=String.class, parameters={})
+    @Export(name="dedicatedHostId", refs={String.class}, tree="[0]")
     private Output<String> dedicatedHostId;
 
     /**

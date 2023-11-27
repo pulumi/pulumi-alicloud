@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = new alicloud.pvtz.Zone("foo", {zoneName: "foo.test.com"});
+ * const foo = new alicloud.pvtz.Zone("foo", {zoneName: "foo.example.com"});
  * ```
  *
  * ## Import
@@ -86,17 +86,21 @@ export class Zone extends pulumi.CustomResource {
     /**
      * The Id of resource group which the Private Zone belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      */
     public readonly syncStatus!: pulumi.Output<string | undefined>;
     /**
+     * The tags of the Private Zone.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The IP address of the client.
      */
     public readonly userClientIp!: pulumi.Output<string | undefined>;
     /**
-     * The user information of the host synchronization task. The details see Block `userInfo`.
+     * The user information of the host synchronization task. See `userInfo` below.
      */
     public readonly userInfos!: pulumi.Output<outputs.pvtz.ZoneUserInfo[]>;
     /**
@@ -125,6 +129,7 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["remark"] = state ? state.remark : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["syncStatus"] = state ? state.syncStatus : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["userClientIp"] = state ? state.userClientIp : undefined;
             resourceInputs["userInfos"] = state ? state.userInfos : undefined;
             resourceInputs["zoneName"] = state ? state.zoneName : undefined;
@@ -136,6 +141,7 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["remark"] = args ? args.remark : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["syncStatus"] = args ? args.syncStatus : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userClientIp"] = args ? args.userClientIp : undefined;
             resourceInputs["userInfos"] = args ? args.userInfos : undefined;
             resourceInputs["zoneName"] = args ? args.zoneName : undefined;
@@ -189,11 +195,15 @@ export interface ZoneState {
      */
     syncStatus?: pulumi.Input<string>;
     /**
+     * The tags of the Private Zone.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The IP address of the client.
      */
     userClientIp?: pulumi.Input<string>;
     /**
-     * The user information of the host synchronization task. The details see Block `userInfo`.
+     * The user information of the host synchronization task. See `userInfo` below.
      */
     userInfos?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneUserInfo>[]>;
     /**
@@ -236,11 +246,15 @@ export interface ZoneArgs {
      */
     syncStatus?: pulumi.Input<string>;
     /**
+     * The tags of the Private Zone.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The IP address of the client.
      */
     userClientIp?: pulumi.Input<string>;
     /**
-     * The user information of the host synchronization task. The details see Block `userInfo`.
+     * The user information of the host synchronization task. See `userInfo` below.
      */
     userInfos?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneUserInfo>[]>;
     /**

@@ -161,15 +161,15 @@ public final class GetVirtualNodesNodeEvent {
             return this;
         }
         public GetVirtualNodesNodeEvent build() {
-            final var o = new GetVirtualNodesNodeEvent();
-            o.count = count;
-            o.firstTimestamp = firstTimestamp;
-            o.lastTimestamp = lastTimestamp;
-            o.message = message;
-            o.name = name;
-            o.reason = reason;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetVirtualNodesNodeEvent();
+            _resultValue.count = count;
+            _resultValue.firstTimestamp = firstTimestamp;
+            _resultValue.lastTimestamp = lastTimestamp;
+            _resultValue.message = message;
+            _resultValue.name = name;
+            _resultValue.reason = reason;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

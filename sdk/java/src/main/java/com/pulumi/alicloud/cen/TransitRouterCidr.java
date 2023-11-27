@@ -87,7 +87,7 @@ public class TransitRouterCidr extends com.pulumi.resources.CustomResource {
      * The cidr of the transit router.
      * 
      */
-    @Export(name="cidr", type=String.class, parameters={})
+    @Export(name="cidr", refs={String.class}, tree="[0]")
     private Output<String> cidr;
 
     /**
@@ -101,7 +101,7 @@ public class TransitRouterCidr extends com.pulumi.resources.CustomResource {
      * The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -115,7 +115,7 @@ public class TransitRouterCidr extends com.pulumi.resources.CustomResource {
      * Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
      * 
      */
-    @Export(name="publishCidrRoute", type=Boolean.class, parameters={})
+    @Export(name="publishCidrRoute", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> publishCidrRoute;
 
     /**
@@ -129,7 +129,7 @@ public class TransitRouterCidr extends com.pulumi.resources.CustomResource {
      * The ID of the transit router cidr.
      * 
      */
-    @Export(name="transitRouterCidrId", type=String.class, parameters={})
+    @Export(name="transitRouterCidrId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterCidrId;
 
     /**
@@ -143,7 +143,7 @@ public class TransitRouterCidr extends com.pulumi.resources.CustomResource {
      * The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="transitRouterCidrName", type=String.class, parameters={})
+    @Export(name="transitRouterCidrName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterCidrName;
 
     /**
@@ -157,7 +157,7 @@ public class TransitRouterCidr extends com.pulumi.resources.CustomResource {
      * The ID of the transit router.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**

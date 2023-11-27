@@ -65,10 +65,10 @@ public final class RdsUpgradeDbInstanceParameter {
             return this;
         }
         public RdsUpgradeDbInstanceParameter build() {
-            final var o = new RdsUpgradeDbInstanceParameter();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new RdsUpgradeDbInstanceParameter();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -81,11 +81,11 @@ public final class GetLoadBalancersBalancerZoneMapping {
             return this;
         }
         public GetLoadBalancersBalancerZoneMapping build() {
-            final var o = new GetLoadBalancersBalancerZoneMapping();
-            o.loadBalancerAddresses = loadBalancerAddresses;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetLoadBalancersBalancerZoneMapping();
+            _resultValue.loadBalancerAddresses = loadBalancerAddresses;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

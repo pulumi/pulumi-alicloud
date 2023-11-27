@@ -69,10 +69,10 @@ public final class GetPolicyDocumentStatementPrincipal {
             return identifiers(List.of(identifiers));
         }
         public GetPolicyDocumentStatementPrincipal build() {
-            final var o = new GetPolicyDocumentStatementPrincipal();
-            o.entity = entity;
-            o.identifiers = identifiers;
-            return o;
+            final var _resultValue = new GetPolicyDocumentStatementPrincipal();
+            _resultValue.entity = entity;
+            _resultValue.identifiers = identifiers;
+            return _resultValue;
         }
     }
 }

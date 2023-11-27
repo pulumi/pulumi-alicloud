@@ -49,10 +49,10 @@ public final class GetAclsAclEntryList {
             return this;
         }
         public GetAclsAclEntryList build() {
-            final var o = new GetAclsAclEntryList();
-            o.comment = comment;
-            o.entry = entry;
-            return o;
+            final var _resultValue = new GetAclsAclEntryList();
+            _resultValue.comment = comment;
+            _resultValue.entry = entry;
+            return _resultValue;
         }
     }
 }

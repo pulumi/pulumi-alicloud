@@ -90,11 +90,11 @@ public final class ErEnvConfPresetCanaryXizang {
             return this;
         }
         public ErEnvConfPresetCanaryXizang build() {
-            final var o = new ErEnvConfPresetCanaryXizang();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfPresetCanaryXizang();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

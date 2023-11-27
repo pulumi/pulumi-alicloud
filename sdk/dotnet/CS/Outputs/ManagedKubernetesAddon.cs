@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// <summary>
         /// It specifies whether to disable automatic installation. 
         /// 
-        /// It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+        /// It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
         /// 
         /// You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
         /// 
@@ -38,6 +38,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// This parameter specifies the name of the component.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// It specifies the version of the component.
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private ManagedKubernetesAddon(
@@ -45,11 +49,14 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             bool? disabled,
 
-            string? name)
+            string? name,
+
+            string? version)
         {
             Config = config;
             Disabled = disabled;
             Name = name;
+            Version = version;
         }
     }
 }

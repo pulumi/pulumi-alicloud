@@ -31,7 +31,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="authConfig", type=DomainAuthConfig.class, parameters={})
+    @Export(name="authConfig", refs={DomainAuthConfig.class}, tree="[0]")
     private Output</* @Nullable */ DomainAuthConfig> authConfig;
 
     public Output<Optional<DomainAuthConfig>> authConfig() {
@@ -43,7 +43,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="blockIps", type=List.class, parameters={String.class})
+    @Export(name="blockIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockIps;
 
     public Output<Optional<List<String>>> blockIps() {
@@ -55,13 +55,13 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="cacheConfigs", type=List.class, parameters={DomainCacheConfig.class})
+    @Export(name="cacheConfigs", refs={List.class,DomainCacheConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DomainCacheConfig>> cacheConfigs;
 
     public Output<Optional<List<DomainCacheConfig>>> cacheConfigs() {
         return Codegen.optional(this.cacheConfigs);
     }
-    @Export(name="cdnType", type=String.class, parameters={})
+    @Export(name="cdnType", refs={String.class}, tree="[0]")
     private Output<String> cdnType;
 
     public Output<String> cdnType() {
@@ -73,13 +73,13 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="certificateConfig", type=DomainCertificateConfig.class, parameters={})
+    @Export(name="certificateConfig", refs={DomainCertificateConfig.class}, tree="[0]")
     private Output</* @Nullable */ DomainCertificateConfig> certificateConfig;
 
     public Output<Optional<DomainCertificateConfig>> certificateConfig() {
         return Codegen.optional(this.certificateConfig);
     }
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     public Output<String> domainName() {
@@ -91,7 +91,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="httpHeaderConfigs", type=List.class, parameters={DomainHttpHeaderConfig.class})
+    @Export(name="httpHeaderConfigs", refs={List.class,DomainHttpHeaderConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DomainHttpHeaderConfig>> httpHeaderConfigs;
 
     public Output<Optional<List<DomainHttpHeaderConfig>>> httpHeaderConfigs() {
@@ -103,7 +103,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="optimizeEnable", type=String.class, parameters={})
+    @Export(name="optimizeEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> optimizeEnable;
 
     public Output<Optional<String>> optimizeEnable() {
@@ -115,7 +115,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="page404Config", type=DomainPage404Config.class, parameters={})
+    @Export(name="page404Config", refs={DomainPage404Config.class}, tree="[0]")
     private Output</* @Nullable */ DomainPage404Config> page404Config;
 
     public Output<Optional<DomainPage404Config>> page404Config() {
@@ -127,7 +127,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="pageCompressEnable", type=String.class, parameters={})
+    @Export(name="pageCompressEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pageCompressEnable;
 
     public Output<Optional<String>> pageCompressEnable() {
@@ -139,7 +139,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="parameterFilterConfig", type=DomainParameterFilterConfig.class, parameters={})
+    @Export(name="parameterFilterConfig", refs={DomainParameterFilterConfig.class}, tree="[0]")
     private Output</* @Nullable */ DomainParameterFilterConfig> parameterFilterConfig;
 
     public Output<Optional<DomainParameterFilterConfig>> parameterFilterConfig() {
@@ -151,7 +151,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="rangeEnable", type=String.class, parameters={})
+    @Export(name="rangeEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rangeEnable;
 
     public Output<Optional<String>> rangeEnable() {
@@ -163,13 +163,13 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="referConfig", type=DomainReferConfig.class, parameters={})
+    @Export(name="referConfig", refs={DomainReferConfig.class}, tree="[0]")
     private Output</* @Nullable */ DomainReferConfig> referConfig;
 
     public Output<Optional<DomainReferConfig>> referConfig() {
         return Codegen.optional(this.referConfig);
     }
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     public Output<String> scope() {
@@ -181,7 +181,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead. */
-    @Export(name="sourcePort", type=Integer.class, parameters={})
+    @Export(name="sourcePort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sourcePort;
 
     public Output<Optional<Integer>> sourcePort() {
@@ -193,7 +193,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead. */
-    @Export(name="sourceType", type=String.class, parameters={})
+    @Export(name="sourceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceType;
 
     public Output<Optional<String>> sourceType() {
@@ -205,7 +205,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_new` configuration `sources` argument instead. */
-    @Export(name="sources", type=List.class, parameters={String.class})
+    @Export(name="sources", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sources;
 
     public Output<Optional<List<String>>> sources() {
@@ -217,7 +217,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead. */
-    @Export(name="videoSeekEnable", type=String.class, parameters={})
+    @Export(name="videoSeekEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> videoSeekEnable;
 
     public Output<Optional<String>> videoSeekEnable() {

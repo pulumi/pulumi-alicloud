@@ -147,17 +147,17 @@ public final class GetIpv4GatewaysResult {
             return this;
         }
         public GetIpv4GatewaysResult build() {
-            final var o = new GetIpv4GatewaysResult();
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.ipv4GatewayName = ipv4GatewayName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetIpv4GatewaysResult();
+            _resultValue.gateways = gateways;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ipv4GatewayName = ipv4GatewayName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

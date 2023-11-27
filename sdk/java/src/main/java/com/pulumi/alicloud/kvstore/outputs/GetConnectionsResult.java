@@ -102,12 +102,12 @@ public final class GetConnectionsResult {
             return this;
         }
         public GetConnectionsResult build() {
-            final var o = new GetConnectionsResult();
-            o.connections = connections;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetConnectionsResult();
+            _resultValue.connections = connections;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

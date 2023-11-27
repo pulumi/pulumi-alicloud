@@ -148,17 +148,17 @@ public final class GetPatchBaselinesResult {
             return this;
         }
         public GetPatchBaselinesResult build() {
-            final var o = new GetPatchBaselinesResult();
-            o.baselines = baselines;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.operationSystem = operationSystem;
-            o.outputFile = outputFile;
-            o.shareType = shareType;
-            return o;
+            final var _resultValue = new GetPatchBaselinesResult();
+            _resultValue.baselines = baselines;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.operationSystem = operationSystem;
+            _resultValue.outputFile = outputFile;
+            _resultValue.shareType = shareType;
+            return _resultValue;
         }
     }
 }

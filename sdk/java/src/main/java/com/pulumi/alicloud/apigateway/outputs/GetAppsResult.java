@@ -151,15 +151,15 @@ public final class GetAppsResult {
             return this;
         }
         public GetAppsResult build() {
-            final var o = new GetAppsResult();
-            o.apps = apps;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetAppsResult();
+            _resultValue.apps = apps;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

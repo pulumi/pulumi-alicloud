@@ -180,16 +180,16 @@ public final class GetLifecycleHooksHook {
             return this;
         }
         public GetLifecycleHooksHook build() {
-            final var o = new GetLifecycleHooksHook();
-            o.defaultResult = defaultResult;
-            o.heartbeatTimeout = heartbeatTimeout;
-            o.id = id;
-            o.lifecycleTransition = lifecycleTransition;
-            o.name = name;
-            o.notificationArn = notificationArn;
-            o.notificationMetadata = notificationMetadata;
-            o.scalingGroupId = scalingGroupId;
-            return o;
+            final var _resultValue = new GetLifecycleHooksHook();
+            _resultValue.defaultResult = defaultResult;
+            _resultValue.heartbeatTimeout = heartbeatTimeout;
+            _resultValue.id = id;
+            _resultValue.lifecycleTransition = lifecycleTransition;
+            _resultValue.name = name;
+            _resultValue.notificationArn = notificationArn;
+            _resultValue.notificationMetadata = notificationMetadata;
+            _resultValue.scalingGroupId = scalingGroupId;
+            return _resultValue;
         }
     }
 }

@@ -315,23 +315,23 @@ public final class GetParametersParameter {
             return this;
         }
         public GetParametersParameter build() {
-            final var o = new GetParametersParameter();
-            o.constraints = constraints;
-            o.createTime = createTime;
-            o.createdBy = createdBy;
-            o.description = description;
-            o.id = id;
-            o.parameterId = parameterId;
-            o.parameterName = parameterName;
-            o.parameterVersion = parameterVersion;
-            o.resourceGroupId = resourceGroupId;
-            o.shareType = shareType;
-            o.tags = tags;
-            o.type = type;
-            o.updatedBy = updatedBy;
-            o.updatedDate = updatedDate;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetParametersParameter();
+            _resultValue.constraints = constraints;
+            _resultValue.createTime = createTime;
+            _resultValue.createdBy = createdBy;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.parameterId = parameterId;
+            _resultValue.parameterName = parameterName;
+            _resultValue.parameterVersion = parameterVersion;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.shareType = shareType;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            _resultValue.updatedBy = updatedBy;
+            _resultValue.updatedDate = updatedDate;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

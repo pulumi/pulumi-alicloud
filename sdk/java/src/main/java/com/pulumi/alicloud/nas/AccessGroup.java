@@ -72,7 +72,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * A Name of one Access Group.
      * 
      */
-    @Export(name="accessGroupName", type=String.class, parameters={})
+    @Export(name="accessGroupName", refs={String.class}, tree="[0]")
     private Output<String> accessGroupName;
 
     /**
@@ -86,7 +86,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
      * 
      */
-    @Export(name="accessGroupType", type=String.class, parameters={})
+    @Export(name="accessGroupType", refs={String.class}, tree="[0]")
     private Output<String> accessGroupType;
 
     /**
@@ -100,7 +100,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * The Access Group description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -114,7 +114,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
      * 
      */
-    @Export(name="fileSystemType", type=String.class, parameters={})
+    @Export(name="fileSystemType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fileSystemType;
 
     /**
@@ -128,7 +128,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * Replaced by `access_group_name` after version 1.92.0.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -142,7 +142,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * Replaced by `access_group_type` after version 1.92.0.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

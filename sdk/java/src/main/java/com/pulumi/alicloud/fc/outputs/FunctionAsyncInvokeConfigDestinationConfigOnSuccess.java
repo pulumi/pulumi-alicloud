@@ -46,9 +46,9 @@ public final class FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
             return this;
         }
         public FunctionAsyncInvokeConfigDestinationConfigOnSuccess build() {
-            final var o = new FunctionAsyncInvokeConfigDestinationConfigOnSuccess();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new FunctionAsyncInvokeConfigDestinationConfigOnSuccess();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

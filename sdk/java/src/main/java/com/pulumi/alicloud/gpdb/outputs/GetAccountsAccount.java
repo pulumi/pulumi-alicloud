@@ -122,13 +122,13 @@ public final class GetAccountsAccount {
             return this;
         }
         public GetAccountsAccount build() {
-            final var o = new GetAccountsAccount();
-            o.accountDescription = accountDescription;
-            o.accountName = accountName;
-            o.dbInstanceId = dbInstanceId;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAccountsAccount();
+            _resultValue.accountDescription = accountDescription;
+            _resultValue.accountName = accountName;
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
     /// 
-    /// &gt; **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
+    /// &gt; **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
     /// 
     /// ## Example Usage
     /// 
@@ -28,12 +28,43 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Log.ResourceRecord("example", new()
+    ///     var exampleResource = new AliCloud.Log.Resource("exampleResource", new()
     ///     {
-    ///         RecordId = "user_tf_test_resource_1",
-    ///         ResourceName = "user.tf.test_resource",
-    ///         Tag = "test resource tag",
-    ///         Value = "{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}",
+    ///         Type = "userdefine",
+    ///         Description = "user tf resource desc",
+    ///         ExtInfo = "{}",
+    ///         Schema = @"    {
+    ///       ""schema"": [
+    ///         {
+    ///           ""column"": ""col1"",
+    ///           ""desc"": ""col1   desc"",
+    ///           ""ext_info"": {
+    ///           },
+    ///           ""required"": true,
+    ///           ""type"": ""string""
+    ///         },
+    ///         {
+    ///           ""column"": ""col2"",
+    ///           ""desc"": ""col2   desc"",
+    ///           ""ext_info"": ""optional"",
+    ///           ""required"": true,
+    ///           ""type"": ""string""
+    ///         }
+    ///       ]
+    ///     }
+    /// ",
+    ///     });
+    /// 
+    ///     var exampleResourceRecord = new AliCloud.Log.ResourceRecord("exampleResourceRecord", new()
+    ///     {
+    ///         ResourceName = exampleResource.Id,
+    ///         RecordId = "user_tf_resource_1",
+    ///         Tag = "resource tag",
+    ///         Value = @"    {
+    ///       ""col1"": ""this is col1 value"",
+    ///       ""col2"": ""col2   value""
+    ///     }
+    /// ",
     ///     });
     /// 
     /// });
@@ -44,7 +75,7 @@ namespace Pulumi.AliCloud.Log
     /// Log resource record can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/resourceRecord:ResourceRecord example user.tf.test_resource:user_tf_test_resource_1
+    ///  $ pulumi import alicloud:log/resourceRecord:ResourceRecord example &lt;resource_name&gt;:&lt;record_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/resourceRecord:ResourceRecord")]

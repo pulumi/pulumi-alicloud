@@ -730,7 +730,7 @@ class ServiceMesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def edition(self) -> pulumi.Output[Optional[str]]:
+    def edition(self) -> pulumi.Output[str]:
         """
         Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
         """
@@ -756,7 +756,7 @@ class ServiceMesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> pulumi.Output[Optional['outputs.ServiceMeshLoadBalancer']]:
+    def load_balancer(self) -> pulumi.Output['outputs.ServiceMeshLoadBalancer']:
         """
         Load balancing information. See `load_balancer` below.
         """
@@ -764,7 +764,7 @@ class ServiceMesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="meshConfig")
-    def mesh_config(self) -> pulumi.Output[Optional['outputs.ServiceMeshMeshConfig']]:
+    def mesh_config(self) -> pulumi.Output['outputs.ServiceMeshMeshConfig']:
         """
         Service grid configuration information. See `mesh_config` below.
         """
@@ -812,7 +812,7 @@ class ServiceMesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> pulumi.Output[Optional[str]]:
+    def version(self) -> pulumi.Output[str]:
         """
         Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
         """

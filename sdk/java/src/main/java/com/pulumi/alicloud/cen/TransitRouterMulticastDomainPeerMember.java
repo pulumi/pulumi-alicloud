@@ -125,7 +125,7 @@ public class TransitRouterMulticastDomainPeerMember extends com.pulumi.resources
      * Specifies whether only to precheck the request.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -139,7 +139,7 @@ public class TransitRouterMulticastDomainPeerMember extends com.pulumi.resources
      * The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
      * 
      */
-    @Export(name="groupIpAddress", type=String.class, parameters={})
+    @Export(name="groupIpAddress", refs={String.class}, tree="[0]")
     private Output<String> groupIpAddress;
 
     /**
@@ -153,7 +153,7 @@ public class TransitRouterMulticastDomainPeerMember extends com.pulumi.resources
      * The IDs of the inter-region multicast domains.
      * 
      */
-    @Export(name="peerTransitRouterMulticastDomainId", type=String.class, parameters={})
+    @Export(name="peerTransitRouterMulticastDomainId", refs={String.class}, tree="[0]")
     private Output<String> peerTransitRouterMulticastDomainId;
 
     /**
@@ -170,7 +170,7 @@ public class TransitRouterMulticastDomainPeerMember extends com.pulumi.resources
      * - Deregistering: being deleted
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -187,7 +187,7 @@ public class TransitRouterMulticastDomainPeerMember extends com.pulumi.resources
      * The ID of the multicast domain to which the multicast member belongs.
      * 
      */
-    @Export(name="transitRouterMulticastDomainId", type=String.class, parameters={})
+    @Export(name="transitRouterMulticastDomainId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterMulticastDomainId;
 
     /**

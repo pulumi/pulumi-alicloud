@@ -159,18 +159,18 @@ public final class GetAccessGroupsResult {
             return this;
         }
         public GetAccessGroupsResult build() {
-            final var o = new GetAccessGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.limit = limit;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.orderBy = orderBy;
-            o.orderType = orderType;
-            o.outputFile = outputFile;
-            o.startOffset = startOffset;
-            return o;
+            final var _resultValue = new GetAccessGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.limit = limit;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.orderBy = orderBy;
+            _resultValue.orderType = orderType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.startOffset = startOffset;
+            return _resultValue;
         }
     }
 }

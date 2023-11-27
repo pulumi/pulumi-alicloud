@@ -105,12 +105,12 @@ public final class EndpointIpConfig {
             return this;
         }
         public EndpointIpConfig build() {
-            final var o = new EndpointIpConfig();
-            o.cidrBlock = cidrBlock;
-            o.ip = ip;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new EndpointIpConfig();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.ip = ip;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

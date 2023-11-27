@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -38,7 +38,6 @@ export function getControlPolicies(args: GetControlPoliciesArgs, opts?: pulumi.I
         "outputFile": args.outputFile,
         "proto": args.proto,
         "source": args.source,
-        "sourceIp": args.sourceIp,
     }, opts);
 }
 
@@ -63,15 +62,15 @@ export interface GetControlPoliciesArgs {
      */
     destination?: string;
     /**
-     * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
     direction: string;
     /**
-     * The ip version.
+     * The IP version of the address in the access control policy.
      */
     ipVersion?: string;
     /**
-     * DestPortGroupPorts. Valid values: `en`, `zh`.
+     * The language of the content within the response. Valid values: `en`, `zh`.
      */
     lang?: string;
     /**
@@ -79,45 +78,67 @@ export interface GetControlPoliciesArgs {
      */
     outputFile?: string;
     /**
-     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      */
     proto?: string;
     /**
-     * The source address defined in the access control policy.
+     * The source address in the access control policy.
      */
     source?: string;
-    /**
-     * The source IP address of the request.
-     */
-    sourceIp?: string;
 }
 
 /**
  * A collection of values returned by getControlPolicies.
  */
 export interface GetControlPoliciesResult {
+    /**
+     * The action that Cloud Firewall performs on the traffic.
+     */
     readonly aclAction?: string;
+    /**
+     * The unique ID of the access control policy.
+     */
     readonly aclUuid?: string;
+    /**
+     * The description of the access control policy.
+     */
     readonly description?: string;
+    /**
+     * The destination address in the access control policy.
+     */
     readonly destination?: string;
+    /**
+     * The direction of the traffic to which the access control policy applies.
+     */
     readonly direction: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Control Policy IDs.
+     */
     readonly ids: string[];
     readonly ipVersion?: string;
     readonly lang?: string;
     readonly outputFile?: string;
+    /**
+     * A list of Cloud Firewall Control Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.cloudfirewall.GetControlPoliciesPolicy[];
+    /**
+     * The type of the protocol in the access control policy.
+     */
     readonly proto?: string;
+    /**
+     * The source address in the access control policy.
+     */
     readonly source?: string;
-    readonly sourceIp?: string;
 }
 /**
  * This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -157,15 +178,15 @@ export interface GetControlPoliciesOutputArgs {
      */
     destination?: pulumi.Input<string>;
     /**
-     * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
     direction: pulumi.Input<string>;
     /**
-     * The ip version.
+     * The IP version of the address in the access control policy.
      */
     ipVersion?: pulumi.Input<string>;
     /**
-     * DestPortGroupPorts. Valid values: `en`, `zh`.
+     * The language of the content within the response. Valid values: `en`, `zh`.
      */
     lang?: pulumi.Input<string>;
     /**
@@ -173,15 +194,11 @@ export interface GetControlPoliciesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      */
     proto?: pulumi.Input<string>;
     /**
-     * The source address defined in the access control policy.
+     * The source address in the access control policy.
      */
     source?: pulumi.Input<string>;
-    /**
-     * The source IP address of the request.
-     */
-    sourceIp?: pulumi.Input<string>;
 }

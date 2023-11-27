@@ -22,7 +22,7 @@ class GetControlPoliciesResult:
     """
     A collection of values returned by getControlPolicies.
     """
-    def __init__(__self__, acl_action=None, acl_uuid=None, description=None, destination=None, direction=None, id=None, ids=None, ip_version=None, lang=None, output_file=None, policies=None, proto=None, source=None, source_ip=None):
+    def __init__(__self__, acl_action=None, acl_uuid=None, description=None, destination=None, direction=None, id=None, ids=None, ip_version=None, lang=None, output_file=None, policies=None, proto=None, source=None):
         if acl_action and not isinstance(acl_action, str):
             raise TypeError("Expected argument 'acl_action' to be a str")
         pulumi.set(__self__, "acl_action", acl_action)
@@ -62,33 +62,45 @@ class GetControlPoliciesResult:
         if source and not isinstance(source, str):
             raise TypeError("Expected argument 'source' to be a str")
         pulumi.set(__self__, "source", source)
-        if source_ip and not isinstance(source_ip, str):
-            raise TypeError("Expected argument 'source_ip' to be a str")
-        pulumi.set(__self__, "source_ip", source_ip)
 
     @property
     @pulumi.getter(name="aclAction")
     def acl_action(self) -> Optional[str]:
+        """
+        The action that Cloud Firewall performs on the traffic.
+        """
         return pulumi.get(self, "acl_action")
 
     @property
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> Optional[str]:
+        """
+        The unique ID of the access control policy.
+        """
         return pulumi.get(self, "acl_uuid")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the access control policy.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def destination(self) -> Optional[str]:
+        """
+        The destination address in the access control policy.
+        """
         return pulumi.get(self, "destination")
 
     @property
     @pulumi.getter
     def direction(self) -> str:
+        """
+        The direction of the traffic to which the access control policy applies.
+        """
         return pulumi.get(self, "direction")
 
     @property
@@ -102,6 +114,9 @@ class GetControlPoliciesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        A list of Control Policy IDs.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -122,22 +137,26 @@ class GetControlPoliciesResult:
     @property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetControlPoliciesPolicyResult']:
+        """
+        A list of Cloud Firewall Control Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
     @property
     @pulumi.getter
     def proto(self) -> Optional[str]:
+        """
+        The type of the protocol in the access control policy.
+        """
         return pulumi.get(self, "proto")
 
     @property
     @pulumi.getter
     def source(self) -> Optional[str]:
+        """
+        The source address in the access control policy.
+        """
         return pulumi.get(self, "source")
-
-    @property
-    @pulumi.getter(name="sourceIp")
-    def source_ip(self) -> Optional[str]:
-        return pulumi.get(self, "source_ip")
 
 
 class AwaitableGetControlPoliciesResult(GetControlPoliciesResult):
@@ -158,8 +177,7 @@ class AwaitableGetControlPoliciesResult(GetControlPoliciesResult):
             output_file=self.output_file,
             policies=self.policies,
             proto=self.proto,
-            source=self.source,
-            source_ip=self.source_ip)
+            source=self.source)
 
 
 def get_control_policies(acl_action: Optional[str] = None,
@@ -172,12 +190,11 @@ def get_control_policies(acl_action: Optional[str] = None,
                          output_file: Optional[str] = None,
                          proto: Optional[str] = None,
                          source: Optional[str] = None,
-                         source_ip: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetControlPoliciesResult:
     """
     This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 
@@ -195,13 +212,12 @@ def get_control_policies(acl_action: Optional[str] = None,
     :param str acl_uuid: The unique ID of the access control policy.
     :param str description: The description of the access control policy.
     :param str destination: The destination address defined in the access control policy.
-    :param str direction: The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
-    :param str ip_version: The ip version.
-    :param str lang: DestPortGroupPorts. Valid values: `en`, `zh`.
+    :param str direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+    :param str ip_version: The IP version of the address in the access control policy.
+    :param str lang: The language of the content within the response. Valid values: `en`, `zh`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str proto: The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
-    :param str source: The source address defined in the access control policy.
-    :param str source_ip: The source IP address of the request.
+    :param str proto: The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+    :param str source: The source address in the access control policy.
     """
     __args__ = dict()
     __args__['aclAction'] = acl_action
@@ -214,7 +230,6 @@ def get_control_policies(acl_action: Optional[str] = None,
     __args__['outputFile'] = output_file
     __args__['proto'] = proto
     __args__['source'] = source
-    __args__['sourceIp'] = source_ip
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cloudfirewall/getControlPolicies:getControlPolicies', __args__, opts=opts, typ=GetControlPoliciesResult).value
 
@@ -231,8 +246,7 @@ def get_control_policies(acl_action: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'),
         proto=pulumi.get(__ret__, 'proto'),
-        source=pulumi.get(__ret__, 'source'),
-        source_ip=pulumi.get(__ret__, 'source_ip'))
+        source=pulumi.get(__ret__, 'source'))
 
 
 @_utilities.lift_output_func(get_control_policies)
@@ -246,12 +260,11 @@ def get_control_policies_output(acl_action: Optional[pulumi.Input[Optional[str]]
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 proto: Optional[pulumi.Input[Optional[str]]] = None,
                                 source: Optional[pulumi.Input[Optional[str]]] = None,
-                                source_ip: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetControlPoliciesResult]:
     """
     This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 
@@ -269,12 +282,11 @@ def get_control_policies_output(acl_action: Optional[pulumi.Input[Optional[str]]
     :param str acl_uuid: The unique ID of the access control policy.
     :param str description: The description of the access control policy.
     :param str destination: The destination address defined in the access control policy.
-    :param str direction: The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
-    :param str ip_version: The ip version.
-    :param str lang: DestPortGroupPorts. Valid values: `en`, `zh`.
+    :param str direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+    :param str ip_version: The IP version of the address in the access control policy.
+    :param str lang: The language of the content within the response. Valid values: `en`, `zh`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str proto: The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
-    :param str source: The source address defined in the access control policy.
-    :param str source_ip: The source IP address of the request.
+    :param str proto: The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+    :param str source: The source address in the access control policy.
     """
     ...

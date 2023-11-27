@@ -98,7 +98,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'. */
-    @Export(name="entryLists", type=List.class, parameters={AclEntryList.class})
+    @Export(name="entryLists", refs={List.class,AclEntryList.class}, tree="[0,1]")
     private Output<List<AclEntryList>> entryLists;
 
     /**
@@ -112,7 +112,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: &#34;ipv4&#34;.
      * 
      */
-    @Export(name="ipVersion", type=String.class, parameters={})
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipVersion;
 
     /**
@@ -126,7 +126,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * Name of the access control list.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -140,7 +140,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * Resource group ID.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -154,7 +154,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

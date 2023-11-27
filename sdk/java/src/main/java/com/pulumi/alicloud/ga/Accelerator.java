@@ -74,7 +74,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * The Name of the GA instance.
      * 
      */
-    @Export(name="acceleratorName", type=String.class, parameters={})
+    @Export(name="acceleratorName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acceleratorName;
 
     /**
@@ -88,7 +88,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * Auto renewal period of an instance, in the unit of month. The value range is 1-12.
      * 
      */
-    @Export(name="autoRenewDuration", type=Integer.class, parameters={})
+    @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewDuration;
 
     /**
@@ -102,7 +102,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * Use coupons to pay bills automatically. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="autoUseCoupon", type=Boolean.class, parameters={})
+    @Export(name="autoUseCoupon", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoUseCoupon;
 
     /**
@@ -116,7 +116,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
      * 
      */
-    @Export(name="bandwidthBillingType", type=String.class, parameters={})
+    @Export(name="bandwidthBillingType", refs={String.class}, tree="[0]")
     private Output<String> bandwidthBillingType;
 
     /**
@@ -130,7 +130,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
      * 
      */
-    @Export(name="crossBorderMode", type=String.class, parameters={})
+    @Export(name="crossBorderMode", refs={String.class}, tree="[0]")
     private Output<String> crossBorderMode;
 
     /**
@@ -144,7 +144,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="crossBorderStatus", type=Boolean.class, parameters={})
+    @Export(name="crossBorderStatus", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> crossBorderStatus;
 
     /**
@@ -158,7 +158,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * Descriptive information of the global acceleration instance.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -174,7 +174,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      * 
      */
-    @Export(name="duration", type=Integer.class, parameters={})
+    @Export(name="duration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> duration;
 
     /**
@@ -190,7 +190,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -204,7 +204,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * The billing cycle of the GA instance. Default value: `Month`. Valid values:
      * 
      */
-    @Export(name="pricingCycle", type=String.class, parameters={})
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pricingCycle;
 
     /**
@@ -218,7 +218,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
-    @Export(name="promotionOptionNo", type=String.class, parameters={})
+    @Export(name="promotionOptionNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> promotionOptionNo;
 
     /**
@@ -232,7 +232,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
@@ -246,7 +246,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      * 
      */
-    @Export(name="spec", type=String.class, parameters={})
+    @Export(name="spec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spec;
 
     /**
@@ -260,7 +260,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * The status of the GA instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -274,7 +274,7 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

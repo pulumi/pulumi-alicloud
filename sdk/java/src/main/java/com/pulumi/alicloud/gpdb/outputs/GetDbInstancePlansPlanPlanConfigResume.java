@@ -84,11 +84,11 @@ public final class GetDbInstancePlansPlanPlanConfigResume {
             return this;
         }
         public GetDbInstancePlansPlanPlanConfigResume build() {
-            final var o = new GetDbInstancePlansPlanPlanConfigResume();
-            o.executeTime = executeTime;
-            o.planCronTime = planCronTime;
-            o.planTaskStatus = planTaskStatus;
-            return o;
+            final var _resultValue = new GetDbInstancePlansPlanPlanConfigResume();
+            _resultValue.executeTime = executeTime;
+            _resultValue.planCronTime = planCronTime;
+            _resultValue.planTaskStatus = planTaskStatus;
+            return _resultValue;
         }
     }
 }

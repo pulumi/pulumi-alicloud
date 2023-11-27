@@ -92,7 +92,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The ID of the backup set that you want to use to restore data.
      * 
      */
-    @Export(name="backupSetId", type=String.class, parameters={})
+    @Export(name="backupSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupSetId;
 
     /**
@@ -106,7 +106,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The name of the service.
      * 
      */
-    @Export(name="commodityCode", type=String.class, parameters={})
+    @Export(name="commodityCode", refs={String.class}, tree="[0]")
     private Output<String> commodityCode;
 
     /**
@@ -120,7 +120,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The computing resources of the cluster.
      * 
      */
-    @Export(name="computeResource", type=String.class, parameters={})
+    @Export(name="computeResource", refs={String.class}, tree="[0]")
     private Output<String> computeResource;
 
     /**
@@ -134,7 +134,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The endpoint of the cluster.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -148,7 +148,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The createTime of the cluster.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -162,7 +162,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The description of the cluster.
      * 
      */
-    @Export(name="dbClusterDescription", type=String.class, parameters={})
+    @Export(name="dbClusterDescription", refs={String.class}, tree="[0]")
     private Output<String> dbClusterDescription;
 
     /**
@@ -176,7 +176,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The version of the cluster. Valid values: `5.0`.
      * 
      */
-    @Export(name="dbClusterVersion", type=String.class, parameters={})
+    @Export(name="dbClusterVersion", refs={String.class}, tree="[0]")
     private Output<String> dbClusterVersion;
 
     /**
@@ -190,7 +190,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * Whether to enable default allocation of resources to user_default resource groups.
      * 
      */
-    @Export(name="enableDefaultResourceGroup", type=Boolean.class, parameters={})
+    @Export(name="enableDefaultResourceGroup", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableDefaultResourceGroup;
 
     /**
@@ -204,7 +204,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The engine of the database.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -218,7 +218,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The engine version of the database.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -232,7 +232,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The time when the cluster expires.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
@@ -246,7 +246,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * Indicates whether the cluster has expired.
      * 
      */
-    @Export(name="expired", type=String.class, parameters={})
+    @Export(name="expired", refs={String.class}, tree="[0]")
     private Output<String> expired;
 
     /**
@@ -260,7 +260,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The lock mode of the cluster.
      * 
      */
-    @Export(name="lockMode", type=String.class, parameters={})
+    @Export(name="lockMode", refs={String.class}, tree="[0]")
     private Output<String> lockMode;
 
     /**
@@ -274,7 +274,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The reason why the cluster is locked.
      * 
      */
-    @Export(name="lockReason", type=String.class, parameters={})
+    @Export(name="lockReason", refs={String.class}, tree="[0]")
     private Output<String> lockReason;
 
     /**
@@ -288,7 +288,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The payment type of the resource. Valid values: `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -302,7 +302,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The port that is used to access the cluster.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -316,7 +316,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -330,7 +330,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The point in time to which you want to restore data from the backup set.
      * 
      */
-    @Export(name="restoreToTime", type=String.class, parameters={})
+    @Export(name="restoreToTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restoreToTime;
 
     /**
@@ -344,7 +344,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The method that you want to use to restore data. Valid values:
      * 
      */
-    @Export(name="restoreType", type=String.class, parameters={})
+    @Export(name="restoreType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restoreType;
 
     /**
@@ -360,7 +360,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
      * 
      */
-    @Export(name="securityIps", type=String.class, parameters={})
+    @Export(name="securityIps", refs={String.class}, tree="[0]")
     private Output<String> securityIps;
 
     /**
@@ -376,7 +376,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
      * 
      */
-    @Export(name="sourceDbClusterId", type=String.class, parameters={})
+    @Export(name="sourceDbClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceDbClusterId;
 
     /**
@@ -390,7 +390,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -404,7 +404,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The storage resources of the cluster.
      * 
      */
-    @Export(name="storageResource", type=String.class, parameters={})
+    @Export(name="storageResource", refs={String.class}, tree="[0]")
     private Output<String> storageResource;
 
     /**
@@ -418,7 +418,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The vpc ID of the resource.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -432,7 +432,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The ID of the vSwitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -446,7 +446,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The zone ID of the resource.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

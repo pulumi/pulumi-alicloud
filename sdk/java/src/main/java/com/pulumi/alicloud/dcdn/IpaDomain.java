@@ -86,7 +86,7 @@ public class IpaDomain extends com.pulumi.resources.CustomResource {
      * The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -100,7 +100,7 @@ public class IpaDomain extends com.pulumi.resources.CustomResource {
      * The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -114,7 +114,7 @@ public class IpaDomain extends com.pulumi.resources.CustomResource {
      * The accelerated region. Valid values: `domestic`, `global`, `overseas`.
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**
@@ -128,7 +128,7 @@ public class IpaDomain extends com.pulumi.resources.CustomResource {
      * Sources. See `sources` below.
      * 
      */
-    @Export(name="sources", type=List.class, parameters={IpaDomainSource.class})
+    @Export(name="sources", refs={List.class,IpaDomainSource.class}, tree="[0,1]")
     private Output<List<IpaDomainSource>> sources;
 
     /**
@@ -142,7 +142,7 @@ public class IpaDomain extends com.pulumi.resources.CustomResource {
      * The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

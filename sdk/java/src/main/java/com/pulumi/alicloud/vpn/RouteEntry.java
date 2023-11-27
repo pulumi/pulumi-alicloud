@@ -115,7 +115,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The next hop of the destination route.
      * 
      */
-    @Export(name="nextHop", type=String.class, parameters={})
+    @Export(name="nextHop", refs={String.class}, tree="[0]")
     private Output<String> nextHop;
 
     /**
@@ -129,7 +129,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * Whether to issue the destination route to the VPC.
      * 
      */
-    @Export(name="publishVpc", type=Boolean.class, parameters={})
+    @Export(name="publishVpc", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> publishVpc;
 
     /**
@@ -143,7 +143,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The destination network segment of the destination route.
      * 
      */
-    @Export(name="routeDest", type=String.class, parameters={})
+    @Export(name="routeDest", refs={String.class}, tree="[0]")
     private Output<String> routeDest;
 
     /**
@@ -157,7 +157,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * (Available in 1.161.0+) The type of the vpn route entry.
      * 
      */
-    @Export(name="routeEntryType", type=String.class, parameters={})
+    @Export(name="routeEntryType", refs={String.class}, tree="[0]")
     private Output<String> routeEntryType;
 
     /**
@@ -171,7 +171,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * (Available in 1.161.0+) The status of the vpn route entry.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -185,7 +185,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The id of the vpn gateway.
      * 
      */
-    @Export(name="vpnGatewayId", type=String.class, parameters={})
+    @Export(name="vpnGatewayId", refs={String.class}, tree="[0]")
     private Output<String> vpnGatewayId;
 
     /**
@@ -199,7 +199,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The value should be 0 or 100.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**

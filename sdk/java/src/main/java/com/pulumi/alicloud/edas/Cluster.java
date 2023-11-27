@@ -86,7 +86,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster that you want to create.
      * 
      */
-    @Export(name="clusterName", type=String.class, parameters={})
+    @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     /**
@@ -100,7 +100,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
      * 
      */
-    @Export(name="clusterType", type=Integer.class, parameters={})
+    @Export(name="clusterType", refs={Integer.class}, tree="[0]")
     private Output<Integer> clusterType;
 
     /**
@@ -114,7 +114,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
      * 
      */
-    @Export(name="logicalRegionId", type=String.class, parameters={})
+    @Export(name="logicalRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logicalRegionId;
 
     /**
@@ -128,7 +128,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      * 
      */
-    @Export(name="networkMode", type=Integer.class, parameters={})
+    @Export(name="networkMode", refs={Integer.class}, tree="[0]")
     private Output<Integer> networkMode;
 
     /**
@@ -142,7 +142,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**

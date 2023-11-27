@@ -123,13 +123,13 @@ public final class GetIpaDomainsDomainSource {
             return this;
         }
         public GetIpaDomainsDomainSource build() {
-            final var o = new GetIpaDomainsDomainSource();
-            o.content = content;
-            o.port = port;
-            o.priority = priority;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetIpaDomainsDomainSource();
+            _resultValue.content = content;
+            _resultValue.port = port;
+            _resultValue.priority = priority;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

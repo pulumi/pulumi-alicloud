@@ -108,7 +108,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      * 
      */
-    @Export(name="connectionPrefix", type=String.class, parameters={})
+    @Export(name="connectionPrefix", refs={String.class}, tree="[0]")
     private Output<String> connectionPrefix;
 
     /**
@@ -122,7 +122,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * Connection cluster or endpoint string.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -136,7 +136,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * The Id of cluster that can run database.
      * 
      */
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
@@ -150,7 +150,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * The Id of endpoint that can run database.
      * 
      */
-    @Export(name="dbEndpointId", type=String.class, parameters={})
+    @Export(name="dbEndpointId", refs={String.class}, tree="[0]")
     private Output<String> dbEndpointId;
 
     /**
@@ -164,7 +164,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * The ip address of connection string.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -178,7 +178,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
      * 
      */
-    @Export(name="netType", type=String.class, parameters={})
+    @Export(name="netType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netType;
 
     /**
@@ -192,7 +192,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * Connection cluster or endpoint port.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**

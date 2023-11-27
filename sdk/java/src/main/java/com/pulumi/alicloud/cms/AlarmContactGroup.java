@@ -70,7 +70,7 @@ public class AlarmContactGroup extends com.pulumi.resources.CustomResource {
      * The name of the alarm group.
      * 
      */
-    @Export(name="alarmContactGroupName", type=String.class, parameters={})
+    @Export(name="alarmContactGroupName", refs={String.class}, tree="[0]")
     private Output<String> alarmContactGroupName;
 
     /**
@@ -84,7 +84,7 @@ public class AlarmContactGroup extends com.pulumi.resources.CustomResource {
      * The name of the alert contact.
      * 
      */
-    @Export(name="contacts", type=List.class, parameters={String.class})
+    @Export(name="contacts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> contacts;
 
     /**
@@ -98,7 +98,7 @@ public class AlarmContactGroup extends com.pulumi.resources.CustomResource {
      * The description of the alert group.
      * 
      */
-    @Export(name="describe", type=String.class, parameters={})
+    @Export(name="describe", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> describe;
 
     /**
@@ -112,7 +112,7 @@ public class AlarmContactGroup extends com.pulumi.resources.CustomResource {
      * Whether to open weekly subscription.
      * 
      */
-    @Export(name="enableSubscribed", type=Boolean.class, parameters={})
+    @Export(name="enableSubscribed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableSubscribed;
 
     /**

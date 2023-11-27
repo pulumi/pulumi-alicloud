@@ -198,18 +198,18 @@ public final class GetTransitRouterPeerAttachmentsResult {
             return this;
         }
         public GetTransitRouterPeerAttachmentsResult build() {
-            final var o = new GetTransitRouterPeerAttachmentsResult();
-            o.attachments = attachments;
-            o.cenId = cenId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetTransitRouterPeerAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.cenId = cenId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

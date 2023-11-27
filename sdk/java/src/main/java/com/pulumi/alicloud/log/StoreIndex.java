@@ -112,7 +112,7 @@ public class StoreIndex extends com.pulumi.resources.CustomResource {
      * List configurations of field search index. Valid item as follows:
      * 
      */
-    @Export(name="fieldSearches", type=List.class, parameters={StoreIndexFieldSearch.class})
+    @Export(name="fieldSearches", refs={List.class,StoreIndexFieldSearch.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StoreIndexFieldSearch>> fieldSearches;
 
     /**
@@ -126,7 +126,7 @@ public class StoreIndex extends com.pulumi.resources.CustomResource {
      * The configuration of full text index. Valid item as follows:
      * 
      */
-    @Export(name="fullText", type=StoreIndexFullText.class, parameters={})
+    @Export(name="fullText", refs={StoreIndexFullText.class}, tree="[0]")
     private Output</* @Nullable */ StoreIndexFullText> fullText;
 
     /**
@@ -140,7 +140,7 @@ public class StoreIndex extends com.pulumi.resources.CustomResource {
      * The log store name to the query index belongs.
      * 
      */
-    @Export(name="logstore", type=String.class, parameters={})
+    @Export(name="logstore", refs={String.class}, tree="[0]")
     private Output<String> logstore;
 
     /**
@@ -154,7 +154,7 @@ public class StoreIndex extends com.pulumi.resources.CustomResource {
      * The project name to the log store belongs.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

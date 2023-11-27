@@ -174,7 +174,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+     * Instance data backup retention days. **NOTE:** Available in 1.42.0+.
      */
     public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
     /**
@@ -371,7 +371,7 @@ export interface ShardingInstanceState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+     * Instance data backup retention days. **NOTE:** Available in 1.42.0+.
      */
     retentionPeriod?: pulumi.Input<number>;
     /**

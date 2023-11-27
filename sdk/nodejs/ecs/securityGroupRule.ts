@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
  *
+ * > **NOTE:** Available since v0.1.0.
+ *
  * ## Example Usage
  *
  * Basic Usage

@@ -134,16 +134,20 @@ import (
 type VpcEndpointZone struct {
 	pulumi.CustomResourceState
 
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The ID of the Vpc Endpoint.
+	// The endpoint ID.
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
-	// Status.
+	// The IP address of the endpoint ENI.
+	EniIp pulumi.StringOutput `pulumi:"eniIp"`
+	// The state of the zone.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The VSwitch id.
+	// The ID of the vSwitch in the zone. .
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
-	// The Zone Id.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	// The zone ID.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewVpcEndpointZone registers a new resource with the given unique name, arguments, and options.
@@ -182,28 +186,36 @@ func GetVpcEndpointZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcEndpointZone resources.
 type vpcEndpointZoneState struct {
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the Vpc Endpoint.
+	// The endpoint ID.
 	EndpointId *string `pulumi:"endpointId"`
-	// Status.
+	// The IP address of the endpoint ENI.
+	EniIp *string `pulumi:"eniIp"`
+	// The state of the zone.
 	Status *string `pulumi:"status"`
-	// The VSwitch id.
+	// The ID of the vSwitch in the zone. .
 	VswitchId *string `pulumi:"vswitchId"`
-	// The Zone Id.
+	// The zone ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type VpcEndpointZoneState struct {
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
-	// The ID of the Vpc Endpoint.
+	// The endpoint ID.
 	EndpointId pulumi.StringPtrInput
-	// Status.
+	// The IP address of the endpoint ENI.
+	EniIp pulumi.StringPtrInput
+	// The state of the zone.
 	Status pulumi.StringPtrInput
-	// The VSwitch id.
+	// The ID of the vSwitch in the zone. .
 	VswitchId pulumi.StringPtrInput
-	// The Zone Id.
+	// The zone ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -212,25 +224,33 @@ func (VpcEndpointZoneState) ElementType() reflect.Type {
 }
 
 type vpcEndpointZoneArgs struct {
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the Vpc Endpoint.
+	// The endpoint ID.
 	EndpointId string `pulumi:"endpointId"`
-	// The VSwitch id.
+	// The IP address of the endpoint ENI.
+	EniIp *string `pulumi:"eniIp"`
+	// The ID of the vSwitch in the zone. .
 	VswitchId string `pulumi:"vswitchId"`
-	// The Zone Id.
+	// The zone ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a VpcEndpointZone resource.
 type VpcEndpointZoneArgs struct {
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
-	// The ID of the Vpc Endpoint.
+	// The endpoint ID.
 	EndpointId pulumi.StringInput
-	// The VSwitch id.
+	// The IP address of the endpoint ENI.
+	EniIp pulumi.StringPtrInput
+	// The ID of the vSwitch in the zone. .
 	VswitchId pulumi.StringInput
-	// The Zone Id.
+	// The zone ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -321,29 +341,36 @@ func (o VpcEndpointZoneOutput) ToVpcEndpointZoneOutputWithContext(ctx context.Co
 	return o
 }
 
-// The dry run.
+// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 func (o VpcEndpointZoneOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpcEndpointZone) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the Vpc Endpoint.
+// The endpoint ID.
 func (o VpcEndpointZoneOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
 }
 
-// Status.
+// The IP address of the endpoint ENI.
+func (o VpcEndpointZoneOutput) EniIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.EniIp }).(pulumi.StringOutput)
+}
+
+// The state of the zone.
 func (o VpcEndpointZoneOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The VSwitch id.
+// The ID of the vSwitch in the zone. .
 func (o VpcEndpointZoneOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The Zone Id.
-func (o VpcEndpointZoneOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+// The zone ID.
+func (o VpcEndpointZoneOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type VpcEndpointZoneArrayOutput struct{ *pulumi.OutputState }

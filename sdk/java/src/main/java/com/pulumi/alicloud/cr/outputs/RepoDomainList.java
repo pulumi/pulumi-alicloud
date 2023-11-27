@@ -86,11 +86,11 @@ public final class RepoDomainList {
             return this;
         }
         public RepoDomainList build() {
-            final var o = new RepoDomainList();
-            o.internal = internal;
-            o.public_ = public_;
-            o.vpc = vpc;
-            return o;
+            final var _resultValue = new RepoDomainList();
+            _resultValue.internal = internal;
+            _resultValue.public_ = public_;
+            _resultValue.vpc = vpc;
+            return _resultValue;
         }
     }
 }

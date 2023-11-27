@@ -73,7 +73,7 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      * 
      */
-    @Export(name="approvalRules", type=String.class, parameters={})
+    @Export(name="approvalRules", refs={String.class}, tree="[0]")
     private Output<String> approvalRules;
 
     /**
@@ -87,7 +87,7 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      * Creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -101,7 +101,7 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      * Patches baseline description information.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -115,7 +115,7 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
      * 
      */
-    @Export(name="operationSystem", type=String.class, parameters={})
+    @Export(name="operationSystem", refs={String.class}, tree="[0]")
     private Output<String> operationSystem;
 
     /**
@@ -129,7 +129,7 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      * The name of the patch baseline.
      * 
      */
-    @Export(name="patchBaselineName", type=String.class, parameters={})
+    @Export(name="patchBaselineName", refs={String.class}, tree="[0]")
     private Output<String> patchBaselineName;
 
     /**
@@ -143,7 +143,7 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      * Reject patches.
      * 
      */
-    @Export(name="rejectedPatches", type=List.class, parameters={String.class})
+    @Export(name="rejectedPatches", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> rejectedPatches;
 
     /**
@@ -157,7 +157,7 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
      * 
      */
-    @Export(name="rejectedPatchesAction", type=String.class, parameters={})
+    @Export(name="rejectedPatchesAction", refs={String.class}, tree="[0]")
     private Output<String> rejectedPatchesAction;
 
     /**

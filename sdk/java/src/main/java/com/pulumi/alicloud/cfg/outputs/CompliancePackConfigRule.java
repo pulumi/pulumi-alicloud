@@ -71,10 +71,10 @@ public final class CompliancePackConfigRule {
             return this;
         }
         public CompliancePackConfigRule build() {
-            final var o = new CompliancePackConfigRule();
-            o.configRuleParameters = configRuleParameters;
-            o.managedRuleIdentifier = managedRuleIdentifier;
-            return o;
+            final var _resultValue = new CompliancePackConfigRule();
+            _resultValue.configRuleParameters = configRuleParameters;
+            _resultValue.managedRuleIdentifier = managedRuleIdentifier;
+            return _resultValue;
         }
     }
 }

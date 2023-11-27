@@ -85,11 +85,11 @@ public final class GetDiskTypesType {
             return this;
         }
         public GetDiskTypesType build() {
-            final var o = new GetDiskTypesType();
-            o.max = max;
-            o.min = min;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetDiskTypesType();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

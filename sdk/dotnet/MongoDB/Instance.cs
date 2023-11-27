@@ -97,11 +97,17 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
+        /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+        /// </summary>
+        [Output("backupInterval")]
+        public Output<string> BackupInterval { get; private set; } = null!;
 
         /// <summary>
         /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -114,6 +120,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("backupTime")]
         public Output<string> BackupTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the encryption key.
+        /// </summary>
+        [Output("cloudDiskEncryptionKey")]
+        public Output<string?> CloudDiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
         /// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
@@ -130,6 +142,21 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> DbInstanceStorage { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("encrypted")]
+        public Output<bool?> Encrypted { get; private set; } = null!;
+
+        [Output("encryptionKey")]
+        public Output<string> EncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        /// </summary>
+        [Output("encryptorName")]
+        public Output<string> EncryptorName { get; private set; } = null!;
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
         /// </summary>
         [Output("engineVersion")]
@@ -142,10 +169,10 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> HiddenZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Output("instanceChargeType")]
-        public Output<string?> InstanceChargeType { get; private set; } = null!;
+        public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
         /// An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
@@ -178,16 +205,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// The network type of the instance. Valid values:`Classic`, `VPC`.
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-        /// * UPGRADE: The specifications are upgraded.
-        /// * DOWNGRADE: The specifications are downgraded.
-        /// **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
@@ -199,7 +223,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
@@ -211,19 +235,19 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> ReadonlyReplicas { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the mongo replica set
+        /// The name of the mongo replica set.
         /// </summary>
         [Output("replicaSetName")]
         public Output<string> ReplicaSetName { get; private set; } = null!;
 
         /// <summary>
-        /// Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+        /// Replica set instance information.
         /// </summary>
         [Output("replicaSets")]
         public Output<ImmutableArray<Outputs.InstanceReplicaSet>> ReplicaSets { get; private set; } = null!;
 
         /// <summary>
-        /// Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        /// Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         /// </summary>
         [Output("replicationFactor")]
         public Output<int> ReplicationFactor { get; private set; } = null!;
@@ -235,10 +259,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log backup retention days. Available in 1.42.0+.
+        /// Instance data backup retention days. Available since v1.42.0.
         /// </summary>
         [Output("retentionPeriod")]
         public Output<int> RetentionPeriod { get; private set; } = null!;
+
+        [Output("roleArn")]
+        public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
         /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
@@ -250,7 +277,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The Security Group ID of ECS.
         /// </summary>
         [Output("securityGroupId")]
-        public Output<string> SecurityGroupId { get; private set; } = null!;
+        public Output<string?> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
         /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -259,19 +286,25 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<string>> SecurityIpLists { get; private set; } = null!;
 
         /// <summary>
-        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// The snapshot backup type. Default value: `Standard`. Valid values:
         /// </summary>
-        [Output("sslAction")]
-        public Output<string> SslAction { get; private set; } = null!;
+        [Output("snapshotBackupType")]
+        public Output<string> SnapshotBackupType { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+        /// Actions performed on SSL functions. Valid values:
+        /// </summary>
+        [Output("sslAction")]
+        public Output<string?> SslAction { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the SSL feature.
         /// </summary>
         [Output("sslStatus")]
         public Output<string> SslStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         /// </summary>
         [Output("storageEngine")]
         public Output<string> StorageEngine { get; private set; } = null!;
@@ -289,13 +322,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status.
+        /// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         /// </summary>
         [Output("tdeStatus")]
-        public Output<string?> TdeStatus { get; private set; } = null!;
+        public Output<string> TdeStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -381,11 +414,17 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
+        /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+        /// </summary>
+        [Input("backupInterval")]
+        public Input<string>? BackupInterval { get; set; }
 
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
@@ -406,6 +445,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
+        /// The ID of the encryption key.
+        /// </summary>
+        [Input("cloudDiskEncryptionKey")]
+        public Input<string>? CloudDiskEncryptionKey { get; set; }
+
+        /// <summary>
         /// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Input("dbInstanceClass", required: true)]
@@ -420,6 +465,21 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int> DbInstanceStorage { get; set; } = null!;
 
         /// <summary>
+        /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        /// </summary>
+        [Input("encryptorName")]
+        public Input<string>? EncryptorName { get; set; }
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
         /// </summary>
         [Input("engineVersion", required: true)]
@@ -432,7 +492,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? HiddenZoneId { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -474,16 +534,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// The network type of the instance. Valid values:`Classic`, `VPC`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
         /// <summary>
-        /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-        /// * UPGRADE: The specifications are upgraded.
-        /// * DOWNGRADE: The specifications are downgraded.
-        /// **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -501,7 +558,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -513,7 +570,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? ReadonlyReplicas { get; set; }
 
         /// <summary>
-        /// Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        /// Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }
@@ -523,6 +580,9 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
 
         /// <summary>
         /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
@@ -549,13 +609,19 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// The snapshot backup type. Default value: `Standard`. Valid values:
+        /// </summary>
+        [Input("snapshotBackupType")]
+        public Input<string>? SnapshotBackupType { get; set; }
+
+        /// <summary>
+        /// Actions performed on SSL functions. Valid values:
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
 
         /// <summary>
-        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
@@ -579,13 +645,13 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status.
+        /// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -629,11 +695,17 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
+        /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+        /// </summary>
+        [Input("backupInterval")]
+        public Input<string>? BackupInterval { get; set; }
 
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
@@ -654,6 +726,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
+        /// The ID of the encryption key.
+        /// </summary>
+        [Input("cloudDiskEncryptionKey")]
+        public Input<string>? CloudDiskEncryptionKey { get; set; }
+
+        /// <summary>
         /// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Input("dbInstanceClass")]
@@ -668,6 +746,21 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? DbInstanceStorage { get; set; }
 
         /// <summary>
+        /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        /// </summary>
+        [Input("encryptorName")]
+        public Input<string>? EncryptorName { get; set; }
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
         /// </summary>
         [Input("engineVersion")]
@@ -680,7 +773,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? HiddenZoneId { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -722,16 +815,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// The network type of the instance. Valid values:`Classic`, `VPC`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
         /// <summary>
-        /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-        /// * UPGRADE: The specifications are upgraded.
-        /// * DOWNGRADE: The specifications are downgraded.
-        /// **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -749,7 +839,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -761,7 +851,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? ReadonlyReplicas { get; set; }
 
         /// <summary>
-        /// The name of the mongo replica set
+        /// The name of the mongo replica set.
         /// </summary>
         [Input("replicaSetName")]
         public Input<string>? ReplicaSetName { get; set; }
@@ -770,7 +860,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.InstanceReplicaSetGetArgs>? _replicaSets;
 
         /// <summary>
-        /// Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+        /// Replica set instance information.
         /// </summary>
         public InputList<Inputs.InstanceReplicaSetGetArgs> ReplicaSets
         {
@@ -779,7 +869,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        /// Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }
@@ -791,10 +881,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Instance log backup retention days. Available in 1.42.0+.
+        /// Instance data backup retention days. Available since v1.42.0.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
+
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
 
         /// <summary>
         /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
@@ -821,19 +914,25 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// The snapshot backup type. Default value: `Standard`. Valid values:
+        /// </summary>
+        [Input("snapshotBackupType")]
+        public Input<string>? SnapshotBackupType { get; set; }
+
+        /// <summary>
+        /// Actions performed on SSL functions. Valid values:
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
 
         /// <summary>
-        /// Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+        /// Status of the SSL feature.
         /// </summary>
         [Input("sslStatus")]
         public Input<string>? SslStatus { get; set; }
 
         /// <summary>
-        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
@@ -857,13 +956,13 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status.
+        /// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

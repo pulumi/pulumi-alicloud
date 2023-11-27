@@ -113,7 +113,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
      * 
      */
-    @Export(name="backupPeriods", type=List.class, parameters={String.class})
+    @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
     /**
@@ -127,7 +127,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Backup time, in the format of HH:mmZ- HH:mm Z
      * 
      */
-    @Export(name="backupTime", type=String.class, parameters={})
+    @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupTime;
 
     /**
@@ -141,7 +141,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The id of ApsaraDB for Redis or Memcache intance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**

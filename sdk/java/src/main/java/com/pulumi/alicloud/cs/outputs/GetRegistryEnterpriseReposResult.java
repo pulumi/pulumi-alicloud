@@ -188,17 +188,17 @@ public final class GetRegistryEnterpriseReposResult {
             return repos(List.of(repos));
         }
         public GetRegistryEnterpriseReposResult build() {
-            final var o = new GetRegistryEnterpriseReposResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespace = namespace;
-            o.outputFile = outputFile;
-            o.repos = repos;
-            return o;
+            final var _resultValue = new GetRegistryEnterpriseReposResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.namespace = namespace;
+            _resultValue.outputFile = outputFile;
+            _resultValue.repos = repos;
+            return _resultValue;
         }
     }
 }

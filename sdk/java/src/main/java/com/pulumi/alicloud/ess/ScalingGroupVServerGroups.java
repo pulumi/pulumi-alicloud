@@ -53,7 +53,7 @@ public class ScalingGroupVServerGroups extends com.pulumi.resources.CustomResour
      * If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -67,7 +67,7 @@ public class ScalingGroupVServerGroups extends com.pulumi.resources.CustomResour
      * ID of the scaling group.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**
@@ -81,7 +81,7 @@ public class ScalingGroupVServerGroups extends com.pulumi.resources.CustomResour
      * A list of vserver groups attached on scaling group. See `vserver_groups` below.
      * 
      */
-    @Export(name="vserverGroups", type=List.class, parameters={ScalingGroupVServerGroupsVserverGroup.class})
+    @Export(name="vserverGroups", refs={List.class,ScalingGroupVServerGroupsVserverGroup.class}, tree="[0,1]")
     private Output<List<ScalingGroupVServerGroupsVserverGroup>> vserverGroups;
 
     /**

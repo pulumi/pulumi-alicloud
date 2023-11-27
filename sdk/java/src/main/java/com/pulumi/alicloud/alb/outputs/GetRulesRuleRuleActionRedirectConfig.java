@@ -141,14 +141,14 @@ public final class GetRulesRuleRuleActionRedirectConfig {
             return this;
         }
         public GetRulesRuleRuleActionRedirectConfig build() {
-            final var o = new GetRulesRuleRuleActionRedirectConfig();
-            o.host = host;
-            o.httpCode = httpCode;
-            o.path = path;
-            o.port = port;
-            o.protocol = protocol;
-            o.query = query;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleActionRedirectConfig();
+            _resultValue.host = host;
+            _resultValue.httpCode = httpCode;
+            _resultValue.path = path;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.query = query;
+            return _resultValue;
         }
     }
 }

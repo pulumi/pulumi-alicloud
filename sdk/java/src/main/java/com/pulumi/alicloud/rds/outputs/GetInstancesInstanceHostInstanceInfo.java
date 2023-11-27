@@ -160,15 +160,15 @@ public final class GetInstancesInstanceHostInstanceInfo {
             return this;
         }
         public GetInstancesInstanceHostInstanceInfo build() {
-            final var o = new GetInstancesInstanceHostInstanceInfo();
-            o.dataSyncTime = dataSyncTime;
-            o.logSyncTime = logSyncTime;
-            o.nodeId = nodeId;
-            o.nodeType = nodeType;
-            o.regionId = regionId;
-            o.syncStatus = syncStatus;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancesInstanceHostInstanceInfo();
+            _resultValue.dataSyncTime = dataSyncTime;
+            _resultValue.logSyncTime = logSyncTime;
+            _resultValue.nodeId = nodeId;
+            _resultValue.nodeType = nodeType;
+            _resultValue.regionId = regionId;
+            _resultValue.syncStatus = syncStatus;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class TemplateScratchSourceResource {
             return this;
         }
         public TemplateScratchSourceResource build() {
-            final var o = new TemplateScratchSourceResource();
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            return o;
+            final var _resultValue = new TemplateScratchSourceResource();
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            return _resultValue;
         }
     }
 }

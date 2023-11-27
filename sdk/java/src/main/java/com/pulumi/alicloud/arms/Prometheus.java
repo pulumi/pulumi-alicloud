@@ -114,7 +114,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -128,7 +128,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
      * 
      */
-    @Export(name="clusterName", type=String.class, parameters={})
+    @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     /**
@@ -142,7 +142,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
      * 
      */
-    @Export(name="clusterType", type=String.class, parameters={})
+    @Export(name="clusterType", refs={String.class}, tree="[0]")
     private Output<String> clusterType;
 
     /**
@@ -156,7 +156,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
      * 
      */
-    @Export(name="grafanaInstanceId", type=String.class, parameters={})
+    @Export(name="grafanaInstanceId", refs={String.class}, tree="[0]")
     private Output<String> grafanaInstanceId;
 
     /**
@@ -170,7 +170,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -184,7 +184,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
@@ -198,7 +198,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * The child instance json string of the globalView instance.
      * 
      */
-    @Export(name="subClustersJson", type=String.class, parameters={})
+    @Export(name="subClustersJson", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subClustersJson;
 
     /**
@@ -212,7 +212,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -226,7 +226,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
@@ -240,7 +240,7 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      * The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**

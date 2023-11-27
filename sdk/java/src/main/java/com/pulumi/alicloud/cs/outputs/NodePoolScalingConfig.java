@@ -145,14 +145,14 @@ public final class NodePoolScalingConfig {
             return this;
         }
         public NodePoolScalingConfig build() {
-            final var o = new NodePoolScalingConfig();
-            o.eipBandwidth = eipBandwidth;
-            o.eipInternetChargeType = eipInternetChargeType;
-            o.isBondEip = isBondEip;
-            o.maxSize = maxSize;
-            o.minSize = minSize;
-            o.type = type;
-            return o;
+            final var _resultValue = new NodePoolScalingConfig();
+            _resultValue.eipBandwidth = eipBandwidth;
+            _resultValue.eipInternetChargeType = eipInternetChargeType;
+            _resultValue.isBondEip = isBondEip;
+            _resultValue.maxSize = maxSize;
+            _resultValue.minSize = minSize;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

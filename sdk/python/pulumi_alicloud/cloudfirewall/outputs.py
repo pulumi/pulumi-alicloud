@@ -1093,19 +1093,29 @@ class GetControlPoliciesPolicyResult(dict):
         """
         :param str acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param str acl_uuid: The unique ID of the access control policy.
-        :param str application_name: The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        :param str application_id: The application ID in the access control policy.
+        :param str application_name: The type of the application that the access control policy supports.
         :param str description: The description of the access control policy.
-        :param str dest_port: The destination port defined in the access control policy.
-        :param str dest_port_group: The destination port address book defined in the access control policy.
-        :param str dest_port_type: The destination port type defined in the access control policy. Valid values: `group`, `port`.
+        :param str dest_port: The destination port in the access control policy.
+        :param str dest_port_group: The name of the destination port address book in the access control policy.
+        :param Sequence[str] dest_port_group_ports: The ports in the destination port address book.
+        :param str dest_port_type: The type of the destination port in the access control policy.
         :param str destination: The destination address defined in the access control policy.
-        :param str destination_type: The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
-        :param str direction: The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
-        :param str id: The ID of the Control Policy.
-        :param str proto: The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
-        :param bool release: Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
-        :param str source: The source address defined in the access control policy.
-        :param str source_type: The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        :param Sequence[str] destination_group_cidrs: The CIDR blocks in the destination address book.
+        :param str destination_group_type: The type of the destination address book in the access control policy.
+        :param str destination_type: The type of the destination address in the access control policy.
+        :param str direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        :param str dns_result: The DNS resolution result.
+        :param str dns_result_time: The timestamp of the DNS resolution result.
+        :param str hit_times: The number of hits for the access control policy.
+        :param str id: The ID of the Control Policy. It formats as `<acl_uuid>:<direction>`.
+        :param int order: The priority of the access control policy.
+        :param str proto: The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        :param bool release: Indicates whether the access control policy is enabled.
+        :param str source: The source address in the access control policy.
+        :param Sequence[str] source_group_cidrs: The CIDR blocks in the source address book.
+        :param str source_group_type: The type of the source address book in the access control policy.
+        :param str source_type: The type of the source address in the access control policy.
         """
         pulumi.set(__self__, "acl_action", acl_action)
         pulumi.set(__self__, "acl_uuid", acl_uuid)
@@ -1152,13 +1162,16 @@ class GetControlPoliciesPolicyResult(dict):
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
+        """
+        The application ID in the access control policy.
+        """
         return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="applicationName")
     def application_name(self) -> str:
         """
-        The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        The type of the application that the access control policy supports.
         """
         return pulumi.get(self, "application_name")
 
@@ -1174,7 +1187,7 @@ class GetControlPoliciesPolicyResult(dict):
     @pulumi.getter(name="destPort")
     def dest_port(self) -> str:
         """
-        The destination port defined in the access control policy.
+        The destination port in the access control policy.
         """
         return pulumi.get(self, "dest_port")
 
@@ -1182,20 +1195,23 @@ class GetControlPoliciesPolicyResult(dict):
     @pulumi.getter(name="destPortGroup")
     def dest_port_group(self) -> str:
         """
-        The destination port address book defined in the access control policy.
+        The name of the destination port address book in the access control policy.
         """
         return pulumi.get(self, "dest_port_group")
 
     @property
     @pulumi.getter(name="destPortGroupPorts")
     def dest_port_group_ports(self) -> Sequence[str]:
+        """
+        The ports in the destination port address book.
+        """
         return pulumi.get(self, "dest_port_group_ports")
 
     @property
     @pulumi.getter(name="destPortType")
     def dest_port_type(self) -> str:
         """
-        The destination port type defined in the access control policy. Valid values: `group`, `port`.
+        The type of the destination port in the access control policy.
         """
         return pulumi.get(self, "dest_port_type")
 
@@ -1210,18 +1226,24 @@ class GetControlPoliciesPolicyResult(dict):
     @property
     @pulumi.getter(name="destinationGroupCidrs")
     def destination_group_cidrs(self) -> Sequence[str]:
+        """
+        The CIDR blocks in the destination address book.
+        """
         return pulumi.get(self, "destination_group_cidrs")
 
     @property
     @pulumi.getter(name="destinationGroupType")
     def destination_group_type(self) -> str:
+        """
+        The type of the destination address book in the access control policy.
+        """
         return pulumi.get(self, "destination_group_type")
 
     @property
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> str:
         """
-        The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+        The type of the destination address in the access control policy.
         """
         return pulumi.get(self, "destination_type")
 
@@ -1229,43 +1251,55 @@ class GetControlPoliciesPolicyResult(dict):
     @pulumi.getter
     def direction(self) -> str:
         """
-        The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+        The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         """
         return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter(name="dnsResult")
     def dns_result(self) -> str:
+        """
+        The DNS resolution result.
+        """
         return pulumi.get(self, "dns_result")
 
     @property
     @pulumi.getter(name="dnsResultTime")
     def dns_result_time(self) -> str:
+        """
+        The timestamp of the DNS resolution result.
+        """
         return pulumi.get(self, "dns_result_time")
 
     @property
     @pulumi.getter(name="hitTimes")
     def hit_times(self) -> str:
+        """
+        The number of hits for the access control policy.
+        """
         return pulumi.get(self, "hit_times")
 
     @property
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of the Control Policy.
+        The ID of the Control Policy. It formats as `<acl_uuid>:<direction>`.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def order(self) -> int:
+        """
+        The priority of the access control policy.
+        """
         return pulumi.get(self, "order")
 
     @property
     @pulumi.getter
     def proto(self) -> str:
         """
-        The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
         """
         return pulumi.get(self, "proto")
 
@@ -1273,7 +1307,7 @@ class GetControlPoliciesPolicyResult(dict):
     @pulumi.getter
     def release(self) -> bool:
         """
-        Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+        Indicates whether the access control policy is enabled.
         """
         return pulumi.get(self, "release")
 
@@ -1281,25 +1315,31 @@ class GetControlPoliciesPolicyResult(dict):
     @pulumi.getter
     def source(self) -> str:
         """
-        The source address defined in the access control policy.
+        The source address in the access control policy.
         """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter(name="sourceGroupCidrs")
     def source_group_cidrs(self) -> Sequence[str]:
+        """
+        The CIDR blocks in the source address book.
+        """
         return pulumi.get(self, "source_group_cidrs")
 
     @property
     @pulumi.getter(name="sourceGroupType")
     def source_group_type(self) -> str:
+        """
+        The type of the source address book in the access control policy.
+        """
         return pulumi.get(self, "source_group_type")
 
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> str:
         """
-        The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        The type of the source address in the access control policy.
         """
         return pulumi.get(self, "source_type")
 

@@ -128,15 +128,15 @@ public final class GetServerGroupServerAttachmentsResult {
             return serverIps(List.of(serverIps));
         }
         public GetServerGroupServerAttachmentsResult build() {
-            final var o = new GetServerGroupServerAttachmentsResult();
-            o.attachments = attachments;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.serverGroupId = serverGroupId;
-            o.serverIds = serverIds;
-            o.serverIps = serverIps;
-            return o;
+            final var _resultValue = new GetServerGroupServerAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.serverGroupId = serverGroupId;
+            _resultValue.serverIds = serverIds;
+            _resultValue.serverIps = serverIps;
+            return _resultValue;
         }
     }
 }

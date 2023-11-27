@@ -200,17 +200,17 @@ public final class GetDedicatedHostsHostCapacity {
             return this;
         }
         public GetDedicatedHostsHostCapacity build() {
-            final var o = new GetDedicatedHostsHostCapacity();
-            o.availableLocalStorage = availableLocalStorage;
-            o.availableMemory = availableMemory;
-            o.availableVcpus = availableVcpus;
-            o.availableVgpus = availableVgpus;
-            o.localStorageCategory = localStorageCategory;
-            o.totalLocalStorage = totalLocalStorage;
-            o.totalMemory = totalMemory;
-            o.totalVcpus = totalVcpus;
-            o.totalVgpus = totalVgpus;
-            return o;
+            final var _resultValue = new GetDedicatedHostsHostCapacity();
+            _resultValue.availableLocalStorage = availableLocalStorage;
+            _resultValue.availableMemory = availableMemory;
+            _resultValue.availableVcpus = availableVcpus;
+            _resultValue.availableVgpus = availableVgpus;
+            _resultValue.localStorageCategory = localStorageCategory;
+            _resultValue.totalLocalStorage = totalLocalStorage;
+            _resultValue.totalMemory = totalMemory;
+            _resultValue.totalVcpus = totalVcpus;
+            _resultValue.totalVgpus = totalVgpus;
+            return _resultValue;
         }
     }
 }

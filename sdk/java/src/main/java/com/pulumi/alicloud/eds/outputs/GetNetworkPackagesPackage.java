@@ -222,18 +222,18 @@ public final class GetNetworkPackagesPackage {
             return this;
         }
         public GetNetworkPackagesPackage build() {
-            final var o = new GetNetworkPackagesPackage();
-            o.bandwidth = bandwidth;
-            o.createTime = createTime;
-            o.eipAddresses = eipAddresses;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.networkPackageId = networkPackageId;
-            o.officeSiteId = officeSiteId;
-            o.officeSiteName = officeSiteName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetNetworkPackagesPackage();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.createTime = createTime;
+            _resultValue.eipAddresses = eipAddresses;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.networkPackageId = networkPackageId;
+            _resultValue.officeSiteId = officeSiteId;
+            _resultValue.officeSiteName = officeSiteName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

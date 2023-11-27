@@ -148,17 +148,17 @@ public final class GetAclsResult {
             return this;
         }
         public GetAclsResult build() {
-            final var o = new GetAclsResult();
-            o.aclName = aclName;
-            o.acls = acls;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAclsResult();
+            _resultValue.aclName = aclName;
+            _resultValue.acls = acls;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

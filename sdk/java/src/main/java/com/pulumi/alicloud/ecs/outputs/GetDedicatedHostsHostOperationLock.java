@@ -46,9 +46,9 @@ public final class GetDedicatedHostsHostOperationLock {
             return this;
         }
         public GetDedicatedHostsHostOperationLock build() {
-            final var o = new GetDedicatedHostsHostOperationLock();
-            o.lockReason = lockReason;
-            return o;
+            final var _resultValue = new GetDedicatedHostsHostOperationLock();
+            _resultValue.lockReason = lockReason;
+            return _resultValue;
         }
     }
 }

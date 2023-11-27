@@ -65,10 +65,10 @@ public final class GetBucketsBucketWebsite {
             return this;
         }
         public GetBucketsBucketWebsite build() {
-            final var o = new GetBucketsBucketWebsite();
-            o.errorDocument = errorDocument;
-            o.indexDocument = indexDocument;
-            return o;
+            final var _resultValue = new GetBucketsBucketWebsite();
+            _resultValue.errorDocument = errorDocument;
+            _resultValue.indexDocument = indexDocument;
+            return _resultValue;
         }
     }
 }

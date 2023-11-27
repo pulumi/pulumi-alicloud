@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
+ * BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/create-an-anti-ddos-pro-or-anti-ddos-premium-instance-by-calling-an-api-operation).
  *
  * > **NOTE:** The product region only support cn-hangzhou.
  *
@@ -24,13 +24,13 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const _default = new alicloud.ddos.DdosCooInstance("default", {
- *     bandwidth: "30",
  *     baseBandwidth: "30",
+ *     bandwidth: "30",
  *     serviceBandwidth: "100",
  *     portCount: "50",
  *     domainCount: "50",
- *     period: 1,
  *     productType: "ddoscoo",
+ *     period: 1,
  * });
  * ```
  *
@@ -71,11 +71,19 @@ export class DdosCooInstance extends pulumi.CustomResource {
     }
 
     /**
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     */
+    public readonly addressType!: pulumi.Output<string>;
+    /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      */
     public readonly bandwidth!: pulumi.Output<string>;
     /**
-     * Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * The mitigation plan of the instance. Valid values:
+     */
+    public readonly bandwidthMode!: pulumi.Output<string | undefined>;
+    /**
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
      */
     public readonly baseBandwidth!: pulumi.Output<string>;
     /**
@@ -83,11 +91,19 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     public readonly domainCount!: pulumi.Output<string>;
     /**
+     * The mitigation plan of the instance. Default value: `coop`. Valid values:
+     */
+    public readonly editionSale!: pulumi.Output<string>;
+    /**
+     * (Available since v1.212.0) The IP address of the instance.
+     */
+    public /*out*/ readonly ip!: pulumi.Output<string>;
+    /**
      * Name of the instance. This name can have a string of 1 to 63 characters.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
@@ -95,10 +111,7 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     public readonly portCount!: pulumi.Output<string>;
     /**
-     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-     * - ddoscoo: Only supports domestic account.
-     * - ddoscoo_intl: Only supports to international account.
-     * Default to ddoscoo.
+     * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      */
     public readonly productType!: pulumi.Output<string | undefined>;
     /**
@@ -119,9 +132,13 @@ export class DdosCooInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdosCooInstanceState | undefined;
+            resourceInputs["addressType"] = state ? state.addressType : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["bandwidthMode"] = state ? state.bandwidthMode : undefined;
             resourceInputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
             resourceInputs["domainCount"] = state ? state.domainCount : undefined;
+            resourceInputs["editionSale"] = state ? state.editionSale : undefined;
+            resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["portCount"] = state ? state.portCount : undefined;
@@ -144,14 +161,18 @@ export class DdosCooInstance extends pulumi.CustomResource {
             if ((!args || args.serviceBandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceBandwidth'");
             }
+            resourceInputs["addressType"] = args ? args.addressType : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["bandwidthMode"] = args ? args.bandwidthMode : undefined;
             resourceInputs["baseBandwidth"] = args ? args.baseBandwidth : undefined;
             resourceInputs["domainCount"] = args ? args.domainCount : undefined;
+            resourceInputs["editionSale"] = args ? args.editionSale : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["portCount"] = args ? args.portCount : undefined;
             resourceInputs["productType"] = args ? args.productType : undefined;
             resourceInputs["serviceBandwidth"] = args ? args.serviceBandwidth : undefined;
+            resourceInputs["ip"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "alicloud:dns/ddosCooInstance:DdosCooInstance" }] };
@@ -165,11 +186,19 @@ export class DdosCooInstance extends pulumi.CustomResource {
  */
 export interface DdosCooInstanceState {
     /**
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     */
+    addressType?: pulumi.Input<string>;
+    /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      */
     bandwidth?: pulumi.Input<string>;
     /**
-     * Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * The mitigation plan of the instance. Valid values:
+     */
+    bandwidthMode?: pulumi.Input<string>;
+    /**
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
      */
     baseBandwidth?: pulumi.Input<string>;
     /**
@@ -177,11 +206,19 @@ export interface DdosCooInstanceState {
      */
     domainCount?: pulumi.Input<string>;
     /**
+     * The mitigation plan of the instance. Default value: `coop`. Valid values:
+     */
+    editionSale?: pulumi.Input<string>;
+    /**
+     * (Available since v1.212.0) The IP address of the instance.
+     */
+    ip?: pulumi.Input<string>;
+    /**
      * Name of the instance. This name can have a string of 1 to 63 characters.
      */
     name?: pulumi.Input<string>;
     /**
-     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      */
     period?: pulumi.Input<number>;
     /**
@@ -189,10 +226,7 @@ export interface DdosCooInstanceState {
      */
     portCount?: pulumi.Input<string>;
     /**
-     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-     * - ddoscoo: Only supports domestic account.
-     * - ddoscoo_intl: Only supports to international account.
-     * Default to ddoscoo.
+     * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      */
     productType?: pulumi.Input<string>;
     /**
@@ -206,11 +240,19 @@ export interface DdosCooInstanceState {
  */
 export interface DdosCooInstanceArgs {
     /**
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     */
+    addressType?: pulumi.Input<string>;
+    /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      */
     bandwidth: pulumi.Input<string>;
     /**
-     * Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * The mitigation plan of the instance. Valid values:
+     */
+    bandwidthMode?: pulumi.Input<string>;
+    /**
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
      */
     baseBandwidth: pulumi.Input<string>;
     /**
@@ -218,11 +260,15 @@ export interface DdosCooInstanceArgs {
      */
     domainCount: pulumi.Input<string>;
     /**
+     * The mitigation plan of the instance. Default value: `coop`. Valid values:
+     */
+    editionSale?: pulumi.Input<string>;
+    /**
      * Name of the instance. This name can have a string of 1 to 63 characters.
      */
     name?: pulumi.Input<string>;
     /**
-     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      */
     period?: pulumi.Input<number>;
     /**
@@ -230,10 +276,7 @@ export interface DdosCooInstanceArgs {
      */
     portCount: pulumi.Input<string>;
     /**
-     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-     * - ddoscoo: Only supports domestic account.
-     * - ddoscoo_intl: Only supports to international account.
-     * Default to ddoscoo.
+     * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      */
     productType?: pulumi.Input<string>;
     /**

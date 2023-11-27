@@ -86,11 +86,11 @@ public final class ServiceMeshNetwork {
             return this;
         }
         public ServiceMeshNetwork build() {
-            final var o = new ServiceMeshNetwork();
-            o.securityGroupId = securityGroupId;
-            o.vpcId = vpcId;
-            o.vswitcheList = vswitcheList;
-            return o;
+            final var _resultValue = new ServiceMeshNetwork();
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitcheList = vswitcheList;
+            return _resultValue;
         }
     }
 }

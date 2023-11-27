@@ -68,10 +68,10 @@ public final class RuleRuleActionTrafficMirrorConfig {
             return this;
         }
         public RuleRuleActionTrafficMirrorConfig build() {
-            final var o = new RuleRuleActionTrafficMirrorConfig();
-            o.mirrorGroupConfig = mirrorGroupConfig;
-            o.targetType = targetType;
-            return o;
+            final var _resultValue = new RuleRuleActionTrafficMirrorConfig();
+            _resultValue.mirrorGroupConfig = mirrorGroupConfig;
+            _resultValue.targetType = targetType;
+            return _resultValue;
         }
     }
 }

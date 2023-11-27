@@ -332,24 +332,24 @@ public final class GetGatewaysGateway {
             return this;
         }
         public GetGatewaysGateway build() {
-            final var o = new GetGatewaysGateway();
-            o.autoPropagate = autoPropagate;
-            o.businessStatus = businessStatus;
-            o.createTime = createTime;
-            o.description = description;
-            o.enableIpsec = enableIpsec;
-            o.enableSsl = enableSsl;
-            o.endTime = endTime;
-            o.id = id;
-            o.instanceChargeType = instanceChargeType;
-            o.internetIp = internetIp;
-            o.name = name;
-            o.networkType = networkType;
-            o.specification = specification;
-            o.sslConnections = sslConnections;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetGatewaysGateway();
+            _resultValue.autoPropagate = autoPropagate;
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.enableIpsec = enableIpsec;
+            _resultValue.enableSsl = enableSsl;
+            _resultValue.endTime = endTime;
+            _resultValue.id = id;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.internetIp = internetIp;
+            _resultValue.name = name;
+            _resultValue.networkType = networkType;
+            _resultValue.specification = specification;
+            _resultValue.sslConnections = sslConnections;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

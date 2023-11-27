@@ -135,14 +135,14 @@ public final class GetIntegrationExportersResult {
             return this;
         }
         public GetIntegrationExportersResult build() {
-            final var o = new GetIntegrationExportersResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.integrationExporters = integrationExporters;
-            o.integrationType = integrationType;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetIntegrationExportersResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.integrationExporters = integrationExporters;
+            _resultValue.integrationType = integrationType;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

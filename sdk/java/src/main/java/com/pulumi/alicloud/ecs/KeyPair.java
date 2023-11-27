@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/keyPair:KeyPair")
 public class KeyPair extends com.pulumi.resources.CustomResource {
-    @Export(name="fingerPrint", type=String.class, parameters={})
+    @Export(name="fingerPrint", refs={String.class}, tree="[0]")
     private Output<String> fingerPrint;
 
     public Output<String> fingerPrint() {
@@ -83,7 +83,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
      * 
      */
-    @Export(name="keyFile", type=String.class, parameters={})
+    @Export(name="keyFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyFile;
 
     /**
@@ -101,7 +101,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
-    @Export(name="keyName", type=String.class, parameters={})
+    @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
     /**
@@ -111,13 +111,13 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
     public Output<String> keyName() {
         return this.keyName;
     }
-    @Export(name="keyNamePrefix", type=String.class, parameters={})
+    @Export(name="keyNamePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyNamePrefix;
 
     public Output<Optional<String>> keyNamePrefix() {
         return Codegen.optional(this.keyNamePrefix);
     }
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output<String> keyPairName;
 
     public Output<String> keyPairName() {
@@ -127,7 +127,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
      * 
      */
-    @Export(name="publicKey", type=String.class, parameters={})
+    @Export(name="publicKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> publicKey;
 
     /**
@@ -141,7 +141,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the key pair belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -151,7 +151,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     public Output<Optional<Map<String,Object>>> tags() {

@@ -66,10 +66,10 @@ public final class GetServerGroupsSlbServerGroupServer {
             return this;
         }
         public GetServerGroupsSlbServerGroupServer build() {
-            final var o = new GetServerGroupsSlbServerGroupServer();
-            o.instanceId = instanceId;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetServerGroupsSlbServerGroupServer();
+            _resultValue.instanceId = instanceId;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

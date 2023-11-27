@@ -103,12 +103,12 @@ public final class GetNestServiceInstancesServiceInstanceServiceServiceInfo {
             return this;
         }
         public GetNestServiceInstancesServiceInstanceServiceServiceInfo build() {
-            final var o = new GetNestServiceInstancesServiceInstanceServiceServiceInfo();
-            o.image = image;
-            o.locale = locale;
-            o.name = name;
-            o.shortDescription = shortDescription;
-            return o;
+            final var _resultValue = new GetNestServiceInstancesServiceInstanceServiceServiceInfo();
+            _resultValue.image = image;
+            _resultValue.locale = locale;
+            _resultValue.name = name;
+            _resultValue.shortDescription = shortDescription;
+            return _resultValue;
         }
     }
 }

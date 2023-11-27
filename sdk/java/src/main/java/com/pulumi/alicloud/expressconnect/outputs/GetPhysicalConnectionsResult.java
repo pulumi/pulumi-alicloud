@@ -137,16 +137,16 @@ public final class GetPhysicalConnectionsResult {
             return this;
         }
         public GetPhysicalConnectionsResult build() {
-            final var o = new GetPhysicalConnectionsResult();
-            o.connections = connections;
-            o.id = id;
-            o.ids = ids;
-            o.includeReservationData = includeReservationData;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetPhysicalConnectionsResult();
+            _resultValue.connections = connections;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.includeReservationData = includeReservationData;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

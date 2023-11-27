@@ -229,20 +229,20 @@ public final class GetMetricRuleBlackListsResult {
             return this;
         }
         public GetMetricRuleBlackListsResult build() {
-            final var o = new GetMetricRuleBlackListsResult();
-            o.category = category;
-            o.id = id;
-            o.ids = ids;
-            o.lists = lists;
-            o.metricRuleBlackListId = metricRuleBlackListId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespace = namespace;
-            o.order = order;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetMetricRuleBlackListsResult();
+            _resultValue.category = category;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lists = lists;
+            _resultValue.metricRuleBlackListId = metricRuleBlackListId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.namespace = namespace;
+            _resultValue.order = order;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

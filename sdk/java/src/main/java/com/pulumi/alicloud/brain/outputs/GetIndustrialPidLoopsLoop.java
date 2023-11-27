@@ -202,18 +202,18 @@ public final class GetIndustrialPidLoopsLoop {
             return this;
         }
         public GetIndustrialPidLoopsLoop build() {
-            final var o = new GetIndustrialPidLoopsLoop();
-            o.id = id;
-            o.pidLoopConfiguration = pidLoopConfiguration;
-            o.pidLoopDcsType = pidLoopDcsType;
-            o.pidLoopDesc = pidLoopDesc;
-            o.pidLoopId = pidLoopId;
-            o.pidLoopIsCrucial = pidLoopIsCrucial;
-            o.pidLoopName = pidLoopName;
-            o.pidLoopType = pidLoopType;
-            o.pidProjectId = pidProjectId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetIndustrialPidLoopsLoop();
+            _resultValue.id = id;
+            _resultValue.pidLoopConfiguration = pidLoopConfiguration;
+            _resultValue.pidLoopDcsType = pidLoopDcsType;
+            _resultValue.pidLoopDesc = pidLoopDesc;
+            _resultValue.pidLoopId = pidLoopId;
+            _resultValue.pidLoopIsCrucial = pidLoopIsCrucial;
+            _resultValue.pidLoopName = pidLoopName;
+            _resultValue.pidLoopType = pidLoopType;
+            _resultValue.pidProjectId = pidProjectId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

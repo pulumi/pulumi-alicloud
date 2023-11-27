@@ -158,16 +158,16 @@ public final class GetSecretVersionsResult {
             return versions(List.of(versions));
         }
         public GetSecretVersionsResult build() {
-            final var o = new GetSecretVersionsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.includeDeprecated = includeDeprecated;
-            o.outputFile = outputFile;
-            o.secretName = secretName;
-            o.versionStage = versionStage;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new GetSecretVersionsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.includeDeprecated = includeDeprecated;
+            _resultValue.outputFile = outputFile;
+            _resultValue.secretName = secretName;
+            _resultValue.versionStage = versionStage;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

@@ -173,18 +173,18 @@ public final class GetDomainsResult {
             return this;
         }
         public GetDomainsResult build() {
-            final var o = new GetDomainsResult();
-            o.backend = backend;
-            o.domain = domain;
-            o.domains = domains;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetDomainsResult();
+            _resultValue.backend = backend;
+            _resultValue.domain = domain;
+            _resultValue.domains = domains;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

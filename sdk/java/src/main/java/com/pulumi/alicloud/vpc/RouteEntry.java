@@ -144,7 +144,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The RouteEntry&#39;s target network segment.
      * 
      */
-    @Export(name="destinationCidrblock", type=String.class, parameters={})
+    @Export(name="destinationCidrblock", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationCidrblock;
 
     /**
@@ -158,7 +158,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -172,7 +172,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
      * 
      */
-    @Export(name="nexthopId", type=String.class, parameters={})
+    @Export(name="nexthopId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nexthopId;
 
     /**
@@ -186,7 +186,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The next hop type. Available values:
      * 
      */
-    @Export(name="nexthopType", type=String.class, parameters={})
+    @Export(name="nexthopType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nexthopType;
 
     /**
@@ -200,7 +200,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The ID of the route table.
      * 
      */
-    @Export(name="routeTableId", type=String.class, parameters={})
+    @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**
@@ -218,7 +218,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute router_id has been deprecated and suggest removing it from your template. */
-    @Export(name="routerId", type=String.class, parameters={})
+    @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**

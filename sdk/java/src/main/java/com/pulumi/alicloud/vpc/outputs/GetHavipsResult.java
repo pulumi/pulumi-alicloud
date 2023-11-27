@@ -125,15 +125,15 @@ public final class GetHavipsResult {
             return this;
         }
         public GetHavipsResult build() {
-            final var o = new GetHavipsResult();
-            o.havips = havips;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetHavipsResult();
+            _resultValue.havips = havips;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

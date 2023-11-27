@@ -135,7 +135,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
      * 
      */
-    @Export(name="acrRegistryInfos", type=List.class, parameters={EciScalingConfigurationAcrRegistryInfo.class})
+    @Export(name="acrRegistryInfos", refs={List.class,EciScalingConfigurationAcrRegistryInfo.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EciScalingConfigurationAcrRegistryInfo>> acrRegistryInfos;
 
     /**
@@ -150,7 +150,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * one configuration can be active. Default to `false`.
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> active;
 
     /**
@@ -165,7 +165,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * Whether create eip automatically.
      * 
      */
-    @Export(name="autoCreateEip", type=Boolean.class, parameters={})
+    @Export(name="autoCreateEip", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoCreateEip;
 
     /**
@@ -179,7 +179,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * The name of the container group.
      * 
      */
-    @Export(name="containerGroupName", type=String.class, parameters={})
+    @Export(name="containerGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerGroupName;
 
     /**
@@ -193,7 +193,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * The list of containers. See `containers` below for details.
      * 
      */
-    @Export(name="containers", type=List.class, parameters={EciScalingConfigurationContainer.class})
+    @Export(name="containers", refs={List.class,EciScalingConfigurationContainer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EciScalingConfigurationContainer>> containers;
 
     /**
@@ -207,7 +207,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * The amount of CPU resources allocated to the container group.
      * 
      */
-    @Export(name="cpu", type=Double.class, parameters={})
+    @Export(name="cpu", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> cpu;
 
     /**
@@ -222,7 +222,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * 256 characters in length and cannot start with http:// or https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -237,7 +237,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * dns policy of contain group.
      * 
      */
-    @Export(name="dnsPolicy", type=String.class, parameters={})
+    @Export(name="dnsPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dnsPolicy;
 
     /**
@@ -251,7 +251,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * egress bandwidth.
      * 
      */
-    @Export(name="egressBandwidth", type=Integer.class, parameters={})
+    @Export(name="egressBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> egressBandwidth;
 
     /**
@@ -265,7 +265,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * Eip bandwidth.
      * 
      */
-    @Export(name="eipBandwidth", type=Integer.class, parameters={})
+    @Export(name="eipBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> eipBandwidth;
 
     /**
@@ -279,7 +279,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * Enable sls log service.
      * 
      */
-    @Export(name="enableSls", type=Boolean.class, parameters={})
+    @Export(name="enableSls", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableSls;
 
     /**
@@ -294,7 +294,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * Default to false.
      * 
      */
-    @Export(name="forceDelete", type=Boolean.class, parameters={})
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
@@ -309,7 +309,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * HostAliases. See `host_aliases` below.
      * 
      */
-    @Export(name="hostAliases", type=List.class, parameters={EciScalingConfigurationHostAlias.class})
+    @Export(name="hostAliases", refs={List.class,EciScalingConfigurationHostAlias.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EciScalingConfigurationHostAlias>> hostAliases;
 
     /**
@@ -323,7 +323,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * Hostname of an ECI instance.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     /**
@@ -338,7 +338,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * details.
      * 
      */
-    @Export(name="imageRegistryCredentials", type=List.class, parameters={EciScalingConfigurationImageRegistryCredential.class})
+    @Export(name="imageRegistryCredentials", refs={List.class,EciScalingConfigurationImageRegistryCredential.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EciScalingConfigurationImageRegistryCredential>> imageRegistryCredentials;
 
     /**
@@ -353,7 +353,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * Ingress bandwidth.
      * 
      */
-    @Export(name="ingressBandwidth", type=Integer.class, parameters={})
+    @Export(name="ingressBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ingressBandwidth;
 
     /**
@@ -367,7 +367,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * The list of initContainers. See `init_containers` below for details.
      * 
      */
-    @Export(name="initContainers", type=List.class, parameters={EciScalingConfigurationInitContainer.class})
+    @Export(name="initContainers", refs={List.class,EciScalingConfigurationInitContainer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EciScalingConfigurationInitContainer>> initContainers;
 
     /**
@@ -381,7 +381,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * The amount of memory resources allocated to the container group.
      * 
      */
-    @Export(name="memory", type=Double.class, parameters={})
+    @Export(name="memory", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> memory;
 
     /**
@@ -395,7 +395,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      * 
      */
-    @Export(name="ramRoleName", type=String.class, parameters={})
+    @Export(name="ramRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ramRoleName;
 
     /**
@@ -409,7 +409,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * ID of resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -423,7 +423,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * The restart policy of the container group. Default to `Always`.
      * 
      */
-    @Export(name="restartPolicy", type=String.class, parameters={})
+    @Export(name="restartPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restartPolicy;
 
     /**
@@ -440,7 +440,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * EciScalingConfigurationId.
      * 
      */
-    @Export(name="scalingConfigurationName", type=String.class, parameters={})
+    @Export(name="scalingConfigurationName", refs={String.class}, tree="[0]")
     private Output<String> scalingConfigurationName;
 
     /**
@@ -457,7 +457,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * ID of the scaling group of a eci scaling configuration.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**
@@ -472,7 +472,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * with `security_group_ids`.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
@@ -487,7 +487,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * The maximum price hourly for spot instance.
      * 
      */
-    @Export(name="spotPriceLimit", type=Double.class, parameters={})
+    @Export(name="spotPriceLimit", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> spotPriceLimit;
 
     /**
@@ -502,7 +502,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * , `SpotWithPriceLimit`.
      * 
      */
-    @Export(name="spotStrategy", type=String.class, parameters={})
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotStrategy;
 
     /**
@@ -521,7 +521,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      *   a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -539,7 +539,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * The list of volumes. See `volumes` below for details.
      * 
      */
-    @Export(name="volumes", type=List.class, parameters={EciScalingConfigurationVolume.class})
+    @Export(name="volumes", refs={List.class,EciScalingConfigurationVolume.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EciScalingConfigurationVolume>> volumes;
 
     /**

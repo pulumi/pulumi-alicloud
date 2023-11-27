@@ -131,15 +131,15 @@ public final class GetGrantRuleToCensResult {
             return this;
         }
         public GetGrantRuleToCensResult build() {
-            final var o = new GetGrantRuleToCensResult();
-            o.cens = cens;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetGrantRuleToCensResult();
+            _resultValue.cens = cens;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

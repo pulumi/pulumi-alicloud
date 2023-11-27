@@ -80,7 +80,7 @@ public class SharedTarget extends com.pulumi.resources.CustomResource {
      * The resource share ID of resource manager.
      * 
      */
-    @Export(name="resourceShareId", type=String.class, parameters={})
+    @Export(name="resourceShareId", refs={String.class}, tree="[0]")
     private Output<String> resourceShareId;
 
     /**
@@ -94,7 +94,7 @@ public class SharedTarget extends com.pulumi.resources.CustomResource {
      * The status of shared target.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -108,7 +108,7 @@ public class SharedTarget extends com.pulumi.resources.CustomResource {
      * The member account ID in resource directory.
      * 
      */
-    @Export(name="targetId", type=String.class, parameters={})
+    @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**

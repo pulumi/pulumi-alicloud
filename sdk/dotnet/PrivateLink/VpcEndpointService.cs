@@ -45,61 +45,114 @@ namespace Pulumi.AliCloud.PrivateLink
     /// Private Link Vpc Endpoint Service can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example &lt;service_id&gt;
+    ///  $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpointService:VpcEndpointService")]
     public partial class VpcEndpointService : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections.
+        /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+        /// - **true**
+        /// - **false**.
         /// </summary>
         [Output("autoAcceptConnection")]
         public Output<bool?> AutoAcceptConnection { get; private set; } = null!;
 
         /// <summary>
-        /// The connection bandwidth.
+        /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         /// </summary>
         [Output("connectBandwidth")]
         public Output<int> ConnectBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to pre-check this request only. Default to: `false`
+        /// The time when the endpoint service was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        /// The payer of the endpoint service. Valid values:
+        /// - **Endpoint**: the service consumer.
+        /// - **EndpointService**: the service provider.
         /// </summary>
         [Output("payer")]
-        public Output<string?> Payer { get; private set; } = null!;
+        public Output<string> Payer { get; private set; } = null!;
 
         /// <summary>
-        /// The business status of Vpc Endpoint Service.
+        /// The resource group ID.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The service state of the endpoint service.
         /// </summary>
         [Output("serviceBusinessStatus")]
         public Output<string> ServiceBusinessStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the terminal node service.
-        /// 
-        /// &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+        /// The description of the endpoint service.
         /// </summary>
         [Output("serviceDescription")]
         public Output<string?> ServiceDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Service Domain.
+        /// The domain name of the endpoint service.
         /// </summary>
         [Output("serviceDomain")]
         public Output<string> ServiceDomain { get; private set; } = null!;
 
         /// <summary>
-        /// The status of Vpc Endpoint Service.
+        /// Service resource type, value:
+        /// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        /// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        /// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        /// </summary>
+        [Output("serviceResourceType")]
+        public Output<string> ServiceResourceType { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+        /// - **true**
+        /// - **false (default)**.
+        /// </summary>
+        [Output("serviceSupportIpv6")]
+        public Output<bool> ServiceSupportIpv6 { get; private set; } = null!;
+
+        /// <summary>
+        /// The state of the endpoint service.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the endpoint service.
+        /// </summary>
+        [Output("vpcEndpointServiceName")]
+        public Output<string> VpcEndpointServiceName { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+        /// - **true**
+        /// - **false (default)**.
+        /// </summary>
+        [Output("zoneAffinityEnabled")]
+        public Output<bool> ZoneAffinityEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,36 +201,83 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections.
+        /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+        /// - **true**
+        /// - **false**.
         /// </summary>
         [Input("autoAcceptConnection")]
         public Input<bool>? AutoAcceptConnection { get; set; }
 
         /// <summary>
-        /// The connection bandwidth.
+        /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         /// </summary>
         [Input("connectBandwidth")]
         public Input<int>? ConnectBandwidth { get; set; }
 
         /// <summary>
-        /// Whether to pre-check this request only. Default to: `false`
+        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        /// The payer of the endpoint service. Valid values:
+        /// - **Endpoint**: the service consumer.
+        /// - **EndpointService**: the service provider.
         /// </summary>
         [Input("payer")]
         public Input<string>? Payer { get; set; }
 
         /// <summary>
-        /// The description of the terminal node service.
-        /// 
-        /// &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+        /// The resource group ID.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The description of the endpoint service.
         /// </summary>
         [Input("serviceDescription")]
         public Input<string>? ServiceDescription { get; set; }
+
+        /// <summary>
+        /// Service resource type, value:
+        /// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        /// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        /// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        /// </summary>
+        [Input("serviceResourceType")]
+        public Input<string>? ServiceResourceType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+        /// - **true**
+        /// - **false (default)**.
+        /// </summary>
+        [Input("serviceSupportIpv6")]
+        public Input<bool>? ServiceSupportIpv6 { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The list of tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+        /// - **true**
+        /// - **false (default)**.
+        /// </summary>
+        [Input("zoneAffinityEnabled")]
+        public Input<bool>? ZoneAffinityEnabled { get; set; }
 
         public VpcEndpointServiceArgs()
         {
@@ -188,54 +288,113 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections.
+        /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+        /// - **true**
+        /// - **false**.
         /// </summary>
         [Input("autoAcceptConnection")]
         public Input<bool>? AutoAcceptConnection { get; set; }
 
         /// <summary>
-        /// The connection bandwidth.
+        /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         /// </summary>
         [Input("connectBandwidth")]
         public Input<int>? ConnectBandwidth { get; set; }
 
         /// <summary>
-        /// Whether to pre-check this request only. Default to: `false`
+        /// The time when the endpoint service was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        /// The payer of the endpoint service. Valid values:
+        /// - **Endpoint**: the service consumer.
+        /// - **EndpointService**: the service provider.
         /// </summary>
         [Input("payer")]
         public Input<string>? Payer { get; set; }
 
         /// <summary>
-        /// The business status of Vpc Endpoint Service.
+        /// The resource group ID.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The service state of the endpoint service.
         /// </summary>
         [Input("serviceBusinessStatus")]
         public Input<string>? ServiceBusinessStatus { get; set; }
 
         /// <summary>
-        /// The description of the terminal node service.
-        /// 
-        /// &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+        /// The description of the endpoint service.
         /// </summary>
         [Input("serviceDescription")]
         public Input<string>? ServiceDescription { get; set; }
 
         /// <summary>
-        /// Service Domain.
+        /// The domain name of the endpoint service.
         /// </summary>
         [Input("serviceDomain")]
         public Input<string>? ServiceDomain { get; set; }
 
         /// <summary>
-        /// The status of Vpc Endpoint Service.
+        /// Service resource type, value:
+        /// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        /// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        /// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        /// </summary>
+        [Input("serviceResourceType")]
+        public Input<string>? ServiceResourceType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+        /// - **true**
+        /// - **false (default)**.
+        /// </summary>
+        [Input("serviceSupportIpv6")]
+        public Input<bool>? ServiceSupportIpv6 { get; set; }
+
+        /// <summary>
+        /// The state of the endpoint service.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The list of tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of the endpoint service.
+        /// </summary>
+        [Input("vpcEndpointServiceName")]
+        public Input<string>? VpcEndpointServiceName { get; set; }
+
+        /// <summary>
+        /// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+        /// - **true**
+        /// - **false (default)**.
+        /// </summary>
+        [Input("zoneAffinityEnabled")]
+        public Input<bool>? ZoneAffinityEnabled { get; set; }
 
         public VpcEndpointServiceState()
         {

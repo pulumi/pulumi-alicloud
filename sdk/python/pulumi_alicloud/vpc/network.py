@@ -24,8 +24,6 @@ class NetworkArgs:
                  ipv6_isp: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 route_table_id: Optional[pulumi.Input[str]] = None,
-                 router_table_id: Optional[pulumi.Input[str]] = None,
                  secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -49,8 +47,6 @@ class NetworkArgs:
                > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
-        :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
-        :param pulumi.Input[str] router_table_id: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
@@ -77,13 +73,6 @@ class NetworkArgs:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
-        if route_table_id is not None:
-            pulumi.set(__self__, "route_table_id", route_table_id)
-        if router_table_id is not None:
-            warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
-            pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")
-        if router_table_id is not None:
-            pulumi.set(__self__, "router_table_id", router_table_id)
         if secondary_cidr_blocks is not None:
             warnings.warn("""Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""", DeprecationWarning)
             pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""")
@@ -205,33 +194,6 @@ class NetworkArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
-    @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The route table ID of the router created by default on VPC creation.
-        """
-        return pulumi.get(self, "route_table_id")
-
-    @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "route_table_id", value)
-
-    @property
-    @pulumi.getter(name="routerTableId")
-    def router_table_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
-        """
-        warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")
-
-        return pulumi.get(self, "router_table_id")
-
-    @router_table_id.setter
-    def router_table_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "router_table_id", value)
-
-    @property
     @pulumi.getter(name="secondaryCidrBlocks")
     def secondary_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -331,7 +293,7 @@ class _NetworkState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
-        :param pulumi.Input[str] router_table_id: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        :param pulumi.Input[str] router_table_id: (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[str] status: The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
@@ -560,7 +522,7 @@ class _NetworkState:
     @pulumi.getter(name="routerTableId")
     def router_table_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         """
         warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")
@@ -650,8 +612,6 @@ class Network(pulumi.CustomResource):
                  ipv6_isp: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 route_table_id: Optional[pulumi.Input[str]] = None,
-                 router_table_id: Optional[pulumi.Input[str]] = None,
                  secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -660,9 +620,11 @@ class Network(pulumi.CustomResource):
         """
         Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
 
+        > **NOTE:** Available since v1.0.0.
+
         > **NOTE:** This resource will auto build a router and a route table while it uses `vpc.Network` to build a vpc resource.
 
-        > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+        > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://www.alibabacloud.com/help/en/vpc/getting-started/create-a-vpc-with-an-ipv6-cidr-block).
 
         ## Module Support
 
@@ -718,8 +680,6 @@ class Network(pulumi.CustomResource):
                > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
-        :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
-        :param pulumi.Input[str] router_table_id: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
@@ -736,9 +696,11 @@ class Network(pulumi.CustomResource):
         """
         Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
 
+        > **NOTE:** Available since v1.0.0.
+
         > **NOTE:** This resource will auto build a router and a route table while it uses `vpc.Network` to build a vpc resource.
 
-        > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+        > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://www.alibabacloud.com/help/en/vpc/getting-started/create-a-vpc-with-an-ipv6-cidr-block).
 
         ## Module Support
 
@@ -798,8 +760,6 @@ class Network(pulumi.CustomResource):
                  ipv6_isp: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 route_table_id: Optional[pulumi.Input[str]] = None,
-                 router_table_id: Optional[pulumi.Input[str]] = None,
                  secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -821,8 +781,6 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["ipv6_isp"] = ipv6_isp
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_group_id"] = resource_group_id
-            __props__.__dict__["route_table_id"] = route_table_id
-            __props__.__dict__["router_table_id"] = router_table_id
             __props__.__dict__["secondary_cidr_blocks"] = secondary_cidr_blocks
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_cidrs"] = user_cidrs
@@ -830,7 +788,9 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["ipv6_cidr_block"] = None
             __props__.__dict__["ipv6_cidr_blocks"] = None
+            __props__.__dict__["route_table_id"] = None
             __props__.__dict__["router_id"] = None
+            __props__.__dict__["router_table_id"] = None
             __props__.__dict__["status"] = None
         super(Network, __self__).__init__(
             'alicloud:vpc/network:Network',
@@ -890,7 +850,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
-        :param pulumi.Input[str] router_table_id: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        :param pulumi.Input[str] router_table_id: (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[str] status: The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
@@ -1044,7 +1004,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="routerTableId")
     def router_table_id(self) -> pulumi.Output[str]:
         """
-        Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         """
         warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")

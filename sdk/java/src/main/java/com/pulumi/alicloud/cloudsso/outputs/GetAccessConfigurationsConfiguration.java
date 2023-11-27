@@ -226,18 +226,18 @@ public final class GetAccessConfigurationsConfiguration {
             return statusNotifications(List.of(statusNotifications));
         }
         public GetAccessConfigurationsConfiguration build() {
-            final var o = new GetAccessConfigurationsConfiguration();
-            o.accessConfigurationId = accessConfigurationId;
-            o.accessConfigurationName = accessConfigurationName;
-            o.createTime = createTime;
-            o.description = description;
-            o.directoryId = directoryId;
-            o.id = id;
-            o.permissionPolicies = permissionPolicies;
-            o.relayState = relayState;
-            o.sessionDuration = sessionDuration;
-            o.statusNotifications = statusNotifications;
-            return o;
+            final var _resultValue = new GetAccessConfigurationsConfiguration();
+            _resultValue.accessConfigurationId = accessConfigurationId;
+            _resultValue.accessConfigurationName = accessConfigurationName;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.directoryId = directoryId;
+            _resultValue.id = id;
+            _resultValue.permissionPolicies = permissionPolicies;
+            _resultValue.relayState = relayState;
+            _resultValue.sessionDuration = sessionDuration;
+            _resultValue.statusNotifications = statusNotifications;
+            return _resultValue;
         }
     }
 }

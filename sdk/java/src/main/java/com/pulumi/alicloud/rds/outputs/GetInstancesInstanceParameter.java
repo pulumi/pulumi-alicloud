@@ -141,14 +141,14 @@ public final class GetInstancesInstanceParameter {
             return this;
         }
         public GetInstancesInstanceParameter build() {
-            final var o = new GetInstancesInstanceParameter();
-            o.checkingCode = checkingCode;
-            o.forceModify = forceModify;
-            o.forceRestart = forceRestart;
-            o.parameterDescription = parameterDescription;
-            o.parameterName = parameterName;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new GetInstancesInstanceParameter();
+            _resultValue.checkingCode = checkingCode;
+            _resultValue.forceModify = forceModify;
+            _resultValue.forceRestart = forceRestart;
+            _resultValue.parameterDescription = parameterDescription;
+            _resultValue.parameterName = parameterName;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

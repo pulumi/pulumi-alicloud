@@ -161,15 +161,15 @@ public final class GetReposRepoTag {
             return this;
         }
         public GetReposRepoTag build() {
-            final var o = new GetReposRepoTag();
-            o.digest = digest;
-            o.imageCreate = imageCreate;
-            o.imageId = imageId;
-            o.imageSize = imageSize;
-            o.imageUpdate = imageUpdate;
-            o.status = status;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new GetReposRepoTag();
+            _resultValue.digest = digest;
+            _resultValue.imageCreate = imageCreate;
+            _resultValue.imageId = imageId;
+            _resultValue.imageSize = imageSize;
+            _resultValue.imageUpdate = imageUpdate;
+            _resultValue.status = status;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

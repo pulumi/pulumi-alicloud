@@ -67,10 +67,10 @@ public final class DirectorySamlIdentityProviderConfiguration {
             return this;
         }
         public DirectorySamlIdentityProviderConfiguration build() {
-            final var o = new DirectorySamlIdentityProviderConfiguration();
-            o.encodedMetadataDocument = encodedMetadataDocument;
-            o.ssoStatus = ssoStatus;
-            return o;
+            final var _resultValue = new DirectorySamlIdentityProviderConfiguration();
+            _resultValue.encodedMetadataDocument = encodedMetadataDocument;
+            _resultValue.ssoStatus = ssoStatus;
+            return _resultValue;
         }
     }
 }

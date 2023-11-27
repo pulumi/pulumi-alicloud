@@ -93,7 +93,7 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      * The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
      * 
      */
-    @Export(name="coverUrl", type=String.class, parameters={})
+    @Export(name="coverUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coverUrl;
 
     /**
@@ -107,7 +107,7 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      * The region where you want to create the online editing project.
      * 
      */
-    @Export(name="division", type=String.class, parameters={})
+    @Export(name="division", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> division;
 
     /**
@@ -121,7 +121,7 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      * The description of the online editing project.
      * 
      */
-    @Export(name="editingProjectName", type=String.class, parameters={})
+    @Export(name="editingProjectName", refs={String.class}, tree="[0]")
     private Output<String> editingProjectName;
 
     /**
@@ -135,7 +135,7 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      * The Status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -149,7 +149,7 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      * The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
      * 
      */
-    @Export(name="timeline", type=String.class, parameters={})
+    @Export(name="timeline", refs={String.class}, tree="[0]")
     private Output<String> timeline;
 
     /**
@@ -163,7 +163,7 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      * The title of the online editing project.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**

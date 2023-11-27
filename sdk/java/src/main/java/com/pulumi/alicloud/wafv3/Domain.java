@@ -38,7 +38,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The access type of the WAF instance. Value: **share** (default): CNAME access.
      * 
      */
-    @Export(name="accessType", type=String.class, parameters={})
+    @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessType;
 
     /**
@@ -52,7 +52,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The name of the domain name to query.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -66,7 +66,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * WAF instance ID
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -80,7 +80,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Configure listening information. See `listen` below.
      * 
      */
-    @Export(name="listen", type=DomainListen.class, parameters={})
+    @Export(name="listen", refs={DomainListen.class}, tree="[0]")
     private Output<DomainListen> listen;
 
     /**
@@ -94,7 +94,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Configure forwarding information. See `redirect` below.
      * 
      */
-    @Export(name="redirect", type=DomainRedirect.class, parameters={})
+    @Export(name="redirect", refs={DomainRedirect.class}, tree="[0]")
     private Output<DomainRedirect> redirect;
 
     /**
@@ -108,7 +108,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceManagerResourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceManagerResourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceManagerResourceGroupId;
 
     /**
@@ -122,7 +122,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

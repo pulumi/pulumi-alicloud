@@ -103,12 +103,12 @@ public final class GetMscSubWebhooksWebhook {
             return this;
         }
         public GetMscSubWebhooksWebhook build() {
-            final var o = new GetMscSubWebhooksWebhook();
-            o.id = id;
-            o.serverUrl = serverUrl;
-            o.webhookId = webhookId;
-            o.webhookName = webhookName;
-            return o;
+            final var _resultValue = new GetMscSubWebhooksWebhook();
+            _resultValue.id = id;
+            _resultValue.serverUrl = serverUrl;
+            _resultValue.webhookId = webhookId;
+            _resultValue.webhookName = webhookName;
+            return _resultValue;
         }
     }
 }

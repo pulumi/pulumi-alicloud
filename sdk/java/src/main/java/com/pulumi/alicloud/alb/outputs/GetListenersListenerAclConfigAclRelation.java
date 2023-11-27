@@ -65,10 +65,10 @@ public final class GetListenersListenerAclConfigAclRelation {
             return this;
         }
         public GetListenersListenerAclConfigAclRelation build() {
-            final var o = new GetListenersListenerAclConfigAclRelation();
-            o.aclId = aclId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetListenersListenerAclConfigAclRelation();
+            _resultValue.aclId = aclId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

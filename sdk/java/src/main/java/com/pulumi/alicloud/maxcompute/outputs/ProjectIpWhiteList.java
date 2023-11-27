@@ -67,10 +67,10 @@ public final class ProjectIpWhiteList {
             return this;
         }
         public ProjectIpWhiteList build() {
-            final var o = new ProjectIpWhiteList();
-            o.ipList = ipList;
-            o.vpcIpList = vpcIpList;
-            return o;
+            final var _resultValue = new ProjectIpWhiteList();
+            _resultValue.ipList = ipList;
+            _resultValue.vpcIpList = vpcIpList;
+            return _resultValue;
         }
     }
 }

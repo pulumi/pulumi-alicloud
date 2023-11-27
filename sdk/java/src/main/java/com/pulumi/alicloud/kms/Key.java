@@ -72,7 +72,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The Alicloud Resource Name (ARN) of the key.
      * 
      */
-    @Export(name="arn", type=String.class, parameters={})
+    @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
@@ -86,7 +86,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
      * 
      */
-    @Export(name="automaticRotation", type=String.class, parameters={})
+    @Export(name="automaticRotation", refs={String.class}, tree="[0]")
     private Output<String> automaticRotation;
 
     /**
@@ -100,7 +100,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The date and time when the CMK was created. The time is displayed in UTC.
      * 
      */
-    @Export(name="creationDate", type=String.class, parameters={})
+    @Export(name="creationDate", refs={String.class}, tree="[0]")
     private Output<String> creationDate;
 
     /**
@@ -114,7 +114,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The creator of the CMK.
      * 
      */
-    @Export(name="creator", type=String.class, parameters={})
+    @Export(name="creator", refs={String.class}, tree="[0]")
     private Output<String> creator;
 
     /**
@@ -128,7 +128,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
      * 
      */
-    @Export(name="deleteDate", type=String.class, parameters={})
+    @Export(name="deleteDate", refs={String.class}, tree="[0]")
     private Output<String> deleteDate;
 
     /**
@@ -146,7 +146,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead. */
-    @Export(name="deletionWindowInDays", type=Integer.class, parameters={})
+    @Export(name="deletionWindowInDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> deletionWindowInDays;
 
     /**
@@ -160,7 +160,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The description of the CMK. The description can be 0 to 8,192 characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -174,7 +174,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The instance ID of the exclusive KMS instance.
      * 
      */
-    @Export(name="dkmsInstanceId", type=String.class, parameters={})
+    @Export(name="dkmsInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dkmsInstanceId;
 
     /**
@@ -192,7 +192,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead. */
-    @Export(name="isEnabled", type=Boolean.class, parameters={})
+    @Export(name="isEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isEnabled;
 
     /**
@@ -208,7 +208,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      * 
      */
-    @Export(name="keySpec", type=String.class, parameters={})
+    @Export(name="keySpec", refs={String.class}, tree="[0]")
     private Output<String> keySpec;
 
     /**
@@ -228,7 +228,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead. */
-    @Export(name="keyState", type=String.class, parameters={})
+    @Export(name="keyState", refs={String.class}, tree="[0]")
     private Output<String> keyState;
 
     /**
@@ -244,7 +244,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * - `SIGN/VERIFY`: generates or verifies a digital signature.
      * 
      */
-    @Export(name="keyUsage", type=String.class, parameters={})
+    @Export(name="keyUsage", refs={String.class}, tree="[0]")
     private Output<String> keyUsage;
 
     /**
@@ -260,7 +260,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The date and time the last rotation was performed. The time is displayed in UTC.
      * 
      */
-    @Export(name="lastRotationDate", type=String.class, parameters={})
+    @Export(name="lastRotationDate", refs={String.class}, tree="[0]")
     private Output<String> lastRotationDate;
 
     /**
@@ -274,7 +274,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
      * 
      */
-    @Export(name="materialExpireTime", type=String.class, parameters={})
+    @Export(name="materialExpireTime", refs={String.class}, tree="[0]")
     private Output<String> materialExpireTime;
 
     /**
@@ -288,7 +288,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The time the next rotation is scheduled for execution.
      * 
      */
-    @Export(name="nextRotationDate", type=String.class, parameters={})
+    @Export(name="nextRotationDate", refs={String.class}, tree="[0]")
     private Output<String> nextRotationDate;
 
     /**
@@ -302,7 +302,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The source of key material. Default value: `Aliyun_KMS`. Valid values:
      * 
      */
-    @Export(name="origin", type=String.class, parameters={})
+    @Export(name="origin", refs={String.class}, tree="[0]")
     private Output<String> origin;
 
     /**
@@ -319,7 +319,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
      * 
      */
-    @Export(name="pendingWindowInDays", type=Integer.class, parameters={})
+    @Export(name="pendingWindowInDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> pendingWindowInDays;
 
     /**
@@ -336,7 +336,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The ID of the current primary key version of the symmetric CMK.
      * 
      */
-    @Export(name="primaryKeyVersion", type=String.class, parameters={})
+    @Export(name="primaryKeyVersion", refs={String.class}, tree="[0]")
     private Output<String> primaryKeyVersion;
 
     /**
@@ -350,7 +350,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
      * 
      */
-    @Export(name="protectionLevel", type=String.class, parameters={})
+    @Export(name="protectionLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protectionLevel;
 
     /**
@@ -370,7 +370,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
      */
-    @Export(name="rotationInterval", type=String.class, parameters={})
+    @Export(name="rotationInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rotationInterval;
 
     /**
@@ -390,7 +390,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The status of CMK. Default value: `Enabled`. Valid Values:
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -404,7 +404,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

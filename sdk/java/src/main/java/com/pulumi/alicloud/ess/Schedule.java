@@ -18,79 +18,79 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:ess/schedule:Schedule")
 public class Schedule extends com.pulumi.resources.CustomResource {
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     public Output<String> description() {
         return this.description;
     }
-    @Export(name="desiredCapacity", type=Integer.class, parameters={})
+    @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> desiredCapacity;
 
     public Output<Optional<Integer>> desiredCapacity() {
         return Codegen.optional(this.desiredCapacity);
     }
-    @Export(name="launchExpirationTime", type=Integer.class, parameters={})
+    @Export(name="launchExpirationTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> launchExpirationTime;
 
     public Output<Optional<Integer>> launchExpirationTime() {
         return Codegen.optional(this.launchExpirationTime);
     }
-    @Export(name="launchTime", type=String.class, parameters={})
+    @Export(name="launchTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTime;
 
     public Output<Optional<String>> launchTime() {
         return Codegen.optional(this.launchTime);
     }
-    @Export(name="maxValue", type=Integer.class, parameters={})
+    @Export(name="maxValue", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxValue;
 
     public Output<Optional<Integer>> maxValue() {
         return Codegen.optional(this.maxValue);
     }
-    @Export(name="minValue", type=Integer.class, parameters={})
+    @Export(name="minValue", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minValue;
 
     public Output<Optional<Integer>> minValue() {
         return Codegen.optional(this.minValue);
     }
-    @Export(name="recurrenceEndTime", type=String.class, parameters={})
+    @Export(name="recurrenceEndTime", refs={String.class}, tree="[0]")
     private Output<String> recurrenceEndTime;
 
     public Output<String> recurrenceEndTime() {
         return this.recurrenceEndTime;
     }
-    @Export(name="recurrenceType", type=String.class, parameters={})
+    @Export(name="recurrenceType", refs={String.class}, tree="[0]")
     private Output<String> recurrenceType;
 
     public Output<String> recurrenceType() {
         return this.recurrenceType;
     }
-    @Export(name="recurrenceValue", type=String.class, parameters={})
+    @Export(name="recurrenceValue", refs={String.class}, tree="[0]")
     private Output<String> recurrenceValue;
 
     public Output<String> recurrenceValue() {
         return this.recurrenceValue;
     }
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     public Output<String> scalingGroupId() {
         return this.scalingGroupId;
     }
-    @Export(name="scheduledAction", type=String.class, parameters={})
+    @Export(name="scheduledAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheduledAction;
 
     public Output<Optional<String>> scheduledAction() {
         return Codegen.optional(this.scheduledAction);
     }
-    @Export(name="scheduledTaskName", type=String.class, parameters={})
+    @Export(name="scheduledTaskName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheduledTaskName;
 
     public Output<Optional<String>> scheduledTaskName() {
         return Codegen.optional(this.scheduledTaskName);
     }
-    @Export(name="taskEnabled", type=Boolean.class, parameters={})
+    @Export(name="taskEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> taskEnabled;
 
     public Output<Optional<Boolean>> taskEnabled() {

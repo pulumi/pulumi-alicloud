@@ -251,19 +251,19 @@ public final class GetServerGroupsGroup {
             return this;
         }
         public GetServerGroupsGroup build() {
-            final var o = new GetServerGroupsGroup();
-            o.healthCheckConfigs = healthCheckConfigs;
-            o.id = id;
-            o.protocol = protocol;
-            o.scheduler = scheduler;
-            o.serverGroupId = serverGroupId;
-            o.serverGroupName = serverGroupName;
-            o.servers = servers;
-            o.status = status;
-            o.stickySessionConfigs = stickySessionConfigs;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetServerGroupsGroup();
+            _resultValue.healthCheckConfigs = healthCheckConfigs;
+            _resultValue.id = id;
+            _resultValue.protocol = protocol;
+            _resultValue.scheduler = scheduler;
+            _resultValue.serverGroupId = serverGroupId;
+            _resultValue.serverGroupName = serverGroupName;
+            _resultValue.servers = servers;
+            _resultValue.status = status;
+            _resultValue.stickySessionConfigs = stickySessionConfigs;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

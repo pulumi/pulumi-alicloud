@@ -103,12 +103,12 @@ public final class GetDelegatedAdministratorsAdministrator {
             return this;
         }
         public GetDelegatedAdministratorsAdministrator build() {
-            final var o = new GetDelegatedAdministratorsAdministrator();
-            o.accountId = accountId;
-            o.delegationEnabledTime = delegationEnabledTime;
-            o.id = id;
-            o.servicePrincipal = servicePrincipal;
-            return o;
+            final var _resultValue = new GetDelegatedAdministratorsAdministrator();
+            _resultValue.accountId = accountId;
+            _resultValue.delegationEnabledTime = delegationEnabledTime;
+            _resultValue.id = id;
+            _resultValue.servicePrincipal = servicePrincipal;
+            return _resultValue;
         }
     }
 }

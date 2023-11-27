@@ -148,6 +148,8 @@ type EndpointGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 	EndpointConfigurations EndpointGroupEndpointConfigurationArrayOutput `pulumi:"endpointConfigurations"`
+	// (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+	EndpointGroupIpLists pulumi.StringArrayOutput `pulumi:"endpointGroupIpLists"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringOutput `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
@@ -229,6 +231,8 @@ type endpointGroupState struct {
 	Description *string `pulumi:"description"`
 	// The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 	EndpointConfigurations []EndpointGroupEndpointConfiguration `pulumi:"endpointConfigurations"`
+	// (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+	EndpointGroupIpLists []string `pulumi:"endpointGroupIpLists"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion *string `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
@@ -269,6 +273,8 @@ type EndpointGroupState struct {
 	Description pulumi.StringPtrInput
 	// The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 	EndpointConfigurations EndpointGroupEndpointConfigurationArrayInput
+	// (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+	EndpointGroupIpLists pulumi.StringArrayInput
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringPtrInput
 	// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
@@ -483,6 +489,11 @@ func (o EndpointGroupOutput) Description() pulumi.StringPtrOutput {
 // The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 func (o EndpointGroupOutput) EndpointConfigurations() EndpointGroupEndpointConfigurationArrayOutput {
 	return o.ApplyT(func(v *EndpointGroup) EndpointGroupEndpointConfigurationArrayOutput { return v.EndpointConfigurations }).(EndpointGroupEndpointConfigurationArrayOutput)
+}
+
+// (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+func (o EndpointGroupOutput) EndpointGroupIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringArrayOutput { return v.EndpointGroupIpLists }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the region where the endpoint group is deployed.

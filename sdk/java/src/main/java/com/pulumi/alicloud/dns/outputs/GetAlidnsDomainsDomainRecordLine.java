@@ -103,12 +103,12 @@ public final class GetAlidnsDomainsDomainRecordLine {
             return this;
         }
         public GetAlidnsDomainsDomainRecordLine build() {
-            final var o = new GetAlidnsDomainsDomainRecordLine();
-            o.fatherCode = fatherCode;
-            o.lineCode = lineCode;
-            o.lineDisplayName = lineDisplayName;
-            o.lineName = lineName;
-            return o;
+            final var _resultValue = new GetAlidnsDomainsDomainRecordLine();
+            _resultValue.fatherCode = fatherCode;
+            _resultValue.lineCode = lineCode;
+            _resultValue.lineDisplayName = lineDisplayName;
+            _resultValue.lineName = lineName;
+            return _resultValue;
         }
     }
 }

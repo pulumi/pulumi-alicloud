@@ -281,21 +281,21 @@ public final class GetChangeSetsSet {
             return this;
         }
         public GetChangeSetsSet build() {
-            final var o = new GetChangeSetsSet();
-            o.changeSetId = changeSetId;
-            o.changeSetName = changeSetName;
-            o.changeSetType = changeSetType;
-            o.description = description;
-            o.disableRollback = disableRollback;
-            o.executionStatus = executionStatus;
-            o.id = id;
-            o.parameters = parameters;
-            o.stackId = stackId;
-            o.stackName = stackName;
-            o.status = status;
-            o.templateBody = templateBody;
-            o.timeoutInMinutes = timeoutInMinutes;
-            return o;
+            final var _resultValue = new GetChangeSetsSet();
+            _resultValue.changeSetId = changeSetId;
+            _resultValue.changeSetName = changeSetName;
+            _resultValue.changeSetType = changeSetType;
+            _resultValue.description = description;
+            _resultValue.disableRollback = disableRollback;
+            _resultValue.executionStatus = executionStatus;
+            _resultValue.id = id;
+            _resultValue.parameters = parameters;
+            _resultValue.stackId = stackId;
+            _resultValue.stackName = stackName;
+            _resultValue.status = status;
+            _resultValue.templateBody = templateBody;
+            _resultValue.timeoutInMinutes = timeoutInMinutes;
+            return _resultValue;
         }
     }
 }

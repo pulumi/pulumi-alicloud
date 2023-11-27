@@ -46,6 +46,7 @@ __all__ = [
     'GetCustomRoutingPortMappingsCustomRoutingPortMappingResult',
     'GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressResult',
     'GetDomainsDomainResult',
+    'GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockResult',
     'GetEndpointGroupsGroupResult',
     'GetEndpointGroupsGroupEndpointConfigurationResult',
     'GetEndpointGroupsGroupPortOverrideResult',
@@ -2479,6 +2480,46 @@ class GetDomainsDomainResult(dict):
     def status(self) -> str:
         """
         The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockResult(dict):
+    def __init__(__self__, *,
+                 endpoint_group_region: str,
+                 ip_address_cidr_blocks: Sequence[str],
+                 status: str):
+        """
+        :param str endpoint_group_region: The region ID of the endpoint group.
+        :param Sequence[str] ip_address_cidr_blocks: The CIDR blocks.
+        :param str status: The status of the list of endpoint group ip address cidr blocks.
+        """
+        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
+        pulumi.set(__self__, "ip_address_cidr_blocks", ip_address_cidr_blocks)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="endpointGroupRegion")
+    def endpoint_group_region(self) -> str:
+        """
+        The region ID of the endpoint group.
+        """
+        return pulumi.get(self, "endpoint_group_region")
+
+    @property
+    @pulumi.getter(name="ipAddressCidrBlocks")
+    def ip_address_cidr_blocks(self) -> Sequence[str]:
+        """
+        The CIDR blocks.
+        """
+        return pulumi.get(self, "ip_address_cidr_blocks")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the list of endpoint group ip address cidr blocks.
         """
         return pulumi.get(self, "status")
 

@@ -104,7 +104,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The accelerator id.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -119,7 +119,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      * 
      */
-    @Export(name="certificates", type=List.class, parameters={ListenerCertificate.class})
+    @Export(name="certificates", refs={List.class,ListenerCertificate.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ListenerCertificate>> certificates;
 
     /**
@@ -134,7 +134,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The clientAffinity of the listener. Default value: `NONE`. Valid values:
      * 
      */
-    @Export(name="clientAffinity", type=String.class, parameters={})
+    @Export(name="clientAffinity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientAffinity;
 
     /**
@@ -148,7 +148,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The description of the listener.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -162,7 +162,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The XForward headers. See `forwarded_for_config` below.
      * 
      */
-    @Export(name="forwardedForConfig", type=ListenerForwardedForConfig.class, parameters={})
+    @Export(name="forwardedForConfig", refs={ListenerForwardedForConfig.class}, tree="[0]")
     private Output</* @Nullable */ ListenerForwardedForConfig> forwardedForConfig;
 
     /**
@@ -176,7 +176,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * 
      */
-    @Export(name="listenerType", type=String.class, parameters={})
+    @Export(name="listenerType", refs={String.class}, tree="[0]")
     private Output<String> listenerType;
 
     /**
@@ -190,7 +190,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -205,7 +205,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
-    @Export(name="portRanges", type=List.class, parameters={ListenerPortRange.class})
+    @Export(name="portRanges", refs={List.class,ListenerPortRange.class}, tree="[0,1]")
     private Output<List<ListenerPortRange>> portRanges;
 
     /**
@@ -220,7 +220,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protocol;
 
     /**
@@ -234,7 +234,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The proxy protocol of the listener. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="proxyProtocol", type=Boolean.class, parameters={})
+    @Export(name="proxyProtocol", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> proxyProtocol;
 
     /**
@@ -248,7 +248,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      * 
      */
-    @Export(name="securityPolicyId", type=String.class, parameters={})
+    @Export(name="securityPolicyId", refs={String.class}, tree="[0]")
     private Output<String> securityPolicyId;
 
     /**
@@ -262,7 +262,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The status of the listener.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

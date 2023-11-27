@@ -104,12 +104,12 @@ public final class GetApplicationLoadBalancersBalancerBackendServer {
             return this;
         }
         public GetApplicationLoadBalancersBalancerBackendServer build() {
-            final var o = new GetApplicationLoadBalancersBalancerBackendServer();
-            o.description = description;
-            o.serverId = serverId;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetApplicationLoadBalancersBalancerBackendServer();
+            _resultValue.description = description;
+            _resultValue.serverId = serverId;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

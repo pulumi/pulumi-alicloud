@@ -84,11 +84,11 @@ public final class GetVpcEndpointServiceResourcesResource {
             return this;
         }
         public GetVpcEndpointServiceResourcesResource build() {
-            final var o = new GetVpcEndpointServiceResourcesResource();
-            o.id = id;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            return o;
+            final var _resultValue = new GetVpcEndpointServiceResourcesResource();
+            _resultValue.id = id;
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            return _resultValue;
         }
     }
 }

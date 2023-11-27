@@ -80,7 +80,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * (Available in 1.196.0+)  The connection string of the instance.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -94,7 +94,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      * 
      */
-    @Export(name="dbInstanceCategory", type=String.class, parameters={})
+    @Export(name="dbInstanceCategory", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceCategory;
 
     /**
@@ -108,7 +108,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * According to the practical example or notes.
      * 
      */
-    @Export(name="dbInstanceDescription", type=String.class, parameters={})
+    @Export(name="dbInstanceDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbInstanceDescription;
 
     /**
@@ -122,7 +122,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
      * 
      */
-    @Export(name="dbInstanceIpArrays", type=List.class, parameters={DbInstanceDbInstanceIpArray.class})
+    @Export(name="dbInstanceIpArrays", refs={List.class,DbInstanceDbInstanceIpArray.class}, tree="[0,1]")
     private Output<List<DbInstanceDbInstanceIpArray>> dbInstanceIpArrays;
 
     /**
@@ -136,7 +136,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * The network type of the db instance. Valid values: `vpc`.
      * 
      */
-    @Export(name="dbInstanceNetworkType", type=String.class, parameters={})
+    @Export(name="dbInstanceNetworkType", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceNetworkType;
 
     /**
@@ -150,7 +150,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
      * 
      */
-    @Export(name="dbInstanceStorageType", type=String.class, parameters={})
+    @Export(name="dbInstanceStorageType", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceStorageType;
 
     /**
@@ -164,7 +164,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
      * 
      */
-    @Export(name="dbNodeClass", type=String.class, parameters={})
+    @Export(name="dbNodeClass", refs={String.class}, tree="[0]")
     private Output<String> dbNodeClass;
 
     /**
@@ -178,7 +178,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * Instance storage space, which is measured in GB.
      * 
      */
-    @Export(name="dbNodeStorage", type=Integer.class, parameters={})
+    @Export(name="dbNodeStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbNodeStorage;
 
     /**
@@ -192,7 +192,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
      * 
      */
-    @Export(name="dbVersion", type=String.class, parameters={})
+    @Export(name="dbVersion", refs={String.class}, tree="[0]")
     private Output<String> dbVersion;
 
     /**
@@ -206,7 +206,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * The paymen type of the resource. Valid values: `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -220,7 +220,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * (Available in 1.196.0+) The connection port of the instance.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -234,7 +234,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -248,7 +248,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * ID of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -262,7 +262,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * The ID of attaching vswitch to instance.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -276,7 +276,7 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      * The zone ID of the resource.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

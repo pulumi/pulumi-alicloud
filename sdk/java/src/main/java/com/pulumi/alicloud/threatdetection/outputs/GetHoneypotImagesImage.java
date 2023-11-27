@@ -217,18 +217,18 @@ public final class GetHoneypotImagesImage {
             return this;
         }
         public GetHoneypotImagesImage build() {
-            final var o = new GetHoneypotImagesImage();
-            o.honeypotImageDisplayName = honeypotImageDisplayName;
-            o.honeypotImageId = honeypotImageId;
-            o.honeypotImageName = honeypotImageName;
-            o.honeypotImageType = honeypotImageType;
-            o.honeypotImageVersion = honeypotImageVersion;
-            o.id = id;
-            o.multiports = multiports;
-            o.proto = proto;
-            o.servicePort = servicePort;
-            o.template = template;
-            return o;
+            final var _resultValue = new GetHoneypotImagesImage();
+            _resultValue.honeypotImageDisplayName = honeypotImageDisplayName;
+            _resultValue.honeypotImageId = honeypotImageId;
+            _resultValue.honeypotImageName = honeypotImageName;
+            _resultValue.honeypotImageType = honeypotImageType;
+            _resultValue.honeypotImageVersion = honeypotImageVersion;
+            _resultValue.id = id;
+            _resultValue.multiports = multiports;
+            _resultValue.proto = proto;
+            _resultValue.servicePort = servicePort;
+            _resultValue.template = template;
+            return _resultValue;
         }
     }
 }

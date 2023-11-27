@@ -39,7 +39,7 @@ public class Directory extends com.pulumi.resources.CustomResource {
      * The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
      * 
      */
-    @Export(name="directoryName", type=String.class, parameters={})
+    @Export(name="directoryName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> directoryName;
 
     /**
@@ -53,7 +53,7 @@ public class Directory extends com.pulumi.resources.CustomResource {
      * The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
      * 
      */
-    @Export(name="mfaAuthenticationStatus", type=String.class, parameters={})
+    @Export(name="mfaAuthenticationStatus", refs={String.class}, tree="[0]")
     private Output<String> mfaAuthenticationStatus;
 
     /**
@@ -69,7 +69,7 @@ public class Directory extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
      * 
      */
-    @Export(name="samlIdentityProviderConfiguration", type=DirectorySamlIdentityProviderConfiguration.class, parameters={})
+    @Export(name="samlIdentityProviderConfiguration", refs={DirectorySamlIdentityProviderConfiguration.class}, tree="[0]")
     private Output<DirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfiguration;
 
     /**
@@ -85,7 +85,7 @@ public class Directory extends com.pulumi.resources.CustomResource {
      * The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
      * 
      */
-    @Export(name="scimSynchronizationStatus", type=String.class, parameters={})
+    @Export(name="scimSynchronizationStatus", refs={String.class}, tree="[0]")
     private Output<String> scimSynchronizationStatus;
 
     /**

@@ -101,31 +101,31 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:rds/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
-    @Export(name="accountDescription", type=String.class, parameters={})
+    @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output<String> accountDescription;
 
     public Output<String> accountDescription() {
         return this.accountDescription;
     }
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     public Output<String> accountName() {
         return this.accountName;
     }
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     public Output<String> accountPassword() {
         return this.accountPassword;
     }
-    @Export(name="accountType", type=String.class, parameters={})
+    @Export(name="accountType", refs={String.class}, tree="[0]")
     private Output<String> accountType;
 
     public Output<String> accountType() {
         return this.accountType;
     }
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     public Output<String> dbInstanceId() {
@@ -139,7 +139,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead. */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -157,7 +157,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead. */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -171,7 +171,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -185,7 +185,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -203,7 +203,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -221,7 +221,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead. */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -231,13 +231,13 @@ public class Account extends com.pulumi.resources.CustomResource {
     public Output<String> password() {
         return this.password;
     }
-    @Export(name="resetPermissionFlag", type=Boolean.class, parameters={})
+    @Export(name="resetPermissionFlag", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> resetPermissionFlag;
 
     public Output<Optional<Boolean>> resetPermissionFlag() {
         return Codegen.optional(this.resetPermissionFlag);
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
@@ -255,7 +255,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead. */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

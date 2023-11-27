@@ -103,7 +103,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * The region of the network instances that access the cloud services.
      * 
      */
-    @Export(name="accessRegionId", type=String.class, parameters={})
+    @Export(name="accessRegionId", refs={String.class}, tree="[0]")
     private Output<String> accessRegionId;
 
     /**
@@ -117,7 +117,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * The ID of the CEN instance.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -131,7 +131,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * The description of the cloud service.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -145,7 +145,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * The domain name or IP address of the cloud service.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -159,7 +159,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * The region of the cloud service.
      * 
      */
-    @Export(name="hostRegionId", type=String.class, parameters={})
+    @Export(name="hostRegionId", refs={String.class}, tree="[0]")
     private Output<String> hostRegionId;
 
     /**
@@ -175,7 +175,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
      * 
      */
-    @Export(name="hostVpcId", type=String.class, parameters={})
+    @Export(name="hostVpcId", refs={String.class}, tree="[0]")
     private Output<String> hostVpcId;
 
     /**
@@ -191,7 +191,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * The status of the cloud service.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

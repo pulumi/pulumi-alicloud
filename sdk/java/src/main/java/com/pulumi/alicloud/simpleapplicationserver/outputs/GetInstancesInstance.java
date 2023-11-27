@@ -274,21 +274,21 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.businessStatus = businessStatus;
-            o.createTime = createTime;
-            o.ddosStatus = ddosStatus;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.imageId = imageId;
-            o.innerIpAddress = innerIpAddress;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.paymentType = paymentType;
-            o.planId = planId;
-            o.publicIpAddress = publicIpAddress;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.createTime = createTime;
+            _resultValue.ddosStatus = ddosStatus;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.innerIpAddress = innerIpAddress;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.paymentType = paymentType;
+            _resultValue.planId = planId;
+            _resultValue.publicIpAddress = publicIpAddress;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

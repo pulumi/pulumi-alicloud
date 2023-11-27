@@ -237,21 +237,21 @@ public final class GetProvisionedProductsResult {
             return this;
         }
         public GetProvisionedProductsResult build() {
-            final var o = new GetProvisionedProductsResult();
-            o.accessLevelFilter = accessLevelFilter;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.products = products;
-            o.provisionedProducts = provisionedProducts;
-            o.sortBy = sortBy;
-            o.sortOrder = sortOrder;
-            return o;
+            final var _resultValue = new GetProvisionedProductsResult();
+            _resultValue.accessLevelFilter = accessLevelFilter;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.products = products;
+            _resultValue.provisionedProducts = provisionedProducts;
+            _resultValue.sortBy = sortBy;
+            _resultValue.sortOrder = sortOrder;
+            return _resultValue;
         }
     }
 }

@@ -66,11 +66,11 @@ public final class GetForwardingRulesForwardingRuleRuleAction {
             return this;
         }
         public GetForwardingRulesForwardingRuleRuleAction build() {
-            final var o = new GetForwardingRulesForwardingRuleRuleAction();
-            o.forwardGroupConfigs = forwardGroupConfigs;
-            o.order = order;
-            o.ruleActionType = ruleActionType;
-            return o;
+            final var _resultValue = new GetForwardingRulesForwardingRuleRuleAction();
+            _resultValue.forwardGroupConfigs = forwardGroupConfigs;
+            _resultValue.order = order;
+            _resultValue.ruleActionType = ruleActionType;
+            return _resultValue;
         }
     }
 }

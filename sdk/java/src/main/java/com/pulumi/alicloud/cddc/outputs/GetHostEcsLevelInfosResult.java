@@ -119,15 +119,15 @@ public final class GetHostEcsLevelInfosResult {
             return this;
         }
         public GetHostEcsLevelInfosResult build() {
-            final var o = new GetHostEcsLevelInfosResult();
-            o.dbType = dbType;
-            o.id = id;
-            o.imageCategory = imageCategory;
-            o.infos = infos;
-            o.outputFile = outputFile;
-            o.storageType = storageType;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetHostEcsLevelInfosResult();
+            _resultValue.dbType = dbType;
+            _resultValue.id = id;
+            _resultValue.imageCategory = imageCategory;
+            _resultValue.infos = infos;
+            _resultValue.outputFile = outputFile;
+            _resultValue.storageType = storageType;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

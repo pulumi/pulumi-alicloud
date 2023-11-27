@@ -114,14 +114,14 @@ public final class GetMscSubContactsResult {
             return this;
         }
         public GetMscSubContactsResult build() {
-            final var o = new GetMscSubContactsResult();
-            o.contacts = contacts;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetMscSubContactsResult();
+            _resultValue.contacts = contacts;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

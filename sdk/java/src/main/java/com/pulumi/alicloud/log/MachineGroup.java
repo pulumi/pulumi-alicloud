@@ -88,7 +88,7 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
      * The specific machine identification, which can be an IP address or user-defined identity.
      * 
      */
-    @Export(name="identifyLists", type=List.class, parameters={String.class})
+    @Export(name="identifyLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> identifyLists;
 
     /**
@@ -102,7 +102,7 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
      * The machine identification type, including IP and user-defined identity. Valid values are &#34;ip&#34; and &#34;userdefined&#34;. Default to &#34;ip&#34;.
      * 
      */
-    @Export(name="identifyType", type=String.class, parameters={})
+    @Export(name="identifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> identifyType;
 
     /**
@@ -116,7 +116,7 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
      * The machine group name, which is unique in the same project.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -130,7 +130,7 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
      * The project name to the machine group belongs.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -144,7 +144,7 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
      * The topic of a machine group.
      * 
      */
-    @Export(name="topic", type=String.class, parameters={})
+    @Export(name="topic", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> topic;
 
     /**

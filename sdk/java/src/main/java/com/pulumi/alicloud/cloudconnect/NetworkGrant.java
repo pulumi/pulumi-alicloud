@@ -109,7 +109,7 @@ public class NetworkGrant extends com.pulumi.resources.CustomResource {
      * The ID of the CCN instance.
      * 
      */
-    @Export(name="ccnId", type=String.class, parameters={})
+    @Export(name="ccnId", refs={String.class}, tree="[0]")
     private Output<String> ccnId;
 
     /**
@@ -123,7 +123,7 @@ public class NetworkGrant extends com.pulumi.resources.CustomResource {
      * The ID of the CEN instance.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -137,7 +137,7 @@ public class NetworkGrant extends com.pulumi.resources.CustomResource {
      * The ID of the account to which the CEN instance belongs.
      * 
      */
-    @Export(name="cenUid", type=String.class, parameters={})
+    @Export(name="cenUid", refs={String.class}, tree="[0]")
     private Output<String> cenUid;
 
     /**

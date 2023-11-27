@@ -42,7 +42,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
      * The AccessConfigurationId of the Access Configuration.
      * 
      */
-    @Export(name="accessConfigurationId", type=String.class, parameters={})
+    @Export(name="accessConfigurationId", refs={String.class}, tree="[0]")
     private Output<String> accessConfigurationId;
 
     /**
@@ -56,7 +56,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
      * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      * 
      */
-    @Export(name="accessConfigurationName", type=String.class, parameters={})
+    @Export(name="accessConfigurationName", refs={String.class}, tree="[0]")
     private Output<String> accessConfigurationName;
 
     /**
@@ -70,7 +70,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
      * The Description of the  Access Configuration. The description can be up to `1024` characters long.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -84,7 +84,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
      * The ID of the Directory.
      * 
      */
-    @Export(name="directoryId", type=String.class, parameters={})
+    @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output<String> directoryId;
 
     /**
@@ -100,7 +100,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
      * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
      */
-    @Export(name="forceRemovePermissionPolicies", type=Boolean.class, parameters={})
+    @Export(name="forceRemovePermissionPolicies", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceRemovePermissionPolicies;
 
     /**
@@ -116,7 +116,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
      * The Policy List. See `permission_policies` below.
      * 
      */
-    @Export(name="permissionPolicies", type=List.class, parameters={AccessConfigurationPermissionPolicy.class})
+    @Export(name="permissionPolicies", refs={List.class,AccessConfigurationPermissionPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessConfigurationPermissionPolicy>> permissionPolicies;
 
     /**
@@ -130,7 +130,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
      * The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
      * 
      */
-    @Export(name="relayState", type=String.class, parameters={})
+    @Export(name="relayState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> relayState;
 
     /**
@@ -144,7 +144,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
      * The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
      * 
      */
-    @Export(name="sessionDuration", type=Integer.class, parameters={})
+    @Export(name="sessionDuration", refs={Integer.class}, tree="[0]")
     private Output<Integer> sessionDuration;
 
     /**

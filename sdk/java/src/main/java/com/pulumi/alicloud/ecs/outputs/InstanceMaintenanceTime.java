@@ -67,10 +67,10 @@ public final class InstanceMaintenanceTime {
             return this;
         }
         public InstanceMaintenanceTime build() {
-            final var o = new InstanceMaintenanceTime();
-            o.endTime = endTime;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new InstanceMaintenanceTime();
+            _resultValue.endTime = endTime;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

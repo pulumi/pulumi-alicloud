@@ -65,10 +65,10 @@ public final class ServiceNasConfigMountPoint {
             return this;
         }
         public ServiceNasConfigMountPoint build() {
-            final var o = new ServiceNasConfigMountPoint();
-            o.mountDir = mountDir;
-            o.serverAddr = serverAddr;
-            return o;
+            final var _resultValue = new ServiceNasConfigMountPoint();
+            _resultValue.mountDir = mountDir;
+            _resultValue.serverAddr = serverAddr;
+            return _resultValue;
         }
     }
 }

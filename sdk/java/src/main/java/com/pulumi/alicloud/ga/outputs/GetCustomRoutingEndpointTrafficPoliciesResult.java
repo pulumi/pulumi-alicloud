@@ -215,19 +215,19 @@ public final class GetCustomRoutingEndpointTrafficPoliciesResult {
             return this;
         }
         public GetCustomRoutingEndpointTrafficPoliciesResult build() {
-            final var o = new GetCustomRoutingEndpointTrafficPoliciesResult();
-            o.acceleratorId = acceleratorId;
-            o.address = address;
-            o.customRoutingEndpointTrafficPolicies = customRoutingEndpointTrafficPolicies;
-            o.endpointGroupId = endpointGroupId;
-            o.endpointId = endpointId;
-            o.id = id;
-            o.ids = ids;
-            o.listenerId = listenerId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetCustomRoutingEndpointTrafficPoliciesResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.address = address;
+            _resultValue.customRoutingEndpointTrafficPolicies = customRoutingEndpointTrafficPolicies;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.endpointId = endpointId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerId = listenerId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

@@ -142,14 +142,14 @@ public final class GetServiceMeshesMeshMeshConfigOpa {
             return this;
         }
         public GetServiceMeshesMeshMeshConfigOpa build() {
-            final var o = new GetServiceMeshesMeshMeshConfigOpa();
-            o.enabled = enabled;
-            o.limitCpu = limitCpu;
-            o.limitMemory = limitMemory;
-            o.logLevel = logLevel;
-            o.requestCpu = requestCpu;
-            o.requestMemory = requestMemory;
-            return o;
+            final var _resultValue = new GetServiceMeshesMeshMeshConfigOpa();
+            _resultValue.enabled = enabled;
+            _resultValue.limitCpu = limitCpu;
+            _resultValue.limitMemory = limitMemory;
+            _resultValue.logLevel = logLevel;
+            _resultValue.requestCpu = requestCpu;
+            _resultValue.requestMemory = requestMemory;
+            return _resultValue;
         }
     }
 }

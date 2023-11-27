@@ -163,18 +163,18 @@ public final class GetEcsDedicatedHostClustersResult {
             return this;
         }
         public GetEcsDedicatedHostClustersResult build() {
-            final var o = new GetEcsDedicatedHostClustersResult();
-            o.clusters = clusters;
-            o.dedicatedHostClusterIds = dedicatedHostClusterIds;
-            o.dedicatedHostClusterName = dedicatedHostClusterName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.tags = tags;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetEcsDedicatedHostClustersResult();
+            _resultValue.clusters = clusters;
+            _resultValue.dedicatedHostClusterIds = dedicatedHostClusterIds;
+            _resultValue.dedicatedHostClusterName = dedicatedHostClusterName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.tags = tags;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

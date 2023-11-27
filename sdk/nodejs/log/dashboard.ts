@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
  * [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
  *
- * > **NOTE:** Available in 1.86.0, parameter "action" in charList is supported since 1.164.0+.
+ * > **NOTE:** Available since v1.86.0.
  *
  * ## Example Usage
  *
@@ -34,7 +34,11 @@ import * as utilities from "../utilities";
  * const exampleDashboard = new alicloud.log.Dashboard("exampleDashboard", {
  *     projectName: exampleProject.name,
  *     dashboardName: "terraform-example",
- *     attribute: "{\"type\":\"grid\"}",
+ *     displayName: "terraform-example",
+ *     attribute: `  {
+ *     "type":"grid"
+ *   }
+ * `,
  *     charList: `  [
  *     {
  *       "action": {},
@@ -68,10 +72,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Log Dashboard can be imported using the id or name, e.g.
+ * Log Dashboard can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+ *  $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
  * ```
  */
 export class Dashboard extends pulumi.CustomResource {
@@ -108,6 +112,7 @@ export class Dashboard extends pulumi.CustomResource {
     public readonly attribute!: pulumi.Output<string>;
     /**
      * Configuration of charts in the dashboard.
+     * **Note:** From version 1.164.0, `charList` can set parameter "action".
      */
     public readonly charList!: pulumi.Output<string>;
     /**
@@ -173,6 +178,7 @@ export interface DashboardState {
     attribute?: pulumi.Input<string>;
     /**
      * Configuration of charts in the dashboard.
+     * **Note:** From version 1.164.0, `charList` can set parameter "action".
      */
     charList?: pulumi.Input<string>;
     /**
@@ -199,6 +205,7 @@ export interface DashboardArgs {
     attribute?: pulumi.Input<string>;
     /**
      * Configuration of charts in the dashboard.
+     * **Note:** From version 1.164.0, `charList` can set parameter "action".
      */
     charList: pulumi.Input<string>;
     /**

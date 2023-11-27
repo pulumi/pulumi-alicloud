@@ -134,7 +134,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The ID of Alibaba Cloud account to which to share the created image.
      * 
      */
-    @Export(name="addAccounts", type=List.class, parameters={String.class})
+    @Export(name="addAccounts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> addAccounts;
 
     /**
@@ -148,7 +148,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
      * 
      */
-    @Export(name="baseImage", type=String.class, parameters={})
+    @Export(name="baseImage", refs={String.class}, tree="[0]")
     private Output<String> baseImage;
 
     /**
@@ -164,7 +164,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * - IMAGE_FAMILY: image family.
      * 
      */
-    @Export(name="baseImageType", type=String.class, parameters={})
+    @Export(name="baseImageType", refs={String.class}, tree="[0]")
     private Output<String> baseImageType;
 
     /**
@@ -180,7 +180,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The content of the image template. The content cannot be greater than 16 KB in size, and can contain up to 127 commands.
      * 
      */
-    @Export(name="buildContent", type=String.class, parameters={})
+    @Export(name="buildContent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> buildContent;
 
     /**
@@ -194,7 +194,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * Specifies whether to release the intermediate instance if the image cannot be created.
      * 
      */
-    @Export(name="deleteInstanceOnFailure", type=Boolean.class, parameters={})
+    @Export(name="deleteInstanceOnFailure", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteInstanceOnFailure;
 
     /**
@@ -208,7 +208,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The description of the image template. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`. **Note:** If the intermediate instance cannot be started, the instance is released by default.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -222,7 +222,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The name prefix of the image to be created. The prefix must be `2` to `64` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
      * 
      */
-    @Export(name="imageName", type=String.class, parameters={})
+    @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageName;
 
     /**
@@ -236,7 +236,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The instance type of the instance. You can call the DescribeInstanceTypes operation to query instance types. If you do not specify this parameter, an instance type that provides the fewest vCPUs and memory resources is automatically selected. This configuration is subject to resource availability of instance types. For example, the `ecs.g6.large` instance type is selected by default. If available `ecs.g6.large` resources are insufficient, the `ecs.g6.xlarge` instance type is selected.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -250,7 +250,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`. Valid values: `0` to `100`. Default value: `0`.
      * 
      */
-    @Export(name="internetMaxBandwidthOut", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthOut;
 
     /**
@@ -264,7 +264,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The name of the image template. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -278,7 +278,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -292,7 +292,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
      * 
      */
-    @Export(name="systemDiskSize", type=Integer.class, parameters={})
+    @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> systemDiskSize;
 
     /**
@@ -306,7 +306,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -320,7 +320,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The ID of region to which to distribute the created image.
      * 
      */
-    @Export(name="toRegionIds", type=List.class, parameters={String.class})
+    @Export(name="toRegionIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> toRegionIds;
 
     /**
@@ -334,7 +334,7 @@ public class EcsImagePipeline extends com.pulumi.resources.CustomResource {
      * The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**

@@ -85,7 +85,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The creation time of the product instance
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -99,7 +99,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The ID of the last instance operation task
      * 
      */
-    @Export(name="lastProvisioningTaskId", type=String.class, parameters={})
+    @Export(name="lastProvisioningTaskId", refs={String.class}, tree="[0]")
     private Output<String> lastProvisioningTaskId;
 
     /**
@@ -113,7 +113,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The ID of the last successful instance operation task
      * 
      */
-    @Export(name="lastSuccessfulProvisioningTaskId", type=String.class, parameters={})
+    @Export(name="lastSuccessfulProvisioningTaskId", refs={String.class}, tree="[0]")
     private Output<String> lastSuccessfulProvisioningTaskId;
 
     /**
@@ -127,7 +127,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The ID of the last task
      * 
      */
-    @Export(name="lastTaskId", type=String.class, parameters={})
+    @Export(name="lastTaskId", refs={String.class}, tree="[0]")
     private Output<String> lastTaskId;
 
     /**
@@ -141,7 +141,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The output value of the template.
      * 
      */
-    @Export(name="outputs", type=List.class, parameters={ProvisionedProductOutput.class})
+    @Export(name="outputs", refs={List.class,ProvisionedProductOutput.class}, tree="[0,1]")
     private Output<List<ProvisionedProductOutput>> outputs;
 
     /**
@@ -155,7 +155,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The RAM entity ID of the owner
      * 
      */
-    @Export(name="ownerPrincipalId", type=String.class, parameters={})
+    @Export(name="ownerPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> ownerPrincipalId;
 
     /**
@@ -169,7 +169,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The RAM entity type of the owner
      * 
      */
-    @Export(name="ownerPrincipalType", type=String.class, parameters={})
+    @Export(name="ownerPrincipalType", refs={String.class}, tree="[0]")
     private Output<String> ownerPrincipalType;
 
     /**
@@ -183,7 +183,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={ProvisionedProductParameter.class})
+    @Export(name="parameters", refs={List.class,ProvisionedProductParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProvisionedProductParameter>> parameters;
 
     /**
@@ -197,7 +197,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * Product mix ID.&gt; When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
      * 
      */
-    @Export(name="portfolioId", type=String.class, parameters={})
+    @Export(name="portfolioId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> portfolioId;
 
     /**
@@ -211,7 +211,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * Product ID.
      * 
      */
-    @Export(name="productId", type=String.class, parameters={})
+    @Export(name="productId", refs={String.class}, tree="[0]")
     private Output<String> productId;
 
     /**
@@ -225,7 +225,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The name of the product
      * 
      */
-    @Export(name="productName", type=String.class, parameters={})
+    @Export(name="productName", refs={String.class}, tree="[0]")
     private Output<String> productName;
 
     /**
@@ -239,7 +239,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * Product version ID.
      * 
      */
-    @Export(name="productVersionId", type=String.class, parameters={})
+    @Export(name="productVersionId", refs={String.class}, tree="[0]")
     private Output<String> productVersionId;
 
     /**
@@ -253,7 +253,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The name of the product version
      * 
      */
-    @Export(name="productVersionName", type=String.class, parameters={})
+    @Export(name="productVersionName", refs={String.class}, tree="[0]")
     private Output<String> productVersionName;
 
     /**
@@ -267,7 +267,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The ARN of the product instance
      * 
      */
-    @Export(name="provisionedProductArn", type=String.class, parameters={})
+    @Export(name="provisionedProductArn", refs={String.class}, tree="[0]")
     private Output<String> provisionedProductArn;
 
     /**
@@ -281,7 +281,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="provisionedProductId", type=String.class, parameters={})
+    @Export(name="provisionedProductId", refs={String.class}, tree="[0]")
     private Output<String> provisionedProductId;
 
     /**
@@ -295,7 +295,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The name of the instance.The length is 1~128 characters.
      * 
      */
-    @Export(name="provisionedProductName", type=String.class, parameters={})
+    @Export(name="provisionedProductName", refs={String.class}, tree="[0]")
     private Output<String> provisionedProductName;
 
     /**
@@ -309,7 +309,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
      * 
      */
-    @Export(name="provisionedProductType", type=String.class, parameters={})
+    @Export(name="provisionedProductType", refs={String.class}, tree="[0]")
     private Output<String> provisionedProductType;
 
     /**
@@ -323,7 +323,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The ID of the ROS stack
      * 
      */
-    @Export(name="stackId", type=String.class, parameters={})
+    @Export(name="stackId", refs={String.class}, tree="[0]")
     private Output<String> stackId;
 
     /**
@@ -337,7 +337,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
      * 
      */
-    @Export(name="stackRegionId", type=String.class, parameters={})
+    @Export(name="stackRegionId", refs={String.class}, tree="[0]")
     private Output<String> stackRegionId;
 
     /**
@@ -351,7 +351,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * Instance status
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -365,7 +365,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * The status message of the product instance
      * 
      */
-    @Export(name="statusMessage", type=String.class, parameters={})
+    @Export(name="statusMessage", refs={String.class}, tree="[0]")
     private Output<String> statusMessage;
 
     /**
@@ -379,7 +379,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

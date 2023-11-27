@@ -135,14 +135,14 @@ public final class GetEnterpriseDatabasesResult {
             return this;
         }
         public GetEnterpriseDatabasesResult build() {
-            final var o = new GetEnterpriseDatabasesResult();
-            o.databases = databases;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetEnterpriseDatabasesResult();
+            _resultValue.databases = databases;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

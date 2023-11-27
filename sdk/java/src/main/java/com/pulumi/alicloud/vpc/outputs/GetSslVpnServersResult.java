@@ -157,15 +157,15 @@ public final class GetSslVpnServersResult {
             return this;
         }
         public GetSslVpnServersResult build() {
-            final var o = new GetSslVpnServersResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.servers = servers;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+            final var _resultValue = new GetSslVpnServersResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.servers = servers;
+            _resultValue.vpnGatewayId = vpnGatewayId;
+            return _resultValue;
         }
     }
 }

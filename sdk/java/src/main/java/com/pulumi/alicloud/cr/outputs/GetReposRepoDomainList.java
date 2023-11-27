@@ -84,11 +84,11 @@ public final class GetReposRepoDomainList {
             return this;
         }
         public GetReposRepoDomainList build() {
-            final var o = new GetReposRepoDomainList();
-            o.internal = internal;
-            o.public_ = public_;
-            o.vpc = vpc;
-            return o;
+            final var _resultValue = new GetReposRepoDomainList();
+            _resultValue.internal = internal;
+            _resultValue.public_ = public_;
+            _resultValue.vpc = vpc;
+            return _resultValue;
         }
     }
 }

@@ -57,10 +57,10 @@ public final class GetGlobalEventsStorageRegionResult {
             return this;
         }
         public GetGlobalEventsStorageRegionResult build() {
-            final var o = new GetGlobalEventsStorageRegionResult();
-            o.id = id;
-            o.storageRegion = storageRegion;
-            return o;
+            final var _resultValue = new GetGlobalEventsStorageRegionResult();
+            _resultValue.id = id;
+            _resultValue.storageRegion = storageRegion;
+            return _resultValue;
         }
     }
 }

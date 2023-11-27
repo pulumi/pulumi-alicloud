@@ -89,12 +89,12 @@ public final class GetCollationTimeZonesResult {
             return this;
         }
         public GetCollationTimeZonesResult build() {
-            final var o = new GetCollationTimeZonesResult();
-            o.collationTimeZones = collationTimeZones;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetCollationTimeZonesResult();
+            _resultValue.collationTimeZones = collationTimeZones;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

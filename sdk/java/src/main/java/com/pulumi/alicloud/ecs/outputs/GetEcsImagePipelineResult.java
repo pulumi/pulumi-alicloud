@@ -149,17 +149,17 @@ public final class GetEcsImagePipelineResult {
             return this;
         }
         public GetEcsImagePipelineResult build() {
-            final var o = new GetEcsImagePipelineResult();
-            o.id = id;
-            o.ids = ids;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pipelines = pipelines;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetEcsImagePipelineResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pipelines = pipelines;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

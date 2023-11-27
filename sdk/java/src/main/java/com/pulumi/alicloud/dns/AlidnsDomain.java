@@ -80,7 +80,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * A list of the dns server name.
      * 
      */
-    @Export(name="dnsServers", type=List.class, parameters={String.class})
+    @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsServers;
 
     /**
@@ -94,7 +94,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * The domain ID.
      * 
      */
-    @Export(name="domainId", type=String.class, parameters={})
+    @Export(name="domainId", refs={String.class}, tree="[0]")
     private Output<String> domainId;
 
     /**
@@ -108,7 +108,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -122,7 +122,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * Id of the group in which the domain will add. If not supplied, then use default group.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupId;
 
     /**
@@ -136,7 +136,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * Domain name group name.
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
@@ -150,7 +150,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * User language.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -164,7 +164,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * Only return punycode codes for Chinese domain names.
      * 
      */
-    @Export(name="punyCode", type=String.class, parameters={})
+    @Export(name="punyCode", refs={String.class}, tree="[0]")
     private Output<String> punyCode;
 
     /**
@@ -178,7 +178,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * Remarks information for your domain name.
      * 
      */
-    @Export(name="remark", type=String.class, parameters={})
+    @Export(name="remark", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> remark;
 
     /**
@@ -192,7 +192,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the dns domain belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -208,7 +208,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * - Value: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

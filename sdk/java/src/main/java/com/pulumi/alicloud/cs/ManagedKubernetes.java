@@ -11,10 +11,6 @@ import com.pulumi.alicloud.cs.outputs.ManagedKubernetesCertificateAuthority;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesConnections;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesMaintenanceWindow;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesRrsaMetadata;
-import com.pulumi.alicloud.cs.outputs.ManagedKubernetesRuntime;
-import com.pulumi.alicloud.cs.outputs.ManagedKubernetesTaint;
-import com.pulumi.alicloud.cs.outputs.ManagedKubernetesWorkerDataDisk;
-import com.pulumi.alicloud.cs.outputs.ManagedKubernetesWorkerNode;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -30,6 +26,8 @@ import javax.annotation.Nullable;
 
 /**
  * This resource will help you to manage a ManagedKubernetes Cluster in Alibaba Cloud Kubernetes Service.
+ * 
+ * &gt; **NOTE:** Available since v1.26.0.
  * 
  * &gt; **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
  * 
@@ -56,6 +54,9 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** From version 1.177.0+, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor` are deprecated.
  * We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
  * 
+ * &gt; **NOTE:** From version 1.212.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor`,`kube_config`,`availability_zone` are removed.
+ * Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
+ * 
  * ## Import
  * 
  * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -68,14 +69,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/managedKubernetes:ManagedKubernetes")
 public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
-     * The addon you want to install in cluster. Detailed below.
+     * The addon you want to install in cluster. See `addons` below.
      * 
      */
-    @Export(name="addons", type=List.class, parameters={ManagedKubernetesAddon.class})
+    @Export(name="addons", refs={List.class,ManagedKubernetesAddon.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedKubernetesAddon>> addons;
 
     /**
-     * @return The addon you want to install in cluster. Detailed below.
+     * @return The addon you want to install in cluster. See `addons` below.
      * 
      */
     public Output<Optional<List<ManagedKubernetesAddon>>> addons() {
@@ -85,7 +86,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
-    @Export(name="apiAudiences", type=List.class, parameters={String.class})
+    @Export(name="apiAudiences", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> apiAudiences;
 
     /**
@@ -96,24 +97,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.apiAudiences);
     }
     /**
-     * The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch&#39;s zone.
-     * 
-     */
-    @Export(name="availabilityZone", type=String.class, parameters={})
-    private Output<String> availabilityZone;
-
-    /**
-     * @return The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch&#39;s zone.
-     * 
-     */
-    public Output<String> availabilityZone() {
-        return this.availabilityZone;
-    }
-    /**
      * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
      * 
      */
-    @Export(name="certificateAuthority", type=ManagedKubernetesCertificateAuthority.class, parameters={})
+    @Export(name="certificateAuthority", refs={ManagedKubernetesCertificateAuthority.class}, tree="[0]")
     private Output<ManagedKubernetesCertificateAuthority> certificateAuthority;
 
     /**
@@ -127,7 +114,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      * 
      */
-    @Export(name="clientCert", type=String.class, parameters={})
+    @Export(name="clientCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCert;
 
     /**
@@ -141,7 +128,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The path of client key, like `~/.kube/client-key.pem`.
      * 
      */
-    @Export(name="clientKey", type=String.class, parameters={})
+    @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
     /**
@@ -155,7 +142,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      * 
      */
-    @Export(name="clusterCaCert", type=String.class, parameters={})
+    @Export(name="clusterCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterCaCert;
 
     /**
@@ -169,7 +156,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      * 
      */
-    @Export(name="clusterDomain", type=String.class, parameters={})
+    @Export(name="clusterDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterDomain;
 
     /**
@@ -185,7 +172,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * * ack.pro.small : Professional managed clusters.
      * 
      */
-    @Export(name="clusterSpec", type=String.class, parameters={})
+    @Export(name="clusterSpec", refs={String.class}, tree="[0]")
     private Output<String> clusterSpec;
 
     /**
@@ -201,7 +188,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * Map of kubernetes cluster connection information.
      * 
      */
-    @Export(name="connections", type=ManagedKubernetesConnections.class, parameters={})
+    @Export(name="connections", refs={ManagedKubernetesConnections.class}, tree="[0]")
     private Output<ManagedKubernetesConnections> connections;
 
     /**
@@ -212,14 +199,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.connections;
     }
     /**
-     * List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+     * List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
      * 
      */
-    @Export(name="controlPlaneLogComponents", type=List.class, parameters={String.class})
+    @Export(name="controlPlaneLogComponents", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> controlPlaneLogComponents;
 
     /**
-     * @return List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
+     * @return List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
      * 
      */
     public Output<Optional<List<String>>> controlPlaneLogComponents() {
@@ -229,53 +216,35 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
      * 
      */
-    @Export(name="controlPlaneLogProject", type=String.class, parameters={})
-    private Output</* @Nullable */ String> controlPlaneLogProject;
+    @Export(name="controlPlaneLogProject", refs={String.class}, tree="[0]")
+    private Output<String> controlPlaneLogProject;
 
     /**
      * @return Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
      * 
      */
-    public Output<Optional<String>> controlPlaneLogProject() {
-        return Codegen.optional(this.controlPlaneLogProject);
+    public Output<String> controlPlaneLogProject() {
+        return this.controlPlaneLogProject;
     }
     /**
      * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
      * 
      */
-    @Export(name="controlPlaneLogTtl", type=String.class, parameters={})
-    private Output</* @Nullable */ String> controlPlaneLogTtl;
+    @Export(name="controlPlaneLogTtl", refs={String.class}, tree="[0]")
+    private Output<String> controlPlaneLogTtl;
 
     /**
      * @return Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
      * 
      */
-    public Output<Optional<String>> controlPlaneLogTtl() {
-        return Codegen.optional(this.controlPlaneLogTtl);
-    }
-    /**
-     * (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
-     * 
-     * @deprecated
-     * Field &#39;cpu_policy&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;cpu_policy&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'cpu_policy' to replace it */
-    @Export(name="cpuPolicy", type=String.class, parameters={})
-    private Output</* @Nullable */ String> cpuPolicy;
-
-    /**
-     * @return (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
-     * 
-     */
-    public Output<Optional<String>> cpuPolicy() {
-        return Codegen.optional(this.cpuPolicy);
+    public Output<String> controlPlaneLogTtl() {
+        return this.controlPlaneLogTtl;
     }
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * 
      */
-    @Export(name="customSan", type=String.class, parameters={})
+    @Export(name="customSan", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customSan;
 
     /**
@@ -289,7 +258,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * Whether to enable cluster deletion protection.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -303,7 +272,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
-    @Export(name="enableRrsa", type=Boolean.class, parameters={})
+    @Export(name="enableRrsa", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableRrsa;
 
     /**
@@ -314,28 +283,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableRrsa);
     }
     /**
-     * (Optional) Enable login to the node through SSH. Default to `false`.
-     * 
-     * @deprecated
-     * Field &#39;enable_ssh&#39; has been deprecated from provider version 1.177.0.
-     * 
-     */
-    @Deprecated /* Field 'enable_ssh' has been deprecated from provider version 1.177.0. */
-    @Export(name="enableSsh", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> enableSsh;
-
-    /**
-     * @return (Optional) Enable login to the node through SSH. Default to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> enableSsh() {
-        return Codegen.optional(this.enableSsh);
-    }
-    /**
      * The disk encryption key.
      * 
      */
-    @Export(name="encryptionProviderKey", type=String.class, parameters={})
+    @Export(name="encryptionProviderKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionProviderKey;
 
     /**
@@ -346,64 +297,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionProviderKey);
     }
     /**
-     * (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
-     * 
-     * @deprecated
-     * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes
-     * 
-     */
-    @Deprecated /* Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes */
-    @Export(name="excludeAutoscalerNodes", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> excludeAutoscalerNodes;
-
-    /**
-     * @return (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> excludeAutoscalerNodes() {
-        return Codegen.optional(this.excludeAutoscalerNodes);
-    }
-    /**
-     * (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
-     * 
-     * @deprecated
-     * Field &#39;image_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;image_id&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'image_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'image_id' to replace it */
-    @Export(name="imageId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> imageId;
-
-    /**
-     * @return (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
-     * 
-     */
-    public Output<Optional<String>> imageId() {
-        return Codegen.optional(this.imageId);
-    }
-    /**
-     * (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
-     * 
-     * @deprecated
-     * Field &#39;install_cloud_monitor&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;install_cloud_monitor&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'install_cloud_monitor' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'install_cloud_monitor' to replace it */
-    @Export(name="installCloudMonitor", type=Boolean.class, parameters={})
-    private Output<Boolean> installCloudMonitor;
-
-    /**
-     * @return (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
-     * 
-     */
-    public Output<Boolean> installCloudMonitor() {
-        return this.installCloudMonitor;
-    }
-    /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      * 
      */
-    @Export(name="isEnterpriseSecurityGroup", type=Boolean.class, parameters={})
+    @Export(name="isEnterpriseSecurityGroup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isEnterpriseSecurityGroup;
 
     /**
@@ -414,82 +311,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.isEnterpriseSecurityGroup;
     }
     /**
-     * (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
-     * 
-     * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;key_name&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'key_name' to replace it */
-    @Export(name="keyName", type=String.class, parameters={})
-    private Output</* @Nullable */ String> keyName;
-
-    /**
-     * @return (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
-     * 
-     */
-    public Output<Optional<String>> keyName() {
-        return Codegen.optional(this.keyName);
-    }
-    /**
-     * (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
-     * 
-     * @deprecated
-     * Field &#39;kms_encrypted_password&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;kms_encrypted_password&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'kms_encrypted_password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encrypted_password' to replace it */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
-    private Output</* @Nullable */ String> kmsEncryptedPassword;
-
-    /**
-     * @return (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
-     * 
-     */
-    public Output<Optional<String>> kmsEncryptedPassword() {
-        return Codegen.optional(this.kmsEncryptedPassword);
-    }
-    /**
-     * (Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-     * 
-     * @deprecated
-     * Field &#39;kms_encryption_context&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;kms_encryption_context&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'kms_encryption_context' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encryption_context' to replace it */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
-    private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
-
-    /**
-     * @return (Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-     * 
-     */
-    public Output<Optional<Map<String,Object>>> kmsEncryptionContext() {
-        return Codegen.optional(this.kmsEncryptionContext);
-    }
-    /**
-     * The path of kube config, like `~/.kube/config`.
-     * 
-     * @deprecated
-     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
-     * 
-     */
-    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
-    @Export(name="kubeConfig", type=String.class, parameters={})
-    private Output</* @Nullable */ String> kubeConfig;
-
-    /**
-     * @return The path of kube config, like `~/.kube/config`.
-     * 
-     */
-    public Output<Optional<String>> kubeConfig() {
-        return Codegen.optional(this.kubeConfig);
-    }
-    /**
      * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * 
      */
-    @Export(name="loadBalancerSpec", type=String.class, parameters={})
+    @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loadBalancerSpec;
 
     /**
@@ -500,14 +325,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.loadBalancerSpec);
     }
     /**
-     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
      * 
      */
-    @Export(name="maintenanceWindow", type=ManagedKubernetesMaintenanceWindow.class, parameters={})
+    @Export(name="maintenanceWindow", refs={ManagedKubernetesMaintenanceWindow.class}, tree="[0]")
     private Output<ManagedKubernetesMaintenanceWindow> maintenanceWindow;
 
     /**
-     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
+     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
      * 
      */
     public Output<ManagedKubernetesMaintenanceWindow> maintenanceWindow() {
@@ -517,7 +342,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * This parameter specifies the name of the component.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -527,7 +352,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="namePrefix", type=String.class, parameters={})
+    @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namePrefix;
 
     public Output<Optional<String>> namePrefix() {
@@ -537,7 +362,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of nat gateway used to launch kubernetes cluster.
      * 
      */
-    @Export(name="natGatewayId", type=String.class, parameters={})
+    @Export(name="natGatewayId", refs={String.class}, tree="[0]")
     private Output<String> natGatewayId;
 
     /**
@@ -551,7 +376,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
      * 
      */
-    @Export(name="newNatGateway", type=Boolean.class, parameters={})
+    @Export(name="newNatGateway", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> newNatGateway;
 
     /**
@@ -565,7 +390,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      * 
      */
-    @Export(name="nodeCidrMask", type=Integer.class, parameters={})
+    @Export(name="nodeCidrMask", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> nodeCidrMask;
 
     /**
@@ -576,100 +401,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nodeCidrMask);
     }
     /**
-     * (Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
-     * 
-     * @deprecated
-     * Field &#39;node_name_mode&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;node_name_mode&#39; to replace it.
-     * 
-     */
-    @Deprecated /* Field 'node_name_mode' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'node_name_mode' to replace it. */
-    @Export(name="nodeNameMode", type=String.class, parameters={})
-    private Output</* @Nullable */ String> nodeNameMode;
-
-    /**
-     * @return (Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
-     * 
-     */
-    public Output<Optional<String>> nodeNameMode() {
-        return Codegen.optional(this.nodeNameMode);
-    }
-    /**
-     * (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
-     * 
-     * @deprecated
-     * Field &#39;platform&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes.
-     * 
-     */
-    @Deprecated /* Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes. */
-    @Export(name="nodePortRange", type=String.class, parameters={})
-    private Output<String> nodePortRange;
-
-    /**
-     * @return (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
-     * 
-     */
-    public Output<String> nodePortRange() {
-        return this.nodePortRange;
-    }
-    /**
-     * (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
-     * 
-     * @deprecated
-     * Field &#39;os_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes.
-     * 
-     */
-    @Deprecated /* Field 'os_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes. */
-    @Export(name="osType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> osType;
-
-    /**
-     * @return (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
-     * 
-     */
-    public Output<Optional<String>> osType() {
-        return Codegen.optional(this.osType);
-    }
-    /**
-     * (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
-     * 
-     * @deprecated
-     * Field &#39;password&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;password&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it */
-    @Export(name="password", type=String.class, parameters={})
-    private Output</* @Nullable */ String> password;
-
-    /**
-     * @return (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
-     * 
-     */
-    public Output<Optional<String>> password() {
-        return Codegen.optional(this.password);
-    }
-    /**
-     * (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-     * 
-     * @deprecated
-     * Field &#39;platform&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;platform&#39; to replace it.
-     * 
-     */
-    @Deprecated /* Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'platform' to replace it. */
-    @Export(name="platform", type=String.class, parameters={})
-    private Output<String> platform;
-
-    /**
-     * @return (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-     * 
-     */
-    public Output<String> platform() {
-        return this.platform;
-    }
-    /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      * 
      */
-    @Export(name="podCidr", type=String.class, parameters={})
+    @Export(name="podCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> podCidr;
 
     /**
@@ -683,7 +418,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
      * 
      */
-    @Export(name="podVswitchIds", type=List.class, parameters={String.class})
+    @Export(name="podVswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> podVswitchIds;
 
     /**
@@ -697,7 +432,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      * 
      */
-    @Export(name="proxyMode", type=String.class, parameters={})
+    @Export(name="proxyMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyMode;
 
     /**
@@ -708,28 +443,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.proxyMode);
     }
     /**
-     * (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
-     * 
-     * @deprecated
-     * Field &#39;rds_instances&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;rds_instances&#39; to replace it.
-     * 
-     */
-    @Deprecated /* Field 'rds_instances' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'rds_instances' to replace it. */
-    @Export(name="rdsInstances", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> rdsInstances;
-
-    /**
-     * @return (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
-     * 
-     */
-    public Output<Optional<List<String>>> rdsInstances() {
-        return Codegen.optional(this.rdsInstances);
-    }
-    /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -739,7 +456,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
-    @Export(name="retainResources", type=List.class, parameters={String.class})
+    @Export(name="retainResources", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> retainResources;
 
     public Output<Optional<List<String>>> retainResources() {
@@ -749,7 +466,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
      * 
      */
-    @Export(name="rrsaMetadata", type=ManagedKubernetesRrsaMetadata.class, parameters={})
+    @Export(name="rrsaMetadata", refs={ManagedKubernetesRrsaMetadata.class}, tree="[0]")
     private Output<ManagedKubernetesRrsaMetadata> rrsaMetadata;
 
     /**
@@ -760,28 +477,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.rrsaMetadata;
     }
     /**
-     * (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
-     * 
-     * @deprecated
-     * Field &#39;runtime&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;runtime_name&#39; and &#39;runtime_version&#39; to replace it.
-     * 
-     */
-    @Deprecated /* Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it. */
-    @Export(name="runtime", type=ManagedKubernetesRuntime.class, parameters={})
-    private Output</* @Nullable */ ManagedKubernetesRuntime> runtime;
-
-    /**
-     * @return (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
-     * 
-     */
-    public Output<Optional<ManagedKubernetesRuntime>> runtime() {
-        return Codegen.optional(this.runtime);
-    }
-    /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -795,7 +494,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      * 
      */
-    @Export(name="serviceAccountIssuer", type=String.class, parameters={})
+    @Export(name="serviceAccountIssuer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccountIssuer;
 
     /**
@@ -809,7 +508,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      * 
      */
-    @Export(name="serviceCidr", type=String.class, parameters={})
+    @Export(name="serviceCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceCidr;
 
     /**
@@ -827,7 +526,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
-    @Export(name="slbId", type=String.class, parameters={})
+    @Export(name="slbId", refs={String.class}, tree="[0]")
     private Output<String> slbId;
 
     /**
@@ -841,7 +540,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The public ip of load balancer.
      * 
      */
-    @Export(name="slbInternet", type=String.class, parameters={})
+    @Export(name="slbInternet", refs={String.class}, tree="[0]")
     private Output<String> slbInternet;
 
     /**
@@ -858,7 +557,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
      * 
      */
-    @Export(name="slbInternetEnabled", type=Boolean.class, parameters={})
+    @Export(name="slbInternetEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> slbInternetEnabled;
 
     /**
@@ -875,7 +574,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of private load balancer where the current cluster master node is located.
      * 
      */
-    @Export(name="slbIntranet", type=String.class, parameters={})
+    @Export(name="slbIntranet", refs={String.class}, tree="[0]")
     private Output<String> slbIntranet;
 
     /**
@@ -886,42 +585,24 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.slbIntranet;
     }
     /**
-     * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
+     * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
+     * @return Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
-     * 
-     * @deprecated
-     * Field &#39;taints&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;taints&#39; to replace it.
-     * 
-     */
-    @Deprecated /* Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'taints' to replace it. */
-    @Export(name="taints", type=List.class, parameters={ManagedKubernetesTaint.class})
-    private Output</* @Nullable */ List<ManagedKubernetesTaint>> taints;
-
-    /**
-     * @return (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
-     * 
-     */
-    public Output<Optional<List<ManagedKubernetesTaint>>> taints() {
-        return Codegen.optional(this.taints);
-    }
-    /**
      * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**
@@ -935,7 +616,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      * 
      */
-    @Export(name="userCa", type=String.class, parameters={})
+    @Export(name="userCa", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userCa;
 
     /**
@@ -946,32 +627,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.userCa);
     }
     /**
-     * (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
-     * 
-     * @deprecated
-     * Field &#39;user_data&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;user_data&#39; to replace it.
+     * It specifies the version of the component.
      * 
      */
-    @Deprecated /* Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'user_data' to replace it. */
-    @Export(name="userData", type=String.class, parameters={})
-    private Output</* @Nullable */ String> userData;
-
-    /**
-     * @return (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
-     * 
-     */
-    public Output<Optional<String>> userData() {
-        return Codegen.optional(this.userData);
-    }
-    /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-     * 
-     */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * @return It specifies the version of the component.
      * 
      */
     public Output<String> version() {
@@ -981,7 +644,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of VPC where the current cluster is located.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -992,280 +655,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * (Optional) Enable worker payment auto-renew, defaults to false.
-     * 
-     * @deprecated
-     * Field &#39;worker_auto_renew&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;auto_renew&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew' to replace it */
-    @Export(name="workerAutoRenew", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> workerAutoRenew;
-
-    /**
-     * @return (Optional) Enable worker payment auto-renew, defaults to false.
-     * 
-     */
-    public Output<Optional<Boolean>> workerAutoRenew() {
-        return Codegen.optional(this.workerAutoRenew);
-    }
-    /**
-     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-     * 
-     * @deprecated
-     * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;auto_renew_period&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'auto_renew_period' to replace it */
-    @Export(name="workerAutoRenewPeriod", type=Integer.class, parameters={})
-    private Output<Integer> workerAutoRenewPeriod;
-
-    /**
-     * @return Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-     * 
-     */
-    public Output<Integer> workerAutoRenewPeriod() {
-        return this.workerAutoRenewPeriod;
-    }
-    /**
-     * (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
-     * 
-     * @deprecated
-     * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.category&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.category' to replace it */
-    @Export(name="workerDataDiskCategory", type=String.class, parameters={})
-    private Output</* @Nullable */ String> workerDataDiskCategory;
-
-    /**
-     * @return (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
-     * 
-     */
-    public Output<Optional<String>> workerDataDiskCategory() {
-        return Codegen.optional(this.workerDataDiskCategory);
-    }
-    /**
-     * (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
-     * 
-     * @deprecated
-     * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.size&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks.size' to replace it */
-    @Export(name="workerDataDiskSize", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> workerDataDiskSize;
-
-    /**
-     * @return (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
-     * 
-     */
-    public Output<Optional<Integer>> workerDataDiskSize() {
-        return Codegen.optional(this.workerDataDiskSize);
-    }
-    /**
-     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
-     * 
-     * @deprecated
-     * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'data_disks' to replace it */
-    @Export(name="workerDataDisks", type=List.class, parameters={ManagedKubernetesWorkerDataDisk.class})
-    private Output</* @Nullable */ List<ManagedKubernetesWorkerDataDisk>> workerDataDisks;
-
-    /**
-     * @return (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
-     * 
-     */
-    public Output<Optional<List<ManagedKubernetesWorkerDataDisk>>> workerDataDisks() {
-        return Codegen.optional(this.workerDataDisks);
-    }
-    /**
-     * (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_category&#39; to replace it.
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_category' to replace it. */
-    @Export(name="workerDiskCategory", type=String.class, parameters={})
-    private Output</* @Nullable */ String> workerDiskCategory;
-
-    /**
-     * @return (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-     * 
-     */
-    public Output<Optional<String>> workerDiskCategory() {
-        return Codegen.optional(this.workerDiskCategory);
-    }
-    /**
-     * (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_performance_level&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_performance_level&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_performance_level' to replace it */
-    @Export(name="workerDiskPerformanceLevel", type=String.class, parameters={})
-    private Output</* @Nullable */ String> workerDiskPerformanceLevel;
-
-    /**
-     * @return (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-     * 
-     */
-    public Output<Optional<String>> workerDiskPerformanceLevel() {
-        return Codegen.optional(this.workerDiskPerformanceLevel);
-    }
-    /**
-     * (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_size&#39; to replace it.
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_size' to replace it. */
-    @Export(name="workerDiskSize", type=Integer.class, parameters={})
-    private Output<Integer> workerDiskSize;
-
-    /**
-     * @return (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
-     * 
-     */
-    public Output<Integer> workerDiskSize() {
-        return this.workerDiskSize;
-    }
-    /**
-     * (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
-     * 
-     * @deprecated
-     * Field &#39;worker_disk_snapshot_policy_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_snapshot_policy_id&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'system_disk_snapshot_policy_id' to replace it */
-    @Export(name="workerDiskSnapshotPolicyId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> workerDiskSnapshotPolicyId;
-
-    /**
-     * @return (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
-     * 
-     */
-    public Output<Optional<String>> workerDiskSnapshotPolicyId() {
-        return Codegen.optional(this.workerDiskSnapshotPolicyId);
-    }
-    /**
-     * (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
-     * 
-     * @deprecated
-     * Field &#39;worker_instance_charge_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;instance_charge_type&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_charge_type' to replace it */
-    @Export(name="workerInstanceChargeType", type=String.class, parameters={})
-    private Output<String> workerInstanceChargeType;
-
-    /**
-     * @return (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
-     * 
-     */
-    public Output<String> workerInstanceChargeType() {
-        return this.workerInstanceChargeType;
-    }
-    /**
-     * (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
-     * 
-     * @deprecated
-     * Field &#39;worker_instance_types&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;instance_types&#39; to replace it.
-     * 
-     */
-    @Deprecated /* Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_types' to replace it. */
-    @Export(name="workerInstanceTypes", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> workerInstanceTypes;
-
-    /**
-     * @return (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
-     * 
-     */
-    public Output<Optional<List<String>>> workerInstanceTypes() {
-        return Codegen.optional(this.workerInstanceTypes);
-    }
-    /**
-     * (Deprecated from version 1.177.0) List of cluster worker nodes.
-     * 
-     * @deprecated
-     * Field &#39;worker_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes.
-     * 
-     */
-    @Deprecated /* Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes. */
-    @Export(name="workerNodes", type=List.class, parameters={ManagedKubernetesWorkerNode.class})
-    private Output<List<ManagedKubernetesWorkerNode>> workerNodes;
-
-    /**
-     * @return (Deprecated from version 1.177.0) List of cluster worker nodes.
-     * 
-     */
-    public Output<List<ManagedKubernetesWorkerNode>> workerNodes() {
-        return this.workerNodes;
-    }
-    /**
-     * (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
-     * 
-     * @deprecated
-     * Field &#39;worker_number&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes., by using field &#39;desired_size&#39; to replace it.
-     * 
-     */
-    @Deprecated /* Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes., by using field 'desired_size' to replace it. */
-    @Export(name="workerNumber", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> workerNumber;
-
-    /**
-     * @return (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
-     * 
-     */
-    public Output<Optional<Integer>> workerNumber() {
-        return Codegen.optional(this.workerNumber);
-    }
-    /**
-     * (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-     * 
-     * @deprecated
-     * Field &#39;worker_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;period&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period' to replace it */
-    @Export(name="workerPeriod", type=Integer.class, parameters={})
-    private Output<Integer> workerPeriod;
-
-    /**
-     * @return (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-     * 
-     */
-    public Output<Integer> workerPeriod() {
-        return this.workerPeriod;
-    }
-    /**
-     * (Optional) Worker payment period unit, the valid value is `Month`.
-     * 
-     * @deprecated
-     * Field &#39;worker_period_unit&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;period_unit&#39; to replace it
-     * 
-     */
-    @Deprecated /* Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'period_unit' to replace it */
-    @Export(name="workerPeriodUnit", type=String.class, parameters={})
-    private Output<String> workerPeriodUnit;
-
-    /**
-     * @return (Optional) Worker payment period unit, the valid value is `Month`.
-     * 
-     */
-    public Output<String> workerPeriodUnit() {
-        return this.workerPeriodUnit;
-    }
-    /**
      * The RamRole Name attached to worker node.
      * 
      */
-    @Export(name="workerRamRoleName", type=String.class, parameters={})
+    @Export(name="workerRamRoleName", refs={String.class}, tree="[0]")
     private Output<String> workerRamRoleName;
 
     /**
@@ -1276,14 +669,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.workerRamRoleName;
     }
     /**
-     * The vswitches used by control plane.
+     * The vswitches used by control plane.  See `worker_vswitch_ids` below.
      * 
      */
-    @Export(name="workerVswitchIds", type=List.class, parameters={String.class})
+    @Export(name="workerVswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> workerVswitchIds;
 
     /**
-     * @return The vswitches used by control plane.
+     * @return The vswitches used by control plane.  See `worker_vswitch_ids` below.
      * 
      */
     public Output<List<String>> workerVswitchIds() {
@@ -1322,9 +715,6 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "password"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

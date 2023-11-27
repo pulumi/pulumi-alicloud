@@ -157,15 +157,15 @@ public final class GetTablesResult {
             return tables(List.of(tables));
         }
         public GetTablesResult build() {
-            final var o = new GetTablesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceName = instanceName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.tables = tables;
-            return o;
+            final var _resultValue = new GetTablesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceName = instanceName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.tables = tables;
+            return _resultValue;
         }
     }
 }

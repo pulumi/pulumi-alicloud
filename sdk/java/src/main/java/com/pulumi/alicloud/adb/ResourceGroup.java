@@ -126,7 +126,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -140,7 +140,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * DB cluster id.
      * 
      */
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
@@ -154,7 +154,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
@@ -171,7 +171,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * * **default_type**: the default query mode.
      * 
      */
-    @Export(name="groupType", type=String.class, parameters={})
+    @Export(name="groupType", refs={String.class}, tree="[0]")
     private Output<String> groupType;
 
     /**
@@ -188,7 +188,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
      * 
      */
-    @Export(name="nodeNum", type=Integer.class, parameters={})
+    @Export(name="nodeNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodeNum;
 
     /**
@@ -202,7 +202,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Update time.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -216,7 +216,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Binding User.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**

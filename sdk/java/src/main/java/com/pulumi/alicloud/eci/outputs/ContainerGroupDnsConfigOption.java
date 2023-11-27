@@ -67,10 +67,10 @@ public final class ContainerGroupDnsConfigOption {
             return this;
         }
         public ContainerGroupDnsConfigOption build() {
-            final var o = new ContainerGroupDnsConfigOption();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ContainerGroupDnsConfigOption();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

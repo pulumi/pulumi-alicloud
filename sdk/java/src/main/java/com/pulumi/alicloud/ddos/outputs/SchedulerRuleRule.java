@@ -156,14 +156,14 @@ public final class SchedulerRuleRule {
             return this;
         }
         public SchedulerRuleRule build() {
-            final var o = new SchedulerRuleRule();
-            o.priority = priority;
-            o.regionId = regionId;
-            o.status = status;
-            o.type = type;
-            o.value = value;
-            o.valueType = valueType;
-            return o;
+            final var _resultValue = new SchedulerRuleRule();
+            _resultValue.priority = priority;
+            _resultValue.regionId = regionId;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            _resultValue.valueType = valueType;
+            return _resultValue;
         }
     }
 }

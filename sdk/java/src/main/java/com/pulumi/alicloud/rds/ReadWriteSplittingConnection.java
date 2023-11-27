@@ -142,7 +142,7 @@ public class ReadWriteSplittingConnection extends com.pulumi.resources.CustomRes
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + &#39;rw&#39;.
      * 
      */
-    @Export(name="connectionPrefix", type=String.class, parameters={})
+    @Export(name="connectionPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectionPrefix;
 
     /**
@@ -156,7 +156,7 @@ public class ReadWriteSplittingConnection extends com.pulumi.resources.CustomRes
      * Connection instance string.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -170,7 +170,7 @@ public class ReadWriteSplittingConnection extends com.pulumi.resources.CustomRes
      * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
      * 
      */
-    @Export(name="distributionType", type=String.class, parameters={})
+    @Export(name="distributionType", refs={String.class}, tree="[0]")
     private Output<String> distributionType;
 
     /**
@@ -184,7 +184,7 @@ public class ReadWriteSplittingConnection extends com.pulumi.resources.CustomRes
      * The Id of instance that can run database.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -198,7 +198,7 @@ public class ReadWriteSplittingConnection extends com.pulumi.resources.CustomRes
      * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
      * 
      */
-    @Export(name="maxDelayTime", type=Integer.class, parameters={})
+    @Export(name="maxDelayTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxDelayTime;
 
     /**
@@ -212,7 +212,7 @@ public class ReadWriteSplittingConnection extends com.pulumi.resources.CustomRes
      * Intranet connection port. Valid value: [3001-3999]. Default to 3306.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -226,7 +226,7 @@ public class ReadWriteSplittingConnection extends com.pulumi.resources.CustomRes
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
      * 
      */
-    @Export(name="weight", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="weight", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> weight;
 
     /**

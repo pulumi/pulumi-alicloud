@@ -148,7 +148,7 @@ public class EcsNetworkInterfaceAttachment extends com.pulumi.resources.CustomRe
      * The instance id.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -162,7 +162,7 @@ public class EcsNetworkInterfaceAttachment extends com.pulumi.resources.CustomRe
      * The network interface id.
      * 
      */
-    @Export(name="networkInterfaceId", type=String.class, parameters={})
+    @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceId;
 
     /**
@@ -176,7 +176,7 @@ public class EcsNetworkInterfaceAttachment extends com.pulumi.resources.CustomRe
      * The trunk network instance id.
      * 
      */
-    @Export(name="trunkNetworkInstanceId", type=String.class, parameters={})
+    @Export(name="trunkNetworkInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trunkNetworkInstanceId;
 
     /**
@@ -190,7 +190,7 @@ public class EcsNetworkInterfaceAttachment extends com.pulumi.resources.CustomRe
      * The wait for network configuration ready.
      * 
      */
-    @Export(name="waitForNetworkConfigurationReady", type=Boolean.class, parameters={})
+    @Export(name="waitForNetworkConfigurationReady", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForNetworkConfigurationReady;
 
     /**

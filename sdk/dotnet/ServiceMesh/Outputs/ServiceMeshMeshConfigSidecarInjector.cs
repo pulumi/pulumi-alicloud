@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly bool? EnableNamespacesByDefault;
         /// <summary>
-        /// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+        /// CNI configuration. See `init_cni_configuration` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration? InitCniConfiguration;
         /// <summary>

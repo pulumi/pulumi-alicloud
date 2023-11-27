@@ -236,20 +236,20 @@ public final class GetSnatEntriesResult {
             return this;
         }
         public GetSnatEntriesResult build() {
-            final var o = new GetSnatEntriesResult();
-            o.entries = entries;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.snatEntryName = snatEntryName;
-            o.snatIp = snatIp;
-            o.snatTableId = snatTableId;
-            o.sourceCidr = sourceCidr;
-            o.sourceVswitchId = sourceVswitchId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSnatEntriesResult();
+            _resultValue.entries = entries;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.snatEntryName = snatEntryName;
+            _resultValue.snatIp = snatIp;
+            _resultValue.snatTableId = snatTableId;
+            _resultValue.sourceCidr = sourceCidr;
+            _resultValue.sourceVswitchId = sourceVswitchId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

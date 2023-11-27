@@ -51,9 +51,9 @@ public final class ContainerGroupContainerLivenessProbeExec {
             return commands(List.of(commands));
         }
         public ContainerGroupContainerLivenessProbeExec build() {
-            final var o = new ContainerGroupContainerLivenessProbeExec();
-            o.commands = commands;
-            return o;
+            final var _resultValue = new ContainerGroupContainerLivenessProbeExec();
+            _resultValue.commands = commands;
+            return _resultValue;
         }
     }
 }

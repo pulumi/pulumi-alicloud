@@ -80,7 +80,7 @@ public class Ipv4CidrBlock extends com.pulumi.resources.CustomResource {
      * * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
      * 
      */
-    @Export(name="secondaryCidrBlock", type=String.class, parameters={})
+    @Export(name="secondaryCidrBlock", refs={String.class}, tree="[0]")
     private Output<String> secondaryCidrBlock;
 
     /**
@@ -98,7 +98,7 @@ public class Ipv4CidrBlock extends com.pulumi.resources.CustomResource {
      * The ID of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

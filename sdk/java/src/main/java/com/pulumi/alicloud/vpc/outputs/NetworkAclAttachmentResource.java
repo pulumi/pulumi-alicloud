@@ -65,10 +65,10 @@ public final class NetworkAclAttachmentResource {
             return this;
         }
         public NetworkAclAttachmentResource build() {
-            final var o = new NetworkAclAttachmentResource();
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            return o;
+            final var _resultValue = new NetworkAclAttachmentResource();
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            return _resultValue;
         }
     }
 }

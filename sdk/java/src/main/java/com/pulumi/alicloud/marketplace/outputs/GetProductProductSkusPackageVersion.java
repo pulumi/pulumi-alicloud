@@ -65,10 +65,10 @@ public final class GetProductProductSkusPackageVersion {
             return this;
         }
         public GetProductProductSkusPackageVersion build() {
-            final var o = new GetProductProductSkusPackageVersion();
-            o.packageName = packageName;
-            o.packageVersion = packageVersion;
-            return o;
+            final var _resultValue = new GetProductProductSkusPackageVersion();
+            _resultValue.packageName = packageName;
+            _resultValue.packageVersion = packageVersion;
+            return _resultValue;
         }
     }
 }

@@ -165,15 +165,15 @@ public final class GetEndpointsEndpoint {
             return this;
         }
         public GetEndpointsEndpoint build() {
-            final var o = new GetEndpointsEndpoint();
-            o.addressItems = addressItems;
-            o.autoAddNewNodes = autoAddNewNodes;
-            o.dbEndpointId = dbEndpointId;
-            o.endpointConfig = endpointConfig;
-            o.endpointType = endpointType;
-            o.nodes = nodes;
-            o.readWriteMode = readWriteMode;
-            return o;
+            final var _resultValue = new GetEndpointsEndpoint();
+            _resultValue.addressItems = addressItems;
+            _resultValue.autoAddNewNodes = autoAddNewNodes;
+            _resultValue.dbEndpointId = dbEndpointId;
+            _resultValue.endpointConfig = endpointConfig;
+            _resultValue.endpointType = endpointType;
+            _resultValue.nodes = nodes;
+            _resultValue.readWriteMode = readWriteMode;
+            return _resultValue;
         }
     }
 }

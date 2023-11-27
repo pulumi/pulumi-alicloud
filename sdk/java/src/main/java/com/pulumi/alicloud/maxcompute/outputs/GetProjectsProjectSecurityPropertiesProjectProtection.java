@@ -66,10 +66,10 @@ public final class GetProjectsProjectSecurityPropertiesProjectProtection {
             return this;
         }
         public GetProjectsProjectSecurityPropertiesProjectProtection build() {
-            final var o = new GetProjectsProjectSecurityPropertiesProjectProtection();
-            o.exceptionPolicy = exceptionPolicy;
-            o.protected_ = protected_;
-            return o;
+            final var _resultValue = new GetProjectsProjectSecurityPropertiesProjectProtection();
+            _resultValue.exceptionPolicy = exceptionPolicy;
+            _resultValue.protected_ = protected_;
+            return _resultValue;
         }
     }
 }

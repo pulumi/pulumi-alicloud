@@ -275,21 +275,21 @@ public final class GetMscSubContactsContact {
             return this;
         }
         public GetMscSubContactsContact build() {
-            final var o = new GetMscSubContactsContact();
-            o.accountUid = accountUid;
-            o.contactId = contactId;
-            o.contactName = contactName;
-            o.email = email;
-            o.id = id;
-            o.isAccount = isAccount;
-            o.isObsolete = isObsolete;
-            o.isVerifiedEmail = isVerifiedEmail;
-            o.isVerifiedMobile = isVerifiedMobile;
-            o.lastEmailVerificationTimeStamp = lastEmailVerificationTimeStamp;
-            o.lastMobileVerificationTimeStamp = lastMobileVerificationTimeStamp;
-            o.mobile = mobile;
-            o.position = position;
-            return o;
+            final var _resultValue = new GetMscSubContactsContact();
+            _resultValue.accountUid = accountUid;
+            _resultValue.contactId = contactId;
+            _resultValue.contactName = contactName;
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.isAccount = isAccount;
+            _resultValue.isObsolete = isObsolete;
+            _resultValue.isVerifiedEmail = isVerifiedEmail;
+            _resultValue.isVerifiedMobile = isVerifiedMobile;
+            _resultValue.lastEmailVerificationTimeStamp = lastEmailVerificationTimeStamp;
+            _resultValue.lastMobileVerificationTimeStamp = lastMobileVerificationTimeStamp;
+            _resultValue.mobile = mobile;
+            _resultValue.position = position;
+            return _resultValue;
         }
     }
 }

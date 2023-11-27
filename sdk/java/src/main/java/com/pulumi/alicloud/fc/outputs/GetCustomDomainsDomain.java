@@ -204,17 +204,17 @@ public final class GetCustomDomainsDomain {
             return routeConfigs(List.of(routeConfigs));
         }
         public GetCustomDomainsDomain build() {
-            final var o = new GetCustomDomainsDomain();
-            o.accountId = accountId;
-            o.apiVersion = apiVersion;
-            o.certConfig = certConfig;
-            o.createdTime = createdTime;
-            o.domainName = domainName;
-            o.id = id;
-            o.lastModifiedTime = lastModifiedTime;
-            o.protocol = protocol;
-            o.routeConfigs = routeConfigs;
-            return o;
+            final var _resultValue = new GetCustomDomainsDomain();
+            _resultValue.accountId = accountId;
+            _resultValue.apiVersion = apiVersion;
+            _resultValue.certConfig = certConfig;
+            _resultValue.createdTime = createdTime;
+            _resultValue.domainName = domainName;
+            _resultValue.id = id;
+            _resultValue.lastModifiedTime = lastModifiedTime;
+            _resultValue.protocol = protocol;
+            _resultValue.routeConfigs = routeConfigs;
+            return _resultValue;
         }
     }
 }

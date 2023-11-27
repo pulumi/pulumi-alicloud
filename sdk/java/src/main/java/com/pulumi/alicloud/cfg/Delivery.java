@@ -98,7 +98,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * Open or close delivery configuration change history. true: open, false: close.
      * 
      */
-    @Export(name="configurationItemChangeNotification", type=Boolean.class, parameters={})
+    @Export(name="configurationItemChangeNotification", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> configurationItemChangeNotification;
 
     /**
@@ -112,7 +112,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `OSS`.
      * 
      */
-    @Export(name="configurationSnapshot", type=Boolean.class, parameters={})
+    @Export(name="configurationSnapshot", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> configurationSnapshot;
 
     /**
@@ -126,7 +126,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `MNS`.
      * 
      */
-    @Export(name="deliveryChannelCondition", type=String.class, parameters={})
+    @Export(name="deliveryChannelCondition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deliveryChannelCondition;
 
     /**
@@ -140,7 +140,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * The name of the delivery method.
      * 
      */
-    @Export(name="deliveryChannelName", type=String.class, parameters={})
+    @Export(name="deliveryChannelName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deliveryChannelName;
 
     /**
@@ -157,7 +157,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      * 
      */
-    @Export(name="deliveryChannelTargetArn", type=String.class, parameters={})
+    @Export(name="deliveryChannelTargetArn", refs={String.class}, tree="[0]")
     private Output<String> deliveryChannelTargetArn;
 
     /**
@@ -174,7 +174,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
      * 
      */
-    @Export(name="deliveryChannelType", type=String.class, parameters={})
+    @Export(name="deliveryChannelType", refs={String.class}, tree="[0]")
     private Output<String> deliveryChannelType;
 
     /**
@@ -188,7 +188,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * The description of the delivery method.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -202,7 +202,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
      * 
      */
-    @Export(name="nonCompliantNotification", type=Boolean.class, parameters={})
+    @Export(name="nonCompliantNotification", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> nonCompliantNotification;
 
     /**
@@ -218,7 +218,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
      * 
      */
-    @Export(name="oversizedDataOssTargetArn", type=String.class, parameters={})
+    @Export(name="oversizedDataOssTargetArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oversizedDataOssTargetArn;
 
     /**
@@ -234,7 +234,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**

@@ -86,11 +86,11 @@ public final class GetCollationTimeZonesCollationTimeZone {
             return this;
         }
         public GetCollationTimeZonesCollationTimeZone build() {
-            final var o = new GetCollationTimeZonesCollationTimeZone();
-            o.description = description;
-            o.standardTimeOffset = standardTimeOffset;
-            o.timeZone = timeZone;
-            return o;
+            final var _resultValue = new GetCollationTimeZonesCollationTimeZone();
+            _resultValue.description = description;
+            _resultValue.standardTimeOffset = standardTimeOffset;
+            _resultValue.timeZone = timeZone;
+            return _resultValue;
         }
     }
 }

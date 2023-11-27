@@ -230,21 +230,21 @@ public final class GetHoneypotPresetsResult {
             return presets(List.of(presets));
         }
         public GetHoneypotPresetsResult build() {
-            final var o = new GetHoneypotPresetsResult();
-            o.currentPage = currentPage;
-            o.enableDetails = enableDetails;
-            o.honeypotImageName = honeypotImageName;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.nodeId = nodeId;
-            o.nodeName = nodeName;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.presetName = presetName;
-            o.presets = presets;
-            return o;
+            final var _resultValue = new GetHoneypotPresetsResult();
+            _resultValue.currentPage = currentPage;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.honeypotImageName = honeypotImageName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lang = lang;
+            _resultValue.nodeId = nodeId;
+            _resultValue.nodeName = nodeName;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.presetName = presetName;
+            _resultValue.presets = presets;
+            return _resultValue;
         }
     }
 }

@@ -90,7 +90,7 @@ public class BasicAccelerateIp extends com.pulumi.resources.CustomResource {
      * The address of the Basic Accelerate IP.
      * 
      */
-    @Export(name="accelerateIpAddress", type=String.class, parameters={})
+    @Export(name="accelerateIpAddress", refs={String.class}, tree="[0]")
     private Output<String> accelerateIpAddress;
 
     /**
@@ -104,7 +104,7 @@ public class BasicAccelerateIp extends com.pulumi.resources.CustomResource {
      * The ID of the Basic GA instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -118,7 +118,7 @@ public class BasicAccelerateIp extends com.pulumi.resources.CustomResource {
      * The ID of the Basic Ip Set.
      * 
      */
-    @Export(name="ipSetId", type=String.class, parameters={})
+    @Export(name="ipSetId", refs={String.class}, tree="[0]")
     private Output<String> ipSetId;
 
     /**
@@ -132,7 +132,7 @@ public class BasicAccelerateIp extends com.pulumi.resources.CustomResource {
      * The status of the Basic Accelerate IP instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

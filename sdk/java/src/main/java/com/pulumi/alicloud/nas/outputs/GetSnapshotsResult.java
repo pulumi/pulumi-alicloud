@@ -147,17 +147,17 @@ public final class GetSnapshotsResult {
             return this;
         }
         public GetSnapshotsResult build() {
-            final var o = new GetSnapshotsResult();
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.snapshotName = snapshotName;
-            o.snapshots = snapshots;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSnapshotsResult();
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.snapshotName = snapshotName;
+            _resultValue.snapshots = snapshots;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

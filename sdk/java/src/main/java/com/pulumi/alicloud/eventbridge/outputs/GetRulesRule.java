@@ -165,15 +165,15 @@ public final class GetRulesRule {
             return targets(List.of(targets));
         }
         public GetRulesRule build() {
-            final var o = new GetRulesRule();
-            o.description = description;
-            o.eventBusName = eventBusName;
-            o.filterPattern = filterPattern;
-            o.id = id;
-            o.ruleName = ruleName;
-            o.status = status;
-            o.targets = targets;
-            return o;
+            final var _resultValue = new GetRulesRule();
+            _resultValue.description = description;
+            _resultValue.eventBusName = eventBusName;
+            _resultValue.filterPattern = filterPattern;
+            _resultValue.id = id;
+            _resultValue.ruleName = ruleName;
+            _resultValue.status = status;
+            _resultValue.targets = targets;
+            return _resultValue;
         }
     }
 }

@@ -192,21 +192,21 @@ public final class GetGroupMetricRulesResult {
             return this;
         }
         public GetGroupMetricRulesResult build() {
-            final var o = new GetGroupMetricRulesResult();
-            o.dimensions = dimensions;
-            o.enableState = enableState;
-            o.groupId = groupId;
-            o.groupMetricRuleName = groupMetricRuleName;
-            o.id = id;
-            o.ids = ids;
-            o.metricName = metricName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespace = namespace;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetGroupMetricRulesResult();
+            _resultValue.dimensions = dimensions;
+            _resultValue.enableState = enableState;
+            _resultValue.groupId = groupId;
+            _resultValue.groupMetricRuleName = groupMetricRuleName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.metricName = metricName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.namespace = namespace;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

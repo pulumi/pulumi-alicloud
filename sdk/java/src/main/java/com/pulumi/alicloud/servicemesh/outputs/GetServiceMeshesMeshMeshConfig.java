@@ -350,23 +350,23 @@ public final class GetServiceMeshesMeshMeshConfig {
             return this;
         }
         public GetServiceMeshesMeshMeshConfig build() {
-            final var o = new GetServiceMeshesMeshMeshConfig();
-            o.accessLogs = accessLogs;
-            o.audits = audits;
-            o.controlPlaneLogs = controlPlaneLogs;
-            o.customizedZipkin = customizedZipkin;
-            o.enableLocalityLb = enableLocalityLb;
-            o.includeIpRanges = includeIpRanges;
-            o.kialis = kialis;
-            o.opas = opas;
-            o.outboundTrafficPolicy = outboundTrafficPolicy;
-            o.pilots = pilots;
-            o.prometheuses = prometheuses;
-            o.proxies = proxies;
-            o.sidecarInjectors = sidecarInjectors;
-            o.telemetry = telemetry;
-            o.tracing = tracing;
-            return o;
+            final var _resultValue = new GetServiceMeshesMeshMeshConfig();
+            _resultValue.accessLogs = accessLogs;
+            _resultValue.audits = audits;
+            _resultValue.controlPlaneLogs = controlPlaneLogs;
+            _resultValue.customizedZipkin = customizedZipkin;
+            _resultValue.enableLocalityLb = enableLocalityLb;
+            _resultValue.includeIpRanges = includeIpRanges;
+            _resultValue.kialis = kialis;
+            _resultValue.opas = opas;
+            _resultValue.outboundTrafficPolicy = outboundTrafficPolicy;
+            _resultValue.pilots = pilots;
+            _resultValue.prometheuses = prometheuses;
+            _resultValue.proxies = proxies;
+            _resultValue.sidecarInjectors = sidecarInjectors;
+            _resultValue.telemetry = telemetry;
+            _resultValue.tracing = tracing;
+            return _resultValue;
         }
     }
 }

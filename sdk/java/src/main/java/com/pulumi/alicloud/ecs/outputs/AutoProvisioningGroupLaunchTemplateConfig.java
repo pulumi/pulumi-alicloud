@@ -124,13 +124,13 @@ public final class AutoProvisioningGroupLaunchTemplateConfig {
             return this;
         }
         public AutoProvisioningGroupLaunchTemplateConfig build() {
-            final var o = new AutoProvisioningGroupLaunchTemplateConfig();
-            o.instanceType = instanceType;
-            o.maxPrice = maxPrice;
-            o.priority = priority;
-            o.vswitchId = vswitchId;
-            o.weightedCapacity = weightedCapacity;
-            return o;
+            final var _resultValue = new AutoProvisioningGroupLaunchTemplateConfig();
+            _resultValue.instanceType = instanceType;
+            _resultValue.maxPrice = maxPrice;
+            _resultValue.priority = priority;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.weightedCapacity = weightedCapacity;
+            return _resultValue;
         }
     }
 }

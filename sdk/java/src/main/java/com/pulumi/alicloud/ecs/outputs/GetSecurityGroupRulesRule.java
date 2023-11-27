@@ -275,21 +275,21 @@ public final class GetSecurityGroupRulesRule {
             return this;
         }
         public GetSecurityGroupRulesRule build() {
-            final var o = new GetSecurityGroupRulesRule();
-            o.description = description;
-            o.destCidrIp = destCidrIp;
-            o.destGroupId = destGroupId;
-            o.destGroupOwnerAccount = destGroupOwnerAccount;
-            o.direction = direction;
-            o.ipProtocol = ipProtocol;
-            o.nicType = nicType;
-            o.policy = policy;
-            o.portRange = portRange;
-            o.priority = priority;
-            o.sourceCidrIp = sourceCidrIp;
-            o.sourceGroupId = sourceGroupId;
-            o.sourceGroupOwnerAccount = sourceGroupOwnerAccount;
-            return o;
+            final var _resultValue = new GetSecurityGroupRulesRule();
+            _resultValue.description = description;
+            _resultValue.destCidrIp = destCidrIp;
+            _resultValue.destGroupId = destGroupId;
+            _resultValue.destGroupOwnerAccount = destGroupOwnerAccount;
+            _resultValue.direction = direction;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.nicType = nicType;
+            _resultValue.policy = policy;
+            _resultValue.portRange = portRange;
+            _resultValue.priority = priority;
+            _resultValue.sourceCidrIp = sourceCidrIp;
+            _resultValue.sourceGroupId = sourceGroupId;
+            _resultValue.sourceGroupOwnerAccount = sourceGroupOwnerAccount;
+            return _resultValue;
         }
     }
 }

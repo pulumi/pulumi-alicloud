@@ -138,14 +138,14 @@ public final class GetMainVersionsResult {
             return this;
         }
         public GetMainVersionsResult build() {
-            final var o = new GetMainVersionsResult();
-            o.clusterTypes = clusterTypes;
-            o.emrVersion = emrVersion;
-            o.id = id;
-            o.ids = ids;
-            o.mainVersions = mainVersions;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetMainVersionsResult();
+            _resultValue.clusterTypes = clusterTypes;
+            _resultValue.emrVersion = emrVersion;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.mainVersions = mainVersions;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

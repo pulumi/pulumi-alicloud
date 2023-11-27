@@ -49,10 +49,10 @@ public final class GetClustersClusterTag {
             return this;
         }
         public GetClustersClusterTag build() {
-            final var o = new GetClustersClusterTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetClustersClusterTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

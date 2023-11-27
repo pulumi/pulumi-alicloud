@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:dataworks/folder:Folder")
 public class Folder extends com.pulumi.resources.CustomResource {
-    @Export(name="folderId", type=String.class, parameters={})
+    @Export(name="folderId", refs={String.class}, tree="[0]")
     private Output<String> folderId;
 
     public Output<String> folderId() {
@@ -75,7 +75,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
      * 
      */
-    @Export(name="folderPath", type=String.class, parameters={})
+    @Export(name="folderPath", refs={String.class}, tree="[0]")
     private Output<String> folderPath;
 
     /**
@@ -89,7 +89,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * The ID of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
@@ -99,7 +99,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
-    @Export(name="projectIdentifier", type=String.class, parameters={})
+    @Export(name="projectIdentifier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectIdentifier;
 
     public Output<Optional<String>> projectIdentifier() {

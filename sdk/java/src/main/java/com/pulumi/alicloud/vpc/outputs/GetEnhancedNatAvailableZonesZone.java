@@ -49,10 +49,10 @@ public final class GetEnhancedNatAvailableZonesZone {
             return this;
         }
         public GetEnhancedNatAvailableZonesZone build() {
-            final var o = new GetEnhancedNatAvailableZonesZone();
-            o.localName = localName;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetEnhancedNatAvailableZonesZone();
+            _resultValue.localName = localName;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -112,7 +112,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * Specify the New Group of Remark Information. Supports up to 500 Characters.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -126,7 +126,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * Specify the New Group of the Bastion Host of Instance Id.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -140,7 +140,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * The User Group self ID.
      * 
      */
-    @Export(name="userGroupId", type=String.class, parameters={})
+    @Export(name="userGroupId", refs={String.class}, tree="[0]")
     private Output<String> userGroupId;
 
     /**
@@ -154,7 +154,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * Specify the New Group Name. Supports up to 128 Characters.
      * 
      */
-    @Export(name="userGroupName", type=String.class, parameters={})
+    @Export(name="userGroupName", refs={String.class}, tree="[0]")
     private Output<String> userGroupName;
 
     /**

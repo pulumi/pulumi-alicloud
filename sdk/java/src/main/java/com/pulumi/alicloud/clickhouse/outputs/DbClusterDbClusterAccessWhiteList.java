@@ -86,11 +86,11 @@ public final class DbClusterDbClusterAccessWhiteList {
             return this;
         }
         public DbClusterDbClusterAccessWhiteList build() {
-            final var o = new DbClusterDbClusterAccessWhiteList();
-            o.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
-            o.dbClusterIpArrayName = dbClusterIpArrayName;
-            o.securityIpList = securityIpList;
-            return o;
+            final var _resultValue = new DbClusterDbClusterAccessWhiteList();
+            _resultValue.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
+            _resultValue.dbClusterIpArrayName = dbClusterIpArrayName;
+            _resultValue.securityIpList = securityIpList;
+            return _resultValue;
         }
     }
 }

@@ -125,15 +125,15 @@ public final class GetKeyPairsResult {
             return pairs(List.of(pairs));
         }
         public GetKeyPairsResult build() {
-            final var o = new GetKeyPairsResult();
-            o.id = id;
-            o.ids = ids;
-            o.keyPairFingerPrint = keyPairFingerPrint;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pairs = pairs;
-            return o;
+            final var _resultValue = new GetKeyPairsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyPairFingerPrint = keyPairFingerPrint;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pairs = pairs;
+            return _resultValue;
         }
     }
 }

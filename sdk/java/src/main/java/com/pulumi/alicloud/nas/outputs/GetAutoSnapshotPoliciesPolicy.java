@@ -206,17 +206,17 @@ public final class GetAutoSnapshotPoliciesPolicy {
             return timePoints(List.of(timePoints));
         }
         public GetAutoSnapshotPoliciesPolicy build() {
-            final var o = new GetAutoSnapshotPoliciesPolicy();
-            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
-            o.autoSnapshotPolicyName = autoSnapshotPolicyName;
-            o.createTime = createTime;
-            o.fileSystemNums = fileSystemNums;
-            o.id = id;
-            o.repeatWeekdays = repeatWeekdays;
-            o.retentionDays = retentionDays;
-            o.status = status;
-            o.timePoints = timePoints;
-            return o;
+            final var _resultValue = new GetAutoSnapshotPoliciesPolicy();
+            _resultValue.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            _resultValue.autoSnapshotPolicyName = autoSnapshotPolicyName;
+            _resultValue.createTime = createTime;
+            _resultValue.fileSystemNums = fileSystemNums;
+            _resultValue.id = id;
+            _resultValue.repeatWeekdays = repeatWeekdays;
+            _resultValue.retentionDays = retentionDays;
+            _resultValue.status = status;
+            _resultValue.timePoints = timePoints;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class GetQuotaApplicationsDimension {
             return this;
         }
         public GetQuotaApplicationsDimension build() {
-            final var o = new GetQuotaApplicationsDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetQuotaApplicationsDimension();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

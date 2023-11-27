@@ -322,23 +322,23 @@ public final class GetEcsInvocationsInvocation {
             return this;
         }
         public GetEcsInvocationsInvocation build() {
-            final var o = new GetEcsInvocationsInvocation();
-            o.commandContent = commandContent;
-            o.commandId = commandId;
-            o.commandName = commandName;
-            o.commandType = commandType;
-            o.createTime = createTime;
-            o.frequency = frequency;
-            o.id = id;
-            o.invocationId = invocationId;
-            o.invocationStatus = invocationStatus;
-            o.invokeInstances = invokeInstances;
-            o.invokeStatus = invokeStatus;
-            o.parameters = parameters;
-            o.repeatMode = repeatMode;
-            o.timed = timed;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetEcsInvocationsInvocation();
+            _resultValue.commandContent = commandContent;
+            _resultValue.commandId = commandId;
+            _resultValue.commandName = commandName;
+            _resultValue.commandType = commandType;
+            _resultValue.createTime = createTime;
+            _resultValue.frequency = frequency;
+            _resultValue.id = id;
+            _resultValue.invocationId = invocationId;
+            _resultValue.invocationStatus = invocationStatus;
+            _resultValue.invokeInstances = invokeInstances;
+            _resultValue.invokeStatus = invokeStatus;
+            _resultValue.parameters = parameters;
+            _resultValue.repeatMode = repeatMode;
+            _resultValue.timed = timed;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

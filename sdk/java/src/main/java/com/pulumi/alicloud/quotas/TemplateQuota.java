@@ -84,7 +84,7 @@ public class TemplateQuota extends com.pulumi.resources.CustomResource {
      * Quota application value.
      * 
      */
-    @Export(name="desireValue", type=Double.class, parameters={})
+    @Export(name="desireValue", refs={Double.class}, tree="[0]")
     private Output<Double> desireValue;
 
     /**
@@ -98,7 +98,7 @@ public class TemplateQuota extends com.pulumi.resources.CustomResource {
      * The Quota Dimensions. See `dimensions` below.
      * 
      */
-    @Export(name="dimensions", type=List.class, parameters={TemplateQuotaDimension.class})
+    @Export(name="dimensions", refs={List.class,TemplateQuotaDimension.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TemplateQuotaDimension>> dimensions;
 
     /**
@@ -112,7 +112,7 @@ public class TemplateQuota extends com.pulumi.resources.CustomResource {
      * The UTC time when the quota takes effect.
      * 
      */
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
@@ -128,7 +128,7 @@ public class TemplateQuota extends com.pulumi.resources.CustomResource {
      * - en: English.
      * 
      */
-    @Export(name="envLanguage", type=String.class, parameters={})
+    @Export(name="envLanguage", refs={String.class}, tree="[0]")
     private Output<String> envLanguage;
 
     /**
@@ -144,7 +144,7 @@ public class TemplateQuota extends com.pulumi.resources.CustomResource {
      * The UTC time when the quota expires.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expireTime;
 
     /**
@@ -160,7 +160,7 @@ public class TemplateQuota extends com.pulumi.resources.CustomResource {
      * - 3: Yes.
      * 
      */
-    @Export(name="noticeType", type=Integer.class, parameters={})
+    @Export(name="noticeType", refs={Integer.class}, tree="[0]")
     private Output<Integer> noticeType;
 
     /**
@@ -176,7 +176,7 @@ public class TemplateQuota extends com.pulumi.resources.CustomResource {
      * The abbreviation of the cloud service name.
      * 
      */
-    @Export(name="productCode", type=String.class, parameters={})
+    @Export(name="productCode", refs={String.class}, tree="[0]")
     private Output<String> productCode;
 
     /**
@@ -190,7 +190,7 @@ public class TemplateQuota extends com.pulumi.resources.CustomResource {
      * The quota ID.
      * 
      */
-    @Export(name="quotaActionCode", type=String.class, parameters={})
+    @Export(name="quotaActionCode", refs={String.class}, tree="[0]")
     private Output<String> quotaActionCode;
 
     /**
@@ -207,7 +207,7 @@ public class TemplateQuota extends com.pulumi.resources.CustomResource {
      * - FlowControl:API rate quota.
      * 
      */
-    @Export(name="quotaCategory", type=String.class, parameters={})
+    @Export(name="quotaCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> quotaCategory;
 
     /**

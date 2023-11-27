@@ -127,13 +127,13 @@ public final class GetAlarmContactGroupsGroup {
             return this;
         }
         public GetAlarmContactGroupsGroup build() {
-            final var o = new GetAlarmContactGroupsGroup();
-            o.alarmContactGroupName = alarmContactGroupName;
-            o.contacts = contacts;
-            o.describe = describe;
-            o.enableSubscribed = enableSubscribed;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetAlarmContactGroupsGroup();
+            _resultValue.alarmContactGroupName = alarmContactGroupName;
+            _resultValue.contacts = contacts;
+            _resultValue.describe = describe;
+            _resultValue.enableSubscribed = enableSubscribed;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

@@ -129,7 +129,7 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      * ID of the ALIKAFKA Instance that owns the groups.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -143,7 +143,7 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -157,7 +157,7 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -171,7 +171,7 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      * Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -185,7 +185,7 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      * The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -199,7 +199,7 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain &#39;a&#39;-&#39;z&#39;, &#39;A&#39;-&#39;Z&#39;, &#39;0&#39;-&#39;9&#39;, &#39;_&#39; and &#39;-&#39;.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

@@ -76,10 +76,10 @@ public final class InstanceDataDisk {
             return this;
         }
         public InstanceDataDisk build() {
-            final var o = new InstanceDataDisk();
-            o.category = category;
-            o.size = size;
-            return o;
+            final var _resultValue = new InstanceDataDisk();
+            _resultValue.category = category;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

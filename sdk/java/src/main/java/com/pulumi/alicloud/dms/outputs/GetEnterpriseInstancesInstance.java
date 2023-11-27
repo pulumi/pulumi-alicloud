@@ -468,32 +468,32 @@ public final class GetEnterpriseInstancesInstance {
             return this;
         }
         public GetEnterpriseInstancesInstance build() {
-            final var o = new GetEnterpriseInstancesInstance();
-            o.dataLinkName = dataLinkName;
-            o.databasePassword = databasePassword;
-            o.databaseUser = databaseUser;
-            o.dbaId = dbaId;
-            o.dbaNickName = dbaNickName;
-            o.ddlOnline = ddlOnline;
-            o.ecsInstanceId = ecsInstanceId;
-            o.ecsRegion = ecsRegion;
-            o.envType = envType;
-            o.exportTimeout = exportTimeout;
-            o.host = host;
-            o.id = id;
-            o.instanceAlias = instanceAlias;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.instanceSource = instanceSource;
-            o.instanceType = instanceType;
-            o.port = port;
-            o.queryTimeout = queryTimeout;
-            o.safeRuleId = safeRuleId;
-            o.sid = sid;
-            o.status = status;
-            o.useDsql = useDsql;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetEnterpriseInstancesInstance();
+            _resultValue.dataLinkName = dataLinkName;
+            _resultValue.databasePassword = databasePassword;
+            _resultValue.databaseUser = databaseUser;
+            _resultValue.dbaId = dbaId;
+            _resultValue.dbaNickName = dbaNickName;
+            _resultValue.ddlOnline = ddlOnline;
+            _resultValue.ecsInstanceId = ecsInstanceId;
+            _resultValue.ecsRegion = ecsRegion;
+            _resultValue.envType = envType;
+            _resultValue.exportTimeout = exportTimeout;
+            _resultValue.host = host;
+            _resultValue.id = id;
+            _resultValue.instanceAlias = instanceAlias;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.instanceSource = instanceSource;
+            _resultValue.instanceType = instanceType;
+            _resultValue.port = port;
+            _resultValue.queryTimeout = queryTimeout;
+            _resultValue.safeRuleId = safeRuleId;
+            _resultValue.sid = sid;
+            _resultValue.status = status;
+            _resultValue.useDsql = useDsql;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

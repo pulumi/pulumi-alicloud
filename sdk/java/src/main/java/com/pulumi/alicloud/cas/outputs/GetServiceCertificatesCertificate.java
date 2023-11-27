@@ -374,26 +374,26 @@ public final class GetServiceCertificatesCertificate {
             return this;
         }
         public GetServiceCertificatesCertificate build() {
-            final var o = new GetServiceCertificatesCertificate();
-            o.buyInAliyun = buyInAliyun;
-            o.cert = cert;
-            o.certId = certId;
-            o.certificateName = certificateName;
-            o.city = city;
-            o.common = common;
-            o.country = country;
-            o.endDate = endDate;
-            o.expired = expired;
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.issuer = issuer;
-            o.key = key;
-            o.name = name;
-            o.orgName = orgName;
-            o.province = province;
-            o.sans = sans;
-            o.startDate = startDate;
-            return o;
+            final var _resultValue = new GetServiceCertificatesCertificate();
+            _resultValue.buyInAliyun = buyInAliyun;
+            _resultValue.cert = cert;
+            _resultValue.certId = certId;
+            _resultValue.certificateName = certificateName;
+            _resultValue.city = city;
+            _resultValue.common = common;
+            _resultValue.country = country;
+            _resultValue.endDate = endDate;
+            _resultValue.expired = expired;
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.issuer = issuer;
+            _resultValue.key = key;
+            _resultValue.name = name;
+            _resultValue.orgName = orgName;
+            _resultValue.province = province;
+            _resultValue.sans = sans;
+            _resultValue.startDate = startDate;
+            return _resultValue;
         }
     }
 }

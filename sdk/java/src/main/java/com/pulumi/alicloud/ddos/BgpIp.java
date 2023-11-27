@@ -38,7 +38,7 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
      * The ID of the native protection enterprise instance to be operated.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -52,7 +52,7 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
      * The IP address.
      * 
      */
-    @Export(name="ip", type=String.class, parameters={})
+    @Export(name="ip", refs={String.class}, tree="[0]")
     private Output<String> ip;
 
     /**
@@ -66,7 +66,7 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -80,7 +80,7 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
      * The current state of the IP address. Valid Value: `normal`, `hole_begin`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

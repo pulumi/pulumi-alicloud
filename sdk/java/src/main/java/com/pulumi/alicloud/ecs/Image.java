@@ -137,7 +137,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
      * 
      */
-    @Export(name="architecture", type=String.class, parameters={})
+    @Export(name="architecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> architecture;
 
     /**
@@ -147,7 +147,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> architecture() {
         return Codegen.optional(this.architecture);
     }
-    @Export(name="deleteAutoSnapshot", type=Boolean.class, parameters={})
+    @Export(name="deleteAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteAutoSnapshot;
 
     public Output<Optional<Boolean>> deleteAutoSnapshot() {
@@ -157,7 +157,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -171,7 +171,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Description of the system with disks and snapshots under the image.
      * 
      */
-    @Export(name="diskDeviceMappings", type=List.class, parameters={ImageDiskDeviceMapping.class})
+    @Export(name="diskDeviceMappings", refs={List.class,ImageDiskDeviceMapping.class}, tree="[0,1]")
     private Output<List<ImageDiskDeviceMapping>> diskDeviceMappings;
 
     /**
@@ -187,7 +187,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -203,7 +203,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
      * 
      */
-    @Export(name="imageName", type=String.class, parameters={})
+    @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output<String> imageName;
 
     /**
@@ -217,7 +217,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The instance ID.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceId;
 
     /**
@@ -233,7 +233,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
@@ -247,7 +247,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
      * 
      */
-    @Export(name="platform", type=String.class, parameters={})
+    @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
     /**
@@ -265,7 +265,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The ID of the enterprise resource group to which a custom image belongs
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -279,7 +279,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Specifies a snapshot that is used to create a combined custom image.
      * 
      */
-    @Export(name="snapshotId", type=String.class, parameters={})
+    @Export(name="snapshotId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotId;
 
     /**
@@ -293,7 +293,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The tag value of an image. The value of N ranges from 1 to 20.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

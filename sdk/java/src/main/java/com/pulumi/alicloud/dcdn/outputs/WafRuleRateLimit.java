@@ -145,14 +145,14 @@ public final class WafRuleRateLimit {
             return this;
         }
         public WafRuleRateLimit build() {
-            final var o = new WafRuleRateLimit();
-            o.interval = interval;
-            o.status = status;
-            o.subKey = subKey;
-            o.target = target;
-            o.threshold = threshold;
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new WafRuleRateLimit();
+            _resultValue.interval = interval;
+            _resultValue.status = status;
+            _resultValue.subKey = subKey;
+            _resultValue.target = target;
+            _resultValue.threshold = threshold;
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

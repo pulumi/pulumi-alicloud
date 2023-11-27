@@ -162,15 +162,15 @@ public final class NetworkAclEntriesIngress {
             return this;
         }
         public NetworkAclEntriesIngress build() {
-            final var o = new NetworkAclEntriesIngress();
-            o.description = description;
-            o.entryType = entryType;
-            o.name = name;
-            o.policy = policy;
-            o.port = port;
-            o.protocol = protocol;
-            o.sourceCidrIp = sourceCidrIp;
-            return o;
+            final var _resultValue = new NetworkAclEntriesIngress();
+            _resultValue.description = description;
+            _resultValue.entryType = entryType;
+            _resultValue.name = name;
+            _resultValue.policy = policy;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.sourceCidrIp = sourceCidrIp;
+            return _resultValue;
         }
     }
 }

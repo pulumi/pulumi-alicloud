@@ -184,16 +184,16 @@ public final class GetVpcFirewallCensCen {
             return this;
         }
         public GetVpcFirewallCensCen build() {
-            final var o = new GetVpcFirewallCensCen();
-            o.cenId = cenId;
-            o.connectType = connectType;
-            o.id = id;
-            o.localVpcs = localVpcs;
-            o.networkInstanceId = networkInstanceId;
-            o.status = status;
-            o.vpcFirewallId = vpcFirewallId;
-            o.vpcFirewallName = vpcFirewallName;
-            return o;
+            final var _resultValue = new GetVpcFirewallCensCen();
+            _resultValue.cenId = cenId;
+            _resultValue.connectType = connectType;
+            _resultValue.id = id;
+            _resultValue.localVpcs = localVpcs;
+            _resultValue.networkInstanceId = networkInstanceId;
+            _resultValue.status = status;
+            _resultValue.vpcFirewallId = vpcFirewallId;
+            _resultValue.vpcFirewallName = vpcFirewallName;
+            return _resultValue;
         }
     }
 }

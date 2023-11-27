@@ -147,15 +147,15 @@ public final class GetInstancesResult {
             return this;
         }
         public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceSource = instanceSource;
-            o.instances = instances;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstancesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceSource = instanceSource;
+            _resultValue.instances = instances;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

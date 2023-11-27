@@ -208,18 +208,18 @@ public final class GetSecurityGroupRulesResult {
             return rules(List.of(rules));
         }
         public GetSecurityGroupRulesResult build() {
-            final var o = new GetSecurityGroupRulesResult();
-            o.direction = direction;
-            o.groupDesc = groupDesc;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            o.ipProtocol = ipProtocol;
-            o.nicType = nicType;
-            o.outputFile = outputFile;
-            o.policy = policy;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetSecurityGroupRulesResult();
+            _resultValue.direction = direction;
+            _resultValue.groupDesc = groupDesc;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.nicType = nicType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policy = policy;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

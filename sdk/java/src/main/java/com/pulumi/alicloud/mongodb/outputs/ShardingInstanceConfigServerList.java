@@ -182,16 +182,16 @@ public final class ShardingInstanceConfigServerList {
             return this;
         }
         public ShardingInstanceConfigServerList build() {
-            final var o = new ShardingInstanceConfigServerList();
-            o.connectString = connectString;
-            o.maxConnections = maxConnections;
-            o.maxIops = maxIops;
-            o.nodeClass = nodeClass;
-            o.nodeDescription = nodeDescription;
-            o.nodeId = nodeId;
-            o.nodeStorage = nodeStorage;
-            o.port = port;
-            return o;
+            final var _resultValue = new ShardingInstanceConfigServerList();
+            _resultValue.connectString = connectString;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.maxIops = maxIops;
+            _resultValue.nodeClass = nodeClass;
+            _resultValue.nodeDescription = nodeDescription;
+            _resultValue.nodeId = nodeId;
+            _resultValue.nodeStorage = nodeStorage;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

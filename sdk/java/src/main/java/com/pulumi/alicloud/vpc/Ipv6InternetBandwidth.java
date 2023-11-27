@@ -145,7 +145,7 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
      * The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -159,7 +159,7 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
      * The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
@@ -173,7 +173,7 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
      * The ID of the IPv6 address instance.
      * 
      */
-    @Export(name="ipv6AddressId", type=String.class, parameters={})
+    @Export(name="ipv6AddressId", refs={String.class}, tree="[0]")
     private Output<String> ipv6AddressId;
 
     /**
@@ -187,7 +187,7 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
      * The ID of the IPv6 gateway to which the IPv6 address belongs.
      * 
      */
-    @Export(name="ipv6GatewayId", type=String.class, parameters={})
+    @Export(name="ipv6GatewayId", refs={String.class}, tree="[0]")
     private Output<String> ipv6GatewayId;
 
     /**
@@ -201,7 +201,7 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

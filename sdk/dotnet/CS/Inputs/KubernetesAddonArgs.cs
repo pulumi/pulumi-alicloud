@@ -32,6 +32,12 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The version of the component.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public KubernetesAddonArgs()
         {
         }

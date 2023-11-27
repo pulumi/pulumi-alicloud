@@ -34,7 +34,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Whether to pay automatically. Default value: `true`. Valid values:
      * 
      */
-    @Export(name="autoPay", type=Boolean.class, parameters={})
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
@@ -48,7 +48,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
      * 
      */
-    @Export(name="autoPropagate", type=Boolean.class, parameters={})
+    @Export(name="autoPropagate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPropagate;
 
     /**
@@ -58,7 +58,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> autoPropagate() {
         return Codegen.optional(this.autoPropagate);
     }
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     public Output<Integer> bandwidth() {
@@ -68,7 +68,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The business status of the VPN gateway.
      * 
      */
-    @Export(name="businessStatus", type=String.class, parameters={})
+    @Export(name="businessStatus", refs={String.class}, tree="[0]")
     private Output<String> businessStatus;
 
     /**
@@ -82,7 +82,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The description of the VPN instance.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
      * 
      */
-    @Export(name="enableIpsec", type=Boolean.class, parameters={})
+    @Export(name="enableIpsec", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableIpsec;
 
     /**
@@ -110,7 +110,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
      * 
      */
-    @Export(name="enableSsl", type=Boolean.class, parameters={})
+    @Export(name="enableSsl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableSsl;
 
     /**
@@ -125,7 +125,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Default to PostPaid.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -140,7 +140,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The internet ip of the VPN.
      * 
      */
-    @Export(name="internetIp", type=String.class, parameters={})
+    @Export(name="internetIp", refs={String.class}, tree="[0]")
     private Output<String> internetIp;
 
     /**
@@ -154,7 +154,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The name of the VPN. Defaults to null.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -172,7 +172,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
@@ -190,7 +190,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -205,7 +205,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * This field is ignored when enable_ssl is false.
      * 
      */
-    @Export(name="sslConnections", type=Integer.class, parameters={})
+    @Export(name="sslConnections", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sslConnections;
 
     /**
@@ -220,7 +220,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The status of the VPN gateway.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -234,7 +234,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The tags of VPN gateway.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -248,7 +248,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The VPN belongs the vpc_id, the field can&#39;t be changed.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -262,7 +262,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The VPN belongs the vswitch_id, the field can&#39;t be changed.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

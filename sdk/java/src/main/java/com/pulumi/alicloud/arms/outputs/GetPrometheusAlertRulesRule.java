@@ -284,21 +284,21 @@ public final class GetPrometheusAlertRulesRule {
             return this;
         }
         public GetPrometheusAlertRulesRule build() {
-            final var o = new GetPrometheusAlertRulesRule();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.dispatchRuleId = dispatchRuleId;
-            o.duration = duration;
-            o.expression = expression;
-            o.id = id;
-            o.labels = labels;
-            o.message = message;
-            o.notifyType = notifyType;
-            o.prometheusAlertRuleId = prometheusAlertRuleId;
-            o.prometheusAlertRuleName = prometheusAlertRuleName;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetPrometheusAlertRulesRule();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.dispatchRuleId = dispatchRuleId;
+            _resultValue.duration = duration;
+            _resultValue.expression = expression;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.message = message;
+            _resultValue.notifyType = notifyType;
+            _resultValue.prometheusAlertRuleId = prometheusAlertRuleId;
+            _resultValue.prometheusAlertRuleName = prometheusAlertRuleName;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -116,7 +116,7 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * Specifies whether to check the validity of the request without actually making the request.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dryRun;
 
     /**
@@ -130,7 +130,7 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      * 
      */
-    @Export(name="natGatewayId", type=String.class, parameters={})
+    @Export(name="natGatewayId", refs={String.class}, tree="[0]")
     private Output<String> natGatewayId;
 
     /**
@@ -144,7 +144,7 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
      * 
      */
-    @Export(name="natIp", type=String.class, parameters={})
+    @Export(name="natIp", refs={String.class}, tree="[0]")
     private Output<String> natIp;
 
     /**
@@ -158,7 +158,7 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * NAT IP ADDRESS of the address segment.
      * 
      */
-    @Export(name="natIpCidr", type=String.class, parameters={})
+    @Export(name="natIpCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> natIpCidr;
 
     /**
@@ -172,7 +172,7 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * The ID of the CIDR block to which the NAT IP address belongs.
      * 
      */
-    @Export(name="natIpCidrId", type=String.class, parameters={})
+    @Export(name="natIpCidrId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> natIpCidrId;
 
     /**
@@ -186,7 +186,7 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
      * 
      */
-    @Export(name="natIpDescription", type=String.class, parameters={})
+    @Export(name="natIpDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> natIpDescription;
 
     /**
@@ -200,7 +200,7 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * Ihe ID of the Nat Ip.
      * 
      */
-    @Export(name="natIpId", type=String.class, parameters={})
+    @Export(name="natIpId", refs={String.class}, tree="[0]")
     private Output<String> natIpId;
 
     /**
@@ -214,7 +214,7 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      * 
      */
-    @Export(name="natIpName", type=String.class, parameters={})
+    @Export(name="natIpName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> natIpName;
 
     /**
@@ -228,7 +228,7 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

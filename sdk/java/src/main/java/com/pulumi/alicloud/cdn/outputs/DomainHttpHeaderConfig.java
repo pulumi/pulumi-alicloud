@@ -62,11 +62,11 @@ public final class DomainHttpHeaderConfig {
             return this;
         }
         public DomainHttpHeaderConfig build() {
-            final var o = new DomainHttpHeaderConfig();
-            o.headerId = headerId;
-            o.headerKey = headerKey;
-            o.headerValue = headerValue;
-            return o;
+            final var _resultValue = new DomainHttpHeaderConfig();
+            _resultValue.headerId = headerId;
+            _resultValue.headerKey = headerKey;
+            _resultValue.headerValue = headerValue;
+            return _resultValue;
         }
     }
 }

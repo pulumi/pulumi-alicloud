@@ -345,11 +345,11 @@ func (o ServiceMeshLoadBalancerPtrOutput) PilotPublicLoadbalancerId() pulumi.Str
 }
 
 type ServiceMeshMeshConfig struct {
-	// The access logging configuration. See `mesh_config-access_log` below.
+	// The access logging configuration. See `accessLog` below.
 	AccessLog *ServiceMeshMeshConfigAccessLog `pulumi:"accessLog"`
-	// Audit information. See `mesh_config-audit` below.
+	// Audit information. See `audit` below.
 	Audit *ServiceMeshMeshConfigAudit `pulumi:"audit"`
-	// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+	// Control plane log collection configuration. See `controlPlaneLog` below.
 	ControlPlaneLog *ServiceMeshMeshConfigControlPlaneLog `pulumi:"controlPlaneLog"`
 	// Whether or not to enable the use of a custom zipkin.
 	CustomizedZipkin *bool `pulumi:"customizedZipkin"`
@@ -357,19 +357,19 @@ type ServiceMeshMeshConfig struct {
 	EnableLocalityLb *bool `pulumi:"enableLocalityLb"`
 	// The IP ADDRESS range.
 	IncludeIpRanges *string `pulumi:"includeIpRanges"`
-	// Kiali configuration. See `mesh_config-kiali` below.
+	// Kiali configuration. See `kiali` below.
 	Kiali *ServiceMeshMeshConfigKiali `pulumi:"kiali"`
-	// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+	// The open-door policy of agent (OPA) plug-in information. See `opa` below.
 	Opa *ServiceMeshMeshConfigOpa `pulumi:"opa"`
 	// Out to the traffic policy.
 	OutboundTrafficPolicy *string `pulumi:"outboundTrafficPolicy"`
-	// Link trace sampling information. See `mesh_config-pilot` below.
+	// Link trace sampling information. See `pilot` below.
 	Pilot *ServiceMeshMeshConfigPilot `pulumi:"pilot"`
 	// Prometheus configuration.
 	Prometheus *ServiceMeshMeshConfigPrometheus `pulumi:"prometheus"`
-	// Proxy configuration. See `mesh_config-proxy` below.
+	// Proxy configuration. See `proxy` below.
 	Proxy *ServiceMeshMeshConfigProxy `pulumi:"proxy"`
-	// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+	// Sidecar injector configuration. See `sidecarInjector` below.
 	SidecarInjector *ServiceMeshMeshConfigSidecarInjector `pulumi:"sidecarInjector"`
 	// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 	Telemetry *bool `pulumi:"telemetry"`
@@ -389,11 +389,11 @@ type ServiceMeshMeshConfigInput interface {
 }
 
 type ServiceMeshMeshConfigArgs struct {
-	// The access logging configuration. See `mesh_config-access_log` below.
+	// The access logging configuration. See `accessLog` below.
 	AccessLog ServiceMeshMeshConfigAccessLogPtrInput `pulumi:"accessLog"`
-	// Audit information. See `mesh_config-audit` below.
+	// Audit information. See `audit` below.
 	Audit ServiceMeshMeshConfigAuditPtrInput `pulumi:"audit"`
-	// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+	// Control plane log collection configuration. See `controlPlaneLog` below.
 	ControlPlaneLog ServiceMeshMeshConfigControlPlaneLogPtrInput `pulumi:"controlPlaneLog"`
 	// Whether or not to enable the use of a custom zipkin.
 	CustomizedZipkin pulumi.BoolPtrInput `pulumi:"customizedZipkin"`
@@ -401,19 +401,19 @@ type ServiceMeshMeshConfigArgs struct {
 	EnableLocalityLb pulumi.BoolPtrInput `pulumi:"enableLocalityLb"`
 	// The IP ADDRESS range.
 	IncludeIpRanges pulumi.StringPtrInput `pulumi:"includeIpRanges"`
-	// Kiali configuration. See `mesh_config-kiali` below.
+	// Kiali configuration. See `kiali` below.
 	Kiali ServiceMeshMeshConfigKialiPtrInput `pulumi:"kiali"`
-	// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+	// The open-door policy of agent (OPA) plug-in information. See `opa` below.
 	Opa ServiceMeshMeshConfigOpaPtrInput `pulumi:"opa"`
 	// Out to the traffic policy.
 	OutboundTrafficPolicy pulumi.StringPtrInput `pulumi:"outboundTrafficPolicy"`
-	// Link trace sampling information. See `mesh_config-pilot` below.
+	// Link trace sampling information. See `pilot` below.
 	Pilot ServiceMeshMeshConfigPilotPtrInput `pulumi:"pilot"`
 	// Prometheus configuration.
 	Prometheus ServiceMeshMeshConfigPrometheusPtrInput `pulumi:"prometheus"`
-	// Proxy configuration. See `mesh_config-proxy` below.
+	// Proxy configuration. See `proxy` below.
 	Proxy ServiceMeshMeshConfigProxyPtrInput `pulumi:"proxy"`
-	// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+	// Sidecar injector configuration. See `sidecarInjector` below.
 	SidecarInjector ServiceMeshMeshConfigSidecarInjectorPtrInput `pulumi:"sidecarInjector"`
 	// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 	Telemetry pulumi.BoolPtrInput `pulumi:"telemetry"`
@@ -498,17 +498,17 @@ func (o ServiceMeshMeshConfigOutput) ToServiceMeshMeshConfigPtrOutputWithContext
 	}).(ServiceMeshMeshConfigPtrOutput)
 }
 
-// The access logging configuration. See `mesh_config-access_log` below.
+// The access logging configuration. See `accessLog` below.
 func (o ServiceMeshMeshConfigOutput) AccessLog() ServiceMeshMeshConfigAccessLogPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigAccessLog { return v.AccessLog }).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
 
-// Audit information. See `mesh_config-audit` below.
+// Audit information. See `audit` below.
 func (o ServiceMeshMeshConfigOutput) Audit() ServiceMeshMeshConfigAuditPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigAudit { return v.Audit }).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
-// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+// Control plane log collection configuration. See `controlPlaneLog` below.
 func (o ServiceMeshMeshConfigOutput) ControlPlaneLog() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigControlPlaneLog { return v.ControlPlaneLog }).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
 }
@@ -528,12 +528,12 @@ func (o ServiceMeshMeshConfigOutput) IncludeIpRanges() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *string { return v.IncludeIpRanges }).(pulumi.StringPtrOutput)
 }
 
-// Kiali configuration. See `mesh_config-kiali` below.
+// Kiali configuration. See `kiali` below.
 func (o ServiceMeshMeshConfigOutput) Kiali() ServiceMeshMeshConfigKialiPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigKiali { return v.Kiali }).(ServiceMeshMeshConfigKialiPtrOutput)
 }
 
-// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+// The open-door policy of agent (OPA) plug-in information. See `opa` below.
 func (o ServiceMeshMeshConfigOutput) Opa() ServiceMeshMeshConfigOpaPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigOpa { return v.Opa }).(ServiceMeshMeshConfigOpaPtrOutput)
 }
@@ -543,7 +543,7 @@ func (o ServiceMeshMeshConfigOutput) OutboundTrafficPolicy() pulumi.StringPtrOut
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *string { return v.OutboundTrafficPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Link trace sampling information. See `mesh_config-pilot` below.
+// Link trace sampling information. See `pilot` below.
 func (o ServiceMeshMeshConfigOutput) Pilot() ServiceMeshMeshConfigPilotPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigPilot { return v.Pilot }).(ServiceMeshMeshConfigPilotPtrOutput)
 }
@@ -553,12 +553,12 @@ func (o ServiceMeshMeshConfigOutput) Prometheus() ServiceMeshMeshConfigPrometheu
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigPrometheus { return v.Prometheus }).(ServiceMeshMeshConfigPrometheusPtrOutput)
 }
 
-// Proxy configuration. See `mesh_config-proxy` below.
+// Proxy configuration. See `proxy` below.
 func (o ServiceMeshMeshConfigOutput) Proxy() ServiceMeshMeshConfigProxyPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigProxy { return v.Proxy }).(ServiceMeshMeshConfigProxyPtrOutput)
 }
 
-// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+// Sidecar injector configuration. See `sidecarInjector` below.
 func (o ServiceMeshMeshConfigOutput) SidecarInjector() ServiceMeshMeshConfigSidecarInjectorPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigSidecarInjector { return v.SidecarInjector }).(ServiceMeshMeshConfigSidecarInjectorPtrOutput)
 }
@@ -597,7 +597,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Elem() ServiceMeshMeshConfigOutput {
 	}).(ServiceMeshMeshConfigOutput)
 }
 
-// The access logging configuration. See `mesh_config-access_log` below.
+// The access logging configuration. See `accessLog` below.
 func (o ServiceMeshMeshConfigPtrOutput) AccessLog() ServiceMeshMeshConfigAccessLogPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigAccessLog {
 		if v == nil {
@@ -607,7 +607,7 @@ func (o ServiceMeshMeshConfigPtrOutput) AccessLog() ServiceMeshMeshConfigAccessL
 	}).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
 
-// Audit information. See `mesh_config-audit` below.
+// Audit information. See `audit` below.
 func (o ServiceMeshMeshConfigPtrOutput) Audit() ServiceMeshMeshConfigAuditPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigAudit {
 		if v == nil {
@@ -617,7 +617,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Audit() ServiceMeshMeshConfigAuditPtrOut
 	}).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
-// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+// Control plane log collection configuration. See `controlPlaneLog` below.
 func (o ServiceMeshMeshConfigPtrOutput) ControlPlaneLog() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigControlPlaneLog {
 		if v == nil {
@@ -657,7 +657,7 @@ func (o ServiceMeshMeshConfigPtrOutput) IncludeIpRanges() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Kiali configuration. See `mesh_config-kiali` below.
+// Kiali configuration. See `kiali` below.
 func (o ServiceMeshMeshConfigPtrOutput) Kiali() ServiceMeshMeshConfigKialiPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigKiali {
 		if v == nil {
@@ -667,7 +667,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Kiali() ServiceMeshMeshConfigKialiPtrOut
 	}).(ServiceMeshMeshConfigKialiPtrOutput)
 }
 
-// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+// The open-door policy of agent (OPA) plug-in information. See `opa` below.
 func (o ServiceMeshMeshConfigPtrOutput) Opa() ServiceMeshMeshConfigOpaPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigOpa {
 		if v == nil {
@@ -687,7 +687,7 @@ func (o ServiceMeshMeshConfigPtrOutput) OutboundTrafficPolicy() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Link trace sampling information. See `mesh_config-pilot` below.
+// Link trace sampling information. See `pilot` below.
 func (o ServiceMeshMeshConfigPtrOutput) Pilot() ServiceMeshMeshConfigPilotPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigPilot {
 		if v == nil {
@@ -707,7 +707,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Prometheus() ServiceMeshMeshConfigPromet
 	}).(ServiceMeshMeshConfigPrometheusPtrOutput)
 }
 
-// Proxy configuration. See `mesh_config-proxy` below.
+// Proxy configuration. See `proxy` below.
 func (o ServiceMeshMeshConfigPtrOutput) Proxy() ServiceMeshMeshConfigProxyPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigProxy {
 		if v == nil {
@@ -717,7 +717,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Proxy() ServiceMeshMeshConfigProxyPtrOut
 	}).(ServiceMeshMeshConfigProxyPtrOutput)
 }
 
-// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+// Sidecar injector configuration. See `sidecarInjector` below.
 func (o ServiceMeshMeshConfigPtrOutput) SidecarInjector() ServiceMeshMeshConfigSidecarInjectorPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigSidecarInjector {
 		if v == nil {
@@ -2133,7 +2133,7 @@ type ServiceMeshMeshConfigSidecarInjector struct {
 	AutoInjectionPolicyEnabled *bool `pulumi:"autoInjectionPolicyEnabled"`
 	// Whether it is the all namespaces you turn on the auto injection capabilities.
 	EnableNamespacesByDefault *bool `pulumi:"enableNamespacesByDefault"`
-	// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+	// CNI configuration. See `initCniConfiguration` below.
 	InitCniConfiguration *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration `pulumi:"initCniConfiguration"`
 	// Sidecar injector Pods on the throttle.
 	LimitCpu *string `pulumi:"limitCpu"`
@@ -2163,7 +2163,7 @@ type ServiceMeshMeshConfigSidecarInjectorArgs struct {
 	AutoInjectionPolicyEnabled pulumi.BoolPtrInput `pulumi:"autoInjectionPolicyEnabled"`
 	// Whether it is the all namespaces you turn on the auto injection capabilities.
 	EnableNamespacesByDefault pulumi.BoolPtrInput `pulumi:"enableNamespacesByDefault"`
-	// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+	// CNI configuration. See `initCniConfiguration` below.
 	InitCniConfiguration ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrInput `pulumi:"initCniConfiguration"`
 	// Sidecar injector Pods on the throttle.
 	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
@@ -2264,7 +2264,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorOutput) EnableNamespacesByDefault() 
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *bool { return v.EnableNamespacesByDefault }).(pulumi.BoolPtrOutput)
 }
 
-// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+// CNI configuration. See `initCniConfiguration` below.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) InitCniConfiguration() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
 		return v.InitCniConfiguration
@@ -2340,7 +2340,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) EnableNamespacesByDefault
 	}).(pulumi.BoolPtrOutput)
 }
 
-// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+// CNI configuration. See `initCniConfiguration` below.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) InitCniConfiguration() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
 		if v == nil {
@@ -3021,6 +3021,8 @@ type GetServiceMeshesMesh struct {
 	Id string `pulumi:"id"`
 	// The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
 	IstioOperatorVersion string `pulumi:"istioOperatorVersion"`
+	// The content of Kube config.
+	KubeConfig string `pulumi:"kubeConfig"`
 	// The configuration of the Load Balancer.
 	LoadBalancers []GetServiceMeshesMeshLoadBalancer `pulumi:"loadBalancers"`
 	// The configuration of the Service grid.
@@ -3065,6 +3067,8 @@ type GetServiceMeshesMeshArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
 	IstioOperatorVersion pulumi.StringInput `pulumi:"istioOperatorVersion"`
+	// The content of Kube config.
+	KubeConfig pulumi.StringInput `pulumi:"kubeConfig"`
 	// The configuration of the Load Balancer.
 	LoadBalancers GetServiceMeshesMeshLoadBalancerArrayInput `pulumi:"loadBalancers"`
 	// The configuration of the Service grid.
@@ -3167,6 +3171,11 @@ func (o GetServiceMeshesMeshOutput) Id() pulumi.StringOutput {
 // The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
 func (o GetServiceMeshesMeshOutput) IstioOperatorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.IstioOperatorVersion }).(pulumi.StringOutput)
+}
+
+// The content of Kube config.
+func (o GetServiceMeshesMeshOutput) KubeConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.KubeConfig }).(pulumi.StringOutput)
 }
 
 // The configuration of the Load Balancer.

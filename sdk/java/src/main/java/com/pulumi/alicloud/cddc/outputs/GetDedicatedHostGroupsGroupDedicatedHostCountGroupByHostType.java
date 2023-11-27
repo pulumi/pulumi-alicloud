@@ -38,9 +38,9 @@ public final class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType 
             return this;
         }
         public GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType build() {
-            final var o = new GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType();
-            o.placeHolder = placeHolder;
-            return o;
+            final var _resultValue = new GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType();
+            _resultValue.placeHolder = placeHolder;
+            return _resultValue;
         }
     }
 }

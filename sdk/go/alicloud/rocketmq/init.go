@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AclRule{}
 	case "alicloud:rocketmq/clientUser:ClientUser":
 		r = &ClientUser{}
+	case "alicloud:rocketmq/consumerGroup:ConsumerGroup":
+		r = &ConsumerGroup{}
 	case "alicloud:rocketmq/dnatEntry:DnatEntry":
 		r = &DnatEntry{}
 	case "alicloud:rocketmq/group:Group":
@@ -39,6 +41,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &QosCar{}
 	case "alicloud:rocketmq/qosPolicy:QosPolicy":
 		r = &QosPolicy{}
+	case "alicloud:rocketmq/rocketMQInstance:RocketMQInstance":
+		r = &RocketMQInstance{}
+	case "alicloud:rocketmq/rocketMQTopic:RocketMQTopic":
+		r = &RocketMQTopic{}
 	case "alicloud:rocketmq/snatEntry:SnatEntry":
 		r = &SnatEntry{}
 	case "alicloud:rocketmq/topic:Topic":
@@ -73,6 +79,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"rocketmq/consumerGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"rocketmq/dnatEntry",
 		&module{version},
 	)
@@ -99,6 +110,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"rocketmq/qosPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rocketmq/rocketMQInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rocketmq/rocketMQTopic",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

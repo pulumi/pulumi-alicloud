@@ -138,15 +138,15 @@ public final class GetInstancesResult {
             return this;
         }
         public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.domainType = domainType;
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.lang = lang;
-            o.outputFile = outputFile;
-            o.userClientIp = userClientIp;
-            return o;
+            final var _resultValue = new GetInstancesResult();
+            _resultValue.domainType = domainType;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instances = instances;
+            _resultValue.lang = lang;
+            _resultValue.outputFile = outputFile;
+            _resultValue.userClientIp = userClientIp;
+            return _resultValue;
         }
     }
 }

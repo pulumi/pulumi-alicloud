@@ -159,18 +159,18 @@ public final class GetPrometheusAlertRulesResult {
             return this;
         }
         public GetPrometheusAlertRulesResult build() {
-            final var o = new GetPrometheusAlertRulesResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.matchExpressions = matchExpressions;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetPrometheusAlertRulesResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.matchExpressions = matchExpressions;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

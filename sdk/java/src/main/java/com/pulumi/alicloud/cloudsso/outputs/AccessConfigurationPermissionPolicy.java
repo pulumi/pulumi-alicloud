@@ -86,11 +86,11 @@ public final class AccessConfigurationPermissionPolicy {
             return this;
         }
         public AccessConfigurationPermissionPolicy build() {
-            final var o = new AccessConfigurationPermissionPolicy();
-            o.permissionPolicyDocument = permissionPolicyDocument;
-            o.permissionPolicyName = permissionPolicyName;
-            o.permissionPolicyType = permissionPolicyType;
-            return o;
+            final var _resultValue = new AccessConfigurationPermissionPolicy();
+            _resultValue.permissionPolicyDocument = permissionPolicyDocument;
+            _resultValue.permissionPolicyName = permissionPolicyName;
+            _resultValue.permissionPolicyType = permissionPolicyType;
+            return _resultValue;
         }
     }
 }

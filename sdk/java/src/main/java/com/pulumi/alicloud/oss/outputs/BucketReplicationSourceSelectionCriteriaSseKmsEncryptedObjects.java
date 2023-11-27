@@ -48,9 +48,9 @@ public final class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObject
             return this;
         }
         public BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects build() {
-            final var o = new BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects();
-            o.status = status;
-            return o;
+            final var _resultValue = new BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects();
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

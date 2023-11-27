@@ -66,10 +66,10 @@ public final class DbInstanceEndpointNodeItem {
             return this;
         }
         public DbInstanceEndpointNodeItem build() {
-            final var o = new DbInstanceEndpointNodeItem();
-            o.nodeId = nodeId;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new DbInstanceEndpointNodeItem();
+            _resultValue.nodeId = nodeId;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

@@ -243,19 +243,19 @@ public final class GetTunnelsTunnel {
             return this;
         }
         public GetTunnelsTunnel build() {
-            final var o = new GetTunnelsTunnel();
-            o.channels = channels;
-            o.createTime = createTime;
-            o.expired = expired;
-            o.id = id;
-            o.instanceName = instanceName;
-            o.tableName = tableName;
-            o.tunnelId = tunnelId;
-            o.tunnelName = tunnelName;
-            o.tunnelRpo = tunnelRpo;
-            o.tunnelStage = tunnelStage;
-            o.tunnelType = tunnelType;
-            return o;
+            final var _resultValue = new GetTunnelsTunnel();
+            _resultValue.channels = channels;
+            _resultValue.createTime = createTime;
+            _resultValue.expired = expired;
+            _resultValue.id = id;
+            _resultValue.instanceName = instanceName;
+            _resultValue.tableName = tableName;
+            _resultValue.tunnelId = tunnelId;
+            _resultValue.tunnelName = tunnelName;
+            _resultValue.tunnelRpo = tunnelRpo;
+            _resultValue.tunnelStage = tunnelStage;
+            _resultValue.tunnelType = tunnelType;
+            return _resultValue;
         }
     }
 }

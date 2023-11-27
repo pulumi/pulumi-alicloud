@@ -68,10 +68,10 @@ public final class ApplicationPvtzDiscoverySvcPortProtocol {
             return this;
         }
         public ApplicationPvtzDiscoverySvcPortProtocol build() {
-            final var o = new ApplicationPvtzDiscoverySvcPortProtocol();
-            o.port = port;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new ApplicationPvtzDiscoverySvcPortProtocol();
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

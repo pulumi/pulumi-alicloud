@@ -71,7 +71,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
      * 
      */
-    @Export(name="cenInstanceName", type=String.class, parameters={})
+    @Export(name="cenInstanceName", refs={String.class}, tree="[0]")
     private Output<String> cenInstanceName;
 
     /**
@@ -85,7 +85,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -103,7 +103,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -117,7 +117,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
      * 
      */
-    @Export(name="protectionLevel", type=String.class, parameters={})
+    @Export(name="protectionLevel", refs={String.class}, tree="[0]")
     private Output<String> protectionLevel;
 
     /**
@@ -131,7 +131,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Cen Instance current status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -145,7 +145,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

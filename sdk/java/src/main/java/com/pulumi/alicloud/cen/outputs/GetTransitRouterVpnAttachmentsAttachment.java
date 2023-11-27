@@ -245,20 +245,20 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
             return zones(List.of(zones));
         }
         public GetTransitRouterVpnAttachmentsAttachment build() {
-            final var o = new GetTransitRouterVpnAttachmentsAttachment();
-            o.autoPublishRouteEnabled = autoPublishRouteEnabled;
-            o.createTime = createTime;
-            o.id = id;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterAttachmentName = transitRouterAttachmentName;
-            o.transitRouterId = transitRouterId;
-            o.vpnId = vpnId;
-            o.vpnOwnerId = vpnOwnerId;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetTransitRouterVpnAttachmentsAttachment();
+            _resultValue.autoPublishRouteEnabled = autoPublishRouteEnabled;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.resourceType = resourceType;
+            _resultValue.status = status;
+            _resultValue.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterAttachmentName = transitRouterAttachmentName;
+            _resultValue.transitRouterId = transitRouterId;
+            _resultValue.vpnId = vpnId;
+            _resultValue.vpnOwnerId = vpnOwnerId;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

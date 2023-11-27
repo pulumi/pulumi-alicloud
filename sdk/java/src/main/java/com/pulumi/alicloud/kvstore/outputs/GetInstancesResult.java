@@ -402,31 +402,31 @@ public final class GetInstancesResult {
             return this;
         }
         public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.architectureType = architectureType;
-            o.editionType = editionType;
-            o.enableDetails = enableDetails;
-            o.engineVersion = engineVersion;
-            o.expired = expired;
-            o.globalInstance = globalInstance;
-            o.id = id;
-            o.ids = ids;
-            o.instanceClass = instanceClass;
-            o.instanceType = instanceType;
-            o.instances = instances;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.searchKey = searchKey;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancesResult();
+            _resultValue.architectureType = architectureType;
+            _resultValue.editionType = editionType;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.expired = expired;
+            _resultValue.globalInstance = globalInstance;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceClass = instanceClass;
+            _resultValue.instanceType = instanceType;
+            _resultValue.instances = instances;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.networkType = networkType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.searchKey = searchKey;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

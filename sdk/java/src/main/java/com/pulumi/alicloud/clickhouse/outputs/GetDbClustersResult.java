@@ -123,15 +123,15 @@ public final class GetDbClustersResult {
             return this;
         }
         public GetDbClustersResult build() {
-            final var o = new GetDbClustersResult();
-            o.clusters = clusters;
-            o.dbClusterDescription = dbClusterDescription;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDbClustersResult();
+            _resultValue.clusters = clusters;
+            _resultValue.dbClusterDescription = dbClusterDescription;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -190,7 +190,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The ACR enterprise edition example properties. See `acr_registry_info` below.
      * 
      */
-    @Export(name="acrRegistryInfos", type=List.class, parameters={ContainerGroupAcrRegistryInfo.class})
+    @Export(name="acrRegistryInfos", refs={List.class,ContainerGroupAcrRegistryInfo.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerGroupAcrRegistryInfo>> acrRegistryInfos;
 
     /**
@@ -204,7 +204,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
      * 
      */
-    @Export(name="autoCreateEip", type=Boolean.class, parameters={})
+    @Export(name="autoCreateEip", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoCreateEip;
 
     /**
@@ -218,7 +218,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      * 
      */
-    @Export(name="autoMatchImageCache", type=Boolean.class, parameters={})
+    @Export(name="autoMatchImageCache", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoMatchImageCache;
 
     /**
@@ -232,7 +232,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The name of the container group.
      * 
      */
-    @Export(name="containerGroupName", type=String.class, parameters={})
+    @Export(name="containerGroupName", refs={String.class}, tree="[0]")
     private Output<String> containerGroupName;
 
     /**
@@ -246,7 +246,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The list of containers. See `containers` below.
      * 
      */
-    @Export(name="containers", type=List.class, parameters={ContainerGroupContainer.class})
+    @Export(name="containers", refs={List.class,ContainerGroupContainer.class}, tree="[0,1]")
     private Output<List<ContainerGroupContainer>> containers;
 
     /**
@@ -260,7 +260,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The amount of CPU resources allocated to the container group.
      * 
      */
-    @Export(name="cpu", type=Double.class, parameters={})
+    @Export(name="cpu", refs={Double.class}, tree="[0]")
     private Output<Double> cpu;
 
     /**
@@ -274,7 +274,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The structure of dnsConfig. See `dns_config` below.
      * 
      */
-    @Export(name="dnsConfig", type=ContainerGroupDnsConfig.class, parameters={})
+    @Export(name="dnsConfig", refs={ContainerGroupDnsConfig.class}, tree="[0]")
     private Output</* @Nullable */ ContainerGroupDnsConfig> dnsConfig;
 
     /**
@@ -288,7 +288,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The security context of the container group. See `eci_security_context` below.
      * 
      */
-    @Export(name="eciSecurityContext", type=ContainerGroupEciSecurityContext.class, parameters={})
+    @Export(name="eciSecurityContext", refs={ContainerGroupEciSecurityContext.class}, tree="[0]")
     private Output</* @Nullable */ ContainerGroupEciSecurityContext> eciSecurityContext;
 
     /**
@@ -302,7 +302,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The bandwidth of the EIP. Default value: `5`.
      * 
      */
-    @Export(name="eipBandwidth", type=Integer.class, parameters={})
+    @Export(name="eipBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> eipBandwidth;
 
     /**
@@ -316,7 +316,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The ID of the elastic IP address (EIP).
      * 
      */
-    @Export(name="eipInstanceId", type=String.class, parameters={})
+    @Export(name="eipInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eipInstanceId;
 
     /**
@@ -330,7 +330,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * HostAliases. See `host_aliases` below.
      * 
      */
-    @Export(name="hostAliases", type=List.class, parameters={ContainerGroupHostAlias.class})
+    @Export(name="hostAliases", refs={List.class,ContainerGroupHostAlias.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerGroupHostAlias>> hostAliases;
 
     /**
@@ -344,7 +344,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The image registry credential. See `image_registry_credential` below.
      * 
      */
-    @Export(name="imageRegistryCredentials", type=List.class, parameters={ContainerGroupImageRegistryCredential.class})
+    @Export(name="imageRegistryCredentials", refs={List.class,ContainerGroupImageRegistryCredential.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerGroupImageRegistryCredential>> imageRegistryCredentials;
 
     /**
@@ -358,7 +358,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The list of initContainers. See `init_containers` below.
      * 
      */
-    @Export(name="initContainers", type=List.class, parameters={ContainerGroupInitContainer.class})
+    @Export(name="initContainers", refs={List.class,ContainerGroupInitContainer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerGroupInitContainer>> initContainers;
 
     /**
@@ -372,7 +372,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
      * 
      */
-    @Export(name="insecureRegistry", type=String.class, parameters={})
+    @Export(name="insecureRegistry", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> insecureRegistry;
 
     /**
@@ -386,7 +386,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The type of the ECS instance.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -400,7 +400,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * (Available since v1.170.0) The Public IP of the container group.
      * 
      */
-    @Export(name="internetIp", type=String.class, parameters={})
+    @Export(name="internetIp", refs={String.class}, tree="[0]")
     private Output<String> internetIp;
 
     /**
@@ -414,7 +414,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * (Available since v1.170.0) The Private IP of the container group.
      * 
      */
-    @Export(name="intranetIp", type=String.class, parameters={})
+    @Export(name="intranetIp", refs={String.class}, tree="[0]")
     private Output<String> intranetIp;
 
     /**
@@ -428,7 +428,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The amount of memory resources allocated to the container group.
      * 
      */
-    @Export(name="memory", type=Double.class, parameters={})
+    @Export(name="memory", refs={Double.class}, tree="[0]")
     private Output<Double> memory;
 
     /**
@@ -442,7 +442,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
      * 
      */
-    @Export(name="plainHttpRegistry", type=String.class, parameters={})
+    @Export(name="plainHttpRegistry", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plainHttpRegistry;
 
     /**
@@ -456,7 +456,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      * 
      */
-    @Export(name="ramRoleName", type=String.class, parameters={})
+    @Export(name="ramRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ramRoleName;
 
     /**
@@ -470,7 +470,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -484,7 +484,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
      * 
      */
-    @Export(name="restartPolicy", type=String.class, parameters={})
+    @Export(name="restartPolicy", refs={String.class}, tree="[0]")
     private Output<String> restartPolicy;
 
     /**
@@ -498,7 +498,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -512,7 +512,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The status of container group.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -528,7 +528,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -544,7 +544,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The list of volumes. See `volumes` below.
      * 
      */
-    @Export(name="volumes", type=List.class, parameters={ContainerGroupVolume.class})
+    @Export(name="volumes", refs={List.class,ContainerGroupVolume.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerGroupVolume>> volumes;
 
     /**
@@ -559,7 +559,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -574,7 +574,7 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

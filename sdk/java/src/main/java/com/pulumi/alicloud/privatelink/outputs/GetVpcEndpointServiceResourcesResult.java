@@ -100,13 +100,13 @@ public final class GetVpcEndpointServiceResourcesResult {
             return this;
         }
         public GetVpcEndpointServiceResourcesResult build() {
-            final var o = new GetVpcEndpointServiceResourcesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.resources = resources;
-            o.serviceId = serviceId;
-            return o;
+            final var _resultValue = new GetVpcEndpointServiceResourcesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resources = resources;
+            _resultValue.serviceId = serviceId;
+            return _resultValue;
         }
     }
 }

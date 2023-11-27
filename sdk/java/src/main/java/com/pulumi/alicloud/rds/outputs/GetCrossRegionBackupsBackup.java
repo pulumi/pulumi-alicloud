@@ -472,30 +472,30 @@ public final class GetCrossRegionBackupsBackup {
             return restoreRegions(List.of(restoreRegions));
         }
         public GetCrossRegionBackupsBackup build() {
-            final var o = new GetCrossRegionBackupsBackup();
-            o.backupEndTime = backupEndTime;
-            o.backupMethod = backupMethod;
-            o.backupSetScale = backupSetScale;
-            o.backupSetStatus = backupSetStatus;
-            o.backupStartTime = backupStartTime;
-            o.backupType = backupType;
-            o.category = category;
-            o.consistentTime = consistentTime;
-            o.crossBackupDownloadLink = crossBackupDownloadLink;
-            o.crossBackupId = crossBackupId;
-            o.crossBackupRegion = crossBackupRegion;
-            o.crossBackupSetFile = crossBackupSetFile;
-            o.crossBackupSetLocation = crossBackupSetLocation;
-            o.crossBackupSetSize = crossBackupSetSize;
-            o.dbInstanceStorageType = dbInstanceStorageType;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.recoveryBeginTime = recoveryBeginTime;
-            o.recoveryEndTime = recoveryEndTime;
-            o.restoreRegions = restoreRegions;
-            return o;
+            final var _resultValue = new GetCrossRegionBackupsBackup();
+            _resultValue.backupEndTime = backupEndTime;
+            _resultValue.backupMethod = backupMethod;
+            _resultValue.backupSetScale = backupSetScale;
+            _resultValue.backupSetStatus = backupSetStatus;
+            _resultValue.backupStartTime = backupStartTime;
+            _resultValue.backupType = backupType;
+            _resultValue.category = category;
+            _resultValue.consistentTime = consistentTime;
+            _resultValue.crossBackupDownloadLink = crossBackupDownloadLink;
+            _resultValue.crossBackupId = crossBackupId;
+            _resultValue.crossBackupRegion = crossBackupRegion;
+            _resultValue.crossBackupSetFile = crossBackupSetFile;
+            _resultValue.crossBackupSetLocation = crossBackupSetLocation;
+            _resultValue.crossBackupSetSize = crossBackupSetSize;
+            _resultValue.dbInstanceStorageType = dbInstanceStorageType;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.recoveryBeginTime = recoveryBeginTime;
+            _resultValue.recoveryEndTime = recoveryEndTime;
+            _resultValue.restoreRegions = restoreRegions;
+            return _resultValue;
         }
     }
 }

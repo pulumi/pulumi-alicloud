@@ -173,16 +173,16 @@ public final class GetAccessRulesResult {
             return this;
         }
         public GetAccessRulesResult build() {
-            final var o = new GetAccessRulesResult();
-            o.accessGroupName = accessGroupName;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            o.rwAccess = rwAccess;
-            o.sourceCidrIp = sourceCidrIp;
-            o.userAccess = userAccess;
-            return o;
+            final var _resultValue = new GetAccessRulesResult();
+            _resultValue.accessGroupName = accessGroupName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            _resultValue.rwAccess = rwAccess;
+            _resultValue.sourceCidrIp = sourceCidrIp;
+            _resultValue.userAccess = userAccess;
+            return _resultValue;
         }
     }
 }

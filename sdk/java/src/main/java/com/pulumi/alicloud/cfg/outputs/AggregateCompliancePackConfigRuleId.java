@@ -48,9 +48,9 @@ public final class AggregateCompliancePackConfigRuleId {
             return this;
         }
         public AggregateCompliancePackConfigRuleId build() {
-            final var o = new AggregateCompliancePackConfigRuleId();
-            o.configRuleId = configRuleId;
-            return o;
+            final var _resultValue = new AggregateCompliancePackConfigRuleId();
+            _resultValue.configRuleId = configRuleId;
+            return _resultValue;
         }
     }
 }

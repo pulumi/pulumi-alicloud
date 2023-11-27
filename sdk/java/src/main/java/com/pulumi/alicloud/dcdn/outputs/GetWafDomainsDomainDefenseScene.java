@@ -65,10 +65,10 @@ public final class GetWafDomainsDomainDefenseScene {
             return this;
         }
         public GetWafDomainsDomainDefenseScene build() {
-            final var o = new GetWafDomainsDomainDefenseScene();
-            o.defenseScene = defenseScene;
-            o.policyId = policyId;
-            return o;
+            final var _resultValue = new GetWafDomainsDomainDefenseScene();
+            _resultValue.defenseScene = defenseScene;
+            _resultValue.policyId = policyId;
+            return _resultValue;
         }
     }
 }

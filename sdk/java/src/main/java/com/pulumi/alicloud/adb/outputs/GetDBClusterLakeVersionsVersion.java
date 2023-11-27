@@ -426,29 +426,29 @@ public final class GetDBClusterLakeVersionsVersion {
             return this;
         }
         public GetDBClusterLakeVersionsVersion build() {
-            final var o = new GetDBClusterLakeVersionsVersion();
-            o.commodityCode = commodityCode;
-            o.computeResource = computeResource;
-            o.connectionString = connectionString;
-            o.createTime = createTime;
-            o.dbClusterId = dbClusterId;
-            o.dbClusterVersion = dbClusterVersion;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.expireTime = expireTime;
-            o.expired = expired;
-            o.id = id;
-            o.lockMode = lockMode;
-            o.lockReason = lockReason;
-            o.paymentType = paymentType;
-            o.port = port;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.storageResource = storageResource;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetDBClusterLakeVersionsVersion();
+            _resultValue.commodityCode = commodityCode;
+            _resultValue.computeResource = computeResource;
+            _resultValue.connectionString = connectionString;
+            _resultValue.createTime = createTime;
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.dbClusterVersion = dbClusterVersion;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.expireTime = expireTime;
+            _resultValue.expired = expired;
+            _resultValue.id = id;
+            _resultValue.lockMode = lockMode;
+            _resultValue.lockReason = lockReason;
+            _resultValue.paymentType = paymentType;
+            _resultValue.port = port;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.storageResource = storageResource;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

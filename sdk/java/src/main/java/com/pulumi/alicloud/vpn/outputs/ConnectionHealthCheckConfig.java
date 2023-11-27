@@ -126,13 +126,13 @@ public final class ConnectionHealthCheckConfig {
             return this;
         }
         public ConnectionHealthCheckConfig build() {
-            final var o = new ConnectionHealthCheckConfig();
-            o.dip = dip;
-            o.enable = enable;
-            o.interval = interval;
-            o.retry = retry;
-            o.sip = sip;
-            return o;
+            final var _resultValue = new ConnectionHealthCheckConfig();
+            _resultValue.dip = dip;
+            _resultValue.enable = enable;
+            _resultValue.interval = interval;
+            _resultValue.retry = retry;
+            _resultValue.sip = sip;
+            return _resultValue;
         }
     }
 }

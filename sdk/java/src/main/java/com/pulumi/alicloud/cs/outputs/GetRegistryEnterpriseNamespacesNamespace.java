@@ -161,15 +161,15 @@ public final class GetRegistryEnterpriseNamespacesNamespace {
             return this;
         }
         public GetRegistryEnterpriseNamespacesNamespace build() {
-            final var o = new GetRegistryEnterpriseNamespacesNamespace();
-            o.autoCreate = autoCreate;
-            o.defaultVisibility = defaultVisibility;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            o.namespaceName = namespaceName;
-            return o;
+            final var _resultValue = new GetRegistryEnterpriseNamespacesNamespace();
+            _resultValue.autoCreate = autoCreate;
+            _resultValue.defaultVisibility = defaultVisibility;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.namespaceName = namespaceName;
+            return _resultValue;
         }
     }
 }

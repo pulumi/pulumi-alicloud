@@ -222,18 +222,18 @@ public final class GetAccessPointsPoint {
             return this;
         }
         public GetAccessPointsPoint build() {
-            final var o = new GetAccessPointsPoint();
-            o.accessPointFeatureModels = accessPointFeatureModels;
-            o.accessPointId = accessPointId;
-            o.accessPointName = accessPointName;
-            o.attachedRegionNo = attachedRegionNo;
-            o.description = description;
-            o.hostOperator = hostOperator;
-            o.id = id;
-            o.location = location;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAccessPointsPoint();
+            _resultValue.accessPointFeatureModels = accessPointFeatureModels;
+            _resultValue.accessPointId = accessPointId;
+            _resultValue.accessPointName = accessPointName;
+            _resultValue.attachedRegionNo = attachedRegionNo;
+            _resultValue.description = description;
+            _resultValue.hostOperator = hostOperator;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

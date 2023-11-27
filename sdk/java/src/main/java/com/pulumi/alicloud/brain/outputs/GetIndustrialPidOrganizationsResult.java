@@ -125,15 +125,15 @@ public final class GetIndustrialPidOrganizationsResult {
             return this;
         }
         public GetIndustrialPidOrganizationsResult build() {
-            final var o = new GetIndustrialPidOrganizationsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.organizations = organizations;
-            o.outputFile = outputFile;
-            o.parentOrganizationId = parentOrganizationId;
-            return o;
+            final var _resultValue = new GetIndustrialPidOrganizationsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.organizations = organizations;
+            _resultValue.outputFile = outputFile;
+            _resultValue.parentOrganizationId = parentOrganizationId;
+            return _resultValue;
         }
     }
 }

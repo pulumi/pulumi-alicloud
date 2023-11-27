@@ -144,7 +144,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The internal endpoint.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -158,7 +158,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The IP address of the internal endpoint.
      * 
      */
-    @Export(name="connectionStringPrefix", type=String.class, parameters={})
+    @Export(name="connectionStringPrefix", refs={String.class}, tree="[0]")
     private Output<String> connectionStringPrefix;
 
     /**
@@ -172,7 +172,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The user-defined description of the endpoint.
      * 
      */
-    @Export(name="dbInstanceEndpointDescription", type=String.class, parameters={})
+    @Export(name="dbInstanceEndpointDescription", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceEndpointDescription;
 
     /**
@@ -186,7 +186,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The Endpoint ID of the instance.
      * 
      */
-    @Export(name="dbInstanceEndpointId", type=String.class, parameters={})
+    @Export(name="dbInstanceEndpointId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceEndpointId;
 
     /**
@@ -200,7 +200,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The type of the endpoint.
      * 
      */
-    @Export(name="dbInstanceEndpointType", type=String.class, parameters={})
+    @Export(name="dbInstanceEndpointType", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceEndpointType;
 
     /**
@@ -214,7 +214,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -228,7 +228,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The type of the IP address.
      * 
      */
-    @Export(name="ipType", type=String.class, parameters={})
+    @Export(name="ipType", refs={String.class}, tree="[0]")
     private Output<String> ipType;
 
     /**
@@ -242,7 +242,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
      * 
      */
-    @Export(name="nodeItems", type=List.class, parameters={DbInstanceEndpointNodeItem.class})
+    @Export(name="nodeItems", refs={List.class,DbInstanceEndpointNodeItem.class}, tree="[0,1]")
     private Output<List<DbInstanceEndpointNodeItem>> nodeItems;
 
     /**
@@ -256,7 +256,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -270,7 +270,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The IP address of the internal endpoint.
      * 
      */
-    @Export(name="privateIpAddress", type=String.class, parameters={})
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output<String> privateIpAddress;
 
     /**
@@ -284,7 +284,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The virtual private cloud (VPC) ID of the internal endpoint.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -298,7 +298,7 @@ public class DbInstanceEndpoint extends com.pulumi.resources.CustomResource {
      * The vSwitch ID of the internal endpoint.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

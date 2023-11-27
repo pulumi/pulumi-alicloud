@@ -87,7 +87,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The resource descriptor of the role.
      * 
      */
-    @Export(name="arn", type=String.class, parameters={})
+    @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
@@ -101,7 +101,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The content of the permissions strategy that plays a role.
      * 
      */
-    @Export(name="assumeRolePolicyDocument", type=String.class, parameters={})
+    @Export(name="assumeRolePolicyDocument", refs={String.class}, tree="[0]")
     private Output<String> assumeRolePolicyDocument;
 
     /**
@@ -115,7 +115,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The description of the Resource Manager role.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -129,7 +129,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
      * 
      */
-    @Export(name="maxSessionDuration", type=Integer.class, parameters={})
+    @Export(name="maxSessionDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxSessionDuration;
 
     /**
@@ -143,7 +143,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * This ID of Resource Manager role. The value is set to `role_name`.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
@@ -157,7 +157,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots &#34;.&#34; and dashes &#34;-&#34;.
      * 
      */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
@@ -171,7 +171,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Role update time.
      * 
      */
-    @Export(name="updateDate", type=String.class, parameters={})
+    @Export(name="updateDate", refs={String.class}, tree="[0]")
     private Output<String> updateDate;
 
     /**

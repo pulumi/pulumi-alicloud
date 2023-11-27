@@ -89,7 +89,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -103,7 +103,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * User language.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -117,7 +117,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
      * 
      */
-    @Export(name="line", type=String.class, parameters={})
+    @Export(name="line", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> line;
 
     /**
@@ -131,7 +131,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -145,7 +145,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * The remark of the domain record.
      * 
      */
-    @Export(name="remark", type=String.class, parameters={})
+    @Export(name="remark", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> remark;
 
     /**
@@ -159,7 +159,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
      * 
      */
-    @Export(name="rr", type=String.class, parameters={})
+    @Export(name="rr", refs={String.class}, tree="[0]")
     private Output<String> rr;
 
     /**
@@ -173,7 +173,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -187,7 +187,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ttl;
 
     /**
@@ -201,7 +201,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -215,7 +215,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * The IP address of the client.
      * 
      */
-    @Export(name="userClientIp", type=String.class, parameters={})
+    @Export(name="userClientIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userClientIp;
 
     /**
@@ -229,7 +229,7 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
      * The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it&#39;s no need to add a `.` at the end.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

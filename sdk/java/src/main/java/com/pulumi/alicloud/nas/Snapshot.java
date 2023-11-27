@@ -93,7 +93,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -107,7 +107,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The ID of the file system.
      * 
      */
-    @Export(name="fileSystemId", type=String.class, parameters={})
+    @Export(name="fileSystemId", refs={String.class}, tree="[0]")
     private Output<String> fileSystemId;
 
     /**
@@ -122,7 +122,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      * 
      */
-    @Export(name="retentionDays", type=Integer.class, parameters={})
+    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**
@@ -137,7 +137,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
      * 
      */
-    @Export(name="snapshotName", type=String.class, parameters={})
+    @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotName;
 
     /**
@@ -151,7 +151,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The status of the snapshot.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

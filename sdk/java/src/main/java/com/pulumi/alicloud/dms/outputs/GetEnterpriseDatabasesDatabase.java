@@ -358,25 +358,25 @@ public final class GetEnterpriseDatabasesDatabase {
             return this;
         }
         public GetEnterpriseDatabasesDatabase build() {
-            final var o = new GetEnterpriseDatabasesDatabase();
-            o.catalogName = catalogName;
-            o.databaseId = databaseId;
-            o.dbType = dbType;
-            o.dbaId = dbaId;
-            o.dbaName = dbaName;
-            o.encoding = encoding;
-            o.envType = envType;
-            o.host = host;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.ownerIdLists = ownerIdLists;
-            o.ownerNameLists = ownerNameLists;
-            o.port = port;
-            o.schemaName = schemaName;
-            o.searchName = searchName;
-            o.sid = sid;
-            o.state = state;
-            return o;
+            final var _resultValue = new GetEnterpriseDatabasesDatabase();
+            _resultValue.catalogName = catalogName;
+            _resultValue.databaseId = databaseId;
+            _resultValue.dbType = dbType;
+            _resultValue.dbaId = dbaId;
+            _resultValue.dbaName = dbaName;
+            _resultValue.encoding = encoding;
+            _resultValue.envType = envType;
+            _resultValue.host = host;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.ownerIdLists = ownerIdLists;
+            _resultValue.ownerNameLists = ownerNameLists;
+            _resultValue.port = port;
+            _resultValue.schemaName = schemaName;
+            _resultValue.searchName = searchName;
+            _resultValue.sid = sid;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

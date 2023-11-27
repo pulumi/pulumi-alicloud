@@ -86,11 +86,11 @@ public final class VirtualNodeTaint {
             return this;
         }
         public VirtualNodeTaint build() {
-            final var o = new VirtualNodeTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new VirtualNodeTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

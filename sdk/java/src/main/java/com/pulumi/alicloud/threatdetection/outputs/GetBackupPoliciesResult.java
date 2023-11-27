@@ -194,19 +194,19 @@ public final class GetBackupPoliciesResult {
             return this;
         }
         public GetBackupPoliciesResult build() {
-            final var o = new GetBackupPoliciesResult();
-            o.currentPage = currentPage;
-            o.id = id;
-            o.ids = ids;
-            o.machineRemark = machineRemark;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageSize = pageSize;
-            o.policies = policies;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBackupPoliciesResult();
+            _resultValue.currentPage = currentPage;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.machineRemark = machineRemark;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageSize = pageSize;
+            _resultValue.policies = policies;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

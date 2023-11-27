@@ -219,18 +219,18 @@ public final class GetServiceTopicsTopic {
             return this;
         }
         public GetServiceTopicsTopic build() {
-            final var o = new GetServiceTopicsTopic();
-            o.createTime = createTime;
-            o.id = id;
-            o.lastModifyTime = lastModifyTime;
-            o.loggingEnabled = loggingEnabled;
-            o.maxMessageSize = maxMessageSize;
-            o.messageCount = messageCount;
-            o.messageRetentionPeriod = messageRetentionPeriod;
-            o.topicInnerUrl = topicInnerUrl;
-            o.topicName = topicName;
-            o.topicUrl = topicUrl;
-            return o;
+            final var _resultValue = new GetServiceTopicsTopic();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.lastModifyTime = lastModifyTime;
+            _resultValue.loggingEnabled = loggingEnabled;
+            _resultValue.maxMessageSize = maxMessageSize;
+            _resultValue.messageCount = messageCount;
+            _resultValue.messageRetentionPeriod = messageRetentionPeriod;
+            _resultValue.topicInnerUrl = topicInnerUrl;
+            _resultValue.topicName = topicName;
+            _resultValue.topicUrl = topicUrl;
+            return _resultValue;
         }
     }
 }

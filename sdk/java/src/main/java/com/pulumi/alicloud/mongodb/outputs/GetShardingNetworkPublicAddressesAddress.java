@@ -236,19 +236,19 @@ public final class GetShardingNetworkPublicAddressesAddress {
             return this;
         }
         public GetShardingNetworkPublicAddressesAddress build() {
-            final var o = new GetShardingNetworkPublicAddressesAddress();
-            o.dbInstanceId = dbInstanceId;
-            o.expiredTime = expiredTime;
-            o.ipAddress = ipAddress;
-            o.networkAddress = networkAddress;
-            o.networkType = networkType;
-            o.nodeId = nodeId;
-            o.nodeType = nodeType;
-            o.port = port;
-            o.role = role;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetShardingNetworkPublicAddressesAddress();
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.networkAddress = networkAddress;
+            _resultValue.networkType = networkType;
+            _resultValue.nodeId = nodeId;
+            _resultValue.nodeType = nodeType;
+            _resultValue.port = port;
+            _resultValue.role = role;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

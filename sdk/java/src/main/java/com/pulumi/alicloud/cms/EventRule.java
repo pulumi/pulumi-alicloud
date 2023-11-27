@@ -97,7 +97,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
      * 
      */
-    @Export(name="contactParameters", type=List.class, parameters={EventRuleContactParameter.class})
+    @Export(name="contactParameters", refs={List.class,EventRuleContactParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleContactParameter>> contactParameters;
 
     /**
@@ -111,7 +111,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The description of the event-triggered alert rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -125,7 +125,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
      * 
      */
-    @Export(name="eventPattern", type=EventRuleEventPattern.class, parameters={})
+    @Export(name="eventPattern", refs={EventRuleEventPattern.class}, tree="[0]")
     private Output<EventRuleEventPattern> eventPattern;
 
     /**
@@ -139,7 +139,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The information about the recipients in Function Compute. See `fc_parameters` below.
      * 
      */
-    @Export(name="fcParameters", type=List.class, parameters={EventRuleFcParameter.class})
+    @Export(name="fcParameters", refs={List.class,EventRuleFcParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleFcParameter>> fcParameters;
 
     /**
@@ -153,7 +153,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The ID of the application group to which the event-triggered alert rule belongs.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupId;
 
     /**
@@ -167,7 +167,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The information about the recipients in Message Service (MNS). See `mns_parameters` below.
      * 
      */
-    @Export(name="mnsParameters", type=List.class, parameters={EventRuleMnsParameter.class})
+    @Export(name="mnsParameters", refs={List.class,EventRuleMnsParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleMnsParameter>> mnsParameters;
 
     /**
@@ -181,7 +181,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The parameters of API callback notification. See `open_api_parameters` below.
      * 
      */
-    @Export(name="openApiParameters", type=List.class, parameters={EventRuleOpenApiParameter.class})
+    @Export(name="openApiParameters", refs={List.class,EventRuleOpenApiParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleOpenApiParameter>> openApiParameters;
 
     /**
@@ -195,7 +195,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The name of the event-triggered alert rule.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
@@ -209,7 +209,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The silence time.
      * 
      */
-    @Export(name="silenceTime", type=Integer.class, parameters={})
+    @Export(name="silenceTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> silenceTime;
 
     /**
@@ -223,7 +223,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The information about the recipients in Simple Log Service. See `sls_parameters` below.
      * 
      */
-    @Export(name="slsParameters", type=List.class, parameters={EventRuleSlsParameter.class})
+    @Export(name="slsParameters", refs={List.class,EventRuleSlsParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleSlsParameter>> slsParameters;
 
     /**
@@ -237,7 +237,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `ENABLED`, `DISABLED`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -251,7 +251,7 @@ public class EventRule extends com.pulumi.resources.CustomResource {
      * The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
      * 
      */
-    @Export(name="webhookParameters", type=List.class, parameters={EventRuleWebhookParameter.class})
+    @Export(name="webhookParameters", refs={List.class,EventRuleWebhookParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EventRuleWebhookParameter>> webhookParameters;
 
     /**

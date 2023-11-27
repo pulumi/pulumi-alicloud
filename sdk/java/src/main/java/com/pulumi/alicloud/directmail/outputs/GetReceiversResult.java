@@ -137,16 +137,16 @@ public final class GetReceiversResult {
             return this;
         }
         public GetReceiversResult build() {
-            final var o = new GetReceiversResult();
-            o.id = id;
-            o.ids = ids;
-            o.keyWord = keyWord;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.receiverses = receiverses;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetReceiversResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyWord = keyWord;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.receiverses = receiverses;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

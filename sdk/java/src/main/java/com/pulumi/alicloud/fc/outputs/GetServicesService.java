@@ -221,18 +221,18 @@ public final class GetServicesService {
             return this;
         }
         public GetServicesService build() {
-            final var o = new GetServicesService();
-            o.creationTime = creationTime;
-            o.description = description;
-            o.id = id;
-            o.internetAccess = internetAccess;
-            o.lastModificationTime = lastModificationTime;
-            o.logConfig = logConfig;
-            o.name = name;
-            o.nasConfig = nasConfig;
-            o.role = role;
-            o.vpcConfig = vpcConfig;
-            return o;
+            final var _resultValue = new GetServicesService();
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.internetAccess = internetAccess;
+            _resultValue.lastModificationTime = lastModificationTime;
+            _resultValue.logConfig = logConfig;
+            _resultValue.name = name;
+            _resultValue.nasConfig = nasConfig;
+            _resultValue.role = role;
+            _resultValue.vpcConfig = vpcConfig;
+            return _resultValue;
         }
     }
 }

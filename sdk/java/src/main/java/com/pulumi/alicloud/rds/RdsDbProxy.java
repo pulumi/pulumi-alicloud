@@ -145,7 +145,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The port number that is associated with the proxy endpoint.
      * 
      */
-    @Export(name="dbProxyConnectStringPort", type=Integer.class, parameters={})
+    @Export(name="dbProxyConnectStringPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbProxyConnectStringPort;
 
     /**
@@ -159,7 +159,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The new prefix of the proxy endpoint. Enter a prefix.
      * 
      */
-    @Export(name="dbProxyConnectionPrefix", type=String.class, parameters={})
+    @Export(name="dbProxyConnectionPrefix", refs={String.class}, tree="[0]")
     private Output<String> dbProxyConnectionPrefix;
 
     /**
@@ -173,7 +173,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * Connection instance string.
      * 
      */
-    @Export(name="dbProxyConnectionString", type=String.class, parameters={})
+    @Export(name="dbProxyConnectionString", refs={String.class}, tree="[0]")
     private Output<String> dbProxyConnectionString;
 
     /**
@@ -187,7 +187,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * Remarks of agent terminal.
      * 
      */
-    @Export(name="dbProxyEndpointAliases", type=String.class, parameters={})
+    @Export(name="dbProxyEndpointAliases", refs={String.class}, tree="[0]")
     private Output<String> dbProxyEndpointAliases;
 
     /**
@@ -201,7 +201,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * Proxy connection address ID.
      * 
      */
-    @Export(name="dbProxyEndpointId", type=String.class, parameters={})
+    @Export(name="dbProxyEndpointId", refs={String.class}, tree="[0]")
     private Output<String> dbProxyEndpointId;
 
     /**
@@ -219,7 +219,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
      * 
      */
-    @Export(name="dbProxyEndpointReadWriteMode", type=String.class, parameters={})
+    @Export(name="dbProxyEndpointReadWriteMode", refs={String.class}, tree="[0]")
     private Output<String> dbProxyEndpointReadWriteMode;
 
     /**
@@ -245,7 +245,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      * 
      */
-    @Export(name="dbProxyFeatures", type=String.class, parameters={})
+    @Export(name="dbProxyFeatures", refs={String.class}, tree="[0]")
     private Output<String> dbProxyFeatures;
 
     /**
@@ -267,7 +267,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The number of proxy instances that are enabled. Valid values: 1 to 60.
      * 
      */
-    @Export(name="dbProxyInstanceNum", type=Integer.class, parameters={})
+    @Export(name="dbProxyInstanceNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbProxyInstanceNum;
 
     /**
@@ -284,7 +284,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * - Update: updates the validity period of the SSL certificate.
      * 
      */
-    @Export(name="dbProxySslEnabled", type=String.class, parameters={})
+    @Export(name="dbProxySslEnabled", refs={String.class}, tree="[0]")
     private Output<String> dbProxySslEnabled;
 
     /**
@@ -301,7 +301,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The point in time at which you want to apply the new database proxy settings. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      * 
      */
-    @Export(name="effectiveSpecificTime", type=String.class, parameters={})
+    @Export(name="effectiveSpecificTime", refs={String.class}, tree="[0]")
     private Output<String> effectiveSpecificTime;
 
     /**
@@ -320,7 +320,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
      * 
      */
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output<String> effectiveTime;
 
     /**
@@ -339,7 +339,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The Id of instance that can run database.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -353,7 +353,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The network type of the instance. Set the value to VPC.
      * 
      */
-    @Export(name="instanceNetworkType", type=String.class, parameters={})
+    @Export(name="instanceNetworkType", refs={String.class}, tree="[0]")
     private Output<String> instanceNetworkType;
 
     /**
@@ -367,7 +367,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * Network type of proxy connection address.
      * 
      */
-    @Export(name="netType", type=String.class, parameters={})
+    @Export(name="netType", refs={String.class}, tree="[0]")
     private Output<String> netType;
 
     /**
@@ -385,7 +385,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
      * 
      */
-    @Export(name="readOnlyInstanceDistributionType", type=String.class, parameters={})
+    @Export(name="readOnlyInstanceDistributionType", refs={String.class}, tree="[0]")
     private Output<String> readOnlyInstanceDistributionType;
 
     /**
@@ -405,7 +405,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
      * 
      */
-    @Export(name="readOnlyInstanceMaxDelayTime", type=Integer.class, parameters={})
+    @Export(name="readOnlyInstanceMaxDelayTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> readOnlyInstanceMaxDelayTime;
 
     /**
@@ -421,7 +421,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
      * 
      */
-    @Export(name="readOnlyInstanceWeights", type=List.class, parameters={RdsDbProxyReadOnlyInstanceWeight.class})
+    @Export(name="readOnlyInstanceWeights", refs={List.class,RdsDbProxyReadOnlyInstanceWeight.class}, tree="[0,1]")
     private Output<List<RdsDbProxyReadOnlyInstanceWeight>> readOnlyInstanceWeights;
 
     /**
@@ -435,7 +435,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -449,7 +449,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The time when the certificate expires.
      * 
      */
-    @Export(name="sslExpiredTime", type=String.class, parameters={})
+    @Export(name="sslExpiredTime", refs={String.class}, tree="[0]")
     private Output<String> sslExpiredTime;
 
     /**
@@ -463,7 +463,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      * 
      */
-    @Export(name="switchTime", type=String.class, parameters={})
+    @Export(name="switchTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> switchTime;
 
     /**
@@ -480,7 +480,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * - SpecificTime: ApsaraDB RDS performs the upgrade at a specified point in time.
      * 
      */
-    @Export(name="upgradeTime", type=String.class, parameters={})
+    @Export(name="upgradeTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> upgradeTime;
 
     /**
@@ -497,7 +497,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The ID of the virtual private cloud (VPC) to which the instance belongs.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -511,7 +511,7 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
      * The ID of the vSwitch that is associated with the specified VPC.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

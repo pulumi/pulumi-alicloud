@@ -89,12 +89,12 @@ public final class GetJobTemplatesResult {
             return templates(List.of(templates));
         }
         public GetJobTemplatesResult build() {
-            final var o = new GetJobTemplatesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.templates = templates;
-            return o;
+            final var _resultValue = new GetJobTemplatesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.templates = templates;
+            return _resultValue;
         }
     }
 }

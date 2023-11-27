@@ -179,16 +179,16 @@ public final class GetTriggersTrigger {
             return this;
         }
         public GetTriggersTrigger build() {
-            final var o = new GetTriggersTrigger();
-            o.config = config;
-            o.creationTime = creationTime;
-            o.id = id;
-            o.invocationRole = invocationRole;
-            o.lastModificationTime = lastModificationTime;
-            o.name = name;
-            o.sourceArn = sourceArn;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetTriggersTrigger();
+            _resultValue.config = config;
+            _resultValue.creationTime = creationTime;
+            _resultValue.id = id;
+            _resultValue.invocationRole = invocationRole;
+            _resultValue.lastModificationTime = lastModificationTime;
+            _resultValue.name = name;
+            _resultValue.sourceArn = sourceArn;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

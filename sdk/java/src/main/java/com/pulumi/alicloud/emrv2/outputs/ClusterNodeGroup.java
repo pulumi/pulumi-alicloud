@@ -337,23 +337,23 @@ public final class ClusterNodeGroup {
             return this;
         }
         public ClusterNodeGroup build() {
-            final var o = new ClusterNodeGroup();
-            o.additionalSecurityGroupIds = additionalSecurityGroupIds;
-            o.costOptimizedConfig = costOptimizedConfig;
-            o.dataDisks = dataDisks;
-            o.gracefulShutdown = gracefulShutdown;
-            o.instanceTypes = instanceTypes;
-            o.nodeCount = nodeCount;
-            o.nodeGroupName = nodeGroupName;
-            o.nodeGroupType = nodeGroupType;
-            o.paymentType = paymentType;
-            o.spotBidPrices = spotBidPrices;
-            o.spotInstanceRemedy = spotInstanceRemedy;
-            o.subscriptionConfig = subscriptionConfig;
-            o.systemDisk = systemDisk;
-            o.vswitchIds = vswitchIds;
-            o.withPublicIp = withPublicIp;
-            return o;
+            final var _resultValue = new ClusterNodeGroup();
+            _resultValue.additionalSecurityGroupIds = additionalSecurityGroupIds;
+            _resultValue.costOptimizedConfig = costOptimizedConfig;
+            _resultValue.dataDisks = dataDisks;
+            _resultValue.gracefulShutdown = gracefulShutdown;
+            _resultValue.instanceTypes = instanceTypes;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.nodeGroupName = nodeGroupName;
+            _resultValue.nodeGroupType = nodeGroupType;
+            _resultValue.paymentType = paymentType;
+            _resultValue.spotBidPrices = spotBidPrices;
+            _resultValue.spotInstanceRemedy = spotInstanceRemedy;
+            _resultValue.subscriptionConfig = subscriptionConfig;
+            _resultValue.systemDisk = systemDisk;
+            _resultValue.vswitchIds = vswitchIds;
+            _resultValue.withPublicIp = withPublicIp;
+            return _resultValue;
         }
     }
 }

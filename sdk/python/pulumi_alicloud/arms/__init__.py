@@ -5,9 +5,15 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .addon_release import *
 from .alert_contact import *
 from .alert_contact_group import *
 from .dispatch_rule import *
+from .env_custom_job import *
+from .env_feature import *
+from .env_pod_monitor import *
+from .env_service_monitor import *
+from .environment import *
 from .get_alert_contact_groups import *
 from .get_alert_contacts import *
 from .get_dispatch_rules import *

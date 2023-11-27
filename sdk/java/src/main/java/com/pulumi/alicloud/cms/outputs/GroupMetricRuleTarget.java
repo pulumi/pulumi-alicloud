@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class GroupMetricRuleTarget {
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the resource.
+     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     private @Nullable String arn;
@@ -23,8 +24,6 @@ public final class GroupMetricRuleTarget {
     private @Nullable String id;
     /**
      * @return The parameters of the alert callback. The parameters are in the JSON format.
-     * 
-     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     private @Nullable String jsonParams;
@@ -37,6 +36,7 @@ public final class GroupMetricRuleTarget {
     private GroupMetricRuleTarget() {}
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the resource.
+     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     public Optional<String> arn() {
@@ -51,8 +51,6 @@ public final class GroupMetricRuleTarget {
     }
     /**
      * @return The parameters of the alert callback. The parameters are in the JSON format.
-     * 
-     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     public Optional<String> jsonParams() {
@@ -109,12 +107,12 @@ public final class GroupMetricRuleTarget {
             return this;
         }
         public GroupMetricRuleTarget build() {
-            final var o = new GroupMetricRuleTarget();
-            o.arn = arn;
-            o.id = id;
-            o.jsonParams = jsonParams;
-            o.level = level;
-            return o;
+            final var _resultValue = new GroupMetricRuleTarget();
+            _resultValue.arn = arn;
+            _resultValue.id = id;
+            _resultValue.jsonParams = jsonParams;
+            _resultValue.level = level;
+            return _resultValue;
         }
     }
 }

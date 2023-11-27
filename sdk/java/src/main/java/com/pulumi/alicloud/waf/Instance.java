@@ -39,7 +39,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specify whether big screen is supported. Valid values: [&#34;0&#34;, &#34;1&#34;]. &#34;0&#34; for false and &#34;1&#34; for true.
      * 
      */
-    @Export(name="bigScreen", type=String.class, parameters={})
+    @Export(name="bigScreen", refs={String.class}, tree="[0]")
     private Output<String> bigScreen;
 
     /**
@@ -53,7 +53,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specify the number of exclusive WAF IP addresses.
      * 
      */
-    @Export(name="exclusiveIpPackage", type=String.class, parameters={})
+    @Export(name="exclusiveIpPackage", refs={String.class}, tree="[0]")
     private Output<String> exclusiveIpPackage;
 
     /**
@@ -67,7 +67,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The extra bandwidth. Unit: Mbit/s.
      * 
      */
-    @Export(name="extBandwidth", type=String.class, parameters={})
+    @Export(name="extBandwidth", refs={String.class}, tree="[0]")
     private Output<String> extBandwidth;
 
     /**
@@ -81,7 +81,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of extra domains.
      * 
      */
-    @Export(name="extDomainPackage", type=String.class, parameters={})
+    @Export(name="extDomainPackage", refs={String.class}, tree="[0]")
     private Output<String> extDomainPackage;
 
     /**
@@ -95,7 +95,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Log storage size. Unit: T. Valid values: [3, 5, 10, 20, 50].
      * 
      */
-    @Export(name="logStorage", type=String.class, parameters={})
+    @Export(name="logStorage", refs={String.class}, tree="[0]")
     private Output<String> logStorage;
 
     /**
@@ -109,7 +109,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Log storage period. Unit: day. Valid values: [180, 360].
      * 
      */
-    @Export(name="logTime", type=String.class, parameters={})
+    @Export(name="logTime", refs={String.class}, tree="[0]")
     private Output<String> logTime;
 
     /**
@@ -123,7 +123,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Type of configuration change. Valid value: Upgrade.
      * 
      */
-    @Export(name="modifyType", type=String.class, parameters={})
+    @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
@@ -141,7 +141,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * International site customers can purchase the following versions of International region: [&#34;version_pro&#34;, &#34;version_business&#34;, &#34;version_enterprise&#34;].
      * 
      */
-    @Export(name="packageCode", type=String.class, parameters={})
+    @Export(name="packageCode", refs={String.class}, tree="[0]")
     private Output<String> packageCode;
 
     /**
@@ -159,7 +159,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Service time of Web Application Firewall.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -173,7 +173,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specify whether professional service is supported. Valid values: [&#34;true&#34;, &#34;false&#34;]
      * 
      */
-    @Export(name="prefessionalService", type=String.class, parameters={})
+    @Export(name="prefessionalService", refs={String.class}, tree="[0]")
     private Output<String> prefessionalService;
 
     /**
@@ -187,7 +187,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The instance region ID.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -201,7 +201,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Renewal period of WAF service. Unit: month
      * 
      */
-    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
@@ -217,7 +217,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: &#34;On&#34; and &#34;Off&#34;. Default to &#34;Off&#34;.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalStatus;
 
     /**
@@ -233,7 +233,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The resource group ID.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -247,7 +247,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of the instance.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
@@ -261,7 +261,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Subscription of WAF service. Valid values: [&#34;Subscription&#34;, &#34;PayAsYouGo&#34;].
      * 
      */
-    @Export(name="subscriptionType", type=String.class, parameters={})
+    @Export(name="subscriptionType", refs={String.class}, tree="[0]")
     private Output<String> subscriptionType;
 
     /**
@@ -275,7 +275,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specify whether Log service is supported. Valid values: [&#34;true&#34;, &#34;false&#34;]
      * 
      */
-    @Export(name="wafLog", type=String.class, parameters={})
+    @Export(name="wafLog", refs={String.class}, tree="[0]")
     private Output<String> wafLog;
 
     /**

@@ -125,13 +125,13 @@ public final class ApiHttpServiceConfig {
             return this;
         }
         public ApiHttpServiceConfig build() {
-            final var o = new ApiHttpServiceConfig();
-            o.address = address;
-            o.aoneName = aoneName;
-            o.method = method;
-            o.path = path;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new ApiHttpServiceConfig();
+            _resultValue.address = address;
+            _resultValue.aoneName = aoneName;
+            _resultValue.method = method;
+            _resultValue.path = path;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

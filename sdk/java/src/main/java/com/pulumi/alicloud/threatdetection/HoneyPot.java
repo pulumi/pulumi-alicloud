@@ -87,7 +87,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * Honeypot ID.
      * 
      */
-    @Export(name="honeypotId", type=String.class, parameters={})
+    @Export(name="honeypotId", refs={String.class}, tree="[0]")
     private Output<String> honeypotId;
 
     /**
@@ -101,7 +101,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * The image ID of the honeypot.
      * 
      */
-    @Export(name="honeypotImageId", type=String.class, parameters={})
+    @Export(name="honeypotImageId", refs={String.class}, tree="[0]")
     private Output<String> honeypotImageId;
 
     /**
@@ -115,7 +115,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * Honeypot mirror name.
      * 
      */
-    @Export(name="honeypotImageName", type=String.class, parameters={})
+    @Export(name="honeypotImageName", refs={String.class}, tree="[0]")
     private Output<String> honeypotImageName;
 
     /**
@@ -129,7 +129,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * Honeypot custom name.
      * 
      */
-    @Export(name="honeypotName", type=String.class, parameters={})
+    @Export(name="honeypotName", refs={String.class}, tree="[0]")
     private Output<String> honeypotName;
 
     /**
@@ -143,7 +143,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * The ID of the honeypot management node.
      * 
      */
-    @Export(name="nodeId", type=String.class, parameters={})
+    @Export(name="nodeId", refs={String.class}, tree="[0]")
     private Output<String> nodeId;
 
     /**
@@ -157,7 +157,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * The custom parameter ID of honeypot.
      * 
      */
-    @Export(name="presetId", type=String.class, parameters={})
+    @Export(name="presetId", refs={String.class}, tree="[0]")
     private Output<String> presetId;
 
     /**
@@ -171,7 +171,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * Honeypot status.
      * 
      */
-    @Export(name="states", type=List.class, parameters={String.class})
+    @Export(name="states", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> states;
 
     /**
@@ -185,7 +185,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

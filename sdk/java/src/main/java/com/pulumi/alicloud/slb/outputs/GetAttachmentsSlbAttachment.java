@@ -66,10 +66,10 @@ public final class GetAttachmentsSlbAttachment {
             return this;
         }
         public GetAttachmentsSlbAttachment build() {
-            final var o = new GetAttachmentsSlbAttachment();
-            o.instanceId = instanceId;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetAttachmentsSlbAttachment();
+            _resultValue.instanceId = instanceId;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

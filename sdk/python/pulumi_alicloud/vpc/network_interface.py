@@ -16,6 +16,8 @@ class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -46,6 +48,10 @@ class NetworkInterfaceArgs:
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv4_prefix_count is not None:
+            pulumi.set(__self__, "ipv4_prefix_count", ipv4_prefix_count)
+        if ipv4_prefixes is not None:
+            pulumi.set(__self__, "ipv4_prefixes", ipv4_prefixes)
         if ipv6_address_count is not None:
             pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
         if ipv6_addresses is not None:
@@ -115,6 +121,24 @@ class NetworkInterfaceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipv4PrefixCount")
+    def ipv4_prefix_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ipv4_prefix_count")
+
+    @ipv4_prefix_count.setter
+    def ipv4_prefix_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv4_prefix_count", value)
+
+    @property
+    @pulumi.getter(name="ipv4Prefixes")
+    def ipv4_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ipv4_prefixes")
+
+    @ipv4_prefixes.setter
+    def ipv4_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4_prefixes", value)
 
     @property
     @pulumi.getter(name="ipv6AddressCount")
@@ -292,6 +316,8 @@ class NetworkInterfaceArgs:
 class _NetworkInterfaceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mac: Optional[pulumi.Input[str]] = None,
@@ -325,6 +351,10 @@ class _NetworkInterfaceState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv4_prefix_count is not None:
+            pulumi.set(__self__, "ipv4_prefix_count", ipv4_prefix_count)
+        if ipv4_prefixes is not None:
+            pulumi.set(__self__, "ipv4_prefixes", ipv4_prefixes)
         if ipv6_address_count is not None:
             pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
         if ipv6_addresses is not None:
@@ -388,6 +418,24 @@ class _NetworkInterfaceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipv4PrefixCount")
+    def ipv4_prefix_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ipv4_prefix_count")
+
+    @ipv4_prefix_count.setter
+    def ipv4_prefix_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv4_prefix_count", value)
+
+    @property
+    @pulumi.getter(name="ipv4Prefixes")
+    def ipv4_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ipv4_prefixes")
+
+    @ipv4_prefixes.setter
+    def ipv4_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4_prefixes", value)
 
     @property
     @pulumi.getter(name="ipv6AddressCount")
@@ -600,6 +648,8 @@ class NetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -739,6 +789,8 @@ class NetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -765,6 +817,8 @@ class NetworkInterface(pulumi.CustomResource):
             __props__ = NetworkInterfaceArgs.__new__(NetworkInterfaceArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
+            __props__.__dict__["ipv4_prefixes"] = ipv4_prefixes
             __props__.__dict__["ipv6_address_count"] = ipv6_address_count
             __props__.__dict__["ipv6_addresses"] = ipv6_addresses
             __props__.__dict__["name"] = name
@@ -796,6 +850,8 @@ class NetworkInterface(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
+            ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_address_count: Optional[pulumi.Input[int]] = None,
             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             mac: Optional[pulumi.Input[str]] = None,
@@ -837,6 +893,8 @@ class NetworkInterface(pulumi.CustomResource):
         __props__ = _NetworkInterfaceState.__new__(_NetworkInterfaceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
+        __props__.__dict__["ipv4_prefixes"] = ipv4_prefixes
         __props__.__dict__["ipv6_address_count"] = ipv6_address_count
         __props__.__dict__["ipv6_addresses"] = ipv6_addresses
         __props__.__dict__["mac"] = mac
@@ -864,6 +922,16 @@ class NetworkInterface(pulumi.CustomResource):
         Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ipv4PrefixCount")
+    def ipv4_prefix_count(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "ipv4_prefix_count")
+
+    @property
+    @pulumi.getter(name="ipv4Prefixes")
+    def ipv4_prefixes(self) -> pulumi.Output[Sequence[str]]:
+        return pulumi.get(self, "ipv4_prefixes")
 
     @property
     @pulumi.getter(name="ipv6AddressCount")

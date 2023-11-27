@@ -49,19 +49,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.4.0.0/16"),
-//			})
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
-//			})
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -75,14 +72,12 @@ import (
 //				ZoneId:              *pulumi.String(defaultZones.Ids[0]),
 //				InstanceNetworkType: pulumi.String("VPC"),
 //				InstanceSpec:        pulumi.String("2C16G"),
-//				MasterNodeNum:       pulumi.Int(1),
 //				PaymentType:         pulumi.String("PayAsYouGo"),
-//				PrivateIpAddress:    pulumi.String("1.1.1.1"),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				SegNodeNum:          pulumi.Int(4),
 //				StorageSize:         pulumi.Int(50),
-//				VpcId:               defaultNetwork.ID(),
-//				VswitchId:           defaultSwitch.ID(),
+//				VpcId:               *pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:           *pulumi.String(defaultSwitches.Ids[0]),
 //				IpWhitelists: gpdb.InstanceIpWhitelistArray{
 //					&gpdb.InstanceIpWhitelistArgs{
 //						SecurityIpList: pulumi.String("127.0.0.1"),
@@ -159,7 +154,11 @@ type Instance struct {
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
-	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+	// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+	MasterCu pulumi.IntOutput `pulumi:"masterCu"`
+	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
 	MasterNodeNum pulumi.IntPtrOutput `pulumi:"masterNodeNum"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -167,10 +166,12 @@ type Instance struct {
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the instance.
 	Port pulumi.StringOutput `pulumi:"port"`
-	// The private ip address.
+	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
 	// The ID of the enterprise resource group to which the instance belongs.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
@@ -293,7 +294,11 @@ type instanceState struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+	// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+	MasterCu *int `pulumi:"masterCu"`
+	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
 	MasterNodeNum *int `pulumi:"masterNodeNum"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -301,7 +306,9 @@ type instanceState struct {
 	Period *string `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the instance.
 	Port *string `pulumi:"port"`
-	// The private ip address.
+	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -386,7 +393,11 @@ type InstanceState struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime pulumi.StringPtrInput
-	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+	// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+	MasterCu pulumi.IntPtrInput
+	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
 	MasterNodeNum pulumi.IntPtrInput
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
@@ -394,7 +405,9 @@ type InstanceState struct {
 	Period pulumi.StringPtrInput
 	// (Available since v1.196.0) The connection port of the instance.
 	Port pulumi.StringPtrInput
-	// The private ip address.
+	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -481,13 +494,19 @@ type instanceArgs struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+	// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+	MasterCu *int `pulumi:"masterCu"`
+	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
 	MasterNodeNum *int `pulumi:"masterNodeNum"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
 	Period *string `pulumi:"period"`
-	// The private ip address.
+	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -569,13 +588,19 @@ type InstanceArgs struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime pulumi.StringPtrInput
-	// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+	// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+	MasterCu pulumi.IntPtrInput
+	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
 	MasterNodeNum pulumi.IntPtrInput
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
 	Period pulumi.StringPtrInput
-	// The private ip address.
+	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+	//
+	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -798,7 +823,14 @@ func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
 
-// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+func (o InstanceOutput) MasterCu() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MasterCu }).(pulumi.IntOutput)
+}
+
+// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+//
+// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
 func (o InstanceOutput) MasterNodeNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.MasterNodeNum }).(pulumi.IntPtrOutput)
 }
@@ -818,14 +850,16 @@ func (o InstanceOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
-// The private ip address.
+// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+//
+// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
 func (o InstanceOutput) PrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the enterprise resource group to which the instance belongs.
-func (o InstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.

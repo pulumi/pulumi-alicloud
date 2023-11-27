@@ -72,7 +72,7 @@ public class MetaTag extends com.pulumi.resources.CustomResource {
      * The key of the tag meta tag. key must be 1 to 128 characters in length.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -86,7 +86,7 @@ public class MetaTag extends com.pulumi.resources.CustomResource {
      * The values of the tag meta tag.
      * 
      */
-    @Export(name="values", type=List.class, parameters={String.class})
+    @Export(name="values", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> values;
 
     /**

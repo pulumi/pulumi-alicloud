@@ -114,14 +114,14 @@ public final class GetExpressSyncsResult {
             return syncs(List.of(syncs));
         }
         public GetExpressSyncsResult build() {
-            final var o = new GetExpressSyncsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.syncs = syncs;
-            return o;
+            final var _resultValue = new GetExpressSyncsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.syncs = syncs;
+            return _resultValue;
         }
     }
 }

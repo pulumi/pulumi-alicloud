@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Network Interface and how to use it, see [What is Network Interface](https://www.alibabacloud.com/help/en/doc-detail/58504.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.123.1+.
+    /// &gt; **NOTE:** Available since v1.123.1.
     /// 
     /// &gt; **NOTE** Only one of `private_ip_addresses` or `secondary_private_ip_address_count` can be specified when assign private IPs.
     /// 
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAcc";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
     ///         VpcName = name,
@@ -98,6 +98,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        /// </summary>
+        [Output("ipv4PrefixCount")]
+        public Output<int> Ipv4PrefixCount { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+        /// </summary>
+        [Output("ipv4Prefixes")]
+        public Output<ImmutableArray<string>> Ipv4Prefixes { get; private set; } = null!;
 
         /// <summary>
         /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
@@ -260,6 +272,24 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        /// </summary>
+        [Input("ipv4PrefixCount")]
+        public Input<int>? Ipv4PrefixCount { get; set; }
+
+        [Input("ipv4Prefixes")]
+        private InputList<string>? _ipv4Prefixes;
+
+        /// <summary>
+        /// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+        /// </summary>
+        public InputList<string> Ipv4Prefixes
+        {
+            get => _ipv4Prefixes ?? (_ipv4Prefixes = new InputList<string>());
+            set => _ipv4Prefixes = value;
+        }
+
+        /// <summary>
         /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         /// </summary>
         [Input("ipv6AddressCount")]
@@ -406,6 +436,24 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+        /// </summary>
+        [Input("ipv4PrefixCount")]
+        public Input<int>? Ipv4PrefixCount { get; set; }
+
+        [Input("ipv4Prefixes")]
+        private InputList<string>? _ipv4Prefixes;
+
+        /// <summary>
+        /// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+        /// </summary>
+        public InputList<string> Ipv4Prefixes
+        {
+            get => _ipv4Prefixes ?? (_ipv4Prefixes = new InputList<string>());
+            set => _ipv4Prefixes = value;
+        }
 
         /// <summary>
         /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.

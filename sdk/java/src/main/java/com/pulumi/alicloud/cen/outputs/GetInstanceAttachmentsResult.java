@@ -181,16 +181,16 @@ public final class GetInstanceAttachmentsResult {
             return this;
         }
         public GetInstanceAttachmentsResult build() {
-            final var o = new GetInstanceAttachmentsResult();
-            o.attachments = attachments;
-            o.childInstanceRegionId = childInstanceRegionId;
-            o.childInstanceType = childInstanceType;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstanceAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.childInstanceRegionId = childInstanceRegionId;
+            _resultValue.childInstanceType = childInstanceType;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -284,27 +284,27 @@ public final class GetEcsNetworkInterfacesResult {
             return this;
         }
         public GetEcsNetworkInterfacesResult build() {
-            final var o = new GetEcsNetworkInterfacesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.interfaces = interfaces;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.networkInterfaceName = networkInterfaceName;
-            o.outputFile = outputFile;
-            o.primaryIpAddress = primaryIpAddress;
-            o.privateIp = privateIp;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupId = securityGroupId;
-            o.serviceManaged = serviceManaged;
-            o.status = status;
-            o.tags = tags;
-            o.type = type;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetEcsNetworkInterfacesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.interfaces = interfaces;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.networkInterfaceName = networkInterfaceName;
+            _resultValue.outputFile = outputFile;
+            _resultValue.primaryIpAddress = primaryIpAddress;
+            _resultValue.privateIp = privateIp;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.serviceManaged = serviceManaged;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

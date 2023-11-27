@@ -103,12 +103,12 @@ public final class GetFoldersFolder {
             return this;
         }
         public GetFoldersFolder build() {
-            final var o = new GetFoldersFolder();
-            o.folderId = folderId;
-            o.folderName = folderName;
-            o.id = id;
-            o.parentFolderId = parentFolderId;
-            return o;
+            final var _resultValue = new GetFoldersFolder();
+            _resultValue.folderId = folderId;
+            _resultValue.folderName = folderName;
+            _resultValue.id = id;
+            _resultValue.parentFolderId = parentFolderId;
+            return _resultValue;
         }
     }
 }

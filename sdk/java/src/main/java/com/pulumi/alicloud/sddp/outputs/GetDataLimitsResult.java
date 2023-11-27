@@ -111,14 +111,14 @@ public final class GetDataLimitsResult {
             return this;
         }
         public GetDataLimitsResult build() {
-            final var o = new GetDataLimitsResult();
-            o.id = id;
-            o.ids = ids;
-            o.limits = limits;
-            o.outputFile = outputFile;
-            o.parentId = parentId;
-            o.resourceType = resourceType;
-            return o;
+            final var _resultValue = new GetDataLimitsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.limits = limits;
+            _resultValue.outputFile = outputFile;
+            _resultValue.parentId = parentId;
+            _resultValue.resourceType = resourceType;
+            return _resultValue;
         }
     }
 }

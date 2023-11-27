@@ -68,10 +68,10 @@ public final class ServiceMeshMeshConfigPilot {
             return this;
         }
         public ServiceMeshMeshConfigPilot build() {
-            final var o = new ServiceMeshMeshConfigPilot();
-            o.http10Enabled = http10Enabled;
-            o.traceSampling = traceSampling;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfigPilot();
+            _resultValue.http10Enabled = http10Enabled;
+            _resultValue.traceSampling = traceSampling;
+            return _resultValue;
         }
     }
 }

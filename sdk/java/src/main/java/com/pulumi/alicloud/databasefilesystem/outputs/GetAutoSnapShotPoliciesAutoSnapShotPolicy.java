@@ -244,19 +244,19 @@ public final class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
             return timePoints(List.of(timePoints));
         }
         public GetAutoSnapShotPoliciesAutoSnapShotPolicy build() {
-            final var o = new GetAutoSnapShotPoliciesAutoSnapShotPolicy();
-            o.appliedDbfsNumber = appliedDbfsNumber;
-            o.createTime = createTime;
-            o.id = id;
-            o.lastModified = lastModified;
-            o.policyId = policyId;
-            o.policyName = policyName;
-            o.repeatWeekdays = repeatWeekdays;
-            o.retentionDays = retentionDays;
-            o.status = status;
-            o.statusDetail = statusDetail;
-            o.timePoints = timePoints;
-            return o;
+            final var _resultValue = new GetAutoSnapShotPoliciesAutoSnapShotPolicy();
+            _resultValue.appliedDbfsNumber = appliedDbfsNumber;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.lastModified = lastModified;
+            _resultValue.policyId = policyId;
+            _resultValue.policyName = policyName;
+            _resultValue.repeatWeekdays = repeatWeekdays;
+            _resultValue.retentionDays = retentionDays;
+            _resultValue.status = status;
+            _resultValue.statusDetail = statusDetail;
+            _resultValue.timePoints = timePoints;
+            return _resultValue;
         }
     }
 }

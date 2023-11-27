@@ -17,6 +17,21 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     public static final DdosCooInstanceArgs Empty = new DdosCooInstanceArgs();
 
     /**
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     * 
+     */
+    @Import(name="addressType")
+    private @Nullable Output<String> addressType;
+
+    /**
+     * @return The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     * 
+     */
+    public Optional<Output<String>> addressType() {
+        return Optional.ofNullable(this.addressType);
+    }
+
+    /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      * 
      */
@@ -32,14 +47,29 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * The mitigation plan of the instance. Valid values:
+     * 
+     */
+    @Import(name="bandwidthMode")
+    private @Nullable Output<String> bandwidthMode;
+
+    /**
+     * @return The mitigation plan of the instance. Valid values:
+     * 
+     */
+    public Optional<Output<String>> bandwidthMode() {
+        return Optional.ofNullable(this.bandwidthMode);
+    }
+
+    /**
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
      * 
      */
     @Import(name="baseBandwidth", required=true)
     private Output<String> baseBandwidth;
 
     /**
-     * @return Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * @return Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
      * 
      */
     public Output<String> baseBandwidth() {
@@ -62,6 +92,21 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The mitigation plan of the instance. Default value: `coop`. Valid values:
+     * 
+     */
+    @Import(name="editionSale")
+    private @Nullable Output<String> editionSale;
+
+    /**
+     * @return The mitigation plan of the instance. Default value: `coop`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> editionSale() {
+        return Optional.ofNullable(this.editionSale);
+    }
+
+    /**
      * Name of the instance. This name can have a string of 1 to 63 characters.
      * 
      */
@@ -77,14 +122,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify &#34;period&#34;.
+     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify &#34;period&#34;.
+     * @return The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -107,20 +152,14 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-     * - ddoscoo: Only supports domestic account.
-     * - ddoscoo_intl: Only supports to international account.
-     *   Default to ddoscoo.
+     * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      * 
      */
     @Import(name="productType")
     private @Nullable Output<String> productType;
 
     /**
-     * @return The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-     * - ddoscoo: Only supports domestic account.
-     * - ddoscoo_intl: Only supports to international account.
-     *   Default to ddoscoo.
+     * @return The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      * 
      */
     public Optional<Output<String>> productType() {
@@ -145,9 +184,12 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     private DdosCooInstanceArgs() {}
 
     private DdosCooInstanceArgs(DdosCooInstanceArgs $) {
+        this.addressType = $.addressType;
         this.bandwidth = $.bandwidth;
+        this.bandwidthMode = $.bandwidthMode;
         this.baseBandwidth = $.baseBandwidth;
         this.domainCount = $.domainCount;
+        this.editionSale = $.editionSale;
         this.name = $.name;
         this.period = $.period;
         this.portCount = $.portCount;
@@ -174,6 +216,27 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param addressType The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressType(@Nullable Output<String> addressType) {
+            $.addressType = addressType;
+            return this;
+        }
+
+        /**
+         * @param addressType The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressType(String addressType) {
+            return addressType(Output.of(addressType));
+        }
+
+        /**
          * @param bandwidth Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
          * 
          * @return builder
@@ -195,7 +258,28 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+         * @param bandwidthMode The mitigation plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthMode(@Nullable Output<String> bandwidthMode) {
+            $.bandwidthMode = bandwidthMode;
+            return this;
+        }
+
+        /**
+         * @param bandwidthMode The mitigation plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthMode(String bandwidthMode) {
+            return bandwidthMode(Output.of(bandwidthMode));
+        }
+
+        /**
+         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
          * 
          * @return builder
          * 
@@ -206,7 +290,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
          * 
          * @return builder
          * 
@@ -237,6 +321,27 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param editionSale The mitigation plan of the instance. Default value: `coop`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder editionSale(@Nullable Output<String> editionSale) {
+            $.editionSale = editionSale;
+            return this;
+        }
+
+        /**
+         * @param editionSale The mitigation plan of the instance. Default value: `coop`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder editionSale(String editionSale) {
+            return editionSale(Output.of(editionSale));
+        }
+
+        /**
          * @param name Name of the instance. This name can have a string of 1 to 63 characters.
          * 
          * @return builder
@@ -258,7 +363,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param period The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify &#34;period&#34;.
+         * @param period The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
          * 
          * @return builder
          * 
@@ -269,7 +374,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param period The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify &#34;period&#34;.
+         * @param period The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
          * 
          * @return builder
          * 
@@ -300,10 +405,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param productType The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-         * - ddoscoo: Only supports domestic account.
-         * - ddoscoo_intl: Only supports to international account.
-         *   Default to ddoscoo.
+         * @param productType The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
          * 
          * @return builder
          * 
@@ -314,10 +416,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param productType The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-         * - ddoscoo: Only supports domestic account.
-         * - ddoscoo_intl: Only supports to international account.
-         *   Default to ddoscoo.
+         * @param productType The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
          * 
          * @return builder
          * 

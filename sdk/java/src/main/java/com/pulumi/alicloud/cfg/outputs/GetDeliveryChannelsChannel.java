@@ -199,17 +199,17 @@ public final class GetDeliveryChannelsChannel {
             return this;
         }
         public GetDeliveryChannelsChannel build() {
-            final var o = new GetDeliveryChannelsChannel();
-            o.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
-            o.deliveryChannelCondition = deliveryChannelCondition;
-            o.deliveryChannelId = deliveryChannelId;
-            o.deliveryChannelName = deliveryChannelName;
-            o.deliveryChannelTargetArn = deliveryChannelTargetArn;
-            o.deliveryChannelType = deliveryChannelType;
-            o.description = description;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDeliveryChannelsChannel();
+            _resultValue.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
+            _resultValue.deliveryChannelCondition = deliveryChannelCondition;
+            _resultValue.deliveryChannelId = deliveryChannelId;
+            _resultValue.deliveryChannelName = deliveryChannelName;
+            _resultValue.deliveryChannelTargetArn = deliveryChannelTargetArn;
+            _resultValue.deliveryChannelType = deliveryChannelType;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

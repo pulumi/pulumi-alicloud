@@ -50,9 +50,9 @@ public final class DispatchRuleLabelMatchExpressionGrid {
             return labelMatchExpressionGroups(List.of(labelMatchExpressionGroups));
         }
         public DispatchRuleLabelMatchExpressionGrid build() {
-            final var o = new DispatchRuleLabelMatchExpressionGrid();
-            o.labelMatchExpressionGroups = labelMatchExpressionGroups;
-            return o;
+            final var _resultValue = new DispatchRuleLabelMatchExpressionGrid();
+            _resultValue.labelMatchExpressionGroups = labelMatchExpressionGroups;
+            return _resultValue;
         }
     }
 }

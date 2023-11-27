@@ -36,7 +36,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * Is the addon ready for upgrade.
      * 
      */
-    @Export(name="canUpgrade", type=Boolean.class, parameters={})
+    @Export(name="canUpgrade", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> canUpgrade;
 
     /**
@@ -50,7 +50,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * The id of kubernetes cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -64,7 +64,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
      * 
      */
-    @Export(name="config", type=String.class, parameters={})
+    @Export(name="config", refs={String.class}, tree="[0]")
     private Output<String> config;
 
     /**
@@ -78,7 +78,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * The name of addon.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -92,7 +92,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * The version which addon can be upgraded to.
      * 
      */
-    @Export(name="nextVersion", type=String.class, parameters={})
+    @Export(name="nextVersion", refs={String.class}, tree="[0]")
     private Output<String> nextVersion;
 
     /**
@@ -106,7 +106,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * Is it a mandatory addon to be installed.
      * 
      */
-    @Export(name="required", type=Boolean.class, parameters={})
+    @Export(name="required", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> required;
 
     /**
@@ -120,7 +120,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * The current version of addon.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

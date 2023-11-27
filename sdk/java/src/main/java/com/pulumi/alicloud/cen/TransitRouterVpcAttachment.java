@@ -20,7 +20,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+ * Provides a CEN Transit Router VPC Attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
  * 
  * &gt; **NOTE:** Available since v1.126.0.
  * 
@@ -119,10 +119,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN instance can be imported using the id, e.g.
+ * CEN Transit Router VPC Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example tr-********:tr-attach-********
+ *  $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
  * ```
  * 
  */
@@ -132,21 +132,21 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      * Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="autoPublishRouteEnabled", type=Boolean.class, parameters={})
-    private Output<Boolean> autoPublishRouteEnabled;
+    @Export(name="autoPublishRouteEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoPublishRouteEnabled;
 
     /**
      * @return Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
      * 
      */
-    public Output<Boolean> autoPublishRouteEnabled() {
-        return this.autoPublishRouteEnabled;
+    public Output<Optional<Boolean>> autoPublishRouteEnabled() {
+        return Codegen.optional(this.autoPublishRouteEnabled);
     }
     /**
      * The ID of the CEN.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -160,7 +160,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -171,64 +171,64 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `PayAsYouGo`.
+     * @return The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+     * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      * 
      */
-    @Export(name="resourceType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> resourceType;
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
+    private Output<String> resourceType;
 
     /**
-     * @return The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+     * @return The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      * 
      */
-    public Output<Optional<String>> resourceType() {
-        return Codegen.optional(this.resourceType);
+    public Output<String> resourceType() {
+        return this.resourceType;
     }
     /**
-     * Whether to enabled route table association. The system default value is `true`. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
      * @deprecated
-     * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.
      * 
      */
-    @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
-    @Export(name="routeTableAssociationEnabled", type=Boolean.class, parameters={})
+    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead. */
+    @Export(name="routeTableAssociationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Whether to enabled route table association. The system default value is `true`. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * @return Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
      */
     public Output<Optional<Boolean>> routeTableAssociationEnabled() {
         return Codegen.optional(this.routeTableAssociationEnabled);
     }
     /**
-     * Whether to enabled route table propagation. The system default value is `true`. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
      * @deprecated
-     * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.
      * 
      */
-    @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
-    @Export(name="routeTablePropagationEnabled", type=Boolean.class, parameters={})
+    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead. */
+    @Export(name="routeTablePropagationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Whether to enabled route table propagation. The system default value is `true`. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
      */
     public Output<Optional<Boolean>> routeTablePropagationEnabled() {
@@ -238,7 +238,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      * The associating status of the network.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -252,7 +252,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -266,7 +266,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      * The description of the transit router vbr attachment.
      * 
      */
-    @Export(name="transitRouterAttachmentDescription", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentDescription;
 
     /**
@@ -277,14 +277,14 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.transitRouterAttachmentDescription);
     }
     /**
-     * The ID of transit router attachment.
+     * The ID of the Transit Router Attachment.
      * 
      */
-    @Export(name="transitRouterAttachmentId", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of transit router attachment.
+     * @return The ID of the Transit Router Attachment.
      * 
      */
     public Output<String> transitRouterAttachmentId() {
@@ -294,7 +294,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      * The name of the transit router vbr attachment.
      * 
      */
-    @Export(name="transitRouterAttachmentName", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentName;
 
     /**
@@ -308,21 +308,21 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      * The ID of the transit router.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> transitRouterId;
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
+    private Output<String> transitRouterId;
 
     /**
      * @return The ID of the transit router.
      * 
      */
-    public Output<Optional<String>> transitRouterId() {
-        return Codegen.optional(this.transitRouterId);
+    public Output<String> transitRouterId() {
+        return this.transitRouterId;
     }
     /**
      * The ID of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -336,7 +336,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      * The owner id of vpc.
      * 
      */
-    @Export(name="vpcOwnerId", type=String.class, parameters={})
+    @Export(name="vpcOwnerId", refs={String.class}, tree="[0]")
     private Output<String> vpcOwnerId;
 
     /**
@@ -347,16 +347,16 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return this.vpcOwnerId;
     }
     /**
-     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
      * 
      */
-    @Export(name="zoneMappings", type=List.class, parameters={TransitRouterVpcAttachmentZoneMapping.class})
+    @Export(name="zoneMappings", refs={List.class,TransitRouterVpcAttachmentZoneMapping.class}, tree="[0,1]")
     private Output<List<TransitRouterVpcAttachmentZoneMapping>> zoneMappings;
 
     /**
-     * @return The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * @return The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
      * 
      */
     public Output<List<TransitRouterVpcAttachmentZoneMapping>> zoneMappings() {

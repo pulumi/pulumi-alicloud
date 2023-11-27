@@ -124,13 +124,13 @@ public final class ListenerForwardedForConfig {
             return this;
         }
         public ListenerForwardedForConfig build() {
-            final var o = new ListenerForwardedForConfig();
-            o.forwardedForGaApEnabled = forwardedForGaApEnabled;
-            o.forwardedForGaIdEnabled = forwardedForGaIdEnabled;
-            o.forwardedForPortEnabled = forwardedForPortEnabled;
-            o.forwardedForProtoEnabled = forwardedForProtoEnabled;
-            o.realIpEnabled = realIpEnabled;
-            return o;
+            final var _resultValue = new ListenerForwardedForConfig();
+            _resultValue.forwardedForGaApEnabled = forwardedForGaApEnabled;
+            _resultValue.forwardedForGaIdEnabled = forwardedForGaIdEnabled;
+            _resultValue.forwardedForPortEnabled = forwardedForPortEnabled;
+            _resultValue.forwardedForProtoEnabled = forwardedForProtoEnabled;
+            _resultValue.realIpEnabled = realIpEnabled;
+            return _resultValue;
         }
     }
 }

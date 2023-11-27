@@ -71,7 +71,7 @@ public class StorageCapacityUnit extends com.pulumi.resources.CustomResource {
      * The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
      * 
      */
-    @Export(name="capacity", type=Integer.class, parameters={})
+    @Export(name="capacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacity;
 
     /**
@@ -85,7 +85,7 @@ public class StorageCapacityUnit extends com.pulumi.resources.CustomResource {
      * The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -101,7 +101,7 @@ public class StorageCapacityUnit extends com.pulumi.resources.CustomResource {
      * * When PeriodUnit is set to Year, Valid values: `1`, `3`, `5`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
@@ -117,7 +117,7 @@ public class StorageCapacityUnit extends com.pulumi.resources.CustomResource {
      * The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output<String> periodUnit;
 
     /**
@@ -131,7 +131,7 @@ public class StorageCapacityUnit extends com.pulumi.resources.CustomResource {
      * The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
      * 
      */
-    @Export(name="startTime", type=String.class, parameters={})
+    @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**
@@ -145,7 +145,7 @@ public class StorageCapacityUnit extends com.pulumi.resources.CustomResource {
      * The status of Storage Capacity Unit.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -159,7 +159,7 @@ public class StorageCapacityUnit extends com.pulumi.resources.CustomResource {
      * The name of the Storage Capacity Unit.
      * 
      */
-    @Export(name="storageCapacityUnitName", type=String.class, parameters={})
+    @Export(name="storageCapacityUnitName", refs={String.class}, tree="[0]")
     private Output<String> storageCapacityUnitName;
 
     /**

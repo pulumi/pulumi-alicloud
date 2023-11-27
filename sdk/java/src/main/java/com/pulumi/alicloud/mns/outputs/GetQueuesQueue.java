@@ -161,15 +161,15 @@ public final class GetQueuesQueue {
             return this;
         }
         public GetQueuesQueue build() {
-            final var o = new GetQueuesQueue();
-            o.delaySeconds = delaySeconds;
-            o.id = id;
-            o.maximumMessageSize = maximumMessageSize;
-            o.messageRetentionPeriod = messageRetentionPeriod;
-            o.name = name;
-            o.pollingWaitSeconds = pollingWaitSeconds;
-            o.visibilityTimeouts = visibilityTimeouts;
-            return o;
+            final var _resultValue = new GetQueuesQueue();
+            _resultValue.delaySeconds = delaySeconds;
+            _resultValue.id = id;
+            _resultValue.maximumMessageSize = maximumMessageSize;
+            _resultValue.messageRetentionPeriod = messageRetentionPeriod;
+            _resultValue.name = name;
+            _resultValue.pollingWaitSeconds = pollingWaitSeconds;
+            _resultValue.visibilityTimeouts = visibilityTimeouts;
+            return _resultValue;
         }
     }
 }

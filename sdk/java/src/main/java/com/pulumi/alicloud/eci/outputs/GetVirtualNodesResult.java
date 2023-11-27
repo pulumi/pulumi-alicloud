@@ -182,20 +182,20 @@ public final class GetVirtualNodesResult {
             return this;
         }
         public GetVirtualNodesResult build() {
-            final var o = new GetVirtualNodesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.nodes = nodes;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupId = securityGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.virtualNodeName = virtualNodeName;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetVirtualNodesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.nodes = nodes;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.virtualNodeName = virtualNodeName;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class GetCustomLinesLineIpSegmentList {
             return this;
         }
         public GetCustomLinesLineIpSegmentList build() {
-            final var o = new GetCustomLinesLineIpSegmentList();
-            o.endIp = endIp;
-            o.startIp = startIp;
-            return o;
+            final var _resultValue = new GetCustomLinesLineIpSegmentList();
+            _resultValue.endIp = endIp;
+            _resultValue.startIp = startIp;
+            return _resultValue;
         }
     }
 }

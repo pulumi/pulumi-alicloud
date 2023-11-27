@@ -161,15 +161,15 @@ public final class GetServerGroupsGroupServer {
             return this;
         }
         public GetServerGroupsGroupServer build() {
-            final var o = new GetServerGroupsGroupServer();
-            o.description = description;
-            o.port = port;
-            o.serverId = serverId;
-            o.serverIp = serverIp;
-            o.serverType = serverType;
-            o.status = status;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetServerGroupsGroupServer();
+            _resultValue.description = description;
+            _resultValue.port = port;
+            _resultValue.serverId = serverId;
+            _resultValue.serverIp = serverIp;
+            _resultValue.serverType = serverType;
+            _resultValue.status = status;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

@@ -175,7 +175,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored.
      * 
      */
-    @Export(name="aclId", type=String.class, parameters={})
+    @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aclId;
 
     /**
@@ -189,7 +189,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Whether to enable &#34;acl(access control list)&#34;, the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
      * 
      */
-    @Export(name="aclStatus", type=String.class, parameters={})
+    @Export(name="aclStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aclStatus;
 
     /**
@@ -203,7 +203,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Mode for handling the acl specified by acl_id. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
      * 
      */
-    @Export(name="aclType", type=String.class, parameters={})
+    @Export(name="aclType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aclType;
 
     /**
@@ -217,7 +217,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
      * 
      */
-    @Export(name="backendPort", type=Integer.class, parameters={})
+    @Export(name="backendPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> backendPort;
 
     /**
@@ -231,7 +231,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -245,7 +245,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * SLB CA certificate ID. Only when `protocol` is `https` can be specified.
      * 
      */
-    @Export(name="caCertificateId", type=String.class, parameters={})
+    @Export(name="caCertificateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caCertificateId;
 
     /**
@@ -259,7 +259,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The cookie configured on the server. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;server&#34;. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      * 
      */
-    @Export(name="cookie", type=String.class, parameters={})
+    @Export(name="cookie", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cookie;
 
     /**
@@ -273,7 +273,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Cookie timeout. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;insert&#34;. Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
      * 
      */
-    @Export(name="cookieTimeout", type=Integer.class, parameters={})
+    @Export(name="cookieTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cookieTimeout;
 
     /**
@@ -287,7 +287,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      * 
      */
-    @Export(name="deleteProtectionValidation", type=Boolean.class, parameters={})
+    @Export(name="deleteProtectionValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteProtectionValidation;
 
     /**
@@ -301,7 +301,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -315,7 +315,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
      * 
      */
-    @Export(name="enableHttp2", type=String.class, parameters={})
+    @Export(name="enableHttp2", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> enableHttp2;
 
     /**
@@ -329,7 +329,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
      * 
      */
-    @Export(name="establishedTimeout", type=Integer.class, parameters={})
+    @Export(name="establishedTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> establishedTimeout;
 
     /**
@@ -343,7 +343,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The port that http redirect to https.
      * 
      */
-    @Export(name="forwardPort", type=Integer.class, parameters={})
+    @Export(name="forwardPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> forwardPort;
 
     /**
@@ -357,7 +357,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
      * 
      */
-    @Export(name="frontendPort", type=Integer.class, parameters={})
+    @Export(name="frontendPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> frontendPort;
 
     /**
@@ -371,7 +371,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
      * 
      */
-    @Export(name="gzip", type=Boolean.class, parameters={})
+    @Export(name="gzip", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> gzip;
 
     /**
@@ -385,7 +385,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener&#39;s HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
      * 
      */
-    @Export(name="healthCheck", type=String.class, parameters={})
+    @Export(name="healthCheck", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheck;
 
     /**
@@ -399,7 +399,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
      * 
      */
-    @Export(name="healthCheckConnectPort", type=Integer.class, parameters={})
+    @Export(name="healthCheckConnectPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> healthCheckConnectPort;
 
     /**
@@ -413,7 +413,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
      * 
      */
-    @Export(name="healthCheckDomain", type=String.class, parameters={})
+    @Export(name="healthCheckDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckDomain;
 
     /**
@@ -427,7 +427,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
      * 
      */
-    @Export(name="healthCheckHttpCode", type=String.class, parameters={})
+    @Export(name="healthCheckHttpCode", refs={String.class}, tree="[0]")
     private Output<String> healthCheckHttpCode;
 
     /**
@@ -441,7 +441,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
      * 
      */
-    @Export(name="healthCheckInterval", type=Integer.class, parameters={})
+    @Export(name="healthCheckInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckInterval;
 
     /**
@@ -455,7 +455,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * HealthCheckMethod used for health check.Valid values: [&#34;head&#34;, &#34;get&#34;] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou&#34;, cn-beijing, cn-shanghai.This function does not support the TCP protocol .
      * 
      */
-    @Export(name="healthCheckMethod", type=String.class, parameters={})
+    @Export(name="healthCheckMethod", refs={String.class}, tree="[0]")
     private Output<String> healthCheckMethod;
 
     /**
@@ -469,7 +469,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
      * 
      */
-    @Export(name="healthCheckTimeout", type=Integer.class, parameters={})
+    @Export(name="healthCheckTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckTimeout;
 
     /**
@@ -483,7 +483,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
      * 
      */
-    @Export(name="healthCheckType", type=String.class, parameters={})
+    @Export(name="healthCheckType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckType;
 
     /**
@@ -497,7 +497,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
-    @Export(name="healthCheckUri", type=String.class, parameters={})
+    @Export(name="healthCheckUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckUri;
 
     /**
@@ -511,7 +511,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
      * 
      */
-    @Export(name="healthyThreshold", type=Integer.class, parameters={})
+    @Export(name="healthyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthyThreshold;
 
     /**
@@ -525,7 +525,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
      * 
      */
-    @Export(name="idleTimeout", type=Integer.class, parameters={})
+    @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> idleTimeout;
 
     /**
@@ -541,7 +541,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'lb_port' has been removed since 1.211.0. */
-    @Export(name="lbPort", type=Integer.class, parameters={})
+    @Export(name="lbPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> lbPort;
 
     public Output<Optional<Integer>> lbPort() {
@@ -553,7 +553,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'lb_protocol' has been removed since 1.211.0. */
-    @Export(name="lbProtocol", type=String.class, parameters={})
+    @Export(name="lbProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lbProtocol;
 
     public Output<Optional<String>> lbProtocol() {
@@ -563,7 +563,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
      * 
      */
-    @Export(name="listenerForward", type=String.class, parameters={})
+    @Export(name="listenerForward", refs={String.class}, tree="[0]")
     private Output<String> listenerForward;
 
     /**
@@ -577,7 +577,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The Load Balancer ID which is used to launch a new listener.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -591,7 +591,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The ID of the master slave server group.
      * 
      */
-    @Export(name="masterSlaveServerGroupId", type=String.class, parameters={})
+    @Export(name="masterSlaveServerGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterSlaveServerGroupId;
 
     /**
@@ -605,7 +605,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
      * 
      */
-    @Export(name="persistenceTimeout", type=Integer.class, parameters={})
+    @Export(name="persistenceTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> persistenceTimeout;
 
     /**
@@ -619,7 +619,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -637,7 +637,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is &#34;Shared-Performance&#34;. More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
      * 
      */
-    @Export(name="proxyProtocolV2Enabled", type=Boolean.class, parameters={})
+    @Export(name="proxyProtocolV2Enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> proxyProtocolV2Enabled;
 
     /**
@@ -655,7 +655,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
      * 
      */
-    @Export(name="requestTimeout", type=Integer.class, parameters={})
+    @Export(name="requestTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> requestTimeout;
 
     /**
@@ -670,7 +670,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
      * 
      */
-    @Export(name="scheduler", type=String.class, parameters={})
+    @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheduler;
 
     /**
@@ -685,7 +685,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
      * 
      */
-    @Export(name="serverCertificateId", type=String.class, parameters={})
+    @Export(name="serverCertificateId", refs={String.class}, tree="[0]")
     private Output<String> serverCertificateId;
 
     /**
@@ -699,7 +699,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
      * 
      */
-    @Export(name="serverGroupId", type=String.class, parameters={})
+    @Export(name="serverGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverGroupId;
 
     /**
@@ -717,7 +717,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead. */
-    @Export(name="sslCertificateId", type=String.class, parameters={})
+    @Export(name="sslCertificateId", refs={String.class}, tree="[0]")
     private Output<String> sslCertificateId;
 
     /**
@@ -731,7 +731,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
      * 
      */
-    @Export(name="stickySession", type=String.class, parameters={})
+    @Export(name="stickySession", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stickySession;
 
     /**
@@ -745,7 +745,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Mode for handling the cookie. If `sticky_session` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
      * 
      */
-    @Export(name="stickySessionType", type=String.class, parameters={})
+    @Export(name="stickySessionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stickySessionType;
 
     /**
@@ -759,7 +759,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is &#34;Shared-Performance&#34;.
      * 
      */
-    @Export(name="tlsCipherPolicy", type=String.class, parameters={})
+    @Export(name="tlsCipherPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tlsCipherPolicy;
 
     /**
@@ -773,7 +773,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
      * 
      */
-    @Export(name="unhealthyThreshold", type=Integer.class, parameters={})
+    @Export(name="unhealthyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> unhealthyThreshold;
 
     /**
@@ -787,7 +787,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
      * 
      */
-    @Export(name="xForwardedFor", type=ListenerXForwardedFor.class, parameters={})
+    @Export(name="xForwardedFor", refs={ListenerXForwardedFor.class}, tree="[0]")
     private Output<ListenerXForwardedFor> xForwardedFor;
 
     /**

@@ -64,7 +64,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The creation time of the resource
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -78,7 +78,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The first ID of the resource
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -92,7 +92,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -49,10 +49,10 @@ public final class GetInstanceTypesInstanceTypeBurstableInstance {
             return this;
         }
         public GetInstanceTypesInstanceTypeBurstableInstance build() {
-            final var o = new GetInstanceTypesInstanceTypeBurstableInstance();
-            o.baselineCredit = baselineCredit;
-            o.initialCredit = initialCredit;
-            return o;
+            final var _resultValue = new GetInstanceTypesInstanceTypeBurstableInstance();
+            _resultValue.baselineCredit = baselineCredit;
+            _resultValue.initialCredit = initialCredit;
+            return _resultValue;
         }
     }
 }

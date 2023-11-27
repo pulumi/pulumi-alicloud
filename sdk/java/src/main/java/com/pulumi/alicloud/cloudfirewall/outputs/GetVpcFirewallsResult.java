@@ -263,21 +263,21 @@ public final class GetVpcFirewallsResult {
             return this;
         }
         public GetVpcFirewallsResult build() {
-            final var o = new GetVpcFirewallsResult();
-            o.firewalls = firewalls;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.memberUid = memberUid;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.regionNo = regionNo;
-            o.status = status;
-            o.vpcFirewallId = vpcFirewallId;
-            o.vpcFirewallName = vpcFirewallName;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetVpcFirewallsResult();
+            _resultValue.firewalls = firewalls;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lang = lang;
+            _resultValue.memberUid = memberUid;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.regionNo = regionNo;
+            _resultValue.status = status;
+            _resultValue.vpcFirewallId = vpcFirewallId;
+            _resultValue.vpcFirewallName = vpcFirewallName;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

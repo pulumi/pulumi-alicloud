@@ -136,16 +136,16 @@ public final class GetEcsBackupPlansResult {
             return this;
         }
         public GetEcsBackupPlansResult build() {
-            final var o = new GetEcsBackupPlansResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.plans = plans;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetEcsBackupPlansResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.plans = plans;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

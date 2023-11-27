@@ -123,7 +123,7 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
      * the content of the CA certificate.
      * 
      */
-    @Export(name="caCertificate", type=String.class, parameters={})
+    @Export(name="caCertificate", refs={String.class}, tree="[0]")
     private Output<String> caCertificate;
 
     /**
@@ -137,7 +137,7 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
      * Name of the CA Certificate.
      * 
      */
-    @Export(name="caCertificateName", type=String.class, parameters={})
+    @Export(name="caCertificateName", refs={String.class}, tree="[0]")
     private Output<String> caCertificateName;
 
     /**
@@ -155,7 +155,7 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -169,7 +169,7 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the slb_ca certificate belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -183,7 +183,7 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

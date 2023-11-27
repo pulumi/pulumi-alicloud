@@ -65,10 +65,10 @@ public final class SiteMonitorIspCity {
             return this;
         }
         public SiteMonitorIspCity build() {
-            final var o = new SiteMonitorIspCity();
-            o.city = city;
-            o.isp = isp;
-            return o;
+            final var _resultValue = new SiteMonitorIspCity();
+            _resultValue.city = city;
+            _resultValue.isp = isp;
+            return _resultValue;
         }
     }
 }

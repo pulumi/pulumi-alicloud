@@ -44,7 +44,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * List of clusters.
      * 
      */
-    @Export(name="clusterIds", type=List.class, parameters={String.class})
+    @Export(name="clusterIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> clusterIds;
 
     /**
@@ -58,7 +58,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      * 
      */
-    @Export(name="clusterSpec", type=String.class, parameters={})
+    @Export(name="clusterSpec", refs={String.class}, tree="[0]")
     private Output<String> clusterSpec;
 
     /**
@@ -72,7 +72,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * Service grid creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -88,7 +88,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * -&#39;false&#39;: Do not customize Prometheus. Default value: &#39;false &#39;.
      * 
      */
-    @Export(name="customizedPrometheus", type=Boolean.class, parameters={})
+    @Export(name="customizedPrometheus", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> customizedPrometheus;
 
     /**
@@ -104,21 +104,21 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
      * 
      */
-    @Export(name="edition", type=String.class, parameters={})
-    private Output</* @Nullable */ String> edition;
+    @Export(name="edition", refs={String.class}, tree="[0]")
+    private Output<String> edition;
 
     /**
      * @return Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
      * 
      */
-    public Output<Optional<String>> edition() {
-        return Codegen.optional(this.edition);
+    public Output<String> edition() {
+        return this.edition;
     }
     /**
      * Data plane KubeAPI access capability. See `extra_configuration` below.
      * 
      */
-    @Export(name="extraConfiguration", type=ServiceMeshExtraConfiguration.class, parameters={})
+    @Export(name="extraConfiguration", refs={ServiceMeshExtraConfiguration.class}, tree="[0]")
     private Output<ServiceMeshExtraConfiguration> extraConfiguration;
 
     /**
@@ -134,7 +134,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * -&#39;false&#39;: no forced deletion of ASM instance. Default value: false.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -150,35 +150,35 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * Load balancing information. See `load_balancer` below.
      * 
      */
-    @Export(name="loadBalancer", type=ServiceMeshLoadBalancer.class, parameters={})
-    private Output</* @Nullable */ ServiceMeshLoadBalancer> loadBalancer;
+    @Export(name="loadBalancer", refs={ServiceMeshLoadBalancer.class}, tree="[0]")
+    private Output<ServiceMeshLoadBalancer> loadBalancer;
 
     /**
      * @return Load balancing information. See `load_balancer` below.
      * 
      */
-    public Output<Optional<ServiceMeshLoadBalancer>> loadBalancer() {
-        return Codegen.optional(this.loadBalancer);
+    public Output<ServiceMeshLoadBalancer> loadBalancer() {
+        return this.loadBalancer;
     }
     /**
      * Service grid configuration information. See `mesh_config` below.
      * 
      */
-    @Export(name="meshConfig", type=ServiceMeshMeshConfig.class, parameters={})
-    private Output</* @Nullable */ ServiceMeshMeshConfig> meshConfig;
+    @Export(name="meshConfig", refs={ServiceMeshMeshConfig.class}, tree="[0]")
+    private Output<ServiceMeshMeshConfig> meshConfig;
 
     /**
      * @return Service grid configuration information. See `mesh_config` below.
      * 
      */
-    public Output<Optional<ServiceMeshMeshConfig>> meshConfig() {
-        return Codegen.optional(this.meshConfig);
+    public Output<ServiceMeshMeshConfig> meshConfig() {
+        return this.meshConfig;
     }
     /**
      * Service grid network configuration information. See `network` below.
      * 
      */
-    @Export(name="network", type=ServiceMeshNetwork.class, parameters={})
+    @Export(name="network", refs={ServiceMeshNetwork.class}, tree="[0]")
     private Output<ServiceMeshNetwork> network;
 
     /**
@@ -192,7 +192,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * The Prometheus service address (in non-custom cases, use the ARMS address format).
      * 
      */
-    @Export(name="prometheusUrl", type=String.class, parameters={})
+    @Export(name="prometheusUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> prometheusUrl;
 
     /**
@@ -206,7 +206,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * ServiceMeshName.
      * 
      */
-    @Export(name="serviceMeshName", type=String.class, parameters={})
+    @Export(name="serviceMeshName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceMeshName;
 
     /**
@@ -220,7 +220,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -234,7 +234,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * The tag of the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -248,15 +248,15 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
-    private Output</* @Nullable */ String> version;
+    @Export(name="version", refs={String.class}, tree="[0]")
+    private Output<String> version;
 
     /**
      * @return Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
      * 
      */
-    public Output<Optional<String>> version() {
-        return Codegen.optional(this.version);
+    public Output<String> version() {
+        return this.version;
     }
 
     /**

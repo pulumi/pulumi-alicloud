@@ -122,13 +122,13 @@ public final class GetResourceSharesShare {
             return this;
         }
         public GetResourceSharesShare build() {
-            final var o = new GetResourceSharesShare();
-            o.id = id;
-            o.resourceShareId = resourceShareId;
-            o.resourceShareName = resourceShareName;
-            o.resourceShareOwner = resourceShareOwner;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetResourceSharesShare();
+            _resultValue.id = id;
+            _resultValue.resourceShareId = resourceShareId;
+            _resultValue.resourceShareName = resourceShareName;
+            _resultValue.resourceShareOwner = resourceShareOwner;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

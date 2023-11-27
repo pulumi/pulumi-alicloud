@@ -44,7 +44,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The Access Logging Configuration Structure. See `access_log_config` below.
      * 
      */
-    @Export(name="accessLogConfig", type=LoadBalancerAccessLogConfig.class, parameters={})
+    @Export(name="accessLogConfig", refs={LoadBalancerAccessLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ LoadBalancerAccessLogConfig> accessLogConfig;
 
     /**
@@ -58,7 +58,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
      * 
      */
-    @Export(name="addressAllocatedMode", type=String.class, parameters={})
+    @Export(name="addressAllocatedMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> addressAllocatedMode;
 
     /**
@@ -74,7 +74,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * - **DualStack**: the dual-stack type.
      * 
      */
-    @Export(name="addressIpVersion", type=String.class, parameters={})
+    @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
     private Output<String> addressIpVersion;
 
     /**
@@ -90,7 +90,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The type of IP address that the SLB instance uses to provide services.
      * 
      */
-    @Export(name="addressType", type=String.class, parameters={})
+    @Export(name="addressType", refs={String.class}, tree="[0]")
     private Output<String> addressType;
 
     /**
@@ -104,7 +104,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
      * 
      */
-    @Export(name="bandwidthPackageId", type=String.class, parameters={})
+    @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bandwidthPackageId;
 
     /**
@@ -118,7 +118,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -132,7 +132,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Whether to enable delete protection. Value:true: on.false (default): Off.
      * 
      */
-    @Export(name="deletionProtectionEnabled", type=Boolean.class, parameters={})
+    @Export(name="deletionProtectionEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtectionEnabled;
 
     /**
@@ -146,7 +146,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
      * 
      */
-    @Export(name="dnsName", type=String.class, parameters={})
+    @Export(name="dnsName", refs={String.class}, tree="[0]")
     private Output<String> dnsName;
 
     /**
@@ -160,7 +160,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -174,7 +174,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The address type of Ipv6.
      * 
      */
-    @Export(name="ipv6AddressType", type=String.class, parameters={})
+    @Export(name="ipv6AddressType", refs={String.class}, tree="[0]")
     private Output<String> ipv6AddressType;
 
     /**
@@ -188,7 +188,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The configuration of the billing method. See `load_balancer_billing_config` below.
      * 
      */
-    @Export(name="loadBalancerBillingConfig", type=LoadBalancerLoadBalancerBillingConfig.class, parameters={})
+    @Export(name="loadBalancerBillingConfig", refs={LoadBalancerLoadBalancerBillingConfig.class}, tree="[0]")
     private Output<LoadBalancerLoadBalancerBillingConfig> loadBalancerBillingConfig;
 
     /**
@@ -202,7 +202,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The edition of the ALB instance.
      * 
      */
-    @Export(name="loadBalancerEdition", type=String.class, parameters={})
+    @Export(name="loadBalancerEdition", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerEdition;
 
     /**
@@ -216,7 +216,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="loadBalancerName", type=String.class, parameters={})
+    @Export(name="loadBalancerName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loadBalancerName;
 
     /**
@@ -230,7 +230,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Modify the Protection Configuration. See `modification_protection_config` below.
      * 
      */
-    @Export(name="modificationProtectionConfig", type=LoadBalancerModificationProtectionConfig.class, parameters={})
+    @Export(name="modificationProtectionConfig", refs={LoadBalancerModificationProtectionConfig.class}, tree="[0]")
     private Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig;
 
     /**
@@ -244,7 +244,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -258,7 +258,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Load Balancing Modify the Protection Status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -272,7 +272,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The tag of the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -286,7 +286,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -300,7 +300,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
      * 
      */
-    @Export(name="zoneMappings", type=List.class, parameters={LoadBalancerZoneMapping.class})
+    @Export(name="zoneMappings", refs={List.class,LoadBalancerZoneMapping.class}, tree="[0,1]")
     private Output<List<LoadBalancerZoneMapping>> zoneMappings;
 
     /**

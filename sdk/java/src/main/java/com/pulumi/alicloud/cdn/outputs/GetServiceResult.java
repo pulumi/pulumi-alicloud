@@ -146,15 +146,15 @@ public final class GetServiceResult {
             return this;
         }
         public GetServiceResult build() {
-            final var o = new GetServiceResult();
-            o.changingAffectTime = changingAffectTime;
-            o.changingChargeType = changingChargeType;
-            o.enable = enable;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.openingTime = openingTime;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetServiceResult();
+            _resultValue.changingAffectTime = changingAffectTime;
+            _resultValue.changingChargeType = changingChargeType;
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.openingTime = openingTime;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

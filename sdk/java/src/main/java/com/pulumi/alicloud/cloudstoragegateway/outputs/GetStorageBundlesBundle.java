@@ -93,14 +93,14 @@ public final class GetStorageBundlesBundle {
             return this;
         }
         public GetStorageBundlesBundle build() {
-            final var o = new GetStorageBundlesBundle();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.location = location;
-            o.storageBundleId = storageBundleId;
-            o.storageBundleName = storageBundleName;
-            return o;
+            final var _resultValue = new GetStorageBundlesBundle();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.storageBundleId = storageBundleId;
+            _resultValue.storageBundleName = storageBundleName;
+            return _resultValue;
         }
     }
 }

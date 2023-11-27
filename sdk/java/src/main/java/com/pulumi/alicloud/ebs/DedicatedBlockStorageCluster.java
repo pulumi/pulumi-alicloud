@@ -72,7 +72,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The available capacity of the dedicated block storage cluster. Unit: GiB.
      * 
      */
-    @Export(name="availableCapacity", type=String.class, parameters={})
+    @Export(name="availableCapacity", refs={String.class}, tree="[0]")
     private Output<String> availableCapacity;
 
     /**
@@ -86,7 +86,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The type of cloud disk that can be created by a dedicated block storage cluster.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output<String> category;
 
     /**
@@ -100,7 +100,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The creation time of the resource
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -114,7 +114,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The first ID of the resource
      * 
      */
-    @Export(name="dedicatedBlockStorageClusterId", type=String.class, parameters={})
+    @Export(name="dedicatedBlockStorageClusterId", refs={String.class}, tree="[0]")
     private Output<String> dedicatedBlockStorageClusterId;
 
     /**
@@ -128,7 +128,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The name of the resource
      * 
      */
-    @Export(name="dedicatedBlockStorageClusterName", type=String.class, parameters={})
+    @Export(name="dedicatedBlockStorageClusterName", refs={String.class}, tree="[0]")
     private Output<String> dedicatedBlockStorageClusterName;
 
     /**
@@ -142,7 +142,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * Capacity to be delivered in GB.
      * 
      */
-    @Export(name="deliveryCapacity", type=String.class, parameters={})
+    @Export(name="deliveryCapacity", refs={String.class}, tree="[0]")
     private Output<String> deliveryCapacity;
 
     /**
@@ -156,7 +156,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The description of the dedicated block storage cluster.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -170,7 +170,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
      * 
      */
-    @Export(name="expiredTime", type=String.class, parameters={})
+    @Export(name="expiredTime", refs={String.class}, tree="[0]")
     private Output<String> expiredTime;
 
     /**
@@ -184,7 +184,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.&gt; Only valid in SupportedCategory = cloud_essd.
      * 
      */
-    @Export(name="performanceLevel", type=String.class, parameters={})
+    @Export(name="performanceLevel", refs={String.class}, tree="[0]")
     private Output<String> performanceLevel;
 
     /**
@@ -198,7 +198,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The ID of the resource group
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -212,7 +212,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -226,7 +226,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * This parameter is not supported.
      * 
      */
-    @Export(name="supportedCategory", type=String.class, parameters={})
+    @Export(name="supportedCategory", refs={String.class}, tree="[0]")
     private Output<String> supportedCategory;
 
     /**
@@ -240,7 +240,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The total capacity of the dedicated block storage cluster. Unit: GiB.
      * 
      */
-    @Export(name="totalCapacity", type=String.class, parameters={})
+    @Export(name="totalCapacity", refs={String.class}, tree="[0]")
     private Output<String> totalCapacity;
 
     /**
@@ -254,7 +254,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -268,7 +268,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The used (created disk) capacity of the current cluster, in GB
      * 
      */
-    @Export(name="usedCapacity", type=String.class, parameters={})
+    @Export(name="usedCapacity", refs={String.class}, tree="[0]")
     private Output<String> usedCapacity;
 
     /**
@@ -282,7 +282,7 @@ public class DedicatedBlockStorageCluster extends com.pulumi.resources.CustomRes
      * The zone ID  of the resource
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

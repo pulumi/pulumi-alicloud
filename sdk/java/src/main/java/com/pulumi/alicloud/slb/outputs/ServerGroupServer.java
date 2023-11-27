@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServerGroupServer {
+    /**
+     * @return The port used by the backend server. Valid value range: [1-65535].
+     * 
+     */
     private Integer port;
+    /**
+     * @return A list backend server ID (ECS instance ID).
+     * 
+     */
     private List<String> serverIds;
+    /**
+     * @return Type of the backend server. Valid value ecs, eni. Default to eni.
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * 
+     */
     private @Nullable Integer weight;
 
     private ServerGroupServer() {}
+    /**
+     * @return The port used by the backend server. Valid value range: [1-65535].
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return A list backend server ID (ECS instance ID).
+     * 
+     */
     public List<String> serverIds() {
         return this.serverIds;
     }
+    /**
+     * @return Type of the backend server. Valid value ecs, eni. Default to eni.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * 
+     */
     public Optional<Integer> weight() {
         return Optional.ofNullable(this.weight);
     }
@@ -78,12 +110,12 @@ public final class ServerGroupServer {
             return this;
         }
         public ServerGroupServer build() {
-            final var o = new ServerGroupServer();
-            o.port = port;
-            o.serverIds = serverIds;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new ServerGroupServer();
+            _resultValue.port = port;
+            _resultValue.serverIds = serverIds;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

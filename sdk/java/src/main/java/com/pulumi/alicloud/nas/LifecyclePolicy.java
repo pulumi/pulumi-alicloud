@@ -79,7 +79,7 @@ public class LifecyclePolicy extends com.pulumi.resources.CustomResource {
      * The ID of the file system.
      * 
      */
-    @Export(name="fileSystemId", type=String.class, parameters={})
+    @Export(name="fileSystemId", refs={String.class}, tree="[0]")
     private Output<String> fileSystemId;
 
     /**
@@ -93,7 +93,7 @@ public class LifecyclePolicy extends com.pulumi.resources.CustomResource {
      * The name of the lifecycle management policy.
      * 
      */
-    @Export(name="lifecyclePolicyName", type=String.class, parameters={})
+    @Export(name="lifecyclePolicyName", refs={String.class}, tree="[0]")
     private Output<String> lifecyclePolicyName;
 
     /**
@@ -107,7 +107,7 @@ public class LifecyclePolicy extends com.pulumi.resources.CustomResource {
      * The rules in the lifecycle management policy. Valid values: `DEFAULT_ATIME_14`, `DEFAULT_ATIME_30`, `DEFAULT_ATIME_60`, `DEFAULT_ATIME_90`.
      * 
      */
-    @Export(name="lifecycleRuleName", type=String.class, parameters={})
+    @Export(name="lifecycleRuleName", refs={String.class}, tree="[0]")
     private Output<String> lifecycleRuleName;
 
     /**
@@ -121,7 +121,7 @@ public class LifecyclePolicy extends com.pulumi.resources.CustomResource {
      * The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
      * 
      */
-    @Export(name="paths", type=List.class, parameters={String.class})
+    @Export(name="paths", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> paths;
 
     /**
@@ -135,7 +135,7 @@ public class LifecyclePolicy extends com.pulumi.resources.CustomResource {
      * The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
      * 
      */
-    @Export(name="storageType", type=String.class, parameters={})
+    @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**

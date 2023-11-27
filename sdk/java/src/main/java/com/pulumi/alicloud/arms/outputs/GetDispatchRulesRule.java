@@ -184,16 +184,16 @@ public final class GetDispatchRulesRule {
             return this;
         }
         public GetDispatchRulesRule build() {
-            final var o = new GetDispatchRulesRule();
-            o.dispatchRuleId = dispatchRuleId;
-            o.dispatchRuleName = dispatchRuleName;
-            o.dispatchType = dispatchType;
-            o.groupRules = groupRules;
-            o.id = id;
-            o.labelMatchExpressionGrids = labelMatchExpressionGrids;
-            o.notifyRules = notifyRules;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDispatchRulesRule();
+            _resultValue.dispatchRuleId = dispatchRuleId;
+            _resultValue.dispatchRuleName = dispatchRuleName;
+            _resultValue.dispatchType = dispatchType;
+            _resultValue.groupRules = groupRules;
+            _resultValue.id = id;
+            _resultValue.labelMatchExpressionGrids = labelMatchExpressionGrids;
+            _resultValue.notifyRules = notifyRules;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

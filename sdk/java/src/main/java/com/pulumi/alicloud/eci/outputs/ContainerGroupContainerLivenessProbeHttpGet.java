@@ -87,11 +87,11 @@ public final class ContainerGroupContainerLivenessProbeHttpGet {
             return this;
         }
         public ContainerGroupContainerLivenessProbeHttpGet build() {
-            final var o = new ContainerGroupContainerLivenessProbeHttpGet();
-            o.path = path;
-            o.port = port;
-            o.scheme = scheme;
-            return o;
+            final var _resultValue = new ContainerGroupContainerLivenessProbeHttpGet();
+            _resultValue.path = path;
+            _resultValue.port = port;
+            _resultValue.scheme = scheme;
+            return _resultValue;
         }
     }
 }

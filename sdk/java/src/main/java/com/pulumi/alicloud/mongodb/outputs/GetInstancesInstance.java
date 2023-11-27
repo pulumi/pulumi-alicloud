@@ -400,27 +400,27 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.availabilityZone = availabilityZone;
-            o.chargeType = chargeType;
-            o.creationTime = creationTime;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.expirationTime = expirationTime;
-            o.id = id;
-            o.instanceClass = instanceClass;
-            o.instanceType = instanceType;
-            o.lockMode = lockMode;
-            o.mongos = mongos;
-            o.name = name;
-            o.networkType = networkType;
-            o.regionId = regionId;
-            o.replication = replication;
-            o.shards = shards;
-            o.status = status;
-            o.storage = storage;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.chargeType = chargeType;
+            _resultValue.creationTime = creationTime;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.expirationTime = expirationTime;
+            _resultValue.id = id;
+            _resultValue.instanceClass = instanceClass;
+            _resultValue.instanceType = instanceType;
+            _resultValue.lockMode = lockMode;
+            _resultValue.mongos = mongos;
+            _resultValue.name = name;
+            _resultValue.networkType = networkType;
+            _resultValue.regionId = regionId;
+            _resultValue.replication = replication;
+            _resultValue.shards = shards;
+            _resultValue.status = status;
+            _resultValue.storage = storage;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

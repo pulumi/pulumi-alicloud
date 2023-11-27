@@ -226,18 +226,18 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
             return this;
         }
         public GetCustomRoutingPortMappingsCustomRoutingPortMapping build() {
-            final var o = new GetCustomRoutingPortMappingsCustomRoutingPortMapping();
-            o.acceleratorId = acceleratorId;
-            o.acceleratorPort = acceleratorPort;
-            o.destinationSocketAddresses = destinationSocketAddresses;
-            o.endpointGroupId = endpointGroupId;
-            o.endpointGroupRegion = endpointGroupRegion;
-            o.endpointId = endpointId;
-            o.listenerId = listenerId;
-            o.protocols = protocols;
-            o.status = status;
-            o.vswitch = vswitch;
-            return o;
+            final var _resultValue = new GetCustomRoutingPortMappingsCustomRoutingPortMapping();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.acceleratorPort = acceleratorPort;
+            _resultValue.destinationSocketAddresses = destinationSocketAddresses;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.endpointGroupRegion = endpointGroupRegion;
+            _resultValue.endpointId = endpointId;
+            _resultValue.listenerId = listenerId;
+            _resultValue.protocols = protocols;
+            _resultValue.status = status;
+            _resultValue.vswitch = vswitch;
+            return _resultValue;
         }
     }
 }

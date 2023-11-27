@@ -116,13 +116,13 @@ public final class GetAccountsResult {
             return names(List.of(names));
         }
         public GetAccountsResult build() {
-            final var o = new GetAccountsResult();
-            o.accounts = accounts;
-            o.dbClusterId = dbClusterId;
-            o.id = id;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            return o;
+            final var _resultValue = new GetAccountsResult();
+            _resultValue.accounts = accounts;
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.id = id;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            return _resultValue;
         }
     }
 }

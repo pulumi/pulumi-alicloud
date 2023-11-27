@@ -55,6 +55,24 @@ import javax.annotation.Nullable;
  *                 .city(&#34;546&#34;)
  *                 .isp(&#34;465&#34;)
  *                 .build())
+ *             .optionsJson(&#34;&#34;&#34;
+ * {
+ *     &#34;http_method&#34;: &#34;get&#34;,
+ *     &#34;waitTime_after_completion&#34;: null,
+ *     &#34;ipv6_task&#34;: false,
+ *     &#34;diagnosis_ping&#34;: false,
+ *     &#34;diagnosis_mtr&#34;: false,
+ *     &#34;assertions&#34;: [
+ *         {
+ *             &#34;operator&#34;: &#34;lessThan&#34;,
+ *             &#34;type&#34;: &#34;response_time&#34;,
+ *             &#34;target&#34;: 1000
+ *         }
+ *     ],
+ *     &#34;time_out&#34;: 30000
+ * }
+ * 
+ *             &#34;&#34;&#34;)
  *             .taskName(&#34;tf-example&#34;)
  *             .taskType(&#34;HTTP&#34;)
  *             .build());
@@ -78,7 +96,7 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
      * The URL or IP address monitored by the site monitoring task.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
@@ -92,7 +110,7 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
      * The IDs of existing alert rules to be associated with the site monitoring task.
      * 
      */
-    @Export(name="alertIds", type=List.class, parameters={String.class})
+    @Export(name="alertIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> alertIds;
 
     /**
@@ -106,7 +124,7 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
      * The time when the site monitoring task was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -120,7 +138,7 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
      * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      * 
      */
-    @Export(name="interval", type=Integer.class, parameters={})
+    @Export(name="interval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> interval;
 
     /**
@@ -134,7 +152,7 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
      * The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
      * 
      */
-    @Export(name="ispCities", type=List.class, parameters={SiteMonitorIspCity.class})
+    @Export(name="ispCities", refs={List.class,SiteMonitorIspCity.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SiteMonitorIspCity>> ispCities;
 
     /**
@@ -145,14 +163,14 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ispCities);
     }
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
      * 
      */
-    @Export(name="optionsJson", type=String.class, parameters={})
+    @Export(name="optionsJson", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> optionsJson;
 
     /**
-     * @return The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     * @return The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
      * 
      */
     public Output<Optional<String>> optionsJson() {
@@ -162,7 +180,7 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
      * The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
      * 
      */
-    @Export(name="taskName", type=String.class, parameters={})
+    @Export(name="taskName", refs={String.class}, tree="[0]")
     private Output<String> taskName;
 
     /**
@@ -176,7 +194,7 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
      * The status of the site monitoring task.
      * 
      */
-    @Export(name="taskState", type=String.class, parameters={})
+    @Export(name="taskState", refs={String.class}, tree="[0]")
     private Output<String> taskState;
 
     /**
@@ -190,7 +208,7 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
      * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
      * 
      */
-    @Export(name="taskType", type=String.class, parameters={})
+    @Export(name="taskType", refs={String.class}, tree="[0]")
     private Output<String> taskType;
 
     /**
@@ -204,7 +222,7 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
      * The time when the site monitoring task was updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

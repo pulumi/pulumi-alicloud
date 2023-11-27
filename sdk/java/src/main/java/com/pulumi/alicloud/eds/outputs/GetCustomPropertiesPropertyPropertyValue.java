@@ -65,10 +65,10 @@ public final class GetCustomPropertiesPropertyPropertyValue {
             return this;
         }
         public GetCustomPropertiesPropertyPropertyValue build() {
-            final var o = new GetCustomPropertiesPropertyPropertyValue();
-            o.propertyValue = propertyValue;
-            o.propertyValueId = propertyValueId;
-            return o;
+            final var _resultValue = new GetCustomPropertiesPropertyPropertyValue();
+            _resultValue.propertyValue = propertyValue;
+            _resultValue.propertyValueId = propertyValueId;
+            return _resultValue;
         }
     }
 }

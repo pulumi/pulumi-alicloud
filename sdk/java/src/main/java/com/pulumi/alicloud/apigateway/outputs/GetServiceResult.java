@@ -78,11 +78,11 @@ public final class GetServiceResult {
             return this;
         }
         public GetServiceResult build() {
-            final var o = new GetServiceResult();
-            o.enable = enable;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetServiceResult();
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

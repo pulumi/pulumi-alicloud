@@ -159,18 +159,18 @@ public final class GetUsersResult {
             return users(List.of(users));
         }
         public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.directoryId = directoryId;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.provisionType = provisionType;
-            o.status = status;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetUsersResult();
+            _resultValue.directoryId = directoryId;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.provisionType = provisionType;
+            _resultValue.status = status;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

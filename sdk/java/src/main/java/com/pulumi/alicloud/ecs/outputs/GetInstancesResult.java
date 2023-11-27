@@ -349,27 +349,27 @@ public final class GetInstancesResult {
             return this;
         }
         public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.availabilityZone = availabilityZone;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.imageId = imageId;
-            o.instanceName = instanceName;
-            o.instances = instances;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.ramRoleName = ramRoleName;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetInstancesResult();
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.imageId = imageId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.instances = instances;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.ramRoleName = ramRoleName;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.totalCount = totalCount;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

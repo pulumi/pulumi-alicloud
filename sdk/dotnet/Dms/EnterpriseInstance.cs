@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Dms
     ///     var defaultEnterpriseInstance = new AliCloud.Dms.EnterpriseInstance("defaultEnterpriseInstance", new()
     ///     {
     ///         Tid = defaultUserTenants.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0]),
-    ///         InstanceType = "MySQL",
+    ///         InstanceType = "mysql",
     ///         InstanceSource = "RDS",
     ///         NetworkType = "VPC",
     ///         EnvType = "dev",
@@ -120,7 +120,8 @@ namespace Pulumi.AliCloud.Dms
     ///         DatabasePassword = defaultAccount.AccountPassword,
     ///         InstanceName = name,
     ///         DbaUid = current.Apply(getAccountResult =&gt; getAccountResult.Id),
-    ///         SafeRule = "自由操作",
+    ///         SafeRule = "904496",
+    ///         UseDsql = 1,
     ///         QueryTimeout = 60,
     ///         ExportTimeout = 600,
     ///         EcsRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),

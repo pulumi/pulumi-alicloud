@@ -172,17 +172,17 @@ public final class GetAggregateCompliancePacksResult {
             return this;
         }
         public GetAggregateCompliancePacksResult build() {
-            final var o = new GetAggregateCompliancePacksResult();
-            o.aggregatorId = aggregatorId;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.packs = packs;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAggregateCompliancePacksResult();
+            _resultValue.aggregatorId = aggregatorId;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.packs = packs;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

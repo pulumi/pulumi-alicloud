@@ -116,13 +116,13 @@ public final class GetDatabasesResult {
             return names(List.of(names));
         }
         public GetDatabasesResult build() {
-            final var o = new GetDatabasesResult();
-            o.databases = databases;
-            o.dbClusterId = dbClusterId;
-            o.id = id;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            return o;
+            final var _resultValue = new GetDatabasesResult();
+            _resultValue.databases = databases;
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.id = id;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            return _resultValue;
         }
     }
 }

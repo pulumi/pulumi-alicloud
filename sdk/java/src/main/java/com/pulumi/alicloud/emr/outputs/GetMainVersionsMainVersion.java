@@ -88,11 +88,11 @@ public final class GetMainVersionsMainVersion {
             return this;
         }
         public GetMainVersionsMainVersion build() {
-            final var o = new GetMainVersionsMainVersion();
-            o.clusterTypes = clusterTypes;
-            o.emrVersion = emrVersion;
-            o.imageId = imageId;
-            return o;
+            final var _resultValue = new GetMainVersionsMainVersion();
+            _resultValue.clusterTypes = clusterTypes;
+            _resultValue.emrVersion = emrVersion;
+            _resultValue.imageId = imageId;
+            return _resultValue;
         }
     }
 }

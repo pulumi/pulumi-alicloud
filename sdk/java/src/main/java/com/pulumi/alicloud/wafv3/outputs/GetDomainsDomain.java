@@ -150,14 +150,14 @@ public final class GetDomainsDomain {
             return this;
         }
         public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.domain = domain;
-            o.id = id;
-            o.listens = listens;
-            o.redirects = redirects;
-            o.resourceManagerResourceGroupId = resourceManagerResourceGroupId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDomainsDomain();
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.listens = listens;
+            _resultValue.redirects = redirects;
+            _resultValue.resourceManagerResourceGroupId = resourceManagerResourceGroupId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

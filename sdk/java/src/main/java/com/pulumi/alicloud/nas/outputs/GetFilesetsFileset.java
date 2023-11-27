@@ -179,16 +179,16 @@ public final class GetFilesetsFileset {
             return this;
         }
         public GetFilesetsFileset build() {
-            final var o = new GetFilesetsFileset();
-            o.createTime = createTime;
-            o.description = description;
-            o.fileSystemId = fileSystemId;
-            o.fileSystemPath = fileSystemPath;
-            o.filesetId = filesetId;
-            o.id = id;
-            o.status = status;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetFilesetsFileset();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.fileSystemPath = fileSystemPath;
+            _resultValue.filesetId = filesetId;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

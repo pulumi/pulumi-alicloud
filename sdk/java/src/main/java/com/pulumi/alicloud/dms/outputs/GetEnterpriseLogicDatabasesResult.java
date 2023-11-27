@@ -105,12 +105,12 @@ public final class GetEnterpriseLogicDatabasesResult {
             return this;
         }
         public GetEnterpriseLogicDatabasesResult build() {
-            final var o = new GetEnterpriseLogicDatabasesResult();
-            o.databases = databases;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetEnterpriseLogicDatabasesResult();
+            _resultValue.databases = databases;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

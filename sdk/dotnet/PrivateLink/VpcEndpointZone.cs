@@ -109,34 +109,42 @@ namespace Pulumi.AliCloud.PrivateLink
     public partial class VpcEndpointZone : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Vpc Endpoint.
+        /// The endpoint ID.
         /// </summary>
         [Output("endpointId")]
         public Output<string> EndpointId { get; private set; } = null!;
 
         /// <summary>
-        /// Status.
+        /// The IP address of the endpoint ENI.
+        /// </summary>
+        [Output("eniIp")]
+        public Output<string> EniIp { get; private set; } = null!;
+
+        /// <summary>
+        /// The state of the zone.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The VSwitch id.
+        /// The ID of the vSwitch in the zone. .
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone Id.
+        /// The zone ID.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -185,25 +193,33 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID of the Vpc Endpoint.
+        /// The endpoint ID.
         /// </summary>
         [Input("endpointId", required: true)]
         public Input<string> EndpointId { get; set; } = null!;
 
         /// <summary>
-        /// The VSwitch id.
+        /// The IP address of the endpoint ENI.
+        /// </summary>
+        [Input("eniIp")]
+        public Input<string>? EniIp { get; set; }
+
+        /// <summary>
+        /// The ID of the vSwitch in the zone. .
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The Zone Id.
+        /// The zone ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -217,31 +233,39 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointZoneState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID of the Vpc Endpoint.
+        /// The endpoint ID.
         /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }
 
         /// <summary>
-        /// Status.
+        /// The IP address of the endpoint ENI.
+        /// </summary>
+        [Input("eniIp")]
+        public Input<string>? EniIp { get; set; }
+
+        /// <summary>
+        /// The state of the zone.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The VSwitch id.
+        /// The ID of the vSwitch in the zone. .
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone Id.
+        /// The zone ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

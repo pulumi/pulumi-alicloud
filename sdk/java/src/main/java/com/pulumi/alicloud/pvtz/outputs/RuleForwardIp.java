@@ -66,10 +66,10 @@ public final class RuleForwardIp {
             return this;
         }
         public RuleForwardIp build() {
-            final var o = new RuleForwardIp();
-            o.ip = ip;
-            o.port = port;
-            return o;
+            final var _resultValue = new RuleForwardIp();
+            _resultValue.ip = ip;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

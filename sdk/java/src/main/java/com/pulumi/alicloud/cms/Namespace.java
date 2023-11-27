@@ -69,7 +69,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Description of indicator warehouse.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -83,7 +83,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -103,7 +103,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      * 
      */
-    @Export(name="specification", type=String.class, parameters={})
+    @Export(name="specification", refs={String.class}, tree="[0]")
     private Output<String> specification;
 
     /**

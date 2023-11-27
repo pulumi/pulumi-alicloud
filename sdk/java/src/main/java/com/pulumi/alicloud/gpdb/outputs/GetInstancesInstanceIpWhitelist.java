@@ -84,11 +84,11 @@ public final class GetInstancesInstanceIpWhitelist {
             return this;
         }
         public GetInstancesInstanceIpWhitelist build() {
-            final var o = new GetInstancesInstanceIpWhitelist();
-            o.ipGroupAttribute = ipGroupAttribute;
-            o.ipGroupName = ipGroupName;
-            o.securityIpList = securityIpList;
-            return o;
+            final var _resultValue = new GetInstancesInstanceIpWhitelist();
+            _resultValue.ipGroupAttribute = ipGroupAttribute;
+            _resultValue.ipGroupName = ipGroupName;
+            _resultValue.securityIpList = securityIpList;
+            return _resultValue;
         }
     }
 }

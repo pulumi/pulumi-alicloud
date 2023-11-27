@@ -67,10 +67,10 @@ public final class ServiceTracingConfig {
             return this;
         }
         public ServiceTracingConfig build() {
-            final var o = new ServiceTracingConfig();
-            o.params = params;
-            o.type = type;
-            return o;
+            final var _resultValue = new ServiceTracingConfig();
+            _resultValue.params = params;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

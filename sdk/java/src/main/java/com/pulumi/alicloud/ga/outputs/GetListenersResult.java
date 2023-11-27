@@ -136,16 +136,16 @@ public final class GetListenersResult {
             return this;
         }
         public GetListenersResult build() {
-            final var o = new GetListenersResult();
-            o.acceleratorId = acceleratorId;
-            o.id = id;
-            o.ids = ids;
-            o.listeners = listeners;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetListenersResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listeners = listeners;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

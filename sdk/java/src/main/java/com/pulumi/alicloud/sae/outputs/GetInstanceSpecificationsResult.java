@@ -89,12 +89,12 @@ public final class GetInstanceSpecificationsResult {
             return specifications(List.of(specifications));
         }
         public GetInstanceSpecificationsResult build() {
-            final var o = new GetInstanceSpecificationsResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.specifications = specifications;
-            return o;
+            final var _resultValue = new GetInstanceSpecificationsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.specifications = specifications;
+            return _resultValue;
         }
     }
 }

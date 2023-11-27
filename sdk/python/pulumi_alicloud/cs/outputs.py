@@ -27,18 +27,11 @@ __all__ = [
     'KubernetesMasterNode',
     'KubernetesPermissionPermission',
     'KubernetesRuntime',
-    'KubernetesTaint',
-    'KubernetesWorkerDataDisk',
-    'KubernetesWorkerNode',
     'ManagedKubernetesAddon',
     'ManagedKubernetesCertificateAuthority',
     'ManagedKubernetesConnections',
     'ManagedKubernetesMaintenanceWindow',
     'ManagedKubernetesRrsaMetadata',
-    'ManagedKubernetesRuntime',
-    'ManagedKubernetesTaint',
-    'ManagedKubernetesWorkerDataDisk',
-    'ManagedKubernetesWorkerNode',
     'NodePoolDataDisk',
     'NodePoolKubeletConfiguration',
     'NodePoolLabel',
@@ -629,13 +622,15 @@ class KubernetesAddon(dict):
     def __init__(__self__, *,
                  config: Optional[str] = None,
                  disabled: Optional[bool] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 version: Optional[str] = None):
         """
         :param str config: The ACK add-on configurations.
         :param bool disabled: Disables the automatic installation of a component. Default is `false`.
                
                The following example is the definition of addons block, The type of this field is list:
         :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        :param str version: The version of the component.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -643,6 +638,8 @@ class KubernetesAddon(dict):
             pulumi.set(__self__, "disabled", disabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -669,6 +666,14 @@ class KubernetesAddon(dict):
         Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        The version of the component.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -880,9 +885,9 @@ class KubernetesMasterNode(dict):
                  name: Optional[str] = None,
                  private_ip: Optional[str] = None):
         """
-        :param str id: The id of a node.
-        :param str name: The name of a node.
-        :param str private_ip: The private ip of a node.
+        :param str id: ID of the node.
+        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str private_ip: The private IP address of node.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -895,7 +900,7 @@ class KubernetesMasterNode(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The id of a node.
+        ID of the node.
         """
         return pulumi.get(self, "id")
 
@@ -903,7 +908,7 @@ class KubernetesMasterNode(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of a node.
+        The kubernetes cluster's name. It is unique in one Alicloud account.
         """
         return pulumi.get(self, "name")
 
@@ -911,7 +916,7 @@ class KubernetesMasterNode(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[str]:
         """
-        The private ip of a node.
+        The private IP address of node.
         """
         return pulumi.get(self, "private_ip")
 
@@ -1047,257 +1052,17 @@ class KubernetesRuntime(dict):
 
 
 @pulumi.output_type
-class KubernetesTaint(dict):
-    def __init__(__self__, *,
-                 effect: Optional[str] = None,
-                 key: Optional[str] = None,
-                 value: Optional[str] = None):
-        """
-        :param str effect: The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
-        :param str key: The key of a taint.
-        :param str value: The key of a taint.
-        """
-        if effect is not None:
-            pulumi.set(__self__, "effect", effect)
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def effect(self) -> Optional[str]:
-        """
-        The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
-        """
-        return pulumi.get(self, "effect")
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[str]:
-        """
-        The key of a taint.
-        """
-        return pulumi.get(self, "key")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        The key of a taint.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class KubernetesWorkerDataDisk(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoSnapshotPolicyId":
-            suggest = "auto_snapshot_policy_id"
-        elif key == "kmsKeyId":
-            suggest = "kms_key_id"
-        elif key == "performanceLevel":
-            suggest = "performance_level"
-        elif key == "snapshotId":
-            suggest = "snapshot_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KubernetesWorkerDataDisk. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KubernetesWorkerDataDisk.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KubernetesWorkerDataDisk.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 auto_snapshot_policy_id: Optional[str] = None,
-                 category: Optional[str] = None,
-                 device: Optional[str] = None,
-                 encrypted: Optional[str] = None,
-                 kms_key_id: Optional[str] = None,
-                 name: Optional[str] = None,
-                 performance_level: Optional[str] = None,
-                 size: Optional[str] = None,
-                 snapshot_id: Optional[str] = None):
-        """
-        :param str auto_snapshot_policy_id: Worker node data disk auto snapshot policy.
-        :param str category: The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        :param str device: The device of the data disks.
-        :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false.
-        :param str kms_key_id: The id of the kms key.
-        :param str name: The name of the data disks.
-        :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        :param str size: The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-        :param str snapshot_id: The id of snapshot.
-        """
-        if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
-        if category is not None:
-            pulumi.set(__self__, "category", category)
-        if device is not None:
-            pulumi.set(__self__, "device", device)
-        if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
-        if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
-        if size is not None:
-            pulumi.set(__self__, "size", size)
-        if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
-
-    @property
-    @pulumi.getter(name="autoSnapshotPolicyId")
-    def auto_snapshot_policy_id(self) -> Optional[str]:
-        """
-        Worker node data disk auto snapshot policy.
-        """
-        return pulumi.get(self, "auto_snapshot_policy_id")
-
-    @property
-    @pulumi.getter
-    def category(self) -> Optional[str]:
-        """
-        The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        """
-        return pulumi.get(self, "category")
-
-    @property
-    @pulumi.getter
-    def device(self) -> Optional[str]:
-        """
-        The device of the data disks.
-        """
-        return pulumi.get(self, "device")
-
-    @property
-    @pulumi.getter
-    def encrypted(self) -> Optional[str]:
-        """
-        Specifies whether to encrypt data disks. Valid values: true and false.
-        """
-        return pulumi.get(self, "encrypted")
-
-    @property
-    @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[str]:
-        """
-        The id of the kms key.
-        """
-        return pulumi.get(self, "kms_key_id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        The name of the data disks.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[str]:
-        """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        """
-        return pulumi.get(self, "performance_level")
-
-    @property
-    @pulumi.getter
-    def size(self) -> Optional[str]:
-        """
-        The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-        """
-        return pulumi.get(self, "size")
-
-    @property
-    @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[str]:
-        """
-        The id of snapshot.
-        """
-        return pulumi.get(self, "snapshot_id")
-
-
-@pulumi.output_type
-class KubernetesWorkerNode(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIp":
-            suggest = "private_ip"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KubernetesWorkerNode. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KubernetesWorkerNode.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KubernetesWorkerNode.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 name: Optional[str] = None,
-                 private_ip: Optional[str] = None):
-        """
-        :param str id: ID of the node.
-        :param str name: Node name.
-        :param str private_ip: The private IP address of node.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        ID of the node.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Node name.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[str]:
-        """
-        The private IP address of node.
-        """
-        return pulumi.get(self, "private_ip")
-
-
-@pulumi.output_type
 class ManagedKubernetesAddon(dict):
     def __init__(__self__, *,
                  config: Optional[str] = None,
                  disabled: Optional[bool] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 version: Optional[str] = None):
         """
         :param str config: If this parameter is left empty, no configurations are required.
         :param bool disabled: It specifies whether to disable automatic installation. 
                
-               It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+               It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
                
                You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
                
@@ -1310,6 +1075,7 @@ class ManagedKubernetesAddon(dict):
                
                The `varibales.tf`:
         :param str name: This parameter specifies the name of the component.
+        :param str version: It specifies the version of the component.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -1317,6 +1083,8 @@ class ManagedKubernetesAddon(dict):
             pulumi.set(__self__, "disabled", disabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1332,7 +1100,7 @@ class ManagedKubernetesAddon(dict):
         """
         It specifies whether to disable automatic installation. 
 
-        It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+        It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
 
         You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
 
@@ -1354,6 +1122,14 @@ class ManagedKubernetesAddon(dict):
         This parameter specifies the name of the component.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        It specifies the version of the component.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -1652,318 +1428,6 @@ class ManagedKubernetesRrsaMetadata(dict):
         The issuer URL of RRSA OIDC Token.
         """
         return pulumi.get(self, "rrsa_oidc_issuer_url")
-
-
-@pulumi.output_type
-class ManagedKubernetesRuntime(dict):
-    def __init__(__self__, *,
-                 name: Optional[str] = None,
-                 version: Optional[str] = None):
-        """
-        :param str name: This parameter specifies the name of the component.
-        :param str version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        This parameter specifies the name of the component.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[str]:
-        """
-        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-        """
-        return pulumi.get(self, "version")
-
-
-@pulumi.output_type
-class ManagedKubernetesTaint(dict):
-    def __init__(__self__, *,
-                 effect: Optional[str] = None,
-                 key: Optional[str] = None,
-                 value: Optional[str] = None):
-        """
-        :param str effect: The taint effect.
-               
-               The following example is the definition of taints block:
-               
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               
-               k8s = alicloud.cs.ManagedKubernetes("k8s", taints=[
-                   alicloud.cs.ManagedKubernetesTaintArgs(
-                       effect="NoSchedule",
-                       key="key-a",
-                       value="value-a",
-                   ),
-                   alicloud.cs.ManagedKubernetesTaintArgs(
-                       effect="NoSchedule",
-                       key="key-b",
-                       value="value-b",
-                   ),
-               ])
-               ```
-        :param str key: The taint key.
-        :param str value: The taint value.
-        """
-        if effect is not None:
-            pulumi.set(__self__, "effect", effect)
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def effect(self) -> Optional[str]:
-        """
-        The taint effect.
-
-        The following example is the definition of taints block:
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        k8s = alicloud.cs.ManagedKubernetes("k8s", taints=[
-            alicloud.cs.ManagedKubernetesTaintArgs(
-                effect="NoSchedule",
-                key="key-a",
-                value="value-a",
-            ),
-            alicloud.cs.ManagedKubernetesTaintArgs(
-                effect="NoSchedule",
-                key="key-b",
-                value="value-b",
-            ),
-        ])
-        ```
-        """
-        return pulumi.get(self, "effect")
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[str]:
-        """
-        The taint key.
-        """
-        return pulumi.get(self, "key")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        The taint value.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class ManagedKubernetesWorkerDataDisk(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoSnapshotPolicyId":
-            suggest = "auto_snapshot_policy_id"
-        elif key == "kmsKeyId":
-            suggest = "kms_key_id"
-        elif key == "performanceLevel":
-            suggest = "performance_level"
-        elif key == "snapshotId":
-            suggest = "snapshot_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesWorkerDataDisk. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedKubernetesWorkerDataDisk.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedKubernetesWorkerDataDisk.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 auto_snapshot_policy_id: Optional[str] = None,
-                 category: Optional[str] = None,
-                 device: Optional[str] = None,
-                 encrypted: Optional[str] = None,
-                 kms_key_id: Optional[str] = None,
-                 name: Optional[str] = None,
-                 performance_level: Optional[str] = None,
-                 size: Optional[str] = None,
-                 snapshot_id: Optional[str] = None):
-        """
-        :param str auto_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
-        :param str category: (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        :param str device: The mount point of data disk N.
-        :param str encrypted: (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-        :param str kms_key_id: The ID of the Key Management Service (KMS) key to use for data disk N.
-        :param str name: The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
-        :param str performance_level: (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        :param str size: (Optional)The size of a data disk, at least 40. Unit: GiB.
-        :param str snapshot_id: The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
-        """
-        if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
-        if category is not None:
-            pulumi.set(__self__, "category", category)
-        if device is not None:
-            pulumi.set(__self__, "device", device)
-        if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
-        if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
-        if size is not None:
-            pulumi.set(__self__, "size", size)
-        if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
-
-    @property
-    @pulumi.getter(name="autoSnapshotPolicyId")
-    def auto_snapshot_policy_id(self) -> Optional[str]:
-        """
-        (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
-        """
-        return pulumi.get(self, "auto_snapshot_policy_id")
-
-    @property
-    @pulumi.getter
-    def category(self) -> Optional[str]:
-        """
-        (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        """
-        return pulumi.get(self, "category")
-
-    @property
-    @pulumi.getter
-    def device(self) -> Optional[str]:
-        """
-        The mount point of data disk N.
-        """
-        return pulumi.get(self, "device")
-
-    @property
-    @pulumi.getter
-    def encrypted(self) -> Optional[str]:
-        """
-        (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-        """
-        return pulumi.get(self, "encrypted")
-
-    @property
-    @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[str]:
-        """
-        The ID of the Key Management Service (KMS) key to use for data disk N.
-        """
-        return pulumi.get(self, "kms_key_id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[str]:
-        """
-        (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        """
-        return pulumi.get(self, "performance_level")
-
-    @property
-    @pulumi.getter
-    def size(self) -> Optional[str]:
-        """
-        (Optional)The size of a data disk, at least 40. Unit: GiB.
-        """
-        return pulumi.get(self, "size")
-
-    @property
-    @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[str]:
-        """
-        The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
-        """
-        return pulumi.get(self, "snapshot_id")
-
-
-@pulumi.output_type
-class ManagedKubernetesWorkerNode(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIp":
-            suggest = "private_ip"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesWorkerNode. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedKubernetesWorkerNode.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedKubernetesWorkerNode.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 name: Optional[str] = None,
-                 private_ip: Optional[str] = None):
-        """
-        :param str id: (Deprecated from version 1.177.0) ID of the node.
-        :param str name: This parameter specifies the name of the component.
-        :param str private_ip: (Deprecated from version 1.177.0) The private IP address of node.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        (Deprecated from version 1.177.0) ID of the node.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        This parameter specifies the name of the component.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[str]:
-        """
-        (Deprecated from version 1.177.0) The private IP address of node.
-        """
-        return pulumi.get(self, "private_ip")
 
 
 @pulumi.output_type

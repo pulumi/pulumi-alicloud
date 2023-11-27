@@ -125,15 +125,15 @@ public final class GetRulesResult {
             return rules(List.of(rules));
         }
         public GetRulesResult build() {
-            final var o = new GetRulesResult();
-            o.endpointId = endpointId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetRulesResult();
+            _resultValue.endpointId = endpointId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

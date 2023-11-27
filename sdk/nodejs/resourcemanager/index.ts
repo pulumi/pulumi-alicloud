@@ -150,6 +150,11 @@ export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
 
+export { SavedQueryArgs, SavedQueryState } from "./savedQuery";
+export type SavedQuery = import("./savedQuery").SavedQuery;
+export const SavedQuery: typeof import("./savedQuery").SavedQuery = null as any;
+utilities.lazyLoad(exports, ["SavedQuery"], () => require("./savedQuery"));
+
 export { ServiceLinkedRoleArgs, ServiceLinkedRoleState } from "./serviceLinkedRole";
 export type ServiceLinkedRole = import("./serviceLinkedRole").ServiceLinkedRole;
 export const ServiceLinkedRole: typeof import("./serviceLinkedRole").ServiceLinkedRole = null as any;
@@ -196,6 +201,8 @@ const _module = {
                 return new ResourceShare(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/savedQuery:SavedQuery":
+                return new SavedQuery(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole":
                 return new ServiceLinkedRole(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/sharedResource:SharedResource":
@@ -220,6 +227,7 @@ pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceDirec
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceShare", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/role", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/savedQuery", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/serviceLinkedRole", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/sharedResource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/sharedTarget", _module)

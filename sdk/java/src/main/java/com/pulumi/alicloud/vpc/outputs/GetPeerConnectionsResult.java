@@ -147,17 +147,17 @@ public final class GetPeerConnectionsResult {
             return this;
         }
         public GetPeerConnectionsResult build() {
-            final var o = new GetPeerConnectionsResult();
-            o.connections = connections;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.peerConnectionName = peerConnectionName;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetPeerConnectionsResult();
+            _resultValue.connections = connections;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.peerConnectionName = peerConnectionName;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

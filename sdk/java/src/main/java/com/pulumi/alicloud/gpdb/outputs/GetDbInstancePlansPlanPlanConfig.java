@@ -119,12 +119,12 @@ public final class GetDbInstancePlansPlanPlanConfig {
             return scaleOuts(List.of(scaleOuts));
         }
         public GetDbInstancePlansPlanPlanConfig build() {
-            final var o = new GetDbInstancePlansPlanPlanConfig();
-            o.pauses = pauses;
-            o.resumes = resumes;
-            o.scaleIns = scaleIns;
-            o.scaleOuts = scaleOuts;
-            return o;
+            final var _resultValue = new GetDbInstancePlansPlanPlanConfig();
+            _resultValue.pauses = pauses;
+            _resultValue.resumes = resumes;
+            _resultValue.scaleIns = scaleIns;
+            _resultValue.scaleOuts = scaleOuts;
+            return _resultValue;
         }
     }
 }

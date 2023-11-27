@@ -146,14 +146,14 @@ public final class GetCustomLinesLine {
             return ipSegmentLists(List.of(ipSegmentLists));
         }
         public GetCustomLinesLine build() {
-            final var o = new GetCustomLinesLine();
-            o.code = code;
-            o.customLineId = customLineId;
-            o.customLineName = customLineName;
-            o.domainName = domainName;
-            o.id = id;
-            o.ipSegmentLists = ipSegmentLists;
-            return o;
+            final var _resultValue = new GetCustomLinesLine();
+            _resultValue.code = code;
+            _resultValue.customLineId = customLineId;
+            _resultValue.customLineName = customLineName;
+            _resultValue.domainName = domainName;
+            _resultValue.id = id;
+            _resultValue.ipSegmentLists = ipSegmentLists;
+            return _resultValue;
         }
     }
 }

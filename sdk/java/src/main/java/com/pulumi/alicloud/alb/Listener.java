@@ -47,7 +47,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
      * 
      */
-    @Export(name="accessLogRecordCustomizedHeadersEnabled", type=Boolean.class, parameters={})
+    @Export(name="accessLogRecordCustomizedHeadersEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accessLogRecordCustomizedHeadersEnabled;
 
     /**
@@ -63,7 +63,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Xtrace Configuration Information. See `access_log_tracing_config` below for details.
      * 
      */
-    @Export(name="accessLogTracingConfig", type=ListenerAccessLogTracingConfig.class, parameters={})
+    @Export(name="accessLogTracingConfig", refs={ListenerAccessLogTracingConfig.class}, tree="[0]")
     private Output</* @Nullable */ ListenerAccessLogTracingConfig> accessLogTracingConfig;
 
     /**
@@ -81,7 +81,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'. */
-    @Export(name="aclConfig", type=ListenerAclConfig.class, parameters={})
+    @Export(name="aclConfig", refs={ListenerAclConfig.class}, tree="[0]")
     private Output<ListenerAclConfig> aclConfig;
 
     /**
@@ -95,7 +95,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
      * 
      */
-    @Export(name="certificates", type=ListenerCertificates.class, parameters={})
+    @Export(name="certificates", refs={ListenerCertificates.class}, tree="[0]")
     private Output</* @Nullable */ ListenerCertificates> certificates;
 
     /**
@@ -109,7 +109,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The Default Rule Action List. See `default_actions` below for details.
      * 
      */
-    @Export(name="defaultActions", type=List.class, parameters={ListenerDefaultAction.class})
+    @Export(name="defaultActions", refs={List.class,ListenerDefaultAction.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ListenerDefaultAction>> defaultActions;
 
     /**
@@ -123,7 +123,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -137,7 +137,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
      * 
      */
-    @Export(name="gzipEnabled", type=Boolean.class, parameters={})
+    @Export(name="gzipEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> gzipEnabled;
 
     /**
@@ -153,7 +153,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
-    @Export(name="http2Enabled", type=Boolean.class, parameters={})
+    @Export(name="http2Enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> http2Enabled;
 
     /**
@@ -169,7 +169,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
      * 
      */
-    @Export(name="idleTimeout", type=Integer.class, parameters={})
+    @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> idleTimeout;
 
     /**
@@ -183,7 +183,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
      * 
      */
-    @Export(name="listenerDescription", type=String.class, parameters={})
+    @Export(name="listenerDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> listenerDescription;
 
     /**
@@ -197,7 +197,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
      * 
      */
-    @Export(name="listenerPort", type=Integer.class, parameters={})
+    @Export(name="listenerPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> listenerPort;
 
     /**
@@ -211,7 +211,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
      * 
      */
-    @Export(name="listenerProtocol", type=String.class, parameters={})
+    @Export(name="listenerProtocol", refs={String.class}, tree="[0]")
     private Output<String> listenerProtocol;
 
     /**
@@ -225,7 +225,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The ALB Instance Id.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -239,7 +239,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Configuration Associated with the QuIC Listening. See `quic_config` below for details.
      * 
      */
-    @Export(name="quicConfig", type=ListenerQuicConfig.class, parameters={})
+    @Export(name="quicConfig", refs={ListenerQuicConfig.class}, tree="[0]")
     private Output<ListenerQuicConfig> quicConfig;
 
     /**
@@ -253,7 +253,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
-    @Export(name="requestTimeout", type=Integer.class, parameters={})
+    @Export(name="requestTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> requestTimeout;
 
     /**
@@ -269,7 +269,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
-    @Export(name="securityPolicyId", type=String.class, parameters={})
+    @Export(name="securityPolicyId", refs={String.class}, tree="[0]")
     private Output<String> securityPolicyId;
 
     /**
@@ -285,7 +285,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -299,7 +299,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
-    @Export(name="xForwardedForConfig", type=ListenerXForwardedForConfig.class, parameters={})
+    @Export(name="xForwardedForConfig", refs={ListenerXForwardedForConfig.class}, tree="[0]")
     private Output<ListenerXForwardedForConfig> xForwardedForConfig;
 
     /**

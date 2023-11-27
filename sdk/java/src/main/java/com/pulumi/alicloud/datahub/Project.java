@@ -70,7 +70,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Comment of the datahub project. It cannot be longer than 255 characters.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -84,7 +84,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -98,7 +98,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      * 
      */
-    @Export(name="lastModifyTime", type=String.class, parameters={})
+    @Export(name="lastModifyTime", refs={String.class}, tree="[0]")
     private Output<String> lastModifyTime;
 
     /**
@@ -112,7 +112,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and &#39;_&#39; are allowed. It is case-insensitive.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

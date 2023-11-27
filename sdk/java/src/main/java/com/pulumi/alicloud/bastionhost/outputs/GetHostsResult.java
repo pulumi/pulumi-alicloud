@@ -203,22 +203,22 @@ public final class GetHostsResult {
             return this;
         }
         public GetHostsResult build() {
-            final var o = new GetHostsResult();
-            o.enableDetails = enableDetails;
-            o.hostAddress = hostAddress;
-            o.hostName = hostName;
-            o.hosts = hosts;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.osType = osType;
-            o.outputFile = outputFile;
-            o.source = source;
-            o.sourceInstanceId = sourceInstanceId;
-            o.sourceInstanceState = sourceInstanceState;
-            return o;
+            final var _resultValue = new GetHostsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.hostAddress = hostAddress;
+            _resultValue.hostName = hostName;
+            _resultValue.hosts = hosts;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.osType = osType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.source = source;
+            _resultValue.sourceInstanceId = sourceInstanceId;
+            _resultValue.sourceInstanceState = sourceInstanceState;
+            return _resultValue;
         }
     }
 }

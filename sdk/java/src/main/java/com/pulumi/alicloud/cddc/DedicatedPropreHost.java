@@ -34,7 +34,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * - **false** (default): Off
      * 
      */
-    @Export(name="autoRenew", type=String.class, parameters={})
+    @Export(name="autoRenew", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoRenew;
 
     /**
@@ -50,7 +50,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * You have a dedicated cluster ID.
      * 
      */
-    @Export(name="dedicatedHostGroupId", type=String.class, parameters={})
+    @Export(name="dedicatedHostGroupId", refs={String.class}, tree="[0]")
     private Output<String> dedicatedHostGroupId;
 
     /**
@@ -64,7 +64,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * ECS specifications. See `ecs_class_list` below.
      * 
      */
-    @Export(name="ecsClassLists", type=List.class, parameters={DedicatedPropreHostEcsClassList.class})
+    @Export(name="ecsClassLists", refs={List.class,DedicatedPropreHostEcsClassList.class}, tree="[0,1]")
     private Output<List<DedicatedPropreHostEcsClassList>> ecsClassLists;
 
     /**
@@ -78,7 +78,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * The ID of the cloud server deployment set.
      * 
      */
-    @Export(name="ecsDeploymentSetId", type=String.class, parameters={})
+    @Export(name="ecsDeploymentSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ecsDeploymentSetId;
 
     /**
@@ -92,7 +92,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
      * 
      */
-    @Export(name="ecsHostName", type=String.class, parameters={})
+    @Export(name="ecsHostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ecsHostName;
 
     /**
@@ -106,7 +106,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * ECS instance ID.
      * 
      */
-    @Export(name="ecsInstanceId", type=String.class, parameters={})
+    @Export(name="ecsInstanceId", refs={String.class}, tree="[0]")
     private Output<String> ecsInstanceId;
 
     /**
@@ -120,7 +120,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
      * 
      */
-    @Export(name="ecsInstanceName", type=String.class, parameters={})
+    @Export(name="ecsInstanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ecsInstanceName;
 
     /**
@@ -137,7 +137,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      * 
      */
-    @Export(name="ecsUniqueSuffix", type=String.class, parameters={})
+    @Export(name="ecsUniqueSuffix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ecsUniqueSuffix;
 
     /**
@@ -154,7 +154,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * The ID of the zone.
      * 
      */
-    @Export(name="ecsZoneId", type=String.class, parameters={})
+    @Export(name="ecsZoneId", refs={String.class}, tree="[0]")
     private Output<String> ecsZoneId;
 
     /**
@@ -172,7 +172,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      *   Must be consistent with the parent resource cluster engine attributes.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -191,7 +191,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**  If you need to use the default image, you do not need to fill it in.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
@@ -206,7 +206,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * The key pair name.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
@@ -224,7 +224,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      * 
      */
-    @Export(name="osPassword", type=String.class, parameters={})
+    @Export(name="osPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osPassword;
 
     /**
@@ -245,7 +245,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      * 
      */
-    @Export(name="passwordInherit", type=String.class, parameters={})
+    @Export(name="passwordInherit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passwordInherit;
 
     /**
@@ -262,7 +262,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * The Payment type. Currently, only **Subscription** is supported.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -276,7 +276,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * Duration of purchase.
      * 
      */
-    @Export(name="period", type=String.class, parameters={})
+    @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
@@ -290,7 +290,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * The subscription type. Currently, only **Monthly** (subscription) is supported.
      * 
      */
-    @Export(name="periodType", type=String.class, parameters={})
+    @Export(name="periodType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodType;
 
     /**
@@ -304,7 +304,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * The ID of the security group.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -318,7 +318,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * VPCID of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -332,7 +332,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * The ID of the virtual switch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

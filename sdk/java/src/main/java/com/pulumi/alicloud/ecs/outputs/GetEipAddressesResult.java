@@ -324,30 +324,30 @@ public final class GetEipAddressesResult {
             return this;
         }
         public GetEipAddressesResult build() {
-            final var o = new GetEipAddressesResult();
-            o.addressName = addressName;
-            o.addresses = addresses;
-            o.associatedInstanceId = associatedInstanceId;
-            o.associatedInstanceType = associatedInstanceType;
-            o.dryRun = dryRun;
-            o.eips = eips;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.includeReservationData = includeReservationData;
-            o.ipAddress = ipAddress;
-            o.ipAddresses = ipAddresses;
-            o.isp = isp;
-            o.lockReason = lockReason;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.segmentInstanceId = segmentInstanceId;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetEipAddressesResult();
+            _resultValue.addressName = addressName;
+            _resultValue.addresses = addresses;
+            _resultValue.associatedInstanceId = associatedInstanceId;
+            _resultValue.associatedInstanceType = associatedInstanceType;
+            _resultValue.dryRun = dryRun;
+            _resultValue.eips = eips;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.includeReservationData = includeReservationData;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.ipAddresses = ipAddresses;
+            _resultValue.isp = isp;
+            _resultValue.lockReason = lockReason;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.segmentInstanceId = segmentInstanceId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

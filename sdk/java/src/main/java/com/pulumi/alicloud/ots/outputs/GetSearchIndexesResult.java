@@ -176,16 +176,16 @@ public final class GetSearchIndexesResult {
             return this;
         }
         public GetSearchIndexesResult build() {
-            final var o = new GetSearchIndexesResult();
-            o.id = id;
-            o.ids = ids;
-            o.indexes = indexes;
-            o.instanceName = instanceName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.tableName = tableName;
-            return o;
+            final var _resultValue = new GetSearchIndexesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.indexes = indexes;
+            _resultValue.instanceName = instanceName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.tableName = tableName;
+            return _resultValue;
         }
     }
 }

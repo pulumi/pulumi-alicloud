@@ -114,14 +114,14 @@ public final class GetServerCustomImagesResult {
             return this;
         }
         public GetServerCustomImagesResult build() {
-            final var o = new GetServerCustomImagesResult();
-            o.id = id;
-            o.ids = ids;
-            o.images = images;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetServerCustomImagesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.images = images;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

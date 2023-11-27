@@ -163,17 +163,17 @@ public final class GetTransitRouterMulticastDomainPeerMembersResult {
             return this;
         }
         public GetTransitRouterMulticastDomainPeerMembersResult build() {
-            final var o = new GetTransitRouterMulticastDomainPeerMembersResult();
-            o.id = id;
-            o.ids = ids;
-            o.members = members;
-            o.outputFile = outputFile;
-            o.peerTransitRouterMulticastDomains = peerTransitRouterMulticastDomains;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-            return o;
+            final var _resultValue = new GetTransitRouterMulticastDomainPeerMembersResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.members = members;
+            _resultValue.outputFile = outputFile;
+            _resultValue.peerTransitRouterMulticastDomains = peerTransitRouterMulticastDomains;
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            return _resultValue;
         }
     }
 }

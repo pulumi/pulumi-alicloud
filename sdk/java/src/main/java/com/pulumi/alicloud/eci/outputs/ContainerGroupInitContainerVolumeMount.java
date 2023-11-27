@@ -87,11 +87,11 @@ public final class ContainerGroupInitContainerVolumeMount {
             return this;
         }
         public ContainerGroupInitContainerVolumeMount build() {
-            final var o = new ContainerGroupInitContainerVolumeMount();
-            o.mountPath = mountPath;
-            o.name = name;
-            o.readOnly = readOnly;
-            return o;
+            final var _resultValue = new ContainerGroupInitContainerVolumeMount();
+            _resultValue.mountPath = mountPath;
+            _resultValue.name = name;
+            _resultValue.readOnly = readOnly;
+            return _resultValue;
         }
     }
 }

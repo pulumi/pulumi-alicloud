@@ -17,14 +17,18 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
     public static final VpcEndpointServiceResourceState Empty = new VpcEndpointServiceResourceState();
 
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -32,14 +36,14 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of Resource.
+     * The service resource ID.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return The ID of Resource.
+     * @return The service resource ID.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -47,14 +51,20 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
     }
 
     /**
-     * The Type of Resource.
+     * Service resource type, value:
+     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The Type of Resource.
+     * @return Service resource type, value:
+     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -62,18 +72,33 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of Vpc Endpoint Service.
+     * The endpoint service ID.
      * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
     /**
-     * @return The ID of Vpc Endpoint Service.
+     * @return The endpoint service ID.
      * 
      */
     public Optional<Output<String>> serviceId() {
         return Optional.ofNullable(this.serviceId);
+    }
+
+    /**
+     * The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private VpcEndpointServiceResourceState() {}
@@ -83,6 +108,7 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
         this.resourceId = $.resourceId;
         this.resourceType = $.resourceType;
         this.serviceId = $.serviceId;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -104,7 +130,9 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -115,7 +143,9 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -125,7 +155,7 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceId The ID of Resource.
+         * @param resourceId The service resource ID.
          * 
          * @return builder
          * 
@@ -136,7 +166,7 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceId The ID of Resource.
+         * @param resourceId The service resource ID.
          * 
          * @return builder
          * 
@@ -146,7 +176,10 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceType The Type of Resource.
+         * @param resourceType Service resource type, value:
+         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -157,7 +190,10 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceType The Type of Resource.
+         * @param resourceType Service resource type, value:
+         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -167,7 +203,7 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
         }
 
         /**
-         * @param serviceId The ID of Vpc Endpoint Service.
+         * @param serviceId The endpoint service ID.
          * 
          * @return builder
          * 
@@ -178,13 +214,34 @@ public final class VpcEndpointServiceResourceState extends com.pulumi.resources.
         }
 
         /**
-         * @param serviceId The ID of Vpc Endpoint Service.
+         * @param serviceId The endpoint service ID.
          * 
          * @return builder
          * 
          */
         public Builder serviceId(String serviceId) {
             return serviceId(Output.of(serviceId));
+        }
+
+        /**
+         * @param zoneId The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public VpcEndpointServiceResourceState build() {

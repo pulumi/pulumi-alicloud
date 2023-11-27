@@ -69,10 +69,10 @@ public final class GetInstancesInstanceAllowedListInternetList {
             return this;
         }
         public GetInstancesInstanceAllowedListInternetList build() {
-            final var o = new GetInstancesInstanceAllowedListInternetList();
-            o.allowedIpLists = allowedIpLists;
-            o.portRange = portRange;
-            return o;
+            final var _resultValue = new GetInstancesInstanceAllowedListInternetList();
+            _resultValue.allowedIpLists = allowedIpLists;
+            _resultValue.portRange = portRange;
+            return _resultValue;
         }
     }
 }

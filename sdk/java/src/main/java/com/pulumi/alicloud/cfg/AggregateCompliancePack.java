@@ -118,7 +118,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
      * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
      * 
      */
-    @Export(name="aggregateCompliancePackName", type=String.class, parameters={})
+    @Export(name="aggregateCompliancePackName", refs={String.class}, tree="[0]")
     private Output<String> aggregateCompliancePackName;
 
     /**
@@ -132,7 +132,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
      * The ID of the compliance package.
      * 
      */
-    @Export(name="aggregatorCompliancePackId", type=String.class, parameters={})
+    @Export(name="aggregatorCompliancePackId", refs={String.class}, tree="[0]")
     private Output<String> aggregatorCompliancePackId;
 
     /**
@@ -146,7 +146,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
      * The ID of aggregator.
      * 
      */
-    @Export(name="aggregatorId", type=String.class, parameters={})
+    @Export(name="aggregatorId", refs={String.class}, tree="[0]")
     private Output<String> aggregatorId;
 
     /**
@@ -160,7 +160,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
      * The Template ID of compliance package.
      * 
      */
-    @Export(name="compliancePackTemplateId", type=String.class, parameters={})
+    @Export(name="compliancePackTemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> compliancePackTemplateId;
 
     /**
@@ -174,7 +174,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
      * A list of Config Rule IDs. See `config_rule_ids` below.
      * 
      */
-    @Export(name="configRuleIds", type=List.class, parameters={AggregateCompliancePackConfigRuleId.class})
+    @Export(name="configRuleIds", refs={List.class,AggregateCompliancePackConfigRuleId.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AggregateCompliancePackConfigRuleId>> configRuleIds;
 
     /**
@@ -192,7 +192,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
      * 
      */
     @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
-    @Export(name="configRules", type=List.class, parameters={AggregateCompliancePackConfigRule.class})
+    @Export(name="configRules", refs={List.class,AggregateCompliancePackConfigRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AggregateCompliancePackConfigRule>> configRules;
 
     /**
@@ -206,7 +206,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
      * The description of compliance package.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -220,7 +220,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
      * The Risk Level. Valid values:
      * 
      */
-    @Export(name="riskLevel", type=Integer.class, parameters={})
+    @Export(name="riskLevel", refs={Integer.class}, tree="[0]")
     private Output<Integer> riskLevel;
 
     /**
@@ -234,7 +234,7 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
      * The status of the Aggregate Compliance Pack.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -217,23 +217,23 @@ public final class GetContainerGroupsResult {
             return this;
         }
         public GetContainerGroupsResult build() {
-            final var o = new GetContainerGroupsResult();
-            o.containerGroupName = containerGroupName;
-            o.enableDetails = enableDetails;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.limit = limit;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.vswitchId = vswitchId;
-            o.withEvent = withEvent;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetContainerGroupsResult();
+            _resultValue.containerGroupName = containerGroupName;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.limit = limit;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.withEvent = withEvent;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

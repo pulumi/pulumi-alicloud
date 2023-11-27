@@ -51,9 +51,9 @@ public final class RuleRuleConditionPathConfig {
             return values(List.of(values));
         }
         public RuleRuleConditionPathConfig build() {
-            final var o = new RuleRuleConditionPathConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new RuleRuleConditionPathConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

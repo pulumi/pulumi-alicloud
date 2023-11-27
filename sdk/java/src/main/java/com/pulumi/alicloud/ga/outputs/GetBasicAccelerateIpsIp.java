@@ -141,14 +141,14 @@ public final class GetBasicAccelerateIpsIp {
             return this;
         }
         public GetBasicAccelerateIpsIp build() {
-            final var o = new GetBasicAccelerateIpsIp();
-            o.accelerateIpAddress = accelerateIpAddress;
-            o.accelerateIpId = accelerateIpId;
-            o.acceleratorId = acceleratorId;
-            o.id = id;
-            o.ipSetId = ipSetId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBasicAccelerateIpsIp();
+            _resultValue.accelerateIpAddress = accelerateIpAddress;
+            _resultValue.accelerateIpId = accelerateIpId;
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.id = id;
+            _resultValue.ipSetId = ipSetId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

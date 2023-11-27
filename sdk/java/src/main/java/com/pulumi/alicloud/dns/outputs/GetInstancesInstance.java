@@ -163,16 +163,16 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.dnsSecurity = dnsSecurity;
-            o.domain = domain;
-            o.domainNumbers = domainNumbers;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.paymentType = paymentType;
-            o.versionCode = versionCode;
-            o.versionName = versionName;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.dnsSecurity = dnsSecurity;
+            _resultValue.domain = domain;
+            _resultValue.domainNumbers = domainNumbers;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.paymentType = paymentType;
+            _resultValue.versionCode = versionCode;
+            _resultValue.versionName = versionName;
+            return _resultValue;
         }
     }
 }

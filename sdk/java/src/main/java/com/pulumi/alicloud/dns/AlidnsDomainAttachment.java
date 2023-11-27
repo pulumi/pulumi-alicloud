@@ -92,7 +92,7 @@ public class AlidnsDomainAttachment extends com.pulumi.resources.CustomResource 
      * The domain names bound to the DNS instance.
      * 
      */
-    @Export(name="domainNames", type=List.class, parameters={String.class})
+    @Export(name="domainNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domainNames;
 
     /**
@@ -106,7 +106,7 @@ public class AlidnsDomainAttachment extends com.pulumi.resources.CustomResource 
      * The id of the DNS instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**

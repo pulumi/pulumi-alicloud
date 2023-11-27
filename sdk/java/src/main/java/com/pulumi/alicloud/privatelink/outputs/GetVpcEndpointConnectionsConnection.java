@@ -104,12 +104,12 @@ public final class GetVpcEndpointConnectionsConnection {
             return this;
         }
         public GetVpcEndpointConnectionsConnection build() {
-            final var o = new GetVpcEndpointConnectionsConnection();
-            o.bandwidth = bandwidth;
-            o.endpointId = endpointId;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetVpcEndpointConnectionsConnection();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.endpointId = endpointId;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

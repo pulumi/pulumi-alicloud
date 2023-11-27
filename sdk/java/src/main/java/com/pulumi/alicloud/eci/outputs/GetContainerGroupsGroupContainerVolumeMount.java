@@ -85,11 +85,11 @@ public final class GetContainerGroupsGroupContainerVolumeMount {
             return this;
         }
         public GetContainerGroupsGroupContainerVolumeMount build() {
-            final var o = new GetContainerGroupsGroupContainerVolumeMount();
-            o.mountPath = mountPath;
-            o.name = name;
-            o.readOnly = readOnly;
-            return o;
+            final var _resultValue = new GetContainerGroupsGroupContainerVolumeMount();
+            _resultValue.mountPath = mountPath;
+            _resultValue.name = name;
+            _resultValue.readOnly = readOnly;
+            return _resultValue;
         }
     }
 }

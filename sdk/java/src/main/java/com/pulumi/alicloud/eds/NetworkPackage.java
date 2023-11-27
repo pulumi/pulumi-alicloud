@@ -80,7 +80,7 @@ public class NetworkPackage extends com.pulumi.resources.CustomResource {
      * The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -94,7 +94,7 @@ public class NetworkPackage extends com.pulumi.resources.CustomResource {
      * The internet charge type  of  package.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
@@ -108,7 +108,7 @@ public class NetworkPackage extends com.pulumi.resources.CustomResource {
      * The ID of office site.
      * 
      */
-    @Export(name="officeSiteId", type=String.class, parameters={})
+    @Export(name="officeSiteId", refs={String.class}, tree="[0]")
     private Output<String> officeSiteId;
 
     /**
@@ -122,7 +122,7 @@ public class NetworkPackage extends com.pulumi.resources.CustomResource {
      * The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

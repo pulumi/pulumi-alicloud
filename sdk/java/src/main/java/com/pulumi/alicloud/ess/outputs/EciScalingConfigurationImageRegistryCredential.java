@@ -92,11 +92,11 @@ public final class EciScalingConfigurationImageRegistryCredential {
             return this;
         }
         public EciScalingConfigurationImageRegistryCredential build() {
-            final var o = new EciScalingConfigurationImageRegistryCredential();
-            o.password = password;
-            o.server = server;
-            o.username = username;
-            return o;
+            final var _resultValue = new EciScalingConfigurationImageRegistryCredential();
+            _resultValue.password = password;
+            _resultValue.server = server;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

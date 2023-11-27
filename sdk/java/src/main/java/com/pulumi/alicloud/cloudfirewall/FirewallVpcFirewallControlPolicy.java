@@ -99,7 +99,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      * 
      */
-    @Export(name="aclAction", type=String.class, parameters={})
+    @Export(name="aclAction", refs={String.class}, tree="[0]")
     private Output<String> aclAction;
 
     /**
@@ -113,7 +113,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * Access control over VPC firewalls strategy unique identifier.
      * 
      */
-    @Export(name="aclUuid", type=String.class, parameters={})
+    @Export(name="aclUuid", refs={String.class}, tree="[0]")
     private Output<String> aclUuid;
 
     /**
@@ -127,7 +127,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * Policy specifies the application ID.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -141,7 +141,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
      * 
      */
-    @Export(name="applicationName", type=String.class, parameters={})
+    @Export(name="applicationName", refs={String.class}, tree="[0]")
     private Output<String> applicationName;
 
     /**
@@ -155,7 +155,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * Access control over VPC firewalls description of the strategy information.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -169,7 +169,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
      * 
      */
-    @Export(name="destPort", type=String.class, parameters={})
+    @Export(name="destPort", refs={String.class}, tree="[0]")
     private Output<String> destPort;
 
     /**
@@ -183,7 +183,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
      * 
      */
-    @Export(name="destPortGroup", type=String.class, parameters={})
+    @Export(name="destPortGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destPortGroup;
 
     /**
@@ -197,7 +197,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * Port Address Book port list.
      * 
      */
-    @Export(name="destPortGroupPorts", type=List.class, parameters={String.class})
+    @Export(name="destPortGroupPorts", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> destPortGroupPorts;
 
     /**
@@ -211,7 +211,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The type of the destination port in the access control policy. Valid values: `port`, `group`.
      * 
      */
-    @Export(name="destPortType", type=String.class, parameters={})
+    @Export(name="destPortType", refs={String.class}, tree="[0]")
     private Output<String> destPortType;
 
     /**
@@ -228,7 +228,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
      * 
      */
-    @Export(name="destination", type=String.class, parameters={})
+    @Export(name="destination", refs={String.class}, tree="[0]")
     private Output<String> destination;
 
     /**
@@ -245,7 +245,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * Destination address book defined in the address list.
      * 
      */
-    @Export(name="destinationGroupCidrs", type=List.class, parameters={String.class})
+    @Export(name="destinationGroupCidrs", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> destinationGroupCidrs;
 
     /**
@@ -259,7 +259,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The destination address book type in the access control policy.
      * 
      */
-    @Export(name="destinationGroupType", type=String.class, parameters={})
+    @Export(name="destinationGroupType", refs={String.class}, tree="[0]")
     private Output<String> destinationGroupType;
 
     /**
@@ -273,7 +273,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
      * 
      */
-    @Export(name="destinationType", type=String.class, parameters={})
+    @Export(name="destinationType", refs={String.class}, tree="[0]")
     private Output<String> destinationType;
 
     /**
@@ -287,7 +287,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * Control strategy of hits per second.
      * 
      */
-    @Export(name="hitTimes", type=Integer.class, parameters={})
+    @Export(name="hitTimes", refs={Integer.class}, tree="[0]")
     private Output<Integer> hitTimes;
 
     /**
@@ -301,7 +301,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -315,7 +315,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The UID of the member account of the current Alibaba cloud account.
      * 
      */
-    @Export(name="memberUid", type=String.class, parameters={})
+    @Export(name="memberUid", refs={String.class}, tree="[0]")
     private Output<String> memberUid;
 
     /**
@@ -329,7 +329,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
      * 
      */
-    @Export(name="order", type=Integer.class, parameters={})
+    @Export(name="order", refs={Integer.class}, tree="[0]")
     private Output<Integer> order;
 
     /**
@@ -343,7 +343,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
      * 
      */
-    @Export(name="proto", type=String.class, parameters={})
+    @Export(name="proto", refs={String.class}, tree="[0]")
     private Output<String> proto;
 
     /**
@@ -357,7 +357,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
-    @Export(name="release", type=Boolean.class, parameters={})
+    @Export(name="release", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> release;
 
     /**
@@ -371,7 +371,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * Access control over VPC firewalls strategy in the source address.
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     /**
@@ -385,7 +385,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * SOURCE address of the address list.
      * 
      */
-    @Export(name="sourceGroupCidrs", type=List.class, parameters={String.class})
+    @Export(name="sourceGroupCidrs", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> sourceGroupCidrs;
 
     /**
@@ -399,7 +399,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The source address type in the access control policy.
      * 
      */
-    @Export(name="sourceGroupType", type=String.class, parameters={})
+    @Export(name="sourceGroupType", refs={String.class}, tree="[0]")
     private Output<String> sourceGroupType;
 
     /**
@@ -413,7 +413,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The type of the source address in the access control policy. Valid values: `net`, `group`.
      * 
      */
-    @Export(name="sourceType", type=String.class, parameters={})
+    @Export(name="sourceType", refs={String.class}, tree="[0]")
     private Output<String> sourceType;
 
     /**
@@ -429,7 +429,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
      */
-    @Export(name="vpcFirewallId", type=String.class, parameters={})
+    @Export(name="vpcFirewallId", refs={String.class}, tree="[0]")
     private Output<String> vpcFirewallId;
 
     /**

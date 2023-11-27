@@ -48,9 +48,9 @@ public final class CompliancePackConfigRuleId {
             return this;
         }
         public CompliancePackConfigRuleId build() {
-            final var o = new CompliancePackConfigRuleId();
-            o.configRuleId = configRuleId;
-            return o;
+            final var _resultValue = new CompliancePackConfigRuleId();
+            _resultValue.configRuleId = configRuleId;
+            return _resultValue;
         }
     }
 }

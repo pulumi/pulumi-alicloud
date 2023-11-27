@@ -164,18 +164,18 @@ public final class GetNatIpCidrsResult {
             return this;
         }
         public GetNatIpCidrsResult build() {
-            final var o = new GetNatIpCidrsResult();
-            o.cidrs = cidrs;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.natGatewayId = natGatewayId;
-            o.natIpCidrNames = natIpCidrNames;
-            o.natIpCidrs = natIpCidrs;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetNatIpCidrsResult();
+            _resultValue.cidrs = cidrs;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.natGatewayId = natGatewayId;
+            _resultValue.natIpCidrNames = natIpCidrNames;
+            _resultValue.natIpCidrs = natIpCidrs;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

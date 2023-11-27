@@ -114,14 +114,14 @@ public final class GetEventSourcesResult {
             return sources(List.of(sources));
         }
         public GetEventSourcesResult build() {
-            final var o = new GetEventSourcesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.sources = sources;
-            return o;
+            final var _resultValue = new GetEventSourcesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sources = sources;
+            return _resultValue;
         }
     }
 }

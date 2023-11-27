@@ -176,16 +176,16 @@ public final class GetScalingRulesResult {
             return this;
         }
         public GetScalingRulesResult build() {
-            final var o = new GetScalingRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            o.scalingGroupId = scalingGroupId;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetScalingRulesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            _resultValue.scalingGroupId = scalingGroupId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

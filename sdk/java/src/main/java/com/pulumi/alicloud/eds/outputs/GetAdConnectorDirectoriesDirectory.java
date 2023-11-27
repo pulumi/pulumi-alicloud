@@ -403,27 +403,27 @@ public final class GetAdConnectorDirectoriesDirectory {
             return vswitchIds(List.of(vswitchIds));
         }
         public GetAdConnectorDirectoriesDirectory build() {
-            final var o = new GetAdConnectorDirectoriesDirectory();
-            o.adConnectorDirectoryId = adConnectorDirectoryId;
-            o.adConnectors = adConnectors;
-            o.createTime = createTime;
-            o.customSecurityGroupId = customSecurityGroupId;
-            o.directoryName = directoryName;
-            o.directoryType = directoryType;
-            o.dnsAddresses = dnsAddresses;
-            o.dnsUserName = dnsUserName;
-            o.domainName = domainName;
-            o.domainUserName = domainUserName;
-            o.enableAdminAccess = enableAdminAccess;
-            o.id = id;
-            o.mfaEnabled = mfaEnabled;
-            o.status = status;
-            o.subDnsAddresses = subDnsAddresses;
-            o.subDomainName = subDomainName;
-            o.trustPassword = trustPassword;
-            o.vpcId = vpcId;
-            o.vswitchIds = vswitchIds;
-            return o;
+            final var _resultValue = new GetAdConnectorDirectoriesDirectory();
+            _resultValue.adConnectorDirectoryId = adConnectorDirectoryId;
+            _resultValue.adConnectors = adConnectors;
+            _resultValue.createTime = createTime;
+            _resultValue.customSecurityGroupId = customSecurityGroupId;
+            _resultValue.directoryName = directoryName;
+            _resultValue.directoryType = directoryType;
+            _resultValue.dnsAddresses = dnsAddresses;
+            _resultValue.dnsUserName = dnsUserName;
+            _resultValue.domainName = domainName;
+            _resultValue.domainUserName = domainUserName;
+            _resultValue.enableAdminAccess = enableAdminAccess;
+            _resultValue.id = id;
+            _resultValue.mfaEnabled = mfaEnabled;
+            _resultValue.status = status;
+            _resultValue.subDnsAddresses = subDnsAddresses;
+            _resultValue.subDomainName = subDomainName;
+            _resultValue.trustPassword = trustPassword;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchIds = vswitchIds;
+            return _resultValue;
         }
     }
 }

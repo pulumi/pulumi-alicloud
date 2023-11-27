@@ -67,10 +67,10 @@ public final class AScriptExtAttribute {
             return this;
         }
         public AScriptExtAttribute build() {
-            final var o = new AScriptExtAttribute();
-            o.attributeKey = attributeKey;
-            o.attributeValue = attributeValue;
-            return o;
+            final var _resultValue = new AScriptExtAttribute();
+            _resultValue.attributeKey = attributeKey;
+            _resultValue.attributeValue = attributeValue;
+            return _resultValue;
         }
     }
 }

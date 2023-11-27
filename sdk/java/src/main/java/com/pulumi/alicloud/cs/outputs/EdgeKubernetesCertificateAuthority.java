@@ -86,11 +86,11 @@ public final class EdgeKubernetesCertificateAuthority {
             return this;
         }
         public EdgeKubernetesCertificateAuthority build() {
-            final var o = new EdgeKubernetesCertificateAuthority();
-            o.clientCert = clientCert;
-            o.clientKey = clientKey;
-            o.clusterCert = clusterCert;
-            return o;
+            final var _resultValue = new EdgeKubernetesCertificateAuthority();
+            _resultValue.clientCert = clientCert;
+            _resultValue.clientKey = clientKey;
+            _resultValue.clusterCert = clusterCert;
+            return _resultValue;
         }
     }
 }

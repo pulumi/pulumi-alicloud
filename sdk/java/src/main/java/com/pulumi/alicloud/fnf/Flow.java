@@ -98,7 +98,7 @@ public class Flow extends com.pulumi.resources.CustomResource {
      * The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
      * 
      */
-    @Export(name="definition", type=String.class, parameters={})
+    @Export(name="definition", refs={String.class}, tree="[0]")
     private Output<String> definition;
 
     /**
@@ -112,7 +112,7 @@ public class Flow extends com.pulumi.resources.CustomResource {
      * The description of the flow.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -126,7 +126,7 @@ public class Flow extends com.pulumi.resources.CustomResource {
      * The unique ID of the flow.
      * 
      */
-    @Export(name="flowId", type=String.class, parameters={})
+    @Export(name="flowId", refs={String.class}, tree="[0]")
     private Output<String> flowId;
 
     /**
@@ -140,7 +140,7 @@ public class Flow extends com.pulumi.resources.CustomResource {
      * The time when the flow was last modified.
      * 
      */
-    @Export(name="lastModifiedTime", type=String.class, parameters={})
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
     private Output<String> lastModifiedTime;
 
     /**
@@ -154,7 +154,7 @@ public class Flow extends com.pulumi.resources.CustomResource {
      * The name of the flow. The name must be unique in an Alibaba Cloud account.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -168,7 +168,7 @@ public class Flow extends com.pulumi.resources.CustomResource {
      * The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
      * 
      */
-    @Export(name="roleArn", type=String.class, parameters={})
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleArn;
 
     /**
@@ -182,7 +182,7 @@ public class Flow extends com.pulumi.resources.CustomResource {
      * The type of the flow. Valid values are `FDL` or `DEFAULT`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

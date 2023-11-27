@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Compute Nest Service Instance resource.
  * 
- * For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/en/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
+ * For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/zh/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
  * 
  * &gt; **NOTE:** Available since v1.205.0.
  * 
@@ -159,7 +159,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The order information of cloud market. See `commodity` below.
      * 
      */
-    @Export(name="commodity", type=NestServiceInstanceCommodity.class, parameters={})
+    @Export(name="commodity", refs={NestServiceInstanceCommodity.class}, tree="[0]")
     private Output</* @Nullable */ NestServiceInstanceCommodity> commodity;
 
     /**
@@ -173,7 +173,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * Whether the service instance has the O&amp;M function. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="enableInstanceOps", type=Boolean.class, parameters={})
+    @Export(name="enableInstanceOps", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableInstanceOps;
 
     /**
@@ -187,7 +187,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="enableUserPrometheus", type=Boolean.class, parameters={})
+    @Export(name="enableUserPrometheus", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableUserPrometheus;
 
     /**
@@ -201,7 +201,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The configuration of O&amp;M. See `operation_metadata` below.
      * 
      */
-    @Export(name="operationMetadata", type=NestServiceInstanceOperationMetadata.class, parameters={})
+    @Export(name="operationMetadata", refs={NestServiceInstanceOperationMetadata.class}, tree="[0]")
     private Output<NestServiceInstanceOperationMetadata> operationMetadata;
 
     /**
@@ -215,7 +215,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The parameters entered by the deployment service instance.
      * 
      */
-    @Export(name="parameters", type=String.class, parameters={})
+    @Export(name="parameters", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parameters;
 
     /**
@@ -229,7 +229,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -243,7 +243,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -257,7 +257,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The ID of the service.
      * 
      */
-    @Export(name="serviceId", type=String.class, parameters={})
+    @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**
@@ -271,7 +271,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The name of the Service Instance.
      * 
      */
-    @Export(name="serviceInstanceName", type=String.class, parameters={})
+    @Export(name="serviceInstanceName", refs={String.class}, tree="[0]")
     private Output<String> serviceInstanceName;
 
     /**
@@ -285,7 +285,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The version of the service.
      * 
      */
-    @Export(name="serviceVersion", type=String.class, parameters={})
+    @Export(name="serviceVersion", refs={String.class}, tree="[0]")
     private Output<String> serviceVersion;
 
     /**
@@ -299,7 +299,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The name of the specification.
      * 
      */
-    @Export(name="specificationName", type=String.class, parameters={})
+    @Export(name="specificationName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> specificationName;
 
     /**
@@ -313,7 +313,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The status of the Service Instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -327,7 +327,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -341,7 +341,7 @@ public class NestServiceInstance extends com.pulumi.resources.CustomResource {
      * The name of the template.
      * 
      */
-    @Export(name="templateName", type=String.class, parameters={})
+    @Export(name="templateName", refs={String.class}, tree="[0]")
     private Output<String> templateName;
 
     /**

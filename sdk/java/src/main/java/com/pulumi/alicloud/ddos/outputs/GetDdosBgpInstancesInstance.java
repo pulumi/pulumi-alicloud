@@ -46,7 +46,7 @@ public final class GetDdosBgpInstancesInstance {
      */
     private Integer normalBandwidth;
     /**
-     * @return A region of instance.
+     * @return The instance&#39;s region.
      * 
      */
     private String region;
@@ -107,7 +107,7 @@ public final class GetDdosBgpInstancesInstance {
         return this.normalBandwidth;
     }
     /**
-     * @return A region of instance.
+     * @return The instance&#39;s region.
      * 
      */
     public String region() {
@@ -199,17 +199,17 @@ public final class GetDdosBgpInstancesInstance {
             return this;
         }
         public GetDdosBgpInstancesInstance build() {
-            final var o = new GetDdosBgpInstancesInstance();
-            o.bandwidth = bandwidth;
-            o.baseBandwidth = baseBandwidth;
-            o.id = id;
-            o.ipCount = ipCount;
-            o.ipType = ipType;
-            o.name = name;
-            o.normalBandwidth = normalBandwidth;
-            o.region = region;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDdosBgpInstancesInstance();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.baseBandwidth = baseBandwidth;
+            _resultValue.id = id;
+            _resultValue.ipCount = ipCount;
+            _resultValue.ipType = ipType;
+            _resultValue.name = name;
+            _resultValue.normalBandwidth = normalBandwidth;
+            _resultValue.region = region;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

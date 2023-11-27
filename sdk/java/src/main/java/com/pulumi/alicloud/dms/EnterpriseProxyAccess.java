@@ -72,7 +72,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * The authorized account of the security agent.
      * 
      */
-    @Export(name="accessId", type=String.class, parameters={})
+    @Export(name="accessId", refs={String.class}, tree="[0]")
     private Output<String> accessId;
 
     /**
@@ -86,7 +86,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * Secure access agent authorization password.
      * 
      */
-    @Export(name="accessSecret", type=String.class, parameters={})
+    @Export(name="accessSecret", refs={String.class}, tree="[0]")
     private Output<String> accessSecret;
 
     /**
@@ -96,7 +96,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
     public Output<String> accessSecret() {
         return this.accessSecret;
     }
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     public Output<String> createTime() {
@@ -106,7 +106,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * Database account.
      * 
      */
-    @Export(name="indepAccount", type=String.class, parameters={})
+    @Export(name="indepAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> indepAccount;
 
     /**
@@ -120,7 +120,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * Database password.
      * 
      */
-    @Export(name="indepPassword", type=String.class, parameters={})
+    @Export(name="indepPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> indepPassword;
 
     /**
@@ -134,7 +134,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -150,7 +150,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * * **Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
      * 
      */
-    @Export(name="originInfo", type=String.class, parameters={})
+    @Export(name="originInfo", refs={String.class}, tree="[0]")
     private Output<String> originInfo;
 
     /**
@@ -166,7 +166,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
      * 
      */
-    @Export(name="proxyAccessId", type=String.class, parameters={})
+    @Export(name="proxyAccessId", refs={String.class}, tree="[0]")
     private Output<String> proxyAccessId;
 
     /**
@@ -180,7 +180,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * The ID of the security agent.
      * 
      */
-    @Export(name="proxyId", type=String.class, parameters={})
+    @Export(name="proxyId", refs={String.class}, tree="[0]")
     private Output<String> proxyId;
 
     /**
@@ -194,7 +194,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * The user ID.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
@@ -208,7 +208,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * User nickname.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**
@@ -222,7 +222,7 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
      * User UID.
      * 
      */
-    @Export(name="userUid", type=String.class, parameters={})
+    @Export(name="userUid", refs={String.class}, tree="[0]")
     private Output<String> userUid;
 
     /**

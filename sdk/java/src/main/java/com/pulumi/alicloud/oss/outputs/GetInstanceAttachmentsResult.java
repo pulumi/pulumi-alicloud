@@ -157,15 +157,15 @@ public final class GetInstanceAttachmentsResult {
             return vpcIds(List.of(vpcIds));
         }
         public GetInstanceAttachmentsResult build() {
-            final var o = new GetInstanceAttachmentsResult();
-            o.attachments = attachments;
-            o.id = id;
-            o.instanceName = instanceName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.vpcIds = vpcIds;
-            return o;
+            final var _resultValue = new GetInstanceAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.id = id;
+            _resultValue.instanceName = instanceName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.vpcIds = vpcIds;
+            return _resultValue;
         }
     }
 }

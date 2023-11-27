@@ -223,24 +223,24 @@ public final class GetVpcFirewallControlPoliciesResult {
             return this;
         }
         public GetVpcFirewallControlPoliciesResult build() {
-            final var o = new GetVpcFirewallControlPoliciesResult();
-            o.aclAction = aclAction;
-            o.aclUuid = aclUuid;
-            o.description = description;
-            o.destination = destination;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.memberUid = memberUid;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.policies = policies;
-            o.proto = proto;
-            o.release = release;
-            o.source = source;
-            o.vpcFirewallId = vpcFirewallId;
-            return o;
+            final var _resultValue = new GetVpcFirewallControlPoliciesResult();
+            _resultValue.aclAction = aclAction;
+            _resultValue.aclUuid = aclUuid;
+            _resultValue.description = description;
+            _resultValue.destination = destination;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lang = lang;
+            _resultValue.memberUid = memberUid;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.policies = policies;
+            _resultValue.proto = proto;
+            _resultValue.release = release;
+            _resultValue.source = source;
+            _resultValue.vpcFirewallId = vpcFirewallId;
+            return _resultValue;
         }
     }
 }

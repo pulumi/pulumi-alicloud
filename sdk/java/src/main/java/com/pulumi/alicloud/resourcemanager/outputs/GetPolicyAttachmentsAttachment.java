@@ -179,16 +179,16 @@ public final class GetPolicyAttachmentsAttachment {
             return this;
         }
         public GetPolicyAttachmentsAttachment build() {
-            final var o = new GetPolicyAttachmentsAttachment();
-            o.attachDate = attachDate;
-            o.description = description;
-            o.id = id;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            o.principalName = principalName;
-            o.principalType = principalType;
-            o.resourceGroupId = resourceGroupId;
-            return o;
+            final var _resultValue = new GetPolicyAttachmentsAttachment();
+            _resultValue.attachDate = attachDate;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.policyName = policyName;
+            _resultValue.policyType = policyType;
+            _resultValue.principalName = principalName;
+            _resultValue.principalType = principalType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            return _resultValue;
         }
     }
 }

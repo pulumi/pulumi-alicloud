@@ -16,84 +16,91 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:fc/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="internetAccess", type=Boolean.class, parameters={})
+    @Export(name="internetAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> internetAccess;
 
     public Output<Optional<Boolean>> internetAccess() {
         return Codegen.optional(this.internetAccess);
     }
-    @Export(name="lastModified", type=String.class, parameters={})
+    @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 
     public Output<String> lastModified() {
         return this.lastModified;
     }
-    @Export(name="logConfig", type=ServiceLogConfig.class, parameters={})
+    @Export(name="logConfig", refs={ServiceLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceLogConfig> logConfig;
 
     public Output<Optional<ServiceLogConfig>> logConfig() {
         return Codegen.optional(this.logConfig);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="namePrefix", type=String.class, parameters={})
+    @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namePrefix;
 
     public Output<Optional<String>> namePrefix() {
         return Codegen.optional(this.namePrefix);
     }
-    @Export(name="nasConfig", type=ServiceNasConfig.class, parameters={})
+    @Export(name="nasConfig", refs={ServiceNasConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceNasConfig> nasConfig;
 
     public Output<Optional<ServiceNasConfig>> nasConfig() {
         return Codegen.optional(this.nasConfig);
     }
-    @Export(name="publish", type=Boolean.class, parameters={})
+    @Export(name="publish", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> publish;
 
     public Output<Optional<Boolean>> publish() {
         return Codegen.optional(this.publish);
     }
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> role;
 
     public Output<Optional<String>> role() {
         return Codegen.optional(this.role);
     }
-    @Export(name="serviceId", type=String.class, parameters={})
+    @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     public Output<String> serviceId() {
         return this.serviceId;
     }
-    @Export(name="tracingConfig", type=ServiceTracingConfig.class, parameters={})
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    @Export(name="tracingConfig", refs={ServiceTracingConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceTracingConfig> tracingConfig;
 
     public Output<Optional<ServiceTracingConfig>> tracingConfig() {
         return Codegen.optional(this.tracingConfig);
     }
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     public Output<String> version() {
         return this.version;
     }
-    @Export(name="vpcConfig", type=ServiceVpcConfig.class, parameters={})
+    @Export(name="vpcConfig", refs={ServiceVpcConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceVpcConfig> vpcConfig;
 
     public Output<Optional<ServiceVpcConfig>> vpcConfig() {

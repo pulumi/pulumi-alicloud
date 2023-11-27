@@ -86,36 +86,52 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <endpoint_id>
+//	$ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <id>
 //
 // ```
 type VpcEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The Bandwidth.
+	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
-	// The status of Connection.
+	// The state of the endpoint connection.
 	ConnectionStatus pulumi.StringOutput `pulumi:"connectionStatus"`
-	// The dry run. Default to: `false`.
+	// The time when the endpoint was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The status of Endpoint Business.
+	// The service state of the endpoint.
 	EndpointBusinessStatus pulumi.StringOutput `pulumi:"endpointBusinessStatus"`
-	// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+	// The description of the endpoint.
 	EndpointDescription pulumi.StringPtrOutput `pulumi:"endpointDescription"`
-	// The Endpoint Domain.
+	// The domain name of the endpoint.
 	EndpointDomain pulumi.StringOutput `pulumi:"endpointDomain"`
-	// The security group associated with the terminal node network card.
+	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
+	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+	// - **false (default)**: disables user authentication.
+	ProtectedEnabled pulumi.BoolPtrOutput `pulumi:"protectedEnabled"`
+	// The resource group ID.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// The terminal node service associated with the terminal node.
+	// The ID of the endpoint service with which the endpoint is associated.
 	ServiceId pulumi.StringPtrOutput `pulumi:"serviceId"`
-	// The name of the terminal node service associated with the terminal node.
+	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The status of Vpc Endpoint.
+	// The state of the endpoint.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+	// The list of tags.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The name of the endpoint.
 	VpcEndpointName pulumi.StringPtrOutput `pulumi:"vpcEndpointName"`
-	// The private network to which the terminal node belongs.
+	// The ID of the VPC to which the endpoint belongs.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+	ZonePrivateIpAddressCount pulumi.IntOutput `pulumi:"zonePrivateIpAddressCount"`
 }
 
 // NewVpcEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -154,57 +170,89 @@ func GetVpcEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcEndpoint resources.
 type vpcEndpointState struct {
-	// The Bandwidth.
+	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The status of Connection.
+	// The state of the endpoint connection.
 	ConnectionStatus *string `pulumi:"connectionStatus"`
-	// The dry run. Default to: `false`.
+	// The time when the endpoint was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
-	// The status of Endpoint Business.
+	// The service state of the endpoint.
 	EndpointBusinessStatus *string `pulumi:"endpointBusinessStatus"`
-	// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+	// The description of the endpoint.
 	EndpointDescription *string `pulumi:"endpointDescription"`
-	// The Endpoint Domain.
+	// The domain name of the endpoint.
 	EndpointDomain *string `pulumi:"endpointDomain"`
-	// The security group associated with the terminal node network card.
+	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	EndpointType *string `pulumi:"endpointType"`
+	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+	// - **false (default)**: disables user authentication.
+	ProtectedEnabled *bool `pulumi:"protectedEnabled"`
+	// The resource group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The terminal node service associated with the terminal node.
+	// The ID of the endpoint service with which the endpoint is associated.
 	ServiceId *string `pulumi:"serviceId"`
-	// The name of the terminal node service associated with the terminal node.
+	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName *string `pulumi:"serviceName"`
-	// The status of Vpc Endpoint.
+	// The state of the endpoint.
 	Status *string `pulumi:"status"`
-	// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+	// The list of tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The name of the endpoint.
 	VpcEndpointName *string `pulumi:"vpcEndpointName"`
-	// The private network to which the terminal node belongs.
+	// The ID of the VPC to which the endpoint belongs.
 	VpcId *string `pulumi:"vpcId"`
+	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+	ZonePrivateIpAddressCount *int `pulumi:"zonePrivateIpAddressCount"`
 }
 
 type VpcEndpointState struct {
-	// The Bandwidth.
+	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
 	Bandwidth pulumi.IntPtrInput
-	// The status of Connection.
+	// The state of the endpoint connection.
 	ConnectionStatus pulumi.StringPtrInput
-	// The dry run. Default to: `false`.
+	// The time when the endpoint was created.
+	CreateTime pulumi.StringPtrInput
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
-	// The status of Endpoint Business.
+	// The service state of the endpoint.
 	EndpointBusinessStatus pulumi.StringPtrInput
-	// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+	// The description of the endpoint.
 	EndpointDescription pulumi.StringPtrInput
-	// The Endpoint Domain.
+	// The domain name of the endpoint.
 	EndpointDomain pulumi.StringPtrInput
-	// The security group associated with the terminal node network card.
+	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	EndpointType pulumi.StringPtrInput
+	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+	// - **false (default)**: disables user authentication.
+	ProtectedEnabled pulumi.BoolPtrInput
+	// The resource group ID.
+	ResourceGroupId pulumi.StringPtrInput
+	// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
 	SecurityGroupIds pulumi.StringArrayInput
-	// The terminal node service associated with the terminal node.
+	// The ID of the endpoint service with which the endpoint is associated.
 	ServiceId pulumi.StringPtrInput
-	// The name of the terminal node service associated with the terminal node.
+	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName pulumi.StringPtrInput
-	// The status of Vpc Endpoint.
+	// The state of the endpoint.
 	Status pulumi.StringPtrInput
-	// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+	// The list of tags.
+	Tags pulumi.MapInput
+	// The name of the endpoint.
 	VpcEndpointName pulumi.StringPtrInput
-	// The private network to which the terminal node belongs.
+	// The ID of the VPC to which the endpoint belongs.
 	VpcId pulumi.StringPtrInput
+	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+	ZonePrivateIpAddressCount pulumi.IntPtrInput
 }
 
 func (VpcEndpointState) ElementType() reflect.Type {
@@ -212,38 +260,66 @@ func (VpcEndpointState) ElementType() reflect.Type {
 }
 
 type vpcEndpointArgs struct {
-	// The dry run. Default to: `false`.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
-	// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+	// The description of the endpoint.
 	EndpointDescription *string `pulumi:"endpointDescription"`
-	// The security group associated with the terminal node network card.
+	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	EndpointType *string `pulumi:"endpointType"`
+	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+	// - **false (default)**: disables user authentication.
+	ProtectedEnabled *bool `pulumi:"protectedEnabled"`
+	// The resource group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The terminal node service associated with the terminal node.
+	// The ID of the endpoint service with which the endpoint is associated.
 	ServiceId *string `pulumi:"serviceId"`
-	// The name of the terminal node service associated with the terminal node.
+	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName *string `pulumi:"serviceName"`
-	// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+	// The list of tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The name of the endpoint.
 	VpcEndpointName *string `pulumi:"vpcEndpointName"`
-	// The private network to which the terminal node belongs.
+	// The ID of the VPC to which the endpoint belongs.
 	VpcId string `pulumi:"vpcId"`
+	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+	ZonePrivateIpAddressCount *int `pulumi:"zonePrivateIpAddressCount"`
 }
 
 // The set of arguments for constructing a VpcEndpoint resource.
 type VpcEndpointArgs struct {
-	// The dry run. Default to: `false`.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
-	// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+	// The description of the endpoint.
 	EndpointDescription pulumi.StringPtrInput
-	// The security group associated with the terminal node network card.
+	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	EndpointType pulumi.StringPtrInput
+	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+	// - **false (default)**: disables user authentication.
+	ProtectedEnabled pulumi.BoolPtrInput
+	// The resource group ID.
+	ResourceGroupId pulumi.StringPtrInput
+	// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
 	SecurityGroupIds pulumi.StringArrayInput
-	// The terminal node service associated with the terminal node.
+	// The ID of the endpoint service with which the endpoint is associated.
 	ServiceId pulumi.StringPtrInput
-	// The name of the terminal node service associated with the terminal node.
+	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName pulumi.StringPtrInput
-	// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+	// The list of tags.
+	Tags pulumi.MapInput
+	// The name of the endpoint.
 	VpcEndpointName pulumi.StringPtrInput
-	// The private network to which the terminal node belongs.
+	// The ID of the VPC to which the endpoint belongs.
 	VpcId pulumi.StringInput
+	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+	ZonePrivateIpAddressCount pulumi.IntPtrInput
 }
 
 func (VpcEndpointArgs) ElementType() reflect.Type {
@@ -333,64 +409,98 @@ func (o VpcEndpointOutput) ToVpcEndpointOutputWithContext(ctx context.Context) V
 	return o
 }
 
-// The Bandwidth.
+// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
 func (o VpcEndpointOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// The status of Connection.
+// The state of the endpoint connection.
 func (o VpcEndpointOutput) ConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.ConnectionStatus }).(pulumi.StringOutput)
 }
 
-// The dry run. Default to: `false`.
+// The time when the endpoint was created.
+func (o VpcEndpointOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 func (o VpcEndpointOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The status of Endpoint Business.
+// The service state of the endpoint.
 func (o VpcEndpointOutput) EndpointBusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointBusinessStatus }).(pulumi.StringOutput)
 }
 
-// The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+// The description of the endpoint.
 func (o VpcEndpointOutput) EndpointDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringPtrOutput { return v.EndpointDescription }).(pulumi.StringPtrOutput)
 }
 
-// The Endpoint Domain.
+// The domain name of the endpoint.
 func (o VpcEndpointOutput) EndpointDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointDomain }).(pulumi.StringOutput)
 }
 
-// The security group associated with the terminal node network card.
+// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+func (o VpcEndpointOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+// - **false (default)**: disables user authentication.
+func (o VpcEndpointOutput) ProtectedEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.BoolPtrOutput { return v.ProtectedEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The resource group ID.
+func (o VpcEndpointOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
 func (o VpcEndpointOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The terminal node service associated with the terminal node.
+// The ID of the endpoint service with which the endpoint is associated.
 func (o VpcEndpointOutput) ServiceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringPtrOutput { return v.ServiceId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the terminal node service associated with the terminal node.
+// The name of the endpoint service with which the endpoint is associated.
 func (o VpcEndpointOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The status of Vpc Endpoint.
+// The state of the endpoint.
 func (o VpcEndpointOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+// The list of tags.
+func (o VpcEndpointOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The name of the endpoint.
 func (o VpcEndpointOutput) VpcEndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringPtrOutput { return v.VpcEndpointName }).(pulumi.StringPtrOutput)
 }
 
-// The private network to which the terminal node belongs.
+// The ID of the VPC to which the endpoint belongs.
 func (o VpcEndpointOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+func (o VpcEndpointOutput) ZonePrivateIpAddressCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.IntOutput { return v.ZonePrivateIpAddressCount }).(pulumi.IntOutput)
 }
 
 type VpcEndpointArrayOutput struct{ *pulumi.OutputState }

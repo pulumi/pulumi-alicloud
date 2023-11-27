@@ -83,7 +83,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -97,7 +97,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The destination CIDR block of the inbound traffic.
      * 
      */
-    @Export(name="destinationCidrBlock", type=String.class, parameters={})
+    @Export(name="destinationCidrBlock", refs={String.class}, tree="[0]")
     private Output<String> destinationCidrBlock;
 
     /**
@@ -111,7 +111,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
      * 
      */
-    @Export(name="destinationPortRange", type=String.class, parameters={})
+    @Export(name="destinationPortRange", refs={String.class}, tree="[0]")
     private Output<String> destinationPortRange;
 
     /**
@@ -127,7 +127,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -143,7 +143,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -157,7 +157,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -175,7 +175,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * 
      */
     @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
-    @Export(name="ruleAction", type=String.class, parameters={})
+    @Export(name="ruleAction", refs={String.class}, tree="[0]")
     private Output<String> ruleAction;
 
     /**
@@ -189,7 +189,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The source CIDR block of the inbound traffic.
      * 
      */
-    @Export(name="sourceCidrBlock", type=String.class, parameters={})
+    @Export(name="sourceCidrBlock", refs={String.class}, tree="[0]")
     private Output<String> sourceCidrBlock;
 
     /**
@@ -203,7 +203,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
      * 
      */
-    @Export(name="sourcePortRange", type=String.class, parameters={})
+    @Export(name="sourcePortRange", refs={String.class}, tree="[0]")
     private Output<String> sourcePortRange;
 
     /**
@@ -217,7 +217,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -233,7 +233,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="trafficMirrorFilterId", type=String.class, parameters={})
+    @Export(name="trafficMirrorFilterId", refs={String.class}, tree="[0]")
     private Output<String> trafficMirrorFilterId;
 
     /**
@@ -249,7 +249,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * The ID of the outbound rule.
      * 
      */
-    @Export(name="trafficMirrorFilterIngressRuleId", type=String.class, parameters={})
+    @Export(name="trafficMirrorFilterIngressRuleId", refs={String.class}, tree="[0]")
     private Output<String> trafficMirrorFilterIngressRuleId;
 
     /**

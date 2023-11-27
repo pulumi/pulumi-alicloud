@@ -179,16 +179,16 @@ public final class GetMountTargetsTarget {
             return this;
         }
         public GetMountTargetsTarget build() {
-            final var o = new GetMountTargetsTarget();
-            o.accessGroupName = accessGroupName;
-            o.id = id;
-            o.mountTargetDomain = mountTargetDomain;
-            o.networkType = networkType;
-            o.status = status;
-            o.type = type;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetMountTargetsTarget();
+            _resultValue.accessGroupName = accessGroupName;
+            _resultValue.id = id;
+            _resultValue.mountTargetDomain = mountTargetDomain;
+            _resultValue.networkType = networkType;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

@@ -169,16 +169,16 @@ public final class GetHoneypotNodesNode {
             return this;
         }
         public GetHoneypotNodesNode build() {
-            final var o = new GetHoneypotNodesNode();
-            o.allowHoneypotAccessInternet = allowHoneypotAccessInternet;
-            o.availableProbeNum = availableProbeNum;
-            o.createTime = createTime;
-            o.id = id;
-            o.nodeId = nodeId;
-            o.nodeName = nodeName;
-            o.securityGroupProbeIpLists = securityGroupProbeIpLists;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetHoneypotNodesNode();
+            _resultValue.allowHoneypotAccessInternet = allowHoneypotAccessInternet;
+            _resultValue.availableProbeNum = availableProbeNum;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.nodeId = nodeId;
+            _resultValue.nodeName = nodeName;
+            _resultValue.securityGroupProbeIpLists = securityGroupProbeIpLists;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

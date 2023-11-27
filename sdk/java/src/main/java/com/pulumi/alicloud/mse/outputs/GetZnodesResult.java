@@ -147,17 +147,17 @@ public final class GetZnodesResult {
             return znodes(List.of(znodes));
         }
         public GetZnodesResult build() {
-            final var o = new GetZnodesResult();
-            o.acceptLanguage = acceptLanguage;
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.path = path;
-            o.znodes = znodes;
-            return o;
+            final var _resultValue = new GetZnodesResult();
+            _resultValue.acceptLanguage = acceptLanguage;
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.path = path;
+            _resultValue.znodes = znodes;
+            return _resultValue;
         }
     }
 }

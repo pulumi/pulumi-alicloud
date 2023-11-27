@@ -163,15 +163,15 @@ public final class GetConnectionsConnectionVpnBgpConfig {
             return this;
         }
         public GetConnectionsConnectionVpnBgpConfig build() {
-            final var o = new GetConnectionsConnectionVpnBgpConfig();
-            o.authKey = authKey;
-            o.localAsn = localAsn;
-            o.localBgpIp = localBgpIp;
-            o.peerAsn = peerAsn;
-            o.peerBgpIp = peerBgpIp;
-            o.status = status;
-            o.tunnelCidr = tunnelCidr;
-            return o;
+            final var _resultValue = new GetConnectionsConnectionVpnBgpConfig();
+            _resultValue.authKey = authKey;
+            _resultValue.localAsn = localAsn;
+            _resultValue.localBgpIp = localBgpIp;
+            _resultValue.peerAsn = peerAsn;
+            _resultValue.peerBgpIp = peerBgpIp;
+            _resultValue.status = status;
+            _resultValue.tunnelCidr = tunnelCidr;
+            return _resultValue;
         }
     }
 }

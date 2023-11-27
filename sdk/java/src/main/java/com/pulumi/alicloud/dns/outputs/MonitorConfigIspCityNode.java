@@ -65,10 +65,10 @@ public final class MonitorConfigIspCityNode {
             return this;
         }
         public MonitorConfigIspCityNode build() {
-            final var o = new MonitorConfigIspCityNode();
-            o.cityCode = cityCode;
-            o.ispCode = ispCode;
-            return o;
+            final var _resultValue = new MonitorConfigIspCityNode();
+            _resultValue.cityCode = cityCode;
+            _resultValue.ispCode = ispCode;
+            return _resultValue;
         }
     }
 }

@@ -16,14 +16,14 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
     public static final KubernetesMasterNodeArgs Empty = new KubernetesMasterNodeArgs();
 
     /**
-     * The id of a node.
+     * ID of the node.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The id of a node.
+     * @return ID of the node.
      * 
      */
     public Optional<Output<String>> id() {
@@ -31,14 +31,14 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of a node.
+     * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of a node.
+     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,14 +46,14 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The private ip of a node.
+     * The private IP address of node.
      * 
      */
     @Import(name="privateIp")
     private @Nullable Output<String> privateIp;
 
     /**
-     * @return The private ip of a node.
+     * @return The private IP address of node.
      * 
      */
     public Optional<Output<String>> privateIp() {
@@ -87,7 +87,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id The id of a node.
+         * @param id ID of the node.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id The id of a node.
+         * @param id ID of the node.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of a node.
+         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of a node.
+         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIp The private ip of a node.
+         * @param privateIp The private IP address of node.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIp The private ip of a node.
+         * @param privateIp The private IP address of node.
          * 
          * @return builder
          * 

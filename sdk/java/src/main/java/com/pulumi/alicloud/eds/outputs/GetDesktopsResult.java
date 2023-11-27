@@ -172,19 +172,19 @@ public final class GetDesktopsResult {
             return this;
         }
         public GetDesktopsResult build() {
-            final var o = new GetDesktopsResult();
-            o.desktopName = desktopName;
-            o.desktops = desktops;
-            o.endUserIds = endUserIds;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.officeSiteId = officeSiteId;
-            o.outputFile = outputFile;
-            o.policyGroupId = policyGroupId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDesktopsResult();
+            _resultValue.desktopName = desktopName;
+            _resultValue.desktops = desktops;
+            _resultValue.endUserIds = endUserIds;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.officeSiteId = officeSiteId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policyGroupId = policyGroupId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

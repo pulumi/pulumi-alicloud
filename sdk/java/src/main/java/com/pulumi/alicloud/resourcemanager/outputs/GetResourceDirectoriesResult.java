@@ -83,11 +83,11 @@ public final class GetResourceDirectoriesResult {
             return this;
         }
         public GetResourceDirectoriesResult build() {
-            final var o = new GetResourceDirectoriesResult();
-            o.directories = directories;
-            o.id = id;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetResourceDirectoriesResult();
+            _resultValue.directories = directories;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

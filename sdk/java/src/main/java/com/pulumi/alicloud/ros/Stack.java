@@ -91,7 +91,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * Specifies whether to delete the stack after it is created.
      * 
      */
-    @Export(name="createOption", type=String.class, parameters={})
+    @Export(name="createOption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> createOption;
 
     /**
@@ -105,7 +105,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
      * 
      */
-    @Export(name="deletionProtection", type=String.class, parameters={})
+    @Export(name="deletionProtection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionProtection;
 
     /**
@@ -119,7 +119,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * Specifies whether to disable rollback on stack creation failure. Default to: `false`.
      * 
      */
-    @Export(name="disableRollback", type=Boolean.class, parameters={})
+    @Export(name="disableRollback", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableRollback;
 
     /**
@@ -133,7 +133,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
      * 
      */
-    @Export(name="notificationUrls", type=List.class, parameters={String.class})
+    @Export(name="notificationUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationUrls;
 
     /**
@@ -147,7 +147,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={StackParameter.class})
+    @Export(name="parameters", refs={List.class,StackParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StackParameter>> parameters;
 
     /**
@@ -161,7 +161,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
      * 
      */
-    @Export(name="ramRoleName", type=String.class, parameters={})
+    @Export(name="ramRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ramRoleName;
 
     /**
@@ -175,7 +175,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
      * 
      */
-    @Export(name="replacementOption", type=String.class, parameters={})
+    @Export(name="replacementOption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> replacementOption;
 
     /**
@@ -189,7 +189,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The retain all resources.
      * 
      */
-    @Export(name="retainAllResources", type=Boolean.class, parameters={})
+    @Export(name="retainAllResources", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> retainAllResources;
 
     /**
@@ -203,7 +203,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * Specifies whether to retain the resources in the stack.
      * 
      */
-    @Export(name="retainResources", type=List.class, parameters={String.class})
+    @Export(name="retainResources", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> retainResources;
 
     /**
@@ -217,7 +217,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      * 
      */
-    @Export(name="stackName", type=String.class, parameters={})
+    @Export(name="stackName", refs={String.class}, tree="[0]")
     private Output<String> stackName;
 
     /**
@@ -231,7 +231,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
      * 
      */
-    @Export(name="stackPolicyBody", type=String.class, parameters={})
+    @Export(name="stackPolicyBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stackPolicyBody;
 
     /**
@@ -245,7 +245,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The structure that contains the body of the temporary overriding stack policy. The stack policy body must be 1 to 16,384 bytes in length.
      * 
      */
-    @Export(name="stackPolicyDuringUpdateBody", type=String.class, parameters={})
+    @Export(name="stackPolicyDuringUpdateBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stackPolicyDuringUpdateBody;
 
     /**
@@ -259,7 +259,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      * 
      */
-    @Export(name="stackPolicyDuringUpdateUrl", type=String.class, parameters={})
+    @Export(name="stackPolicyDuringUpdateUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stackPolicyDuringUpdateUrl;
 
     /**
@@ -273,7 +273,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The URL of the file that contains the stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      * 
      */
-    @Export(name="stackPolicyUrl", type=String.class, parameters={})
+    @Export(name="stackPolicyUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stackPolicyUrl;
 
     /**
@@ -287,7 +287,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The status of Stack.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -301,7 +301,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -315,7 +315,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
      * 
      */
-    @Export(name="templateBody", type=String.class, parameters={})
+    @Export(name="templateBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateBody;
 
     /**
@@ -329,7 +329,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      * 
      */
-    @Export(name="templateUrl", type=String.class, parameters={})
+    @Export(name="templateUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateUrl;
 
     /**
@@ -343,7 +343,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The version of the template.
      * 
      */
-    @Export(name="templateVersion", type=String.class, parameters={})
+    @Export(name="templateVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateVersion;
 
     /**
@@ -357,7 +357,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * The timeout period that is specified for the stack creation request. Default to: `60`.
      * 
      */
-    @Export(name="timeoutInMinutes", type=Integer.class, parameters={})
+    @Export(name="timeoutInMinutes", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutInMinutes;
 
     /**
@@ -371,7 +371,7 @@ public class Stack extends com.pulumi.resources.CustomResource {
      * Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
      * 
      */
-    @Export(name="usePreviousParameters", type=Boolean.class, parameters={})
+    @Export(name="usePreviousParameters", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> usePreviousParameters;
 
     /**

@@ -85,11 +85,11 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusC
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric();
-            o.currentValue = currentValue;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric();
+            _resultValue.currentValue = currentValue;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

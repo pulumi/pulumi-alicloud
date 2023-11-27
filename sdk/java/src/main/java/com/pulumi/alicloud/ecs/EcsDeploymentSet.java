@@ -72,7 +72,7 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
      * The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="deploymentSetName", type=String.class, parameters={})
+    @Export(name="deploymentSetName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentSetName;
 
     /**
@@ -86,7 +86,7 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
      * The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -100,7 +100,7 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
      * The deployment domain. Valid values: `Default`.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domain;
 
     /**
@@ -114,7 +114,7 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
      * The deployment granularity. Valid values: `Host`.
      * 
      */
-    @Export(name="granularity", type=String.class, parameters={})
+    @Export(name="granularity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> granularity;
 
     /**
@@ -128,7 +128,7 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
      * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
      * 
      */
-    @Export(name="onUnableToRedeployFailedInstance", type=String.class, parameters={})
+    @Export(name="onUnableToRedeployFailedInstance", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> onUnableToRedeployFailedInstance;
 
     /**
@@ -142,7 +142,7 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
      * The deployment strategy. Valid values: `Availability`.
      * 
      */
-    @Export(name="strategy", type=String.class, parameters={})
+    @Export(name="strategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> strategy;
 
     /**

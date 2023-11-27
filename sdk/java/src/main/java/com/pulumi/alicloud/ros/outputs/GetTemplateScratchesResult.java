@@ -123,15 +123,15 @@ public final class GetTemplateScratchesResult {
             return this;
         }
         public GetTemplateScratchesResult build() {
-            final var o = new GetTemplateScratchesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.scratches = scratches;
-            o.status = status;
-            o.templateScratchType = templateScratchType;
-            return o;
+            final var _resultValue = new GetTemplateScratchesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.scratches = scratches;
+            _resultValue.status = status;
+            _resultValue.templateScratchType = templateScratchType;
+            return _resultValue;
         }
     }
 }

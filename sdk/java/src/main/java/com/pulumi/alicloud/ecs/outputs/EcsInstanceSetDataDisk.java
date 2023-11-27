@@ -210,17 +210,17 @@ public final class EcsInstanceSetDataDisk {
             return this;
         }
         public EcsInstanceSetDataDisk build() {
-            final var o = new EcsInstanceSetDataDisk();
-            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
-            o.diskCategory = diskCategory;
-            o.diskDescription = diskDescription;
-            o.diskName = diskName;
-            o.diskSize = diskSize;
-            o.encrypted = encrypted;
-            o.kmsKeyId = kmsKeyId;
-            o.performanceLevel = performanceLevel;
-            o.snapshotId = snapshotId;
-            return o;
+            final var _resultValue = new EcsInstanceSetDataDisk();
+            _resultValue.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            _resultValue.diskCategory = diskCategory;
+            _resultValue.diskDescription = diskDescription;
+            _resultValue.diskName = diskName;
+            _resultValue.diskSize = diskSize;
+            _resultValue.encrypted = encrypted;
+            _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.performanceLevel = performanceLevel;
+            _resultValue.snapshotId = snapshotId;
+            return _resultValue;
         }
     }
 }

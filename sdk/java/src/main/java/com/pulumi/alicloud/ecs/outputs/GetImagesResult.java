@@ -341,31 +341,31 @@ public final class GetImagesResult {
             return this;
         }
         public GetImagesResult build() {
-            final var o = new GetImagesResult();
-            o.actionType = actionType;
-            o.architecture = architecture;
-            o.dryRun = dryRun;
-            o.id = id;
-            o.ids = ids;
-            o.imageFamily = imageFamily;
-            o.imageId = imageId;
-            o.imageName = imageName;
-            o.imageOwnerId = imageOwnerId;
-            o.images = images;
-            o.instanceType = instanceType;
-            o.isSupportCloudInit = isSupportCloudInit;
-            o.isSupportIoOptimized = isSupportIoOptimized;
-            o.mostRecent = mostRecent;
-            o.nameRegex = nameRegex;
-            o.osType = osType;
-            o.outputFile = outputFile;
-            o.owners = owners;
-            o.resourceGroupId = resourceGroupId;
-            o.snapshotId = snapshotId;
-            o.status = status;
-            o.tags = tags;
-            o.usage = usage;
-            return o;
+            final var _resultValue = new GetImagesResult();
+            _resultValue.actionType = actionType;
+            _resultValue.architecture = architecture;
+            _resultValue.dryRun = dryRun;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.imageFamily = imageFamily;
+            _resultValue.imageId = imageId;
+            _resultValue.imageName = imageName;
+            _resultValue.imageOwnerId = imageOwnerId;
+            _resultValue.images = images;
+            _resultValue.instanceType = instanceType;
+            _resultValue.isSupportCloudInit = isSupportCloudInit;
+            _resultValue.isSupportIoOptimized = isSupportIoOptimized;
+            _resultValue.mostRecent = mostRecent;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.osType = osType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.owners = owners;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.usage = usage;
+            return _resultValue;
         }
     }
 }

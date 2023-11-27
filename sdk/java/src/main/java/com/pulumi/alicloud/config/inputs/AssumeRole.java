@@ -85,13 +85,13 @@ public final class AssumeRole {
             return this;
         }
         public AssumeRole build() {
-            final var o = new AssumeRole();
-            o.externalId = externalId;
-            o.policy = policy;
-            o.roleArn = roleArn;
-            o.sessionExpiration = sessionExpiration;
-            o.sessionName = sessionName;
-            return o;
+            final var _resultValue = new AssumeRole();
+            _resultValue.externalId = externalId;
+            _resultValue.policy = policy;
+            _resultValue.roleArn = roleArn;
+            _resultValue.sessionExpiration = sessionExpiration;
+            _resultValue.sessionName = sessionName;
+            return _resultValue;
         }
     }
 }

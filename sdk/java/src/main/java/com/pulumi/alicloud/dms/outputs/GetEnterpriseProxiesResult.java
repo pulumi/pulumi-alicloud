@@ -100,13 +100,13 @@ public final class GetEnterpriseProxiesResult {
             return this;
         }
         public GetEnterpriseProxiesResult build() {
-            final var o = new GetEnterpriseProxiesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.proxies = proxies;
-            o.tid = tid;
-            return o;
+            final var _resultValue = new GetEnterpriseProxiesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.proxies = proxies;
+            _resultValue.tid = tid;
+            return _resultValue;
         }
     }
 }

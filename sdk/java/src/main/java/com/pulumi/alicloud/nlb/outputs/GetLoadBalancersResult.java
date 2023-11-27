@@ -243,25 +243,25 @@ public final class GetLoadBalancersResult {
             return this;
         }
         public GetLoadBalancersResult build() {
-            final var o = new GetLoadBalancersResult();
-            o.addressIpVersion = addressIpVersion;
-            o.addressType = addressType;
-            o.balancers = balancers;
-            o.dnsName = dnsName;
-            o.id = id;
-            o.ids = ids;
-            o.ipv6AddressType = ipv6AddressType;
-            o.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
-            o.loadBalancerNames = loadBalancerNames;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcIds = vpcIds;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetLoadBalancersResult();
+            _resultValue.addressIpVersion = addressIpVersion;
+            _resultValue.addressType = addressType;
+            _resultValue.balancers = balancers;
+            _resultValue.dnsName = dnsName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ipv6AddressType = ipv6AddressType;
+            _resultValue.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
+            _resultValue.loadBalancerNames = loadBalancerNames;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcIds = vpcIds;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

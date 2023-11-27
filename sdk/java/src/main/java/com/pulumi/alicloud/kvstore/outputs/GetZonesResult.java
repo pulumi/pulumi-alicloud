@@ -150,16 +150,16 @@ public final class GetZonesResult {
             return zones(List.of(zones));
         }
         public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.engine = engine;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.multi = multi;
-            o.outputFile = outputFile;
-            o.productType = productType;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetZonesResult();
+            _resultValue.engine = engine;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.multi = multi;
+            _resultValue.outputFile = outputFile;
+            _resultValue.productType = productType;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

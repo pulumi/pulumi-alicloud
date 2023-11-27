@@ -160,15 +160,15 @@ public final class GetStaticAccountsAccount {
             return this;
         }
         public GetStaticAccountsAccount build() {
-            final var o = new GetStaticAccountsAccount();
-            o.accessKey = accessKey;
-            o.createTime = createTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.masterUid = masterUid;
-            o.password = password;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetStaticAccountsAccount();
+            _resultValue.accessKey = accessKey;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.masterUid = masterUid;
+            _resultValue.password = password;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

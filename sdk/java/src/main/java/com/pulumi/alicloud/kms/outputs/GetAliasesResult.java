@@ -138,14 +138,14 @@ public final class GetAliasesResult {
             return this;
         }
         public GetAliasesResult build() {
-            final var o = new GetAliasesResult();
-            o.aliases = aliases;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetAliasesResult();
+            _resultValue.aliases = aliases;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

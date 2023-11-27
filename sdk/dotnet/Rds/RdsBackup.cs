@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Rds
     /// <summary>
     /// Provides a RDS Backup resource.
     /// 
-    /// For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createbackup).
+    /// For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createbackup).
     /// 
     /// &gt; **NOTE:** Available since v1.149.0.
     /// 

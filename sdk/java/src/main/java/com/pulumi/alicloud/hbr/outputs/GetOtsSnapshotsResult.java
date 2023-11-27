@@ -111,14 +111,14 @@ public final class GetOtsSnapshotsResult {
             return this;
         }
         public GetOtsSnapshotsResult build() {
-            final var o = new GetOtsSnapshotsResult();
-            o.endTime = endTime;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.snapshots = snapshots;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new GetOtsSnapshotsResult();
+            _resultValue.endTime = endTime;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.snapshots = snapshots;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

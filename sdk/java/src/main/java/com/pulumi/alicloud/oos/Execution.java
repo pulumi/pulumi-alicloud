@@ -104,7 +104,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The counters of OOS Execution.
      * 
      */
-    @Export(name="counters", type=String.class, parameters={})
+    @Export(name="counters", refs={String.class}, tree="[0]")
     private Output<String> counters;
 
     /**
@@ -118,7 +118,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The time when the execution was created.
      * 
      */
-    @Export(name="createDate", type=String.class, parameters={})
+    @Export(name="createDate", refs={String.class}, tree="[0]")
     private Output<String> createDate;
 
     /**
@@ -132,7 +132,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The description of OOS Execution.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -146,7 +146,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The time when the execution was ended.
      * 
      */
-    @Export(name="endDate", type=String.class, parameters={})
+    @Export(name="endDate", refs={String.class}, tree="[0]")
     private Output<String> endDate;
 
     /**
@@ -160,7 +160,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The user who execute the template.
      * 
      */
-    @Export(name="executedBy", type=String.class, parameters={})
+    @Export(name="executedBy", refs={String.class}, tree="[0]")
     private Output<String> executedBy;
 
     /**
@@ -174,7 +174,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * Whether to include subtasks.
      * 
      */
-    @Export(name="isParent", type=Boolean.class, parameters={})
+    @Export(name="isParent", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isParent;
 
     /**
@@ -188,7 +188,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The loop mode of OOS Execution.
      * 
      */
-    @Export(name="loopMode", type=String.class, parameters={})
+    @Export(name="loopMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loopMode;
 
     /**
@@ -202,7 +202,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
      * 
      */
-    @Export(name="mode", type=String.class, parameters={})
+    @Export(name="mode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mode;
 
     /**
@@ -216,7 +216,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The outputs of OOS Execution.
      * 
      */
-    @Export(name="outputs", type=String.class, parameters={})
+    @Export(name="outputs", refs={String.class}, tree="[0]")
     private Output<String> outputs;
 
     /**
@@ -230,7 +230,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The parameters required by the template. Default to `{}`.
      * 
      */
-    @Export(name="parameters", type=String.class, parameters={})
+    @Export(name="parameters", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parameters;
 
     /**
@@ -244,7 +244,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The id of parent execution.
      * 
      */
-    @Export(name="parentExecutionId", type=String.class, parameters={})
+    @Export(name="parentExecutionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentExecutionId;
 
     /**
@@ -258,7 +258,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The role that executes the current template.
      * 
      */
-    @Export(name="ramRole", type=String.class, parameters={})
+    @Export(name="ramRole", refs={String.class}, tree="[0]")
     private Output<String> ramRole;
 
     /**
@@ -272,7 +272,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The mode of safety check.
      * 
      */
-    @Export(name="safetyCheck", type=String.class, parameters={})
+    @Export(name="safetyCheck", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> safetyCheck;
 
     /**
@@ -286,7 +286,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The time when the execution was started.
      * 
      */
-    @Export(name="startDate", type=String.class, parameters={})
+    @Export(name="startDate", refs={String.class}, tree="[0]")
     private Output<String> startDate;
 
     /**
@@ -300,7 +300,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The status of OOS Execution.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -314,7 +314,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The message of status.
      * 
      */
-    @Export(name="statusMessage", type=String.class, parameters={})
+    @Export(name="statusMessage", refs={String.class}, tree="[0]")
     private Output<String> statusMessage;
 
     /**
@@ -328,7 +328,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
      * 
      */
-    @Export(name="templateContent", type=String.class, parameters={})
+    @Export(name="templateContent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateContent;
 
     /**
@@ -342,7 +342,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The id of template.
      * 
      */
-    @Export(name="templateId", type=String.class, parameters={})
+    @Export(name="templateId", refs={String.class}, tree="[0]")
     private Output<String> templateId;
 
     /**
@@ -356,7 +356,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The name of execution template.
      * 
      */
-    @Export(name="templateName", type=String.class, parameters={})
+    @Export(name="templateName", refs={String.class}, tree="[0]")
     private Output<String> templateName;
 
     /**
@@ -370,7 +370,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The version of execution template.
      * 
      */
-    @Export(name="templateVersion", type=String.class, parameters={})
+    @Export(name="templateVersion", refs={String.class}, tree="[0]")
     private Output<String> templateVersion;
 
     /**
@@ -384,7 +384,7 @@ public class Execution extends com.pulumi.resources.CustomResource {
      * The time when the execution was updated.
      * 
      */
-    @Export(name="updateDate", type=String.class, parameters={})
+    @Export(name="updateDate", refs={String.class}, tree="[0]")
     private Output<String> updateDate;
 
     /**

@@ -160,7 +160,7 @@ public class SlbAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the application to which you want to bind an SLB instance.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -174,7 +174,7 @@ public class SlbAttachment extends com.pulumi.resources.CustomResource {
      * The listening port for the bound SLB instance.
      * 
      */
-    @Export(name="listenerPort", type=Integer.class, parameters={})
+    @Export(name="listenerPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> listenerPort;
 
     /**
@@ -188,7 +188,7 @@ public class SlbAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the SLB instance that is going to be bound.
      * 
      */
-    @Export(name="slbId", type=String.class, parameters={})
+    @Export(name="slbId", refs={String.class}, tree="[0]")
     private Output<String> slbId;
 
     /**
@@ -202,7 +202,7 @@ public class SlbAttachment extends com.pulumi.resources.CustomResource {
      * The IP address that is allocated to the bound SLB instance.
      * 
      */
-    @Export(name="slbIp", type=String.class, parameters={})
+    @Export(name="slbIp", refs={String.class}, tree="[0]")
     private Output<String> slbIp;
 
     /**
@@ -216,7 +216,7 @@ public class SlbAttachment extends com.pulumi.resources.CustomResource {
      * Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
      * 
      */
-    @Export(name="slbStatus", type=String.class, parameters={})
+    @Export(name="slbStatus", refs={String.class}, tree="[0]")
     private Output<String> slbStatus;
 
     /**
@@ -230,7 +230,7 @@ public class SlbAttachment extends com.pulumi.resources.CustomResource {
      * The type of the bound SLB instance.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -244,7 +244,7 @@ public class SlbAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the virtual server (VServer) group associated with the intranet SLB instance.
      * 
      */
-    @Export(name="vserverGroupId", type=String.class, parameters={})
+    @Export(name="vserverGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vserverGroupId;
 
     /**
@@ -258,7 +258,7 @@ public class SlbAttachment extends com.pulumi.resources.CustomResource {
      * VPC related vswitch ID.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

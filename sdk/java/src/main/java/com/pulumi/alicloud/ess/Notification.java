@@ -118,7 +118,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
      * 
      */
-    @Export(name="notificationArn", type=String.class, parameters={})
+    @Export(name="notificationArn", refs={String.class}, tree="[0]")
     private Output<String> notificationArn;
 
     /**
@@ -135,7 +135,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * The notification types of Auto Scaling events and resource changes. Supported notification types: &#39;AUTOSCALING:SCALE_OUT_SUCCESS&#39;, &#39;AUTOSCALING:SCALE_IN_SUCCESS&#39;, &#39;AUTOSCALING:SCALE_OUT_ERROR&#39;, &#39;AUTOSCALING:SCALE_IN_ERROR&#39;, &#39;AUTOSCALING:SCALE_REJECT&#39;, &#39;AUTOSCALING:SCALE_OUT_START&#39;, &#39;AUTOSCALING:SCALE_IN_START&#39;, &#39;AUTOSCALING:SCHEDULE_TASK_EXPIRING&#39;.
      * 
      */
-    @Export(name="notificationTypes", type=List.class, parameters={String.class})
+    @Export(name="notificationTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> notificationTypes;
 
     /**
@@ -149,7 +149,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * The ID of the Auto Scaling group.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**

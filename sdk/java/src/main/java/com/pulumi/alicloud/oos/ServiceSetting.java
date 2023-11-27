@@ -85,7 +85,7 @@ public class ServiceSetting extends com.pulumi.resources.CustomResource {
      * The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
      * 
      */
-    @Export(name="deliveryOssBucketName", type=String.class, parameters={})
+    @Export(name="deliveryOssBucketName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deliveryOssBucketName;
 
     /**
@@ -99,7 +99,7 @@ public class ServiceSetting extends com.pulumi.resources.CustomResource {
      * Is the recording function for the OSS delivery template enabled.
      * 
      */
-    @Export(name="deliveryOssEnabled", type=Boolean.class, parameters={})
+    @Export(name="deliveryOssEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deliveryOssEnabled;
 
     /**
@@ -113,7 +113,7 @@ public class ServiceSetting extends com.pulumi.resources.CustomResource {
      * The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
      * 
      */
-    @Export(name="deliveryOssKeyPrefix", type=String.class, parameters={})
+    @Export(name="deliveryOssKeyPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deliveryOssKeyPrefix;
 
     /**
@@ -127,7 +127,7 @@ public class ServiceSetting extends com.pulumi.resources.CustomResource {
      * Is the execution record function to SLS delivery Template turned on.
      * 
      */
-    @Export(name="deliverySlsEnabled", type=Boolean.class, parameters={})
+    @Export(name="deliverySlsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deliverySlsEnabled;
 
     /**
@@ -141,7 +141,7 @@ public class ServiceSetting extends com.pulumi.resources.CustomResource {
      * The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
      * 
      */
-    @Export(name="deliverySlsProjectName", type=String.class, parameters={})
+    @Export(name="deliverySlsProjectName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deliverySlsProjectName;
 
     /**

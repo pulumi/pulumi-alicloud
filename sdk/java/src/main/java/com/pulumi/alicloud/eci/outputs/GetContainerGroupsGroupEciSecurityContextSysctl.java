@@ -65,10 +65,10 @@ public final class GetContainerGroupsGroupEciSecurityContextSysctl {
             return this;
         }
         public GetContainerGroupsGroupEciSecurityContextSysctl build() {
-            final var o = new GetContainerGroupsGroupEciSecurityContextSysctl();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetContainerGroupsGroupEciSecurityContextSysctl();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class GetSaslUsersUser {
             return this;
         }
         public GetSaslUsersUser build() {
-            final var o = new GetSaslUsersUser();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetSaslUsersUser();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

@@ -99,7 +99,7 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
      * The resource ID need shared.
      * 
      */
-    @Export(name="resourceId", type=String.class, parameters={})
+    @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
@@ -113,7 +113,7 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
      * The resource share ID of resource manager.
      * 
      */
-    @Export(name="resourceShareId", type=String.class, parameters={})
+    @Export(name="resourceShareId", refs={String.class}, tree="[0]")
     private Output<String> resourceShareId;
 
     /**
@@ -127,7 +127,7 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
      * The resource type of should shared. Valid values:
      * 
      */
-    @Export(name="resourceType", type=String.class, parameters={})
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
@@ -141,7 +141,7 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
      * The status of the Shared Resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

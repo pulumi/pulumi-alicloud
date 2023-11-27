@@ -86,11 +86,11 @@ public final class EdgeKubernetesWorkerNode {
             return this;
         }
         public EdgeKubernetesWorkerNode build() {
-            final var o = new EdgeKubernetesWorkerNode();
-            o.id = id;
-            o.name = name;
-            o.privateIp = privateIp;
-            return o;
+            final var _resultValue = new EdgeKubernetesWorkerNode();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.privateIp = privateIp;
+            return _resultValue;
         }
     }
 }

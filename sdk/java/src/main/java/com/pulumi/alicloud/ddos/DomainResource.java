@@ -96,7 +96,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
      * (Available since v1.207.2) The CNAME assigned to the domain name.
      * 
      */
-    @Export(name="cname", type=String.class, parameters={})
+    @Export(name="cname", refs={String.class}, tree="[0]")
     private Output<String> cname;
 
     /**
@@ -110,7 +110,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
      * The domain name of the website that you want to add to the instance.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -124,7 +124,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
      * The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
      * 
      */
-    @Export(name="httpsExt", type=String.class, parameters={})
+    @Export(name="httpsExt", refs={String.class}, tree="[0]")
     private Output<String> httpsExt;
 
     /**
@@ -139,7 +139,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
      * 
      */
-    @Export(name="instanceIds", type=List.class, parameters={String.class})
+    @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceIds;
 
     /**
@@ -154,7 +154,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="ocspEnabled", type=Boolean.class, parameters={})
+    @Export(name="ocspEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ocspEnabled;
 
     /**
@@ -169,7 +169,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
      * 
      */
-    @Export(name="proxyTypes", type=List.class, parameters={DomainResourceProxyType.class})
+    @Export(name="proxyTypes", refs={List.class,DomainResourceProxyType.class}, tree="[0,1]")
     private Output<List<DomainResourceProxyType>> proxyTypes;
 
     /**
@@ -184,7 +184,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
      * the IP address. This field is required and must be a string array.
      * 
      */
-    @Export(name="realServers", type=List.class, parameters={String.class})
+    @Export(name="realServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> realServers;
 
     /**
@@ -198,7 +198,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
      * The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
      * 
      */
-    @Export(name="rsType", type=Integer.class, parameters={})
+    @Export(name="rsType", refs={Integer.class}, tree="[0]")
     private Output<Integer> rsType;
 
     /**

@@ -111,7 +111,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * EIP bound to HaVip.
      * 
      */
-    @Export(name="associatedEipAddresses", type=List.class, parameters={String.class})
+    @Export(name="associatedEipAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> associatedEipAddresses;
 
     /**
@@ -125,7 +125,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
      * 
      */
-    @Export(name="associatedInstanceType", type=String.class, parameters={})
+    @Export(name="associatedInstanceType", refs={String.class}, tree="[0]")
     private Output<String> associatedInstanceType;
 
     /**
@@ -139,7 +139,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * An ECS instance that is bound to HaVip.
      * 
      */
-    @Export(name="associatedInstances", type=List.class, parameters={String.class})
+    @Export(name="associatedInstances", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> associatedInstances;
 
     /**
@@ -153,7 +153,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -167,7 +167,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The description of the HaVip instance. The length is 2 to 256 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -181,7 +181,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The ID of the resource.
      * 
      */
-    @Export(name="haVipId", type=String.class, parameters={})
+    @Export(name="haVipId", refs={String.class}, tree="[0]")
     private Output<String> haVipId;
 
     /**
@@ -195,7 +195,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The name of the HaVip instance.
      * 
      */
-    @Export(name="haVipName", type=String.class, parameters={})
+    @Export(name="haVipName", refs={String.class}, tree="[0]")
     private Output<String> haVipName;
 
     /**
@@ -213,7 +213,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
-    @Export(name="havipName", type=String.class, parameters={})
+    @Export(name="havipName", refs={String.class}, tree="[0]")
     private Output<String> havipName;
 
     /**
@@ -227,7 +227,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -241,7 +241,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The primary instance ID bound to HaVip.
      * 
      */
-    @Export(name="masterInstanceId", type=String.class, parameters={})
+    @Export(name="masterInstanceId", refs={String.class}, tree="[0]")
     private Output<String> masterInstanceId;
 
     /**
@@ -255,7 +255,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -269,7 +269,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The status of this resource instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -283,7 +283,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The tags of HaVip.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -297,7 +297,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The VPC ID to which the HaVip instance belongs.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -313,7 +313,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

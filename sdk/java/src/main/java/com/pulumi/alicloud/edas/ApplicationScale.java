@@ -168,7 +168,7 @@ public class ApplicationScale extends com.pulumi.resources.CustomResource {
      * The ID of the application that you want to deploy.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -182,7 +182,7 @@ public class ApplicationScale extends com.pulumi.resources.CustomResource {
      * The ID of the instance group to which you want to add ECS instances to scale out the application.
      * 
      */
-    @Export(name="deployGroup", type=String.class, parameters={})
+    @Export(name="deployGroup", refs={String.class}, tree="[0]")
     private Output<String> deployGroup;
 
     /**
@@ -196,7 +196,7 @@ public class ApplicationScale extends com.pulumi.resources.CustomResource {
      * The ecc information of the resource supplied above. The value is formulated as `&lt;ecc1,ecc2&gt;`.
      * 
      */
-    @Export(name="eccInfo", type=String.class, parameters={})
+    @Export(name="eccInfo", refs={String.class}, tree="[0]")
     private Output<String> eccInfo;
 
     /**
@@ -210,7 +210,7 @@ public class ApplicationScale extends com.pulumi.resources.CustomResource {
      * The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
      * 
      */
-    @Export(name="ecuInfos", type=List.class, parameters={String.class})
+    @Export(name="ecuInfos", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ecuInfos;
 
     /**
@@ -224,7 +224,7 @@ public class ApplicationScale extends com.pulumi.resources.CustomResource {
      * This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
      * 
      */
-    @Export(name="forceStatus", type=Boolean.class, parameters={})
+    @Export(name="forceStatus", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceStatus;
 
     /**

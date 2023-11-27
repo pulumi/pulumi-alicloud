@@ -141,14 +141,14 @@ public final class GetHybridMonitorFcTasksTask {
             return this;
         }
         public GetHybridMonitorFcTasksTask build() {
-            final var o = new GetHybridMonitorFcTasksTask();
-            o.createTime = createTime;
-            o.hybridMonitorFcTaskId = hybridMonitorFcTaskId;
-            o.id = id;
-            o.namespace = namespace;
-            o.targetUserId = targetUserId;
-            o.yarmConfig = yarmConfig;
-            return o;
+            final var _resultValue = new GetHybridMonitorFcTasksTask();
+            _resultValue.createTime = createTime;
+            _resultValue.hybridMonitorFcTaskId = hybridMonitorFcTaskId;
+            _resultValue.id = id;
+            _resultValue.namespace = namespace;
+            _resultValue.targetUserId = targetUserId;
+            _resultValue.yarmConfig = yarmConfig;
+            return _resultValue;
         }
     }
 }

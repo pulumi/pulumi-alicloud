@@ -65,10 +65,10 @@ public final class GetClustersClusterHostPoolInfo {
             return this;
         }
         public GetClustersClusterHostPoolInfo build() {
-            final var o = new GetClustersClusterHostPoolInfo();
-            o.hpBizId = hpBizId;
-            o.hpName = hpName;
-            return o;
+            final var _resultValue = new GetClustersClusterHostPoolInfo();
+            _resultValue.hpBizId = hpBizId;
+            _resultValue.hpName = hpName;
+            return _resultValue;
         }
     }
 }

@@ -154,15 +154,15 @@ public final class GetVpcEndpointLinkedVpcsResult {
             return vpcEndpointLinkedVpcs(List.of(vpcEndpointLinkedVpcs));
         }
         public GetVpcEndpointLinkedVpcsResult build() {
-            final var o = new GetVpcEndpointLinkedVpcsResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.moduleName = moduleName;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.vpcEndpointLinkedVpcs = vpcEndpointLinkedVpcs;
-            return o;
+            final var _resultValue = new GetVpcEndpointLinkedVpcsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.moduleName = moduleName;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.vpcEndpointLinkedVpcs = vpcEndpointLinkedVpcs;
+            return _resultValue;
         }
     }
 }

@@ -166,7 +166,7 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
      * The ID of the GA instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -180,7 +180,7 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
      * The IP address of the destination to which traffic is allowed.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
@@ -194,7 +194,7 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
      * The ID of the Custom Routing Endpoint Traffic Policy.
      * 
      */
-    @Export(name="customRoutingEndpointTrafficPolicyId", type=String.class, parameters={})
+    @Export(name="customRoutingEndpointTrafficPolicyId", refs={String.class}, tree="[0]")
     private Output<String> customRoutingEndpointTrafficPolicyId;
 
     /**
@@ -208,7 +208,7 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
      * The ID of the endpoint group.
      * 
      */
-    @Export(name="endpointGroupId", type=String.class, parameters={})
+    @Export(name="endpointGroupId", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupId;
 
     /**
@@ -222,7 +222,7 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
      * The ID of the Custom Routing Endpoint.
      * 
      */
-    @Export(name="endpointId", type=String.class, parameters={})
+    @Export(name="endpointId", refs={String.class}, tree="[0]")
     private Output<String> endpointId;
 
     /**
@@ -236,7 +236,7 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
      * The ID of the listener.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -250,7 +250,7 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
      * Port rangeSee the following. See `port_ranges` below.
      * 
      */
-    @Export(name="portRanges", type=List.class, parameters={CustomRoutingEndpointTrafficPolicyPortRange.class})
+    @Export(name="portRanges", refs={List.class,CustomRoutingEndpointTrafficPolicyPortRange.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CustomRoutingEndpointTrafficPolicyPortRange>> portRanges;
 
     /**
@@ -264,7 +264,7 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
      * The status of the Custom Routing Endpoint Traffic Policy.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

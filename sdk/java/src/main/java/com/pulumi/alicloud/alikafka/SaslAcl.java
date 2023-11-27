@@ -134,7 +134,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * Operation type for this acl. The operation type can only be &#34;Write&#34; and &#34;Read&#34;.
      * 
      */
-    @Export(name="aclOperationType", type=String.class, parameters={})
+    @Export(name="aclOperationType", refs={String.class}, tree="[0]")
     private Output<String> aclOperationType;
 
     /**
@@ -148,7 +148,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * Resource name for this acl. The resource name should be a topic or consumer group name.
      * 
      */
-    @Export(name="aclResourceName", type=String.class, parameters={})
+    @Export(name="aclResourceName", refs={String.class}, tree="[0]")
     private Output<String> aclResourceName;
 
     /**
@@ -162,7 +162,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * Resource pattern type for this acl. The resource pattern support two types &#34;LITERAL&#34; and &#34;PREFIXED&#34;. &#34;LITERAL&#34;: A literal name defines the full name of a resource. The special wildcard character &#34;*&#34; can be used to represent a resource with any name. &#34;PREFIXED&#34;: A prefixed name defines a prefix for a resource.
      * 
      */
-    @Export(name="aclResourcePatternType", type=String.class, parameters={})
+    @Export(name="aclResourcePatternType", refs={String.class}, tree="[0]")
     private Output<String> aclResourcePatternType;
 
     /**
@@ -176,7 +176,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * Resource type for this acl. The resource type can only be &#34;Topic&#34; and &#34;Group&#34;.
      * 
      */
-    @Export(name="aclResourceType", type=String.class, parameters={})
+    @Export(name="aclResourceType", refs={String.class}, tree="[0]")
     private Output<String> aclResourceType;
 
     /**
@@ -190,7 +190,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * The host of the acl.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -204,7 +204,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * ID of the ALIKAFKA Instance that owns the groups.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -218,7 +218,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

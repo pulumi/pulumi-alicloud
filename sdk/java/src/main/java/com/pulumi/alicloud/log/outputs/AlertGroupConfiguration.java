@@ -62,10 +62,10 @@ public final class AlertGroupConfiguration {
             return this;
         }
         public AlertGroupConfiguration build() {
-            final var o = new AlertGroupConfiguration();
-            o.fields = fields;
-            o.type = type;
-            return o;
+            final var _resultValue = new AlertGroupConfiguration();
+            _resultValue.fields = fields;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

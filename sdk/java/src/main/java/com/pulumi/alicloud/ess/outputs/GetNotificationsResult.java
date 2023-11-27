@@ -124,13 +124,13 @@ public final class GetNotificationsResult {
             return this;
         }
         public GetNotificationsResult build() {
-            final var o = new GetNotificationsResult();
-            o.id = id;
-            o.ids = ids;
-            o.notifications = notifications;
-            o.outputFile = outputFile;
-            o.scalingGroupId = scalingGroupId;
-            return o;
+            final var _resultValue = new GetNotificationsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.notifications = notifications;
+            _resultValue.outputFile = outputFile;
+            _resultValue.scalingGroupId = scalingGroupId;
+            return _resultValue;
         }
     }
 }

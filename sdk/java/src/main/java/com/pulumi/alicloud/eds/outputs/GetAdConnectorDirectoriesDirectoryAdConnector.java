@@ -141,14 +141,14 @@ public final class GetAdConnectorDirectoriesDirectoryAdConnector {
             return this;
         }
         public GetAdConnectorDirectoriesDirectoryAdConnector build() {
-            final var o = new GetAdConnectorDirectoriesDirectoryAdConnector();
-            o.adConnectorAddress = adConnectorAddress;
-            o.connectorStatus = connectorStatus;
-            o.networkInterfaceId = networkInterfaceId;
-            o.specification = specification;
-            o.trustKey = trustKey;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetAdConnectorDirectoriesDirectoryAdConnector();
+            _resultValue.adConnectorAddress = adConnectorAddress;
+            _resultValue.connectorStatus = connectorStatus;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.specification = specification;
+            _resultValue.trustKey = trustKey;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

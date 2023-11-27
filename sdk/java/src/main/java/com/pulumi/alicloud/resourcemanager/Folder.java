@@ -70,7 +70,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
      * 
      */
-    @Export(name="folderName", type=String.class, parameters={})
+    @Export(name="folderName", refs={String.class}, tree="[0]")
     private Output<String> folderName;
 
     /**
@@ -84,7 +84,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * The ID of the parent folder. If not set, the system default value will be used.
      * 
      */
-    @Export(name="parentFolderId", type=String.class, parameters={})
+    @Export(name="parentFolderId", refs={String.class}, tree="[0]")
     private Output<String> parentFolderId;
 
     /**

@@ -104,12 +104,12 @@ public final class GetPolicyVersionsVersion {
             return this;
         }
         public GetPolicyVersionsVersion build() {
-            final var o = new GetPolicyVersionsVersion();
-            o.id = id;
-            o.isDefaultVersion = isDefaultVersion;
-            o.policyDocument = policyDocument;
-            o.versionId = versionId;
-            return o;
+            final var _resultValue = new GetPolicyVersionsVersion();
+            _resultValue.id = id;
+            _resultValue.isDefaultVersion = isDefaultVersion;
+            _resultValue.policyDocument = policyDocument;
+            _resultValue.versionId = versionId;
+            return _resultValue;
         }
     }
 }

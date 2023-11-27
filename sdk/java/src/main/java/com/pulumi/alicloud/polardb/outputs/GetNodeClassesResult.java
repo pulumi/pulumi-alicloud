@@ -176,18 +176,18 @@ public final class GetNodeClassesResult {
             return this;
         }
         public GetNodeClassesResult build() {
-            final var o = new GetNodeClassesResult();
-            o.category = category;
-            o.classes = classes;
-            o.dbNodeClass = dbNodeClass;
-            o.dbType = dbType;
-            o.dbVersion = dbVersion;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.payType = payType;
-            o.regionId = regionId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetNodeClassesResult();
+            _resultValue.category = category;
+            _resultValue.classes = classes;
+            _resultValue.dbNodeClass = dbNodeClass;
+            _resultValue.dbType = dbType;
+            _resultValue.dbVersion = dbVersion;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.payType = payType;
+            _resultValue.regionId = regionId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

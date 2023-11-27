@@ -185,16 +185,16 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjector {
             return this;
         }
         public GetServiceMeshesMeshMeshConfigSidecarInjector build() {
-            final var o = new GetServiceMeshesMeshMeshConfigSidecarInjector();
-            o.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
-            o.enableNamespacesByDefault = enableNamespacesByDefault;
-            o.initCniConfigurations = initCniConfigurations;
-            o.limitCpu = limitCpu;
-            o.limitMemory = limitMemory;
-            o.requestCpu = requestCpu;
-            o.requestMemory = requestMemory;
-            o.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
-            return o;
+            final var _resultValue = new GetServiceMeshesMeshMeshConfigSidecarInjector();
+            _resultValue.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
+            _resultValue.enableNamespacesByDefault = enableNamespacesByDefault;
+            _resultValue.initCniConfigurations = initCniConfigurations;
+            _resultValue.limitCpu = limitCpu;
+            _resultValue.limitMemory = limitMemory;
+            _resultValue.requestCpu = requestCpu;
+            _resultValue.requestMemory = requestMemory;
+            _resultValue.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
+            return _resultValue;
         }
     }
 }

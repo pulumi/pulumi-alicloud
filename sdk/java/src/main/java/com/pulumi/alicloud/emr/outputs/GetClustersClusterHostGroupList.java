@@ -318,23 +318,23 @@ public final class GetClustersClusterHostGroupList {
             return this;
         }
         public GetClustersClusterHostGroupList build() {
-            final var o = new GetClustersClusterHostGroupList();
-            o.bandWidth = bandWidth;
-            o.chargeType = chargeType;
-            o.cpuCore = cpuCore;
-            o.diskCapacity = diskCapacity;
-            o.diskCount = diskCount;
-            o.diskType = diskType;
-            o.hostGroupChangeType = hostGroupChangeType;
-            o.hostGroupId = hostGroupId;
-            o.hostGroupName = hostGroupName;
-            o.hostGroupType = hostGroupType;
-            o.instanceType = instanceType;
-            o.memoryCapacity = memoryCapacity;
-            o.nodeCount = nodeCount;
-            o.nodes = nodes;
-            o.period = period;
-            return o;
+            final var _resultValue = new GetClustersClusterHostGroupList();
+            _resultValue.bandWidth = bandWidth;
+            _resultValue.chargeType = chargeType;
+            _resultValue.cpuCore = cpuCore;
+            _resultValue.diskCapacity = diskCapacity;
+            _resultValue.diskCount = diskCount;
+            _resultValue.diskType = diskType;
+            _resultValue.hostGroupChangeType = hostGroupChangeType;
+            _resultValue.hostGroupId = hostGroupId;
+            _resultValue.hostGroupName = hostGroupName;
+            _resultValue.hostGroupType = hostGroupType;
+            _resultValue.instanceType = instanceType;
+            _resultValue.memoryCapacity = memoryCapacity;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.nodes = nodes;
+            _resultValue.period = period;
+            return _resultValue;
         }
     }
 }

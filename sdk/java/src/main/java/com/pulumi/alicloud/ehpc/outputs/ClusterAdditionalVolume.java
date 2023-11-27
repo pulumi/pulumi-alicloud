@@ -224,18 +224,18 @@ public final class ClusterAdditionalVolume {
             return this;
         }
         public ClusterAdditionalVolume build() {
-            final var o = new ClusterAdditionalVolume();
-            o.jobQueue = jobQueue;
-            o.localDirectory = localDirectory;
-            o.location = location;
-            o.remoteDirectory = remoteDirectory;
-            o.roles = roles;
-            o.volumeId = volumeId;
-            o.volumeMountOption = volumeMountOption;
-            o.volumeMountpoint = volumeMountpoint;
-            o.volumeProtocol = volumeProtocol;
-            o.volumeType = volumeType;
-            return o;
+            final var _resultValue = new ClusterAdditionalVolume();
+            _resultValue.jobQueue = jobQueue;
+            _resultValue.localDirectory = localDirectory;
+            _resultValue.location = location;
+            _resultValue.remoteDirectory = remoteDirectory;
+            _resultValue.roles = roles;
+            _resultValue.volumeId = volumeId;
+            _resultValue.volumeMountOption = volumeMountOption;
+            _resultValue.volumeMountpoint = volumeMountpoint;
+            _resultValue.volumeProtocol = volumeProtocol;
+            _resultValue.volumeType = volumeType;
+            return _resultValue;
         }
     }
 }

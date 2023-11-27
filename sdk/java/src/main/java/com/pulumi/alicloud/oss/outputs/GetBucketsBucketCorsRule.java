@@ -136,13 +136,13 @@ public final class GetBucketsBucketCorsRule {
             return this;
         }
         public GetBucketsBucketCorsRule build() {
-            final var o = new GetBucketsBucketCorsRule();
-            o.allowedHeaders = allowedHeaders;
-            o.allowedMethods = allowedMethods;
-            o.allowedOrigins = allowedOrigins;
-            o.exposeHeaders = exposeHeaders;
-            o.maxAgeSeconds = maxAgeSeconds;
-            return o;
+            final var _resultValue = new GetBucketsBucketCorsRule();
+            _resultValue.allowedHeaders = allowedHeaders;
+            _resultValue.allowedMethods = allowedMethods;
+            _resultValue.allowedOrigins = allowedOrigins;
+            _resultValue.exposeHeaders = exposeHeaders;
+            _resultValue.maxAgeSeconds = maxAgeSeconds;
+            return _resultValue;
         }
     }
 }

@@ -224,22 +224,22 @@ public final class GetZonesResult {
             return zones(List.of(zones));
         }
         public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.availableDiskCategory = availableDiskCategory;
-            o.availableInstanceType = availableInstanceType;
-            o.availableResourceCreation = availableResourceCreation;
-            o.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
-            o.availableSlbAddressType = availableSlbAddressType;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.multi = multi;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.spotStrategy = spotStrategy;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetZonesResult();
+            _resultValue.availableDiskCategory = availableDiskCategory;
+            _resultValue.availableInstanceType = availableInstanceType;
+            _resultValue.availableResourceCreation = availableResourceCreation;
+            _resultValue.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
+            _resultValue.availableSlbAddressType = availableSlbAddressType;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.multi = multi;
+            _resultValue.networkType = networkType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.spotStrategy = spotStrategy;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

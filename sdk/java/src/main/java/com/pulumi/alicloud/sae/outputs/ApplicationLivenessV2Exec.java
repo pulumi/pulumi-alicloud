@@ -51,9 +51,9 @@ public final class ApplicationLivenessV2Exec {
             return commands(List.of(commands));
         }
         public ApplicationLivenessV2Exec build() {
-            final var o = new ApplicationLivenessV2Exec();
-            o.commands = commands;
-            return o;
+            final var _resultValue = new ApplicationLivenessV2Exec();
+            _resultValue.commands = commands;
+            return _resultValue;
         }
     }
 }

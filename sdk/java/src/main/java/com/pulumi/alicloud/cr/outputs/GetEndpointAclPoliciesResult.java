@@ -111,14 +111,14 @@ public final class GetEndpointAclPoliciesResult {
             return policies(List.of(policies));
         }
         public GetEndpointAclPoliciesResult build() {
-            final var o = new GetEndpointAclPoliciesResult();
-            o.endpointType = endpointType;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            return o;
+            final var _resultValue = new GetEndpointAclPoliciesResult();
+            _resultValue.endpointType = endpointType;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            return _resultValue;
         }
     }
 }

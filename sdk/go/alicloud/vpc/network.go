@@ -13,9 +13,11 @@ import (
 
 // Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
 //
+// > **NOTE:** Available since v1.0.0.
+//
 // > **NOTE:** This resource will auto build a router and a route table while it uses `vpc.Network` to build a vpc resource.
 //
-// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://www.alibabacloud.com/help/en/vpc/getting-started/create-a-vpc-with-an-ipv6-cidr-block).
 //
 // ## Module Support
 //
@@ -111,7 +113,7 @@ type Network struct {
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	// (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
 	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId pulumi.StringOutput `pulumi:"routerTableId"`
@@ -198,7 +200,7 @@ type networkState struct {
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
 	RouterId *string `pulumi:"routerId"`
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	// (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
 	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId *string `pulumi:"routerTableId"`
@@ -256,7 +258,7 @@ type NetworkState struct {
 	RouteTableId pulumi.StringPtrInput
 	// The ID of the router created by default on VPC creation.
 	RouterId pulumi.StringPtrInput
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	// (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
 	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId pulumi.StringPtrInput
@@ -308,12 +310,6 @@ type networkArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The route table ID of the router created by default on VPC creation.
-	RouteTableId *string `pulumi:"routeTableId"`
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
-	//
-	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
-	RouterTableId *string `pulumi:"routerTableId"`
 	// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	//
 	// Deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
@@ -357,12 +353,6 @@ type NetworkArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The route table ID of the router created by default on VPC creation.
-	RouteTableId pulumi.StringPtrInput
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
-	//
-	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
-	RouterTableId pulumi.StringPtrInput
 	// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	//
 	// Deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
@@ -540,7 +530,7 @@ func (o NetworkOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
 
-// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+// (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 //
 // Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 func (o NetworkOutput) RouterTableId() pulumi.StringOutput {

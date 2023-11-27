@@ -142,7 +142,7 @@ public class ImageExport extends com.pulumi.resources.CustomResource {
      * The source image ID.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -156,7 +156,7 @@ public class ImageExport extends com.pulumi.resources.CustomResource {
      * Save the exported OSS bucket.
      * 
      */
-    @Export(name="ossBucket", type=String.class, parameters={})
+    @Export(name="ossBucket", refs={String.class}, tree="[0]")
     private Output<String> ossBucket;
 
     /**
@@ -170,7 +170,7 @@ public class ImageExport extends com.pulumi.resources.CustomResource {
      * The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
      * 
      */
-    @Export(name="ossPrefix", type=String.class, parameters={})
+    @Export(name="ossPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossPrefix;
 
     /**

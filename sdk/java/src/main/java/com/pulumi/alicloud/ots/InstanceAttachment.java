@@ -92,7 +92,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The name of the OTS instance.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -106,7 +106,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The ID of attaching VPC to instance.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -120,7 +120,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
      * 
      */
-    @Export(name="vpcName", type=String.class, parameters={})
+    @Export(name="vpcName", refs={String.class}, tree="[0]")
     private Output<String> vpcName;
 
     /**
@@ -134,7 +134,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The ID of attaching VSwitch to instance.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

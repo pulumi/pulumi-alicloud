@@ -114,14 +114,14 @@ public final class GetDdosCooDomainResourcesResult {
             return resources(List.of(resources));
         }
         public GetDdosCooDomainResourcesResult build() {
-            final var o = new GetDdosCooDomainResourcesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceIds = instanceIds;
-            o.outputFile = outputFile;
-            o.queryDomainPattern = queryDomainPattern;
-            o.resources = resources;
-            return o;
+            final var _resultValue = new GetDdosCooDomainResourcesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceIds = instanceIds;
+            _resultValue.outputFile = outputFile;
+            _resultValue.queryDomainPattern = queryDomainPattern;
+            _resultValue.resources = resources;
+            return _resultValue;
         }
     }
 }

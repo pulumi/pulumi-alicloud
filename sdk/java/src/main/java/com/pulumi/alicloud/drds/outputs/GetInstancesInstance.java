@@ -218,18 +218,18 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.connectionString = connectionString;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.networkType = networkType;
-            o.port = port;
-            o.status = status;
-            o.type = type;
-            o.version = version;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.connectionString = connectionString;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.networkType = networkType;
+            _resultValue.port = port;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.version = version;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -103,12 +103,12 @@ public final class GetHostEcsLevelInfosInfo {
             return this;
         }
         public GetHostEcsLevelInfosInfo build() {
-            final var o = new GetHostEcsLevelInfosInfo();
-            o.description = description;
-            o.ecsClass = ecsClass;
-            o.ecsClassCode = ecsClassCode;
-            o.resClassCode = resClassCode;
-            return o;
+            final var _resultValue = new GetHostEcsLevelInfosInfo();
+            _resultValue.description = description;
+            _resultValue.ecsClass = ecsClass;
+            _resultValue.ecsClassCode = ecsClassCode;
+            _resultValue.resClassCode = resClassCode;
+            return _resultValue;
         }
     }
 }

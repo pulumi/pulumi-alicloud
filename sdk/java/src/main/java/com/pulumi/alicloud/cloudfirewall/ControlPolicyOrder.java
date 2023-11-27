@@ -85,7 +85,7 @@ public class ControlPolicyOrder extends com.pulumi.resources.CustomResource {
      * The unique ID of the access control policy.
      * 
      */
-    @Export(name="aclUuid", type=String.class, parameters={})
+    @Export(name="aclUuid", refs={String.class}, tree="[0]")
     private Output<String> aclUuid;
 
     /**
@@ -99,7 +99,7 @@ public class ControlPolicyOrder extends com.pulumi.resources.CustomResource {
      * Direction. Valid values: `in`, `out`.
      * 
      */
-    @Export(name="direction", type=String.class, parameters={})
+    @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
@@ -113,7 +113,7 @@ public class ControlPolicyOrder extends com.pulumi.resources.CustomResource {
      * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
      * 
      */
-    @Export(name="order", type=Integer.class, parameters={})
+    @Export(name="order", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> order;
 
     /**

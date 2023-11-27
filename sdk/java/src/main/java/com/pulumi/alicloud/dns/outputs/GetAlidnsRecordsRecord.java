@@ -257,20 +257,20 @@ public final class GetAlidnsRecordsRecord {
             return this;
         }
         public GetAlidnsRecordsRecord build() {
-            final var o = new GetAlidnsRecordsRecord();
-            o.domainName = domainName;
-            o.id = id;
-            o.line = line;
-            o.locked = locked;
-            o.priority = priority;
-            o.recordId = recordId;
-            o.remark = remark;
-            o.rr = rr;
-            o.status = status;
-            o.ttl = ttl;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetAlidnsRecordsRecord();
+            _resultValue.domainName = domainName;
+            _resultValue.id = id;
+            _resultValue.line = line;
+            _resultValue.locked = locked;
+            _resultValue.priority = priority;
+            _resultValue.recordId = recordId;
+            _resultValue.remark = remark;
+            _resultValue.rr = rr;
+            _resultValue.status = status;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

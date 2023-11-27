@@ -110,12 +110,12 @@ public final class GetSystemSecurityPoliciesPolicy {
             return tlsVersions(List.of(tlsVersions));
         }
         public GetSystemSecurityPoliciesPolicy build() {
-            final var o = new GetSystemSecurityPoliciesPolicy();
-            o.ciphers = ciphers;
-            o.id = id;
-            o.securityPolicyId = securityPolicyId;
-            o.tlsVersions = tlsVersions;
-            return o;
+            final var _resultValue = new GetSystemSecurityPoliciesPolicy();
+            _resultValue.ciphers = ciphers;
+            _resultValue.id = id;
+            _resultValue.securityPolicyId = securityPolicyId;
+            _resultValue.tlsVersions = tlsVersions;
+            return _resultValue;
         }
     }
 }

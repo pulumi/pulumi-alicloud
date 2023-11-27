@@ -146,15 +146,15 @@ public final class GetTransitRouterVbrAttachmentsResult {
             return this;
         }
         public GetTransitRouterVbrAttachmentsResult build() {
-            final var o = new GetTransitRouterVbrAttachmentsResult();
-            o.attachments = attachments;
-            o.cenId = cenId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetTransitRouterVbrAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.cenId = cenId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

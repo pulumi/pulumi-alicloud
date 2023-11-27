@@ -113,7 +113,7 @@ public class LogConfig extends com.pulumi.resources.CustomResource {
      * The type the of log. Valid values: `PROVIDER`.
      * 
      */
-    @Export(name="logType", type=String.class, parameters={})
+    @Export(name="logType", refs={String.class}, tree="[0]")
     private Output<String> logType;
 
     /**
@@ -127,7 +127,7 @@ public class LogConfig extends com.pulumi.resources.CustomResource {
      * The name of the Log Store.
      * 
      */
-    @Export(name="slsLogStore", type=String.class, parameters={})
+    @Export(name="slsLogStore", refs={String.class}, tree="[0]")
     private Output<String> slsLogStore;
 
     /**
@@ -141,7 +141,7 @@ public class LogConfig extends com.pulumi.resources.CustomResource {
      * The name of the Project.
      * 
      */
-    @Export(name="slsProject", type=String.class, parameters={})
+    @Export(name="slsProject", refs={String.class}, tree="[0]")
     private Output<String> slsProject;
 
     /**

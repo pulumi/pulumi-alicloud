@@ -84,11 +84,11 @@ public final class StoreEncryptConfUserCmkInfo {
             return this;
         }
         public StoreEncryptConfUserCmkInfo build() {
-            final var o = new StoreEncryptConfUserCmkInfo();
-            o.arn = arn;
-            o.cmkKeyId = cmkKeyId;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new StoreEncryptConfUserCmkInfo();
+            _resultValue.arn = arn;
+            _resultValue.cmkKeyId = cmkKeyId;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }

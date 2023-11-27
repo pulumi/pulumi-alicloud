@@ -74,7 +74,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -88,7 +88,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
      * 
      */
-    @Export(name="instanceStatus", type=Integer.class, parameters={})
+    @Export(name="instanceStatus", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceStatus;
 
     /**
@@ -102,7 +102,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
      * 
      */
-    @Export(name="instanceType", type=Integer.class, parameters={})
+    @Export(name="instanceType", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceType;
 
     /**
@@ -120,7 +120,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -134,7 +134,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Platinum edition instance expiration time.
      * 
      */
-    @Export(name="releaseTime", type=String.class, parameters={})
+    @Export(name="releaseTime", refs={String.class}, tree="[0]")
     private Output<String> releaseTime;
 
     /**
@@ -148,7 +148,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * This attribute is a concise description of instance. The length cannot exceed 128.
      * 
      */
-    @Export(name="remark", type=String.class, parameters={})
+    @Export(name="remark", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> remark;
 
     /**
@@ -162,7 +162,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
@@ -178,7 +178,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

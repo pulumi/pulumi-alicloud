@@ -206,18 +206,18 @@ public final class GetImageCachesResult {
             return this;
         }
         public GetImageCachesResult build() {
-            final var o = new GetImageCachesResult();
-            o.caches = caches;
-            o.id = id;
-            o.ids = ids;
-            o.image = image;
-            o.imageCacheName = imageCacheName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.snapshotId = snapshotId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetImageCachesResult();
+            _resultValue.caches = caches;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.image = image;
+            _resultValue.imageCacheName = imageCacheName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

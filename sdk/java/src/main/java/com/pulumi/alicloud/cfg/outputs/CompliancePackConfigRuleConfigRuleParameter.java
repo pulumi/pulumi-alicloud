@@ -67,10 +67,10 @@ public final class CompliancePackConfigRuleConfigRuleParameter {
             return this;
         }
         public CompliancePackConfigRuleConfigRuleParameter build() {
-            final var o = new CompliancePackConfigRuleConfigRuleParameter();
-            o.parameterName = parameterName;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new CompliancePackConfigRuleConfigRuleParameter();
+            _resultValue.parameterName = parameterName;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

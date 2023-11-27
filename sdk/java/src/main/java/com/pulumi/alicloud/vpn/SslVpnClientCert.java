@@ -30,7 +30,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * The client ca cert.
      * 
      */
-    @Export(name="caCert", type=String.class, parameters={})
+    @Export(name="caCert", refs={String.class}, tree="[0]")
     private Output<String> caCert;
 
     /**
@@ -44,7 +44,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * The client cert.
      * 
      */
-    @Export(name="clientCert", type=String.class, parameters={})
+    @Export(name="clientCert", refs={String.class}, tree="[0]")
     private Output<String> clientCert;
 
     /**
@@ -58,7 +58,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * The vpn client config.
      * 
      */
-    @Export(name="clientConfig", type=String.class, parameters={})
+    @Export(name="clientConfig", refs={String.class}, tree="[0]")
     private Output<String> clientConfig;
 
     /**
@@ -72,7 +72,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * The client key.
      * 
      */
-    @Export(name="clientKey", type=String.class, parameters={})
+    @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output<String> clientKey;
 
     /**
@@ -86,7 +86,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * The name of the client certificate.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -100,7 +100,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * The ID of the SSL-VPN server.
      * 
      */
-    @Export(name="sslVpnServerId", type=String.class, parameters={})
+    @Export(name="sslVpnServerId", refs={String.class}, tree="[0]")
     private Output<String> sslVpnServerId;
 
     /**
@@ -114,7 +114,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * The status of the client certificate.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

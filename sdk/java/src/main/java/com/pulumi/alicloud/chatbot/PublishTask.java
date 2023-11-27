@@ -74,7 +74,7 @@ public class PublishTask extends com.pulumi.resources.CustomResource {
      * The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
      * 
      */
-    @Export(name="agentKey", type=String.class, parameters={})
+    @Export(name="agentKey", refs={String.class}, tree="[0]")
     private Output<String> agentKey;
 
     /**
@@ -88,7 +88,7 @@ public class PublishTask extends com.pulumi.resources.CustomResource {
      * The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
      * 
      */
-    @Export(name="bizType", type=String.class, parameters={})
+    @Export(name="bizType", refs={String.class}, tree="[0]")
     private Output<String> bizType;
 
     /**
@@ -102,7 +102,7 @@ public class PublishTask extends com.pulumi.resources.CustomResource {
      * UTC time of task creation
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -116,7 +116,7 @@ public class PublishTask extends com.pulumi.resources.CustomResource {
      * Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
      * 
      */
-    @Export(name="dataIdLists", type=List.class, parameters={String.class})
+    @Export(name="dataIdLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dataIdLists;
 
     /**
@@ -130,7 +130,7 @@ public class PublishTask extends com.pulumi.resources.CustomResource {
      * UTC time for task modification
      * 
      */
-    @Export(name="modifyTime", type=String.class, parameters={})
+    @Export(name="modifyTime", refs={String.class}, tree="[0]")
     private Output<String> modifyTime;
 
     /**
@@ -144,7 +144,7 @@ public class PublishTask extends com.pulumi.resources.CustomResource {
      * The status of the task.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

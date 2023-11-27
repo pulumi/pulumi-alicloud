@@ -34,7 +34,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
      * 
      */
-    @Export(name="config", type=String.class, parameters={})
+    @Export(name="config", refs={String.class}, tree="[0]")
     private Output<String> config;
 
     /**
@@ -50,7 +50,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - 5: vpc instance.
      * 
      */
-    @Export(name="deployType", type=Integer.class, parameters={})
+    @Export(name="deployType", refs={Integer.class}, tree="[0]")
     private Output<Integer> deployType;
 
     /**
@@ -66,7 +66,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
      * 
      */
-    @Export(name="diskSize", type=Integer.class, parameters={})
+    @Export(name="diskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> diskSize;
 
     /**
@@ -80,7 +80,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
      * 
      */
-    @Export(name="diskType", type=Integer.class, parameters={})
+    @Export(name="diskType", refs={Integer.class}, tree="[0]")
     private Output<Integer> diskType;
 
     /**
@@ -94,7 +94,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
      * 
      */
-    @Export(name="eipMax", type=Integer.class, parameters={})
+    @Export(name="eipMax", refs={Integer.class}, tree="[0]")
     private Output<Integer> eipMax;
 
     /**
@@ -108,7 +108,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The EndPoint to access the kafka instance.
      * 
      */
-    @Export(name="endPoint", type=String.class, parameters={})
+    @Export(name="endPoint", refs={String.class}, tree="[0]")
     private Output<String> endPoint;
 
     /**
@@ -122,7 +122,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      * 
      */
-    @Export(name="ioMax", type=Integer.class, parameters={})
+    @Export(name="ioMax", refs={Integer.class}, tree="[0]")
     private Output<Integer> ioMax;
 
     /**
@@ -138,7 +138,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      * 
      */
-    @Export(name="ioMaxSpec", type=String.class, parameters={})
+    @Export(name="ioMaxSpec", refs={String.class}, tree="[0]")
     private Output<String> ioMaxSpec;
 
     /**
@@ -154,7 +154,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
      * 
      */
-    @Export(name="kmsKeyId", type=String.class, parameters={})
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
     /**
@@ -168,7 +168,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -182,7 +182,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The paid type of the instance. Support two type, &#34;PrePaid&#34;: pre paid type instance, &#34;PostPaid&#34;: post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
      * 
      */
-    @Export(name="paidType", type=String.class, parameters={})
+    @Export(name="paidType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paidType;
 
     /**
@@ -196,7 +196,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of partitions.
      * 
      */
-    @Export(name="partitionNum", type=Integer.class, parameters={})
+    @Export(name="partitionNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> partitionNum;
 
     /**
@@ -210,7 +210,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      * 
      */
-    @Export(name="securityGroup", type=String.class, parameters={})
+    @Export(name="securityGroup", refs={String.class}, tree="[0]")
     private Output<String> securityGroup;
 
     /**
@@ -234,7 +234,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      * 
      */
-    @Export(name="selectedZones", type=List.class, parameters={String.class})
+    @Export(name="selectedZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> selectedZones;
 
     /**
@@ -258,7 +258,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      * 
      */
-    @Export(name="serviceVersion", type=String.class, parameters={})
+    @Export(name="serviceVersion", refs={String.class}, tree="[0]")
     private Output<String> serviceVersion;
 
     /**
@@ -272,7 +272,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The spec type of the instance. Support two type, &#34;normal&#34;: normal version instance, &#34;professional&#34;: professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      * 
      */
-    @Export(name="specType", type=String.class, parameters={})
+    @Export(name="specType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> specType;
 
     /**
@@ -290,7 +290,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - 15: expired
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
@@ -308,7 +308,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -329,7 +329,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
-    @Export(name="topicQuota", type=Integer.class, parameters={})
+    @Export(name="topicQuota", refs={Integer.class}, tree="[0]")
     private Output<Integer> topicQuota;
 
     /**
@@ -346,7 +346,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The VPC ID of the instance.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -360,7 +360,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of attaching vswitch to instance.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -374,7 +374,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The zone ID of the instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

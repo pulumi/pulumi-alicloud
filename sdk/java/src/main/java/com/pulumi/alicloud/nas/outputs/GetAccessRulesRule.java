@@ -123,13 +123,13 @@ public final class GetAccessRulesRule {
             return this;
         }
         public GetAccessRulesRule build() {
-            final var o = new GetAccessRulesRule();
-            o.accessRuleId = accessRuleId;
-            o.priority = priority;
-            o.rwAccess = rwAccess;
-            o.sourceCidrIp = sourceCidrIp;
-            o.userAccess = userAccess;
-            return o;
+            final var _resultValue = new GetAccessRulesRule();
+            _resultValue.accessRuleId = accessRuleId;
+            _resultValue.priority = priority;
+            _resultValue.rwAccess = rwAccess;
+            _resultValue.sourceCidrIp = sourceCidrIp;
+            _resultValue.userAccess = userAccess;
+            return _resultValue;
         }
     }
 }

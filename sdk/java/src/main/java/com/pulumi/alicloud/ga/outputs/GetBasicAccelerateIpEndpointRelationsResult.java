@@ -173,16 +173,16 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
             return this;
         }
         public GetBasicAccelerateIpEndpointRelationsResult build() {
-            final var o = new GetBasicAccelerateIpEndpointRelationsResult();
-            o.accelerateIpId = accelerateIpId;
-            o.acceleratorId = acceleratorId;
-            o.endpointId = endpointId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.relations = relations;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBasicAccelerateIpEndpointRelationsResult();
+            _resultValue.accelerateIpId = accelerateIpId;
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.endpointId = endpointId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.relations = relations;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

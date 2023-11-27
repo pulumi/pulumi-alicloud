@@ -84,11 +84,11 @@ public final class GetTagsTag {
             return this;
         }
         public GetTagsTag build() {
-            final var o = new GetTagsTag();
-            o.id = id;
-            o.tagId = tagId;
-            o.tagName = tagName;
-            return o;
+            final var _resultValue = new GetTagsTag();
+            _resultValue.id = id;
+            _resultValue.tagId = tagId;
+            _resultValue.tagName = tagName;
+            return _resultValue;
         }
     }
 }

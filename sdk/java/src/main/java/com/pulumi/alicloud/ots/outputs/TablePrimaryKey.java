@@ -65,10 +65,10 @@ public final class TablePrimaryKey {
             return this;
         }
         public TablePrimaryKey build() {
-            final var o = new TablePrimaryKey();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new TablePrimaryKey();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

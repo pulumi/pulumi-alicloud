@@ -125,13 +125,13 @@ public final class ApplicationNasConfig {
             return this;
         }
         public ApplicationNasConfig build() {
-            final var o = new ApplicationNasConfig();
-            o.mountDomain = mountDomain;
-            o.mountPath = mountPath;
-            o.nasId = nasId;
-            o.nasPath = nasPath;
-            o.readOnly = readOnly;
-            return o;
+            final var _resultValue = new ApplicationNasConfig();
+            _resultValue.mountDomain = mountDomain;
+            _resultValue.mountPath = mountPath;
+            _resultValue.nasId = nasId;
+            _resultValue.nasPath = nasPath;
+            _resultValue.readOnly = readOnly;
+            return _resultValue;
         }
     }
 }

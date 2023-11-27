@@ -38,9 +38,9 @@ public final class GetClustersClusterApplication {
             return this;
         }
         public GetClustersClusterApplication build() {
-            final var o = new GetClustersClusterApplication();
-            o.tag = tag;
-            return o;
+            final var _resultValue = new GetClustersClusterApplication();
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

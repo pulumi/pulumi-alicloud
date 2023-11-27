@@ -68,10 +68,10 @@ public final class ServiceMeshMeshConfigPrometheus {
             return this;
         }
         public ServiceMeshMeshConfigPrometheus build() {
-            final var o = new ServiceMeshMeshConfigPrometheus();
-            o.externalUrl = externalUrl;
-            o.useExternal = useExternal;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfigPrometheus();
+            _resultValue.externalUrl = externalUrl;
+            _resultValue.useExternal = useExternal;
+            return _resultValue;
         }
     }
 }

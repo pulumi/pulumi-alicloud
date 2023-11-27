@@ -176,7 +176,7 @@ public class BasicAccelerateIpEndpointRelation extends com.pulumi.resources.Cust
      * The ID of the Basic Accelerate IP.
      * 
      */
-    @Export(name="accelerateIpId", type=String.class, parameters={})
+    @Export(name="accelerateIpId", refs={String.class}, tree="[0]")
     private Output<String> accelerateIpId;
 
     /**
@@ -190,7 +190,7 @@ public class BasicAccelerateIpEndpointRelation extends com.pulumi.resources.Cust
      * The ID of the Basic GA instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -204,7 +204,7 @@ public class BasicAccelerateIpEndpointRelation extends com.pulumi.resources.Cust
      * The ID of the Basic Endpoint.
      * 
      */
-    @Export(name="endpointId", type=String.class, parameters={})
+    @Export(name="endpointId", refs={String.class}, tree="[0]")
     private Output<String> endpointId;
 
     /**
@@ -218,7 +218,7 @@ public class BasicAccelerateIpEndpointRelation extends com.pulumi.resources.Cust
      * The status of the Basic Accelerate Ip Endpoint Relation.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

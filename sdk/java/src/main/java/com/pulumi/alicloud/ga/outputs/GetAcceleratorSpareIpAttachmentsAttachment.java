@@ -103,12 +103,12 @@ public final class GetAcceleratorSpareIpAttachmentsAttachment {
             return this;
         }
         public GetAcceleratorSpareIpAttachmentsAttachment build() {
-            final var o = new GetAcceleratorSpareIpAttachmentsAttachment();
-            o.acceleratorId = acceleratorId;
-            o.id = id;
-            o.spareIp = spareIp;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAcceleratorSpareIpAttachmentsAttachment();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.id = id;
+            _resultValue.spareIp = spareIp;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

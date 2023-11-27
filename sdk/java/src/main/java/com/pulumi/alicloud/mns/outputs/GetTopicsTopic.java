@@ -105,12 +105,12 @@ public final class GetTopicsTopic {
             return this;
         }
         public GetTopicsTopic build() {
-            final var o = new GetTopicsTopic();
-            o.id = id;
-            o.loggingEnabled = loggingEnabled;
-            o.maximumMessageSize = maximumMessageSize;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetTopicsTopic();
+            _resultValue.id = id;
+            _resultValue.loggingEnabled = loggingEnabled;
+            _resultValue.maximumMessageSize = maximumMessageSize;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -18,15 +18,18 @@ class InstanceArgs:
                  version_code: pulumi.Input[str],
                  buy_number: Optional[pulumi.Input[str]] = None,
                  container_image_scan: Optional[pulumi.Input[str]] = None,
+                 container_image_scan_new: Optional[pulumi.Input[str]] = None,
                  honeypot: Optional[pulumi.Input[str]] = None,
                  honeypot_switch: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 rasp_count: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  sas_anti_ransomware: Optional[pulumi.Input[str]] = None,
+                 sas_cspm: Optional[pulumi.Input[str]] = None,
+                 sas_cspm_switch: Optional[pulumi.Input[str]] = None,
                  sas_sc: Optional[pulumi.Input[bool]] = None,
                  sas_sdk: Optional[pulumi.Input[str]] = None,
                  sas_sdk_switch: Optional[pulumi.Input[str]] = None,
@@ -35,50 +38,98 @@ class InstanceArgs:
                  sas_webguard_order_num: Optional[pulumi.Input[str]] = None,
                  threat_analysis: Optional[pulumi.Input[str]] = None,
                  threat_analysis_switch: Optional[pulumi.Input[str]] = None,
-                 v_core: Optional[pulumi.Input[str]] = None):
+                 v_core: Optional[pulumi.Input[str]] = None,
+                 vul_count: Optional[pulumi.Input[str]] = None,
+                 vul_switch: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
-        :param pulumi.Input[str] version_code: Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+        :param pulumi.Input[str] version_code: Select the security center version. Value:
+               - level7: Antivirus Edition.
+               - level3: Premium version.
+               - level2: Enterprise Edition.
+               - level8: Ultimate.
+               - level10: Purchase value-added services only.
         :param pulumi.Input[str] buy_number: Number of servers.
-        :param pulumi.Input[str] container_image_scan: Container Image security scan.
-        :param pulumi.Input[str] honeypot: Cloud honeypot authorization number.
-        :param pulumi.Input[str] honeypot_switch: Cloud honeypot. Valid values: `1`, `2`.
-        :param pulumi.Input[str] instance_id: The first ID of the resource
+        :param pulumi.Input[str] container_image_scan: Container Image security scan. Interval type, value interval:[0,200000].
+               > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        :param pulumi.Input[str] container_image_scan_new: Container Image security scan. Interval type, value interval:[0,200000].
+               > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        :param pulumi.Input[str] honeypot: Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+               > **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+        :param pulumi.Input[str] honeypot_switch: Cloud honeypot. Value:
+               - 1: Yes.
+               - 2: No.
         :param pulumi.Input[str] modify_type: Change configuration type, value
                - Upgrade: Upgrade.
                - Downgrade: Downgrade.
-        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
-        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
-        :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
-        :param pulumi.Input[str] renewal_status: Automatic renewal status, Default ManualRenewal. value:
-        :param pulumi.Input[str] sas_anti_ransomware: Anti-extortion.
-        :param pulumi.Input[bool] sas_sc: Large security screen.
-        :param pulumi.Input[str] sas_sdk: Number of malicious file detections.
-        :param pulumi.Input[str] sas_sdk_switch: Malicious file detection SDK. Valid values: `0`, `1`.
-        :param pulumi.Input[str] sas_sls_storage: Log analysis.
-        :param pulumi.Input[str] sas_webguard_boolean: Web page tamper-proof.  Valid values: `0`, `1`.
-        :param pulumi.Input[str] sas_webguard_order_num: Number of tamper-proof authorizations.
-        :param pulumi.Input[str] threat_analysis: The amount of threat analysis log storage.
-        :param pulumi.Input[str] threat_analysis_switch: Threat analysis.  Valid values: `0`, `1`.
+        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+               > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
+        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
+               > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+        :param pulumi.Input[str] renewal_period_unit: Automatic renewal period unit, value:
+               - M: month.
+               - Y: years.
+               > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status, default ManualRenewal, valid values:
+               - AutoRenewal: automatic renewal.
+               - ManualRenewal: manual renewal.
+        :param pulumi.Input[str] sas_anti_ransomware: Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_cspm: Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+               > **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_cspm_switch: Cloud platform configuration check switch. Value:
+               - 0: No.
+               - 1: Yes.
+        :param pulumi.Input[bool] sas_sc: Security screen. Value:
+               - true: Yes.
+               - false: No.
+        :param pulumi.Input[str] sas_sdk: Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+               > **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_sdk_switch: Malicious file detection SDK.
+        :param pulumi.Input[str] sas_sls_storage: Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_webguard_boolean: Web tamper-proof switch. Value:
+               - 0: No.
+               - 1: Yes.
+        :param pulumi.Input[str] sas_webguard_order_num: Tamper-proof authorization number. Value:
+               - 0: No
+               - 1: Yes.
+        :param pulumi.Input[str] threat_analysis: Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+               > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] threat_analysis_switch: Threat analysis. Value:
+               - 0: No.
+               - 1: Yes.
         :param pulumi.Input[str] v_core: Number of cores.
+        :param pulumi.Input[str] vul_count: Vulnerability repair times, interval type, value range:[20,100000000].
+               > **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        :param pulumi.Input[str] vul_switch: Vulnerability fix switch. Value:
+               - 0: No.
+               - 1: Yes.
+               > **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         """
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "version_code", version_code)
         if buy_number is not None:
             pulumi.set(__self__, "buy_number", buy_number)
         if container_image_scan is not None:
+            warnings.warn("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""", DeprecationWarning)
+            pulumi.log.warn("""container_image_scan is deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
+        if container_image_scan is not None:
             pulumi.set(__self__, "container_image_scan", container_image_scan)
+        if container_image_scan_new is not None:
+            pulumi.set(__self__, "container_image_scan_new", container_image_scan_new)
         if honeypot is not None:
             pulumi.set(__self__, "honeypot", honeypot)
         if honeypot_switch is not None:
             pulumi.set(__self__, "honeypot_switch", honeypot_switch)
-        if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if rasp_count is not None:
+            pulumi.set(__self__, "rasp_count", rasp_count)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
@@ -87,6 +138,10 @@ class InstanceArgs:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if sas_anti_ransomware is not None:
             pulumi.set(__self__, "sas_anti_ransomware", sas_anti_ransomware)
+        if sas_cspm is not None:
+            pulumi.set(__self__, "sas_cspm", sas_cspm)
+        if sas_cspm_switch is not None:
+            pulumi.set(__self__, "sas_cspm_switch", sas_cspm_switch)
         if sas_sc is not None:
             pulumi.set(__self__, "sas_sc", sas_sc)
         if sas_sdk is not None:
@@ -105,6 +160,10 @@ class InstanceArgs:
             pulumi.set(__self__, "threat_analysis_switch", threat_analysis_switch)
         if v_core is not None:
             pulumi.set(__self__, "v_core", v_core)
+        if vul_count is not None:
+            pulumi.set(__self__, "vul_count", vul_count)
+        if vul_switch is not None:
+            pulumi.set(__self__, "vul_switch", vul_switch)
 
     @property
     @pulumi.getter(name="paymentType")
@@ -122,7 +181,12 @@ class InstanceArgs:
     @pulumi.getter(name="versionCode")
     def version_code(self) -> pulumi.Input[str]:
         """
-        Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+        Select the security center version. Value:
+        - level7: Antivirus Edition.
+        - level3: Premium version.
+        - level2: Enterprise Edition.
+        - level8: Ultimate.
+        - level10: Purchase value-added services only.
         """
         return pulumi.get(self, "version_code")
 
@@ -146,8 +210,12 @@ class InstanceArgs:
     @pulumi.getter(name="containerImageScan")
     def container_image_scan(self) -> Optional[pulumi.Input[str]]:
         """
-        Container Image security scan.
+        Container Image security scan. Interval type, value interval:[0,200000].
+        > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         """
+        warnings.warn("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""", DeprecationWarning)
+        pulumi.log.warn("""container_image_scan is deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
+
         return pulumi.get(self, "container_image_scan")
 
     @container_image_scan.setter
@@ -155,10 +223,24 @@ class InstanceArgs:
         pulumi.set(self, "container_image_scan", value)
 
     @property
+    @pulumi.getter(name="containerImageScanNew")
+    def container_image_scan_new(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container Image security scan. Interval type, value interval:[0,200000].
+        > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        """
+        return pulumi.get(self, "container_image_scan_new")
+
+    @container_image_scan_new.setter
+    def container_image_scan_new(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_image_scan_new", value)
+
+    @property
     @pulumi.getter
     def honeypot(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud honeypot authorization number.
+        Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+        > **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
         """
         return pulumi.get(self, "honeypot")
 
@@ -170,25 +252,15 @@ class InstanceArgs:
     @pulumi.getter(name="honeypotSwitch")
     def honeypot_switch(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud honeypot. Valid values: `1`, `2`.
+        Cloud honeypot. Value:
+        - 1: Yes.
+        - 2: No.
         """
         return pulumi.get(self, "honeypot_switch")
 
     @honeypot_switch.setter
     def honeypot_switch(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "honeypot_switch", value)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The first ID of the resource
-        """
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="modifyType")
@@ -208,7 +280,8 @@ class InstanceArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
+        Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+        > **NOTE:**  must be set when creating a prepaid instance.
         """
         return pulumi.get(self, "period")
 
@@ -217,10 +290,23 @@ class InstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="raspCount")
+    def rasp_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of application protection licenses. Interval type, value interval:[1,100000000].
+        """
+        return pulumi.get(self, "rasp_count")
+
+    @rasp_count.setter
+    def rasp_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rasp_count", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
+        Automatic renewal cycle, in months.
+        > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
         """
         return pulumi.get(self, "renew_period")
 
@@ -232,7 +318,10 @@ class InstanceArgs:
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
+        Automatic renewal period unit, value:
+        - M: month.
+        - Y: years.
+        > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
         """
         return pulumi.get(self, "renewal_period_unit")
 
@@ -244,7 +333,9 @@ class InstanceArgs:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Automatic renewal status, Default ManualRenewal. value:
+        Automatic renewal status, default ManualRenewal, valid values:
+        - AutoRenewal: automatic renewal.
+        - ManualRenewal: manual renewal.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -256,7 +347,8 @@ class InstanceArgs:
     @pulumi.getter(name="sasAntiRansomware")
     def sas_anti_ransomware(self) -> Optional[pulumi.Input[str]]:
         """
-        Anti-extortion.
+        Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+        > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "sas_anti_ransomware")
 
@@ -265,10 +357,39 @@ class InstanceArgs:
         pulumi.set(self, "sas_anti_ransomware", value)
 
     @property
+    @pulumi.getter(name="sasCspm")
+    def sas_cspm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+        > **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        """
+        return pulumi.get(self, "sas_cspm")
+
+    @sas_cspm.setter
+    def sas_cspm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sas_cspm", value)
+
+    @property
+    @pulumi.getter(name="sasCspmSwitch")
+    def sas_cspm_switch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud platform configuration check switch. Value:
+        - 0: No.
+        - 1: Yes.
+        """
+        return pulumi.get(self, "sas_cspm_switch")
+
+    @sas_cspm_switch.setter
+    def sas_cspm_switch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sas_cspm_switch", value)
+
+    @property
     @pulumi.getter(name="sasSc")
     def sas_sc(self) -> Optional[pulumi.Input[bool]]:
         """
-        Large security screen.
+        Security screen. Value:
+        - true: Yes.
+        - false: No.
         """
         return pulumi.get(self, "sas_sc")
 
@@ -280,7 +401,8 @@ class InstanceArgs:
     @pulumi.getter(name="sasSdk")
     def sas_sdk(self) -> Optional[pulumi.Input[str]]:
         """
-        Number of malicious file detections.
+        Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+        > **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "sas_sdk")
 
@@ -292,7 +414,7 @@ class InstanceArgs:
     @pulumi.getter(name="sasSdkSwitch")
     def sas_sdk_switch(self) -> Optional[pulumi.Input[str]]:
         """
-        Malicious file detection SDK. Valid values: `0`, `1`.
+        Malicious file detection SDK.
         """
         return pulumi.get(self, "sas_sdk_switch")
 
@@ -304,7 +426,8 @@ class InstanceArgs:
     @pulumi.getter(name="sasSlsStorage")
     def sas_sls_storage(self) -> Optional[pulumi.Input[str]]:
         """
-        Log analysis.
+        Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+        > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "sas_sls_storage")
 
@@ -316,7 +439,9 @@ class InstanceArgs:
     @pulumi.getter(name="sasWebguardBoolean")
     def sas_webguard_boolean(self) -> Optional[pulumi.Input[str]]:
         """
-        Web page tamper-proof.  Valid values: `0`, `1`.
+        Web tamper-proof switch. Value:
+        - 0: No.
+        - 1: Yes.
         """
         return pulumi.get(self, "sas_webguard_boolean")
 
@@ -328,7 +453,9 @@ class InstanceArgs:
     @pulumi.getter(name="sasWebguardOrderNum")
     def sas_webguard_order_num(self) -> Optional[pulumi.Input[str]]:
         """
-        Number of tamper-proof authorizations.
+        Tamper-proof authorization number. Value:
+        - 0: No
+        - 1: Yes.
         """
         return pulumi.get(self, "sas_webguard_order_num")
 
@@ -340,7 +467,8 @@ class InstanceArgs:
     @pulumi.getter(name="threatAnalysis")
     def threat_analysis(self) -> Optional[pulumi.Input[str]]:
         """
-        The amount of threat analysis log storage.
+        Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+        > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "threat_analysis")
 
@@ -352,7 +480,9 @@ class InstanceArgs:
     @pulumi.getter(name="threatAnalysisSwitch")
     def threat_analysis_switch(self) -> Optional[pulumi.Input[str]]:
         """
-        Threat analysis.  Valid values: `0`, `1`.
+        Threat analysis. Value:
+        - 0: No.
+        - 1: Yes.
         """
         return pulumi.get(self, "threat_analysis_switch")
 
@@ -372,23 +502,54 @@ class InstanceArgs:
     def v_core(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "v_core", value)
 
+    @property
+    @pulumi.getter(name="vulCount")
+    def vul_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Vulnerability repair times, interval type, value range:[20,100000000].
+        > **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        """
+        return pulumi.get(self, "vul_count")
+
+    @vul_count.setter
+    def vul_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vul_count", value)
+
+    @property
+    @pulumi.getter(name="vulSwitch")
+    def vul_switch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Vulnerability fix switch. Value:
+        - 0: No.
+        - 1: Yes.
+        > **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+        """
+        return pulumi.get(self, "vul_switch")
+
+    @vul_switch.setter
+    def vul_switch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vul_switch", value)
+
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
                  buy_number: Optional[pulumi.Input[str]] = None,
                  container_image_scan: Optional[pulumi.Input[str]] = None,
+                 container_image_scan_new: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  honeypot: Optional[pulumi.Input[str]] = None,
                  honeypot_switch: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 rasp_count: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  sas_anti_ransomware: Optional[pulumi.Input[str]] = None,
+                 sas_cspm: Optional[pulumi.Input[str]] = None,
+                 sas_cspm_switch: Optional[pulumi.Input[str]] = None,
                  sas_sc: Optional[pulumi.Input[bool]] = None,
                  sas_sdk: Optional[pulumi.Input[str]] = None,
                  sas_sdk_switch: Optional[pulumi.Input[str]] = None,
@@ -399,54 +560,102 @@ class _InstanceState:
                  threat_analysis: Optional[pulumi.Input[str]] = None,
                  threat_analysis_switch: Optional[pulumi.Input[str]] = None,
                  v_core: Optional[pulumi.Input[str]] = None,
-                 version_code: Optional[pulumi.Input[str]] = None):
+                 version_code: Optional[pulumi.Input[str]] = None,
+                 vul_count: Optional[pulumi.Input[str]] = None,
+                 vul_switch: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] buy_number: Number of servers.
-        :param pulumi.Input[str] container_image_scan: Container Image security scan.
-        :param pulumi.Input[str] create_time: The creation time of the resource
-        :param pulumi.Input[str] honeypot: Cloud honeypot authorization number.
-        :param pulumi.Input[str] honeypot_switch: Cloud honeypot. Valid values: `1`, `2`.
-        :param pulumi.Input[str] instance_id: The first ID of the resource
+        :param pulumi.Input[str] container_image_scan: Container Image security scan. Interval type, value interval:[0,200000].
+               > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        :param pulumi.Input[str] container_image_scan_new: Container Image security scan. Interval type, value interval:[0,200000].
+               > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] honeypot: Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+               > **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+        :param pulumi.Input[str] honeypot_switch: Cloud honeypot. Value:
+               - 1: Yes.
+               - 2: No.
         :param pulumi.Input[str] modify_type: Change configuration type, value
                - Upgrade: Upgrade.
                - Downgrade: Downgrade.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
-        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
-        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
-        :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
-        :param pulumi.Input[str] renewal_status: Automatic renewal status, Default ManualRenewal. value:
-        :param pulumi.Input[str] sas_anti_ransomware: Anti-extortion.
-        :param pulumi.Input[bool] sas_sc: Large security screen.
-        :param pulumi.Input[str] sas_sdk: Number of malicious file detections.
-        :param pulumi.Input[str] sas_sdk_switch: Malicious file detection SDK. Valid values: `0`, `1`.
-        :param pulumi.Input[str] sas_sls_storage: Log analysis.
-        :param pulumi.Input[str] sas_webguard_boolean: Web page tamper-proof.  Valid values: `0`, `1`.
-        :param pulumi.Input[str] sas_webguard_order_num: Number of tamper-proof authorizations.
-        :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[str] threat_analysis: The amount of threat analysis log storage.
-        :param pulumi.Input[str] threat_analysis_switch: Threat analysis.  Valid values: `0`, `1`.
+        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+               > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
+        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
+               > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+        :param pulumi.Input[str] renewal_period_unit: Automatic renewal period unit, value:
+               - M: month.
+               - Y: years.
+               > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status, default ManualRenewal, valid values:
+               - AutoRenewal: automatic renewal.
+               - ManualRenewal: manual renewal.
+        :param pulumi.Input[str] sas_anti_ransomware: Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_cspm: Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+               > **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_cspm_switch: Cloud platform configuration check switch. Value:
+               - 0: No.
+               - 1: Yes.
+        :param pulumi.Input[bool] sas_sc: Security screen. Value:
+               - true: Yes.
+               - false: No.
+        :param pulumi.Input[str] sas_sdk: Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+               > **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_sdk_switch: Malicious file detection SDK.
+        :param pulumi.Input[str] sas_sls_storage: Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_webguard_boolean: Web tamper-proof switch. Value:
+               - 0: No.
+               - 1: Yes.
+        :param pulumi.Input[str] sas_webguard_order_num: Tamper-proof authorization number. Value:
+               - 0: No
+               - 1: Yes.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] threat_analysis: Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+               > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] threat_analysis_switch: Threat analysis. Value:
+               - 0: No.
+               - 1: Yes.
         :param pulumi.Input[str] v_core: Number of cores.
-        :param pulumi.Input[str] version_code: Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+        :param pulumi.Input[str] version_code: Select the security center version. Value:
+               - level7: Antivirus Edition.
+               - level3: Premium version.
+               - level2: Enterprise Edition.
+               - level8: Ultimate.
+               - level10: Purchase value-added services only.
+        :param pulumi.Input[str] vul_count: Vulnerability repair times, interval type, value range:[20,100000000].
+               > **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        :param pulumi.Input[str] vul_switch: Vulnerability fix switch. Value:
+               - 0: No.
+               - 1: Yes.
+               > **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         """
         if buy_number is not None:
             pulumi.set(__self__, "buy_number", buy_number)
         if container_image_scan is not None:
+            warnings.warn("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""", DeprecationWarning)
+            pulumi.log.warn("""container_image_scan is deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
+        if container_image_scan is not None:
             pulumi.set(__self__, "container_image_scan", container_image_scan)
+        if container_image_scan_new is not None:
+            pulumi.set(__self__, "container_image_scan_new", container_image_scan_new)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if honeypot is not None:
             pulumi.set(__self__, "honeypot", honeypot)
         if honeypot_switch is not None:
             pulumi.set(__self__, "honeypot_switch", honeypot_switch)
-        if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if rasp_count is not None:
+            pulumi.set(__self__, "rasp_count", rasp_count)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
@@ -455,6 +664,10 @@ class _InstanceState:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if sas_anti_ransomware is not None:
             pulumi.set(__self__, "sas_anti_ransomware", sas_anti_ransomware)
+        if sas_cspm is not None:
+            pulumi.set(__self__, "sas_cspm", sas_cspm)
+        if sas_cspm_switch is not None:
+            pulumi.set(__self__, "sas_cspm_switch", sas_cspm_switch)
         if sas_sc is not None:
             pulumi.set(__self__, "sas_sc", sas_sc)
         if sas_sdk is not None:
@@ -477,6 +690,10 @@ class _InstanceState:
             pulumi.set(__self__, "v_core", v_core)
         if version_code is not None:
             pulumi.set(__self__, "version_code", version_code)
+        if vul_count is not None:
+            pulumi.set(__self__, "vul_count", vul_count)
+        if vul_switch is not None:
+            pulumi.set(__self__, "vul_switch", vul_switch)
 
     @property
     @pulumi.getter(name="buyNumber")
@@ -494,8 +711,12 @@ class _InstanceState:
     @pulumi.getter(name="containerImageScan")
     def container_image_scan(self) -> Optional[pulumi.Input[str]]:
         """
-        Container Image security scan.
+        Container Image security scan. Interval type, value interval:[0,200000].
+        > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         """
+        warnings.warn("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""", DeprecationWarning)
+        pulumi.log.warn("""container_image_scan is deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
+
         return pulumi.get(self, "container_image_scan")
 
     @container_image_scan.setter
@@ -503,10 +724,23 @@ class _InstanceState:
         pulumi.set(self, "container_image_scan", value)
 
     @property
+    @pulumi.getter(name="containerImageScanNew")
+    def container_image_scan_new(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container Image security scan. Interval type, value interval:[0,200000].
+        > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        """
+        return pulumi.get(self, "container_image_scan_new")
+
+    @container_image_scan_new.setter
+    def container_image_scan_new(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_image_scan_new", value)
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -518,7 +752,8 @@ class _InstanceState:
     @pulumi.getter
     def honeypot(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud honeypot authorization number.
+        Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+        > **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
         """
         return pulumi.get(self, "honeypot")
 
@@ -530,25 +765,15 @@ class _InstanceState:
     @pulumi.getter(name="honeypotSwitch")
     def honeypot_switch(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud honeypot. Valid values: `1`, `2`.
+        Cloud honeypot. Value:
+        - 1: Yes.
+        - 2: No.
         """
         return pulumi.get(self, "honeypot_switch")
 
     @honeypot_switch.setter
     def honeypot_switch(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "honeypot_switch", value)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The first ID of the resource
-        """
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="modifyType")
@@ -580,7 +805,8 @@ class _InstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
+        Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+        > **NOTE:**  must be set when creating a prepaid instance.
         """
         return pulumi.get(self, "period")
 
@@ -589,10 +815,23 @@ class _InstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="raspCount")
+    def rasp_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of application protection licenses. Interval type, value interval:[1,100000000].
+        """
+        return pulumi.get(self, "rasp_count")
+
+    @rasp_count.setter
+    def rasp_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rasp_count", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
+        Automatic renewal cycle, in months.
+        > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
         """
         return pulumi.get(self, "renew_period")
 
@@ -604,7 +843,10 @@ class _InstanceState:
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
+        Automatic renewal period unit, value:
+        - M: month.
+        - Y: years.
+        > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
         """
         return pulumi.get(self, "renewal_period_unit")
 
@@ -616,7 +858,9 @@ class _InstanceState:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Automatic renewal status, Default ManualRenewal. value:
+        Automatic renewal status, default ManualRenewal, valid values:
+        - AutoRenewal: automatic renewal.
+        - ManualRenewal: manual renewal.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -628,7 +872,8 @@ class _InstanceState:
     @pulumi.getter(name="sasAntiRansomware")
     def sas_anti_ransomware(self) -> Optional[pulumi.Input[str]]:
         """
-        Anti-extortion.
+        Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+        > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "sas_anti_ransomware")
 
@@ -637,10 +882,39 @@ class _InstanceState:
         pulumi.set(self, "sas_anti_ransomware", value)
 
     @property
+    @pulumi.getter(name="sasCspm")
+    def sas_cspm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+        > **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        """
+        return pulumi.get(self, "sas_cspm")
+
+    @sas_cspm.setter
+    def sas_cspm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sas_cspm", value)
+
+    @property
+    @pulumi.getter(name="sasCspmSwitch")
+    def sas_cspm_switch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud platform configuration check switch. Value:
+        - 0: No.
+        - 1: Yes.
+        """
+        return pulumi.get(self, "sas_cspm_switch")
+
+    @sas_cspm_switch.setter
+    def sas_cspm_switch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sas_cspm_switch", value)
+
+    @property
     @pulumi.getter(name="sasSc")
     def sas_sc(self) -> Optional[pulumi.Input[bool]]:
         """
-        Large security screen.
+        Security screen. Value:
+        - true: Yes.
+        - false: No.
         """
         return pulumi.get(self, "sas_sc")
 
@@ -652,7 +926,8 @@ class _InstanceState:
     @pulumi.getter(name="sasSdk")
     def sas_sdk(self) -> Optional[pulumi.Input[str]]:
         """
-        Number of malicious file detections.
+        Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+        > **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "sas_sdk")
 
@@ -664,7 +939,7 @@ class _InstanceState:
     @pulumi.getter(name="sasSdkSwitch")
     def sas_sdk_switch(self) -> Optional[pulumi.Input[str]]:
         """
-        Malicious file detection SDK. Valid values: `0`, `1`.
+        Malicious file detection SDK.
         """
         return pulumi.get(self, "sas_sdk_switch")
 
@@ -676,7 +951,8 @@ class _InstanceState:
     @pulumi.getter(name="sasSlsStorage")
     def sas_sls_storage(self) -> Optional[pulumi.Input[str]]:
         """
-        Log analysis.
+        Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+        > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "sas_sls_storage")
 
@@ -688,7 +964,9 @@ class _InstanceState:
     @pulumi.getter(name="sasWebguardBoolean")
     def sas_webguard_boolean(self) -> Optional[pulumi.Input[str]]:
         """
-        Web page tamper-proof.  Valid values: `0`, `1`.
+        Web tamper-proof switch. Value:
+        - 0: No.
+        - 1: Yes.
         """
         return pulumi.get(self, "sas_webguard_boolean")
 
@@ -700,7 +978,9 @@ class _InstanceState:
     @pulumi.getter(name="sasWebguardOrderNum")
     def sas_webguard_order_num(self) -> Optional[pulumi.Input[str]]:
         """
-        Number of tamper-proof authorizations.
+        Tamper-proof authorization number. Value:
+        - 0: No
+        - 1: Yes.
         """
         return pulumi.get(self, "sas_webguard_order_num")
 
@@ -712,7 +992,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -724,7 +1004,8 @@ class _InstanceState:
     @pulumi.getter(name="threatAnalysis")
     def threat_analysis(self) -> Optional[pulumi.Input[str]]:
         """
-        The amount of threat analysis log storage.
+        Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+        > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "threat_analysis")
 
@@ -736,7 +1017,9 @@ class _InstanceState:
     @pulumi.getter(name="threatAnalysisSwitch")
     def threat_analysis_switch(self) -> Optional[pulumi.Input[str]]:
         """
-        Threat analysis.  Valid values: `0`, `1`.
+        Threat analysis. Value:
+        - 0: No.
+        - 1: Yes.
         """
         return pulumi.get(self, "threat_analysis_switch")
 
@@ -760,13 +1043,46 @@ class _InstanceState:
     @pulumi.getter(name="versionCode")
     def version_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+        Select the security center version. Value:
+        - level7: Antivirus Edition.
+        - level3: Premium version.
+        - level2: Enterprise Edition.
+        - level8: Ultimate.
+        - level10: Purchase value-added services only.
         """
         return pulumi.get(self, "version_code")
 
     @version_code.setter
     def version_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version_code", value)
+
+    @property
+    @pulumi.getter(name="vulCount")
+    def vul_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Vulnerability repair times, interval type, value range:[20,100000000].
+        > **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        """
+        return pulumi.get(self, "vul_count")
+
+    @vul_count.setter
+    def vul_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vul_count", value)
+
+    @property
+    @pulumi.getter(name="vulSwitch")
+    def vul_switch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Vulnerability fix switch. Value:
+        - 0: No.
+        - 1: Yes.
+        > **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+        """
+        return pulumi.get(self, "vul_switch")
+
+    @vul_switch.setter
+    def vul_switch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vul_switch", value)
 
 
 class Instance(pulumi.CustomResource):
@@ -776,16 +1092,19 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  buy_number: Optional[pulumi.Input[str]] = None,
                  container_image_scan: Optional[pulumi.Input[str]] = None,
+                 container_image_scan_new: Optional[pulumi.Input[str]] = None,
                  honeypot: Optional[pulumi.Input[str]] = None,
                  honeypot_switch: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 rasp_count: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  sas_anti_ransomware: Optional[pulumi.Input[str]] = None,
+                 sas_cspm: Optional[pulumi.Input[str]] = None,
+                 sas_cspm_switch: Optional[pulumi.Input[str]] = None,
                  sas_sc: Optional[pulumi.Input[bool]] = None,
                  sas_sdk: Optional[pulumi.Input[str]] = None,
                  sas_sdk_switch: Optional[pulumi.Input[str]] = None,
@@ -796,70 +1115,85 @@ class Instance(pulumi.CustomResource):
                  threat_analysis_switch: Optional[pulumi.Input[str]] = None,
                  v_core: Optional[pulumi.Input[str]] = None,
                  version_code: Optional[pulumi.Input[str]] = None,
+                 vul_count: Optional[pulumi.Input[str]] = None,
+                 vul_switch: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Threat Detection Instance resource.
-
-        For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
-
-        > **NOTE:** Available in v1.199.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.Instance("default",
-            buy_number="30",
-            container_image_scan="100",
-            honeypot="32",
-            honeypot_switch="1",
-            payment_type="Subscription",
-            period=12,
-            renewal_status="ManualRenewal",
-            sas_anti_ransomware="100",
-            sas_sc=True,
-            sas_sdk="1000",
-            sas_sdk_switch="1",
-            sas_sls_storage="100",
-            sas_webguard_order_num="100",
-            v_core="100",
-            version_code="level2")
-        ```
-
         ## Import
 
-        Threat Detection Instance do not support import.
+        Threat Detection Instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:threatdetection/instance:Instance example <id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] buy_number: Number of servers.
-        :param pulumi.Input[str] container_image_scan: Container Image security scan.
-        :param pulumi.Input[str] honeypot: Cloud honeypot authorization number.
-        :param pulumi.Input[str] honeypot_switch: Cloud honeypot. Valid values: `1`, `2`.
-        :param pulumi.Input[str] instance_id: The first ID of the resource
+        :param pulumi.Input[str] container_image_scan: Container Image security scan. Interval type, value interval:[0,200000].
+               > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        :param pulumi.Input[str] container_image_scan_new: Container Image security scan. Interval type, value interval:[0,200000].
+               > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        :param pulumi.Input[str] honeypot: Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+               > **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+        :param pulumi.Input[str] honeypot_switch: Cloud honeypot. Value:
+               - 1: Yes.
+               - 2: No.
         :param pulumi.Input[str] modify_type: Change configuration type, value
                - Upgrade: Upgrade.
                - Downgrade: Downgrade.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
-        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
-        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
-        :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
-        :param pulumi.Input[str] renewal_status: Automatic renewal status, Default ManualRenewal. value:
-        :param pulumi.Input[str] sas_anti_ransomware: Anti-extortion.
-        :param pulumi.Input[bool] sas_sc: Large security screen.
-        :param pulumi.Input[str] sas_sdk: Number of malicious file detections.
-        :param pulumi.Input[str] sas_sdk_switch: Malicious file detection SDK. Valid values: `0`, `1`.
-        :param pulumi.Input[str] sas_sls_storage: Log analysis.
-        :param pulumi.Input[str] sas_webguard_boolean: Web page tamper-proof.  Valid values: `0`, `1`.
-        :param pulumi.Input[str] sas_webguard_order_num: Number of tamper-proof authorizations.
-        :param pulumi.Input[str] threat_analysis: The amount of threat analysis log storage.
-        :param pulumi.Input[str] threat_analysis_switch: Threat analysis.  Valid values: `0`, `1`.
+        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+               > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
+        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
+               > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+        :param pulumi.Input[str] renewal_period_unit: Automatic renewal period unit, value:
+               - M: month.
+               - Y: years.
+               > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status, default ManualRenewal, valid values:
+               - AutoRenewal: automatic renewal.
+               - ManualRenewal: manual renewal.
+        :param pulumi.Input[str] sas_anti_ransomware: Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_cspm: Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+               > **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_cspm_switch: Cloud platform configuration check switch. Value:
+               - 0: No.
+               - 1: Yes.
+        :param pulumi.Input[bool] sas_sc: Security screen. Value:
+               - true: Yes.
+               - false: No.
+        :param pulumi.Input[str] sas_sdk: Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+               > **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_sdk_switch: Malicious file detection SDK.
+        :param pulumi.Input[str] sas_sls_storage: Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_webguard_boolean: Web tamper-proof switch. Value:
+               - 0: No.
+               - 1: Yes.
+        :param pulumi.Input[str] sas_webguard_order_num: Tamper-proof authorization number. Value:
+               - 0: No
+               - 1: Yes.
+        :param pulumi.Input[str] threat_analysis: Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+               > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] threat_analysis_switch: Threat analysis. Value:
+               - 0: No.
+               - 1: Yes.
         :param pulumi.Input[str] v_core: Number of cores.
-        :param pulumi.Input[str] version_code: Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+        :param pulumi.Input[str] version_code: Select the security center version. Value:
+               - level7: Antivirus Edition.
+               - level3: Premium version.
+               - level2: Enterprise Edition.
+               - level8: Ultimate.
+               - level10: Purchase value-added services only.
+        :param pulumi.Input[str] vul_count: Vulnerability repair times, interval type, value range:[20,100000000].
+               > **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        :param pulumi.Input[str] vul_switch: Vulnerability fix switch. Value:
+               - 0: No.
+               - 1: Yes.
+               > **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         """
         ...
     @overload
@@ -868,41 +1202,13 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Threat Detection Instance resource.
-
-        For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
-
-        > **NOTE:** Available in v1.199.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.Instance("default",
-            buy_number="30",
-            container_image_scan="100",
-            honeypot="32",
-            honeypot_switch="1",
-            payment_type="Subscription",
-            period=12,
-            renewal_status="ManualRenewal",
-            sas_anti_ransomware="100",
-            sas_sc=True,
-            sas_sdk="1000",
-            sas_sdk_switch="1",
-            sas_sls_storage="100",
-            sas_webguard_order_num="100",
-            v_core="100",
-            version_code="level2")
-        ```
-
         ## Import
 
-        Threat Detection Instance do not support import.
+        Threat Detection Instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:threatdetection/instance:Instance example <id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
@@ -921,16 +1227,19 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  buy_number: Optional[pulumi.Input[str]] = None,
                  container_image_scan: Optional[pulumi.Input[str]] = None,
+                 container_image_scan_new: Optional[pulumi.Input[str]] = None,
                  honeypot: Optional[pulumi.Input[str]] = None,
                  honeypot_switch: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 rasp_count: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  sas_anti_ransomware: Optional[pulumi.Input[str]] = None,
+                 sas_cspm: Optional[pulumi.Input[str]] = None,
+                 sas_cspm_switch: Optional[pulumi.Input[str]] = None,
                  sas_sc: Optional[pulumi.Input[bool]] = None,
                  sas_sdk: Optional[pulumi.Input[str]] = None,
                  sas_sdk_switch: Optional[pulumi.Input[str]] = None,
@@ -941,6 +1250,8 @@ class Instance(pulumi.CustomResource):
                  threat_analysis_switch: Optional[pulumi.Input[str]] = None,
                  v_core: Optional[pulumi.Input[str]] = None,
                  version_code: Optional[pulumi.Input[str]] = None,
+                 vul_count: Optional[pulumi.Input[str]] = None,
+                 vul_switch: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -952,18 +1263,21 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["buy_number"] = buy_number
             __props__.__dict__["container_image_scan"] = container_image_scan
+            __props__.__dict__["container_image_scan_new"] = container_image_scan_new
             __props__.__dict__["honeypot"] = honeypot
             __props__.__dict__["honeypot_switch"] = honeypot_switch
-            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["modify_type"] = modify_type
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["rasp_count"] = rasp_count
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renewal_period_unit"] = renewal_period_unit
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["sas_anti_ransomware"] = sas_anti_ransomware
+            __props__.__dict__["sas_cspm"] = sas_cspm
+            __props__.__dict__["sas_cspm_switch"] = sas_cspm_switch
             __props__.__dict__["sas_sc"] = sas_sc
             __props__.__dict__["sas_sdk"] = sas_sdk
             __props__.__dict__["sas_sdk_switch"] = sas_sdk_switch
@@ -976,6 +1290,8 @@ class Instance(pulumi.CustomResource):
             if version_code is None and not opts.urn:
                 raise TypeError("Missing required property 'version_code'")
             __props__.__dict__["version_code"] = version_code
+            __props__.__dict__["vul_count"] = vul_count
+            __props__.__dict__["vul_switch"] = vul_switch
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
@@ -990,17 +1306,20 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             buy_number: Optional[pulumi.Input[str]] = None,
             container_image_scan: Optional[pulumi.Input[str]] = None,
+            container_image_scan_new: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             honeypot: Optional[pulumi.Input[str]] = None,
             honeypot_switch: Optional[pulumi.Input[str]] = None,
-            instance_id: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            rasp_count: Optional[pulumi.Input[str]] = None,
             renew_period: Optional[pulumi.Input[int]] = None,
             renewal_period_unit: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             sas_anti_ransomware: Optional[pulumi.Input[str]] = None,
+            sas_cspm: Optional[pulumi.Input[str]] = None,
+            sas_cspm_switch: Optional[pulumi.Input[str]] = None,
             sas_sc: Optional[pulumi.Input[bool]] = None,
             sas_sdk: Optional[pulumi.Input[str]] = None,
             sas_sdk_switch: Optional[pulumi.Input[str]] = None,
@@ -1011,7 +1330,9 @@ class Instance(pulumi.CustomResource):
             threat_analysis: Optional[pulumi.Input[str]] = None,
             threat_analysis_switch: Optional[pulumi.Input[str]] = None,
             v_core: Optional[pulumi.Input[str]] = None,
-            version_code: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            version_code: Optional[pulumi.Input[str]] = None,
+            vul_count: Optional[pulumi.Input[str]] = None,
+            vul_switch: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1020,31 +1341,72 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] buy_number: Number of servers.
-        :param pulumi.Input[str] container_image_scan: Container Image security scan.
-        :param pulumi.Input[str] create_time: The creation time of the resource
-        :param pulumi.Input[str] honeypot: Cloud honeypot authorization number.
-        :param pulumi.Input[str] honeypot_switch: Cloud honeypot. Valid values: `1`, `2`.
-        :param pulumi.Input[str] instance_id: The first ID of the resource
+        :param pulumi.Input[str] container_image_scan: Container Image security scan. Interval type, value interval:[0,200000].
+               > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        :param pulumi.Input[str] container_image_scan_new: Container Image security scan. Interval type, value interval:[0,200000].
+               > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] honeypot: Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+               > **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
+        :param pulumi.Input[str] honeypot_switch: Cloud honeypot. Value:
+               - 1: Yes.
+               - 2: No.
         :param pulumi.Input[str] modify_type: Change configuration type, value
                - Upgrade: Upgrade.
                - Downgrade: Downgrade.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
-        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
-        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
-        :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
-        :param pulumi.Input[str] renewal_status: Automatic renewal status, Default ManualRenewal. value:
-        :param pulumi.Input[str] sas_anti_ransomware: Anti-extortion.
-        :param pulumi.Input[bool] sas_sc: Large security screen.
-        :param pulumi.Input[str] sas_sdk: Number of malicious file detections.
-        :param pulumi.Input[str] sas_sdk_switch: Malicious file detection SDK. Valid values: `0`, `1`.
-        :param pulumi.Input[str] sas_sls_storage: Log analysis.
-        :param pulumi.Input[str] sas_webguard_boolean: Web page tamper-proof.  Valid values: `0`, `1`.
-        :param pulumi.Input[str] sas_webguard_order_num: Number of tamper-proof authorizations.
-        :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[str] threat_analysis: The amount of threat analysis log storage.
-        :param pulumi.Input[str] threat_analysis_switch: Threat analysis.  Valid values: `0`, `1`.
+        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+               > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
+        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
+               > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+        :param pulumi.Input[str] renewal_period_unit: Automatic renewal period unit, value:
+               - M: month.
+               - Y: years.
+               > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status, default ManualRenewal, valid values:
+               - AutoRenewal: automatic renewal.
+               - ManualRenewal: manual renewal.
+        :param pulumi.Input[str] sas_anti_ransomware: Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_cspm: Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+               > **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_cspm_switch: Cloud platform configuration check switch. Value:
+               - 0: No.
+               - 1: Yes.
+        :param pulumi.Input[bool] sas_sc: Security screen. Value:
+               - true: Yes.
+               - false: No.
+        :param pulumi.Input[str] sas_sdk: Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+               > **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_sdk_switch: Malicious file detection SDK.
+        :param pulumi.Input[str] sas_sls_storage: Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] sas_webguard_boolean: Web tamper-proof switch. Value:
+               - 0: No.
+               - 1: Yes.
+        :param pulumi.Input[str] sas_webguard_order_num: Tamper-proof authorization number. Value:
+               - 0: No
+               - 1: Yes.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] threat_analysis: Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+               > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
+        :param pulumi.Input[str] threat_analysis_switch: Threat analysis. Value:
+               - 0: No.
+               - 1: Yes.
         :param pulumi.Input[str] v_core: Number of cores.
-        :param pulumi.Input[str] version_code: Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+        :param pulumi.Input[str] version_code: Select the security center version. Value:
+               - level7: Antivirus Edition.
+               - level3: Premium version.
+               - level2: Enterprise Edition.
+               - level8: Ultimate.
+               - level10: Purchase value-added services only.
+        :param pulumi.Input[str] vul_count: Vulnerability repair times, interval type, value range:[20,100000000].
+               > **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        :param pulumi.Input[str] vul_switch: Vulnerability fix switch. Value:
+               - 0: No.
+               - 1: Yes.
+               > **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1052,17 +1414,20 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["buy_number"] = buy_number
         __props__.__dict__["container_image_scan"] = container_image_scan
+        __props__.__dict__["container_image_scan_new"] = container_image_scan_new
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["honeypot"] = honeypot
         __props__.__dict__["honeypot_switch"] = honeypot_switch
-        __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["modify_type"] = modify_type
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["rasp_count"] = rasp_count
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renewal_period_unit"] = renewal_period_unit
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["sas_anti_ransomware"] = sas_anti_ransomware
+        __props__.__dict__["sas_cspm"] = sas_cspm
+        __props__.__dict__["sas_cspm_switch"] = sas_cspm_switch
         __props__.__dict__["sas_sc"] = sas_sc
         __props__.__dict__["sas_sdk"] = sas_sdk
         __props__.__dict__["sas_sdk_switch"] = sas_sdk_switch
@@ -1074,6 +1439,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["threat_analysis_switch"] = threat_analysis_switch
         __props__.__dict__["v_core"] = v_core
         __props__.__dict__["version_code"] = version_code
+        __props__.__dict__["vul_count"] = vul_count
+        __props__.__dict__["vul_switch"] = vul_switch
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1088,15 +1455,28 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="containerImageScan")
     def container_image_scan(self) -> pulumi.Output[Optional[str]]:
         """
-        Container Image security scan.
+        Container Image security scan. Interval type, value interval:[0,200000].
+        > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         """
+        warnings.warn("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""", DeprecationWarning)
+        pulumi.log.warn("""container_image_scan is deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
+
         return pulumi.get(self, "container_image_scan")
+
+    @property
+    @pulumi.getter(name="containerImageScanNew")
+    def container_image_scan_new(self) -> pulumi.Output[Optional[str]]:
+        """
+        Container Image security scan. Interval type, value interval:[0,200000].
+        > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
+        """
+        return pulumi.get(self, "container_image_scan_new")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -1104,25 +1484,20 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def honeypot(self) -> pulumi.Output[Optional[str]]:
         """
-        Cloud honeypot authorization number.
+        Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+        > **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
         """
         return pulumi.get(self, "honeypot")
 
     @property
     @pulumi.getter(name="honeypotSwitch")
-    def honeypot_switch(self) -> pulumi.Output[Optional[str]]:
+    def honeypot_switch(self) -> pulumi.Output[str]:
         """
-        Cloud honeypot. Valid values: `1`, `2`.
+        Cloud honeypot. Value:
+        - 1: Yes.
+        - 2: No.
         """
         return pulumi.get(self, "honeypot_switch")
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> pulumi.Output[str]:
-        """
-        The first ID of the resource
-        """
-        return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="modifyType")
@@ -1146,15 +1521,25 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         """
-        Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products. **NOTE:** must be set when creating a prepaid instance.
+        Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+        > **NOTE:**  must be set when creating a prepaid instance.
         """
         return pulumi.get(self, "period")
 
     @property
-    @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> pulumi.Output[Optional[int]]:
+    @pulumi.getter(name="raspCount")
+    def rasp_count(self) -> pulumi.Output[Optional[str]]:
         """
-        Automatic renewal cycle, in months. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`.
+        Number of application protection licenses. Interval type, value interval:[1,100000000].
+        """
+        return pulumi.get(self, "rasp_count")
+
+    @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> pulumi.Output[int]:
+        """
+        Automatic renewal cycle, in months.
+        > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
         """
         return pulumi.get(self, "renew_period")
 
@@ -1162,15 +1547,20 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> pulumi.Output[str]:
         """
-        The unit of the auto-renewal period. **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`. Valid values:
+        Automatic renewal period unit, value:
+        - M: month.
+        - Y: years.
+        > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
         """
         return pulumi.get(self, "renewal_period_unit")
 
     @property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> pulumi.Output[str]:
+    def renewal_status(self) -> pulumi.Output[Optional[str]]:
         """
-        Automatic renewal status, Default ManualRenewal. value:
+        Automatic renewal status, default ManualRenewal, valid values:
+        - AutoRenewal: automatic renewal.
+        - ManualRenewal: manual renewal.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -1178,15 +1568,37 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sasAntiRansomware")
     def sas_anti_ransomware(self) -> pulumi.Output[Optional[str]]:
         """
-        Anti-extortion.
+        Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+        > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "sas_anti_ransomware")
+
+    @property
+    @pulumi.getter(name="sasCspm")
+    def sas_cspm(self) -> pulumi.Output[Optional[str]]:
+        """
+        Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
+        > **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        """
+        return pulumi.get(self, "sas_cspm")
+
+    @property
+    @pulumi.getter(name="sasCspmSwitch")
+    def sas_cspm_switch(self) -> pulumi.Output[str]:
+        """
+        Cloud platform configuration check switch. Value:
+        - 0: No.
+        - 1: Yes.
+        """
+        return pulumi.get(self, "sas_cspm_switch")
 
     @property
     @pulumi.getter(name="sasSc")
     def sas_sc(self) -> pulumi.Output[Optional[bool]]:
         """
-        Large security screen.
+        Security screen. Value:
+        - true: Yes.
+        - false: No.
         """
         return pulumi.get(self, "sas_sc")
 
@@ -1194,15 +1606,16 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sasSdk")
     def sas_sdk(self) -> pulumi.Output[Optional[str]]:
         """
-        Number of malicious file detections.
+        Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+        > **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "sas_sdk")
 
     @property
     @pulumi.getter(name="sasSdkSwitch")
-    def sas_sdk_switch(self) -> pulumi.Output[Optional[str]]:
+    def sas_sdk_switch(self) -> pulumi.Output[str]:
         """
-        Malicious file detection SDK. Valid values: `0`, `1`.
+        Malicious file detection SDK.
         """
         return pulumi.get(self, "sas_sdk_switch")
 
@@ -1210,15 +1623,18 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sasSlsStorage")
     def sas_sls_storage(self) -> pulumi.Output[Optional[str]]:
         """
-        Log analysis.
+        Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+        > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "sas_sls_storage")
 
     @property
     @pulumi.getter(name="sasWebguardBoolean")
-    def sas_webguard_boolean(self) -> pulumi.Output[Optional[str]]:
+    def sas_webguard_boolean(self) -> pulumi.Output[str]:
         """
-        Web page tamper-proof.  Valid values: `0`, `1`.
+        Web tamper-proof switch. Value:
+        - 0: No.
+        - 1: Yes.
         """
         return pulumi.get(self, "sas_webguard_boolean")
 
@@ -1226,7 +1642,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sasWebguardOrderNum")
     def sas_webguard_order_num(self) -> pulumi.Output[Optional[str]]:
         """
-        Number of tamper-proof authorizations.
+        Tamper-proof authorization number. Value:
+        - 0: No
+        - 1: Yes.
         """
         return pulumi.get(self, "sas_webguard_order_num")
 
@@ -1234,7 +1652,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -1242,15 +1660,18 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="threatAnalysis")
     def threat_analysis(self) -> pulumi.Output[Optional[str]]:
         """
-        The amount of threat analysis log storage.
+        Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+        > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         """
         return pulumi.get(self, "threat_analysis")
 
     @property
     @pulumi.getter(name="threatAnalysisSwitch")
-    def threat_analysis_switch(self) -> pulumi.Output[Optional[str]]:
+    def threat_analysis_switch(self) -> pulumi.Output[str]:
         """
-        Threat analysis.  Valid values: `0`, `1`.
+        Threat analysis. Value:
+        - 0: No.
+        - 1: Yes.
         """
         return pulumi.get(self, "threat_analysis_switch")
 
@@ -1266,7 +1687,32 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="versionCode")
     def version_code(self) -> pulumi.Output[str]:
         """
-        Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
+        Select the security center version. Value:
+        - level7: Antivirus Edition.
+        - level3: Premium version.
+        - level2: Enterprise Edition.
+        - level8: Ultimate.
+        - level10: Purchase value-added services only.
         """
         return pulumi.get(self, "version_code")
+
+    @property
+    @pulumi.getter(name="vulCount")
+    def vul_count(self) -> pulumi.Output[Optional[str]]:
+        """
+        Vulnerability repair times, interval type, value range:[20,100000000].
+        > **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
+        """
+        return pulumi.get(self, "vul_count")
+
+    @property
+    @pulumi.getter(name="vulSwitch")
+    def vul_switch(self) -> pulumi.Output[str]:
+        """
+        Vulnerability fix switch. Value:
+        - 0: No.
+        - 1: Yes.
+        > **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
+        """
+        return pulumi.get(self, "vul_switch")
 

@@ -136,16 +136,16 @@ public final class GetIndustrialPidProjectsResult {
             return projects(List.of(projects));
         }
         public GetIndustrialPidProjectsResult build() {
-            final var o = new GetIndustrialPidProjectsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pidOrganizationId = pidOrganizationId;
-            o.pidProjectName = pidProjectName;
-            o.projects = projects;
-            return o;
+            final var _resultValue = new GetIndustrialPidProjectsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pidOrganizationId = pidOrganizationId;
+            _resultValue.pidProjectName = pidProjectName;
+            _resultValue.projects = projects;
+            return _resultValue;
         }
     }
 }

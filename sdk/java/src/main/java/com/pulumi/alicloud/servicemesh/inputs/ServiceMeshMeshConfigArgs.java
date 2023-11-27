@@ -26,14 +26,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     public static final ServiceMeshMeshConfigArgs Empty = new ServiceMeshMeshConfigArgs();
 
     /**
-     * The access logging configuration. See `mesh_config-access_log` below.
+     * The access logging configuration. See `access_log` below.
      * 
      */
     @Import(name="accessLog")
     private @Nullable Output<ServiceMeshMeshConfigAccessLogArgs> accessLog;
 
     /**
-     * @return The access logging configuration. See `mesh_config-access_log` below.
+     * @return The access logging configuration. See `access_log` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigAccessLogArgs>> accessLog() {
@@ -41,14 +41,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Audit information. See `mesh_config-audit` below.
+     * Audit information. See `audit` below.
      * 
      */
     @Import(name="audit")
     private @Nullable Output<ServiceMeshMeshConfigAuditArgs> audit;
 
     /**
-     * @return Audit information. See `mesh_config-audit` below.
+     * @return Audit information. See `audit` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigAuditArgs>> audit() {
@@ -56,14 +56,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+     * Control plane log collection configuration. See `control_plane_log` below.
      * 
      */
     @Import(name="controlPlaneLog")
     private @Nullable Output<ServiceMeshMeshConfigControlPlaneLogArgs> controlPlaneLog;
 
     /**
-     * @return Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+     * @return Control plane log collection configuration. See `control_plane_log` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigControlPlaneLogArgs>> controlPlaneLog() {
@@ -116,14 +116,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Kiali configuration. See `mesh_config-kiali` below.
+     * Kiali configuration. See `kiali` below.
      * 
      */
     @Import(name="kiali")
     private @Nullable Output<ServiceMeshMeshConfigKialiArgs> kiali;
 
     /**
-     * @return Kiali configuration. See `mesh_config-kiali` below.
+     * @return Kiali configuration. See `kiali` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigKialiArgs>> kiali() {
@@ -131,14 +131,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+     * The open-door policy of agent (OPA) plug-in information. See `opa` below.
      * 
      */
     @Import(name="opa")
     private @Nullable Output<ServiceMeshMeshConfigOpaArgs> opa;
 
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigOpaArgs>> opa() {
@@ -161,14 +161,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Link trace sampling information. See `mesh_config-pilot` below.
+     * Link trace sampling information. See `pilot` below.
      * 
      */
     @Import(name="pilot")
     private @Nullable Output<ServiceMeshMeshConfigPilotArgs> pilot;
 
     /**
-     * @return Link trace sampling information. See `mesh_config-pilot` below.
+     * @return Link trace sampling information. See `pilot` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigPilotArgs>> pilot() {
@@ -191,14 +191,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Proxy configuration. See `mesh_config-proxy` below.
+     * Proxy configuration. See `proxy` below.
      * 
      */
     @Import(name="proxy")
     private @Nullable Output<ServiceMeshMeshConfigProxyArgs> proxy;
 
     /**
-     * @return Proxy configuration. See `mesh_config-proxy` below.
+     * @return Proxy configuration. See `proxy` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigProxyArgs>> proxy() {
@@ -206,14 +206,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+     * Sidecar injector configuration. See `sidecar_injector` below.
      * 
      */
     @Import(name="sidecarInjector")
     private @Nullable Output<ServiceMeshMeshConfigSidecarInjectorArgs> sidecarInjector;
 
     /**
-     * @return Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+     * @return Sidecar injector configuration. See `sidecar_injector` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigSidecarInjectorArgs>> sidecarInjector() {
@@ -289,7 +289,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessLog The access logging configuration. See `mesh_config-access_log` below.
+         * @param accessLog The access logging configuration. See `access_log` below.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessLog The access logging configuration. See `mesh_config-access_log` below.
+         * @param accessLog The access logging configuration. See `access_log` below.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param audit Audit information. See `mesh_config-audit` below.
+         * @param audit Audit information. See `audit` below.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param audit Audit information. See `mesh_config-audit` below.
+         * @param audit Audit information. See `audit` below.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param controlPlaneLog Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+         * @param controlPlaneLog Control plane log collection configuration. See `control_plane_log` below.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param controlPlaneLog Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+         * @param controlPlaneLog Control plane log collection configuration. See `control_plane_log` below.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kiali Kiali configuration. See `mesh_config-kiali` below.
+         * @param kiali Kiali configuration. See `kiali` below.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kiali Kiali configuration. See `mesh_config-kiali` below.
+         * @param kiali Kiali configuration. See `kiali` below.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param opa The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+         * @param opa The open-door policy of agent (OPA) plug-in information. See `opa` below.
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param opa The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+         * @param opa The open-door policy of agent (OPA) plug-in information. See `opa` below.
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param pilot Link trace sampling information. See `mesh_config-pilot` below.
+         * @param pilot Link trace sampling information. See `pilot` below.
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param pilot Link trace sampling information. See `mesh_config-pilot` below.
+         * @param pilot Link trace sampling information. See `pilot` below.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxy Proxy configuration. See `mesh_config-proxy` below.
+         * @param proxy Proxy configuration. See `proxy` below.
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxy Proxy configuration. See `mesh_config-proxy` below.
+         * @param proxy Proxy configuration. See `proxy` below.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sidecarInjector Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+         * @param sidecarInjector Sidecar injector configuration. See `sidecar_injector` below.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sidecarInjector Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+         * @param sidecarInjector Sidecar injector configuration. See `sidecar_injector` below.
          * 
          * @return builder
          * 

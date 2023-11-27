@@ -133,16 +133,16 @@ public final class GetCommandsResult {
             return this;
         }
         public GetCommandsResult build() {
-            final var o = new GetCommandsResult();
-            o.commandType = commandType;
-            o.commands = commands;
-            o.contentEncoding = contentEncoding;
-            o.desktopId = desktopId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetCommandsResult();
+            _resultValue.commandType = commandType;
+            _resultValue.commands = commands;
+            _resultValue.contentEncoding = contentEncoding;
+            _resultValue.desktopId = desktopId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

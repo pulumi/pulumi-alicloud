@@ -142,14 +142,14 @@ public final class GetAppsApp {
             return this;
         }
         public GetAppsApp build() {
-            final var o = new GetAppsApp();
-            o.appCode = appCode;
-            o.createdTime = createdTime;
-            o.description = description;
-            o.id = id;
-            o.modifiedTime = modifiedTime;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAppsApp();
+            _resultValue.appCode = appCode;
+            _resultValue.createdTime = createdTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.modifiedTime = modifiedTime;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

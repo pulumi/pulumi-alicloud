@@ -250,6 +250,12 @@ class ServerGroupServerArgs:
                  server_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  type: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] port: The port used by the backend server. Valid value range: [1-65535].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] server_ids: A list backend server ID (ECS instance ID).
+        :param pulumi.Input[str] type: Type of the backend server. Valid value ecs, eni. Default to eni.
+        :param pulumi.Input[int] weight: Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_ids", server_ids)
         if type is not None:
@@ -260,6 +266,9 @@ class ServerGroupServerArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port used by the backend server. Valid value range: [1-65535].
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -269,6 +278,9 @@ class ServerGroupServerArgs:
     @property
     @pulumi.getter(name="serverIds")
     def server_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list backend server ID (ECS instance ID).
+        """
         return pulumi.get(self, "server_ids")
 
     @server_ids.setter
@@ -278,6 +290,9 @@ class ServerGroupServerArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the backend server. Valid value ecs, eni. Default to eni.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -287,6 +302,9 @@ class ServerGroupServerArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter

@@ -89,12 +89,12 @@ public final class GetFileCrc64ChecksumResult {
             return this;
         }
         public GetFileCrc64ChecksumResult build() {
-            final var o = new GetFileCrc64ChecksumResult();
-            o.checksum = checksum;
-            o.filename = filename;
-            o.id = id;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetFileCrc64ChecksumResult();
+            _resultValue.checksum = checksum;
+            _resultValue.filename = filename;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

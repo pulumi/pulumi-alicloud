@@ -247,20 +247,20 @@ public final class GetEnterpriseProxyAccessesAccess {
             return this;
         }
         public GetEnterpriseProxyAccessesAccess build() {
-            final var o = new GetEnterpriseProxyAccessesAccess();
-            o.accessId = accessId;
-            o.accessSecret = accessSecret;
-            o.createTime = createTime;
-            o.id = id;
-            o.indepAccount = indepAccount;
-            o.instanceId = instanceId;
-            o.originInfo = originInfo;
-            o.proxyAccessId = proxyAccessId;
-            o.proxyId = proxyId;
-            o.userId = userId;
-            o.userName = userName;
-            o.userUid = userUid;
-            return o;
+            final var _resultValue = new GetEnterpriseProxyAccessesAccess();
+            _resultValue.accessId = accessId;
+            _resultValue.accessSecret = accessSecret;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.indepAccount = indepAccount;
+            _resultValue.instanceId = instanceId;
+            _resultValue.originInfo = originInfo;
+            _resultValue.proxyAccessId = proxyAccessId;
+            _resultValue.proxyId = proxyId;
+            _resultValue.userId = userId;
+            _resultValue.userName = userName;
+            _resultValue.userUid = userUid;
+            return _resultValue;
         }
     }
 }

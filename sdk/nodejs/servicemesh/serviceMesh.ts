@@ -70,7 +70,7 @@ export class ServiceMesh extends pulumi.CustomResource {
     /**
      * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
      */
-    public readonly edition!: pulumi.Output<string | undefined>;
+    public readonly edition!: pulumi.Output<string>;
     /**
      * Data plane KubeAPI access capability. See `extraConfiguration` below.
      */
@@ -84,11 +84,11 @@ export class ServiceMesh extends pulumi.CustomResource {
     /**
      * Load balancing information. See `loadBalancer` below.
      */
-    public readonly loadBalancer!: pulumi.Output<outputs.servicemesh.ServiceMeshLoadBalancer | undefined>;
+    public readonly loadBalancer!: pulumi.Output<outputs.servicemesh.ServiceMeshLoadBalancer>;
     /**
      * Service grid configuration information. See `meshConfig` below.
      */
-    public readonly meshConfig!: pulumi.Output<outputs.servicemesh.ServiceMeshMeshConfig | undefined>;
+    public readonly meshConfig!: pulumi.Output<outputs.servicemesh.ServiceMeshMeshConfig>;
     /**
      * Service grid network configuration information. See `network` below.
      */
@@ -112,7 +112,7 @@ export class ServiceMesh extends pulumi.CustomResource {
     /**
      * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `alicloud.servicemesh.getServiceMeshes`.
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    public readonly version!: pulumi.Output<string>;
 
     /**
      * Create a ServiceMesh resource with the given unique name, arguments, and options.

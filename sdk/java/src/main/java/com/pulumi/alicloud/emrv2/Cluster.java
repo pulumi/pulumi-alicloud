@@ -219,7 +219,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The application configurations of EMR cluster. See `application_configs` below.
      * 
      */
-    @Export(name="applicationConfigs", type=List.class, parameters={ClusterApplicationConfig.class})
+    @Export(name="applicationConfigs", refs={List.class,ClusterApplicationConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterApplicationConfig>> applicationConfigs;
 
     /**
@@ -233,7 +233,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
      * 
      */
-    @Export(name="applications", type=List.class, parameters={String.class})
+    @Export(name="applications", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> applications;
 
     /**
@@ -247,7 +247,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
      * 
      */
-    @Export(name="bootstrapScripts", type=List.class, parameters={ClusterBootstrapScript.class})
+    @Export(name="bootstrapScripts", refs={List.class,ClusterBootstrapScript.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterBootstrapScript>> bootstrapScripts;
 
     /**
@@ -261,7 +261,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
-    @Export(name="clusterName", type=String.class, parameters={})
+    @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     /**
@@ -275,7 +275,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
      * 
      */
-    @Export(name="clusterType", type=String.class, parameters={})
+    @Export(name="clusterType", refs={String.class}, tree="[0]")
     private Output<String> clusterType;
 
     /**
@@ -289,7 +289,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.
      * 
      */
-    @Export(name="deployMode", type=String.class, parameters={})
+    @Export(name="deployMode", refs={String.class}, tree="[0]")
     private Output<String> deployMode;
 
     /**
@@ -303,7 +303,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
      * 
      */
-    @Export(name="nodeAttributes", type=List.class, parameters={ClusterNodeAttribute.class})
+    @Export(name="nodeAttributes", refs={List.class,ClusterNodeAttribute.class}, tree="[0,1]")
     private Output<List<ClusterNodeAttribute>> nodeAttributes;
 
     /**
@@ -317,7 +317,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
      * 
      */
-    @Export(name="nodeGroups", type=List.class, parameters={ClusterNodeGroup.class})
+    @Export(name="nodeGroups", refs={List.class,ClusterNodeGroup.class}, tree="[0,1]")
     private Output<List<ClusterNodeGroup>> nodeGroups;
 
     /**
@@ -331,7 +331,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -345,7 +345,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
      * 
      */
-    @Export(name="releaseVersion", type=String.class, parameters={})
+    @Export(name="releaseVersion", refs={String.class}, tree="[0]")
     private Output<String> releaseVersion;
 
     /**
@@ -359,7 +359,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the emr-cluster belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -373,7 +373,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
      * 
      */
-    @Export(name="securityMode", type=String.class, parameters={})
+    @Export(name="securityMode", refs={String.class}, tree="[0]")
     private Output<String> securityMode;
 
     /**
@@ -387,7 +387,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
-    @Export(name="subscriptionConfig", type=ClusterSubscriptionConfig.class, parameters={})
+    @Export(name="subscriptionConfig", refs={ClusterSubscriptionConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterSubscriptionConfig> subscriptionConfig;
 
     /**
@@ -401,7 +401,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

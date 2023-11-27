@@ -91,11 +91,11 @@ public final class PolicyStatement {
             return resources(List.of(resources));
         }
         public PolicyStatement build() {
-            final var o = new PolicyStatement();
-            o.actions = actions;
-            o.effect = effect;
-            o.resources = resources;
-            return o;
+            final var _resultValue = new PolicyStatement();
+            _resultValue.actions = actions;
+            _resultValue.effect = effect;
+            _resultValue.resources = resources;
+            return _resultValue;
         }
     }
 }

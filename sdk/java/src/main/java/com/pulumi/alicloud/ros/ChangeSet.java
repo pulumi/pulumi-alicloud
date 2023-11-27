@@ -76,7 +76,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      * 
      */
-    @Export(name="changeSetName", type=String.class, parameters={})
+    @Export(name="changeSetName", refs={String.class}, tree="[0]")
     private Output<String> changeSetName;
 
     /**
@@ -90,7 +90,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
      * 
      */
-    @Export(name="changeSetType", type=String.class, parameters={})
+    @Export(name="changeSetType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> changeSetType;
 
     /**
@@ -104,7 +104,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The description of the change set. The description can be up to 1,024 bytes in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -118,7 +118,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
      * 
      */
-    @Export(name="disableRollback", type=Boolean.class, parameters={})
+    @Export(name="disableRollback", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableRollback;
 
     /**
@@ -132,7 +132,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The notification urls.
      * 
      */
-    @Export(name="notificationUrls", type=List.class, parameters={String.class})
+    @Export(name="notificationUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationUrls;
 
     /**
@@ -146,7 +146,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * Parameters.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={ChangeSetParameter.class})
+    @Export(name="parameters", refs={List.class,ChangeSetParameter.class}, tree="[0,1]")
     private Output<List<ChangeSetParameter>> parameters;
 
     /**
@@ -160,7 +160,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The ram role name.
      * 
      */
-    @Export(name="ramRoleName", type=String.class, parameters={})
+    @Export(name="ramRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ramRoleName;
 
     /**
@@ -174,7 +174,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The replacement option.
      * 
      */
-    @Export(name="replacementOption", type=String.class, parameters={})
+    @Export(name="replacementOption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> replacementOption;
 
     /**
@@ -188,7 +188,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
      * 
      */
-    @Export(name="stackId", type=String.class, parameters={})
+    @Export(name="stackId", refs={String.class}, tree="[0]")
     private Output<String> stackId;
 
     /**
@@ -202,7 +202,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
      * 
      */
-    @Export(name="stackName", type=String.class, parameters={})
+    @Export(name="stackName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stackName;
 
     /**
@@ -216,7 +216,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The stack policy body.
      * 
      */
-    @Export(name="stackPolicyBody", type=String.class, parameters={})
+    @Export(name="stackPolicyBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stackPolicyBody;
 
     /**
@@ -230,7 +230,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The stack policy during update body.
      * 
      */
-    @Export(name="stackPolicyDuringUpdateBody", type=String.class, parameters={})
+    @Export(name="stackPolicyDuringUpdateBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stackPolicyDuringUpdateBody;
 
     /**
@@ -244,7 +244,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The stack policy during update url.
      * 
      */
-    @Export(name="stackPolicyDuringUpdateUrl", type=String.class, parameters={})
+    @Export(name="stackPolicyDuringUpdateUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stackPolicyDuringUpdateUrl;
 
     /**
@@ -258,7 +258,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The stack policy url.
      * 
      */
-    @Export(name="stackPolicyUrl", type=String.class, parameters={})
+    @Export(name="stackPolicyUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stackPolicyUrl;
 
     /**
@@ -272,7 +272,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The status of the change set.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -286,7 +286,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
      * 
      */
-    @Export(name="templateBody", type=String.class, parameters={})
+    @Export(name="templateBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateBody;
 
     /**
@@ -300,7 +300,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The template url.
      * 
      */
-    @Export(name="templateUrl", type=String.class, parameters={})
+    @Export(name="templateUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateUrl;
 
     /**
@@ -314,7 +314,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * Timeout In Minutes.
      * 
      */
-    @Export(name="timeoutInMinutes", type=Integer.class, parameters={})
+    @Export(name="timeoutInMinutes", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutInMinutes;
 
     /**
@@ -328,7 +328,7 @@ public class ChangeSet extends com.pulumi.resources.CustomResource {
      * The use previous parameters.
      * 
      */
-    @Export(name="usePreviousParameters", type=Boolean.class, parameters={})
+    @Export(name="usePreviousParameters", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> usePreviousParameters;
 
     /**

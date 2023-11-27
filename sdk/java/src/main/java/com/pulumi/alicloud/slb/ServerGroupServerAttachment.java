@@ -37,7 +37,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The description of the backend server.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -51,7 +51,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The port that is used by the backend server. Valid values: `1` to `65535`.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -65,7 +65,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The ID of the server group.
      * 
      */
-    @Export(name="serverGroupId", type=String.class, parameters={})
+    @Export(name="serverGroupId", refs={String.class}, tree="[0]")
     private Output<String> serverGroupId;
 
     /**
@@ -79,7 +79,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
      * 
      */
-    @Export(name="serverId", type=String.class, parameters={})
+    @Export(name="serverId", refs={String.class}, tree="[0]")
     private Output<String> serverId;
 
     /**
@@ -93,7 +93,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The type of backend server. Valid values: `ecs`, `eni`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -107,7 +107,7 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
      * The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**

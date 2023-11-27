@@ -260,20 +260,20 @@ public final class GetHostsHost {
             return this;
         }
         public GetHostsHost build() {
-            final var o = new GetHostsHost();
-            o.activeAddressType = activeAddressType;
-            o.comment = comment;
-            o.hostId = hostId;
-            o.hostName = hostName;
-            o.hostPrivateAddress = hostPrivateAddress;
-            o.hostPublicAddress = hostPublicAddress;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.osType = osType;
-            o.protocols = protocols;
-            o.source = source;
-            o.sourceInstanceId = sourceInstanceId;
-            return o;
+            final var _resultValue = new GetHostsHost();
+            _resultValue.activeAddressType = activeAddressType;
+            _resultValue.comment = comment;
+            _resultValue.hostId = hostId;
+            _resultValue.hostName = hostName;
+            _resultValue.hostPrivateAddress = hostPrivateAddress;
+            _resultValue.hostPublicAddress = hostPublicAddress;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.osType = osType;
+            _resultValue.protocols = protocols;
+            _resultValue.source = source;
+            _resultValue.sourceInstanceId = sourceInstanceId;
+            return _resultValue;
         }
     }
 }

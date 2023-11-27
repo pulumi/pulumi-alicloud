@@ -245,21 +245,21 @@ public final class GetServerGroupsResult {
             return this;
         }
         public GetServerGroupsResult build() {
-            final var o = new GetServerGroupsResult();
-            o.enableDetails = enableDetails;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.serverGroupIds = serverGroupIds;
-            o.serverGroupName = serverGroupName;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetServerGroupsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.serverGroupIds = serverGroupIds;
+            _resultValue.serverGroupName = serverGroupName;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

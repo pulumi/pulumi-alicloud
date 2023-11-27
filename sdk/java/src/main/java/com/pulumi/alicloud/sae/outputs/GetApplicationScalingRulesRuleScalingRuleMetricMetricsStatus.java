@@ -189,16 +189,16 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus();
-            o.currentMetrics = currentMetrics;
-            o.currentReplicas = currentReplicas;
-            o.desiredReplicas = desiredReplicas;
-            o.lastScaleTime = lastScaleTime;
-            o.maxReplicas = maxReplicas;
-            o.minReplicas = minReplicas;
-            o.nextScaleMetrics = nextScaleMetrics;
-            o.nextScaleTimePeriod = nextScaleTimePeriod;
-            return o;
+            final var _resultValue = new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus();
+            _resultValue.currentMetrics = currentMetrics;
+            _resultValue.currentReplicas = currentReplicas;
+            _resultValue.desiredReplicas = desiredReplicas;
+            _resultValue.lastScaleTime = lastScaleTime;
+            _resultValue.maxReplicas = maxReplicas;
+            _resultValue.minReplicas = minReplicas;
+            _resultValue.nextScaleMetrics = nextScaleMetrics;
+            _resultValue.nextScaleTimePeriod = nextScaleTimePeriod;
+            return _resultValue;
         }
     }
 }

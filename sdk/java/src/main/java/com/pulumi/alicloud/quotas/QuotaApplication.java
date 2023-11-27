@@ -34,7 +34,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The approve value of the quota application.
      * 
      */
-    @Export(name="approveValue", type=String.class, parameters={})
+    @Export(name="approveValue", refs={String.class}, tree="[0]")
     private Output<String> approveValue;
 
     /**
@@ -51,7 +51,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      * 
      */
-    @Export(name="auditMode", type=String.class, parameters={})
+    @Export(name="auditMode", refs={String.class}, tree="[0]")
     private Output<String> auditMode;
 
     /**
@@ -68,7 +68,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The audit reason.
      * 
      */
-    @Export(name="auditReason", type=String.class, parameters={})
+    @Export(name="auditReason", refs={String.class}, tree="[0]")
     private Output<String> auditReason;
 
     /**
@@ -82,7 +82,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * Resource attribute field representing creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -96,7 +96,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The desire value of the quota application.
      * 
      */
-    @Export(name="desireValue", type=Double.class, parameters={})
+    @Export(name="desireValue", refs={Double.class}, tree="[0]")
     private Output<Double> desireValue;
 
     /**
@@ -110,7 +110,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * QuotaDimensions. See `dimensions` below.
      * 
      */
-    @Export(name="dimensions", type=List.class, parameters={QuotaApplicationDimension.class})
+    @Export(name="dimensions", refs={List.class,QuotaApplicationDimension.class}, tree="[0,1]")
     private Output</* @Nullable */ List<QuotaApplicationDimension>> dimensions;
 
     /**
@@ -124,7 +124,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The effective time of the quota application.
      * 
      */
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
@@ -140,7 +140,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * - en: English.
      * 
      */
-    @Export(name="envLanguage", type=String.class, parameters={})
+    @Export(name="envLanguage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> envLanguage;
 
     /**
@@ -156,7 +156,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The expired time of the quota application.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expireTime;
 
     /**
@@ -170,7 +170,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
      * 
      */
-    @Export(name="noticeType", type=Integer.class, parameters={})
+    @Export(name="noticeType", refs={Integer.class}, tree="[0]")
     private Output<Integer> noticeType;
 
     /**
@@ -184,7 +184,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The product code.
      * 
      */
-    @Export(name="productCode", type=String.class, parameters={})
+    @Export(name="productCode", refs={String.class}, tree="[0]")
     private Output<String> productCode;
 
     /**
@@ -198,7 +198,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The ID of quota action.
      * 
      */
-    @Export(name="quotaActionCode", type=String.class, parameters={})
+    @Export(name="quotaActionCode", refs={String.class}, tree="[0]")
     private Output<String> quotaActionCode;
 
     /**
@@ -215,7 +215,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * - WhiteListLabel: Equity quota.
      * 
      */
-    @Export(name="quotaCategory", type=String.class, parameters={})
+    @Export(name="quotaCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> quotaCategory;
 
     /**
@@ -232,7 +232,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The description of the quota application.
      * 
      */
-    @Export(name="quotaDescription", type=String.class, parameters={})
+    @Export(name="quotaDescription", refs={String.class}, tree="[0]")
     private Output<String> quotaDescription;
 
     /**
@@ -246,7 +246,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The name of the quota application.
      * 
      */
-    @Export(name="quotaName", type=String.class, parameters={})
+    @Export(name="quotaName", refs={String.class}, tree="[0]")
     private Output<String> quotaName;
 
     /**
@@ -260,7 +260,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The unit of the quota application.
      * 
      */
-    @Export(name="quotaUnit", type=String.class, parameters={})
+    @Export(name="quotaUnit", refs={String.class}, tree="[0]")
     private Output<String> quotaUnit;
 
     /**
@@ -274,7 +274,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * The reason of the quota application.
      * 
      */
-    @Export(name="reason", type=String.class, parameters={})
+    @Export(name="reason", refs={String.class}, tree="[0]")
     private Output<String> reason;
 
     /**
@@ -292,7 +292,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * - Cancel: Closed.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

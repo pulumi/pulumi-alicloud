@@ -104,13 +104,13 @@ public final class GetProtocolsResult {
             return this;
         }
         public GetProtocolsResult build() {
-            final var o = new GetProtocolsResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.protocols = protocols;
-            o.type = type;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetProtocolsResult();
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.protocols = protocols;
+            _resultValue.type = type;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

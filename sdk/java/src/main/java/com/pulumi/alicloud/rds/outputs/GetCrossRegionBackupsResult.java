@@ -166,19 +166,19 @@ public final class GetCrossRegionBackupsResult {
             return this;
         }
         public GetCrossRegionBackupsResult build() {
-            final var o = new GetCrossRegionBackupsResult();
-            o.backupId = backupId;
-            o.backups = backups;
-            o.crossBackupId = crossBackupId;
-            o.crossBackupRegion = crossBackupRegion;
-            o.dbInstanceId = dbInstanceId;
-            o.endTime = endTime;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new GetCrossRegionBackupsResult();
+            _resultValue.backupId = backupId;
+            _resultValue.backups = backups;
+            _resultValue.crossBackupId = crossBackupId;
+            _resultValue.crossBackupRegion = crossBackupRegion;
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.endTime = endTime;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

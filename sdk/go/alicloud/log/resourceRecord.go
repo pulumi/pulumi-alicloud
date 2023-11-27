@@ -16,7 +16,7 @@ import (
 //
 // For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
 //
-// > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
+// > **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
 //
 // ## Example Usage
 //
@@ -34,11 +34,41 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewResourceRecord(ctx, "example", &log.ResourceRecordArgs{
-//				RecordId:     pulumi.String("user_tf_test_resource_1"),
-//				ResourceName: pulumi.String("user.tf.test_resource"),
-//				Tag:          pulumi.String("test resource tag"),
-//				Value:        pulumi.String("{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}"),
+//			exampleResource, err := log.NewResource(ctx, "exampleResource", &log.ResourceArgs{
+//				Type:        pulumi.String("userdefine"),
+//				Description: pulumi.String("user tf resource desc"),
+//				ExtInfo:     pulumi.String("{}"),
+//				Schema: pulumi.String(`    {
+//	      "schema": [
+//	        {
+//	          "column": "col1",
+//	          "desc": "col1   desc",
+//	          "ext_info": {
+//	          },
+//	          "required": true,
+//	          "type": "string"
+//	        },
+//	        {
+//	          "column": "col2",
+//	          "desc": "col2   desc",
+//	          "ext_info": "optional",
+//	          "required": true,
+//	          "type": "string"
+//	        }
+//	      ]
+//	    }
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewResourceRecord(ctx, "exampleResourceRecord", &log.ResourceRecordArgs{
+//				ResourceName: exampleResource.ID(),
+//				RecordId:     pulumi.String("user_tf_resource_1"),
+//				Tag:          pulumi.String("resource tag"),
+//				Value:        pulumi.String("    {\n      \"col1\": \"this is col1 value\",\n      \"col2\": \"col2   value\"\n    }\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +85,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:log/resourceRecord:ResourceRecord example user.tf.test_resource:user_tf_test_resource_1
+//	$ pulumi import alicloud:log/resourceRecord:ResourceRecord example <resource_name>:<record_id>
 //
 // ```
 type ResourceRecord struct {

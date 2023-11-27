@@ -224,18 +224,18 @@ public final class GetCustomRoutingEndpointGroupsGroup {
             return this;
         }
         public GetCustomRoutingEndpointGroupsGroup build() {
-            final var o = new GetCustomRoutingEndpointGroupsGroup();
-            o.acceleratorId = acceleratorId;
-            o.customRoutingEndpointGroupName = customRoutingEndpointGroupName;
-            o.description = description;
-            o.endpointGroupId = endpointGroupId;
-            o.endpointGroupIpLists = endpointGroupIpLists;
-            o.endpointGroupRegion = endpointGroupRegion;
-            o.endpointGroupUnconfirmedIpLists = endpointGroupUnconfirmedIpLists;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetCustomRoutingEndpointGroupsGroup();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.customRoutingEndpointGroupName = customRoutingEndpointGroupName;
+            _resultValue.description = description;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.endpointGroupIpLists = endpointGroupIpLists;
+            _resultValue.endpointGroupRegion = endpointGroupRegion;
+            _resultValue.endpointGroupUnconfirmedIpLists = endpointGroupUnconfirmedIpLists;
+            _resultValue.id = id;
+            _resultValue.listenerId = listenerId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

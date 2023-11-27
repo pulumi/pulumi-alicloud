@@ -51,9 +51,9 @@ public final class ForwardingRuleRuleConditionPathConfig {
             return values(List.of(values));
         }
         public ForwardingRuleRuleConditionPathConfig build() {
-            final var o = new ForwardingRuleRuleConditionPathConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new ForwardingRuleRuleConditionPathConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

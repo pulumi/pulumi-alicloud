@@ -66,10 +66,10 @@ public final class GetLoadBalancersBalancerDeletionProtectionConfig {
             return this;
         }
         public GetLoadBalancersBalancerDeletionProtectionConfig build() {
-            final var o = new GetLoadBalancersBalancerDeletionProtectionConfig();
-            o.enabled = enabled;
-            o.enabledTime = enabledTime;
-            return o;
+            final var _resultValue = new GetLoadBalancersBalancerDeletionProtectionConfig();
+            _resultValue.enabled = enabled;
+            _resultValue.enabledTime = enabledTime;
+            return _resultValue;
         }
     }
 }

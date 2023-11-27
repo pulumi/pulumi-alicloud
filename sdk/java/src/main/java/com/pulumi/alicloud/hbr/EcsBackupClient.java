@@ -140,7 +140,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
      * 
      */
-    @Export(name="dataNetworkType", type=String.class, parameters={})
+    @Export(name="dataNetworkType", refs={String.class}, tree="[0]")
     private Output<String> dataNetworkType;
 
     /**
@@ -154,7 +154,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
      * 
      */
-    @Export(name="dataProxySetting", type=String.class, parameters={})
+    @Export(name="dataProxySetting", refs={String.class}, tree="[0]")
     private Output<String> dataProxySetting;
 
     /**
@@ -168,7 +168,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * The ID of ECS instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -182,7 +182,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * The number of CPU cores used by a single backup task, 0 means no restrictions.
      * 
      */
-    @Export(name="maxCpuCore", type=String.class, parameters={})
+    @Export(name="maxCpuCore", refs={String.class}, tree="[0]")
     private Output<String> maxCpuCore;
 
     /**
@@ -196,7 +196,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * The number of concurrent jobs for a single backup task, 0 means no restrictions.
      * 
      */
-    @Export(name="maxWorker", type=String.class, parameters={})
+    @Export(name="maxWorker", refs={String.class}, tree="[0]")
     private Output<String> maxWorker;
 
     /**
@@ -210,7 +210,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * Custom data plane proxy server host address.
      * 
      */
-    @Export(name="proxyHost", type=String.class, parameters={})
+    @Export(name="proxyHost", refs={String.class}, tree="[0]")
     private Output<String> proxyHost;
 
     /**
@@ -224,7 +224,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * The password of custom data plane proxy server.
      * 
      */
-    @Export(name="proxyPassword", type=String.class, parameters={})
+    @Export(name="proxyPassword", refs={String.class}, tree="[0]")
     private Output<String> proxyPassword;
 
     /**
@@ -238,7 +238,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * Custom data plane proxy server host port.
      * 
      */
-    @Export(name="proxyPort", type=String.class, parameters={})
+    @Export(name="proxyPort", refs={String.class}, tree="[0]")
     private Output<String> proxyPort;
 
     /**
@@ -252,7 +252,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * The username of custom data plane proxy server.
      * 
      */
-    @Export(name="proxyUser", type=String.class, parameters={})
+    @Export(name="proxyUser", refs={String.class}, tree="[0]")
     private Output<String> proxyUser;
 
     /**
@@ -266,7 +266,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -280,7 +280,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="useHttps", type=Boolean.class, parameters={})
+    @Export(name="useHttps", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> useHttps;
 
     /**

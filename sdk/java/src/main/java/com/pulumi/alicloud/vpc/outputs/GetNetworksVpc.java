@@ -382,26 +382,26 @@ public final class GetNetworksVpc {
             return vswitchIds(List.of(vswitchIds));
         }
         public GetNetworksVpc build() {
-            final var o = new GetNetworksVpc();
-            o.cidrBlock = cidrBlock;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.id = id;
-            o.ipv6CidrBlock = ipv6CidrBlock;
-            o.isDefault = isDefault;
-            o.regionId = regionId;
-            o.resourceGroupId = resourceGroupId;
-            o.routeTableId = routeTableId;
-            o.routerId = routerId;
-            o.secondaryCidrBlocks = secondaryCidrBlocks;
-            o.status = status;
-            o.tags = tags;
-            o.userCidrs = userCidrs;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            o.vrouterId = vrouterId;
-            o.vswitchIds = vswitchIds;
-            return o;
+            final var _resultValue = new GetNetworksVpc();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ipv6CidrBlock = ipv6CidrBlock;
+            _resultValue.isDefault = isDefault;
+            _resultValue.regionId = regionId;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.routeTableId = routeTableId;
+            _resultValue.routerId = routerId;
+            _resultValue.secondaryCidrBlocks = secondaryCidrBlocks;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.userCidrs = userCidrs;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcName = vpcName;
+            _resultValue.vrouterId = vrouterId;
+            _resultValue.vswitchIds = vswitchIds;
+            return _resultValue;
         }
     }
 }

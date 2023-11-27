@@ -82,7 +82,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
      * 
      */
-    @Export(name="allocationStatus", type=String.class, parameters={})
+    @Export(name="allocationStatus", refs={String.class}, tree="[0]")
     private Output<String> allocationStatus;
 
     /**
@@ -96,7 +96,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoRenewPeriod;
 
     /**
@@ -110,7 +110,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * The time when the reserved instance was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -124,7 +124,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -138,7 +138,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * The time when the reserved instance expires.
      * 
      */
-    @Export(name="expiredTime", type=String.class, parameters={})
+    @Export(name="expiredTime", refs={String.class}, tree="[0]")
     private Output<String> expiredTime;
 
     /**
@@ -152,7 +152,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
      * 
      */
-    @Export(name="instanceAmount", type=Integer.class, parameters={})
+    @Export(name="instanceAmount", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceAmount;
 
     /**
@@ -166,7 +166,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -184,7 +184,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -201,7 +201,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * - `All Upfront`: Full upfront payment.
      * 
      */
-    @Export(name="offeringType", type=String.class, parameters={})
+    @Export(name="offeringType", refs={String.class}, tree="[0]")
     private Output<String> offeringType;
 
     /**
@@ -218,7 +218,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * Details about the lock status of the reserved instance.
      * 
      */
-    @Export(name="operationLocks", type=List.class, parameters={ReservedInstanceOperationLock.class})
+    @Export(name="operationLocks", refs={List.class,ReservedInstanceOperationLock.class}, tree="[0,1]")
     private Output<List<ReservedInstanceOperationLock>> operationLocks;
 
     /**
@@ -234,7 +234,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * - When `period_unit` is `Month`, Valid values: `1`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -250,7 +250,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -264,7 +264,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
      * 
      */
-    @Export(name="platform", type=String.class, parameters={})
+    @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
     /**
@@ -278,7 +278,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
@@ -292,7 +292,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
      * 
      */
-    @Export(name="reservedInstanceName", type=String.class, parameters={})
+    @Export(name="reservedInstanceName", refs={String.class}, tree="[0]")
     private Output<String> reservedInstanceName;
 
     /**
@@ -306,7 +306,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * Resource group ID.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -320,7 +320,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**
@@ -334,7 +334,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * The time when the reserved instance took effect.
      * 
      */
-    @Export(name="startTime", type=String.class, parameters={})
+    @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**
@@ -348,7 +348,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * The status of the reserved instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -362,7 +362,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -376,7 +376,7 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**

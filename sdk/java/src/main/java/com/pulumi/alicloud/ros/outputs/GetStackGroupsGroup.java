@@ -203,17 +203,17 @@ public final class GetStackGroupsGroup {
             return this;
         }
         public GetStackGroupsGroup build() {
-            final var o = new GetStackGroupsGroup();
-            o.administrationRoleName = administrationRoleName;
-            o.description = description;
-            o.executionRoleName = executionRoleName;
-            o.id = id;
-            o.parameters = parameters;
-            o.stackGroupId = stackGroupId;
-            o.stackGroupName = stackGroupName;
-            o.status = status;
-            o.templateBody = templateBody;
-            return o;
+            final var _resultValue = new GetStackGroupsGroup();
+            _resultValue.administrationRoleName = administrationRoleName;
+            _resultValue.description = description;
+            _resultValue.executionRoleName = executionRoleName;
+            _resultValue.id = id;
+            _resultValue.parameters = parameters;
+            _resultValue.stackGroupId = stackGroupId;
+            _resultValue.stackGroupName = stackGroupName;
+            _resultValue.status = status;
+            _resultValue.templateBody = templateBody;
+            return _resultValue;
         }
     }
 }

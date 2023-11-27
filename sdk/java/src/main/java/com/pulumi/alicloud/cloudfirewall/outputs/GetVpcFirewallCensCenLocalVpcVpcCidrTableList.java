@@ -70,10 +70,10 @@ public final class GetVpcFirewallCensCenLocalVpcVpcCidrTableList {
             return this;
         }
         public GetVpcFirewallCensCenLocalVpcVpcCidrTableList build() {
-            final var o = new GetVpcFirewallCensCenLocalVpcVpcCidrTableList();
-            o.routeEntryLists = routeEntryLists;
-            o.routeTableId = routeTableId;
-            return o;
+            final var _resultValue = new GetVpcFirewallCensCenLocalVpcVpcCidrTableList();
+            _resultValue.routeEntryLists = routeEntryLists;
+            _resultValue.routeTableId = routeTableId;
+            return _resultValue;
         }
     }
 }

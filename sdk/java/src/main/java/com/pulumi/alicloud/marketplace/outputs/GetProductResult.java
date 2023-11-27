@@ -94,12 +94,12 @@ public final class GetProductResult {
             return products(List.of(products));
         }
         public GetProductResult build() {
-            final var o = new GetProductResult();
-            o.availableRegion = availableRegion;
-            o.id = id;
-            o.productCode = productCode;
-            o.products = products;
-            return o;
+            final var _resultValue = new GetProductResult();
+            _resultValue.availableRegion = availableRegion;
+            _resultValue.id = id;
+            _resultValue.productCode = productCode;
+            _resultValue.products = products;
+            return _resultValue;
         }
     }
 }

@@ -1338,6 +1338,8 @@ type KubernetesAddonType struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name *string `pulumi:"name"`
+	// The version of the component.
+	Version *string `pulumi:"version"`
 }
 
 // KubernetesAddonTypeInput is an input type that accepts KubernetesAddonTypeArgs and KubernetesAddonTypeOutput values.
@@ -1360,6 +1362,8 @@ type KubernetesAddonTypeArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The version of the component.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (KubernetesAddonTypeArgs) ElementType() reflect.Type {
@@ -1428,6 +1432,11 @@ func (o KubernetesAddonTypeOutput) Disabled() pulumi.BoolPtrOutput {
 // Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 func (o KubernetesAddonTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAddonType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The version of the component.
+func (o KubernetesAddonTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesAddonType) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type KubernetesAddonTypeArrayOutput struct{ *pulumi.OutputState }
@@ -1935,11 +1944,11 @@ func (o KubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
 }
 
 type KubernetesMasterNode struct {
-	// The id of a node.
+	// ID of the node.
 	Id *string `pulumi:"id"`
-	// The name of a node.
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
-	// The private ip of a node.
+	// The private IP address of node.
 	PrivateIp *string `pulumi:"privateIp"`
 }
 
@@ -1955,11 +1964,11 @@ type KubernetesMasterNodeInput interface {
 }
 
 type KubernetesMasterNodeArgs struct {
-	// The id of a node.
+	// ID of the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of a node.
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The private ip of a node.
+	// The private IP address of node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
 }
 
@@ -2014,17 +2023,17 @@ func (o KubernetesMasterNodeOutput) ToKubernetesMasterNodeOutputWithContext(ctx 
 	return o
 }
 
-// The id of a node.
+// ID of the node.
 func (o KubernetesMasterNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The name of a node.
+// The kubernetes cluster's name. It is unique in one Alicloud account.
 func (o KubernetesMasterNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The private ip of a node.
+// The private IP address of node.
 func (o KubernetesMasterNodeOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
@@ -2347,411 +2356,12 @@ func (o KubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type KubernetesTaint struct {
-	// The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
-	Effect *string `pulumi:"effect"`
-	// The key of a taint.
-	Key *string `pulumi:"key"`
-	// The key of a taint.
-	Value *string `pulumi:"value"`
-}
-
-// KubernetesTaintInput is an input type that accepts KubernetesTaintArgs and KubernetesTaintOutput values.
-// You can construct a concrete instance of `KubernetesTaintInput` via:
-//
-//	KubernetesTaintArgs{...}
-type KubernetesTaintInput interface {
-	pulumi.Input
-
-	ToKubernetesTaintOutput() KubernetesTaintOutput
-	ToKubernetesTaintOutputWithContext(context.Context) KubernetesTaintOutput
-}
-
-type KubernetesTaintArgs struct {
-	// The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
-	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	// The key of a taint.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The key of a taint.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (KubernetesTaintArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesTaint)(nil)).Elem()
-}
-
-func (i KubernetesTaintArgs) ToKubernetesTaintOutput() KubernetesTaintOutput {
-	return i.ToKubernetesTaintOutputWithContext(context.Background())
-}
-
-func (i KubernetesTaintArgs) ToKubernetesTaintOutputWithContext(ctx context.Context) KubernetesTaintOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesTaintOutput)
-}
-
-// KubernetesTaintArrayInput is an input type that accepts KubernetesTaintArray and KubernetesTaintArrayOutput values.
-// You can construct a concrete instance of `KubernetesTaintArrayInput` via:
-//
-//	KubernetesTaintArray{ KubernetesTaintArgs{...} }
-type KubernetesTaintArrayInput interface {
-	pulumi.Input
-
-	ToKubernetesTaintArrayOutput() KubernetesTaintArrayOutput
-	ToKubernetesTaintArrayOutputWithContext(context.Context) KubernetesTaintArrayOutput
-}
-
-type KubernetesTaintArray []KubernetesTaintInput
-
-func (KubernetesTaintArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesTaint)(nil)).Elem()
-}
-
-func (i KubernetesTaintArray) ToKubernetesTaintArrayOutput() KubernetesTaintArrayOutput {
-	return i.ToKubernetesTaintArrayOutputWithContext(context.Background())
-}
-
-func (i KubernetesTaintArray) ToKubernetesTaintArrayOutputWithContext(ctx context.Context) KubernetesTaintArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesTaintArrayOutput)
-}
-
-type KubernetesTaintOutput struct{ *pulumi.OutputState }
-
-func (KubernetesTaintOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesTaint)(nil)).Elem()
-}
-
-func (o KubernetesTaintOutput) ToKubernetesTaintOutput() KubernetesTaintOutput {
-	return o
-}
-
-func (o KubernetesTaintOutput) ToKubernetesTaintOutputWithContext(ctx context.Context) KubernetesTaintOutput {
-	return o
-}
-
-// The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
-func (o KubernetesTaintOutput) Effect() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
-}
-
-// The key of a taint.
-func (o KubernetesTaintOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// The key of a taint.
-func (o KubernetesTaintOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type KubernetesTaintArrayOutput struct{ *pulumi.OutputState }
-
-func (KubernetesTaintArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesTaint)(nil)).Elem()
-}
-
-func (o KubernetesTaintArrayOutput) ToKubernetesTaintArrayOutput() KubernetesTaintArrayOutput {
-	return o
-}
-
-func (o KubernetesTaintArrayOutput) ToKubernetesTaintArrayOutputWithContext(ctx context.Context) KubernetesTaintArrayOutput {
-	return o
-}
-
-func (o KubernetesTaintArrayOutput) Index(i pulumi.IntInput) KubernetesTaintOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesTaint {
-		return vs[0].([]KubernetesTaint)[vs[1].(int)]
-	}).(KubernetesTaintOutput)
-}
-
-type KubernetesWorkerDataDisk struct {
-	// Worker node data disk auto snapshot policy.
-	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-	Category *string `pulumi:"category"`
-	// The device of the data disks.
-	Device *string `pulumi:"device"`
-	// Specifies whether to encrypt data disks. Valid values: true and false.
-	Encrypted *string `pulumi:"encrypted"`
-	// The id of the kms key.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The name of the data disks.
-	Name *string `pulumi:"name"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-	Size *string `pulumi:"size"`
-	// The id of snapshot.
-	SnapshotId *string `pulumi:"snapshotId"`
-}
-
-// KubernetesWorkerDataDiskInput is an input type that accepts KubernetesWorkerDataDiskArgs and KubernetesWorkerDataDiskOutput values.
-// You can construct a concrete instance of `KubernetesWorkerDataDiskInput` via:
-//
-//	KubernetesWorkerDataDiskArgs{...}
-type KubernetesWorkerDataDiskInput interface {
-	pulumi.Input
-
-	ToKubernetesWorkerDataDiskOutput() KubernetesWorkerDataDiskOutput
-	ToKubernetesWorkerDataDiskOutputWithContext(context.Context) KubernetesWorkerDataDiskOutput
-}
-
-type KubernetesWorkerDataDiskArgs struct {
-	// Worker node data disk auto snapshot policy.
-	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-	Category pulumi.StringPtrInput `pulumi:"category"`
-	// The device of the data disks.
-	Device pulumi.StringPtrInput `pulumi:"device"`
-	// Specifies whether to encrypt data disks. Valid values: true and false.
-	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
-	// The id of the kms key.
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The name of the data disks.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-	Size pulumi.StringPtrInput `pulumi:"size"`
-	// The id of snapshot.
-	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
-}
-
-func (KubernetesWorkerDataDiskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesWorkerDataDisk)(nil)).Elem()
-}
-
-func (i KubernetesWorkerDataDiskArgs) ToKubernetesWorkerDataDiskOutput() KubernetesWorkerDataDiskOutput {
-	return i.ToKubernetesWorkerDataDiskOutputWithContext(context.Background())
-}
-
-func (i KubernetesWorkerDataDiskArgs) ToKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) KubernetesWorkerDataDiskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesWorkerDataDiskOutput)
-}
-
-// KubernetesWorkerDataDiskArrayInput is an input type that accepts KubernetesWorkerDataDiskArray and KubernetesWorkerDataDiskArrayOutput values.
-// You can construct a concrete instance of `KubernetesWorkerDataDiskArrayInput` via:
-//
-//	KubernetesWorkerDataDiskArray{ KubernetesWorkerDataDiskArgs{...} }
-type KubernetesWorkerDataDiskArrayInput interface {
-	pulumi.Input
-
-	ToKubernetesWorkerDataDiskArrayOutput() KubernetesWorkerDataDiskArrayOutput
-	ToKubernetesWorkerDataDiskArrayOutputWithContext(context.Context) KubernetesWorkerDataDiskArrayOutput
-}
-
-type KubernetesWorkerDataDiskArray []KubernetesWorkerDataDiskInput
-
-func (KubernetesWorkerDataDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesWorkerDataDisk)(nil)).Elem()
-}
-
-func (i KubernetesWorkerDataDiskArray) ToKubernetesWorkerDataDiskArrayOutput() KubernetesWorkerDataDiskArrayOutput {
-	return i.ToKubernetesWorkerDataDiskArrayOutputWithContext(context.Background())
-}
-
-func (i KubernetesWorkerDataDiskArray) ToKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) KubernetesWorkerDataDiskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesWorkerDataDiskArrayOutput)
-}
-
-type KubernetesWorkerDataDiskOutput struct{ *pulumi.OutputState }
-
-func (KubernetesWorkerDataDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesWorkerDataDisk)(nil)).Elem()
-}
-
-func (o KubernetesWorkerDataDiskOutput) ToKubernetesWorkerDataDiskOutput() KubernetesWorkerDataDiskOutput {
-	return o
-}
-
-func (o KubernetesWorkerDataDiskOutput) ToKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) KubernetesWorkerDataDiskOutput {
-	return o
-}
-
-// Worker node data disk auto snapshot policy.
-func (o KubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
-}
-
-// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-func (o KubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// The device of the data disks.
-func (o KubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether to encrypt data disks. Valid values: true and false.
-func (o KubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
-}
-
-// The id of the kms key.
-func (o KubernetesWorkerDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
-}
-
-// The name of the data disks.
-func (o KubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-func (o KubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
-}
-
-// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-func (o KubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
-}
-
-// The id of snapshot.
-func (o KubernetesWorkerDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
-}
-
-type KubernetesWorkerDataDiskArrayOutput struct{ *pulumi.OutputState }
-
-func (KubernetesWorkerDataDiskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesWorkerDataDisk)(nil)).Elem()
-}
-
-func (o KubernetesWorkerDataDiskArrayOutput) ToKubernetesWorkerDataDiskArrayOutput() KubernetesWorkerDataDiskArrayOutput {
-	return o
-}
-
-func (o KubernetesWorkerDataDiskArrayOutput) ToKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) KubernetesWorkerDataDiskArrayOutput {
-	return o
-}
-
-func (o KubernetesWorkerDataDiskArrayOutput) Index(i pulumi.IntInput) KubernetesWorkerDataDiskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesWorkerDataDisk {
-		return vs[0].([]KubernetesWorkerDataDisk)[vs[1].(int)]
-	}).(KubernetesWorkerDataDiskOutput)
-}
-
-type KubernetesWorkerNode struct {
-	// ID of the node.
-	Id *string `pulumi:"id"`
-	// Node name.
-	Name *string `pulumi:"name"`
-	// The private IP address of node.
-	PrivateIp *string `pulumi:"privateIp"`
-}
-
-// KubernetesWorkerNodeInput is an input type that accepts KubernetesWorkerNodeArgs and KubernetesWorkerNodeOutput values.
-// You can construct a concrete instance of `KubernetesWorkerNodeInput` via:
-//
-//	KubernetesWorkerNodeArgs{...}
-type KubernetesWorkerNodeInput interface {
-	pulumi.Input
-
-	ToKubernetesWorkerNodeOutput() KubernetesWorkerNodeOutput
-	ToKubernetesWorkerNodeOutputWithContext(context.Context) KubernetesWorkerNodeOutput
-}
-
-type KubernetesWorkerNodeArgs struct {
-	// ID of the node.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Node name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The private IP address of node.
-	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-}
-
-func (KubernetesWorkerNodeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesWorkerNode)(nil)).Elem()
-}
-
-func (i KubernetesWorkerNodeArgs) ToKubernetesWorkerNodeOutput() KubernetesWorkerNodeOutput {
-	return i.ToKubernetesWorkerNodeOutputWithContext(context.Background())
-}
-
-func (i KubernetesWorkerNodeArgs) ToKubernetesWorkerNodeOutputWithContext(ctx context.Context) KubernetesWorkerNodeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesWorkerNodeOutput)
-}
-
-// KubernetesWorkerNodeArrayInput is an input type that accepts KubernetesWorkerNodeArray and KubernetesWorkerNodeArrayOutput values.
-// You can construct a concrete instance of `KubernetesWorkerNodeArrayInput` via:
-//
-//	KubernetesWorkerNodeArray{ KubernetesWorkerNodeArgs{...} }
-type KubernetesWorkerNodeArrayInput interface {
-	pulumi.Input
-
-	ToKubernetesWorkerNodeArrayOutput() KubernetesWorkerNodeArrayOutput
-	ToKubernetesWorkerNodeArrayOutputWithContext(context.Context) KubernetesWorkerNodeArrayOutput
-}
-
-type KubernetesWorkerNodeArray []KubernetesWorkerNodeInput
-
-func (KubernetesWorkerNodeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesWorkerNode)(nil)).Elem()
-}
-
-func (i KubernetesWorkerNodeArray) ToKubernetesWorkerNodeArrayOutput() KubernetesWorkerNodeArrayOutput {
-	return i.ToKubernetesWorkerNodeArrayOutputWithContext(context.Background())
-}
-
-func (i KubernetesWorkerNodeArray) ToKubernetesWorkerNodeArrayOutputWithContext(ctx context.Context) KubernetesWorkerNodeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesWorkerNodeArrayOutput)
-}
-
-type KubernetesWorkerNodeOutput struct{ *pulumi.OutputState }
-
-func (KubernetesWorkerNodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesWorkerNode)(nil)).Elem()
-}
-
-func (o KubernetesWorkerNodeOutput) ToKubernetesWorkerNodeOutput() KubernetesWorkerNodeOutput {
-	return o
-}
-
-func (o KubernetesWorkerNodeOutput) ToKubernetesWorkerNodeOutputWithContext(ctx context.Context) KubernetesWorkerNodeOutput {
-	return o
-}
-
-// ID of the node.
-func (o KubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Node name.
-func (o KubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The private IP address of node.
-func (o KubernetesWorkerNodeOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesWorkerNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
-}
-
-type KubernetesWorkerNodeArrayOutput struct{ *pulumi.OutputState }
-
-func (KubernetesWorkerNodeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesWorkerNode)(nil)).Elem()
-}
-
-func (o KubernetesWorkerNodeArrayOutput) ToKubernetesWorkerNodeArrayOutput() KubernetesWorkerNodeArrayOutput {
-	return o
-}
-
-func (o KubernetesWorkerNodeArrayOutput) ToKubernetesWorkerNodeArrayOutputWithContext(ctx context.Context) KubernetesWorkerNodeArrayOutput {
-	return o
-}
-
-func (o KubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) KubernetesWorkerNodeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesWorkerNode {
-		return vs[0].([]KubernetesWorkerNode)[vs[1].(int)]
-	}).(KubernetesWorkerNodeOutput)
-}
-
 type ManagedKubernetesAddon struct {
 	// If this parameter is left empty, no configurations are required.
 	Config *string `pulumi:"config"`
 	// It specifies whether to disable automatic installation.
 	//
-	// It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+	// It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
 	//
 	// You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
 	//
@@ -2765,6 +2375,8 @@ type ManagedKubernetesAddon struct {
 	Disabled *bool `pulumi:"disabled"`
 	// This parameter specifies the name of the component.
 	Name *string `pulumi:"name"`
+	// It specifies the version of the component.
+	Version *string `pulumi:"version"`
 }
 
 // ManagedKubernetesAddonInput is an input type that accepts ManagedKubernetesAddonArgs and ManagedKubernetesAddonOutput values.
@@ -2783,7 +2395,7 @@ type ManagedKubernetesAddonArgs struct {
 	Config pulumi.StringPtrInput `pulumi:"config"`
 	// It specifies whether to disable automatic installation.
 	//
-	// It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+	// It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
 	//
 	// You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
 	//
@@ -2797,6 +2409,8 @@ type ManagedKubernetesAddonArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// This parameter specifies the name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// It specifies the version of the component.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ManagedKubernetesAddonArgs) ElementType() reflect.Type {
@@ -2857,7 +2471,7 @@ func (o ManagedKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 
 // It specifies whether to disable automatic installation.
 //
-// It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+// It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
 //
 // You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
 //
@@ -2875,6 +2489,11 @@ func (o ManagedKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
 // This parameter specifies the name of the component.
 func (o ManagedKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// It specifies the version of the component.
+func (o ManagedKubernetesAddonOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type ManagedKubernetesAddonArrayOutput struct{ *pulumi.OutputState }
@@ -3718,666 +3337,6 @@ func (o ManagedKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.Strin
 		}
 		return v.RrsaOidcIssuerUrl
 	}).(pulumi.StringPtrOutput)
-}
-
-type ManagedKubernetesRuntime struct {
-	// This parameter specifies the name of the component.
-	Name *string `pulumi:"name"`
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-	Version *string `pulumi:"version"`
-}
-
-// ManagedKubernetesRuntimeInput is an input type that accepts ManagedKubernetesRuntimeArgs and ManagedKubernetesRuntimeOutput values.
-// You can construct a concrete instance of `ManagedKubernetesRuntimeInput` via:
-//
-//	ManagedKubernetesRuntimeArgs{...}
-type ManagedKubernetesRuntimeInput interface {
-	pulumi.Input
-
-	ToManagedKubernetesRuntimeOutput() ManagedKubernetesRuntimeOutput
-	ToManagedKubernetesRuntimeOutputWithContext(context.Context) ManagedKubernetesRuntimeOutput
-}
-
-type ManagedKubernetesRuntimeArgs struct {
-	// This parameter specifies the name of the component.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-	Version pulumi.StringPtrInput `pulumi:"version"`
-}
-
-func (ManagedKubernetesRuntimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesRuntime)(nil)).Elem()
-}
-
-func (i ManagedKubernetesRuntimeArgs) ToManagedKubernetesRuntimeOutput() ManagedKubernetesRuntimeOutput {
-	return i.ToManagedKubernetesRuntimeOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesRuntimeArgs) ToManagedKubernetesRuntimeOutputWithContext(ctx context.Context) ManagedKubernetesRuntimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesRuntimeOutput)
-}
-
-func (i ManagedKubernetesRuntimeArgs) ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput {
-	return i.ToManagedKubernetesRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesRuntimeArgs) ToManagedKubernetesRuntimePtrOutputWithContext(ctx context.Context) ManagedKubernetesRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesRuntimeOutput).ToManagedKubernetesRuntimePtrOutputWithContext(ctx)
-}
-
-// ManagedKubernetesRuntimePtrInput is an input type that accepts ManagedKubernetesRuntimeArgs, ManagedKubernetesRuntimePtr and ManagedKubernetesRuntimePtrOutput values.
-// You can construct a concrete instance of `ManagedKubernetesRuntimePtrInput` via:
-//
-//	        ManagedKubernetesRuntimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedKubernetesRuntimePtrInput interface {
-	pulumi.Input
-
-	ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput
-	ToManagedKubernetesRuntimePtrOutputWithContext(context.Context) ManagedKubernetesRuntimePtrOutput
-}
-
-type managedKubernetesRuntimePtrType ManagedKubernetesRuntimeArgs
-
-func ManagedKubernetesRuntimePtr(v *ManagedKubernetesRuntimeArgs) ManagedKubernetesRuntimePtrInput {
-	return (*managedKubernetesRuntimePtrType)(v)
-}
-
-func (*managedKubernetesRuntimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedKubernetesRuntime)(nil)).Elem()
-}
-
-func (i *managedKubernetesRuntimePtrType) ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput {
-	return i.ToManagedKubernetesRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *managedKubernetesRuntimePtrType) ToManagedKubernetesRuntimePtrOutputWithContext(ctx context.Context) ManagedKubernetesRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesRuntimePtrOutput)
-}
-
-type ManagedKubernetesRuntimeOutput struct{ *pulumi.OutputState }
-
-func (ManagedKubernetesRuntimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesRuntime)(nil)).Elem()
-}
-
-func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimeOutput() ManagedKubernetesRuntimeOutput {
-	return o
-}
-
-func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimeOutputWithContext(ctx context.Context) ManagedKubernetesRuntimeOutput {
-	return o
-}
-
-func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput {
-	return o.ToManagedKubernetesRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o ManagedKubernetesRuntimeOutput) ToManagedKubernetesRuntimePtrOutputWithContext(ctx context.Context) ManagedKubernetesRuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesRuntime) *ManagedKubernetesRuntime {
-		return &v
-	}).(ManagedKubernetesRuntimePtrOutput)
-}
-
-// This parameter specifies the name of the component.
-func (o ManagedKubernetesRuntimeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesRuntime) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-func (o ManagedKubernetesRuntimeOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesRuntime) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type ManagedKubernetesRuntimePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedKubernetesRuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedKubernetesRuntime)(nil)).Elem()
-}
-
-func (o ManagedKubernetesRuntimePtrOutput) ToManagedKubernetesRuntimePtrOutput() ManagedKubernetesRuntimePtrOutput {
-	return o
-}
-
-func (o ManagedKubernetesRuntimePtrOutput) ToManagedKubernetesRuntimePtrOutputWithContext(ctx context.Context) ManagedKubernetesRuntimePtrOutput {
-	return o
-}
-
-func (o ManagedKubernetesRuntimePtrOutput) Elem() ManagedKubernetesRuntimeOutput {
-	return o.ApplyT(func(v *ManagedKubernetesRuntime) ManagedKubernetesRuntime {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedKubernetesRuntime
-		return ret
-	}).(ManagedKubernetesRuntimeOutput)
-}
-
-// This parameter specifies the name of the component.
-func (o ManagedKubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetesRuntime) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-func (o ManagedKubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetesRuntime) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-type ManagedKubernetesTaint struct {
-	// The taint effect.
-	//
-	// The following example is the definition of taints block:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
-	// 			Taints: cs.ManagedKubernetesTaintArray{
-	// 				&cs.ManagedKubernetesTaintArgs{
-	// 					Effect: pulumi.String("NoSchedule"),
-	// 					Key:    pulumi.String("key-a"),
-	// 					Value:  pulumi.String("value-a"),
-	// 				},
-	// 				&cs.ManagedKubernetesTaintArgs{
-	// 					Effect: pulumi.String("NoSchedule"),
-	// 					Key:    pulumi.String("key-b"),
-	// 					Value:  pulumi.String("value-b"),
-	// 				},
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	Effect *string `pulumi:"effect"`
-	// The taint key.
-	Key *string `pulumi:"key"`
-	// The taint value.
-	Value *string `pulumi:"value"`
-}
-
-// ManagedKubernetesTaintInput is an input type that accepts ManagedKubernetesTaintArgs and ManagedKubernetesTaintOutput values.
-// You can construct a concrete instance of `ManagedKubernetesTaintInput` via:
-//
-//	ManagedKubernetesTaintArgs{...}
-type ManagedKubernetesTaintInput interface {
-	pulumi.Input
-
-	ToManagedKubernetesTaintOutput() ManagedKubernetesTaintOutput
-	ToManagedKubernetesTaintOutputWithContext(context.Context) ManagedKubernetesTaintOutput
-}
-
-type ManagedKubernetesTaintArgs struct {
-	// The taint effect.
-	//
-	// The following example is the definition of taints block:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
-	// 			Taints: cs.ManagedKubernetesTaintArray{
-	// 				&cs.ManagedKubernetesTaintArgs{
-	// 					Effect: pulumi.String("NoSchedule"),
-	// 					Key:    pulumi.String("key-a"),
-	// 					Value:  pulumi.String("value-a"),
-	// 				},
-	// 				&cs.ManagedKubernetesTaintArgs{
-	// 					Effect: pulumi.String("NoSchedule"),
-	// 					Key:    pulumi.String("key-b"),
-	// 					Value:  pulumi.String("value-b"),
-	// 				},
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	// The taint key.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The taint value.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ManagedKubernetesTaintArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesTaint)(nil)).Elem()
-}
-
-func (i ManagedKubernetesTaintArgs) ToManagedKubernetesTaintOutput() ManagedKubernetesTaintOutput {
-	return i.ToManagedKubernetesTaintOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesTaintArgs) ToManagedKubernetesTaintOutputWithContext(ctx context.Context) ManagedKubernetesTaintOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesTaintOutput)
-}
-
-// ManagedKubernetesTaintArrayInput is an input type that accepts ManagedKubernetesTaintArray and ManagedKubernetesTaintArrayOutput values.
-// You can construct a concrete instance of `ManagedKubernetesTaintArrayInput` via:
-//
-//	ManagedKubernetesTaintArray{ ManagedKubernetesTaintArgs{...} }
-type ManagedKubernetesTaintArrayInput interface {
-	pulumi.Input
-
-	ToManagedKubernetesTaintArrayOutput() ManagedKubernetesTaintArrayOutput
-	ToManagedKubernetesTaintArrayOutputWithContext(context.Context) ManagedKubernetesTaintArrayOutput
-}
-
-type ManagedKubernetesTaintArray []ManagedKubernetesTaintInput
-
-func (ManagedKubernetesTaintArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedKubernetesTaint)(nil)).Elem()
-}
-
-func (i ManagedKubernetesTaintArray) ToManagedKubernetesTaintArrayOutput() ManagedKubernetesTaintArrayOutput {
-	return i.ToManagedKubernetesTaintArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesTaintArray) ToManagedKubernetesTaintArrayOutputWithContext(ctx context.Context) ManagedKubernetesTaintArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesTaintArrayOutput)
-}
-
-type ManagedKubernetesTaintOutput struct{ *pulumi.OutputState }
-
-func (ManagedKubernetesTaintOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesTaint)(nil)).Elem()
-}
-
-func (o ManagedKubernetesTaintOutput) ToManagedKubernetesTaintOutput() ManagedKubernetesTaintOutput {
-	return o
-}
-
-func (o ManagedKubernetesTaintOutput) ToManagedKubernetesTaintOutputWithContext(ctx context.Context) ManagedKubernetesTaintOutput {
-	return o
-}
-
-// The taint effect.
-//
-// The following example is the definition of taints block:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
-//				Taints: cs.ManagedKubernetesTaintArray{
-//					&cs.ManagedKubernetesTaintArgs{
-//						Effect: pulumi.String("NoSchedule"),
-//						Key:    pulumi.String("key-a"),
-//						Value:  pulumi.String("value-a"),
-//					},
-//					&cs.ManagedKubernetesTaintArgs{
-//						Effect: pulumi.String("NoSchedule"),
-//						Key:    pulumi.String("key-b"),
-//						Value:  pulumi.String("value-b"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-func (o ManagedKubernetesTaintOutput) Effect() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
-}
-
-// The taint key.
-func (o ManagedKubernetesTaintOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// The taint value.
-func (o ManagedKubernetesTaintOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ManagedKubernetesTaintArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedKubernetesTaintArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedKubernetesTaint)(nil)).Elem()
-}
-
-func (o ManagedKubernetesTaintArrayOutput) ToManagedKubernetesTaintArrayOutput() ManagedKubernetesTaintArrayOutput {
-	return o
-}
-
-func (o ManagedKubernetesTaintArrayOutput) ToManagedKubernetesTaintArrayOutputWithContext(ctx context.Context) ManagedKubernetesTaintArrayOutput {
-	return o
-}
-
-func (o ManagedKubernetesTaintArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesTaintOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesTaint {
-		return vs[0].([]ManagedKubernetesTaint)[vs[1].(int)]
-	}).(ManagedKubernetesTaintOutput)
-}
-
-type ManagedKubernetesWorkerDataDisk struct {
-	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
-	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	// (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-	Category *string `pulumi:"category"`
-	// The mount point of data disk N.
-	Device *string `pulumi:"device"`
-	// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-	Encrypted *string `pulumi:"encrypted"`
-	// The ID of the Key Management Service (KMS) key to use for data disk N.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
-	Name *string `pulumi:"name"`
-	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// (Optional)The size of a data disk, at least 40. Unit: GiB.
-	Size *string `pulumi:"size"`
-	// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
-	SnapshotId *string `pulumi:"snapshotId"`
-}
-
-// ManagedKubernetesWorkerDataDiskInput is an input type that accepts ManagedKubernetesWorkerDataDiskArgs and ManagedKubernetesWorkerDataDiskOutput values.
-// You can construct a concrete instance of `ManagedKubernetesWorkerDataDiskInput` via:
-//
-//	ManagedKubernetesWorkerDataDiskArgs{...}
-type ManagedKubernetesWorkerDataDiskInput interface {
-	pulumi.Input
-
-	ToManagedKubernetesWorkerDataDiskOutput() ManagedKubernetesWorkerDataDiskOutput
-	ToManagedKubernetesWorkerDataDiskOutputWithContext(context.Context) ManagedKubernetesWorkerDataDiskOutput
-}
-
-type ManagedKubernetesWorkerDataDiskArgs struct {
-	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
-	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	// (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-	Category pulumi.StringPtrInput `pulumi:"category"`
-	// The mount point of data disk N.
-	Device pulumi.StringPtrInput `pulumi:"device"`
-	// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
-	// The ID of the Key Management Service (KMS) key to use for data disk N.
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// (Optional)The size of a data disk, at least 40. Unit: GiB.
-	Size pulumi.StringPtrInput `pulumi:"size"`
-	// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
-	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
-}
-
-func (ManagedKubernetesWorkerDataDiskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesWorkerDataDisk)(nil)).Elem()
-}
-
-func (i ManagedKubernetesWorkerDataDiskArgs) ToManagedKubernetesWorkerDataDiskOutput() ManagedKubernetesWorkerDataDiskOutput {
-	return i.ToManagedKubernetesWorkerDataDiskOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesWorkerDataDiskArgs) ToManagedKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) ManagedKubernetesWorkerDataDiskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesWorkerDataDiskOutput)
-}
-
-// ManagedKubernetesWorkerDataDiskArrayInput is an input type that accepts ManagedKubernetesWorkerDataDiskArray and ManagedKubernetesWorkerDataDiskArrayOutput values.
-// You can construct a concrete instance of `ManagedKubernetesWorkerDataDiskArrayInput` via:
-//
-//	ManagedKubernetesWorkerDataDiskArray{ ManagedKubernetesWorkerDataDiskArgs{...} }
-type ManagedKubernetesWorkerDataDiskArrayInput interface {
-	pulumi.Input
-
-	ToManagedKubernetesWorkerDataDiskArrayOutput() ManagedKubernetesWorkerDataDiskArrayOutput
-	ToManagedKubernetesWorkerDataDiskArrayOutputWithContext(context.Context) ManagedKubernetesWorkerDataDiskArrayOutput
-}
-
-type ManagedKubernetesWorkerDataDiskArray []ManagedKubernetesWorkerDataDiskInput
-
-func (ManagedKubernetesWorkerDataDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedKubernetesWorkerDataDisk)(nil)).Elem()
-}
-
-func (i ManagedKubernetesWorkerDataDiskArray) ToManagedKubernetesWorkerDataDiskArrayOutput() ManagedKubernetesWorkerDataDiskArrayOutput {
-	return i.ToManagedKubernetesWorkerDataDiskArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesWorkerDataDiskArray) ToManagedKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) ManagedKubernetesWorkerDataDiskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesWorkerDataDiskArrayOutput)
-}
-
-type ManagedKubernetesWorkerDataDiskOutput struct{ *pulumi.OutputState }
-
-func (ManagedKubernetesWorkerDataDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesWorkerDataDisk)(nil)).Elem()
-}
-
-func (o ManagedKubernetesWorkerDataDiskOutput) ToManagedKubernetesWorkerDataDiskOutput() ManagedKubernetesWorkerDataDiskOutput {
-	return o
-}
-
-func (o ManagedKubernetesWorkerDataDiskOutput) ToManagedKubernetesWorkerDataDiskOutputWithContext(ctx context.Context) ManagedKubernetesWorkerDataDiskOutput {
-	return o
-}
-
-// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
-func (o ManagedKubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
-}
-
-// (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-func (o ManagedKubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// The mount point of data disk N.
-func (o ManagedKubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
-}
-
-// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-func (o ManagedKubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the Key Management Service (KMS) key to use for data disk N.
-func (o ManagedKubernetesWorkerDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
-}
-
-// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
-func (o ManagedKubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-func (o ManagedKubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
-}
-
-// (Optional)The size of a data disk, at least 40. Unit: GiB.
-func (o ManagedKubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
-func (o ManagedKubernetesWorkerDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
-}
-
-type ManagedKubernetesWorkerDataDiskArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedKubernetesWorkerDataDiskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedKubernetesWorkerDataDisk)(nil)).Elem()
-}
-
-func (o ManagedKubernetesWorkerDataDiskArrayOutput) ToManagedKubernetesWorkerDataDiskArrayOutput() ManagedKubernetesWorkerDataDiskArrayOutput {
-	return o
-}
-
-func (o ManagedKubernetesWorkerDataDiskArrayOutput) ToManagedKubernetesWorkerDataDiskArrayOutputWithContext(ctx context.Context) ManagedKubernetesWorkerDataDiskArrayOutput {
-	return o
-}
-
-func (o ManagedKubernetesWorkerDataDiskArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesWorkerDataDiskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesWorkerDataDisk {
-		return vs[0].([]ManagedKubernetesWorkerDataDisk)[vs[1].(int)]
-	}).(ManagedKubernetesWorkerDataDiskOutput)
-}
-
-type ManagedKubernetesWorkerNode struct {
-	// (Deprecated from version 1.177.0) ID of the node.
-	Id *string `pulumi:"id"`
-	// This parameter specifies the name of the component.
-	Name *string `pulumi:"name"`
-	// (Deprecated from version 1.177.0) The private IP address of node.
-	PrivateIp *string `pulumi:"privateIp"`
-}
-
-// ManagedKubernetesWorkerNodeInput is an input type that accepts ManagedKubernetesWorkerNodeArgs and ManagedKubernetesWorkerNodeOutput values.
-// You can construct a concrete instance of `ManagedKubernetesWorkerNodeInput` via:
-//
-//	ManagedKubernetesWorkerNodeArgs{...}
-type ManagedKubernetesWorkerNodeInput interface {
-	pulumi.Input
-
-	ToManagedKubernetesWorkerNodeOutput() ManagedKubernetesWorkerNodeOutput
-	ToManagedKubernetesWorkerNodeOutputWithContext(context.Context) ManagedKubernetesWorkerNodeOutput
-}
-
-type ManagedKubernetesWorkerNodeArgs struct {
-	// (Deprecated from version 1.177.0) ID of the node.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This parameter specifies the name of the component.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Deprecated from version 1.177.0) The private IP address of node.
-	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-}
-
-func (ManagedKubernetesWorkerNodeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesWorkerNode)(nil)).Elem()
-}
-
-func (i ManagedKubernetesWorkerNodeArgs) ToManagedKubernetesWorkerNodeOutput() ManagedKubernetesWorkerNodeOutput {
-	return i.ToManagedKubernetesWorkerNodeOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesWorkerNodeArgs) ToManagedKubernetesWorkerNodeOutputWithContext(ctx context.Context) ManagedKubernetesWorkerNodeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesWorkerNodeOutput)
-}
-
-// ManagedKubernetesWorkerNodeArrayInput is an input type that accepts ManagedKubernetesWorkerNodeArray and ManagedKubernetesWorkerNodeArrayOutput values.
-// You can construct a concrete instance of `ManagedKubernetesWorkerNodeArrayInput` via:
-//
-//	ManagedKubernetesWorkerNodeArray{ ManagedKubernetesWorkerNodeArgs{...} }
-type ManagedKubernetesWorkerNodeArrayInput interface {
-	pulumi.Input
-
-	ToManagedKubernetesWorkerNodeArrayOutput() ManagedKubernetesWorkerNodeArrayOutput
-	ToManagedKubernetesWorkerNodeArrayOutputWithContext(context.Context) ManagedKubernetesWorkerNodeArrayOutput
-}
-
-type ManagedKubernetesWorkerNodeArray []ManagedKubernetesWorkerNodeInput
-
-func (ManagedKubernetesWorkerNodeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedKubernetesWorkerNode)(nil)).Elem()
-}
-
-func (i ManagedKubernetesWorkerNodeArray) ToManagedKubernetesWorkerNodeArrayOutput() ManagedKubernetesWorkerNodeArrayOutput {
-	return i.ToManagedKubernetesWorkerNodeArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesWorkerNodeArray) ToManagedKubernetesWorkerNodeArrayOutputWithContext(ctx context.Context) ManagedKubernetesWorkerNodeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesWorkerNodeArrayOutput)
-}
-
-type ManagedKubernetesWorkerNodeOutput struct{ *pulumi.OutputState }
-
-func (ManagedKubernetesWorkerNodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesWorkerNode)(nil)).Elem()
-}
-
-func (o ManagedKubernetesWorkerNodeOutput) ToManagedKubernetesWorkerNodeOutput() ManagedKubernetesWorkerNodeOutput {
-	return o
-}
-
-func (o ManagedKubernetesWorkerNodeOutput) ToManagedKubernetesWorkerNodeOutputWithContext(ctx context.Context) ManagedKubernetesWorkerNodeOutput {
-	return o
-}
-
-// (Deprecated from version 1.177.0) ID of the node.
-func (o ManagedKubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// This parameter specifies the name of the component.
-func (o ManagedKubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// (Deprecated from version 1.177.0) The private IP address of node.
-func (o ManagedKubernetesWorkerNodeOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
-}
-
-type ManagedKubernetesWorkerNodeArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedKubernetesWorkerNodeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedKubernetesWorkerNode)(nil)).Elem()
-}
-
-func (o ManagedKubernetesWorkerNodeArrayOutput) ToManagedKubernetesWorkerNodeArrayOutput() ManagedKubernetesWorkerNodeArrayOutput {
-	return o
-}
-
-func (o ManagedKubernetesWorkerNodeArrayOutput) ToManagedKubernetesWorkerNodeArrayOutputWithContext(ctx context.Context) ManagedKubernetesWorkerNodeArrayOutput {
-	return o
-}
-
-func (o ManagedKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesWorkerNodeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesWorkerNode {
-		return vs[0].([]ManagedKubernetesWorkerNode)[vs[1].(int)]
-	}).(ManagedKubernetesWorkerNodeOutput)
 }
 
 type NodePoolDataDisk struct {
@@ -9819,12 +8778,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionPermissionArrayInput)(nil)).Elem(), KubernetesPermissionPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesRuntimeInput)(nil)).Elem(), KubernetesRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesRuntimePtrInput)(nil)).Elem(), KubernetesRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesTaintInput)(nil)).Elem(), KubernetesTaintArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesTaintArrayInput)(nil)).Elem(), KubernetesTaintArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesWorkerDataDiskInput)(nil)).Elem(), KubernetesWorkerDataDiskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesWorkerDataDiskArrayInput)(nil)).Elem(), KubernetesWorkerDataDiskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesWorkerNodeInput)(nil)).Elem(), KubernetesWorkerNodeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesWorkerNodeArrayInput)(nil)).Elem(), KubernetesWorkerNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAddonInput)(nil)).Elem(), ManagedKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAddonArrayInput)(nil)).Elem(), ManagedKubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
@@ -9835,14 +8788,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowPtrInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRuntimeInput)(nil)).Elem(), ManagedKubernetesRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRuntimePtrInput)(nil)).Elem(), ManagedKubernetesRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesTaintInput)(nil)).Elem(), ManagedKubernetesTaintArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesTaintArrayInput)(nil)).Elem(), ManagedKubernetesTaintArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesWorkerDataDiskInput)(nil)).Elem(), ManagedKubernetesWorkerDataDiskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesWorkerDataDiskArrayInput)(nil)).Elem(), ManagedKubernetesWorkerDataDiskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesWorkerNodeInput)(nil)).Elem(), ManagedKubernetesWorkerNodeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesWorkerNodeArrayInput)(nil)).Elem(), ManagedKubernetesWorkerNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskInput)(nil)).Elem(), NodePoolDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskArrayInput)(nil)).Elem(), NodePoolDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationInput)(nil)).Elem(), NodePoolKubeletConfigurationArgs{})
@@ -9942,12 +8887,6 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesPermissionPermissionArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesRuntimeOutput{})
 	pulumi.RegisterOutputType(KubernetesRuntimePtrOutput{})
-	pulumi.RegisterOutputType(KubernetesTaintOutput{})
-	pulumi.RegisterOutputType(KubernetesTaintArrayOutput{})
-	pulumi.RegisterOutputType(KubernetesWorkerDataDiskOutput{})
-	pulumi.RegisterOutputType(KubernetesWorkerDataDiskArrayOutput{})
-	pulumi.RegisterOutputType(KubernetesWorkerNodeOutput{})
-	pulumi.RegisterOutputType(KubernetesWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityOutput{})
@@ -9958,14 +8897,6 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataPtrOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesRuntimeOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesRuntimePtrOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesTaintOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesTaintArrayOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesWorkerDataDiskOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesWorkerDataDiskArrayOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolKubeletConfigurationOutput{})

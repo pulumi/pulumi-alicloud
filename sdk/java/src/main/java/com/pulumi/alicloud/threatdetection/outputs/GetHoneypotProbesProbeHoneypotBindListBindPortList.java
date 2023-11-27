@@ -123,13 +123,13 @@ public final class GetHoneypotProbesProbeHoneypotBindListBindPortList {
             return this;
         }
         public GetHoneypotProbesProbeHoneypotBindListBindPortList build() {
-            final var o = new GetHoneypotProbesProbeHoneypotBindListBindPortList();
-            o.bindPort = bindPort;
-            o.endPort = endPort;
-            o.fixed = fixed;
-            o.startPort = startPort;
-            o.targetPort = targetPort;
-            return o;
+            final var _resultValue = new GetHoneypotProbesProbeHoneypotBindListBindPortList();
+            _resultValue.bindPort = bindPort;
+            _resultValue.endPort = endPort;
+            _resultValue.fixed = fixed;
+            _resultValue.startPort = startPort;
+            _resultValue.targetPort = targetPort;
+            return _resultValue;
         }
     }
 }

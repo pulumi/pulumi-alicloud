@@ -193,16 +193,16 @@ public final class DomainNewCertificateConfig {
             return this;
         }
         public DomainNewCertificateConfig build() {
-            final var o = new DomainNewCertificateConfig();
-            o.certId = certId;
-            o.certName = certName;
-            o.certRegion = certRegion;
-            o.certType = certType;
-            o.forceSet = forceSet;
-            o.privateKey = privateKey;
-            o.serverCertificate = serverCertificate;
-            o.serverCertificateStatus = serverCertificateStatus;
-            return o;
+            final var _resultValue = new DomainNewCertificateConfig();
+            _resultValue.certId = certId;
+            _resultValue.certName = certName;
+            _resultValue.certRegion = certRegion;
+            _resultValue.certType = certType;
+            _resultValue.forceSet = forceSet;
+            _resultValue.privateKey = privateKey;
+            _resultValue.serverCertificate = serverCertificate;
+            _resultValue.serverCertificateStatus = serverCertificateStatus;
+            return _resultValue;
         }
     }
 }

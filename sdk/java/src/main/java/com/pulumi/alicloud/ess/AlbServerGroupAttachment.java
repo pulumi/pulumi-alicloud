@@ -164,7 +164,7 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
      * ID of Alb Server Group.
      * 
      */
-    @Export(name="albServerGroupId", type=String.class, parameters={})
+    @Export(name="albServerGroupId", refs={String.class}, tree="[0]")
     private Output<String> albServerGroupId;
 
     /**
@@ -179,7 +179,7 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
      * server group from scaling group. Default to false.
      * 
      */
-    @Export(name="forceAttach", type=Boolean.class, parameters={})
+    @Export(name="forceAttach", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceAttach;
 
     /**
@@ -194,7 +194,7 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
      * The port will be used for Alb Server Group backend server.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -208,7 +208,7 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
      * ID of the scaling group.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**
@@ -222,7 +222,7 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
      * The weight of an ECS instance attached to the Alb Server Group.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**

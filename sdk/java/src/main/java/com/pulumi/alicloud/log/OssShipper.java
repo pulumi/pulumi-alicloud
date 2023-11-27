@@ -108,7 +108,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * How often is it delivered every interval.
      * 
      */
-    @Export(name="bufferInterval", type=Integer.class, parameters={})
+    @Export(name="bufferInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> bufferInterval;
 
     /**
@@ -122,7 +122,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
      * 
      */
-    @Export(name="bufferSize", type=Integer.class, parameters={})
+    @Export(name="bufferSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> bufferSize;
 
     /**
@@ -136,7 +136,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      * 
      */
-    @Export(name="compressType", type=String.class, parameters={})
+    @Export(name="compressType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> compressType;
 
     /**
@@ -146,37 +146,37 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> compressType() {
         return Codegen.optional(this.compressType);
     }
-    @Export(name="csvConfigColumns", type=List.class, parameters={String.class})
+    @Export(name="csvConfigColumns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> csvConfigColumns;
 
     public Output<Optional<List<String>>> csvConfigColumns() {
         return Codegen.optional(this.csvConfigColumns);
     }
-    @Export(name="csvConfigDelimiter", type=String.class, parameters={})
+    @Export(name="csvConfigDelimiter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigDelimiter;
 
     public Output<Optional<String>> csvConfigDelimiter() {
         return Codegen.optional(this.csvConfigDelimiter);
     }
-    @Export(name="csvConfigHeader", type=Boolean.class, parameters={})
+    @Export(name="csvConfigHeader", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> csvConfigHeader;
 
     public Output<Optional<Boolean>> csvConfigHeader() {
         return Codegen.optional(this.csvConfigHeader);
     }
-    @Export(name="csvConfigLinefeed", type=String.class, parameters={})
+    @Export(name="csvConfigLinefeed", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigLinefeed;
 
     public Output<Optional<String>> csvConfigLinefeed() {
         return Codegen.optional(this.csvConfigLinefeed);
     }
-    @Export(name="csvConfigNullidentifier", type=String.class, parameters={})
+    @Export(name="csvConfigNullidentifier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigNullidentifier;
 
     public Output<Optional<String>> csvConfigNullidentifier() {
         return Codegen.optional(this.csvConfigNullidentifier);
     }
-    @Export(name="csvConfigQuote", type=String.class, parameters={})
+    @Export(name="csvConfigQuote", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigQuote;
 
     public Output<Optional<String>> csvConfigQuote() {
@@ -200,7 +200,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      *   `type` - (Required) Type of configuration name.
      * 
      */
-    @Export(name="format", type=String.class, parameters={})
+    @Export(name="format", refs={String.class}, tree="[0]")
     private Output<String> format;
 
     /**
@@ -224,7 +224,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
     public Output<String> format() {
         return this.format;
     }
-    @Export(name="jsonEnableTag", type=Boolean.class, parameters={})
+    @Export(name="jsonEnableTag", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> jsonEnableTag;
 
     public Output<Optional<Boolean>> jsonEnableTag() {
@@ -234,7 +234,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * The name of the log logstore.
      * 
      */
-    @Export(name="logstoreName", type=String.class, parameters={})
+    @Export(name="logstoreName", refs={String.class}, tree="[0]")
     private Output<String> logstoreName;
 
     /**
@@ -248,7 +248,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * The name of the oss bucket.
      * 
      */
-    @Export(name="ossBucket", type=String.class, parameters={})
+    @Export(name="ossBucket", refs={String.class}, tree="[0]")
     private Output<String> ossBucket;
 
     /**
@@ -262,7 +262,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      * 
      */
-    @Export(name="ossPrefix", type=String.class, parameters={})
+    @Export(name="ossPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossPrefix;
 
     /**
@@ -272,7 +272,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> ossPrefix() {
         return Codegen.optional(this.ossPrefix);
     }
-    @Export(name="parquetConfigs", type=List.class, parameters={OssShipperParquetConfig.class})
+    @Export(name="parquetConfigs", refs={List.class,OssShipperParquetConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OssShipperParquetConfig>> parquetConfigs;
 
     public Output<Optional<List<OssShipperParquetConfig>>> parquetConfigs() {
@@ -282,7 +282,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      * 
      */
-    @Export(name="pathFormat", type=String.class, parameters={})
+    @Export(name="pathFormat", refs={String.class}, tree="[0]")
     private Output<String> pathFormat;
 
     /**
@@ -296,7 +296,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * The name of the log project. It is the only in one Alicloud account.
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
@@ -310,7 +310,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
      * 
      */
-    @Export(name="roleArn", type=String.class, parameters={})
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleArn;
 
     /**
@@ -324,7 +324,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      * 
      */
-    @Export(name="shipperName", type=String.class, parameters={})
+    @Export(name="shipperName", refs={String.class}, tree="[0]")
     private Output<String> shipperName;
 
     /**

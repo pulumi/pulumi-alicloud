@@ -363,24 +363,24 @@ public final class ContainerGroupContainer {
             return this;
         }
         public ContainerGroupContainer build() {
-            final var o = new ContainerGroupContainer();
-            o.args = args;
-            o.commands = commands;
-            o.cpu = cpu;
-            o.environmentVars = environmentVars;
-            o.gpu = gpu;
-            o.image = image;
-            o.imagePullPolicy = imagePullPolicy;
-            o.livenessProbes = livenessProbes;
-            o.memory = memory;
-            o.name = name;
-            o.ports = ports;
-            o.readinessProbes = readinessProbes;
-            o.ready = ready;
-            o.restartCount = restartCount;
-            o.volumeMounts = volumeMounts;
-            o.workingDir = workingDir;
-            return o;
+            final var _resultValue = new ContainerGroupContainer();
+            _resultValue.args = args;
+            _resultValue.commands = commands;
+            _resultValue.cpu = cpu;
+            _resultValue.environmentVars = environmentVars;
+            _resultValue.gpu = gpu;
+            _resultValue.image = image;
+            _resultValue.imagePullPolicy = imagePullPolicy;
+            _resultValue.livenessProbes = livenessProbes;
+            _resultValue.memory = memory;
+            _resultValue.name = name;
+            _resultValue.ports = ports;
+            _resultValue.readinessProbes = readinessProbes;
+            _resultValue.ready = ready;
+            _resultValue.restartCount = restartCount;
+            _resultValue.volumeMounts = volumeMounts;
+            _resultValue.workingDir = workingDir;
+            return _resultValue;
         }
     }
 }

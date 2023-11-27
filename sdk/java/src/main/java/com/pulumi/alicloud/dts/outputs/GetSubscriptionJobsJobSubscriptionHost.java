@@ -84,11 +84,11 @@ public final class GetSubscriptionJobsJobSubscriptionHost {
             return this;
         }
         public GetSubscriptionJobsJobSubscriptionHost build() {
-            final var o = new GetSubscriptionJobsJobSubscriptionHost();
-            o.privateHost = privateHost;
-            o.publicHost = publicHost;
-            o.vpcHost = vpcHost;
-            return o;
+            final var _resultValue = new GetSubscriptionJobsJobSubscriptionHost();
+            _resultValue.privateHost = privateHost;
+            _resultValue.publicHost = publicHost;
+            _resultValue.vpcHost = vpcHost;
+            return _resultValue;
         }
     }
 }

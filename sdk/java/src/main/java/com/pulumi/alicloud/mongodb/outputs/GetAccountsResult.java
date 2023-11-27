@@ -97,13 +97,13 @@ public final class GetAccountsResult {
             return this;
         }
         public GetAccountsResult build() {
-            final var o = new GetAccountsResult();
-            o.accountName = accountName;
-            o.accounts = accounts;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetAccountsResult();
+            _resultValue.accountName = accountName;
+            _resultValue.accounts = accounts;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

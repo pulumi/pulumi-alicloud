@@ -108,7 +108,7 @@ public class GrantRuleToCen extends com.pulumi.resources.CustomResource {
      * The ID of the CEN instance to which you want to grant permissions.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -122,7 +122,7 @@ public class GrantRuleToCen extends com.pulumi.resources.CustomResource {
      * The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      * 
      */
-    @Export(name="cenOwnerId", type=Integer.class, parameters={})
+    @Export(name="cenOwnerId", refs={Integer.class}, tree="[0]")
     private Output<Integer> cenOwnerId;
 
     /**
@@ -136,7 +136,7 @@ public class GrantRuleToCen extends com.pulumi.resources.CustomResource {
      * The ID of the VBR.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
