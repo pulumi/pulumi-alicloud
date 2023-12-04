@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Ddos
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "alicloud:dns/ddosBgpInstance:DdosBgpInstance"},
+                    new global::Pulumi.Alias { Type = "alicloud:dns/ddosBgpInstance:DdosBgpInstance" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
