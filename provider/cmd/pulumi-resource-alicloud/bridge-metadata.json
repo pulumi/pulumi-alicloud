@@ -20597,10 +20597,6 @@
                 "xForwardedForSlbIdEnabled": "x_forwarded_for_slb_id_enabled",
                 "xForwardedForSlbPortEnabled": "x_forwarded_for_slb_port_enabled"
             },
-            "alicloud:alb/ListenerXforwardedForConfig:ListenerXforwardedForConfig": {
-                "xforwardedforclientcertIssuerdnalias": "xforwardedforclientcert_issuerdnalias",
-                "xforwardedforclientcertIssuerdnenabled": "xforwardedforclientcert_issuerdnenabled"
-            },
             "alicloud:alb/LoadBalancerAccessLogConfig:LoadBalancerAccessLogConfig": {
                 "logProject": "log_project",
                 "logStore": "log_store"
