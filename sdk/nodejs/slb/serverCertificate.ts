@@ -65,8 +65,8 @@ import * as utilities from "../utilities";
  *
  * // create a server certificate
  * const foo = new alicloud.slb.ServerCertificate("foo", {
- *     serverCertificate: fs.readFileSync(`${path.module}/server_certificate.pem`),
- *     privateKey: fs.readFileSync(`${path.module}/private_key.pem`),
+ *     serverCertificate: fs.readFileSync(`${path.module}/server_certificate.pem`, "utf8"),
+ *     privateKey: fs.readFileSync(`${path.module}/private_key.pem`, "utf8"),
  * });
  * ```
  *

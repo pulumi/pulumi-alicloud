@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *
  * const foo_file = new alicloud.slb.CaCertificate("foo-file", {
  *     caCertificateName: "tf-testAccSlbCACertificate",
- *     caCertificate: fs.readFileSync(`${path.module}/ca_certificate.pem`),
+ *     caCertificate: fs.readFileSync(`${path.module}/ca_certificate.pem`, "utf8"),
  * });
  * ```
  *
