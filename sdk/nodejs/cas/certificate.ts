@@ -24,8 +24,8 @@ import * as utilities from "../utilities";
  *
  * // Add a new Certificate.
  * const cert = new alicloud.cas.Certificate("cert", {
- *     cert: fs.readFileSync(`${path.module}/test.crt`),
- *     key: fs.readFileSync(`${path.module}/test.key`),
+ *     cert: fs.readFileSync(`${path.module}/test.crt`, "utf8"),
+ *     key: fs.readFileSync(`${path.module}/test.key`, "utf8"),
  * });
  * ```
  *

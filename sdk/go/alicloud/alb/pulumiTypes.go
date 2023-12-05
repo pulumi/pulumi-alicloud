@@ -1618,166 +1618,6 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForSlbPortEnabled() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-type ListenerXforwardedForConfig struct {
-	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
-	XforwardedforclientcertIssuerdnalias *string `pulumi:"xforwardedforclientcertIssuerdnalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-	XforwardedforclientcertIssuerdnenabled *bool `pulumi:"xforwardedforclientcertIssuerdnenabled"`
-	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertclientverifyalias *string `pulumi:"xforwardedforclientcertclientverifyalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-	Xforwardedforclientcertclientverifyenabled *bool `pulumi:"xforwardedforclientcertclientverifyenabled"`
-	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertfingerprintalias *string `pulumi:"xforwardedforclientcertfingerprintalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-	Xforwardedforclientcertfingerprintenabled *bool `pulumi:"xforwardedforclientcertfingerprintenabled"`
-	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertsubjectdnalias *string `pulumi:"xforwardedforclientcertsubjectdnalias"`
-	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-	Xforwardedforclientcertsubjectdnenabled *bool `pulumi:"xforwardedforclientcertsubjectdnenabled"`
-	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-	Xforwardedforclientsrcportenabled *bool `pulumi:"xforwardedforclientsrcportenabled"`
-	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
-	Xforwardedforenabled *bool `pulumi:"xforwardedforenabled"`
-	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-	Xforwardedforprotoenabled *bool `pulumi:"xforwardedforprotoenabled"`
-	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
-	Xforwardedforslbidenabled *bool `pulumi:"xforwardedforslbidenabled"`
-	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
-	Xforwardedforslbportenabled *bool `pulumi:"xforwardedforslbportenabled"`
-}
-
-// ListenerXforwardedForConfigInput is an input type that accepts ListenerXforwardedForConfigArgs and ListenerXforwardedForConfigOutput values.
-// You can construct a concrete instance of `ListenerXforwardedForConfigInput` via:
-//
-//	ListenerXforwardedForConfigArgs{...}
-type ListenerXforwardedForConfigInput interface {
-	pulumi.Input
-
-	ToListenerXforwardedForConfigOutput() ListenerXforwardedForConfigOutput
-	ToListenerXforwardedForConfigOutputWithContext(context.Context) ListenerXforwardedForConfigOutput
-}
-
-type ListenerXforwardedForConfigArgs struct {
-	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
-	XforwardedforclientcertIssuerdnalias pulumi.StringPtrInput `pulumi:"xforwardedforclientcertIssuerdnalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-	XforwardedforclientcertIssuerdnenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientcertIssuerdnenabled"`
-	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertclientverifyalias pulumi.StringPtrInput `pulumi:"xforwardedforclientcertclientverifyalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-	Xforwardedforclientcertclientverifyenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientcertclientverifyenabled"`
-	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertfingerprintalias pulumi.StringPtrInput `pulumi:"xforwardedforclientcertfingerprintalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-	Xforwardedforclientcertfingerprintenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientcertfingerprintenabled"`
-	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertsubjectdnalias pulumi.StringPtrInput `pulumi:"xforwardedforclientcertsubjectdnalias"`
-	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-	Xforwardedforclientcertsubjectdnenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientcertsubjectdnenabled"`
-	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-	Xforwardedforclientsrcportenabled pulumi.BoolPtrInput `pulumi:"xforwardedforclientsrcportenabled"`
-	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
-	Xforwardedforenabled pulumi.BoolPtrInput `pulumi:"xforwardedforenabled"`
-	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-	Xforwardedforprotoenabled pulumi.BoolPtrInput `pulumi:"xforwardedforprotoenabled"`
-	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
-	Xforwardedforslbidenabled pulumi.BoolPtrInput `pulumi:"xforwardedforslbidenabled"`
-	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
-	Xforwardedforslbportenabled pulumi.BoolPtrInput `pulumi:"xforwardedforslbportenabled"`
-}
-
-func (ListenerXforwardedForConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListenerXforwardedForConfig)(nil)).Elem()
-}
-
-func (i ListenerXforwardedForConfigArgs) ToListenerXforwardedForConfigOutput() ListenerXforwardedForConfigOutput {
-	return i.ToListenerXforwardedForConfigOutputWithContext(context.Background())
-}
-
-func (i ListenerXforwardedForConfigArgs) ToListenerXforwardedForConfigOutputWithContext(ctx context.Context) ListenerXforwardedForConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerXforwardedForConfigOutput)
-}
-
-type ListenerXforwardedForConfigOutput struct{ *pulumi.OutputState }
-
-func (ListenerXforwardedForConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListenerXforwardedForConfig)(nil)).Elem()
-}
-
-func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigOutput() ListenerXforwardedForConfigOutput {
-	return o
-}
-
-func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigOutputWithContext(ctx context.Context) ListenerXforwardedForConfigOutput {
-	return o
-}
-
-// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
-func (o ListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnalias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *string { return v.XforwardedforclientcertIssuerdnalias }).(pulumi.StringPtrOutput)
-}
-
-// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-func (o ListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.XforwardedforclientcertIssuerdnenabled }).(pulumi.BoolPtrOutput)
-}
-
-// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyalias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *string { return v.Xforwardedforclientcertclientverifyalias }).(pulumi.StringPtrOutput)
-}
-
-// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforclientcertclientverifyenabled }).(pulumi.BoolPtrOutput)
-}
-
-// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintalias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *string { return v.Xforwardedforclientcertfingerprintalias }).(pulumi.StringPtrOutput)
-}
-
-// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforclientcertfingerprintenabled }).(pulumi.BoolPtrOutput)
-}
-
-// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnalias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *string { return v.Xforwardedforclientcertsubjectdnalias }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforclientcertsubjectdnenabled }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforclientsrcportenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforclientsrcportenabled }).(pulumi.BoolPtrOutput)
-}
-
-// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforenabled }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforprotoenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforprotoenabled }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforslbidenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforslbidenabled }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
-func (o ListenerXforwardedForConfigOutput) Xforwardedforslbportenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforslbportenabled }).(pulumi.BoolPtrOutput)
-}
-
 type LoadBalancerAccessLogConfig struct {
 	// This Log Storage Project.
 	LogProject string `pulumi:"logProject"`
@@ -13440,7 +13280,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerQuicConfigPtrInput)(nil)).Elem(), ListenerQuicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXForwardedForConfigInput)(nil)).Elem(), ListenerXForwardedForConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXForwardedForConfigPtrInput)(nil)).Elem(), ListenerXForwardedForConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXforwardedForConfigInput)(nil)).Elem(), ListenerXforwardedForConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAccessLogConfigInput)(nil)).Elem(), LoadBalancerAccessLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAccessLogConfigPtrInput)(nil)).Elem(), LoadBalancerAccessLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerLoadBalancerBillingConfigInput)(nil)).Elem(), LoadBalancerLoadBalancerBillingConfigArgs{})
@@ -13628,7 +13467,6 @@ func init() {
 	pulumi.RegisterOutputType(ListenerQuicConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListenerXForwardedForConfigOutput{})
 	pulumi.RegisterOutputType(ListenerXForwardedForConfigPtrOutput{})
-	pulumi.RegisterOutputType(ListenerXforwardedForConfigOutput{})
 	pulumi.RegisterOutputType(LoadBalancerAccessLogConfigOutput{})
 	pulumi.RegisterOutputType(LoadBalancerAccessLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerLoadBalancerBillingConfigOutput{})
