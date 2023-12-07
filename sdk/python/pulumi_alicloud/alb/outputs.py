@@ -35,6 +35,7 @@ __all__ = [
     'RuleRuleActionForwardGroupConfigServerGroupTuple',
     'RuleRuleActionInsertHeaderConfig',
     'RuleRuleActionRedirectConfig',
+    'RuleRuleActionRemoveHeaderConfig',
     'RuleRuleActionRewriteConfig',
     'RuleRuleActionTrafficLimitConfig',
     'RuleRuleActionTrafficMirrorConfig',
@@ -49,6 +50,8 @@ __all__ = [
     'RuleRuleConditionPathConfig',
     'RuleRuleConditionQueryStringConfig',
     'RuleRuleConditionQueryStringConfigValue',
+    'RuleRuleConditionResponseHeaderConfig',
+    'RuleRuleConditionResponseStatusCodeConfig',
     'RuleRuleConditionSourceIpConfig',
     'ServerGroupHealthCheckConfig',
     'ServerGroupServer',
@@ -601,6 +604,10 @@ class ListenerXForwardedForConfig(dict):
             suggest = "x_forwarded_for_client_cert_subject_dn_alias"
         elif key == "xForwardedForClientCertSubjectDnEnabled":
             suggest = "x_forwarded_for_client_cert_subject_dn_enabled"
+        elif key == "xForwardedForClientSourceIpsEnabled":
+            suggest = "x_forwarded_for_client_source_ips_enabled"
+        elif key == "xForwardedForClientSourceIpsTrusted":
+            suggest = "x_forwarded_for_client_source_ips_trusted"
         elif key == "xForwardedForClientSrcPortEnabled":
             suggest = "x_forwarded_for_client_src_port_enabled"
         elif key == "xForwardedForEnabled":
@@ -632,6 +639,8 @@ class ListenerXForwardedForConfig(dict):
                  x_forwarded_for_client_cert_issuer_dn_enabled: Optional[bool] = None,
                  x_forwarded_for_client_cert_subject_dn_alias: Optional[str] = None,
                  x_forwarded_for_client_cert_subject_dn_enabled: Optional[bool] = None,
+                 x_forwarded_for_client_source_ips_enabled: Optional[bool] = None,
+                 x_forwarded_for_client_source_ips_trusted: Optional[str] = None,
                  x_forwarded_for_client_src_port_enabled: Optional[bool] = None,
                  x_forwarded_for_enabled: Optional[bool] = None,
                  x_forwarded_for_proto_enabled: Optional[bool] = None,
@@ -646,6 +655,8 @@ class ListenerXForwardedForConfig(dict):
         :param bool x_forwarded_for_client_cert_issuer_dn_enabled: Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
         :param str x_forwarded_for_client_cert_subject_dn_alias: The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         :param bool x_forwarded_for_client_cert_subject_dn_enabled: Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        :param bool x_forwarded_for_client_source_ips_enabled: Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+        :param str x_forwarded_for_client_source_ips_trusted: Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
         :param bool x_forwarded_for_client_src_port_enabled: Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
         :param bool x_forwarded_for_enabled: Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
         :param bool x_forwarded_for_proto_enabled: Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
@@ -668,6 +679,10 @@ class ListenerXForwardedForConfig(dict):
             pulumi.set(__self__, "x_forwarded_for_client_cert_subject_dn_alias", x_forwarded_for_client_cert_subject_dn_alias)
         if x_forwarded_for_client_cert_subject_dn_enabled is not None:
             pulumi.set(__self__, "x_forwarded_for_client_cert_subject_dn_enabled", x_forwarded_for_client_cert_subject_dn_enabled)
+        if x_forwarded_for_client_source_ips_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_source_ips_enabled", x_forwarded_for_client_source_ips_enabled)
+        if x_forwarded_for_client_source_ips_trusted is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_source_ips_trusted", x_forwarded_for_client_source_ips_trusted)
         if x_forwarded_for_client_src_port_enabled is not None:
             pulumi.set(__self__, "x_forwarded_for_client_src_port_enabled", x_forwarded_for_client_src_port_enabled)
         if x_forwarded_for_enabled is not None:
@@ -742,6 +757,22 @@ class ListenerXForwardedForConfig(dict):
         Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
         """
         return pulumi.get(self, "x_forwarded_for_client_cert_subject_dn_enabled")
+
+    @property
+    @pulumi.getter(name="xForwardedForClientSourceIpsEnabled")
+    def x_forwarded_for_client_source_ips_enabled(self) -> Optional[bool]:
+        """
+        Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+        """
+        return pulumi.get(self, "x_forwarded_for_client_source_ips_enabled")
+
+    @property
+    @pulumi.getter(name="xForwardedForClientSourceIpsTrusted")
+    def x_forwarded_for_client_source_ips_trusted(self) -> Optional[str]:
+        """
+        Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+        """
+        return pulumi.get(self, "x_forwarded_for_client_source_ips_trusted")
 
     @property
     @pulumi.getter(name="xForwardedForClientSrcPortEnabled")
@@ -854,7 +885,7 @@ class LoadBalancerLoadBalancerBillingConfig(dict):
     def __init__(__self__, *,
                  pay_type: str):
         """
-        :param str pay_type: Pay Type.
+        :param str pay_type: Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
         """
         pulumi.set(__self__, "pay_type", pay_type)
 
@@ -862,7 +893,7 @@ class LoadBalancerLoadBalancerBillingConfig(dict):
     @pulumi.getter(name="payType")
     def pay_type(self) -> str:
         """
-        Pay Type.
+        Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
         """
         return pulumi.get(self, "pay_type")
 
@@ -1051,6 +1082,8 @@ class RuleRuleAction(dict):
             suggest = "insert_header_config"
         elif key == "redirectConfig":
             suggest = "redirect_config"
+        elif key == "removeHeaderConfig":
+            suggest = "remove_header_config"
         elif key == "rewriteConfig":
             suggest = "rewrite_config"
         elif key == "trafficLimitConfig":
@@ -1077,12 +1110,13 @@ class RuleRuleAction(dict):
                  forward_group_config: Optional['outputs.RuleRuleActionForwardGroupConfig'] = None,
                  insert_header_config: Optional['outputs.RuleRuleActionInsertHeaderConfig'] = None,
                  redirect_config: Optional['outputs.RuleRuleActionRedirectConfig'] = None,
+                 remove_header_config: Optional['outputs.RuleRuleActionRemoveHeaderConfig'] = None,
                  rewrite_config: Optional['outputs.RuleRuleActionRewriteConfig'] = None,
                  traffic_limit_config: Optional['outputs.RuleRuleActionTrafficLimitConfig'] = None,
                  traffic_mirror_config: Optional['outputs.RuleRuleActionTrafficMirrorConfig'] = None):
         """
         :param int order: The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
-        :param str type: The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+        :param str type: The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
                **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
                **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
                **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -1091,6 +1125,7 @@ class RuleRuleAction(dict):
         :param 'RuleRuleActionForwardGroupConfigArgs' forward_group_config: The forward response action within ALB. See `forward_group_config` below.
         :param 'RuleRuleActionInsertHeaderConfigArgs' insert_header_config: The configuration of the inserted header field. See `insert_header_config` below.
         :param 'RuleRuleActionRedirectConfigArgs' redirect_config: The configuration of the external redirect action. See `redirect_config` below.
+        :param 'RuleRuleActionRemoveHeaderConfigArgs' remove_header_config: The configuration of the inserted header field. See `remove_header_config` below.
         :param 'RuleRuleActionRewriteConfigArgs' rewrite_config: The redirect action within ALB. See `rewrite_config` below.
         :param 'RuleRuleActionTrafficLimitConfigArgs' traffic_limit_config: The Flow speed limit. See `traffic_limit_config` below.
         :param 'RuleRuleActionTrafficMirrorConfigArgs' traffic_mirror_config: The Traffic mirroring. See `traffic_mirror_config` below.
@@ -1107,6 +1142,8 @@ class RuleRuleAction(dict):
             pulumi.set(__self__, "insert_header_config", insert_header_config)
         if redirect_config is not None:
             pulumi.set(__self__, "redirect_config", redirect_config)
+        if remove_header_config is not None:
+            pulumi.set(__self__, "remove_header_config", remove_header_config)
         if rewrite_config is not None:
             pulumi.set(__self__, "rewrite_config", rewrite_config)
         if traffic_limit_config is not None:
@@ -1126,7 +1163,7 @@ class RuleRuleAction(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+        The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
         **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
         **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
         **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -1172,6 +1209,14 @@ class RuleRuleAction(dict):
         The configuration of the external redirect action. See `redirect_config` below.
         """
         return pulumi.get(self, "redirect_config")
+
+    @property
+    @pulumi.getter(name="removeHeaderConfig")
+    def remove_header_config(self) -> Optional['outputs.RuleRuleActionRemoveHeaderConfig']:
+        """
+        The configuration of the inserted header field. See `remove_header_config` below.
+        """
+        return pulumi.get(self, "remove_header_config")
 
     @property
     @pulumi.getter(name="rewriteConfig")
@@ -1518,7 +1563,9 @@ class RuleRuleActionInsertHeaderConfig(dict):
                  value: Optional[str] = None,
                  value_type: Optional[str] = None):
         """
-        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        :param str key: The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+               * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+               * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
         :param str value: The content of the inserted header field. Valid values:
                * If the `value_type` is set to `SystemDefined`, the following values are used:
         :param str value_type: The value type of the inserted header field. Valid values:
@@ -1534,7 +1581,9 @@ class RuleRuleActionInsertHeaderConfig(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+        * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+        * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
         """
         return pulumi.get(self, "key")
 
@@ -1653,6 +1702,29 @@ class RuleRuleActionRedirectConfig(dict):
 
 
 @pulumi.output_type
+class RuleRuleActionRemoveHeaderConfig(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None):
+        """
+        :param str key: The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+               * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+               * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+        * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+        * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
 class RuleRuleActionRewriteConfig(dict):
     def __init__(__self__, *,
                  host: Optional[str] = None,
@@ -1697,13 +1769,42 @@ class RuleRuleActionRewriteConfig(dict):
 
 @pulumi.output_type
 class RuleRuleActionTrafficLimitConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "perIpQps":
+            suggest = "per_ip_qps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleRuleActionTrafficLimitConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleRuleActionTrafficLimitConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleRuleActionTrafficLimitConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 per_ip_qps: Optional[int] = None,
                  qps: Optional[int] = None):
         """
+        :param int per_ip_qps: The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
         :param int qps: The Number of requests per second. Valid values: `1` to `100000`.
         """
+        if per_ip_qps is not None:
+            pulumi.set(__self__, "per_ip_qps", per_ip_qps)
         if qps is not None:
             pulumi.set(__self__, "qps", qps)
+
+    @property
+    @pulumi.getter(name="perIpQps")
+    def per_ip_qps(self) -> Optional[int]:
+        """
+        The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+        """
+        return pulumi.get(self, "per_ip_qps")
 
     @property
     @pulumi.getter
@@ -1853,6 +1954,10 @@ class RuleRuleCondition(dict):
             suggest = "path_config"
         elif key == "queryStringConfig":
             suggest = "query_string_config"
+        elif key == "responseHeaderConfig":
+            suggest = "response_header_config"
+        elif key == "responseStatusCodeConfig":
+            suggest = "response_status_code_config"
         elif key == "sourceIpConfig":
             suggest = "source_ip_config"
 
@@ -1875,6 +1980,8 @@ class RuleRuleCondition(dict):
                  method_config: Optional['outputs.RuleRuleConditionMethodConfig'] = None,
                  path_config: Optional['outputs.RuleRuleConditionPathConfig'] = None,
                  query_string_config: Optional['outputs.RuleRuleConditionQueryStringConfig'] = None,
+                 response_header_config: Optional['outputs.RuleRuleConditionResponseHeaderConfig'] = None,
+                 response_status_code_config: Optional['outputs.RuleRuleConditionResponseStatusCodeConfig'] = None,
                  source_ip_config: Optional['outputs.RuleRuleConditionSourceIpConfig'] = None):
         """
         :param str type: The type of the forwarding rule. Valid values:
@@ -1884,6 +1991,8 @@ class RuleRuleCondition(dict):
         :param 'RuleRuleConditionMethodConfigArgs' method_config: The configuration of the request method. See `method_config` below.
         :param 'RuleRuleConditionPathConfigArgs' path_config: The configuration of the path for the request to be forwarded. See `path_config` below.
         :param 'RuleRuleConditionQueryStringConfigArgs' query_string_config: The configuration of the query string. See `query_string_config` below.
+        :param 'RuleRuleConditionResponseHeaderConfigArgs' response_header_config: The configuration of the header field. See `response_header_config` below.
+        :param 'RuleRuleConditionResponseStatusCodeConfigArgs' response_status_code_config: The configuration of the header field. See `response_status_code_config` below.
         :param 'RuleRuleConditionSourceIpConfigArgs' source_ip_config: The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
         """
         pulumi.set(__self__, "type", type)
@@ -1899,6 +2008,10 @@ class RuleRuleCondition(dict):
             pulumi.set(__self__, "path_config", path_config)
         if query_string_config is not None:
             pulumi.set(__self__, "query_string_config", query_string_config)
+        if response_header_config is not None:
+            pulumi.set(__self__, "response_header_config", response_header_config)
+        if response_status_code_config is not None:
+            pulumi.set(__self__, "response_status_code_config", response_status_code_config)
         if source_ip_config is not None:
             pulumi.set(__self__, "source_ip_config", source_ip_config)
 
@@ -1959,6 +2072,22 @@ class RuleRuleCondition(dict):
         return pulumi.get(self, "query_string_config")
 
     @property
+    @pulumi.getter(name="responseHeaderConfig")
+    def response_header_config(self) -> Optional['outputs.RuleRuleConditionResponseHeaderConfig']:
+        """
+        The configuration of the header field. See `response_header_config` below.
+        """
+        return pulumi.get(self, "response_header_config")
+
+    @property
+    @pulumi.getter(name="responseStatusCodeConfig")
+    def response_status_code_config(self) -> Optional['outputs.RuleRuleConditionResponseStatusCodeConfig']:
+        """
+        The configuration of the header field. See `response_status_code_config` below.
+        """
+        return pulumi.get(self, "response_status_code_config")
+
+    @property
     @pulumi.getter(name="sourceIpConfig")
     def source_ip_config(self) -> Optional['outputs.RuleRuleConditionSourceIpConfig']:
         """
@@ -1992,7 +2121,9 @@ class RuleRuleConditionCookieConfigValue(dict):
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        :param str key: The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+               * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+               * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
         :param str value: The content of the inserted header field. Valid values:
                * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
@@ -2005,7 +2136,9 @@ class RuleRuleConditionCookieConfigValue(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+        * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+        * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
         """
         return pulumi.get(self, "key")
 
@@ -2025,7 +2158,9 @@ class RuleRuleConditionHeaderConfig(dict):
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        :param str key: The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+               * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+               * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
         :param Sequence[str] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
         if key is not None:
@@ -2037,7 +2172,9 @@ class RuleRuleConditionHeaderConfig(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+        * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+        * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
         """
         return pulumi.get(self, "key")
 
@@ -2132,7 +2269,9 @@ class RuleRuleConditionQueryStringConfigValue(dict):
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        :param str key: The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+               * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+               * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
         :param str value: The content of the inserted header field. Valid values:
                * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
@@ -2145,7 +2284,9 @@ class RuleRuleConditionQueryStringConfigValue(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+        The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+        * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+        * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
         """
         return pulumi.get(self, "key")
 
@@ -2157,6 +2298,60 @@ class RuleRuleConditionQueryStringConfigValue(dict):
         * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RuleRuleConditionResponseHeaderConfig(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str key: The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+               * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+               * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+        :param Sequence[str] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+        * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+        * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class RuleRuleConditionResponseStatusCodeConfig(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class LoadBalancerLoadBalancerBillingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Pay Type.
+        /// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
         /// </summary>
         [Input("payType", required: true)]
         public Input<string> PayType { get; set; } = null!;

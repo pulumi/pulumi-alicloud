@@ -76,14 +76,14 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
         return this.networkInterfaceId;
     }
     /**
-     * The status of the resource
+     * The status of the Transit Router Multicast Domain Member.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the Transit Router Multicast Domain Member.
      * 
      */
     public Output<String> status() {
@@ -108,14 +108,14 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> vpcId;
+    private Output<String> vpcId;
 
     /**
      * @return The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
      * 
      */
-    public Output<Optional<String>> vpcId() {
-        return Codegen.optional(this.vpcId);
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
 
     /**

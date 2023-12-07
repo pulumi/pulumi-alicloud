@@ -2285,6 +2285,14 @@ export namespace alb {
          */
         xForwardedForClientCertSubjectDnEnabled: boolean;
         /**
+         * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+         */
+        xForwardedForClientSourceIpsEnabled?: boolean;
+        /**
+         * Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+         */
+        xForwardedForClientSourceIpsTrusted?: string;
+        /**
          * Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
          */
         xForwardedForClientSrcPortEnabled: boolean;
@@ -2319,7 +2327,7 @@ export namespace alb {
 
     export interface LoadBalancerLoadBalancerBillingConfig {
         /**
-         * Pay Type.
+         * Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
          */
         payType: string;
     }
@@ -2395,6 +2403,10 @@ export namespace alb {
          */
         redirectConfig?: outputs.alb.RuleRuleActionRedirectConfig;
         /**
+         * The configuration of the inserted header field. See `removeHeaderConfig` below.
+         */
+        removeHeaderConfig?: outputs.alb.RuleRuleActionRemoveHeaderConfig;
+        /**
          * The redirect action within ALB. See `rewriteConfig` below.
          */
         rewriteConfig?: outputs.alb.RuleRuleActionRewriteConfig;
@@ -2407,7 +2419,7 @@ export namespace alb {
          */
         trafficMirrorConfig?: outputs.alb.RuleRuleActionTrafficMirrorConfig;
         /**
-         * The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+         * The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
          * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
          * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
          * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -2492,7 +2504,9 @@ export namespace alb {
 
     export interface RuleRuleActionInsertHeaderConfig {
         /**
-         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
          */
         key?: string;
         /**
@@ -2533,6 +2547,15 @@ export namespace alb {
         query?: string;
     }
 
+    export interface RuleRuleActionRemoveHeaderConfig {
+        /**
+         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+         */
+        key?: string;
+    }
+
     export interface RuleRuleActionRewriteConfig {
         /**
          * The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
@@ -2549,6 +2572,10 @@ export namespace alb {
     }
 
     export interface RuleRuleActionTrafficLimitConfig {
+        /**
+         * The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+         */
+        perIpQps?: number;
         /**
          * The Number of requests per second. Valid values: `1` to `100000`.
          */
@@ -2606,6 +2633,14 @@ export namespace alb {
          */
         queryStringConfig?: outputs.alb.RuleRuleConditionQueryStringConfig;
         /**
+         * The configuration of the header field. See `responseHeaderConfig` below.
+         */
+        responseHeaderConfig?: outputs.alb.RuleRuleConditionResponseHeaderConfig;
+        /**
+         * The configuration of the header field. See `responseStatusCodeConfig` below.
+         */
+        responseStatusCodeConfig?: outputs.alb.RuleRuleConditionResponseStatusCodeConfig;
+        /**
          * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
          */
         sourceIpConfig?: outputs.alb.RuleRuleConditionSourceIpConfig;
@@ -2624,7 +2659,9 @@ export namespace alb {
 
     export interface RuleRuleConditionCookieConfigValue {
         /**
-         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
          */
         key?: string;
         /**
@@ -2636,7 +2673,9 @@ export namespace alb {
 
     export interface RuleRuleConditionHeaderConfig {
         /**
-         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
          */
         key?: string;
         /**
@@ -2675,7 +2714,9 @@ export namespace alb {
 
     export interface RuleRuleConditionQueryStringConfigValue {
         /**
-         * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
          */
         key?: string;
         /**
@@ -2683,6 +2724,26 @@ export namespace alb {
          * * If the `valueType` is set to `SystemDefined`, the following values are used:
          */
         value?: string;
+    }
+
+    export interface RuleRuleConditionResponseHeaderConfig {
+        /**
+         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
+         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+         */
+        key?: string;
+        /**
+         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+         */
+        values?: string[];
+    }
+
+    export interface RuleRuleConditionResponseStatusCodeConfig {
+        /**
+         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+         */
+        values?: string[];
     }
 
     export interface RuleRuleConditionSourceIpConfig {
@@ -7883,7 +7944,8 @@ export namespace cloudfirewall {
          */
         groupName: string;
         /**
-         * The type of the Address Book. Valid values: `ip`, `tag`.
+         * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+         * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
          */
         groupType: string;
         /**
@@ -28460,6 +28522,10 @@ export namespace ga {
          */
         endpointGroupId: string;
         /**
+         * (Available since v1.213.1) The list of endpoint group IP addresses.
+         */
+        endpointGroupIpLists: string[];
+        /**
          * The ID of the region where the endpoint group is deployed.
          */
         endpointGroupRegion: string;
@@ -28496,7 +28562,7 @@ export namespace ga {
          */
         portOverrides: outputs.ga.GetEndpointGroupsGroupPortOverride[];
         /**
-         * The status of the endpoint group.
+         * The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
          */
         status: string;
         /**

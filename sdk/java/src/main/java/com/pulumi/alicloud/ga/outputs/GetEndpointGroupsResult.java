@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 public final class GetEndpointGroupsResult {
     private String acceleratorId;
     private @Nullable String endpointGroupType;
+    /**
+     * @return A list of Ga Endpoint Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetEndpointGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,10 +26,22 @@ public final class GetEndpointGroupsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the listener that is associated with the endpoint group.
+     * 
+     */
     private @Nullable String listenerId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Endpoint Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the endpoint group.
+     * 
+     */
     private @Nullable String status;
 
     private GetEndpointGroupsResult() {}
@@ -35,6 +51,10 @@ public final class GetEndpointGroupsResult {
     public Optional<String> endpointGroupType() {
         return Optional.ofNullable(this.endpointGroupType);
     }
+    /**
+     * @return A list of Ga Endpoint Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetEndpointGroupsGroup> groups() {
         return this.groups;
     }
@@ -48,18 +68,30 @@ public final class GetEndpointGroupsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the listener that is associated with the endpoint group.
+     * 
+     */
     public Optional<String> listenerId() {
         return Optional.ofNullable(this.listenerId);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Endpoint Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the endpoint group.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

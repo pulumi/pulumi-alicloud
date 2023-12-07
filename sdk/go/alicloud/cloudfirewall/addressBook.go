@@ -78,7 +78,8 @@ type AddressBook struct {
 	EcsTags AddressBookEcsTagArrayOutput `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	// The type of the Address Book. Valid values: `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 	GroupType pulumi.StringOutput `pulumi:"groupType"`
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
@@ -135,7 +136,8 @@ type addressBookState struct {
 	EcsTags []AddressBookEcsTag `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName *string `pulumi:"groupName"`
-	// The type of the Address Book. Valid values: `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 	GroupType *string `pulumi:"groupType"`
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang *string `pulumi:"lang"`
@@ -154,7 +156,8 @@ type AddressBookState struct {
 	EcsTags AddressBookEcsTagArrayInput
 	// The name of the Address Book.
 	GroupName pulumi.StringPtrInput
-	// The type of the Address Book. Valid values: `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 	GroupType pulumi.StringPtrInput
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrInput
@@ -177,7 +180,8 @@ type addressBookArgs struct {
 	EcsTags []AddressBookEcsTag `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName string `pulumi:"groupName"`
-	// The type of the Address Book. Valid values: `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 	GroupType string `pulumi:"groupType"`
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang *string `pulumi:"lang"`
@@ -197,7 +201,8 @@ type AddressBookArgs struct {
 	EcsTags AddressBookEcsTagArrayInput
 	// The name of the Address Book.
 	GroupName pulumi.StringInput
-	// The type of the Address Book. Valid values: `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 	GroupType pulumi.StringInput
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrInput
@@ -317,7 +322,8 @@ func (o AddressBookOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressBook) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The type of the Address Book. Valid values: `ip`, `tag`.
+// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 func (o AddressBookOutput) GroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressBook) pulumi.StringOutput { return v.GroupType }).(pulumi.StringOutput)
 }

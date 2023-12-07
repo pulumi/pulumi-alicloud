@@ -38,6 +38,14 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly Outputs.RuleRuleConditionQueryStringConfig? QueryStringConfig;
         /// <summary>
+        /// The configuration of the header field. See `response_header_config` below.
+        /// </summary>
+        public readonly Outputs.RuleRuleConditionResponseHeaderConfig? ResponseHeaderConfig;
+        /// <summary>
+        /// The configuration of the header field. See `response_status_code_config` below.
+        /// </summary>
+        public readonly Outputs.RuleRuleConditionResponseStatusCodeConfig? ResponseStatusCodeConfig;
+        /// <summary>
         /// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionSourceIpConfig? SourceIpConfig;
@@ -60,6 +68,10 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             Outputs.RuleRuleConditionQueryStringConfig? queryStringConfig,
 
+            Outputs.RuleRuleConditionResponseHeaderConfig? responseHeaderConfig,
+
+            Outputs.RuleRuleConditionResponseStatusCodeConfig? responseStatusCodeConfig,
+
             Outputs.RuleRuleConditionSourceIpConfig? sourceIpConfig,
 
             string type)
@@ -70,6 +82,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
             MethodConfig = methodConfig;
             PathConfig = pathConfig;
             QueryStringConfig = queryStringConfig;
+            ResponseHeaderConfig = responseHeaderConfig;
+            ResponseStatusCodeConfig = responseStatusCodeConfig;
             SourceIpConfig = sourceIpConfig;
             Type = type;
         }

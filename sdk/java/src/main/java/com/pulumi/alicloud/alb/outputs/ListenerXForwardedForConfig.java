@@ -53,6 +53,16 @@ public final class ListenerXForwardedForConfig {
      */
     private @Nullable Boolean xForwardedForClientCertSubjectDnEnabled;
     /**
+     * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+     * 
+     */
+    private @Nullable Boolean xForwardedForClientSourceIpsEnabled;
+    /**
+     * @return Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * 
+     */
+    private @Nullable String xForwardedForClientSourceIpsTrusted;
+    /**
      * @return Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
      * 
      */
@@ -136,6 +146,20 @@ public final class ListenerXForwardedForConfig {
         return Optional.ofNullable(this.xForwardedForClientCertSubjectDnEnabled);
     }
     /**
+     * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+     * 
+     */
+    public Optional<Boolean> xForwardedForClientSourceIpsEnabled() {
+        return Optional.ofNullable(this.xForwardedForClientSourceIpsEnabled);
+    }
+    /**
+     * @return Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * 
+     */
+    public Optional<String> xForwardedForClientSourceIpsTrusted() {
+        return Optional.ofNullable(this.xForwardedForClientSourceIpsTrusted);
+    }
+    /**
      * @return Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
      * 
      */
@@ -188,6 +212,8 @@ public final class ListenerXForwardedForConfig {
         private @Nullable Boolean xForwardedForClientCertIssuerDnEnabled;
         private @Nullable String xForwardedForClientCertSubjectDnAlias;
         private @Nullable Boolean xForwardedForClientCertSubjectDnEnabled;
+        private @Nullable Boolean xForwardedForClientSourceIpsEnabled;
+        private @Nullable String xForwardedForClientSourceIpsTrusted;
         private @Nullable Boolean xForwardedForClientSrcPortEnabled;
         private @Nullable Boolean xForwardedForEnabled;
         private @Nullable Boolean xForwardedForProtoEnabled;
@@ -204,6 +230,8 @@ public final class ListenerXForwardedForConfig {
     	      this.xForwardedForClientCertIssuerDnEnabled = defaults.xForwardedForClientCertIssuerDnEnabled;
     	      this.xForwardedForClientCertSubjectDnAlias = defaults.xForwardedForClientCertSubjectDnAlias;
     	      this.xForwardedForClientCertSubjectDnEnabled = defaults.xForwardedForClientCertSubjectDnEnabled;
+    	      this.xForwardedForClientSourceIpsEnabled = defaults.xForwardedForClientSourceIpsEnabled;
+    	      this.xForwardedForClientSourceIpsTrusted = defaults.xForwardedForClientSourceIpsTrusted;
     	      this.xForwardedForClientSrcPortEnabled = defaults.xForwardedForClientSrcPortEnabled;
     	      this.xForwardedForEnabled = defaults.xForwardedForEnabled;
     	      this.xForwardedForProtoEnabled = defaults.xForwardedForProtoEnabled;
@@ -252,6 +280,16 @@ public final class ListenerXForwardedForConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder xForwardedForClientSourceIpsEnabled(@Nullable Boolean xForwardedForClientSourceIpsEnabled) {
+            this.xForwardedForClientSourceIpsEnabled = xForwardedForClientSourceIpsEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder xForwardedForClientSourceIpsTrusted(@Nullable String xForwardedForClientSourceIpsTrusted) {
+            this.xForwardedForClientSourceIpsTrusted = xForwardedForClientSourceIpsTrusted;
+            return this;
+        }
+        @CustomType.Setter
         public Builder xForwardedForClientSrcPortEnabled(@Nullable Boolean xForwardedForClientSrcPortEnabled) {
             this.xForwardedForClientSrcPortEnabled = xForwardedForClientSrcPortEnabled;
             return this;
@@ -286,6 +324,8 @@ public final class ListenerXForwardedForConfig {
             _resultValue.xForwardedForClientCertIssuerDnEnabled = xForwardedForClientCertIssuerDnEnabled;
             _resultValue.xForwardedForClientCertSubjectDnAlias = xForwardedForClientCertSubjectDnAlias;
             _resultValue.xForwardedForClientCertSubjectDnEnabled = xForwardedForClientCertSubjectDnEnabled;
+            _resultValue.xForwardedForClientSourceIpsEnabled = xForwardedForClientSourceIpsEnabled;
+            _resultValue.xForwardedForClientSourceIpsTrusted = xForwardedForClientSourceIpsTrusted;
             _resultValue.xForwardedForClientSrcPortEnabled = xForwardedForClientSrcPortEnabled;
             _resultValue.xForwardedForEnabled = xForwardedForEnabled;
             _resultValue.xForwardedForProtoEnabled = xForwardedForProtoEnabled;

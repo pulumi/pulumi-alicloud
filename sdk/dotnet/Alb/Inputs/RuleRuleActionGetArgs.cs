@@ -49,6 +49,12 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<Inputs.RuleRuleActionRedirectConfigGetArgs>? RedirectConfig { get; set; }
 
         /// <summary>
+        /// The configuration of the inserted header field. See `remove_header_config` below.
+        /// </summary>
+        [Input("removeHeaderConfig")]
+        public Input<Inputs.RuleRuleActionRemoveHeaderConfigGetArgs>? RemoveHeaderConfig { get; set; }
+
+        /// <summary>
         /// The redirect action within ALB. See `rewrite_config` below.
         /// </summary>
         [Input("rewriteConfig")]
@@ -67,7 +73,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<Inputs.RuleRuleActionTrafficMirrorConfigGetArgs>? TrafficMirrorConfig { get; set; }
 
         /// <summary>
-        /// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+        /// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
         /// **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
         /// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
         /// **NOTE:** From version 1.205.0, `type` can be set to `Cors`.

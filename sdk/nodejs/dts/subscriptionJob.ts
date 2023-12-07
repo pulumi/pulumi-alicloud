@@ -64,8 +64,8 @@ import * as utilities from "../utilities";
  * });
  * const exampleRdsAccount = new alicloud.rds.RdsAccount("exampleRdsAccount", {
  *     dbInstanceId: exampleInstance.id,
- *     accountName: "example_name",
- *     accountPassword: "example_password",
+ *     accountName: "test_mysql",
+ *     accountPassword: "N1cetest",
  * });
  * const exampleDatabase = new alicloud.rds.Database("exampleDatabase", {instanceId: exampleInstance.id});
  * const exampleAccountPrivilege = new alicloud.rds.AccountPrivilege("exampleAccountPrivilege", {
@@ -84,7 +84,12 @@ import * as utilities from "../utilities";
  *     sourceEndpointDatabaseName: exampleDatabase.name,
  *     sourceEndpointUserName: exampleRdsAccount.accountName,
  *     sourceEndpointPassword: exampleRdsAccount.accountPassword,
- *     dbList: pulumi.interpolate`{"${exampleDatabase.name}":{"name":"${exampleDatabase.name}","all":true}}`,
+ *     dbList: pulumi.all([exampleDatabase.name, exampleDatabase.name]).apply(([exampleDatabaseName, exampleDatabaseName1]) => JSON.stringify({
+ *         [exampleDatabaseName]: {
+ *             name: exampleDatabaseName1,
+ *             all: true,
+ *         },
+ *     })),
  *     subscriptionInstanceNetworkType: "vpc",
  *     subscriptionInstanceVpcId: exampleNetwork.id,
  *     subscriptionInstanceVswitchId: exampleSwitch.id,

@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"fmt"
+//	"encoding/json"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
@@ -114,8 +114,8 @@ import (
 //			}
 //			exampleRdsAccount, err := rds.NewRdsAccount(ctx, "exampleRdsAccount", &rds.RdsAccountArgs{
 //				DbInstanceId:    exampleInstance.ID(),
-//				AccountName:     pulumi.String("example_name"),
-//				AccountPassword: pulumi.String("example_password"),
+//				AccountName:     pulumi.String("test_mysql"),
+//				AccountPassword: pulumi.String("N1cetest"),
 //			})
 //			if err != nil {
 //				return err
@@ -150,7 +150,18 @@ import (
 //				DbList: pulumi.All(exampleDatabase.Name, exampleDatabase.Name).ApplyT(func(_args []interface{}) (string, error) {
 //					exampleDatabaseName := _args[0].(string)
 //					exampleDatabaseName1 := _args[1].(string)
-//					return fmt.Sprintf("{\"%v\":{\"name\":\"%v\",\"all\":true}}", exampleDatabaseName, exampleDatabaseName1), nil
+//					var _zero string
+//					tmpJSON0, err := json.Marshal(map[string]map[string]interface{}{
+//						exampleDatabaseName: map[string]interface{}{
+//							"name": exampleDatabaseName1,
+//							"all":  true,
+//						},
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json0 := string(tmpJSON0)
+//					return json0, nil
 //				}).(pulumi.StringOutput),
 //				SubscriptionInstanceNetworkType: pulumi.String("vpc"),
 //				SubscriptionInstanceVpcId:       exampleNetwork.ID(),

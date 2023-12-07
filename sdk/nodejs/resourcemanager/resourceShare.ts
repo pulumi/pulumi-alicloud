@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
+ * const name = config.get("name") || "tf-example";
  * const example = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: name});
  * ```
  *
@@ -65,11 +65,11 @@ export class ResourceShare extends pulumi.CustomResource {
      */
     public readonly resourceShareName!: pulumi.Output<string>;
     /**
-     * The owner of resource share.
+     * The owner of the Resource Share.
      */
     public /*out*/ readonly resourceShareOwner!: pulumi.Output<string>;
     /**
-     * The status of resource share.
+     * The status of the Resource Share.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -112,11 +112,11 @@ export interface ResourceShareState {
      */
     resourceShareName?: pulumi.Input<string>;
     /**
-     * The owner of resource share.
+     * The owner of the Resource Share.
      */
     resourceShareOwner?: pulumi.Input<string>;
     /**
-     * The status of resource share.
+     * The status of the Resource Share.
      */
     status?: pulumi.Input<string>;
 }

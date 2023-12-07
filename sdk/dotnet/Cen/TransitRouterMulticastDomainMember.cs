@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> NetworkInterfaceId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the Transit Router Multicast Domain Member.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Cen
         /// The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
         /// </summary>
         [Output("vpcId")]
-        public Output<string?> VpcId { get; private set; } = null!;
+        public Output<string> VpcId { get; private set; } = null!;
 
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? NetworkInterfaceId { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the Transit Router Multicast Domain Member.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

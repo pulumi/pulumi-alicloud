@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available since v1.0.0
     /// 
+    /// &gt; **NOTE:** From version v1.213.0, you can specify `launch_template_id` and `launch_template_version` to use a launch template. This eliminates the need to configure a large number of parameters every time you create instances.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -184,7 +186,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to send a dry-run request. Default to false. 
@@ -235,7 +237,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> HttpTokens { get; private set; } = null!;
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
@@ -253,13 +255,13 @@ namespace Pulumi.AliCloud.Ecs
         /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         /// </summary>
         [Output("instanceChargeType")]
-        public Output<string?> InstanceChargeType { get; private set; } = null!;
+        public Output<string> InstanceChargeType { get; private set; } = null!;
 
         [Output("instanceName")]
-        public Output<string?> InstanceName { get; private set; } = null!;
+        public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -268,7 +270,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
         /// </summary>
         [Output("internetChargeType")]
-        public Output<string?> InternetChargeType { get; private set; } = null!;
+        public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
         /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
@@ -280,13 +282,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
         /// </summary>
         [Output("internetMaxBandwidthOut")]
-        public Output<int?> InternetMaxBandwidthOut { get; private set; } = null!;
-
-        /// <summary>
-        /// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-        /// </summary>
-        [Output("ioOptimized")]
-        public Output<string?> IoOptimized { get; private set; } = null!;
+        public Output<int> InternetMaxBandwidthOut { get; private set; } = null!;
 
         /// <summary>
         /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
@@ -323,6 +319,39 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+        /// </summary>
+        [Output("launchTemplateId")]
+        public Output<string?> LaunchTemplateId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the launch template.
+        /// </summary>
+        [Output("launchTemplateName")]
+        public Output<string?> LaunchTemplateName { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+        /// 
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        /// </summary>
+        [Output("launchTemplateVersion")]
+        public Output<string?> LaunchTemplateVersion { get; private set; } = null!;
 
         /// <summary>
         /// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
@@ -391,7 +420,7 @@ namespace Pulumi.AliCloud.Ecs
         /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
-        public Output<int?> Period { get; private set; } = null!;
+        public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
         /// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -427,7 +456,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The Id of resource group which the instance belongs.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
@@ -453,10 +482,10 @@ namespace Pulumi.AliCloud.Ecs
         /// - Deactive: Disable security enhancement strategy, it works on all images.
         /// </summary>
         [Output("securityEnhancementStrategy")]
-        public Output<string?> SecurityEnhancementStrategy { get; private set; } = null!;
+        public Output<string> SecurityEnhancementStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// A list of security group ids to associate with.
+        /// A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
@@ -471,7 +500,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         /// </summary>
         [Output("spotPriceLimit")]
-        public Output<double?> SpotPriceLimit { get; private set; } = null!;
+        public Output<double> SpotPriceLimit { get; private set; } = null!;
 
         /// <summary>
         /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
@@ -506,13 +535,13 @@ namespace Pulumi.AliCloud.Ecs
         /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
         /// </summary>
         [Output("systemDiskCategory")]
-        public Output<string?> SystemDiskCategory { get; private set; } = null!;
+        public Output<string> SystemDiskCategory { get; private set; } = null!;
 
         /// <summary>
         /// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Output("systemDiskDescription")]
-        public Output<string?> SystemDiskDescription { get; private set; } = null!;
+        public Output<string> SystemDiskDescription { get; private set; } = null!;
 
         /// <summary>
         /// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
@@ -524,7 +553,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         /// </summary>
         [Output("systemDiskEncrypted")]
-        public Output<bool?> SystemDiskEncrypted { get; private set; } = null!;
+        public Output<bool> SystemDiskEncrypted { get; private set; } = null!;
 
         /// <summary>
         /// (Available since v1.210.0) The ID of system disk.
@@ -542,7 +571,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         /// </summary>
         [Output("systemDiskName")]
-        public Output<string?> SystemDiskName { get; private set; } = null!;
+        public Output<string> SystemDiskName { get; private set; } = null!;
 
         /// <summary>
         /// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
@@ -554,7 +583,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         /// </summary>
         [Output("systemDiskSize")]
-        public Output<int?> SystemDiskSize { get; private set; } = null!;
+        public Output<int> SystemDiskSize { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
@@ -585,7 +614,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string?> VswitchId { get; private set; } = null!;
+        public Output<string> VswitchId { get; private set; } = null!;
 
 
         /// <summary>
@@ -595,7 +624,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
+        public Instance(string name, InstanceArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:ecs/instance:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -758,10 +787,10 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HttpTokens { get; set; }
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
         /// </summary>
-        [Input("imageId", required: true)]
-        public Input<string> ImageId { get; set; } = null!;
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
 
         /// <summary>
         /// Whether to change instance disks charge type when changing instance charge type.
@@ -782,10 +811,10 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
         /// </summary>
-        [Input("instanceType", required: true)]
-        public Input<string> InstanceType { get; set; } = null!;
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
 
         /// <summary>
         /// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
@@ -804,12 +833,6 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
-
-        /// <summary>
-        /// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-        /// </summary>
-        [Input("ioOptimized")]
-        public Input<string>? IoOptimized { get; set; }
 
         /// <summary>
         /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
@@ -858,6 +881,39 @@ namespace Pulumi.AliCloud.Ecs
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+        /// </summary>
+        [Input("launchTemplateId")]
+        public Input<string>? LaunchTemplateId { get; set; }
+
+        /// <summary>
+        /// The name of the launch template.
+        /// </summary>
+        [Input("launchTemplateName")]
+        public Input<string>? LaunchTemplateName { get; set; }
+
+        /// <summary>
+        /// The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+        /// 
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        /// </summary>
+        [Input("launchTemplateVersion")]
+        public Input<string>? LaunchTemplateVersion { get; set; }
 
         /// <summary>
         /// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
@@ -970,11 +1026,11 @@ namespace Pulumi.AliCloud.Ecs
         [Input("securityEnhancementStrategy")]
         public Input<string>? SecurityEnhancementStrategy { get; set; }
 
-        [Input("securityGroups", required: true)]
+        [Input("securityGroups")]
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with.
+        /// A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -1255,7 +1311,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HttpTokens { get; set; }
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -1279,7 +1335,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+        /// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1301,12 +1357,6 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
-
-        /// <summary>
-        /// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-        /// </summary>
-        [Input("ioOptimized")]
-        public Input<string>? IoOptimized { get; set; }
 
         /// <summary>
         /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
@@ -1355,6 +1405,39 @@ namespace Pulumi.AliCloud.Ecs
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+        /// </summary>
+        [Input("launchTemplateId")]
+        public Input<string>? LaunchTemplateId { get; set; }
+
+        /// <summary>
+        /// The name of the launch template.
+        /// </summary>
+        [Input("launchTemplateName")]
+        public Input<string>? LaunchTemplateName { get; set; }
+
+        /// <summary>
+        /// The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+        /// 
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        /// </summary>
+        [Input("launchTemplateVersion")]
+        public Input<string>? LaunchTemplateVersion { get; set; }
 
         /// <summary>
         /// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
@@ -1507,7 +1590,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with.
+        /// A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         /// </summary>
         public InputList<string> SecurityGroups
         {

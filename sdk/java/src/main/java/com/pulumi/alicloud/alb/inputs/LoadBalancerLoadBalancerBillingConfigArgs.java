@@ -14,14 +14,14 @@ public final class LoadBalancerLoadBalancerBillingConfigArgs extends com.pulumi.
     public static final LoadBalancerLoadBalancerBillingConfigArgs Empty = new LoadBalancerLoadBalancerBillingConfigArgs();
 
     /**
-     * Pay Type.
+     * Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
      * 
      */
     @Import(name="payType", required=true)
     private Output<String> payType;
 
     /**
-     * @return Pay Type.
+     * @return Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
      * 
      */
     public Output<String> payType() {
@@ -53,7 +53,7 @@ public final class LoadBalancerLoadBalancerBillingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param payType Pay Type.
+         * @param payType Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class LoadBalancerLoadBalancerBillingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param payType Pay Type.
+         * @param payType Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
          * 
          * @return builder
          * 

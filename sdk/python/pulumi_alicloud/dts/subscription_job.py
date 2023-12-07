@@ -1329,6 +1329,7 @@ class SubscriptionJob(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -1369,8 +1370,8 @@ class SubscriptionJob(pulumi.CustomResource):
             security_group_ids=[example_security_group.id])
         example_rds_account = alicloud.rds.RdsAccount("exampleRdsAccount",
             db_instance_id=example_instance.id,
-            account_name="example_name",
-            account_password="example_password")
+            account_name="test_mysql",
+            account_password="N1cetest")
         example_database = alicloud.rds.Database("exampleDatabase", instance_id=example_instance.id)
         example_account_privilege = alicloud.rds.AccountPrivilege("exampleAccountPrivilege",
             instance_id=example_instance.id,
@@ -1387,7 +1388,12 @@ class SubscriptionJob(pulumi.CustomResource):
             source_endpoint_database_name=example_database.name,
             source_endpoint_user_name=example_rds_account.account_name,
             source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
+            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: json.dumps({
+                example_database_name: {
+                    "name": example_database_name1,
+                    "all": True,
+                },
+            })),
             subscription_instance_network_type="vpc",
             subscription_instance_vpc_id=example_network.id,
             subscription_instance_vswitch_id=example_switch.id,
@@ -1463,6 +1469,7 @@ class SubscriptionJob(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -1503,8 +1510,8 @@ class SubscriptionJob(pulumi.CustomResource):
             security_group_ids=[example_security_group.id])
         example_rds_account = alicloud.rds.RdsAccount("exampleRdsAccount",
             db_instance_id=example_instance.id,
-            account_name="example_name",
-            account_password="example_password")
+            account_name="test_mysql",
+            account_password="N1cetest")
         example_database = alicloud.rds.Database("exampleDatabase", instance_id=example_instance.id)
         example_account_privilege = alicloud.rds.AccountPrivilege("exampleAccountPrivilege",
             instance_id=example_instance.id,
@@ -1521,7 +1528,12 @@ class SubscriptionJob(pulumi.CustomResource):
             source_endpoint_database_name=example_database.name,
             source_endpoint_user_name=example_rds_account.account_name,
             source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
+            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: json.dumps({
+                example_database_name: {
+                    "name": example_database_name1,
+                    "all": True,
+                },
+            })),
             subscription_instance_network_type="vpc",
             subscription_instance_vpc_id=example_network.id,
             subscription_instance_vswitch_id=example_switch.id,

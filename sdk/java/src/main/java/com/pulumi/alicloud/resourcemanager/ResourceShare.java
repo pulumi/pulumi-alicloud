@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var example = new ResourceShare(&#34;example&#34;, ResourceShareArgs.builder()        
  *             .resourceShareName(name)
  *             .build());
@@ -80,28 +80,28 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
         return this.resourceShareName;
     }
     /**
-     * The owner of resource share.
+     * The owner of the Resource Share.
      * 
      */
     @Export(name="resourceShareOwner", refs={String.class}, tree="[0]")
     private Output<String> resourceShareOwner;
 
     /**
-     * @return The owner of resource share.
+     * @return The owner of the Resource Share.
      * 
      */
     public Output<String> resourceShareOwner() {
         return this.resourceShareOwner;
     }
     /**
-     * The status of resource share.
+     * The status of the Resource Share.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of resource share.
+     * @return The status of the Resource Share.
      * 
      */
     public Output<String> status() {

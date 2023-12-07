@@ -1837,7 +1837,8 @@ type GetAddressBooksBook struct {
 	EcsTags []GetAddressBooksBookEcsTag `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName string `pulumi:"groupName"`
-	// The type of the Address Book. Valid values: `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 	GroupType string `pulumi:"groupType"`
 	// The ID of the Address Book.
 	GroupUuid string `pulumi:"groupUuid"`
@@ -1869,7 +1870,8 @@ type GetAddressBooksBookArgs struct {
 	EcsTags GetAddressBooksBookEcsTagArrayInput `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// The type of the Address Book. Valid values: `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 	GroupType pulumi.StringInput `pulumi:"groupType"`
 	// The ID of the Address Book.
 	GroupUuid pulumi.StringInput `pulumi:"groupUuid"`
@@ -1955,7 +1957,8 @@ func (o GetAddressBooksBookOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The type of the Address Book. Valid values: `ip`, `tag`.
+// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 func (o GetAddressBooksBookOutput) GroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) string { return v.GroupType }).(pulumi.StringOutput)
 }

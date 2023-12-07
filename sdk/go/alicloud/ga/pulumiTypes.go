@@ -5089,6 +5089,8 @@ type GetEndpointGroupsGroup struct {
 	EndpointConfigurations []GetEndpointGroupsGroupEndpointConfiguration `pulumi:"endpointConfigurations"`
 	// The endpointGroupId of the Endpoint Group.
 	EndpointGroupId string `pulumi:"endpointGroupId"`
+	// (Available since v1.213.1) The list of endpoint group IP addresses.
+	EndpointGroupIpLists []string `pulumi:"endpointGroupIpLists"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
 	// The interval between two consecutive health checks. Unit: seconds.
@@ -5107,7 +5109,7 @@ type GetEndpointGroupsGroup struct {
 	Name string `pulumi:"name"`
 	// Mapping between listening port and forwarding port of boarding point.
 	PortOverrides []GetEndpointGroupsGroupPortOverride `pulumi:"portOverrides"`
-	// The status of the endpoint group.
+	// The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
 	Status string `pulumi:"status"`
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
 	ThresholdCount int `pulumi:"thresholdCount"`
@@ -5133,6 +5135,8 @@ type GetEndpointGroupsGroupArgs struct {
 	EndpointConfigurations GetEndpointGroupsGroupEndpointConfigurationArrayInput `pulumi:"endpointConfigurations"`
 	// The endpointGroupId of the Endpoint Group.
 	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+	// (Available since v1.213.1) The list of endpoint group IP addresses.
+	EndpointGroupIpLists pulumi.StringArrayInput `pulumi:"endpointGroupIpLists"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringInput `pulumi:"endpointGroupRegion"`
 	// The interval between two consecutive health checks. Unit: seconds.
@@ -5151,7 +5155,7 @@ type GetEndpointGroupsGroupArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Mapping between listening port and forwarding port of boarding point.
 	PortOverrides GetEndpointGroupsGroupPortOverrideArrayInput `pulumi:"portOverrides"`
-	// The status of the endpoint group.
+	// The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
 	ThresholdCount pulumi.IntInput `pulumi:"thresholdCount"`
@@ -5227,6 +5231,11 @@ func (o GetEndpointGroupsGroupOutput) EndpointGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.EndpointGroupId }).(pulumi.StringOutput)
 }
 
+// (Available since v1.213.1) The list of endpoint group IP addresses.
+func (o GetEndpointGroupsGroupOutput) EndpointGroupIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEndpointGroupsGroup) []string { return v.EndpointGroupIpLists }).(pulumi.StringArrayOutput)
+}
+
 // The ID of the region where the endpoint group is deployed.
 func (o GetEndpointGroupsGroupOutput) EndpointGroupRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.EndpointGroupRegion }).(pulumi.StringOutput)
@@ -5272,7 +5281,7 @@ func (o GetEndpointGroupsGroupOutput) PortOverrides() GetEndpointGroupsGroupPort
 	return o.ApplyT(func(v GetEndpointGroupsGroup) []GetEndpointGroupsGroupPortOverride { return v.PortOverrides }).(GetEndpointGroupsGroupPortOverrideArrayOutput)
 }
 
-// The status of the endpoint group.
+// The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
 func (o GetEndpointGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }

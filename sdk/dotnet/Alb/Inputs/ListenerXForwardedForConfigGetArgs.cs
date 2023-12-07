@@ -61,6 +61,18 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<bool>? XForwardedForClientCertSubjectDnEnabled { get; set; }
 
         /// <summary>
+        /// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+        /// </summary>
+        [Input("xForwardedForClientSourceIpsEnabled")]
+        public Input<bool>? XForwardedForClientSourceIpsEnabled { get; set; }
+
+        /// <summary>
+        /// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+        /// </summary>
+        [Input("xForwardedForClientSourceIpsTrusted")]
+        public Input<string>? XForwardedForClientSourceIpsTrusted { get; set; }
+
+        /// <summary>
         /// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
         /// </summary>
         [Input("xForwardedForClientSrcPortEnabled")]

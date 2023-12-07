@@ -23,6 +23,7 @@ namespace Pulumi.AliCloud.Dts
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -93,8 +94,8 @@ namespace Pulumi.AliCloud.Dts
     ///     var exampleRdsAccount = new AliCloud.Rds.RdsAccount("exampleRdsAccount", new()
     ///     {
     ///         DbInstanceId = exampleInstance.Id,
-    ///         AccountName = "example_name",
-    ///         AccountPassword = "example_password",
+    ///         AccountName = "test_mysql",
+    ///         AccountPassword = "N1cetest",
     ///     });
     /// 
     ///     var exampleDatabase = new AliCloud.Rds.Database("exampleDatabase", new()
@@ -128,7 +129,14 @@ namespace Pulumi.AliCloud.Dts
     ///         {
     ///             var exampleDatabaseName = values.Item1;
     ///             var exampleDatabaseName1 = values.Item2;
-    ///             return $"{{\"{exampleDatabaseName}\":{{\"name\":\"{exampleDatabaseName1}\",\"all\":true}}}}";
+    ///             return JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 [exampleDatabaseName] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = exampleDatabaseName1,
+    ///                     ["all"] = true,
+    ///                 },
+    ///             });
     ///         }),
     ///         SubscriptionInstanceNetworkType = "vpc",
     ///         SubscriptionInstanceVpcId = exampleNetwork.Id,

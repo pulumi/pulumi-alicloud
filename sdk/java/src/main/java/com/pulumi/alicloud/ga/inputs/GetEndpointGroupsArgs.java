@@ -32,14 +32,14 @@ public final class GetEndpointGroupsArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * 
      */
     @Import(name="endpointGroupType")
     private @Nullable Output<String> endpointGroupType;
 
     /**
-     * @return The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     * @return The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * 
      */
     public Optional<Output<String>> endpointGroupType() {
@@ -107,14 +107,14 @@ public final class GetEndpointGroupsArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The status of the endpoint group.
+     * The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the endpoint group.
+     * @return The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -173,7 +173,7 @@ public final class GetEndpointGroupsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param endpointGroupType The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+         * @param endpointGroupType The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class GetEndpointGroupsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param endpointGroupType The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+         * @param endpointGroupType The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class GetEndpointGroupsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of the endpoint group.
+         * @param status The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class GetEndpointGroupsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of the endpoint group.
+         * @param status The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
          * 
          * @return builder
          * 

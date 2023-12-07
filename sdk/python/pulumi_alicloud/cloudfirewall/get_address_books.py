@@ -144,7 +144,8 @@ def get_address_books(group_type: Optional[str] = None,
     ```
 
 
-    :param str group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+    :param str group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+           **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
     :param Sequence[str] ids: A list of Address Book IDs.
     :param str name_regex: A regex string to filter results Address Book name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -204,7 +205,8 @@ def get_address_books_output(group_type: Optional[pulumi.Input[Optional[str]]] =
     ```
 
 
-    :param str group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+    :param str group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+           **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
     :param Sequence[str] ids: A list of Address Book IDs.
     :param str name_regex: A regex string to filter results Address Book name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

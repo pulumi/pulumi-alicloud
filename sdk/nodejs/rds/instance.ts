@@ -215,6 +215,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable forcible switching. Valid values:
+     * - Yes
+     * - No
+     */
+    public readonly force!: pulumi.Output<string | undefined>;
+    /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
     public readonly forceRestart!: pulumi.Output<boolean | undefined>;
@@ -282,6 +288,10 @@ export class Instance extends pulumi.CustomResource {
      * The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
      */
     public readonly monitoringPeriod!: pulumi.Output<number>;
+    /**
+     * The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+     */
+    public readonly nodeId!: pulumi.Output<string>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
@@ -494,10 +504,6 @@ export class Instance extends pulumi.CustomResource {
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
     public readonly zoneIdSlaveA!: pulumi.Output<string>;
-    /**
-     * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-     */
-    public readonly zoneIdSlaveB!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -539,6 +545,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["forceRestart"] = state ? state.forceRestart : undefined;
             resourceInputs["freshWhiteListReadins"] = state ? state.freshWhiteListReadins : undefined;
             resourceInputs["haConfig"] = state ? state.haConfig : undefined;
@@ -550,6 +557,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["manualHaTime"] = state ? state.manualHaTime : undefined;
             resourceInputs["modifyMode"] = state ? state.modifyMode : undefined;
             resourceInputs["monitoringPeriod"] = state ? state.monitoringPeriod : undefined;
+            resourceInputs["nodeId"] = state ? state.nodeId : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["pgHbaConfs"] = state ? state.pgHbaConfs : undefined;
@@ -588,7 +596,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["whitelistNetworkType"] = state ? state.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
             resourceInputs["zoneIdSlaveA"] = state ? state.zoneIdSlaveA : undefined;
-            resourceInputs["zoneIdSlaveB"] = state ? state.zoneIdSlaveB : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.engine === undefined) && !opts.urn) {
@@ -627,6 +634,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["forceRestart"] = args ? args.forceRestart : undefined;
             resourceInputs["freshWhiteListReadins"] = args ? args.freshWhiteListReadins : undefined;
             resourceInputs["haConfig"] = args ? args.haConfig : undefined;
@@ -638,6 +646,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["manualHaTime"] = args ? args.manualHaTime : undefined;
             resourceInputs["modifyMode"] = args ? args.modifyMode : undefined;
             resourceInputs["monitoringPeriod"] = args ? args.monitoringPeriod : undefined;
+            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["pgHbaConfs"] = args ? args.pgHbaConfs : undefined;
@@ -674,7 +683,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["whitelistNetworkType"] = args ? args.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["zoneIdSlaveA"] = args ? args.zoneIdSlaveA : undefined;
-            resourceInputs["zoneIdSlaveB"] = args ? args.zoneIdSlaveB : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dbInstanceType"] = undefined /*out*/;
@@ -862,6 +870,12 @@ export interface InstanceState {
      */
     engineVersion?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable forcible switching. Valid values:
+     * - Yes
+     * - No
+     */
+    force?: pulumi.Input<string>;
+    /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
     forceRestart?: pulumi.Input<boolean>;
@@ -929,6 +943,10 @@ export interface InstanceState {
      * The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
      */
     monitoringPeriod?: pulumi.Input<number>;
+    /**
+     * The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+     */
+    nodeId?: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
@@ -1141,10 +1159,6 @@ export interface InstanceState {
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
     zoneIdSlaveA?: pulumi.Input<string>;
-    /**
-     * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-     */
-    zoneIdSlaveB?: pulumi.Input<string>;
 }
 
 /**
@@ -1311,6 +1325,12 @@ export interface InstanceArgs {
      */
     engineVersion: pulumi.Input<string>;
     /**
+     * Specifies whether to enable forcible switching. Valid values:
+     * - Yes
+     * - No
+     */
+    force?: pulumi.Input<string>;
+    /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
     forceRestart?: pulumi.Input<boolean>;
@@ -1378,6 +1398,10 @@ export interface InstanceArgs {
      * The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
      */
     monitoringPeriod?: pulumi.Input<number>;
+    /**
+     * The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+     */
+    nodeId?: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
@@ -1582,8 +1606,4 @@ export interface InstanceArgs {
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
     zoneIdSlaveA?: pulumi.Input<string>;
-    /**
-     * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-     */
-    zoneIdSlaveB?: pulumi.Input<string>;
 }

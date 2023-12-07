@@ -110,10 +110,16 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> BackupInterval { get; private set; } = null!;
 
         /// <summary>
-        /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         /// </summary>
         [Output("backupPeriods")]
         public Output<ImmutableArray<string>> BackupPeriods { get; private set; } = null!;
+
+        /// <summary>
+        /// The retention period of full backups.
+        /// </summary>
+        [Output("backupRetentionPeriod")]
+        public Output<int> BackupRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
         /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -147,6 +153,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Output("encrypted")]
         public Output<bool?> Encrypted { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the custom key.
+        /// </summary>
         [Output("encryptionKey")]
         public Output<string> EncryptionKey { get; private set; } = null!;
 
@@ -264,6 +273,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Output("retentionPeriod")]
         public Output<int> RetentionPeriod { get; private set; } = null!;
 
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
@@ -430,13 +442,19 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         /// </summary>
         public InputList<string> BackupPeriods
         {
             get => _backupPeriods ?? (_backupPeriods = new InputList<string>());
             set => _backupPeriods = value;
         }
+
+        /// <summary>
+        /// The retention period of full backups.
+        /// </summary>
+        [Input("backupRetentionPeriod")]
+        public Input<int>? BackupRetentionPeriod { get; set; }
 
         /// <summary>
         /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -470,6 +488,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The ID of the custom key.
+        /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
 
@@ -581,6 +602,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
@@ -711,13 +735,19 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         /// </summary>
         public InputList<string> BackupPeriods
         {
             get => _backupPeriods ?? (_backupPeriods = new InputList<string>());
             set => _backupPeriods = value;
         }
+
+        /// <summary>
+        /// The retention period of full backups.
+        /// </summary>
+        [Input("backupRetentionPeriod")]
+        public Input<int>? BackupRetentionPeriod { get; set; }
 
         /// <summary>
         /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -751,6 +781,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The ID of the custom key.
+        /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
 
@@ -886,6 +919,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
 
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 

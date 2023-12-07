@@ -2530,6 +2530,7 @@ class GetEndpointGroupsGroupResult(dict):
                  description: str,
                  endpoint_configurations: Sequence['outputs.GetEndpointGroupsGroupEndpointConfigurationResult'],
                  endpoint_group_id: str,
+                 endpoint_group_ip_lists: Sequence[str],
                  endpoint_group_region: str,
                  health_check_interval_seconds: int,
                  health_check_path: str,
@@ -2546,6 +2547,7 @@ class GetEndpointGroupsGroupResult(dict):
         :param str description: The description of the endpoint group.
         :param Sequence['GetEndpointGroupsGroupEndpointConfigurationArgs'] endpoint_configurations: The endpointConfigurations of the endpoint group.
         :param str endpoint_group_id: The endpoint_group_id of the Endpoint Group.
+        :param Sequence[str] endpoint_group_ip_lists: (Available since v1.213.1) The list of endpoint group IP addresses.
         :param str endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param int health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param str health_check_path: The path specified as the destination of the targets for health checks.
@@ -2555,13 +2557,14 @@ class GetEndpointGroupsGroupResult(dict):
         :param str listener_id: The ID of the listener that is associated with the endpoint group.
         :param str name: The name of the endpoint group.
         :param Sequence['GetEndpointGroupsGroupPortOverrideArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point.
-        :param str status: The status of the endpoint group.
+        :param str status: The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
         :param int threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
         :param int traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "endpoint_configurations", endpoint_configurations)
         pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "endpoint_group_ip_lists", endpoint_group_ip_lists)
         pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
         pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
         pulumi.set(__self__, "health_check_path", health_check_path)
@@ -2598,6 +2601,14 @@ class GetEndpointGroupsGroupResult(dict):
         The endpoint_group_id of the Endpoint Group.
         """
         return pulumi.get(self, "endpoint_group_id")
+
+    @property
+    @pulumi.getter(name="endpointGroupIpLists")
+    def endpoint_group_ip_lists(self) -> Sequence[str]:
+        """
+        (Available since v1.213.1) The list of endpoint group IP addresses.
+        """
+        return pulumi.get(self, "endpoint_group_ip_lists")
 
     @property
     @pulumi.getter(name="endpointGroupRegion")
@@ -2675,7 +2686,7 @@ class GetEndpointGroupsGroupResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the endpoint group.
+        The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
         """
         return pulumi.get(self, "status")
 

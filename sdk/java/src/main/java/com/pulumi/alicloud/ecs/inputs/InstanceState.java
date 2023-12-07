@@ -342,14 +342,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
+     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
+     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -400,14 +400,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+     * The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+     * @return The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -465,29 +465,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> internetMaxBandwidthOut() {
         return Optional.ofNullable(this.internetMaxBandwidthOut);
-    }
-
-    /**
-     * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-     * 
-     * @deprecated
-     * Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-     * 
-     */
-    @Deprecated /* Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
-    @Import(name="ioOptimized")
-    private @Nullable Output<String> ioOptimized;
-
-    /**
-     * @return It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-     * 
-     * @deprecated
-     * Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-     * 
-     */
-    @Deprecated /* Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
-    public Optional<Output<String>> ioOptimized() {
-        return Optional.ofNullable(this.ioOptimized);
     }
 
     /**
@@ -578,6 +555,79 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,Object>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
+    }
+
+    /**
+     * The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * 
+     */
+    @Import(name="launchTemplateId")
+    private @Nullable Output<String> launchTemplateId;
+
+    /**
+     * @return The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+     * 
+     */
+    public Optional<Output<String>> launchTemplateId() {
+        return Optional.ofNullable(this.launchTemplateId);
+    }
+
+    /**
+     * The name of the launch template.
+     * 
+     */
+    @Import(name="launchTemplateName")
+    private @Nullable Output<String> launchTemplateName;
+
+    /**
+     * @return The name of the launch template.
+     * 
+     */
+    public Optional<Output<String>> launchTemplateName() {
+        return Optional.ofNullable(this.launchTemplateName);
+    }
+
+    /**
+     * The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
+     */
+    @Import(name="launchTemplateVersion")
+    private @Nullable Output<String> launchTemplateVersion;
+
+    /**
+     * @return The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
+     */
+    public Optional<Output<String>> launchTemplateVersion() {
+        return Optional.ofNullable(this.launchTemplateVersion);
     }
 
     /**
@@ -906,14 +956,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of security group ids to associate with.
+     * A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
      * 
      */
     @Import(name="securityGroups")
     private @Nullable Output<List<String>> securityGroups;
 
     /**
-     * @return A list of security group ids to associate with.
+     * @return A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
      * 
      */
     public Optional<Output<List<String>>> securityGroups() {
@@ -1260,13 +1310,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.internetChargeType = $.internetChargeType;
         this.internetMaxBandwidthIn = $.internetMaxBandwidthIn;
         this.internetMaxBandwidthOut = $.internetMaxBandwidthOut;
-        this.ioOptimized = $.ioOptimized;
         this.ipv6AddressCount = $.ipv6AddressCount;
         this.ipv6Addresses = $.ipv6Addresses;
         this.isOutdated = $.isOutdated;
         this.keyName = $.keyName;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.launchTemplateId = $.launchTemplateId;
+        this.launchTemplateName = $.launchTemplateName;
+        this.launchTemplateVersion = $.launchTemplateVersion;
         this.maintenanceAction = $.maintenanceAction;
         this.maintenanceNotify = $.maintenanceNotify;
         this.maintenanceTime = $.maintenanceTime;
@@ -1771,7 +1823,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
+         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
          * 
          * @return builder
          * 
@@ -1782,7 +1834,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
+         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
          * 
          * @return builder
          * 
@@ -1849,7 +1901,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+         * @param instanceType The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
          * 
          * @return builder
          * 
@@ -1860,7 +1912,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+         * @param instanceType The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
          * 
          * @return builder
          * 
@@ -1938,35 +1990,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder internetMaxBandwidthOut(Integer internetMaxBandwidthOut) {
             return internetMaxBandwidthOut(Output.of(internetMaxBandwidthOut));
-        }
-
-        /**
-         * @param ioOptimized It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-         * 
-         */
-        @Deprecated /* Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
-        public Builder ioOptimized(@Nullable Output<String> ioOptimized) {
-            $.ioOptimized = ioOptimized;
-            return this;
-        }
-
-        /**
-         * @param ioOptimized It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-         * 
-         */
-        @Deprecated /* Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
-        public Builder ioOptimized(String ioOptimized) {
-            return ioOptimized(Output.of(ioOptimized));
         }
 
         /**
@@ -2103,6 +2126,97 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsEncryptionContext(Map<String,Object> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
+        }
+
+        /**
+         * @param launchTemplateId The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launchTemplateId(@Nullable Output<String> launchTemplateId) {
+            $.launchTemplateId = launchTemplateId;
+            return this;
+        }
+
+        /**
+         * @param launchTemplateId The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launchTemplateId(String launchTemplateId) {
+            return launchTemplateId(Output.of(launchTemplateId));
+        }
+
+        /**
+         * @param launchTemplateName The name of the launch template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launchTemplateName(@Nullable Output<String> launchTemplateName) {
+            $.launchTemplateName = launchTemplateName;
+            return this;
+        }
+
+        /**
+         * @param launchTemplateName The name of the launch template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launchTemplateName(String launchTemplateName) {
+            return launchTemplateName(Output.of(launchTemplateName));
+        }
+
+        /**
+         * @param launchTemplateVersion The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+         * 
+         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launchTemplateVersion(@Nullable Output<String> launchTemplateVersion) {
+            $.launchTemplateVersion = launchTemplateVersion;
+            return this;
+        }
+
+        /**
+         * @param launchTemplateVersion The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
+         * 
+         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launchTemplateVersion(String launchTemplateVersion) {
+            return launchTemplateVersion(Output.of(launchTemplateVersion));
         }
 
         /**
@@ -2567,7 +2681,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with.
+         * @param securityGroups A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
          * 
          * @return builder
          * 
@@ -2578,7 +2692,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with.
+         * @param securityGroups A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
          * 
          * @return builder
          * 
@@ -2588,7 +2702,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with.
+         * @param securityGroups A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
          * 
          * @return builder
          * 

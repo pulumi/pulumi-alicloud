@@ -9,6 +9,8 @@ import com.pulumi.alicloud.alb.outputs.RuleRuleConditionHostConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleConditionMethodConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleConditionPathConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleConditionQueryStringConfig;
+import com.pulumi.alicloud.alb.outputs.RuleRuleConditionResponseHeaderConfig;
+import com.pulumi.alicloud.alb.outputs.RuleRuleConditionResponseStatusCodeConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleConditionSourceIpConfig;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
@@ -48,6 +50,16 @@ public final class RuleRuleCondition {
      * 
      */
     private @Nullable RuleRuleConditionQueryStringConfig queryStringConfig;
+    /**
+     * @return The configuration of the header field. See `response_header_config` below.
+     * 
+     */
+    private @Nullable RuleRuleConditionResponseHeaderConfig responseHeaderConfig;
+    /**
+     * @return The configuration of the header field. See `response_status_code_config` below.
+     * 
+     */
+    private @Nullable RuleRuleConditionResponseStatusCodeConfig responseStatusCodeConfig;
     /**
      * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
      * 
@@ -103,6 +115,20 @@ public final class RuleRuleCondition {
         return Optional.ofNullable(this.queryStringConfig);
     }
     /**
+     * @return The configuration of the header field. See `response_header_config` below.
+     * 
+     */
+    public Optional<RuleRuleConditionResponseHeaderConfig> responseHeaderConfig() {
+        return Optional.ofNullable(this.responseHeaderConfig);
+    }
+    /**
+     * @return The configuration of the header field. See `response_status_code_config` below.
+     * 
+     */
+    public Optional<RuleRuleConditionResponseStatusCodeConfig> responseStatusCodeConfig() {
+        return Optional.ofNullable(this.responseStatusCodeConfig);
+    }
+    /**
      * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
      * 
      */
@@ -132,6 +158,8 @@ public final class RuleRuleCondition {
         private @Nullable RuleRuleConditionMethodConfig methodConfig;
         private @Nullable RuleRuleConditionPathConfig pathConfig;
         private @Nullable RuleRuleConditionQueryStringConfig queryStringConfig;
+        private @Nullable RuleRuleConditionResponseHeaderConfig responseHeaderConfig;
+        private @Nullable RuleRuleConditionResponseStatusCodeConfig responseStatusCodeConfig;
         private @Nullable RuleRuleConditionSourceIpConfig sourceIpConfig;
         private String type;
         public Builder() {}
@@ -143,6 +171,8 @@ public final class RuleRuleCondition {
     	      this.methodConfig = defaults.methodConfig;
     	      this.pathConfig = defaults.pathConfig;
     	      this.queryStringConfig = defaults.queryStringConfig;
+    	      this.responseHeaderConfig = defaults.responseHeaderConfig;
+    	      this.responseStatusCodeConfig = defaults.responseStatusCodeConfig;
     	      this.sourceIpConfig = defaults.sourceIpConfig;
     	      this.type = defaults.type;
         }
@@ -178,6 +208,16 @@ public final class RuleRuleCondition {
             return this;
         }
         @CustomType.Setter
+        public Builder responseHeaderConfig(@Nullable RuleRuleConditionResponseHeaderConfig responseHeaderConfig) {
+            this.responseHeaderConfig = responseHeaderConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder responseStatusCodeConfig(@Nullable RuleRuleConditionResponseStatusCodeConfig responseStatusCodeConfig) {
+            this.responseStatusCodeConfig = responseStatusCodeConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceIpConfig(@Nullable RuleRuleConditionSourceIpConfig sourceIpConfig) {
             this.sourceIpConfig = sourceIpConfig;
             return this;
@@ -195,6 +235,8 @@ public final class RuleRuleCondition {
             _resultValue.methodConfig = methodConfig;
             _resultValue.pathConfig = pathConfig;
             _resultValue.queryStringConfig = queryStringConfig;
+            _resultValue.responseHeaderConfig = responseHeaderConfig;
+            _resultValue.responseStatusCodeConfig = responseStatusCodeConfig;
             _resultValue.sourceIpConfig = sourceIpConfig;
             _resultValue.type = type;
             return _resultValue;

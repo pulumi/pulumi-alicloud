@@ -1270,6 +1270,10 @@ type ListenerXForwardedForConfig struct {
 	XForwardedForClientCertSubjectDnAlias *string `pulumi:"xForwardedForClientCertSubjectDnAlias"`
 	// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
 	XForwardedForClientCertSubjectDnEnabled *bool `pulumi:"xForwardedForClientCertSubjectDnEnabled"`
+	// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+	XForwardedForClientSourceIpsEnabled *bool `pulumi:"xForwardedForClientSourceIpsEnabled"`
+	// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+	XForwardedForClientSourceIpsTrusted *string `pulumi:"xForwardedForClientSourceIpsTrusted"`
 	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
 	XForwardedForClientSrcPortEnabled *bool `pulumi:"xForwardedForClientSrcPortEnabled"`
 	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
@@ -1310,6 +1314,10 @@ type ListenerXForwardedForConfigArgs struct {
 	XForwardedForClientCertSubjectDnAlias pulumi.StringPtrInput `pulumi:"xForwardedForClientCertSubjectDnAlias"`
 	// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
 	XForwardedForClientCertSubjectDnEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertSubjectDnEnabled"`
+	// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+	XForwardedForClientSourceIpsEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientSourceIpsEnabled"`
+	// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+	XForwardedForClientSourceIpsTrusted pulumi.StringPtrInput `pulumi:"xForwardedForClientSourceIpsTrusted"`
 	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
 	XForwardedForClientSrcPortEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientSrcPortEnabled"`
 	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
@@ -1439,6 +1447,16 @@ func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertSubjectDnEnabl
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientCertSubjectDnEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientSourceIpsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientSourceIpsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientSourceIpsTrusted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientSourceIpsTrusted }).(pulumi.StringPtrOutput)
+}
+
 // Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientSrcPortEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientSrcPortEnabled }).(pulumi.BoolPtrOutput)
@@ -1566,6 +1584,26 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertSubjectDnEn
 		}
 		return v.XForwardedForClientCertSubjectDnEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientSourceIpsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientSourceIpsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientSourceIpsTrusted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientSourceIpsTrusted
+	}).(pulumi.StringPtrOutput)
 }
 
 // Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
@@ -1775,7 +1813,7 @@ func (o LoadBalancerAccessLogConfigPtrOutput) LogStore() pulumi.StringPtrOutput 
 }
 
 type LoadBalancerLoadBalancerBillingConfig struct {
-	// Pay Type.
+	// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
 	PayType string `pulumi:"payType"`
 }
 
@@ -1791,7 +1829,7 @@ type LoadBalancerLoadBalancerBillingConfigInput interface {
 }
 
 type LoadBalancerLoadBalancerBillingConfigArgs struct {
-	// Pay Type.
+	// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
 	PayType pulumi.StringInput `pulumi:"payType"`
 }
 
@@ -1872,7 +1910,7 @@ func (o LoadBalancerLoadBalancerBillingConfigOutput) ToLoadBalancerLoadBalancerB
 	}).(LoadBalancerLoadBalancerBillingConfigPtrOutput)
 }
 
-// Pay Type.
+// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
 func (o LoadBalancerLoadBalancerBillingConfigOutput) PayType() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerLoadBalancerBillingConfig) string { return v.PayType }).(pulumi.StringOutput)
 }
@@ -1901,7 +1939,7 @@ func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) Elem() LoadBalancerLoadB
 	}).(LoadBalancerLoadBalancerBillingConfigOutput)
 }
 
-// Pay Type.
+// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
 func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) PayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerLoadBalancerBillingConfig) *string {
 		if v == nil {
@@ -2321,13 +2359,15 @@ type RuleRuleAction struct {
 	Order int `pulumi:"order"`
 	// The configuration of the external redirect action. See `redirectConfig` below.
 	RedirectConfig *RuleRuleActionRedirectConfig `pulumi:"redirectConfig"`
+	// The configuration of the inserted header field. See `removeHeaderConfig` below.
+	RemoveHeaderConfig *RuleRuleActionRemoveHeaderConfig `pulumi:"removeHeaderConfig"`
 	// The redirect action within ALB. See `rewriteConfig` below.
 	RewriteConfig *RuleRuleActionRewriteConfig `pulumi:"rewriteConfig"`
 	// The Flow speed limit. See `trafficLimitConfig` below.
 	TrafficLimitConfig *RuleRuleActionTrafficLimitConfig `pulumi:"trafficLimitConfig"`
 	// The Traffic mirroring. See `trafficMirrorConfig` below.
 	TrafficMirrorConfig *RuleRuleActionTrafficMirrorConfig `pulumi:"trafficMirrorConfig"`
-	// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+	// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
 	// **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
 	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
 	// **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -2358,13 +2398,15 @@ type RuleRuleActionArgs struct {
 	Order pulumi.IntInput `pulumi:"order"`
 	// The configuration of the external redirect action. See `redirectConfig` below.
 	RedirectConfig RuleRuleActionRedirectConfigPtrInput `pulumi:"redirectConfig"`
+	// The configuration of the inserted header field. See `removeHeaderConfig` below.
+	RemoveHeaderConfig RuleRuleActionRemoveHeaderConfigPtrInput `pulumi:"removeHeaderConfig"`
 	// The redirect action within ALB. See `rewriteConfig` below.
 	RewriteConfig RuleRuleActionRewriteConfigPtrInput `pulumi:"rewriteConfig"`
 	// The Flow speed limit. See `trafficLimitConfig` below.
 	TrafficLimitConfig RuleRuleActionTrafficLimitConfigPtrInput `pulumi:"trafficLimitConfig"`
 	// The Traffic mirroring. See `trafficMirrorConfig` below.
 	TrafficMirrorConfig RuleRuleActionTrafficMirrorConfigPtrInput `pulumi:"trafficMirrorConfig"`
-	// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+	// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
 	// **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
 	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
 	// **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -2452,6 +2494,11 @@ func (o RuleRuleActionOutput) RedirectConfig() RuleRuleActionRedirectConfigPtrOu
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRedirectConfig { return v.RedirectConfig }).(RuleRuleActionRedirectConfigPtrOutput)
 }
 
+// The configuration of the inserted header field. See `removeHeaderConfig` below.
+func (o RuleRuleActionOutput) RemoveHeaderConfig() RuleRuleActionRemoveHeaderConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRemoveHeaderConfig { return v.RemoveHeaderConfig }).(RuleRuleActionRemoveHeaderConfigPtrOutput)
+}
+
 // The redirect action within ALB. See `rewriteConfig` below.
 func (o RuleRuleActionOutput) RewriteConfig() RuleRuleActionRewriteConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRewriteConfig { return v.RewriteConfig }).(RuleRuleActionRewriteConfigPtrOutput)
@@ -2467,7 +2514,7 @@ func (o RuleRuleActionOutput) TrafficMirrorConfig() RuleRuleActionTrafficMirrorC
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionTrafficMirrorConfig { return v.TrafficMirrorConfig }).(RuleRuleActionTrafficMirrorConfigPtrOutput)
 }
 
-// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
 // **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
 // **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
 // **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -3325,7 +3372,9 @@ func (o RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pul
 }
 
 type RuleRuleActionInsertHeaderConfig struct {
-	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key *string `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
@@ -3346,7 +3395,9 @@ type RuleRuleActionInsertHeaderConfigInput interface {
 }
 
 type RuleRuleActionInsertHeaderConfigArgs struct {
-	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
@@ -3432,7 +3483,9 @@ func (o RuleRuleActionInsertHeaderConfigOutput) ToRuleRuleActionInsertHeaderConf
 	}).(RuleRuleActionInsertHeaderConfigPtrOutput)
 }
 
-// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleActionInsertHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -3472,7 +3525,9 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) Elem() RuleRuleActionInsertHe
 	}).(RuleRuleActionInsertHeaderConfigOutput)
 }
 
-// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleActionInsertHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
 		if v == nil {
@@ -3735,6 +3790,151 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Query() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RuleRuleActionRemoveHeaderConfig struct {
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+	Key *string `pulumi:"key"`
+}
+
+// RuleRuleActionRemoveHeaderConfigInput is an input type that accepts RuleRuleActionRemoveHeaderConfigArgs and RuleRuleActionRemoveHeaderConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionRemoveHeaderConfigInput` via:
+//
+//	RuleRuleActionRemoveHeaderConfigArgs{...}
+type RuleRuleActionRemoveHeaderConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionRemoveHeaderConfigOutput() RuleRuleActionRemoveHeaderConfigOutput
+	ToRuleRuleActionRemoveHeaderConfigOutputWithContext(context.Context) RuleRuleActionRemoveHeaderConfigOutput
+}
+
+type RuleRuleActionRemoveHeaderConfigArgs struct {
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (RuleRuleActionRemoveHeaderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionRemoveHeaderConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionRemoveHeaderConfigArgs) ToRuleRuleActionRemoveHeaderConfigOutput() RuleRuleActionRemoveHeaderConfigOutput {
+	return i.ToRuleRuleActionRemoveHeaderConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionRemoveHeaderConfigArgs) ToRuleRuleActionRemoveHeaderConfigOutputWithContext(ctx context.Context) RuleRuleActionRemoveHeaderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionRemoveHeaderConfigOutput)
+}
+
+func (i RuleRuleActionRemoveHeaderConfigArgs) ToRuleRuleActionRemoveHeaderConfigPtrOutput() RuleRuleActionRemoveHeaderConfigPtrOutput {
+	return i.ToRuleRuleActionRemoveHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionRemoveHeaderConfigArgs) ToRuleRuleActionRemoveHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRemoveHeaderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionRemoveHeaderConfigOutput).ToRuleRuleActionRemoveHeaderConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionRemoveHeaderConfigPtrInput is an input type that accepts RuleRuleActionRemoveHeaderConfigArgs, RuleRuleActionRemoveHeaderConfigPtr and RuleRuleActionRemoveHeaderConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionRemoveHeaderConfigPtrInput` via:
+//
+//	        RuleRuleActionRemoveHeaderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleRuleActionRemoveHeaderConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionRemoveHeaderConfigPtrOutput() RuleRuleActionRemoveHeaderConfigPtrOutput
+	ToRuleRuleActionRemoveHeaderConfigPtrOutputWithContext(context.Context) RuleRuleActionRemoveHeaderConfigPtrOutput
+}
+
+type ruleRuleActionRemoveHeaderConfigPtrType RuleRuleActionRemoveHeaderConfigArgs
+
+func RuleRuleActionRemoveHeaderConfigPtr(v *RuleRuleActionRemoveHeaderConfigArgs) RuleRuleActionRemoveHeaderConfigPtrInput {
+	return (*ruleRuleActionRemoveHeaderConfigPtrType)(v)
+}
+
+func (*ruleRuleActionRemoveHeaderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionRemoveHeaderConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionRemoveHeaderConfigPtrType) ToRuleRuleActionRemoveHeaderConfigPtrOutput() RuleRuleActionRemoveHeaderConfigPtrOutput {
+	return i.ToRuleRuleActionRemoveHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionRemoveHeaderConfigPtrType) ToRuleRuleActionRemoveHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRemoveHeaderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionRemoveHeaderConfigPtrOutput)
+}
+
+type RuleRuleActionRemoveHeaderConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionRemoveHeaderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionRemoveHeaderConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionRemoveHeaderConfigOutput) ToRuleRuleActionRemoveHeaderConfigOutput() RuleRuleActionRemoveHeaderConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionRemoveHeaderConfigOutput) ToRuleRuleActionRemoveHeaderConfigOutputWithContext(ctx context.Context) RuleRuleActionRemoveHeaderConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionRemoveHeaderConfigOutput) ToRuleRuleActionRemoveHeaderConfigPtrOutput() RuleRuleActionRemoveHeaderConfigPtrOutput {
+	return o.ToRuleRuleActionRemoveHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionRemoveHeaderConfigOutput) ToRuleRuleActionRemoveHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRemoveHeaderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionRemoveHeaderConfig) *RuleRuleActionRemoveHeaderConfig {
+		return &v
+	}).(RuleRuleActionRemoveHeaderConfigPtrOutput)
+}
+
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+func (o RuleRuleActionRemoveHeaderConfigOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRemoveHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionRemoveHeaderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionRemoveHeaderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionRemoveHeaderConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionRemoveHeaderConfigPtrOutput) ToRuleRuleActionRemoveHeaderConfigPtrOutput() RuleRuleActionRemoveHeaderConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionRemoveHeaderConfigPtrOutput) ToRuleRuleActionRemoveHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionRemoveHeaderConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionRemoveHeaderConfigPtrOutput) Elem() RuleRuleActionRemoveHeaderConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionRemoveHeaderConfig) RuleRuleActionRemoveHeaderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionRemoveHeaderConfig
+		return ret
+	}).(RuleRuleActionRemoveHeaderConfigOutput)
+}
+
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+func (o RuleRuleActionRemoveHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRemoveHeaderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
 type RuleRuleActionRewriteConfig struct {
 	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 	Host *string `pulumi:"host"`
@@ -3911,6 +4111,8 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Query() pulumi.StringPtrOutput {
 }
 
 type RuleRuleActionTrafficLimitConfig struct {
+	// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+	PerIpQps *int `pulumi:"perIpQps"`
 	// The Number of requests per second. Valid values: `1` to `100000`.
 	Qps *int `pulumi:"qps"`
 }
@@ -3927,6 +4129,8 @@ type RuleRuleActionTrafficLimitConfigInput interface {
 }
 
 type RuleRuleActionTrafficLimitConfigArgs struct {
+	// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+	PerIpQps pulumi.IntPtrInput `pulumi:"perIpQps"`
 	// The Number of requests per second. Valid values: `1` to `100000`.
 	Qps pulumi.IntPtrInput `pulumi:"qps"`
 }
@@ -4008,6 +4212,11 @@ func (o RuleRuleActionTrafficLimitConfigOutput) ToRuleRuleActionTrafficLimitConf
 	}).(RuleRuleActionTrafficLimitConfigPtrOutput)
 }
 
+// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+func (o RuleRuleActionTrafficLimitConfigOutput) PerIpQps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionTrafficLimitConfig) *int { return v.PerIpQps }).(pulumi.IntPtrOutput)
+}
+
 // The Number of requests per second. Valid values: `1` to `100000`.
 func (o RuleRuleActionTrafficLimitConfigOutput) Qps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficLimitConfig) *int { return v.Qps }).(pulumi.IntPtrOutput)
@@ -4035,6 +4244,16 @@ func (o RuleRuleActionTrafficLimitConfigPtrOutput) Elem() RuleRuleActionTrafficL
 		var ret RuleRuleActionTrafficLimitConfig
 		return ret
 	}).(RuleRuleActionTrafficLimitConfigOutput)
+}
+
+// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+func (o RuleRuleActionTrafficLimitConfigPtrOutput) PerIpQps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionTrafficLimitConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerIpQps
+	}).(pulumi.IntPtrOutput)
 }
 
 // The Number of requests per second. Valid values: `1` to `100000`.
@@ -4456,6 +4675,10 @@ type RuleRuleCondition struct {
 	PathConfig *RuleRuleConditionPathConfig `pulumi:"pathConfig"`
 	// The configuration of the query string. See `queryStringConfig` below.
 	QueryStringConfig *RuleRuleConditionQueryStringConfig `pulumi:"queryStringConfig"`
+	// The configuration of the header field. See `responseHeaderConfig` below.
+	ResponseHeaderConfig *RuleRuleConditionResponseHeaderConfig `pulumi:"responseHeaderConfig"`
+	// The configuration of the header field. See `responseStatusCodeConfig` below.
+	ResponseStatusCodeConfig *RuleRuleConditionResponseStatusCodeConfig `pulumi:"responseStatusCodeConfig"`
 	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
 	SourceIpConfig *RuleRuleConditionSourceIpConfig `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values:
@@ -4486,6 +4709,10 @@ type RuleRuleConditionArgs struct {
 	PathConfig RuleRuleConditionPathConfigPtrInput `pulumi:"pathConfig"`
 	// The configuration of the query string. See `queryStringConfig` below.
 	QueryStringConfig RuleRuleConditionQueryStringConfigPtrInput `pulumi:"queryStringConfig"`
+	// The configuration of the header field. See `responseHeaderConfig` below.
+	ResponseHeaderConfig RuleRuleConditionResponseHeaderConfigPtrInput `pulumi:"responseHeaderConfig"`
+	// The configuration of the header field. See `responseStatusCodeConfig` below.
+	ResponseStatusCodeConfig RuleRuleConditionResponseStatusCodeConfigPtrInput `pulumi:"responseStatusCodeConfig"`
 	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
 	SourceIpConfig RuleRuleConditionSourceIpConfigPtrInput `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values:
@@ -4571,6 +4798,18 @@ func (o RuleRuleConditionOutput) PathConfig() RuleRuleConditionPathConfigPtrOutp
 // The configuration of the query string. See `queryStringConfig` below.
 func (o RuleRuleConditionOutput) QueryStringConfig() RuleRuleConditionQueryStringConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionQueryStringConfig { return v.QueryStringConfig }).(RuleRuleConditionQueryStringConfigPtrOutput)
+}
+
+// The configuration of the header field. See `responseHeaderConfig` below.
+func (o RuleRuleConditionOutput) ResponseHeaderConfig() RuleRuleConditionResponseHeaderConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionResponseHeaderConfig { return v.ResponseHeaderConfig }).(RuleRuleConditionResponseHeaderConfigPtrOutput)
+}
+
+// The configuration of the header field. See `responseStatusCodeConfig` below.
+func (o RuleRuleConditionOutput) ResponseStatusCodeConfig() RuleRuleConditionResponseStatusCodeConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionResponseStatusCodeConfig {
+		return v.ResponseStatusCodeConfig
+	}).(RuleRuleConditionResponseStatusCodeConfigPtrOutput)
 }
 
 // The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
@@ -4741,7 +4980,9 @@ func (o RuleRuleConditionCookieConfigPtrOutput) Values() RuleRuleConditionCookie
 }
 
 type RuleRuleConditionCookieConfigValue struct {
-	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key *string `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
@@ -4760,7 +5001,9 @@ type RuleRuleConditionCookieConfigValueInput interface {
 }
 
 type RuleRuleConditionCookieConfigValueArgs struct {
-	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
@@ -4818,7 +5061,9 @@ func (o RuleRuleConditionCookieConfigValueOutput) ToRuleRuleConditionCookieConfi
 	return o
 }
 
-// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionCookieConfigValueOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionCookieConfigValue) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -4850,7 +5095,9 @@ func (o RuleRuleConditionCookieConfigValueArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type RuleRuleConditionHeaderConfig struct {
-	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key *string `pulumi:"key"`
 	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
@@ -4868,7 +5115,9 @@ type RuleRuleConditionHeaderConfigInput interface {
 }
 
 type RuleRuleConditionHeaderConfigArgs struct {
-	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -4951,7 +5200,9 @@ func (o RuleRuleConditionHeaderConfigOutput) ToRuleRuleConditionHeaderConfigPtrO
 	}).(RuleRuleConditionHeaderConfigPtrOutput)
 }
 
-// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -4985,7 +5236,9 @@ func (o RuleRuleConditionHeaderConfigPtrOutput) Elem() RuleRuleConditionHeaderCo
 	}).(RuleRuleConditionHeaderConfigOutput)
 }
 
-// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) *string {
 		if v == nil {
@@ -5554,7 +5807,9 @@ func (o RuleRuleConditionQueryStringConfigPtrOutput) Values() RuleRuleConditionQ
 }
 
 type RuleRuleConditionQueryStringConfigValue struct {
-	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key *string `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
@@ -5573,7 +5828,9 @@ type RuleRuleConditionQueryStringConfigValueInput interface {
 }
 
 type RuleRuleConditionQueryStringConfigValueArgs struct {
-	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
@@ -5631,7 +5888,9 @@ func (o RuleRuleConditionQueryStringConfigValueOutput) ToRuleRuleConditionQueryS
 	return o
 }
 
-// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionQueryStringConfigValueOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionQueryStringConfigValue) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -5660,6 +5919,307 @@ func (o RuleRuleConditionQueryStringConfigValueArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleRuleConditionQueryStringConfigValue {
 		return vs[0].([]RuleRuleConditionQueryStringConfigValue)[vs[1].(int)]
 	}).(RuleRuleConditionQueryStringConfigValueOutput)
+}
+
+type RuleRuleConditionResponseHeaderConfig struct {
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+	Key *string `pulumi:"key"`
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+	Values []string `pulumi:"values"`
+}
+
+// RuleRuleConditionResponseHeaderConfigInput is an input type that accepts RuleRuleConditionResponseHeaderConfigArgs and RuleRuleConditionResponseHeaderConfigOutput values.
+// You can construct a concrete instance of `RuleRuleConditionResponseHeaderConfigInput` via:
+//
+//	RuleRuleConditionResponseHeaderConfigArgs{...}
+type RuleRuleConditionResponseHeaderConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionResponseHeaderConfigOutput() RuleRuleConditionResponseHeaderConfigOutput
+	ToRuleRuleConditionResponseHeaderConfigOutputWithContext(context.Context) RuleRuleConditionResponseHeaderConfigOutput
+}
+
+type RuleRuleConditionResponseHeaderConfigArgs struct {
+	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RuleRuleConditionResponseHeaderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionResponseHeaderConfig)(nil)).Elem()
+}
+
+func (i RuleRuleConditionResponseHeaderConfigArgs) ToRuleRuleConditionResponseHeaderConfigOutput() RuleRuleConditionResponseHeaderConfigOutput {
+	return i.ToRuleRuleConditionResponseHeaderConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionResponseHeaderConfigArgs) ToRuleRuleConditionResponseHeaderConfigOutputWithContext(ctx context.Context) RuleRuleConditionResponseHeaderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionResponseHeaderConfigOutput)
+}
+
+func (i RuleRuleConditionResponseHeaderConfigArgs) ToRuleRuleConditionResponseHeaderConfigPtrOutput() RuleRuleConditionResponseHeaderConfigPtrOutput {
+	return i.ToRuleRuleConditionResponseHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionResponseHeaderConfigArgs) ToRuleRuleConditionResponseHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionResponseHeaderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionResponseHeaderConfigOutput).ToRuleRuleConditionResponseHeaderConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleConditionResponseHeaderConfigPtrInput is an input type that accepts RuleRuleConditionResponseHeaderConfigArgs, RuleRuleConditionResponseHeaderConfigPtr and RuleRuleConditionResponseHeaderConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleConditionResponseHeaderConfigPtrInput` via:
+//
+//	        RuleRuleConditionResponseHeaderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleRuleConditionResponseHeaderConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionResponseHeaderConfigPtrOutput() RuleRuleConditionResponseHeaderConfigPtrOutput
+	ToRuleRuleConditionResponseHeaderConfigPtrOutputWithContext(context.Context) RuleRuleConditionResponseHeaderConfigPtrOutput
+}
+
+type ruleRuleConditionResponseHeaderConfigPtrType RuleRuleConditionResponseHeaderConfigArgs
+
+func RuleRuleConditionResponseHeaderConfigPtr(v *RuleRuleConditionResponseHeaderConfigArgs) RuleRuleConditionResponseHeaderConfigPtrInput {
+	return (*ruleRuleConditionResponseHeaderConfigPtrType)(v)
+}
+
+func (*ruleRuleConditionResponseHeaderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionResponseHeaderConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleConditionResponseHeaderConfigPtrType) ToRuleRuleConditionResponseHeaderConfigPtrOutput() RuleRuleConditionResponseHeaderConfigPtrOutput {
+	return i.ToRuleRuleConditionResponseHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleConditionResponseHeaderConfigPtrType) ToRuleRuleConditionResponseHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionResponseHeaderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionResponseHeaderConfigPtrOutput)
+}
+
+type RuleRuleConditionResponseHeaderConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionResponseHeaderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionResponseHeaderConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionResponseHeaderConfigOutput) ToRuleRuleConditionResponseHeaderConfigOutput() RuleRuleConditionResponseHeaderConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionResponseHeaderConfigOutput) ToRuleRuleConditionResponseHeaderConfigOutputWithContext(ctx context.Context) RuleRuleConditionResponseHeaderConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionResponseHeaderConfigOutput) ToRuleRuleConditionResponseHeaderConfigPtrOutput() RuleRuleConditionResponseHeaderConfigPtrOutput {
+	return o.ToRuleRuleConditionResponseHeaderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleConditionResponseHeaderConfigOutput) ToRuleRuleConditionResponseHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionResponseHeaderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleConditionResponseHeaderConfig) *RuleRuleConditionResponseHeaderConfig {
+		return &v
+	}).(RuleRuleConditionResponseHeaderConfigPtrOutput)
+}
+
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+func (o RuleRuleConditionResponseHeaderConfigOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleConditionResponseHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+func (o RuleRuleConditionResponseHeaderConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleConditionResponseHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionResponseHeaderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionResponseHeaderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionResponseHeaderConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionResponseHeaderConfigPtrOutput) ToRuleRuleConditionResponseHeaderConfigPtrOutput() RuleRuleConditionResponseHeaderConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionResponseHeaderConfigPtrOutput) ToRuleRuleConditionResponseHeaderConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionResponseHeaderConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Elem() RuleRuleConditionResponseHeaderConfigOutput {
+	return o.ApplyT(func(v *RuleRuleConditionResponseHeaderConfig) RuleRuleConditionResponseHeaderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleConditionResponseHeaderConfig
+		return ret
+	}).(RuleRuleConditionResponseHeaderConfigOutput)
+}
+
+// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
+// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
+// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
+func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleConditionResponseHeaderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleConditionResponseHeaderConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionResponseStatusCodeConfig struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+	Values []string `pulumi:"values"`
+}
+
+// RuleRuleConditionResponseStatusCodeConfigInput is an input type that accepts RuleRuleConditionResponseStatusCodeConfigArgs and RuleRuleConditionResponseStatusCodeConfigOutput values.
+// You can construct a concrete instance of `RuleRuleConditionResponseStatusCodeConfigInput` via:
+//
+//	RuleRuleConditionResponseStatusCodeConfigArgs{...}
+type RuleRuleConditionResponseStatusCodeConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionResponseStatusCodeConfigOutput() RuleRuleConditionResponseStatusCodeConfigOutput
+	ToRuleRuleConditionResponseStatusCodeConfigOutputWithContext(context.Context) RuleRuleConditionResponseStatusCodeConfigOutput
+}
+
+type RuleRuleConditionResponseStatusCodeConfigArgs struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RuleRuleConditionResponseStatusCodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionResponseStatusCodeConfig)(nil)).Elem()
+}
+
+func (i RuleRuleConditionResponseStatusCodeConfigArgs) ToRuleRuleConditionResponseStatusCodeConfigOutput() RuleRuleConditionResponseStatusCodeConfigOutput {
+	return i.ToRuleRuleConditionResponseStatusCodeConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionResponseStatusCodeConfigArgs) ToRuleRuleConditionResponseStatusCodeConfigOutputWithContext(ctx context.Context) RuleRuleConditionResponseStatusCodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionResponseStatusCodeConfigOutput)
+}
+
+func (i RuleRuleConditionResponseStatusCodeConfigArgs) ToRuleRuleConditionResponseStatusCodeConfigPtrOutput() RuleRuleConditionResponseStatusCodeConfigPtrOutput {
+	return i.ToRuleRuleConditionResponseStatusCodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionResponseStatusCodeConfigArgs) ToRuleRuleConditionResponseStatusCodeConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionResponseStatusCodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionResponseStatusCodeConfigOutput).ToRuleRuleConditionResponseStatusCodeConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleConditionResponseStatusCodeConfigPtrInput is an input type that accepts RuleRuleConditionResponseStatusCodeConfigArgs, RuleRuleConditionResponseStatusCodeConfigPtr and RuleRuleConditionResponseStatusCodeConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleConditionResponseStatusCodeConfigPtrInput` via:
+//
+//	        RuleRuleConditionResponseStatusCodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleRuleConditionResponseStatusCodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionResponseStatusCodeConfigPtrOutput() RuleRuleConditionResponseStatusCodeConfigPtrOutput
+	ToRuleRuleConditionResponseStatusCodeConfigPtrOutputWithContext(context.Context) RuleRuleConditionResponseStatusCodeConfigPtrOutput
+}
+
+type ruleRuleConditionResponseStatusCodeConfigPtrType RuleRuleConditionResponseStatusCodeConfigArgs
+
+func RuleRuleConditionResponseStatusCodeConfigPtr(v *RuleRuleConditionResponseStatusCodeConfigArgs) RuleRuleConditionResponseStatusCodeConfigPtrInput {
+	return (*ruleRuleConditionResponseStatusCodeConfigPtrType)(v)
+}
+
+func (*ruleRuleConditionResponseStatusCodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionResponseStatusCodeConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleConditionResponseStatusCodeConfigPtrType) ToRuleRuleConditionResponseStatusCodeConfigPtrOutput() RuleRuleConditionResponseStatusCodeConfigPtrOutput {
+	return i.ToRuleRuleConditionResponseStatusCodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleConditionResponseStatusCodeConfigPtrType) ToRuleRuleConditionResponseStatusCodeConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionResponseStatusCodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionResponseStatusCodeConfigPtrOutput)
+}
+
+type RuleRuleConditionResponseStatusCodeConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionResponseStatusCodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionResponseStatusCodeConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionResponseStatusCodeConfigOutput) ToRuleRuleConditionResponseStatusCodeConfigOutput() RuleRuleConditionResponseStatusCodeConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionResponseStatusCodeConfigOutput) ToRuleRuleConditionResponseStatusCodeConfigOutputWithContext(ctx context.Context) RuleRuleConditionResponseStatusCodeConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionResponseStatusCodeConfigOutput) ToRuleRuleConditionResponseStatusCodeConfigPtrOutput() RuleRuleConditionResponseStatusCodeConfigPtrOutput {
+	return o.ToRuleRuleConditionResponseStatusCodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleConditionResponseStatusCodeConfigOutput) ToRuleRuleConditionResponseStatusCodeConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionResponseStatusCodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleConditionResponseStatusCodeConfig) *RuleRuleConditionResponseStatusCodeConfig {
+		return &v
+	}).(RuleRuleConditionResponseStatusCodeConfigPtrOutput)
+}
+
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+func (o RuleRuleConditionResponseStatusCodeConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleConditionResponseStatusCodeConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionResponseStatusCodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionResponseStatusCodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionResponseStatusCodeConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) ToRuleRuleConditionResponseStatusCodeConfigPtrOutput() RuleRuleConditionResponseStatusCodeConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) ToRuleRuleConditionResponseStatusCodeConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionResponseStatusCodeConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) Elem() RuleRuleConditionResponseStatusCodeConfigOutput {
+	return o.ApplyT(func(v *RuleRuleConditionResponseStatusCodeConfig) RuleRuleConditionResponseStatusCodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleConditionResponseStatusCodeConfig
+		return ret
+	}).(RuleRuleConditionResponseStatusCodeConfigOutput)
+}
+
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleConditionResponseStatusCodeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type RuleRuleConditionSourceIpConfig struct {
@@ -13306,6 +13866,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionInsertHeaderConfigPtrInput)(nil)).Elem(), RuleRuleActionInsertHeaderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRedirectConfigInput)(nil)).Elem(), RuleRuleActionRedirectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRedirectConfigPtrInput)(nil)).Elem(), RuleRuleActionRedirectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRemoveHeaderConfigInput)(nil)).Elem(), RuleRuleActionRemoveHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRemoveHeaderConfigPtrInput)(nil)).Elem(), RuleRuleActionRemoveHeaderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRewriteConfigInput)(nil)).Elem(), RuleRuleActionRewriteConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRewriteConfigPtrInput)(nil)).Elem(), RuleRuleActionRewriteConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionTrafficLimitConfigInput)(nil)).Elem(), RuleRuleActionTrafficLimitConfigArgs{})
@@ -13334,6 +13896,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigPtrInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigValueInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigValueArrayInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionResponseHeaderConfigInput)(nil)).Elem(), RuleRuleConditionResponseHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionResponseHeaderConfigPtrInput)(nil)).Elem(), RuleRuleConditionResponseHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionResponseStatusCodeConfigInput)(nil)).Elem(), RuleRuleConditionResponseStatusCodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionResponseStatusCodeConfigPtrInput)(nil)).Elem(), RuleRuleConditionResponseStatusCodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionSourceIpConfigInput)(nil)).Elem(), RuleRuleConditionSourceIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionSourceIpConfigPtrInput)(nil)).Elem(), RuleRuleConditionSourceIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
@@ -13493,6 +14059,8 @@ func init() {
 	pulumi.RegisterOutputType(RuleRuleActionInsertHeaderConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionRedirectConfigOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionRedirectConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionRemoveHeaderConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionRemoveHeaderConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionRewriteConfigOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionRewriteConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionTrafficLimitConfigOutput{})
@@ -13521,6 +14089,10 @@ func init() {
 	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigValueOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigValueArrayOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionResponseHeaderConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionResponseHeaderConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionResponseStatusCodeConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionResponseStatusCodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionSourceIpConfigOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionSourceIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigOutput{})

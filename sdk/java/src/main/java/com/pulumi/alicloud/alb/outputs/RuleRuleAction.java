@@ -8,6 +8,7 @@ import com.pulumi.alicloud.alb.outputs.RuleRuleActionFixedResponseConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionForwardGroupConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionInsertHeaderConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionRedirectConfig;
+import com.pulumi.alicloud.alb.outputs.RuleRuleActionRemoveHeaderConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionRewriteConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionTrafficLimitConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionTrafficMirrorConfig;
@@ -51,6 +52,11 @@ public final class RuleRuleAction {
      */
     private @Nullable RuleRuleActionRedirectConfig redirectConfig;
     /**
+     * @return The configuration of the inserted header field. See `remove_header_config` below.
+     * 
+     */
+    private @Nullable RuleRuleActionRemoveHeaderConfig removeHeaderConfig;
+    /**
      * @return The redirect action within ALB. See `rewrite_config` below.
      * 
      */
@@ -66,7 +72,7 @@ public final class RuleRuleAction {
      */
     private @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig;
     /**
-     * @return The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+     * @return The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
      * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
      * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
      * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -118,6 +124,13 @@ public final class RuleRuleAction {
         return Optional.ofNullable(this.redirectConfig);
     }
     /**
+     * @return The configuration of the inserted header field. See `remove_header_config` below.
+     * 
+     */
+    public Optional<RuleRuleActionRemoveHeaderConfig> removeHeaderConfig() {
+        return Optional.ofNullable(this.removeHeaderConfig);
+    }
+    /**
      * @return The redirect action within ALB. See `rewrite_config` below.
      * 
      */
@@ -139,7 +152,7 @@ public final class RuleRuleAction {
         return Optional.ofNullable(this.trafficMirrorConfig);
     }
     /**
-     * @return The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+     * @return The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
      * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
      * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
      * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -164,6 +177,7 @@ public final class RuleRuleAction {
         private @Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig;
         private Integer order;
         private @Nullable RuleRuleActionRedirectConfig redirectConfig;
+        private @Nullable RuleRuleActionRemoveHeaderConfig removeHeaderConfig;
         private @Nullable RuleRuleActionRewriteConfig rewriteConfig;
         private @Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig;
         private @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig;
@@ -177,6 +191,7 @@ public final class RuleRuleAction {
     	      this.insertHeaderConfig = defaults.insertHeaderConfig;
     	      this.order = defaults.order;
     	      this.redirectConfig = defaults.redirectConfig;
+    	      this.removeHeaderConfig = defaults.removeHeaderConfig;
     	      this.rewriteConfig = defaults.rewriteConfig;
     	      this.trafficLimitConfig = defaults.trafficLimitConfig;
     	      this.trafficMirrorConfig = defaults.trafficMirrorConfig;
@@ -214,6 +229,11 @@ public final class RuleRuleAction {
             return this;
         }
         @CustomType.Setter
+        public Builder removeHeaderConfig(@Nullable RuleRuleActionRemoveHeaderConfig removeHeaderConfig) {
+            this.removeHeaderConfig = removeHeaderConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rewriteConfig(@Nullable RuleRuleActionRewriteConfig rewriteConfig) {
             this.rewriteConfig = rewriteConfig;
             return this;
@@ -241,6 +261,7 @@ public final class RuleRuleAction {
             _resultValue.insertHeaderConfig = insertHeaderConfig;
             _resultValue.order = order;
             _resultValue.redirectConfig = redirectConfig;
+            _resultValue.removeHeaderConfig = removeHeaderConfig;
             _resultValue.rewriteConfig = rewriteConfig;
             _resultValue.trafficLimitConfig = trafficLimitConfig;
             _resultValue.trafficMirrorConfig = trafficMirrorConfig;

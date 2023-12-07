@@ -29,6 +29,11 @@ public final class GetEndpointGroupsGroup {
      */
     private String endpointGroupId;
     /**
+     * @return (Available since v1.213.1) The list of endpoint group IP addresses.
+     * 
+     */
+    private List<String> endpointGroupIpLists;
+    /**
      * @return The ID of the region where the endpoint group is deployed.
      * 
      */
@@ -74,7 +79,7 @@ public final class GetEndpointGroupsGroup {
      */
     private List<GetEndpointGroupsGroupPortOverride> portOverrides;
     /**
-     * @return The status of the endpoint group.
+     * @return The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
      * 
      */
     private String status;
@@ -110,6 +115,13 @@ public final class GetEndpointGroupsGroup {
      */
     public String endpointGroupId() {
         return this.endpointGroupId;
+    }
+    /**
+     * @return (Available since v1.213.1) The list of endpoint group IP addresses.
+     * 
+     */
+    public List<String> endpointGroupIpLists() {
+        return this.endpointGroupIpLists;
     }
     /**
      * @return The ID of the region where the endpoint group is deployed.
@@ -175,7 +187,7 @@ public final class GetEndpointGroupsGroup {
         return this.portOverrides;
     }
     /**
-     * @return The status of the endpoint group.
+     * @return The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
      * 
      */
     public String status() {
@@ -208,6 +220,7 @@ public final class GetEndpointGroupsGroup {
         private String description;
         private List<GetEndpointGroupsGroupEndpointConfiguration> endpointConfigurations;
         private String endpointGroupId;
+        private List<String> endpointGroupIpLists;
         private String endpointGroupRegion;
         private Integer healthCheckIntervalSeconds;
         private String healthCheckPath;
@@ -226,6 +239,7 @@ public final class GetEndpointGroupsGroup {
     	      this.description = defaults.description;
     	      this.endpointConfigurations = defaults.endpointConfigurations;
     	      this.endpointGroupId = defaults.endpointGroupId;
+    	      this.endpointGroupIpLists = defaults.endpointGroupIpLists;
     	      this.endpointGroupRegion = defaults.endpointGroupRegion;
     	      this.healthCheckIntervalSeconds = defaults.healthCheckIntervalSeconds;
     	      this.healthCheckPath = defaults.healthCheckPath;
@@ -257,6 +271,14 @@ public final class GetEndpointGroupsGroup {
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
+        }
+        @CustomType.Setter
+        public Builder endpointGroupIpLists(List<String> endpointGroupIpLists) {
+            this.endpointGroupIpLists = Objects.requireNonNull(endpointGroupIpLists);
+            return this;
+        }
+        public Builder endpointGroupIpLists(String... endpointGroupIpLists) {
+            return endpointGroupIpLists(List.of(endpointGroupIpLists));
         }
         @CustomType.Setter
         public Builder endpointGroupRegion(String endpointGroupRegion) {
@@ -326,6 +348,7 @@ public final class GetEndpointGroupsGroup {
             _resultValue.description = description;
             _resultValue.endpointConfigurations = endpointConfigurations;
             _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.endpointGroupIpLists = endpointGroupIpLists;
             _resultValue.endpointGroupRegion = endpointGroupRegion;
             _resultValue.healthCheckIntervalSeconds = healthCheckIntervalSeconds;
             _resultValue.healthCheckPath = healthCheckPath;

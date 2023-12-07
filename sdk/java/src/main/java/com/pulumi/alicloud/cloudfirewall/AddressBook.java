@@ -147,14 +147,16 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
         return this.groupName;
     }
     /**
-     * The type of the Address Book. Valid values: `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     @Export(name="groupType", refs={String.class}, tree="[0]")
     private Output<String> groupType;
 
     /**
-     * @return The type of the Address Book. Valid values: `ip`, `tag`.
+     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     public Output<String> groupType() {

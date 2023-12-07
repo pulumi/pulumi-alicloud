@@ -222,6 +222,9 @@
                                 "redirect_config": {
                                     "maxItemsOne": true
                                 },
+                                "remove_header_config": {
+                                    "maxItemsOne": true
+                                },
                                 "rewrite_config": {
                                     "maxItemsOne": true
                                 },
@@ -303,6 +306,26 @@
                                     }
                                 },
                                 "query_string_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "response_header_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "response_status_code_config": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
@@ -13425,6 +13448,9 @@
                                 "endpoint_configurations": {
                                     "maxItemsOne": false
                                 },
+                                "endpoint_group_ip_list": {
+                                    "maxItemsOne": false
+                                },
                                 "port_overrides": {
                                     "maxItemsOne": false
                                 }
@@ -20591,6 +20617,8 @@
                 "xForwardedForClientCertIssuerDnEnabled": "x_forwarded_for_client_cert_issuer_dn_enabled",
                 "xForwardedForClientCertSubjectDnAlias": "x_forwarded_for_client_cert_subject_dn_alias",
                 "xForwardedForClientCertSubjectDnEnabled": "x_forwarded_for_client_cert_subject_dn_enabled",
+                "xForwardedForClientSourceIpsEnabled": "x_forwarded_for_client_source_ips_enabled",
+                "xForwardedForClientSourceIpsTrusted": "x_forwarded_for_client_source_ips_trusted",
                 "xForwardedForClientSrcPortEnabled": "x_forwarded_for_client_src_port_enabled",
                 "xForwardedForEnabled": "x_forwarded_for_enabled",
                 "xForwardedForProtoEnabled": "x_forwarded_for_proto_enabled",
@@ -20620,6 +20648,7 @@
                 "forwardGroupConfig": "forward_group_config",
                 "insertHeaderConfig": "insert_header_config",
                 "redirectConfig": "redirect_config",
+                "removeHeaderConfig": "remove_header_config",
                 "rewriteConfig": "rewrite_config",
                 "trafficLimitConfig": "traffic_limit_config",
                 "trafficMirrorConfig": "traffic_mirror_config"
@@ -20649,6 +20678,9 @@
             "alicloud:alb/RuleRuleActionRedirectConfig:RuleRuleActionRedirectConfig": {
                 "httpCode": "http_code"
             },
+            "alicloud:alb/RuleRuleActionTrafficLimitConfig:RuleRuleActionTrafficLimitConfig": {
+                "perIpQps": "per_ip_qps"
+            },
             "alicloud:alb/RuleRuleActionTrafficMirrorConfig:RuleRuleActionTrafficMirrorConfig": {
                 "mirrorGroupConfig": "mirror_group_config",
                 "targetType": "target_type"
@@ -20666,6 +20698,8 @@
                 "methodConfig": "method_config",
                 "pathConfig": "path_config",
                 "queryStringConfig": "query_string_config",
+                "responseHeaderConfig": "response_header_config",
+                "responseStatusCodeConfig": "response_status_code_config",
                 "sourceIpConfig": "source_ip_config"
             },
             "alicloud:alb/ServerGroupHealthCheckConfig:ServerGroupHealthCheckConfig": {
@@ -27801,9 +27835,11 @@
                 "syncArchitecture": "sync_architecture"
             },
             "alicloud:dts/synchronizationJob:SynchronizationJob": {
+                "dataCheckConfigure": "data_check_configure",
                 "dataInitialization": "data_initialization",
                 "dataSynchronization": "data_synchronization",
                 "dbList": "db_list",
+                "dedicatedClusterId": "dedicated_cluster_id",
                 "delayNotice": "delay_notice",
                 "delayPhone": "delay_phone",
                 "delayRuleTime": "delay_rule_time",
@@ -27813,10 +27849,13 @@
                 "destinationEndpointInstanceType": "destination_endpoint_instance_type",
                 "destinationEndpointIp": "destination_endpoint_ip",
                 "destinationEndpointOracleSid": "destination_endpoint_oracle_sid",
+                "destinationEndpointOwnerId": "destination_endpoint_owner_id",
                 "destinationEndpointPassword": "destination_endpoint_password",
                 "destinationEndpointPort": "destination_endpoint_port",
                 "destinationEndpointRegion": "destination_endpoint_region",
+                "destinationEndpointRole": "destination_endpoint_role",
                 "destinationEndpointUserName": "destination_endpoint_user_name",
+                "dtsBisLabel": "dts_bis_label",
                 "dtsInstanceId": "dts_instance_id",
                 "dtsJobName": "dts_job_name",
                 "errorNotice": "error_notice",
@@ -27834,6 +27873,7 @@
                 "sourceEndpointRegion": "source_endpoint_region",
                 "sourceEndpointRole": "source_endpoint_role",
                 "sourceEndpointUserName": "source_endpoint_user_name",
+                "sourceEndpointVswitchId": "source_endpoint_vswitch_id",
                 "structureInitialization": "structure_initialization",
                 "synchronizationDirection": "synchronization_direction"
             },
@@ -29780,13 +29820,15 @@
                 "internetChargeType": "internet_charge_type",
                 "internetMaxBandwidthIn": "internet_max_bandwidth_in",
                 "internetMaxBandwidthOut": "internet_max_bandwidth_out",
-                "ioOptimized": "io_optimized",
                 "ipv6AddressCount": "ipv6_address_count",
                 "ipv6Addresses": "ipv6_addresses",
                 "isOutdated": "is_outdated",
                 "keyName": "key_name",
                 "kmsEncryptedPassword": "kms_encrypted_password",
                 "kmsEncryptionContext": "kms_encryption_context",
+                "launchTemplateId": "launch_template_id",
+                "launchTemplateName": "launch_template_name",
+                "launchTemplateVersion": "launch_template_version",
                 "maintenanceAction": "maintenance_action",
                 "maintenanceNotify": "maintenance_notify",
                 "maintenanceTime": "maintenance_time",
@@ -32828,6 +32870,7 @@
             "alicloud:ga/getEndpointGroupsGroup:getEndpointGroupsGroup": {
                 "endpointConfigurations": "endpoint_configurations",
                 "endpointGroupId": "endpoint_group_id",
+                "endpointGroupIpLists": "endpoint_group_ip_list",
                 "endpointGroupRegion": "endpoint_group_region",
                 "healthCheckIntervalSeconds": "health_check_interval_seconds",
                 "healthCheckPath": "health_check_path",
@@ -35149,6 +35192,7 @@
                 "autoRenew": "auto_renew",
                 "backupInterval": "backup_interval",
                 "backupPeriods": "backup_period",
+                "backupRetentionPeriod": "backup_retention_period",
                 "backupTime": "backup_time",
                 "cloudDiskEncryptionKey": "cloud_disk_encryption_key",
                 "dbInstanceClass": "db_instance_class",
@@ -37907,6 +37951,7 @@
                 "manualHaTime": "manual_ha_time",
                 "modifyMode": "modify_mode",
                 "monitoringPeriod": "monitoring_period",
+                "nodeId": "node_id",
                 "pgHbaConfs": "pg_hba_conf",
                 "privateIpAddress": "private_ip_address",
                 "releasedKeepPolicy": "released_keep_policy",
@@ -37939,8 +37984,7 @@
                 "vswitchId": "vswitch_id",
                 "whitelistNetworkType": "whitelist_network_type",
                 "zoneId": "zone_id",
-                "zoneIdSlaveA": "zone_id_slave_a",
-                "zoneIdSlaveB": "zone_id_slave_b"
+                "zoneIdSlaveA": "zone_id_slave_a"
             },
             "alicloud:rds/rdsAccount:RdsAccount": {
                 "accountDescription": "account_description",

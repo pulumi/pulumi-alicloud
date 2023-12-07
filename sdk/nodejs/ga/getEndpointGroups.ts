@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *
@@ -19,12 +19,67 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ga.getEndpointGroups({
- *     acceleratorId: "example_value",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const name = config.get("name") || "tf-example";
+ * const defaultAccelerators = alicloud.ga.getAccelerators({
+ *     status: "active",
  * });
- * export const firstGaEndpointGroupId = example.then(example => example.groups?.[0]?.id);
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ *     bandwidth: 100,
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ *     bandwidthPackageName: name,
+ *     autoPay: true,
+ *     autoUseCoupon: true,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     acceleratorId: defaultAccelerators.then(defaultAccelerators => defaultAccelerators.ids?.[0]),
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * });
+ * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
+ *     clientAffinity: "SOURCE_IP",
+ *     protocol: "UDP",
+ *     portRanges: [{
+ *         fromPort: 60,
+ *         toPort: 70,
+ *     }],
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     bandwidth: "10",
+ *     internetChargeType: "PayByBandwidth",
+ *     addressName: name,
+ * });
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
+ *     acceleratorId: defaultListener.acceleratorId,
+ *     listenerId: defaultListener.id,
+ *     description: name,
+ *     thresholdCount: 4,
+ *     trafficPercentage: 20,
+ *     endpointGroupRegion: "cn-hangzhou",
+ *     healthCheckIntervalSeconds: 3,
+ *     healthCheckPath: "/healthcheck",
+ *     healthCheckPort: 9999,
+ *     healthCheckProtocol: "http",
+ *     portOverrides: {
+ *         endpointPort: 10,
+ *         listenerPort: 60,
+ *     },
+ *     endpointConfigurations: [{
+ *         endpoint: defaultEipAddress.ipAddress,
+ *         type: "PublicIp",
+ *         weight: 20,
+ *     }],
+ * });
+ * const defaultEndpointGroups = alicloud.ga.getEndpointGroupsOutput({
+ *     acceleratorId: defaultEndpointGroup.acceleratorId,
+ *     ids: [defaultEndpointGroup.id],
+ * });
+ * export const firstGaEndpointGroupId = defaultEndpointGroups.apply(defaultEndpointGroups => defaultEndpointGroups.groups?.[0]?.id);
  * ```
  */
 export function getEndpointGroups(args: GetEndpointGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointGroupsResult> {
@@ -50,7 +105,7 @@ export interface GetEndpointGroupsArgs {
      */
     acceleratorId: string;
     /**
-     * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      */
     endpointGroupType?: string;
     /**
@@ -70,7 +125,7 @@ export interface GetEndpointGroupsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the endpoint group.
+     * The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
      */
     status?: string;
 }
@@ -81,22 +136,34 @@ export interface GetEndpointGroupsArgs {
 export interface GetEndpointGroupsResult {
     readonly acceleratorId: string;
     readonly endpointGroupType?: string;
+    /**
+     * A list of Ga Endpoint Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.ga.GetEndpointGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the listener that is associated with the endpoint group.
+     */
     readonly listenerId?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Endpoint Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the endpoint group.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *
@@ -106,12 +173,67 @@ export interface GetEndpointGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ga.getEndpointGroups({
- *     acceleratorId: "example_value",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const name = config.get("name") || "tf-example";
+ * const defaultAccelerators = alicloud.ga.getAccelerators({
+ *     status: "active",
  * });
- * export const firstGaEndpointGroupId = example.then(example => example.groups?.[0]?.id);
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ *     bandwidth: 100,
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ *     bandwidthPackageName: name,
+ *     autoPay: true,
+ *     autoUseCoupon: true,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     acceleratorId: defaultAccelerators.then(defaultAccelerators => defaultAccelerators.ids?.[0]),
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * });
+ * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
+ *     clientAffinity: "SOURCE_IP",
+ *     protocol: "UDP",
+ *     portRanges: [{
+ *         fromPort: 60,
+ *         toPort: 70,
+ *     }],
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     bandwidth: "10",
+ *     internetChargeType: "PayByBandwidth",
+ *     addressName: name,
+ * });
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
+ *     acceleratorId: defaultListener.acceleratorId,
+ *     listenerId: defaultListener.id,
+ *     description: name,
+ *     thresholdCount: 4,
+ *     trafficPercentage: 20,
+ *     endpointGroupRegion: "cn-hangzhou",
+ *     healthCheckIntervalSeconds: 3,
+ *     healthCheckPath: "/healthcheck",
+ *     healthCheckPort: 9999,
+ *     healthCheckProtocol: "http",
+ *     portOverrides: {
+ *         endpointPort: 10,
+ *         listenerPort: 60,
+ *     },
+ *     endpointConfigurations: [{
+ *         endpoint: defaultEipAddress.ipAddress,
+ *         type: "PublicIp",
+ *         weight: 20,
+ *     }],
+ * });
+ * const defaultEndpointGroups = alicloud.ga.getEndpointGroupsOutput({
+ *     acceleratorId: defaultEndpointGroup.acceleratorId,
+ *     ids: [defaultEndpointGroup.id],
+ * });
+ * export const firstGaEndpointGroupId = defaultEndpointGroups.apply(defaultEndpointGroups => defaultEndpointGroups.groups?.[0]?.id);
  * ```
  */
 export function getEndpointGroupsOutput(args: GetEndpointGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointGroupsResult> {
@@ -127,7 +249,7 @@ export interface GetEndpointGroupsOutputArgs {
      */
     acceleratorId: pulumi.Input<string>;
     /**
-     * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      */
     endpointGroupType?: pulumi.Input<string>;
     /**
@@ -147,7 +269,7 @@ export interface GetEndpointGroupsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the endpoint group.
+     * The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
      */
     status?: pulumi.Input<string>;
 }

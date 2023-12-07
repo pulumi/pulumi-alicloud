@@ -62,14 +62,14 @@ public final class TransitRouterMulticastDomainMemberState extends com.pulumi.re
     }
 
     /**
-     * The status of the resource
+     * The status of the Transit Router Multicast Domain Member.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the Transit Router Multicast Domain Member.
      * 
      */
     public Optional<Output<String>> status() {
@@ -199,7 +199,7 @@ public final class TransitRouterMulticastDomainMemberState extends com.pulumi.re
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the Transit Router Multicast Domain Member.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class TransitRouterMulticastDomainMemberState extends com.pulumi.re
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the Transit Router Multicast Domain Member.
          * 
          * @return builder
          * 

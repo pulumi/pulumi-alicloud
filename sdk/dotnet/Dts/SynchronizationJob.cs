@@ -43,6 +43,12 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> Checkpoint { get; private set; } = null!;
 
         /// <summary>
+        /// The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        /// </summary>
+        [Output("dataCheckConfigure")]
+        public Output<string?> DataCheckConfigure { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         /// </summary>
         [Output("dataInitialization")]
@@ -59,6 +65,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Output("dbList")]
         public Output<string> DbList { get; private set; } = null!;
+
+        /// <summary>
+        /// When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+        /// </summary>
+        [Output("dedicatedClusterId")]
+        public Output<string?> DedicatedClusterId { get; private set; } = null!;
 
         /// <summary>
         /// The delay notice. Valid values: `true`, `false`.
@@ -118,6 +130,12 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DestinationEndpointOracleSid { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+        /// </summary>
+        [Output("destinationEndpointOwnerId")]
+        public Output<string?> DestinationEndpointOwnerId { get; private set; } = null!;
+
+        /// <summary>
         /// The password of database account.
         /// </summary>
         [Output("destinationEndpointPassword")]
@@ -136,10 +154,26 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DestinationEndpointRegion { get; private set; } = null!;
 
         /// <summary>
+        /// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+        /// </summary>
+        [Output("destinationEndpointRole")]
+        public Output<string?> DestinationEndpointRole { get; private set; } = null!;
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Output("destinationEndpointUserName")]
         public Output<string?> DestinationEndpointUserName { get; private set; } = null!;
+
+        /// <summary>
+        /// The environment label of the DTS instance. The value is: **normal**, **online**.
+        /// 
+        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+        /// 
+        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
+        /// </summary>
+        [Output("dtsBisLabel")]
+        public Output<string?> DtsBisLabel { get; private set; } = null!;
 
         /// <summary>
         /// The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
@@ -253,11 +287,13 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> SourceEndpointUserName { get; private set; } = null!;
 
         /// <summary>
+        /// Data Delivery link switch instance id
+        /// </summary>
+        [Output("sourceEndpointVswitchId")]
+        public Output<string?> SourceEndpointVswitchId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-        /// 
-        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-        /// 
-        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -327,6 +363,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Checkpoint { get; set; }
 
         /// <summary>
+        /// The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        /// </summary>
+        [Input("dataCheckConfigure")]
+        public Input<string>? DataCheckConfigure { get; set; }
+
+        /// <summary>
         /// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         /// </summary>
         [Input("dataInitialization", required: true)]
@@ -343,6 +385,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("dbList", required: true)]
         public Input<string> DbList { get; set; } = null!;
+
+        /// <summary>
+        /// When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+        /// </summary>
+        [Input("dedicatedClusterId")]
+        public Input<string>? DedicatedClusterId { get; set; }
 
         /// <summary>
         /// The delay notice. Valid values: `true`, `false`.
@@ -402,6 +450,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointOracleSid { get; set; }
 
         /// <summary>
+        /// The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+        /// </summary>
+        [Input("destinationEndpointOwnerId")]
+        public Input<string>? DestinationEndpointOwnerId { get; set; }
+
+        /// <summary>
         /// The password of database account.
         /// </summary>
         [Input("destinationEndpointPassword")]
@@ -420,10 +474,26 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointRegion { get; set; }
 
         /// <summary>
+        /// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+        /// </summary>
+        [Input("destinationEndpointRole")]
+        public Input<string>? DestinationEndpointRole { get; set; }
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("destinationEndpointUserName")]
         public Input<string>? DestinationEndpointUserName { get; set; }
+
+        /// <summary>
+        /// The environment label of the DTS instance. The value is: **normal**, **online**.
+        /// 
+        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+        /// 
+        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
+        /// </summary>
+        [Input("dtsBisLabel")]
+        public Input<string>? DtsBisLabel { get; set; }
 
         /// <summary>
         /// The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
@@ -537,11 +607,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointUserName { get; set; }
 
         /// <summary>
+        /// Data Delivery link switch instance id
+        /// </summary>
+        [Input("sourceEndpointVswitchId")]
+        public Input<string>? SourceEndpointVswitchId { get; set; }
+
+        /// <summary>
         /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-        /// 
-        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-        /// 
-        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -573,6 +645,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Checkpoint { get; set; }
 
         /// <summary>
+        /// The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        /// </summary>
+        [Input("dataCheckConfigure")]
+        public Input<string>? DataCheckConfigure { get; set; }
+
+        /// <summary>
         /// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         /// </summary>
         [Input("dataInitialization")]
@@ -589,6 +667,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("dbList")]
         public Input<string>? DbList { get; set; }
+
+        /// <summary>
+        /// When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+        /// </summary>
+        [Input("dedicatedClusterId")]
+        public Input<string>? DedicatedClusterId { get; set; }
 
         /// <summary>
         /// The delay notice. Valid values: `true`, `false`.
@@ -648,6 +732,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointOracleSid { get; set; }
 
         /// <summary>
+        /// The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+        /// </summary>
+        [Input("destinationEndpointOwnerId")]
+        public Input<string>? DestinationEndpointOwnerId { get; set; }
+
+        /// <summary>
         /// The password of database account.
         /// </summary>
         [Input("destinationEndpointPassword")]
@@ -666,10 +756,26 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointRegion { get; set; }
 
         /// <summary>
+        /// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+        /// </summary>
+        [Input("destinationEndpointRole")]
+        public Input<string>? DestinationEndpointRole { get; set; }
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("destinationEndpointUserName")]
         public Input<string>? DestinationEndpointUserName { get; set; }
+
+        /// <summary>
+        /// The environment label of the DTS instance. The value is: **normal**, **online**.
+        /// 
+        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+        /// 
+        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
+        /// </summary>
+        [Input("dtsBisLabel")]
+        public Input<string>? DtsBisLabel { get; set; }
 
         /// <summary>
         /// The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
@@ -783,11 +889,13 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointUserName { get; set; }
 
         /// <summary>
+        /// Data Delivery link switch instance id
+        /// </summary>
+        [Input("sourceEndpointVswitchId")]
+        public Input<string>? SourceEndpointVswitchId { get; set; }
+
+        /// <summary>
         /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-        /// 
-        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-        /// 
-        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

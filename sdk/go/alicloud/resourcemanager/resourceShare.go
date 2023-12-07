@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tfexample"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -66,9 +66,9 @@ type ResourceShare struct {
 
 	// The name of resource share.
 	ResourceShareName pulumi.StringOutput `pulumi:"resourceShareName"`
-	// The owner of resource share.
+	// The owner of the Resource Share.
 	ResourceShareOwner pulumi.StringOutput `pulumi:"resourceShareOwner"`
-	// The status of resource share.
+	// The status of the Resource Share.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -107,18 +107,18 @@ func GetResourceShare(ctx *pulumi.Context,
 type resourceShareState struct {
 	// The name of resource share.
 	ResourceShareName *string `pulumi:"resourceShareName"`
-	// The owner of resource share.
+	// The owner of the Resource Share.
 	ResourceShareOwner *string `pulumi:"resourceShareOwner"`
-	// The status of resource share.
+	// The status of the Resource Share.
 	Status *string `pulumi:"status"`
 }
 
 type ResourceShareState struct {
 	// The name of resource share.
 	ResourceShareName pulumi.StringPtrInput
-	// The owner of resource share.
+	// The owner of the Resource Share.
 	ResourceShareOwner pulumi.StringPtrInput
-	// The status of resource share.
+	// The status of the Resource Share.
 	Status pulumi.StringPtrInput
 }
 
@@ -229,12 +229,12 @@ func (o ResourceShareOutput) ResourceShareName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.ResourceShareName }).(pulumi.StringOutput)
 }
 
-// The owner of resource share.
+// The owner of the Resource Share.
 func (o ResourceShareOutput) ResourceShareOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.ResourceShareOwner }).(pulumi.StringOutput)
 }
 
-// The status of resource share.
+// The status of the Resource Share.
 func (o ResourceShareOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -9,6 +9,8 @@ import com.pulumi.alicloud.alb.inputs.RuleRuleConditionHostConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleConditionMethodConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleConditionPathConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleConditionQueryStringConfigArgs;
+import com.pulumi.alicloud.alb.inputs.RuleRuleConditionResponseHeaderConfigArgs;
+import com.pulumi.alicloud.alb.inputs.RuleRuleConditionResponseStatusCodeConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleConditionSourceIpConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -113,6 +115,36 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The configuration of the header field. See `response_header_config` below.
+     * 
+     */
+    @Import(name="responseHeaderConfig")
+    private @Nullable Output<RuleRuleConditionResponseHeaderConfigArgs> responseHeaderConfig;
+
+    /**
+     * @return The configuration of the header field. See `response_header_config` below.
+     * 
+     */
+    public Optional<Output<RuleRuleConditionResponseHeaderConfigArgs>> responseHeaderConfig() {
+        return Optional.ofNullable(this.responseHeaderConfig);
+    }
+
+    /**
+     * The configuration of the header field. See `response_status_code_config` below.
+     * 
+     */
+    @Import(name="responseStatusCodeConfig")
+    private @Nullable Output<RuleRuleConditionResponseStatusCodeConfigArgs> responseStatusCodeConfig;
+
+    /**
+     * @return The configuration of the header field. See `response_status_code_config` below.
+     * 
+     */
+    public Optional<Output<RuleRuleConditionResponseStatusCodeConfigArgs>> responseStatusCodeConfig() {
+        return Optional.ofNullable(this.responseStatusCodeConfig);
+    }
+
+    /**
      * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
      * 
      */
@@ -151,6 +183,8 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         this.methodConfig = $.methodConfig;
         this.pathConfig = $.pathConfig;
         this.queryStringConfig = $.queryStringConfig;
+        this.responseHeaderConfig = $.responseHeaderConfig;
+        this.responseStatusCodeConfig = $.responseStatusCodeConfig;
         this.sourceIpConfig = $.sourceIpConfig;
         this.type = $.type;
     }
@@ -297,6 +331,48 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder queryStringConfig(RuleRuleConditionQueryStringConfigArgs queryStringConfig) {
             return queryStringConfig(Output.of(queryStringConfig));
+        }
+
+        /**
+         * @param responseHeaderConfig The configuration of the header field. See `response_header_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseHeaderConfig(@Nullable Output<RuleRuleConditionResponseHeaderConfigArgs> responseHeaderConfig) {
+            $.responseHeaderConfig = responseHeaderConfig;
+            return this;
+        }
+
+        /**
+         * @param responseHeaderConfig The configuration of the header field. See `response_header_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseHeaderConfig(RuleRuleConditionResponseHeaderConfigArgs responseHeaderConfig) {
+            return responseHeaderConfig(Output.of(responseHeaderConfig));
+        }
+
+        /**
+         * @param responseStatusCodeConfig The configuration of the header field. See `response_status_code_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseStatusCodeConfig(@Nullable Output<RuleRuleConditionResponseStatusCodeConfigArgs> responseStatusCodeConfig) {
+            $.responseStatusCodeConfig = responseStatusCodeConfig;
+            return this;
+        }
+
+        /**
+         * @param responseStatusCodeConfig The configuration of the header field. See `response_status_code_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseStatusCodeConfig(RuleRuleConditionResponseStatusCodeConfigArgs responseStatusCodeConfig) {
+            return responseStatusCodeConfig(Output.of(responseStatusCodeConfig));
         }
 
         /**

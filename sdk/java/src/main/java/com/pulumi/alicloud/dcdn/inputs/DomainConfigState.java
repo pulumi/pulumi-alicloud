@@ -18,14 +18,14 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
     public static final DomainConfigState Empty = new DomainConfigState();
 
     /**
-     * The DCDN domain config id.
+     * The ID of the configuration.
      * 
      */
     @Import(name="configId")
     private @Nullable Output<String> configId;
 
     /**
-     * @return The DCDN domain config id.
+     * @return The ID of the configuration.
      * 
      */
     public Optional<Output<String>> configId() {
@@ -48,14 +48,14 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The args of the domain config.  See `function_args` below.
+     * The args of the domain config. See `function_args` below.
      * 
      */
     @Import(name="functionArgs")
     private @Nullable Output<List<DomainConfigFunctionArgArgs>> functionArgs;
 
     /**
-     * @return The args of the domain config.  See `function_args` below.
+     * @return The args of the domain config. See `function_args` below.
      * 
      */
     public Optional<Output<List<DomainConfigFunctionArgArgs>>> functionArgs() {
@@ -78,14 +78,14 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of this resource.
+     * The status of the Config.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of this resource.
+     * @return The status of the Config.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,7 +121,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configId The DCDN domain config id.
+         * @param configId The ID of the configuration.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configId The DCDN domain config id.
+         * @param configId The ID of the configuration.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionArgs The args of the domain config.  See `function_args` below.
+         * @param functionArgs The args of the domain config. See `function_args` below.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionArgs The args of the domain config.  See `function_args` below.
+         * @param functionArgs The args of the domain config. See `function_args` below.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionArgs The args of the domain config.  See `function_args` below.
+         * @param functionArgs The args of the domain config. See `function_args` below.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of this resource.
+         * @param status The status of the Config.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of this resource.
+         * @param status The status of the Config.
          * 
          * @return builder
          * 

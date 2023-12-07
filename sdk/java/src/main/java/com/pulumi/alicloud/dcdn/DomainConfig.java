@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a DCDN Accelerated Domain resource.
  * 
- * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm)
+ * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm).
  * 
  * &gt; **NOTE:** Available since v1.131.0.
  * 
@@ -51,26 +51,54 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;example.com&#34;);
- *         var exampleDomain = new Domain(&#34;exampleDomain&#34;, DomainArgs.builder()        
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;alibaba-example.com&#34;);
+ *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
  *             .domainName(domainName)
  *             .scope(&#34;overseas&#34;)
+ *             .status(&#34;online&#34;)
  *             .sources(DomainSourceArgs.builder()
  *                 .content(&#34;1.1.1.1&#34;)
- *                 .port(&#34;80&#34;)
- *                 .priority(&#34;20&#34;)
  *                 .type(&#34;ipaddr&#34;)
- *                 .weight(&#34;10&#34;)
+ *                 .priority(20)
+ *                 .port(80)
+ *                 .weight(10)
  *                 .build())
  *             .build());
  * 
- *         var exampleDomainConfig = new DomainConfig(&#34;exampleDomainConfig&#34;, DomainConfigArgs.builder()        
- *             .domainName(exampleDomain.domainName())
+ *         var ipAllowListSet = new DomainConfig(&#34;ipAllowListSet&#34;, DomainConfigArgs.builder()        
+ *             .domainName(example.domainName())
  *             .functionName(&#34;ip_allow_list_set&#34;)
  *             .functionArgs(DomainConfigFunctionArgArgs.builder()
  *                 .argName(&#34;ip_list&#34;)
+ *                 .argValue(&#34;192.168.0.1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var refererWhiteListSet = new DomainConfig(&#34;refererWhiteListSet&#34;, DomainConfigArgs.builder()        
+ *             .domainName(example.domainName())
+ *             .functionName(&#34;referer_white_list_set&#34;)
+ *             .functionArgs(DomainConfigFunctionArgArgs.builder()
+ *                 .argName(&#34;refer_domain_allow_list&#34;)
  *                 .argValue(&#34;110.110.110.110&#34;)
  *                 .build())
+ *             .build());
+ * 
+ *         var filetypeBasedTtlSet = new DomainConfig(&#34;filetypeBasedTtlSet&#34;, DomainConfigArgs.builder()        
+ *             .domainName(example.domainName())
+ *             .functionName(&#34;filetype_based_ttl_set&#34;)
+ *             .functionArgs(            
+ *                 DomainConfigFunctionArgArgs.builder()
+ *                     .argName(&#34;ttl&#34;)
+ *                     .argValue(&#34;300&#34;)
+ *                     .build(),
+ *                 DomainConfigFunctionArgArgs.builder()
+ *                     .argName(&#34;file_type&#34;)
+ *                     .argValue(&#34;jpg&#34;)
+ *                     .build(),
+ *                 DomainConfigFunctionArgArgs.builder()
+ *                     .argName(&#34;weight&#34;)
+ *                     .argValue(&#34;1&#34;)
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -89,14 +117,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dcdn/domainConfig:DomainConfig")
 public class DomainConfig extends com.pulumi.resources.CustomResource {
     /**
-     * The DCDN domain config id.
+     * The ID of the configuration.
      * 
      */
     @Export(name="configId", refs={String.class}, tree="[0]")
     private Output<String> configId;
 
     /**
-     * @return The DCDN domain config id.
+     * @return The ID of the configuration.
      * 
      */
     public Output<String> configId() {
@@ -117,14 +145,14 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * The args of the domain config.  See `function_args` below.
+     * The args of the domain config. See `function_args` below.
      * 
      */
     @Export(name="functionArgs", refs={List.class,DomainConfigFunctionArg.class}, tree="[0,1]")
     private Output<List<DomainConfigFunctionArg>> functionArgs;
 
     /**
-     * @return The args of the domain config.  See `function_args` below.
+     * @return The args of the domain config. See `function_args` below.
      * 
      */
     public Output<List<DomainConfigFunctionArg>> functionArgs() {
@@ -145,14 +173,14 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
         return this.functionName;
     }
     /**
-     * The status of this resource.
+     * The status of the Config.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of this resource.
+     * @return The status of the Config.
      * 
      */
     public Output<String> status() {

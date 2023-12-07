@@ -8,6 +8,7 @@ import com.pulumi.alicloud.alb.inputs.RuleRuleActionFixedResponseConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleActionForwardGroupConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleActionInsertHeaderConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleActionRedirectConfigArgs;
+import com.pulumi.alicloud.alb.inputs.RuleRuleActionRemoveHeaderConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleActionRewriteConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleActionTrafficLimitConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleActionTrafficMirrorConfigArgs;
@@ -115,6 +116,21 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The configuration of the inserted header field. See `remove_header_config` below.
+     * 
+     */
+    @Import(name="removeHeaderConfig")
+    private @Nullable Output<RuleRuleActionRemoveHeaderConfigArgs> removeHeaderConfig;
+
+    /**
+     * @return The configuration of the inserted header field. See `remove_header_config` below.
+     * 
+     */
+    public Optional<Output<RuleRuleActionRemoveHeaderConfigArgs>> removeHeaderConfig() {
+        return Optional.ofNullable(this.removeHeaderConfig);
+    }
+
+    /**
      * The redirect action within ALB. See `rewrite_config` below.
      * 
      */
@@ -160,7 +176,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+     * The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
      * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
      * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
      * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -170,7 +186,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
     private Output<String> type;
 
     /**
-     * @return The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+     * @return The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
      * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
      * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
      * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -189,6 +205,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         this.insertHeaderConfig = $.insertHeaderConfig;
         this.order = $.order;
         this.redirectConfig = $.redirectConfig;
+        this.removeHeaderConfig = $.removeHeaderConfig;
         this.rewriteConfig = $.rewriteConfig;
         this.trafficLimitConfig = $.trafficLimitConfig;
         this.trafficMirrorConfig = $.trafficMirrorConfig;
@@ -340,6 +357,27 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param removeHeaderConfig The configuration of the inserted header field. See `remove_header_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeHeaderConfig(@Nullable Output<RuleRuleActionRemoveHeaderConfigArgs> removeHeaderConfig) {
+            $.removeHeaderConfig = removeHeaderConfig;
+            return this;
+        }
+
+        /**
+         * @param removeHeaderConfig The configuration of the inserted header field. See `remove_header_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeHeaderConfig(RuleRuleActionRemoveHeaderConfigArgs removeHeaderConfig) {
+            return removeHeaderConfig(Output.of(removeHeaderConfig));
+        }
+
+        /**
          * @param rewriteConfig The redirect action within ALB. See `rewrite_config` below.
          * 
          * @return builder
@@ -403,7 +441,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+         * @param type The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
          * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
          * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
          * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
@@ -417,7 +455,7 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+         * @param type The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
          * **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
          * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
          * **NOTE:** From version 1.205.0, `type` can be set to `Cors`.

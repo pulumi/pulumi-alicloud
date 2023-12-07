@@ -540,6 +540,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
+     * Specifies whether to enable forcible switching. Valid values:
+     * - Yes
+     * - No
+     * 
+     */
+    @Export(name="force", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> force;
+
+    /**
+     * @return Specifies whether to enable forcible switching. Valid values:
+     * - Yes
+     * - No
+     * 
+     */
+    public Output<Optional<String>> force() {
+        return Codegen.optional(this.force);
+    }
+    /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      * 
      */
@@ -740,6 +758,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> monitoringPeriod() {
         return this.monitoringPeriod;
+    }
+    /**
+     * The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+     * 
+     */
+    @Export(name="nodeId", refs={String.class}, tree="[0]")
+    private Output<String> nodeId;
+
+    /**
+     * @return The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+     * 
+     */
+    public Output<String> nodeId() {
+        return this.nodeId;
     }
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
@@ -1390,20 +1422,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> zoneIdSlaveA() {
         return this.zoneIdSlaveA;
-    }
-    /**
-     * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-     * 
-     */
-    @Export(name="zoneIdSlaveB", refs={String.class}, tree="[0]")
-    private Output<String> zoneIdSlaveB;
-
-    /**
-     * @return The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-     * 
-     */
-    public Output<String> zoneIdSlaveB() {
-        return this.zoneIdSlaveB;
     }
 
     /**

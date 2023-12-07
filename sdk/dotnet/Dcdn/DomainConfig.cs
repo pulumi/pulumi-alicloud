@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// <summary>
     /// Provides a DCDN Accelerated Domain resource.
     /// 
-    /// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm)
+    /// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.131.0.
     /// 
@@ -29,34 +29,73 @@ namespace Pulumi.AliCloud.Dcdn
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var domainName = config.Get("domainName") ?? "example.com";
-    ///     var exampleDomain = new AliCloud.Dcdn.Domain("exampleDomain", new()
+    ///     var domainName = config.Get("domainName") ?? "alibaba-example.com";
+    ///     var example = new AliCloud.Dcdn.Domain("example", new()
     ///     {
     ///         DomainName = domainName,
     ///         Scope = "overseas",
+    ///         Status = "online",
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Dcdn.Inputs.DomainSourceArgs
     ///             {
     ///                 Content = "1.1.1.1",
-    ///                 Port = 80,
-    ///                 Priority = "20",
     ///                 Type = "ipaddr",
+    ///                 Priority = "20",
+    ///                 Port = 80,
     ///                 Weight = "10",
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var exampleDomainConfig = new AliCloud.Dcdn.DomainConfig("exampleDomainConfig", new()
+    ///     var ipAllowListSet = new AliCloud.Dcdn.DomainConfig("ipAllowListSet", new()
     ///     {
-    ///         DomainName = exampleDomain.DomainName,
+    ///         DomainName = example.DomainName,
     ///         FunctionName = "ip_allow_list_set",
     ///         FunctionArgs = new[]
     ///         {
     ///             new AliCloud.Dcdn.Inputs.DomainConfigFunctionArgArgs
     ///             {
     ///                 ArgName = "ip_list",
+    ///                 ArgValue = "192.168.0.1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var refererWhiteListSet = new AliCloud.Dcdn.DomainConfig("refererWhiteListSet", new()
+    ///     {
+    ///         DomainName = example.DomainName,
+    ///         FunctionName = "referer_white_list_set",
+    ///         FunctionArgs = new[]
+    ///         {
+    ///             new AliCloud.Dcdn.Inputs.DomainConfigFunctionArgArgs
+    ///             {
+    ///                 ArgName = "refer_domain_allow_list",
     ///                 ArgValue = "110.110.110.110",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var filetypeBasedTtlSet = new AliCloud.Dcdn.DomainConfig("filetypeBasedTtlSet", new()
+    ///     {
+    ///         DomainName = example.DomainName,
+    ///         FunctionName = "filetype_based_ttl_set",
+    ///         FunctionArgs = new[]
+    ///         {
+    ///             new AliCloud.Dcdn.Inputs.DomainConfigFunctionArgArgs
+    ///             {
+    ///                 ArgName = "ttl",
+    ///                 ArgValue = "300",
+    ///             },
+    ///             new AliCloud.Dcdn.Inputs.DomainConfigFunctionArgArgs
+    ///             {
+    ///                 ArgName = "file_type",
+    ///                 ArgValue = "jpg",
+    ///             },
+    ///             new AliCloud.Dcdn.Inputs.DomainConfigFunctionArgArgs
+    ///             {
+    ///                 ArgName = "weight",
+    ///                 ArgValue = "1",
     ///             },
     ///         },
     ///     });
@@ -76,7 +115,7 @@ namespace Pulumi.AliCloud.Dcdn
     public partial class DomainConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The DCDN domain config id.
+        /// The ID of the configuration.
         /// </summary>
         [Output("configId")]
         public Output<string> ConfigId { get; private set; } = null!;
@@ -88,7 +127,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The args of the domain config.  See `function_args` below.
+        /// The args of the domain config. See `function_args` below.
         /// </summary>
         [Output("functionArgs")]
         public Output<ImmutableArray<Outputs.DomainConfigFunctionArg>> FunctionArgs { get; private set; } = null!;
@@ -100,7 +139,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> FunctionName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of this resource.
+        /// The status of the Config.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -161,7 +200,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainConfigFunctionArgArgs>? _functionArgs;
 
         /// <summary>
-        /// The args of the domain config.  See `function_args` below.
+        /// The args of the domain config. See `function_args` below.
         /// </summary>
         public InputList<Inputs.DomainConfigFunctionArgArgs> FunctionArgs
         {
@@ -184,7 +223,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class DomainConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The DCDN domain config id.
+        /// The ID of the configuration.
         /// </summary>
         [Input("configId")]
         public Input<string>? ConfigId { get; set; }
@@ -199,7 +238,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputList<Inputs.DomainConfigFunctionArgGetArgs>? _functionArgs;
 
         /// <summary>
-        /// The args of the domain config.  See `function_args` below.
+        /// The args of the domain config. See `function_args` below.
         /// </summary>
         public InputList<Inputs.DomainConfigFunctionArgGetArgs> FunctionArgs
         {
@@ -214,7 +253,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? FunctionName { get; set; }
 
         /// <summary>
-        /// The status of this resource.
+        /// The status of the Config.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class LoadBalancerLoadBalancerBillingConfig
     {
         /// <summary>
-        /// Pay Type.
+        /// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
         /// </summary>
         public readonly string PayType;
 

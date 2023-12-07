@@ -57,6 +57,20 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return this.checkpoint;
     }
     /**
+     * The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+     * 
+     */
+    @Export(name="dataCheckConfigure", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataCheckConfigure;
+
+    /**
+     * @return The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+     * 
+     */
+    public Output<Optional<String>> dataCheckConfigure() {
+        return Codegen.optional(this.dataCheckConfigure);
+    }
+    /**
      * Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
      * 
      */
@@ -97,6 +111,20 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dbList() {
         return this.dbList;
+    }
+    /**
+     * When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+     * 
+     */
+    @Export(name="dedicatedClusterId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dedicatedClusterId;
+
+    /**
+     * @return When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+     * 
+     */
+    public Output<Optional<String>> dedicatedClusterId() {
+        return Codegen.optional(this.dedicatedClusterId);
     }
     /**
      * The delay notice. Valid values: `true`, `false`.
@@ -231,6 +259,20 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.destinationEndpointOracleSid);
     }
     /**
+     * The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+     * 
+     */
+    @Export(name="destinationEndpointOwnerId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> destinationEndpointOwnerId;
+
+    /**
+     * @return The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+     * 
+     */
+    public Output<Optional<String>> destinationEndpointOwnerId() {
+        return Codegen.optional(this.destinationEndpointOwnerId);
+    }
+    /**
      * The password of database account.
      * 
      */
@@ -273,6 +315,20 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.destinationEndpointRegion);
     }
     /**
+     * The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+     * 
+     */
+    @Export(name="destinationEndpointRole", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> destinationEndpointRole;
+
+    /**
+     * @return The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+     * 
+     */
+    public Output<Optional<String>> destinationEndpointRole() {
+        return Codegen.optional(this.destinationEndpointRole);
+    }
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      * 
      */
@@ -285,6 +341,28 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> destinationEndpointUserName() {
         return Codegen.optional(this.destinationEndpointUserName);
+    }
+    /**
+     * The environment label of the DTS instance. The value is: **normal**, **online**.
+     * 
+     * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+     * 
+     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it&#39;s instance to keep them consistent.
+     * 
+     */
+    @Export(name="dtsBisLabel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dtsBisLabel;
+
+    /**
+     * @return The environment label of the DTS instance. The value is: **normal**, **online**.
+     * 
+     * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+     * 
+     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it&#39;s instance to keep them consistent.
+     * 
+     */
+    public Output<Optional<String>> dtsBisLabel() {
+        return Codegen.optional(this.dtsBisLabel);
     }
     /**
      * The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
@@ -545,11 +623,21 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceEndpointUserName);
     }
     /**
+     * Data Delivery link switch instance id
+     * 
+     */
+    @Export(name="sourceEndpointVswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sourceEndpointVswitchId;
+
+    /**
+     * @return Data Delivery link switch instance id
+     * 
+     */
+    public Output<Optional<String>> sourceEndpointVswitchId() {
+        return Codegen.optional(this.sourceEndpointVswitchId);
+    }
+    /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-     * 
-     * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-     * 
-     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it&#39;s instance to keep them consistent.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -557,10 +645,6 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-     * 
-     * &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-     * 
-     * &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it&#39;s instance to keep them consistent.
      * 
      */
     public Output<String> status() {

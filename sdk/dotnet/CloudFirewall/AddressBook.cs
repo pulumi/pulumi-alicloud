@@ -90,7 +90,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Address Book. Valid values: `ip`, `tag`.
+        /// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+        /// **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         /// </summary>
         [Output("groupType")]
         public Output<string> GroupType { get; private set; } = null!;
@@ -196,7 +197,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the Address Book. Valid values: `ip`, `tag`.
+        /// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+        /// **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         /// </summary>
         [Input("groupType", required: true)]
         public Input<string> GroupType { get; set; } = null!;
@@ -264,7 +266,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// The type of the Address Book. Valid values: `ip`, `tag`.
+        /// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+        /// **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }

@@ -110,9 +110,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly backupInterval!: pulumi.Output<string>;
     /**
-     * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+     * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
+    /**
+     * The retention period of full backups.
+     */
+    public readonly backupRetentionPeriod!: pulumi.Output<number>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
@@ -135,6 +139,9 @@ export class Instance extends pulumi.CustomResource {
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
     public readonly encrypted!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the custom key.
+     */
     public readonly encryptionKey!: pulumi.Output<string>;
     /**
      * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
@@ -212,6 +219,9 @@ export class Instance extends pulumi.CustomResource {
      * Instance data backup retention days. Available since v1.42.0.
      */
     public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     */
     public readonly roleArn!: pulumi.Output<string>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
@@ -285,6 +295,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["backupInterval"] = state ? state.backupInterval : undefined;
             resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
+            resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
             resourceInputs["backupTime"] = state ? state.backupTime : undefined;
             resourceInputs["cloudDiskEncryptionKey"] = state ? state.cloudDiskEncryptionKey : undefined;
             resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
@@ -339,6 +350,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["backupInterval"] = args ? args.backupInterval : undefined;
             resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
+            resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
             resourceInputs["cloudDiskEncryptionKey"] = args ? args.cloudDiskEncryptionKey : undefined;
             resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
@@ -404,9 +416,13 @@ export interface InstanceState {
      */
     backupInterval?: pulumi.Input<string>;
     /**
-     * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+     * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The retention period of full backups.
+     */
+    backupRetentionPeriod?: pulumi.Input<number>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
@@ -429,6 +445,9 @@ export interface InstanceState {
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
     encrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the custom key.
+     */
     encryptionKey?: pulumi.Input<string>;
     /**
      * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
@@ -506,6 +525,9 @@ export interface InstanceState {
      * Instance data backup retention days. Available since v1.42.0.
      */
     retentionPeriod?: pulumi.Input<number>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     */
     roleArn?: pulumi.Input<string>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
@@ -581,9 +603,13 @@ export interface InstanceArgs {
      */
     backupInterval?: pulumi.Input<string>;
     /**
-     * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+     * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The retention period of full backups.
+     */
+    backupRetentionPeriod?: pulumi.Input<number>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
@@ -606,6 +632,9 @@ export interface InstanceArgs {
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
     encrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the custom key.
+     */
     encryptionKey?: pulumi.Input<string>;
     /**
      * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
@@ -671,6 +700,9 @@ export interface InstanceArgs {
      * The ID of the Resource Group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     */
     roleArn?: pulumi.Input<string>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.

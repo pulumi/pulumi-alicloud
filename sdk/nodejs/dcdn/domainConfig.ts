@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a DCDN Accelerated Domain resource.
  *
- * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm)
+ * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm).
  *
  * > **NOTE:** Available since v1.131.0.
  *
@@ -22,25 +22,52 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const domainName = config.get("domainName") || "example.com";
- * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
+ * const domainName = config.get("domainName") || "alibaba-example.com";
+ * const example = new alicloud.dcdn.Domain("example", {
  *     domainName: domainName,
  *     scope: "overseas",
+ *     status: "online",
  *     sources: [{
  *         content: "1.1.1.1",
- *         port: 80,
- *         priority: "20",
  *         type: "ipaddr",
+ *         priority: "20",
+ *         port: 80,
  *         weight: "10",
  *     }],
  * });
- * const exampleDomainConfig = new alicloud.dcdn.DomainConfig("exampleDomainConfig", {
- *     domainName: exampleDomain.domainName,
+ * const ipAllowListSet = new alicloud.dcdn.DomainConfig("ipAllowListSet", {
+ *     domainName: example.domainName,
  *     functionName: "ip_allow_list_set",
  *     functionArgs: [{
  *         argName: "ip_list",
+ *         argValue: "192.168.0.1",
+ *     }],
+ * });
+ * const refererWhiteListSet = new alicloud.dcdn.DomainConfig("refererWhiteListSet", {
+ *     domainName: example.domainName,
+ *     functionName: "referer_white_list_set",
+ *     functionArgs: [{
+ *         argName: "refer_domain_allow_list",
  *         argValue: "110.110.110.110",
  *     }],
+ * });
+ * const filetypeBasedTtlSet = new alicloud.dcdn.DomainConfig("filetypeBasedTtlSet", {
+ *     domainName: example.domainName,
+ *     functionName: "filetype_based_ttl_set",
+ *     functionArgs: [
+ *         {
+ *             argName: "ttl",
+ *             argValue: "300",
+ *         },
+ *         {
+ *             argName: "file_type",
+ *             argValue: "jpg",
+ *         },
+ *         {
+ *             argName: "weight",
+ *             argValue: "1",
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -81,7 +108,7 @@ export class DomainConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The DCDN domain config id.
+     * The ID of the configuration.
      */
     public /*out*/ readonly configId!: pulumi.Output<string>;
     /**
@@ -89,7 +116,7 @@ export class DomainConfig extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
-     * The args of the domain config.  See `functionArgs` below.
+     * The args of the domain config. See `functionArgs` below.
      */
     public readonly functionArgs!: pulumi.Output<outputs.dcdn.DomainConfigFunctionArg[]>;
     /**
@@ -97,7 +124,7 @@ export class DomainConfig extends pulumi.CustomResource {
      */
     public readonly functionName!: pulumi.Output<string>;
     /**
-     * The status of this resource.
+     * The status of the Config.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -146,7 +173,7 @@ export class DomainConfig extends pulumi.CustomResource {
  */
 export interface DomainConfigState {
     /**
-     * The DCDN domain config id.
+     * The ID of the configuration.
      */
     configId?: pulumi.Input<string>;
     /**
@@ -154,7 +181,7 @@ export interface DomainConfigState {
      */
     domainName?: pulumi.Input<string>;
     /**
-     * The args of the domain config.  See `functionArgs` below.
+     * The args of the domain config. See `functionArgs` below.
      */
     functionArgs?: pulumi.Input<pulumi.Input<inputs.dcdn.DomainConfigFunctionArg>[]>;
     /**
@@ -162,7 +189,7 @@ export interface DomainConfigState {
      */
     functionName?: pulumi.Input<string>;
     /**
-     * The status of this resource.
+     * The status of the Config.
      */
     status?: pulumi.Input<string>;
 }
@@ -176,7 +203,7 @@ export interface DomainConfigArgs {
      */
     domainName: pulumi.Input<string>;
     /**
-     * The args of the domain config.  See `functionArgs` below.
+     * The args of the domain config. See `functionArgs` below.
      */
     functionArgs: pulumi.Input<pulumi.Input<inputs.dcdn.DomainConfigFunctionArg>[]>;
     /**

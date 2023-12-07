@@ -42,6 +42,7 @@ class InstanceArgs:
                  direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
                  ha_config: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,7 @@ class InstanceArgs:
                  manual_ha_time: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
+                 node_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]] = None,
@@ -86,8 +88,7 @@ class InstanceArgs:
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
-                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
-                 zone_id_slave_b: Optional[pulumi.Input[str]] = None):
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
@@ -192,6 +193,9 @@ class InstanceArgs:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
+        :param pulumi.Input[str] force: Specifies whether to enable forcible switching. Valid values:
+               - Yes
+               - No
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
                * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
@@ -212,6 +216,7 @@ class InstanceArgs:
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
+        :param pulumi.Input[str] node_id: The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -304,7 +309,6 @@ class InstanceArgs:
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "engine_version", engine_version)
@@ -354,6 +358,8 @@ class InstanceArgs:
             pulumi.set(__self__, "effective_time", effective_time)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
         if fresh_white_list_readins is not None:
@@ -372,6 +378,8 @@ class InstanceArgs:
             pulumi.set(__self__, "modify_mode", modify_mode)
         if monitoring_period is not None:
             pulumi.set(__self__, "monitoring_period", monitoring_period)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if period is not None:
@@ -450,8 +458,6 @@ class InstanceArgs:
             pulumi.set(__self__, "zone_id", zone_id)
         if zone_id_slave_a is not None:
             pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
-        if zone_id_slave_b is not None:
-            pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter
@@ -842,6 +848,20 @@ class InstanceArgs:
         pulumi.set(self, "encryption_key", value)
 
     @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable forcible switching. Valid values:
+        - Yes
+        - No
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force", value)
+
+    @property
     @pulumi.getter(name="forceRestart")
     def force_restart(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -959,6 +979,18 @@ class InstanceArgs:
     @monitoring_period.setter
     def monitoring_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "monitoring_period", value)
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+        """
+        return pulumi.get(self, "node_id")
+
+    @node_id.setter
+    def node_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_id", value)
 
     @property
     @pulumi.getter
@@ -1454,18 +1486,6 @@ class InstanceArgs:
     def zone_id_slave_a(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id_slave_a", value)
 
-    @property
-    @pulumi.getter(name="zoneIdSlaveB")
-    def zone_id_slave_b(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        """
-        return pulumi.get(self, "zone_id_slave_b")
-
-    @zone_id_slave_b.setter
-    def zone_id_slave_b(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zone_id_slave_b", value)
-
 
 @pulumi.input_type
 class _InstanceState:
@@ -1497,6 +1517,7 @@ class _InstanceState:
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
                  ha_config: Optional[pulumi.Input[str]] = None,
@@ -1508,6 +1529,7 @@ class _InstanceState:
                  manual_ha_time: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
+                 node_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]] = None,
@@ -1545,8 +1567,7 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
-                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
-                 zone_id_slave_b: Optional[pulumi.Input[str]] = None):
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -1639,6 +1660,9 @@ class _InstanceState:
                > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
                > - PostgreSQL: [ 14.0 ]
                > - MariaDB does not support creating serverless instances.
+        :param pulumi.Input[str] force: Specifies whether to enable forcible switching. Valid values:
+               - Yes
+               - No
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
                * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
@@ -1674,6 +1698,7 @@ class _InstanceState:
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
+        :param pulumi.Input[str] node_id: The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -1768,7 +1793,6 @@ class _InstanceState:
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -1824,6 +1848,8 @@ class _InstanceState:
             pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
         if fresh_white_list_readins is not None:
@@ -1846,6 +1872,8 @@ class _InstanceState:
             pulumi.set(__self__, "modify_mode", modify_mode)
         if monitoring_period is not None:
             pulumi.set(__self__, "monitoring_period", monitoring_period)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if period is not None:
@@ -1928,8 +1956,6 @@ class _InstanceState:
             pulumi.set(__self__, "zone_id", zone_id)
         if zone_id_slave_a is not None:
             pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
-        if zone_id_slave_b is not None:
-            pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter
@@ -2319,6 +2345,20 @@ class _InstanceState:
         pulumi.set(self, "engine_version", value)
 
     @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable forcible switching. Valid values:
+        - Yes
+        - No
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force", value)
+
+    @property
     @pulumi.getter(name="forceRestart")
     def force_restart(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2473,6 +2513,18 @@ class _InstanceState:
     @monitoring_period.setter
     def monitoring_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "monitoring_period", value)
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+        """
+        return pulumi.get(self, "node_id")
+
+    @node_id.setter
+    def node_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_id", value)
 
     @property
     @pulumi.getter
@@ -2992,18 +3044,6 @@ class _InstanceState:
     def zone_id_slave_a(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id_slave_a", value)
 
-    @property
-    @pulumi.getter(name="zoneIdSlaveB")
-    def zone_id_slave_b(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        """
-        return pulumi.get(self, "zone_id_slave_b")
-
-    @zone_id_slave_b.setter
-    def zone_id_slave_b(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zone_id_slave_b", value)
-
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -3034,6 +3074,7 @@ class Instance(pulumi.CustomResource):
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
                  ha_config: Optional[pulumi.Input[str]] = None,
@@ -3045,6 +3086,7 @@ class Instance(pulumi.CustomResource):
                  manual_ha_time: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
+                 node_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]]] = None,
@@ -3081,7 +3123,6 @@ class Instance(pulumi.CustomResource):
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_a: Optional[pulumi.Input[str]] = None,
-                 zone_id_slave_b: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Import
@@ -3181,6 +3222,9 @@ class Instance(pulumi.CustomResource):
                > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
                > - PostgreSQL: [ 14.0 ]
                > - MariaDB does not support creating serverless instances.
+        :param pulumi.Input[str] force: Specifies whether to enable forcible switching. Valid values:
+               - Yes
+               - No
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
                * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
@@ -3216,6 +3260,7 @@ class Instance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
+        :param pulumi.Input[str] node_id: The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -3308,7 +3353,6 @@ class Instance(pulumi.CustomResource):
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         ...
     @overload
@@ -3364,6 +3408,7 @@ class Instance(pulumi.CustomResource):
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
                  ha_config: Optional[pulumi.Input[str]] = None,
@@ -3375,6 +3420,7 @@ class Instance(pulumi.CustomResource):
                  manual_ha_time: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
+                 node_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]]] = None,
@@ -3411,7 +3457,6 @@ class Instance(pulumi.CustomResource):
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_a: Optional[pulumi.Input[str]] = None,
-                 zone_id_slave_b: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -3449,6 +3494,7 @@ class Instance(pulumi.CustomResource):
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
+            __props__.__dict__["force"] = force
             __props__.__dict__["force_restart"] = force_restart
             __props__.__dict__["fresh_white_list_readins"] = fresh_white_list_readins
             __props__.__dict__["ha_config"] = ha_config
@@ -3464,6 +3510,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["manual_ha_time"] = manual_ha_time
             __props__.__dict__["modify_mode"] = modify_mode
             __props__.__dict__["monitoring_period"] = monitoring_period
+            __props__.__dict__["node_id"] = node_id
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["period"] = period
             __props__.__dict__["pg_hba_confs"] = pg_hba_confs
@@ -3500,7 +3547,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["whitelist_network_type"] = whitelist_network_type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
-            __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["db_instance_type"] = None
@@ -3543,6 +3589,7 @@ class Instance(pulumi.CustomResource):
             encryption_key: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
+            force: Optional[pulumi.Input[str]] = None,
             force_restart: Optional[pulumi.Input[bool]] = None,
             fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
             ha_config: Optional[pulumi.Input[str]] = None,
@@ -3554,6 +3601,7 @@ class Instance(pulumi.CustomResource):
             manual_ha_time: Optional[pulumi.Input[str]] = None,
             modify_mode: Optional[pulumi.Input[str]] = None,
             monitoring_period: Optional[pulumi.Input[int]] = None,
+            node_id: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
             period: Optional[pulumi.Input[int]] = None,
             pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]]] = None,
@@ -3591,8 +3639,7 @@ class Instance(pulumi.CustomResource):
             vswitch_id: Optional[pulumi.Input[str]] = None,
             whitelist_network_type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None,
-            zone_id_slave_a: Optional[pulumi.Input[str]] = None,
-            zone_id_slave_b: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            zone_id_slave_a: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -3690,6 +3737,9 @@ class Instance(pulumi.CustomResource):
                > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
                > - PostgreSQL: [ 14.0 ]
                > - MariaDB does not support creating serverless instances.
+        :param pulumi.Input[str] force: Specifies whether to enable forcible switching. Valid values:
+               - Yes
+               - No
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
                * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
@@ -3725,6 +3775,7 @@ class Instance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
+        :param pulumi.Input[str] node_id: The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -3819,7 +3870,6 @@ class Instance(pulumi.CustomResource):
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3852,6 +3902,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
+        __props__.__dict__["force"] = force
         __props__.__dict__["force_restart"] = force_restart
         __props__.__dict__["fresh_white_list_readins"] = fresh_white_list_readins
         __props__.__dict__["ha_config"] = ha_config
@@ -3863,6 +3914,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["manual_ha_time"] = manual_ha_time
         __props__.__dict__["modify_mode"] = modify_mode
         __props__.__dict__["monitoring_period"] = monitoring_period
+        __props__.__dict__["node_id"] = node_id
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["period"] = period
         __props__.__dict__["pg_hba_confs"] = pg_hba_confs
@@ -3901,7 +3953,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["whitelist_network_type"] = whitelist_network_type
         __props__.__dict__["zone_id"] = zone_id
         __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
-        __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -4184,6 +4235,16 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "engine_version")
 
     @property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies whether to enable forcible switching. Valid values:
+        - Yes
+        - No
+        """
+        return pulumi.get(self, "force")
+
+    @property
     @pulumi.getter(name="forceRestart")
     def force_restart(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -4294,6 +4355,14 @@ class Instance(pulumi.CustomResource):
         The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
         """
         return pulumi.get(self, "monitoring_period")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> pulumi.Output[str]:
+        """
+        The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+        """
+        return pulumi.get(self, "node_id")
 
     @property
     @pulumi.getter
@@ -4660,12 +4729,4 @@ class Instance(pulumi.CustomResource):
         The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         return pulumi.get(self, "zone_id_slave_a")
-
-    @property
-    @pulumi.getter(name="zoneIdSlaveB")
-    def zone_id_slave_b(self) -> pulumi.Output[str]:
-        """
-        The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        """
-        return pulumi.get(self, "zone_id_slave_b")
 

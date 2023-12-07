@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class LoadBalancerLoadBalancerBillingConfig {
     /**
-     * @return Pay Type.
+     * @return Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
      * 
      */
     private String payType;
 
     private LoadBalancerLoadBalancerBillingConfig() {}
     /**
-     * @return Pay Type.
+     * @return Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
      * 
      */
     public String payType() {

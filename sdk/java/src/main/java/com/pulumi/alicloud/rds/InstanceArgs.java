@@ -511,6 +511,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable forcible switching. Valid values:
+     * - Yes
+     * - No
+     * 
+     */
+    @Import(name="force")
+    private @Nullable Output<String> force;
+
+    /**
+     * @return Specifies whether to enable forcible switching. Valid values:
+     * - Yes
+     * - No
+     * 
+     */
+    public Optional<Output<String>> force() {
+        return Optional.ofNullable(this.force);
+    }
+
+    /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      * 
      */
@@ -721,6 +740,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> monitoringPeriod() {
         return Optional.ofNullable(this.monitoringPeriod);
+    }
+
+    /**
+     * The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+     * 
+     */
+    @Import(name="nodeId")
+    private @Nullable Output<String> nodeId;
+
+    /**
+     * @return The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+     * 
+     */
+    public Optional<Output<String>> nodeId() {
+        return Optional.ofNullable(this.nodeId);
     }
 
     /**
@@ -1389,21 +1423,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.zoneIdSlaveA);
     }
 
-    /**
-     * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-     * 
-     */
-    @Import(name="zoneIdSlaveB")
-    private @Nullable Output<String> zoneIdSlaveB;
-
-    /**
-     * @return The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-     * 
-     */
-    public Optional<Output<String>> zoneIdSlaveB() {
-        return Optional.ofNullable(this.zoneIdSlaveB);
-    }
-
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
@@ -1431,6 +1450,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.encryptionKey = $.encryptionKey;
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
+        this.force = $.force;
         this.forceRestart = $.forceRestart;
         this.freshWhiteListReadins = $.freshWhiteListReadins;
         this.haConfig = $.haConfig;
@@ -1442,6 +1462,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.manualHaTime = $.manualHaTime;
         this.modifyMode = $.modifyMode;
         this.monitoringPeriod = $.monitoringPeriod;
+        this.nodeId = $.nodeId;
         this.parameters = $.parameters;
         this.period = $.period;
         this.pgHbaConfs = $.pgHbaConfs;
@@ -1478,7 +1499,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.whitelistNetworkType = $.whitelistNetworkType;
         this.zoneId = $.zoneId;
         this.zoneIdSlaveA = $.zoneIdSlaveA;
-        this.zoneIdSlaveB = $.zoneIdSlaveB;
     }
 
     public static Builder builder() {
@@ -2142,6 +2162,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param force Specifies whether to enable forcible switching. Valid values:
+         * - Yes
+         * - No
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(@Nullable Output<String> force) {
+            $.force = force;
+            return this;
+        }
+
+        /**
+         * @param force Specifies whether to enable forcible switching. Valid values:
+         * - Yes
+         * - No
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(String force) {
+            return force(Output.of(force));
+        }
+
+        /**
          * @param forceRestart Set it to true to make some parameter efficient when modifying them. Default to false.
          * 
          * @return builder
@@ -2418,6 +2463,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder monitoringPeriod(Integer monitoringPeriod) {
             return monitoringPeriod(Output.of(monitoringPeriod));
+        }
+
+        /**
+         * @param nodeId The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeId(@Nullable Output<String> nodeId) {
+            $.nodeId = nodeId;
+            return this;
+        }
+
+        /**
+         * @param nodeId The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeId(String nodeId) {
+            return nodeId(Output.of(nodeId));
         }
 
         /**
@@ -3350,27 +3416,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder zoneIdSlaveA(String zoneIdSlaveA) {
             return zoneIdSlaveA(Output.of(zoneIdSlaveA));
-        }
-
-        /**
-         * @param zoneIdSlaveB The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneIdSlaveB(@Nullable Output<String> zoneIdSlaveB) {
-            $.zoneIdSlaveB = zoneIdSlaveB;
-            return this;
-        }
-
-        /**
-         * @param zoneIdSlaveB The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneIdSlaveB(String zoneIdSlaveB) {
-            return zoneIdSlaveB(Output.of(zoneIdSlaveB));
         }
 
         public InstanceArgs build() {
