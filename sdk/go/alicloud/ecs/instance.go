@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -15,6 +14,8 @@ import (
 // Provides a ECS instance resource.
 //
 // > **NOTE:** Available since v1.0.0
+//
+// > **NOTE:** From version v1.213.0, you can specify `launchTemplateId` and `launchTemplateVersion` to use a launch template. This eliminates the need to configure a large number of parameters every time you create instances.
 //
 // ## Example Usage
 //
@@ -157,7 +158,7 @@ type Instance struct {
 	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
 	// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
@@ -178,7 +179,7 @@ type Instance struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens pulumi.StringOutput `pulumi:"httpTokens"`
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks pulumi.BoolPtrOutput `pulumi:"includeDataDisks"`
@@ -186,22 +187,18 @@ type Instance struct {
 	// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
 	// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
-	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
-	InstanceName       pulumi.StringPtrOutput `pulumi:"instanceName"`
-	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
+	InstanceName       pulumi.StringOutput `pulumi:"instanceName"`
+	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
-	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
+	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
 	//
 	// Deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
 	InternetMaxBandwidthIn pulumi.IntOutput `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
-	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-	IoOptimized pulumi.StringPtrOutput `pulumi:"ioOptimized"`
+	InternetMaxBandwidthOut pulumi.IntOutput `pulumi:"internetMaxBandwidthOut"`
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount pulumi.IntOutput `pulumi:"ipv6AddressCount"`
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -214,6 +211,26 @@ type Instance struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
+	LaunchTemplateId pulumi.StringPtrOutput `pulumi:"launchTemplateId"`
+	// The name of the launch template.
+	LaunchTemplateName pulumi.StringPtrOutput `pulumi:"launchTemplateName"`
+	// The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
+	//
+	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	//
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	//
+	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+	//
+	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+	//
+	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+	//
+	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+	LaunchTemplateVersion pulumi.StringPtrOutput `pulumi:"launchTemplateVersion"`
 	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
 	MaintenanceAction pulumi.StringOutput `pulumi:"maintenanceAction"`
 	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
@@ -238,7 +255,7 @@ type Instance struct {
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period pulumi.IntOutput `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// The primary private IP address of the ENI.
@@ -250,7 +267,7 @@ type Instance struct {
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
@@ -260,13 +277,13 @@ type Instance struct {
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
-	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
-	// A list of security group ids to associate with.
+	SecurityEnhancementStrategy pulumi.StringOutput `pulumi:"securityEnhancementStrategy"`
+	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration pulumi.IntOutput `pulumi:"spotDuration"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
-	SpotPriceLimit pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
+	SpotPriceLimit pulumi.Float64Output `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
 	// - NoSpot: A regular Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: A price threshold for a spot instance
@@ -281,23 +298,23 @@ type Instance struct {
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
-	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
+	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
+	SystemDiskDescription pulumi.StringOutput `pulumi:"systemDiskDescription"`
 	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrOutput `pulumi:"systemDiskEncryptAlgorithm"`
 	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
-	SystemDiskEncrypted pulumi.BoolPtrOutput `pulumi:"systemDiskEncrypted"`
+	SystemDiskEncrypted pulumi.BoolOutput `pulumi:"systemDiskEncrypted"`
 	// (Available since v1.210.0) The ID of system disk.
 	SystemDiskId pulumi.StringOutput `pulumi:"systemDiskId"`
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
 	SystemDiskKmsKeyId pulumi.StringPtrOutput `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
-	SystemDiskName pulumi.StringPtrOutput `pulumi:"systemDiskName"`
+	SystemDiskName pulumi.StringOutput `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel pulumi.StringOutput `pulumi:"systemDiskPerformanceLevel"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
-	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
+	SystemDiskSize pulumi.IntOutput `pulumi:"systemDiskSize"`
 	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId pulumi.StringPtrOutput `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
@@ -310,25 +327,16 @@ type Instance struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	VolumeTags pulumi.MapOutput `pulumi:"volumeTags"`
 	// The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
-	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &InstanceArgs{}
 	}
 
-	if args.ImageId == nil {
-		return nil, errors.New("invalid value for required argument 'ImageId'")
-	}
-	if args.InstanceType == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceType'")
-	}
-	if args.SecurityGroups == nil {
-		return nil, errors.New("invalid value for required argument 'SecurityGroups'")
-	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
@@ -411,7 +419,7 @@ type instanceState struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens *string `pulumi:"httpTokens"`
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
 	ImageId *string `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks *bool `pulumi:"includeDataDisks"`
@@ -421,7 +429,7 @@ type instanceState struct {
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	InstanceName       *string `pulumi:"instanceName"`
-	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
 	InstanceType *string `pulumi:"instanceType"`
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
 	InternetChargeType *string `pulumi:"internetChargeType"`
@@ -431,10 +439,6 @@ type instanceState struct {
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-	IoOptimized *string `pulumi:"ioOptimized"`
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -447,6 +451,26 @@ type instanceState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
+	LaunchTemplateId *string `pulumi:"launchTemplateId"`
+	// The name of the launch template.
+	LaunchTemplateName *string `pulumi:"launchTemplateName"`
+	// The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
+	//
+	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	//
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	//
+	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+	//
+	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+	//
+	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+	//
+	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
 	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
 	MaintenanceAction *string `pulumi:"maintenanceAction"`
 	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
@@ -494,7 +518,7 @@ type instanceState struct {
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// A list of security group ids to associate with.
+	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration *int `pulumi:"spotDuration"`
@@ -599,7 +623,7 @@ type InstanceState struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens pulumi.StringPtrInput
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
 	ImageId pulumi.StringPtrInput
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks pulumi.BoolPtrInput
@@ -609,7 +633,7 @@ type InstanceState struct {
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 	InstanceChargeType pulumi.StringPtrInput
 	InstanceName       pulumi.StringPtrInput
-	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
 	InstanceType pulumi.StringPtrInput
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
 	InternetChargeType pulumi.StringPtrInput
@@ -619,10 +643,6 @@ type InstanceState struct {
 	InternetMaxBandwidthIn pulumi.IntPtrInput
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-	IoOptimized pulumi.StringPtrInput
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount pulumi.IntPtrInput
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -635,6 +655,26 @@ type InstanceState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext pulumi.MapInput
+	// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
+	LaunchTemplateId pulumi.StringPtrInput
+	// The name of the launch template.
+	LaunchTemplateName pulumi.StringPtrInput
+	// The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
+	//
+	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	//
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	//
+	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+	//
+	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+	//
+	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+	//
+	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+	LaunchTemplateVersion pulumi.StringPtrInput
 	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
 	MaintenanceAction pulumi.StringPtrInput
 	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
@@ -682,7 +722,7 @@ type InstanceState struct {
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// A list of security group ids to associate with.
+	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups pulumi.StringArrayInput
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration pulumi.IntPtrInput
@@ -787,8 +827,8 @@ type instanceArgs struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens *string `pulumi:"httpTokens"`
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
-	ImageId string `pulumi:"imageId"`
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+	ImageId *string `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks *bool `pulumi:"includeDataDisks"`
 	// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
@@ -797,8 +837,8 @@ type instanceArgs struct {
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	InstanceName       *string `pulumi:"instanceName"`
-	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
-	InstanceType string `pulumi:"instanceType"`
+	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
+	InstanceType *string `pulumi:"instanceType"`
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
@@ -807,10 +847,6 @@ type instanceArgs struct {
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-	IoOptimized *string `pulumi:"ioOptimized"`
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -823,6 +859,26 @@ type instanceArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
+	LaunchTemplateId *string `pulumi:"launchTemplateId"`
+	// The name of the launch template.
+	LaunchTemplateName *string `pulumi:"launchTemplateName"`
+	// The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
+	//
+	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	//
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	//
+	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+	//
+	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+	//
+	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+	//
+	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
 	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
 	MaintenanceAction *string `pulumi:"maintenanceAction"`
 	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
@@ -858,7 +914,7 @@ type instanceArgs struct {
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// A list of security group ids to associate with.
+	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration *int `pulumi:"spotDuration"`
@@ -958,8 +1014,8 @@ type InstanceArgs struct {
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
 	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
 	HttpTokens pulumi.StringPtrInput
-	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
-	ImageId pulumi.StringInput
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+	ImageId pulumi.StringPtrInput
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks pulumi.BoolPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
@@ -968,8 +1024,8 @@ type InstanceArgs struct {
 	// there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
 	InstanceChargeType pulumi.StringPtrInput
 	InstanceName       pulumi.StringPtrInput
-	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
-	InstanceType pulumi.StringInput
+	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
+	InstanceType pulumi.StringPtrInput
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
 	InternetChargeType pulumi.StringPtrInput
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
@@ -978,10 +1034,6 @@ type InstanceArgs struct {
 	InternetMaxBandwidthIn pulumi.IntPtrInput
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-	IoOptimized pulumi.StringPtrInput
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount pulumi.IntPtrInput
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -994,6 +1046,26 @@ type InstanceArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext pulumi.MapInput
+	// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
+	LaunchTemplateId pulumi.StringPtrInput
+	// The name of the launch template.
+	LaunchTemplateName pulumi.StringPtrInput
+	// The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
+	//
+	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	//
+	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+	//
+	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+	//
+	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+	//
+	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+	//
+	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+	LaunchTemplateVersion pulumi.StringPtrInput
 	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
 	MaintenanceAction pulumi.StringPtrInput
 	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
@@ -1029,7 +1101,7 @@ type InstanceArgs struct {
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// A list of security group ids to associate with.
+	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups pulumi.StringArrayInput
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration pulumi.IntPtrInput
@@ -1230,8 +1302,8 @@ func (o InstanceOutput) DeploymentSetId() pulumi.StringPtrOutput {
 }
 
 // Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-func (o InstanceOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Specifies whether to send a dry-run request. Default to false.
@@ -1275,7 +1347,7 @@ func (o InstanceOutput) HttpTokens() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HttpTokens }).(pulumi.StringOutput)
 }
 
-// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
+// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
 func (o InstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -1289,22 +1361,22 @@ func (o InstanceOutput) IncludeDataDisks() pulumi.BoolPtrOutput {
 // **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
 // However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
 // there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
-func (o InstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
-func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+// The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
-func (o InstanceOutput) InternetChargeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
 // Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
@@ -1315,15 +1387,8 @@ func (o InstanceOutput) InternetMaxBandwidthIn() pulumi.IntOutput {
 }
 
 // Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
-func (o InstanceOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
-}
-
-// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-//
-// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
-func (o InstanceOutput) IoOptimized() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.IoOptimized }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
 }
 
 // The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
@@ -1354,6 +1419,35 @@ func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 func (o InstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
+func (o InstanceOutput) LaunchTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the launch template.
+func (o InstanceOutput) LaunchTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// The version of the launch template. If you set `launchTemplateId` or `launchTemplateName` parameter but do not set the version number of the launch template, the default template version is used.
+//
+// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+//
+// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+//
+// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+//
+// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+//
+// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+//
+// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+func (o InstanceOutput) LaunchTemplateVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.LaunchTemplateVersion }).(pulumi.StringPtrOutput)
 }
 
 // The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
@@ -1410,8 +1504,8 @@ func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 // - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 // - [1-3] when `periodUnit` in "Week"
 // > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-func (o InstanceOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+func (o InstanceOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
 }
 
 // The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -1440,8 +1534,8 @@ func (o InstanceOutput) RenewalStatus() pulumi.StringPtrOutput {
 }
 
 // The Id of resource group which the instance belongs.
-func (o InstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
@@ -1462,11 +1556,11 @@ func (o InstanceOutput) SecondaryPrivateIps() pulumi.StringArrayOutput {
 // The security enhancement strategy.
 // - Active: Enable security enhancement strategy, it only works on system images.
 // - Deactive: Disable security enhancement strategy, it works on all images.
-func (o InstanceOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) SecurityEnhancementStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringOutput)
 }
 
-// A list of security group ids to associate with.
+// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 func (o InstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
@@ -1477,8 +1571,8 @@ func (o InstanceOutput) SpotDuration() pulumi.IntOutput {
 }
 
 // The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
-func (o InstanceOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.Float64PtrOutput { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
+func (o InstanceOutput) SpotPriceLimit() pulumi.Float64Output {
+	return o.ApplyT(func(v *Instance) pulumi.Float64Output { return v.SpotPriceLimit }).(pulumi.Float64Output)
 }
 
 // The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
@@ -1507,13 +1601,13 @@ func (o InstanceOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrOutput 
 }
 
 // Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
-func (o InstanceOutput) SystemDiskCategory() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskCategory }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) SystemDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
 }
 
 // The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-func (o InstanceOutput) SystemDiskDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskDescription }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) SystemDiskDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskDescription }).(pulumi.StringOutput)
 }
 
 // The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
@@ -1522,8 +1616,8 @@ func (o InstanceOutput) SystemDiskEncryptAlgorithm() pulumi.StringPtrOutput {
 }
 
 // Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
-func (o InstanceOutput) SystemDiskEncrypted() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.SystemDiskEncrypted }).(pulumi.BoolPtrOutput)
+func (o InstanceOutput) SystemDiskEncrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SystemDiskEncrypted }).(pulumi.BoolOutput)
 }
 
 // (Available since v1.210.0) The ID of system disk.
@@ -1537,8 +1631,8 @@ func (o InstanceOutput) SystemDiskKmsKeyId() pulumi.StringPtrOutput {
 }
 
 // The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
-func (o InstanceOutput) SystemDiskName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskName }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) SystemDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskName }).(pulumi.StringOutput)
 }
 
 // The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
@@ -1547,8 +1641,8 @@ func (o InstanceOutput) SystemDiskPerformanceLevel() pulumi.StringOutput {
 }
 
 // Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
-func (o InstanceOutput) SystemDiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.SystemDiskSize }).(pulumi.IntPtrOutput)
+func (o InstanceOutput) SystemDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SystemDiskSize }).(pulumi.IntOutput)
 }
 
 // The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
@@ -1575,8 +1669,8 @@ func (o InstanceOutput) VolumeTags() pulumi.MapOutput {
 }
 
 // The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
-func (o InstanceOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

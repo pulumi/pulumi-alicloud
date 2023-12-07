@@ -160,18 +160,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.backupInterval;
     }
     /**
-     * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+     * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
     @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
     /**
-     * @return MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+     * @return MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
     public Output<List<String>> backupPeriods() {
         return this.backupPeriods;
+    }
+    /**
+     * The retention period of full backups.
+     * 
+     */
+    @Export(name="backupRetentionPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> backupRetentionPeriod;
+
+    /**
+     * @return The retention period of full backups.
+     * 
+     */
+    public Output<Integer> backupRetentionPeriod() {
+        return this.backupRetentionPeriod;
     }
     /**
      * MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
@@ -247,9 +261,17 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> encrypted() {
         return Codegen.optional(this.encrypted);
     }
+    /**
+     * The ID of the custom key.
+     * 
+     */
     @Export(name="encryptionKey", refs={String.class}, tree="[0]")
     private Output<String> encryptionKey;
 
+    /**
+     * @return The ID of the custom key.
+     * 
+     */
     public Output<String> encryptionKey() {
         return this.encryptionKey;
     }
@@ -519,9 +541,17 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Integer> retentionPeriod() {
         return this.retentionPeriod;
     }
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     * 
+     */
     @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output<String> roleArn;
 
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     * 
+     */
     public Output<String> roleArn() {
         return this.roleArn;
     }

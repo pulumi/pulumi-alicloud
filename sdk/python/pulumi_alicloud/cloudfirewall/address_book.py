@@ -28,7 +28,8 @@ class AddressBookArgs:
         The set of arguments for constructing a AddressBook resource.
         :param pulumi.Input[str] description: The description of the Address Book.
         :param pulumi.Input[str] group_name: The name of the Address Book.
-        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lists: The list of addresses.
         :param pulumi.Input[int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
@@ -77,7 +78,8 @@ class AddressBookArgs:
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Input[str]:
         """
-        The type of the Address Book. Valid values: `ip`, `tag`.
+        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         """
         return pulumi.get(self, "group_type")
 
@@ -164,7 +166,8 @@ class _AddressBookState:
         :param pulumi.Input[str] description: The description of the Address Book.
         :param pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[str] group_name: The name of the Address Book.
-        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
@@ -249,7 +252,8 @@ class _AddressBookState:
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the Address Book. Valid values: `ip`, `tag`.
+        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         """
         return pulumi.get(self, "group_type")
 
@@ -338,7 +342,8 @@ class AddressBook(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the Address Book.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[str] group_name: The name of the Address Book.
-        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
@@ -459,7 +464,8 @@ class AddressBook(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the Address Book.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[str] group_name: The name of the Address Book.
-        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+        :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
@@ -521,7 +527,8 @@ class AddressBook(pulumi.CustomResource):
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Output[str]:
         """
-        The type of the Address Book. Valid values: `ip`, `tag`.
+        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         """
         return pulumi.get(self, "group_type")
 

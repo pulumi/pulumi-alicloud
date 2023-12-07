@@ -25,6 +25,8 @@ class SynchronizationJobArgs:
                  source_endpoint_instance_type: pulumi.Input[str],
                  structure_initialization: pulumi.Input[bool],
                  checkpoint: Optional[pulumi.Input[str]] = None,
+                 data_check_configure: Optional[pulumi.Input[str]] = None,
+                 dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
                  delay_notice: Optional[pulumi.Input[bool]] = None,
                  delay_phone: Optional[pulumi.Input[str]] = None,
                  delay_rule_time: Optional[pulumi.Input[str]] = None,
@@ -32,10 +34,13 @@ class SynchronizationJobArgs:
                  destination_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_ip: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+                 destination_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_password: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_port: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_region: Optional[pulumi.Input[str]] = None,
+                 destination_endpoint_role: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+                 dts_bis_label: Optional[pulumi.Input[str]] = None,
                  error_notice: Optional[pulumi.Input[bool]] = None,
                  error_phone: Optional[pulumi.Input[str]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
@@ -50,6 +55,7 @@ class SynchronizationJobArgs:
                  source_endpoint_region: Optional[pulumi.Input[str]] = None,
                  source_endpoint_role: Optional[pulumi.Input[str]] = None,
                  source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+                 source_endpoint_vswitch_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None):
         """
@@ -65,6 +71,8 @@ class SynchronizationJobArgs:
         :param pulumi.Input[str] source_endpoint_instance_type: The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         :param pulumi.Input[str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
+        :param pulumi.Input[str] data_check_configure: The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        :param pulumi.Input[str] dedicated_cluster_id: When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
         :param pulumi.Input[bool] delay_notice: The delay notice. Valid values: `true`, `false`.
         :param pulumi.Input[str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
@@ -75,10 +83,17 @@ class SynchronizationJobArgs:
                ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
         :param pulumi.Input[str] destination_endpoint_ip: The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         :param pulumi.Input[str] destination_endpoint_oracle_sid: The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
+        :param pulumi.Input[str] destination_endpoint_owner_id: The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
         :param pulumi.Input[str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[str] destination_endpoint_port: The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
         :param pulumi.Input[str] destination_endpoint_region: The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
+        :param pulumi.Input[str] destination_endpoint_role: The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
         :param pulumi.Input[str] destination_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+        :param pulumi.Input[str] dts_bis_label: The environment label of the DTS instance. The value is: **normal**, **online**.
+               
+               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+               
+               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
@@ -96,11 +111,8 @@ class SynchronizationJobArgs:
         :param pulumi.Input[str] source_endpoint_region: Source instance area, please refer to the [list of supported areas](https://help.aliyun.com/document_detail/141033.htm) for details. Note if the source is an Alibaba Cloud database, this parameter must be passed in.
         :param pulumi.Input[str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
         :param pulumi.Input[str] source_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+        :param pulumi.Input[str] source_endpoint_vswitch_id: Data Delivery link switch instance id
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-               
-               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-               
-               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
         pulumi.set(__self__, "data_initialization", data_initialization)
@@ -115,6 +127,10 @@ class SynchronizationJobArgs:
         pulumi.set(__self__, "structure_initialization", structure_initialization)
         if checkpoint is not None:
             pulumi.set(__self__, "checkpoint", checkpoint)
+        if data_check_configure is not None:
+            pulumi.set(__self__, "data_check_configure", data_check_configure)
+        if dedicated_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_cluster_id", dedicated_cluster_id)
         if delay_notice is not None:
             pulumi.set(__self__, "delay_notice", delay_notice)
         if delay_phone is not None:
@@ -129,14 +145,20 @@ class SynchronizationJobArgs:
             pulumi.set(__self__, "destination_endpoint_ip", destination_endpoint_ip)
         if destination_endpoint_oracle_sid is not None:
             pulumi.set(__self__, "destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
+        if destination_endpoint_owner_id is not None:
+            pulumi.set(__self__, "destination_endpoint_owner_id", destination_endpoint_owner_id)
         if destination_endpoint_password is not None:
             pulumi.set(__self__, "destination_endpoint_password", destination_endpoint_password)
         if destination_endpoint_port is not None:
             pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
             pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+        if destination_endpoint_role is not None:
+            pulumi.set(__self__, "destination_endpoint_role", destination_endpoint_role)
         if destination_endpoint_user_name is not None:
             pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
+        if dts_bis_label is not None:
+            pulumi.set(__self__, "dts_bis_label", dts_bis_label)
         if error_notice is not None:
             pulumi.set(__self__, "error_notice", error_notice)
         if error_phone is not None:
@@ -165,6 +187,8 @@ class SynchronizationJobArgs:
             pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
         if source_endpoint_user_name is not None:
             pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+        if source_endpoint_vswitch_id is not None:
+            pulumi.set(__self__, "source_endpoint_vswitch_id", source_endpoint_vswitch_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if synchronization_direction is not None:
@@ -303,6 +327,30 @@ class SynchronizationJobArgs:
         pulumi.set(self, "checkpoint", value)
 
     @property
+    @pulumi.getter(name="dataCheckConfigure")
+    def data_check_configure(self) -> Optional[pulumi.Input[str]]:
+        """
+        The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        """
+        return pulumi.get(self, "data_check_configure")
+
+    @data_check_configure.setter
+    def data_check_configure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_check_configure", value)
+
+    @property
+    @pulumi.getter(name="dedicatedClusterId")
+    def dedicated_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+        """
+        return pulumi.get(self, "dedicated_cluster_id")
+
+    @dedicated_cluster_id.setter
+    def dedicated_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_cluster_id", value)
+
+    @property
     @pulumi.getter(name="delayNotice")
     def delay_notice(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -390,6 +438,18 @@ class SynchronizationJobArgs:
         pulumi.set(self, "destination_endpoint_oracle_sid", value)
 
     @property
+    @pulumi.getter(name="destinationEndpointOwnerId")
+    def destination_endpoint_owner_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+        """
+        return pulumi.get(self, "destination_endpoint_owner_id")
+
+    @destination_endpoint_owner_id.setter
+    def destination_endpoint_owner_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_endpoint_owner_id", value)
+
+    @property
     @pulumi.getter(name="destinationEndpointPassword")
     def destination_endpoint_password(self) -> Optional[pulumi.Input[str]]:
         """
@@ -426,6 +486,18 @@ class SynchronizationJobArgs:
         pulumi.set(self, "destination_endpoint_region", value)
 
     @property
+    @pulumi.getter(name="destinationEndpointRole")
+    def destination_endpoint_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+        """
+        return pulumi.get(self, "destination_endpoint_role")
+
+    @destination_endpoint_role.setter
+    def destination_endpoint_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_endpoint_role", value)
+
+    @property
     @pulumi.getter(name="destinationEndpointUserName")
     def destination_endpoint_user_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -436,6 +508,22 @@ class SynchronizationJobArgs:
     @destination_endpoint_user_name.setter
     def destination_endpoint_user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "destination_endpoint_user_name", value)
+
+    @property
+    @pulumi.getter(name="dtsBisLabel")
+    def dts_bis_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The environment label of the DTS instance. The value is: **normal**, **online**.
+
+        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+
+        > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
+        """
+        return pulumi.get(self, "dts_bis_label")
+
+    @dts_bis_label.setter
+    def dts_bis_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dts_bis_label", value)
 
     @property
     @pulumi.getter(name="errorNotice")
@@ -609,14 +697,22 @@ class SynchronizationJobArgs:
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @property
+    @pulumi.getter(name="sourceEndpointVswitchId")
+    def source_endpoint_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data Delivery link switch instance id
+        """
+        return pulumi.get(self, "source_endpoint_vswitch_id")
+
+    @source_endpoint_vswitch_id.setter
+    def source_endpoint_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_endpoint_vswitch_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-
-        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-
-        > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         """
         return pulumi.get(self, "status")
 
@@ -641,9 +737,11 @@ class SynchronizationJobArgs:
 class _SynchronizationJobState:
     def __init__(__self__, *,
                  checkpoint: Optional[pulumi.Input[str]] = None,
+                 data_check_configure: Optional[pulumi.Input[str]] = None,
                  data_initialization: Optional[pulumi.Input[bool]] = None,
                  data_synchronization: Optional[pulumi.Input[bool]] = None,
                  db_list: Optional[pulumi.Input[str]] = None,
+                 dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
                  delay_notice: Optional[pulumi.Input[bool]] = None,
                  delay_phone: Optional[pulumi.Input[str]] = None,
                  delay_rule_time: Optional[pulumi.Input[str]] = None,
@@ -653,10 +751,13 @@ class _SynchronizationJobState:
                  destination_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_ip: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+                 destination_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_password: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_port: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_region: Optional[pulumi.Input[str]] = None,
+                 destination_endpoint_role: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+                 dts_bis_label: Optional[pulumi.Input[str]] = None,
                  dts_instance_id: Optional[pulumi.Input[str]] = None,
                  dts_job_name: Optional[pulumi.Input[str]] = None,
                  error_notice: Optional[pulumi.Input[bool]] = None,
@@ -675,15 +776,18 @@ class _SynchronizationJobState:
                  source_endpoint_region: Optional[pulumi.Input[str]] = None,
                  source_endpoint_role: Optional[pulumi.Input[str]] = None,
                  source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+                 source_endpoint_vswitch_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  structure_initialization: Optional[pulumi.Input[bool]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationJob resources.
         :param pulumi.Input[str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
+        :param pulumi.Input[str] data_check_configure: The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
         :param pulumi.Input[bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         :param pulumi.Input[bool] data_synchronization: Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
+        :param pulumi.Input[str] dedicated_cluster_id: When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
         :param pulumi.Input[bool] delay_notice: The delay notice. Valid values: `true`, `false`.
         :param pulumi.Input[str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
@@ -696,10 +800,17 @@ class _SynchronizationJobState:
         :param pulumi.Input[str] destination_endpoint_instance_type: The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[str] destination_endpoint_ip: The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         :param pulumi.Input[str] destination_endpoint_oracle_sid: The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
+        :param pulumi.Input[str] destination_endpoint_owner_id: The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
         :param pulumi.Input[str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[str] destination_endpoint_port: The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
         :param pulumi.Input[str] destination_endpoint_region: The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
+        :param pulumi.Input[str] destination_endpoint_role: The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
         :param pulumi.Input[str] destination_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+        :param pulumi.Input[str] dts_bis_label: The environment label of the DTS instance. The value is: **normal**, **online**.
+               
+               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+               
+               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[str] dts_instance_id: The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
         :param pulumi.Input[str] dts_job_name: The name of synchronization job.
         :param pulumi.Input[bool] error_notice: The error notice. Valid values: `true`, `false`.
@@ -721,22 +832,23 @@ class _SynchronizationJobState:
         :param pulumi.Input[str] source_endpoint_region: Source instance area, please refer to the [list of supported areas](https://help.aliyun.com/document_detail/141033.htm) for details. Note if the source is an Alibaba Cloud database, this parameter must be passed in.
         :param pulumi.Input[str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
         :param pulumi.Input[str] source_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+        :param pulumi.Input[str] source_endpoint_vswitch_id: Data Delivery link switch instance id
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-               
-               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-               
-               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         :param pulumi.Input[str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
         if checkpoint is not None:
             pulumi.set(__self__, "checkpoint", checkpoint)
+        if data_check_configure is not None:
+            pulumi.set(__self__, "data_check_configure", data_check_configure)
         if data_initialization is not None:
             pulumi.set(__self__, "data_initialization", data_initialization)
         if data_synchronization is not None:
             pulumi.set(__self__, "data_synchronization", data_synchronization)
         if db_list is not None:
             pulumi.set(__self__, "db_list", db_list)
+        if dedicated_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_cluster_id", dedicated_cluster_id)
         if delay_notice is not None:
             pulumi.set(__self__, "delay_notice", delay_notice)
         if delay_phone is not None:
@@ -755,14 +867,20 @@ class _SynchronizationJobState:
             pulumi.set(__self__, "destination_endpoint_ip", destination_endpoint_ip)
         if destination_endpoint_oracle_sid is not None:
             pulumi.set(__self__, "destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
+        if destination_endpoint_owner_id is not None:
+            pulumi.set(__self__, "destination_endpoint_owner_id", destination_endpoint_owner_id)
         if destination_endpoint_password is not None:
             pulumi.set(__self__, "destination_endpoint_password", destination_endpoint_password)
         if destination_endpoint_port is not None:
             pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
             pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+        if destination_endpoint_role is not None:
+            pulumi.set(__self__, "destination_endpoint_role", destination_endpoint_role)
         if destination_endpoint_user_name is not None:
             pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
+        if dts_bis_label is not None:
+            pulumi.set(__self__, "dts_bis_label", dts_bis_label)
         if dts_instance_id is not None:
             pulumi.set(__self__, "dts_instance_id", dts_instance_id)
         if dts_job_name is not None:
@@ -799,6 +917,8 @@ class _SynchronizationJobState:
             pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
         if source_endpoint_user_name is not None:
             pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+        if source_endpoint_vswitch_id is not None:
+            pulumi.set(__self__, "source_endpoint_vswitch_id", source_endpoint_vswitch_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if structure_initialization is not None:
@@ -817,6 +937,18 @@ class _SynchronizationJobState:
     @checkpoint.setter
     def checkpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "checkpoint", value)
+
+    @property
+    @pulumi.getter(name="dataCheckConfigure")
+    def data_check_configure(self) -> Optional[pulumi.Input[str]]:
+        """
+        The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        """
+        return pulumi.get(self, "data_check_configure")
+
+    @data_check_configure.setter
+    def data_check_configure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_check_configure", value)
 
     @property
     @pulumi.getter(name="dataInitialization")
@@ -853,6 +985,18 @@ class _SynchronizationJobState:
     @db_list.setter
     def db_list(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_list", value)
+
+    @property
+    @pulumi.getter(name="dedicatedClusterId")
+    def dedicated_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+        """
+        return pulumi.get(self, "dedicated_cluster_id")
+
+    @dedicated_cluster_id.setter
+    def dedicated_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_cluster_id", value)
 
     @property
     @pulumi.getter(name="delayNotice")
@@ -966,6 +1110,18 @@ class _SynchronizationJobState:
         pulumi.set(self, "destination_endpoint_oracle_sid", value)
 
     @property
+    @pulumi.getter(name="destinationEndpointOwnerId")
+    def destination_endpoint_owner_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+        """
+        return pulumi.get(self, "destination_endpoint_owner_id")
+
+    @destination_endpoint_owner_id.setter
+    def destination_endpoint_owner_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_endpoint_owner_id", value)
+
+    @property
     @pulumi.getter(name="destinationEndpointPassword")
     def destination_endpoint_password(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1002,6 +1158,18 @@ class _SynchronizationJobState:
         pulumi.set(self, "destination_endpoint_region", value)
 
     @property
+    @pulumi.getter(name="destinationEndpointRole")
+    def destination_endpoint_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+        """
+        return pulumi.get(self, "destination_endpoint_role")
+
+    @destination_endpoint_role.setter
+    def destination_endpoint_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_endpoint_role", value)
+
+    @property
     @pulumi.getter(name="destinationEndpointUserName")
     def destination_endpoint_user_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1012,6 +1180,22 @@ class _SynchronizationJobState:
     @destination_endpoint_user_name.setter
     def destination_endpoint_user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "destination_endpoint_user_name", value)
+
+    @property
+    @pulumi.getter(name="dtsBisLabel")
+    def dts_bis_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The environment label of the DTS instance. The value is: **normal**, **online**.
+
+        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+
+        > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
+        """
+        return pulumi.get(self, "dts_bis_label")
+
+    @dts_bis_label.setter
+    def dts_bis_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dts_bis_label", value)
 
     @property
     @pulumi.getter(name="dtsInstanceId")
@@ -1233,14 +1417,22 @@ class _SynchronizationJobState:
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @property
+    @pulumi.getter(name="sourceEndpointVswitchId")
+    def source_endpoint_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data Delivery link switch instance id
+        """
+        return pulumi.get(self, "source_endpoint_vswitch_id")
+
+    @source_endpoint_vswitch_id.setter
+    def source_endpoint_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_endpoint_vswitch_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-
-        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-
-        > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         """
         return pulumi.get(self, "status")
 
@@ -1279,9 +1471,11 @@ class SynchronizationJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  checkpoint: Optional[pulumi.Input[str]] = None,
+                 data_check_configure: Optional[pulumi.Input[str]] = None,
                  data_initialization: Optional[pulumi.Input[bool]] = None,
                  data_synchronization: Optional[pulumi.Input[bool]] = None,
                  db_list: Optional[pulumi.Input[str]] = None,
+                 dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
                  delay_notice: Optional[pulumi.Input[bool]] = None,
                  delay_phone: Optional[pulumi.Input[str]] = None,
                  delay_rule_time: Optional[pulumi.Input[str]] = None,
@@ -1291,10 +1485,13 @@ class SynchronizationJob(pulumi.CustomResource):
                  destination_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_ip: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+                 destination_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_password: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_port: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_region: Optional[pulumi.Input[str]] = None,
+                 destination_endpoint_role: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+                 dts_bis_label: Optional[pulumi.Input[str]] = None,
                  dts_instance_id: Optional[pulumi.Input[str]] = None,
                  dts_job_name: Optional[pulumi.Input[str]] = None,
                  error_notice: Optional[pulumi.Input[bool]] = None,
@@ -1313,6 +1510,7 @@ class SynchronizationJob(pulumi.CustomResource):
                  source_endpoint_region: Optional[pulumi.Input[str]] = None,
                  source_endpoint_role: Optional[pulumi.Input[str]] = None,
                  source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+                 source_endpoint_vswitch_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  structure_initialization: Optional[pulumi.Input[bool]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
@@ -1344,9 +1542,11 @@ class SynchronizationJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
+        :param pulumi.Input[str] data_check_configure: The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
         :param pulumi.Input[bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         :param pulumi.Input[bool] data_synchronization: Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
+        :param pulumi.Input[str] dedicated_cluster_id: When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
         :param pulumi.Input[bool] delay_notice: The delay notice. Valid values: `true`, `false`.
         :param pulumi.Input[str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
@@ -1359,10 +1559,17 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[str] destination_endpoint_instance_type: The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[str] destination_endpoint_ip: The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         :param pulumi.Input[str] destination_endpoint_oracle_sid: The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
+        :param pulumi.Input[str] destination_endpoint_owner_id: The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
         :param pulumi.Input[str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[str] destination_endpoint_port: The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
         :param pulumi.Input[str] destination_endpoint_region: The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
+        :param pulumi.Input[str] destination_endpoint_role: The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
         :param pulumi.Input[str] destination_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+        :param pulumi.Input[str] dts_bis_label: The environment label of the DTS instance. The value is: **normal**, **online**.
+               
+               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+               
+               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[str] dts_instance_id: The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
         :param pulumi.Input[str] dts_job_name: The name of synchronization job.
         :param pulumi.Input[bool] error_notice: The error notice. Valid values: `true`, `false`.
@@ -1384,11 +1591,8 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[str] source_endpoint_region: Source instance area, please refer to the [list of supported areas](https://help.aliyun.com/document_detail/141033.htm) for details. Note if the source is an Alibaba Cloud database, this parameter must be passed in.
         :param pulumi.Input[str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
         :param pulumi.Input[str] source_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+        :param pulumi.Input[str] source_endpoint_vswitch_id: Data Delivery link switch instance id
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-               
-               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-               
-               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         :param pulumi.Input[str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
@@ -1438,9 +1642,11 @@ class SynchronizationJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  checkpoint: Optional[pulumi.Input[str]] = None,
+                 data_check_configure: Optional[pulumi.Input[str]] = None,
                  data_initialization: Optional[pulumi.Input[bool]] = None,
                  data_synchronization: Optional[pulumi.Input[bool]] = None,
                  db_list: Optional[pulumi.Input[str]] = None,
+                 dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
                  delay_notice: Optional[pulumi.Input[bool]] = None,
                  delay_phone: Optional[pulumi.Input[str]] = None,
                  delay_rule_time: Optional[pulumi.Input[str]] = None,
@@ -1450,10 +1656,13 @@ class SynchronizationJob(pulumi.CustomResource):
                  destination_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_ip: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+                 destination_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_password: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_port: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_region: Optional[pulumi.Input[str]] = None,
+                 destination_endpoint_role: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+                 dts_bis_label: Optional[pulumi.Input[str]] = None,
                  dts_instance_id: Optional[pulumi.Input[str]] = None,
                  dts_job_name: Optional[pulumi.Input[str]] = None,
                  error_notice: Optional[pulumi.Input[bool]] = None,
@@ -1472,6 +1681,7 @@ class SynchronizationJob(pulumi.CustomResource):
                  source_endpoint_region: Optional[pulumi.Input[str]] = None,
                  source_endpoint_role: Optional[pulumi.Input[str]] = None,
                  source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+                 source_endpoint_vswitch_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  structure_initialization: Optional[pulumi.Input[bool]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
@@ -1485,6 +1695,7 @@ class SynchronizationJob(pulumi.CustomResource):
             __props__ = SynchronizationJobArgs.__new__(SynchronizationJobArgs)
 
             __props__.__dict__["checkpoint"] = checkpoint
+            __props__.__dict__["data_check_configure"] = data_check_configure
             if data_initialization is None and not opts.urn:
                 raise TypeError("Missing required property 'data_initialization'")
             __props__.__dict__["data_initialization"] = data_initialization
@@ -1494,6 +1705,7 @@ class SynchronizationJob(pulumi.CustomResource):
             if db_list is None and not opts.urn:
                 raise TypeError("Missing required property 'db_list'")
             __props__.__dict__["db_list"] = db_list
+            __props__.__dict__["dedicated_cluster_id"] = dedicated_cluster_id
             __props__.__dict__["delay_notice"] = delay_notice
             __props__.__dict__["delay_phone"] = delay_phone
             __props__.__dict__["delay_rule_time"] = delay_rule_time
@@ -1507,10 +1719,13 @@ class SynchronizationJob(pulumi.CustomResource):
             __props__.__dict__["destination_endpoint_instance_type"] = destination_endpoint_instance_type
             __props__.__dict__["destination_endpoint_ip"] = destination_endpoint_ip
             __props__.__dict__["destination_endpoint_oracle_sid"] = destination_endpoint_oracle_sid
+            __props__.__dict__["destination_endpoint_owner_id"] = destination_endpoint_owner_id
             __props__.__dict__["destination_endpoint_password"] = destination_endpoint_password
             __props__.__dict__["destination_endpoint_port"] = destination_endpoint_port
             __props__.__dict__["destination_endpoint_region"] = destination_endpoint_region
+            __props__.__dict__["destination_endpoint_role"] = destination_endpoint_role
             __props__.__dict__["destination_endpoint_user_name"] = destination_endpoint_user_name
+            __props__.__dict__["dts_bis_label"] = dts_bis_label
             if dts_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dts_instance_id'")
             __props__.__dict__["dts_instance_id"] = dts_instance_id
@@ -1537,6 +1752,7 @@ class SynchronizationJob(pulumi.CustomResource):
             __props__.__dict__["source_endpoint_region"] = source_endpoint_region
             __props__.__dict__["source_endpoint_role"] = source_endpoint_role
             __props__.__dict__["source_endpoint_user_name"] = source_endpoint_user_name
+            __props__.__dict__["source_endpoint_vswitch_id"] = source_endpoint_vswitch_id
             __props__.__dict__["status"] = status
             if structure_initialization is None and not opts.urn:
                 raise TypeError("Missing required property 'structure_initialization'")
@@ -1553,9 +1769,11 @@ class SynchronizationJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             checkpoint: Optional[pulumi.Input[str]] = None,
+            data_check_configure: Optional[pulumi.Input[str]] = None,
             data_initialization: Optional[pulumi.Input[bool]] = None,
             data_synchronization: Optional[pulumi.Input[bool]] = None,
             db_list: Optional[pulumi.Input[str]] = None,
+            dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
             delay_notice: Optional[pulumi.Input[bool]] = None,
             delay_phone: Optional[pulumi.Input[str]] = None,
             delay_rule_time: Optional[pulumi.Input[str]] = None,
@@ -1565,10 +1783,13 @@ class SynchronizationJob(pulumi.CustomResource):
             destination_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
             destination_endpoint_ip: Optional[pulumi.Input[str]] = None,
             destination_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+            destination_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
             destination_endpoint_password: Optional[pulumi.Input[str]] = None,
             destination_endpoint_port: Optional[pulumi.Input[str]] = None,
             destination_endpoint_region: Optional[pulumi.Input[str]] = None,
+            destination_endpoint_role: Optional[pulumi.Input[str]] = None,
             destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+            dts_bis_label: Optional[pulumi.Input[str]] = None,
             dts_instance_id: Optional[pulumi.Input[str]] = None,
             dts_job_name: Optional[pulumi.Input[str]] = None,
             error_notice: Optional[pulumi.Input[bool]] = None,
@@ -1587,6 +1808,7 @@ class SynchronizationJob(pulumi.CustomResource):
             source_endpoint_region: Optional[pulumi.Input[str]] = None,
             source_endpoint_role: Optional[pulumi.Input[str]] = None,
             source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+            source_endpoint_vswitch_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             structure_initialization: Optional[pulumi.Input[bool]] = None,
             synchronization_direction: Optional[pulumi.Input[str]] = None) -> 'SynchronizationJob':
@@ -1598,9 +1820,11 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
+        :param pulumi.Input[str] data_check_configure: The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
         :param pulumi.Input[bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         :param pulumi.Input[bool] data_synchronization: Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
+        :param pulumi.Input[str] dedicated_cluster_id: When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
         :param pulumi.Input[bool] delay_notice: The delay notice. Valid values: `true`, `false`.
         :param pulumi.Input[str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
@@ -1613,10 +1837,17 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[str] destination_endpoint_instance_type: The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[str] destination_endpoint_ip: The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         :param pulumi.Input[str] destination_endpoint_oracle_sid: The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
+        :param pulumi.Input[str] destination_endpoint_owner_id: The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
         :param pulumi.Input[str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[str] destination_endpoint_port: The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
         :param pulumi.Input[str] destination_endpoint_region: The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
+        :param pulumi.Input[str] destination_endpoint_role: The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
         :param pulumi.Input[str] destination_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+        :param pulumi.Input[str] dts_bis_label: The environment label of the DTS instance. The value is: **normal**, **online**.
+               
+               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+               
+               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[str] dts_instance_id: The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
         :param pulumi.Input[str] dts_job_name: The name of synchronization job.
         :param pulumi.Input[bool] error_notice: The error notice. Valid values: `true`, `false`.
@@ -1638,11 +1869,8 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[str] source_endpoint_region: Source instance area, please refer to the [list of supported areas](https://help.aliyun.com/document_detail/141033.htm) for details. Note if the source is an Alibaba Cloud database, this parameter must be passed in.
         :param pulumi.Input[str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
         :param pulumi.Input[str] source_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
+        :param pulumi.Input[str] source_endpoint_vswitch_id: Data Delivery link switch instance id
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-               
-               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-               
-               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         :param pulumi.Input[str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
@@ -1651,9 +1879,11 @@ class SynchronizationJob(pulumi.CustomResource):
         __props__ = _SynchronizationJobState.__new__(_SynchronizationJobState)
 
         __props__.__dict__["checkpoint"] = checkpoint
+        __props__.__dict__["data_check_configure"] = data_check_configure
         __props__.__dict__["data_initialization"] = data_initialization
         __props__.__dict__["data_synchronization"] = data_synchronization
         __props__.__dict__["db_list"] = db_list
+        __props__.__dict__["dedicated_cluster_id"] = dedicated_cluster_id
         __props__.__dict__["delay_notice"] = delay_notice
         __props__.__dict__["delay_phone"] = delay_phone
         __props__.__dict__["delay_rule_time"] = delay_rule_time
@@ -1663,10 +1893,13 @@ class SynchronizationJob(pulumi.CustomResource):
         __props__.__dict__["destination_endpoint_instance_type"] = destination_endpoint_instance_type
         __props__.__dict__["destination_endpoint_ip"] = destination_endpoint_ip
         __props__.__dict__["destination_endpoint_oracle_sid"] = destination_endpoint_oracle_sid
+        __props__.__dict__["destination_endpoint_owner_id"] = destination_endpoint_owner_id
         __props__.__dict__["destination_endpoint_password"] = destination_endpoint_password
         __props__.__dict__["destination_endpoint_port"] = destination_endpoint_port
         __props__.__dict__["destination_endpoint_region"] = destination_endpoint_region
+        __props__.__dict__["destination_endpoint_role"] = destination_endpoint_role
         __props__.__dict__["destination_endpoint_user_name"] = destination_endpoint_user_name
+        __props__.__dict__["dts_bis_label"] = dts_bis_label
         __props__.__dict__["dts_instance_id"] = dts_instance_id
         __props__.__dict__["dts_job_name"] = dts_job_name
         __props__.__dict__["error_notice"] = error_notice
@@ -1685,6 +1918,7 @@ class SynchronizationJob(pulumi.CustomResource):
         __props__.__dict__["source_endpoint_region"] = source_endpoint_region
         __props__.__dict__["source_endpoint_role"] = source_endpoint_role
         __props__.__dict__["source_endpoint_user_name"] = source_endpoint_user_name
+        __props__.__dict__["source_endpoint_vswitch_id"] = source_endpoint_vswitch_id
         __props__.__dict__["status"] = status
         __props__.__dict__["structure_initialization"] = structure_initialization
         __props__.__dict__["synchronization_direction"] = synchronization_direction
@@ -1697,6 +1931,14 @@ class SynchronizationJob(pulumi.CustomResource):
         The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
         """
         return pulumi.get(self, "checkpoint")
+
+    @property
+    @pulumi.getter(name="dataCheckConfigure")
+    def data_check_configure(self) -> pulumi.Output[Optional[str]]:
+        """
+        The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+        """
+        return pulumi.get(self, "data_check_configure")
 
     @property
     @pulumi.getter(name="dataInitialization")
@@ -1721,6 +1963,14 @@ class SynchronizationJob(pulumi.CustomResource):
         Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         """
         return pulumi.get(self, "db_list")
+
+    @property
+    @pulumi.getter(name="dedicatedClusterId")
+    def dedicated_cluster_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+        """
+        return pulumi.get(self, "dedicated_cluster_id")
 
     @property
     @pulumi.getter(name="delayNotice")
@@ -1798,6 +2048,14 @@ class SynchronizationJob(pulumi.CustomResource):
         return pulumi.get(self, "destination_endpoint_oracle_sid")
 
     @property
+    @pulumi.getter(name="destinationEndpointOwnerId")
+    def destination_endpoint_owner_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+        """
+        return pulumi.get(self, "destination_endpoint_owner_id")
+
+    @property
     @pulumi.getter(name="destinationEndpointPassword")
     def destination_endpoint_password(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1822,12 +2080,32 @@ class SynchronizationJob(pulumi.CustomResource):
         return pulumi.get(self, "destination_endpoint_region")
 
     @property
+    @pulumi.getter(name="destinationEndpointRole")
+    def destination_endpoint_role(self) -> pulumi.Output[Optional[str]]:
+        """
+        The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+        """
+        return pulumi.get(self, "destination_endpoint_role")
+
+    @property
     @pulumi.getter(name="destinationEndpointUserName")
     def destination_endpoint_user_name(self) -> pulumi.Output[Optional[str]]:
         """
         The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         """
         return pulumi.get(self, "destination_endpoint_user_name")
+
+    @property
+    @pulumi.getter(name="dtsBisLabel")
+    def dts_bis_label(self) -> pulumi.Output[Optional[str]]:
+        """
+        The environment label of the DTS instance. The value is: **normal**, **online**.
+
+        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+
+        > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
+        """
+        return pulumi.get(self, "dts_bis_label")
 
     @property
     @pulumi.getter(name="dtsInstanceId")
@@ -1977,14 +2255,18 @@ class SynchronizationJob(pulumi.CustomResource):
         return pulumi.get(self, "source_endpoint_user_name")
 
     @property
+    @pulumi.getter(name="sourceEndpointVswitchId")
+    def source_endpoint_vswitch_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Data Delivery link switch instance id
+        """
+        return pulumi.get(self, "source_endpoint_vswitch_id")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
         The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-
-        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-
-        > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         """
         return pulumi.get(self, "status")
 

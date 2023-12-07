@@ -41,12 +41,16 @@ type SynchronizationJob struct {
 
 	// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
 	Checkpoint pulumi.StringOutput `pulumi:"checkpoint"`
+	// The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+	DataCheckConfigure pulumi.StringPtrOutput `pulumi:"dataCheckConfigure"`
 	// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
 	DataInitialization pulumi.BoolOutput `pulumi:"dataInitialization"`
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization pulumi.BoolOutput `pulumi:"dataSynchronization"`
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList pulumi.StringOutput `pulumi:"dbList"`
+	// When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+	DedicatedClusterId pulumi.StringPtrOutput `pulumi:"dedicatedClusterId"`
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice pulumi.BoolPtrOutput `pulumi:"delayNotice"`
 	// The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
@@ -68,14 +72,24 @@ type SynchronizationJob struct {
 	DestinationEndpointIp pulumi.StringPtrOutput `pulumi:"destinationEndpointIp"`
 	// The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
 	DestinationEndpointOracleSid pulumi.StringPtrOutput `pulumi:"destinationEndpointOracleSid"`
+	// The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+	DestinationEndpointOwnerId pulumi.StringPtrOutput `pulumi:"destinationEndpointOwnerId"`
 	// The password of database account.
 	DestinationEndpointPassword pulumi.StringPtrOutput `pulumi:"destinationEndpointPassword"`
 	// The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
 	DestinationEndpointPort pulumi.StringPtrOutput `pulumi:"destinationEndpointPort"`
 	// The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
 	DestinationEndpointRegion pulumi.StringPtrOutput `pulumi:"destinationEndpointRegion"`
+	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+	DestinationEndpointRole pulumi.StringPtrOutput `pulumi:"destinationEndpointRole"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrOutput `pulumi:"destinationEndpointUserName"`
+	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
+	DtsBisLabel pulumi.StringPtrOutput `pulumi:"dtsBisLabel"`
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId pulumi.StringOutput `pulumi:"dtsInstanceId"`
 	// The name of synchronization job.
@@ -115,11 +129,9 @@ type SynchronizationJob struct {
 	SourceEndpointRole pulumi.StringPtrOutput `pulumi:"sourceEndpointRole"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrOutput `pulumi:"sourceEndpointUserName"`
+	// Data Delivery link switch instance id
+	SourceEndpointVswitchId pulumi.StringPtrOutput `pulumi:"sourceEndpointVswitchId"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization pulumi.BoolOutput `pulumi:"structureInitialization"`
@@ -189,12 +201,16 @@ func GetSynchronizationJob(ctx *pulumi.Context,
 type synchronizationJobState struct {
 	// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
 	Checkpoint *string `pulumi:"checkpoint"`
+	// The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+	DataCheckConfigure *string `pulumi:"dataCheckConfigure"`
 	// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
 	DataInitialization *bool `pulumi:"dataInitialization"`
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization *bool `pulumi:"dataSynchronization"`
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList *string `pulumi:"dbList"`
+	// When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+	DedicatedClusterId *string `pulumi:"dedicatedClusterId"`
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice *bool `pulumi:"delayNotice"`
 	// The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
@@ -216,14 +232,24 @@ type synchronizationJobState struct {
 	DestinationEndpointIp *string `pulumi:"destinationEndpointIp"`
 	// The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
 	DestinationEndpointOracleSid *string `pulumi:"destinationEndpointOracleSid"`
+	// The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+	DestinationEndpointOwnerId *string `pulumi:"destinationEndpointOwnerId"`
 	// The password of database account.
 	DestinationEndpointPassword *string `pulumi:"destinationEndpointPassword"`
 	// The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
 	DestinationEndpointPort *string `pulumi:"destinationEndpointPort"`
 	// The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
+	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+	DestinationEndpointRole *string `pulumi:"destinationEndpointRole"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
+	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
+	DtsBisLabel *string `pulumi:"dtsBisLabel"`
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId *string `pulumi:"dtsInstanceId"`
 	// The name of synchronization job.
@@ -263,11 +289,9 @@ type synchronizationJobState struct {
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
+	// Data Delivery link switch instance id
+	SourceEndpointVswitchId *string `pulumi:"sourceEndpointVswitchId"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status *string `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization *bool `pulumi:"structureInitialization"`
@@ -278,12 +302,16 @@ type synchronizationJobState struct {
 type SynchronizationJobState struct {
 	// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
 	Checkpoint pulumi.StringPtrInput
+	// The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+	DataCheckConfigure pulumi.StringPtrInput
 	// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
 	DataInitialization pulumi.BoolPtrInput
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization pulumi.BoolPtrInput
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList pulumi.StringPtrInput
+	// When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+	DedicatedClusterId pulumi.StringPtrInput
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice pulumi.BoolPtrInput
 	// The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
@@ -305,14 +333,24 @@ type SynchronizationJobState struct {
 	DestinationEndpointIp pulumi.StringPtrInput
 	// The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
 	DestinationEndpointOracleSid pulumi.StringPtrInput
+	// The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+	DestinationEndpointOwnerId pulumi.StringPtrInput
 	// The password of database account.
 	DestinationEndpointPassword pulumi.StringPtrInput
 	// The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
 	DestinationEndpointPort pulumi.StringPtrInput
 	// The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
 	DestinationEndpointRegion pulumi.StringPtrInput
+	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+	DestinationEndpointRole pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrInput
+	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
+	DtsBisLabel pulumi.StringPtrInput
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId pulumi.StringPtrInput
 	// The name of synchronization job.
@@ -352,11 +390,9 @@ type SynchronizationJobState struct {
 	SourceEndpointRole pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrInput
+	// Data Delivery link switch instance id
+	SourceEndpointVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status pulumi.StringPtrInput
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization pulumi.BoolPtrInput
@@ -371,12 +407,16 @@ func (SynchronizationJobState) ElementType() reflect.Type {
 type synchronizationJobArgs struct {
 	// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
 	Checkpoint *string `pulumi:"checkpoint"`
+	// The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+	DataCheckConfigure *string `pulumi:"dataCheckConfigure"`
 	// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
 	DataInitialization bool `pulumi:"dataInitialization"`
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization bool `pulumi:"dataSynchronization"`
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList string `pulumi:"dbList"`
+	// When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+	DedicatedClusterId *string `pulumi:"dedicatedClusterId"`
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice *bool `pulumi:"delayNotice"`
 	// The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
@@ -398,14 +438,24 @@ type synchronizationJobArgs struct {
 	DestinationEndpointIp *string `pulumi:"destinationEndpointIp"`
 	// The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
 	DestinationEndpointOracleSid *string `pulumi:"destinationEndpointOracleSid"`
+	// The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+	DestinationEndpointOwnerId *string `pulumi:"destinationEndpointOwnerId"`
 	// The password of database account.
 	DestinationEndpointPassword *string `pulumi:"destinationEndpointPassword"`
 	// The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
 	DestinationEndpointPort *string `pulumi:"destinationEndpointPort"`
 	// The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
+	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+	DestinationEndpointRole *string `pulumi:"destinationEndpointRole"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
+	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
+	DtsBisLabel *string `pulumi:"dtsBisLabel"`
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId string `pulumi:"dtsInstanceId"`
 	// The name of synchronization job.
@@ -445,11 +495,9 @@ type synchronizationJobArgs struct {
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
+	// Data Delivery link switch instance id
+	SourceEndpointVswitchId *string `pulumi:"sourceEndpointVswitchId"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status *string `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization bool `pulumi:"structureInitialization"`
@@ -461,12 +509,16 @@ type synchronizationJobArgs struct {
 type SynchronizationJobArgs struct {
 	// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
 	Checkpoint pulumi.StringPtrInput
+	// The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+	DataCheckConfigure pulumi.StringPtrInput
 	// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
 	DataInitialization pulumi.BoolInput
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization pulumi.BoolInput
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList pulumi.StringInput
+	// When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+	DedicatedClusterId pulumi.StringPtrInput
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice pulumi.BoolPtrInput
 	// The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
@@ -488,14 +540,24 @@ type SynchronizationJobArgs struct {
 	DestinationEndpointIp pulumi.StringPtrInput
 	// The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
 	DestinationEndpointOracleSid pulumi.StringPtrInput
+	// The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+	DestinationEndpointOwnerId pulumi.StringPtrInput
 	// The password of database account.
 	DestinationEndpointPassword pulumi.StringPtrInput
 	// The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
 	DestinationEndpointPort pulumi.StringPtrInput
 	// The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
 	DestinationEndpointRegion pulumi.StringPtrInput
+	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+	DestinationEndpointRole pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrInput
+	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
+	DtsBisLabel pulumi.StringPtrInput
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId pulumi.StringInput
 	// The name of synchronization job.
@@ -535,11 +597,9 @@ type SynchronizationJobArgs struct {
 	SourceEndpointRole pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrInput
+	// Data Delivery link switch instance id
+	SourceEndpointVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status pulumi.StringPtrInput
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization pulumi.BoolInput
@@ -639,6 +699,11 @@ func (o SynchronizationJobOutput) Checkpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.Checkpoint }).(pulumi.StringOutput)
 }
 
+// The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+func (o SynchronizationJobOutput) DataCheckConfigure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DataCheckConfigure }).(pulumi.StringPtrOutput)
+}
+
 // Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
 func (o SynchronizationJobOutput) DataInitialization() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.BoolOutput { return v.DataInitialization }).(pulumi.BoolOutput)
@@ -652,6 +717,11 @@ func (o SynchronizationJobOutput) DataSynchronization() pulumi.BoolOutput {
 // Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 func (o SynchronizationJobOutput) DbList() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DbList }).(pulumi.StringOutput)
+}
+
+// When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+func (o SynchronizationJobOutput) DedicatedClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DedicatedClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The delay notice. Valid values: `true`, `false`.
@@ -702,6 +772,11 @@ func (o SynchronizationJobOutput) DestinationEndpointOracleSid() pulumi.StringPt
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointOracleSid }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+func (o SynchronizationJobOutput) DestinationEndpointOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointOwnerId }).(pulumi.StringPtrOutput)
+}
+
 // The password of database account.
 func (o SynchronizationJobOutput) DestinationEndpointPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointPassword }).(pulumi.StringPtrOutput)
@@ -717,9 +792,23 @@ func (o SynchronizationJobOutput) DestinationEndpointRegion() pulumi.StringPtrOu
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointRegion }).(pulumi.StringPtrOutput)
 }
 
+// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+func (o SynchronizationJobOutput) DestinationEndpointRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointRole }).(pulumi.StringPtrOutput)
+}
+
 // The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 func (o SynchronizationJobOutput) DestinationEndpointUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointUserName }).(pulumi.StringPtrOutput)
+}
+
+// The environment label of the DTS instance. The value is: **normal**, **online**.
+//
+// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+//
+// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
+func (o SynchronizationJobOutput) DtsBisLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DtsBisLabel }).(pulumi.StringPtrOutput)
 }
 
 // The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
@@ -815,11 +904,12 @@ func (o SynchronizationJobOutput) SourceEndpointUserName() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointUserName }).(pulumi.StringPtrOutput)
 }
 
+// Data Delivery link switch instance id
+func (o SynchronizationJobOutput) SourceEndpointVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointVswitchId }).(pulumi.StringPtrOutput)
+}
+
 // The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-//
-// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-//
-// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 func (o SynchronizationJobOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

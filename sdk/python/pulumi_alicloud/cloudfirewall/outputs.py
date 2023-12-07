@@ -945,7 +945,8 @@ class GetAddressBooksBookResult(dict):
         :param str description: The description of the Address Book.
         :param Sequence['GetAddressBooksBookEcsTagArgs'] ecs_tags: The logical relation among the ECS tags that to be matchedh.
         :param str group_name: The name of the Address Book.
-        :param str group_type: The type of the Address Book. Valid values: `ip`, `tag`.
+        :param str group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+               **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         :param str group_uuid: The ID of the Address Book.
         :param str id: The ID of the Address Book.
         :param str tag_relation: One or more tags for the relationship between.
@@ -1004,7 +1005,8 @@ class GetAddressBooksBookResult(dict):
     @pulumi.getter(name="groupType")
     def group_type(self) -> str:
         """
-        The type of the Address Book. Valid values: `ip`, `tag`.
+        The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+        **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
         """
         return pulumi.get(self, "group_type")
 

@@ -61,6 +61,10 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     public readonly checkpoint!: pulumi.Output<string>;
     /**
+     * The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+     */
+    public readonly dataCheckConfigure!: pulumi.Output<string | undefined>;
+    /**
      * Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
      */
     public readonly dataInitialization!: pulumi.Output<boolean>;
@@ -72,6 +76,10 @@ export class SynchronizationJob extends pulumi.CustomResource {
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
      */
     public readonly dbList!: pulumi.Output<string>;
+    /**
+     * When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+     */
+    public readonly dedicatedClusterId!: pulumi.Output<string | undefined>;
     /**
      * The delay notice. Valid values: `true`, `false`.
      */
@@ -112,6 +120,10 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     public readonly destinationEndpointOracleSid!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+     */
+    public readonly destinationEndpointOwnerId!: pulumi.Output<string | undefined>;
+    /**
      * The password of database account.
      */
     public readonly destinationEndpointPassword!: pulumi.Output<string | undefined>;
@@ -124,9 +136,21 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     public readonly destinationEndpointRegion!: pulumi.Output<string | undefined>;
     /**
+     * The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+     */
+    public readonly destinationEndpointRole!: pulumi.Output<string | undefined>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     public readonly destinationEndpointUserName!: pulumi.Output<string | undefined>;
+    /**
+     * The environment label of the DTS instance. The value is: **normal**, **online**.
+     *
+     * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+     *
+     * > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
+     */
+    public readonly dtsBisLabel!: pulumi.Output<string | undefined>;
     /**
      * The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
      */
@@ -203,11 +227,11 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     public readonly sourceEndpointUserName!: pulumi.Output<string | undefined>;
     /**
+     * Data Delivery link switch instance id
+     */
+    public readonly sourceEndpointVswitchId!: pulumi.Output<string | undefined>;
+    /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-     *
-     * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-     *
-     * > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -233,9 +257,11 @@ export class SynchronizationJob extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SynchronizationJobState | undefined;
             resourceInputs["checkpoint"] = state ? state.checkpoint : undefined;
+            resourceInputs["dataCheckConfigure"] = state ? state.dataCheckConfigure : undefined;
             resourceInputs["dataInitialization"] = state ? state.dataInitialization : undefined;
             resourceInputs["dataSynchronization"] = state ? state.dataSynchronization : undefined;
             resourceInputs["dbList"] = state ? state.dbList : undefined;
+            resourceInputs["dedicatedClusterId"] = state ? state.dedicatedClusterId : undefined;
             resourceInputs["delayNotice"] = state ? state.delayNotice : undefined;
             resourceInputs["delayPhone"] = state ? state.delayPhone : undefined;
             resourceInputs["delayRuleTime"] = state ? state.delayRuleTime : undefined;
@@ -245,10 +271,13 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointInstanceType"] = state ? state.destinationEndpointInstanceType : undefined;
             resourceInputs["destinationEndpointIp"] = state ? state.destinationEndpointIp : undefined;
             resourceInputs["destinationEndpointOracleSid"] = state ? state.destinationEndpointOracleSid : undefined;
+            resourceInputs["destinationEndpointOwnerId"] = state ? state.destinationEndpointOwnerId : undefined;
             resourceInputs["destinationEndpointPassword"] = state ? state.destinationEndpointPassword : undefined;
             resourceInputs["destinationEndpointPort"] = state ? state.destinationEndpointPort : undefined;
             resourceInputs["destinationEndpointRegion"] = state ? state.destinationEndpointRegion : undefined;
+            resourceInputs["destinationEndpointRole"] = state ? state.destinationEndpointRole : undefined;
             resourceInputs["destinationEndpointUserName"] = state ? state.destinationEndpointUserName : undefined;
+            resourceInputs["dtsBisLabel"] = state ? state.dtsBisLabel : undefined;
             resourceInputs["dtsInstanceId"] = state ? state.dtsInstanceId : undefined;
             resourceInputs["dtsJobName"] = state ? state.dtsJobName : undefined;
             resourceInputs["errorNotice"] = state ? state.errorNotice : undefined;
@@ -267,6 +296,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointRegion"] = state ? state.sourceEndpointRegion : undefined;
             resourceInputs["sourceEndpointRole"] = state ? state.sourceEndpointRole : undefined;
             resourceInputs["sourceEndpointUserName"] = state ? state.sourceEndpointUserName : undefined;
+            resourceInputs["sourceEndpointVswitchId"] = state ? state.sourceEndpointVswitchId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["structureInitialization"] = state ? state.structureInitialization : undefined;
             resourceInputs["synchronizationDirection"] = state ? state.synchronizationDirection : undefined;
@@ -303,9 +333,11 @@ export class SynchronizationJob extends pulumi.CustomResource {
                 throw new Error("Missing required property 'structureInitialization'");
             }
             resourceInputs["checkpoint"] = args ? args.checkpoint : undefined;
+            resourceInputs["dataCheckConfigure"] = args ? args.dataCheckConfigure : undefined;
             resourceInputs["dataInitialization"] = args ? args.dataInitialization : undefined;
             resourceInputs["dataSynchronization"] = args ? args.dataSynchronization : undefined;
             resourceInputs["dbList"] = args ? args.dbList : undefined;
+            resourceInputs["dedicatedClusterId"] = args ? args.dedicatedClusterId : undefined;
             resourceInputs["delayNotice"] = args ? args.delayNotice : undefined;
             resourceInputs["delayPhone"] = args ? args.delayPhone : undefined;
             resourceInputs["delayRuleTime"] = args ? args.delayRuleTime : undefined;
@@ -315,10 +347,13 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointInstanceType"] = args ? args.destinationEndpointInstanceType : undefined;
             resourceInputs["destinationEndpointIp"] = args ? args.destinationEndpointIp : undefined;
             resourceInputs["destinationEndpointOracleSid"] = args ? args.destinationEndpointOracleSid : undefined;
+            resourceInputs["destinationEndpointOwnerId"] = args ? args.destinationEndpointOwnerId : undefined;
             resourceInputs["destinationEndpointPassword"] = args ? args.destinationEndpointPassword : undefined;
             resourceInputs["destinationEndpointPort"] = args ? args.destinationEndpointPort : undefined;
             resourceInputs["destinationEndpointRegion"] = args ? args.destinationEndpointRegion : undefined;
+            resourceInputs["destinationEndpointRole"] = args ? args.destinationEndpointRole : undefined;
             resourceInputs["destinationEndpointUserName"] = args ? args.destinationEndpointUserName : undefined;
+            resourceInputs["dtsBisLabel"] = args ? args.dtsBisLabel : undefined;
             resourceInputs["dtsInstanceId"] = args ? args.dtsInstanceId : undefined;
             resourceInputs["dtsJobName"] = args ? args.dtsJobName : undefined;
             resourceInputs["errorNotice"] = args ? args.errorNotice : undefined;
@@ -337,6 +372,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointRegion"] = args ? args.sourceEndpointRegion : undefined;
             resourceInputs["sourceEndpointRole"] = args ? args.sourceEndpointRole : undefined;
             resourceInputs["sourceEndpointUserName"] = args ? args.sourceEndpointUserName : undefined;
+            resourceInputs["sourceEndpointVswitchId"] = args ? args.sourceEndpointVswitchId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["structureInitialization"] = args ? args.structureInitialization : undefined;
             resourceInputs["synchronizationDirection"] = args ? args.synchronizationDirection : undefined;
@@ -355,6 +391,10 @@ export interface SynchronizationJobState {
      */
     checkpoint?: pulumi.Input<string>;
     /**
+     * The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+     */
+    dataCheckConfigure?: pulumi.Input<string>;
+    /**
      * Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
      */
     dataInitialization?: pulumi.Input<boolean>;
@@ -366,6 +406,10 @@ export interface SynchronizationJobState {
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
      */
     dbList?: pulumi.Input<string>;
+    /**
+     * When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+     */
+    dedicatedClusterId?: pulumi.Input<string>;
     /**
      * The delay notice. Valid values: `true`, `false`.
      */
@@ -406,6 +450,10 @@ export interface SynchronizationJobState {
      */
     destinationEndpointOracleSid?: pulumi.Input<string>;
     /**
+     * The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+     */
+    destinationEndpointOwnerId?: pulumi.Input<string>;
+    /**
      * The password of database account.
      */
     destinationEndpointPassword?: pulumi.Input<string>;
@@ -418,9 +466,21 @@ export interface SynchronizationJobState {
      */
     destinationEndpointRegion?: pulumi.Input<string>;
     /**
+     * The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+     */
+    destinationEndpointRole?: pulumi.Input<string>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     destinationEndpointUserName?: pulumi.Input<string>;
+    /**
+     * The environment label of the DTS instance. The value is: **normal**, **online**.
+     *
+     * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+     *
+     * > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
+     */
+    dtsBisLabel?: pulumi.Input<string>;
     /**
      * The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
      */
@@ -497,11 +557,11 @@ export interface SynchronizationJobState {
      */
     sourceEndpointUserName?: pulumi.Input<string>;
     /**
+     * Data Delivery link switch instance id
+     */
+    sourceEndpointVswitchId?: pulumi.Input<string>;
+    /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-     *
-     * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-     *
-     * > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
      */
     status?: pulumi.Input<string>;
     /**
@@ -523,6 +583,10 @@ export interface SynchronizationJobArgs {
      */
     checkpoint?: pulumi.Input<string>;
     /**
+     * The data verification task of the migration or synchronization instance, in the format of a JSON string, such as parameter limits or alarm configurations. For more information, see the DataCheckConfigure parameter description [datacheckconfigure-parameter](https://help.aliyun.com/zh/dts/developer-reference/datacheckconfigure-parameter).
+     */
+    dataCheckConfigure?: pulumi.Input<string>;
+    /**
      * Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
      */
     dataInitialization: pulumi.Input<boolean>;
@@ -534,6 +598,10 @@ export interface SynchronizationJobArgs {
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
      */
     dbList: pulumi.Input<string>;
+    /**
+     * When the ID of the dedicated cluster is input, the task is scheduled to the corresponding cluster.
+     */
+    dedicatedClusterId?: pulumi.Input<string>;
     /**
      * The delay notice. Valid values: `true`, `false`.
      */
@@ -574,6 +642,10 @@ export interface SynchronizationJobArgs {
      */
     destinationEndpointOracleSid?: pulumi.Input<string>;
     /**
+     * The ID of the Alibaba Cloud account to which the target RDS MySQL instance belongs. can be configured only when the target instance is RDS MySQL. This parameter is used to migrate or synchronize data across Alibaba Cloud accounts. You also need to enter the **destinationendpointrle** parameter.
+     */
+    destinationEndpointOwnerId?: pulumi.Input<string>;
+    /**
      * The password of database account.
      */
     destinationEndpointPassword?: pulumi.Input<string>;
@@ -586,9 +658,21 @@ export interface SynchronizationJobArgs {
      */
     destinationEndpointRegion?: pulumi.Input<string>;
     /**
+     * The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
+     */
+    destinationEndpointRole?: pulumi.Input<string>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     destinationEndpointUserName?: pulumi.Input<string>;
+    /**
+     * The environment label of the DTS instance. The value is: **normal**, **online**.
+     *
+     * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+     *
+     * > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
+     */
+    dtsBisLabel?: pulumi.Input<string>;
     /**
      * The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
      */
@@ -665,11 +749,11 @@ export interface SynchronizationJobArgs {
      */
     sourceEndpointUserName?: pulumi.Input<string>;
     /**
+     * Data Delivery link switch instance id
+     */
+    sourceEndpointVswitchId?: pulumi.Input<string>;
+    /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-     *
-     * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-     *
-     * > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
      */
     status?: pulumi.Input<string>;
     /**

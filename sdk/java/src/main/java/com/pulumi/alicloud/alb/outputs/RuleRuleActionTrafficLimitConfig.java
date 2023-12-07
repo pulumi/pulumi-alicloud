@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleActionTrafficLimitConfig {
     /**
+     * @return The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+     * 
+     */
+    private @Nullable Integer perIpQps;
+    /**
      * @return The Number of requests per second. Valid values: `1` to `100000`.
      * 
      */
     private @Nullable Integer qps;
 
     private RuleRuleActionTrafficLimitConfig() {}
+    /**
+     * @return The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+     * 
+     */
+    public Optional<Integer> perIpQps() {
+        return Optional.ofNullable(this.perIpQps);
+    }
     /**
      * @return The Number of requests per second. Valid values: `1` to `100000`.
      * 
@@ -35,13 +47,20 @@ public final class RuleRuleActionTrafficLimitConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer perIpQps;
         private @Nullable Integer qps;
         public Builder() {}
         public Builder(RuleRuleActionTrafficLimitConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.perIpQps = defaults.perIpQps;
     	      this.qps = defaults.qps;
         }
 
+        @CustomType.Setter
+        public Builder perIpQps(@Nullable Integer perIpQps) {
+            this.perIpQps = perIpQps;
+            return this;
+        }
         @CustomType.Setter
         public Builder qps(@Nullable Integer qps) {
             this.qps = qps;
@@ -49,6 +68,7 @@ public final class RuleRuleActionTrafficLimitConfig {
         }
         public RuleRuleActionTrafficLimitConfig build() {
             final var _resultValue = new RuleRuleActionTrafficLimitConfig();
+            _resultValue.perIpQps = perIpQps;
             _resultValue.qps = qps;
             return _resultValue;
         }

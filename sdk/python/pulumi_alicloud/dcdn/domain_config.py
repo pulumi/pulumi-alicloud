@@ -22,7 +22,7 @@ class DomainConfigArgs:
         """
         The set of arguments for constructing a DomainConfig resource.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.  See `function_args` below.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
         """
         pulumi.set(__self__, "domain_name", domain_name)
@@ -45,7 +45,7 @@ class DomainConfigArgs:
     @pulumi.getter(name="functionArgs")
     def function_args(self) -> pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]:
         """
-        The args of the domain config.  See `function_args` below.
+        The args of the domain config. See `function_args` below.
         """
         return pulumi.get(self, "function_args")
 
@@ -76,11 +76,11 @@ class _DomainConfigState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DomainConfig resources.
-        :param pulumi.Input[str] config_id: The DCDN domain config id.
+        :param pulumi.Input[str] config_id: The ID of the configuration.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.  See `function_args` below.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
-        :param pulumi.Input[str] status: The status of this resource.
+        :param pulumi.Input[str] status: The status of the Config.
         """
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
@@ -97,7 +97,7 @@ class _DomainConfigState:
     @pulumi.getter(name="configId")
     def config_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DCDN domain config id.
+        The ID of the configuration.
         """
         return pulumi.get(self, "config_id")
 
@@ -121,7 +121,7 @@ class _DomainConfigState:
     @pulumi.getter(name="functionArgs")
     def function_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]]:
         """
-        The args of the domain config.  See `function_args` below.
+        The args of the domain config. See `function_args` below.
         """
         return pulumi.get(self, "function_args")
 
@@ -145,7 +145,7 @@ class _DomainConfigState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of this resource.
+        The status of the Config.
         """
         return pulumi.get(self, "status")
 
@@ -166,7 +166,7 @@ class DomainConfig(pulumi.CustomResource):
         """
         Provides a DCDN Accelerated Domain resource.
 
-        For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm)
+        For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm).
 
         > **NOTE:** Available since v1.131.0.
 
@@ -181,24 +181,49 @@ class DomainConfig(pulumi.CustomResource):
         config = pulumi.Config()
         domain_name = config.get("domainName")
         if domain_name is None:
-            domain_name = "example.com"
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
+            domain_name = "alibaba-example.com"
+        example = alicloud.dcdn.Domain("example",
             domain_name=domain_name,
             scope="overseas",
+            status="online",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
-                port=80,
-                priority="20",
                 type="ipaddr",
+                priority="20",
+                port=80,
                 weight="10",
             )])
-        example_domain_config = alicloud.dcdn.DomainConfig("exampleDomainConfig",
-            domain_name=example_domain.domain_name,
+        ip_allow_list_set = alicloud.dcdn.DomainConfig("ipAllowListSet",
+            domain_name=example.domain_name,
             function_name="ip_allow_list_set",
             function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
                 arg_name="ip_list",
+                arg_value="192.168.0.1",
+            )])
+        referer_white_list_set = alicloud.dcdn.DomainConfig("refererWhiteListSet",
+            domain_name=example.domain_name,
+            function_name="referer_white_list_set",
+            function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
+                arg_name="refer_domain_allow_list",
                 arg_value="110.110.110.110",
             )])
+        filetype_based_ttl_set = alicloud.dcdn.DomainConfig("filetypeBasedTtlSet",
+            domain_name=example.domain_name,
+            function_name="filetype_based_ttl_set",
+            function_args=[
+                alicloud.dcdn.DomainConfigFunctionArgArgs(
+                    arg_name="ttl",
+                    arg_value="300",
+                ),
+                alicloud.dcdn.DomainConfigFunctionArgArgs(
+                    arg_name="file_type",
+                    arg_value="jpg",
+                ),
+                alicloud.dcdn.DomainConfigFunctionArgArgs(
+                    arg_name="weight",
+                    arg_value="1",
+                ),
+            ])
         ```
 
         ## Import
@@ -212,7 +237,7 @@ class DomainConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config.  See `function_args` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
         """
         ...
@@ -224,7 +249,7 @@ class DomainConfig(pulumi.CustomResource):
         """
         Provides a DCDN Accelerated Domain resource.
 
-        For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm)
+        For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm).
 
         > **NOTE:** Available since v1.131.0.
 
@@ -239,24 +264,49 @@ class DomainConfig(pulumi.CustomResource):
         config = pulumi.Config()
         domain_name = config.get("domainName")
         if domain_name is None:
-            domain_name = "example.com"
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
+            domain_name = "alibaba-example.com"
+        example = alicloud.dcdn.Domain("example",
             domain_name=domain_name,
             scope="overseas",
+            status="online",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
-                port=80,
-                priority="20",
                 type="ipaddr",
+                priority="20",
+                port=80,
                 weight="10",
             )])
-        example_domain_config = alicloud.dcdn.DomainConfig("exampleDomainConfig",
-            domain_name=example_domain.domain_name,
+        ip_allow_list_set = alicloud.dcdn.DomainConfig("ipAllowListSet",
+            domain_name=example.domain_name,
             function_name="ip_allow_list_set",
             function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
                 arg_name="ip_list",
+                arg_value="192.168.0.1",
+            )])
+        referer_white_list_set = alicloud.dcdn.DomainConfig("refererWhiteListSet",
+            domain_name=example.domain_name,
+            function_name="referer_white_list_set",
+            function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
+                arg_name="refer_domain_allow_list",
                 arg_value="110.110.110.110",
             )])
+        filetype_based_ttl_set = alicloud.dcdn.DomainConfig("filetypeBasedTtlSet",
+            domain_name=example.domain_name,
+            function_name="filetype_based_ttl_set",
+            function_args=[
+                alicloud.dcdn.DomainConfigFunctionArgArgs(
+                    arg_name="ttl",
+                    arg_value="300",
+                ),
+                alicloud.dcdn.DomainConfigFunctionArgArgs(
+                    arg_name="file_type",
+                    arg_value="jpg",
+                ),
+                alicloud.dcdn.DomainConfigFunctionArgArgs(
+                    arg_name="weight",
+                    arg_value="1",
+                ),
+            ])
         ```
 
         ## Import
@@ -327,11 +377,11 @@ class DomainConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config_id: The DCDN domain config id.
+        :param pulumi.Input[str] config_id: The ID of the configuration.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config.  See `function_args` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
-        :param pulumi.Input[str] status: The status of this resource.
+        :param pulumi.Input[str] status: The status of the Config.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -348,7 +398,7 @@ class DomainConfig(pulumi.CustomResource):
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[str]:
         """
-        The DCDN domain config id.
+        The ID of the configuration.
         """
         return pulumi.get(self, "config_id")
 
@@ -364,7 +414,7 @@ class DomainConfig(pulumi.CustomResource):
     @pulumi.getter(name="functionArgs")
     def function_args(self) -> pulumi.Output[Sequence['outputs.DomainConfigFunctionArg']]:
         """
-        The args of the domain config.  See `function_args` below.
+        The args of the domain config. See `function_args` below.
         """
         return pulumi.get(self, "function_args")
 
@@ -380,7 +430,7 @@ class DomainConfig(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of this resource.
+        The status of the Config.
         """
         return pulumi.get(self, "status")
 

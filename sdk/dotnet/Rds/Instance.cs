@@ -247,6 +247,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable forcible switching. Valid values:
+        /// - Yes
+        /// - No
+        /// </summary>
+        [Output("force")]
+        public Output<string?> Force { get; private set; } = null!;
+
+        /// <summary>
         /// Set it to true to make some parameter efficient when modifying them. Default to false.
         /// </summary>
         [Output("forceRestart")]
@@ -335,6 +343,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("monitoringPeriod")]
         public Output<int> MonitoringPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+        /// </summary>
+        [Output("nodeId")]
+        public Output<string> NodeId { get; private set; } = null!;
 
         /// <summary>
         /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
@@ -620,12 +634,6 @@ namespace Pulumi.AliCloud.Rds
         [Output("zoneIdSlaveA")]
         public Output<string> ZoneIdSlaveA { get; private set; } = null!;
 
-        /// <summary>
-        /// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        /// </summary>
-        [Output("zoneIdSlaveB")]
-        public Output<string> ZoneIdSlaveB { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -886,6 +894,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable forcible switching. Valid values:
+        /// - Yes
+        /// - No
+        /// </summary>
+        [Input("force")]
+        public Input<string>? Force { get; set; }
+
+        /// <summary>
         /// Set it to true to make some parameter efficient when modifying them. Default to false.
         /// </summary>
         [Input("forceRestart")]
@@ -974,6 +990,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("monitoringPeriod")]
         public Input<int>? MonitoringPeriod { get; set; }
+
+        /// <summary>
+        /// The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+        /// </summary>
+        [Input("nodeId")]
+        public Input<string>? NodeId { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.InstanceParameterArgs>? _parameters;
@@ -1283,12 +1305,6 @@ namespace Pulumi.AliCloud.Rds
         [Input("zoneIdSlaveA")]
         public Input<string>? ZoneIdSlaveA { get; set; }
 
-        /// <summary>
-        /// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        /// </summary>
-        [Input("zoneIdSlaveB")]
-        public Input<string>? ZoneIdSlaveB { get; set; }
-
         public InstanceArgs()
         {
         }
@@ -1529,6 +1545,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable forcible switching. Valid values:
+        /// - Yes
+        /// - No
+        /// </summary>
+        [Input("force")]
+        public Input<string>? Force { get; set; }
+
+        /// <summary>
         /// Set it to true to make some parameter efficient when modifying them. Default to false.
         /// </summary>
         [Input("forceRestart")]
@@ -1617,6 +1641,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("monitoringPeriod")]
         public Input<int>? MonitoringPeriod { get; set; }
+
+        /// <summary>
+        /// The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+        /// </summary>
+        [Input("nodeId")]
+        public Input<string>? NodeId { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
@@ -1937,12 +1967,6 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("zoneIdSlaveA")]
         public Input<string>? ZoneIdSlaveA { get; set; }
-
-        /// <summary>
-        /// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-        /// </summary>
-        [Input("zoneIdSlaveB")]
-        public Input<string>? ZoneIdSlaveB { get; set; }
 
         public InstanceState()
         {

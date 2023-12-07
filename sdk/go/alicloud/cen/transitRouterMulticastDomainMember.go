@@ -36,12 +36,12 @@ type TransitRouterMulticastDomainMember struct {
 	GroupIpAddress pulumi.StringOutput `pulumi:"groupIpAddress"`
 	// The ID of the ENI.
 	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
-	// The status of the resource
+	// The status of the Transit Router Multicast Domain Member.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the multicast domain to which the multicast member belongs.
 	TransitRouterMulticastDomainId pulumi.StringOutput `pulumi:"transitRouterMulticastDomainId"`
 	// The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
-	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
 // NewTransitRouterMulticastDomainMember registers a new resource with the given unique name, arguments, and options.
@@ -89,7 +89,7 @@ type transitRouterMulticastDomainMemberState struct {
 	GroupIpAddress *string `pulumi:"groupIpAddress"`
 	// The ID of the ENI.
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
-	// The status of the resource
+	// The status of the Transit Router Multicast Domain Member.
 	Status *string `pulumi:"status"`
 	// The ID of the multicast domain to which the multicast member belongs.
 	TransitRouterMulticastDomainId *string `pulumi:"transitRouterMulticastDomainId"`
@@ -104,7 +104,7 @@ type TransitRouterMulticastDomainMemberState struct {
 	GroupIpAddress pulumi.StringPtrInput
 	// The ID of the ENI.
 	NetworkInterfaceId pulumi.StringPtrInput
-	// The status of the resource
+	// The status of the Transit Router Multicast Domain Member.
 	Status pulumi.StringPtrInput
 	// The ID of the multicast domain to which the multicast member belongs.
 	TransitRouterMulticastDomainId pulumi.StringPtrInput
@@ -245,7 +245,7 @@ func (o TransitRouterMulticastDomainMemberOutput) NetworkInterfaceId() pulumi.St
 	return o.ApplyT(func(v *TransitRouterMulticastDomainMember) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
 
-// The status of the resource
+// The status of the Transit Router Multicast Domain Member.
 func (o TransitRouterMulticastDomainMemberOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterMulticastDomainMember) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -258,8 +258,8 @@ func (o TransitRouterMulticastDomainMemberOutput) TransitRouterMulticastDomainId
 }
 
 // The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
-func (o TransitRouterMulticastDomainMemberOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransitRouterMulticastDomainMember) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+func (o TransitRouterMulticastDomainMemberOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterMulticastDomainMember) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 type TransitRouterMulticastDomainMemberArrayOutput struct{ *pulumi.OutputState }

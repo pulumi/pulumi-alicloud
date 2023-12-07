@@ -31,14 +31,14 @@ public final class ResourceShareState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The owner of resource share.
+     * The owner of the Resource Share.
      * 
      */
     @Import(name="resourceShareOwner")
     private @Nullable Output<String> resourceShareOwner;
 
     /**
-     * @return The owner of resource share.
+     * @return The owner of the Resource Share.
      * 
      */
     public Optional<Output<String>> resourceShareOwner() {
@@ -46,14 +46,14 @@ public final class ResourceShareState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The status of resource share.
+     * The status of the Resource Share.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of resource share.
+     * @return The status of the Resource Share.
      * 
      */
     public Optional<Output<String>> status() {
@@ -108,7 +108,7 @@ public final class ResourceShareState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceShareOwner The owner of resource share.
+         * @param resourceShareOwner The owner of the Resource Share.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ResourceShareState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceShareOwner The owner of resource share.
+         * @param resourceShareOwner The owner of the Resource Share.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ResourceShareState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The status of resource share.
+         * @param status The status of the Resource Share.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ResourceShareState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The status of resource share.
+         * @param status The status of the Resource Share.
          * 
          * @return builder
          * 

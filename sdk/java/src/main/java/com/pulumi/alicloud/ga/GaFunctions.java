@@ -3148,7 +3148,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -3160,6 +3160,20 @@ public final class GaFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackage;
+     * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+     * import com.pulumi.alicloud.ga.Listener;
+     * import com.pulumi.alicloud.ga.ListenerArgs;
+     * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ga.EndpointGroup;
+     * import com.pulumi.alicloud.ga.EndpointGroupArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupPortOverridesArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupEndpointConfigurationArgs;
      * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3174,13 +3188,74 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *         final var config = ctx.config();
+     *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, example.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id()));
+     *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+     *             .bandwidth(100)
+     *             .type(&#34;Basic&#34;)
+     *             .bandwidthType(&#34;Basic&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .billingType(&#34;PayBy95&#34;)
+     *             .ratio(30)
+     *             .bandwidthPackageName(name)
+     *             .autoPay(true)
+     *             .autoUseCoupon(true)
+     *             .build());
+     * 
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+     *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.ids()[0]))
+     *             .bandwidthPackageId(defaultBandwidthPackage.id())
+     *             .build());
+     * 
+     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+     *             .clientAffinity(&#34;SOURCE_IP&#34;)
+     *             .protocol(&#34;UDP&#34;)
+     *             .portRanges(ListenerPortRangeArgs.builder()
+     *                 .fromPort(&#34;60&#34;)
+     *                 .toPort(&#34;70&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .internetChargeType(&#34;PayByBandwidth&#34;)
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+     *             .acceleratorId(defaultListener.acceleratorId())
+     *             .listenerId(defaultListener.id())
+     *             .description(name)
+     *             .thresholdCount(4)
+     *             .trafficPercentage(20)
+     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .healthCheckIntervalSeconds(&#34;3&#34;)
+     *             .healthCheckPath(&#34;/healthcheck&#34;)
+     *             .healthCheckPort(&#34;9999&#34;)
+     *             .healthCheckProtocol(&#34;http&#34;)
+     *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
+     *                 .endpointPort(&#34;10&#34;)
+     *                 .listenerPort(&#34;60&#34;)
+     *                 .build())
+     *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
+     *                 .endpoint(defaultEipAddress.ipAddress())
+     *                 .type(&#34;PublicIp&#34;)
+     *                 .weight(&#34;20&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *             .acceleratorId(defaultEndpointGroup.acceleratorId())
+     *             .ids(defaultEndpointGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultEndpointGroups -&gt; defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
      * ```
@@ -3192,7 +3267,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -3204,6 +3279,20 @@ public final class GaFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackage;
+     * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+     * import com.pulumi.alicloud.ga.Listener;
+     * import com.pulumi.alicloud.ga.ListenerArgs;
+     * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ga.EndpointGroup;
+     * import com.pulumi.alicloud.ga.EndpointGroupArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupPortOverridesArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupEndpointConfigurationArgs;
      * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3218,13 +3307,74 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *         final var config = ctx.config();
+     *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, example.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id()));
+     *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+     *             .bandwidth(100)
+     *             .type(&#34;Basic&#34;)
+     *             .bandwidthType(&#34;Basic&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .billingType(&#34;PayBy95&#34;)
+     *             .ratio(30)
+     *             .bandwidthPackageName(name)
+     *             .autoPay(true)
+     *             .autoUseCoupon(true)
+     *             .build());
+     * 
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+     *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.ids()[0]))
+     *             .bandwidthPackageId(defaultBandwidthPackage.id())
+     *             .build());
+     * 
+     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+     *             .clientAffinity(&#34;SOURCE_IP&#34;)
+     *             .protocol(&#34;UDP&#34;)
+     *             .portRanges(ListenerPortRangeArgs.builder()
+     *                 .fromPort(&#34;60&#34;)
+     *                 .toPort(&#34;70&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .internetChargeType(&#34;PayByBandwidth&#34;)
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+     *             .acceleratorId(defaultListener.acceleratorId())
+     *             .listenerId(defaultListener.id())
+     *             .description(name)
+     *             .thresholdCount(4)
+     *             .trafficPercentage(20)
+     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .healthCheckIntervalSeconds(&#34;3&#34;)
+     *             .healthCheckPath(&#34;/healthcheck&#34;)
+     *             .healthCheckPort(&#34;9999&#34;)
+     *             .healthCheckProtocol(&#34;http&#34;)
+     *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
+     *                 .endpointPort(&#34;10&#34;)
+     *                 .listenerPort(&#34;60&#34;)
+     *                 .build())
+     *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
+     *                 .endpoint(defaultEipAddress.ipAddress())
+     *                 .type(&#34;PublicIp&#34;)
+     *                 .weight(&#34;20&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *             .acceleratorId(defaultEndpointGroup.acceleratorId())
+     *             .ids(defaultEndpointGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultEndpointGroups -&gt; defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
      * ```
@@ -3236,7 +3386,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -3248,6 +3398,20 @@ public final class GaFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackage;
+     * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+     * import com.pulumi.alicloud.ga.Listener;
+     * import com.pulumi.alicloud.ga.ListenerArgs;
+     * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ga.EndpointGroup;
+     * import com.pulumi.alicloud.ga.EndpointGroupArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupPortOverridesArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupEndpointConfigurationArgs;
      * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3262,13 +3426,74 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *         final var config = ctx.config();
+     *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, example.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id()));
+     *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+     *             .bandwidth(100)
+     *             .type(&#34;Basic&#34;)
+     *             .bandwidthType(&#34;Basic&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .billingType(&#34;PayBy95&#34;)
+     *             .ratio(30)
+     *             .bandwidthPackageName(name)
+     *             .autoPay(true)
+     *             .autoUseCoupon(true)
+     *             .build());
+     * 
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+     *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.ids()[0]))
+     *             .bandwidthPackageId(defaultBandwidthPackage.id())
+     *             .build());
+     * 
+     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+     *             .clientAffinity(&#34;SOURCE_IP&#34;)
+     *             .protocol(&#34;UDP&#34;)
+     *             .portRanges(ListenerPortRangeArgs.builder()
+     *                 .fromPort(&#34;60&#34;)
+     *                 .toPort(&#34;70&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .internetChargeType(&#34;PayByBandwidth&#34;)
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+     *             .acceleratorId(defaultListener.acceleratorId())
+     *             .listenerId(defaultListener.id())
+     *             .description(name)
+     *             .thresholdCount(4)
+     *             .trafficPercentage(20)
+     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .healthCheckIntervalSeconds(&#34;3&#34;)
+     *             .healthCheckPath(&#34;/healthcheck&#34;)
+     *             .healthCheckPort(&#34;9999&#34;)
+     *             .healthCheckProtocol(&#34;http&#34;)
+     *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
+     *                 .endpointPort(&#34;10&#34;)
+     *                 .listenerPort(&#34;60&#34;)
+     *                 .build())
+     *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
+     *                 .endpoint(defaultEipAddress.ipAddress())
+     *                 .type(&#34;PublicIp&#34;)
+     *                 .weight(&#34;20&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *             .acceleratorId(defaultEndpointGroup.acceleratorId())
+     *             .ids(defaultEndpointGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultEndpointGroups -&gt; defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
      * ```
@@ -3280,7 +3505,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -3292,6 +3517,20 @@ public final class GaFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackage;
+     * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+     * import com.pulumi.alicloud.ga.Listener;
+     * import com.pulumi.alicloud.ga.ListenerArgs;
+     * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ga.EndpointGroup;
+     * import com.pulumi.alicloud.ga.EndpointGroupArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupPortOverridesArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupEndpointConfigurationArgs;
      * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3306,13 +3545,74 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *         final var config = ctx.config();
+     *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, example.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id()));
+     *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+     *             .bandwidth(100)
+     *             .type(&#34;Basic&#34;)
+     *             .bandwidthType(&#34;Basic&#34;)
+     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .billingType(&#34;PayBy95&#34;)
+     *             .ratio(30)
+     *             .bandwidthPackageName(name)
+     *             .autoPay(true)
+     *             .autoUseCoupon(true)
+     *             .build());
+     * 
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+     *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.ids()[0]))
+     *             .bandwidthPackageId(defaultBandwidthPackage.id())
+     *             .build());
+     * 
+     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+     *             .clientAffinity(&#34;SOURCE_IP&#34;)
+     *             .protocol(&#34;UDP&#34;)
+     *             .portRanges(ListenerPortRangeArgs.builder()
+     *                 .fromPort(&#34;60&#34;)
+     *                 .toPort(&#34;70&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *             .bandwidth(&#34;10&#34;)
+     *             .internetChargeType(&#34;PayByBandwidth&#34;)
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+     *             .acceleratorId(defaultListener.acceleratorId())
+     *             .listenerId(defaultListener.id())
+     *             .description(name)
+     *             .thresholdCount(4)
+     *             .trafficPercentage(20)
+     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .healthCheckIntervalSeconds(&#34;3&#34;)
+     *             .healthCheckPath(&#34;/healthcheck&#34;)
+     *             .healthCheckPort(&#34;9999&#34;)
+     *             .healthCheckProtocol(&#34;http&#34;)
+     *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
+     *                 .endpointPort(&#34;10&#34;)
+     *                 .listenerPort(&#34;60&#34;)
+     *                 .build())
+     *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
+     *                 .endpoint(defaultEipAddress.ipAddress())
+     *                 .type(&#34;PublicIp&#34;)
+     *                 .weight(&#34;20&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *             .acceleratorId(defaultEndpointGroup.acceleratorId())
+     *             .ids(defaultEndpointGroup.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultEndpointGroups -&gt; defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
      * ```

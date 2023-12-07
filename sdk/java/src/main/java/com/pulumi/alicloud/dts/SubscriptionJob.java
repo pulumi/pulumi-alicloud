@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.rds.AccountPrivilegeArgs;
  * import com.pulumi.alicloud.dts.SubscriptionJob;
  * import com.pulumi.alicloud.dts.SubscriptionJobArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -122,8 +123,8 @@ import javax.annotation.Nullable;
  * 
  *         var exampleRdsAccount = new RdsAccount(&#34;exampleRdsAccount&#34;, RdsAccountArgs.builder()        
  *             .dbInstanceId(exampleInstance.id())
- *             .accountName(&#34;example_name&#34;)
- *             .accountPassword(&#34;example_password&#34;)
+ *             .accountName(&#34;test_mysql&#34;)
+ *             .accountPassword(&#34;N1cetest&#34;)
  *             .build());
  * 
  *         var exampleDatabase = new Database(&#34;exampleDatabase&#34;, DatabaseArgs.builder()        
@@ -150,7 +151,13 @@ import javax.annotation.Nullable;
  *             .dbList(Output.tuple(exampleDatabase.name(), exampleDatabase.name()).applyValue(values -&gt; {
  *                 var exampleDatabaseName = values.t1;
  *                 var exampleDatabaseName1 = values.t2;
- *                 return String.format(&#34;{{\&#34;%s\&#34;:{{\&#34;name\&#34;:\&#34;%s\&#34;,\&#34;all\&#34;:true}}}}&#34;, exampleDatabaseName,exampleDatabaseName1);
+ *                 return serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty(exampleDatabaseName, jsonObject(
+ *                             jsonProperty(&#34;name&#34;, exampleDatabaseName1),
+ *                             jsonProperty(&#34;all&#34;, true)
+ *                         ))
+ *                     ));
  *             }))
  *             .subscriptionInstanceNetworkType(&#34;vpc&#34;)
  *             .subscriptionInstanceVpcId(exampleNetwork.id())

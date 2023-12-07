@@ -137,6 +137,36 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+     * 
+     */
+    @Import(name="xForwardedForClientSourceIpsEnabled")
+    private @Nullable Output<Boolean> xForwardedForClientSourceIpsEnabled;
+
+    /**
+     * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+     * 
+     */
+    public Optional<Output<Boolean>> xForwardedForClientSourceIpsEnabled() {
+        return Optional.ofNullable(this.xForwardedForClientSourceIpsEnabled);
+    }
+
+    /**
+     * Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * 
+     */
+    @Import(name="xForwardedForClientSourceIpsTrusted")
+    private @Nullable Output<String> xForwardedForClientSourceIpsTrusted;
+
+    /**
+     * @return Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * 
+     */
+    public Optional<Output<String>> xForwardedForClientSourceIpsTrusted() {
+        return Optional.ofNullable(this.xForwardedForClientSourceIpsTrusted);
+    }
+
+    /**
      * Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
      * 
      */
@@ -222,6 +252,8 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         this.xForwardedForClientCertIssuerDnEnabled = $.xForwardedForClientCertIssuerDnEnabled;
         this.xForwardedForClientCertSubjectDnAlias = $.xForwardedForClientCertSubjectDnAlias;
         this.xForwardedForClientCertSubjectDnEnabled = $.xForwardedForClientCertSubjectDnEnabled;
+        this.xForwardedForClientSourceIpsEnabled = $.xForwardedForClientSourceIpsEnabled;
+        this.xForwardedForClientSourceIpsTrusted = $.xForwardedForClientSourceIpsTrusted;
         this.xForwardedForClientSrcPortEnabled = $.xForwardedForClientSrcPortEnabled;
         this.xForwardedForEnabled = $.xForwardedForEnabled;
         this.xForwardedForProtoEnabled = $.xForwardedForProtoEnabled;
@@ -413,6 +445,48 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
          */
         public Builder xForwardedForClientCertSubjectDnEnabled(Boolean xForwardedForClientCertSubjectDnEnabled) {
             return xForwardedForClientCertSubjectDnEnabled(Output.of(xForwardedForClientCertSubjectDnEnabled));
+        }
+
+        /**
+         * @param xForwardedForClientSourceIpsEnabled Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xForwardedForClientSourceIpsEnabled(@Nullable Output<Boolean> xForwardedForClientSourceIpsEnabled) {
+            $.xForwardedForClientSourceIpsEnabled = xForwardedForClientSourceIpsEnabled;
+            return this;
+        }
+
+        /**
+         * @param xForwardedForClientSourceIpsEnabled Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xForwardedForClientSourceIpsEnabled(Boolean xForwardedForClientSourceIpsEnabled) {
+            return xForwardedForClientSourceIpsEnabled(Output.of(xForwardedForClientSourceIpsEnabled));
+        }
+
+        /**
+         * @param xForwardedForClientSourceIpsTrusted Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xForwardedForClientSourceIpsTrusted(@Nullable Output<String> xForwardedForClientSourceIpsTrusted) {
+            $.xForwardedForClientSourceIpsTrusted = xForwardedForClientSourceIpsTrusted;
+            return this;
+        }
+
+        /**
+         * @param xForwardedForClientSourceIpsTrusted Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xForwardedForClientSourceIpsTrusted(String xForwardedForClientSourceIpsTrusted) {
+            return xForwardedForClientSourceIpsTrusted(Output.of(xForwardedForClientSourceIpsTrusted));
         }
 
         /**

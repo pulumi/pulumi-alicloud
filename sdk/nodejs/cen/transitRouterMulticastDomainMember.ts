@@ -60,7 +60,7 @@ export class TransitRouterMulticastDomainMember extends pulumi.CustomResource {
      */
     public readonly networkInterfaceId!: pulumi.Output<string>;
     /**
-     * The status of the resource
+     * The status of the Transit Router Multicast Domain Member.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -70,7 +70,7 @@ export class TransitRouterMulticastDomainMember extends pulumi.CustomResource {
     /**
      * The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterMulticastDomainMember resource with the given unique name, arguments, and options.
@@ -131,7 +131,7 @@ export interface TransitRouterMulticastDomainMemberState {
      */
     networkInterfaceId?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * The status of the Transit Router Multicast Domain Member.
      */
     status?: pulumi.Input<string>;
     /**

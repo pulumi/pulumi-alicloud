@@ -43,8 +43,8 @@ class _ResourceShareState:
         """
         Input properties used for looking up and filtering ResourceShare resources.
         :param pulumi.Input[str] resource_share_name: The name of resource share.
-        :param pulumi.Input[str] resource_share_owner: The owner of resource share.
-        :param pulumi.Input[str] status: The status of resource share.
+        :param pulumi.Input[str] resource_share_owner: The owner of the Resource Share.
+        :param pulumi.Input[str] status: The status of the Resource Share.
         """
         if resource_share_name is not None:
             pulumi.set(__self__, "resource_share_name", resource_share_name)
@@ -69,7 +69,7 @@ class _ResourceShareState:
     @pulumi.getter(name="resourceShareOwner")
     def resource_share_owner(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner of resource share.
+        The owner of the Resource Share.
         """
         return pulumi.get(self, "resource_share_owner")
 
@@ -81,7 +81,7 @@ class _ResourceShareState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of resource share.
+        The status of the Resource Share.
         """
         return pulumi.get(self, "status")
 
@@ -115,7 +115,7 @@ class ResourceShare(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfexample"
+            name = "tf-example"
         example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
 
@@ -155,7 +155,7 @@ class ResourceShare(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfexample"
+            name = "tf-example"
         example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
 
@@ -218,8 +218,8 @@ class ResourceShare(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] resource_share_name: The name of resource share.
-        :param pulumi.Input[str] resource_share_owner: The owner of resource share.
-        :param pulumi.Input[str] status: The status of resource share.
+        :param pulumi.Input[str] resource_share_owner: The owner of the Resource Share.
+        :param pulumi.Input[str] status: The status of the Resource Share.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -242,7 +242,7 @@ class ResourceShare(pulumi.CustomResource):
     @pulumi.getter(name="resourceShareOwner")
     def resource_share_owner(self) -> pulumi.Output[str]:
         """
-        The owner of resource share.
+        The owner of the Resource Share.
         """
         return pulumi.get(self, "resource_share_owner")
 
@@ -250,7 +250,7 @@ class ResourceShare(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of resource share.
+        The status of the Resource Share.
         """
         return pulumi.get(self, "status")
 

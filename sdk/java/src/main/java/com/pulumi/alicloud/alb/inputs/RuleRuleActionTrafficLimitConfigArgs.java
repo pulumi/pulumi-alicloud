@@ -16,6 +16,21 @@ public final class RuleRuleActionTrafficLimitConfigArgs extends com.pulumi.resou
     public static final RuleRuleActionTrafficLimitConfigArgs Empty = new RuleRuleActionTrafficLimitConfigArgs();
 
     /**
+     * The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+     * 
+     */
+    @Import(name="perIpQps")
+    private @Nullable Output<Integer> perIpQps;
+
+    /**
+     * @return The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+     * 
+     */
+    public Optional<Output<Integer>> perIpQps() {
+        return Optional.ofNullable(this.perIpQps);
+    }
+
+    /**
      * The Number of requests per second. Valid values: `1` to `100000`.
      * 
      */
@@ -33,6 +48,7 @@ public final class RuleRuleActionTrafficLimitConfigArgs extends com.pulumi.resou
     private RuleRuleActionTrafficLimitConfigArgs() {}
 
     private RuleRuleActionTrafficLimitConfigArgs(RuleRuleActionTrafficLimitConfigArgs $) {
+        this.perIpQps = $.perIpQps;
         this.qps = $.qps;
     }
 
@@ -52,6 +68,27 @@ public final class RuleRuleActionTrafficLimitConfigArgs extends com.pulumi.resou
 
         public Builder(RuleRuleActionTrafficLimitConfigArgs defaults) {
             $ = new RuleRuleActionTrafficLimitConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param perIpQps The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perIpQps(@Nullable Output<Integer> perIpQps) {
+            $.perIpQps = perIpQps;
+            return this;
+        }
+
+        /**
+         * @param perIpQps The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perIpQps(Integer perIpQps) {
+            return perIpQps(Output.of(perIpQps));
         }
 
         /**

@@ -69,18 +69,33 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+     * MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
     @Import(name="backupPeriods")
     private @Nullable Output<List<String>> backupPeriods;
 
     /**
-     * @return MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+     * @return MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
     public Optional<Output<List<String>>> backupPeriods() {
         return Optional.ofNullable(this.backupPeriods);
+    }
+
+    /**
+     * The retention period of full backups.
+     * 
+     */
+    @Import(name="backupRetentionPeriod")
+    private @Nullable Output<Integer> backupRetentionPeriod;
+
+    /**
+     * @return The retention period of full backups.
+     * 
+     */
+    public Optional<Output<Integer>> backupRetentionPeriod() {
+        return Optional.ofNullable(this.backupRetentionPeriod);
     }
 
     /**
@@ -162,9 +177,17 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.encrypted);
     }
 
+    /**
+     * The ID of the custom key.
+     * 
+     */
     @Import(name="encryptionKey")
     private @Nullable Output<String> encryptionKey;
 
+    /**
+     * @return The ID of the custom key.
+     * 
+     */
     public Optional<Output<String>> encryptionKey() {
         return Optional.ofNullable(this.encryptionKey);
     }
@@ -409,9 +432,17 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     * 
+     */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     * 
+     */
     public Optional<Output<String>> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }
@@ -607,6 +638,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.autoRenew = $.autoRenew;
         this.backupInterval = $.backupInterval;
         this.backupPeriods = $.backupPeriods;
+        this.backupRetentionPeriod = $.backupRetentionPeriod;
         this.backupTime = $.backupTime;
         this.cloudDiskEncryptionKey = $.cloudDiskEncryptionKey;
         this.dbInstanceClass = $.dbInstanceClass;
@@ -728,7 +760,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupPeriods MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+         * @param backupPeriods MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
          * 
          * @return builder
          * 
@@ -739,7 +771,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupPeriods MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+         * @param backupPeriods MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
          * 
          * @return builder
          * 
@@ -749,13 +781,34 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupPeriods MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+         * @param backupPeriods MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
          * 
          * @return builder
          * 
          */
         public Builder backupPeriods(String... backupPeriods) {
             return backupPeriods(List.of(backupPeriods));
+        }
+
+        /**
+         * @param backupRetentionPeriod The retention period of full backups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPeriod(@Nullable Output<Integer> backupRetentionPeriod) {
+            $.backupRetentionPeriod = backupRetentionPeriod;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionPeriod The retention period of full backups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPeriod(Integer backupRetentionPeriod) {
+            return backupRetentionPeriod(Output.of(backupRetentionPeriod));
         }
 
         /**
@@ -867,11 +920,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return encrypted(Output.of(encrypted));
         }
 
+        /**
+         * @param encryptionKey The ID of the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptionKey(@Nullable Output<String> encryptionKey) {
             $.encryptionKey = encryptionKey;
             return this;
         }
 
+        /**
+         * @param encryptionKey The ID of the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptionKey(String encryptionKey) {
             return encryptionKey(Output.of(encryptionKey));
         }
@@ -1222,11 +1287,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(@Nullable Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
+        /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
         }

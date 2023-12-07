@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string EndpointGroupId;
         /// <summary>
+        /// (Available since v1.213.1) The list of endpoint group IP addresses.
+        /// </summary>
+        public readonly ImmutableArray<string> EndpointGroupIpLists;
+        /// <summary>
         /// The ID of the region where the endpoint group is deployed.
         /// </summary>
         public readonly string EndpointGroupRegion;
@@ -62,7 +66,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEndpointGroupsGroupPortOverrideResult> PortOverrides;
         /// <summary>
-        /// The status of the endpoint group.
+        /// The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -81,6 +85,8 @@ namespace Pulumi.AliCloud.Ga.Outputs
             ImmutableArray<Outputs.GetEndpointGroupsGroupEndpointConfigurationResult> endpointConfigurations,
 
             string endpointGroupId,
+
+            ImmutableArray<string> endpointGroupIpLists,
 
             string endpointGroupRegion,
 
@@ -109,6 +115,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
             Description = description;
             EndpointConfigurations = endpointConfigurations;
             EndpointGroupId = endpointGroupId;
+            EndpointGroupIpLists = endpointGroupIpLists;
             EndpointGroupRegion = endpointGroupRegion;
             HealthCheckIntervalSeconds = healthCheckIntervalSeconds;
             HealthCheckPath = healthCheckPath;

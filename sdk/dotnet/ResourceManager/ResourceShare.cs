@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = new AliCloud.ResourceManager.ResourceShare("example", new()
     ///     {
     ///         ResourceShareName = name,
@@ -56,13 +56,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> ResourceShareName { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of resource share.
+        /// The owner of the Resource Share.
         /// </summary>
         [Output("resourceShareOwner")]
         public Output<string> ResourceShareOwner { get; private set; } = null!;
 
         /// <summary>
-        /// The status of resource share.
+        /// The status of the Resource Share.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -134,13 +134,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ResourceShareName { get; set; }
 
         /// <summary>
-        /// The owner of resource share.
+        /// The owner of the Resource Share.
         /// </summary>
         [Input("resourceShareOwner")]
         public Input<string>? ResourceShareOwner { get; set; }
 
         /// <summary>
-        /// The status of resource share.
+        /// The status of the Resource Share.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

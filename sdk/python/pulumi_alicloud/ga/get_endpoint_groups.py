@@ -67,6 +67,9 @@ class GetEndpointGroupsResult:
     @property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetEndpointGroupsGroupResult']:
+        """
+        A list of Ga Endpoint Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @property
@@ -85,6 +88,9 @@ class GetEndpointGroupsResult:
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[str]:
+        """
+        The ID of the listener that is associated with the endpoint group.
+        """
         return pulumi.get(self, "listener_id")
 
     @property
@@ -95,6 +101,9 @@ class GetEndpointGroupsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Endpoint Group names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -105,6 +114,9 @@ class GetEndpointGroupsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the endpoint group.
+        """
         return pulumi.get(self, "status")
 
 
@@ -137,7 +149,7 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
     """
     This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 
@@ -147,20 +159,72 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ga.get_endpoint_groups(accelerator_id="example_value",
-        ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstGaEndpointGroupId", example.groups[0].id)
+    config = pulumi.Config()
+    region = config.get("region")
+    if region is None:
+        region = "cn-hangzhou"
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default_accelerators = alicloud.ga.get_accelerators(status="active")
+    default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        bandwidth=100,
+        type="Basic",
+        bandwidth_type="Basic",
+        payment_type="PayAsYouGo",
+        billing_type="PayBy95",
+        ratio=30,
+        bandwidth_package_name=name,
+        auto_pay=True,
+        auto_use_coupon=True)
+    default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+        accelerator_id=default_accelerators.ids[0],
+        bandwidth_package_id=default_bandwidth_package.id)
+    default_listener = alicloud.ga.Listener("defaultListener",
+        accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+        client_affinity="SOURCE_IP",
+        protocol="UDP",
+        port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+            from_port=60,
+            to_port=70,
+        )])
+    default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+        bandwidth="10",
+        internet_charge_type="PayByBandwidth",
+        address_name=name)
+    default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+        accelerator_id=default_listener.accelerator_id,
+        listener_id=default_listener.id,
+        description=name,
+        threshold_count=4,
+        traffic_percentage=20,
+        endpoint_group_region="cn-hangzhou",
+        health_check_interval_seconds=3,
+        health_check_path="/healthcheck",
+        health_check_port=9999,
+        health_check_protocol="http",
+        port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
+            endpoint_port=10,
+            listener_port=60,
+        ),
+        endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+            endpoint=default_eip_address.ip_address,
+            type="PublicIp",
+            weight=20,
+        )])
+    default_endpoint_groups = alicloud.ga.get_endpoint_groups_output(accelerator_id=default_endpoint_group.accelerator_id,
+        ids=[default_endpoint_group.id])
+    pulumi.export("firstGaEndpointGroupId", default_endpoint_groups.groups[0].id)
     ```
 
 
     :param str accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
-    :param str endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+    :param str endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
     :param Sequence[str] ids: A list of Endpoint Group IDs.
     :param str listener_id: The ID of the listener that is associated with the endpoint group.
     :param str name_regex: A regex string to filter results by Endpoint Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the endpoint group.
+    :param str status: The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
     """
     __args__ = dict()
     __args__['acceleratorId'] = accelerator_id
@@ -198,7 +262,7 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
     """
     This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 
@@ -208,19 +272,71 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ga.get_endpoint_groups(accelerator_id="example_value",
-        ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstGaEndpointGroupId", example.groups[0].id)
+    config = pulumi.Config()
+    region = config.get("region")
+    if region is None:
+        region = "cn-hangzhou"
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default_accelerators = alicloud.ga.get_accelerators(status="active")
+    default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        bandwidth=100,
+        type="Basic",
+        bandwidth_type="Basic",
+        payment_type="PayAsYouGo",
+        billing_type="PayBy95",
+        ratio=30,
+        bandwidth_package_name=name,
+        auto_pay=True,
+        auto_use_coupon=True)
+    default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+        accelerator_id=default_accelerators.ids[0],
+        bandwidth_package_id=default_bandwidth_package.id)
+    default_listener = alicloud.ga.Listener("defaultListener",
+        accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+        client_affinity="SOURCE_IP",
+        protocol="UDP",
+        port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+            from_port=60,
+            to_port=70,
+        )])
+    default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+        bandwidth="10",
+        internet_charge_type="PayByBandwidth",
+        address_name=name)
+    default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+        accelerator_id=default_listener.accelerator_id,
+        listener_id=default_listener.id,
+        description=name,
+        threshold_count=4,
+        traffic_percentage=20,
+        endpoint_group_region="cn-hangzhou",
+        health_check_interval_seconds=3,
+        health_check_path="/healthcheck",
+        health_check_port=9999,
+        health_check_protocol="http",
+        port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
+            endpoint_port=10,
+            listener_port=60,
+        ),
+        endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+            endpoint=default_eip_address.ip_address,
+            type="PublicIp",
+            weight=20,
+        )])
+    default_endpoint_groups = alicloud.ga.get_endpoint_groups_output(accelerator_id=default_endpoint_group.accelerator_id,
+        ids=[default_endpoint_group.id])
+    pulumi.export("firstGaEndpointGroupId", default_endpoint_groups.groups[0].id)
     ```
 
 
     :param str accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
-    :param str endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+    :param str endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
     :param Sequence[str] ids: A list of Endpoint Group IDs.
     :param str listener_id: The ID of the listener that is associated with the endpoint group.
     :param str name_regex: A regex string to filter results by Endpoint Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the endpoint group.
+    :param str status: The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
     """
     ...

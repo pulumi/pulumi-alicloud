@@ -38,7 +38,8 @@ public final class GetAddressBooksBook {
      */
     private String groupName;
     /**
-     * @return The type of the Address Book. Valid values: `ip`, `tag`.
+     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     private String groupType;
@@ -95,7 +96,8 @@ public final class GetAddressBooksBook {
         return this.groupName;
     }
     /**
-     * @return The type of the Address Book. Valid values: `ip`, `tag`.
+     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     public String groupType() {

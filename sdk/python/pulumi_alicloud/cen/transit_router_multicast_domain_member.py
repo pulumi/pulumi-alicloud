@@ -110,7 +110,7 @@ class _TransitRouterMulticastDomainMemberState:
         :param pulumi.Input[bool] dry_run: Specifies whether only to precheck the request.
         :param pulumi.Input[str] group_ip_address: The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
         :param pulumi.Input[str] network_interface_id: The ID of the ENI.
-        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[str] status: The status of the Transit Router Multicast Domain Member.
         :param pulumi.Input[str] transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
         :param pulumi.Input[str] vpc_id: The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
         """
@@ -167,7 +167,7 @@ class _TransitRouterMulticastDomainMemberState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource
+        The status of the Transit Router Multicast Domain Member.
         """
         return pulumi.get(self, "status")
 
@@ -322,7 +322,7 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether only to precheck the request.
         :param pulumi.Input[str] group_ip_address: The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
         :param pulumi.Input[str] network_interface_id: The ID of the ENI.
-        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[str] status: The status of the Transit Router Multicast Domain Member.
         :param pulumi.Input[str] transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
         :param pulumi.Input[str] vpc_id: The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
         """
@@ -366,7 +366,7 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource
+        The status of the Transit Router Multicast Domain Member.
         """
         return pulumi.get(self, "status")
 
@@ -380,7 +380,7 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> pulumi.Output[Optional[str]]:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
         """

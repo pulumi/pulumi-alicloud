@@ -141,6 +141,10 @@ type Instance struct {
 	// > - PostgreSQL: [ 14.0 ]
 	// > - MariaDB does not support creating serverless instances.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
+	// Specifies whether to enable forcible switching. Valid values:
+	// - Yes
+	// - No
+	Force pulumi.StringPtrOutput `pulumi:"force"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrOutput `pulumi:"forceRestart"`
 	// The read-only instances to which you want to synchronize the IP address whitelist.
@@ -187,6 +191,8 @@ type Instance struct {
 	ModifyMode pulumi.StringPtrOutput `pulumi:"modifyMode"`
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntOutput `pulumi:"monitoringPeriod"`
+	// The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+	NodeId pulumi.StringOutput `pulumi:"nodeId"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
@@ -322,8 +328,6 @@ type Instance struct {
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA pulumi.StringOutput `pulumi:"zoneIdSlaveA"`
-	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-	ZoneIdSlaveB pulumi.StringOutput `pulumi:"zoneIdSlaveB"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -485,6 +489,10 @@ type instanceState struct {
 	// > - PostgreSQL: [ 14.0 ]
 	// > - MariaDB does not support creating serverless instances.
 	EngineVersion *string `pulumi:"engineVersion"`
+	// Specifies whether to enable forcible switching. Valid values:
+	// - Yes
+	// - No
+	Force *string `pulumi:"force"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
 	// The read-only instances to which you want to synchronize the IP address whitelist.
@@ -531,6 +539,8 @@ type instanceState struct {
 	ModifyMode *string `pulumi:"modifyMode"`
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
+	// The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+	NodeId *string `pulumi:"nodeId"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
@@ -666,8 +676,6 @@ type instanceState struct {
 	ZoneId *string `pulumi:"zoneId"`
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA *string `pulumi:"zoneIdSlaveA"`
-	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-	ZoneIdSlaveB *string `pulumi:"zoneIdSlaveB"`
 }
 
 type InstanceState struct {
@@ -788,6 +796,10 @@ type InstanceState struct {
 	// > - PostgreSQL: [ 14.0 ]
 	// > - MariaDB does not support creating serverless instances.
 	EngineVersion pulumi.StringPtrInput
+	// Specifies whether to enable forcible switching. Valid values:
+	// - Yes
+	// - No
+	Force pulumi.StringPtrInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
 	// The read-only instances to which you want to synchronize the IP address whitelist.
@@ -834,6 +846,8 @@ type InstanceState struct {
 	ModifyMode pulumi.StringPtrInput
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntPtrInput
+	// The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+	NodeId pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
@@ -969,8 +983,6 @@ type InstanceState struct {
 	ZoneId pulumi.StringPtrInput
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA pulumi.StringPtrInput
-	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-	ZoneIdSlaveB pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -1089,6 +1101,10 @@ type instanceArgs struct {
 	// > - PostgreSQL: [ 14.0 ]
 	// > - MariaDB does not support creating serverless instances.
 	EngineVersion string `pulumi:"engineVersion"`
+	// Specifies whether to enable forcible switching. Valid values:
+	// - Yes
+	// - No
+	Force *string `pulumi:"force"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
 	// The read-only instances to which you want to synchronize the IP address whitelist.
@@ -1135,6 +1151,8 @@ type instanceArgs struct {
 	ModifyMode *string `pulumi:"modifyMode"`
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
+	// The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+	NodeId *string `pulumi:"nodeId"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
@@ -1266,8 +1284,6 @@ type instanceArgs struct {
 	ZoneId *string `pulumi:"zoneId"`
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA *string `pulumi:"zoneIdSlaveA"`
-	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-	ZoneIdSlaveB *string `pulumi:"zoneIdSlaveB"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -1383,6 +1399,10 @@ type InstanceArgs struct {
 	// > - PostgreSQL: [ 14.0 ]
 	// > - MariaDB does not support creating serverless instances.
 	EngineVersion pulumi.StringInput
+	// Specifies whether to enable forcible switching. Valid values:
+	// - Yes
+	// - No
+	Force pulumi.StringPtrInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
 	// The read-only instances to which you want to synchronize the IP address whitelist.
@@ -1429,6 +1449,8 @@ type InstanceArgs struct {
 	ModifyMode pulumi.StringPtrInput
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntPtrInput
+	// The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+	NodeId pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
@@ -1560,8 +1582,6 @@ type InstanceArgs struct {
 	ZoneId pulumi.StringPtrInput
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA pulumi.StringPtrInput
-	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-	ZoneIdSlaveB pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -1849,6 +1869,13 @@ func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable forcible switching. Valid values:
+// - Yes
+// - No
+func (o InstanceOutput) Force() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
+}
+
 // Set it to true to make some parameter efficient when modifying them. Default to false.
 func (o InstanceOutput) ForceRestart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceRestart }).(pulumi.BoolPtrOutput)
@@ -1926,6 +1953,11 @@ func (o InstanceOutput) ModifyMode() pulumi.StringPtrOutput {
 // The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 func (o InstanceOutput) MonitoringPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MonitoringPeriod }).(pulumi.IntOutput)
+}
+
+// The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
+func (o InstanceOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NodeId }).(pulumi.StringOutput)
 }
 
 // Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
@@ -2175,11 +2207,6 @@ func (o InstanceOutput) ZoneId() pulumi.StringOutput {
 // The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 func (o InstanceOutput) ZoneIdSlaveA() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneIdSlaveA }).(pulumi.StringOutput)
-}
-
-// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-func (o InstanceOutput) ZoneIdSlaveB() pulumi.StringOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneIdSlaveB }).(pulumi.StringOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

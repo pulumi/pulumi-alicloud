@@ -75,7 +75,8 @@ func GetAddressBooks(ctx *pulumi.Context, args *GetAddressBooksArgs, opts ...pul
 
 // A collection of arguments for invoking getAddressBooks.
 type GetAddressBooksArgs struct {
-	// The type of the Address Book. Valid values: `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 	GroupType *string `pulumi:"groupType"`
 	// A list of Address Book IDs.
 	Ids []string `pulumi:"ids"`
@@ -115,7 +116,8 @@ func GetAddressBooksOutput(ctx *pulumi.Context, args GetAddressBooksOutputArgs, 
 
 // A collection of arguments for invoking getAddressBooks.
 type GetAddressBooksOutputArgs struct {
-	// The type of the Address Book. Valid values: `ip`, `tag`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
 	GroupType pulumi.StringPtrInput `pulumi:"groupType"`
 	// A list of Address Book IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

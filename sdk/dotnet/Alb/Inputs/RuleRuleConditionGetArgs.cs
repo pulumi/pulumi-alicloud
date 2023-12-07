@@ -49,6 +49,18 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<Inputs.RuleRuleConditionQueryStringConfigGetArgs>? QueryStringConfig { get; set; }
 
         /// <summary>
+        /// The configuration of the header field. See `response_header_config` below.
+        /// </summary>
+        [Input("responseHeaderConfig")]
+        public Input<Inputs.RuleRuleConditionResponseHeaderConfigGetArgs>? ResponseHeaderConfig { get; set; }
+
+        /// <summary>
+        /// The configuration of the header field. See `response_status_code_config` below.
+        /// </summary>
+        [Input("responseStatusCodeConfig")]
+        public Input<Inputs.RuleRuleConditionResponseStatusCodeConfigGetArgs>? ResponseStatusCodeConfig { get; set; }
+
+        /// <summary>
         /// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
         /// </summary>
         [Input("sourceIpConfig")]

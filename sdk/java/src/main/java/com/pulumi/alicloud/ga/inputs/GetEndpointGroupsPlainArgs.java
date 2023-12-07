@@ -31,14 +31,14 @@ public final class GetEndpointGroupsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * 
      */
     @Import(name="endpointGroupType")
     private @Nullable String endpointGroupType;
 
     /**
-     * @return The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     * @return The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * 
      */
     public Optional<String> endpointGroupType() {
@@ -106,14 +106,14 @@ public final class GetEndpointGroupsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The status of the endpoint group.
+     * The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the endpoint group.
+     * @return The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
      * 
      */
     public Optional<String> status() {
@@ -162,7 +162,7 @@ public final class GetEndpointGroupsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param endpointGroupType The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+         * @param endpointGroupType The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GetEndpointGroupsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status The status of the endpoint group.
+         * @param status The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
          * 
          * @return builder
          * 

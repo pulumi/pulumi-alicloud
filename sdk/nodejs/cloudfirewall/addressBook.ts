@@ -91,7 +91,8 @@ export class AddressBook extends pulumi.CustomResource {
      */
     public readonly groupName!: pulumi.Output<string>;
     /**
-     * The type of the Address Book. Valid values: `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      */
     public readonly groupType!: pulumi.Output<string>;
     /**
@@ -174,7 +175,8 @@ export interface AddressBookState {
      */
     groupName?: pulumi.Input<string>;
     /**
-     * The type of the Address Book. Valid values: `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      */
     groupType?: pulumi.Input<string>;
     /**
@@ -212,7 +214,8 @@ export interface AddressBookArgs {
      */
     groupName: pulumi.Input<string>;
     /**
-     * The type of the Address Book. Valid values: `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      */
     groupType: pulumi.Input<string>;
     /**

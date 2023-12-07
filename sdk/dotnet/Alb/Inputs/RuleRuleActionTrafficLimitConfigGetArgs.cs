@@ -13,6 +13,12 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class RuleRuleActionTrafficLimitConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+        /// </summary>
+        [Input("perIpQps")]
+        public Input<int>? PerIpQps { get; set; }
+
+        /// <summary>
         /// The Number of requests per second. Valid values: `1` to `100000`.
         /// </summary>
         [Input("qps")]

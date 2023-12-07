@@ -17,14 +17,16 @@ public final class GetAddressBooksArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAddressBooksArgs Empty = new GetAddressBooksArgs();
 
     /**
-     * The type of the Address Book. Valid values: `ip`, `tag`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     @Import(name="groupType")
     private @Nullable Output<String> groupType;
 
     /**
-     * @return The type of the Address Book. Valid values: `ip`, `tag`.
+     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+     * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
      * 
      */
     public Optional<Output<String>> groupType() {
@@ -104,7 +106,8 @@ public final class GetAddressBooksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param groupType The type of the Address Book. Valid values: `ip`, `tag`.
+         * @param groupType The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+         * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
          * 
          * @return builder
          * 
@@ -115,7 +118,8 @@ public final class GetAddressBooksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param groupType The type of the Address Book. Valid values: `ip`, `tag`.
+         * @param groupType The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
+         * **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
          * 
          * @return builder
          * 
