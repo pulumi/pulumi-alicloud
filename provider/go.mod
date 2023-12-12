@@ -12,7 +12,7 @@ replace (
 require (
 	github.com/aliyun/terraform-provider-alicloud v1.213.1
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.68.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.68.1-0.20231212222643-ba3ef0bc9481
 	github.com/pulumi/pulumi/sdk/v3 v3.96.2
 )
 
@@ -186,6 +186,7 @@ require (
 	github.com/hashicorp/terraform-config-inspect v0.0.0-20191212124732-c6ae6269b9d7 // indirect
 	github.com/hashicorp/terraform-exec v0.13.3 // indirect
 	github.com/hashicorp/terraform-json v0.13.0 // indirect
+	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-test/v2 v2.2.1 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.8.2 // indirect
