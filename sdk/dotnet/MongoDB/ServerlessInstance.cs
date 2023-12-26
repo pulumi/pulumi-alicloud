@@ -14,7 +14,9 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.148.0+.
+    /// &gt; **NOTE:** Deprecated since v1.214.0.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.214.0`.
     /// 
     /// ## Example Usage
     /// 

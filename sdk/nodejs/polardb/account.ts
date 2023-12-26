@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a PolarDB account resource and used to manage databases.
  *
- * > **NOTE:** Available in v1.67.0+.
+ * > **NOTE:** Available since v1.67.0.
  *
  * ## Example Usage
  *
@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
+ *     category: "Normal",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: "terraform-example",

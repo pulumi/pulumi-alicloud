@@ -202,21 +202,6 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
-     * 
-     */
-    @Import(name="enableBackupLog")
-    private @Nullable Output<Integer> enableBackupLog;
-
-    /**
-     * @return Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
-     * 
-     */
-    public Optional<Output<Integer>> enableBackupLog() {
-        return Optional.ofNullable(this.enableBackupLog);
-    }
-
-    /**
      * The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
      * 
      */
@@ -308,7 +293,6 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
         this.dataLevel2BackupPeriods = $.dataLevel2BackupPeriods;
         this.dataLevel2BackupRetentionPeriod = $.dataLevel2BackupRetentionPeriod;
         this.dbClusterId = $.dbClusterId;
-        this.enableBackupLog = $.enableBackupLog;
         this.logBackupAnotherRegionRegion = $.logBackupAnotherRegionRegion;
         this.logBackupAnotherRegionRetentionPeriod = $.logBackupAnotherRegionRetentionPeriod;
         this.logBackupRetentionPeriod = $.logBackupRetentionPeriod;
@@ -610,27 +594,6 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbClusterId(String dbClusterId) {
             return dbClusterId(Output.of(dbClusterId));
-        }
-
-        /**
-         * @param enableBackupLog Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableBackupLog(@Nullable Output<Integer> enableBackupLog) {
-            $.enableBackupLog = enableBackupLog;
-            return this;
-        }
-
-        /**
-         * @param enableBackupLog Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableBackupLog(Integer enableBackupLog) {
-            return enableBackupLog(Output.of(enableBackupLog));
         }
 
         /**

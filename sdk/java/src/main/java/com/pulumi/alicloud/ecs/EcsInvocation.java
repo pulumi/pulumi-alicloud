@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
  * 
- * &gt; **NOTE:** Available in v1.168.0+.
+ * &gt; **NOTE:** Available since v1.168.0+.
  * 
  * ## Example Usage
  * 
@@ -34,10 +34,23 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.ecs.Command;
  * import com.pulumi.alicloud.ecs.CommandArgs;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.ecs.EcsInvocation;
  * import com.pulumi.alicloud.ecs.EcsInvocationArgs;
  * import java.util.List;
@@ -53,20 +66,72 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
- *             .commandContent(&#34;bHMK&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .type(&#34;RunShellScript&#34;)
- *             .workingDir(&#34;/root&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
- *             .status(&#34;Running&#34;)
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroupRule = new SecurityGroupRule(&#34;defaultSecurityGroupRule&#34;, SecurityGroupRuleArgs.builder()        
+ *             .type(&#34;ingress&#34;)
+ *             .ipProtocol(&#34;tcp&#34;)
+ *             .nicType(&#34;intranet&#34;)
+ *             .policy(&#34;accept&#34;)
+ *             .portRange(&#34;22/22&#34;)
+ *             .priority(1)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .cidrIp(&#34;172.16.0.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .vswitchId(defaultSwitch.id())
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .internetMaxBandwidthOut(5)
+ *             .securityGroups(defaultSecurityGroup.id())
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
+ *             .commandContent(&#34;ZWNobyBoZWxsbyx7e25hbWV9fQ==&#34;)
+ *             .description(&#34;For Terraform Test&#34;)
+ *             .type(&#34;RunShellScript&#34;)
+ *             .workingDir(&#34;/root&#34;)
+ *             .enableParameter(true)
  *             .build());
  * 
  *         var defaultEcsInvocation = new EcsInvocation(&#34;defaultEcsInvocation&#34;, EcsInvocationArgs.builder()        
  *             .commandId(defaultCommand.id())
- *             .instanceIds(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .instanceIds(defaultInstance.id())
  *             .build());
  * 
  *     }

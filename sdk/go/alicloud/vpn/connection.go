@@ -25,47 +25,50 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			})
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("terraform-example"),
-//				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				VpcId:       fooNetwork.ID(),
-//				ZoneId:      *pulumi.String(fooZones.Zones[0].Id),
-//			})
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			fooGateway, err := vpn.NewGateway(ctx, "fooGateway", &vpn.GatewayArgs{
-//				VpcId:              fooNetwork.ID(),
+//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
 //				Bandwidth:          pulumi.Int(10),
 //				EnableSsl:          pulumi.Bool(true),
 //				InstanceChargeType: pulumi.String("PrePaid"),
 //				Description:        pulumi.String("test_create_description"),
-//				VswitchId:          fooSwitch.ID(),
+//				VswitchId:          *pulumi.String(defaultSwitches.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			fooCustomerGateway, err := vpn.NewCustomerGateway(ctx, "fooCustomerGateway", &vpn.CustomerGatewayArgs{
 //				IpAddress:   pulumi.String("42.104.22.210"),
-//				Description: pulumi.String("terraform-example"),
+//				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -121,7 +124,7 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	// The configurations of the BGP routing protocol. See `bgpConfig` below.
 	BgpConfig ConnectionBgpConfigOutput `pulumi:"bgpConfig"`
 	// The ID of the customer gateway.
 	CustomerGatewayId pulumi.StringOutput `pulumi:"customerGatewayId"`
@@ -131,11 +134,11 @@ type Connection struct {
 	EnableDpd pulumi.BoolOutput `pulumi:"enableDpd"`
 	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal pulumi.BoolOutput `pulumi:"enableNatTraversal"`
-	// The health check configurations. See the following `Block healthCheckConfig`.
+	// The health check configurations. See `healthCheckConfig` below.
 	HealthCheckConfig ConnectionHealthCheckConfigOutput `pulumi:"healthCheckConfig"`
-	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	// The configurations of phase-one negotiation. See `ikeConfig` below.
 	IkeConfig ConnectionIkeConfigOutput `pulumi:"ikeConfig"`
-	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	// The configurations of phase-two negotiation. See `ipsecConfig` below.
 	IpsecConfig ConnectionIpsecConfigOutput `pulumi:"ipsecConfig"`
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets pulumi.StringArrayOutput `pulumi:"localSubnets"`
@@ -191,7 +194,7 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	// The configurations of the BGP routing protocol. See `bgpConfig` below.
 	BgpConfig *ConnectionBgpConfig `pulumi:"bgpConfig"`
 	// The ID of the customer gateway.
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
@@ -201,11 +204,11 @@ type connectionState struct {
 	EnableDpd *bool `pulumi:"enableDpd"`
 	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
-	// The health check configurations. See the following `Block healthCheckConfig`.
+	// The health check configurations. See `healthCheckConfig` below.
 	HealthCheckConfig *ConnectionHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	// The configurations of phase-one negotiation. See `ikeConfig` below.
 	IkeConfig *ConnectionIkeConfig `pulumi:"ikeConfig"`
-	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	// The configurations of phase-two negotiation. See `ipsecConfig` below.
 	IpsecConfig *ConnectionIpsecConfig `pulumi:"ipsecConfig"`
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets []string `pulumi:"localSubnets"`
@@ -220,7 +223,7 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
-	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	// The configurations of the BGP routing protocol. See `bgpConfig` below.
 	BgpConfig ConnectionBgpConfigPtrInput
 	// The ID of the customer gateway.
 	CustomerGatewayId pulumi.StringPtrInput
@@ -230,11 +233,11 @@ type ConnectionState struct {
 	EnableDpd pulumi.BoolPtrInput
 	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal pulumi.BoolPtrInput
-	// The health check configurations. See the following `Block healthCheckConfig`.
+	// The health check configurations. See `healthCheckConfig` below.
 	HealthCheckConfig ConnectionHealthCheckConfigPtrInput
-	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	// The configurations of phase-one negotiation. See `ikeConfig` below.
 	IkeConfig ConnectionIkeConfigPtrInput
-	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	// The configurations of phase-two negotiation. See `ipsecConfig` below.
 	IpsecConfig ConnectionIpsecConfigPtrInput
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets pulumi.StringArrayInput
@@ -253,7 +256,7 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	// The configurations of the BGP routing protocol. See `bgpConfig` below.
 	BgpConfig *ConnectionBgpConfig `pulumi:"bgpConfig"`
 	// The ID of the customer gateway.
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
@@ -263,11 +266,11 @@ type connectionArgs struct {
 	EnableDpd *bool `pulumi:"enableDpd"`
 	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
-	// The health check configurations. See the following `Block healthCheckConfig`.
+	// The health check configurations. See `healthCheckConfig` below.
 	HealthCheckConfig *ConnectionHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	// The configurations of phase-one negotiation. See `ikeConfig` below.
 	IkeConfig *ConnectionIkeConfig `pulumi:"ikeConfig"`
-	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	// The configurations of phase-two negotiation. See `ipsecConfig` below.
 	IpsecConfig *ConnectionIpsecConfig `pulumi:"ipsecConfig"`
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets []string `pulumi:"localSubnets"`
@@ -281,7 +284,7 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	// The configurations of the BGP routing protocol. See `bgpConfig` below.
 	BgpConfig ConnectionBgpConfigPtrInput
 	// The ID of the customer gateway.
 	CustomerGatewayId pulumi.StringInput
@@ -291,11 +294,11 @@ type ConnectionArgs struct {
 	EnableDpd pulumi.BoolPtrInput
 	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal pulumi.BoolPtrInput
-	// The health check configurations. See the following `Block healthCheckConfig`.
+	// The health check configurations. See `healthCheckConfig` below.
 	HealthCheckConfig ConnectionHealthCheckConfigPtrInput
-	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	// The configurations of phase-one negotiation. See `ikeConfig` below.
 	IkeConfig ConnectionIkeConfigPtrInput
-	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	// The configurations of phase-two negotiation. See `ipsecConfig` below.
 	IpsecConfig ConnectionIpsecConfigPtrInput
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets pulumi.StringArrayInput
@@ -394,7 +397,7 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
-// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+// The configurations of the BGP routing protocol. See `bgpConfig` below.
 func (o ConnectionOutput) BgpConfig() ConnectionBgpConfigOutput {
 	return o.ApplyT(func(v *Connection) ConnectionBgpConfigOutput { return v.BgpConfig }).(ConnectionBgpConfigOutput)
 }
@@ -419,17 +422,17 @@ func (o ConnectionOutput) EnableNatTraversal() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.EnableNatTraversal }).(pulumi.BoolOutput)
 }
 
-// The health check configurations. See the following `Block healthCheckConfig`.
+// The health check configurations. See `healthCheckConfig` below.
 func (o ConnectionOutput) HealthCheckConfig() ConnectionHealthCheckConfigOutput {
 	return o.ApplyT(func(v *Connection) ConnectionHealthCheckConfigOutput { return v.HealthCheckConfig }).(ConnectionHealthCheckConfigOutput)
 }
 
-// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+// The configurations of phase-one negotiation. See `ikeConfig` below.
 func (o ConnectionOutput) IkeConfig() ConnectionIkeConfigOutput {
 	return o.ApplyT(func(v *Connection) ConnectionIkeConfigOutput { return v.IkeConfig }).(ConnectionIkeConfigOutput)
 }
 
-// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+// The configurations of phase-two negotiation. See `ipsecConfig` below.
 func (o ConnectionOutput) IpsecConfig() ConnectionIpsecConfigOutput {
 	return o.ApplyT(func(v *Connection) ConnectionIpsecConfigOutput { return v.IpsecConfig }).(ConnectionIpsecConfigOutput)
 }

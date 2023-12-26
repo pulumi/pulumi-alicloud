@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.168.0+.
+    /// &gt; **NOTE:** Available since v1.168.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -28,17 +28,79 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultCommand = new AliCloud.Ecs.Command("defaultCommand", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         CommandContent = "bHMK",
-    ///         Description = "terraform-example",
-    ///         Type = "RunShellScript",
-    ///         WorkingDir = "/root",
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke(new()
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         Status = "Running",
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("defaultSecurityGroupRule", new()
+    ///     {
+    ///         Type = "ingress",
+    ///         IpProtocol = "tcp",
+    ///         NicType = "intranet",
+    ///         Policy = "accept",
+    ///         PortRange = "22/22",
+    ///         Priority = 1,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         CidrIp = "172.16.0.0/24",
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     {
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 5,
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var defaultCommand = new AliCloud.Ecs.Command("defaultCommand", new()
+    ///     {
+    ///         CommandContent = "ZWNobyBoZWxsbyx7e25hbWV9fQ==",
+    ///         Description = "For Terraform Test",
+    ///         Type = "RunShellScript",
+    ///         WorkingDir = "/root",
+    ///         EnableParameter = true,
     ///     });
     /// 
     ///     var defaultEcsInvocation = new AliCloud.Ecs.EcsInvocation("defaultEcsInvocation", new()
@@ -46,7 +108,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         CommandId = defaultCommand.Id,
     ///         InstanceIds = new[]
     ///         {
-    ///             defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///             defaultInstance.Id,
     ///         },
     ///     });
     /// 

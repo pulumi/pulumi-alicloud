@@ -22,6 +22,7 @@ class EcsKeyPairAttachmentArgs:
         The set of arguments for constructing a EcsKeyPairAttachment resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        :param pulumi.Input[str] key_name: New field 'key_pair_name' instead.
         :param pulumi.Input[str] key_pair_name: The name of key pair used to bind.
         """
         pulumi.set(__self__, "instance_ids", instance_ids)
@@ -62,6 +63,9 @@ class EcsKeyPairAttachmentArgs:
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        New field 'key_pair_name' instead.
+        """
         warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
 
@@ -95,6 +99,7 @@ class _EcsKeyPairAttachmentState:
         Input properties used for looking up and filtering EcsKeyPairAttachment resources.
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[str] key_name: New field 'key_pair_name' instead.
         :param pulumi.Input[str] key_pair_name: The name of key pair used to bind.
         """
         if force is not None:
@@ -136,6 +141,9 @@ class _EcsKeyPairAttachmentState:
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        New field 'key_pair_name' instead.
+        """
         warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
 
@@ -173,7 +181,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
 
         For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
 
-        > **NOTE:** Available in v1.121.0+.
+        > **NOTE:** Available since v1.121.0+.
 
         ## Example Usage
 
@@ -206,7 +214,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             instance_name="terraform-example",
             internet_charge_type="PayByBandwidth",
             vswitch_id=example_switch.id)
-        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name="terraform-example")
+        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name="tf-example")
         example_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment",
             key_pair_name=example_ecs_key_pair.key_pair_name,
             instance_ids=[example_instance.id])
@@ -224,6 +232,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[str] key_name: New field 'key_pair_name' instead.
         :param pulumi.Input[str] key_pair_name: The name of key pair used to bind.
         """
         ...
@@ -237,7 +246,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
 
         For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
 
-        > **NOTE:** Available in v1.121.0+.
+        > **NOTE:** Available since v1.121.0+.
 
         ## Example Usage
 
@@ -270,7 +279,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             instance_name="terraform-example",
             internet_charge_type="PayByBandwidth",
             vswitch_id=example_switch.id)
-        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name="terraform-example")
+        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name="tf-example")
         example_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment",
             key_pair_name=example_ecs_key_pair.key_pair_name,
             instance_ids=[example_instance.id])
@@ -341,6 +350,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[str] key_name: New field 'key_pair_name' instead.
         :param pulumi.Input[str] key_pair_name: The name of key pair used to bind.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -372,6 +382,9 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> pulumi.Output[str]:
+        """
+        New field 'key_pair_name' instead.
+        """
         warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
 

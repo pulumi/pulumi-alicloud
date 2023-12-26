@@ -10,13 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
-    /// BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/create-an-anti-ddos-pro-or-anti-ddos-premium-instance-by-calling-an-api-operation).
+    /// Provides a BGP-line Anti-DDoS Pro(DdosCoo) Instance resource.
     /// 
-    /// &gt; **NOTE:** The product region only support cn-hangzhou.
+    /// For information about BGP-line Anti-DDoS Pro(DdosCoo) Instance and how to use it, see [What is Anti-DDoS Pro Instance](https://www.alibabacloud.com/help/en/ddos-protection/latest/create-an-anti-ddos-pro-or-anti-ddos-premium-instance-by-calling-an-api-operation).
+    /// 
+    /// &gt; **NOTE:** Available since v1.37.0.
     /// 
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
-    /// &gt; **NOTE:** Available since v1.37.0.
+    /// &gt; **NOTE:** From version 1.214.0, if `product_type` is set to `ddoscoo` or `ddoscoo_intl`, the provider `region` should be set to `cn-hangzhou`, and if `product_type` is set to `ddosDip`, the provider `region` should be set to `ap-southeast-1`.
     /// 
     /// ## Example Usage
     /// 
@@ -48,7 +50,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// ## Import
     /// 
-    /// Ddoscoo instance can be imported using the id, e.g.
+    /// DdosCoo instance can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
@@ -94,6 +96,12 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> EditionSale { get; private set; } = null!;
 
         /// <summary>
+        /// The function plan of the instance. Valid values:
+        /// </summary>
+        [Output("functionVersion")]
+        public Output<string> FunctionVersion { get; private set; } = null!;
+
+        /// <summary>
         /// (Available since v1.212.0) The IP address of the instance.
         /// </summary>
         [Output("ip")]
@@ -106,7 +114,19 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+        /// The clean bandwidth provided by the instance.
+        /// </summary>
+        [Output("normalBandwidth")]
+        public Output<string> NormalBandwidth { get; private set; } = null!;
+
+        /// <summary>
+        /// The clean QPS provided by the instance.
+        /// </summary>
+        [Output("normalQps")]
+        public Output<string> NormalQps { get; private set; } = null!;
+
+        /// <summary>
+        /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -116,6 +136,12 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Output("portCount")]
         public Output<string> PortCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The mitigation plan of the instance. Valid values:
+        /// </summary>
+        [Output("productPlan")]
+        public Output<string> ProductPlan { get; private set; } = null!;
 
         /// <summary>
         /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
@@ -188,8 +214,8 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
         /// </summary>
-        [Input("bandwidth", required: true)]
-        public Input<string> Bandwidth { get; set; } = null!;
+        [Input("bandwidth")]
+        public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
         /// The mitigation plan of the instance. Valid values:
@@ -200,8 +226,8 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
         /// </summary>
-        [Input("baseBandwidth", required: true)]
-        public Input<string> BaseBandwidth { get; set; } = null!;
+        [Input("baseBandwidth")]
+        public Input<string>? BaseBandwidth { get; set; }
 
         /// <summary>
         /// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
@@ -216,13 +242,31 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? EditionSale { get; set; }
 
         /// <summary>
+        /// The function plan of the instance. Valid values:
+        /// </summary>
+        [Input("functionVersion")]
+        public Input<string>? FunctionVersion { get; set; }
+
+        /// <summary>
         /// Name of the instance. This name can have a string of 1 to 63 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+        /// The clean bandwidth provided by the instance.
+        /// </summary>
+        [Input("normalBandwidth")]
+        public Input<string>? NormalBandwidth { get; set; }
+
+        /// <summary>
+        /// The clean QPS provided by the instance.
+        /// </summary>
+        [Input("normalQps")]
+        public Input<string>? NormalQps { get; set; }
+
+        /// <summary>
+        /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -234,6 +278,12 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string> PortCount { get; set; } = null!;
 
         /// <summary>
+        /// The mitigation plan of the instance. Valid values:
+        /// </summary>
+        [Input("productPlan")]
+        public Input<string>? ProductPlan { get; set; }
+
+        /// <summary>
         /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
         /// </summary>
         [Input("productType")]
@@ -242,8 +292,8 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         /// </summary>
-        [Input("serviceBandwidth", required: true)]
-        public Input<string> ServiceBandwidth { get; set; } = null!;
+        [Input("serviceBandwidth")]
+        public Input<string>? ServiceBandwidth { get; set; }
 
         public DdosCooInstanceArgs()
         {
@@ -290,6 +340,12 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? EditionSale { get; set; }
 
         /// <summary>
+        /// The function plan of the instance. Valid values:
+        /// </summary>
+        [Input("functionVersion")]
+        public Input<string>? FunctionVersion { get; set; }
+
+        /// <summary>
         /// (Available since v1.212.0) The IP address of the instance.
         /// </summary>
         [Input("ip")]
@@ -302,7 +358,19 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+        /// The clean bandwidth provided by the instance.
+        /// </summary>
+        [Input("normalBandwidth")]
+        public Input<string>? NormalBandwidth { get; set; }
+
+        /// <summary>
+        /// The clean QPS provided by the instance.
+        /// </summary>
+        [Input("normalQps")]
+        public Input<string>? NormalQps { get; set; }
+
+        /// <summary>
+        /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -312,6 +380,12 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Input("portCount")]
         public Input<string>? PortCount { get; set; }
+
+        /// <summary>
+        /// The mitigation plan of the instance. Valid values:
+        /// </summary>
+        [Input("productPlan")]
+        public Input<string>? ProductPlan { get; set; }
 
         /// <summary>
         /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:

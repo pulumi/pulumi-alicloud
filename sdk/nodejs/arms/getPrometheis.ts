@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.203.0+.
+ * > **NOTE:** Available since v1.203.0.
+ *
+ * > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
  *
  * ## Example Usage
  *
@@ -19,14 +21,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.arms.getPrometheis({
- *     ids: ["example_id"],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
  * });
- * export const armsPrometheisId1 = ids.then(ids => ids.prometheis?.[0]?.id);
- * const nameRegex = alicloud.arms.getPrometheis({
- *     nameRegex: "tf-example",
+ * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ * }));
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
+ * const defaultPrometheus = new alicloud.arms.Prometheus("defaultPrometheus", {
+ *     clusterType: "ecs",
+ *     grafanaInstanceId: "free",
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     clusterName: defaultNetworks.then(defaultNetworks => `${name}-${defaultNetworks.ids?.[0]}`),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[1]?.id),
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Prometheus",
+ *     },
  * });
- * export const armsPrometheisId2 = nameRegex.then(nameRegex => nameRegex.prometheis?.[0]?.id);
+ * const nameRegex = alicloud.arms.getPrometheisOutput({
+ *     nameRegex: defaultPrometheus.clusterName,
+ * });
+ * export const armsPrometheisId = nameRegex.apply(nameRegex => nameRegex.prometheis?.[0]?.id);
  * ```
  */
 export function getPrometheis(args?: GetPrometheisArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheisResult> {
@@ -34,6 +55,7 @@ export function getPrometheis(args?: GetPrometheisArgs, opts?: pulumi.InvokeOpti
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getPrometheis:getPrometheis", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -46,6 +68,10 @@ export function getPrometheis(args?: GetPrometheisArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getPrometheis.
  */
 export interface GetPrometheisArgs {
+    /**
+     * Whether to query details about the instance.
+     */
+    enableDetails?: boolean;
     /**
      * A list of Prometheus IDs.
      */
@@ -72,6 +98,7 @@ export interface GetPrometheisArgs {
  * A collection of values returned by getPrometheis.
  */
 export interface GetPrometheisResult {
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -84,7 +111,7 @@ export interface GetPrometheisResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * A list of Prometheis. Each element contains the following attributes:
+     * A list of Prometheus. Each element contains the following attributes:
      */
     readonly prometheis: outputs.arms.GetPrometheisPromethei[];
     /**
@@ -99,7 +126,9 @@ export interface GetPrometheisResult {
 /**
  * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.203.0+.
+ * > **NOTE:** Available since v1.203.0.
+ *
+ * > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
  *
  * ## Example Usage
  *
@@ -109,14 +138,33 @@ export interface GetPrometheisResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.arms.getPrometheis({
- *     ids: ["example_id"],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
  * });
- * export const armsPrometheisId1 = ids.then(ids => ids.prometheis?.[0]?.id);
- * const nameRegex = alicloud.arms.getPrometheis({
- *     nameRegex: "tf-example",
+ * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ * }));
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
+ * const defaultPrometheus = new alicloud.arms.Prometheus("defaultPrometheus", {
+ *     clusterType: "ecs",
+ *     grafanaInstanceId: "free",
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     clusterName: defaultNetworks.then(defaultNetworks => `${name}-${defaultNetworks.ids?.[0]}`),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[1]?.id),
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Prometheus",
+ *     },
  * });
- * export const armsPrometheisId2 = nameRegex.then(nameRegex => nameRegex.prometheis?.[0]?.id);
+ * const nameRegex = alicloud.arms.getPrometheisOutput({
+ *     nameRegex: defaultPrometheus.clusterName,
+ * });
+ * export const armsPrometheisId = nameRegex.apply(nameRegex => nameRegex.prometheis?.[0]?.id);
  * ```
  */
 export function getPrometheisOutput(args?: GetPrometheisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheisResult> {
@@ -127,6 +175,10 @@ export function getPrometheisOutput(args?: GetPrometheisOutputArgs, opts?: pulum
  * A collection of arguments for invoking getPrometheis.
  */
 export interface GetPrometheisOutputArgs {
+    /**
+     * Whether to query details about the instance.
+     */
+    enableDetails?: pulumi.Input<boolean>;
     /**
      * A list of Prometheus IDs.
      */

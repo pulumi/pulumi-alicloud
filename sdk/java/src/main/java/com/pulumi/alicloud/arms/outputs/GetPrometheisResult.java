@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.alicloud.arms.outputs.GetPrometheisPromethei;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPrometheisResult {
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -29,7 +31,7 @@ public final class GetPrometheisResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return A list of Prometheis. Each element contains the following attributes:
+     * @return A list of Prometheus. Each element contains the following attributes:
      * 
      */
     private List<GetPrometheisPromethei> prometheis;
@@ -45,6 +47,9 @@ public final class GetPrometheisResult {
     private @Nullable Map<String,Object> tags;
 
     private GetPrometheisResult() {}
+    public Optional<Boolean> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -69,7 +74,7 @@ public final class GetPrometheisResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return A list of Prometheis. Each element contains the following attributes:
+     * @return A list of Prometheus. Each element contains the following attributes:
      * 
      */
     public List<GetPrometheisPromethei> prometheis() {
@@ -99,6 +104,7 @@ public final class GetPrometheisResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enableDetails;
         private String id;
         private List<String> ids;
         private @Nullable String nameRegex;
@@ -110,6 +116,7 @@ public final class GetPrometheisResult {
         public Builder() {}
         public Builder(GetPrometheisResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enableDetails = defaults.enableDetails;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.nameRegex = defaults.nameRegex;
@@ -120,6 +127,11 @@ public final class GetPrometheisResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
+        public Builder enableDetails(@Nullable Boolean enableDetails) {
+            this.enableDetails = enableDetails;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
@@ -171,6 +183,7 @@ public final class GetPrometheisResult {
         }
         public GetPrometheisResult build() {
             final var _resultValue = new GetPrometheisResult();
+            _resultValue.enableDetails = enableDetails;
             _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.nameRegex = nameRegex;

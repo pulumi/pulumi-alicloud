@@ -33,7 +33,16 @@ import * as utilities from "../utilities";
  *     vpcId: defaultVpc.id,
  *     resourceGroupId: defaultRg.id,
  *     serviceName: domain,
- *     policyDocument: "{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }",
+ *     policyDocument: `      {
+ *         "Version": "1",
+ *         "Statement": [{
+ *           "Effect": "Allow",
+ *           "Resource": ["*"],
+ *           "Action": ["*"],
+ *           "Principal": ["*"]
+ *         }]
+ *       }
+ * `,
  * });
  * ```
  *

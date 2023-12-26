@@ -22,14 +22,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     public static final ConnectionArgs Empty = new ConnectionArgs();
 
     /**
-     * The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+     * The configurations of the BGP routing protocol. See `bgp_config` below.
      * 
      */
     @Import(name="bgpConfig")
     private @Nullable Output<ConnectionBgpConfigArgs> bgpConfig;
 
     /**
-     * @return The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+     * @return The configurations of the BGP routing protocol. See `bgp_config` below.
      * 
      */
     public Optional<Output<ConnectionBgpConfigArgs>> bgpConfig() {
@@ -97,14 +97,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The health check configurations. See the following `Block health_check_config`.
+     * The health check configurations. See `health_check_config` below.
      * 
      */
     @Import(name="healthCheckConfig")
     private @Nullable Output<ConnectionHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return The health check configurations. See the following `Block health_check_config`.
+     * @return The health check configurations. See `health_check_config` below.
      * 
      */
     public Optional<Output<ConnectionHealthCheckConfigArgs>> healthCheckConfig() {
@@ -112,14 +112,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of phase-one negotiation. See the following `Block ike_config`.
+     * The configurations of phase-one negotiation. See `ike_config` below.
      * 
      */
     @Import(name="ikeConfig")
     private @Nullable Output<ConnectionIkeConfigArgs> ikeConfig;
 
     /**
-     * @return The configurations of phase-one negotiation. See the following `Block ike_config`.
+     * @return The configurations of phase-one negotiation. See `ike_config` below.
      * 
      */
     public Optional<Output<ConnectionIkeConfigArgs>> ikeConfig() {
@@ -127,14 +127,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+     * The configurations of phase-two negotiation. See `ipsec_config` below.
      * 
      */
     @Import(name="ipsecConfig")
     private @Nullable Output<ConnectionIpsecConfigArgs> ipsecConfig;
 
     /**
-     * @return The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+     * @return The configurations of phase-two negotiation. See `ipsec_config` below.
      * 
      */
     public Optional<Output<ConnectionIpsecConfigArgs>> ipsecConfig() {
@@ -237,7 +237,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpConfig The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+         * @param bgpConfig The configurations of the BGP routing protocol. See `bgp_config` below.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpConfig The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+         * @param bgpConfig The configurations of the BGP routing protocol. See `bgp_config` below.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The health check configurations. See the following `Block health_check_config`.
+         * @param healthCheckConfig The health check configurations. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The health check configurations. See the following `Block health_check_config`.
+         * @param healthCheckConfig The health check configurations. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeConfig The configurations of phase-one negotiation. See the following `Block ike_config`.
+         * @param ikeConfig The configurations of phase-one negotiation. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeConfig The configurations of phase-one negotiation. See the following `Block ike_config`.
+         * @param ikeConfig The configurations of phase-one negotiation. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipsecConfig The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+         * @param ipsecConfig The configurations of phase-two negotiation. See `ipsec_config` below.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipsecConfig The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+         * @param ipsecConfig The configurations of phase-two negotiation. See `ipsec_config` below.
          * 
          * @return builder
          * 

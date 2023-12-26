@@ -18,7 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a security group resource.
+ * Provides a Security Group resource.
+ * 
+ * For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * &gt; **NOTE:** `alicloud.ecs.SecurityGroup` is used to build and manage a security group, and `alicloud.ecs.SecurityGroupRule` can define ingress or egress rules for it.
  * 
@@ -55,7 +59,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * Basic usage for vpc
+ * 
+ * Basic Usage for VPC
  * ```java
  * package generated_program;
  * 
@@ -122,32 +127,36 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * 
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      * 
      * @deprecated
-     * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+     * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
      * 
      */
-    @Deprecated /* Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it. */
+    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
     @Export(name="innerAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> innerAccess;
 
     /**
-     * @return Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+     * @return Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * 
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      * 
      */
     public Output<Boolean> innerAccess() {
         return this.innerAccess;
     }
     /**
-     * Whether to allow both machines to access each other on all ports in the same security group. Valid values: [&#34;Accept&#34;, &#34;Drop&#34;]
+     * The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
      * 
      */
     @Export(name="innerAccessPolicy", refs={String.class}, tree="[0]")
     private Output<String> innerAccessPolicy;
 
     /**
-     * @return Whether to allow both machines to access each other on all ports in the same security group. Valid values: [&#34;Accept&#34;, &#34;Drop&#34;]
+     * @return The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
      * 
      */
     public Output<String> innerAccessPolicy() {
@@ -168,14 +177,14 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The Id of resource group which the security_group belongs.
+     * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the security_group belongs.
+     * @return The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {
@@ -183,26 +192,20 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the security group. Valid values:
-     * `normal`: basic security group.
-     * `enterprise`: advanced security group For more information.
      * 
      */
     @Export(name="securityGroupType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> securityGroupType;
+    private Output<String> securityGroupType;
 
     /**
      * @return The type of the security group. Valid values:
-     * `normal`: basic security group.
-     * `enterprise`: advanced security group For more information.
      * 
      */
-    public Output<Optional<String>> securityGroupType() {
-        return Codegen.optional(this.securityGroupType);
+    public Output<String> securityGroupType() {
+        return this.securityGroupType;
     }
     /**
      * A mapping of tags to assign to the resource.
-     * 
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
@@ -211,21 +214,19 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return A mapping of tags to assign to the resource.
      * 
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-     * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The VPC ID.
+     * The ID of the VPC.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The VPC ID.
+     * @return The ID of the VPC.
      * 
      */
     public Output<Optional<String>> vpcId() {

@@ -64,7 +64,18 @@ import (
 //				VpcId:                     defaultVpc.ID(),
 //				ResourceGroupId:           defaultRg.ID(),
 //				ServiceName:               pulumi.String(domain),
-//				PolicyDocument:            pulumi.String("{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }"),
+//				PolicyDocument: pulumi.String(`      {
+//	        "Version": "1",
+//	        "Statement": [{
+//	          "Effect": "Allow",
+//	          "Resource": ["*"],
+//	          "Action": ["*"],
+//	          "Principal": ["*"]
+//	        }]
+//	      }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err

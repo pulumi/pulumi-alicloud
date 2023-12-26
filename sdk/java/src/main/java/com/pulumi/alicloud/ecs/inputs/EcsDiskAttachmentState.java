@@ -46,9 +46,17 @@ public final class EcsDiskAttachmentState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.deleteWithInstance);
     }
 
+    /**
+     * The name of the cloud disk device.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The name of the cloud disk device.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
@@ -185,11 +193,23 @@ public final class EcsDiskAttachmentState extends com.pulumi.resources.ResourceA
             return deleteWithInstance(Output.of(deleteWithInstance));
         }
 
+        /**
+         * @param device The name of the cloud disk device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The name of the cloud disk device.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }

@@ -257,14 +257,14 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+     * Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
      * 
      */
     @Import(name="internetMaxBandwidthOut")
     private @Nullable Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+     * @return Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
      * 
      */
     public Optional<Output<Integer>> internetMaxBandwidthOut() {
@@ -1134,7 +1134,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param internetMaxBandwidthOut Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+         * @param internetMaxBandwidthOut Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
          * 
          * @return builder
          * 
@@ -1145,7 +1145,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param internetMaxBandwidthOut Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+         * @param internetMaxBandwidthOut Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
          * 
          * @return builder
          * 

@@ -60,6 +60,11 @@ export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
 utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
 
+export { LakeAccountArgs, LakeAccountState } from "./lakeAccount";
+export type LakeAccount = import("./lakeAccount").LakeAccount;
+export const LakeAccount: typeof import("./lakeAccount").LakeAccount = null as any;
+utilities.lazyLoad(exports, ["LakeAccount"], () => require("./lakeAccount"));
+
 export { ResourceGroupArgs, ResourceGroupState } from "./resourceGroup";
 export type ResourceGroup = import("./resourceGroup").ResourceGroup;
 export const ResourceGroup: typeof import("./resourceGroup").ResourceGroup = null as any;
@@ -82,6 +87,8 @@ const _module = {
                 return new DBCluster(name, <any>undefined, { urn })
             case "alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion":
                 return new DBClusterLakeVersion(name, <any>undefined, { urn })
+            case "alicloud:adb/lakeAccount:LakeAccount":
+                return new LakeAccount(name, <any>undefined, { urn })
             case "alicloud:adb/resourceGroup:ResourceGroup":
                 return new ResourceGroup(name, <any>undefined, { urn })
             default:
@@ -95,4 +102,5 @@ pulumi.runtime.registerResourceModule("alicloud", "adb/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/dBCluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/dBClusterLakeVersion", _module)
+pulumi.runtime.registerResourceModule("alicloud", "adb/lakeAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/resourceGroup", _module)

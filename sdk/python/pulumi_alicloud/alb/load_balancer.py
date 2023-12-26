@@ -859,7 +859,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
-    def bandwidth_package_id(self) -> pulumi.Output[Optional[str]]:
+    def bandwidth_package_id(self) -> pulumi.Output[str]:
         """
         The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
         """

@@ -69,7 +69,17 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultVpc.id())
  *             .resourceGroupId(defaultRg.id())
  *             .serviceName(domain)
- *             .policyDocument(&#34;{ \&#34;Version\&#34; : \&#34;1\&#34;, \&#34;Statement\&#34; : [ { \&#34;Effect\&#34; : \&#34;Allow\&#34;, \&#34;Resource\&#34; : [ \&#34;*\&#34; ], \&#34;Action\&#34; : [ \&#34;*\&#34; ], \&#34;Principal\&#34; : [ \&#34;*\&#34; ] } ] }&#34;)
+ *             .policyDocument(&#34;&#34;&#34;
+ *       {
+ *         &#34;Version&#34;: &#34;1&#34;,
+ *         &#34;Statement&#34;: [{
+ *           &#34;Effect&#34;: &#34;Allow&#34;,
+ *           &#34;Resource&#34;: [&#34;*&#34;],
+ *           &#34;Action&#34;: [&#34;*&#34;],
+ *           &#34;Principal&#34;: [&#34;*&#34;]
+ *         }]
+ *       }
+ *             &#34;&#34;&#34;)
  *             .build());
  * 
  *     }

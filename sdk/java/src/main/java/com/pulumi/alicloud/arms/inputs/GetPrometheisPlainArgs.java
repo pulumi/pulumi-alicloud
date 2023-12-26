@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class GetPrometheisPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPrometheisPlainArgs Empty = new GetPrometheisPlainArgs();
+
+    /**
+     * Whether to query details about the instance.
+     * 
+     */
+    @Import(name="enableDetails")
+    private @Nullable Boolean enableDetails;
+
+    /**
+     * @return Whether to query details about the instance.
+     * 
+     */
+    public Optional<Boolean> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
+    }
 
     /**
      * A list of Prometheus IDs.
@@ -95,6 +111,7 @@ public final class GetPrometheisPlainArgs extends com.pulumi.resources.InvokeArg
     private GetPrometheisPlainArgs() {}
 
     private GetPrometheisPlainArgs(GetPrometheisPlainArgs $) {
+        this.enableDetails = $.enableDetails;
         this.ids = $.ids;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
@@ -118,6 +135,17 @@ public final class GetPrometheisPlainArgs extends com.pulumi.resources.InvokeArg
 
         public Builder(GetPrometheisPlainArgs defaults) {
             $ = new GetPrometheisPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enableDetails Whether to query details about the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(@Nullable Boolean enableDetails) {
+            $.enableDetails = enableDetails;
+            return this;
         }
 
         /**

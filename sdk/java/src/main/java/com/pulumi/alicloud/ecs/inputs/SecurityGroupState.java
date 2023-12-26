@@ -34,37 +34,41 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * 
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      * 
      * @deprecated
-     * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+     * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
      * 
      */
-    @Deprecated /* Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it. */
+    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
     @Import(name="innerAccess")
     private @Nullable Output<Boolean> innerAccess;
 
     /**
-     * @return Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+     * @return Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+     * 
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      * 
      * @deprecated
-     * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+     * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
      * 
      */
-    @Deprecated /* Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it. */
+    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
     public Optional<Output<Boolean>> innerAccess() {
         return Optional.ofNullable(this.innerAccess);
     }
 
     /**
-     * Whether to allow both machines to access each other on all ports in the same security group. Valid values: [&#34;Accept&#34;, &#34;Drop&#34;]
+     * The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
      * 
      */
     @Import(name="innerAccessPolicy")
     private @Nullable Output<String> innerAccessPolicy;
 
     /**
-     * @return Whether to allow both machines to access each other on all ports in the same security group. Valid values: [&#34;Accept&#34;, &#34;Drop&#34;]
+     * @return The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
      * 
      */
     public Optional<Output<String>> innerAccessPolicy() {
@@ -87,14 +91,14 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Id of resource group which the security_group belongs.
+     * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the security_group belongs.
+     * @return The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -103,8 +107,6 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The type of the security group. Valid values:
-     * `normal`: basic security group.
-     * `enterprise`: advanced security group For more information.
      * 
      */
     @Import(name="securityGroupType")
@@ -112,8 +114,6 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The type of the security group. Valid values:
-     * `normal`: basic security group.
-     * `enterprise`: advanced security group For more information.
      * 
      */
     public Optional<Output<String>> securityGroupType() {
@@ -123,8 +123,6 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     /**
      * A mapping of tags to assign to the resource.
      * 
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
@@ -132,22 +130,20 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return A mapping of tags to assign to the resource.
      * 
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-     * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
     /**
-     * The VPC ID.
+     * The ID of the VPC.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The VPC ID.
+     * @return The ID of the VPC.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -207,36 +203,40 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param innerAccess Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+         * @param innerAccess Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+         * 
+         * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+         * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
          * 
          */
-        @Deprecated /* Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it. */
+        @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
         public Builder innerAccess(@Nullable Output<Boolean> innerAccess) {
             $.innerAccess = innerAccess;
             return this;
         }
 
         /**
-         * @param innerAccess Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+         * @param innerAccess Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+         * 
+         * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+         * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
          * 
          */
-        @Deprecated /* Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it. */
+        @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
         public Builder innerAccess(Boolean innerAccess) {
             return innerAccess(Output.of(innerAccess));
         }
 
         /**
-         * @param innerAccessPolicy Whether to allow both machines to access each other on all ports in the same security group. Valid values: [&#34;Accept&#34;, &#34;Drop&#34;]
+         * @param innerAccessPolicy The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param innerAccessPolicy Whether to allow both machines to access each other on all ports in the same security group. Valid values: [&#34;Accept&#34;, &#34;Drop&#34;]
+         * @param innerAccessPolicy The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the security_group belongs.
+         * @param resourceGroupId The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the security_group belongs.
+         * @param resourceGroupId The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 
@@ -300,8 +300,6 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param securityGroupType The type of the security group. Valid values:
-         * `normal`: basic security group.
-         * `enterprise`: advanced security group For more information.
          * 
          * @return builder
          * 
@@ -313,8 +311,6 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param securityGroupType The type of the security group. Valid values:
-         * `normal`: basic security group.
-         * `enterprise`: advanced security group For more information.
          * 
          * @return builder
          * 
@@ -325,8 +321,6 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * 
-         * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
          * 
          * @return builder
          * 
@@ -339,8 +333,6 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param tags A mapping of tags to assign to the resource.
          * 
-         * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-         * 
          * @return builder
          * 
          */
@@ -349,7 +341,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The VPC ID.
+         * @param vpcId The ID of the VPC.
          * 
          * @return builder
          * 
@@ -360,7 +352,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The VPC ID.
+         * @param vpcId The ID of the VPC.
          * 
          * @return builder
          * 

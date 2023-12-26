@@ -11,7 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a security group resource.
+// Provides a Security Group resource.
+//
+// For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+//
+// > **NOTE:** Available since v1.0.0.
 //
 // > **NOTE:** `ecs.SecurityGroup` is used to build and manage a security group, and `ecs.SecurityGroupRule` can define ingress or egress rules for it.
 //
@@ -44,7 +48,8 @@ import (
 //	}
 //
 // ```
-// Basic usage for vpc
+//
+// # Basic Usage for VPC
 //
 // ```go
 // package main
@@ -96,25 +101,23 @@ type SecurityGroup struct {
 
 	// The security group description. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+	//
+	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
 	InnerAccess pulumi.BoolOutput `pulumi:"innerAccess"`
-	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy pulumi.StringOutput `pulumi:"innerAccessPolicy"`
 	// The name of the security group. Defaults to null.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Id of resource group which the securityGroup belongs.
+	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The type of the security group. Valid values:
-	// `normal`: basic security group.
-	// `enterprise`: advanced security group For more information.
-	SecurityGroupType pulumi.StringPtrOutput `pulumi:"securityGroupType"`
+	SecurityGroupType pulumi.StringOutput `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
-	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
 
@@ -150,50 +153,46 @@ func GetSecurityGroup(ctx *pulumi.Context,
 type securityGroupState struct {
 	// The security group description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+	//
+	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
 	InnerAccess *bool `pulumi:"innerAccess"`
-	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy *string `pulumi:"innerAccessPolicy"`
 	// The name of the security group. Defaults to null.
 	Name *string `pulumi:"name"`
-	// The Id of resource group which the securityGroup belongs.
+	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The type of the security group. Valid values:
-	// `normal`: basic security group.
-	// `enterprise`: advanced security group For more information.
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
-	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type SecurityGroupState struct {
 	// The security group description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+	//
+	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
 	InnerAccess pulumi.BoolPtrInput
-	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy pulumi.StringPtrInput
 	// The name of the security group. Defaults to null.
 	Name pulumi.StringPtrInput
-	// The Id of resource group which the securityGroup belongs.
+	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
 	// The type of the security group. Valid values:
-	// `normal`: basic security group.
-	// `enterprise`: advanced security group For more information.
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags pulumi.MapInput
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -204,25 +203,23 @@ func (SecurityGroupState) ElementType() reflect.Type {
 type securityGroupArgs struct {
 	// The security group description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+	//
+	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
 	InnerAccess *bool `pulumi:"innerAccess"`
-	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy *string `pulumi:"innerAccessPolicy"`
 	// The name of the security group. Defaults to null.
 	Name *string `pulumi:"name"`
-	// The Id of resource group which the securityGroup belongs.
+	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The type of the security group. Valid values:
-	// `normal`: basic security group.
-	// `enterprise`: advanced security group For more information.
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
-	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -230,25 +227,23 @@ type securityGroupArgs struct {
 type SecurityGroupArgs struct {
 	// The security group description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+	//
+	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
 	InnerAccess pulumi.BoolPtrInput
-	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy pulumi.StringPtrInput
 	// The name of the security group. Defaults to null.
 	Name pulumi.StringPtrInput
-	// The Id of resource group which the securityGroup belongs.
+	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
 	// The type of the security group. Valid values:
-	// `normal`: basic security group.
-	// `enterprise`: advanced security group For more information.
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags pulumi.MapInput
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -344,14 +339,16 @@ func (o SecurityGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 //
-// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+//
+// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
 func (o SecurityGroupOutput) InnerAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.BoolOutput { return v.InnerAccess }).(pulumi.BoolOutput)
 }
 
-// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 func (o SecurityGroupOutput) InnerAccessPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.InnerAccessPolicy }).(pulumi.StringOutput)
 }
@@ -361,26 +358,22 @@ func (o SecurityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Id of resource group which the securityGroup belongs.
+// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 func (o SecurityGroupOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
 // The type of the security group. Valid values:
-// `normal`: basic security group.
-// `enterprise`: advanced security group For more information.
-func (o SecurityGroupOutput) SecurityGroupType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.SecurityGroupType }).(pulumi.StringPtrOutput)
+func (o SecurityGroupOutput) SecurityGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.SecurityGroupType }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.
-//
-// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 func (o SecurityGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The VPC ID.
+// The ID of the VPC.
 func (o SecurityGroupOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }

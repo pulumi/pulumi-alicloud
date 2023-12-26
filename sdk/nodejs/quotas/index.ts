@@ -30,6 +30,11 @@ export const getQuotas: typeof import("./getQuotas").getQuotas = null as any;
 export const getQuotasOutput: typeof import("./getQuotas").getQuotasOutput = null as any;
 utilities.lazyLoad(exports, ["getQuotas","getQuotasOutput"], () => require("./getQuotas"));
 
+export { GetTemplateApplicationsArgs, GetTemplateApplicationsResult, GetTemplateApplicationsOutputArgs } from "./getTemplateApplications";
+export const getTemplateApplications: typeof import("./getTemplateApplications").getTemplateApplications = null as any;
+export const getTemplateApplicationsOutput: typeof import("./getTemplateApplications").getTemplateApplicationsOutput = null as any;
+utilities.lazyLoad(exports, ["getTemplateApplications","getTemplateApplicationsOutput"], () => require("./getTemplateApplications"));
+
 export { QuotaAlarmArgs, QuotaAlarmState } from "./quotaAlarm";
 export type QuotaAlarm = import("./quotaAlarm").QuotaAlarm;
 export const QuotaAlarm: typeof import("./quotaAlarm").QuotaAlarm = null as any;
@@ -39,6 +44,11 @@ export { QuotaApplicationArgs, QuotaApplicationState } from "./quotaApplication"
 export type QuotaApplication = import("./quotaApplication").QuotaApplication;
 export const QuotaApplication: typeof import("./quotaApplication").QuotaApplication = null as any;
 utilities.lazyLoad(exports, ["QuotaApplication"], () => require("./quotaApplication"));
+
+export { TemplateApplicationsArgs, TemplateApplicationsState } from "./templateApplications";
+export type TemplateApplications = import("./templateApplications").TemplateApplications;
+export const TemplateApplications: typeof import("./templateApplications").TemplateApplications = null as any;
+utilities.lazyLoad(exports, ["TemplateApplications"], () => require("./templateApplications"));
 
 export { TemplateQuotaArgs, TemplateQuotaState } from "./templateQuota";
 export type TemplateQuota = import("./templateQuota").TemplateQuota;
@@ -56,6 +66,8 @@ const _module = {
                 return new QuotaAlarm(name, <any>undefined, { urn })
             case "alicloud:quotas/quotaApplication:QuotaApplication":
                 return new QuotaApplication(name, <any>undefined, { urn })
+            case "alicloud:quotas/templateApplications:TemplateApplications":
+                return new TemplateApplications(name, <any>undefined, { urn })
             case "alicloud:quotas/templateQuota:TemplateQuota":
                 return new TemplateQuota(name, <any>undefined, { urn })
             default:
@@ -66,4 +78,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "quotas/applicationInfo", _module)
 pulumi.runtime.registerResourceModule("alicloud", "quotas/quotaAlarm", _module)
 pulumi.runtime.registerResourceModule("alicloud", "quotas/quotaApplication", _module)
+pulumi.runtime.registerResourceModule("alicloud", "quotas/templateApplications", _module)
 pulumi.runtime.registerResourceModule("alicloud", "quotas/templateQuota", _module)

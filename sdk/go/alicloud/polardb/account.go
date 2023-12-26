@@ -14,7 +14,7 @@ import (
 
 // Provides a PolarDB account resource and used to manage databases.
 //
-// > **NOTE:** Available in v1.67.0+.
+// > **NOTE:** Available since v1.67.0.
 //
 // ## Example Usage
 //
@@ -35,6 +35,7 @@ import (
 //				DbType:    pulumi.StringRef("MySQL"),
 //				DbVersion: pulumi.StringRef("8.0"),
 //				PayType:   "PostPaid",
+//				Category:  pulumi.StringRef("Normal"),
 //			}, nil)
 //			if err != nil {
 //				return err

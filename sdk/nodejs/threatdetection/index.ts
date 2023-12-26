@@ -130,6 +130,16 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { MaliciousFileWhitelistConfigArgs, MaliciousFileWhitelistConfigState } from "./maliciousFileWhitelistConfig";
+export type MaliciousFileWhitelistConfig = import("./maliciousFileWhitelistConfig").MaliciousFileWhitelistConfig;
+export const MaliciousFileWhitelistConfig: typeof import("./maliciousFileWhitelistConfig").MaliciousFileWhitelistConfig = null as any;
+utilities.lazyLoad(exports, ["MaliciousFileWhitelistConfig"], () => require("./maliciousFileWhitelistConfig"));
+
+export { OssScanConfigArgs, OssScanConfigState } from "./ossScanConfig";
+export type OssScanConfig = import("./ossScanConfig").OssScanConfig;
+export const OssScanConfig: typeof import("./ossScanConfig").OssScanConfig = null as any;
+utilities.lazyLoad(exports, ["OssScanConfig"], () => require("./ossScanConfig"));
+
 export { SasTrailArgs, SasTrailState } from "./sasTrail";
 export type SasTrail = import("./sasTrail").SasTrail;
 export const SasTrail: typeof import("./sasTrail").SasTrail = null as any;
@@ -174,6 +184,10 @@ const _module = {
                 return new ImageEventOperation(name, <any>undefined, { urn })
             case "alicloud:threatdetection/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig":
+                return new MaliciousFileWhitelistConfig(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/ossScanConfig:OssScanConfig":
+                return new OssScanConfig(name, <any>undefined, { urn })
             case "alicloud:threatdetection/sasTrail:SasTrail":
                 return new SasTrail(name, <any>undefined, { urn })
             case "alicloud:threatdetection/vulWhitelist:VulWhitelist":
@@ -197,6 +211,8 @@ pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotPrese
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotProbe", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/imageEventOperation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/maliciousFileWhitelistConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/ossScanConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/sasTrail", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/vulWhitelist", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/webLockConfig", _module)

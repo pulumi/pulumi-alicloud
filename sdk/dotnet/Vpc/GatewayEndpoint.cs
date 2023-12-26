@@ -49,7 +49,16 @@ namespace Pulumi.AliCloud.Vpc
     ///         VpcId = defaultVpc.Id,
     ///         ResourceGroupId = defaultRg.Id,
     ///         ServiceName = domain,
-    ///         PolicyDocument = "{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }",
+    ///         PolicyDocument = @"      {
+    ///         ""Version"": ""1"",
+    ///         ""Statement"": [{
+    ///           ""Effect"": ""Allow"",
+    ///           ""Resource"": [""*""],
+    ///           ""Action"": [""*""],
+    ///           ""Principal"": [""*""]
+    ///         }]
+    ///       }
+    /// ",
     ///     });
     /// 
     /// });

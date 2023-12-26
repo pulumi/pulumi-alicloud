@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// <summary>
     /// Provides a PolarDB account resource and used to manage databases.
     /// 
-    /// &gt; **NOTE:** Available in v1.67.0+.
+    /// &gt; **NOTE:** Available since v1.67.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
     ///         PayType = "PostPaid",
+    ///         Category = "Normal",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()

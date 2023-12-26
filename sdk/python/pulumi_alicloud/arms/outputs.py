@@ -34,6 +34,7 @@ __all__ = [
     'GetPrometheusAlertRulesRuleAnnotationResult',
     'GetPrometheusAlertRulesRuleLabelResult',
     'GetPrometheusMonitoringsPrometheusMonitoringResult',
+    'GetPrometheusPrometheiResult',
     'GetRemoteWritesRemoteWriteResult',
 ]
 
@@ -996,11 +997,20 @@ class GetIntegrationExportersIntegrationExporterResult(dict):
 @pulumi.output_type
 class GetPrometheisPrometheiResult(dict):
     def __init__(__self__, *,
+                 auth_token: str,
                  cluster_id: str,
                  cluster_name: str,
                  cluster_type: str,
                  grafana_instance_id: str,
+                 http_api_inter_url: str,
+                 http_api_intra_url: str,
                  id: str,
+                 push_gate_way_inter_url: str,
+                 push_gate_way_intra_url: str,
+                 remote_read_inter_url: str,
+                 remote_read_intra_url: str,
+                 remote_write_inter_url: str,
+                 remote_write_intra_url: str,
                  resource_group_id: str,
                  security_group_id: str,
                  sub_clusters_json: str,
@@ -1008,11 +1018,20 @@ class GetPrometheisPrometheiResult(dict):
                  vpc_id: str,
                  vswitch_id: str):
         """
+        :param str auth_token: The token used to access the data source.
         :param str cluster_id: The ID of the cluster.
         :param str cluster_name: The name of the cluster.
         :param str cluster_type: The type of the cluster.
         :param str grafana_instance_id: The ID of the Grafana workspace.
+        :param str http_api_inter_url: Http api public network address.
+        :param str http_api_intra_url: Http api intranet address.
         :param str id: The ID of the Prometheus.
+        :param str push_gate_way_inter_url: PushGateway public network Url.
+        :param str push_gate_way_intra_url: PushGateway intranet Url.
+        :param str remote_read_inter_url: Public Url of remoteRead.
+        :param str remote_read_intra_url: RemoteRead intranet Url.
+        :param str remote_write_inter_url: RemoteWrite public Url.
+        :param str remote_write_intra_url: RemoteWrite Intranet Url.
         :param str resource_group_id: The ID of the resource group.
         :param str security_group_id: The ID of the security group.
         :param str sub_clusters_json: The child instance json string of the globalView instance.
@@ -1020,17 +1039,34 @@ class GetPrometheisPrometheiResult(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The ID of the VSwitch.
         """
+        pulumi.set(__self__, "auth_token", auth_token)
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "cluster_type", cluster_type)
         pulumi.set(__self__, "grafana_instance_id", grafana_instance_id)
+        pulumi.set(__self__, "http_api_inter_url", http_api_inter_url)
+        pulumi.set(__self__, "http_api_intra_url", http_api_intra_url)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "push_gate_way_inter_url", push_gate_way_inter_url)
+        pulumi.set(__self__, "push_gate_way_intra_url", push_gate_way_intra_url)
+        pulumi.set(__self__, "remote_read_inter_url", remote_read_inter_url)
+        pulumi.set(__self__, "remote_read_intra_url", remote_read_intra_url)
+        pulumi.set(__self__, "remote_write_inter_url", remote_write_inter_url)
+        pulumi.set(__self__, "remote_write_intra_url", remote_write_intra_url)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "sub_clusters_json", sub_clusters_json)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> str:
+        """
+        The token used to access the data source.
+        """
+        return pulumi.get(self, "auth_token")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -1065,12 +1101,76 @@ class GetPrometheisPrometheiResult(dict):
         return pulumi.get(self, "grafana_instance_id")
 
     @property
+    @pulumi.getter(name="httpApiInterUrl")
+    def http_api_inter_url(self) -> str:
+        """
+        Http api public network address.
+        """
+        return pulumi.get(self, "http_api_inter_url")
+
+    @property
+    @pulumi.getter(name="httpApiIntraUrl")
+    def http_api_intra_url(self) -> str:
+        """
+        Http api intranet address.
+        """
+        return pulumi.get(self, "http_api_intra_url")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
         The ID of the Prometheus.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="pushGateWayInterUrl")
+    def push_gate_way_inter_url(self) -> str:
+        """
+        PushGateway public network Url.
+        """
+        return pulumi.get(self, "push_gate_way_inter_url")
+
+    @property
+    @pulumi.getter(name="pushGateWayIntraUrl")
+    def push_gate_way_intra_url(self) -> str:
+        """
+        PushGateway intranet Url.
+        """
+        return pulumi.get(self, "push_gate_way_intra_url")
+
+    @property
+    @pulumi.getter(name="remoteReadInterUrl")
+    def remote_read_inter_url(self) -> str:
+        """
+        Public Url of remoteRead.
+        """
+        return pulumi.get(self, "remote_read_inter_url")
+
+    @property
+    @pulumi.getter(name="remoteReadIntraUrl")
+    def remote_read_intra_url(self) -> str:
+        """
+        RemoteRead intranet Url.
+        """
+        return pulumi.get(self, "remote_read_intra_url")
+
+    @property
+    @pulumi.getter(name="remoteWriteInterUrl")
+    def remote_write_inter_url(self) -> str:
+        """
+        RemoteWrite public Url.
+        """
+        return pulumi.get(self, "remote_write_inter_url")
+
+    @property
+    @pulumi.getter(name="remoteWriteIntraUrl")
+    def remote_write_intra_url(self) -> str:
+        """
+        RemoteWrite Intranet Url.
+        """
+        return pulumi.get(self, "remote_write_intra_url")
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -1400,6 +1500,233 @@ class GetPrometheusMonitoringsPrometheusMonitoringResult(dict):
         The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPrometheusPrometheiResult(dict):
+    def __init__(__self__, *,
+                 auth_token: str,
+                 cluster_id: str,
+                 cluster_name: str,
+                 cluster_type: str,
+                 grafana_instance_id: str,
+                 http_api_inter_url: str,
+                 http_api_intra_url: str,
+                 id: str,
+                 push_gate_way_inter_url: str,
+                 push_gate_way_intra_url: str,
+                 remote_read_inter_url: str,
+                 remote_read_intra_url: str,
+                 remote_write_inter_url: str,
+                 remote_write_intra_url: str,
+                 resource_group_id: str,
+                 security_group_id: str,
+                 sub_clusters_json: str,
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param str auth_token: The token used to access the data source.
+        :param str cluster_id: The ID of the cluster.
+        :param str cluster_name: The name of the cluster.
+        :param str cluster_type: The type of the cluster.
+        :param str grafana_instance_id: The ID of the Grafana workspace.
+        :param str http_api_inter_url: Http api public network address.
+        :param str http_api_intra_url: Http api intranet address.
+        :param str id: The ID of the Prometheus.
+        :param str push_gate_way_inter_url: PushGateway public network Url.
+        :param str push_gate_way_intra_url: PushGateway intranet Url.
+        :param str remote_read_inter_url: Public Url of remoteRead.
+        :param str remote_read_intra_url: RemoteRead intranet Url.
+        :param str remote_write_inter_url: RemoteWrite public Url.
+        :param str remote_write_intra_url: RemoteWrite Intranet Url.
+        :param str resource_group_id: The ID of the resource group.
+        :param str security_group_id: The ID of the security group.
+        :param str sub_clusters_json: The child instance json string of the globalView instance.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param str vpc_id: The ID of the VPC.
+        :param str vswitch_id: The ID of the VSwitch.
+        """
+        pulumi.set(__self__, "auth_token", auth_token)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "grafana_instance_id", grafana_instance_id)
+        pulumi.set(__self__, "http_api_inter_url", http_api_inter_url)
+        pulumi.set(__self__, "http_api_intra_url", http_api_intra_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "push_gate_way_inter_url", push_gate_way_inter_url)
+        pulumi.set(__self__, "push_gate_way_intra_url", push_gate_way_intra_url)
+        pulumi.set(__self__, "remote_read_inter_url", remote_read_inter_url)
+        pulumi.set(__self__, "remote_read_intra_url", remote_read_intra_url)
+        pulumi.set(__self__, "remote_write_inter_url", remote_write_inter_url)
+        pulumi.set(__self__, "remote_write_intra_url", remote_write_intra_url)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "sub_clusters_json", sub_clusters_json)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> str:
+        """
+        The token used to access the data source.
+        """
+        return pulumi.get(self, "auth_token")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        The name of the cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        """
+        The type of the cluster.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter(name="grafanaInstanceId")
+    def grafana_instance_id(self) -> str:
+        """
+        The ID of the Grafana workspace.
+        """
+        return pulumi.get(self, "grafana_instance_id")
+
+    @property
+    @pulumi.getter(name="httpApiInterUrl")
+    def http_api_inter_url(self) -> str:
+        """
+        Http api public network address.
+        """
+        return pulumi.get(self, "http_api_inter_url")
+
+    @property
+    @pulumi.getter(name="httpApiIntraUrl")
+    def http_api_intra_url(self) -> str:
+        """
+        Http api intranet address.
+        """
+        return pulumi.get(self, "http_api_intra_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Prometheus.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="pushGateWayInterUrl")
+    def push_gate_way_inter_url(self) -> str:
+        """
+        PushGateway public network Url.
+        """
+        return pulumi.get(self, "push_gate_way_inter_url")
+
+    @property
+    @pulumi.getter(name="pushGateWayIntraUrl")
+    def push_gate_way_intra_url(self) -> str:
+        """
+        PushGateway intranet Url.
+        """
+        return pulumi.get(self, "push_gate_way_intra_url")
+
+    @property
+    @pulumi.getter(name="remoteReadInterUrl")
+    def remote_read_inter_url(self) -> str:
+        """
+        Public Url of remoteRead.
+        """
+        return pulumi.get(self, "remote_read_inter_url")
+
+    @property
+    @pulumi.getter(name="remoteReadIntraUrl")
+    def remote_read_intra_url(self) -> str:
+        """
+        RemoteRead intranet Url.
+        """
+        return pulumi.get(self, "remote_read_intra_url")
+
+    @property
+    @pulumi.getter(name="remoteWriteInterUrl")
+    def remote_write_inter_url(self) -> str:
+        """
+        RemoteWrite public Url.
+        """
+        return pulumi.get(self, "remote_write_inter_url")
+
+    @property
+    @pulumi.getter(name="remoteWriteIntraUrl")
+    def remote_write_intra_url(self) -> str:
+        """
+        RemoteWrite Intranet Url.
+        """
+        return pulumi.get(self, "remote_write_intra_url")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="subClustersJson")
+    def sub_clusters_json(self) -> str:
+        """
+        The child instance json string of the globalView instance.
+        """
+        return pulumi.get(self, "sub_clusters_json")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the VSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
 
 
 @pulumi.output_type

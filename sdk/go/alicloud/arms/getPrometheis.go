@@ -13,7 +13,9 @@ import (
 
 // This data source provides the Arms Prometheis of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.203.0+.
+// > **NOTE:** Available since v1.203.0.
+//
+// > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.214.0.
 //
 // ## Example Usage
 //
@@ -24,29 +26,68 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := arms.GetPrometheis(ctx, &arms.GetPrometheisArgs{
-//				Ids: []string{
-//					"example_id",
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultPrometheus, err := arms.NewPrometheus(ctx, "defaultPrometheus", &arms.PrometheusArgs{
+//				ClusterType:       pulumi.String("ecs"),
+//				GrafanaInstanceId: pulumi.String("free"),
+//				VpcId:             *pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:         *pulumi.String(defaultSwitches.Ids[0]),
+//				SecurityGroupId:   defaultSecurityGroup.ID(),
+//				ClusterName:       pulumi.String(fmt.Sprintf("%v-%v", name, defaultNetworks.Ids[0])),
+//				ResourceGroupId:   *pulumi.String(defaultResourceGroups.Groups[1].Id),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Prometheus"),
 //				},
-//			}, nil)
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("armsPrometheisId1", ids.Prometheis[0].Id)
-//			nameRegex, err := arms.GetPrometheis(ctx, &arms.GetPrometheisArgs{
-//				NameRegex: pulumi.StringRef("tf-example"),
+//			nameRegex := arms.GetPrometheisOutput(ctx, arms.GetPrometheisOutputArgs{
+//				NameRegex: defaultPrometheus.ClusterName,
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsPrometheisId2", nameRegex.Prometheis[0].Id)
+//			ctx.Export("armsPrometheisId", nameRegex.ApplyT(func(nameRegex arms.GetPrometheisResult) (*string, error) {
+//				return &nameRegex.Prometheis[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -64,6 +105,8 @@ func GetPrometheis(ctx *pulumi.Context, args *GetPrometheisArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getPrometheis.
 type GetPrometheisArgs struct {
+	// Whether to query details about the instance.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Prometheus IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Prometheus name.
@@ -78,6 +121,7 @@ type GetPrometheisArgs struct {
 
 // A collection of values returned by getPrometheis.
 type GetPrometheisResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
@@ -85,7 +129,7 @@ type GetPrometheisResult struct {
 	// A list of Prometheus names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// A list of Prometheis. Each element contains the following attributes:
+	// A list of Prometheus. Each element contains the following attributes:
 	Prometheis []GetPrometheisPromethei `pulumi:"prometheis"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -108,6 +152,8 @@ func GetPrometheisOutput(ctx *pulumi.Context, args GetPrometheisOutputArgs, opts
 
 // A collection of arguments for invoking getPrometheis.
 type GetPrometheisOutputArgs struct {
+	// Whether to query details about the instance.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Prometheus IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Prometheus name.
@@ -139,6 +185,10 @@ func (o GetPrometheisResultOutput) ToGetPrometheisResultOutputWithContext(ctx co
 	return o
 }
 
+func (o GetPrometheisResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPrometheisResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetPrometheisResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheisResult) string { return v.Id }).(pulumi.StringOutput)
@@ -161,7 +211,7 @@ func (o GetPrometheisResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPrometheisResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// A list of Prometheis. Each element contains the following attributes:
+// A list of Prometheus. Each element contains the following attributes:
 func (o GetPrometheisResultOutput) Prometheis() GetPrometheisPrometheiArrayOutput {
 	return o.ApplyT(func(v GetPrometheisResult) []GetPrometheisPromethei { return v.Prometheis }).(GetPrometheisPrometheiArrayOutput)
 }

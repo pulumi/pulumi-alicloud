@@ -24,7 +24,16 @@ import * as utilities from "../utilities";
  * const defaulteVpc = new alicloud.vpc.Network("defaulteVpc", {description: "test"});
  * const defaultGE = new alicloud.vpc.GatewayEndpoint("defaultGE", {
  *     serviceName: "com.aliyun.cn-hangzhou.oss",
- *     policyDocument: "{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }",
+ *     policyDocument: `        {
+ *           "Version": "1",
+ *           "Statement": [{
+ *             "Effect": "Allow",
+ *             "Resource": ["*"],
+ *             "Action": ["*"],
+ *             "Principal": ["*"]
+ *           }]
+ *         }
+ * `,
  *     vpcId: defaulteVpc.id,
  *     gatewayEndpointDescrption: "test-gateway-endpoint",
  *     gatewayEndpointName: `${name}1`,

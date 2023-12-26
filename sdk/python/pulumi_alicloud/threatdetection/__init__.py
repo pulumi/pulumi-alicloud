@@ -30,6 +30,8 @@ from .honeypot_preset import *
 from .honeypot_probe import *
 from .image_event_operation import *
 from .instance import *
+from .malicious_file_whitelist_config import *
+from .oss_scan_config import *
 from .sas_trail import *
 from .vul_whitelist import *
 from .web_lock_config import *

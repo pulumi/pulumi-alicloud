@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Alb
         /// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
         /// </summary>
         [Output("bandwidthPackageId")]
-        public Output<string?> BandwidthPackageId { get; private set; } = null!;
+        public Output<string> BandwidthPackageId { get; private set; } = null!;
 
         /// <summary>
         /// The creation time of the resource.

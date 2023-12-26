@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
  *
- * > **NOTE:** Available in v1.123.1+.
+ * > **NOTE:** Available since v1.123.1+.
  *
  * ## Example Usage
  *
@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAcc";
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  * });
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     instanceName: name,
- *     hostName: "tf-testAcc",
+ *     hostName: "tf-example",
  *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
  *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroups: [defaultSecurityGroup.id],
@@ -63,11 +63,11 @@ import * as utilities from "../utilities";
  *     networkInterfaceName: name,
  *     vswitchId: defaultSwitch.id,
  *     securityGroupIds: [defaultSecurityGroup.id],
- *     description: "Basic test",
+ *     description: "Basic example",
  *     primaryIpAddress: "192.168.0.2",
  *     tags: {
  *         Created: "TF",
- *         For: "Test",
+ *         For: "example",
  *     },
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  * });

@@ -19,19 +19,9 @@ import (
 //
 // > **NOTE:** If you call this operation as a RAM user, make sure that this RAM user has the permissions to grant other RAM users the permissions to manage ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` errors will be returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://www.alibabacloud.com/help/faq-detail/119035.htm).
 //
-// > **NOTE:** This operation **overwrites** the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+// > **NOTE:** This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
 //
 // > **NOTE:** Available since v1.122.0.
-//
-// ## Import
-//
-// alicloud_cs_kubernetes_permissions can be imported using the RAM user id or Ram Role id, e.g.
-//
-// ```sh
-//
-//	$ pulumi import alicloud:cs/kubernetesPermission:KubernetesPermission user <uid>
-//
-// ```
 type KubernetesPermission struct {
 	pulumi.CustomResourceState
 

@@ -65,14 +65,14 @@ public final class IpsecServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+     * The configuration of Phase 1 negotiations. See `ike_config` below.
      * 
      */
     @Import(name="ikeConfigs")
     private @Nullable Output<List<IpsecServerIkeConfigArgs>> ikeConfigs;
 
     /**
-     * @return The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+     * @return The configuration of Phase 1 negotiations. See `ike_config` below.
      * 
      */
     public Optional<Output<List<IpsecServerIkeConfigArgs>>> ikeConfigs() {
@@ -80,14 +80,14 @@ public final class IpsecServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+     * The configuration of Phase 2 negotiations. See `ipsec_config` below.
      * 
      */
     @Import(name="ipsecConfigs")
     private @Nullable Output<List<IpsecServerIpsecConfigArgs>> ipsecConfigs;
 
     /**
-     * @return The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+     * @return The configuration of Phase 2 negotiations. See `ipsec_config` below.
      * 
      */
     public Optional<Output<List<IpsecServerIpsecConfigArgs>>> ipsecConfigs() {
@@ -266,7 +266,7 @@ public final class IpsecServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeConfigs The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+         * @param ikeConfigs The configuration of Phase 1 negotiations. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class IpsecServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeConfigs The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+         * @param ikeConfigs The configuration of Phase 1 negotiations. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class IpsecServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeConfigs The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+         * @param ikeConfigs The configuration of Phase 1 negotiations. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class IpsecServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipsecConfigs The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+         * @param ipsecConfigs The configuration of Phase 2 negotiations. See `ipsec_config` below.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class IpsecServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipsecConfigs The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+         * @param ipsecConfigs The configuration of Phase 2 negotiations. See `ipsec_config` below.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class IpsecServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipsecConfigs The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+         * @param ipsecConfigs The configuration of Phase 2 negotiations. See `ipsec_config` below.
          * 
          * @return builder
          * 

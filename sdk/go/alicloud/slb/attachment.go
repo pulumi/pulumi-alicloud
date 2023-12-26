@@ -16,6 +16,8 @@ import (
 //
 // Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
 //
+// > **NOTE:** Deprecated since v1.153.0+.
+//
 // ## Example Usage
 //
 // ```go
@@ -35,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "slbattachmenttest"
+//			name := "slb-attachment-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -101,6 +103,7 @@ import (
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "defaultApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
 //				VswitchId:        defaultSwitch.ID(),
+//				LoadBalancerSpec: pulumi.String("slb.s1.small"),
 //			})
 //			if err != nil {
 //				return err

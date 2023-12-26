@@ -58,7 +58,17 @@ import javax.annotation.Nullable;
  * 
  *         var defaultGE = new GatewayEndpoint(&#34;defaultGE&#34;, GatewayEndpointArgs.builder()        
  *             .serviceName(&#34;com.aliyun.cn-hangzhou.oss&#34;)
- *             .policyDocument(&#34;{ \&#34;Version\&#34; : \&#34;1\&#34;, \&#34;Statement\&#34; : [ { \&#34;Effect\&#34; : \&#34;Allow\&#34;, \&#34;Resource\&#34; : [ \&#34;*\&#34; ], \&#34;Action\&#34; : [ \&#34;*\&#34; ], \&#34;Principal\&#34; : [ \&#34;*\&#34; ] } ] }&#34;)
+ *             .policyDocument(&#34;&#34;&#34;
+ *         {
+ *           &#34;Version&#34;: &#34;1&#34;,
+ *           &#34;Statement&#34;: [{
+ *             &#34;Effect&#34;: &#34;Allow&#34;,
+ *             &#34;Resource&#34;: [&#34;*&#34;],
+ *             &#34;Action&#34;: [&#34;*&#34;],
+ *             &#34;Principal&#34;: [&#34;*&#34;]
+ *           }]
+ *         }
+ *             &#34;&#34;&#34;)
  *             .vpcId(defaulteVpc.id())
  *             .gatewayEndpointDescrption(&#34;test-gateway-endpoint&#34;)
  *             .gatewayEndpointName(String.format(&#34;%s1&#34;, name))

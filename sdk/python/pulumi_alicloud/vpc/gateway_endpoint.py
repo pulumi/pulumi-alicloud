@@ -326,7 +326,16 @@ class GatewayEndpoint(pulumi.CustomResource):
             vpc_id=default_vpc.id,
             resource_group_id=default_rg.id,
             service_name=domain,
-            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }")
+            policy_document=\"\"\"      {
+                "Version": "1",
+                "Statement": [{
+                  "Effect": "Allow",
+                  "Resource": ["*"],
+                  "Action": ["*"],
+                  "Principal": ["*"]
+                }]
+              }
+        \"\"\")
         ```
 
         ## Import
@@ -385,7 +394,16 @@ class GatewayEndpoint(pulumi.CustomResource):
             vpc_id=default_vpc.id,
             resource_group_id=default_rg.id,
             service_name=domain,
-            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }")
+            policy_document=\"\"\"      {
+                "Version": "1",
+                "Statement": [{
+                  "Effect": "Allow",
+                  "Resource": ["*"],
+                  "Action": ["*"],
+                  "Principal": ["*"]
+                }]
+              }
+        \"\"\")
         ```
 
         ## Import

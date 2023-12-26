@@ -8,14 +8,122 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'LakeAccountAccountPrivilege',
+    'LakeAccountAccountPrivilegePrivilegeObject',
     'GetClustersClusterResult',
     'GetDBClusterLakeVersionsVersionResult',
     'GetDBClustersClusterResult',
     'GetResourceGroupsGroupResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class LakeAccountAccountPrivilege(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privilegeObject":
+            suggest = "privilege_object"
+        elif key == "privilegeType":
+            suggest = "privilege_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LakeAccountAccountPrivilege. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LakeAccountAccountPrivilege.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LakeAccountAccountPrivilege.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 privilege_object: Optional['outputs.LakeAccountAccountPrivilegePrivilegeObject'] = None,
+                 privilege_type: Optional[str] = None,
+                 privileges: Optional[Sequence[str]] = None):
+        """
+        :param 'LakeAccountAccountPrivilegePrivilegeObjectArgs' privilege_object: Object associated to privileges. See `privilege_object` below.
+        :param str privilege_type: The type of privileges.
+        :param Sequence[str] privileges: privilege list.
+        """
+        if privilege_object is not None:
+            pulumi.set(__self__, "privilege_object", privilege_object)
+        if privilege_type is not None:
+            pulumi.set(__self__, "privilege_type", privilege_type)
+        if privileges is not None:
+            pulumi.set(__self__, "privileges", privileges)
+
+    @property
+    @pulumi.getter(name="privilegeObject")
+    def privilege_object(self) -> Optional['outputs.LakeAccountAccountPrivilegePrivilegeObject']:
+        """
+        Object associated to privileges. See `privilege_object` below.
+        """
+        return pulumi.get(self, "privilege_object")
+
+    @property
+    @pulumi.getter(name="privilegeType")
+    def privilege_type(self) -> Optional[str]:
+        """
+        The type of privileges.
+        """
+        return pulumi.get(self, "privilege_type")
+
+    @property
+    @pulumi.getter
+    def privileges(self) -> Optional[Sequence[str]]:
+        """
+        privilege list.
+        """
+        return pulumi.get(self, "privileges")
+
+
+@pulumi.output_type
+class LakeAccountAccountPrivilegePrivilegeObject(dict):
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 database: Optional[str] = None,
+                 table: Optional[str] = None):
+        """
+        :param str column: The name of column.
+        :param str database: The name of database.
+        :param str table: The name of table.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        The name of column.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The name of database.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[str]:
+        """
+        The name of table.
+        """
+        return pulumi.get(self, "table")
+
 
 @pulumi.output_type
 class GetClustersClusterResult(dict):

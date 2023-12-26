@@ -14,7 +14,9 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Prometheis of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.203.0+.
+        /// &gt; **NOTE:** Available since v1.203.0.
+        /// 
+        /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -30,23 +32,49 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Arms.GetPrometheis.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
-        ///         Ids = new[]
+        ///         NameRegex = "default-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+        ///     {
+        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("defaultPrometheus", new()
+        ///     {
+        ///         ClusterType = "ecs",
+        ///         GrafanaInstanceId = "free",
+        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         ClusterName = $"{name}-{defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}",
+        ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
+        ///         Tags = 
         ///         {
-        ///             "example_id",
+        ///             { "Created", "TF" },
+        ///             { "For", "Prometheus" },
         ///         },
         ///     });
         /// 
         ///     var nameRegex = AliCloud.Arms.GetPrometheis.Invoke(new()
         ///     {
-        ///         NameRegex = "tf-example",
+        ///         NameRegex = defaultPrometheus.ClusterName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["armsPrometheisId1"] = ids.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
-        ///         ["armsPrometheisId2"] = nameRegex.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
+        ///         ["armsPrometheisId"] = nameRegex.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -59,7 +87,9 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Prometheis of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.203.0+.
+        /// &gt; **NOTE:** Available since v1.203.0.
+        /// 
+        /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -75,23 +105,49 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Arms.GetPrometheis.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
-        ///         Ids = new[]
+        ///         NameRegex = "default-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+        ///     {
+        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("defaultPrometheus", new()
+        ///     {
+        ///         ClusterType = "ecs",
+        ///         GrafanaInstanceId = "free",
+        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         ClusterName = $"{name}-{defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}",
+        ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
+        ///         Tags = 
         ///         {
-        ///             "example_id",
+        ///             { "Created", "TF" },
+        ///             { "For", "Prometheus" },
         ///         },
         ///     });
         /// 
         ///     var nameRegex = AliCloud.Arms.GetPrometheis.Invoke(new()
         ///     {
-        ///         NameRegex = "tf-example",
+        ///         NameRegex = defaultPrometheus.ClusterName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["armsPrometheisId1"] = ids.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
-        ///         ["armsPrometheisId2"] = nameRegex.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
+        ///         ["armsPrometheisId"] = nameRegex.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -105,6 +161,12 @@ namespace Pulumi.AliCloud.Arms
 
     public sealed class GetPrometheisArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to query details about the instance.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -155,6 +217,12 @@ namespace Pulumi.AliCloud.Arms
 
     public sealed class GetPrometheisInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to query details about the instance.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
         [Input("ids")]
         private InputList<string>? _ids;
 
@@ -207,6 +275,7 @@ namespace Pulumi.AliCloud.Arms
     [OutputType]
     public sealed class GetPrometheisResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -219,7 +288,7 @@ namespace Pulumi.AliCloud.Arms
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// A list of Prometheis. Each element contains the following attributes:
+        /// A list of Prometheus. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPrometheisPrometheiResult> Prometheis;
         /// <summary>
@@ -233,6 +302,8 @@ namespace Pulumi.AliCloud.Arms
 
         [OutputConstructor]
         private GetPrometheisResult(
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -249,6 +320,7 @@ namespace Pulumi.AliCloud.Arms
 
             ImmutableDictionary<string, object>? tags)
         {
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             NameRegex = nameRegex;

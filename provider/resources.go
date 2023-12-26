@@ -265,6 +265,7 @@ var mappedMods = map[string]string{
 	"ram":                   ramMod,
 	"rdc":                   rdcMod,
 	"rds":                   rdsMod,
+	"realtime_compute":      "RealtimeCompute",
 	"redis":                 redisMod,
 	"resource_manager":      resourceManagerMod,
 	"rocketmq":              rocketMqMod,

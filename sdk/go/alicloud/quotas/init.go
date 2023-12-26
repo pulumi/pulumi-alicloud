@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &QuotaAlarm{}
 	case "alicloud:quotas/quotaApplication:QuotaApplication":
 		r = &QuotaApplication{}
+	case "alicloud:quotas/templateApplications:TemplateApplications":
+		r = &TemplateApplications{}
 	case "alicloud:quotas/templateQuota:TemplateQuota":
 		r = &TemplateQuota{}
 	default:
@@ -55,6 +57,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"quotas/quotaApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"quotas/templateApplications",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

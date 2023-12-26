@@ -61,54 +61,56 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
  *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .cpuCoreCount(1)
- *             .memorySize(2)
+ *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
  *             .build());
  * 
  *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .owners(&#34;system&#34;)
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .description(&#34;New security group&#34;)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .instanceName(name)
- *             .hostName(name)
- *             .internetMaxBandwidthOut(10)
  *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
  *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .securityGroups(defaultSecurityGroup.id())
+ *             .instanceName(name)
+ *             .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .internetMaxBandwidthOut(&#34;10&#34;)
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
  *         var example = new BasicThreshold(&#34;example&#34;, BasicThresholdArgs.builder()        
- *             .pps(60000)
- *             .bps(100)
- *             .internetIp(defaultInstance.publicIp())
- *             .instanceId(defaultInstance.id())
  *             .instanceType(&#34;ecs&#34;)
+ *             .instanceId(defaultInstance.id())
+ *             .internetIp(defaultInstance.publicIp())
+ *             .bps(100)
+ *             .pps(60000)
  *             .build());
  * 
  *     }

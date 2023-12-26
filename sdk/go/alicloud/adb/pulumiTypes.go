@@ -13,6 +13,298 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type LakeAccountAccountPrivilege struct {
+	// Object associated to privileges. See `privilegeObject` below.
+	PrivilegeObject *LakeAccountAccountPrivilegePrivilegeObject `pulumi:"privilegeObject"`
+	// The type of privileges.
+	PrivilegeType *string `pulumi:"privilegeType"`
+	// privilege list.
+	Privileges []string `pulumi:"privileges"`
+}
+
+// LakeAccountAccountPrivilegeInput is an input type that accepts LakeAccountAccountPrivilegeArgs and LakeAccountAccountPrivilegeOutput values.
+// You can construct a concrete instance of `LakeAccountAccountPrivilegeInput` via:
+//
+//	LakeAccountAccountPrivilegeArgs{...}
+type LakeAccountAccountPrivilegeInput interface {
+	pulumi.Input
+
+	ToLakeAccountAccountPrivilegeOutput() LakeAccountAccountPrivilegeOutput
+	ToLakeAccountAccountPrivilegeOutputWithContext(context.Context) LakeAccountAccountPrivilegeOutput
+}
+
+type LakeAccountAccountPrivilegeArgs struct {
+	// Object associated to privileges. See `privilegeObject` below.
+	PrivilegeObject LakeAccountAccountPrivilegePrivilegeObjectPtrInput `pulumi:"privilegeObject"`
+	// The type of privileges.
+	PrivilegeType pulumi.StringPtrInput `pulumi:"privilegeType"`
+	// privilege list.
+	Privileges pulumi.StringArrayInput `pulumi:"privileges"`
+}
+
+func (LakeAccountAccountPrivilegeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakeAccountAccountPrivilege)(nil)).Elem()
+}
+
+func (i LakeAccountAccountPrivilegeArgs) ToLakeAccountAccountPrivilegeOutput() LakeAccountAccountPrivilegeOutput {
+	return i.ToLakeAccountAccountPrivilegeOutputWithContext(context.Background())
+}
+
+func (i LakeAccountAccountPrivilegeArgs) ToLakeAccountAccountPrivilegeOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeAccountAccountPrivilegeOutput)
+}
+
+// LakeAccountAccountPrivilegeArrayInput is an input type that accepts LakeAccountAccountPrivilegeArray and LakeAccountAccountPrivilegeArrayOutput values.
+// You can construct a concrete instance of `LakeAccountAccountPrivilegeArrayInput` via:
+//
+//	LakeAccountAccountPrivilegeArray{ LakeAccountAccountPrivilegeArgs{...} }
+type LakeAccountAccountPrivilegeArrayInput interface {
+	pulumi.Input
+
+	ToLakeAccountAccountPrivilegeArrayOutput() LakeAccountAccountPrivilegeArrayOutput
+	ToLakeAccountAccountPrivilegeArrayOutputWithContext(context.Context) LakeAccountAccountPrivilegeArrayOutput
+}
+
+type LakeAccountAccountPrivilegeArray []LakeAccountAccountPrivilegeInput
+
+func (LakeAccountAccountPrivilegeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LakeAccountAccountPrivilege)(nil)).Elem()
+}
+
+func (i LakeAccountAccountPrivilegeArray) ToLakeAccountAccountPrivilegeArrayOutput() LakeAccountAccountPrivilegeArrayOutput {
+	return i.ToLakeAccountAccountPrivilegeArrayOutputWithContext(context.Background())
+}
+
+func (i LakeAccountAccountPrivilegeArray) ToLakeAccountAccountPrivilegeArrayOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeAccountAccountPrivilegeArrayOutput)
+}
+
+type LakeAccountAccountPrivilegeOutput struct{ *pulumi.OutputState }
+
+func (LakeAccountAccountPrivilegeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakeAccountAccountPrivilege)(nil)).Elem()
+}
+
+func (o LakeAccountAccountPrivilegeOutput) ToLakeAccountAccountPrivilegeOutput() LakeAccountAccountPrivilegeOutput {
+	return o
+}
+
+func (o LakeAccountAccountPrivilegeOutput) ToLakeAccountAccountPrivilegeOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegeOutput {
+	return o
+}
+
+// Object associated to privileges. See `privilegeObject` below.
+func (o LakeAccountAccountPrivilegeOutput) PrivilegeObject() LakeAccountAccountPrivilegePrivilegeObjectPtrOutput {
+	return o.ApplyT(func(v LakeAccountAccountPrivilege) *LakeAccountAccountPrivilegePrivilegeObject {
+		return v.PrivilegeObject
+	}).(LakeAccountAccountPrivilegePrivilegeObjectPtrOutput)
+}
+
+// The type of privileges.
+func (o LakeAccountAccountPrivilegeOutput) PrivilegeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeAccountAccountPrivilege) *string { return v.PrivilegeType }).(pulumi.StringPtrOutput)
+}
+
+// privilege list.
+func (o LakeAccountAccountPrivilegeOutput) Privileges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LakeAccountAccountPrivilege) []string { return v.Privileges }).(pulumi.StringArrayOutput)
+}
+
+type LakeAccountAccountPrivilegeArrayOutput struct{ *pulumi.OutputState }
+
+func (LakeAccountAccountPrivilegeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LakeAccountAccountPrivilege)(nil)).Elem()
+}
+
+func (o LakeAccountAccountPrivilegeArrayOutput) ToLakeAccountAccountPrivilegeArrayOutput() LakeAccountAccountPrivilegeArrayOutput {
+	return o
+}
+
+func (o LakeAccountAccountPrivilegeArrayOutput) ToLakeAccountAccountPrivilegeArrayOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegeArrayOutput {
+	return o
+}
+
+func (o LakeAccountAccountPrivilegeArrayOutput) Index(i pulumi.IntInput) LakeAccountAccountPrivilegeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LakeAccountAccountPrivilege {
+		return vs[0].([]LakeAccountAccountPrivilege)[vs[1].(int)]
+	}).(LakeAccountAccountPrivilegeOutput)
+}
+
+type LakeAccountAccountPrivilegePrivilegeObject struct {
+	// The name of column.
+	Column *string `pulumi:"column"`
+	// The name of database.
+	Database *string `pulumi:"database"`
+	// The name of table.
+	Table *string `pulumi:"table"`
+}
+
+// LakeAccountAccountPrivilegePrivilegeObjectInput is an input type that accepts LakeAccountAccountPrivilegePrivilegeObjectArgs and LakeAccountAccountPrivilegePrivilegeObjectOutput values.
+// You can construct a concrete instance of `LakeAccountAccountPrivilegePrivilegeObjectInput` via:
+//
+//	LakeAccountAccountPrivilegePrivilegeObjectArgs{...}
+type LakeAccountAccountPrivilegePrivilegeObjectInput interface {
+	pulumi.Input
+
+	ToLakeAccountAccountPrivilegePrivilegeObjectOutput() LakeAccountAccountPrivilegePrivilegeObjectOutput
+	ToLakeAccountAccountPrivilegePrivilegeObjectOutputWithContext(context.Context) LakeAccountAccountPrivilegePrivilegeObjectOutput
+}
+
+type LakeAccountAccountPrivilegePrivilegeObjectArgs struct {
+	// The name of column.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The name of database.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// The name of table.
+	Table pulumi.StringPtrInput `pulumi:"table"`
+}
+
+func (LakeAccountAccountPrivilegePrivilegeObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakeAccountAccountPrivilegePrivilegeObject)(nil)).Elem()
+}
+
+func (i LakeAccountAccountPrivilegePrivilegeObjectArgs) ToLakeAccountAccountPrivilegePrivilegeObjectOutput() LakeAccountAccountPrivilegePrivilegeObjectOutput {
+	return i.ToLakeAccountAccountPrivilegePrivilegeObjectOutputWithContext(context.Background())
+}
+
+func (i LakeAccountAccountPrivilegePrivilegeObjectArgs) ToLakeAccountAccountPrivilegePrivilegeObjectOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegePrivilegeObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeAccountAccountPrivilegePrivilegeObjectOutput)
+}
+
+func (i LakeAccountAccountPrivilegePrivilegeObjectArgs) ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutput() LakeAccountAccountPrivilegePrivilegeObjectPtrOutput {
+	return i.ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutputWithContext(context.Background())
+}
+
+func (i LakeAccountAccountPrivilegePrivilegeObjectArgs) ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegePrivilegeObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeAccountAccountPrivilegePrivilegeObjectOutput).ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutputWithContext(ctx)
+}
+
+// LakeAccountAccountPrivilegePrivilegeObjectPtrInput is an input type that accepts LakeAccountAccountPrivilegePrivilegeObjectArgs, LakeAccountAccountPrivilegePrivilegeObjectPtr and LakeAccountAccountPrivilegePrivilegeObjectPtrOutput values.
+// You can construct a concrete instance of `LakeAccountAccountPrivilegePrivilegeObjectPtrInput` via:
+//
+//	        LakeAccountAccountPrivilegePrivilegeObjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type LakeAccountAccountPrivilegePrivilegeObjectPtrInput interface {
+	pulumi.Input
+
+	ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutput() LakeAccountAccountPrivilegePrivilegeObjectPtrOutput
+	ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutputWithContext(context.Context) LakeAccountAccountPrivilegePrivilegeObjectPtrOutput
+}
+
+type lakeAccountAccountPrivilegePrivilegeObjectPtrType LakeAccountAccountPrivilegePrivilegeObjectArgs
+
+func LakeAccountAccountPrivilegePrivilegeObjectPtr(v *LakeAccountAccountPrivilegePrivilegeObjectArgs) LakeAccountAccountPrivilegePrivilegeObjectPtrInput {
+	return (*lakeAccountAccountPrivilegePrivilegeObjectPtrType)(v)
+}
+
+func (*lakeAccountAccountPrivilegePrivilegeObjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LakeAccountAccountPrivilegePrivilegeObject)(nil)).Elem()
+}
+
+func (i *lakeAccountAccountPrivilegePrivilegeObjectPtrType) ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutput() LakeAccountAccountPrivilegePrivilegeObjectPtrOutput {
+	return i.ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *lakeAccountAccountPrivilegePrivilegeObjectPtrType) ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegePrivilegeObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeAccountAccountPrivilegePrivilegeObjectPtrOutput)
+}
+
+type LakeAccountAccountPrivilegePrivilegeObjectOutput struct{ *pulumi.OutputState }
+
+func (LakeAccountAccountPrivilegePrivilegeObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakeAccountAccountPrivilegePrivilegeObject)(nil)).Elem()
+}
+
+func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) ToLakeAccountAccountPrivilegePrivilegeObjectOutput() LakeAccountAccountPrivilegePrivilegeObjectOutput {
+	return o
+}
+
+func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) ToLakeAccountAccountPrivilegePrivilegeObjectOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegePrivilegeObjectOutput {
+	return o
+}
+
+func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutput() LakeAccountAccountPrivilegePrivilegeObjectPtrOutput {
+	return o.ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutputWithContext(context.Background())
+}
+
+func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegePrivilegeObjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LakeAccountAccountPrivilegePrivilegeObject) *LakeAccountAccountPrivilegePrivilegeObject {
+		return &v
+	}).(LakeAccountAccountPrivilegePrivilegeObjectPtrOutput)
+}
+
+// The name of column.
+func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeAccountAccountPrivilegePrivilegeObject) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// The name of database.
+func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeAccountAccountPrivilegePrivilegeObject) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// The name of table.
+func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeAccountAccountPrivilegePrivilegeObject) *string { return v.Table }).(pulumi.StringPtrOutput)
+}
+
+type LakeAccountAccountPrivilegePrivilegeObjectPtrOutput struct{ *pulumi.OutputState }
+
+func (LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LakeAccountAccountPrivilegePrivilegeObject)(nil)).Elem()
+}
+
+func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutput() LakeAccountAccountPrivilegePrivilegeObjectPtrOutput {
+	return o
+}
+
+func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) ToLakeAccountAccountPrivilegePrivilegeObjectPtrOutputWithContext(ctx context.Context) LakeAccountAccountPrivilegePrivilegeObjectPtrOutput {
+	return o
+}
+
+func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Elem() LakeAccountAccountPrivilegePrivilegeObjectOutput {
+	return o.ApplyT(func(v *LakeAccountAccountPrivilegePrivilegeObject) LakeAccountAccountPrivilegePrivilegeObject {
+		if v != nil {
+			return *v
+		}
+		var ret LakeAccountAccountPrivilegePrivilegeObject
+		return ret
+	}).(LakeAccountAccountPrivilegePrivilegeObjectOutput)
+}
+
+// The name of column.
+func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LakeAccountAccountPrivilegePrivilegeObject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of database.
+func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LakeAccountAccountPrivilegePrivilegeObject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of table.
+func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LakeAccountAccountPrivilegePrivilegeObject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetClustersCluster struct {
 	AutoRenewPeriod int `pulumi:"autoRenewPeriod"`
 	// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
@@ -1432,6 +1724,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LakeAccountAccountPrivilegeInput)(nil)).Elem(), LakeAccountAccountPrivilegeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LakeAccountAccountPrivilegeArrayInput)(nil)).Elem(), LakeAccountAccountPrivilegeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LakeAccountAccountPrivilegePrivilegeObjectInput)(nil)).Elem(), LakeAccountAccountPrivilegePrivilegeObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LakeAccountAccountPrivilegePrivilegeObjectPtrInput)(nil)).Elem(), LakeAccountAccountPrivilegePrivilegeObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClusterLakeVersionsVersionInput)(nil)).Elem(), GetDBClusterLakeVersionsVersionArgs{})
@@ -1442,6 +1738,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsGroupArrayInput)(nil)).Elem(), GetResourceGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(LakeAccountAccountPrivilegeOutput{})
+	pulumi.RegisterOutputType(LakeAccountAccountPrivilegeArrayOutput{})
+	pulumi.RegisterOutputType(LakeAccountAccountPrivilegePrivilegeObjectOutput{})
+	pulumi.RegisterOutputType(LakeAccountAccountPrivilegePrivilegeObjectPtrOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetDBClusterLakeVersionsVersionOutput{})

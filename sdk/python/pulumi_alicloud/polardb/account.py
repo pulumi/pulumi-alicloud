@@ -264,7 +264,7 @@ class Account(pulumi.CustomResource):
         """
         Provides a PolarDB account resource and used to manage databases.
 
-        > **NOTE:** Available in v1.67.0+.
+        > **NOTE:** Available since v1.67.0.
 
         ## Example Usage
 
@@ -274,7 +274,8 @@ class Account(pulumi.CustomResource):
 
         default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid")
+            pay_type="PostPaid",
+            category="Normal")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
@@ -324,7 +325,7 @@ class Account(pulumi.CustomResource):
         """
         Provides a PolarDB account resource and used to manage databases.
 
-        > **NOTE:** Available in v1.67.0+.
+        > **NOTE:** Available since v1.67.0.
 
         ## Example Usage
 
@@ -334,7 +335,8 @@ class Account(pulumi.CustomResource):
 
         default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid")
+            pay_type="PostPaid",
+            category="Normal")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")

@@ -25,23 +25,21 @@ class SecurityGroupArgs:
         """
         The set of arguments for constructing a SecurityGroup resource.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
-        :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
-        :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
-        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the security_group belongs.
-        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
-               `normal`: basic security group.
-               `enterprise`: advanced security group For more information.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
                
                Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-        :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if inner_access is not None:
-            warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
+            warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
         if inner_access is not None:
             pulumi.set(__self__, "inner_access", inner_access)
         if inner_access_policy is not None:
@@ -73,10 +71,12 @@ class SecurityGroupArgs:
     @pulumi.getter(name="innerAccess")
     def inner_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+
+        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
-        warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
+        warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
 
         return pulumi.get(self, "inner_access")
 
@@ -88,7 +88,7 @@ class SecurityGroupArgs:
     @pulumi.getter(name="innerAccessPolicy")
     def inner_access_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+        The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
         """
         return pulumi.get(self, "inner_access_policy")
 
@@ -112,7 +112,7 @@ class SecurityGroupArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the security_group belongs.
+        The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -125,8 +125,6 @@ class SecurityGroupArgs:
     def security_group_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the security group. Valid values:
-        `normal`: basic security group.
-        `enterprise`: advanced security group For more information.
         """
         return pulumi.get(self, "security_group_type")
 
@@ -139,8 +137,6 @@ class SecurityGroupArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
-
-        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
         return pulumi.get(self, "tags")
 
@@ -152,7 +148,7 @@ class SecurityGroupArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VPC ID.
+        The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -175,23 +171,21 @@ class _SecurityGroupState:
         """
         Input properties used for looking up and filtering SecurityGroup resources.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
-        :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
-        :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
-        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the security_group belongs.
-        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
-               `normal`: basic security group.
-               `enterprise`: advanced security group For more information.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
                
                Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-        :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if inner_access is not None:
-            warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
+            warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
         if inner_access is not None:
             pulumi.set(__self__, "inner_access", inner_access)
         if inner_access_policy is not None:
@@ -223,10 +217,12 @@ class _SecurityGroupState:
     @pulumi.getter(name="innerAccess")
     def inner_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+
+        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
-        warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
+        warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
 
         return pulumi.get(self, "inner_access")
 
@@ -238,7 +234,7 @@ class _SecurityGroupState:
     @pulumi.getter(name="innerAccessPolicy")
     def inner_access_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+        The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
         """
         return pulumi.get(self, "inner_access_policy")
 
@@ -262,7 +258,7 @@ class _SecurityGroupState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the security_group belongs.
+        The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -275,8 +271,6 @@ class _SecurityGroupState:
     def security_group_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the security group. Valid values:
-        `normal`: basic security group.
-        `enterprise`: advanced security group For more information.
         """
         return pulumi.get(self, "security_group_type")
 
@@ -289,8 +283,6 @@ class _SecurityGroupState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
-
-        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
         return pulumi.get(self, "tags")
 
@@ -302,7 +294,7 @@ class _SecurityGroupState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VPC ID.
+        The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -326,7 +318,11 @@ class SecurityGroup(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a security group resource.
+        Provides a Security Group resource.
+
+        For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+
+        > **NOTE:** Available since v1.0.0.
 
         > **NOTE:** `ecs.SecurityGroup` is used to build and manage a security group, and `ecs.SecurityGroupRule` can define ingress or egress rules for it.
 
@@ -342,7 +338,8 @@ class SecurityGroup(pulumi.CustomResource):
 
         default = alicloud.ecs.SecurityGroup("default", description="New security group")
         ```
-        Basic usage for vpc
+
+        Basic Usage for VPC
 
         ```python
         import pulumi
@@ -369,17 +366,15 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
-        :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
-        :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
-        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the security_group belongs.
-        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
-               `normal`: basic security group.
-               `enterprise`: advanced security group For more information.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
                
                Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-        :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
         ...
     @overload
@@ -388,7 +383,11 @@ class SecurityGroup(pulumi.CustomResource):
                  args: Optional[SecurityGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a security group resource.
+        Provides a Security Group resource.
+
+        For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+
+        > **NOTE:** Available since v1.0.0.
 
         > **NOTE:** `ecs.SecurityGroup` is used to build and manage a security group, and `ecs.SecurityGroupRule` can define ingress or egress rules for it.
 
@@ -404,7 +403,8 @@ class SecurityGroup(pulumi.CustomResource):
 
         default = alicloud.ecs.SecurityGroup("default", description="New security group")
         ```
-        Basic usage for vpc
+
+        Basic Usage for VPC
 
         ```python
         import pulumi
@@ -494,17 +494,15 @@ class SecurityGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
-        :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
-        :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
-        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the security_group belongs.
-        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
-               `normal`: basic security group.
-               `enterprise`: advanced security group For more information.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
                
                Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-        :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
+        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -532,10 +530,12 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="innerAccess")
     def inner_access(self) -> pulumi.Output[bool]:
         """
-        Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+
+        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
-        warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
+        warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
 
         return pulumi.get(self, "inner_access")
 
@@ -543,7 +543,7 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="innerAccessPolicy")
     def inner_access_policy(self) -> pulumi.Output[str]:
         """
-        Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+        The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
         """
         return pulumi.get(self, "inner_access_policy")
 
@@ -559,17 +559,15 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The Id of resource group which the security_group belongs.
+        The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityGroupType")
-    def security_group_type(self) -> pulumi.Output[Optional[str]]:
+    def security_group_type(self) -> pulumi.Output[str]:
         """
         The type of the security group. Valid values:
-        `normal`: basic security group.
-        `enterprise`: advanced security group For more information.
         """
         return pulumi.get(self, "security_group_type")
 
@@ -578,8 +576,6 @@ class SecurityGroup(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
-
-        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
         return pulumi.get(self, "tags")
 
@@ -587,7 +583,7 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The VPC ID.
+        The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 

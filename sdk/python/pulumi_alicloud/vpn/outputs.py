@@ -122,7 +122,7 @@ class ConnectionHealthCheckConfig(dict):
                  sip: Optional[str] = None):
         """
         :param str dip: The destination IP address.
-        :param bool enable: Whether to enable BGP.
+        :param bool enable: Whether to enable Health Check.
         :param int interval: The interval between two consecutive health checks. Unit: seconds.
         :param int retry: The maximum number of health check retries.
         :param str sip: The source IP address.
@@ -150,7 +150,7 @@ class ConnectionHealthCheckConfig(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        Whether to enable BGP.
+        Whether to enable Health Check.
         """
         return pulumi.get(self, "enable")
 

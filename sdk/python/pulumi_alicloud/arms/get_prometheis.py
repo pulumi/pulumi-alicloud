@@ -22,7 +22,10 @@ class GetPrometheisResult:
     """
     A collection of values returned by getPrometheis.
     """
-    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, prometheis=None, resource_group_id=None, tags=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, prometheis=None, resource_group_id=None, tags=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -47,6 +50,11 @@ class GetPrometheisResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -83,7 +91,7 @@ class GetPrometheisResult:
     @pulumi.getter
     def prometheis(self) -> Sequence['outputs.GetPrometheisPrometheiResult']:
         """
-        A list of Prometheis. Each element contains the following attributes:
+        A list of Prometheus. Each element contains the following attributes:
         """
         return pulumi.get(self, "prometheis")
 
@@ -110,6 +118,7 @@ class AwaitableGetPrometheisResult(GetPrometheisResult):
         if False:
             yield self
         return GetPrometheisResult(
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
@@ -120,7 +129,8 @@ class AwaitableGetPrometheisResult(GetPrometheisResult):
             tags=self.tags)
 
 
-def get_prometheis(ids: Optional[Sequence[str]] = None,
+def get_prometheis(enable_details: Optional[bool] = None,
+                   ids: Optional[Sequence[str]] = None,
                    name_regex: Optional[str] = None,
                    output_file: Optional[str] = None,
                    resource_group_id: Optional[str] = None,
@@ -129,7 +139,9 @@ def get_prometheis(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Arms Prometheis of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.203.0+.
+    > **NOTE:** Available since v1.203.0.
+
+    > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.214.0.
 
     ## Example Usage
 
@@ -139,13 +151,32 @@ def get_prometheis(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.arms.get_prometheis(ids=["example_id"])
-    pulumi.export("armsPrometheisId1", ids.prometheis[0].id)
-    name_regex = alicloud.arms.get_prometheis(name_regex="tf-example")
-    pulumi.export("armsPrometheisId2", name_regex.prometheis[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+    default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+    default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
+    default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
+        cluster_type="ecs",
+        grafana_instance_id="free",
+        vpc_id=default_networks.ids[0],
+        vswitch_id=default_switches.ids[0],
+        security_group_id=default_security_group.id,
+        cluster_name=f"{name}-{default_networks.ids[0]}",
+        resource_group_id=default_resource_groups.groups[1].id,
+        tags={
+            "Created": "TF",
+            "For": "Prometheus",
+        })
+    name_regex = alicloud.arms.get_prometheis_output(name_regex=default_prometheus.cluster_name)
+    pulumi.export("armsPrometheisId", name_regex.prometheis[0].id)
     ```
 
 
+    :param bool enable_details: Whether to query details about the instance.
     :param Sequence[str] ids: A list of Prometheus IDs.
     :param str name_regex: A regex string to filter results by Prometheus name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -153,6 +184,7 @@ def get_prometheis(ids: Optional[Sequence[str]] = None,
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -162,6 +194,7 @@ def get_prometheis(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:arms/getPrometheis:getPrometheis', __args__, opts=opts, typ=GetPrometheisResult).value
 
     return AwaitableGetPrometheisResult(
+        enable_details=pulumi.get(__ret__, 'enable_details'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
@@ -173,7 +206,8 @@ def get_prometheis(ids: Optional[Sequence[str]] = None,
 
 
 @_utilities.lift_output_func(get_prometheis)
-def get_prometheis_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+def get_prometheis_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                           resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -182,7 +216,9 @@ def get_prometheis_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     """
     This data source provides the Arms Prometheis of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.203.0+.
+    > **NOTE:** Available since v1.203.0.
+
+    > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.214.0.
 
     ## Example Usage
 
@@ -192,13 +228,32 @@ def get_prometheis_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.arms.get_prometheis(ids=["example_id"])
-    pulumi.export("armsPrometheisId1", ids.prometheis[0].id)
-    name_regex = alicloud.arms.get_prometheis(name_regex="tf-example")
-    pulumi.export("armsPrometheisId2", name_regex.prometheis[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+    default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+    default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
+    default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
+        cluster_type="ecs",
+        grafana_instance_id="free",
+        vpc_id=default_networks.ids[0],
+        vswitch_id=default_switches.ids[0],
+        security_group_id=default_security_group.id,
+        cluster_name=f"{name}-{default_networks.ids[0]}",
+        resource_group_id=default_resource_groups.groups[1].id,
+        tags={
+            "Created": "TF",
+            "For": "Prometheus",
+        })
+    name_regex = alicloud.arms.get_prometheis_output(name_regex=default_prometheus.cluster_name)
+    pulumi.export("armsPrometheisId", name_regex.prometheis[0].id)
     ```
 
 
+    :param bool enable_details: Whether to query details about the instance.
     :param Sequence[str] ids: A list of Prometheus IDs.
     :param str name_regex: A regex string to filter results by Prometheus name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

@@ -13,6 +13,8 @@ import (
 
 // The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
 //
+// > **NOTE:** Available since v1.18.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -20,28 +22,66 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpn.GetGateways(ctx, &vpn.GetGatewaysArgs{
-//				BusinessStatus: pulumi.StringRef("Normal"),
-//				Ids: []string{
-//					"fake-vpn-id1",
-//					"fake-vpn-id2",
-//				},
-//				IncludeReservationData: pulumi.BoolRef(true),
-//				NameRegex:              pulumi.StringRef("testAcc*"),
-//				OutputFile:             pulumi.StringRef("/tmp/vpns"),
-//				Status:                 pulumi.StringRef("Active"),
-//				VpcId:                  pulumi.StringRef("fake-vpc-id"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
+//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
+//				Bandwidth:          pulumi.Int(10),
+//				EnableSsl:          pulumi.Bool(true),
+//				EnableIpsec:        pulumi.Bool(true),
+//				InstanceChargeType: pulumi.String("PrePaid"),
+//				Description:        pulumi.String(name),
+//				VswitchId:          *pulumi.String(defaultSwitches.Ids[0]),
+//				NetworkType:        pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = defaultGateway.ID().ApplyT(func(id string) (vpn.GetGatewaysResult, error) {
+//				return vpn.GetGatewaysOutput(ctx, vpn.GetGatewaysOutputArgs{
+//					VpcId: defaultNetworks.Ids[0],
+//					Ids: []string{
+//						id,
+//					},
+//					Status:                 "Active",
+//					BusinessStatus:         "Normal",
+//					NameRegex:              "tf-example",
+//					IncludeReservationData: true,
+//					OutputFile:             "/tmp/vpns",
+//				}, nil), nil
+//			}).(vpn.GetGatewaysResultOutput)
 //			return nil
 //		})
 //	}

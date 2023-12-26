@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Disk Attachment and how to use it, see [What is Disk Attachment](https://www.alibabacloud.com/help/en/doc-detail/25515.htm).
  * 
- * &gt; **NOTE:** Available in v1.122.0+.
+ * &gt; **NOTE:** Available since v1.122.0+.
  * 
  * ## Example Usage
  * 
@@ -31,12 +31,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.ecs.EcsDisk;
- * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.EcsDisk;
+ * import com.pulumi.alicloud.ecs.EcsDiskArgs;
  * import com.pulumi.alicloud.ecs.EcsDiskAttachment;
  * import com.pulumi.alicloud.ecs.EcsDiskAttachmentArgs;
  * import java.util.List;
@@ -52,29 +61,71 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ecsSg = new SecurityGroup(&#34;ecsSg&#34;, SecurityGroupArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
  *             .description(&#34;New security group&#34;)
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var ecsDisk = new EcsDisk(&#34;ecsDisk&#34;, EcsDiskArgs.builder()        
- *             .zoneId(&#34;cn-beijing-a&#34;)
- *             .size(&#34;50&#34;)
- *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest-disk&#34;))
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         var ecsInstance = new Instance(&#34;ecsInstance&#34;, InstanceArgs.builder()        
- *             .imageId(&#34;ubuntu_18_04_64_20G_alibase_20190624.vhd&#34;)
- *             .instanceType(&#34;ecs.n4.small&#34;)
- *             .availabilityZone(&#34;cn-beijing-a&#34;)
- *             .securityGroups(ecsSg.id())
- *             .instanceName(&#34;Hello&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
- *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest-instance&#34;))
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceName(name)
+ *             .hostName(name)
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
- *         var ecsDiskAtt = new EcsDiskAttachment(&#34;ecsDiskAtt&#34;, EcsDiskAttachmentArgs.builder()        
- *             .diskId(ecsDisk.id())
- *             .instanceId(ecsInstance.id())
+ *         final var disk = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultEcsDisk = new EcsDisk(&#34;defaultEcsDisk&#34;, EcsDiskArgs.builder()        
+ *             .zoneId(disk.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .category(&#34;cloud_efficiency&#34;)
+ *             .deleteAutoSnapshot(&#34;true&#34;)
+ *             .description(&#34;Test For Terraform&#34;)
+ *             .diskName(name)
+ *             .enableAutoSnapshot(&#34;true&#34;)
+ *             .encrypted(&#34;true&#34;)
+ *             .size(&#34;500&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;Environment&#34;, &#34;Acceptance-test&#34;)
+ *             ))
+ *             .build());
+ * 
+ *         var defaultEcsDiskAttachment = new EcsDiskAttachment(&#34;defaultEcsDiskAttachment&#34;, EcsDiskAttachmentArgs.builder()        
+ *             .diskId(defaultEcsDisk.id())
+ *             .instanceId(defaultInstance.id())
  *             .build());
  * 
  *     }
@@ -120,9 +171,17 @@ public class EcsDiskAttachment extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> deleteWithInstance() {
         return Codegen.optional(this.deleteWithInstance);
     }
+    /**
+     * The name of the cloud disk device.
+     * 
+     */
     @Export(name="device", refs={String.class}, tree="[0]")
     private Output<String> device;
 
+    /**
+     * @return The name of the cloud disk device.
+     * 
+     */
     public Output<String> device() {
         return this.device;
     }

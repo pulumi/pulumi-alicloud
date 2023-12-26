@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.121.0+.
+    /// &gt; **NOTE:** Available since v1.121.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var exampleEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("exampleEcsKeyPair", new()
     ///     {
-    ///         KeyPairName = "terraform-example",
+    ///         KeyPairName = "tf-example",
     ///     });
     /// 
     ///     var exampleEcsKeyPairAttachment = new AliCloud.Ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment", new()
@@ -119,6 +119,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("instanceIds")]
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
+        /// <summary>
+        /// New field 'key_pair_name' instead.
+        /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
 
@@ -192,6 +195,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _instanceIds = value;
         }
 
+        /// <summary>
+        /// New field 'key_pair_name' instead.
+        /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
@@ -227,6 +233,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _instanceIds = value;
         }
 
+        /// <summary>
+        /// New field 'key_pair_name' instead.
+        /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 

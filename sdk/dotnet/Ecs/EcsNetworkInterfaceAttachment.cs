@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.123.1+.
+    /// &gt; **NOTE:** Available since v1.123.1+.
     /// 
     /// ## Example Usage
     /// 
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Ecs
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAcc";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ecs
     ///     {
     ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         InstanceName = name,
-    ///         HostName = "tf-testAcc",
+    ///         HostName = "tf-example",
     ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroups = new[]
@@ -95,12 +95,12 @@ namespace Pulumi.AliCloud.Ecs
     ///         {
     ///             defaultSecurityGroup.Id,
     ///         },
-    ///         Description = "Basic test",
+    ///         Description = "Basic example",
     ///         PrimaryIpAddress = "192.168.0.2",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "Test" },
+    ///             { "For", "example" },
     ///         },
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///     });

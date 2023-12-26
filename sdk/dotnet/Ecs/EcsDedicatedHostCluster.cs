@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Dedicated Host Cluster and how to use it, see [What is Dedicated Host Cluster](https://www.alibabacloud.com/help/en/doc-detail/184667.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.146.0+.
+    /// &gt; **NOTE:** Available since v1.146.0+.
     /// 
     /// ## Example Usage
     /// 

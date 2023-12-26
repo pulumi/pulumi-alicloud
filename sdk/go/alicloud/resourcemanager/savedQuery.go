@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Resource Manager Saved Query resource. Saved Query Requests.
+// Provides a Resource Manager Saved Query resource. ResourceCenter Saved Query.
 //
 // For information about Resource Manager Saved Query and how to use it, see [What is Saved Query](https://www.alibabacloud.com/help/zh/resource-management/developer-reference/api-resourcecenter-2022-12-01-createsavedquery).
 //

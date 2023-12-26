@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a VPN Pbr Route Entry resource.
  * 
- * &gt; **NOTE:** Available in 1.162.0+.
+ * &gt; **NOTE:** Available since v1.162.0+.
  * 
  * For information about VPN Pbr Route Entry and how to use it, see [What is VPN Pbr Route Entry](https://www.alibabacloud.com/help/en/doc-detail/127248.html).
  * 

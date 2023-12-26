@@ -76,7 +76,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
-        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -408,7 +408,7 @@ class ScalingConfigurationArgs:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -798,7 +798,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
-        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -1120,7 +1120,7 @@ class _ScalingConfigurationState:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -1598,7 +1598,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
-        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -1905,7 +1905,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
-        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -2124,7 +2124,7 @@ class ScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 

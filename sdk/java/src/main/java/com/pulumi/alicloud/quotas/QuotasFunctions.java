@@ -12,10 +12,13 @@ import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
 import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsPlainArgs;
 import com.pulumi.alicloud.quotas.inputs.GetQuotasArgs;
 import com.pulumi.alicloud.quotas.inputs.GetQuotasPlainArgs;
+import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
+import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsPlainArgs;
 import com.pulumi.alicloud.quotas.outputs.GetApplicationInfosResult;
 import com.pulumi.alicloud.quotas.outputs.GetQuotaAlarmsResult;
 import com.pulumi.alicloud.quotas.outputs.GetQuotaApplicationsResult;
 import com.pulumi.alicloud.quotas.outputs.GetQuotasResult;
+import com.pulumi.alicloud.quotas.outputs.GetTemplateApplicationsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -636,5 +639,59 @@ public final class QuotasFunctions {
      */
     public static CompletableFuture<GetQuotasResult> getQuotasPlain(GetQuotasPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:quotas/getQuotas:getQuotas", TypeShape.of(GetQuotasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     */
+    public static Output<GetTemplateApplicationsResult> getTemplateApplications() {
+        return getTemplateApplications(GetTemplateApplicationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     */
+    public static CompletableFuture<GetTemplateApplicationsResult> getTemplateApplicationsPlain() {
+        return getTemplateApplicationsPlain(GetTemplateApplicationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     */
+    public static Output<GetTemplateApplicationsResult> getTemplateApplications(GetTemplateApplicationsArgs args) {
+        return getTemplateApplications(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     */
+    public static CompletableFuture<GetTemplateApplicationsResult> getTemplateApplicationsPlain(GetTemplateApplicationsPlainArgs args) {
+        return getTemplateApplicationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     */
+    public static Output<GetTemplateApplicationsResult> getTemplateApplications(GetTemplateApplicationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:quotas/getTemplateApplications:getTemplateApplications", TypeShape.of(GetTemplateApplicationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     */
+    public static CompletableFuture<GetTemplateApplicationsResult> getTemplateApplicationsPlain(GetTemplateApplicationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:quotas/getTemplateApplications:getTemplateApplications", TypeShape.of(GetTemplateApplicationsResult.class), args, Utilities.withVersion(options));
     }
 }

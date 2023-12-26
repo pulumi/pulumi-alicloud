@@ -173,6 +173,7 @@ import * as quotas from "./quotas";
 import * as ram from "./ram";
 import * as rdc from "./rdc";
 import * as rds from "./rds";
+import * as realtimecompute from "./realtimecompute";
 import * as redis from "./redis";
 import * as resourcemanager from "./resourcemanager";
 import * as rocketmq from "./rocketmq";
@@ -302,6 +303,7 @@ export {
     ram,
     rdc,
     rds,
+    realtimecompute,
     redis,
     resourcemanager,
     rocketmq,

@@ -11,6 +11,79 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.204.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "cluster",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: defaultZones.ids?.[0],
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "cluster",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     vswitchName: name,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     zoneIdSlaveA: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ * });
+ * const defaultDbNode = new alicloud.rds.DbNode("defaultDbNode", {
+ *     dbInstanceId: defaultInstance.id,
+ *     classCode: defaultInstance.instanceType,
+ *     zoneId: defaultSwitch.zoneId,
+ * });
+ * const defaultDbInstanceEndpoint = new alicloud.rds.DbInstanceEndpoint("defaultDbInstanceEndpoint", {
+ *     dbInstanceId: defaultDbNode.dbInstanceId,
+ *     vpcId: defaultNetwork.id,
+ *     vswitchId: defaultInstance.vswitchId,
+ *     connectionStringPrefix: "example",
+ *     port: "3306",
+ *     dbInstanceEndpointDescription: name,
+ *     nodeItems: [{
+ *         nodeId: defaultDbNode.nodeId,
+ *         weight: 25,
+ *     }],
+ * });
+ * const defaultDbInstanceEndpointAddress = new alicloud.rds.DbInstanceEndpointAddress("defaultDbInstanceEndpointAddress", {
+ *     dbInstanceId: defaultInstance.id,
+ *     dbInstanceEndpointId: defaultDbInstanceEndpoint.dbInstanceEndpointId,
+ *     connectionStringPrefix: "tf-example-prefix",
+ *     port: "3306",
+ * });
+ * ```
+ *
  * ## Import
  *
  * RDS database endpoint public address feature can be imported using the id, e.g.
