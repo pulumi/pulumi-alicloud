@@ -127,6 +127,7 @@ class _EcsDiskAttachmentState:
         Input properties used for looking up and filtering EcsDiskAttachment resources.
         :param pulumi.Input[bool] bootable: Whether to mount as a system disk. Default to: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default to: `false`.
+        :param pulumi.Input[str] device: The name of the cloud disk device.
         :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
         :param pulumi.Input[str] key_pair_name: The name of key pair
@@ -174,6 +175,9 @@ class _EcsDiskAttachmentState:
     @property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the cloud disk device.
+        """
         return pulumi.get(self, "device")
 
     @device.setter
@@ -246,7 +250,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
 
         For information about ECS Disk Attachment and how to use it, see [What is Disk Attachment](https://www.alibabacloud.com/help/en/doc-detail/25515.htm).
 
-        > **NOTE:** Available in v1.122.0+.
+        > **NOTE:** Available since v1.122.0+.
 
         ## Example Usage
 
@@ -256,27 +260,51 @@ class EcsDiskAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
-        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
-        ecs_disk = alicloud.ecs.EcsDisk("ecsDisk",
-            zone_id="cn-beijing-a",
-            size=50,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            instance_type_family="ecs.sn1ne")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="10.4.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description="New security group",
+            vpc_id=default_network.id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            host_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        disk = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_ecs_disk = alicloud.ecs.EcsDisk("defaultEcsDisk",
+            zone_id=disk.zones[0].id,
+            category="cloud_efficiency",
+            delete_auto_snapshot=True,
+            description="Test For Terraform",
+            disk_name=name,
+            enable_auto_snapshot=True,
+            encrypted=True,
+            size=500,
             tags={
-                "Name": "TerraformTest-disk",
+                "Created": "TF",
+                "Environment": "Acceptance-test",
             })
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
-            instance_type="ecs.n4.small",
-            availability_zone="cn-beijing-a",
-            security_groups=[ecs_sg.id],
-            instance_name="Hello",
-            internet_charge_type="PayByBandwidth",
-            tags={
-                "Name": "TerraformTest-instance",
-            })
-        ecs_disk_att = alicloud.ecs.EcsDiskAttachment("ecsDiskAtt",
-            disk_id=ecs_disk.id,
-            instance_id=ecs_instance.id)
+        default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("defaultEcsDiskAttachment",
+            disk_id=default_ecs_disk.id,
+            instance_id=default_instance.id)
         ```
 
         ## Import
@@ -307,7 +335,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
 
         For information about ECS Disk Attachment and how to use it, see [What is Disk Attachment](https://www.alibabacloud.com/help/en/doc-detail/25515.htm).
 
-        > **NOTE:** Available in v1.122.0+.
+        > **NOTE:** Available since v1.122.0+.
 
         ## Example Usage
 
@@ -317,27 +345,51 @@ class EcsDiskAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
-        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
-        ecs_disk = alicloud.ecs.EcsDisk("ecsDisk",
-            zone_id="cn-beijing-a",
-            size=50,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            instance_type_family="ecs.sn1ne")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="10.4.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description="New security group",
+            vpc_id=default_network.id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            host_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        disk = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_ecs_disk = alicloud.ecs.EcsDisk("defaultEcsDisk",
+            zone_id=disk.zones[0].id,
+            category="cloud_efficiency",
+            delete_auto_snapshot=True,
+            description="Test For Terraform",
+            disk_name=name,
+            enable_auto_snapshot=True,
+            encrypted=True,
+            size=500,
             tags={
-                "Name": "TerraformTest-disk",
+                "Created": "TF",
+                "Environment": "Acceptance-test",
             })
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
-            instance_type="ecs.n4.small",
-            availability_zone="cn-beijing-a",
-            security_groups=[ecs_sg.id],
-            instance_name="Hello",
-            internet_charge_type="PayByBandwidth",
-            tags={
-                "Name": "TerraformTest-instance",
-            })
-        ecs_disk_att = alicloud.ecs.EcsDiskAttachment("ecsDiskAtt",
-            disk_id=ecs_disk.id,
-            instance_id=ecs_instance.id)
+        default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("defaultEcsDiskAttachment",
+            disk_id=default_ecs_disk.id,
+            instance_id=default_instance.id)
         ```
 
         ## Import
@@ -415,6 +467,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bootable: Whether to mount as a system disk. Default to: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default to: `false`.
+        :param pulumi.Input[str] device: The name of the cloud disk device.
         :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
         :param pulumi.Input[str] key_pair_name: The name of key pair
@@ -452,6 +505,9 @@ class EcsDiskAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def device(self) -> pulumi.Output[str]:
+        """
+        The name of the cloud disk device.
+        """
         return pulumi.get(self, "device")
 
     @property

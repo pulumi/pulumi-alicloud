@@ -10,8 +10,10 @@ from .get_application_infos import *
 from .get_quota_alarms import *
 from .get_quota_applications import *
 from .get_quotas import *
+from .get_template_applications import *
 from .quota_alarm import *
 from .quota_application import *
+from .template_applications import *
 from .template_quota import *
 from ._inputs import *
 from . import outputs

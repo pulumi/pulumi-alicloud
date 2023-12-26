@@ -2231,6 +2231,8 @@ func (o GetIntegrationExportersIntegrationExporterArrayOutput) Index(i pulumi.In
 }
 
 type GetPrometheisPromethei struct {
+	// The token used to access the data source.
+	AuthToken string `pulumi:"authToken"`
 	// The ID of the cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The name of the cluster.
@@ -2239,8 +2241,24 @@ type GetPrometheisPromethei struct {
 	ClusterType string `pulumi:"clusterType"`
 	// The ID of the Grafana workspace.
 	GrafanaInstanceId string `pulumi:"grafanaInstanceId"`
+	// Http api public network address.
+	HttpApiInterUrl string `pulumi:"httpApiInterUrl"`
+	// Http api intranet address.
+	HttpApiIntraUrl string `pulumi:"httpApiIntraUrl"`
 	// The ID of the Prometheus.
 	Id string `pulumi:"id"`
+	// PushGateway public network Url.
+	PushGateWayInterUrl string `pulumi:"pushGateWayInterUrl"`
+	// PushGateway intranet Url.
+	PushGateWayIntraUrl string `pulumi:"pushGateWayIntraUrl"`
+	// Public Url of remoteRead.
+	RemoteReadInterUrl string `pulumi:"remoteReadInterUrl"`
+	// RemoteRead intranet Url.
+	RemoteReadIntraUrl string `pulumi:"remoteReadIntraUrl"`
+	// RemoteWrite public Url.
+	RemoteWriteInterUrl string `pulumi:"remoteWriteInterUrl"`
+	// RemoteWrite Intranet Url.
+	RemoteWriteIntraUrl string `pulumi:"remoteWriteIntraUrl"`
 	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The ID of the security group.
@@ -2267,6 +2285,8 @@ type GetPrometheisPrometheiInput interface {
 }
 
 type GetPrometheisPrometheiArgs struct {
+	// The token used to access the data source.
+	AuthToken pulumi.StringInput `pulumi:"authToken"`
 	// The ID of the cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The name of the cluster.
@@ -2275,8 +2295,24 @@ type GetPrometheisPrometheiArgs struct {
 	ClusterType pulumi.StringInput `pulumi:"clusterType"`
 	// The ID of the Grafana workspace.
 	GrafanaInstanceId pulumi.StringInput `pulumi:"grafanaInstanceId"`
+	// Http api public network address.
+	HttpApiInterUrl pulumi.StringInput `pulumi:"httpApiInterUrl"`
+	// Http api intranet address.
+	HttpApiIntraUrl pulumi.StringInput `pulumi:"httpApiIntraUrl"`
 	// The ID of the Prometheus.
 	Id pulumi.StringInput `pulumi:"id"`
+	// PushGateway public network Url.
+	PushGateWayInterUrl pulumi.StringInput `pulumi:"pushGateWayInterUrl"`
+	// PushGateway intranet Url.
+	PushGateWayIntraUrl pulumi.StringInput `pulumi:"pushGateWayIntraUrl"`
+	// Public Url of remoteRead.
+	RemoteReadInterUrl pulumi.StringInput `pulumi:"remoteReadInterUrl"`
+	// RemoteRead intranet Url.
+	RemoteReadIntraUrl pulumi.StringInput `pulumi:"remoteReadIntraUrl"`
+	// RemoteWrite public Url.
+	RemoteWriteInterUrl pulumi.StringInput `pulumi:"remoteWriteInterUrl"`
+	// RemoteWrite Intranet Url.
+	RemoteWriteIntraUrl pulumi.StringInput `pulumi:"remoteWriteIntraUrl"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The ID of the security group.
@@ -2342,6 +2378,11 @@ func (o GetPrometheisPrometheiOutput) ToGetPrometheisPrometheiOutputWithContext(
 	return o
 }
 
+// The token used to access the data source.
+func (o GetPrometheisPrometheiOutput) AuthToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.AuthToken }).(pulumi.StringOutput)
+}
+
 // The ID of the cluster.
 func (o GetPrometheisPrometheiOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.ClusterId }).(pulumi.StringOutput)
@@ -2362,9 +2403,49 @@ func (o GetPrometheisPrometheiOutput) GrafanaInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.GrafanaInstanceId }).(pulumi.StringOutput)
 }
 
+// Http api public network address.
+func (o GetPrometheisPrometheiOutput) HttpApiInterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.HttpApiInterUrl }).(pulumi.StringOutput)
+}
+
+// Http api intranet address.
+func (o GetPrometheisPrometheiOutput) HttpApiIntraUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.HttpApiIntraUrl }).(pulumi.StringOutput)
+}
+
 // The ID of the Prometheus.
 func (o GetPrometheisPrometheiOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// PushGateway public network Url.
+func (o GetPrometheisPrometheiOutput) PushGateWayInterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.PushGateWayInterUrl }).(pulumi.StringOutput)
+}
+
+// PushGateway intranet Url.
+func (o GetPrometheisPrometheiOutput) PushGateWayIntraUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.PushGateWayIntraUrl }).(pulumi.StringOutput)
+}
+
+// Public Url of remoteRead.
+func (o GetPrometheisPrometheiOutput) RemoteReadInterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.RemoteReadInterUrl }).(pulumi.StringOutput)
+}
+
+// RemoteRead intranet Url.
+func (o GetPrometheisPrometheiOutput) RemoteReadIntraUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.RemoteReadIntraUrl }).(pulumi.StringOutput)
+}
+
+// RemoteWrite public Url.
+func (o GetPrometheisPrometheiOutput) RemoteWriteInterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.RemoteWriteInterUrl }).(pulumi.StringOutput)
+}
+
+// RemoteWrite Intranet Url.
+func (o GetPrometheisPrometheiOutput) RemoteWriteIntraUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.RemoteWriteIntraUrl }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.
@@ -2976,6 +3057,274 @@ func (o GetPrometheusMonitoringsPrometheusMonitoringArrayOutput) Index(i pulumi.
 	}).(GetPrometheusMonitoringsPrometheusMonitoringOutput)
 }
 
+type GetPrometheusPromethei struct {
+	// The token used to access the data source.
+	AuthToken string `pulumi:"authToken"`
+	// The ID of the cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The type of the cluster.
+	ClusterType string `pulumi:"clusterType"`
+	// The ID of the Grafana workspace.
+	GrafanaInstanceId string `pulumi:"grafanaInstanceId"`
+	// Http api public network address.
+	HttpApiInterUrl string `pulumi:"httpApiInterUrl"`
+	// Http api intranet address.
+	HttpApiIntraUrl string `pulumi:"httpApiIntraUrl"`
+	// The ID of the Prometheus.
+	Id string `pulumi:"id"`
+	// PushGateway public network Url.
+	PushGateWayInterUrl string `pulumi:"pushGateWayInterUrl"`
+	// PushGateway intranet Url.
+	PushGateWayIntraUrl string `pulumi:"pushGateWayIntraUrl"`
+	// Public Url of remoteRead.
+	RemoteReadInterUrl string `pulumi:"remoteReadInterUrl"`
+	// RemoteRead intranet Url.
+	RemoteReadIntraUrl string `pulumi:"remoteReadIntraUrl"`
+	// RemoteWrite public Url.
+	RemoteWriteInterUrl string `pulumi:"remoteWriteInterUrl"`
+	// RemoteWrite Intranet Url.
+	RemoteWriteIntraUrl string `pulumi:"remoteWriteIntraUrl"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The ID of the security group.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The child instance json string of the globalView instance.
+	SubClustersJson string `pulumi:"subClustersJson"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the VSwitch.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetPrometheusPrometheiInput is an input type that accepts GetPrometheusPrometheiArgs and GetPrometheusPrometheiOutput values.
+// You can construct a concrete instance of `GetPrometheusPrometheiInput` via:
+//
+//	GetPrometheusPrometheiArgs{...}
+type GetPrometheusPrometheiInput interface {
+	pulumi.Input
+
+	ToGetPrometheusPrometheiOutput() GetPrometheusPrometheiOutput
+	ToGetPrometheusPrometheiOutputWithContext(context.Context) GetPrometheusPrometheiOutput
+}
+
+type GetPrometheusPrometheiArgs struct {
+	// The token used to access the data source.
+	AuthToken pulumi.StringInput `pulumi:"authToken"`
+	// The ID of the cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The type of the cluster.
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// The ID of the Grafana workspace.
+	GrafanaInstanceId pulumi.StringInput `pulumi:"grafanaInstanceId"`
+	// Http api public network address.
+	HttpApiInterUrl pulumi.StringInput `pulumi:"httpApiInterUrl"`
+	// Http api intranet address.
+	HttpApiIntraUrl pulumi.StringInput `pulumi:"httpApiIntraUrl"`
+	// The ID of the Prometheus.
+	Id pulumi.StringInput `pulumi:"id"`
+	// PushGateway public network Url.
+	PushGateWayInterUrl pulumi.StringInput `pulumi:"pushGateWayInterUrl"`
+	// PushGateway intranet Url.
+	PushGateWayIntraUrl pulumi.StringInput `pulumi:"pushGateWayIntraUrl"`
+	// Public Url of remoteRead.
+	RemoteReadInterUrl pulumi.StringInput `pulumi:"remoteReadInterUrl"`
+	// RemoteRead intranet Url.
+	RemoteReadIntraUrl pulumi.StringInput `pulumi:"remoteReadIntraUrl"`
+	// RemoteWrite public Url.
+	RemoteWriteInterUrl pulumi.StringInput `pulumi:"remoteWriteInterUrl"`
+	// RemoteWrite Intranet Url.
+	RemoteWriteIntraUrl pulumi.StringInput `pulumi:"remoteWriteIntraUrl"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The ID of the security group.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The child instance json string of the globalView instance.
+	SubClustersJson pulumi.StringInput `pulumi:"subClustersJson"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the VSwitch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetPrometheusPrometheiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusPromethei)(nil)).Elem()
+}
+
+func (i GetPrometheusPrometheiArgs) ToGetPrometheusPrometheiOutput() GetPrometheusPrometheiOutput {
+	return i.ToGetPrometheusPrometheiOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusPrometheiArgs) ToGetPrometheusPrometheiOutputWithContext(ctx context.Context) GetPrometheusPrometheiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusPrometheiOutput)
+}
+
+// GetPrometheusPrometheiArrayInput is an input type that accepts GetPrometheusPrometheiArray and GetPrometheusPrometheiArrayOutput values.
+// You can construct a concrete instance of `GetPrometheusPrometheiArrayInput` via:
+//
+//	GetPrometheusPrometheiArray{ GetPrometheusPrometheiArgs{...} }
+type GetPrometheusPrometheiArrayInput interface {
+	pulumi.Input
+
+	ToGetPrometheusPrometheiArrayOutput() GetPrometheusPrometheiArrayOutput
+	ToGetPrometheusPrometheiArrayOutputWithContext(context.Context) GetPrometheusPrometheiArrayOutput
+}
+
+type GetPrometheusPrometheiArray []GetPrometheusPrometheiInput
+
+func (GetPrometheusPrometheiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusPromethei)(nil)).Elem()
+}
+
+func (i GetPrometheusPrometheiArray) ToGetPrometheusPrometheiArrayOutput() GetPrometheusPrometheiArrayOutput {
+	return i.ToGetPrometheusPrometheiArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusPrometheiArray) ToGetPrometheusPrometheiArrayOutputWithContext(ctx context.Context) GetPrometheusPrometheiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusPrometheiArrayOutput)
+}
+
+type GetPrometheusPrometheiOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusPrometheiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusPromethei)(nil)).Elem()
+}
+
+func (o GetPrometheusPrometheiOutput) ToGetPrometheusPrometheiOutput() GetPrometheusPrometheiOutput {
+	return o
+}
+
+func (o GetPrometheusPrometheiOutput) ToGetPrometheusPrometheiOutputWithContext(ctx context.Context) GetPrometheusPrometheiOutput {
+	return o
+}
+
+// The token used to access the data source.
+func (o GetPrometheusPrometheiOutput) AuthToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.AuthToken }).(pulumi.StringOutput)
+}
+
+// The ID of the cluster.
+func (o GetPrometheusPrometheiOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the cluster.
+func (o GetPrometheusPrometheiOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The type of the cluster.
+func (o GetPrometheusPrometheiOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// The ID of the Grafana workspace.
+func (o GetPrometheusPrometheiOutput) GrafanaInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.GrafanaInstanceId }).(pulumi.StringOutput)
+}
+
+// Http api public network address.
+func (o GetPrometheusPrometheiOutput) HttpApiInterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.HttpApiInterUrl }).(pulumi.StringOutput)
+}
+
+// Http api intranet address.
+func (o GetPrometheusPrometheiOutput) HttpApiIntraUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.HttpApiIntraUrl }).(pulumi.StringOutput)
+}
+
+// The ID of the Prometheus.
+func (o GetPrometheusPrometheiOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// PushGateway public network Url.
+func (o GetPrometheusPrometheiOutput) PushGateWayInterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.PushGateWayInterUrl }).(pulumi.StringOutput)
+}
+
+// PushGateway intranet Url.
+func (o GetPrometheusPrometheiOutput) PushGateWayIntraUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.PushGateWayIntraUrl }).(pulumi.StringOutput)
+}
+
+// Public Url of remoteRead.
+func (o GetPrometheusPrometheiOutput) RemoteReadInterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.RemoteReadInterUrl }).(pulumi.StringOutput)
+}
+
+// RemoteRead intranet Url.
+func (o GetPrometheusPrometheiOutput) RemoteReadIntraUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.RemoteReadIntraUrl }).(pulumi.StringOutput)
+}
+
+// RemoteWrite public Url.
+func (o GetPrometheusPrometheiOutput) RemoteWriteInterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.RemoteWriteInterUrl }).(pulumi.StringOutput)
+}
+
+// RemoteWrite Intranet Url.
+func (o GetPrometheusPrometheiOutput) RemoteWriteIntraUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.RemoteWriteIntraUrl }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetPrometheusPrometheiOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the security group.
+func (o GetPrometheusPrometheiOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The child instance json string of the globalView instance.
+func (o GetPrometheusPrometheiOutput) SubClustersJson() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.SubClustersJson }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetPrometheusPrometheiOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the VPC.
+func (o GetPrometheusPrometheiOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch.
+func (o GetPrometheusPrometheiOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetPrometheusPrometheiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusPrometheiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusPromethei)(nil)).Elem()
+}
+
+func (o GetPrometheusPrometheiArrayOutput) ToGetPrometheusPrometheiArrayOutput() GetPrometheusPrometheiArrayOutput {
+	return o
+}
+
+func (o GetPrometheusPrometheiArrayOutput) ToGetPrometheusPrometheiArrayOutputWithContext(ctx context.Context) GetPrometheusPrometheiArrayOutput {
+	return o
+}
+
+func (o GetPrometheusPrometheiArrayOutput) Index(i pulumi.IntInput) GetPrometheusPrometheiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrometheusPromethei {
+		return vs[0].([]GetPrometheusPromethei)[vs[1].(int)]
+	}).(GetPrometheusPrometheiOutput)
+}
+
 type GetRemoteWritesRemoteWrite struct {
 	// The ID of the Prometheus instance.
 	ClusterId string `pulumi:"clusterId"`
@@ -3147,6 +3496,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleLabelArrayInput)(nil)).Elem(), GetPrometheusAlertRulesRuleLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusMonitoringsPrometheusMonitoringInput)(nil)).Elem(), GetPrometheusMonitoringsPrometheusMonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusMonitoringsPrometheusMonitoringArrayInput)(nil)).Elem(), GetPrometheusMonitoringsPrometheusMonitoringArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusPrometheiInput)(nil)).Elem(), GetPrometheusPrometheiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusPrometheiArrayInput)(nil)).Elem(), GetPrometheusPrometheiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteWritesRemoteWriteInput)(nil)).Elem(), GetRemoteWritesRemoteWriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteWritesRemoteWriteArrayInput)(nil)).Elem(), GetRemoteWritesRemoteWriteArray{})
 	pulumi.RegisterOutputType(DispatchRuleGroupRuleOutput{})
@@ -3195,6 +3546,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetPrometheusMonitoringsPrometheusMonitoringOutput{})
 	pulumi.RegisterOutputType(GetPrometheusMonitoringsPrometheusMonitoringArrayOutput{})
+	pulumi.RegisterOutputType(GetPrometheusPrometheiOutput{})
+	pulumi.RegisterOutputType(GetPrometheusPrometheiArrayOutput{})
 	pulumi.RegisterOutputType(GetRemoteWritesRemoteWriteOutput{})
 	pulumi.RegisterOutputType(GetRemoteWritesRemoteWriteArrayOutput{})
 }

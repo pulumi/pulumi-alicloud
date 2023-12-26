@@ -9,24 +9,45 @@ import * as utilities from "../utilities";
 /**
  * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
  *
+ * > **NOTE:** Available since v1.18.0.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const vpnGateways = alicloud.vpn.getGateways({
- *     businessStatus: "Normal",
- *     ids: [
- *         "fake-vpn-id1",
- *         "fake-vpn-id2",
- *     ],
- *     includeReservationData: true,
- *     nameRegex: "testAcc*",
- *     outputFile: "/tmp/vpns",
- *     status: "Active",
- *     vpcId: "fake-vpc-id",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
+ * }));
+ * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     bandwidth: 10,
+ *     enableSsl: true,
+ *     enableIpsec: true,
+ *     instanceChargeType: "PrePaid",
+ *     description: name,
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     networkType: "public",
+ * });
+ * const vpnGateways = pulumi.all([defaultNetworks, defaultGateway.id]).apply(([defaultNetworks, id]) => alicloud.vpn.getGatewaysOutput({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     ids: [id],
+ *     status: "Active",
+ *     businessStatus: "Normal",
+ *     nameRegex: "tf-example",
+ *     includeReservationData: true,
+ *     outputFile: "/tmp/vpns",
+ * }));
  * ```
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
@@ -130,24 +151,45 @@ export interface GetGatewaysResult {
 /**
  * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
  *
+ * > **NOTE:** Available since v1.18.0.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const vpnGateways = alicloud.vpn.getGateways({
- *     businessStatus: "Normal",
- *     ids: [
- *         "fake-vpn-id1",
- *         "fake-vpn-id2",
- *     ],
- *     includeReservationData: true,
- *     nameRegex: "testAcc*",
- *     outputFile: "/tmp/vpns",
- *     status: "Active",
- *     vpcId: "fake-vpc-id",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
+ * }));
+ * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     bandwidth: 10,
+ *     enableSsl: true,
+ *     enableIpsec: true,
+ *     instanceChargeType: "PrePaid",
+ *     description: name,
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     networkType: "public",
+ * });
+ * const vpnGateways = pulumi.all([defaultNetworks, defaultGateway.id]).apply(([defaultNetworks, id]) => alicloud.vpn.getGatewaysOutput({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     ids: [id],
+ *     status: "Active",
+ *     businessStatus: "Normal",
+ *     nameRegex: "tf-example",
+ *     includeReservationData: true,
+ *     outputFile: "/tmp/vpns",
+ * }));
  * ```
  */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {

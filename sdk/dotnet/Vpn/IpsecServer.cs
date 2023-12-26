@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// For information about VPN Ipsec Server and how to use it, see [What is Ipsec Server](https://www.alibabacloud.com/help/en/doc-detail/205454.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.161.0+.
+    /// &gt; **NOTE:** Available since v1.161.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -28,41 +28,40 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooZones = AliCloud.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VswitchName = "terraform-example",
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         VpcId = fooNetwork.Id,
-    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
-    ///     var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new()
+    ///     var defaultGateway = new AliCloud.Vpn.Gateway("defaultGateway", new()
     ///     {
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         Bandwidth = 10,
     ///         EnableSsl = true,
+    ///         Description = name,
     ///         InstanceChargeType = "PrePaid",
-    ///         Description = "terraform-example",
-    ///         VswitchId = fooSwitch.Id,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///     });
     /// 
-    ///     var fooIpsecServer = new AliCloud.Vpn.IpsecServer("fooIpsecServer", new()
+    ///     var foo = new AliCloud.Vpn.IpsecServer("foo", new()
     ///     {
     ///         ClientIpPool = "10.0.0.0/24",
-    ///         IpsecServerName = "terraform-example",
+    ///         IpsecServerName = name,
     ///         LocalSubnet = "192.168.0.0/24",
-    ///         VpnGatewayId = fooGateway.Id,
+    ///         VpnGatewayId = defaultGateway.Id,
     ///         PskEnabled = true,
     ///     });
     /// 
@@ -99,13 +98,13 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool?> EffectImmediately { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+        /// The configuration of Phase 1 negotiations. See `ike_config` below.
         /// </summary>
         [Output("ikeConfigs")]
         public Output<ImmutableArray<Outputs.IpsecServerIkeConfig>> IkeConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        /// The configuration of Phase 2 negotiations. See `ipsec_config` below.
         /// </summary>
         [Output("ipsecConfigs")]
         public Output<ImmutableArray<Outputs.IpsecServerIpsecConfig>> IpsecConfigs { get; private set; } = null!;
@@ -208,7 +207,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.IpsecServerIkeConfigArgs>? _ikeConfigs;
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+        /// The configuration of Phase 1 negotiations. See `ike_config` below.
         /// </summary>
         public InputList<Inputs.IpsecServerIkeConfigArgs> IkeConfigs
         {
@@ -220,7 +219,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.IpsecServerIpsecConfigArgs>? _ipsecConfigs;
 
         /// <summary>
-        /// The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        /// The configuration of Phase 2 negotiations. See `ipsec_config` below.
         /// </summary>
         public InputList<Inputs.IpsecServerIpsecConfigArgs> IpsecConfigs
         {
@@ -288,7 +287,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.IpsecServerIkeConfigGetArgs>? _ikeConfigs;
 
         /// <summary>
-        /// The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+        /// The configuration of Phase 1 negotiations. See `ike_config` below.
         /// </summary>
         public InputList<Inputs.IpsecServerIkeConfigGetArgs> IkeConfigs
         {
@@ -300,7 +299,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputList<Inputs.IpsecServerIpsecConfigGetArgs>? _ipsecConfigs;
 
         /// <summary>
-        /// The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        /// The configuration of Phase 2 negotiations. See `ipsec_config` below.
         /// </summary>
         public InputList<Inputs.IpsecServerIpsecConfigGetArgs> IpsecConfigs
         {

@@ -225,6 +225,8 @@ if typing.TYPE_CHECKING:
     rdc = __rdc
     import pulumi_alicloud.rds as __rds
     rds = __rds
+    import pulumi_alicloud.realtimecompute as __realtimecompute
+    realtimecompute = __realtimecompute
     import pulumi_alicloud.redis as __redis
     redis = __redis
     import pulumi_alicloud.resourcemanager as __resourcemanager
@@ -377,6 +379,7 @@ else:
     ram = _utilities.lazy_import('pulumi_alicloud.ram')
     rdc = _utilities.lazy_import('pulumi_alicloud.rdc')
     rds = _utilities.lazy_import('pulumi_alicloud.rds')
+    realtimecompute = _utilities.lazy_import('pulumi_alicloud.realtimecompute')
     redis = _utilities.lazy_import('pulumi_alicloud.redis')
     resourcemanager = _utilities.lazy_import('pulumi_alicloud.resourcemanager')
     rocketmq = _utilities.lazy_import('pulumi_alicloud.rocketmq')
@@ -492,6 +495,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.adb",
   "classes": {
    "alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion": "DBClusterLakeVersion"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "adb/lakeAccount",
+  "fqn": "pulumi_alicloud.adb",
+  "classes": {
+   "alicloud:adb/lakeAccount:LakeAccount": "LakeAccount"
   }
  },
  {
@@ -5136,6 +5147,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "quotas/templateApplications",
+  "fqn": "pulumi_alicloud.quotas",
+  "classes": {
+   "alicloud:quotas/templateApplications:TemplateApplications": "TemplateApplications"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "quotas/templateQuota",
   "fqn": "pulumi_alicloud.quotas",
   "classes": {
@@ -5436,6 +5455,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.rds",
   "classes": {
    "alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection": "ReadWriteSplittingConnection"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "realtimecompute/vvpInstance",
+  "fqn": "pulumi_alicloud.realtimecompute",
+  "classes": {
+   "alicloud:realtimecompute/vvpInstance:VvpInstance": "VvpInstance"
   }
  },
  {
@@ -6204,6 +6231,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.threatdetection",
   "classes": {
    "alicloud:threatdetection/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "threatdetection/maliciousFileWhitelistConfig",
+  "fqn": "pulumi_alicloud.threatdetection",
+  "classes": {
+   "alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig": "MaliciousFileWhitelistConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "threatdetection/ossScanConfig",
+  "fqn": "pulumi_alicloud.threatdetection",
+  "classes": {
+   "alicloud:threatdetection/ossScanConfig:OssScanConfig": "OssScanConfig"
   }
  },
  {

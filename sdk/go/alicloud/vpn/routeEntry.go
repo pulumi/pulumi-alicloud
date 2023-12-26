@@ -25,11 +25,17 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
@@ -37,28 +43,25 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("10.1.0.0/21"),
-//			})
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("terraform-example"),
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("10.1.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//			})
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
-//				VpcId:              defaultNetwork.ID(),
+//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
 //				Bandwidth:          pulumi.Int(10),
 //				InstanceChargeType: pulumi.String("PrePaid"),
 //				EnableSsl:          pulumi.Bool(false),
-//				VswitchId:          defaultSwitch.ID(),
+//				VswitchId:          *pulumi.String(defaultSwitches.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

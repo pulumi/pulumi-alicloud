@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
 //
-// > **NOTE:** Available in v1.121.0+.
+// > **NOTE:** Available since v1.121.0+.
 //
 // ## Example Usage
 //
@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			exampleEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "exampleEcsKeyPair", &ecs.EcsKeyPairArgs{
-//				KeyPairName: pulumi.String("terraform-example"),
+//				KeyPairName: pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -130,6 +130,8 @@ type EcsKeyPairAttachment struct {
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The list of ECS instance's IDs.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
+	// New field 'key_pair_name' instead.
+	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName pulumi.StringOutput `pulumi:"keyName"`
 	// The name of key pair used to bind.
@@ -173,6 +175,8 @@ type ecsKeyPairAttachmentState struct {
 	Force *bool `pulumi:"force"`
 	// The list of ECS instance's IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
+	// New field 'key_pair_name' instead.
+	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName *string `pulumi:"keyName"`
 	// The name of key pair used to bind.
@@ -184,6 +188,8 @@ type EcsKeyPairAttachmentState struct {
 	Force pulumi.BoolPtrInput
 	// The list of ECS instance's IDs.
 	InstanceIds pulumi.StringArrayInput
+	// New field 'key_pair_name' instead.
+	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName pulumi.StringPtrInput
 	// The name of key pair used to bind.
@@ -199,6 +205,8 @@ type ecsKeyPairAttachmentArgs struct {
 	Force *bool `pulumi:"force"`
 	// The list of ECS instance's IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
+	// New field 'key_pair_name' instead.
+	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName *string `pulumi:"keyName"`
 	// The name of key pair used to bind.
@@ -211,6 +219,8 @@ type EcsKeyPairAttachmentArgs struct {
 	Force pulumi.BoolPtrInput
 	// The list of ECS instance's IDs.
 	InstanceIds pulumi.StringArrayInput
+	// New field 'key_pair_name' instead.
+	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName pulumi.StringPtrInput
 	// The name of key pair used to bind.
@@ -314,6 +324,8 @@ func (o EcsKeyPairAttachmentOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
 }
 
+// New field 'key_pair_name' instead.
+//
 // Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 func (o EcsKeyPairAttachmentOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsKeyPairAttachment) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)

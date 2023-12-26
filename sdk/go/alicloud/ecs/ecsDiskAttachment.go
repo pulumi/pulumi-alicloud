@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Disk Attachment and how to use it, see [What is Disk Attachment](https://www.alibabacloud.com/help/en/doc-detail/25515.htm).
 //
-// > **NOTE:** Available in v1.122.0+.
+// > **NOTE:** Available since v1.122.0+.
 //
 // ## Example Usage
 //
@@ -27,48 +27,104 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ecsSg, err := ecs.NewSecurityGroup(ctx, "ecsSg", &ecs.SecurityGroupArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
+//				InstanceTypeFamily: pulumi.StringRef("ecs.sn1ne"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("10.4.0.0/24"),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
 //				Description: pulumi.String("New security group"),
+//				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ecsDisk, err := ecs.NewEcsDisk(ctx, "ecsDisk", &ecs.EcsDiskArgs{
-//				ZoneId: pulumi.String("cn-beijing-a"),
-//				Size:   pulumi.Int(50),
-//				Tags: pulumi.Map{
-//					"Name": pulumi.Any("TerraformTest-disk"),
-//				},
-//			})
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
-//				ImageId:          pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
-//				InstanceType:     pulumi.String("ecs.n4.small"),
-//				AvailabilityZone: pulumi.String("cn-beijing-a"),
+//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				InstanceName:     pulumi.String(name),
+//				HostName:         pulumi.String(name),
+//				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					ecsSg.ID(),
+//					defaultSecurityGroup.ID(),
 //				},
-//				InstanceName:       pulumi.String("Hello"),
-//				InternetChargeType: pulumi.String("PayByBandwidth"),
-//				Tags: pulumi.StringMap{
-//					"Name": pulumi.String("TerraformTest-instance"),
+//				VswitchId: defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			disk, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "defaultEcsDisk", &ecs.EcsDiskArgs{
+//				ZoneId:             *pulumi.String(disk.Zones[0].Id),
+//				Category:           pulumi.String("cloud_efficiency"),
+//				DeleteAutoSnapshot: pulumi.Bool(true),
+//				Description:        pulumi.String("Test For Terraform"),
+//				DiskName:           pulumi.String(name),
+//				EnableAutoSnapshot: pulumi.Bool(true),
+//				Encrypted:          pulumi.Bool(true),
+//				Size:               pulumi.Int(500),
+//				Tags: pulumi.Map{
+//					"Created":     pulumi.Any("TF"),
+//					"Environment": pulumi.Any("Acceptance-test"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEcsDiskAttachment(ctx, "ecsDiskAtt", &ecs.EcsDiskAttachmentArgs{
-//				DiskId:     ecsDisk.ID(),
-//				InstanceId: ecsInstance.ID(),
+//			_, err = ecs.NewEcsDiskAttachment(ctx, "defaultEcsDiskAttachment", &ecs.EcsDiskAttachmentArgs{
+//				DiskId:     defaultEcsDisk.ID(),
+//				InstanceId: defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,7 +151,8 @@ type EcsDiskAttachment struct {
 	Bootable pulumi.BoolPtrOutput `pulumi:"bootable"`
 	// Indicates whether the disk is released together with the instance. Default to: `false`.
 	DeleteWithInstance pulumi.BoolPtrOutput `pulumi:"deleteWithInstance"`
-	Device             pulumi.StringOutput  `pulumi:"device"`
+	// The name of the cloud disk device.
+	Device pulumi.StringOutput `pulumi:"device"`
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
 	// ID of the Instance to attach to.
@@ -145,8 +202,9 @@ type ecsDiskAttachmentState struct {
 	// Whether to mount as a system disk. Default to: `false`.
 	Bootable *bool `pulumi:"bootable"`
 	// Indicates whether the disk is released together with the instance. Default to: `false`.
-	DeleteWithInstance *bool   `pulumi:"deleteWithInstance"`
-	Device             *string `pulumi:"device"`
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	// The name of the cloud disk device.
+	Device *string `pulumi:"device"`
 	// ID of the Disk to be attached.
 	DiskId *string `pulumi:"diskId"`
 	// ID of the Instance to attach to.
@@ -162,7 +220,8 @@ type EcsDiskAttachmentState struct {
 	Bootable pulumi.BoolPtrInput
 	// Indicates whether the disk is released together with the instance. Default to: `false`.
 	DeleteWithInstance pulumi.BoolPtrInput
-	Device             pulumi.StringPtrInput
+	// The name of the cloud disk device.
+	Device pulumi.StringPtrInput
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringPtrInput
 	// ID of the Instance to attach to.
@@ -305,6 +364,7 @@ func (o EcsDiskAttachmentOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsDiskAttachment) pulumi.BoolPtrOutput { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the cloud disk device.
 func (o EcsDiskAttachmentOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDiskAttachment) pulumi.StringOutput { return v.Device }).(pulumi.StringOutput)
 }

@@ -15,30 +15,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooZones = alicloud.getZones({
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.16.0.0/12",
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
  * });
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
- *     vswitchName: "terraform-example",
- *     cidrBlock: "172.16.0.0/21",
- *     vpcId: fooNetwork.id,
- *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
- * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
+ * }));
  * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
- *     vpcId: fooNetwork.id,
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  *     bandwidth: 10,
  *     enableSsl: true,
  *     instanceChargeType: "PrePaid",
  *     description: "test_create_description",
- *     vswitchId: fooSwitch.id,
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  * });
  * const fooCustomerGateway = new alicloud.vpn.CustomerGateway("fooCustomerGateway", {
  *     ipAddress: "42.104.22.210",
- *     description: "terraform-example",
+ *     description: name,
  * });
  * const fooConnection = new alicloud.vpn.Connection("fooConnection", {
  *     vpnGatewayId: fooGateway.id,
@@ -109,7 +108,7 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
-     * The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+     * The configurations of the BGP routing protocol. See `bgpConfig` below.
      */
     public readonly bgpConfig!: pulumi.Output<outputs.vpn.ConnectionBgpConfig>;
     /**
@@ -129,15 +128,15 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly enableNatTraversal!: pulumi.Output<boolean>;
     /**
-     * The health check configurations. See the following `Block healthCheckConfig`.
+     * The health check configurations. See `healthCheckConfig` below.
      */
     public readonly healthCheckConfig!: pulumi.Output<outputs.vpn.ConnectionHealthCheckConfig>;
     /**
-     * The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+     * The configurations of phase-one negotiation. See `ikeConfig` below.
      */
     public readonly ikeConfig!: pulumi.Output<outputs.vpn.ConnectionIkeConfig>;
     /**
-     * The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+     * The configurations of phase-two negotiation. See `ipsecConfig` below.
      */
     public readonly ipsecConfig!: pulumi.Output<outputs.vpn.ConnectionIpsecConfig>;
     /**
@@ -225,7 +224,7 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
-     * The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+     * The configurations of the BGP routing protocol. See `bgpConfig` below.
      */
     bgpConfig?: pulumi.Input<inputs.vpn.ConnectionBgpConfig>;
     /**
@@ -245,15 +244,15 @@ export interface ConnectionState {
      */
     enableNatTraversal?: pulumi.Input<boolean>;
     /**
-     * The health check configurations. See the following `Block healthCheckConfig`.
+     * The health check configurations. See `healthCheckConfig` below.
      */
     healthCheckConfig?: pulumi.Input<inputs.vpn.ConnectionHealthCheckConfig>;
     /**
-     * The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+     * The configurations of phase-one negotiation. See `ikeConfig` below.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.ConnectionIkeConfig>;
     /**
-     * The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+     * The configurations of phase-two negotiation. See `ipsecConfig` below.
      */
     ipsecConfig?: pulumi.Input<inputs.vpn.ConnectionIpsecConfig>;
     /**
@@ -283,7 +282,7 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
-     * The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+     * The configurations of the BGP routing protocol. See `bgpConfig` below.
      */
     bgpConfig?: pulumi.Input<inputs.vpn.ConnectionBgpConfig>;
     /**
@@ -303,15 +302,15 @@ export interface ConnectionArgs {
      */
     enableNatTraversal?: pulumi.Input<boolean>;
     /**
-     * The health check configurations. See the following `Block healthCheckConfig`.
+     * The health check configurations. See `healthCheckConfig` below.
      */
     healthCheckConfig?: pulumi.Input<inputs.vpn.ConnectionHealthCheckConfig>;
     /**
-     * The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+     * The configurations of phase-one negotiation. See `ikeConfig` below.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.ConnectionIkeConfig>;
     /**
-     * The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+     * The configurations of phase-two negotiation. See `ipsecConfig` below.
      */
     ipsecConfig?: pulumi.Input<inputs.vpn.ConnectionIpsecConfig>;
     /**

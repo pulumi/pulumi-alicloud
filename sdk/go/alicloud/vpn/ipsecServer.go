@@ -16,7 +16,7 @@ import (
 //
 // For information about VPN Ipsec Server and how to use it, see [What is Ipsec Server](https://www.alibabacloud.com/help/en/doc-detail/205454.html).
 //
-// > **NOTE:** Available in v1.161.0+.
+// > **NOTE:** Available since v1.161.0+.
 //
 // ## Example Usage
 //
@@ -31,49 +31,52 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			})
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("terraform-example"),
-//				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				VpcId:       fooNetwork.ID(),
-//				ZoneId:      *pulumi.String(fooZones.Zones[0].Id),
-//			})
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooGateway, err := vpn.NewGateway(ctx, "fooGateway", &vpn.GatewayArgs{
-//				VpcId:              fooNetwork.ID(),
+//			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
+//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
 //				Bandwidth:          pulumi.Int(10),
 //				EnableSsl:          pulumi.Bool(true),
+//				Description:        pulumi.String(name),
 //				InstanceChargeType: pulumi.String("PrePaid"),
-//				Description:        pulumi.String("terraform-example"),
-//				VswitchId:          fooSwitch.ID(),
+//				VswitchId:          *pulumi.String(defaultSwitches.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpn.NewIpsecServer(ctx, "fooIpsecServer", &vpn.IpsecServerArgs{
+//			_, err = vpn.NewIpsecServer(ctx, "foo", &vpn.IpsecServerArgs{
 //				ClientIpPool:    pulumi.String("10.0.0.0/24"),
-//				IpsecServerName: pulumi.String("terraform-example"),
+//				IpsecServerName: pulumi.String(name),
 //				LocalSubnet:     pulumi.String("192.168.0.0/24"),
-//				VpnGatewayId:    fooGateway.ID(),
+//				VpnGatewayId:    defaultGateway.ID(),
 //				PskEnabled:      pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -103,9 +106,9 @@ type IpsecServer struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Specifies whether you want the configuration to immediately take effect.
 	EffectImmediately pulumi.BoolPtrOutput `pulumi:"effectImmediately"`
-	// The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfigs IpsecServerIkeConfigArrayOutput `pulumi:"ikeConfigs"`
-	// The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+	// The configuration of Phase 2 negotiations. See `ipsecConfig` below.
 	IpsecConfigs IpsecServerIpsecConfigArrayOutput `pulumi:"ipsecConfigs"`
 	// The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
 	IpsecServerName pulumi.StringPtrOutput `pulumi:"ipsecServerName"`
@@ -164,9 +167,9 @@ type ipsecServerState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Specifies whether you want the configuration to immediately take effect.
 	EffectImmediately *bool `pulumi:"effectImmediately"`
-	// The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfigs []IpsecServerIkeConfig `pulumi:"ikeConfigs"`
-	// The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+	// The configuration of Phase 2 negotiations. See `ipsecConfig` below.
 	IpsecConfigs []IpsecServerIpsecConfig `pulumi:"ipsecConfigs"`
 	// The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
 	IpsecServerName *string `pulumi:"ipsecServerName"`
@@ -187,9 +190,9 @@ type IpsecServerState struct {
 	DryRun pulumi.BoolPtrInput
 	// Specifies whether you want the configuration to immediately take effect.
 	EffectImmediately pulumi.BoolPtrInput
-	// The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfigs IpsecServerIkeConfigArrayInput
-	// The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+	// The configuration of Phase 2 negotiations. See `ipsecConfig` below.
 	IpsecConfigs IpsecServerIpsecConfigArrayInput
 	// The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
 	IpsecServerName pulumi.StringPtrInput
@@ -214,9 +217,9 @@ type ipsecServerArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Specifies whether you want the configuration to immediately take effect.
 	EffectImmediately *bool `pulumi:"effectImmediately"`
-	// The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfigs []IpsecServerIkeConfig `pulumi:"ikeConfigs"`
-	// The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+	// The configuration of Phase 2 negotiations. See `ipsecConfig` below.
 	IpsecConfigs []IpsecServerIpsecConfig `pulumi:"ipsecConfigs"`
 	// The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
 	IpsecServerName *string `pulumi:"ipsecServerName"`
@@ -238,9 +241,9 @@ type IpsecServerArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// Specifies whether you want the configuration to immediately take effect.
 	EffectImmediately pulumi.BoolPtrInput
-	// The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfigs IpsecServerIkeConfigArrayInput
-	// The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+	// The configuration of Phase 2 negotiations. See `ipsecConfig` below.
 	IpsecConfigs IpsecServerIpsecConfigArrayInput
 	// The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
 	IpsecServerName pulumi.StringPtrInput
@@ -356,12 +359,12 @@ func (o IpsecServerOutput) EffectImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IpsecServer) pulumi.BoolPtrOutput { return v.EffectImmediately }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 func (o IpsecServerOutput) IkeConfigs() IpsecServerIkeConfigArrayOutput {
 	return o.ApplyT(func(v *IpsecServer) IpsecServerIkeConfigArrayOutput { return v.IkeConfigs }).(IpsecServerIkeConfigArrayOutput)
 }
 
-// The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+// The configuration of Phase 2 negotiations. See `ipsecConfig` below.
 func (o IpsecServerOutput) IpsecConfigs() IpsecServerIpsecConfigArrayOutput {
 	return o.ApplyT(func(v *IpsecServer) IpsecServerIpsecConfigArrayOutput { return v.IpsecConfigs }).(IpsecServerIpsecConfigArrayOutput)
 }

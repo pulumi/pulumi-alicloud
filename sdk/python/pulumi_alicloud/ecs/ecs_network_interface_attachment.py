@@ -168,7 +168,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
 
         For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
 
-        > **NOTE:** Available in v1.123.1+.
+        > **NOTE:** Available since v1.123.1+.
 
         ## Example Usage
 
@@ -181,7 +181,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAcc"
+            name = "tf-example"
         default_zones = alicloud.get_zones(available_resource_creation="Instance")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             eni_amount=3)
@@ -202,7 +202,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         default_instance = alicloud.ecs.Instance("defaultInstance",
             availability_zone=default_zones.zones[0].id,
             instance_name=name,
-            host_name="tf-testAcc",
+            host_name="tf-example",
             image_id=default_images.images[0].id,
             instance_type=default_instance_types.instance_types[0].id,
             security_groups=[default_security_group.id],
@@ -212,11 +212,11 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
             network_interface_name=name,
             vswitch_id=default_switch.id,
             security_group_ids=[default_security_group.id],
-            description="Basic test",
+            description="Basic example",
             primary_ip_address="192.168.0.2",
             tags={
                 "Created": "TF",
-                "For": "Test",
+                "For": "example",
             },
             resource_group_id=default_resource_groups.ids[0])
         default_ecs_network_interface_attachment = alicloud.ecs.EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment",
@@ -250,7 +250,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
 
         For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
 
-        > **NOTE:** Available in v1.123.1+.
+        > **NOTE:** Available since v1.123.1+.
 
         ## Example Usage
 
@@ -263,7 +263,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAcc"
+            name = "tf-example"
         default_zones = alicloud.get_zones(available_resource_creation="Instance")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             eni_amount=3)
@@ -284,7 +284,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         default_instance = alicloud.ecs.Instance("defaultInstance",
             availability_zone=default_zones.zones[0].id,
             instance_name=name,
-            host_name="tf-testAcc",
+            host_name="tf-example",
             image_id=default_images.images[0].id,
             instance_type=default_instance_types.instance_types[0].id,
             security_groups=[default_security_group.id],
@@ -294,11 +294,11 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
             network_interface_name=name,
             vswitch_id=default_switch.id,
             security_group_ids=[default_security_group.id],
-            description="Basic test",
+            description="Basic example",
             primary_ip_address="192.168.0.2",
             tags={
                 "Created": "TF",
-                "For": "Test",
+                "For": "example",
             },
             resource_group_id=default_resource_groups.ids[0])
         default_ecs_network_interface_attachment = alicloud.ecs.EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment",

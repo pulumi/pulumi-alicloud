@@ -14,6 +14,9 @@ __all__ = [
     'ApplicationInfoDimension',
     'QuotaAlarmQuotaDimension',
     'QuotaApplicationDimension',
+    'TemplateApplicationsDimension',
+    'TemplateApplicationsQuotaApplicationDetail',
+    'TemplateApplicationsQuotaApplicationDetailPeriod',
     'TemplateQuotaDimension',
     'GetApplicationInfosApplicationResult',
     'GetApplicationInfosApplicationDimensionResult',
@@ -26,6 +29,9 @@ __all__ = [
     'GetQuotaApplicationsDimensionResult',
     'GetQuotasDimensionResult',
     'GetQuotasQuotaResult',
+    'GetTemplateApplicationsApplicationResult',
+    'GetTemplateApplicationsApplicationAuditStatusVoResult',
+    'GetTemplateApplicationsApplicationDimensionResult',
 ]
 
 @pulumi.output_type
@@ -109,6 +115,315 @@ class QuotaApplicationDimension(dict):
         Value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class TemplateApplicationsDimension(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: Quota dimension Key.
+        :param str value: Quota dimension Value.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Quota dimension Key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Quota dimension Value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class TemplateApplicationsQuotaApplicationDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aliyunUid":
+            suggest = "aliyun_uid"
+        elif key == "applicationId":
+            suggest = "application_id"
+        elif key == "approveValue":
+            suggest = "approve_value"
+        elif key == "auditReason":
+            suggest = "audit_reason"
+        elif key == "envLanguage":
+            suggest = "env_language"
+        elif key == "noticeType":
+            suggest = "notice_type"
+        elif key == "quotaArn":
+            suggest = "quota_arn"
+        elif key == "quotaDescription":
+            suggest = "quota_description"
+        elif key == "quotaName":
+            suggest = "quota_name"
+        elif key == "quotaUnit":
+            suggest = "quota_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateApplicationsQuotaApplicationDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateApplicationsQuotaApplicationDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateApplicationsQuotaApplicationDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aliyun_uid: Optional[str] = None,
+                 application_id: Optional[str] = None,
+                 approve_value: Optional[float] = None,
+                 audit_reason: Optional[str] = None,
+                 dimensions: Optional[Mapping[str, Any]] = None,
+                 env_language: Optional[str] = None,
+                 notice_type: Optional[int] = None,
+                 period: Optional['outputs.TemplateApplicationsQuotaApplicationDetailPeriod'] = None,
+                 quota_arn: Optional[str] = None,
+                 quota_description: Optional[str] = None,
+                 quota_name: Optional[str] = None,
+                 quota_unit: Optional[str] = None,
+                 reason: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str aliyun_uid: Alibaba Cloud account (primary account).
+        :param str application_id: The ID of the quota promotion request.
+        :param float approve_value: The approved quota value of the quota increase request.
+        :param str audit_reason: Approval comments on quota increase applications.
+        :param Mapping[str, Any] dimensions: Quota dimension. See `dimensions` below.
+        :param str env_language: The language of the quota application result notification. Value:
+               - zh (default): Chinese.
+               - en: English.
+        :param int notice_type: Whether to send notification of quota application result. Value:
+               - 0 (default): No.
+               - 3: Yes.
+        :param 'TemplateApplicationsQuotaApplicationDetailPeriodArgs' period: Quota calculation period.
+        :param str quota_arn: Quota ARN.
+        :param str quota_description: The quota description.
+        :param str quota_name: The quota name.
+        :param str quota_unit: Quota unit.
+        :param str reason: Reason for quota application.
+               > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+        :param str status: The approval status of the quota promotion application. Value:
+               - Disagree: reject.
+               - Approve: approved.
+               - Process: under review.
+               - Cancel: Closed.
+        """
+        if aliyun_uid is not None:
+            pulumi.set(__self__, "aliyun_uid", aliyun_uid)
+        if application_id is not None:
+            pulumi.set(__self__, "application_id", application_id)
+        if approve_value is not None:
+            pulumi.set(__self__, "approve_value", approve_value)
+        if audit_reason is not None:
+            pulumi.set(__self__, "audit_reason", audit_reason)
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if env_language is not None:
+            pulumi.set(__self__, "env_language", env_language)
+        if notice_type is not None:
+            pulumi.set(__self__, "notice_type", notice_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if quota_arn is not None:
+            pulumi.set(__self__, "quota_arn", quota_arn)
+        if quota_description is not None:
+            pulumi.set(__self__, "quota_description", quota_description)
+        if quota_name is not None:
+            pulumi.set(__self__, "quota_name", quota_name)
+        if quota_unit is not None:
+            pulumi.set(__self__, "quota_unit", quota_unit)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="aliyunUid")
+    def aliyun_uid(self) -> Optional[str]:
+        """
+        Alibaba Cloud account (primary account).
+        """
+        return pulumi.get(self, "aliyun_uid")
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[str]:
+        """
+        The ID of the quota promotion request.
+        """
+        return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="approveValue")
+    def approve_value(self) -> Optional[float]:
+        """
+        The approved quota value of the quota increase request.
+        """
+        return pulumi.get(self, "approve_value")
+
+    @property
+    @pulumi.getter(name="auditReason")
+    def audit_reason(self) -> Optional[str]:
+        """
+        Approval comments on quota increase applications.
+        """
+        return pulumi.get(self, "audit_reason")
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[Mapping[str, Any]]:
+        """
+        Quota dimension. See `dimensions` below.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="envLanguage")
+    def env_language(self) -> Optional[str]:
+        """
+        The language of the quota application result notification. Value:
+        - zh (default): Chinese.
+        - en: English.
+        """
+        return pulumi.get(self, "env_language")
+
+    @property
+    @pulumi.getter(name="noticeType")
+    def notice_type(self) -> Optional[int]:
+        """
+        Whether to send notification of quota application result. Value:
+        - 0 (default): No.
+        - 3: Yes.
+        """
+        return pulumi.get(self, "notice_type")
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional['outputs.TemplateApplicationsQuotaApplicationDetailPeriod']:
+        """
+        Quota calculation period.
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="quotaArn")
+    def quota_arn(self) -> Optional[str]:
+        """
+        Quota ARN.
+        """
+        return pulumi.get(self, "quota_arn")
+
+    @property
+    @pulumi.getter(name="quotaDescription")
+    def quota_description(self) -> Optional[str]:
+        """
+        The quota description.
+        """
+        return pulumi.get(self, "quota_description")
+
+    @property
+    @pulumi.getter(name="quotaName")
+    def quota_name(self) -> Optional[str]:
+        """
+        The quota name.
+        """
+        return pulumi.get(self, "quota_name")
+
+    @property
+    @pulumi.getter(name="quotaUnit")
+    def quota_unit(self) -> Optional[str]:
+        """
+        Quota unit.
+        """
+        return pulumi.get(self, "quota_unit")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        Reason for quota application.
+        > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The approval status of the quota promotion application. Value:
+        - Disagree: reject.
+        - Approve: approved.
+        - Process: under review.
+        - Cancel: Closed.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class TemplateApplicationsQuotaApplicationDetailPeriod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "periodUnit":
+            suggest = "period_unit"
+        elif key == "periodValue":
+            suggest = "period_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateApplicationsQuotaApplicationDetailPeriod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateApplicationsQuotaApplicationDetailPeriod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateApplicationsQuotaApplicationDetailPeriod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 period_unit: Optional[str] = None,
+                 period_value: Optional[int] = None):
+        """
+        :param str period_unit: Quota calculation cycle unit.
+        :param int period_value: The quota calculation period value.
+        """
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
+        if period_value is not None:
+            pulumi.set(__self__, "period_value", period_value)
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> Optional[str]:
+        """
+        Quota calculation cycle unit.
+        """
+        return pulumi.get(self, "period_unit")
+
+    @property
+    @pulumi.getter(name="periodValue")
+    def period_value(self) -> Optional[int]:
+        """
+        The quota calculation period value.
+        """
+        return pulumi.get(self, "period_value")
 
 
 @pulumi.output_type
@@ -887,5 +1202,213 @@ class GetQuotasQuotaResult(dict):
         The unadjustable detail.
         """
         return pulumi.get(self, "unadjustable_detail")
+
+
+@pulumi.output_type
+class GetTemplateApplicationsApplicationResult(dict):
+    def __init__(__self__, *,
+                 aliyun_uids: Sequence[str],
+                 apply_time: str,
+                 audit_status_vos: Sequence['outputs.GetTemplateApplicationsApplicationAuditStatusVoResult'],
+                 batch_quota_application_id: str,
+                 desire_value: float,
+                 dimensions: Sequence['outputs.GetTemplateApplicationsApplicationDimensionResult'],
+                 effective_time: str,
+                 expire_time: str,
+                 id: str,
+                 product_code: str,
+                 quota_action_code: str,
+                 quota_category: str,
+                 reason: str):
+        """
+        :param Sequence[str] aliyun_uids: The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.> Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
+        :param str apply_time: The UTC time of the quota increase application.
+        :param Sequence['GetTemplateApplicationsApplicationAuditStatusVoArgs'] audit_status_vos: Quantity of requisitions in different approval statuses.
+        :param str batch_quota_application_id: The ID of the quota application batch.
+        :param float desire_value: The value of the quota request.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+        :param Sequence['GetTemplateApplicationsApplicationDimensionArgs'] dimensions: Quota dimension.
+        :param str effective_time: The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).> If the current account does not select the effective time, the default is the submission time.
+        :param str expire_time: The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).> If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
+        :param str id: The ID of the quota application batch.
+        :param str product_code: Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
+        :param str quota_action_code: The quota ID.
+        :param str quota_category: The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+        :param str reason: Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+        """
+        pulumi.set(__self__, "aliyun_uids", aliyun_uids)
+        pulumi.set(__self__, "apply_time", apply_time)
+        pulumi.set(__self__, "audit_status_vos", audit_status_vos)
+        pulumi.set(__self__, "batch_quota_application_id", batch_quota_application_id)
+        pulumi.set(__self__, "desire_value", desire_value)
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "effective_time", effective_time)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        pulumi.set(__self__, "quota_category", quota_category)
+        pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter(name="aliyunUids")
+    def aliyun_uids(self) -> Sequence[str]:
+        """
+        The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.> Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
+        """
+        return pulumi.get(self, "aliyun_uids")
+
+    @property
+    @pulumi.getter(name="applyTime")
+    def apply_time(self) -> str:
+        """
+        The UTC time of the quota increase application.
+        """
+        return pulumi.get(self, "apply_time")
+
+    @property
+    @pulumi.getter(name="auditStatusVos")
+    def audit_status_vos(self) -> Sequence['outputs.GetTemplateApplicationsApplicationAuditStatusVoResult']:
+        """
+        Quantity of requisitions in different approval statuses.
+        """
+        return pulumi.get(self, "audit_status_vos")
+
+    @property
+    @pulumi.getter(name="batchQuotaApplicationId")
+    def batch_quota_application_id(self) -> str:
+        """
+        The ID of the quota application batch.
+        """
+        return pulumi.get(self, "batch_quota_application_id")
+
+    @property
+    @pulumi.getter(name="desireValue")
+    def desire_value(self) -> float:
+        """
+        The value of the quota request.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+        """
+        return pulumi.get(self, "desire_value")
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Sequence['outputs.GetTemplateApplicationsApplicationDimensionResult']:
+        """
+        Quota dimension.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> str:
+        """
+        The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).> If the current account does not select the effective time, the default is the submission time.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).> If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the quota application batch.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="productCode")
+    def product_code(self) -> str:
+        """
+        Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
+        """
+        return pulumi.get(self, "product_code")
+
+    @property
+    @pulumi.getter(name="quotaActionCode")
+    def quota_action_code(self) -> str:
+        """
+        The quota ID.
+        """
+        return pulumi.get(self, "quota_action_code")
+
+    @property
+    @pulumi.getter(name="quotaCategory")
+    def quota_category(self) -> str:
+        """
+        The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+        """
+        return pulumi.get(self, "quota_category")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class GetTemplateApplicationsApplicationAuditStatusVoResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 status: str):
+        """
+        :param int count: Approval document quantity.
+        :param str status: The approval status of the quota promotion application. Value:-Disagree: reject.-Approve: approved.-Process: under review.-Cancel: Closed.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        Approval document quantity.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The approval status of the quota promotion application. Value:-Disagree: reject.-Approve: approved.-Process: under review.-Cancel: Closed.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetTemplateApplicationsApplicationDimensionResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Quota dimension Key.
+        :param str value: Quota dimension Value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Quota dimension Key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Quota dimension Value.
+        """
+        return pulumi.get(self, "value")
 
 

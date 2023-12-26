@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> InternetMaxBandwidthIn { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        /// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         /// </summary>
         [Output("internetMaxBandwidthOut")]
         public Output<int?> InternetMaxBandwidthOut { get; private set; } = null!;
@@ -553,7 +553,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? InternetMaxBandwidthIn { get; set; }
 
         /// <summary>
-        /// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        /// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
@@ -878,7 +878,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? InternetMaxBandwidthIn { get; set; }
 
         /// <summary>
-        /// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
+        /// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }

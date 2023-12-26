@@ -103,7 +103,7 @@ class ConnectionHealthCheckConfigArgs:
                  sip: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] dip: The destination IP address.
-        :param pulumi.Input[bool] enable: Whether to enable BGP.
+        :param pulumi.Input[bool] enable: Whether to enable Health Check.
         :param pulumi.Input[int] interval: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[int] retry: The maximum number of health check retries.
         :param pulumi.Input[str] sip: The source IP address.
@@ -135,7 +135,7 @@ class ConnectionHealthCheckConfigArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable BGP.
+        Whether to enable Health Check.
         """
         return pulumi.get(self, "enable")
 

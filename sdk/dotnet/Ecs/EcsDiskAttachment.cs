@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Disk Attachment and how to use it, see [What is Disk Attachment](https://www.alibabacloud.com/help/en/doc-detail/25515.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.122.0+.
+    /// &gt; **NOTE:** Available since v1.122.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -28,43 +28,85 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new ECS disk-attachment and use it attach one disk to a new instance.
-    ///     var ecsSg = new AliCloud.Ecs.SecurityGroup("ecsSg", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "Instance",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceTypeFamily = "ecs.sn1ne",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
     ///         Description = "New security group",
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var ecsDisk = new AliCloud.Ecs.EcsDisk("ecsDisk", new()
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         ZoneId = "cn-beijing-a",
-    ///         Size = 50,
-    ///         Tags = 
-    ///         {
-    ///             { "Name", "TerraformTest-disk" },
-    ///         },
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         MostRecent = true,
+    ///         Owners = "system",
     ///     });
     /// 
-    ///     var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new()
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
     ///     {
-    ///         ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
-    ///         InstanceType = "ecs.n4.small",
-    ///         AvailabilityZone = "cn-beijing-a",
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceName = name,
+    ///         HostName = name,
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroups = new[]
     ///         {
-    ///             ecsSg.Id,
+    ///             defaultSecurityGroup.Id,
     ///         },
-    ///         InstanceName = "Hello",
-    ///         InternetChargeType = "PayByBandwidth",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var disk = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("defaultEcsDisk", new()
+    ///     {
+    ///         ZoneId = disk.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Category = "cloud_efficiency",
+    ///         DeleteAutoSnapshot = true,
+    ///         Description = "Test For Terraform",
+    ///         DiskName = name,
+    ///         EnableAutoSnapshot = true,
+    ///         Encrypted = true,
+    ///         Size = 500,
     ///         Tags = 
     ///         {
-    ///             { "Name", "TerraformTest-instance" },
+    ///             { "Created", "TF" },
+    ///             { "Environment", "Acceptance-test" },
     ///         },
     ///     });
     /// 
-    ///     var ecsDiskAtt = new AliCloud.Ecs.EcsDiskAttachment("ecsDiskAtt", new()
+    ///     var defaultEcsDiskAttachment = new AliCloud.Ecs.EcsDiskAttachment("defaultEcsDiskAttachment", new()
     ///     {
-    ///         DiskId = ecsDisk.Id,
-    ///         InstanceId = ecsInstance.Id,
+    ///         DiskId = defaultEcsDisk.Id,
+    ///         InstanceId = defaultInstance.Id,
     ///     });
     /// 
     /// });
@@ -93,6 +135,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("deleteWithInstance")]
         public Output<bool?> DeleteWithInstance { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the cloud disk device.
+        /// </summary>
         [Output("device")]
         public Output<string> Device { get; private set; } = null!;
 
@@ -222,6 +267,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
+        /// <summary>
+        /// The name of the cloud disk device.
+        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 

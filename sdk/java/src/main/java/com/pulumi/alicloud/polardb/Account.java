@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a PolarDB account resource and used to manage databases.
  * 
- * &gt; **NOTE:** Available in v1.67.0+.
+ * &gt; **NOTE:** Available since v1.67.0.
  * 
  * ## Example Usage
  * ```java
@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
  *             .payType(&#34;PostPaid&#34;)
+ *             .category(&#34;Normal&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        

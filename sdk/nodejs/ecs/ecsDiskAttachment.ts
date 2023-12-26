@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Disk Attachment and how to use it, see [What is Disk Attachment](https://www.alibabacloud.com/help/en/doc-detail/25515.htm).
  *
- * > **NOTE:** Available in v1.122.0+.
+ * > **NOTE:** Available since v1.122.0+.
  *
  * ## Example Usage
  *
@@ -19,29 +19,62 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a new ECS disk-attachment and use it attach one disk to a new instance.
- * const ecsSg = new alicloud.ecs.SecurityGroup("ecsSg", {description: "New security group"});
- * const ecsDisk = new alicloud.ecs.EcsDisk("ecsDisk", {
- *     zoneId: "cn-beijing-a",
- *     size: 50,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     instanceTypeFamily: "ecs.sn1ne",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.4.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
+ *     description: "New security group",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceName: name,
+ *     hostName: name,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup.id],
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const disk = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("defaultEcsDisk", {
+ *     zoneId: disk.then(disk => disk.zones?.[0]?.id),
+ *     category: "cloud_efficiency",
+ *     deleteAutoSnapshot: true,
+ *     description: "Test For Terraform",
+ *     diskName: name,
+ *     enableAutoSnapshot: true,
+ *     encrypted: true,
+ *     size: 500,
  *     tags: {
- *         Name: "TerraformTest-disk",
+ *         Created: "TF",
+ *         Environment: "Acceptance-test",
  *     },
  * });
- * const ecsInstance = new alicloud.ecs.Instance("ecsInstance", {
- *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
- *     instanceType: "ecs.n4.small",
- *     availabilityZone: "cn-beijing-a",
- *     securityGroups: [ecsSg.id],
- *     instanceName: "Hello",
- *     internetChargeType: "PayByBandwidth",
- *     tags: {
- *         Name: "TerraformTest-instance",
- *     },
- * });
- * const ecsDiskAtt = new alicloud.ecs.EcsDiskAttachment("ecsDiskAtt", {
- *     diskId: ecsDisk.id,
- *     instanceId: ecsInstance.id,
+ * const defaultEcsDiskAttachment = new alicloud.ecs.EcsDiskAttachment("defaultEcsDiskAttachment", {
+ *     diskId: defaultEcsDisk.id,
+ *     instanceId: defaultInstance.id,
  * });
  * ```
  *
@@ -89,6 +122,9 @@ export class EcsDiskAttachment extends pulumi.CustomResource {
      * Indicates whether the disk is released together with the instance. Default to: `false`.
      */
     public readonly deleteWithInstance!: pulumi.Output<boolean | undefined>;
+    /**
+     * The name of the cloud disk device.
+     */
     public /*out*/ readonly device!: pulumi.Output<string>;
     /**
      * ID of the Disk to be attached.
@@ -160,6 +196,9 @@ export interface EcsDiskAttachmentState {
      * Indicates whether the disk is released together with the instance. Default to: `false`.
      */
     deleteWithInstance?: pulumi.Input<boolean>;
+    /**
+     * The name of the cloud disk device.
+     */
     device?: pulumi.Input<string>;
     /**
      * ID of the Disk to be attached.

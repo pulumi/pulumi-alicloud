@@ -34,13 +34,13 @@ class ConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-        :param pulumi.Input['ConnectionBgpConfigArgs'] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        :param pulumi.Input['ConnectionBgpConfigArgs'] bgp_config: The configurations of the BGP routing protocol. See `bgp_config` below.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
         :param pulumi.Input[bool] enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         :param pulumi.Input[bool] enable_nat_traversal: Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
-        :param pulumi.Input['ConnectionHealthCheckConfigArgs'] health_check_config: The health check configurations. See the following `Block health_check_config`.
-        :param pulumi.Input['ConnectionIkeConfigArgs'] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
-        :param pulumi.Input['ConnectionIpsecConfigArgs'] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        :param pulumi.Input['ConnectionHealthCheckConfigArgs'] health_check_config: The health check configurations. See `health_check_config` below.
+        :param pulumi.Input['ConnectionIkeConfigArgs'] ike_config: The configurations of phase-one negotiation. See `ike_config` below.
+        :param pulumi.Input['ConnectionIpsecConfigArgs'] ipsec_config: The configurations of phase-two negotiation. See `ipsec_config` below.
         :param pulumi.Input[str] name: The name of the IPsec connection.
         """
         pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
@@ -116,7 +116,7 @@ class ConnectionArgs:
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> Optional[pulumi.Input['ConnectionBgpConfigArgs']]:
         """
-        The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        The configurations of the BGP routing protocol. See `bgp_config` below.
         """
         return pulumi.get(self, "bgp_config")
 
@@ -164,7 +164,7 @@ class ConnectionArgs:
     @pulumi.getter(name="healthCheckConfig")
     def health_check_config(self) -> Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]:
         """
-        The health check configurations. See the following `Block health_check_config`.
+        The health check configurations. See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
@@ -176,7 +176,7 @@ class ConnectionArgs:
     @pulumi.getter(name="ikeConfig")
     def ike_config(self) -> Optional[pulumi.Input['ConnectionIkeConfigArgs']]:
         """
-        The configurations of phase-one negotiation. See the following `Block ike_config`.
+        The configurations of phase-one negotiation. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
 
@@ -188,7 +188,7 @@ class ConnectionArgs:
     @pulumi.getter(name="ipsecConfig")
     def ipsec_config(self) -> Optional[pulumi.Input['ConnectionIpsecConfigArgs']]:
         """
-        The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        The configurations of phase-two negotiation. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
 
@@ -227,14 +227,14 @@ class _ConnectionState:
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
-        :param pulumi.Input['ConnectionBgpConfigArgs'] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        :param pulumi.Input['ConnectionBgpConfigArgs'] bgp_config: The configurations of the BGP routing protocol. See `bgp_config` below.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
         :param pulumi.Input[bool] enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         :param pulumi.Input[bool] enable_nat_traversal: Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
-        :param pulumi.Input['ConnectionHealthCheckConfigArgs'] health_check_config: The health check configurations. See the following `Block health_check_config`.
-        :param pulumi.Input['ConnectionIkeConfigArgs'] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
-        :param pulumi.Input['ConnectionIpsecConfigArgs'] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        :param pulumi.Input['ConnectionHealthCheckConfigArgs'] health_check_config: The health check configurations. See `health_check_config` below.
+        :param pulumi.Input['ConnectionIkeConfigArgs'] ike_config: The configurations of phase-one negotiation. See `ike_config` below.
+        :param pulumi.Input['ConnectionIpsecConfigArgs'] ipsec_config: The configurations of phase-two negotiation. See `ipsec_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: The name of the IPsec connection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
@@ -272,7 +272,7 @@ class _ConnectionState:
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> Optional[pulumi.Input['ConnectionBgpConfigArgs']]:
         """
-        The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        The configurations of the BGP routing protocol. See `bgp_config` below.
         """
         return pulumi.get(self, "bgp_config")
 
@@ -332,7 +332,7 @@ class _ConnectionState:
     @pulumi.getter(name="healthCheckConfig")
     def health_check_config(self) -> Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]:
         """
-        The health check configurations. See the following `Block health_check_config`.
+        The health check configurations. See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
@@ -344,7 +344,7 @@ class _ConnectionState:
     @pulumi.getter(name="ikeConfig")
     def ike_config(self) -> Optional[pulumi.Input['ConnectionIkeConfigArgs']]:
         """
-        The configurations of phase-one negotiation. See the following `Block ike_config`.
+        The configurations of phase-one negotiation. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
 
@@ -356,7 +356,7 @@ class _ConnectionState:
     @pulumi.getter(name="ipsecConfig")
     def ipsec_config(self) -> Optional[pulumi.Input['ConnectionIpsecConfigArgs']]:
         """
-        The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        The configurations of phase-two negotiation. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
 
@@ -452,25 +452,24 @@ class Connection(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
         foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id=foo_network.id,
+            vpc_id=default_networks.ids[0],
             bandwidth=10,
             enable_ssl=True,
             instance_charge_type="PrePaid",
             description="test_create_description",
-            vswitch_id=foo_switch.id)
+            vswitch_id=default_switches.ids[0])
         foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
             ip_address="42.104.22.210",
-            description="terraform-example")
+            description=name)
         foo_connection = alicloud.vpn.Connection("fooConnection",
             vpn_gateway_id=foo_gateway.id,
             customer_gateway_id=foo_customer_gateway.id,
@@ -512,14 +511,14 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: The configurations of the BGP routing protocol. See `bgp_config` below.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
         :param pulumi.Input[bool] enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         :param pulumi.Input[bool] enable_nat_traversal: Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
-        :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: The health check configurations. See the following `Block health_check_config`.
-        :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
-        :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: The health check configurations. See `health_check_config` below.
+        :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configurations of phase-one negotiation. See `ike_config` below.
+        :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: The configurations of phase-two negotiation. See `ipsec_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: The name of the IPsec connection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
@@ -540,25 +539,24 @@ class Connection(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
         foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id=foo_network.id,
+            vpc_id=default_networks.ids[0],
             bandwidth=10,
             enable_ssl=True,
             instance_charge_type="PrePaid",
             description="test_create_description",
-            vswitch_id=foo_switch.id)
+            vswitch_id=default_switches.ids[0])
         foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
             ip_address="42.104.22.210",
-            description="terraform-example")
+            description=name)
         foo_connection = alicloud.vpn.Connection("fooConnection",
             vpn_gateway_id=foo_gateway.id,
             customer_gateway_id=foo_customer_gateway.id,
@@ -685,14 +683,14 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: The configurations of the BGP routing protocol. See `bgp_config` below.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
         :param pulumi.Input[bool] enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         :param pulumi.Input[bool] enable_nat_traversal: Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
-        :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: The health check configurations. See the following `Block health_check_config`.
-        :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
-        :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: The health check configurations. See `health_check_config` below.
+        :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configurations of phase-one negotiation. See `ike_config` below.
+        :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: The configurations of phase-two negotiation. See `ipsec_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: The name of the IPsec connection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
@@ -722,7 +720,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Output['outputs.ConnectionBgpConfig']:
         """
-        The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        The configurations of the BGP routing protocol. See `bgp_config` below.
         """
         return pulumi.get(self, "bgp_config")
 
@@ -762,7 +760,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckConfig")
     def health_check_config(self) -> pulumi.Output['outputs.ConnectionHealthCheckConfig']:
         """
-        The health check configurations. See the following `Block health_check_config`.
+        The health check configurations. See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
@@ -770,7 +768,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="ikeConfig")
     def ike_config(self) -> pulumi.Output['outputs.ConnectionIkeConfig']:
         """
-        The configurations of phase-one negotiation. See the following `Block ike_config`.
+        The configurations of phase-one negotiation. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
 
@@ -778,7 +776,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="ipsecConfig")
     def ipsec_config(self) -> pulumi.Output['outputs.ConnectionIpsecConfig']:
         """
-        The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        The configurations of phase-two negotiation. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
 

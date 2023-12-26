@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
 //
-// > **NOTE:** Available in v1.123.1+.
+// > **NOTE:** Available since v1.123.1+.
 //
 // ## Example Usage
 //
@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testAcc"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -90,7 +90,7 @@ import (
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
 //				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
 //				InstanceName:     pulumi.String(name),
-//				HostName:         pulumi.String("tf-testAcc"),
+//				HostName:         pulumi.String("tf-example"),
 //				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
 //				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
@@ -113,11 +113,11 @@ import (
 //				SecurityGroupIds: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
-//				Description:      pulumi.String("Basic test"),
+//				Description:      pulumi.String("Basic example"),
 //				PrimaryIpAddress: pulumi.String("192.168.0.2"),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Test"),
+//					"For":     pulumi.Any("example"),
 //				},
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
 //			})

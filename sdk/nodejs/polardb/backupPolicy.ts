@@ -94,7 +94,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
      */
-    public readonly enableBackupLog!: pulumi.Output<number>;
+    public /*out*/ readonly enableBackupLog!: pulumi.Output<number>;
     /**
      * The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
      */
@@ -165,12 +165,12 @@ export class BackupPolicy extends pulumi.CustomResource {
             resourceInputs["dataLevel2BackupPeriods"] = args ? args.dataLevel2BackupPeriods : undefined;
             resourceInputs["dataLevel2BackupRetentionPeriod"] = args ? args.dataLevel2BackupRetentionPeriod : undefined;
             resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
             resourceInputs["logBackupAnotherRegionRegion"] = args ? args.logBackupAnotherRegionRegion : undefined;
             resourceInputs["logBackupAnotherRegionRetentionPeriod"] = args ? args.logBackupAnotherRegionRetentionPeriod : undefined;
             resourceInputs["logBackupRetentionPeriod"] = args ? args.logBackupRetentionPeriod : undefined;
             resourceInputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
             resourceInputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
+            resourceInputs["enableBackupLog"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BackupPolicy.__pulumiType, name, resourceInputs, opts);
@@ -312,10 +312,6 @@ export interface BackupPolicyArgs {
      * The Id of cluster that can run database.
      */
     dbClusterId: pulumi.Input<string>;
-    /**
-     * Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
-     */
-    enableBackupLog?: pulumi.Input<number>;
     /**
      * The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
      */

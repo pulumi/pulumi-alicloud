@@ -135,7 +135,16 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
         defaulte_vpc = alicloud.vpc.Network("defaulteVpc", description="test")
         default_ge = alicloud.vpc.GatewayEndpoint("defaultGE",
             service_name="com.aliyun.cn-hangzhou.oss",
-            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }",
+            policy_document=\"\"\"        {
+                  "Version": "1",
+                  "Statement": [{
+                    "Effect": "Allow",
+                    "Resource": ["*"],
+                    "Action": ["*"],
+                    "Principal": ["*"]
+                  }]
+                }
+        \"\"\",
             vpc_id=defaulte_vpc.id,
             gateway_endpoint_descrption="test-gateway-endpoint",
             gateway_endpoint_name=f"{name}1")
@@ -188,7 +197,16 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
         defaulte_vpc = alicloud.vpc.Network("defaulteVpc", description="test")
         default_ge = alicloud.vpc.GatewayEndpoint("defaultGE",
             service_name="com.aliyun.cn-hangzhou.oss",
-            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }",
+            policy_document=\"\"\"        {
+                  "Version": "1",
+                  "Statement": [{
+                    "Effect": "Allow",
+                    "Resource": ["*"],
+                    "Action": ["*"],
+                    "Principal": ["*"]
+                  }]
+                }
+        \"\"\",
             vpc_id=defaulte_vpc.id,
             gateway_endpoint_descrption="test-gateway-endpoint",
             gateway_endpoint_name=f"{name}1")

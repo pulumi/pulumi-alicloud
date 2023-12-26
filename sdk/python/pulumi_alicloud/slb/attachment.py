@@ -234,6 +234,8 @@ class Attachment(pulumi.CustomResource):
 
         Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
 
+        > **NOTE:** Deprecated since v1.153.0+.
+
         ## Example Usage
 
         ```python
@@ -243,7 +245,7 @@ class Attachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "slbattachmenttest"
+            name = "slb-attachment-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -270,7 +272,8 @@ class Attachment(pulumi.CustomResource):
             vswitch_id=default_switch.id)
         default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
             load_balancer_name=name,
-            vswitch_id=default_switch.id)
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s1.small")
         default_attachment = alicloud.slb.Attachment("defaultAttachment",
             load_balancer_id=default_application_load_balancer.id,
             instance_ids=[default_instance.id],
@@ -305,6 +308,8 @@ class Attachment(pulumi.CustomResource):
 
         Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
 
+        > **NOTE:** Deprecated since v1.153.0+.
+
         ## Example Usage
 
         ```python
@@ -314,7 +319,7 @@ class Attachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "slbattachmenttest"
+            name = "slb-attachment-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -341,7 +346,8 @@ class Attachment(pulumi.CustomResource):
             vswitch_id=default_switch.id)
         default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
             load_balancer_name=name,
-            vswitch_id=default_switch.id)
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s1.small")
         default_attachment = alicloud.slb.Attachment("defaultAttachment",
             load_balancer_id=default_application_load_balancer.id,
             instance_ids=[default_instance.id],

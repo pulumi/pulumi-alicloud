@@ -107,6 +107,21 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The function plan of the instance. Valid values:
+     * 
+     */
+    @Import(name="functionVersion")
+    private @Nullable Output<String> functionVersion;
+
+    /**
+     * @return The function plan of the instance. Valid values:
+     * 
+     */
+    public Optional<Output<String>> functionVersion() {
+        return Optional.ofNullable(this.functionVersion);
+    }
+
+    /**
      * (Available since v1.212.0) The IP address of the instance.
      * 
      */
@@ -137,14 +152,44 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+     * The clean bandwidth provided by the instance.
+     * 
+     */
+    @Import(name="normalBandwidth")
+    private @Nullable Output<String> normalBandwidth;
+
+    /**
+     * @return The clean bandwidth provided by the instance.
+     * 
+     */
+    public Optional<Output<String>> normalBandwidth() {
+        return Optional.ofNullable(this.normalBandwidth);
+    }
+
+    /**
+     * The clean QPS provided by the instance.
+     * 
+     */
+    @Import(name="normalQps")
+    private @Nullable Output<String> normalQps;
+
+    /**
+     * @return The clean QPS provided by the instance.
+     * 
+     */
+    public Optional<Output<String>> normalQps() {
+        return Optional.ofNullable(this.normalQps);
+    }
+
+    /**
+     * The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+     * @return The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -164,6 +209,21 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> portCount() {
         return Optional.ofNullable(this.portCount);
+    }
+
+    /**
+     * The mitigation plan of the instance. Valid values:
+     * 
+     */
+    @Import(name="productPlan")
+    private @Nullable Output<String> productPlan;
+
+    /**
+     * @return The mitigation plan of the instance. Valid values:
+     * 
+     */
+    public Optional<Output<String>> productPlan() {
+        return Optional.ofNullable(this.productPlan);
     }
 
     /**
@@ -205,10 +265,14 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         this.baseBandwidth = $.baseBandwidth;
         this.domainCount = $.domainCount;
         this.editionSale = $.editionSale;
+        this.functionVersion = $.functionVersion;
         this.ip = $.ip;
         this.name = $.name;
+        this.normalBandwidth = $.normalBandwidth;
+        this.normalQps = $.normalQps;
         this.period = $.period;
         this.portCount = $.portCount;
+        this.productPlan = $.productPlan;
         this.productType = $.productType;
         this.serviceBandwidth = $.serviceBandwidth;
     }
@@ -358,6 +422,27 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param functionVersion The function plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionVersion(@Nullable Output<String> functionVersion) {
+            $.functionVersion = functionVersion;
+            return this;
+        }
+
+        /**
+         * @param functionVersion The function plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionVersion(String functionVersion) {
+            return functionVersion(Output.of(functionVersion));
+        }
+
+        /**
          * @param ip (Available since v1.212.0) The IP address of the instance.
          * 
          * @return builder
@@ -400,7 +485,49 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param period The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+         * @param normalBandwidth The clean bandwidth provided by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalBandwidth(@Nullable Output<String> normalBandwidth) {
+            $.normalBandwidth = normalBandwidth;
+            return this;
+        }
+
+        /**
+         * @param normalBandwidth The clean bandwidth provided by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalBandwidth(String normalBandwidth) {
+            return normalBandwidth(Output.of(normalBandwidth));
+        }
+
+        /**
+         * @param normalQps The clean QPS provided by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalQps(@Nullable Output<String> normalQps) {
+            $.normalQps = normalQps;
+            return this;
+        }
+
+        /**
+         * @param normalQps The clean QPS provided by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalQps(String normalQps) {
+            return normalQps(Output.of(normalQps));
+        }
+
+        /**
+         * @param period The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
          * 
          * @return builder
          * 
@@ -411,7 +538,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param period The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+         * @param period The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
          * 
          * @return builder
          * 
@@ -439,6 +566,27 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
          */
         public Builder portCount(String portCount) {
             return portCount(Output.of(portCount));
+        }
+
+        /**
+         * @param productPlan The mitigation plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productPlan(@Nullable Output<String> productPlan) {
+            $.productPlan = productPlan;
+            return this;
+        }
+
+        /**
+         * @param productPlan The mitigation plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productPlan(String productPlan) {
+            return productPlan(Output.of(productPlan));
         }
 
         /**

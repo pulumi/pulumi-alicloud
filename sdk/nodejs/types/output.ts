@@ -1064,6 +1064,36 @@ export namespace adb {
         multiZoneIds: string[];
     }
 
+    export interface LakeAccountAccountPrivilege {
+        /**
+         * Object associated to privileges. See `privilegeObject` below.
+         */
+        privilegeObject?: outputs.adb.LakeAccountAccountPrivilegePrivilegeObject;
+        /**
+         * The type of privileges.
+         */
+        privilegeType?: string;
+        /**
+         * privilege list.
+         */
+        privileges?: string[];
+    }
+
+    export interface LakeAccountAccountPrivilegePrivilegeObject {
+        /**
+         * The name of column.
+         */
+        column: string;
+        /**
+         * The name of database.
+         */
+        database: string;
+        /**
+         * The name of table.
+         */
+        table: string;
+    }
+
 }
 
 export namespace alb {
@@ -3794,6 +3824,10 @@ export namespace arms {
 
     export interface GetPrometheisPromethei {
         /**
+         * The token used to access the data source.
+         */
+        authToken: string;
+        /**
          * The ID of the cluster.
          */
         clusterId: string;
@@ -3810,9 +3844,41 @@ export namespace arms {
          */
         grafanaInstanceId: string;
         /**
+         * Http api public network address.
+         */
+        httpApiInterUrl: string;
+        /**
+         * Http api intranet address.
+         */
+        httpApiIntraUrl: string;
+        /**
          * The ID of the Prometheus.
          */
         id: string;
+        /**
+         * PushGateway public network Url.
+         */
+        pushGateWayInterUrl: string;
+        /**
+         * PushGateway intranet Url.
+         */
+        pushGateWayIntraUrl: string;
+        /**
+         * Public Url of remoteRead.
+         */
+        remoteReadInterUrl: string;
+        /**
+         * RemoteRead intranet Url.
+         */
+        remoteReadIntraUrl: string;
+        /**
+         * RemoteWrite public Url.
+         */
+        remoteWriteInterUrl: string;
+        /**
+         * RemoteWrite Intranet Url.
+         */
+        remoteWriteIntraUrl: string;
         /**
          * The ID of the resource group.
          */
@@ -3941,6 +4007,89 @@ export namespace arms {
          * The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
          */
         type: string;
+    }
+
+    export interface GetPrometheusPromethei {
+        /**
+         * The token used to access the data source.
+         */
+        authToken: string;
+        /**
+         * The ID of the cluster.
+         */
+        clusterId: string;
+        /**
+         * The name of the cluster.
+         */
+        clusterName: string;
+        /**
+         * The type of the cluster.
+         */
+        clusterType: string;
+        /**
+         * The ID of the Grafana workspace.
+         */
+        grafanaInstanceId: string;
+        /**
+         * Http api public network address.
+         */
+        httpApiInterUrl: string;
+        /**
+         * Http api intranet address.
+         */
+        httpApiIntraUrl: string;
+        /**
+         * The ID of the Prometheus.
+         */
+        id: string;
+        /**
+         * PushGateway public network Url.
+         */
+        pushGateWayInterUrl: string;
+        /**
+         * PushGateway intranet Url.
+         */
+        pushGateWayIntraUrl: string;
+        /**
+         * Public Url of remoteRead.
+         */
+        remoteReadInterUrl: string;
+        /**
+         * RemoteRead intranet Url.
+         */
+        remoteReadIntraUrl: string;
+        /**
+         * RemoteWrite public Url.
+         */
+        remoteWriteInterUrl: string;
+        /**
+         * RemoteWrite Intranet Url.
+         */
+        remoteWriteIntraUrl: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The ID of the security group.
+         */
+        securityGroupId: string;
+        /**
+         * The child instance json string of the globalView instance.
+         */
+        subClustersJson: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The ID of the VSwitch.
+         */
+        vswitchId: string;
     }
 
     export interface GetRemoteWritesRemoteWrite {
@@ -37628,6 +37777,83 @@ export namespace quotas {
         unadjustableDetail: string;
     }
 
+    export interface GetTemplateApplicationsApplication {
+        /**
+         * The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.> Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
+         */
+        aliyunUids: string[];
+        /**
+         * The UTC time of the quota increase application.
+         */
+        applyTime: string;
+        /**
+         * Quantity of requisitions in different approval statuses.
+         */
+        auditStatusVos: outputs.quotas.GetTemplateApplicationsApplicationAuditStatusVo[];
+        /**
+         * The ID of the quota application batch.
+         */
+        batchQuotaApplicationId: string;
+        /**
+         * The value of the quota request.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+         */
+        desireValue: number;
+        /**
+         * Quota dimension.
+         */
+        dimensions: outputs.quotas.GetTemplateApplicationsApplicationDimension[];
+        /**
+         * The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).> If the current account does not select the effective time, the default is the submission time.
+         */
+        effectiveTime: string;
+        /**
+         * The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).> If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
+         */
+        expireTime: string;
+        /**
+         * The ID of the quota application batch.
+         */
+        id: string;
+        /**
+         * Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
+         */
+        productCode: string;
+        /**
+         * The quota ID.
+         */
+        quotaActionCode: string;
+        /**
+         * The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+         */
+        quotaCategory: string;
+        /**
+         * Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+         */
+        reason: string;
+    }
+
+    export interface GetTemplateApplicationsApplicationAuditStatusVo {
+        /**
+         * Approval document quantity.
+         */
+        count: number;
+        /**
+         * The approval status of the quota promotion application. Value:-Disagree: reject.-Approve: approved.-Process: under review.-Cancel: Closed.
+         */
+        status: string;
+    }
+
+    export interface GetTemplateApplicationsApplicationDimension {
+        /**
+         * Quota dimension Key.
+         */
+        key: string;
+        /**
+         * Quota dimension Value.
+         */
+        value: string;
+    }
+
     export interface QuotaAlarmQuotaDimension {
         /**
          * The Key of quota_dimensions.
@@ -37648,6 +37874,96 @@ export namespace quotas {
          * Value.
          */
         value?: string;
+    }
+
+    export interface TemplateApplicationsDimension {
+        /**
+         * Quota dimension Key.
+         */
+        key?: string;
+        /**
+         * Quota dimension Value.
+         */
+        value?: string;
+    }
+
+    export interface TemplateApplicationsQuotaApplicationDetail {
+        /**
+         * Alibaba Cloud account (primary account).
+         */
+        aliyunUid: string;
+        /**
+         * The ID of the quota promotion request.
+         */
+        applicationId: string;
+        /**
+         * The approved quota value of the quota increase request.
+         */
+        approveValue: number;
+        /**
+         * Approval comments on quota increase applications.
+         */
+        auditReason: string;
+        /**
+         * Quota dimension. See `dimensions` below.
+         */
+        dimensions: {[key: string]: any};
+        /**
+         * The language of the quota application result notification. Value:
+         * - zh (default): Chinese.
+         * - en: English.
+         */
+        envLanguage: string;
+        /**
+         * Whether to send notification of quota application result. Value:
+         * - 0 (default): No.
+         * - 3: Yes.
+         */
+        noticeType: number;
+        /**
+         * Quota calculation period.
+         */
+        period: outputs.quotas.TemplateApplicationsQuotaApplicationDetailPeriod;
+        /**
+         * Quota ARN.
+         */
+        quotaArn: string;
+        /**
+         * The quota description.
+         */
+        quotaDescription: string;
+        /**
+         * The quota name.
+         */
+        quotaName: string;
+        /**
+         * Quota unit.
+         */
+        quotaUnit: string;
+        /**
+         * Reason for quota application.
+         * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+         */
+        reason: string;
+        /**
+         * The approval status of the quota promotion application. Value:
+         * - Disagree: reject.
+         * - Approve: approved.
+         * - Process: under review.
+         * - Cancel: Closed.
+         */
+        status: string;
+    }
+
+    export interface TemplateApplicationsQuotaApplicationDetailPeriod {
+        /**
+         * Quota calculation cycle unit.
+         */
+        periodUnit: string;
+        /**
+         * The quota calculation period value.
+         */
+        periodValue: number;
     }
 
     export interface TemplateQuotaDimension {
@@ -39014,6 +39330,34 @@ export namespace rds {
          * The parameter value.
          */
         value: string;
+    }
+
+}
+
+export namespace realtimecompute {
+    export interface VvpInstanceResourceSpec {
+        /**
+         * CPU number.
+         */
+        cpu: number;
+        /**
+         * Memory size.
+         */
+        memoryGb: number;
+    }
+
+    export interface VvpInstanceStorage {
+        /**
+         * OSS stores information. See `oss` below.
+         */
+        oss: outputs.realtimecompute.VvpInstanceStorageOss;
+    }
+
+    export interface VvpInstanceStorageOss {
+        /**
+         * OSS Bucket name.
+         */
+        bucket: string;
     }
 
 }
@@ -47411,7 +47755,7 @@ export namespace vpn {
          */
         dip: string;
         /**
-         * Whether to enable BGP.
+         * Whether to enable Health Check.
          */
         enable: boolean;
         /**

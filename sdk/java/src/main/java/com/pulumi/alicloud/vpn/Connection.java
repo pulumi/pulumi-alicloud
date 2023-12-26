@@ -32,10 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.vpn.Gateway;
  * import com.pulumi.alicloud.vpn.GatewayArgs;
  * import com.pulumi.alicloud.vpn.CustomerGateway;
@@ -57,34 +56,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var fooZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .vpcId(fooNetwork.id())
- *             .zoneId(fooZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
  *         var fooGateway = new Gateway(&#34;fooGateway&#34;, GatewayArgs.builder()        
- *             .vpcId(fooNetwork.id())
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .bandwidth(&#34;10&#34;)
  *             .enableSsl(true)
  *             .instanceChargeType(&#34;PrePaid&#34;)
  *             .description(&#34;test_create_description&#34;)
- *             .vswitchId(fooSwitch.id())
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .build());
  * 
  *         var fooCustomerGateway = new CustomerGateway(&#34;fooCustomerGateway&#34;, CustomerGatewayArgs.builder()        
  *             .ipAddress(&#34;42.104.22.210&#34;)
- *             .description(&#34;terraform-example&#34;)
+ *             .description(name)
  *             .build());
  * 
  *         var fooConnection = new Connection(&#34;fooConnection&#34;, ConnectionArgs.builder()        
@@ -132,14 +130,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpn/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
-     * The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+     * The configurations of the BGP routing protocol. See `bgp_config` below.
      * 
      */
     @Export(name="bgpConfig", refs={ConnectionBgpConfig.class}, tree="[0]")
     private Output<ConnectionBgpConfig> bgpConfig;
 
     /**
-     * @return The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+     * @return The configurations of the BGP routing protocol. See `bgp_config` below.
      * 
      */
     public Output<ConnectionBgpConfig> bgpConfig() {
@@ -202,42 +200,42 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.enableNatTraversal;
     }
     /**
-     * The health check configurations. See the following `Block health_check_config`.
+     * The health check configurations. See `health_check_config` below.
      * 
      */
     @Export(name="healthCheckConfig", refs={ConnectionHealthCheckConfig.class}, tree="[0]")
     private Output<ConnectionHealthCheckConfig> healthCheckConfig;
 
     /**
-     * @return The health check configurations. See the following `Block health_check_config`.
+     * @return The health check configurations. See `health_check_config` below.
      * 
      */
     public Output<ConnectionHealthCheckConfig> healthCheckConfig() {
         return this.healthCheckConfig;
     }
     /**
-     * The configurations of phase-one negotiation. See the following `Block ike_config`.
+     * The configurations of phase-one negotiation. See `ike_config` below.
      * 
      */
     @Export(name="ikeConfig", refs={ConnectionIkeConfig.class}, tree="[0]")
     private Output<ConnectionIkeConfig> ikeConfig;
 
     /**
-     * @return The configurations of phase-one negotiation. See the following `Block ike_config`.
+     * @return The configurations of phase-one negotiation. See `ike_config` below.
      * 
      */
     public Output<ConnectionIkeConfig> ikeConfig() {
         return this.ikeConfig;
     }
     /**
-     * The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+     * The configurations of phase-two negotiation. See `ipsec_config` below.
      * 
      */
     @Export(name="ipsecConfig", refs={ConnectionIpsecConfig.class}, tree="[0]")
     private Output<ConnectionIpsecConfig> ipsecConfig;
 
     /**
-     * @return The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+     * @return The configurations of phase-two negotiation. See `ipsec_config` below.
      * 
      */
     public Output<ConnectionIpsecConfig> ipsecConfig() {

@@ -5,7 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a security group resource.
+ * Provides a Security Group resource.
+ *
+ * For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+ *
+ * > **NOTE:** Available since v1.0.0.
  *
  * > **NOTE:** `alicloud.ecs.SecurityGroup` is used to build and manage a security group, and `alicloud.ecs.SecurityGroupRule` can define ingress or egress rules for it.
  *
@@ -21,7 +25,8 @@ import * as utilities from "../utilities";
  *
  * const _default = new alicloud.ecs.SecurityGroup("default", {description: "New security group"});
  * ```
- * Basic usage for vpc
+ *
+ * Basic Usage for VPC
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -79,13 +84,15 @@ export class SecurityGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      *
-     * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+     *
+     * @deprecated Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
      */
     public readonly innerAccess!: pulumi.Output<boolean>;
     /**
-     * Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+     * The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
      */
     public readonly innerAccessPolicy!: pulumi.Output<string>;
     /**
@@ -93,23 +100,19 @@ export class SecurityGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The Id of resource group which the securityGroup belongs.
+     * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
      * The type of the security group. Valid values:
-     * `normal`: basic security group.
-     * `enterprise`: advanced security group For more information.
      */
-    public readonly securityGroupType!: pulumi.Output<string | undefined>;
+    public readonly securityGroupType!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
-     *
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The VPC ID.
+     * The ID of the VPC.
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
 
@@ -159,13 +162,15 @@ export interface SecurityGroupState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      *
-     * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+     *
+     * @deprecated Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
      */
     innerAccess?: pulumi.Input<boolean>;
     /**
-     * Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+     * The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
      */
     innerAccessPolicy?: pulumi.Input<string>;
     /**
@@ -173,23 +178,19 @@ export interface SecurityGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Id of resource group which the securityGroup belongs.
+     * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
      * The type of the security group. Valid values:
-     * `normal`: basic security group.
-     * `enterprise`: advanced security group For more information.
      */
     securityGroupType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
-     *
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VPC ID.
+     * The ID of the VPC.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -203,13 +204,15 @@ export interface SecurityGroupArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      *
-     * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+     *
+     * @deprecated Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
      */
     innerAccess?: pulumi.Input<boolean>;
     /**
-     * Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+     * The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
      */
     innerAccessPolicy?: pulumi.Input<string>;
     /**
@@ -217,23 +220,19 @@ export interface SecurityGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Id of resource group which the securityGroup belongs.
+     * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
      * The type of the security group. Valid values:
-     * `normal`: basic security group.
-     * `enterprise`: advanced security group For more information.
      */
     securityGroupType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
-     *
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VPC ID.
+     * The ID of the VPC.
      */
     vpcId?: pulumi.Input<string>;
 }

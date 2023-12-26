@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Arms.Outputs
     public sealed class GetPrometheisPrometheiResult
     {
         /// <summary>
+        /// The token used to access the data source.
+        /// </summary>
+        public readonly string AuthToken;
+        /// <summary>
         /// The ID of the cluster.
         /// </summary>
         public readonly string ClusterId;
@@ -30,9 +34,41 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string GrafanaInstanceId;
         /// <summary>
+        /// Http api public network address.
+        /// </summary>
+        public readonly string HttpApiInterUrl;
+        /// <summary>
+        /// Http api intranet address.
+        /// </summary>
+        public readonly string HttpApiIntraUrl;
+        /// <summary>
         /// The ID of the Prometheus.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// PushGateway public network Url.
+        /// </summary>
+        public readonly string PushGateWayInterUrl;
+        /// <summary>
+        /// PushGateway intranet Url.
+        /// </summary>
+        public readonly string PushGateWayIntraUrl;
+        /// <summary>
+        /// Public Url of remoteRead.
+        /// </summary>
+        public readonly string RemoteReadInterUrl;
+        /// <summary>
+        /// RemoteRead intranet Url.
+        /// </summary>
+        public readonly string RemoteReadIntraUrl;
+        /// <summary>
+        /// RemoteWrite public Url.
+        /// </summary>
+        public readonly string RemoteWriteInterUrl;
+        /// <summary>
+        /// RemoteWrite Intranet Url.
+        /// </summary>
+        public readonly string RemoteWriteIntraUrl;
         /// <summary>
         /// The ID of the resource group.
         /// </summary>
@@ -60,6 +96,8 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
         [OutputConstructor]
         private GetPrometheisPrometheiResult(
+            string authToken,
+
             string clusterId,
 
             string clusterName,
@@ -68,7 +106,23 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
             string grafanaInstanceId,
 
+            string httpApiInterUrl,
+
+            string httpApiIntraUrl,
+
             string id,
+
+            string pushGateWayInterUrl,
+
+            string pushGateWayIntraUrl,
+
+            string remoteReadInterUrl,
+
+            string remoteReadIntraUrl,
+
+            string remoteWriteInterUrl,
+
+            string remoteWriteIntraUrl,
 
             string resourceGroupId,
 
@@ -82,11 +136,20 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
             string vswitchId)
         {
+            AuthToken = authToken;
             ClusterId = clusterId;
             ClusterName = clusterName;
             ClusterType = clusterType;
             GrafanaInstanceId = grafanaInstanceId;
+            HttpApiInterUrl = httpApiInterUrl;
+            HttpApiIntraUrl = httpApiIntraUrl;
             Id = id;
+            PushGateWayInterUrl = pushGateWayInterUrl;
+            PushGateWayIntraUrl = pushGateWayIntraUrl;
+            RemoteReadInterUrl = remoteReadInterUrl;
+            RemoteReadIntraUrl = remoteReadIntraUrl;
+            RemoteWriteInterUrl = remoteWriteInterUrl;
+            RemoteWriteIntraUrl = remoteWriteIntraUrl;
             ResourceGroupId = resourceGroupId;
             SecurityGroupId = securityGroupId;
             SubClustersJson = subClustersJson;

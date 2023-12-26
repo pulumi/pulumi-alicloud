@@ -35,15 +35,15 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      * 
      */
-    @Import(name="bandwidth", required=true)
-    private Output<String> bandwidth;
+    @Import(name="bandwidth")
+    private @Nullable Output<String> bandwidth;
 
     /**
      * @return Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      * 
      */
-    public Output<String> bandwidth() {
-        return this.bandwidth;
+    public Optional<Output<String>> bandwidth() {
+        return Optional.ofNullable(this.bandwidth);
     }
 
     /**
@@ -65,15 +65,15 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
      * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
      * 
      */
-    @Import(name="baseBandwidth", required=true)
-    private Output<String> baseBandwidth;
+    @Import(name="baseBandwidth")
+    private @Nullable Output<String> baseBandwidth;
 
     /**
      * @return Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
      * 
      */
-    public Output<String> baseBandwidth() {
-        return this.baseBandwidth;
+    public Optional<Output<String>> baseBandwidth() {
+        return Optional.ofNullable(this.baseBandwidth);
     }
 
     /**
@@ -107,6 +107,21 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The function plan of the instance. Valid values:
+     * 
+     */
+    @Import(name="functionVersion")
+    private @Nullable Output<String> functionVersion;
+
+    /**
+     * @return The function plan of the instance. Valid values:
+     * 
+     */
+    public Optional<Output<String>> functionVersion() {
+        return Optional.ofNullable(this.functionVersion);
+    }
+
+    /**
      * Name of the instance. This name can have a string of 1 to 63 characters.
      * 
      */
@@ -122,14 +137,44 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+     * The clean bandwidth provided by the instance.
+     * 
+     */
+    @Import(name="normalBandwidth")
+    private @Nullable Output<String> normalBandwidth;
+
+    /**
+     * @return The clean bandwidth provided by the instance.
+     * 
+     */
+    public Optional<Output<String>> normalBandwidth() {
+        return Optional.ofNullable(this.normalBandwidth);
+    }
+
+    /**
+     * The clean QPS provided by the instance.
+     * 
+     */
+    @Import(name="normalQps")
+    private @Nullable Output<String> normalQps;
+
+    /**
+     * @return The clean QPS provided by the instance.
+     * 
+     */
+    public Optional<Output<String>> normalQps() {
+        return Optional.ofNullable(this.normalQps);
+    }
+
+    /**
+     * The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+     * @return The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -152,6 +197,21 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The mitigation plan of the instance. Valid values:
+     * 
+     */
+    @Import(name="productPlan")
+    private @Nullable Output<String> productPlan;
+
+    /**
+     * @return The mitigation plan of the instance. Valid values:
+     * 
+     */
+    public Optional<Output<String>> productPlan() {
+        return Optional.ofNullable(this.productPlan);
+    }
+
+    /**
      * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      * 
      */
@@ -170,15 +230,15 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
      * 
      */
-    @Import(name="serviceBandwidth", required=true)
-    private Output<String> serviceBandwidth;
+    @Import(name="serviceBandwidth")
+    private @Nullable Output<String> serviceBandwidth;
 
     /**
      * @return Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
      * 
      */
-    public Output<String> serviceBandwidth() {
-        return this.serviceBandwidth;
+    public Optional<Output<String>> serviceBandwidth() {
+        return Optional.ofNullable(this.serviceBandwidth);
     }
 
     private DdosCooInstanceArgs() {}
@@ -190,9 +250,13 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         this.baseBandwidth = $.baseBandwidth;
         this.domainCount = $.domainCount;
         this.editionSale = $.editionSale;
+        this.functionVersion = $.functionVersion;
         this.name = $.name;
+        this.normalBandwidth = $.normalBandwidth;
+        this.normalQps = $.normalQps;
         this.period = $.period;
         this.portCount = $.portCount;
+        this.productPlan = $.productPlan;
         this.productType = $.productType;
         this.serviceBandwidth = $.serviceBandwidth;
     }
@@ -242,7 +306,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder bandwidth(Output<String> bandwidth) {
+        public Builder bandwidth(@Nullable Output<String> bandwidth) {
             $.bandwidth = bandwidth;
             return this;
         }
@@ -284,7 +348,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder baseBandwidth(Output<String> baseBandwidth) {
+        public Builder baseBandwidth(@Nullable Output<String> baseBandwidth) {
             $.baseBandwidth = baseBandwidth;
             return this;
         }
@@ -342,6 +406,27 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param functionVersion The function plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionVersion(@Nullable Output<String> functionVersion) {
+            $.functionVersion = functionVersion;
+            return this;
+        }
+
+        /**
+         * @param functionVersion The function plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionVersion(String functionVersion) {
+            return functionVersion(Output.of(functionVersion));
+        }
+
+        /**
          * @param name Name of the instance. This name can have a string of 1 to 63 characters.
          * 
          * @return builder
@@ -363,7 +448,49 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param period The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+         * @param normalBandwidth The clean bandwidth provided by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalBandwidth(@Nullable Output<String> normalBandwidth) {
+            $.normalBandwidth = normalBandwidth;
+            return this;
+        }
+
+        /**
+         * @param normalBandwidth The clean bandwidth provided by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalBandwidth(String normalBandwidth) {
+            return normalBandwidth(Output.of(normalBandwidth));
+        }
+
+        /**
+         * @param normalQps The clean QPS provided by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalQps(@Nullable Output<String> normalQps) {
+            $.normalQps = normalQps;
+            return this;
+        }
+
+        /**
+         * @param normalQps The clean QPS provided by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalQps(String normalQps) {
+            return normalQps(Output.of(normalQps));
+        }
+
+        /**
+         * @param period The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
          * 
          * @return builder
          * 
@@ -374,7 +501,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param period The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+         * @param period The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
          * 
          * @return builder
          * 
@@ -405,6 +532,27 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param productPlan The mitigation plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productPlan(@Nullable Output<String> productPlan) {
+            $.productPlan = productPlan;
+            return this;
+        }
+
+        /**
+         * @param productPlan The mitigation plan of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productPlan(String productPlan) {
+            return productPlan(Output.of(productPlan));
+        }
+
+        /**
          * @param productType The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
          * 
          * @return builder
@@ -431,7 +579,7 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder serviceBandwidth(Output<String> serviceBandwidth) {
+        public Builder serviceBandwidth(@Nullable Output<String> serviceBandwidth) {
             $.serviceBandwidth = serviceBandwidth;
             return this;
         }
@@ -447,11 +595,8 @@ public final class DdosCooInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DdosCooInstanceArgs build() {
-            $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
-            $.baseBandwidth = Objects.requireNonNull($.baseBandwidth, "expected parameter 'baseBandwidth' to be non-null");
             $.domainCount = Objects.requireNonNull($.domainCount, "expected parameter 'domainCount' to be non-null");
             $.portCount = Objects.requireNonNull($.portCount, "expected parameter 'portCount' to be non-null");
-            $.serviceBandwidth = Objects.requireNonNull($.serviceBandwidth, "expected parameter 'serviceBandwidth' to be non-null");
             return $;
         }
     }

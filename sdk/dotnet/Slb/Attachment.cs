@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
     /// 
+    /// &gt; **NOTE:** Deprecated since v1.153.0+.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -25,7 +27,7 @@ namespace Pulumi.AliCloud.Slb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "slbattachmenttest";
+    ///     var name = config.Get("name") ?? "slb-attachment-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
@@ -83,6 +85,7 @@ namespace Pulumi.AliCloud.Slb
     ///     {
     ///         LoadBalancerName = name,
     ///         VswitchId = defaultSwitch.Id,
+    ///         LoadBalancerSpec = "slb.s1.small",
     ///     });
     /// 
     ///     var defaultAttachment = new AliCloud.Slb.Attachment("defaultAttachment", new()

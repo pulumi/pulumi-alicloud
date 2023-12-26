@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DBCluster{}
 	case "alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion":
 		r = &DBClusterLakeVersion{}
+	case "alicloud:adb/lakeAccount:LakeAccount":
+		r = &LakeAccount{}
 	case "alicloud:adb/resourceGroup:ResourceGroup":
 		r = &ResourceGroup{}
 	default:
@@ -76,6 +78,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"adb/dBClusterLakeVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"adb/lakeAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

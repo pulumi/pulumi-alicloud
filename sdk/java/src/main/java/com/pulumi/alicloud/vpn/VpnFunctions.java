@@ -1357,6 +1357,8 @@ public final class VpnFunctions {
     /**
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
      * 
+     * &gt; **NOTE:** Available since v1.18.0.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1364,6 +1366,13 @@ public final class VpnFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
@@ -1379,16 +1388,40 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;^default-NODELETING$&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .bandwidth(&#34;10&#34;)
+     *             .enableSsl(true)
+     *             .enableIpsec(true)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .description(name)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .networkType(&#34;public&#34;)
+     *             .build());
+     * 
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .businessStatus(&#34;Normal&#34;)
-     *             .ids(            
-     *                 &#34;fake-vpn-id1&#34;,
-     *                 &#34;fake-vpn-id2&#34;)
-     *             .includeReservationData(true)
-     *             .nameRegex(&#34;testAcc*&#34;)
-     *             .outputFile(&#34;/tmp/vpns&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .ids(defaultGateway.id())
      *             .status(&#34;Active&#34;)
-     *             .vpcId(&#34;fake-vpc-id&#34;)
+     *             .businessStatus(&#34;Normal&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .includeReservationData(true)
+     *             .outputFile(&#34;/tmp/vpns&#34;)
      *             .build());
      * 
      *     }
@@ -1402,6 +1435,8 @@ public final class VpnFunctions {
     /**
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
      * 
+     * &gt; **NOTE:** Available since v1.18.0.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1409,6 +1444,13 @@ public final class VpnFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
@@ -1424,16 +1466,40 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;^default-NODELETING$&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .bandwidth(&#34;10&#34;)
+     *             .enableSsl(true)
+     *             .enableIpsec(true)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .description(name)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .networkType(&#34;public&#34;)
+     *             .build());
+     * 
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .businessStatus(&#34;Normal&#34;)
-     *             .ids(            
-     *                 &#34;fake-vpn-id1&#34;,
-     *                 &#34;fake-vpn-id2&#34;)
-     *             .includeReservationData(true)
-     *             .nameRegex(&#34;testAcc*&#34;)
-     *             .outputFile(&#34;/tmp/vpns&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .ids(defaultGateway.id())
      *             .status(&#34;Active&#34;)
-     *             .vpcId(&#34;fake-vpc-id&#34;)
+     *             .businessStatus(&#34;Normal&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .includeReservationData(true)
+     *             .outputFile(&#34;/tmp/vpns&#34;)
      *             .build());
      * 
      *     }
@@ -1447,6 +1513,8 @@ public final class VpnFunctions {
     /**
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
      * 
+     * &gt; **NOTE:** Available since v1.18.0.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1454,6 +1522,13 @@ public final class VpnFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
@@ -1469,16 +1544,40 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;^default-NODELETING$&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .bandwidth(&#34;10&#34;)
+     *             .enableSsl(true)
+     *             .enableIpsec(true)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .description(name)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .networkType(&#34;public&#34;)
+     *             .build());
+     * 
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .businessStatus(&#34;Normal&#34;)
-     *             .ids(            
-     *                 &#34;fake-vpn-id1&#34;,
-     *                 &#34;fake-vpn-id2&#34;)
-     *             .includeReservationData(true)
-     *             .nameRegex(&#34;testAcc*&#34;)
-     *             .outputFile(&#34;/tmp/vpns&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .ids(defaultGateway.id())
      *             .status(&#34;Active&#34;)
-     *             .vpcId(&#34;fake-vpc-id&#34;)
+     *             .businessStatus(&#34;Normal&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .includeReservationData(true)
+     *             .outputFile(&#34;/tmp/vpns&#34;)
      *             .build());
      * 
      *     }
@@ -1492,6 +1591,8 @@ public final class VpnFunctions {
     /**
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
      * 
+     * &gt; **NOTE:** Available since v1.18.0.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1499,6 +1600,13 @@ public final class VpnFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
@@ -1514,16 +1622,40 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;^default-NODELETING$&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .bandwidth(&#34;10&#34;)
+     *             .enableSsl(true)
+     *             .enableIpsec(true)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .description(name)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .networkType(&#34;public&#34;)
+     *             .build());
+     * 
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .businessStatus(&#34;Normal&#34;)
-     *             .ids(            
-     *                 &#34;fake-vpn-id1&#34;,
-     *                 &#34;fake-vpn-id2&#34;)
-     *             .includeReservationData(true)
-     *             .nameRegex(&#34;testAcc*&#34;)
-     *             .outputFile(&#34;/tmp/vpns&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .ids(defaultGateway.id())
      *             .status(&#34;Active&#34;)
-     *             .vpcId(&#34;fake-vpc-id&#34;)
+     *             .businessStatus(&#34;Normal&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .includeReservationData(true)
+     *             .outputFile(&#34;/tmp/vpns&#34;)
      *             .build());
      * 
      *     }
@@ -1537,6 +1669,8 @@ public final class VpnFunctions {
     /**
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
      * 
+     * &gt; **NOTE:** Available since v1.18.0.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1544,6 +1678,13 @@ public final class VpnFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
@@ -1559,16 +1700,40 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;^default-NODELETING$&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .bandwidth(&#34;10&#34;)
+     *             .enableSsl(true)
+     *             .enableIpsec(true)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .description(name)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .networkType(&#34;public&#34;)
+     *             .build());
+     * 
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .businessStatus(&#34;Normal&#34;)
-     *             .ids(            
-     *                 &#34;fake-vpn-id1&#34;,
-     *                 &#34;fake-vpn-id2&#34;)
-     *             .includeReservationData(true)
-     *             .nameRegex(&#34;testAcc*&#34;)
-     *             .outputFile(&#34;/tmp/vpns&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .ids(defaultGateway.id())
      *             .status(&#34;Active&#34;)
-     *             .vpcId(&#34;fake-vpc-id&#34;)
+     *             .businessStatus(&#34;Normal&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .includeReservationData(true)
+     *             .outputFile(&#34;/tmp/vpns&#34;)
      *             .build());
      * 
      *     }
@@ -1582,6 +1747,8 @@ public final class VpnFunctions {
     /**
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
      * 
+     * &gt; **NOTE:** Available since v1.18.0.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1589,6 +1756,13 @@ public final class VpnFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
      * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
@@ -1604,16 +1778,40 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;^default-NODELETING$&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .bandwidth(&#34;10&#34;)
+     *             .enableSsl(true)
+     *             .enableIpsec(true)
+     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .description(name)
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .networkType(&#34;public&#34;)
+     *             .build());
+     * 
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .businessStatus(&#34;Normal&#34;)
-     *             .ids(            
-     *                 &#34;fake-vpn-id1&#34;,
-     *                 &#34;fake-vpn-id2&#34;)
-     *             .includeReservationData(true)
-     *             .nameRegex(&#34;testAcc*&#34;)
-     *             .outputFile(&#34;/tmp/vpns&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .ids(defaultGateway.id())
      *             .status(&#34;Active&#34;)
-     *             .vpcId(&#34;fake-vpc-id&#34;)
+     *             .businessStatus(&#34;Normal&#34;)
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .includeReservationData(true)
+     *             .outputFile(&#34;/tmp/vpns&#34;)
      *             .build());
      * 
      *     }

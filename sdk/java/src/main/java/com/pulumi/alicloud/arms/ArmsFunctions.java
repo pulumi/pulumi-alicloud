@@ -16,8 +16,10 @@ import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheisPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetPrometheusPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
 import com.pulumi.alicloud.arms.inputs.GetRemoteWritesPlainArgs;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactGroupsResult;
@@ -27,6 +29,7 @@ import com.pulumi.alicloud.arms.outputs.GetIntegrationExportersResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheisResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheusAlertRulesResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheusMonitoringsResult;
+import com.pulumi.alicloud.arms.outputs.GetPrometheusResult;
 import com.pulumi.alicloud.arms.outputs.GetRemoteWritesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -1006,7 +1009,9 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.203.0+.
+     * &gt; **NOTE:** Available since v1.203.0.
+     * 
+     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -1017,6 +1022,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
      * import java.util.List;
@@ -1032,16 +1046,41 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
      *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
      * ```
@@ -1053,7 +1092,9 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.203.0+.
+     * &gt; **NOTE:** Available since v1.203.0.
+     * 
+     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -1064,6 +1105,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
      * import java.util.List;
@@ -1079,16 +1129,41 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
      *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
      * ```
@@ -1100,7 +1175,9 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.203.0+.
+     * &gt; **NOTE:** Available since v1.203.0.
+     * 
+     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -1111,6 +1188,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
      * import java.util.List;
@@ -1126,16 +1212,41 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
      *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
      * ```
@@ -1147,7 +1258,9 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.203.0+.
+     * &gt; **NOTE:** Available since v1.203.0.
+     * 
+     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -1158,6 +1271,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
      * import java.util.List;
@@ -1173,16 +1295,41 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
      *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
      * ```
@@ -1194,7 +1341,9 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.203.0+.
+     * &gt; **NOTE:** Available since v1.203.0.
+     * 
+     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -1205,6 +1354,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
      * import java.util.List;
@@ -1220,16 +1378,41 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
      *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
      * ```
@@ -1241,7 +1424,9 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.203.0+.
+     * &gt; **NOTE:** Available since v1.203.0.
+     * 
+     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -1252,6 +1437,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
      * import java.util.List;
@@ -1267,16 +1461,41 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
      *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
      * ```
@@ -1284,6 +1503,492 @@ public final class ArmsFunctions {
      */
     public static CompletableFuture<GetPrometheisResult> getPrometheisPlain(GetPrometheisPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getPrometheis:getPrometheis", TypeShape.of(GetPrometheisResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheus of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .nameRegex(defaultPrometheus.clusterName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrometheusResult> getPrometheus() {
+        return getPrometheus(GetPrometheusArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheus of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .nameRegex(defaultPrometheus.clusterName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrometheusResult> getPrometheusPlain() {
+        return getPrometheusPlain(GetPrometheusPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheus of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .nameRegex(defaultPrometheus.clusterName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrometheusResult> getPrometheus(GetPrometheusArgs args) {
+        return getPrometheus(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheus of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .nameRegex(defaultPrometheus.clusterName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrometheusResult> getPrometheusPlain(GetPrometheusPlainArgs args) {
+        return getPrometheusPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheus of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .nameRegex(defaultPrometheus.clusterName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrometheusResult> getPrometheus(GetPrometheusArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getPrometheus:getPrometheus", TypeShape.of(GetPrometheusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheus of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .build());
+     * 
+     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
+     *             .clusterType(&#34;ecs&#34;)
+     *             .grafanaInstanceId(&#34;free&#34;)
+     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
+     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *             ))
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .nameRegex(defaultPrometheus.clusterName())
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrometheusResult> getPrometheusPlain(GetPrometheusPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getPrometheus:getPrometheus", TypeShape.of(GetPrometheusResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.

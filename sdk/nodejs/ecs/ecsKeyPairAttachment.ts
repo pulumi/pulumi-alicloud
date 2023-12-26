@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
  *
- * > **NOTE:** Available in v1.121.0+.
+ * > **NOTE:** Available since v1.121.0+.
  *
  * ## Example Usage
  *
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     internetChargeType: "PayByBandwidth",
  *     vswitchId: exampleSwitch.id,
  * });
- * const exampleEcsKeyPair = new alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", {keyPairName: "terraform-example"});
+ * const exampleEcsKeyPair = new alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", {keyPairName: "tf-example"});
  * const exampleEcsKeyPairAttachment = new alicloud.ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment", {
  *     keyPairName: exampleEcsKeyPair.keyPairName,
  *     instanceIds: [exampleInstance.id],
@@ -103,6 +103,8 @@ export class EcsKeyPairAttachment extends pulumi.CustomResource {
      */
     public readonly instanceIds!: pulumi.Output<string[]>;
     /**
+     * New field 'key_pair_name' instead.
+     *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     public readonly keyName!: pulumi.Output<string>;
@@ -156,6 +158,8 @@ export interface EcsKeyPairAttachmentState {
      */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * New field 'key_pair_name' instead.
+     *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     keyName?: pulumi.Input<string>;
@@ -178,6 +182,8 @@ export interface EcsKeyPairAttachmentArgs {
      */
     instanceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * New field 'key_pair_name' instead.
+     *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     keyName?: pulumi.Input<string>;

@@ -325,6 +325,511 @@ func (o QuotaApplicationDimensionArrayOutput) Index(i pulumi.IntInput) QuotaAppl
 	}).(QuotaApplicationDimensionOutput)
 }
 
+type TemplateApplicationsDimension struct {
+	// Quota dimension Key.
+	Key *string `pulumi:"key"`
+	// Quota dimension Value.
+	Value *string `pulumi:"value"`
+}
+
+// TemplateApplicationsDimensionInput is an input type that accepts TemplateApplicationsDimensionArgs and TemplateApplicationsDimensionOutput values.
+// You can construct a concrete instance of `TemplateApplicationsDimensionInput` via:
+//
+//	TemplateApplicationsDimensionArgs{...}
+type TemplateApplicationsDimensionInput interface {
+	pulumi.Input
+
+	ToTemplateApplicationsDimensionOutput() TemplateApplicationsDimensionOutput
+	ToTemplateApplicationsDimensionOutputWithContext(context.Context) TemplateApplicationsDimensionOutput
+}
+
+type TemplateApplicationsDimensionArgs struct {
+	// Quota dimension Key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Quota dimension Value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (TemplateApplicationsDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateApplicationsDimension)(nil)).Elem()
+}
+
+func (i TemplateApplicationsDimensionArgs) ToTemplateApplicationsDimensionOutput() TemplateApplicationsDimensionOutput {
+	return i.ToTemplateApplicationsDimensionOutputWithContext(context.Background())
+}
+
+func (i TemplateApplicationsDimensionArgs) ToTemplateApplicationsDimensionOutputWithContext(ctx context.Context) TemplateApplicationsDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateApplicationsDimensionOutput)
+}
+
+// TemplateApplicationsDimensionArrayInput is an input type that accepts TemplateApplicationsDimensionArray and TemplateApplicationsDimensionArrayOutput values.
+// You can construct a concrete instance of `TemplateApplicationsDimensionArrayInput` via:
+//
+//	TemplateApplicationsDimensionArray{ TemplateApplicationsDimensionArgs{...} }
+type TemplateApplicationsDimensionArrayInput interface {
+	pulumi.Input
+
+	ToTemplateApplicationsDimensionArrayOutput() TemplateApplicationsDimensionArrayOutput
+	ToTemplateApplicationsDimensionArrayOutputWithContext(context.Context) TemplateApplicationsDimensionArrayOutput
+}
+
+type TemplateApplicationsDimensionArray []TemplateApplicationsDimensionInput
+
+func (TemplateApplicationsDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateApplicationsDimension)(nil)).Elem()
+}
+
+func (i TemplateApplicationsDimensionArray) ToTemplateApplicationsDimensionArrayOutput() TemplateApplicationsDimensionArrayOutput {
+	return i.ToTemplateApplicationsDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i TemplateApplicationsDimensionArray) ToTemplateApplicationsDimensionArrayOutputWithContext(ctx context.Context) TemplateApplicationsDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateApplicationsDimensionArrayOutput)
+}
+
+type TemplateApplicationsDimensionOutput struct{ *pulumi.OutputState }
+
+func (TemplateApplicationsDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateApplicationsDimension)(nil)).Elem()
+}
+
+func (o TemplateApplicationsDimensionOutput) ToTemplateApplicationsDimensionOutput() TemplateApplicationsDimensionOutput {
+	return o
+}
+
+func (o TemplateApplicationsDimensionOutput) ToTemplateApplicationsDimensionOutputWithContext(ctx context.Context) TemplateApplicationsDimensionOutput {
+	return o
+}
+
+// Quota dimension Key.
+func (o TemplateApplicationsDimensionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Quota dimension Value.
+func (o TemplateApplicationsDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type TemplateApplicationsDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (TemplateApplicationsDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateApplicationsDimension)(nil)).Elem()
+}
+
+func (o TemplateApplicationsDimensionArrayOutput) ToTemplateApplicationsDimensionArrayOutput() TemplateApplicationsDimensionArrayOutput {
+	return o
+}
+
+func (o TemplateApplicationsDimensionArrayOutput) ToTemplateApplicationsDimensionArrayOutputWithContext(ctx context.Context) TemplateApplicationsDimensionArrayOutput {
+	return o
+}
+
+func (o TemplateApplicationsDimensionArrayOutput) Index(i pulumi.IntInput) TemplateApplicationsDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateApplicationsDimension {
+		return vs[0].([]TemplateApplicationsDimension)[vs[1].(int)]
+	}).(TemplateApplicationsDimensionOutput)
+}
+
+type TemplateApplicationsQuotaApplicationDetail struct {
+	// Alibaba Cloud account (primary account).
+	AliyunUid *string `pulumi:"aliyunUid"`
+	// The ID of the quota promotion request.
+	ApplicationId *string `pulumi:"applicationId"`
+	// The approved quota value of the quota increase request.
+	ApproveValue *float64 `pulumi:"approveValue"`
+	// Approval comments on quota increase applications.
+	AuditReason *string `pulumi:"auditReason"`
+	// Quota dimension. See `dimensions` below.
+	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	// The language of the quota application result notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage *string `pulumi:"envLanguage"`
+	// Whether to send notification of quota application result. Value:
+	// - 0 (default): No.
+	// - 3: Yes.
+	NoticeType *int `pulumi:"noticeType"`
+	// Quota calculation period.
+	Period *TemplateApplicationsQuotaApplicationDetailPeriod `pulumi:"period"`
+	// Quota ARN.
+	QuotaArn *string `pulumi:"quotaArn"`
+	// The quota description.
+	QuotaDescription *string `pulumi:"quotaDescription"`
+	// The quota name.
+	QuotaName *string `pulumi:"quotaName"`
+	// Quota unit.
+	QuotaUnit *string `pulumi:"quotaUnit"`
+	// Reason for quota application.
+	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+	Reason *string `pulumi:"reason"`
+	// The approval status of the quota promotion application. Value:
+	// - Disagree: reject.
+	// - Approve: approved.
+	// - Process: under review.
+	// - Cancel: Closed.
+	Status *string `pulumi:"status"`
+}
+
+// TemplateApplicationsQuotaApplicationDetailInput is an input type that accepts TemplateApplicationsQuotaApplicationDetailArgs and TemplateApplicationsQuotaApplicationDetailOutput values.
+// You can construct a concrete instance of `TemplateApplicationsQuotaApplicationDetailInput` via:
+//
+//	TemplateApplicationsQuotaApplicationDetailArgs{...}
+type TemplateApplicationsQuotaApplicationDetailInput interface {
+	pulumi.Input
+
+	ToTemplateApplicationsQuotaApplicationDetailOutput() TemplateApplicationsQuotaApplicationDetailOutput
+	ToTemplateApplicationsQuotaApplicationDetailOutputWithContext(context.Context) TemplateApplicationsQuotaApplicationDetailOutput
+}
+
+type TemplateApplicationsQuotaApplicationDetailArgs struct {
+	// Alibaba Cloud account (primary account).
+	AliyunUid pulumi.StringPtrInput `pulumi:"aliyunUid"`
+	// The ID of the quota promotion request.
+	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
+	// The approved quota value of the quota increase request.
+	ApproveValue pulumi.Float64PtrInput `pulumi:"approveValue"`
+	// Approval comments on quota increase applications.
+	AuditReason pulumi.StringPtrInput `pulumi:"auditReason"`
+	// Quota dimension. See `dimensions` below.
+	Dimensions pulumi.MapInput `pulumi:"dimensions"`
+	// The language of the quota application result notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage pulumi.StringPtrInput `pulumi:"envLanguage"`
+	// Whether to send notification of quota application result. Value:
+	// - 0 (default): No.
+	// - 3: Yes.
+	NoticeType pulumi.IntPtrInput `pulumi:"noticeType"`
+	// Quota calculation period.
+	Period TemplateApplicationsQuotaApplicationDetailPeriodPtrInput `pulumi:"period"`
+	// Quota ARN.
+	QuotaArn pulumi.StringPtrInput `pulumi:"quotaArn"`
+	// The quota description.
+	QuotaDescription pulumi.StringPtrInput `pulumi:"quotaDescription"`
+	// The quota name.
+	QuotaName pulumi.StringPtrInput `pulumi:"quotaName"`
+	// Quota unit.
+	QuotaUnit pulumi.StringPtrInput `pulumi:"quotaUnit"`
+	// Reason for quota application.
+	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// The approval status of the quota promotion application. Value:
+	// - Disagree: reject.
+	// - Approve: approved.
+	// - Process: under review.
+	// - Cancel: Closed.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (TemplateApplicationsQuotaApplicationDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateApplicationsQuotaApplicationDetail)(nil)).Elem()
+}
+
+func (i TemplateApplicationsQuotaApplicationDetailArgs) ToTemplateApplicationsQuotaApplicationDetailOutput() TemplateApplicationsQuotaApplicationDetailOutput {
+	return i.ToTemplateApplicationsQuotaApplicationDetailOutputWithContext(context.Background())
+}
+
+func (i TemplateApplicationsQuotaApplicationDetailArgs) ToTemplateApplicationsQuotaApplicationDetailOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateApplicationsQuotaApplicationDetailOutput)
+}
+
+// TemplateApplicationsQuotaApplicationDetailArrayInput is an input type that accepts TemplateApplicationsQuotaApplicationDetailArray and TemplateApplicationsQuotaApplicationDetailArrayOutput values.
+// You can construct a concrete instance of `TemplateApplicationsQuotaApplicationDetailArrayInput` via:
+//
+//	TemplateApplicationsQuotaApplicationDetailArray{ TemplateApplicationsQuotaApplicationDetailArgs{...} }
+type TemplateApplicationsQuotaApplicationDetailArrayInput interface {
+	pulumi.Input
+
+	ToTemplateApplicationsQuotaApplicationDetailArrayOutput() TemplateApplicationsQuotaApplicationDetailArrayOutput
+	ToTemplateApplicationsQuotaApplicationDetailArrayOutputWithContext(context.Context) TemplateApplicationsQuotaApplicationDetailArrayOutput
+}
+
+type TemplateApplicationsQuotaApplicationDetailArray []TemplateApplicationsQuotaApplicationDetailInput
+
+func (TemplateApplicationsQuotaApplicationDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateApplicationsQuotaApplicationDetail)(nil)).Elem()
+}
+
+func (i TemplateApplicationsQuotaApplicationDetailArray) ToTemplateApplicationsQuotaApplicationDetailArrayOutput() TemplateApplicationsQuotaApplicationDetailArrayOutput {
+	return i.ToTemplateApplicationsQuotaApplicationDetailArrayOutputWithContext(context.Background())
+}
+
+func (i TemplateApplicationsQuotaApplicationDetailArray) ToTemplateApplicationsQuotaApplicationDetailArrayOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateApplicationsQuotaApplicationDetailArrayOutput)
+}
+
+type TemplateApplicationsQuotaApplicationDetailOutput struct{ *pulumi.OutputState }
+
+func (TemplateApplicationsQuotaApplicationDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateApplicationsQuotaApplicationDetail)(nil)).Elem()
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailOutput) ToTemplateApplicationsQuotaApplicationDetailOutput() TemplateApplicationsQuotaApplicationDetailOutput {
+	return o
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailOutput) ToTemplateApplicationsQuotaApplicationDetailOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailOutput {
+	return o
+}
+
+// Alibaba Cloud account (primary account).
+func (o TemplateApplicationsQuotaApplicationDetailOutput) AliyunUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.AliyunUid }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the quota promotion request.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
+}
+
+// The approved quota value of the quota increase request.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) ApproveValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *float64 { return v.ApproveValue }).(pulumi.Float64PtrOutput)
+}
+
+// Approval comments on quota increase applications.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) AuditReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.AuditReason }).(pulumi.StringPtrOutput)
+}
+
+// Quota dimension. See `dimensions` below.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) Dimensions() pulumi.MapOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+}
+
+// The language of the quota application result notification. Value:
+// - zh (default): Chinese.
+// - en: English.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) EnvLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.EnvLanguage }).(pulumi.StringPtrOutput)
+}
+
+// Whether to send notification of quota application result. Value:
+// - 0 (default): No.
+// - 3: Yes.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) NoticeType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *int { return v.NoticeType }).(pulumi.IntPtrOutput)
+}
+
+// Quota calculation period.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) Period() TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *TemplateApplicationsQuotaApplicationDetailPeriod {
+		return v.Period
+	}).(TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput)
+}
+
+// Quota ARN.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) QuotaArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.QuotaArn }).(pulumi.StringPtrOutput)
+}
+
+// The quota description.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) QuotaDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.QuotaDescription }).(pulumi.StringPtrOutput)
+}
+
+// The quota name.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) QuotaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.QuotaName }).(pulumi.StringPtrOutput)
+}
+
+// Quota unit.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) QuotaUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.QuotaUnit }).(pulumi.StringPtrOutput)
+}
+
+// Reason for quota application.
+// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// The approval status of the quota promotion application. Value:
+// - Disagree: reject.
+// - Approve: approved.
+// - Process: under review.
+// - Cancel: Closed.
+func (o TemplateApplicationsQuotaApplicationDetailOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type TemplateApplicationsQuotaApplicationDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (TemplateApplicationsQuotaApplicationDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateApplicationsQuotaApplicationDetail)(nil)).Elem()
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailArrayOutput) ToTemplateApplicationsQuotaApplicationDetailArrayOutput() TemplateApplicationsQuotaApplicationDetailArrayOutput {
+	return o
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailArrayOutput) ToTemplateApplicationsQuotaApplicationDetailArrayOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailArrayOutput {
+	return o
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailArrayOutput) Index(i pulumi.IntInput) TemplateApplicationsQuotaApplicationDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateApplicationsQuotaApplicationDetail {
+		return vs[0].([]TemplateApplicationsQuotaApplicationDetail)[vs[1].(int)]
+	}).(TemplateApplicationsQuotaApplicationDetailOutput)
+}
+
+type TemplateApplicationsQuotaApplicationDetailPeriod struct {
+	// Quota calculation cycle unit.
+	PeriodUnit *string `pulumi:"periodUnit"`
+	// The quota calculation period value.
+	PeriodValue *int `pulumi:"periodValue"`
+}
+
+// TemplateApplicationsQuotaApplicationDetailPeriodInput is an input type that accepts TemplateApplicationsQuotaApplicationDetailPeriodArgs and TemplateApplicationsQuotaApplicationDetailPeriodOutput values.
+// You can construct a concrete instance of `TemplateApplicationsQuotaApplicationDetailPeriodInput` via:
+//
+//	TemplateApplicationsQuotaApplicationDetailPeriodArgs{...}
+type TemplateApplicationsQuotaApplicationDetailPeriodInput interface {
+	pulumi.Input
+
+	ToTemplateApplicationsQuotaApplicationDetailPeriodOutput() TemplateApplicationsQuotaApplicationDetailPeriodOutput
+	ToTemplateApplicationsQuotaApplicationDetailPeriodOutputWithContext(context.Context) TemplateApplicationsQuotaApplicationDetailPeriodOutput
+}
+
+type TemplateApplicationsQuotaApplicationDetailPeriodArgs struct {
+	// Quota calculation cycle unit.
+	PeriodUnit pulumi.StringPtrInput `pulumi:"periodUnit"`
+	// The quota calculation period value.
+	PeriodValue pulumi.IntPtrInput `pulumi:"periodValue"`
+}
+
+func (TemplateApplicationsQuotaApplicationDetailPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateApplicationsQuotaApplicationDetailPeriod)(nil)).Elem()
+}
+
+func (i TemplateApplicationsQuotaApplicationDetailPeriodArgs) ToTemplateApplicationsQuotaApplicationDetailPeriodOutput() TemplateApplicationsQuotaApplicationDetailPeriodOutput {
+	return i.ToTemplateApplicationsQuotaApplicationDetailPeriodOutputWithContext(context.Background())
+}
+
+func (i TemplateApplicationsQuotaApplicationDetailPeriodArgs) ToTemplateApplicationsQuotaApplicationDetailPeriodOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateApplicationsQuotaApplicationDetailPeriodOutput)
+}
+
+func (i TemplateApplicationsQuotaApplicationDetailPeriodArgs) ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutput() TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
+	return i.ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutputWithContext(context.Background())
+}
+
+func (i TemplateApplicationsQuotaApplicationDetailPeriodArgs) ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateApplicationsQuotaApplicationDetailPeriodOutput).ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutputWithContext(ctx)
+}
+
+// TemplateApplicationsQuotaApplicationDetailPeriodPtrInput is an input type that accepts TemplateApplicationsQuotaApplicationDetailPeriodArgs, TemplateApplicationsQuotaApplicationDetailPeriodPtr and TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput values.
+// You can construct a concrete instance of `TemplateApplicationsQuotaApplicationDetailPeriodPtrInput` via:
+//
+//	        TemplateApplicationsQuotaApplicationDetailPeriodArgs{...}
+//
+//	or:
+//
+//	        nil
+type TemplateApplicationsQuotaApplicationDetailPeriodPtrInput interface {
+	pulumi.Input
+
+	ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutput() TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput
+	ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutputWithContext(context.Context) TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput
+}
+
+type templateApplicationsQuotaApplicationDetailPeriodPtrType TemplateApplicationsQuotaApplicationDetailPeriodArgs
+
+func TemplateApplicationsQuotaApplicationDetailPeriodPtr(v *TemplateApplicationsQuotaApplicationDetailPeriodArgs) TemplateApplicationsQuotaApplicationDetailPeriodPtrInput {
+	return (*templateApplicationsQuotaApplicationDetailPeriodPtrType)(v)
+}
+
+func (*templateApplicationsQuotaApplicationDetailPeriodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateApplicationsQuotaApplicationDetailPeriod)(nil)).Elem()
+}
+
+func (i *templateApplicationsQuotaApplicationDetailPeriodPtrType) ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutput() TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
+	return i.ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutputWithContext(context.Background())
+}
+
+func (i *templateApplicationsQuotaApplicationDetailPeriodPtrType) ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput)
+}
+
+type TemplateApplicationsQuotaApplicationDetailPeriodOutput struct{ *pulumi.OutputState }
+
+func (TemplateApplicationsQuotaApplicationDetailPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateApplicationsQuotaApplicationDetailPeriod)(nil)).Elem()
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailPeriodOutput) ToTemplateApplicationsQuotaApplicationDetailPeriodOutput() TemplateApplicationsQuotaApplicationDetailPeriodOutput {
+	return o
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailPeriodOutput) ToTemplateApplicationsQuotaApplicationDetailPeriodOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailPeriodOutput {
+	return o
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailPeriodOutput) ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutput() TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
+	return o.ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutputWithContext(context.Background())
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailPeriodOutput) ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateApplicationsQuotaApplicationDetailPeriod) *TemplateApplicationsQuotaApplicationDetailPeriod {
+		return &v
+	}).(TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput)
+}
+
+// Quota calculation cycle unit.
+func (o TemplateApplicationsQuotaApplicationDetailPeriodOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetailPeriod) *string { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// The quota calculation period value.
+func (o TemplateApplicationsQuotaApplicationDetailPeriodOutput) PeriodValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetailPeriod) *int { return v.PeriodValue }).(pulumi.IntPtrOutput)
+}
+
+type TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput struct{ *pulumi.OutputState }
+
+func (TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateApplicationsQuotaApplicationDetailPeriod)(nil)).Elem()
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput) ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutput() TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
+	return o
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput) ToTemplateApplicationsQuotaApplicationDetailPeriodPtrOutputWithContext(ctx context.Context) TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
+	return o
+}
+
+func (o TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput) Elem() TemplateApplicationsQuotaApplicationDetailPeriodOutput {
+	return o.ApplyT(func(v *TemplateApplicationsQuotaApplicationDetailPeriod) TemplateApplicationsQuotaApplicationDetailPeriod {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateApplicationsQuotaApplicationDetailPeriod
+		return ret
+	}).(TemplateApplicationsQuotaApplicationDetailPeriodOutput)
+}
+
+// Quota calculation cycle unit.
+func (o TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TemplateApplicationsQuotaApplicationDetailPeriod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The quota calculation period value.
+func (o TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput) PeriodValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TemplateApplicationsQuotaApplicationDetailPeriod) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodValue
+	}).(pulumi.IntPtrOutput)
+}
+
 type TemplateQuotaDimension struct {
 	// The Key of quota_dimensions.
 	Key *string `pulumi:"key"`
@@ -1953,6 +2458,427 @@ func (o GetQuotasQuotaArrayOutput) Index(i pulumi.IntInput) GetQuotasQuotaOutput
 	}).(GetQuotasQuotaOutput)
 }
 
+type GetTemplateApplicationsApplication struct {
+	// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.> Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
+	AliyunUids []string `pulumi:"aliyunUids"`
+	// The UTC time of the quota increase application.
+	ApplyTime string `pulumi:"applyTime"`
+	// Quantity of requisitions in different approval statuses.
+	AuditStatusVos []GetTemplateApplicationsApplicationAuditStatusVo `pulumi:"auditStatusVos"`
+	// The ID of the quota application batch.
+	BatchQuotaApplicationId string `pulumi:"batchQuotaApplicationId"`
+	// The value of the quota request.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+	DesireValue float64 `pulumi:"desireValue"`
+	// Quota dimension.
+	Dimensions []GetTemplateApplicationsApplicationDimension `pulumi:"dimensions"`
+	// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).> If the current account does not select the effective time, the default is the submission time.
+	EffectiveTime string `pulumi:"effectiveTime"`
+	// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).> If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the quota application batch.
+	Id string `pulumi:"id"`
+	// Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
+	ProductCode string `pulumi:"productCode"`
+	// The quota ID.
+	QuotaActionCode string `pulumi:"quotaActionCode"`
+	// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+	QuotaCategory string `pulumi:"quotaCategory"`
+	// Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+	Reason string `pulumi:"reason"`
+}
+
+// GetTemplateApplicationsApplicationInput is an input type that accepts GetTemplateApplicationsApplicationArgs and GetTemplateApplicationsApplicationOutput values.
+// You can construct a concrete instance of `GetTemplateApplicationsApplicationInput` via:
+//
+//	GetTemplateApplicationsApplicationArgs{...}
+type GetTemplateApplicationsApplicationInput interface {
+	pulumi.Input
+
+	ToGetTemplateApplicationsApplicationOutput() GetTemplateApplicationsApplicationOutput
+	ToGetTemplateApplicationsApplicationOutputWithContext(context.Context) GetTemplateApplicationsApplicationOutput
+}
+
+type GetTemplateApplicationsApplicationArgs struct {
+	// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.> Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
+	AliyunUids pulumi.StringArrayInput `pulumi:"aliyunUids"`
+	// The UTC time of the quota increase application.
+	ApplyTime pulumi.StringInput `pulumi:"applyTime"`
+	// Quantity of requisitions in different approval statuses.
+	AuditStatusVos GetTemplateApplicationsApplicationAuditStatusVoArrayInput `pulumi:"auditStatusVos"`
+	// The ID of the quota application batch.
+	BatchQuotaApplicationId pulumi.StringInput `pulumi:"batchQuotaApplicationId"`
+	// The value of the quota request.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+	DesireValue pulumi.Float64Input `pulumi:"desireValue"`
+	// Quota dimension.
+	Dimensions GetTemplateApplicationsApplicationDimensionArrayInput `pulumi:"dimensions"`
+	// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).> If the current account does not select the effective time, the default is the submission time.
+	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
+	// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).> If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the quota application batch.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// The quota ID.
+	QuotaActionCode pulumi.StringInput `pulumi:"quotaActionCode"`
+	// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+	QuotaCategory pulumi.StringInput `pulumi:"quotaCategory"`
+	// Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+	Reason pulumi.StringInput `pulumi:"reason"`
+}
+
+func (GetTemplateApplicationsApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateApplicationsApplication)(nil)).Elem()
+}
+
+func (i GetTemplateApplicationsApplicationArgs) ToGetTemplateApplicationsApplicationOutput() GetTemplateApplicationsApplicationOutput {
+	return i.ToGetTemplateApplicationsApplicationOutputWithContext(context.Background())
+}
+
+func (i GetTemplateApplicationsApplicationArgs) ToGetTemplateApplicationsApplicationOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateApplicationsApplicationOutput)
+}
+
+// GetTemplateApplicationsApplicationArrayInput is an input type that accepts GetTemplateApplicationsApplicationArray and GetTemplateApplicationsApplicationArrayOutput values.
+// You can construct a concrete instance of `GetTemplateApplicationsApplicationArrayInput` via:
+//
+//	GetTemplateApplicationsApplicationArray{ GetTemplateApplicationsApplicationArgs{...} }
+type GetTemplateApplicationsApplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateApplicationsApplicationArrayOutput() GetTemplateApplicationsApplicationArrayOutput
+	ToGetTemplateApplicationsApplicationArrayOutputWithContext(context.Context) GetTemplateApplicationsApplicationArrayOutput
+}
+
+type GetTemplateApplicationsApplicationArray []GetTemplateApplicationsApplicationInput
+
+func (GetTemplateApplicationsApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateApplicationsApplication)(nil)).Elem()
+}
+
+func (i GetTemplateApplicationsApplicationArray) ToGetTemplateApplicationsApplicationArrayOutput() GetTemplateApplicationsApplicationArrayOutput {
+	return i.ToGetTemplateApplicationsApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateApplicationsApplicationArray) ToGetTemplateApplicationsApplicationArrayOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateApplicationsApplicationArrayOutput)
+}
+
+type GetTemplateApplicationsApplicationOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateApplicationsApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateApplicationsApplication)(nil)).Elem()
+}
+
+func (o GetTemplateApplicationsApplicationOutput) ToGetTemplateApplicationsApplicationOutput() GetTemplateApplicationsApplicationOutput {
+	return o
+}
+
+func (o GetTemplateApplicationsApplicationOutput) ToGetTemplateApplicationsApplicationOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationOutput {
+	return o
+}
+
+// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.> Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
+func (o GetTemplateApplicationsApplicationOutput) AliyunUids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) []string { return v.AliyunUids }).(pulumi.StringArrayOutput)
+}
+
+// The UTC time of the quota increase application.
+func (o GetTemplateApplicationsApplicationOutput) ApplyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.ApplyTime }).(pulumi.StringOutput)
+}
+
+// Quantity of requisitions in different approval statuses.
+func (o GetTemplateApplicationsApplicationOutput) AuditStatusVos() GetTemplateApplicationsApplicationAuditStatusVoArrayOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) []GetTemplateApplicationsApplicationAuditStatusVo {
+		return v.AuditStatusVos
+	}).(GetTemplateApplicationsApplicationAuditStatusVoArrayOutput)
+}
+
+// The ID of the quota application batch.
+func (o GetTemplateApplicationsApplicationOutput) BatchQuotaApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.BatchQuotaApplicationId }).(pulumi.StringOutput)
+}
+
+// The value of the quota request.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+func (o GetTemplateApplicationsApplicationOutput) DesireValue() pulumi.Float64Output {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) float64 { return v.DesireValue }).(pulumi.Float64Output)
+}
+
+// Quota dimension.
+func (o GetTemplateApplicationsApplicationOutput) Dimensions() GetTemplateApplicationsApplicationDimensionArrayOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) []GetTemplateApplicationsApplicationDimension {
+		return v.Dimensions
+	}).(GetTemplateApplicationsApplicationDimensionArrayOutput)
+}
+
+// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).> If the current account does not select the effective time, the default is the submission time.
+func (o GetTemplateApplicationsApplicationOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).> If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
+func (o GetTemplateApplicationsApplicationOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The ID of the quota application batch.
+func (o GetTemplateApplicationsApplicationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
+func (o GetTemplateApplicationsApplicationOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// The quota ID.
+func (o GetTemplateApplicationsApplicationOutput) QuotaActionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.QuotaActionCode }).(pulumi.StringOutput)
+}
+
+// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+func (o GetTemplateApplicationsApplicationOutput) QuotaCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.QuotaCategory }).(pulumi.StringOutput)
+}
+
+// Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+func (o GetTemplateApplicationsApplicationOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+type GetTemplateApplicationsApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateApplicationsApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateApplicationsApplication)(nil)).Elem()
+}
+
+func (o GetTemplateApplicationsApplicationArrayOutput) ToGetTemplateApplicationsApplicationArrayOutput() GetTemplateApplicationsApplicationArrayOutput {
+	return o
+}
+
+func (o GetTemplateApplicationsApplicationArrayOutput) ToGetTemplateApplicationsApplicationArrayOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationArrayOutput {
+	return o
+}
+
+func (o GetTemplateApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetTemplateApplicationsApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateApplicationsApplication {
+		return vs[0].([]GetTemplateApplicationsApplication)[vs[1].(int)]
+	}).(GetTemplateApplicationsApplicationOutput)
+}
+
+type GetTemplateApplicationsApplicationAuditStatusVo struct {
+	// Approval document quantity.
+	Count int `pulumi:"count"`
+	// The approval status of the quota promotion application. Value:-Disagree: reject.-Approve: approved.-Process: under review.-Cancel: Closed.
+	Status string `pulumi:"status"`
+}
+
+// GetTemplateApplicationsApplicationAuditStatusVoInput is an input type that accepts GetTemplateApplicationsApplicationAuditStatusVoArgs and GetTemplateApplicationsApplicationAuditStatusVoOutput values.
+// You can construct a concrete instance of `GetTemplateApplicationsApplicationAuditStatusVoInput` via:
+//
+//	GetTemplateApplicationsApplicationAuditStatusVoArgs{...}
+type GetTemplateApplicationsApplicationAuditStatusVoInput interface {
+	pulumi.Input
+
+	ToGetTemplateApplicationsApplicationAuditStatusVoOutput() GetTemplateApplicationsApplicationAuditStatusVoOutput
+	ToGetTemplateApplicationsApplicationAuditStatusVoOutputWithContext(context.Context) GetTemplateApplicationsApplicationAuditStatusVoOutput
+}
+
+type GetTemplateApplicationsApplicationAuditStatusVoArgs struct {
+	// Approval document quantity.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The approval status of the quota promotion application. Value:-Disagree: reject.-Approve: approved.-Process: under review.-Cancel: Closed.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetTemplateApplicationsApplicationAuditStatusVoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateApplicationsApplicationAuditStatusVo)(nil)).Elem()
+}
+
+func (i GetTemplateApplicationsApplicationAuditStatusVoArgs) ToGetTemplateApplicationsApplicationAuditStatusVoOutput() GetTemplateApplicationsApplicationAuditStatusVoOutput {
+	return i.ToGetTemplateApplicationsApplicationAuditStatusVoOutputWithContext(context.Background())
+}
+
+func (i GetTemplateApplicationsApplicationAuditStatusVoArgs) ToGetTemplateApplicationsApplicationAuditStatusVoOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationAuditStatusVoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateApplicationsApplicationAuditStatusVoOutput)
+}
+
+// GetTemplateApplicationsApplicationAuditStatusVoArrayInput is an input type that accepts GetTemplateApplicationsApplicationAuditStatusVoArray and GetTemplateApplicationsApplicationAuditStatusVoArrayOutput values.
+// You can construct a concrete instance of `GetTemplateApplicationsApplicationAuditStatusVoArrayInput` via:
+//
+//	GetTemplateApplicationsApplicationAuditStatusVoArray{ GetTemplateApplicationsApplicationAuditStatusVoArgs{...} }
+type GetTemplateApplicationsApplicationAuditStatusVoArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateApplicationsApplicationAuditStatusVoArrayOutput() GetTemplateApplicationsApplicationAuditStatusVoArrayOutput
+	ToGetTemplateApplicationsApplicationAuditStatusVoArrayOutputWithContext(context.Context) GetTemplateApplicationsApplicationAuditStatusVoArrayOutput
+}
+
+type GetTemplateApplicationsApplicationAuditStatusVoArray []GetTemplateApplicationsApplicationAuditStatusVoInput
+
+func (GetTemplateApplicationsApplicationAuditStatusVoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateApplicationsApplicationAuditStatusVo)(nil)).Elem()
+}
+
+func (i GetTemplateApplicationsApplicationAuditStatusVoArray) ToGetTemplateApplicationsApplicationAuditStatusVoArrayOutput() GetTemplateApplicationsApplicationAuditStatusVoArrayOutput {
+	return i.ToGetTemplateApplicationsApplicationAuditStatusVoArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateApplicationsApplicationAuditStatusVoArray) ToGetTemplateApplicationsApplicationAuditStatusVoArrayOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationAuditStatusVoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateApplicationsApplicationAuditStatusVoArrayOutput)
+}
+
+type GetTemplateApplicationsApplicationAuditStatusVoOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateApplicationsApplicationAuditStatusVoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateApplicationsApplicationAuditStatusVo)(nil)).Elem()
+}
+
+func (o GetTemplateApplicationsApplicationAuditStatusVoOutput) ToGetTemplateApplicationsApplicationAuditStatusVoOutput() GetTemplateApplicationsApplicationAuditStatusVoOutput {
+	return o
+}
+
+func (o GetTemplateApplicationsApplicationAuditStatusVoOutput) ToGetTemplateApplicationsApplicationAuditStatusVoOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationAuditStatusVoOutput {
+	return o
+}
+
+// Approval document quantity.
+func (o GetTemplateApplicationsApplicationAuditStatusVoOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplicationAuditStatusVo) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The approval status of the quota promotion application. Value:-Disagree: reject.-Approve: approved.-Process: under review.-Cancel: Closed.
+func (o GetTemplateApplicationsApplicationAuditStatusVoOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplicationAuditStatusVo) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetTemplateApplicationsApplicationAuditStatusVoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateApplicationsApplicationAuditStatusVoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateApplicationsApplicationAuditStatusVo)(nil)).Elem()
+}
+
+func (o GetTemplateApplicationsApplicationAuditStatusVoArrayOutput) ToGetTemplateApplicationsApplicationAuditStatusVoArrayOutput() GetTemplateApplicationsApplicationAuditStatusVoArrayOutput {
+	return o
+}
+
+func (o GetTemplateApplicationsApplicationAuditStatusVoArrayOutput) ToGetTemplateApplicationsApplicationAuditStatusVoArrayOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationAuditStatusVoArrayOutput {
+	return o
+}
+
+func (o GetTemplateApplicationsApplicationAuditStatusVoArrayOutput) Index(i pulumi.IntInput) GetTemplateApplicationsApplicationAuditStatusVoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateApplicationsApplicationAuditStatusVo {
+		return vs[0].([]GetTemplateApplicationsApplicationAuditStatusVo)[vs[1].(int)]
+	}).(GetTemplateApplicationsApplicationAuditStatusVoOutput)
+}
+
+type GetTemplateApplicationsApplicationDimension struct {
+	// Quota dimension Key.
+	Key string `pulumi:"key"`
+	// Quota dimension Value.
+	Value string `pulumi:"value"`
+}
+
+// GetTemplateApplicationsApplicationDimensionInput is an input type that accepts GetTemplateApplicationsApplicationDimensionArgs and GetTemplateApplicationsApplicationDimensionOutput values.
+// You can construct a concrete instance of `GetTemplateApplicationsApplicationDimensionInput` via:
+//
+//	GetTemplateApplicationsApplicationDimensionArgs{...}
+type GetTemplateApplicationsApplicationDimensionInput interface {
+	pulumi.Input
+
+	ToGetTemplateApplicationsApplicationDimensionOutput() GetTemplateApplicationsApplicationDimensionOutput
+	ToGetTemplateApplicationsApplicationDimensionOutputWithContext(context.Context) GetTemplateApplicationsApplicationDimensionOutput
+}
+
+type GetTemplateApplicationsApplicationDimensionArgs struct {
+	// Quota dimension Key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Quota dimension Value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetTemplateApplicationsApplicationDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateApplicationsApplicationDimension)(nil)).Elem()
+}
+
+func (i GetTemplateApplicationsApplicationDimensionArgs) ToGetTemplateApplicationsApplicationDimensionOutput() GetTemplateApplicationsApplicationDimensionOutput {
+	return i.ToGetTemplateApplicationsApplicationDimensionOutputWithContext(context.Background())
+}
+
+func (i GetTemplateApplicationsApplicationDimensionArgs) ToGetTemplateApplicationsApplicationDimensionOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateApplicationsApplicationDimensionOutput)
+}
+
+// GetTemplateApplicationsApplicationDimensionArrayInput is an input type that accepts GetTemplateApplicationsApplicationDimensionArray and GetTemplateApplicationsApplicationDimensionArrayOutput values.
+// You can construct a concrete instance of `GetTemplateApplicationsApplicationDimensionArrayInput` via:
+//
+//	GetTemplateApplicationsApplicationDimensionArray{ GetTemplateApplicationsApplicationDimensionArgs{...} }
+type GetTemplateApplicationsApplicationDimensionArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateApplicationsApplicationDimensionArrayOutput() GetTemplateApplicationsApplicationDimensionArrayOutput
+	ToGetTemplateApplicationsApplicationDimensionArrayOutputWithContext(context.Context) GetTemplateApplicationsApplicationDimensionArrayOutput
+}
+
+type GetTemplateApplicationsApplicationDimensionArray []GetTemplateApplicationsApplicationDimensionInput
+
+func (GetTemplateApplicationsApplicationDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateApplicationsApplicationDimension)(nil)).Elem()
+}
+
+func (i GetTemplateApplicationsApplicationDimensionArray) ToGetTemplateApplicationsApplicationDimensionArrayOutput() GetTemplateApplicationsApplicationDimensionArrayOutput {
+	return i.ToGetTemplateApplicationsApplicationDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateApplicationsApplicationDimensionArray) ToGetTemplateApplicationsApplicationDimensionArrayOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateApplicationsApplicationDimensionArrayOutput)
+}
+
+type GetTemplateApplicationsApplicationDimensionOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateApplicationsApplicationDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateApplicationsApplicationDimension)(nil)).Elem()
+}
+
+func (o GetTemplateApplicationsApplicationDimensionOutput) ToGetTemplateApplicationsApplicationDimensionOutput() GetTemplateApplicationsApplicationDimensionOutput {
+	return o
+}
+
+func (o GetTemplateApplicationsApplicationDimensionOutput) ToGetTemplateApplicationsApplicationDimensionOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationDimensionOutput {
+	return o
+}
+
+// Quota dimension Key.
+func (o GetTemplateApplicationsApplicationDimensionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplicationDimension) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Quota dimension Value.
+func (o GetTemplateApplicationsApplicationDimensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateApplicationsApplicationDimension) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetTemplateApplicationsApplicationDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateApplicationsApplicationDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateApplicationsApplicationDimension)(nil)).Elem()
+}
+
+func (o GetTemplateApplicationsApplicationDimensionArrayOutput) ToGetTemplateApplicationsApplicationDimensionArrayOutput() GetTemplateApplicationsApplicationDimensionArrayOutput {
+	return o
+}
+
+func (o GetTemplateApplicationsApplicationDimensionArrayOutput) ToGetTemplateApplicationsApplicationDimensionArrayOutputWithContext(ctx context.Context) GetTemplateApplicationsApplicationDimensionArrayOutput {
+	return o
+}
+
+func (o GetTemplateApplicationsApplicationDimensionArrayOutput) Index(i pulumi.IntInput) GetTemplateApplicationsApplicationDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateApplicationsApplicationDimension {
+		return vs[0].([]GetTemplateApplicationsApplicationDimension)[vs[1].(int)]
+	}).(GetTemplateApplicationsApplicationDimensionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInfoDimensionInput)(nil)).Elem(), ApplicationInfoDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInfoDimensionArrayInput)(nil)).Elem(), ApplicationInfoDimensionArray{})
@@ -1960,6 +2886,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaAlarmQuotaDimensionArrayInput)(nil)).Elem(), QuotaAlarmQuotaDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaApplicationDimensionInput)(nil)).Elem(), QuotaApplicationDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaApplicationDimensionArrayInput)(nil)).Elem(), QuotaApplicationDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateApplicationsDimensionInput)(nil)).Elem(), TemplateApplicationsDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateApplicationsDimensionArrayInput)(nil)).Elem(), TemplateApplicationsDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateApplicationsQuotaApplicationDetailInput)(nil)).Elem(), TemplateApplicationsQuotaApplicationDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateApplicationsQuotaApplicationDetailArrayInput)(nil)).Elem(), TemplateApplicationsQuotaApplicationDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateApplicationsQuotaApplicationDetailPeriodInput)(nil)).Elem(), TemplateApplicationsQuotaApplicationDetailPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateApplicationsQuotaApplicationDetailPeriodPtrInput)(nil)).Elem(), TemplateApplicationsQuotaApplicationDetailPeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateQuotaDimensionInput)(nil)).Elem(), TemplateQuotaDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateQuotaDimensionArrayInput)(nil)).Elem(), TemplateQuotaDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationInfosApplicationInput)(nil)).Elem(), GetApplicationInfosApplicationArgs{})
@@ -1984,12 +2916,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQuotasDimensionArrayInput)(nil)).Elem(), GetQuotasDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQuotasQuotaInput)(nil)).Elem(), GetQuotasQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQuotasQuotaArrayInput)(nil)).Elem(), GetQuotasQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateApplicationsApplicationInput)(nil)).Elem(), GetTemplateApplicationsApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateApplicationsApplicationArrayInput)(nil)).Elem(), GetTemplateApplicationsApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateApplicationsApplicationAuditStatusVoInput)(nil)).Elem(), GetTemplateApplicationsApplicationAuditStatusVoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateApplicationsApplicationAuditStatusVoArrayInput)(nil)).Elem(), GetTemplateApplicationsApplicationAuditStatusVoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateApplicationsApplicationDimensionInput)(nil)).Elem(), GetTemplateApplicationsApplicationDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateApplicationsApplicationDimensionArrayInput)(nil)).Elem(), GetTemplateApplicationsApplicationDimensionArray{})
 	pulumi.RegisterOutputType(ApplicationInfoDimensionOutput{})
 	pulumi.RegisterOutputType(ApplicationInfoDimensionArrayOutput{})
 	pulumi.RegisterOutputType(QuotaAlarmQuotaDimensionOutput{})
 	pulumi.RegisterOutputType(QuotaAlarmQuotaDimensionArrayOutput{})
 	pulumi.RegisterOutputType(QuotaApplicationDimensionOutput{})
 	pulumi.RegisterOutputType(QuotaApplicationDimensionArrayOutput{})
+	pulumi.RegisterOutputType(TemplateApplicationsDimensionOutput{})
+	pulumi.RegisterOutputType(TemplateApplicationsDimensionArrayOutput{})
+	pulumi.RegisterOutputType(TemplateApplicationsQuotaApplicationDetailOutput{})
+	pulumi.RegisterOutputType(TemplateApplicationsQuotaApplicationDetailArrayOutput{})
+	pulumi.RegisterOutputType(TemplateApplicationsQuotaApplicationDetailPeriodOutput{})
+	pulumi.RegisterOutputType(TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput{})
 	pulumi.RegisterOutputType(TemplateQuotaDimensionOutput{})
 	pulumi.RegisterOutputType(TemplateQuotaDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosApplicationOutput{})
@@ -2014,4 +2958,10 @@ func init() {
 	pulumi.RegisterOutputType(GetQuotasDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetQuotasQuotaOutput{})
 	pulumi.RegisterOutputType(GetQuotasQuotaArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateApplicationsApplicationOutput{})
+	pulumi.RegisterOutputType(GetTemplateApplicationsApplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateApplicationsApplicationAuditStatusVoOutput{})
+	pulumi.RegisterOutputType(GetTemplateApplicationsApplicationAuditStatusVoArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateApplicationsApplicationDimensionOutput{})
+	pulumi.RegisterOutputType(GetTemplateApplicationsApplicationDimensionArrayOutput{})
 }

@@ -22,39 +22,38 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooZones = AliCloud.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VswitchName = "terraform-example",
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         VpcId = fooNetwork.Id,
-    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
     ///     var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new()
     ///     {
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         Bandwidth = 10,
     ///         EnableSsl = true,
     ///         InstanceChargeType = "PrePaid",
     ///         Description = "test_create_description",
-    ///         VswitchId = fooSwitch.Id,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///     });
     /// 
     ///     var fooCustomerGateway = new AliCloud.Vpn.CustomerGateway("fooCustomerGateway", new()
     ///     {
     ///         IpAddress = "42.104.22.210",
-    ///         Description = "terraform-example",
+    ///         Description = name,
     ///     });
     /// 
     ///     var fooConnection = new AliCloud.Vpn.Connection("fooConnection", new()
@@ -108,7 +107,7 @@ namespace Pulumi.AliCloud.Vpn
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        /// The configurations of the BGP routing protocol. See `bgp_config` below.
         /// </summary>
         [Output("bgpConfig")]
         public Output<Outputs.ConnectionBgpConfig> BgpConfig { get; private set; } = null!;
@@ -138,19 +137,19 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool> EnableNatTraversal { get; private set; } = null!;
 
         /// <summary>
-        /// The health check configurations. See the following `Block health_check_config`.
+        /// The health check configurations. See `health_check_config` below.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.ConnectionHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of phase-one negotiation. See the following `Block ike_config`.
+        /// The configurations of phase-one negotiation. See `ike_config` below.
         /// </summary>
         [Output("ikeConfig")]
         public Output<Outputs.ConnectionIkeConfig> IkeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        /// The configurations of phase-two negotiation. See `ipsec_config` below.
         /// </summary>
         [Output("ipsecConfig")]
         public Output<Outputs.ConnectionIpsecConfig> IpsecConfig { get; private set; } = null!;
@@ -232,7 +231,7 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        /// The configurations of the BGP routing protocol. See `bgp_config` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.ConnectionBgpConfigArgs>? BgpConfig { get; set; }
@@ -262,19 +261,19 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// The health check configurations. See the following `Block health_check_config`.
+        /// The health check configurations. See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ConnectionHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The configurations of phase-one negotiation. See the following `Block ike_config`.
+        /// The configurations of phase-one negotiation. See `ike_config` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.ConnectionIkeConfigArgs>? IkeConfig { get; set; }
 
         /// <summary>
-        /// The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        /// The configurations of phase-two negotiation. See `ipsec_config` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.ConnectionIpsecConfigArgs>? IpsecConfig { get; set; }
@@ -324,7 +323,7 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        /// The configurations of the BGP routing protocol. See `bgp_config` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.ConnectionBgpConfigGetArgs>? BgpConfig { get; set; }
@@ -354,19 +353,19 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// The health check configurations. See the following `Block health_check_config`.
+        /// The health check configurations. See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ConnectionHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The configurations of phase-one negotiation. See the following `Block ike_config`.
+        /// The configurations of phase-one negotiation. See `ike_config` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.ConnectionIkeConfigGetArgs>? IkeConfig { get; set; }
 
         /// <summary>
-        /// The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        /// The configurations of phase-two negotiation. See `ipsec_config` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.ConnectionIpsecConfigGetArgs>? IpsecConfig { get; set; }

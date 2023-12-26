@@ -212,8 +212,6 @@ type backupPolicyArgs struct {
 	DataLevel2BackupRetentionPeriod *int `pulumi:"dataLevel2BackupRetentionPeriod"`
 	// The Id of cluster that can run database.
 	DbClusterId string `pulumi:"dbClusterId"`
-	// Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
-	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion *string `pulumi:"logBackupAnotherRegionRegion"`
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
@@ -255,8 +253,6 @@ type BackupPolicyArgs struct {
 	DataLevel2BackupRetentionPeriod pulumi.IntPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringInput
-	// Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
-	EnableBackupLog pulumi.IntPtrInput
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion pulumi.StringPtrInput
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.

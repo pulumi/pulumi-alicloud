@@ -22,47 +22,47 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "Instance",
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: defaultZones.zones?.[0]?.id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
+ *     instanceTypeFamily: "ecs.sn1ne",
  * }));
  * const defaultImages = alicloud.ecs.getImages({
- *     owners: "system",
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     mostRecent: true,
+ *     owners: "system",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
+ *     cidrBlock: "192.168.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vswitchName: name,
- *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
- *     description: "New security group",
- *     vpcId: defaultNetwork.id,
- * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     instanceName: name,
- *     hostName: name,
- *     internetMaxBandwidthOut: 10,
  *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
  *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
- *     securityGroups: [defaultSecurityGroup.id],
+ *     instanceName: name,
+ *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 10,
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceChargeType: "PostPaid",
+ *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: defaultSwitch.id,
  * });
  * const example = new alicloud.ddos.BasicThreshold("example", {
- *     pps: 60000,
- *     bps: 100,
- *     internetIp: defaultInstance.publicIp,
- *     instanceId: defaultInstance.id,
  *     instanceType: "ecs",
+ *     instanceId: defaultInstance.id,
+ *     internetIp: defaultInstance.publicIp,
+ *     bps: 100,
+ *     pps: 60000,
  * });
  * ```
  *

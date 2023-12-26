@@ -70,7 +70,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
      */
-    public readonly bandwidthPackageId!: pulumi.Output<string | undefined>;
+    public readonly bandwidthPackageId!: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */

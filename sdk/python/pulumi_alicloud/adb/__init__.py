@@ -16,5 +16,7 @@ from .get_db_cluster_lake_versions import *
 from .get_db_clusters import *
 from .get_resource_groups import *
 from .get_zones import *
+from .lake_account import *
 from .resource_group import *
+from ._inputs import *
 from . import outputs

@@ -48,6 +48,8 @@ public final class EcsKeyPairAttachmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * New field &#39;key_pair_name&#39; instead.
+     * 
      * @deprecated
      * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
      * 
@@ -57,6 +59,8 @@ public final class EcsKeyPairAttachmentArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> keyName;
 
     /**
+     * @return New field &#39;key_pair_name&#39; instead.
+     * 
      * @deprecated
      * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
      * 
@@ -161,6 +165,8 @@ public final class EcsKeyPairAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param keyName New field &#39;key_pair_name&#39; instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -174,6 +180,8 @@ public final class EcsKeyPairAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param keyName New field &#39;key_pair_name&#39; instead.
+         * 
          * @return builder
          * 
          * @deprecated

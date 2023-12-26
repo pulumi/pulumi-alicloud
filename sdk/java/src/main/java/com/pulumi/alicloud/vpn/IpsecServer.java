@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VPN Ipsec Server and how to use it, see [What is Ipsec Server](https://www.alibabacloud.com/help/en/doc-detail/205454.html).
  * 
- * &gt; **NOTE:** Available in v1.161.0+.
+ * &gt; **NOTE:** Available since v1.161.0+.
  * 
  * ## Example Usage
  * 
@@ -36,10 +36,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.vpn.Gateway;
  * import com.pulumi.alicloud.vpn.GatewayArgs;
  * import com.pulumi.alicloud.vpn.IpsecServer;
@@ -57,36 +56,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var fooZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .vpcId(fooNetwork.id())
- *             .zoneId(fooZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
- *         var fooGateway = new Gateway(&#34;fooGateway&#34;, GatewayArgs.builder()        
- *             .vpcId(fooNetwork.id())
+ *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .bandwidth(&#34;10&#34;)
  *             .enableSsl(true)
+ *             .description(name)
  *             .instanceChargeType(&#34;PrePaid&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .vswitchId(fooSwitch.id())
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .build());
  * 
- *         var fooIpsecServer = new IpsecServer(&#34;fooIpsecServer&#34;, IpsecServerArgs.builder()        
+ *         var foo = new IpsecServer(&#34;foo&#34;, IpsecServerArgs.builder()        
  *             .clientIpPool(&#34;10.0.0.0/24&#34;)
- *             .ipsecServerName(&#34;terraform-example&#34;)
+ *             .ipsecServerName(name)
  *             .localSubnet(&#34;192.168.0.0/24&#34;)
- *             .vpnGatewayId(fooGateway.id())
+ *             .vpnGatewayId(defaultGateway.id())
  *             .pskEnabled(true)
  *             .build());
  * 
@@ -148,28 +146,28 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.effectImmediately);
     }
     /**
-     * The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+     * The configuration of Phase 1 negotiations. See `ike_config` below.
      * 
      */
     @Export(name="ikeConfigs", refs={List.class,IpsecServerIkeConfig.class}, tree="[0,1]")
     private Output<List<IpsecServerIkeConfig>> ikeConfigs;
 
     /**
-     * @return The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+     * @return The configuration of Phase 1 negotiations. See `ike_config` below.
      * 
      */
     public Output<List<IpsecServerIkeConfig>> ikeConfigs() {
         return this.ikeConfigs;
     }
     /**
-     * The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+     * The configuration of Phase 2 negotiations. See `ipsec_config` below.
      * 
      */
     @Export(name="ipsecConfigs", refs={List.class,IpsecServerIpsecConfig.class}, tree="[0,1]")
     private Output<List<IpsecServerIpsecConfig>> ipsecConfigs;
 
     /**
-     * @return The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+     * @return The configuration of Phase 2 negotiations. See `ipsec_config` below.
      * 
      */
     public Output<List<IpsecServerIpsecConfig>> ipsecConfigs() {

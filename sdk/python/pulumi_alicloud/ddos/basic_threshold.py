@@ -244,38 +244,39 @@ class BasicThreshold(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(owners="system",
-            name_regex="^ubuntu_[0-9]+_[0-9]+_x64*")
+            instance_type_family="ecs.sn1ne")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
-            cidr_block="10.4.0.0/16")
+            cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vswitch_name=name,
-            cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
-            description="New security group",
-            vpc_id=default_network.id)
+            cidr_block="192.168.192.0/24",
+            zone_id=default_zones.ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name=name,
-            host_name=name,
-            internet_max_bandwidth_out=10,
             image_id=default_images.images[0].id,
             instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[default_security_group.id],
+            instance_name=name,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_zones.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
             vswitch_id=default_switch.id)
         example = alicloud.ddos.BasicThreshold("example",
-            pps=60000,
-            bps=100,
-            internet_ip=default_instance.public_ip,
+            instance_type="ecs",
             instance_id=default_instance.id,
-            instance_type="ecs")
+            internet_ip=default_instance.public_ip,
+            bps=100,
+            pps=60000)
         ```
 
         ## Import
@@ -319,38 +320,39 @@ class BasicThreshold(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(owners="system",
-            name_regex="^ubuntu_[0-9]+_[0-9]+_x64*")
+            instance_type_family="ecs.sn1ne")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
-            cidr_block="10.4.0.0/16")
+            cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vswitch_name=name,
-            cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
-            description="New security group",
-            vpc_id=default_network.id)
+            cidr_block="192.168.192.0/24",
+            zone_id=default_zones.ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name=name,
-            host_name=name,
-            internet_max_bandwidth_out=10,
             image_id=default_images.images[0].id,
             instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[default_security_group.id],
+            instance_name=name,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_zones.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
             vswitch_id=default_switch.id)
         example = alicloud.ddos.BasicThreshold("example",
-            pps=60000,
-            bps=100,
-            internet_ip=default_instance.public_ip,
+            instance_type="ecs",
             instance_id=default_instance.id,
-            instance_type="ecs")
+            internet_ip=default_instance.public_ip,
+            bps=100,
+            pps=60000)
         ```
 
         ## Import

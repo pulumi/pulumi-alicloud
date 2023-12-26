@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about VPN Ipsec Server and how to use it, see [What is Ipsec Server](https://www.alibabacloud.com/help/en/doc-detail/205454.html).
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0+.
  *
  * ## Example Usage
  *
@@ -21,32 +21,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooZones = alicloud.getZones({
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.16.0.0/12",
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
  * });
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
- *     vswitchName: "terraform-example",
- *     cidrBlock: "172.16.0.0/21",
- *     vpcId: fooNetwork.id,
- *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
- * });
- * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
- *     vpcId: fooNetwork.id,
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
+ * }));
+ * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  *     bandwidth: 10,
  *     enableSsl: true,
+ *     description: name,
  *     instanceChargeType: "PrePaid",
- *     description: "terraform-example",
- *     vswitchId: fooSwitch.id,
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  * });
- * const fooIpsecServer = new alicloud.vpn.IpsecServer("fooIpsecServer", {
+ * const foo = new alicloud.vpn.IpsecServer("foo", {
  *     clientIpPool: "10.0.0.0/24",
- *     ipsecServerName: "terraform-example",
+ *     ipsecServerName: name,
  *     localSubnet: "192.168.0.0/24",
- *     vpnGatewayId: fooGateway.id,
+ *     vpnGatewayId: defaultGateway.id,
  *     pskEnabled: true,
  * });
  * ```
@@ -100,11 +99,11 @@ export class IpsecServer extends pulumi.CustomResource {
      */
     public readonly effectImmediately!: pulumi.Output<boolean | undefined>;
     /**
-     * The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+     * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
     public readonly ikeConfigs!: pulumi.Output<outputs.vpn.IpsecServerIkeConfig[]>;
     /**
-     * The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+     * The configuration of Phase 2 negotiations. See `ipsecConfig` below.
      */
     public readonly ipsecConfigs!: pulumi.Output<outputs.vpn.IpsecServerIpsecConfig[]>;
     /**
@@ -195,11 +194,11 @@ export interface IpsecServerState {
      */
     effectImmediately?: pulumi.Input<boolean>;
     /**
-     * The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+     * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
     ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIkeConfig>[]>;
     /**
-     * The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+     * The configuration of Phase 2 negotiations. See `ipsecConfig` below.
      */
     ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIpsecConfig>[]>;
     /**
@@ -241,11 +240,11 @@ export interface IpsecServerArgs {
      */
     effectImmediately?: pulumi.Input<boolean>;
     /**
-     * The configuration of Phase 1 negotiations. See the following `Block ikeConfig`.
+     * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
     ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIkeConfig>[]>;
     /**
-     * The configuration of Phase 2 negotiations. See the following `Block ipsecConfig`.
+     * The configuration of Phase 2 negotiations. See `ipsecConfig` below.
      */
     ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIpsecConfig>[]>;
     /**

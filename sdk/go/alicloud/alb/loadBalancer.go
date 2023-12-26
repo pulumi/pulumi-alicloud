@@ -41,7 +41,7 @@ type LoadBalancer struct {
 	// The type of IP address that the SLB instance uses to provide services.
 	AddressType pulumi.StringOutput `pulumi:"addressType"`
 	// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
-	BandwidthPackageId pulumi.StringPtrOutput `pulumi:"bandwidthPackageId"`
+	BandwidthPackageId pulumi.StringOutput `pulumi:"bandwidthPackageId"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether to enable delete protection. Value:true: on.false (default): Off.
@@ -391,8 +391,8 @@ func (o LoadBalancerOutput) AddressType() pulumi.StringOutput {
 }
 
 // The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
-func (o LoadBalancerOutput) BandwidthPackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.BandwidthPackageId }).(pulumi.StringPtrOutput)
+func (o LoadBalancerOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
 }
 
 // The creation time of the resource.

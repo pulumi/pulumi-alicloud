@@ -265,12 +265,6 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
-        /// </summary>
-        [Input("enableBackupLog")]
-        public Input<int>? EnableBackupLog { get; set; }
-
-        /// <summary>
         /// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         /// </summary>
         [Input("logBackupAnotherRegionRegion")]

@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
 //
-// > **NOTE:** Available in v1.168.0+.
+// > **NOTE:** Available since v1.168.0+.
 //
 // ## Example Usage
 //
@@ -27,32 +27,106 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultCommand, err := ecs.NewCommand(ctx, "defaultCommand", &ecs.CommandArgs{
-//				CommandContent: pulumi.String("bHMK"),
-//				Description:    pulumi.String("terraform-example"),
-//				Type:           pulumi.String("RunShellScript"),
-//				WorkingDir:     pulumi.String("/root"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-//				Status: pulumi.StringRef("Running"),
-//			}, nil)
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroupRule(ctx, "defaultSecurityGroupRule", &ecs.SecurityGroupRuleArgs{
+//				Type:            pulumi.String("ingress"),
+//				IpProtocol:      pulumi.String("tcp"),
+//				NicType:         pulumi.String("intranet"),
+//				Policy:          pulumi.String("accept"),
+//				PortRange:       pulumi.String("22/22"),
+//				Priority:        pulumi.Int(1),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				CidrIp:          pulumi.String("172.16.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//				VswitchId:               defaultSwitch.ID(),
+//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
+//				InternetChargeType:      pulumi.String("PayByTraffic"),
+//				InternetMaxBandwidthOut: pulumi.Int(5),
+//				SecurityGroups: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				InstanceName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCommand, err := ecs.NewCommand(ctx, "defaultCommand", &ecs.CommandArgs{
+//				CommandContent:  pulumi.String("ZWNobyBoZWxsbyx7e25hbWV9fQ=="),
+//				Description:     pulumi.String("For Terraform Test"),
+//				Type:            pulumi.String("RunShellScript"),
+//				WorkingDir:      pulumi.String("/root"),
+//				EnableParameter: pulumi.Bool(true),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewEcsInvocation(ctx, "defaultEcsInvocation", &ecs.EcsInvocationArgs{
 //				CommandId: defaultCommand.ID(),
 //				InstanceIds: pulumi.StringArray{
-//					*pulumi.String(defaultInstances.Ids[0]),
+//					defaultInstance.ID(),
 //				},
 //			})
 //			if err != nil {

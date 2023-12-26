@@ -27,10 +27,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.vpn.Gateway;
  * import com.pulumi.alicloud.vpn.GatewayArgs;
  * import com.pulumi.alicloud.vpn.CustomerGateway;
@@ -52,29 +51,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;10.1.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
  *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
- *             .vpcId(defaultNetwork.id())
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .bandwidth(10)
  *             .instanceChargeType(&#34;PrePaid&#34;)
  *             .enableSsl(false)
- *             .vswitchId(defaultSwitch.id())
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .build());
  * 
  *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        

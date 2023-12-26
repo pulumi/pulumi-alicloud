@@ -16,6 +16,111 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Available since v1.204.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "cluster",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "cluster",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceType = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         ZoneIdSlaveA = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultDbNode = new AliCloud.Rds.DbNode("defaultDbNode", new()
+    ///     {
+    ///         DbInstanceId = defaultInstance.Id,
+    ///         ClassCode = defaultInstance.InstanceType,
+    ///         ZoneId = defaultSwitch.ZoneId,
+    ///     });
+    /// 
+    ///     var defaultDbInstanceEndpoint = new AliCloud.Rds.DbInstanceEndpoint("defaultDbInstanceEndpoint", new()
+    ///     {
+    ///         DbInstanceId = defaultDbNode.DbInstanceId,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultInstance.VswitchId,
+    ///         ConnectionStringPrefix = "example",
+    ///         Port = "3306",
+    ///         DbInstanceEndpointDescription = name,
+    ///         NodeItems = new[]
+    ///         {
+    ///             new AliCloud.Rds.Inputs.DbInstanceEndpointNodeItemArgs
+    ///             {
+    ///                 NodeId = defaultDbNode.NodeId,
+    ///                 Weight = 25,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDbInstanceEndpointAddress = new AliCloud.Rds.DbInstanceEndpointAddress("defaultDbInstanceEndpointAddress", new()
+    ///     {
+    ///         DbInstanceId = defaultInstance.Id,
+    ///         DbInstanceEndpointId = defaultDbInstanceEndpoint.DbInstanceEndpointId,
+    ///         ConnectionStringPrefix = "tf-example-prefix",
+    ///         Port = "3306",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RDS database endpoint public address feature can be imported using the id, e.g.

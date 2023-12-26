@@ -33,8 +33,8 @@ class IpsecServerArgs:
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] effect_immediately: Specifies whether you want the configuration to immediately take effect.
-        :param pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]] ike_configs: The configuration of Phase 1 negotiations. See the following `Block ike_config`.
-        :param pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]] ipsec_configs: The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        :param pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]] ike_configs: The configuration of Phase 1 negotiations. See `ike_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]] ipsec_configs: The configuration of Phase 2 negotiations. See `ipsec_config` below.
         :param pulumi.Input[str] ipsec_server_name: The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
         :param pulumi.Input[str] psk: The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
         :param pulumi.Input[bool] psk_enabled: Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
@@ -121,7 +121,7 @@ class IpsecServerArgs:
     @pulumi.getter(name="ikeConfigs")
     def ike_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]:
         """
-        The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+        The configuration of Phase 1 negotiations. See `ike_config` below.
         """
         return pulumi.get(self, "ike_configs")
 
@@ -133,7 +133,7 @@ class IpsecServerArgs:
     @pulumi.getter(name="ipsecConfigs")
     def ipsec_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]:
         """
-        The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        The configuration of Phase 2 negotiations. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_configs")
 
@@ -196,8 +196,8 @@ class _IpsecServerState:
         :param pulumi.Input[str] client_ip_pool: The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] effect_immediately: Specifies whether you want the configuration to immediately take effect.
-        :param pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]] ike_configs: The configuration of Phase 1 negotiations. See the following `Block ike_config`.
-        :param pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]] ipsec_configs: The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        :param pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]] ike_configs: The configuration of Phase 1 negotiations. See `ike_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]] ipsec_configs: The configuration of Phase 2 negotiations. See `ipsec_config` below.
         :param pulumi.Input[str] ipsec_server_name: The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
         :param pulumi.Input[str] local_subnet: The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
         :param pulumi.Input[str] psk: The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
@@ -265,7 +265,7 @@ class _IpsecServerState:
     @pulumi.getter(name="ikeConfigs")
     def ike_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]:
         """
-        The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+        The configuration of Phase 1 negotiations. See `ike_config` below.
         """
         return pulumi.get(self, "ike_configs")
 
@@ -277,7 +277,7 @@ class _IpsecServerState:
     @pulumi.getter(name="ipsecConfigs")
     def ipsec_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]:
         """
-        The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        The configuration of Phase 2 negotiations. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_configs")
 
@@ -367,7 +367,7 @@ class IpsecServer(pulumi.CustomResource):
 
         For information about VPN Ipsec Server and how to use it, see [What is Ipsec Server](https://www.alibabacloud.com/help/en/doc-detail/205454.html).
 
-        > **NOTE:** Available in v1.161.0+.
+        > **NOTE:** Available since v1.161.0+.
 
         ## Example Usage
 
@@ -377,27 +377,26 @@ class IpsecServer(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
-        foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id=foo_network.id,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
+        default_gateway = alicloud.vpn.Gateway("defaultGateway",
+            vpc_id=default_networks.ids[0],
             bandwidth=10,
             enable_ssl=True,
+            description=name,
             instance_charge_type="PrePaid",
-            description="terraform-example",
-            vswitch_id=foo_switch.id)
-        foo_ipsec_server = alicloud.vpn.IpsecServer("fooIpsecServer",
+            vswitch_id=default_switches.ids[0])
+        foo = alicloud.vpn.IpsecServer("foo",
             client_ip_pool="10.0.0.0/24",
-            ipsec_server_name="terraform-example",
+            ipsec_server_name=name,
             local_subnet="192.168.0.0/24",
-            vpn_gateway_id=foo_gateway.id,
+            vpn_gateway_id=default_gateway.id,
             psk_enabled=True)
         ```
 
@@ -414,8 +413,8 @@ class IpsecServer(pulumi.CustomResource):
         :param pulumi.Input[str] client_ip_pool: The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] effect_immediately: Specifies whether you want the configuration to immediately take effect.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIkeConfigArgs']]]] ike_configs: The configuration of Phase 1 negotiations. See the following `Block ike_config`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIpsecConfigArgs']]]] ipsec_configs: The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIkeConfigArgs']]]] ike_configs: The configuration of Phase 1 negotiations. See `ike_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIpsecConfigArgs']]]] ipsec_configs: The configuration of Phase 2 negotiations. See `ipsec_config` below.
         :param pulumi.Input[str] ipsec_server_name: The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
         :param pulumi.Input[str] local_subnet: The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
         :param pulumi.Input[str] psk: The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
@@ -433,7 +432,7 @@ class IpsecServer(pulumi.CustomResource):
 
         For information about VPN Ipsec Server and how to use it, see [What is Ipsec Server](https://www.alibabacloud.com/help/en/doc-detail/205454.html).
 
-        > **NOTE:** Available in v1.161.0+.
+        > **NOTE:** Available since v1.161.0+.
 
         ## Example Usage
 
@@ -443,27 +442,26 @@ class IpsecServer(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
-        foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id=foo_network.id,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
+        default_gateway = alicloud.vpn.Gateway("defaultGateway",
+            vpc_id=default_networks.ids[0],
             bandwidth=10,
             enable_ssl=True,
+            description=name,
             instance_charge_type="PrePaid",
-            description="terraform-example",
-            vswitch_id=foo_switch.id)
-        foo_ipsec_server = alicloud.vpn.IpsecServer("fooIpsecServer",
+            vswitch_id=default_switches.ids[0])
+        foo = alicloud.vpn.IpsecServer("foo",
             client_ip_pool="10.0.0.0/24",
-            ipsec_server_name="terraform-example",
+            ipsec_server_name=name,
             local_subnet="192.168.0.0/24",
-            vpn_gateway_id=foo_gateway.id,
+            vpn_gateway_id=default_gateway.id,
             psk_enabled=True)
         ```
 
@@ -555,8 +553,8 @@ class IpsecServer(pulumi.CustomResource):
         :param pulumi.Input[str] client_ip_pool: The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] effect_immediately: Specifies whether you want the configuration to immediately take effect.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIkeConfigArgs']]]] ike_configs: The configuration of Phase 1 negotiations. See the following `Block ike_config`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIpsecConfigArgs']]]] ipsec_configs: The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIkeConfigArgs']]]] ike_configs: The configuration of Phase 1 negotiations. See `ike_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIpsecConfigArgs']]]] ipsec_configs: The configuration of Phase 2 negotiations. See `ipsec_config` below.
         :param pulumi.Input[str] ipsec_server_name: The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
         :param pulumi.Input[str] local_subnet: The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
         :param pulumi.Input[str] psk: The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
@@ -607,7 +605,7 @@ class IpsecServer(pulumi.CustomResource):
     @pulumi.getter(name="ikeConfigs")
     def ike_configs(self) -> pulumi.Output[Sequence['outputs.IpsecServerIkeConfig']]:
         """
-        The configuration of Phase 1 negotiations. See the following `Block ike_config`.
+        The configuration of Phase 1 negotiations. See `ike_config` below.
         """
         return pulumi.get(self, "ike_configs")
 
@@ -615,7 +613,7 @@ class IpsecServer(pulumi.CustomResource):
     @pulumi.getter(name="ipsecConfigs")
     def ipsec_configs(self) -> pulumi.Output[Sequence['outputs.IpsecServerIpsecConfig']]:
         """
-        The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
+        The configuration of Phase 2 negotiations. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_configs")
 

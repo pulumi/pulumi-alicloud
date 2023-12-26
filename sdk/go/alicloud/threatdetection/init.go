@@ -45,6 +45,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ImageEventOperation{}
 	case "alicloud:threatdetection/instance:Instance":
 		r = &Instance{}
+	case "alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig":
+		r = &MaliciousFileWhitelistConfig{}
+	case "alicloud:threatdetection/ossScanConfig:OssScanConfig":
+		r = &OssScanConfig{}
 	case "alicloud:threatdetection/sasTrail:SasTrail":
 		r = &SasTrail{}
 	case "alicloud:threatdetection/vulWhitelist:VulWhitelist":
@@ -122,6 +126,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"threatdetection/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/maliciousFileWhitelistConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/ossScanConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

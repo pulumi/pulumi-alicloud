@@ -340,7 +340,7 @@ class EcsInvocation(pulumi.CustomResource):
 
         For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
 
-        > **NOTE:** Available in v1.168.0+.
+        > **NOTE:** Available since v1.168.0+.
 
         ## Example Usage
 
@@ -350,15 +350,52 @@ class EcsInvocation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            vswitch_id=default_switch.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            security_groups=[default_security_group.id],
+            instance_name=name)
         default_command = alicloud.ecs.Command("defaultCommand",
-            command_content="bHMK",
-            description="terraform-example",
+            command_content="ZWNobyBoZWxsbyx7e25hbWV9fQ==",
+            description="For Terraform Test",
             type="RunShellScript",
-            working_dir="/root")
-        default_instances = alicloud.ecs.get_instances(status="Running")
+            working_dir="/root",
+            enable_parameter=True)
         default_ecs_invocation = alicloud.ecs.EcsInvocation("defaultEcsInvocation",
             command_id=default_command.id,
-            instance_ids=[default_instances.ids[0]])
+            instance_ids=[default_instance.id])
         ```
 
         ## Import
@@ -397,7 +434,7 @@ class EcsInvocation(pulumi.CustomResource):
 
         For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
 
-        > **NOTE:** Available in v1.168.0+.
+        > **NOTE:** Available since v1.168.0+.
 
         ## Example Usage
 
@@ -407,15 +444,52 @@ class EcsInvocation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            vswitch_id=default_switch.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            security_groups=[default_security_group.id],
+            instance_name=name)
         default_command = alicloud.ecs.Command("defaultCommand",
-            command_content="bHMK",
-            description="terraform-example",
+            command_content="ZWNobyBoZWxsbyx7e25hbWV9fQ==",
+            description="For Terraform Test",
             type="RunShellScript",
-            working_dir="/root")
-        default_instances = alicloud.ecs.get_instances(status="Running")
+            working_dir="/root",
+            enable_parameter=True)
         default_ecs_invocation = alicloud.ecs.EcsInvocation("defaultEcsInvocation",
             command_id=default_command.id,
-            instance_ids=[default_instances.ids[0]])
+            instance_ids=[default_instance.id])
         ```
 
         ## Import

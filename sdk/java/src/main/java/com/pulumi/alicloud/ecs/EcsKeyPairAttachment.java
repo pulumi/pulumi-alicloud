@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
  * 
- * &gt; **NOTE:** Available in v1.121.0+.
+ * &gt; **NOTE:** Available since v1.121.0+.
  * 
  * ## Example Usage
  * 
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleEcsKeyPair = new EcsKeyPair(&#34;exampleEcsKeyPair&#34;, EcsKeyPairArgs.builder()        
- *             .keyPairName(&#34;terraform-example&#34;)
+ *             .keyPairName(&#34;tf-example&#34;)
  *             .build());
  * 
  *         var exampleEcsKeyPairAttachment = new EcsKeyPairAttachment(&#34;exampleEcsKeyPairAttachment&#34;, EcsKeyPairAttachmentArgs.builder()        
@@ -156,6 +156,8 @@ public class EcsKeyPairAttachment extends com.pulumi.resources.CustomResource {
         return this.instanceIds;
     }
     /**
+     * New field &#39;key_pair_name&#39; instead.
+     * 
      * @deprecated
      * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
      * 
@@ -164,6 +166,10 @@ public class EcsKeyPairAttachment extends com.pulumi.resources.CustomResource {
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
+    /**
+     * @return New field &#39;key_pair_name&#39; instead.
+     * 
+     */
     public Output<String> keyName() {
         return this.keyName;
     }

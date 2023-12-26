@@ -26,7 +26,6 @@ class BackupPolicyArgs:
                  data_level2_backup_another_region_retention_period: Optional[pulumi.Input[int]] = None,
                  data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_level2_backup_retention_period: Optional[pulumi.Input[int]] = None,
-                 enable_backup_log: Optional[pulumi.Input[int]] = None,
                  log_backup_another_region_region: Optional[pulumi.Input[str]] = None,
                  log_backup_another_region_retention_period: Optional[pulumi.Input[int]] = None,
                  log_backup_retention_period: Optional[pulumi.Input[int]] = None,
@@ -48,7 +47,6 @@ class BackupPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_level2_backup_periods: PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
-        :param pulumi.Input[int] enable_backup_log: Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
         :param pulumi.Input[str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
@@ -79,8 +77,6 @@ class BackupPolicyArgs:
             pulumi.set(__self__, "data_level2_backup_periods", data_level2_backup_periods)
         if data_level2_backup_retention_period is not None:
             pulumi.set(__self__, "data_level2_backup_retention_period", data_level2_backup_retention_period)
-        if enable_backup_log is not None:
-            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if log_backup_another_region_region is not None:
             pulumi.set(__self__, "log_backup_another_region_region", log_backup_another_region_region)
         if log_backup_another_region_retention_period is not None:
@@ -237,18 +233,6 @@ class BackupPolicyArgs:
     @data_level2_backup_retention_period.setter
     def data_level2_backup_retention_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "data_level2_backup_retention_period", value)
-
-    @property
-    @pulumi.getter(name="enableBackupLog")
-    def enable_backup_log(self) -> Optional[pulumi.Input[int]]:
-        """
-        Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
-        """
-        return pulumi.get(self, "enable_backup_log")
-
-    @enable_backup_log.setter
-    def enable_backup_log(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "enable_backup_log", value)
 
     @property
     @pulumi.getter(name="logBackupAnotherRegionRegion")
@@ -631,7 +615,6 @@ class BackupPolicy(pulumi.CustomResource):
                  data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_level2_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
-                 enable_backup_log: Optional[pulumi.Input[int]] = None,
                  log_backup_another_region_region: Optional[pulumi.Input[str]] = None,
                  log_backup_another_region_retention_period: Optional[pulumi.Input[int]] = None,
                  log_backup_retention_period: Optional[pulumi.Input[int]] = None,
@@ -663,7 +646,6 @@ class BackupPolicy(pulumi.CustomResource):
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[int] enable_backup_log: Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
         :param pulumi.Input[str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
@@ -713,7 +695,6 @@ class BackupPolicy(pulumi.CustomResource):
                  data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_level2_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
-                 enable_backup_log: Optional[pulumi.Input[int]] = None,
                  log_backup_another_region_region: Optional[pulumi.Input[str]] = None,
                  log_backup_another_region_retention_period: Optional[pulumi.Input[int]] = None,
                  log_backup_retention_period: Optional[pulumi.Input[int]] = None,
@@ -742,12 +723,12 @@ class BackupPolicy(pulumi.CustomResource):
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__.__dict__["db_cluster_id"] = db_cluster_id
-            __props__.__dict__["enable_backup_log"] = enable_backup_log
             __props__.__dict__["log_backup_another_region_region"] = log_backup_another_region_region
             __props__.__dict__["log_backup_another_region_retention_period"] = log_backup_another_region_retention_period
             __props__.__dict__["log_backup_retention_period"] = log_backup_retention_period
             __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
             __props__.__dict__["preferred_backup_time"] = preferred_backup_time
+            __props__.__dict__["enable_backup_log"] = None
         super(BackupPolicy, __self__).__init__(
             'alicloud:polardb/backupPolicy:BackupPolicy',
             resource_name,

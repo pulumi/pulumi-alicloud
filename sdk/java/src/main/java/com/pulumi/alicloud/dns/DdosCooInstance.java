@@ -16,13 +16,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * BGP-Line Anti-DDoS instance resource. &#34;Ddoscoo&#34; is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/create-an-anti-ddos-pro-or-anti-ddos-premium-instance-by-calling-an-api-operation).
+ * Provides a BGP-line Anti-DDoS Pro(DdosCoo) Instance resource.
  * 
- * &gt; **NOTE:** The product region only support cn-hangzhou.
+ * For information about BGP-line Anti-DDoS Pro(DdosCoo) Instance and how to use it, see [What is Anti-DDoS Pro Instance](https://www.alibabacloud.com/help/en/ddos-protection/latest/create-an-anti-ddos-pro-or-anti-ddos-premium-instance-by-calling-an-api-operation).
+ * 
+ * &gt; **NOTE:** Available since v1.37.0.
  * 
  * &gt; **NOTE:** The endpoint of bssopenapi used only support &#34;business.aliyuncs.com&#34; at present.
  * 
- * &gt; **NOTE:** Available since v1.37.0.
+ * &gt; **NOTE:** From version 1.214.0, if `product_type` is set to `ddoscoo` or `ddoscoo_intl`, the provider `region` should be set to `cn-hangzhou`, and if `product_type` is set to `ddosDip`, the provider `region` should be set to `ap-southeast-1`.
  * 
  * ## Example Usage
  * 
@@ -66,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Ddoscoo instance can be imported using the id, e.g.
+ * DdosCoo instance can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
@@ -164,6 +166,20 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.editionSale;
     }
     /**
+     * The function plan of the instance. Valid values:
+     * 
+     */
+    @Export(name="functionVersion", refs={String.class}, tree="[0]")
+    private Output<String> functionVersion;
+
+    /**
+     * @return The function plan of the instance. Valid values:
+     * 
+     */
+    public Output<String> functionVersion() {
+        return this.functionVersion;
+    }
+    /**
      * (Available since v1.212.0) The IP address of the instance.
      * 
      */
@@ -192,14 +208,42 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+     * The clean bandwidth provided by the instance.
+     * 
+     */
+    @Export(name="normalBandwidth", refs={String.class}, tree="[0]")
+    private Output<String> normalBandwidth;
+
+    /**
+     * @return The clean bandwidth provided by the instance.
+     * 
+     */
+    public Output<String> normalBandwidth() {
+        return this.normalBandwidth;
+    }
+    /**
+     * The clean QPS provided by the instance.
+     * 
+     */
+    @Export(name="normalQps", refs={String.class}, tree="[0]")
+    private Output<String> normalQps;
+
+    /**
+     * @return The clean QPS provided by the instance.
+     * 
+     */
+    public Output<String> normalQps() {
+        return this.normalQps;
+    }
+    /**
+     * The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
+     * @return The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
     public Output<Optional<Integer>> period() {
@@ -218,6 +262,20 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> portCount() {
         return this.portCount;
+    }
+    /**
+     * The mitigation plan of the instance. Valid values:
+     * 
+     */
+    @Export(name="productPlan", refs={String.class}, tree="[0]")
+    private Output<String> productPlan;
+
+    /**
+     * @return The mitigation plan of the instance. Valid values:
+     * 
+     */
+    public Output<String> productPlan() {
+        return this.productPlan;
     }
     /**
      * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:

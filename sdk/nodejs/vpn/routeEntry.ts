@@ -13,26 +13,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "10.1.0.0/21",
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: "terraform-example",
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "10.1.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
+ * }));
  * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
- *     vpcId: defaultNetwork.id,
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  *     bandwidth: 10,
  *     instanceChargeType: "PrePaid",
  *     enableSsl: false,
- *     vswitchId: defaultSwitch.id,
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  * });
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {ipAddress: "192.168.1.1"});
  * const defaultConnection = new alicloud.vpn.Connection("defaultConnection", {

@@ -32,64 +32,66 @@ namespace Pulumi.AliCloud.Ddos
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = "Instance",
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
     ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         InstanceTypeFamily = "ecs.sn1ne",
     ///     });
     /// 
     ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         Owners = "system",
     ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         MostRecent = true,
+    ///         Owners = "system",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
     ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
+    ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
     ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         Description = "New security group",
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         InstanceName = name,
-    ///         HostName = name,
-    ///         InternetMaxBandwidthOut = 10,
     ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InstanceName = name,
     ///         SecurityGroups = new[]
     ///         {
-    ///             defaultSecurityGroup.Id,
-    ///         },
+    ///             defaultSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceChargeType = "PostPaid",
+    ///         SystemDiskCategory = "cloud_efficiency",
     ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
     ///     var example = new AliCloud.Ddos.BasicThreshold("example", new()
     ///     {
-    ///         Pps = 60000,
-    ///         Bps = 100,
-    ///         InternetIp = defaultInstance.PublicIp,
-    ///         InstanceId = defaultInstance.Id,
     ///         InstanceType = "ecs",
+    ///         InstanceId = defaultInstance.Id,
+    ///         InternetIp = defaultInstance.PublicIp,
+    ///         Bps = 100,
+    ///         Pps = 60000,
     ///     });
     /// 
     /// });

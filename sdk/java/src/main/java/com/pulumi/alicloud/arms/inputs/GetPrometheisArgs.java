@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class GetPrometheisArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPrometheisArgs Empty = new GetPrometheisArgs();
+
+    /**
+     * Whether to query details about the instance.
+     * 
+     */
+    @Import(name="enableDetails")
+    private @Nullable Output<Boolean> enableDetails;
+
+    /**
+     * @return Whether to query details about the instance.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
+    }
 
     /**
      * A list of Prometheus IDs.
@@ -96,6 +112,7 @@ public final class GetPrometheisArgs extends com.pulumi.resources.InvokeArgs {
     private GetPrometheisArgs() {}
 
     private GetPrometheisArgs(GetPrometheisArgs $) {
+        this.enableDetails = $.enableDetails;
         this.ids = $.ids;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
@@ -119,6 +136,27 @@ public final class GetPrometheisArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetPrometheisArgs defaults) {
             $ = new GetPrometheisArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enableDetails Whether to query details about the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
+            $.enableDetails = enableDetails;
+            return this;
+        }
+
+        /**
+         * @param enableDetails Whether to query details about the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(Boolean enableDetails) {
+            return enableDetails(Output.of(enableDetails));
         }
 
         /**

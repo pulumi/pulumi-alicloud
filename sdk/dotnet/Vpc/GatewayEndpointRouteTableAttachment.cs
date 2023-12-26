@@ -38,7 +38,16 @@ namespace Pulumi.AliCloud.Vpc
     ///     var defaultGE = new AliCloud.Vpc.GatewayEndpoint("defaultGE", new()
     ///     {
     ///         ServiceName = "com.aliyun.cn-hangzhou.oss",
-    ///         PolicyDocument = "{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }",
+    ///         PolicyDocument = @"        {
+    ///           ""Version"": ""1"",
+    ///           ""Statement"": [{
+    ///             ""Effect"": ""Allow"",
+    ///             ""Resource"": [""*""],
+    ///             ""Action"": [""*""],
+    ///             ""Principal"": [""*""]
+    ///           }]
+    ///         }
+    /// ",
     ///         VpcId = defaulteVpc.Id,
     ///         GatewayEndpointDescrption = "test-gateway-endpoint",
     ///         GatewayEndpointName = $"{name}1",

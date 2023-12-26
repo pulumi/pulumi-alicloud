@@ -244,7 +244,7 @@ class PbrRouteEntry(pulumi.CustomResource):
         """
         Provides a VPN Pbr Route Entry resource.
 
-        > **NOTE:** Available in 1.162.0+.
+        > **NOTE:** Available since v1.162.0+.
 
         For information about VPN Pbr Route Entry and how to use it, see [What is VPN Pbr Route Entry](https://www.alibabacloud.com/help/en/doc-detail/127248.html).
 
@@ -302,7 +302,7 @@ class PbrRouteEntry(pulumi.CustomResource):
         """
         Provides a VPN Pbr Route Entry resource.
 
-        > **NOTE:** Available in 1.162.0+.
+        > **NOTE:** Available since v1.162.0+.
 
         For information about VPN Pbr Route Entry and how to use it, see [What is VPN Pbr Route Entry](https://www.alibabacloud.com/help/en/doc-detail/127248.html).
 

@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  *
  * Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
  *
+ * > **NOTE:** Deprecated since v1.153.0+.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "slbattachmenttest";
+ * const name = config.get("name") || "slb-attachment-example";
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
@@ -52,6 +54,7 @@ import * as utilities from "../utilities";
  * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
  *     loadBalancerName: name,
  *     vswitchId: defaultSwitch.id,
+ *     loadBalancerSpec: "slb.s1.small",
  * });
  * const defaultAttachment = new alicloud.slb.Attachment("defaultAttachment", {
  *     loadBalancerId: defaultApplicationLoadBalancer.id,

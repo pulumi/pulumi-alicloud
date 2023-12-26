@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a security group resource.
+    /// Provides a Security Group resource.
+    /// 
+    /// For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// &gt; **NOTE:** `alicloud.ecs.SecurityGroup` is used to build and manage a security group, and `alicloud.ecs.SecurityGroupRule` can define ingress or egress rules for it.
     /// 
@@ -35,7 +39,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
-    /// Basic usage for vpc
+    /// 
+    /// Basic Usage for VPC
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -81,13 +86,15 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+        /// 
+        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         [Output("innerAccess")]
         public Output<bool> InnerAccess { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+        /// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
         /// </summary>
         [Output("innerAccessPolicy")]
         public Output<string> InnerAccessPolicy { get; private set; } = null!;
@@ -99,29 +106,25 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the security_group belongs.
+        /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The type of the security group. Valid values:
-        /// `normal`: basic security group.
-        /// `enterprise`: advanced security group For more information.
         /// </summary>
         [Output("securityGroupType")]
-        public Output<string?> SecurityGroupType { get; private set; } = null!;
+        public Output<string> SecurityGroupType { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// 
-        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC ID.
+        /// The ID of the VPC.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -179,13 +182,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+        /// 
+        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         [Input("innerAccess")]
         public Input<bool>? InnerAccess { get; set; }
 
         /// <summary>
-        /// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+        /// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
         /// </summary>
         [Input("innerAccessPolicy")]
         public Input<string>? InnerAccessPolicy { get; set; }
@@ -197,15 +202,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the security_group belongs.
+        /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The type of the security group. Valid values:
-        /// `normal`: basic security group.
-        /// `enterprise`: advanced security group For more information.
         /// </summary>
         [Input("securityGroupType")]
         public Input<string>? SecurityGroupType { get; set; }
@@ -215,8 +218,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// 
-        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -225,7 +226,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The VPC ID.
+        /// The ID of the VPC.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -245,13 +246,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
+        /// 
+        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         [Input("innerAccess")]
         public Input<bool>? InnerAccess { get; set; }
 
         /// <summary>
-        /// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+        /// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
         /// </summary>
         [Input("innerAccessPolicy")]
         public Input<string>? InnerAccessPolicy { get; set; }
@@ -263,15 +266,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the security_group belongs.
+        /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The type of the security group. Valid values:
-        /// `normal`: basic security group.
-        /// `enterprise`: advanced security group For more information.
         /// </summary>
         [Input("securityGroupType")]
         public Input<string>? SecurityGroupType { get; set; }
@@ -281,8 +282,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// 
-        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -291,7 +290,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The VPC ID.
+        /// The ID of the VPC.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

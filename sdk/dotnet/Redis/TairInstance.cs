@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> EffectiveTime { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine version of the instance. Default value: 1.0. The default version is developed by Alibaba Cloud and compatible with Redis 5.0.
+        /// Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
-        /// The database engine version of the instance. Default value: 1.0. The default version is developed by Alibaba Cloud and compatible with Redis 5.0.
+        /// Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -384,7 +384,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
-        /// The database engine version of the instance. Default value: 1.0. The default version is developed by Alibaba Cloud and compatible with Redis 5.0.
+        /// Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }

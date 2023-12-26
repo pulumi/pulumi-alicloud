@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetPrometheisPromethei {
     /**
+     * @return The token used to access the data source.
+     * 
+     */
+    private String authToken;
+    /**
      * @return The ID of the cluster.
      * 
      */
@@ -32,10 +37,50 @@ public final class GetPrometheisPromethei {
      */
     private String grafanaInstanceId;
     /**
+     * @return Http api public network address.
+     * 
+     */
+    private String httpApiInterUrl;
+    /**
+     * @return Http api intranet address.
+     * 
+     */
+    private String httpApiIntraUrl;
+    /**
      * @return The ID of the Prometheus.
      * 
      */
     private String id;
+    /**
+     * @return PushGateway public network Url.
+     * 
+     */
+    private String pushGateWayInterUrl;
+    /**
+     * @return PushGateway intranet Url.
+     * 
+     */
+    private String pushGateWayIntraUrl;
+    /**
+     * @return Public Url of remoteRead.
+     * 
+     */
+    private String remoteReadInterUrl;
+    /**
+     * @return RemoteRead intranet Url.
+     * 
+     */
+    private String remoteReadIntraUrl;
+    /**
+     * @return RemoteWrite public Url.
+     * 
+     */
+    private String remoteWriteInterUrl;
+    /**
+     * @return RemoteWrite Intranet Url.
+     * 
+     */
+    private String remoteWriteIntraUrl;
     /**
      * @return The ID of the resource group.
      * 
@@ -69,6 +114,13 @@ public final class GetPrometheisPromethei {
 
     private GetPrometheisPromethei() {}
     /**
+     * @return The token used to access the data source.
+     * 
+     */
+    public String authToken() {
+        return this.authToken;
+    }
+    /**
      * @return The ID of the cluster.
      * 
      */
@@ -97,11 +149,67 @@ public final class GetPrometheisPromethei {
         return this.grafanaInstanceId;
     }
     /**
+     * @return Http api public network address.
+     * 
+     */
+    public String httpApiInterUrl() {
+        return this.httpApiInterUrl;
+    }
+    /**
+     * @return Http api intranet address.
+     * 
+     */
+    public String httpApiIntraUrl() {
+        return this.httpApiIntraUrl;
+    }
+    /**
      * @return The ID of the Prometheus.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return PushGateway public network Url.
+     * 
+     */
+    public String pushGateWayInterUrl() {
+        return this.pushGateWayInterUrl;
+    }
+    /**
+     * @return PushGateway intranet Url.
+     * 
+     */
+    public String pushGateWayIntraUrl() {
+        return this.pushGateWayIntraUrl;
+    }
+    /**
+     * @return Public Url of remoteRead.
+     * 
+     */
+    public String remoteReadInterUrl() {
+        return this.remoteReadInterUrl;
+    }
+    /**
+     * @return RemoteRead intranet Url.
+     * 
+     */
+    public String remoteReadIntraUrl() {
+        return this.remoteReadIntraUrl;
+    }
+    /**
+     * @return RemoteWrite public Url.
+     * 
+     */
+    public String remoteWriteInterUrl() {
+        return this.remoteWriteInterUrl;
+    }
+    /**
+     * @return RemoteWrite Intranet Url.
+     * 
+     */
+    public String remoteWriteIntraUrl() {
+        return this.remoteWriteIntraUrl;
     }
     /**
      * @return The ID of the resource group.
@@ -155,11 +263,20 @@ public final class GetPrometheisPromethei {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String authToken;
         private String clusterId;
         private String clusterName;
         private String clusterType;
         private String grafanaInstanceId;
+        private String httpApiInterUrl;
+        private String httpApiIntraUrl;
         private String id;
+        private String pushGateWayInterUrl;
+        private String pushGateWayIntraUrl;
+        private String remoteReadInterUrl;
+        private String remoteReadIntraUrl;
+        private String remoteWriteInterUrl;
+        private String remoteWriteIntraUrl;
         private String resourceGroupId;
         private String securityGroupId;
         private String subClustersJson;
@@ -169,11 +286,20 @@ public final class GetPrometheisPromethei {
         public Builder() {}
         public Builder(GetPrometheisPromethei defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authToken = defaults.authToken;
     	      this.clusterId = defaults.clusterId;
     	      this.clusterName = defaults.clusterName;
     	      this.clusterType = defaults.clusterType;
     	      this.grafanaInstanceId = defaults.grafanaInstanceId;
+    	      this.httpApiInterUrl = defaults.httpApiInterUrl;
+    	      this.httpApiIntraUrl = defaults.httpApiIntraUrl;
     	      this.id = defaults.id;
+    	      this.pushGateWayInterUrl = defaults.pushGateWayInterUrl;
+    	      this.pushGateWayIntraUrl = defaults.pushGateWayIntraUrl;
+    	      this.remoteReadInterUrl = defaults.remoteReadInterUrl;
+    	      this.remoteReadIntraUrl = defaults.remoteReadIntraUrl;
+    	      this.remoteWriteInterUrl = defaults.remoteWriteInterUrl;
+    	      this.remoteWriteIntraUrl = defaults.remoteWriteIntraUrl;
     	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.securityGroupId = defaults.securityGroupId;
     	      this.subClustersJson = defaults.subClustersJson;
@@ -182,6 +308,11 @@ public final class GetPrometheisPromethei {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
+        public Builder authToken(String authToken) {
+            this.authToken = Objects.requireNonNull(authToken);
+            return this;
+        }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
@@ -203,8 +334,48 @@ public final class GetPrometheisPromethei {
             return this;
         }
         @CustomType.Setter
+        public Builder httpApiInterUrl(String httpApiInterUrl) {
+            this.httpApiInterUrl = Objects.requireNonNull(httpApiInterUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpApiIntraUrl(String httpApiIntraUrl) {
+            this.httpApiIntraUrl = Objects.requireNonNull(httpApiIntraUrl);
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pushGateWayInterUrl(String pushGateWayInterUrl) {
+            this.pushGateWayInterUrl = Objects.requireNonNull(pushGateWayInterUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pushGateWayIntraUrl(String pushGateWayIntraUrl) {
+            this.pushGateWayIntraUrl = Objects.requireNonNull(pushGateWayIntraUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder remoteReadInterUrl(String remoteReadInterUrl) {
+            this.remoteReadInterUrl = Objects.requireNonNull(remoteReadInterUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder remoteReadIntraUrl(String remoteReadIntraUrl) {
+            this.remoteReadIntraUrl = Objects.requireNonNull(remoteReadIntraUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder remoteWriteInterUrl(String remoteWriteInterUrl) {
+            this.remoteWriteInterUrl = Objects.requireNonNull(remoteWriteInterUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder remoteWriteIntraUrl(String remoteWriteIntraUrl) {
+            this.remoteWriteIntraUrl = Objects.requireNonNull(remoteWriteIntraUrl);
             return this;
         }
         @CustomType.Setter
@@ -239,11 +410,20 @@ public final class GetPrometheisPromethei {
         }
         public GetPrometheisPromethei build() {
             final var _resultValue = new GetPrometheisPromethei();
+            _resultValue.authToken = authToken;
             _resultValue.clusterId = clusterId;
             _resultValue.clusterName = clusterName;
             _resultValue.clusterType = clusterType;
             _resultValue.grafanaInstanceId = grafanaInstanceId;
+            _resultValue.httpApiInterUrl = httpApiInterUrl;
+            _resultValue.httpApiIntraUrl = httpApiIntraUrl;
             _resultValue.id = id;
+            _resultValue.pushGateWayInterUrl = pushGateWayInterUrl;
+            _resultValue.pushGateWayIntraUrl = pushGateWayIntraUrl;
+            _resultValue.remoteReadInterUrl = remoteReadInterUrl;
+            _resultValue.remoteReadIntraUrl = remoteReadIntraUrl;
+            _resultValue.remoteWriteInterUrl = remoteWriteInterUrl;
+            _resultValue.remoteWriteIntraUrl = remoteWriteIntraUrl;
             _resultValue.resourceGroupId = resourceGroupId;
             _resultValue.securityGroupId = securityGroupId;
             _resultValue.subClustersJson = subClustersJson;

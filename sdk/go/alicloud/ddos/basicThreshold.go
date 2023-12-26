@@ -35,87 +35,89 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("Instance"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
-//				CpuCoreCount:     pulumi.IntRef(1),
-//				MemorySize:       pulumi.Float64Ref(2),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				Owners:    pulumi.StringRef("system"),
-//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.4.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				Description: pulumi.String("New security group"),
-//				VpcId:       defaultNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone:        *pulumi.String(defaultZones.Zones[0].Id),
-//				InstanceName:            pulumi.String(name),
-//				HostName:                pulumi.String(name),
-//				InternetMaxBandwidthOut: pulumi.Int(10),
-//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-//				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
-//				},
-//				VswitchId: defaultSwitch.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ddos.NewBasicThreshold(ctx, "example", &ddos.BasicThresholdArgs{
-//				Pps:          pulumi.Int(60000),
-//				Bps:          pulumi.Int(100),
-//				InternetIp:   defaultInstance.PublicIp,
-//				InstanceId:   defaultInstance.ID(),
-//				InstanceType: pulumi.String("ecs"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+// InstanceTypeFamily: pulumi.StringRef("ecs.sn1ne"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("192.168.192.0/24"),
+// ZoneId: *pulumi.String(defaultZones.Ids[0]),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+// ImageId: *pulumi.String(defaultImages.Images[0].Id),
+// InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// InstanceName: pulumi.String(name),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: defaultSwitch.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = ddos.NewBasicThreshold(ctx, "example", &ddos.BasicThresholdArgs{
+// InstanceType: pulumi.String("ecs"),
+// InstanceId: defaultInstance.ID(),
+// InternetIp: defaultInstance.PublicIp,
+// Bps: pulumi.Int(100),
+// Pps: pulumi.Int(60000),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

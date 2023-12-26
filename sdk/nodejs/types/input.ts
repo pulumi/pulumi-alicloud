@@ -165,6 +165,35 @@ export namespace actiontrail {
 }
 
 export namespace adb {
+    export interface LakeAccountAccountPrivilege {
+        /**
+         * Object associated to privileges. See `privilegeObject` below.
+         */
+        privilegeObject?: pulumi.Input<inputs.adb.LakeAccountAccountPrivilegePrivilegeObject>;
+        /**
+         * The type of privileges.
+         */
+        privilegeType?: pulumi.Input<string>;
+        /**
+         * privilege list.
+         */
+        privileges?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface LakeAccountAccountPrivilegePrivilegeObject {
+        /**
+         * The name of column.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The name of database.
+         */
+        database?: pulumi.Input<string>;
+        /**
+         * The name of table.
+         */
+        table?: pulumi.Input<string>;
+    }
 }
 
 export namespace alb {
@@ -9266,6 +9295,96 @@ export namespace quotas {
         value?: pulumi.Input<string>;
     }
 
+    export interface TemplateApplicationsDimension {
+        /**
+         * Quota dimension Key.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Quota dimension Value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface TemplateApplicationsQuotaApplicationDetail {
+        /**
+         * Alibaba Cloud account (primary account).
+         */
+        aliyunUid?: pulumi.Input<string>;
+        /**
+         * The ID of the quota promotion request.
+         */
+        applicationId?: pulumi.Input<string>;
+        /**
+         * The approved quota value of the quota increase request.
+         */
+        approveValue?: pulumi.Input<number>;
+        /**
+         * Approval comments on quota increase applications.
+         */
+        auditReason?: pulumi.Input<string>;
+        /**
+         * Quota dimension. See `dimensions` below.
+         */
+        dimensions?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The language of the quota application result notification. Value:
+         * - zh (default): Chinese.
+         * - en: English.
+         */
+        envLanguage?: pulumi.Input<string>;
+        /**
+         * Whether to send notification of quota application result. Value:
+         * - 0 (default): No.
+         * - 3: Yes.
+         */
+        noticeType?: pulumi.Input<number>;
+        /**
+         * Quota calculation period.
+         */
+        period?: pulumi.Input<inputs.quotas.TemplateApplicationsQuotaApplicationDetailPeriod>;
+        /**
+         * Quota ARN.
+         */
+        quotaArn?: pulumi.Input<string>;
+        /**
+         * The quota description.
+         */
+        quotaDescription?: pulumi.Input<string>;
+        /**
+         * The quota name.
+         */
+        quotaName?: pulumi.Input<string>;
+        /**
+         * Quota unit.
+         */
+        quotaUnit?: pulumi.Input<string>;
+        /**
+         * Reason for quota application.
+         * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+         */
+        reason?: pulumi.Input<string>;
+        /**
+         * The approval status of the quota promotion application. Value:
+         * - Disagree: reject.
+         * - Approve: approved.
+         * - Process: under review.
+         * - Cancel: Closed.
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface TemplateApplicationsQuotaApplicationDetailPeriod {
+        /**
+         * Quota calculation cycle unit.
+         */
+        periodUnit?: pulumi.Input<string>;
+        /**
+         * The quota calculation period value.
+         */
+        periodValue?: pulumi.Input<number>;
+    }
+
     export interface TemplateQuotaDimension {
         /**
          * The Key of quota_dimensions.
@@ -9834,6 +9953,33 @@ export namespace rds {
          * The parameter value.
          */
         value: pulumi.Input<string>;
+    }
+}
+
+export namespace realtimecompute {
+    export interface VvpInstanceResourceSpec {
+        /**
+         * CPU number.
+         */
+        cpu?: pulumi.Input<number>;
+        /**
+         * Memory size.
+         */
+        memoryGb?: pulumi.Input<number>;
+    }
+
+    export interface VvpInstanceStorage {
+        /**
+         * OSS stores information. See `oss` below.
+         */
+        oss: pulumi.Input<inputs.realtimecompute.VvpInstanceStorageOss>;
+    }
+
+    export interface VvpInstanceStorageOss {
+        /**
+         * OSS Bucket name.
+         */
+        bucket: pulumi.Input<string>;
     }
 }
 
@@ -11586,7 +11732,7 @@ export namespace vpn {
          */
         dip?: pulumi.Input<string>;
         /**
-         * Whether to enable BGP.
+         * Whether to enable Health Check.
          */
         enable?: pulumi.Input<boolean>;
         /**

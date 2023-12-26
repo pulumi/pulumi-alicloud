@@ -171,22 +171,38 @@ def get_gateways(business_status: Optional[str] = None,
     """
     The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
 
+    > **NOTE:** Available since v1.18.0.
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    vpn_gateways = alicloud.vpn.get_gateways(business_status="Normal",
-        ids=[
-            "fake-vpn-id1",
-            "fake-vpn-id2",
-        ],
-        include_reservation_data=True,
-        name_regex="testAcc*",
-        output_file="/tmp/vpns",
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        zone_id=default_zones.zones[0].id)
+    default_gateway = alicloud.vpn.Gateway("defaultGateway",
+        vpc_id=default_networks.ids[0],
+        bandwidth=10,
+        enable_ssl=True,
+        enable_ipsec=True,
+        instance_charge_type="PrePaid",
+        description=name,
+        vswitch_id=default_switches.ids[0],
+        network_type="public")
+    vpn_gateways = default_gateway.id.apply(lambda id: alicloud.vpn.get_gateways_output(vpc_id=default_networks.ids[0],
+        ids=[id],
         status="Active",
-        vpc_id="fake-vpc-id")
+        business_status="Normal",
+        name_regex="tf-example",
+        include_reservation_data=True,
+        output_file="/tmp/vpns"))
     ```
 
 
@@ -238,22 +254,38 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
     """
     The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
 
+    > **NOTE:** Available since v1.18.0.
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    vpn_gateways = alicloud.vpn.get_gateways(business_status="Normal",
-        ids=[
-            "fake-vpn-id1",
-            "fake-vpn-id2",
-        ],
-        include_reservation_data=True,
-        name_regex="testAcc*",
-        output_file="/tmp/vpns",
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        zone_id=default_zones.zones[0].id)
+    default_gateway = alicloud.vpn.Gateway("defaultGateway",
+        vpc_id=default_networks.ids[0],
+        bandwidth=10,
+        enable_ssl=True,
+        enable_ipsec=True,
+        instance_charge_type="PrePaid",
+        description=name,
+        vswitch_id=default_switches.ids[0],
+        network_type="public")
+    vpn_gateways = default_gateway.id.apply(lambda id: alicloud.vpn.get_gateways_output(vpc_id=default_networks.ids[0],
+        ids=[id],
         status="Active",
-        vpc_id="fake-vpc-id")
+        business_status="Normal",
+        name_regex="tf-example",
+        include_reservation_data=True,
+        output_file="/tmp/vpns"))
     ```
 
 
