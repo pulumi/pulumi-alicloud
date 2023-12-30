@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -135,8 +136,12 @@ public final class AliasArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AliasArgs build() {
-            $.aliasName = Objects.requireNonNull($.aliasName, "expected parameter 'aliasName' to be non-null");
-            $.keyId = Objects.requireNonNull($.keyId, "expected parameter 'keyId' to be non-null");
+            if ($.aliasName == null) {
+                throw new MissingRequiredPropertyException("AliasArgs", "aliasName");
+            }
+            if ($.keyId == null) {
+                throw new MissingRequiredPropertyException("AliasArgs", "keyId");
+            }
             return $;
         }
     }

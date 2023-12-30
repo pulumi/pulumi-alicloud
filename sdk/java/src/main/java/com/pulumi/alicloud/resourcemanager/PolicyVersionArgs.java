@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -167,8 +168,12 @@ public final class PolicyVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PolicyVersionArgs build() {
-            $.policyDocument = Objects.requireNonNull($.policyDocument, "expected parameter 'policyDocument' to be non-null");
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
+            if ($.policyDocument == null) {
+                throw new MissingRequiredPropertyException("PolicyVersionArgs", "policyDocument");
+            }
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("PolicyVersionArgs", "policyName");
+            }
             return $;
         }
     }

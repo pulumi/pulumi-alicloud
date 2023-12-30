@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class MetricRuleBlackListMetricArgs extends com.pulumi.resources.Re
         }
 
         public MetricRuleBlackListMetricArgs build() {
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("MetricRuleBlackListMetricArgs", "metricName");
+            }
             return $;
         }
     }

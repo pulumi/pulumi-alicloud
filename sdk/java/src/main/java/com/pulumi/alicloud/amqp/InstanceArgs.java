@@ -5,6 +5,7 @@ package com.pulumi.alicloud.amqp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -559,11 +560,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.maxTps = Objects.requireNonNull($.maxTps, "expected parameter 'maxTps' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.queueCapacity = Objects.requireNonNull($.queueCapacity, "expected parameter 'queueCapacity' to be non-null");
-            $.supportEip = Objects.requireNonNull($.supportEip, "expected parameter 'supportEip' to be non-null");
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceType");
+            }
+            if ($.maxTps == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "maxTps");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
+            }
+            if ($.queueCapacity == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "queueCapacity");
+            }
+            if ($.supportEip == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "supportEip");
+            }
             return $;
         }
     }

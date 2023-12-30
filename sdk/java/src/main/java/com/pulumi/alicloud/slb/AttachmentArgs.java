@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -274,8 +275,12 @@ public final class AttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AttachmentArgs build() {
-            $.instanceIds = Objects.requireNonNull($.instanceIds, "expected parameter 'instanceIds' to be non-null");
-            $.loadBalancerId = Objects.requireNonNull($.loadBalancerId, "expected parameter 'loadBalancerId' to be non-null");
+            if ($.instanceIds == null) {
+                throw new MissingRequiredPropertyException("AttachmentArgs", "instanceIds");
+            }
+            if ($.loadBalancerId == null) {
+                throw new MissingRequiredPropertyException("AttachmentArgs", "loadBalancerId");
+            }
             return $;
         }
     }

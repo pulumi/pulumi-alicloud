@@ -44,6 +44,7 @@ public final class OtsBackupPlanOtsDetail {
 
         @CustomType.Setter
         public Builder tableNames(@Nullable List<String> tableNames) {
+
             this.tableNames = tableNames;
             return this;
         }

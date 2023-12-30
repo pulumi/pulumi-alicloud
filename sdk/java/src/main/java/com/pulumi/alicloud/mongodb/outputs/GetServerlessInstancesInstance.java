@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mongodb.outputs;
 
 import com.pulumi.alicloud.mongodb.outputs.GetServerlessInstancesInstanceSecurityIpGroup;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -426,107 +427,170 @@ public final class GetServerlessInstancesInstance {
 
         @CustomType.Setter
         public Builder capacityUnit(Integer capacityUnit) {
-            this.capacityUnit = Objects.requireNonNull(capacityUnit);
+            if (capacityUnit == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "capacityUnit");
+            }
+            this.capacityUnit = capacityUnit;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceClass(String dbInstanceClass) {
-            this.dbInstanceClass = Objects.requireNonNull(dbInstanceClass);
+            if (dbInstanceClass == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "dbInstanceClass");
+            }
+            this.dbInstanceClass = dbInstanceClass;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceDescription(String dbInstanceDescription) {
-            this.dbInstanceDescription = Objects.requireNonNull(dbInstanceDescription);
+            if (dbInstanceDescription == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "dbInstanceDescription");
+            }
+            this.dbInstanceDescription = dbInstanceDescription;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
-            this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
+            if (dbInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "dbInstanceId");
+            }
+            this.dbInstanceId = dbInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceReleaseProtection(Boolean dbInstanceReleaseProtection) {
-            this.dbInstanceReleaseProtection = Objects.requireNonNull(dbInstanceReleaseProtection);
+            if (dbInstanceReleaseProtection == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "dbInstanceReleaseProtection");
+            }
+            this.dbInstanceReleaseProtection = dbInstanceReleaseProtection;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceStorage(Integer dbInstanceStorage) {
-            this.dbInstanceStorage = Objects.requireNonNull(dbInstanceStorage);
+            if (dbInstanceStorage == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "dbInstanceStorage");
+            }
+            this.dbInstanceStorage = dbInstanceStorage;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
-            this.engineVersion = Objects.requireNonNull(engineVersion);
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kindCode(String kindCode) {
-            this.kindCode = Objects.requireNonNull(kindCode);
+            if (kindCode == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "kindCode");
+            }
+            this.kindCode = kindCode;
             return this;
         }
         @CustomType.Setter
         public Builder lockMode(String lockMode) {
-            this.lockMode = Objects.requireNonNull(lockMode);
+            if (lockMode == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "lockMode");
+            }
+            this.lockMode = lockMode;
             return this;
         }
         @CustomType.Setter
         public Builder maintainEndTime(String maintainEndTime) {
-            this.maintainEndTime = Objects.requireNonNull(maintainEndTime);
+            if (maintainEndTime == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "maintainEndTime");
+            }
+            this.maintainEndTime = maintainEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder maintainStartTime(String maintainStartTime) {
-            this.maintainStartTime = Objects.requireNonNull(maintainStartTime);
+            if (maintainStartTime == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "maintainStartTime");
+            }
+            this.maintainStartTime = maintainStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
-            this.maxConnections = Objects.requireNonNull(maxConnections);
+            if (maxConnections == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "maxConnections");
+            }
+            this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxIops(Integer maxIops) {
-            this.maxIops = Objects.requireNonNull(maxIops);
+            if (maxIops == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "maxIops");
+            }
+            this.maxIops = maxIops;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder protocolType(String protocolType) {
-            this.protocolType = Objects.requireNonNull(protocolType);
+            if (protocolType == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "protocolType");
+            }
+            this.protocolType = protocolType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityIpGroups(List<GetServerlessInstancesInstanceSecurityIpGroup> securityIpGroups) {
-            this.securityIpGroups = Objects.requireNonNull(securityIpGroups);
+            if (securityIpGroups == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "securityIpGroups");
+            }
+            this.securityIpGroups = securityIpGroups;
             return this;
         }
         public Builder securityIpGroups(GetServerlessInstancesInstanceSecurityIpGroup... securityIpGroups) {
@@ -534,37 +598,58 @@ public final class GetServerlessInstancesInstance {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageEngine(String storageEngine) {
-            this.storageEngine = Objects.requireNonNull(storageEngine);
+            if (storageEngine == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "storageEngine");
+            }
+            this.storageEngine = storageEngine;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcAuthMode(String vpcAuthMode) {
-            this.vpcAuthMode = Objects.requireNonNull(vpcAuthMode);
+            if (vpcAuthMode == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "vpcAuthMode");
+            }
+            this.vpcAuthMode = vpcAuthMode;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstance", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetServerlessInstancesInstance build() {

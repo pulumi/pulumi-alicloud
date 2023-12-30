@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class GetDomainTxtGuidArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetDomainTxtGuidArgs build() {
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("GetDomainTxtGuidArgs", "domainName");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetDomainTxtGuidArgs", "type");
+            }
             return $;
         }
     }

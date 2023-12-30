@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ram;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class RolePolicyAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         public RolePolicyAttachmentArgs build() {
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.policyType = Objects.requireNonNull($.policyType, "expected parameter 'policyType' to be non-null");
-            $.roleName = Objects.requireNonNull($.roleName, "expected parameter 'roleName' to be non-null");
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("RolePolicyAttachmentArgs", "policyName");
+            }
+            if ($.policyType == null) {
+                throw new MissingRequiredPropertyException("RolePolicyAttachmentArgs", "policyType");
+            }
+            if ($.roleName == null) {
+                throw new MissingRequiredPropertyException("RolePolicyAttachmentArgs", "roleName");
+            }
             return $;
         }
     }

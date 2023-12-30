@@ -115,31 +115,37 @@ public final class GetConnectionsConnectionVcoHealthCheck {
 
         @CustomType.Setter
         public Builder dip(@Nullable String dip) {
+
             this.dip = dip;
             return this;
         }
         @CustomType.Setter
         public Builder enable(@Nullable String enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
+
             this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder retry(@Nullable Integer retry) {
+
             this.retry = retry;
             return this;
         }
         @CustomType.Setter
         public Builder sip(@Nullable String sip) {
+
             this.sip = sip;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

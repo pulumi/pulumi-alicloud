@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log.outputs;
 
 import com.pulumi.alicloud.log.outputs.GetStoresStore;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -82,12 +83,18 @@ public final class GetStoresResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStoresResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetStoresResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -95,12 +102,16 @@ public final class GetStoresResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetStoresResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -108,17 +119,24 @@ public final class GetStoresResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetStoresResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder stores(List<GetStoresStore> stores) {
-            this.stores = Objects.requireNonNull(stores);
+            if (stores == null) {
+              throw new MissingRequiredPropertyException("GetStoresResult", "stores");
+            }
+            this.stores = stores;
             return this;
         }
         public Builder stores(GetStoresStore... stores) {

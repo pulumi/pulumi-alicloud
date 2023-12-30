@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -169,9 +170,15 @@ public final class TlsCipherPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public TlsCipherPolicyArgs build() {
-            $.ciphers = Objects.requireNonNull($.ciphers, "expected parameter 'ciphers' to be non-null");
-            $.tlsCipherPolicyName = Objects.requireNonNull($.tlsCipherPolicyName, "expected parameter 'tlsCipherPolicyName' to be non-null");
-            $.tlsVersions = Objects.requireNonNull($.tlsVersions, "expected parameter 'tlsVersions' to be non-null");
+            if ($.ciphers == null) {
+                throw new MissingRequiredPropertyException("TlsCipherPolicyArgs", "ciphers");
+            }
+            if ($.tlsCipherPolicyName == null) {
+                throw new MissingRequiredPropertyException("TlsCipherPolicyArgs", "tlsCipherPolicyName");
+            }
+            if ($.tlsVersions == null) {
+                throw new MissingRequiredPropertyException("TlsCipherPolicyArgs", "tlsVersions");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -232,8 +233,12 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
         }
 
         public RouterInterfaceConnectionArgs build() {
-            $.interfaceId = Objects.requireNonNull($.interfaceId, "expected parameter 'interfaceId' to be non-null");
-            $.oppositeInterfaceId = Objects.requireNonNull($.oppositeInterfaceId, "expected parameter 'oppositeInterfaceId' to be non-null");
+            if ($.interfaceId == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceConnectionArgs", "interfaceId");
+            }
+            if ($.oppositeInterfaceId == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceConnectionArgs", "oppositeInterfaceId");
+            }
             return $;
         }
     }

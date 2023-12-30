@@ -5,6 +5,7 @@ package com.pulumi.alicloud.schedulerx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NamespaceArgs build() {
-            $.namespaceName = Objects.requireNonNull($.namespaceName, "expected parameter 'namespaceName' to be non-null");
+            if ($.namespaceName == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "namespaceName");
+            }
             return $;
         }
     }

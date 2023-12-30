@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudmonitor.inputs;
 import com.pulumi.alicloud.cloudmonitor.inputs.ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -385,11 +386,21 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfigArgs extends com
         }
 
         public ServiceGroupMonitoringAgentProcessAlertConfigArgs build() {
-            $.comparisonOperator = Objects.requireNonNull($.comparisonOperator, "expected parameter 'comparisonOperator' to be non-null");
-            $.escalationsLevel = Objects.requireNonNull($.escalationsLevel, "expected parameter 'escalationsLevel' to be non-null");
-            $.statistics = Objects.requireNonNull($.statistics, "expected parameter 'statistics' to be non-null");
-            $.threshold = Objects.requireNonNull($.threshold, "expected parameter 'threshold' to be non-null");
-            $.times = Objects.requireNonNull($.times, "expected parameter 'times' to be non-null");
+            if ($.comparisonOperator == null) {
+                throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfigArgs", "comparisonOperator");
+            }
+            if ($.escalationsLevel == null) {
+                throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfigArgs", "escalationsLevel");
+            }
+            if ($.statistics == null) {
+                throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfigArgs", "statistics");
+            }
+            if ($.threshold == null) {
+                throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfigArgs", "threshold");
+            }
+            if ($.times == null) {
+                throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfigArgs", "times");
+            }
             return $;
         }
     }

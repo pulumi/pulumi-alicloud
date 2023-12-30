@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -210,67 +211,106 @@ public final class GetHandshakesHandshake {
 
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder handshakeId(String handshakeId) {
-            this.handshakeId = Objects.requireNonNull(handshakeId);
+            if (handshakeId == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "handshakeId");
+            }
+            this.handshakeId = handshakeId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder invitedAccountRealName(String invitedAccountRealName) {
-            this.invitedAccountRealName = Objects.requireNonNull(invitedAccountRealName);
+            if (invitedAccountRealName == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "invitedAccountRealName");
+            }
+            this.invitedAccountRealName = invitedAccountRealName;
             return this;
         }
         @CustomType.Setter
         public Builder masterAccountId(String masterAccountId) {
-            this.masterAccountId = Objects.requireNonNull(masterAccountId);
+            if (masterAccountId == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "masterAccountId");
+            }
+            this.masterAccountId = masterAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder masterAccountName(String masterAccountName) {
-            this.masterAccountName = Objects.requireNonNull(masterAccountName);
+            if (masterAccountName == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "masterAccountName");
+            }
+            this.masterAccountName = masterAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder masterAccountRealName(String masterAccountRealName) {
-            this.masterAccountRealName = Objects.requireNonNull(masterAccountRealName);
+            if (masterAccountRealName == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "masterAccountRealName");
+            }
+            this.masterAccountRealName = masterAccountRealName;
             return this;
         }
         @CustomType.Setter
         public Builder modifyTime(String modifyTime) {
-            this.modifyTime = Objects.requireNonNull(modifyTime);
+            if (modifyTime == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "modifyTime");
+            }
+            this.modifyTime = modifyTime;
             return this;
         }
         @CustomType.Setter
         public Builder note(String note) {
-            this.note = Objects.requireNonNull(note);
+            if (note == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "note");
+            }
+            this.note = note;
             return this;
         }
         @CustomType.Setter
         public Builder resourceDirectoryId(String resourceDirectoryId) {
-            this.resourceDirectoryId = Objects.requireNonNull(resourceDirectoryId);
+            if (resourceDirectoryId == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "resourceDirectoryId");
+            }
+            this.resourceDirectoryId = resourceDirectoryId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder targetEntity(String targetEntity) {
-            this.targetEntity = Objects.requireNonNull(targetEntity);
+            if (targetEntity == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "targetEntity");
+            }
+            this.targetEntity = targetEntity;
             return this;
         }
         @CustomType.Setter
         public Builder targetType(String targetType) {
-            this.targetType = Objects.requireNonNull(targetType);
+            if (targetType == null) {
+              throw new MissingRequiredPropertyException("GetHandshakesHandshake", "targetType");
+            }
+            this.targetType = targetType;
             return this;
         }
         public GetHandshakesHandshake build() {

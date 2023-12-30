@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class GatewaySmbUserArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GatewaySmbUserArgs build() {
-            $.gatewayId = Objects.requireNonNull($.gatewayId, "expected parameter 'gatewayId' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.gatewayId == null) {
+                throw new MissingRequiredPropertyException("GatewaySmbUserArgs", "gatewayId");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("GatewaySmbUserArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("GatewaySmbUserArgs", "username");
+            }
             return $;
         }
     }

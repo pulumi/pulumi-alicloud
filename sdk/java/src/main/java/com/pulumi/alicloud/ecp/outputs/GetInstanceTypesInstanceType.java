@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -105,32 +106,50 @@ public final class GetInstanceTypesInstanceType {
 
         @CustomType.Setter
         public Builder cpuCoreCount(Integer cpuCoreCount) {
-            this.cpuCoreCount = Objects.requireNonNull(cpuCoreCount);
+            if (cpuCoreCount == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "cpuCoreCount");
+            }
+            this.cpuCoreCount = cpuCoreCount;
             return this;
         }
         @CustomType.Setter
         public Builder defaultResolution(String defaultResolution) {
-            this.defaultResolution = Objects.requireNonNull(defaultResolution);
+            if (defaultResolution == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "defaultResolution");
+            }
+            this.defaultResolution = defaultResolution;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTypeFamily(String instanceTypeFamily) {
-            this.instanceTypeFamily = Objects.requireNonNull(instanceTypeFamily);
+            if (instanceTypeFamily == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "instanceTypeFamily");
+            }
+            this.instanceTypeFamily = instanceTypeFamily;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameEn(String nameEn) {
-            this.nameEn = Objects.requireNonNull(nameEn);
+            if (nameEn == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "nameEn");
+            }
+            this.nameEn = nameEn;
             return this;
         }
         public GetInstanceTypesInstanceType build() {

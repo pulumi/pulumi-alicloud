@@ -58,11 +58,13 @@ public final class AggregateCompliancePackConfigRuleConfigRuleParameter {
 
         @CustomType.Setter
         public Builder parameterName(@Nullable String parameterName) {
+
             this.parameterName = parameterName;
             return this;
         }
         @CustomType.Setter
         public Builder parameterValue(@Nullable String parameterValue) {
+
             this.parameterValue = parameterValue;
             return this;
         }

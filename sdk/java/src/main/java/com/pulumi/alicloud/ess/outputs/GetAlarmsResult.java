@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.alicloud.ess.outputs.GetAlarmsAlarm;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,7 +129,10 @@ public final class GetAlarmsResult {
 
         @CustomType.Setter
         public Builder alarms(List<GetAlarmsAlarm> alarms) {
-            this.alarms = Objects.requireNonNull(alarms);
+            if (alarms == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsResult", "alarms");
+            }
+            this.alarms = alarms;
             return this;
         }
         public Builder alarms(GetAlarmsAlarm... alarms) {
@@ -136,12 +140,18 @@ public final class GetAlarmsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -149,17 +159,22 @@ public final class GetAlarmsResult {
         }
         @CustomType.Setter
         public Builder metricType(@Nullable String metricType) {
+
             this.metricType = metricType;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -167,11 +182,13 @@ public final class GetAlarmsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder scalingGroupId(@Nullable String scalingGroupId) {
+
             this.scalingGroupId = scalingGroupId;
             return this;
         }

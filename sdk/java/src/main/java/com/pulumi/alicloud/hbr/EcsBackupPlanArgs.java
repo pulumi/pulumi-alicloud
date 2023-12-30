@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -697,12 +698,24 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EcsBackupPlanArgs build() {
-            $.backupType = Objects.requireNonNull($.backupType, "expected parameter 'backupType' to be non-null");
-            $.ecsBackupPlanName = Objects.requireNonNull($.ecsBackupPlanName, "expected parameter 'ecsBackupPlanName' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.retention = Objects.requireNonNull($.retention, "expected parameter 'retention' to be non-null");
-            $.schedule = Objects.requireNonNull($.schedule, "expected parameter 'schedule' to be non-null");
-            $.vaultId = Objects.requireNonNull($.vaultId, "expected parameter 'vaultId' to be non-null");
+            if ($.backupType == null) {
+                throw new MissingRequiredPropertyException("EcsBackupPlanArgs", "backupType");
+            }
+            if ($.ecsBackupPlanName == null) {
+                throw new MissingRequiredPropertyException("EcsBackupPlanArgs", "ecsBackupPlanName");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("EcsBackupPlanArgs", "instanceId");
+            }
+            if ($.retention == null) {
+                throw new MissingRequiredPropertyException("EcsBackupPlanArgs", "retention");
+            }
+            if ($.schedule == null) {
+                throw new MissingRequiredPropertyException("EcsBackupPlanArgs", "schedule");
+            }
+            if ($.vaultId == null) {
+                throw new MissingRequiredPropertyException("EcsBackupPlanArgs", "vaultId");
+            }
             return $;
         }
     }

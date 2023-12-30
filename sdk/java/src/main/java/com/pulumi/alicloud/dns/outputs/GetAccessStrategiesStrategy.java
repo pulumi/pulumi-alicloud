@@ -7,6 +7,7 @@ import com.pulumi.alicloud.dns.outputs.GetAccessStrategiesStrategyDefaultAddrPoo
 import com.pulumi.alicloud.dns.outputs.GetAccessStrategiesStrategyFailoverAddrPool;
 import com.pulumi.alicloud.dns.outputs.GetAccessStrategiesStrategyLine;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -369,32 +370,50 @@ public final class GetAccessStrategiesStrategy {
 
         @CustomType.Setter
         public Builder accessMode(String accessMode) {
-            this.accessMode = Objects.requireNonNull(accessMode);
+            if (accessMode == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "accessMode");
+            }
+            this.accessMode = accessMode;
             return this;
         }
         @CustomType.Setter
         public Builder accessStrategyId(String accessStrategyId) {
-            this.accessStrategyId = Objects.requireNonNull(accessStrategyId);
+            if (accessStrategyId == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "accessStrategyId");
+            }
+            this.accessStrategyId = accessStrategyId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder createTimestamp(String createTimestamp) {
-            this.createTimestamp = Objects.requireNonNull(createTimestamp);
+            if (createTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "createTimestamp");
+            }
+            this.createTimestamp = createTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder defaultAddrPoolType(String defaultAddrPoolType) {
-            this.defaultAddrPoolType = Objects.requireNonNull(defaultAddrPoolType);
+            if (defaultAddrPoolType == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "defaultAddrPoolType");
+            }
+            this.defaultAddrPoolType = defaultAddrPoolType;
             return this;
         }
         @CustomType.Setter
         public Builder defaultAddrPools(List<GetAccessStrategiesStrategyDefaultAddrPool> defaultAddrPools) {
-            this.defaultAddrPools = Objects.requireNonNull(defaultAddrPools);
+            if (defaultAddrPools == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "defaultAddrPools");
+            }
+            this.defaultAddrPools = defaultAddrPools;
             return this;
         }
         public Builder defaultAddrPools(GetAccessStrategiesStrategyDefaultAddrPool... defaultAddrPools) {
@@ -402,42 +421,66 @@ public final class GetAccessStrategiesStrategy {
         }
         @CustomType.Setter
         public Builder defaultAvailableAddrNum(Integer defaultAvailableAddrNum) {
-            this.defaultAvailableAddrNum = Objects.requireNonNull(defaultAvailableAddrNum);
+            if (defaultAvailableAddrNum == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "defaultAvailableAddrNum");
+            }
+            this.defaultAvailableAddrNum = defaultAvailableAddrNum;
             return this;
         }
         @CustomType.Setter
         public Builder defaultLatencyOptimization(String defaultLatencyOptimization) {
-            this.defaultLatencyOptimization = Objects.requireNonNull(defaultLatencyOptimization);
+            if (defaultLatencyOptimization == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "defaultLatencyOptimization");
+            }
+            this.defaultLatencyOptimization = defaultLatencyOptimization;
             return this;
         }
         @CustomType.Setter
         public Builder defaultLbaStrategy(String defaultLbaStrategy) {
-            this.defaultLbaStrategy = Objects.requireNonNull(defaultLbaStrategy);
+            if (defaultLbaStrategy == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "defaultLbaStrategy");
+            }
+            this.defaultLbaStrategy = defaultLbaStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder defaultMaxReturnAddrNum(Integer defaultMaxReturnAddrNum) {
-            this.defaultMaxReturnAddrNum = Objects.requireNonNull(defaultMaxReturnAddrNum);
+            if (defaultMaxReturnAddrNum == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "defaultMaxReturnAddrNum");
+            }
+            this.defaultMaxReturnAddrNum = defaultMaxReturnAddrNum;
             return this;
         }
         @CustomType.Setter
         public Builder defaultMinAvailableAddrNum(Integer defaultMinAvailableAddrNum) {
-            this.defaultMinAvailableAddrNum = Objects.requireNonNull(defaultMinAvailableAddrNum);
+            if (defaultMinAvailableAddrNum == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "defaultMinAvailableAddrNum");
+            }
+            this.defaultMinAvailableAddrNum = defaultMinAvailableAddrNum;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveAddrPoolGroupType(String effectiveAddrPoolGroupType) {
-            this.effectiveAddrPoolGroupType = Objects.requireNonNull(effectiveAddrPoolGroupType);
+            if (effectiveAddrPoolGroupType == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "effectiveAddrPoolGroupType");
+            }
+            this.effectiveAddrPoolGroupType = effectiveAddrPoolGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder failoverAddrPoolType(String failoverAddrPoolType) {
-            this.failoverAddrPoolType = Objects.requireNonNull(failoverAddrPoolType);
+            if (failoverAddrPoolType == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "failoverAddrPoolType");
+            }
+            this.failoverAddrPoolType = failoverAddrPoolType;
             return this;
         }
         @CustomType.Setter
         public Builder failoverAddrPools(List<GetAccessStrategiesStrategyFailoverAddrPool> failoverAddrPools) {
-            this.failoverAddrPools = Objects.requireNonNull(failoverAddrPools);
+            if (failoverAddrPools == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "failoverAddrPools");
+            }
+            this.failoverAddrPools = failoverAddrPools;
             return this;
         }
         public Builder failoverAddrPools(GetAccessStrategiesStrategyFailoverAddrPool... failoverAddrPools) {
@@ -445,42 +488,66 @@ public final class GetAccessStrategiesStrategy {
         }
         @CustomType.Setter
         public Builder failoverAvailableAddrNum(Integer failoverAvailableAddrNum) {
-            this.failoverAvailableAddrNum = Objects.requireNonNull(failoverAvailableAddrNum);
+            if (failoverAvailableAddrNum == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "failoverAvailableAddrNum");
+            }
+            this.failoverAvailableAddrNum = failoverAvailableAddrNum;
             return this;
         }
         @CustomType.Setter
         public Builder failoverLatencyOptimization(String failoverLatencyOptimization) {
-            this.failoverLatencyOptimization = Objects.requireNonNull(failoverLatencyOptimization);
+            if (failoverLatencyOptimization == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "failoverLatencyOptimization");
+            }
+            this.failoverLatencyOptimization = failoverLatencyOptimization;
             return this;
         }
         @CustomType.Setter
         public Builder failoverLbaStrategy(String failoverLbaStrategy) {
-            this.failoverLbaStrategy = Objects.requireNonNull(failoverLbaStrategy);
+            if (failoverLbaStrategy == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "failoverLbaStrategy");
+            }
+            this.failoverLbaStrategy = failoverLbaStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder failoverMaxReturnAddrNum(Integer failoverMaxReturnAddrNum) {
-            this.failoverMaxReturnAddrNum = Objects.requireNonNull(failoverMaxReturnAddrNum);
+            if (failoverMaxReturnAddrNum == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "failoverMaxReturnAddrNum");
+            }
+            this.failoverMaxReturnAddrNum = failoverMaxReturnAddrNum;
             return this;
         }
         @CustomType.Setter
         public Builder failoverMinAvailableAddrNum(Integer failoverMinAvailableAddrNum) {
-            this.failoverMinAvailableAddrNum = Objects.requireNonNull(failoverMinAvailableAddrNum);
+            if (failoverMinAvailableAddrNum == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "failoverMinAvailableAddrNum");
+            }
+            this.failoverMinAvailableAddrNum = failoverMinAvailableAddrNum;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder lines(List<GetAccessStrategiesStrategyLine> lines) {
-            this.lines = Objects.requireNonNull(lines);
+            if (lines == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "lines");
+            }
+            this.lines = lines;
             return this;
         }
         public Builder lines(GetAccessStrategiesStrategyLine... lines) {
@@ -488,12 +555,18 @@ public final class GetAccessStrategiesStrategy {
         }
         @CustomType.Setter
         public Builder strategyMode(String strategyMode) {
-            this.strategyMode = Objects.requireNonNull(strategyMode);
+            if (strategyMode == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "strategyMode");
+            }
+            this.strategyMode = strategyMode;
             return this;
         }
         @CustomType.Setter
         public Builder strategyName(String strategyName) {
-            this.strategyName = Objects.requireNonNull(strategyName);
+            if (strategyName == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategy", "strategyName");
+            }
+            this.strategyName = strategyName;
             return this;
         }
         public GetAccessStrategiesStrategy build() {

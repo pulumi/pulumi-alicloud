@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cs.outputs;
 import com.pulumi.alicloud.cs.outputs.GetEdgeKubernetesClustersClusterConnections;
 import com.pulumi.alicloud.cs.outputs.GetEdgeKubernetesClustersClusterWorkerNode;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -143,42 +144,66 @@ public final class GetEdgeKubernetesClustersCluster {
 
         @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
-            this.availabilityZone = Objects.requireNonNull(availabilityZone);
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersCluster", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder connections(GetEdgeKubernetesClustersClusterConnections connections) {
-            this.connections = Objects.requireNonNull(connections);
+            if (connections == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersCluster", "connections");
+            }
+            this.connections = connections;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersCluster", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersCluster", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
-            this.natGatewayId = Objects.requireNonNull(natGatewayId);
+            if (natGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersCluster", "natGatewayId");
+            }
+            this.natGatewayId = natGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersCluster", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersCluster", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder workerNodes(List<GetEdgeKubernetesClustersClusterWorkerNode> workerNodes) {
-            this.workerNodes = Objects.requireNonNull(workerNodes);
+            if (workerNodes == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersCluster", "workerNodes");
+            }
+            this.workerNodes = workerNodes;
             return this;
         }
         public Builder workerNodes(GetEdgeKubernetesClustersClusterWorkerNode... workerNodes) {

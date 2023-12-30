@@ -6,6 +6,7 @@ package com.pulumi.alicloud.imp;
 import com.pulumi.alicloud.imp.inputs.AppTemplateConfigListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -254,8 +255,12 @@ public final class AppTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppTemplateArgs build() {
-            $.appTemplateName = Objects.requireNonNull($.appTemplateName, "expected parameter 'appTemplateName' to be non-null");
-            $.componentLists = Objects.requireNonNull($.componentLists, "expected parameter 'componentLists' to be non-null");
+            if ($.appTemplateName == null) {
+                throw new MissingRequiredPropertyException("AppTemplateArgs", "appTemplateName");
+            }
+            if ($.componentLists == null) {
+                throw new MissingRequiredPropertyException("AppTemplateArgs", "componentLists");
+            }
             return $;
         }
     }

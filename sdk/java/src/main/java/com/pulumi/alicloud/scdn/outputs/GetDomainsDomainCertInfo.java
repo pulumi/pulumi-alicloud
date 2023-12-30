@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.scdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetDomainsDomainCertInfo {
 
         @CustomType.Setter
         public Builder certName(String certName) {
-            this.certName = Objects.requireNonNull(certName);
+            if (certName == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainCertInfo", "certName");
+            }
+            this.certName = certName;
             return this;
         }
         @CustomType.Setter
         public Builder certType(String certType) {
-            this.certType = Objects.requireNonNull(certType);
+            if (certType == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainCertInfo", "certType");
+            }
+            this.certType = certType;
             return this;
         }
         @CustomType.Setter
         public Builder sslProtocol(String sslProtocol) {
-            this.sslProtocol = Objects.requireNonNull(sslProtocol);
+            if (sslProtocol == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainCertInfo", "sslProtocol");
+            }
+            this.sslProtocol = sslProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder sslPub(String sslPub) {
-            this.sslPub = Objects.requireNonNull(sslPub);
+            if (sslPub == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainCertInfo", "sslPub");
+            }
+            this.sslPub = sslPub;
             return this;
         }
         public GetDomainsDomainCertInfo build() {

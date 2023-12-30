@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.alicloud.eds.outputs.GetImagesImage;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,17 +101,24 @@ public final class GetImagesResult {
 
         @CustomType.Setter
         public Builder desktopInstanceType(@Nullable String desktopInstanceType) {
+
             this.desktopInstanceType = desktopInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImagesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetImagesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -118,12 +126,16 @@ public final class GetImagesResult {
         }
         @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
+
             this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder images(List<GetImagesImage> images) {
-            this.images = Objects.requireNonNull(images);
+            if (images == null) {
+              throw new MissingRequiredPropertyException("GetImagesResult", "images");
+            }
+            this.images = images;
             return this;
         }
         public Builder images(GetImagesImage... images) {
@@ -131,12 +143,16 @@ public final class GetImagesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetImagesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -144,16 +160,19 @@ public final class GetImagesResult {
         }
         @CustomType.Setter
         public Builder osType(@Nullable String osType) {
+
             this.osType = osType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

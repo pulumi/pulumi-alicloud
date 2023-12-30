@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudstoragegateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class GetStocksStock {
 
         @CustomType.Setter
         public Builder availableGatewayClasses(List<String> availableGatewayClasses) {
-            this.availableGatewayClasses = Objects.requireNonNull(availableGatewayClasses);
+            if (availableGatewayClasses == null) {
+              throw new MissingRequiredPropertyException("GetStocksStock", "availableGatewayClasses");
+            }
+            this.availableGatewayClasses = availableGatewayClasses;
             return this;
         }
         public Builder availableGatewayClasses(String... availableGatewayClasses) {
@@ -65,7 +69,10 @@ public final class GetStocksStock {
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetStocksStock", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetStocksStock build() {

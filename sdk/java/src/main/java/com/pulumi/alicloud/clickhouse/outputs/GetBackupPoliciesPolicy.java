@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.clickhouse.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -114,22 +115,34 @@ public final class GetBackupPoliciesPolicy {
 
         @CustomType.Setter
         public Builder backupRetentionPeriod(Integer backupRetentionPeriod) {
-            this.backupRetentionPeriod = Objects.requireNonNull(backupRetentionPeriod);
+            if (backupRetentionPeriod == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "backupRetentionPeriod");
+            }
+            this.backupRetentionPeriod = backupRetentionPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
-            this.dbClusterId = Objects.requireNonNull(dbClusterId);
+            if (dbClusterId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "dbClusterId");
+            }
+            this.dbClusterId = dbClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder preferredBackupPeriods(List<String> preferredBackupPeriods) {
-            this.preferredBackupPeriods = Objects.requireNonNull(preferredBackupPeriods);
+            if (preferredBackupPeriods == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "preferredBackupPeriods");
+            }
+            this.preferredBackupPeriods = preferredBackupPeriods;
             return this;
         }
         public Builder preferredBackupPeriods(String... preferredBackupPeriods) {
@@ -137,12 +150,18 @@ public final class GetBackupPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder preferredBackupTime(String preferredBackupTime) {
-            this.preferredBackupTime = Objects.requireNonNull(preferredBackupTime);
+            if (preferredBackupTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "preferredBackupTime");
+            }
+            this.preferredBackupTime = preferredBackupTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBackupPoliciesPolicy build() {

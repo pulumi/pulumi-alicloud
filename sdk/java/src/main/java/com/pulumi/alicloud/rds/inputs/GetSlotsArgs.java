@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class GetSlotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetSlotsArgs build() {
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("GetSlotsArgs", "dbInstanceId");
+            }
             return $;
         }
     }

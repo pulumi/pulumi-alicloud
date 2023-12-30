@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetRulesSlbRule {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetRulesSlbRule", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesSlbRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRulesSlbRule", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
-            this.serverGroupId = Objects.requireNonNull(serverGroupId);
+            if (serverGroupId == null) {
+              throw new MissingRequiredPropertyException("GetRulesSlbRule", "serverGroupId");
+            }
+            this.serverGroupId = serverGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetRulesSlbRule", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetRulesSlbRule build() {

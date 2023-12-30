@@ -6,6 +6,7 @@ package com.pulumi.alicloud.nlb;
 import com.pulumi.alicloud.nlb.inputs.LoadBalancerZoneMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -588,9 +589,15 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LoadBalancerArgs build() {
-            $.addressType = Objects.requireNonNull($.addressType, "expected parameter 'addressType' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.zoneMappings = Objects.requireNonNull($.zoneMappings, "expected parameter 'zoneMappings' to be non-null");
+            if ($.addressType == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "addressType");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "vpcId");
+            }
+            if ($.zoneMappings == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "zoneMappings");
+            }
             return $;
         }
     }

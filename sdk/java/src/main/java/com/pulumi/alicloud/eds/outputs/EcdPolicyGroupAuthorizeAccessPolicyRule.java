@@ -58,11 +58,13 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRule {
 
         @CustomType.Setter
         public Builder cidrIp(@Nullable String cidrIp) {
+
             this.cidrIp = cidrIp;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }

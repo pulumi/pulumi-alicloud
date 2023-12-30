@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetBackupJobsJobOtsDetail {
 
         @CustomType.Setter
         public Builder tableNames(List<String> tableNames) {
-            this.tableNames = Objects.requireNonNull(tableNames);
+            if (tableNames == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJobOtsDetail", "tableNames");
+            }
+            this.tableNames = tableNames;
             return this;
         }
         public Builder tableNames(String... tableNames) {

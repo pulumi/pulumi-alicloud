@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eais.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -154,47 +155,74 @@ public final class GetInstancesInstance {
 
         @CustomType.Setter
         public Builder clientInstanceId(String clientInstanceId) {
-            this.clientInstanceId = Objects.requireNonNull(clientInstanceId);
+            if (clientInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "clientInstanceId");
+            }
+            this.clientInstanceId = clientInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder clientInstanceName(String clientInstanceName) {
-            this.clientInstanceName = Objects.requireNonNull(clientInstanceName);
+            if (clientInstanceName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "clientInstanceName");
+            }
+            this.clientInstanceName = clientInstanceName;
             return this;
         }
         @CustomType.Setter
         public Builder clientInstanceType(String clientInstanceType) {
-            this.clientInstanceType = Objects.requireNonNull(clientInstanceType);
+            if (clientInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "clientInstanceType");
+            }
+            this.clientInstanceType = clientInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetInstancesInstance build() {

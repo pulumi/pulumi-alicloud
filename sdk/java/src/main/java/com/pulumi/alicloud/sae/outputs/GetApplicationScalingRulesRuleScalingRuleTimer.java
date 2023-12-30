@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.alicloud.sae.outputs.GetApplicationScalingRulesRuleScalingRuleTimerSchedule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,22 +87,34 @@ public final class GetApplicationScalingRulesRuleScalingRuleTimer {
 
         @CustomType.Setter
         public Builder beginDate(String beginDate) {
-            this.beginDate = Objects.requireNonNull(beginDate);
+            if (beginDate == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleTimer", "beginDate");
+            }
+            this.beginDate = beginDate;
             return this;
         }
         @CustomType.Setter
         public Builder endDate(String endDate) {
-            this.endDate = Objects.requireNonNull(endDate);
+            if (endDate == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleTimer", "endDate");
+            }
+            this.endDate = endDate;
             return this;
         }
         @CustomType.Setter
         public Builder period(String period) {
-            this.period = Objects.requireNonNull(period);
+            if (period == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleTimer", "period");
+            }
+            this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder schedules(List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule> schedules) {
-            this.schedules = Objects.requireNonNull(schedules);
+            if (schedules == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleTimer", "schedules");
+            }
+            this.schedules = schedules;
             return this;
         }
         public Builder schedules(GetApplicationScalingRulesRuleScalingRuleTimerSchedule... schedules) {

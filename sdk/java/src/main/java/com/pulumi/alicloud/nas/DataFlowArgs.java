@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -349,10 +350,18 @@ public final class DataFlowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DataFlowArgs build() {
-            $.fileSystemId = Objects.requireNonNull($.fileSystemId, "expected parameter 'fileSystemId' to be non-null");
-            $.fsetId = Objects.requireNonNull($.fsetId, "expected parameter 'fsetId' to be non-null");
-            $.sourceStorage = Objects.requireNonNull($.sourceStorage, "expected parameter 'sourceStorage' to be non-null");
-            $.throughput = Objects.requireNonNull($.throughput, "expected parameter 'throughput' to be non-null");
+            if ($.fileSystemId == null) {
+                throw new MissingRequiredPropertyException("DataFlowArgs", "fileSystemId");
+            }
+            if ($.fsetId == null) {
+                throw new MissingRequiredPropertyException("DataFlowArgs", "fsetId");
+            }
+            if ($.sourceStorage == null) {
+                throw new MissingRequiredPropertyException("DataFlowArgs", "sourceStorage");
+            }
+            if ($.throughput == null) {
+                throw new MissingRequiredPropertyException("DataFlowArgs", "throughput");
+            }
             return $;
         }
     }

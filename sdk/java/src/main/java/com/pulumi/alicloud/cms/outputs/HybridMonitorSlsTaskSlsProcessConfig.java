@@ -90,6 +90,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfig {
 
         @CustomType.Setter
         public Builder expresses(@Nullable List<HybridMonitorSlsTaskSlsProcessConfigExpress> expresses) {
+
             this.expresses = expresses;
             return this;
         }
@@ -98,11 +99,13 @@ public final class HybridMonitorSlsTaskSlsProcessConfig {
         }
         @CustomType.Setter
         public Builder filter(@Nullable HybridMonitorSlsTaskSlsProcessConfigFilter filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder groupBies(@Nullable List<HybridMonitorSlsTaskSlsProcessConfigGroupBy> groupBies) {
+
             this.groupBies = groupBies;
             return this;
         }
@@ -111,6 +114,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfig {
         }
         @CustomType.Setter
         public Builder statistics(@Nullable List<HybridMonitorSlsTaskSlsProcessConfigStatistic> statistics) {
+
             this.statistics = statistics;
             return this;
         }

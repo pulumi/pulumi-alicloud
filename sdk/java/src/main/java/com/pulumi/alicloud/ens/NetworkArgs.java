@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ens;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NetworkArgs build() {
-            $.cidrBlock = Objects.requireNonNull($.cidrBlock, "expected parameter 'cidrBlock' to be non-null");
-            $.ensRegionId = Objects.requireNonNull($.ensRegionId, "expected parameter 'ensRegionId' to be non-null");
+            if ($.cidrBlock == null) {
+                throw new MissingRequiredPropertyException("NetworkArgs", "cidrBlock");
+            }
+            if ($.ensRegionId == null) {
+                throw new MissingRequiredPropertyException("NetworkArgs", "ensRegionId");
+            }
             return $;
         }
     }

@@ -8,6 +8,7 @@ import com.pulumi.alicloud.ga.inputs.ListenerForwardedForConfigArgs;
 import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -481,8 +482,12 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ListenerArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.portRanges = Objects.requireNonNull($.portRanges, "expected parameter 'portRanges' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("ListenerArgs", "acceleratorId");
+            }
+            if ($.portRanges == null) {
+                throw new MissingRequiredPropertyException("ListenerArgs", "portRanges");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ots.outputs;
 
 import com.pulumi.alicloud.ots.outputs.GetTunnelsTunnel;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,12 +129,18 @@ public final class GetTunnelsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -141,17 +148,24 @@ public final class GetTunnelsResult {
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsResult", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -159,17 +173,24 @@ public final class GetTunnelsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder tableName(String tableName) {
-            this.tableName = Objects.requireNonNull(tableName);
+            if (tableName == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsResult", "tableName");
+            }
+            this.tableName = tableName;
             return this;
         }
         @CustomType.Setter
         public Builder tunnels(List<GetTunnelsTunnel> tunnels) {
-            this.tunnels = Objects.requireNonNull(tunnels);
+            if (tunnels == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsResult", "tunnels");
+            }
+            this.tunnels = tunnels;
             return this;
         }
         public Builder tunnels(GetTunnelsTunnel... tunnels) {

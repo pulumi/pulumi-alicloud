@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetVersionsVersion {
 
         @CustomType.Setter
         public Builder edition(String edition) {
-            this.edition = Objects.requireNonNull(edition);
+            if (edition == null) {
+              throw new MissingRequiredPropertyException("GetVersionsVersion", "edition");
+            }
+            this.edition = edition;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVersionsVersion", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetVersionsVersion", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetVersionsVersion build() {

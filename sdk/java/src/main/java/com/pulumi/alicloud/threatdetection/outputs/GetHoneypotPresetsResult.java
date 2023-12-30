@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotPresetsPreset;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -160,27 +161,36 @@ public final class GetHoneypotPresetsResult {
 
         @CustomType.Setter
         public Builder currentPage(@Nullable Integer currentPage) {
+
             this.currentPage = currentPage;
             return this;
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotImageName(@Nullable String honeypotImageName) {
+
             this.honeypotImageName = honeypotImageName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotPresetsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotPresetsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -188,42 +198,52 @@ public final class GetHoneypotPresetsResult {
         }
         @CustomType.Setter
         public Builder lang(@Nullable String lang) {
+
             this.lang = lang;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
+
             this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
+
             this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder presetName(@Nullable String presetName) {
+
             this.presetName = presetName;
             return this;
         }
         @CustomType.Setter
         public Builder presets(List<GetHoneypotPresetsPreset> presets) {
-            this.presets = Objects.requireNonNull(presets);
+            if (presets == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotPresetsResult", "presets");
+            }
+            this.presets = presets;
             return this;
         }
         public Builder presets(GetHoneypotPresetsPreset... presets) {

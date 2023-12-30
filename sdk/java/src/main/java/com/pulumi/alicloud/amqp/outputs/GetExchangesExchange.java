@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.amqp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -143,42 +144,66 @@ public final class GetExchangesExchange {
 
         @CustomType.Setter
         public Builder attributes(Map<String,Object> attributes) {
-            this.attributes = Objects.requireNonNull(attributes);
+            if (attributes == null) {
+              throw new MissingRequiredPropertyException("GetExchangesExchange", "attributes");
+            }
+            this.attributes = attributes;
             return this;
         }
         @CustomType.Setter
         public Builder autoDeleteState(Boolean autoDeleteState) {
-            this.autoDeleteState = Objects.requireNonNull(autoDeleteState);
+            if (autoDeleteState == null) {
+              throw new MissingRequiredPropertyException("GetExchangesExchange", "autoDeleteState");
+            }
+            this.autoDeleteState = autoDeleteState;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetExchangesExchange", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder exchangeName(String exchangeName) {
-            this.exchangeName = Objects.requireNonNull(exchangeName);
+            if (exchangeName == null) {
+              throw new MissingRequiredPropertyException("GetExchangesExchange", "exchangeName");
+            }
+            this.exchangeName = exchangeName;
             return this;
         }
         @CustomType.Setter
         public Builder exchangeType(String exchangeType) {
-            this.exchangeType = Objects.requireNonNull(exchangeType);
+            if (exchangeType == null) {
+              throw new MissingRequiredPropertyException("GetExchangesExchange", "exchangeType");
+            }
+            this.exchangeType = exchangeType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetExchangesExchange", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetExchangesExchange", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder virtualHostName(String virtualHostName) {
-            this.virtualHostName = Objects.requireNonNull(virtualHostName);
+            if (virtualHostName == null) {
+              throw new MissingRequiredPropertyException("GetExchangesExchange", "virtualHostName");
+            }
+            this.virtualHostName = virtualHostName;
             return this;
         }
         public GetExchangesExchange build() {

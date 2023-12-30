@@ -73,16 +73,19 @@ public final class WafRuleRateLimitStatus {
 
         @CustomType.Setter
         public Builder code(@Nullable String code) {
+
             this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder ratio(@Nullable Integer ratio) {
+
             this.ratio = ratio;
             return this;
         }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudfirewall.inputs;
 import com.pulumi.alicloud.cloudfirewall.inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -310,9 +311,15 @@ public final class FirewallVpcFirewallLocalVpcArgs extends com.pulumi.resources.
         }
 
         public FirewallVpcFirewallLocalVpcArgs build() {
-            $.localVpcCidrTableLists = Objects.requireNonNull($.localVpcCidrTableLists, "expected parameter 'localVpcCidrTableLists' to be non-null");
-            $.regionNo = Objects.requireNonNull($.regionNo, "expected parameter 'regionNo' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.localVpcCidrTableLists == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpcArgs", "localVpcCidrTableLists");
+            }
+            if ($.regionNo == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpcArgs", "regionNo");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpcArgs", "vpcId");
+            }
             return $;
         }
     }

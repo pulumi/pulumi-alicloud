@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.alicloud.eds.outputs.GetCustomPropertiesPropertyPropertyValue;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,22 +87,34 @@ public final class GetCustomPropertiesProperty {
 
         @CustomType.Setter
         public Builder customPropertyId(String customPropertyId) {
-            this.customPropertyId = Objects.requireNonNull(customPropertyId);
+            if (customPropertyId == null) {
+              throw new MissingRequiredPropertyException("GetCustomPropertiesProperty", "customPropertyId");
+            }
+            this.customPropertyId = customPropertyId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomPropertiesProperty", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder propertyKey(String propertyKey) {
-            this.propertyKey = Objects.requireNonNull(propertyKey);
+            if (propertyKey == null) {
+              throw new MissingRequiredPropertyException("GetCustomPropertiesProperty", "propertyKey");
+            }
+            this.propertyKey = propertyKey;
             return this;
         }
         @CustomType.Setter
         public Builder propertyValues(List<GetCustomPropertiesPropertyPropertyValue> propertyValues) {
-            this.propertyValues = Objects.requireNonNull(propertyValues);
+            if (propertyValues == null) {
+              throw new MissingRequiredPropertyException("GetCustomPropertiesProperty", "propertyValues");
+            }
+            this.propertyValues = propertyValues;
             return this;
         }
         public Builder propertyValues(GetCustomPropertiesPropertyPropertyValue... propertyValues) {

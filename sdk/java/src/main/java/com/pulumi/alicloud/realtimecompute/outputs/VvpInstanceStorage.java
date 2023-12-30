@@ -5,6 +5,7 @@ package com.pulumi.alicloud.realtimecompute.outputs;
 
 import com.pulumi.alicloud.realtimecompute.outputs.VvpInstanceStorageOss;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 @CustomType
@@ -42,7 +43,10 @@ public final class VvpInstanceStorage {
 
         @CustomType.Setter
         public Builder oss(VvpInstanceStorageOss oss) {
-            this.oss = Objects.requireNonNull(oss);
+            if (oss == null) {
+              throw new MissingRequiredPropertyException("VvpInstanceStorage", "oss");
+            }
+            this.oss = oss;
             return this;
         }
         public VvpInstanceStorage build() {

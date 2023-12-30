@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public UserAttachmentArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.userGroupId = Objects.requireNonNull($.userGroupId, "expected parameter 'userGroupId' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("UserAttachmentArgs", "instanceId");
+            }
+            if ($.userGroupId == null) {
+                throw new MissingRequiredPropertyException("UserAttachmentArgs", "userGroupId");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("UserAttachmentArgs", "userId");
+            }
             return $;
         }
     }

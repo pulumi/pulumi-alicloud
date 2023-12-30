@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.alicloud.nas.outputs.GetAccessGroupsGroup;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -177,27 +178,34 @@ public final class GetAccessGroupsResult {
 
         @CustomType.Setter
         public Builder accessGroupName(@Nullable String accessGroupName) {
+
             this.accessGroupName = accessGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder accessGroupType(@Nullable String accessGroupType) {
+
             this.accessGroupType = accessGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemType(@Nullable String fileSystemType) {
+
             this.fileSystemType = fileSystemType;
             return this;
         }
         @CustomType.Setter
         public Builder groups(List<GetAccessGroupsGroup> groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsResult", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         public Builder groups(GetAccessGroupsGroup... groups) {
@@ -205,12 +213,18 @@ public final class GetAccessGroupsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -218,12 +232,16 @@ public final class GetAccessGroupsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -231,16 +249,19 @@ public final class GetAccessGroupsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder useutcDateTime(@Nullable Boolean useutcDateTime) {
+
             this.useutcDateTime = useutcDateTime;
             return this;
         }

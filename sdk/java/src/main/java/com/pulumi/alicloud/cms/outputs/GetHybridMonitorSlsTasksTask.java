@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cms.outputs.GetHybridMonitorSlsTasksTaskAttachLabel;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorSlsTasksTaskMatchExpress;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -403,7 +404,10 @@ public final class GetHybridMonitorSlsTasksTask {
 
         @CustomType.Setter
         public Builder attachLabels(List<GetHybridMonitorSlsTasksTaskAttachLabel> attachLabels) {
-            this.attachLabels = Objects.requireNonNull(attachLabels);
+            if (attachLabels == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "attachLabels");
+            }
+            this.attachLabels = attachLabels;
             return this;
         }
         public Builder attachLabels(GetHybridMonitorSlsTasksTaskAttachLabel... attachLabels) {
@@ -411,62 +415,98 @@ public final class GetHybridMonitorSlsTasksTask {
         }
         @CustomType.Setter
         public Builder collectInterval(Integer collectInterval) {
-            this.collectInterval = Objects.requireNonNull(collectInterval);
+            if (collectInterval == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "collectInterval");
+            }
+            this.collectInterval = collectInterval;
             return this;
         }
         @CustomType.Setter
         public Builder collectTargetEndpoint(String collectTargetEndpoint) {
-            this.collectTargetEndpoint = Objects.requireNonNull(collectTargetEndpoint);
+            if (collectTargetEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "collectTargetEndpoint");
+            }
+            this.collectTargetEndpoint = collectTargetEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder collectTargetPath(String collectTargetPath) {
-            this.collectTargetPath = Objects.requireNonNull(collectTargetPath);
+            if (collectTargetPath == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "collectTargetPath");
+            }
+            this.collectTargetPath = collectTargetPath;
             return this;
         }
         @CustomType.Setter
         public Builder collectTargetType(String collectTargetType) {
-            this.collectTargetType = Objects.requireNonNull(collectTargetType);
+            if (collectTargetType == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "collectTargetType");
+            }
+            this.collectTargetType = collectTargetType;
             return this;
         }
         @CustomType.Setter
         public Builder collectTimout(Integer collectTimout) {
-            this.collectTimout = Objects.requireNonNull(collectTimout);
+            if (collectTimout == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "collectTimout");
+            }
+            this.collectTimout = collectTimout;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder extraInfo(String extraInfo) {
-            this.extraInfo = Objects.requireNonNull(extraInfo);
+            if (extraInfo == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "extraInfo");
+            }
+            this.extraInfo = extraInfo;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder hybridMonitorSlsTaskId(String hybridMonitorSlsTaskId) {
-            this.hybridMonitorSlsTaskId = Objects.requireNonNull(hybridMonitorSlsTaskId);
+            if (hybridMonitorSlsTaskId == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "hybridMonitorSlsTaskId");
+            }
+            this.hybridMonitorSlsTaskId = hybridMonitorSlsTaskId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instances(List<String> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(String... instances) {
@@ -474,32 +514,50 @@ public final class GetHybridMonitorSlsTasksTask {
         }
         @CustomType.Setter
         public Builder logFilePath(String logFilePath) {
-            this.logFilePath = Objects.requireNonNull(logFilePath);
+            if (logFilePath == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "logFilePath");
+            }
+            this.logFilePath = logFilePath;
             return this;
         }
         @CustomType.Setter
         public Builder logProcess(String logProcess) {
-            this.logProcess = Objects.requireNonNull(logProcess);
+            if (logProcess == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "logProcess");
+            }
+            this.logProcess = logProcess;
             return this;
         }
         @CustomType.Setter
         public Builder logSample(String logSample) {
-            this.logSample = Objects.requireNonNull(logSample);
+            if (logSample == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "logSample");
+            }
+            this.logSample = logSample;
             return this;
         }
         @CustomType.Setter
         public Builder logSplit(String logSplit) {
-            this.logSplit = Objects.requireNonNull(logSplit);
+            if (logSplit == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "logSplit");
+            }
+            this.logSplit = logSplit;
             return this;
         }
         @CustomType.Setter
         public Builder matchExpressRelation(String matchExpressRelation) {
-            this.matchExpressRelation = Objects.requireNonNull(matchExpressRelation);
+            if (matchExpressRelation == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "matchExpressRelation");
+            }
+            this.matchExpressRelation = matchExpressRelation;
             return this;
         }
         @CustomType.Setter
         public Builder matchExpresses(List<GetHybridMonitorSlsTasksTaskMatchExpress> matchExpresses) {
-            this.matchExpresses = Objects.requireNonNull(matchExpresses);
+            if (matchExpresses == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "matchExpresses");
+            }
+            this.matchExpresses = matchExpresses;
             return this;
         }
         public Builder matchExpresses(GetHybridMonitorSlsTasksTaskMatchExpress... matchExpresses) {
@@ -507,22 +565,34 @@ public final class GetHybridMonitorSlsTasksTask {
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder slsProcess(String slsProcess) {
-            this.slsProcess = Objects.requireNonNull(slsProcess);
+            if (slsProcess == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "slsProcess");
+            }
+            this.slsProcess = slsProcess;
             return this;
         }
         @CustomType.Setter
         public Builder slsProcessConfigs(List<GetHybridMonitorSlsTasksTaskSlsProcessConfig> slsProcessConfigs) {
-            this.slsProcessConfigs = Objects.requireNonNull(slsProcessConfigs);
+            if (slsProcessConfigs == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "slsProcessConfigs");
+            }
+            this.slsProcessConfigs = slsProcessConfigs;
             return this;
         }
         public Builder slsProcessConfigs(GetHybridMonitorSlsTasksTaskSlsProcessConfig... slsProcessConfigs) {
@@ -530,22 +600,34 @@ public final class GetHybridMonitorSlsTasksTask {
         }
         @CustomType.Setter
         public Builder taskName(String taskName) {
-            this.taskName = Objects.requireNonNull(taskName);
+            if (taskName == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "taskName");
+            }
+            this.taskName = taskName;
             return this;
         }
         @CustomType.Setter
         public Builder taskType(String taskType) {
-            this.taskType = Objects.requireNonNull(taskType);
+            if (taskType == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "taskType");
+            }
+            this.taskType = taskType;
             return this;
         }
         @CustomType.Setter
         public Builder uploadRegion(String uploadRegion) {
-            this.uploadRegion = Objects.requireNonNull(uploadRegion);
+            if (uploadRegion == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "uploadRegion");
+            }
+            this.uploadRegion = uploadRegion;
             return this;
         }
         @CustomType.Setter
         public Builder yarmConfig(String yarmConfig) {
-            this.yarmConfig = Objects.requireNonNull(yarmConfig);
+            if (yarmConfig == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTask", "yarmConfig");
+            }
+            this.yarmConfig = yarmConfig;
             return this;
         }
         public GetHybridMonitorSlsTasksTask build() {

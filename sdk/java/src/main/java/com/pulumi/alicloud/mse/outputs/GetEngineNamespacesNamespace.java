@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mse.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -147,42 +148,66 @@ public final class GetEngineNamespacesNamespace {
 
         @CustomType.Setter
         public Builder configCount(Integer configCount) {
-            this.configCount = Objects.requireNonNull(configCount);
+            if (configCount == null) {
+              throw new MissingRequiredPropertyException("GetEngineNamespacesNamespace", "configCount");
+            }
+            this.configCount = configCount;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEngineNamespacesNamespace", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceDesc(String namespaceDesc) {
-            this.namespaceDesc = Objects.requireNonNull(namespaceDesc);
+            if (namespaceDesc == null) {
+              throw new MissingRequiredPropertyException("GetEngineNamespacesNamespace", "namespaceDesc");
+            }
+            this.namespaceDesc = namespaceDesc;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetEngineNamespacesNamespace", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceShowName(String namespaceShowName) {
-            this.namespaceShowName = Objects.requireNonNull(namespaceShowName);
+            if (namespaceShowName == null) {
+              throw new MissingRequiredPropertyException("GetEngineNamespacesNamespace", "namespaceShowName");
+            }
+            this.namespaceShowName = namespaceShowName;
             return this;
         }
         @CustomType.Setter
         public Builder quota(Integer quota) {
-            this.quota = Objects.requireNonNull(quota);
+            if (quota == null) {
+              throw new MissingRequiredPropertyException("GetEngineNamespacesNamespace", "quota");
+            }
+            this.quota = quota;
             return this;
         }
         @CustomType.Setter
         public Builder serviceCount(String serviceCount) {
-            this.serviceCount = Objects.requireNonNull(serviceCount);
+            if (serviceCount == null) {
+              throw new MissingRequiredPropertyException("GetEngineNamespacesNamespace", "serviceCount");
+            }
+            this.serviceCount = serviceCount;
             return this;
         }
         @CustomType.Setter
         public Builder type(Integer type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetEngineNamespacesNamespace", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetEngineNamespacesNamespace build() {

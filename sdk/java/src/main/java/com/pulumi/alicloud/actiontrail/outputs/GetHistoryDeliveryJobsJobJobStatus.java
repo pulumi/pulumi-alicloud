@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetHistoryDeliveryJobsJobJobStatus {
 
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJobJobStatus", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJobJobStatus", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetHistoryDeliveryJobsJobJobStatus build() {

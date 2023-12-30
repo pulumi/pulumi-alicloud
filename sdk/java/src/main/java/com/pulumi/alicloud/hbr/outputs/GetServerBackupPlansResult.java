@@ -6,6 +6,7 @@ package com.pulumi.alicloud.hbr.outputs;
 import com.pulumi.alicloud.hbr.outputs.GetServerBackupPlansFilter;
 import com.pulumi.alicloud.hbr.outputs.GetServerBackupPlansPlan;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,6 +72,7 @@ public final class GetServerBackupPlansResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetServerBackupPlansFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -79,12 +81,18 @@ public final class GetServerBackupPlansResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -92,12 +100,16 @@ public final class GetServerBackupPlansResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder plans(List<GetServerBackupPlansPlan> plans) {
-            this.plans = Objects.requireNonNull(plans);
+            if (plans == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansResult", "plans");
+            }
+            this.plans = plans;
             return this;
         }
         public Builder plans(GetServerBackupPlansPlan... plans) {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.alicloud.fc.outputs.GetFunctionsFunctionCustomContainerConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -286,92 +287,144 @@ public final class GetFunctionsFunction {
 
         @CustomType.Setter
         public Builder caPort(Integer caPort) {
-            this.caPort = Objects.requireNonNull(caPort);
+            if (caPort == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "caPort");
+            }
+            this.caPort = caPort;
             return this;
         }
         @CustomType.Setter
         public Builder codeChecksum(String codeChecksum) {
-            this.codeChecksum = Objects.requireNonNull(codeChecksum);
+            if (codeChecksum == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "codeChecksum");
+            }
+            this.codeChecksum = codeChecksum;
             return this;
         }
         @CustomType.Setter
         public Builder codeSize(Integer codeSize) {
-            this.codeSize = Objects.requireNonNull(codeSize);
+            if (codeSize == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "codeSize");
+            }
+            this.codeSize = codeSize;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder customContainerConfig(@Nullable GetFunctionsFunctionCustomContainerConfig customContainerConfig) {
+
             this.customContainerConfig = customContainerConfig;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVariables(Map<String,Object> environmentVariables) {
-            this.environmentVariables = Objects.requireNonNull(environmentVariables);
+            if (environmentVariables == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "environmentVariables");
+            }
+            this.environmentVariables = environmentVariables;
             return this;
         }
         @CustomType.Setter
         public Builder handler(String handler) {
-            this.handler = Objects.requireNonNull(handler);
+            if (handler == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "handler");
+            }
+            this.handler = handler;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder initializationTimeout(Integer initializationTimeout) {
-            this.initializationTimeout = Objects.requireNonNull(initializationTimeout);
+            if (initializationTimeout == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "initializationTimeout");
+            }
+            this.initializationTimeout = initializationTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder initializer(String initializer) {
-            this.initializer = Objects.requireNonNull(initializer);
+            if (initializer == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "initializer");
+            }
+            this.initializer = initializer;
             return this;
         }
         @CustomType.Setter
         public Builder instanceConcurrency(Integer instanceConcurrency) {
-            this.instanceConcurrency = Objects.requireNonNull(instanceConcurrency);
+            if (instanceConcurrency == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "instanceConcurrency");
+            }
+            this.instanceConcurrency = instanceConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder lastModificationTime(String lastModificationTime) {
-            this.lastModificationTime = Objects.requireNonNull(lastModificationTime);
+            if (lastModificationTime == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "lastModificationTime");
+            }
+            this.lastModificationTime = lastModificationTime;
             return this;
         }
         @CustomType.Setter
         public Builder memorySize(Integer memorySize) {
-            this.memorySize = Objects.requireNonNull(memorySize);
+            if (memorySize == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "memorySize");
+            }
+            this.memorySize = memorySize;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder runtime(String runtime) {
-            this.runtime = Objects.requireNonNull(runtime);
+            if (runtime == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "runtime");
+            }
+            this.runtime = runtime;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(Integer timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunction", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         public GetFunctionsFunction build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.bastionhost.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -200,61 +201,87 @@ public final class InstanceAdAuthServer {
 
         @CustomType.Setter
         public Builder account(String account) {
-            this.account = Objects.requireNonNull(account);
+            if (account == null) {
+              throw new MissingRequiredPropertyException("InstanceAdAuthServer", "account");
+            }
+            this.account = account;
             return this;
         }
         @CustomType.Setter
         public Builder baseDn(String baseDn) {
-            this.baseDn = Objects.requireNonNull(baseDn);
+            if (baseDn == null) {
+              throw new MissingRequiredPropertyException("InstanceAdAuthServer", "baseDn");
+            }
+            this.baseDn = baseDn;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("InstanceAdAuthServer", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder emailMapping(@Nullable String emailMapping) {
+
             this.emailMapping = emailMapping;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable String filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder isSsl(Boolean isSsl) {
-            this.isSsl = Objects.requireNonNull(isSsl);
+            if (isSsl == null) {
+              throw new MissingRequiredPropertyException("InstanceAdAuthServer", "isSsl");
+            }
+            this.isSsl = isSsl;
             return this;
         }
         @CustomType.Setter
         public Builder mobileMapping(@Nullable String mobileMapping) {
+
             this.mobileMapping = mobileMapping;
             return this;
         }
         @CustomType.Setter
         public Builder nameMapping(@Nullable String nameMapping) {
+
             this.nameMapping = nameMapping;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("InstanceAdAuthServer", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("InstanceAdAuthServer", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder server(String server) {
-            this.server = Objects.requireNonNull(server);
+            if (server == null) {
+              throw new MissingRequiredPropertyException("InstanceAdAuthServer", "server");
+            }
+            this.server = server;
             return this;
         }
         @CustomType.Setter
         public Builder standbyServer(@Nullable String standbyServer) {
+
             this.standbyServer = standbyServer;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetInstanceClassesInstanceClassStorageRange {
 
         @CustomType.Setter
         public Builder max(String max) {
-            this.max = Objects.requireNonNull(max);
+            if (max == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesInstanceClassStorageRange", "max");
+            }
+            this.max = max;
             return this;
         }
         @CustomType.Setter
         public Builder min(String min) {
-            this.min = Objects.requireNonNull(min);
+            if (min == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesInstanceClassStorageRange", "min");
+            }
+            this.min = min;
             return this;
         }
         @CustomType.Setter
         public Builder step(String step) {
-            this.step = Objects.requireNonNull(step);
+            if (step == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesInstanceClassStorageRange", "step");
+            }
+            this.step = step;
             return this;
         }
         public GetInstanceClassesInstanceClassStorageRange build() {

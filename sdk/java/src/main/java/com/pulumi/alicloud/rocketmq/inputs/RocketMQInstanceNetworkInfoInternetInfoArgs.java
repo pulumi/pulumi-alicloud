@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -215,8 +216,12 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         public RocketMQInstanceNetworkInfoInternetInfoArgs build() {
-            $.flowOutType = Objects.requireNonNull($.flowOutType, "expected parameter 'flowOutType' to be non-null");
-            $.internetSpec = Objects.requireNonNull($.internetSpec, "expected parameter 'internetSpec' to be non-null");
+            if ($.flowOutType == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoInternetInfoArgs", "flowOutType");
+            }
+            if ($.internetSpec == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoInternetInfoArgs", "internetSpec");
+            }
             return $;
         }
     }

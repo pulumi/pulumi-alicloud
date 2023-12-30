@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.alicloud.ros.outputs.GetTemplateScratchesScratch;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -83,17 +84,24 @@ public final class GetTemplateScratchesResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -101,12 +109,16 @@ public final class GetTemplateScratchesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder scratches(List<GetTemplateScratchesScratch> scratches) {
-            this.scratches = Objects.requireNonNull(scratches);
+            if (scratches == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesResult", "scratches");
+            }
+            this.scratches = scratches;
             return this;
         }
         public Builder scratches(GetTemplateScratchesScratch... scratches) {
@@ -114,11 +126,13 @@ public final class GetTemplateScratchesResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder templateScratchType(@Nullable String templateScratchType) {
+
             this.templateScratchType = templateScratchType;
             return this;
         }

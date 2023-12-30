@@ -60,6 +60,7 @@ public final class ListenerAclConfig {
 
         @CustomType.Setter
         public Builder aclRelations(@Nullable List<ListenerAclConfigAclRelation> aclRelations) {
+
             this.aclRelations = aclRelations;
             return this;
         }
@@ -68,6 +69,7 @@ public final class ListenerAclConfig {
         }
         @CustomType.Setter
         public Builder aclType(@Nullable String aclType) {
+
             this.aclType = aclType;
             return this;
         }

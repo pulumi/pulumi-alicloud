@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.alicloud.polardb.outputs.GetEndpointsEndpoint;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -80,17 +81,24 @@ public final class GetEndpointsResult {
 
         @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
-            this.dbClusterId = Objects.requireNonNull(dbClusterId);
+            if (dbClusterId == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsResult", "dbClusterId");
+            }
+            this.dbClusterId = dbClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder dbEndpointId(@Nullable String dbEndpointId) {
+
             this.dbEndpointId = dbEndpointId;
             return this;
         }
         @CustomType.Setter
         public Builder endpoints(List<GetEndpointsEndpoint> endpoints) {
-            this.endpoints = Objects.requireNonNull(endpoints);
+            if (endpoints == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsResult", "endpoints");
+            }
+            this.endpoints = endpoints;
             return this;
         }
         public Builder endpoints(GetEndpointsEndpoint... endpoints) {
@@ -98,7 +106,10 @@ public final class GetEndpointsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetEndpointsResult build() {

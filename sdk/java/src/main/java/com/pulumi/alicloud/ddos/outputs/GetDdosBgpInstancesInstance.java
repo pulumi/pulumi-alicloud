@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ddos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetDdosBgpInstancesInstance {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetDdosBgpInstancesInstance", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder baseBandwidth(Integer baseBandwidth) {
-            this.baseBandwidth = Objects.requireNonNull(baseBandwidth);
+            if (baseBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetDdosBgpInstancesInstance", "baseBandwidth");
+            }
+            this.baseBandwidth = baseBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDdosBgpInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipCount(Integer ipCount) {
-            this.ipCount = Objects.requireNonNull(ipCount);
+            if (ipCount == null) {
+              throw new MissingRequiredPropertyException("GetDdosBgpInstancesInstance", "ipCount");
+            }
+            this.ipCount = ipCount;
             return this;
         }
         @CustomType.Setter
         public Builder ipType(String ipType) {
-            this.ipType = Objects.requireNonNull(ipType);
+            if (ipType == null) {
+              throw new MissingRequiredPropertyException("GetDdosBgpInstancesInstance", "ipType");
+            }
+            this.ipType = ipType;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDdosBgpInstancesInstance", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder normalBandwidth(Integer normalBandwidth) {
-            this.normalBandwidth = Objects.requireNonNull(normalBandwidth);
+            if (normalBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetDdosBgpInstancesInstance", "normalBandwidth");
+            }
+            this.normalBandwidth = normalBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDdosBgpInstancesInstance", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDdosBgpInstancesInstance", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetDdosBgpInstancesInstance build() {

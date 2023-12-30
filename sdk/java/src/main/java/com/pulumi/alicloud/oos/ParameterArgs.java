@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oos;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -300,9 +301,15 @@ public final class ParameterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ParameterArgs build() {
-            $.parameterName = Objects.requireNonNull($.parameterName, "expected parameter 'parameterName' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.parameterName == null) {
+                throw new MissingRequiredPropertyException("ParameterArgs", "parameterName");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ParameterArgs", "type");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("ParameterArgs", "value");
+            }
             return $;
         }
     }

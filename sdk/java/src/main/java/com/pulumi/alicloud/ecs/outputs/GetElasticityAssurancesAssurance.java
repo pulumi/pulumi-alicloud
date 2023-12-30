@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetElasticityAssurancesAssuranceAllocatedResource;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -258,7 +259,10 @@ public final class GetElasticityAssurancesAssurance {
 
         @CustomType.Setter
         public Builder allocatedResources(List<GetElasticityAssurancesAssuranceAllocatedResource> allocatedResources) {
-            this.allocatedResources = Objects.requireNonNull(allocatedResources);
+            if (allocatedResources == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "allocatedResources");
+            }
+            this.allocatedResources = allocatedResources;
             return this;
         }
         public Builder allocatedResources(GetElasticityAssurancesAssuranceAllocatedResource... allocatedResources) {
@@ -266,77 +270,120 @@ public final class GetElasticityAssurancesAssurance {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder elasticityAssuranceId(String elasticityAssuranceId) {
-            this.elasticityAssuranceId = Objects.requireNonNull(elasticityAssuranceId);
+            if (elasticityAssuranceId == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "elasticityAssuranceId");
+            }
+            this.elasticityAssuranceId = elasticityAssuranceId;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
-            this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
+            if (instanceChargeType == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "instanceChargeType");
+            }
+            this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder privatePoolOptionsId(String privatePoolOptionsId) {
-            this.privatePoolOptionsId = Objects.requireNonNull(privatePoolOptionsId);
+            if (privatePoolOptionsId == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "privatePoolOptionsId");
+            }
+            this.privatePoolOptionsId = privatePoolOptionsId;
             return this;
         }
         @CustomType.Setter
         public Builder privatePoolOptionsMatchCriteria(String privatePoolOptionsMatchCriteria) {
-            this.privatePoolOptionsMatchCriteria = Objects.requireNonNull(privatePoolOptionsMatchCriteria);
+            if (privatePoolOptionsMatchCriteria == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "privatePoolOptionsMatchCriteria");
+            }
+            this.privatePoolOptionsMatchCriteria = privatePoolOptionsMatchCriteria;
             return this;
         }
         @CustomType.Setter
         public Builder privatePoolOptionsName(String privatePoolOptionsName) {
-            this.privatePoolOptionsName = Objects.requireNonNull(privatePoolOptionsName);
+            if (privatePoolOptionsName == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "privatePoolOptionsName");
+            }
+            this.privatePoolOptionsName = privatePoolOptionsName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder startTimeType(String startTimeType) {
-            this.startTimeType = Objects.requireNonNull(startTimeType);
+            if (startTimeType == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "startTimeType");
+            }
+            this.startTimeType = startTimeType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder totalAssuranceTimes(String totalAssuranceTimes) {
-            this.totalAssuranceTimes = Objects.requireNonNull(totalAssuranceTimes);
+            if (totalAssuranceTimes == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "totalAssuranceTimes");
+            }
+            this.totalAssuranceTimes = totalAssuranceTimes;
             return this;
         }
         @CustomType.Setter
         public Builder usedAssuranceTimes(Integer usedAssuranceTimes) {
-            this.usedAssuranceTimes = Objects.requireNonNull(usedAssuranceTimes);
+            if (usedAssuranceTimes == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssurance", "usedAssuranceTimes");
+            }
+            this.usedAssuranceTimes = usedAssuranceTimes;
             return this;
         }
         public GetElasticityAssurancesAssurance build() {

@@ -107,26 +107,31 @@ public final class UserPermissionPermission {
 
         @CustomType.Setter
         public Builder isCustom(@Nullable Boolean isCustom) {
+
             this.isCustom = isCustom;
             return this;
         }
         @CustomType.Setter
         public Builder isRamRole(@Nullable Boolean isRamRole) {
+
             this.isRamRole = isRamRole;
             return this;
         }
         @CustomType.Setter
         public Builder roleName(@Nullable String roleName) {
+
             this.roleName = roleName;
             return this;
         }
         @CustomType.Setter
         public Builder roleType(@Nullable String roleType) {
+
             this.roleType = roleType;
             return this;
         }
         @CustomType.Setter
         public Builder serviceMeshId(@Nullable String serviceMeshId) {
+
             this.serviceMeshId = serviceMeshId;
             return this;
         }

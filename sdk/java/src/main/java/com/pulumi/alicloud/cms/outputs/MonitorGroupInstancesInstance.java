@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class MonitorGroupInstancesInstance {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("MonitorGroupInstancesInstance", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("MonitorGroupInstancesInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("MonitorGroupInstancesInstance", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("MonitorGroupInstancesInstance", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         public MonitorGroupInstancesInstance build() {

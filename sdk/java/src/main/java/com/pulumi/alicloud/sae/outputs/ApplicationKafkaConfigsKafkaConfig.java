@@ -72,16 +72,19 @@ public final class ApplicationKafkaConfigsKafkaConfig {
 
         @CustomType.Setter
         public Builder kafkaTopic(@Nullable String kafkaTopic) {
+
             this.kafkaTopic = kafkaTopic;
             return this;
         }
         @CustomType.Setter
         public Builder logDir(@Nullable String logDir) {
+
             this.logDir = logDir;
             return this;
         }
         @CustomType.Setter
         public Builder logType(@Nullable String logType) {
+
             this.logType = logType;
             return this;
         }

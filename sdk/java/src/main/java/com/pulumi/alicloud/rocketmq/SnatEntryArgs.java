@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SnatEntryArgs build() {
-            $.cidrBlock = Objects.requireNonNull($.cidrBlock, "expected parameter 'cidrBlock' to be non-null");
-            $.sagId = Objects.requireNonNull($.sagId, "expected parameter 'sagId' to be non-null");
-            $.snatIp = Objects.requireNonNull($.snatIp, "expected parameter 'snatIp' to be non-null");
+            if ($.cidrBlock == null) {
+                throw new MissingRequiredPropertyException("SnatEntryArgs", "cidrBlock");
+            }
+            if ($.sagId == null) {
+                throw new MissingRequiredPropertyException("SnatEntryArgs", "sagId");
+            }
+            if ($.snatIp == null) {
+                throw new MissingRequiredPropertyException("SnatEntryArgs", "snatIp");
+            }
             return $;
         }
     }

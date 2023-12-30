@@ -144,41 +144,49 @@ public final class ServiceMeshMeshConfigSidecarInjector {
 
         @CustomType.Setter
         public Builder autoInjectionPolicyEnabled(@Nullable Boolean autoInjectionPolicyEnabled) {
+
             this.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder enableNamespacesByDefault(@Nullable Boolean enableNamespacesByDefault) {
+
             this.enableNamespacesByDefault = enableNamespacesByDefault;
             return this;
         }
         @CustomType.Setter
         public Builder initCniConfiguration(@Nullable ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration initCniConfiguration) {
+
             this.initCniConfiguration = initCniConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder limitCpu(@Nullable String limitCpu) {
+
             this.limitCpu = limitCpu;
             return this;
         }
         @CustomType.Setter
         public Builder limitMemory(@Nullable String limitMemory) {
+
             this.limitMemory = limitMemory;
             return this;
         }
         @CustomType.Setter
         public Builder requestCpu(@Nullable String requestCpu) {
+
             this.requestCpu = requestCpu;
             return this;
         }
         @CustomType.Setter
         public Builder requestMemory(@Nullable String requestMemory) {
+
             this.requestMemory = requestMemory;
             return this;
         }
         @CustomType.Setter
         public Builder sidecarInjectorWebhookAsYaml(@Nullable String sidecarInjectorWebhookAsYaml) {
+
             this.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
             return this;
         }

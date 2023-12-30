@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -341,112 +342,176 @@ public final class GetInstancesInstance {
 
         @CustomType.Setter
         public Builder backupStatus(String backupStatus) {
-            this.backupStatus = Objects.requireNonNull(backupStatus);
+            if (backupStatus == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "backupStatus");
+            }
+            this.backupStatus = backupStatus;
             return this;
         }
         @CustomType.Setter
         public Builder coreDiskSize(Integer coreDiskSize) {
-            this.coreDiskSize = Objects.requireNonNull(coreDiskSize);
+            if (coreDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "coreDiskSize");
+            }
+            this.coreDiskSize = coreDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder coreDiskType(String coreDiskType) {
-            this.coreDiskType = Objects.requireNonNull(coreDiskType);
+            if (coreDiskType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "coreDiskType");
+            }
+            this.coreDiskType = coreDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder coreInstanceType(String coreInstanceType) {
-            this.coreInstanceType = Objects.requireNonNull(coreInstanceType);
+            if (coreInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "coreInstanceType");
+            }
+            this.coreInstanceType = coreInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder coreNodeCount(Integer coreNodeCount) {
-            this.coreNodeCount = Objects.requireNonNull(coreNodeCount);
+            if (coreNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "coreNodeCount");
+            }
+            this.coreNodeCount = coreNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder createdTime(String createdTime) {
-            this.createdTime = Objects.requireNonNull(createdTime);
+            if (createdTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "createdTime");
+            }
+            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
-            this.deletionProtection = Objects.requireNonNull(deletionProtection);
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
-            this.engineVersion = Objects.requireNonNull(engineVersion);
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder masterInstanceType(String masterInstanceType) {
-            this.masterInstanceType = Objects.requireNonNull(masterInstanceType);
+            if (masterInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "masterInstanceType");
+            }
+            this.masterInstanceType = masterInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder masterNodeCount(Integer masterNodeCount) {
-            this.masterNodeCount = Objects.requireNonNull(masterNodeCount);
+            if (masterNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "masterNodeCount");
+            }
+            this.masterNodeCount = masterNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder payType(String payType) {
-            this.payType = Objects.requireNonNull(payType);
+            if (payType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "payType");
+            }
+            this.payType = payType;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetInstancesInstance build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -467,42 +468,66 @@ public final class GetSimpleOfficeSitesSite {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
-            this.cidrBlock = Objects.requireNonNull(cidrBlock);
+            if (cidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "cidrBlock");
+            }
+            this.cidrBlock = cidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder customSecurityGroupId(String customSecurityGroupId) {
-            this.customSecurityGroupId = Objects.requireNonNull(customSecurityGroupId);
+            if (customSecurityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "customSecurityGroupId");
+            }
+            this.customSecurityGroupId = customSecurityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder desktopAccessType(String desktopAccessType) {
-            this.desktopAccessType = Objects.requireNonNull(desktopAccessType);
+            if (desktopAccessType == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "desktopAccessType");
+            }
+            this.desktopAccessType = desktopAccessType;
             return this;
         }
         @CustomType.Setter
         public Builder desktopVpcEndpoint(String desktopVpcEndpoint) {
-            this.desktopVpcEndpoint = Objects.requireNonNull(desktopVpcEndpoint);
+            if (desktopVpcEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "desktopVpcEndpoint");
+            }
+            this.desktopVpcEndpoint = desktopVpcEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder dnsAddresses(List<String> dnsAddresses) {
-            this.dnsAddresses = Objects.requireNonNull(dnsAddresses);
+            if (dnsAddresses == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "dnsAddresses");
+            }
+            this.dnsAddresses = dnsAddresses;
             return this;
         }
         public Builder dnsAddresses(String... dnsAddresses) {
@@ -510,42 +535,66 @@ public final class GetSimpleOfficeSitesSite {
         }
         @CustomType.Setter
         public Builder dnsUserName(String dnsUserName) {
-            this.dnsUserName = Objects.requireNonNull(dnsUserName);
+            if (dnsUserName == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "dnsUserName");
+            }
+            this.dnsUserName = dnsUserName;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder domainPassword(String domainPassword) {
-            this.domainPassword = Objects.requireNonNull(domainPassword);
+            if (domainPassword == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "domainPassword");
+            }
+            this.domainPassword = domainPassword;
             return this;
         }
         @CustomType.Setter
         public Builder domainUserName(String domainUserName) {
-            this.domainUserName = Objects.requireNonNull(domainUserName);
+            if (domainUserName == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "domainUserName");
+            }
+            this.domainUserName = domainUserName;
             return this;
         }
         @CustomType.Setter
         public Builder enableAdminAccess(Boolean enableAdminAccess) {
-            this.enableAdminAccess = Objects.requireNonNull(enableAdminAccess);
+            if (enableAdminAccess == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "enableAdminAccess");
+            }
+            this.enableAdminAccess = enableAdminAccess;
             return this;
         }
         @CustomType.Setter
         public Builder enableCrossDesktopAccess(Boolean enableCrossDesktopAccess) {
-            this.enableCrossDesktopAccess = Objects.requireNonNull(enableCrossDesktopAccess);
+            if (enableCrossDesktopAccess == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "enableCrossDesktopAccess");
+            }
+            this.enableCrossDesktopAccess = enableCrossDesktopAccess;
             return this;
         }
         @CustomType.Setter
         public Builder enableInternetAccess(Boolean enableInternetAccess) {
-            this.enableInternetAccess = Objects.requireNonNull(enableInternetAccess);
+            if (enableInternetAccess == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "enableInternetAccess");
+            }
+            this.enableInternetAccess = enableInternetAccess;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemIds(List<String> fileSystemIds) {
-            this.fileSystemIds = Objects.requireNonNull(fileSystemIds);
+            if (fileSystemIds == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "fileSystemIds");
+            }
+            this.fileSystemIds = fileSystemIds;
             return this;
         }
         public Builder fileSystemIds(String... fileSystemIds) {
@@ -553,52 +602,82 @@ public final class GetSimpleOfficeSitesSite {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mfaEnabled(Boolean mfaEnabled) {
-            this.mfaEnabled = Objects.requireNonNull(mfaEnabled);
+            if (mfaEnabled == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "mfaEnabled");
+            }
+            this.mfaEnabled = mfaEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder networkPackageId(String networkPackageId) {
-            this.networkPackageId = Objects.requireNonNull(networkPackageId);
+            if (networkPackageId == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "networkPackageId");
+            }
+            this.networkPackageId = networkPackageId;
             return this;
         }
         @CustomType.Setter
         public Builder officeSiteId(String officeSiteId) {
-            this.officeSiteId = Objects.requireNonNull(officeSiteId);
+            if (officeSiteId == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "officeSiteId");
+            }
+            this.officeSiteId = officeSiteId;
             return this;
         }
         @CustomType.Setter
         public Builder officeSiteType(String officeSiteType) {
-            this.officeSiteType = Objects.requireNonNull(officeSiteType);
+            if (officeSiteType == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "officeSiteType");
+            }
+            this.officeSiteType = officeSiteType;
             return this;
         }
         @CustomType.Setter
         public Builder simpleOfficeSiteName(String simpleOfficeSiteName) {
-            this.simpleOfficeSiteName = Objects.requireNonNull(simpleOfficeSiteName);
+            if (simpleOfficeSiteName == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "simpleOfficeSiteName");
+            }
+            this.simpleOfficeSiteName = simpleOfficeSiteName;
             return this;
         }
         @CustomType.Setter
         public Builder ssoEnabled(Boolean ssoEnabled) {
-            this.ssoEnabled = Objects.requireNonNull(ssoEnabled);
+            if (ssoEnabled == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "ssoEnabled");
+            }
+            this.ssoEnabled = ssoEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder ssoStatus(Boolean ssoStatus) {
-            this.ssoStatus = Objects.requireNonNull(ssoStatus);
+            if (ssoStatus == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "ssoStatus");
+            }
+            this.ssoStatus = ssoStatus;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subDnsAddresses(List<String> subDnsAddresses) {
-            this.subDnsAddresses = Objects.requireNonNull(subDnsAddresses);
+            if (subDnsAddresses == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "subDnsAddresses");
+            }
+            this.subDnsAddresses = subDnsAddresses;
             return this;
         }
         public Builder subDnsAddresses(String... subDnsAddresses) {
@@ -606,22 +685,34 @@ public final class GetSimpleOfficeSitesSite {
         }
         @CustomType.Setter
         public Builder subDomainName(String subDomainName) {
-            this.subDomainName = Objects.requireNonNull(subDomainName);
+            if (subDomainName == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "subDomainName");
+            }
+            this.subDomainName = subDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder trustPassword(String trustPassword) {
-            this.trustPassword = Objects.requireNonNull(trustPassword);
+            if (trustPassword == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "trustPassword");
+            }
+            this.trustPassword = trustPassword;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
-            this.vswitchIds = Objects.requireNonNull(vswitchIds);
+            if (vswitchIds == null) {
+              throw new MissingRequiredPropertyException("GetSimpleOfficeSitesSite", "vswitchIds");
+            }
+            this.vswitchIds = vswitchIds;
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {

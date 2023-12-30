@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class ServiceLogConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ServiceLogConfigArgs build() {
-            $.logstore = Objects.requireNonNull($.logstore, "expected parameter 'logstore' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.logstore == null) {
+                throw new MissingRequiredPropertyException("ServiceLogConfigArgs", "logstore");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ServiceLogConfigArgs", "project");
+            }
             return $;
         }
     }

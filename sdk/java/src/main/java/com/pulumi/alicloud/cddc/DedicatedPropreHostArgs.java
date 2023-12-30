@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cddc;
 import com.pulumi.alicloud.cddc.inputs.DedicatedPropreHostEcsClassListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -822,13 +823,27 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
         }
 
         public DedicatedPropreHostArgs build() {
-            $.ecsClassLists = Objects.requireNonNull($.ecsClassLists, "expected parameter 'ecsClassLists' to be non-null");
-            $.ecsZoneId = Objects.requireNonNull($.ecsZoneId, "expected parameter 'ecsZoneId' to be non-null");
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.ecsClassLists == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostArgs", "ecsClassLists");
+            }
+            if ($.ecsZoneId == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostArgs", "ecsZoneId");
+            }
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostArgs", "engine");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostArgs", "paymentType");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostArgs", "securityGroupId");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostArgs", "vswitchId");
+            }
             return $;
         }
     }

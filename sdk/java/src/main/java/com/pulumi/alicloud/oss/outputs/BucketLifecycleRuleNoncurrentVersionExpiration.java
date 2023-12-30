@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class BucketLifecycleRuleNoncurrentVersionExpiration {
 
         @CustomType.Setter
         public Builder days(Integer days) {
-            this.days = Objects.requireNonNull(days);
+            if (days == null) {
+              throw new MissingRequiredPropertyException("BucketLifecycleRuleNoncurrentVersionExpiration", "days");
+            }
+            this.days = days;
             return this;
         }
         public BucketLifecycleRuleNoncurrentVersionExpiration build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -311,9 +312,15 @@ public final class TransitRouterRouteEntryArgs extends com.pulumi.resources.Reso
         }
 
         public TransitRouterRouteEntryArgs build() {
-            $.transitRouterRouteEntryDestinationCidrBlock = Objects.requireNonNull($.transitRouterRouteEntryDestinationCidrBlock, "expected parameter 'transitRouterRouteEntryDestinationCidrBlock' to be non-null");
-            $.transitRouterRouteEntryNextHopType = Objects.requireNonNull($.transitRouterRouteEntryNextHopType, "expected parameter 'transitRouterRouteEntryNextHopType' to be non-null");
-            $.transitRouterRouteTableId = Objects.requireNonNull($.transitRouterRouteTableId, "expected parameter 'transitRouterRouteTableId' to be non-null");
+            if ($.transitRouterRouteEntryDestinationCidrBlock == null) {
+                throw new MissingRequiredPropertyException("TransitRouterRouteEntryArgs", "transitRouterRouteEntryDestinationCidrBlock");
+            }
+            if ($.transitRouterRouteEntryNextHopType == null) {
+                throw new MissingRequiredPropertyException("TransitRouterRouteEntryArgs", "transitRouterRouteEntryNextHopType");
+            }
+            if ($.transitRouterRouteTableId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterRouteEntryArgs", "transitRouterRouteTableId");
+            }
             return $;
         }
     }

@@ -1974,24 +1974,11 @@ func (o OssShipperParquetConfigArrayOutput) Index(i pulumi.IntInput) OssShipperP
 }
 
 type StoreEncryptConf struct {
-	// enable encryption. Default `false`
+	// Enable encryption. Default false.
 	Enable *bool `pulumi:"enable"`
-	// Supported encryption type, only supports `default(AES)`,`  m4 `
+	// Supported encryption type, only supports `default`(AES), `m4`.
 	EncryptType *string `pulumi:"encryptType"`
-	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ "cmkKeyId": "yourCmkKeyId", "arn": "yourRoleArn", "regionId": "youCmkRegionId" }`. See `userCmkInfo` below.
 	UserCmkInfo *StoreEncryptConfUserCmkInfo `pulumi:"userCmkInfo"`
 }
 
@@ -2007,24 +1994,11 @@ type StoreEncryptConfInput interface {
 }
 
 type StoreEncryptConfArgs struct {
-	// enable encryption. Default `false`
+	// Enable encryption. Default false.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Supported encryption type, only supports `default(AES)`,`  m4 `
+	// Supported encryption type, only supports `default`(AES), `m4`.
 	EncryptType pulumi.StringPtrInput `pulumi:"encryptType"`
-	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ "cmkKeyId": "yourCmkKeyId", "arn": "yourRoleArn", "regionId": "youCmkRegionId" }`. See `userCmkInfo` below.
 	UserCmkInfo StoreEncryptConfUserCmkInfoPtrInput `pulumi:"userCmkInfo"`
 }
 
@@ -2105,33 +2079,17 @@ func (o StoreEncryptConfOutput) ToStoreEncryptConfPtrOutputWithContext(ctx conte
 	}).(StoreEncryptConfPtrOutput)
 }
 
-// enable encryption. Default `false`
+// Enable encryption. Default false.
 func (o StoreEncryptConfOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConf) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Supported encryption type, only supports `default(AES)`,`  m4 `
+// Supported encryption type, only supports `default`(AES), `m4`.
 func (o StoreEncryptConfOutput) EncryptType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConf) *string { return v.EncryptType }).(pulumi.StringPtrOutput)
 }
 
-// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
+// User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ "cmkKeyId": "yourCmkKeyId", "arn": "yourRoleArn", "regionId": "youCmkRegionId" }`. See `userCmkInfo` below.
 func (o StoreEncryptConfOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConf) *StoreEncryptConfUserCmkInfo { return v.UserCmkInfo }).(StoreEncryptConfUserCmkInfoPtrOutput)
 }
@@ -2160,7 +2118,7 @@ func (o StoreEncryptConfPtrOutput) Elem() StoreEncryptConfOutput {
 	}).(StoreEncryptConfOutput)
 }
 
-// enable encryption. Default `false`
+// Enable encryption. Default false.
 func (o StoreEncryptConfPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConf) *bool {
 		if v == nil {
@@ -2170,7 +2128,7 @@ func (o StoreEncryptConfPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Supported encryption type, only supports `default(AES)`,`  m4 `
+// Supported encryption type, only supports `default`(AES), `m4`.
 func (o StoreEncryptConfPtrOutput) EncryptType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConf) *string {
 		if v == nil {
@@ -2180,23 +2138,7 @@ func (o StoreEncryptConfPtrOutput) EncryptType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
+// User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ "cmkKeyId": "yourCmkKeyId", "arn": "yourRoleArn", "regionId": "youCmkRegionId" }`. See `userCmkInfo` below.
 func (o StoreEncryptConfPtrOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConf) *StoreEncryptConfUserCmkInfo {
 		if v == nil {
@@ -2207,12 +2149,12 @@ func (o StoreEncryptConfPtrOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrO
 }
 
 type StoreEncryptConfUserCmkInfo struct {
-	// role arn.
-	Arn string `pulumi:"arn"`
+	// Role arn.
+	Arn *string `pulumi:"arn"`
 	// User master key id.
-	CmkKeyId string `pulumi:"cmkKeyId"`
-	// Region id where the  user master key id is located.
-	RegionId string `pulumi:"regionId"`
+	CmkKeyId *string `pulumi:"cmkKeyId"`
+	// Region id where the user master key id is located.
+	RegionId *string `pulumi:"regionId"`
 }
 
 // StoreEncryptConfUserCmkInfoInput is an input type that accepts StoreEncryptConfUserCmkInfoArgs and StoreEncryptConfUserCmkInfoOutput values.
@@ -2227,12 +2169,12 @@ type StoreEncryptConfUserCmkInfoInput interface {
 }
 
 type StoreEncryptConfUserCmkInfoArgs struct {
-	// role arn.
-	Arn pulumi.StringInput `pulumi:"arn"`
+	// Role arn.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
 	// User master key id.
-	CmkKeyId pulumi.StringInput `pulumi:"cmkKeyId"`
-	// Region id where the  user master key id is located.
-	RegionId pulumi.StringInput `pulumi:"regionId"`
+	CmkKeyId pulumi.StringPtrInput `pulumi:"cmkKeyId"`
+	// Region id where the user master key id is located.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
 }
 
 func (StoreEncryptConfUserCmkInfoArgs) ElementType() reflect.Type {
@@ -2312,19 +2254,19 @@ func (o StoreEncryptConfUserCmkInfoOutput) ToStoreEncryptConfUserCmkInfoPtrOutpu
 	}).(StoreEncryptConfUserCmkInfoPtrOutput)
 }
 
-// role arn.
-func (o StoreEncryptConfUserCmkInfoOutput) Arn() pulumi.StringOutput {
-	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) string { return v.Arn }).(pulumi.StringOutput)
+// Role arn.
+func (o StoreEncryptConfUserCmkInfoOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
 // User master key id.
-func (o StoreEncryptConfUserCmkInfoOutput) CmkKeyId() pulumi.StringOutput {
-	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) string { return v.CmkKeyId }).(pulumi.StringOutput)
+func (o StoreEncryptConfUserCmkInfoOutput) CmkKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) *string { return v.CmkKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Region id where the  user master key id is located.
-func (o StoreEncryptConfUserCmkInfoOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) string { return v.RegionId }).(pulumi.StringOutput)
+// Region id where the user master key id is located.
+func (o StoreEncryptConfUserCmkInfoOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) *string { return v.RegionId }).(pulumi.StringPtrOutput)
 }
 
 type StoreEncryptConfUserCmkInfoPtrOutput struct{ *pulumi.OutputState }
@@ -2351,13 +2293,13 @@ func (o StoreEncryptConfUserCmkInfoPtrOutput) Elem() StoreEncryptConfUserCmkInfo
 	}).(StoreEncryptConfUserCmkInfoOutput)
 }
 
-// role arn.
+// Role arn.
 func (o StoreEncryptConfUserCmkInfoPtrOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Arn
+		return v.Arn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2367,17 +2309,17 @@ func (o StoreEncryptConfUserCmkInfoPtrOutput) CmkKeyId() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.CmkKeyId
+		return v.CmkKeyId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Region id where the  user master key id is located.
+// Region id where the user master key id is located.
 func (o StoreEncryptConfUserCmkInfoPtrOutput) RegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.RegionId
+		return v.RegionId
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,8 +225,12 @@ public final class ClientKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClientKeyArgs build() {
-            $.aapName = Objects.requireNonNull($.aapName, "expected parameter 'aapName' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
+            if ($.aapName == null) {
+                throw new MissingRequiredPropertyException("ClientKeyArgs", "aapName");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("ClientKeyArgs", "password");
+            }
             return $;
         }
     }

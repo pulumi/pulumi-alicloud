@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotProbesProbe;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -127,22 +128,30 @@ public final class GetHoneypotProbesResult {
 
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -150,27 +159,34 @@ public final class GetHoneypotProbesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder probeStatus(@Nullable String probeStatus) {
+
             this.probeStatus = probeStatus;
             return this;
         }
         @CustomType.Setter
         public Builder probeType(@Nullable String probeType) {
+
             this.probeType = probeType;
             return this;
         }
         @CustomType.Setter
         public Builder probes(List<GetHoneypotProbesProbe> probes) {
-            this.probes = Objects.requireNonNull(probes);
+            if (probes == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesResult", "probes");
+            }
+            this.probes = probes;
             return this;
         }
         public Builder probes(GetHoneypotProbesProbe... probes) {

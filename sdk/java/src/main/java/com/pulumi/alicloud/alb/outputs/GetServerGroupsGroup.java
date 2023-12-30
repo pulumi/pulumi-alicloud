@@ -7,6 +7,7 @@ import com.pulumi.alicloud.alb.outputs.GetServerGroupsGroupHealthCheckConfig;
 import com.pulumi.alicloud.alb.outputs.GetServerGroupsGroupServer;
 import com.pulumi.alicloud.alb.outputs.GetServerGroupsGroupStickySessionConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -188,7 +189,10 @@ public final class GetServerGroupsGroup {
 
         @CustomType.Setter
         public Builder healthCheckConfigs(List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs) {
-            this.healthCheckConfigs = Objects.requireNonNull(healthCheckConfigs);
+            if (healthCheckConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "healthCheckConfigs");
+            }
+            this.healthCheckConfigs = healthCheckConfigs;
             return this;
         }
         public Builder healthCheckConfigs(GetServerGroupsGroupHealthCheckConfig... healthCheckConfigs) {
@@ -196,32 +200,50 @@ public final class GetServerGroupsGroup {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder scheduler(String scheduler) {
-            this.scheduler = Objects.requireNonNull(scheduler);
+            if (scheduler == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "scheduler");
+            }
+            this.scheduler = scheduler;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
-            this.serverGroupId = Objects.requireNonNull(serverGroupId);
+            if (serverGroupId == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "serverGroupId");
+            }
+            this.serverGroupId = serverGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupName(String serverGroupName) {
-            this.serverGroupName = Objects.requireNonNull(serverGroupName);
+            if (serverGroupName == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "serverGroupName");
+            }
+            this.serverGroupName = serverGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder servers(List<GetServerGroupsGroupServer> servers) {
-            this.servers = Objects.requireNonNull(servers);
+            if (servers == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "servers");
+            }
+            this.servers = servers;
             return this;
         }
         public Builder servers(GetServerGroupsGroupServer... servers) {
@@ -229,12 +251,18 @@ public final class GetServerGroupsGroup {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder stickySessionConfigs(List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs) {
-            this.stickySessionConfigs = Objects.requireNonNull(stickySessionConfigs);
+            if (stickySessionConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "stickySessionConfigs");
+            }
+            this.stickySessionConfigs = stickySessionConfigs;
             return this;
         }
         public Builder stickySessionConfigs(GetServerGroupsGroupStickySessionConfig... stickySessionConfigs) {
@@ -242,12 +270,18 @@ public final class GetServerGroupsGroup {
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetServerGroupsGroup build() {

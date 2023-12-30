@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.alicloud.dns.outputs.GetGtmInstancesInstanceAlertConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -269,7 +270,10 @@ public final class GetGtmInstancesInstance {
 
         @CustomType.Setter
         public Builder alertConfigs(List<GetGtmInstancesInstanceAlertConfig> alertConfigs) {
-            this.alertConfigs = Objects.requireNonNull(alertConfigs);
+            if (alertConfigs == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "alertConfigs");
+            }
+            this.alertConfigs = alertConfigs;
             return this;
         }
         public Builder alertConfigs(GetGtmInstancesInstanceAlertConfig... alertConfigs) {
@@ -277,7 +281,10 @@ public final class GetGtmInstancesInstance {
         }
         @CustomType.Setter
         public Builder alertGroups(List<String> alertGroups) {
-            this.alertGroups = Objects.requireNonNull(alertGroups);
+            if (alertGroups == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "alertGroups");
+            }
+            this.alertGroups = alertGroups;
             return this;
         }
         public Builder alertGroups(String... alertGroups) {
@@ -285,77 +292,122 @@ public final class GetGtmInstancesInstance {
         }
         @CustomType.Setter
         public Builder cnameType(String cnameType) {
-            this.cnameType = Objects.requireNonNull(cnameType);
+            if (cnameType == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "cnameType");
+            }
+            this.cnameType = cnameType;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder packageEdition(String packageEdition) {
-            this.packageEdition = Objects.requireNonNull(packageEdition);
+            if (packageEdition == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "packageEdition");
+            }
+            this.packageEdition = packageEdition;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder publicCnameMode(String publicCnameMode) {
-            this.publicCnameMode = Objects.requireNonNull(publicCnameMode);
+            if (publicCnameMode == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "publicCnameMode");
+            }
+            this.publicCnameMode = publicCnameMode;
             return this;
         }
         @CustomType.Setter
         public Builder publicRr(String publicRr) {
-            this.publicRr = Objects.requireNonNull(publicRr);
+            if (publicRr == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "publicRr");
+            }
+            this.publicRr = publicRr;
             return this;
         }
         @CustomType.Setter
         public Builder publicUserDomainName(String publicUserDomainName) {
-            this.publicUserDomainName = Objects.requireNonNull(publicUserDomainName);
+            if (publicUserDomainName == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "publicUserDomainName");
+            }
+            this.publicUserDomainName = publicUserDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder publicZoneName(String publicZoneName) {
-            this.publicZoneName = Objects.requireNonNull(publicZoneName);
+            if (publicZoneName == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "publicZoneName");
+            }
+            this.publicZoneName = publicZoneName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder strategyMode(String strategyMode) {
-            this.strategyMode = Objects.requireNonNull(strategyMode);
+            if (strategyMode == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "strategyMode");
+            }
+            this.strategyMode = strategyMode;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(Integer ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstance", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         public GetGtmInstancesInstance build() {

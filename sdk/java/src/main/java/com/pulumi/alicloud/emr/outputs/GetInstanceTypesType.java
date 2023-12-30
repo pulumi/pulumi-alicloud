@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetInstanceTypesType {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localStorageCapacity(Integer localStorageCapacity) {
-            this.localStorageCapacity = Objects.requireNonNull(localStorageCapacity);
+            if (localStorageCapacity == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "localStorageCapacity");
+            }
+            this.localStorageCapacity = localStorageCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesType", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetInstanceTypesType build() {

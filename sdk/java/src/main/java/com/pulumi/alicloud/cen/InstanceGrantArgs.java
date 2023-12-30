@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class InstanceGrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceGrantArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.cenOwnerId = Objects.requireNonNull($.cenOwnerId, "expected parameter 'cenOwnerId' to be non-null");
-            $.childInstanceId = Objects.requireNonNull($.childInstanceId, "expected parameter 'childInstanceId' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("InstanceGrantArgs", "cenId");
+            }
+            if ($.cenOwnerId == null) {
+                throw new MissingRequiredPropertyException("InstanceGrantArgs", "cenOwnerId");
+            }
+            if ($.childInstanceId == null) {
+                throw new MissingRequiredPropertyException("InstanceGrantArgs", "childInstanceId");
+            }
             return $;
         }
     }

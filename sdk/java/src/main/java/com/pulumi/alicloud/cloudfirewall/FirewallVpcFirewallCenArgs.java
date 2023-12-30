@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudfirewall;
 import com.pulumi.alicloud.cloudfirewall.inputs.FirewallVpcFirewallCenLocalVpcArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -299,11 +300,21 @@ public final class FirewallVpcFirewallCenArgs extends com.pulumi.resources.Resou
         }
 
         public FirewallVpcFirewallCenArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.localVpc = Objects.requireNonNull($.localVpc, "expected parameter 'localVpc' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
-            $.vpcFirewallName = Objects.requireNonNull($.vpcFirewallName, "expected parameter 'vpcFirewallName' to be non-null");
-            $.vpcRegion = Objects.requireNonNull($.vpcRegion, "expected parameter 'vpcRegion' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallCenArgs", "cenId");
+            }
+            if ($.localVpc == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallCenArgs", "localVpc");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallCenArgs", "status");
+            }
+            if ($.vpcFirewallName == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallCenArgs", "vpcFirewallName");
+            }
+            if ($.vpcRegion == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallCenArgs", "vpcRegion");
+            }
             return $;
         }
     }

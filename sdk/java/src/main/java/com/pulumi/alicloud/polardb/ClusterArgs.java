@@ -7,6 +7,7 @@ import com.pulumi.alicloud.polardb.inputs.ClusterDbClusterIpArrayArgs;
 import com.pulumi.alicloud.polardb.inputs.ClusterParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -2464,9 +2465,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.dbNodeClass = Objects.requireNonNull($.dbNodeClass, "expected parameter 'dbNodeClass' to be non-null");
-            $.dbType = Objects.requireNonNull($.dbType, "expected parameter 'dbType' to be non-null");
-            $.dbVersion = Objects.requireNonNull($.dbVersion, "expected parameter 'dbVersion' to be non-null");
+            if ($.dbNodeClass == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "dbNodeClass");
+            }
+            if ($.dbType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "dbType");
+            }
+            if ($.dbVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "dbVersion");
+            }
             return $;
         }
     }

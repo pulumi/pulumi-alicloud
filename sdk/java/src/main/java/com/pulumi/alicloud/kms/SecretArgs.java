@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -609,9 +610,15 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SecretArgs build() {
-            $.secretData = Objects.requireNonNull($.secretData, "expected parameter 'secretData' to be non-null");
-            $.secretName = Objects.requireNonNull($.secretName, "expected parameter 'secretName' to be non-null");
-            $.versionId = Objects.requireNonNull($.versionId, "expected parameter 'versionId' to be non-null");
+            if ($.secretData == null) {
+                throw new MissingRequiredPropertyException("SecretArgs", "secretData");
+            }
+            if ($.secretName == null) {
+                throw new MissingRequiredPropertyException("SecretArgs", "secretName");
+            }
+            if ($.versionId == null) {
+                throw new MissingRequiredPropertyException("SecretArgs", "versionId");
+            }
             return $;
         }
     }

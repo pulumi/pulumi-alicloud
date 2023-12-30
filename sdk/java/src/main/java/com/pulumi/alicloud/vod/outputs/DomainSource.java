@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vod.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,32 @@ public final class DomainSource {
 
         @CustomType.Setter
         public Builder sourceContent(String sourceContent) {
-            this.sourceContent = Objects.requireNonNull(sourceContent);
+            if (sourceContent == null) {
+              throw new MissingRequiredPropertyException("DomainSource", "sourceContent");
+            }
+            this.sourceContent = sourceContent;
             return this;
         }
         @CustomType.Setter
         public Builder sourcePort(String sourcePort) {
-            this.sourcePort = Objects.requireNonNull(sourcePort);
+            if (sourcePort == null) {
+              throw new MissingRequiredPropertyException("DomainSource", "sourcePort");
+            }
+            this.sourcePort = sourcePort;
             return this;
         }
         @CustomType.Setter
         public Builder sourcePriority(@Nullable String sourcePriority) {
+
             this.sourcePriority = sourcePriority;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("DomainSource", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         public DomainSource build() {

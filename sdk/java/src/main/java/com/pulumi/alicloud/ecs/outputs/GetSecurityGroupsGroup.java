@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -220,47 +221,72 @@ public final class GetSecurityGroupsGroup {
 
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupsGroup", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder innerAccess(Boolean innerAccess) {
-            this.innerAccess = Objects.requireNonNull(innerAccess);
+            if (innerAccess == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupsGroup", "innerAccess");
+            }
+            this.innerAccess = innerAccess;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupsGroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupsGroup", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupType(String securityGroupType) {
-            this.securityGroupType = Objects.requireNonNull(securityGroupType);
+            if (securityGroupType == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupsGroup", "securityGroupType");
+            }
+            this.securityGroupType = securityGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupsGroup", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetSecurityGroupsGroup build() {

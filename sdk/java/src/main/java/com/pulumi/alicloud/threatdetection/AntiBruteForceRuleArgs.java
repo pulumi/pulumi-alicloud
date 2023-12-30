@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -274,11 +275,21 @@ public final class AntiBruteForceRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         public AntiBruteForceRuleArgs build() {
-            $.antiBruteForceRuleName = Objects.requireNonNull($.antiBruteForceRuleName, "expected parameter 'antiBruteForceRuleName' to be non-null");
-            $.failCount = Objects.requireNonNull($.failCount, "expected parameter 'failCount' to be non-null");
-            $.forbiddenTime = Objects.requireNonNull($.forbiddenTime, "expected parameter 'forbiddenTime' to be non-null");
-            $.span = Objects.requireNonNull($.span, "expected parameter 'span' to be non-null");
-            $.uuidLists = Objects.requireNonNull($.uuidLists, "expected parameter 'uuidLists' to be non-null");
+            if ($.antiBruteForceRuleName == null) {
+                throw new MissingRequiredPropertyException("AntiBruteForceRuleArgs", "antiBruteForceRuleName");
+            }
+            if ($.failCount == null) {
+                throw new MissingRequiredPropertyException("AntiBruteForceRuleArgs", "failCount");
+            }
+            if ($.forbiddenTime == null) {
+                throw new MissingRequiredPropertyException("AntiBruteForceRuleArgs", "forbiddenTime");
+            }
+            if ($.span == null) {
+                throw new MissingRequiredPropertyException("AntiBruteForceRuleArgs", "span");
+            }
+            if ($.uuidLists == null) {
+                throw new MissingRequiredPropertyException("AntiBruteForceRuleArgs", "uuidLists");
+            }
             return $;
         }
     }

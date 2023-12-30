@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -49,12 +50,16 @@ public final class DomainReferConfig {
 
         @CustomType.Setter
         public Builder allowEmpty(@Nullable String allowEmpty) {
+
             this.allowEmpty = allowEmpty;
             return this;
         }
         @CustomType.Setter
         public Builder referLists(List<String> referLists) {
-            this.referLists = Objects.requireNonNull(referLists);
+            if (referLists == null) {
+              throw new MissingRequiredPropertyException("DomainReferConfig", "referLists");
+            }
+            this.referLists = referLists;
             return this;
         }
         public Builder referLists(String... referLists) {
@@ -62,6 +67,7 @@ public final class DomainReferConfig {
         }
         @CustomType.Setter
         public Builder referType(@Nullable String referType) {
+
             this.referType = referType;
             return this;
         }

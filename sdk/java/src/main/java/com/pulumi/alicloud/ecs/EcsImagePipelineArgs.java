@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -627,8 +628,12 @@ public final class EcsImagePipelineArgs extends com.pulumi.resources.ResourceArg
         }
 
         public EcsImagePipelineArgs build() {
-            $.baseImage = Objects.requireNonNull($.baseImage, "expected parameter 'baseImage' to be non-null");
-            $.baseImageType = Objects.requireNonNull($.baseImageType, "expected parameter 'baseImageType' to be non-null");
+            if ($.baseImage == null) {
+                throw new MissingRequiredPropertyException("EcsImagePipelineArgs", "baseImage");
+            }
+            if ($.baseImageType == null) {
+                throw new MissingRequiredPropertyException("EcsImagePipelineArgs", "baseImageType");
+            }
             return $;
         }
     }

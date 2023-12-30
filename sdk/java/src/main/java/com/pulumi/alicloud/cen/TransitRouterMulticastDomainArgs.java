@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -189,7 +190,9 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         public TransitRouterMulticastDomainArgs build() {
-            $.transitRouterId = Objects.requireNonNull($.transitRouterId, "expected parameter 'transitRouterId' to be non-null");
+            if ($.transitRouterId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterMulticastDomainArgs", "transitRouterId");
+            }
             return $;
         }
     }

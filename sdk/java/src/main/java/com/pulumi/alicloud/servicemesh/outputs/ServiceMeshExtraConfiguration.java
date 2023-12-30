@@ -44,6 +44,7 @@ public final class ServiceMeshExtraConfiguration {
 
         @CustomType.Setter
         public Builder crAggregationEnabled(@Nullable Boolean crAggregationEnabled) {
+
             this.crAggregationEnabled = crAggregationEnabled;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eventbridge.outputs;
 
 import com.pulumi.alicloud.eventbridge.outputs.GetEventBusesBus;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -88,7 +89,10 @@ public final class GetEventBusesResult {
 
         @CustomType.Setter
         public Builder buses(List<GetEventBusesBus> buses) {
-            this.buses = Objects.requireNonNull(buses);
+            if (buses == null) {
+              throw new MissingRequiredPropertyException("GetEventBusesResult", "buses");
+            }
+            this.buses = buses;
             return this;
         }
         public Builder buses(GetEventBusesBus... buses) {
@@ -96,17 +100,24 @@ public final class GetEventBusesResult {
         }
         @CustomType.Setter
         public Builder eventBusType(@Nullable String eventBusType) {
+
             this.eventBusType = eventBusType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEventBusesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEventBusesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -114,17 +125,22 @@ public final class GetEventBusesResult {
         }
         @CustomType.Setter
         public Builder namePrefix(@Nullable String namePrefix) {
+
             this.namePrefix = namePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetEventBusesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -132,6 +148,7 @@ public final class GetEventBusesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

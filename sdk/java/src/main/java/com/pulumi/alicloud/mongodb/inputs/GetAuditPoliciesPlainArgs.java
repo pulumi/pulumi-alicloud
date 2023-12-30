@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mongodb.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +93,9 @@ public final class GetAuditPoliciesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetAuditPoliciesPlainArgs build() {
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("GetAuditPoliciesPlainArgs", "dbInstanceId");
+            }
             return $;
         }
     }

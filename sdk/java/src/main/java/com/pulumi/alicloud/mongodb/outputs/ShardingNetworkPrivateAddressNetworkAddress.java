@@ -170,51 +170,61 @@ public final class ShardingNetworkPrivateAddressNetworkAddress {
 
         @CustomType.Setter
         public Builder expiredTime(@Nullable String expiredTime) {
+
             this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder networkAddress(@Nullable String networkAddress) {
+
             this.networkAddress = networkAddress;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
+
             this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
+
             this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeType(@Nullable String nodeType) {
+
             this.nodeType = nodeType;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable String port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder role(@Nullable String role) {
+
             this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
+
             this.vswitchId = vswitchId;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eventbridge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,21 +87,27 @@ public final class ConnectionNetworkParameters {
 
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("ConnectionNetworkParameters", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(@Nullable String securityGroupId) {
+
             this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitcheId(@Nullable String vswitcheId) {
+
             this.vswitcheId = vswitcheId;
             return this;
         }

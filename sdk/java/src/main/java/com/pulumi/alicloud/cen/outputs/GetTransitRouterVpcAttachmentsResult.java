@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterVpcAttachmentsAttachment;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -106,7 +107,10 @@ public final class GetTransitRouterVpcAttachmentsResult {
 
         @CustomType.Setter
         public Builder attachments(List<GetTransitRouterVpcAttachmentsAttachment> attachments) {
-            this.attachments = Objects.requireNonNull(attachments);
+            if (attachments == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsResult", "attachments");
+            }
+            this.attachments = attachments;
             return this;
         }
         public Builder attachments(GetTransitRouterVpcAttachmentsAttachment... attachments) {
@@ -114,17 +118,26 @@ public final class GetTransitRouterVpcAttachmentsResult {
         }
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsResult", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -132,16 +145,19 @@ public final class GetTransitRouterVpcAttachmentsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(@Nullable String transitRouterId) {
+
             this.transitRouterId = transitRouterId;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetAccessStrategiesStrategyLine {
 
         @CustomType.Setter
         public Builder groupCode(String groupCode) {
-            this.groupCode = Objects.requireNonNull(groupCode);
+            if (groupCode == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategyLine", "groupCode");
+            }
+            this.groupCode = groupCode;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategyLine", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder lineCode(String lineCode) {
-            this.lineCode = Objects.requireNonNull(lineCode);
+            if (lineCode == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategyLine", "lineCode");
+            }
+            this.lineCode = lineCode;
             return this;
         }
         @CustomType.Setter
         public Builder lineName(String lineName) {
-            this.lineName = Objects.requireNonNull(lineName);
+            if (lineName == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategyLine", "lineName");
+            }
+            this.lineName = lineName;
             return this;
         }
         public GetAccessStrategiesStrategyLine build() {

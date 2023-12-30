@@ -63,11 +63,13 @@ public final class ListenerQuicConfig {
 
         @CustomType.Setter
         public Builder quicListenerId(@Nullable String quicListenerId) {
+
             this.quicListenerId = quicListenerId;
             return this;
         }
         @CustomType.Setter
         public Builder quicUpgradeEnabled(@Nullable Boolean quicUpgradeEnabled) {
+
             this.quicUpgradeEnabled = quicUpgradeEnabled;
             return this;
         }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs;
 import com.pulumi.alicloud.ecs.inputs.DedicatedHostNetworkAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -796,7 +797,9 @@ public final class DedicatedHostArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DedicatedHostArgs build() {
-            $.dedicatedHostType = Objects.requireNonNull($.dedicatedHostType, "expected parameter 'dedicatedHostType' to be non-null");
+            if ($.dedicatedHostType == null) {
+                throw new MissingRequiredPropertyException("DedicatedHostArgs", "dedicatedHostType");
+            }
             return $;
         }
     }

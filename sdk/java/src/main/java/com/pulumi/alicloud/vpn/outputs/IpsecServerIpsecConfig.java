@@ -87,21 +87,25 @@ public final class IpsecServerIpsecConfig {
 
         @CustomType.Setter
         public Builder ipsecAuthAlg(@Nullable String ipsecAuthAlg) {
+
             this.ipsecAuthAlg = ipsecAuthAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ipsecEncAlg(@Nullable String ipsecEncAlg) {
+
             this.ipsecEncAlg = ipsecEncAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ipsecLifetime(@Nullable Integer ipsecLifetime) {
+
             this.ipsecLifetime = ipsecLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder ipsecPfs(@Nullable String ipsecPfs) {
+
             this.ipsecPfs = ipsecPfs;
             return this;
         }

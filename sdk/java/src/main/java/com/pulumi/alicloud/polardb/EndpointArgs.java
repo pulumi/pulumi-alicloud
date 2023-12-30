@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -236,7 +237,9 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EndpointArgs build() {
-            $.dbClusterId = Objects.requireNonNull($.dbClusterId, "expected parameter 'dbClusterId' to be non-null");
+            if ($.dbClusterId == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "dbClusterId");
+            }
             return $;
         }
     }

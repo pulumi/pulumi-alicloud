@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetTransitRouterMulticastDomainAssociationsAssociation {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainAssociationsAssociation", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceId(String resourceId) {
-            this.resourceId = Objects.requireNonNull(resourceId);
+            if (resourceId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainAssociationsAssociation", "resourceId");
+            }
+            this.resourceId = resourceId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceOwnerId(Integer resourceOwnerId) {
-            this.resourceOwnerId = Objects.requireNonNull(resourceOwnerId);
+            if (resourceOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainAssociationsAssociation", "resourceOwnerId");
+            }
+            this.resourceOwnerId = resourceOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainAssociationsAssociation", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainAssociationsAssociation", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainAssociationsAssociation", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterMulticastDomainId(String transitRouterMulticastDomainId) {
-            this.transitRouterMulticastDomainId = Objects.requireNonNull(transitRouterMulticastDomainId);
+            if (transitRouterMulticastDomainId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainAssociationsAssociation", "transitRouterMulticastDomainId");
+            }
+            this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainAssociationsAssociation", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetTransitRouterMulticastDomainAssociationsAssociation build() {

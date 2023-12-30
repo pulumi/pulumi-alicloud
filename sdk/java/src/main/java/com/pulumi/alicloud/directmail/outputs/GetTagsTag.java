@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.directmail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetTagsTag {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder tagId(String tagId) {
-            this.tagId = Objects.requireNonNull(tagId);
+            if (tagId == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "tagId");
+            }
+            this.tagId = tagId;
             return this;
         }
         @CustomType.Setter
         public Builder tagName(String tagName) {
-            this.tagName = Objects.requireNonNull(tagName);
+            if (tagName == null) {
+              throw new MissingRequiredPropertyException("GetTagsTag", "tagName");
+            }
+            this.tagName = tagName;
             return this;
         }
         public GetTagsTag build() {

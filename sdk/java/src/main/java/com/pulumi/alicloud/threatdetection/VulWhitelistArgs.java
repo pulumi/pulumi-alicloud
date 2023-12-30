@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class VulWhitelistArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VulWhitelistArgs build() {
-            $.whitelist = Objects.requireNonNull($.whitelist, "expected parameter 'whitelist' to be non-null");
+            if ($.whitelist == null) {
+                throw new MissingRequiredPropertyException("VulWhitelistArgs", "whitelist");
+            }
             return $;
         }
     }

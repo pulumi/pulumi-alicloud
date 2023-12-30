@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.alicloud.rds.outputs.GetModifyParameterLogsLog;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,22 +77,34 @@ public final class GetModifyParameterLogsResult {
 
         @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
-            this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
+            if (dbInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsResult", "dbInstanceId");
+            }
+            this.dbInstanceId = dbInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsResult", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logs(List<GetModifyParameterLogsLog> logs) {
-            this.logs = Objects.requireNonNull(logs);
+            if (logs == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsResult", "logs");
+            }
+            this.logs = logs;
             return this;
         }
         public Builder logs(GetModifyParameterLogsLog... logs) {
@@ -99,12 +112,16 @@ public final class GetModifyParameterLogsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsResult", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         public GetModifyParameterLogsResult build() {

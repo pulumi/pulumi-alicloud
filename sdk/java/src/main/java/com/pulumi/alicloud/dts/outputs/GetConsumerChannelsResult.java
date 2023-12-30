@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dts.outputs;
 
 import com.pulumi.alicloud.dts.outputs.GetConsumerChannelsChannel;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -70,7 +71,10 @@ public final class GetConsumerChannelsResult {
 
         @CustomType.Setter
         public Builder channels(List<GetConsumerChannelsChannel> channels) {
-            this.channels = Objects.requireNonNull(channels);
+            if (channels == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsResult", "channels");
+            }
+            this.channels = channels;
             return this;
         }
         public Builder channels(GetConsumerChannelsChannel... channels) {
@@ -78,17 +82,26 @@ public final class GetConsumerChannelsResult {
         }
         @CustomType.Setter
         public Builder dtsInstanceId(String dtsInstanceId) {
-            this.dtsInstanceId = Objects.requireNonNull(dtsInstanceId);
+            if (dtsInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsResult", "dtsInstanceId");
+            }
+            this.dtsInstanceId = dtsInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -96,6 +109,7 @@ public final class GetConsumerChannelsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

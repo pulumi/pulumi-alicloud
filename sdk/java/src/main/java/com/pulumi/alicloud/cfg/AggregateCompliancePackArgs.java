@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cfg.inputs.AggregateCompliancePackConfigRuleArgs;
 import com.pulumi.alicloud.cfg.inputs.AggregateCompliancePackConfigRuleIdArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -342,10 +343,18 @@ public final class AggregateCompliancePackArgs extends com.pulumi.resources.Reso
         }
 
         public AggregateCompliancePackArgs build() {
-            $.aggregateCompliancePackName = Objects.requireNonNull($.aggregateCompliancePackName, "expected parameter 'aggregateCompliancePackName' to be non-null");
-            $.aggregatorId = Objects.requireNonNull($.aggregatorId, "expected parameter 'aggregatorId' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.riskLevel = Objects.requireNonNull($.riskLevel, "expected parameter 'riskLevel' to be non-null");
+            if ($.aggregateCompliancePackName == null) {
+                throw new MissingRequiredPropertyException("AggregateCompliancePackArgs", "aggregateCompliancePackName");
+            }
+            if ($.aggregatorId == null) {
+                throw new MissingRequiredPropertyException("AggregateCompliancePackArgs", "aggregatorId");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("AggregateCompliancePackArgs", "description");
+            }
+            if ($.riskLevel == null) {
+                throw new MissingRequiredPropertyException("AggregateCompliancePackArgs", "riskLevel");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.servicecatalog.outputs;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProvisionedProductsProduct;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProvisionedProductsProvisionedProduct;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -161,22 +162,30 @@ public final class GetProvisionedProductsResult {
 
         @CustomType.Setter
         public Builder accessLevelFilter(@Nullable String accessLevelFilter) {
+
             this.accessLevelFilter = accessLevelFilter;
             return this;
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -184,12 +193,16 @@ public final class GetProvisionedProductsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -197,22 +210,28 @@ public final class GetProvisionedProductsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder products(List<GetProvisionedProductsProduct> products) {
-            this.products = Objects.requireNonNull(products);
+            if (products == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsResult", "products");
+            }
+            this.products = products;
             return this;
         }
         public Builder products(GetProvisionedProductsProduct... products) {
@@ -220,7 +239,10 @@ public final class GetProvisionedProductsResult {
         }
         @CustomType.Setter
         public Builder provisionedProducts(List<GetProvisionedProductsProvisionedProduct> provisionedProducts) {
-            this.provisionedProducts = Objects.requireNonNull(provisionedProducts);
+            if (provisionedProducts == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsResult", "provisionedProducts");
+            }
+            this.provisionedProducts = provisionedProducts;
             return this;
         }
         public Builder provisionedProducts(GetProvisionedProductsProvisionedProduct... provisionedProducts) {
@@ -228,11 +250,13 @@ public final class GetProvisionedProductsResult {
         }
         @CustomType.Setter
         public Builder sortBy(@Nullable String sortBy) {
+
             this.sortBy = sortBy;
             return this;
         }
         @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
+
             this.sortOrder = sortOrder;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -101,6 +102,7 @@ public final class EventRuleEventPattern {
 
         @CustomType.Setter
         public Builder eventTypeLists(@Nullable List<String> eventTypeLists) {
+
             this.eventTypeLists = eventTypeLists;
             return this;
         }
@@ -109,6 +111,7 @@ public final class EventRuleEventPattern {
         }
         @CustomType.Setter
         public Builder levelLists(@Nullable List<String> levelLists) {
+
             this.levelLists = levelLists;
             return this;
         }
@@ -117,6 +120,7 @@ public final class EventRuleEventPattern {
         }
         @CustomType.Setter
         public Builder nameLists(@Nullable List<String> nameLists) {
+
             this.nameLists = nameLists;
             return this;
         }
@@ -125,11 +129,15 @@ public final class EventRuleEventPattern {
         }
         @CustomType.Setter
         public Builder product(String product) {
-            this.product = Objects.requireNonNull(product);
+            if (product == null) {
+              throw new MissingRequiredPropertyException("EventRuleEventPattern", "product");
+            }
+            this.product = product;
             return this;
         }
         @CustomType.Setter
         public Builder sqlFilter(@Nullable String sqlFilter) {
+
             this.sqlFilter = sqlFilter;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class InstanceClusterAttachmentArgs extends com.pulumi.resources.Re
         }
 
         public InstanceClusterAttachmentArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.instanceIds = Objects.requireNonNull($.instanceIds, "expected parameter 'instanceIds' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("InstanceClusterAttachmentArgs", "clusterId");
+            }
+            if ($.instanceIds == null) {
+                throw new MissingRequiredPropertyException("InstanceClusterAttachmentArgs", "instanceIds");
+            }
             return $;
         }
     }

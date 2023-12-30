@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -186,10 +187,18 @@ public final class GatewayVcoRouteArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GatewayVcoRouteArgs build() {
-            $.nextHop = Objects.requireNonNull($.nextHop, "expected parameter 'nextHop' to be non-null");
-            $.routeDest = Objects.requireNonNull($.routeDest, "expected parameter 'routeDest' to be non-null");
-            $.vpnConnectionId = Objects.requireNonNull($.vpnConnectionId, "expected parameter 'vpnConnectionId' to be non-null");
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.nextHop == null) {
+                throw new MissingRequiredPropertyException("GatewayVcoRouteArgs", "nextHop");
+            }
+            if ($.routeDest == null) {
+                throw new MissingRequiredPropertyException("GatewayVcoRouteArgs", "routeDest");
+            }
+            if ($.vpnConnectionId == null) {
+                throw new MissingRequiredPropertyException("GatewayVcoRouteArgs", "vpnConnectionId");
+            }
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("GatewayVcoRouteArgs", "weight");
+            }
             return $;
         }
     }

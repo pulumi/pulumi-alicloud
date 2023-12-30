@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicecatalog.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,7 +199,9 @@ public final class GetLaunchOptionsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetLaunchOptionsArgs build() {
-            $.productId = Objects.requireNonNull($.productId, "expected parameter 'productId' to be non-null");
+            if ($.productId == null) {
+                throw new MissingRequiredPropertyException("GetLaunchOptionsArgs", "productId");
+            }
             return $;
         }
     }

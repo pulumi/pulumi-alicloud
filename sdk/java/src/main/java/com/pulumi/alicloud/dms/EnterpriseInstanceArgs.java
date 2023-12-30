@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1019,18 +1020,42 @@ public final class EnterpriseInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         public EnterpriseInstanceArgs build() {
-            $.databasePassword = Objects.requireNonNull($.databasePassword, "expected parameter 'databasePassword' to be non-null");
-            $.databaseUser = Objects.requireNonNull($.databaseUser, "expected parameter 'databaseUser' to be non-null");
-            $.dbaUid = Objects.requireNonNull($.dbaUid, "expected parameter 'dbaUid' to be non-null");
-            $.envType = Objects.requireNonNull($.envType, "expected parameter 'envType' to be non-null");
-            $.exportTimeout = Objects.requireNonNull($.exportTimeout, "expected parameter 'exportTimeout' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.instanceSource = Objects.requireNonNull($.instanceSource, "expected parameter 'instanceSource' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.networkType = Objects.requireNonNull($.networkType, "expected parameter 'networkType' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.queryTimeout = Objects.requireNonNull($.queryTimeout, "expected parameter 'queryTimeout' to be non-null");
-            $.safeRule = Objects.requireNonNull($.safeRule, "expected parameter 'safeRule' to be non-null");
+            if ($.databasePassword == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "databasePassword");
+            }
+            if ($.databaseUser == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "databaseUser");
+            }
+            if ($.dbaUid == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "dbaUid");
+            }
+            if ($.envType == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "envType");
+            }
+            if ($.exportTimeout == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "exportTimeout");
+            }
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "host");
+            }
+            if ($.instanceSource == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "instanceSource");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "instanceType");
+            }
+            if ($.networkType == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "networkType");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "port");
+            }
+            if ($.queryTimeout == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "queryTimeout");
+            }
+            if ($.safeRule == null) {
+                throw new MissingRequiredPropertyException("EnterpriseInstanceArgs", "safeRule");
+            }
             return $;
         }
     }

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cs.inputs.KubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesRuntimeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1994,8 +1995,12 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public KubernetesArgs build() {
-            $.masterInstanceTypes = Objects.requireNonNull($.masterInstanceTypes, "expected parameter 'masterInstanceTypes' to be non-null");
-            $.masterVswitchIds = Objects.requireNonNull($.masterVswitchIds, "expected parameter 'masterVswitchIds' to be non-null");
+            if ($.masterInstanceTypes == null) {
+                throw new MissingRequiredPropertyException("KubernetesArgs", "masterInstanceTypes");
+            }
+            if ($.masterVswitchIds == null) {
+                throw new MissingRequiredPropertyException("KubernetesArgs", "masterVswitchIds");
+            }
             return $;
         }
     }

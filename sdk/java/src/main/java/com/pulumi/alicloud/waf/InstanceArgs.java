@@ -5,6 +5,7 @@ package com.pulumi.alicloud.waf;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -656,16 +657,36 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.bigScreen = Objects.requireNonNull($.bigScreen, "expected parameter 'bigScreen' to be non-null");
-            $.exclusiveIpPackage = Objects.requireNonNull($.exclusiveIpPackage, "expected parameter 'exclusiveIpPackage' to be non-null");
-            $.extBandwidth = Objects.requireNonNull($.extBandwidth, "expected parameter 'extBandwidth' to be non-null");
-            $.extDomainPackage = Objects.requireNonNull($.extDomainPackage, "expected parameter 'extDomainPackage' to be non-null");
-            $.logStorage = Objects.requireNonNull($.logStorage, "expected parameter 'logStorage' to be non-null");
-            $.logTime = Objects.requireNonNull($.logTime, "expected parameter 'logTime' to be non-null");
-            $.packageCode = Objects.requireNonNull($.packageCode, "expected parameter 'packageCode' to be non-null");
-            $.prefessionalService = Objects.requireNonNull($.prefessionalService, "expected parameter 'prefessionalService' to be non-null");
-            $.subscriptionType = Objects.requireNonNull($.subscriptionType, "expected parameter 'subscriptionType' to be non-null");
-            $.wafLog = Objects.requireNonNull($.wafLog, "expected parameter 'wafLog' to be non-null");
+            if ($.bigScreen == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "bigScreen");
+            }
+            if ($.exclusiveIpPackage == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "exclusiveIpPackage");
+            }
+            if ($.extBandwidth == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "extBandwidth");
+            }
+            if ($.extDomainPackage == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "extDomainPackage");
+            }
+            if ($.logStorage == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "logStorage");
+            }
+            if ($.logTime == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "logTime");
+            }
+            if ($.packageCode == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "packageCode");
+            }
+            if ($.prefessionalService == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "prefessionalService");
+            }
+            if ($.subscriptionType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "subscriptionType");
+            }
+            if ($.wafLog == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "wafLog");
+            }
             return $;
         }
     }

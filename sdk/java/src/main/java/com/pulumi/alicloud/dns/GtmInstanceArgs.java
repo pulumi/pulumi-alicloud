@@ -6,6 +6,7 @@ package com.pulumi.alicloud.dns;
 import com.pulumi.alicloud.dns.inputs.GtmInstanceAlertConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -803,12 +804,24 @@ public final class GtmInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GtmInstanceArgs build() {
-            $.healthCheckTaskCount = Objects.requireNonNull($.healthCheckTaskCount, "expected parameter 'healthCheckTaskCount' to be non-null");
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.packageEdition = Objects.requireNonNull($.packageEdition, "expected parameter 'packageEdition' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.period = Objects.requireNonNull($.period, "expected parameter 'period' to be non-null");
-            $.smsNotificationCount = Objects.requireNonNull($.smsNotificationCount, "expected parameter 'smsNotificationCount' to be non-null");
+            if ($.healthCheckTaskCount == null) {
+                throw new MissingRequiredPropertyException("GtmInstanceArgs", "healthCheckTaskCount");
+            }
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("GtmInstanceArgs", "instanceName");
+            }
+            if ($.packageEdition == null) {
+                throw new MissingRequiredPropertyException("GtmInstanceArgs", "packageEdition");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("GtmInstanceArgs", "paymentType");
+            }
+            if ($.period == null) {
+                throw new MissingRequiredPropertyException("GtmInstanceArgs", "period");
+            }
+            if ($.smsNotificationCount == null) {
+                throw new MissingRequiredPropertyException("GtmInstanceArgs", "smsNotificationCount");
+            }
             return $;
         }
     }

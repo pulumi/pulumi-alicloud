@@ -6,6 +6,7 @@ package com.pulumi.alicloud.servicecatalog.outputs;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProvisionedProductsProvisionedProductOutput;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProvisionedProductsProvisionedProductParameter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -324,32 +325,50 @@ public final class GetProvisionedProductsProvisionedProduct {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastProvisioningTaskId(String lastProvisioningTaskId) {
-            this.lastProvisioningTaskId = Objects.requireNonNull(lastProvisioningTaskId);
+            if (lastProvisioningTaskId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "lastProvisioningTaskId");
+            }
+            this.lastProvisioningTaskId = lastProvisioningTaskId;
             return this;
         }
         @CustomType.Setter
         public Builder lastSuccessfulProvisioningTaskId(String lastSuccessfulProvisioningTaskId) {
-            this.lastSuccessfulProvisioningTaskId = Objects.requireNonNull(lastSuccessfulProvisioningTaskId);
+            if (lastSuccessfulProvisioningTaskId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "lastSuccessfulProvisioningTaskId");
+            }
+            this.lastSuccessfulProvisioningTaskId = lastSuccessfulProvisioningTaskId;
             return this;
         }
         @CustomType.Setter
         public Builder lastTaskId(String lastTaskId) {
-            this.lastTaskId = Objects.requireNonNull(lastTaskId);
+            if (lastTaskId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "lastTaskId");
+            }
+            this.lastTaskId = lastTaskId;
             return this;
         }
         @CustomType.Setter
         public Builder outputs(List<GetProvisionedProductsProvisionedProductOutput> outputs) {
-            this.outputs = Objects.requireNonNull(outputs);
+            if (outputs == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "outputs");
+            }
+            this.outputs = outputs;
             return this;
         }
         public Builder outputs(GetProvisionedProductsProvisionedProductOutput... outputs) {
@@ -357,17 +376,26 @@ public final class GetProvisionedProductsProvisionedProduct {
         }
         @CustomType.Setter
         public Builder ownerPrincipalId(String ownerPrincipalId) {
-            this.ownerPrincipalId = Objects.requireNonNull(ownerPrincipalId);
+            if (ownerPrincipalId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "ownerPrincipalId");
+            }
+            this.ownerPrincipalId = ownerPrincipalId;
             return this;
         }
         @CustomType.Setter
         public Builder ownerPrincipalType(String ownerPrincipalType) {
-            this.ownerPrincipalType = Objects.requireNonNull(ownerPrincipalType);
+            if (ownerPrincipalType == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "ownerPrincipalType");
+            }
+            this.ownerPrincipalType = ownerPrincipalType;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(List<GetProvisionedProductsProvisionedProductParameter> parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         public Builder parameters(GetProvisionedProductsProvisionedProductParameter... parameters) {
@@ -375,71 +403,111 @@ public final class GetProvisionedProductsProvisionedProduct {
         }
         @CustomType.Setter
         public Builder portfolioId(String portfolioId) {
-            this.portfolioId = Objects.requireNonNull(portfolioId);
+            if (portfolioId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "portfolioId");
+            }
+            this.portfolioId = portfolioId;
             return this;
         }
         @CustomType.Setter
         public Builder productId(String productId) {
-            this.productId = Objects.requireNonNull(productId);
+            if (productId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "productId");
+            }
+            this.productId = productId;
             return this;
         }
         @CustomType.Setter
         public Builder productName(String productName) {
-            this.productName = Objects.requireNonNull(productName);
+            if (productName == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "productName");
+            }
+            this.productName = productName;
             return this;
         }
         @CustomType.Setter
         public Builder productVersionId(String productVersionId) {
-            this.productVersionId = Objects.requireNonNull(productVersionId);
+            if (productVersionId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "productVersionId");
+            }
+            this.productVersionId = productVersionId;
             return this;
         }
         @CustomType.Setter
         public Builder productVersionName(String productVersionName) {
-            this.productVersionName = Objects.requireNonNull(productVersionName);
+            if (productVersionName == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "productVersionName");
+            }
+            this.productVersionName = productVersionName;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedProductArn(String provisionedProductArn) {
-            this.provisionedProductArn = Objects.requireNonNull(provisionedProductArn);
+            if (provisionedProductArn == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "provisionedProductArn");
+            }
+            this.provisionedProductArn = provisionedProductArn;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedProductId(String provisionedProductId) {
-            this.provisionedProductId = Objects.requireNonNull(provisionedProductId);
+            if (provisionedProductId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "provisionedProductId");
+            }
+            this.provisionedProductId = provisionedProductId;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedProductName(String provisionedProductName) {
-            this.provisionedProductName = Objects.requireNonNull(provisionedProductName);
+            if (provisionedProductName == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "provisionedProductName");
+            }
+            this.provisionedProductName = provisionedProductName;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedProductType(String provisionedProductType) {
-            this.provisionedProductType = Objects.requireNonNull(provisionedProductType);
+            if (provisionedProductType == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "provisionedProductType");
+            }
+            this.provisionedProductType = provisionedProductType;
             return this;
         }
         @CustomType.Setter
         public Builder stackId(String stackId) {
-            this.stackId = Objects.requireNonNull(stackId);
+            if (stackId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "stackId");
+            }
+            this.stackId = stackId;
             return this;
         }
         @CustomType.Setter
         public Builder stackRegionId(String stackRegionId) {
-            this.stackRegionId = Objects.requireNonNull(stackRegionId);
+            if (stackRegionId == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "stackRegionId");
+            }
+            this.stackRegionId = stackRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
-            this.statusMessage = Objects.requireNonNull(statusMessage);
+            if (statusMessage == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProduct", "statusMessage");
+            }
+            this.statusMessage = statusMessage;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

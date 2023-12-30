@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -196,10 +197,18 @@ public final class HostGroupAccountUserAttachmentArgs extends com.pulumi.resourc
         }
 
         public HostGroupAccountUserAttachmentArgs build() {
-            $.hostAccountNames = Objects.requireNonNull($.hostAccountNames, "expected parameter 'hostAccountNames' to be non-null");
-            $.hostGroupId = Objects.requireNonNull($.hostGroupId, "expected parameter 'hostGroupId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.hostAccountNames == null) {
+                throw new MissingRequiredPropertyException("HostGroupAccountUserAttachmentArgs", "hostAccountNames");
+            }
+            if ($.hostGroupId == null) {
+                throw new MissingRequiredPropertyException("HostGroupAccountUserAttachmentArgs", "hostGroupId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("HostGroupAccountUserAttachmentArgs", "instanceId");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("HostGroupAccountUserAttachmentArgs", "userId");
+            }
             return $;
         }
     }

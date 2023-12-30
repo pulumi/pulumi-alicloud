@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sag.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -253,82 +254,130 @@ public final class GetSmartagFlowLogsLog {
 
         @CustomType.Setter
         public Builder activeAging(Integer activeAging) {
-            this.activeAging = Objects.requireNonNull(activeAging);
+            if (activeAging == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "activeAging");
+            }
+            this.activeAging = activeAging;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder flowLogId(String flowLogId) {
-            this.flowLogId = Objects.requireNonNull(flowLogId);
+            if (flowLogId == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "flowLogId");
+            }
+            this.flowLogId = flowLogId;
             return this;
         }
         @CustomType.Setter
         public Builder flowLogName(String flowLogName) {
-            this.flowLogName = Objects.requireNonNull(flowLogName);
+            if (flowLogName == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "flowLogName");
+            }
+            this.flowLogName = flowLogName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inactiveAging(Integer inactiveAging) {
-            this.inactiveAging = Objects.requireNonNull(inactiveAging);
+            if (inactiveAging == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "inactiveAging");
+            }
+            this.inactiveAging = inactiveAging;
             return this;
         }
         @CustomType.Setter
         public Builder logstoreName(String logstoreName) {
-            this.logstoreName = Objects.requireNonNull(logstoreName);
+            if (logstoreName == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "logstoreName");
+            }
+            this.logstoreName = logstoreName;
             return this;
         }
         @CustomType.Setter
         public Builder netflowServerIp(String netflowServerIp) {
-            this.netflowServerIp = Objects.requireNonNull(netflowServerIp);
+            if (netflowServerIp == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "netflowServerIp");
+            }
+            this.netflowServerIp = netflowServerIp;
             return this;
         }
         @CustomType.Setter
         public Builder netflowServerPort(Integer netflowServerPort) {
-            this.netflowServerPort = Objects.requireNonNull(netflowServerPort);
+            if (netflowServerPort == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "netflowServerPort");
+            }
+            this.netflowServerPort = netflowServerPort;
             return this;
         }
         @CustomType.Setter
         public Builder netflowVersion(String netflowVersion) {
-            this.netflowVersion = Objects.requireNonNull(netflowVersion);
+            if (netflowVersion == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "netflowVersion");
+            }
+            this.netflowVersion = netflowVersion;
             return this;
         }
         @CustomType.Setter
         public Builder outputType(String outputType) {
-            this.outputType = Objects.requireNonNull(outputType);
+            if (outputType == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "outputType");
+            }
+            this.outputType = outputType;
             return this;
         }
         @CustomType.Setter
         public Builder projectName(String projectName) {
-            this.projectName = Objects.requireNonNull(projectName);
+            if (projectName == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "projectName");
+            }
+            this.projectName = projectName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder slsRegionId(String slsRegionId) {
-            this.slsRegionId = Objects.requireNonNull(slsRegionId);
+            if (slsRegionId == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "slsRegionId");
+            }
+            this.slsRegionId = slsRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder totalSagNum(Integer totalSagNum) {
-            this.totalSagNum = Objects.requireNonNull(totalSagNum);
+            if (totalSagNum == null) {
+              throw new MissingRequiredPropertyException("GetSmartagFlowLogsLog", "totalSagNum");
+            }
+            this.totalSagNum = totalSagNum;
             return this;
         }
         public GetSmartagFlowLogsLog build() {

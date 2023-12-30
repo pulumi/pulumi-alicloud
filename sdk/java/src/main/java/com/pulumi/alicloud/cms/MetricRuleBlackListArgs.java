@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cms;
 import com.pulumi.alicloud.cms.inputs.MetricRuleBlackListMetricArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -479,10 +480,18 @@ public final class MetricRuleBlackListArgs extends com.pulumi.resources.Resource
         }
 
         public MetricRuleBlackListArgs build() {
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
-            $.instances = Objects.requireNonNull($.instances, "expected parameter 'instances' to be non-null");
-            $.metricRuleBlackListName = Objects.requireNonNull($.metricRuleBlackListName, "expected parameter 'metricRuleBlackListName' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
+            if ($.category == null) {
+                throw new MissingRequiredPropertyException("MetricRuleBlackListArgs", "category");
+            }
+            if ($.instances == null) {
+                throw new MissingRequiredPropertyException("MetricRuleBlackListArgs", "instances");
+            }
+            if ($.metricRuleBlackListName == null) {
+                throw new MissingRequiredPropertyException("MetricRuleBlackListArgs", "metricRuleBlackListName");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("MetricRuleBlackListArgs", "namespace");
+            }
             return $;
         }
     }

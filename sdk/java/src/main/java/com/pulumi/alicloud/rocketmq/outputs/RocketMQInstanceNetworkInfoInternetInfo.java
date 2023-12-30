@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rocketmq.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -96,21 +97,29 @@ public final class RocketMQInstanceNetworkInfoInternetInfo {
 
         @CustomType.Setter
         public Builder flowOutBandwidth(@Nullable Integer flowOutBandwidth) {
+
             this.flowOutBandwidth = flowOutBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder flowOutType(String flowOutType) {
-            this.flowOutType = Objects.requireNonNull(flowOutType);
+            if (flowOutType == null) {
+              throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoInternetInfo", "flowOutType");
+            }
+            this.flowOutType = flowOutType;
             return this;
         }
         @CustomType.Setter
         public Builder internetSpec(String internetSpec) {
-            this.internetSpec = Objects.requireNonNull(internetSpec);
+            if (internetSpec == null) {
+              throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoInternetInfo", "internetSpec");
+            }
+            this.internetSpec = internetSpec;
             return this;
         }
         @CustomType.Setter
         public Builder ipWhitelists(@Nullable List<String> ipWhitelists) {
+
             this.ipWhitelists = ipWhitelists;
             return this;
         }

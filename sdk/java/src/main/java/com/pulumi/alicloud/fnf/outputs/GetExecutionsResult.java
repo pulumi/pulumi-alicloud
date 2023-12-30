@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fnf.outputs;
 
 import com.pulumi.alicloud.fnf.outputs.GetExecutionsExecution;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -95,12 +96,16 @@ public final class GetExecutionsResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder executions(List<GetExecutionsExecution> executions) {
-            this.executions = Objects.requireNonNull(executions);
+            if (executions == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsResult", "executions");
+            }
+            this.executions = executions;
             return this;
         }
         public Builder executions(GetExecutionsExecution... executions) {
@@ -108,17 +113,26 @@ public final class GetExecutionsResult {
         }
         @CustomType.Setter
         public Builder flowName(String flowName) {
-            this.flowName = Objects.requireNonNull(flowName);
+            if (flowName == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsResult", "flowName");
+            }
+            this.flowName = flowName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -126,12 +140,16 @@ public final class GetExecutionsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -139,11 +157,13 @@ public final class GetExecutionsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

@@ -10,6 +10,7 @@ import com.pulumi.alicloud.alb.outputs.GetLoadBalancersBalancerLoadBalancerOpera
 import com.pulumi.alicloud.alb.outputs.GetLoadBalancersBalancerModificationProtectionConfig;
 import com.pulumi.alicloud.alb.outputs.GetLoadBalancersBalancerZoneMapping;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -345,7 +346,10 @@ public final class GetLoadBalancersBalancer {
 
         @CustomType.Setter
         public Builder accessLogConfigs(List<GetLoadBalancersBalancerAccessLogConfig> accessLogConfigs) {
-            this.accessLogConfigs = Objects.requireNonNull(accessLogConfigs);
+            if (accessLogConfigs == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "accessLogConfigs");
+            }
+            this.accessLogConfigs = accessLogConfigs;
             return this;
         }
         public Builder accessLogConfigs(GetLoadBalancersBalancerAccessLogConfig... accessLogConfigs) {
@@ -353,27 +357,42 @@ public final class GetLoadBalancersBalancer {
         }
         @CustomType.Setter
         public Builder addressAllocatedMode(String addressAllocatedMode) {
-            this.addressAllocatedMode = Objects.requireNonNull(addressAllocatedMode);
+            if (addressAllocatedMode == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "addressAllocatedMode");
+            }
+            this.addressAllocatedMode = addressAllocatedMode;
             return this;
         }
         @CustomType.Setter
         public Builder addressType(String addressType) {
-            this.addressType = Objects.requireNonNull(addressType);
+            if (addressType == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "addressType");
+            }
+            this.addressType = addressType;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthPackageId(String bandwidthPackageId) {
-            this.bandwidthPackageId = Objects.requireNonNull(bandwidthPackageId);
+            if (bandwidthPackageId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "bandwidthPackageId");
+            }
+            this.bandwidthPackageId = bandwidthPackageId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder deletionProtectionConfigs(List<GetLoadBalancersBalancerDeletionProtectionConfig> deletionProtectionConfigs) {
-            this.deletionProtectionConfigs = Objects.requireNonNull(deletionProtectionConfigs);
+            if (deletionProtectionConfigs == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "deletionProtectionConfigs");
+            }
+            this.deletionProtectionConfigs = deletionProtectionConfigs;
             return this;
         }
         public Builder deletionProtectionConfigs(GetLoadBalancersBalancerDeletionProtectionConfig... deletionProtectionConfigs) {
@@ -381,17 +400,26 @@ public final class GetLoadBalancersBalancer {
         }
         @CustomType.Setter
         public Builder dnsName(String dnsName) {
-            this.dnsName = Objects.requireNonNull(dnsName);
+            if (dnsName == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "dnsName");
+            }
+            this.dnsName = dnsName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerBillingConfigs(List<GetLoadBalancersBalancerLoadBalancerBillingConfig> loadBalancerBillingConfigs) {
-            this.loadBalancerBillingConfigs = Objects.requireNonNull(loadBalancerBillingConfigs);
+            if (loadBalancerBillingConfigs == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "loadBalancerBillingConfigs");
+            }
+            this.loadBalancerBillingConfigs = loadBalancerBillingConfigs;
             return this;
         }
         public Builder loadBalancerBillingConfigs(GetLoadBalancersBalancerLoadBalancerBillingConfig... loadBalancerBillingConfigs) {
@@ -399,32 +427,50 @@ public final class GetLoadBalancersBalancer {
         }
         @CustomType.Setter
         public Builder loadBalancerBusinessStatus(String loadBalancerBusinessStatus) {
-            this.loadBalancerBusinessStatus = Objects.requireNonNull(loadBalancerBusinessStatus);
+            if (loadBalancerBusinessStatus == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "loadBalancerBusinessStatus");
+            }
+            this.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerBussinessStatus(String loadBalancerBussinessStatus) {
-            this.loadBalancerBussinessStatus = Objects.requireNonNull(loadBalancerBussinessStatus);
+            if (loadBalancerBussinessStatus == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "loadBalancerBussinessStatus");
+            }
+            this.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerEdition(String loadBalancerEdition) {
-            this.loadBalancerEdition = Objects.requireNonNull(loadBalancerEdition);
+            if (loadBalancerEdition == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "loadBalancerEdition");
+            }
+            this.loadBalancerEdition = loadBalancerEdition;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
-            this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "loadBalancerId");
+            }
+            this.loadBalancerId = loadBalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerName(String loadBalancerName) {
-            this.loadBalancerName = Objects.requireNonNull(loadBalancerName);
+            if (loadBalancerName == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "loadBalancerName");
+            }
+            this.loadBalancerName = loadBalancerName;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerOperationLocks(List<GetLoadBalancersBalancerLoadBalancerOperationLock> loadBalancerOperationLocks) {
-            this.loadBalancerOperationLocks = Objects.requireNonNull(loadBalancerOperationLocks);
+            if (loadBalancerOperationLocks == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "loadBalancerOperationLocks");
+            }
+            this.loadBalancerOperationLocks = loadBalancerOperationLocks;
             return this;
         }
         public Builder loadBalancerOperationLocks(GetLoadBalancersBalancerLoadBalancerOperationLock... loadBalancerOperationLocks) {
@@ -432,7 +478,10 @@ public final class GetLoadBalancersBalancer {
         }
         @CustomType.Setter
         public Builder modificationProtectionConfigs(List<GetLoadBalancersBalancerModificationProtectionConfig> modificationProtectionConfigs) {
-            this.modificationProtectionConfigs = Objects.requireNonNull(modificationProtectionConfigs);
+            if (modificationProtectionConfigs == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "modificationProtectionConfigs");
+            }
+            this.modificationProtectionConfigs = modificationProtectionConfigs;
             return this;
         }
         public Builder modificationProtectionConfigs(GetLoadBalancersBalancerModificationProtectionConfig... modificationProtectionConfigs) {
@@ -440,27 +489,42 @@ public final class GetLoadBalancersBalancer {
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneMappings(List<GetLoadBalancersBalancerZoneMapping> zoneMappings) {
-            this.zoneMappings = Objects.requireNonNull(zoneMappings);
+            if (zoneMappings == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "zoneMappings");
+            }
+            this.zoneMappings = zoneMappings;
             return this;
         }
         public Builder zoneMappings(GetLoadBalancersBalancerZoneMapping... zoneMappings) {

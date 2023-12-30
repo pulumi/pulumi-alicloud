@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.alicloud.eds.outputs.GetBundlesBundle;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -88,7 +89,10 @@ public final class GetBundlesResult {
 
         @CustomType.Setter
         public Builder bundleIds(List<String> bundleIds) {
-            this.bundleIds = Objects.requireNonNull(bundleIds);
+            if (bundleIds == null) {
+              throw new MissingRequiredPropertyException("GetBundlesResult", "bundleIds");
+            }
+            this.bundleIds = bundleIds;
             return this;
         }
         public Builder bundleIds(String... bundleIds) {
@@ -96,12 +100,16 @@ public final class GetBundlesResult {
         }
         @CustomType.Setter
         public Builder bundleType(@Nullable String bundleType) {
+
             this.bundleType = bundleType;
             return this;
         }
         @CustomType.Setter
         public Builder bundles(List<GetBundlesBundle> bundles) {
-            this.bundles = Objects.requireNonNull(bundles);
+            if (bundles == null) {
+              throw new MissingRequiredPropertyException("GetBundlesResult", "bundles");
+            }
+            this.bundles = bundles;
             return this;
         }
         public Builder bundles(GetBundlesBundle... bundles) {
@@ -109,12 +117,18 @@ public final class GetBundlesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBundlesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetBundlesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -122,12 +136,16 @@ public final class GetBundlesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetBundlesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -135,6 +153,7 @@ public final class GetBundlesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

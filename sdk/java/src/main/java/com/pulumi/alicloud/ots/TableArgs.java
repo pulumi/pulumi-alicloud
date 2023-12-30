@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ots.inputs.TableDefinedColumnArgs;
 import com.pulumi.alicloud.ots.inputs.TablePrimaryKeyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -397,11 +398,21 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TableArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.maxVersion = Objects.requireNonNull($.maxVersion, "expected parameter 'maxVersion' to be non-null");
-            $.primaryKeys = Objects.requireNonNull($.primaryKeys, "expected parameter 'primaryKeys' to be non-null");
-            $.tableName = Objects.requireNonNull($.tableName, "expected parameter 'tableName' to be non-null");
-            $.timeToLive = Objects.requireNonNull($.timeToLive, "expected parameter 'timeToLive' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "instanceName");
+            }
+            if ($.maxVersion == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "maxVersion");
+            }
+            if ($.primaryKeys == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "primaryKeys");
+            }
+            if ($.tableName == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "tableName");
+            }
+            if ($.timeToLive == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "timeToLive");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.alicloud.cloudsso.outputs.GetUsersUserMfaDevice;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -212,47 +213,74 @@ public final class GetUsersUser {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder directoryId(String directoryId) {
-            this.directoryId = Objects.requireNonNull(directoryId);
+            if (directoryId == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "directoryId");
+            }
+            this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder firstName(String firstName) {
-            this.firstName = Objects.requireNonNull(firstName);
+            if (firstName == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "firstName");
+            }
+            this.firstName = firstName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastName(String lastName) {
-            this.lastName = Objects.requireNonNull(lastName);
+            if (lastName == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "lastName");
+            }
+            this.lastName = lastName;
             return this;
         }
         @CustomType.Setter
         public Builder mfaDevices(List<GetUsersUserMfaDevice> mfaDevices) {
-            this.mfaDevices = Objects.requireNonNull(mfaDevices);
+            if (mfaDevices == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "mfaDevices");
+            }
+            this.mfaDevices = mfaDevices;
             return this;
         }
         public Builder mfaDevices(GetUsersUserMfaDevice... mfaDevices) {
@@ -260,22 +288,34 @@ public final class GetUsersUser {
         }
         @CustomType.Setter
         public Builder provisionType(String provisionType) {
-            this.provisionType = Objects.requireNonNull(provisionType);
+            if (provisionType == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "provisionType");
+            }
+            this.provisionType = provisionType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         public GetUsersUser build() {

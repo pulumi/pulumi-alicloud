@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.alicloud.alb.outputs.GetHealthCheckTemplatesTemplate;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -88,6 +89,7 @@ public final class GetHealthCheckTemplatesResult {
 
         @CustomType.Setter
         public Builder healthCheckTemplateIds(@Nullable List<String> healthCheckTemplateIds) {
+
             this.healthCheckTemplateIds = healthCheckTemplateIds;
             return this;
         }
@@ -96,17 +98,24 @@ public final class GetHealthCheckTemplatesResult {
         }
         @CustomType.Setter
         public Builder healthCheckTemplateName(@Nullable String healthCheckTemplateName) {
+
             this.healthCheckTemplateName = healthCheckTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -114,12 +123,16 @@ public final class GetHealthCheckTemplatesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -127,12 +140,16 @@ public final class GetHealthCheckTemplatesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder templates(List<GetHealthCheckTemplatesTemplate> templates) {
-            this.templates = Objects.requireNonNull(templates);
+            if (templates == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesResult", "templates");
+            }
+            this.templates = templates;
             return this;
         }
         public Builder templates(GetHealthCheckTemplatesTemplate... templates) {

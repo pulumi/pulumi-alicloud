@@ -5,6 +5,7 @@ package com.pulumi.alicloud.pvtz.outputs;
 
 import com.pulumi.alicloud.pvtz.outputs.GetZonesZoneBindVpc;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,7 +227,10 @@ public final class GetZonesZone {
 
         @CustomType.Setter
         public Builder bindVpcs(List<GetZonesZoneBindVpc> bindVpcs) {
-            this.bindVpcs = Objects.requireNonNull(bindVpcs);
+            if (bindVpcs == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "bindVpcs");
+            }
+            this.bindVpcs = bindVpcs;
             return this;
         }
         public Builder bindVpcs(GetZonesZoneBindVpc... bindVpcs) {
@@ -234,72 +238,114 @@ public final class GetZonesZone {
         }
         @CustomType.Setter
         public Builder createTimestamp(Integer createTimestamp) {
-            this.createTimestamp = Objects.requireNonNull(createTimestamp);
+            if (createTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "createTimestamp");
+            }
+            this.createTimestamp = createTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isPtr(Boolean isPtr) {
-            this.isPtr = Objects.requireNonNull(isPtr);
+            if (isPtr == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "isPtr");
+            }
+            this.isPtr = isPtr;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder proxyPattern(String proxyPattern) {
-            this.proxyPattern = Objects.requireNonNull(proxyPattern);
+            if (proxyPattern == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "proxyPattern");
+            }
+            this.proxyPattern = proxyPattern;
             return this;
         }
         @CustomType.Setter
         public Builder recordCount(Integer recordCount) {
-            this.recordCount = Objects.requireNonNull(recordCount);
+            if (recordCount == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "recordCount");
+            }
+            this.recordCount = recordCount;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder slaveDns(Boolean slaveDns) {
-            this.slaveDns = Objects.requireNonNull(slaveDns);
+            if (slaveDns == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "slaveDns");
+            }
+            this.slaveDns = slaveDns;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder updateTimestamp(Integer updateTimestamp) {
-            this.updateTimestamp = Objects.requireNonNull(updateTimestamp);
+            if (updateTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "updateTimestamp");
+            }
+            this.updateTimestamp = updateTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneName(String zoneName) {
-            this.zoneName = Objects.requireNonNull(zoneName);
+            if (zoneName == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "zoneName");
+            }
+            this.zoneName = zoneName;
             return this;
         }
         public GetZonesZone build() {

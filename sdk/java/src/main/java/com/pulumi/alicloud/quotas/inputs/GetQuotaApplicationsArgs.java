@@ -6,6 +6,7 @@ package com.pulumi.alicloud.quotas.inputs;
 import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsDimensionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -375,7 +376,9 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetQuotaApplicationsArgs build() {
-            $.productCode = Objects.requireNonNull($.productCode, "expected parameter 'productCode' to be non-null");
+            if ($.productCode == null) {
+                throw new MissingRequiredPropertyException("GetQuotaApplicationsArgs", "productCode");
+            }
             return $;
         }
     }

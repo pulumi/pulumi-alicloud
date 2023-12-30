@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kms.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -212,7 +213,9 @@ public final class GetSecretVersionsPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetSecretVersionsPlainArgs build() {
-            $.secretName = Objects.requireNonNull($.secretName, "expected parameter 'secretName' to be non-null");
+            if ($.secretName == null) {
+                throw new MissingRequiredPropertyException("GetSecretVersionsPlainArgs", "secretName");
+            }
             return $;
         }
     }

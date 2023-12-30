@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.alicloud.cloudsso.outputs.GetAccessConfigurationsConfigurationPermissionPolicy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -171,37 +172,58 @@ public final class GetAccessConfigurationsConfiguration {
 
         @CustomType.Setter
         public Builder accessConfigurationId(String accessConfigurationId) {
-            this.accessConfigurationId = Objects.requireNonNull(accessConfigurationId);
+            if (accessConfigurationId == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "accessConfigurationId");
+            }
+            this.accessConfigurationId = accessConfigurationId;
             return this;
         }
         @CustomType.Setter
         public Builder accessConfigurationName(String accessConfigurationName) {
-            this.accessConfigurationName = Objects.requireNonNull(accessConfigurationName);
+            if (accessConfigurationName == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "accessConfigurationName");
+            }
+            this.accessConfigurationName = accessConfigurationName;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder directoryId(String directoryId) {
-            this.directoryId = Objects.requireNonNull(directoryId);
+            if (directoryId == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "directoryId");
+            }
+            this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder permissionPolicies(List<GetAccessConfigurationsConfigurationPermissionPolicy> permissionPolicies) {
-            this.permissionPolicies = Objects.requireNonNull(permissionPolicies);
+            if (permissionPolicies == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "permissionPolicies");
+            }
+            this.permissionPolicies = permissionPolicies;
             return this;
         }
         public Builder permissionPolicies(GetAccessConfigurationsConfigurationPermissionPolicy... permissionPolicies) {
@@ -209,17 +231,26 @@ public final class GetAccessConfigurationsConfiguration {
         }
         @CustomType.Setter
         public Builder relayState(String relayState) {
-            this.relayState = Objects.requireNonNull(relayState);
+            if (relayState == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "relayState");
+            }
+            this.relayState = relayState;
             return this;
         }
         @CustomType.Setter
         public Builder sessionDuration(Integer sessionDuration) {
-            this.sessionDuration = Objects.requireNonNull(sessionDuration);
+            if (sessionDuration == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "sessionDuration");
+            }
+            this.sessionDuration = sessionDuration;
             return this;
         }
         @CustomType.Setter
         public Builder statusNotifications(List<String> statusNotifications) {
-            this.statusNotifications = Objects.requireNonNull(statusNotifications);
+            if (statusNotifications == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfiguration", "statusNotifications");
+            }
+            this.statusNotifications = statusNotifications;
             return this;
         }
         public Builder statusNotifications(String... statusNotifications) {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eipanycast;
 import com.pulumi.alicloud.eipanycast.inputs.AnycastEipAddressAttachmentPopLocationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -326,10 +327,18 @@ public final class AnycastEipAddressAttachmentArgs extends com.pulumi.resources.
         }
 
         public AnycastEipAddressAttachmentArgs build() {
-            $.anycastId = Objects.requireNonNull($.anycastId, "expected parameter 'anycastId' to be non-null");
-            $.bindInstanceId = Objects.requireNonNull($.bindInstanceId, "expected parameter 'bindInstanceId' to be non-null");
-            $.bindInstanceRegionId = Objects.requireNonNull($.bindInstanceRegionId, "expected parameter 'bindInstanceRegionId' to be non-null");
-            $.bindInstanceType = Objects.requireNonNull($.bindInstanceType, "expected parameter 'bindInstanceType' to be non-null");
+            if ($.anycastId == null) {
+                throw new MissingRequiredPropertyException("AnycastEipAddressAttachmentArgs", "anycastId");
+            }
+            if ($.bindInstanceId == null) {
+                throw new MissingRequiredPropertyException("AnycastEipAddressAttachmentArgs", "bindInstanceId");
+            }
+            if ($.bindInstanceRegionId == null) {
+                throw new MissingRequiredPropertyException("AnycastEipAddressAttachmentArgs", "bindInstanceRegionId");
+            }
+            if ($.bindInstanceType == null) {
+                throw new MissingRequiredPropertyException("AnycastEipAddressAttachmentArgs", "bindInstanceType");
+            }
             return $;
         }
     }

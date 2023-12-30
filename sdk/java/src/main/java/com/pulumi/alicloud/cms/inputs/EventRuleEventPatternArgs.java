@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -255,7 +256,9 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
         }
 
         public EventRuleEventPatternArgs build() {
-            $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
+            if ($.product == null) {
+                throw new MissingRequiredPropertyException("EventRuleEventPatternArgs", "product");
+            }
             return $;
         }
     }

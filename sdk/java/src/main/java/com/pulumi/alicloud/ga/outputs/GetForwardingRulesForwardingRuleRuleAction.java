@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -49,7 +50,10 @@ public final class GetForwardingRulesForwardingRuleRuleAction {
 
         @CustomType.Setter
         public Builder forwardGroupConfigs(List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs) {
-            this.forwardGroupConfigs = Objects.requireNonNull(forwardGroupConfigs);
+            if (forwardGroupConfigs == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRuleRuleAction", "forwardGroupConfigs");
+            }
+            this.forwardGroupConfigs = forwardGroupConfigs;
             return this;
         }
         public Builder forwardGroupConfigs(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig... forwardGroupConfigs) {
@@ -57,12 +61,18 @@ public final class GetForwardingRulesForwardingRuleRuleAction {
         }
         @CustomType.Setter
         public Builder order(Integer order) {
-            this.order = Objects.requireNonNull(order);
+            if (order == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRuleRuleAction", "order");
+            }
+            this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder ruleActionType(String ruleActionType) {
-            this.ruleActionType = Objects.requireNonNull(ruleActionType);
+            if (ruleActionType == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRuleRuleAction", "ruleActionType");
+            }
+            this.ruleActionType = ruleActionType;
             return this;
         }
         public GetForwardingRulesForwardingRuleRuleAction build() {

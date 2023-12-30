@@ -189,26 +189,31 @@ public final class ServerGroupHealthCheck {
 
         @CustomType.Setter
         public Builder healthCheckConnectPort(@Nullable Integer healthCheckConnectPort) {
+
             this.healthCheckConnectPort = healthCheckConnectPort;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckConnectTimeout(@Nullable Integer healthCheckConnectTimeout) {
+
             this.healthCheckConnectTimeout = healthCheckConnectTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckDomain(@Nullable String healthCheckDomain) {
+
             this.healthCheckDomain = healthCheckDomain;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckEnabled(@Nullable Boolean healthCheckEnabled) {
+
             this.healthCheckEnabled = healthCheckEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckHttpCodes(@Nullable List<String> healthCheckHttpCodes) {
+
             this.healthCheckHttpCodes = healthCheckHttpCodes;
             return this;
         }
@@ -217,31 +222,37 @@ public final class ServerGroupHealthCheck {
         }
         @CustomType.Setter
         public Builder healthCheckInterval(@Nullable Integer healthCheckInterval) {
+
             this.healthCheckInterval = healthCheckInterval;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckType(@Nullable String healthCheckType) {
+
             this.healthCheckType = healthCheckType;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckUrl(@Nullable String healthCheckUrl) {
+
             this.healthCheckUrl = healthCheckUrl;
             return this;
         }
         @CustomType.Setter
         public Builder healthyThreshold(@Nullable Integer healthyThreshold) {
+
             this.healthyThreshold = healthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder httpCheckMethod(@Nullable String httpCheckMethod) {
+
             this.httpCheckMethod = httpCheckMethod;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthyThreshold(@Nullable Integer unhealthyThreshold) {
+
             this.unhealthyThreshold = unhealthyThreshold;
             return this;
         }

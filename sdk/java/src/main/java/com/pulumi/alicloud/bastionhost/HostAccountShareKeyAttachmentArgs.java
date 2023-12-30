@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class HostAccountShareKeyAttachmentArgs extends com.pulumi.resource
         }
 
         public HostAccountShareKeyAttachmentArgs build() {
-            $.hostAccountId = Objects.requireNonNull($.hostAccountId, "expected parameter 'hostAccountId' to be non-null");
-            $.hostShareKeyId = Objects.requireNonNull($.hostShareKeyId, "expected parameter 'hostShareKeyId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.hostAccountId == null) {
+                throw new MissingRequiredPropertyException("HostAccountShareKeyAttachmentArgs", "hostAccountId");
+            }
+            if ($.hostShareKeyId == null) {
+                throw new MissingRequiredPropertyException("HostAccountShareKeyAttachmentArgs", "hostShareKeyId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("HostAccountShareKeyAttachmentArgs", "instanceId");
+            }
             return $;
         }
     }

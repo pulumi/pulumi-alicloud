@@ -6,6 +6,7 @@ package com.pulumi.alicloud.quotas.outputs;
 import com.pulumi.alicloud.quotas.outputs.GetTemplateApplicationsApplicationAuditStatusVo;
 import com.pulumi.alicloud.quotas.outputs.GetTemplateApplicationsApplicationDimension;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -214,7 +215,10 @@ public final class GetTemplateApplicationsApplication {
 
         @CustomType.Setter
         public Builder aliyunUids(List<String> aliyunUids) {
-            this.aliyunUids = Objects.requireNonNull(aliyunUids);
+            if (aliyunUids == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "aliyunUids");
+            }
+            this.aliyunUids = aliyunUids;
             return this;
         }
         public Builder aliyunUids(String... aliyunUids) {
@@ -222,12 +226,18 @@ public final class GetTemplateApplicationsApplication {
         }
         @CustomType.Setter
         public Builder applyTime(String applyTime) {
-            this.applyTime = Objects.requireNonNull(applyTime);
+            if (applyTime == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "applyTime");
+            }
+            this.applyTime = applyTime;
             return this;
         }
         @CustomType.Setter
         public Builder auditStatusVos(List<GetTemplateApplicationsApplicationAuditStatusVo> auditStatusVos) {
-            this.auditStatusVos = Objects.requireNonNull(auditStatusVos);
+            if (auditStatusVos == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "auditStatusVos");
+            }
+            this.auditStatusVos = auditStatusVos;
             return this;
         }
         public Builder auditStatusVos(GetTemplateApplicationsApplicationAuditStatusVo... auditStatusVos) {
@@ -235,17 +245,26 @@ public final class GetTemplateApplicationsApplication {
         }
         @CustomType.Setter
         public Builder batchQuotaApplicationId(String batchQuotaApplicationId) {
-            this.batchQuotaApplicationId = Objects.requireNonNull(batchQuotaApplicationId);
+            if (batchQuotaApplicationId == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "batchQuotaApplicationId");
+            }
+            this.batchQuotaApplicationId = batchQuotaApplicationId;
             return this;
         }
         @CustomType.Setter
         public Builder desireValue(Double desireValue) {
-            this.desireValue = Objects.requireNonNull(desireValue);
+            if (desireValue == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "desireValue");
+            }
+            this.desireValue = desireValue;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(List<GetTemplateApplicationsApplicationDimension> dimensions) {
-            this.dimensions = Objects.requireNonNull(dimensions);
+            if (dimensions == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "dimensions");
+            }
+            this.dimensions = dimensions;
             return this;
         }
         public Builder dimensions(GetTemplateApplicationsApplicationDimension... dimensions) {
@@ -253,37 +272,58 @@ public final class GetTemplateApplicationsApplication {
         }
         @CustomType.Setter
         public Builder effectiveTime(String effectiveTime) {
-            this.effectiveTime = Objects.requireNonNull(effectiveTime);
+            if (effectiveTime == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "effectiveTime");
+            }
+            this.effectiveTime = effectiveTime;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaActionCode(String quotaActionCode) {
-            this.quotaActionCode = Objects.requireNonNull(quotaActionCode);
+            if (quotaActionCode == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "quotaActionCode");
+            }
+            this.quotaActionCode = quotaActionCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaCategory(String quotaCategory) {
-            this.quotaCategory = Objects.requireNonNull(quotaCategory);
+            if (quotaCategory == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "quotaCategory");
+            }
+            this.quotaCategory = quotaCategory;
             return this;
         }
         @CustomType.Setter
         public Builder reason(String reason) {
-            this.reason = Objects.requireNonNull(reason);
+            if (reason == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplication", "reason");
+            }
+            this.reason = reason;
             return this;
         }
         public GetTemplateApplicationsApplication build() {

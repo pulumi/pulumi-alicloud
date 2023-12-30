@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -265,7 +266,9 @@ public final class GetBasicEndpointsPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetBasicEndpointsPlainArgs build() {
-            $.endpointGroupId = Objects.requireNonNull($.endpointGroupId, "expected parameter 'endpointGroupId' to be non-null");
+            if ($.endpointGroupId == null) {
+                throw new MissingRequiredPropertyException("GetBasicEndpointsPlainArgs", "endpointGroupId");
+            }
             return $;
         }
     }

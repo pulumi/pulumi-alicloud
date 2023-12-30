@@ -11,6 +11,7 @@ import com.pulumi.alicloud.fc.inputs.V2FunctionCustomRuntimeConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V2FunctionInstanceLifecycleConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.Object;
@@ -462,10 +463,18 @@ public final class V2FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public V2FunctionArgs build() {
-            $.functionName = Objects.requireNonNull($.functionName, "expected parameter 'functionName' to be non-null");
-            $.handler = Objects.requireNonNull($.handler, "expected parameter 'handler' to be non-null");
-            $.runtime = Objects.requireNonNull($.runtime, "expected parameter 'runtime' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.functionName == null) {
+                throw new MissingRequiredPropertyException("V2FunctionArgs", "functionName");
+            }
+            if ($.handler == null) {
+                throw new MissingRequiredPropertyException("V2FunctionArgs", "handler");
+            }
+            if ($.runtime == null) {
+                throw new MissingRequiredPropertyException("V2FunctionArgs", "runtime");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("V2FunctionArgs", "serviceName");
+            }
             return $;
         }
     }

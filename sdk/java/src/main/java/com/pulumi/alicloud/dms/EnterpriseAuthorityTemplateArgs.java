@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class EnterpriseAuthorityTemplateArgs extends com.pulumi.resources.
         }
 
         public EnterpriseAuthorityTemplateArgs build() {
-            $.authorityTemplateName = Objects.requireNonNull($.authorityTemplateName, "expected parameter 'authorityTemplateName' to be non-null");
-            $.tid = Objects.requireNonNull($.tid, "expected parameter 'tid' to be non-null");
+            if ($.authorityTemplateName == null) {
+                throw new MissingRequiredPropertyException("EnterpriseAuthorityTemplateArgs", "authorityTemplateName");
+            }
+            if ($.tid == null) {
+                throw new MissingRequiredPropertyException("EnterpriseAuthorityTemplateArgs", "tid");
+            }
             return $;
         }
     }

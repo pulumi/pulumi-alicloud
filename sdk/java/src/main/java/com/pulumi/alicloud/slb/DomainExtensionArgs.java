@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,10 +227,18 @@ public final class DomainExtensionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DomainExtensionArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.frontendPort = Objects.requireNonNull($.frontendPort, "expected parameter 'frontendPort' to be non-null");
-            $.loadBalancerId = Objects.requireNonNull($.loadBalancerId, "expected parameter 'loadBalancerId' to be non-null");
-            $.serverCertificateId = Objects.requireNonNull($.serverCertificateId, "expected parameter 'serverCertificateId' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("DomainExtensionArgs", "domain");
+            }
+            if ($.frontendPort == null) {
+                throw new MissingRequiredPropertyException("DomainExtensionArgs", "frontendPort");
+            }
+            if ($.loadBalancerId == null) {
+                throw new MissingRequiredPropertyException("DomainExtensionArgs", "loadBalancerId");
+            }
+            if ($.serverCertificateId == null) {
+                throw new MissingRequiredPropertyException("DomainExtensionArgs", "serverCertificateId");
+            }
             return $;
         }
     }

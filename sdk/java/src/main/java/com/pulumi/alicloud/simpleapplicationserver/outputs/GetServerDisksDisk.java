@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.simpleapplicationserver.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -183,57 +184,90 @@ public final class GetServerDisksDisk {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder device(String device) {
-            this.device = Objects.requireNonNull(device);
+            if (device == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "device");
+            }
+            this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder diskId(String diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskName(String diskName) {
-            this.diskName = Objects.requireNonNull(diskName);
+            if (diskName == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "diskName");
+            }
+            this.diskName = diskName;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServerDisksDisk", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetServerDisksDisk build() {

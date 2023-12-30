@@ -5,6 +5,7 @@ package com.pulumi.alicloud.drds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -455,14 +456,30 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public PolardbxInstanceArgs build() {
-            $.cnClass = Objects.requireNonNull($.cnClass, "expected parameter 'cnClass' to be non-null");
-            $.cnNodeCount = Objects.requireNonNull($.cnNodeCount, "expected parameter 'cnNodeCount' to be non-null");
-            $.dnClass = Objects.requireNonNull($.dnClass, "expected parameter 'dnClass' to be non-null");
-            $.dnNodeCount = Objects.requireNonNull($.dnNodeCount, "expected parameter 'dnNodeCount' to be non-null");
-            $.primaryZone = Objects.requireNonNull($.primaryZone, "expected parameter 'primaryZone' to be non-null");
-            $.topologyType = Objects.requireNonNull($.topologyType, "expected parameter 'topologyType' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.cnClass == null) {
+                throw new MissingRequiredPropertyException("PolardbxInstanceArgs", "cnClass");
+            }
+            if ($.cnNodeCount == null) {
+                throw new MissingRequiredPropertyException("PolardbxInstanceArgs", "cnNodeCount");
+            }
+            if ($.dnClass == null) {
+                throw new MissingRequiredPropertyException("PolardbxInstanceArgs", "dnClass");
+            }
+            if ($.dnNodeCount == null) {
+                throw new MissingRequiredPropertyException("PolardbxInstanceArgs", "dnNodeCount");
+            }
+            if ($.primaryZone == null) {
+                throw new MissingRequiredPropertyException("PolardbxInstanceArgs", "primaryZone");
+            }
+            if ($.topologyType == null) {
+                throw new MissingRequiredPropertyException("PolardbxInstanceArgs", "topologyType");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("PolardbxInstanceArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("PolardbxInstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

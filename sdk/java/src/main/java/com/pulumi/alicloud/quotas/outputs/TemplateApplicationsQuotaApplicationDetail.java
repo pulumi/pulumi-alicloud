@@ -249,71 +249,85 @@ public final class TemplateApplicationsQuotaApplicationDetail {
 
         @CustomType.Setter
         public Builder aliyunUid(@Nullable String aliyunUid) {
+
             this.aliyunUid = aliyunUid;
             return this;
         }
         @CustomType.Setter
         public Builder applicationId(@Nullable String applicationId) {
+
             this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder approveValue(@Nullable Double approveValue) {
+
             this.approveValue = approveValue;
             return this;
         }
         @CustomType.Setter
         public Builder auditReason(@Nullable String auditReason) {
+
             this.auditReason = auditReason;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(@Nullable Map<String,Object> dimensions) {
+
             this.dimensions = dimensions;
             return this;
         }
         @CustomType.Setter
         public Builder envLanguage(@Nullable String envLanguage) {
+
             this.envLanguage = envLanguage;
             return this;
         }
         @CustomType.Setter
         public Builder noticeType(@Nullable Integer noticeType) {
+
             this.noticeType = noticeType;
             return this;
         }
         @CustomType.Setter
         public Builder period(@Nullable TemplateApplicationsQuotaApplicationDetailPeriod period) {
+
             this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder quotaArn(@Nullable String quotaArn) {
+
             this.quotaArn = quotaArn;
             return this;
         }
         @CustomType.Setter
         public Builder quotaDescription(@Nullable String quotaDescription) {
+
             this.quotaDescription = quotaDescription;
             return this;
         }
         @CustomType.Setter
         public Builder quotaName(@Nullable String quotaName) {
+
             this.quotaName = quotaName;
             return this;
         }
         @CustomType.Setter
         public Builder quotaUnit(@Nullable String quotaUnit) {
+
             this.quotaUnit = quotaUnit;
             return this;
         }
         @CustomType.Setter
         public Builder reason(@Nullable String reason) {
+
             this.reason = reason;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

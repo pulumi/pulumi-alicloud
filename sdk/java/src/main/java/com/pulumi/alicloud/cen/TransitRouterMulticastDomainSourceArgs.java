@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class TransitRouterMulticastDomainSourceArgs extends com.pulumi.res
         }
 
         public TransitRouterMulticastDomainSourceArgs build() {
-            $.groupIpAddress = Objects.requireNonNull($.groupIpAddress, "expected parameter 'groupIpAddress' to be non-null");
-            $.networkInterfaceId = Objects.requireNonNull($.networkInterfaceId, "expected parameter 'networkInterfaceId' to be non-null");
-            $.transitRouterMulticastDomainId = Objects.requireNonNull($.transitRouterMulticastDomainId, "expected parameter 'transitRouterMulticastDomainId' to be non-null");
+            if ($.groupIpAddress == null) {
+                throw new MissingRequiredPropertyException("TransitRouterMulticastDomainSourceArgs", "groupIpAddress");
+            }
+            if ($.networkInterfaceId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterMulticastDomainSourceArgs", "networkInterfaceId");
+            }
+            if ($.transitRouterMulticastDomainId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterMulticastDomainSourceArgs", "transitRouterMulticastDomainId");
+            }
             return $;
         }
     }

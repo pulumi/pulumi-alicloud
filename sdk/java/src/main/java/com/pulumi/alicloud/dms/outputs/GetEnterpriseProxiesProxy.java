@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -198,62 +199,98 @@ public final class GetEnterpriseProxiesProxy {
 
         @CustomType.Setter
         public Builder creatorId(String creatorId) {
-            this.creatorId = Objects.requireNonNull(creatorId);
+            if (creatorId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "creatorId");
+            }
+            this.creatorId = creatorId;
             return this;
         }
         @CustomType.Setter
         public Builder creatorName(String creatorName) {
-            this.creatorName = Objects.requireNonNull(creatorName);
+            if (creatorName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "creatorName");
+            }
+            this.creatorName = creatorName;
             return this;
         }
         @CustomType.Setter
         public Builder httpsPort(Integer httpsPort) {
-            this.httpsPort = Objects.requireNonNull(httpsPort);
+            if (httpsPort == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "httpsPort");
+            }
+            this.httpsPort = httpsPort;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder privateEnable(Boolean privateEnable) {
-            this.privateEnable = Objects.requireNonNull(privateEnable);
+            if (privateEnable == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "privateEnable");
+            }
+            this.privateEnable = privateEnable;
             return this;
         }
         @CustomType.Setter
         public Builder privateHost(String privateHost) {
-            this.privateHost = Objects.requireNonNull(privateHost);
+            if (privateHost == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "privateHost");
+            }
+            this.privateHost = privateHost;
             return this;
         }
         @CustomType.Setter
         public Builder protocolPort(Integer protocolPort) {
-            this.protocolPort = Objects.requireNonNull(protocolPort);
+            if (protocolPort == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "protocolPort");
+            }
+            this.protocolPort = protocolPort;
             return this;
         }
         @CustomType.Setter
         public Builder protocolType(String protocolType) {
-            this.protocolType = Objects.requireNonNull(protocolType);
+            if (protocolType == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "protocolType");
+            }
+            this.protocolType = protocolType;
             return this;
         }
         @CustomType.Setter
         public Builder proxyId(String proxyId) {
-            this.proxyId = Objects.requireNonNull(proxyId);
+            if (proxyId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "proxyId");
+            }
+            this.proxyId = proxyId;
             return this;
         }
         @CustomType.Setter
         public Builder publicEnable(Boolean publicEnable) {
-            this.publicEnable = Objects.requireNonNull(publicEnable);
+            if (publicEnable == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "publicEnable");
+            }
+            this.publicEnable = publicEnable;
             return this;
         }
         @CustomType.Setter
         public Builder publicHost(String publicHost) {
-            this.publicHost = Objects.requireNonNull(publicHost);
+            if (publicHost == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesProxy", "publicHost");
+            }
+            this.publicHost = publicHost;
             return this;
         }
         public GetEnterpriseProxiesProxy build() {

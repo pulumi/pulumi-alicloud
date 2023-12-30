@@ -7,10 +7,10 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * ALIKAFKA instance can be imported using the id, e.g.
+ * AliKafka instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
+ *  $ pulumi import alicloud:alikafka/instance:Instance instance <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -68,6 +68,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly endPoint!: pulumi.Output<string>;
     /**
+     * (Available since v1.214.1) The number of available groups.
+     */
+    public /*out*/ readonly groupLeft!: pulumi.Output<number>;
+    /**
+     * (Available since v1.214.1) The number of used groups.
+     */
+    public /*out*/ readonly groupUsed!: pulumi.Output<number>;
+    /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
     public readonly ioMax!: pulumi.Output<number>;
@@ -77,6 +85,10 @@ export class Instance extends pulumi.CustomResource {
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      */
     public readonly ioMaxSpec!: pulumi.Output<string>;
+    /**
+     * (Available since v1.214.1) The method that you use to purchase partitions.
+     */
+    public /*out*/ readonly isPartitionBuy!: pulumi.Output<number>;
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
      */
@@ -90,9 +102,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly paidType!: pulumi.Output<string | undefined>;
     /**
+     * (Available since v1.214.1) The number of available partitions.
+     */
+    public /*out*/ readonly partitionLeft!: pulumi.Output<number>;
+    /**
      * The number of partitions.
      */
     public readonly partitionNum!: pulumi.Output<number | undefined>;
+    /**
+     * (Available since v1.214.1) The number of used partitions.
+     */
+    public /*out*/ readonly partitionUsed!: pulumi.Output<number>;
     /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
@@ -120,11 +140,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly specType!: pulumi.Output<string | undefined>;
     /**
-     * The status of the instance. Valid values:
-     * - 0: pending
-     * - 1: deploying
-     * - 5: running
-     * - 15: expired
+     * The status of the instance.
      */
     public /*out*/ readonly status!: pulumi.Output<number>;
     /**
@@ -132,14 +148,26 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * (Available since v1.214.1) The number of available topics.
+     */
+    public /*out*/ readonly topicLeft!: pulumi.Output<number>;
+    /**
+     * (Available since v1.214.1) The number of purchased topics.
+     */
+    public /*out*/ readonly topicNumOfBuy!: pulumi.Output<number>;
+    /**
      * The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      *
-     * @deprecated Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+     * @deprecated Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
      */
     public readonly topicQuota!: pulumi.Output<number>;
+    /**
+     * (Available since v1.214.1) The number of used topics.
+     */
+    public /*out*/ readonly topicUsed!: pulumi.Output<number>;
     /**
      * The VPC ID of the instance.
      */
@@ -172,19 +200,27 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["diskType"] = state ? state.diskType : undefined;
             resourceInputs["eipMax"] = state ? state.eipMax : undefined;
             resourceInputs["endPoint"] = state ? state.endPoint : undefined;
+            resourceInputs["groupLeft"] = state ? state.groupLeft : undefined;
+            resourceInputs["groupUsed"] = state ? state.groupUsed : undefined;
             resourceInputs["ioMax"] = state ? state.ioMax : undefined;
             resourceInputs["ioMaxSpec"] = state ? state.ioMaxSpec : undefined;
+            resourceInputs["isPartitionBuy"] = state ? state.isPartitionBuy : undefined;
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["paidType"] = state ? state.paidType : undefined;
+            resourceInputs["partitionLeft"] = state ? state.partitionLeft : undefined;
             resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
+            resourceInputs["partitionUsed"] = state ? state.partitionUsed : undefined;
             resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
             resourceInputs["selectedZones"] = state ? state.selectedZones : undefined;
             resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
             resourceInputs["specType"] = state ? state.specType : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["topicLeft"] = state ? state.topicLeft : undefined;
+            resourceInputs["topicNumOfBuy"] = state ? state.topicNumOfBuy : undefined;
             resourceInputs["topicQuota"] = state ? state.topicQuota : undefined;
+            resourceInputs["topicUsed"] = state ? state.topicUsed : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -223,7 +259,15 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["endPoint"] = undefined /*out*/;
+            resourceInputs["groupLeft"] = undefined /*out*/;
+            resourceInputs["groupUsed"] = undefined /*out*/;
+            resourceInputs["isPartitionBuy"] = undefined /*out*/;
+            resourceInputs["partitionLeft"] = undefined /*out*/;
+            resourceInputs["partitionUsed"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["topicLeft"] = undefined /*out*/;
+            resourceInputs["topicNumOfBuy"] = undefined /*out*/;
+            resourceInputs["topicUsed"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -261,6 +305,14 @@ export interface InstanceState {
      */
     endPoint?: pulumi.Input<string>;
     /**
+     * (Available since v1.214.1) The number of available groups.
+     */
+    groupLeft?: pulumi.Input<number>;
+    /**
+     * (Available since v1.214.1) The number of used groups.
+     */
+    groupUsed?: pulumi.Input<number>;
+    /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
     ioMax?: pulumi.Input<number>;
@@ -270,6 +322,10 @@ export interface InstanceState {
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      */
     ioMaxSpec?: pulumi.Input<string>;
+    /**
+     * (Available since v1.214.1) The method that you use to purchase partitions.
+     */
+    isPartitionBuy?: pulumi.Input<number>;
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
      */
@@ -283,9 +339,17 @@ export interface InstanceState {
      */
     paidType?: pulumi.Input<string>;
     /**
+     * (Available since v1.214.1) The number of available partitions.
+     */
+    partitionLeft?: pulumi.Input<number>;
+    /**
      * The number of partitions.
      */
     partitionNum?: pulumi.Input<number>;
+    /**
+     * (Available since v1.214.1) The number of used partitions.
+     */
+    partitionUsed?: pulumi.Input<number>;
     /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
@@ -313,11 +377,7 @@ export interface InstanceState {
      */
     specType?: pulumi.Input<string>;
     /**
-     * The status of the instance. Valid values:
-     * - 0: pending
-     * - 1: deploying
-     * - 5: running
-     * - 15: expired
+     * The status of the instance.
      */
     status?: pulumi.Input<number>;
     /**
@@ -325,14 +385,26 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
+     * (Available since v1.214.1) The number of available topics.
+     */
+    topicLeft?: pulumi.Input<number>;
+    /**
+     * (Available since v1.214.1) The number of purchased topics.
+     */
+    topicNumOfBuy?: pulumi.Input<number>;
+    /**
      * The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      *
-     * @deprecated Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+     * @deprecated Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
      */
     topicQuota?: pulumi.Input<number>;
+    /**
+     * (Available since v1.214.1) The number of used topics.
+     */
+    topicUsed?: pulumi.Input<number>;
     /**
      * The VPC ID of the instance.
      */
@@ -435,7 +507,7 @@ export interface InstanceArgs {
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      *
-     * @deprecated Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+     * @deprecated Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
      */
     topicQuota?: pulumi.Input<number>;
     /**

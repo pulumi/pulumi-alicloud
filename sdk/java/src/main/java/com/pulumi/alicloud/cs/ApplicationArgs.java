@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -195,8 +196,12 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ApplicationArgs build() {
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.template = Objects.requireNonNull($.template, "expected parameter 'template' to be non-null");
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "clusterName");
+            }
+            if ($.template == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "template");
+            }
             return $;
         }
     }

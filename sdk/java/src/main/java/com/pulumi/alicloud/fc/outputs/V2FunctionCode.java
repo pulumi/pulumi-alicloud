@@ -72,16 +72,19 @@ public final class V2FunctionCode {
 
         @CustomType.Setter
         public Builder ossBucketName(@Nullable String ossBucketName) {
+
             this.ossBucketName = ossBucketName;
             return this;
         }
         @CustomType.Setter
         public Builder ossObjectName(@Nullable String ossObjectName) {
+
             this.ossObjectName = ossObjectName;
             return this;
         }
         @CustomType.Setter
         public Builder zipFile(@Nullable String zipFile) {
+
             this.zipFile = zipFile;
             return this;
         }

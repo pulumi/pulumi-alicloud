@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.pvtz.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetResolverZonesZone {
 
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetResolverZonesZone", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetResolverZonesZone", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetResolverZonesZone build() {

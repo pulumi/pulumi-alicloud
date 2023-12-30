@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kvstore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,12 +49,18 @@ public final class GetInstanceClassesClass {
 
         @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
-            this.instanceClass = Objects.requireNonNull(instanceClass);
+            if (instanceClass == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesClass", "instanceClass");
+            }
+            this.instanceClass = instanceClass;
             return this;
         }
         @CustomType.Setter
         public Builder price(String price) {
-            this.price = Objects.requireNonNull(price);
+            if (price == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesClass", "price");
+            }
+            this.price = price;
             return this;
         }
         public GetInstanceClassesClass build() {

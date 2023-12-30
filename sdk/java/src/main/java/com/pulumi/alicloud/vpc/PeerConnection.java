@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Peer Connection resource. Vpc peer connection.
+ * Provides a VPC Peer Connection resource.
  * 
  * For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
  * 
@@ -174,14 +174,14 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
         return this.bandwidth;
     }
     /**
-     * The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
+     * The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
+     * @return The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
      * 
      */
     public Output<String> createTime() {
@@ -202,32 +202,28 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to PreCheck only this request. Value:
-     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+     * Whether to PreCheck only this request. Default value: `false`. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck only this request. Value:
-     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+     * @return Whether to PreCheck only this request. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
     @Export(name="peerConnectionName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerConnectionName;
 
     /**
-     * @return The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> peerConnectionName() {
@@ -248,42 +244,42 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The status of the resource.
+     * The status of the VPC peer connection.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the VPC peer connection.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tags of PrefixList.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return The tags of PrefixList.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * You must create a VPC ID on the initiator of a VPC peer connection.
+     * The ID of the requester VPC.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return You must create a VPC ID on the initiator of a VPC peer connection.
+     * @return The ID of the requester VPC.
      * 
      */
     public Output<String> vpcId() {

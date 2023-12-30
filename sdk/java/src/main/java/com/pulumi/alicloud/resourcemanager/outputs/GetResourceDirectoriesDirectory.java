@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetResourceDirectoriesDirectory {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceDirectoriesDirectory", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder masterAccountId(String masterAccountId) {
-            this.masterAccountId = Objects.requireNonNull(masterAccountId);
+            if (masterAccountId == null) {
+              throw new MissingRequiredPropertyException("GetResourceDirectoriesDirectory", "masterAccountId");
+            }
+            this.masterAccountId = masterAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder masterAccountName(String masterAccountName) {
-            this.masterAccountName = Objects.requireNonNull(masterAccountName);
+            if (masterAccountName == null) {
+              throw new MissingRequiredPropertyException("GetResourceDirectoriesDirectory", "masterAccountName");
+            }
+            this.masterAccountName = masterAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceDirectoryId(String resourceDirectoryId) {
-            this.resourceDirectoryId = Objects.requireNonNull(resourceDirectoryId);
+            if (resourceDirectoryId == null) {
+              throw new MissingRequiredPropertyException("GetResourceDirectoriesDirectory", "resourceDirectoryId");
+            }
+            this.resourceDirectoryId = resourceDirectoryId;
             return this;
         }
         @CustomType.Setter
         public Builder rootFolderId(String rootFolderId) {
-            this.rootFolderId = Objects.requireNonNull(rootFolderId);
+            if (rootFolderId == null) {
+              throw new MissingRequiredPropertyException("GetResourceDirectoriesDirectory", "rootFolderId");
+            }
+            this.rootFolderId = rootFolderId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetResourceDirectoriesDirectory", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetResourceDirectoriesDirectory build() {

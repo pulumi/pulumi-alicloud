@@ -48,6 +48,7 @@ public final class RuleRuleActionRemoveHeaderConfig {
 
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }

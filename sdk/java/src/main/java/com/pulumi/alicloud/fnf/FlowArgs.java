@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fnf;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class FlowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FlowArgs build() {
-            $.definition = Objects.requireNonNull($.definition, "expected parameter 'definition' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.definition == null) {
+                throw new MissingRequiredPropertyException("FlowArgs", "definition");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("FlowArgs", "description");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("FlowArgs", "type");
+            }
             return $;
         }
     }

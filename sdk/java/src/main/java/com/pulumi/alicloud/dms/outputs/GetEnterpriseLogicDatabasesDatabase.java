@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -184,12 +185,18 @@ public final class GetEnterpriseLogicDatabasesDatabase {
 
         @CustomType.Setter
         public Builder alias(String alias) {
-            this.alias = Objects.requireNonNull(alias);
+            if (alias == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "alias");
+            }
+            this.alias = alias;
             return this;
         }
         @CustomType.Setter
         public Builder databaseIds(List<String> databaseIds) {
-            this.databaseIds = Objects.requireNonNull(databaseIds);
+            if (databaseIds == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "databaseIds");
+            }
+            this.databaseIds = databaseIds;
             return this;
         }
         public Builder databaseIds(String... databaseIds) {
@@ -197,32 +204,50 @@ public final class GetEnterpriseLogicDatabasesDatabase {
         }
         @CustomType.Setter
         public Builder dbType(String dbType) {
-            this.dbType = Objects.requireNonNull(dbType);
+            if (dbType == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "dbType");
+            }
+            this.dbType = dbType;
             return this;
         }
         @CustomType.Setter
         public Builder envType(String envType) {
-            this.envType = Objects.requireNonNull(envType);
+            if (envType == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "envType");
+            }
+            this.envType = envType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logic(Boolean logic) {
-            this.logic = Objects.requireNonNull(logic);
+            if (logic == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "logic");
+            }
+            this.logic = logic;
             return this;
         }
         @CustomType.Setter
         public Builder logicDatabaseId(String logicDatabaseId) {
-            this.logicDatabaseId = Objects.requireNonNull(logicDatabaseId);
+            if (logicDatabaseId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "logicDatabaseId");
+            }
+            this.logicDatabaseId = logicDatabaseId;
             return this;
         }
         @CustomType.Setter
         public Builder ownerIdLists(List<String> ownerIdLists) {
-            this.ownerIdLists = Objects.requireNonNull(ownerIdLists);
+            if (ownerIdLists == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "ownerIdLists");
+            }
+            this.ownerIdLists = ownerIdLists;
             return this;
         }
         public Builder ownerIdLists(String... ownerIdLists) {
@@ -230,7 +255,10 @@ public final class GetEnterpriseLogicDatabasesDatabase {
         }
         @CustomType.Setter
         public Builder ownerNameLists(List<String> ownerNameLists) {
-            this.ownerNameLists = Objects.requireNonNull(ownerNameLists);
+            if (ownerNameLists == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "ownerNameLists");
+            }
+            this.ownerNameLists = ownerNameLists;
             return this;
         }
         public Builder ownerNameLists(String... ownerNameLists) {
@@ -238,12 +266,18 @@ public final class GetEnterpriseLogicDatabasesDatabase {
         }
         @CustomType.Setter
         public Builder schemaName(String schemaName) {
-            this.schemaName = Objects.requireNonNull(schemaName);
+            if (schemaName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "schemaName");
+            }
+            this.schemaName = schemaName;
             return this;
         }
         @CustomType.Setter
         public Builder searchName(String searchName) {
-            this.searchName = Objects.requireNonNull(searchName);
+            if (searchName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesDatabase", "searchName");
+            }
+            this.searchName = searchName;
             return this;
         }
         public GetEnterpriseLogicDatabasesDatabase build() {

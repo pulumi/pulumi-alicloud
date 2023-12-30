@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetCommonBandwidthPackagesPackage;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -155,22 +156,30 @@ public final class GetCommonBandwidthPackagesResult {
 
         @CustomType.Setter
         public Builder bandwidthPackageName(@Nullable String bandwidthPackageName) {
+
             this.bandwidthPackageName = bandwidthPackageName;
             return this;
         }
         @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
+
             this.dryRun = dryRun;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -178,17 +187,22 @@ public final class GetCommonBandwidthPackagesResult {
         }
         @CustomType.Setter
         public Builder includeReservationData(@Nullable Boolean includeReservationData) {
+
             this.includeReservationData = includeReservationData;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -196,12 +210,16 @@ public final class GetCommonBandwidthPackagesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder packages(List<GetCommonBandwidthPackagesPackage> packages) {
-            this.packages = Objects.requireNonNull(packages);
+            if (packages == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesResult", "packages");
+            }
+            this.packages = packages;
             return this;
         }
         public Builder packages(GetCommonBandwidthPackagesPackage... packages) {
@@ -209,11 +227,13 @@ public final class GetCommonBandwidthPackagesResult {
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

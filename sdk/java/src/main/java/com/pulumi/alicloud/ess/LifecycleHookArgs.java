@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -299,8 +300,12 @@ public final class LifecycleHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LifecycleHookArgs build() {
-            $.lifecycleTransition = Objects.requireNonNull($.lifecycleTransition, "expected parameter 'lifecycleTransition' to be non-null");
-            $.scalingGroupId = Objects.requireNonNull($.scalingGroupId, "expected parameter 'scalingGroupId' to be non-null");
+            if ($.lifecycleTransition == null) {
+                throw new MissingRequiredPropertyException("LifecycleHookArgs", "lifecycleTransition");
+            }
+            if ($.scalingGroupId == null) {
+                throw new MissingRequiredPropertyException("LifecycleHookArgs", "scalingGroupId");
+            }
             return $;
         }
     }

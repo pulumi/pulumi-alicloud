@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cdn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -193,10 +194,18 @@ public final class RealTimeLogDeliveryArgs extends com.pulumi.resources.Resource
         }
 
         public RealTimeLogDeliveryArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.logstore = Objects.requireNonNull($.logstore, "expected parameter 'logstore' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.slsRegion = Objects.requireNonNull($.slsRegion, "expected parameter 'slsRegion' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("RealTimeLogDeliveryArgs", "domain");
+            }
+            if ($.logstore == null) {
+                throw new MissingRequiredPropertyException("RealTimeLogDeliveryArgs", "logstore");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("RealTimeLogDeliveryArgs", "project");
+            }
+            if ($.slsRegion == null) {
+                throw new MissingRequiredPropertyException("RealTimeLogDeliveryArgs", "slsRegion");
+            }
             return $;
         }
     }

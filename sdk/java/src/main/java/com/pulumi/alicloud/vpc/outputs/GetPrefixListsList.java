@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetPrefixListsListEntry;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -157,12 +158,18 @@ public final class GetPrefixListsList {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetPrefixListsList", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder entrys(List<GetPrefixListsListEntry> entrys) {
-            this.entrys = Objects.requireNonNull(entrys);
+            if (entrys == null) {
+              throw new MissingRequiredPropertyException("GetPrefixListsList", "entrys");
+            }
+            this.entrys = entrys;
             return this;
         }
         public Builder entrys(GetPrefixListsListEntry... entrys) {
@@ -170,37 +177,58 @@ public final class GetPrefixListsList {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrefixListsList", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
-            this.ipVersion = Objects.requireNonNull(ipVersion);
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetPrefixListsList", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder maxEntries(Integer maxEntries) {
-            this.maxEntries = Objects.requireNonNull(maxEntries);
+            if (maxEntries == null) {
+              throw new MissingRequiredPropertyException("GetPrefixListsList", "maxEntries");
+            }
+            this.maxEntries = maxEntries;
             return this;
         }
         @CustomType.Setter
         public Builder prefixListDescription(String prefixListDescription) {
-            this.prefixListDescription = Objects.requireNonNull(prefixListDescription);
+            if (prefixListDescription == null) {
+              throw new MissingRequiredPropertyException("GetPrefixListsList", "prefixListDescription");
+            }
+            this.prefixListDescription = prefixListDescription;
             return this;
         }
         @CustomType.Setter
         public Builder prefixListId(String prefixListId) {
-            this.prefixListId = Objects.requireNonNull(prefixListId);
+            if (prefixListId == null) {
+              throw new MissingRequiredPropertyException("GetPrefixListsList", "prefixListId");
+            }
+            this.prefixListId = prefixListId;
             return this;
         }
         @CustomType.Setter
         public Builder prefixListName(String prefixListName) {
-            this.prefixListName = Objects.requireNonNull(prefixListName);
+            if (prefixListName == null) {
+              throw new MissingRequiredPropertyException("GetPrefixListsList", "prefixListName");
+            }
+            this.prefixListName = prefixListName;
             return this;
         }
         @CustomType.Setter
         public Builder shareType(String shareType) {
-            this.shareType = Objects.requireNonNull(shareType);
+            if (shareType == null) {
+              throw new MissingRequiredPropertyException("GetPrefixListsList", "shareType");
+            }
+            this.shareType = shareType;
             return this;
         }
         public GetPrefixListsList build() {

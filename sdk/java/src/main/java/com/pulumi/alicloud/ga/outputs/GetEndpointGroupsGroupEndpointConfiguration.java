@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -114,32 +115,50 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
 
         @CustomType.Setter
         public Builder enableClientipPreservation(Boolean enableClientipPreservation) {
-            this.enableClientipPreservation = Objects.requireNonNull(enableClientipPreservation);
+            if (enableClientipPreservation == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "enableClientipPreservation");
+            }
+            this.enableClientipPreservation = enableClientipPreservation;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder probePort(Integer probePort) {
-            this.probePort = Objects.requireNonNull(probePort);
+            if (probePort == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "probePort");
+            }
+            this.probePort = probePort;
             return this;
         }
         @CustomType.Setter
         public Builder probeProtocol(String probeProtocol) {
-            this.probeProtocol = Objects.requireNonNull(probeProtocol);
+            if (probeProtocol == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "probeProtocol");
+            }
+            this.probeProtocol = probeProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupEndpointConfiguration", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public GetEndpointGroupsGroupEndpointConfiguration build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetInstancesInstanceHostInstanceInfo {
 
         @CustomType.Setter
         public Builder dataSyncTime(String dataSyncTime) {
-            this.dataSyncTime = Objects.requireNonNull(dataSyncTime);
+            if (dataSyncTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceHostInstanceInfo", "dataSyncTime");
+            }
+            this.dataSyncTime = dataSyncTime;
             return this;
         }
         @CustomType.Setter
         public Builder logSyncTime(String logSyncTime) {
-            this.logSyncTime = Objects.requireNonNull(logSyncTime);
+            if (logSyncTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceHostInstanceInfo", "logSyncTime");
+            }
+            this.logSyncTime = logSyncTime;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(String nodeId) {
-            this.nodeId = Objects.requireNonNull(nodeId);
+            if (nodeId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceHostInstanceInfo", "nodeId");
+            }
+            this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeType(String nodeType) {
-            this.nodeType = Objects.requireNonNull(nodeType);
+            if (nodeType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceHostInstanceInfo", "nodeType");
+            }
+            this.nodeType = nodeType;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceHostInstanceInfo", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder syncStatus(String syncStatus) {
-            this.syncStatus = Objects.requireNonNull(syncStatus);
+            if (syncStatus == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceHostInstanceInfo", "syncStatus");
+            }
+            this.syncStatus = syncStatus;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceHostInstanceInfo", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetInstancesInstanceHostInstanceInfo build() {

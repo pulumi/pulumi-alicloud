@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eventbridge.outputs;
 
 import com.pulumi.alicloud.eventbridge.outputs.GetRulesRuleTarget;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,37 +129,58 @@ public final class GetRulesRule {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder eventBusName(String eventBusName) {
-            this.eventBusName = Objects.requireNonNull(eventBusName);
+            if (eventBusName == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "eventBusName");
+            }
+            this.eventBusName = eventBusName;
             return this;
         }
         @CustomType.Setter
         public Builder filterPattern(String filterPattern) {
-            this.filterPattern = Objects.requireNonNull(filterPattern);
+            if (filterPattern == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "filterPattern");
+            }
+            this.filterPattern = filterPattern;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ruleName(String ruleName) {
-            this.ruleName = Objects.requireNonNull(ruleName);
+            if (ruleName == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "ruleName");
+            }
+            this.ruleName = ruleName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder targets(List<GetRulesRuleTarget> targets) {
-            this.targets = Objects.requireNonNull(targets);
+            if (targets == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "targets");
+            }
+            this.targets = targets;
             return this;
         }
         public Builder targets(GetRulesRuleTarget... targets) {

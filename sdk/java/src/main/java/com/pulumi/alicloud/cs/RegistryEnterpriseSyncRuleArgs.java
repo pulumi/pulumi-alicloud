@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -372,12 +373,24 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         public RegistryEnterpriseSyncRuleArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.namespaceName = Objects.requireNonNull($.namespaceName, "expected parameter 'namespaceName' to be non-null");
-            $.tagFilter = Objects.requireNonNull($.tagFilter, "expected parameter 'tagFilter' to be non-null");
-            $.targetInstanceId = Objects.requireNonNull($.targetInstanceId, "expected parameter 'targetInstanceId' to be non-null");
-            $.targetNamespaceName = Objects.requireNonNull($.targetNamespaceName, "expected parameter 'targetNamespaceName' to be non-null");
-            $.targetRegionId = Objects.requireNonNull($.targetRegionId, "expected parameter 'targetRegionId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseSyncRuleArgs", "instanceId");
+            }
+            if ($.namespaceName == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseSyncRuleArgs", "namespaceName");
+            }
+            if ($.tagFilter == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseSyncRuleArgs", "tagFilter");
+            }
+            if ($.targetInstanceId == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseSyncRuleArgs", "targetInstanceId");
+            }
+            if ($.targetNamespaceName == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseSyncRuleArgs", "targetNamespaceName");
+            }
+            if ($.targetRegionId == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseSyncRuleArgs", "targetRegionId");
+            }
             return $;
         }
     }

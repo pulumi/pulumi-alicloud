@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ens;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -299,9 +300,15 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EipArgs build() {
-            $.ensRegionId = Objects.requireNonNull($.ensRegionId, "expected parameter 'ensRegionId' to be non-null");
-            $.internetChargeType = Objects.requireNonNull($.internetChargeType, "expected parameter 'internetChargeType' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
+            if ($.ensRegionId == null) {
+                throw new MissingRequiredPropertyException("EipArgs", "ensRegionId");
+            }
+            if ($.internetChargeType == null) {
+                throw new MissingRequiredPropertyException("EipArgs", "internetChargeType");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("EipArgs", "paymentType");
+            }
             return $;
         }
     }

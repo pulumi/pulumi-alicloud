@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -282,11 +283,21 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PolicyArgs build() {
-            $.accessControlRules = Objects.requireNonNull($.accessControlRules, "expected parameter 'accessControlRules' to be non-null");
-            $.kmsInstanceId = Objects.requireNonNull($.kmsInstanceId, "expected parameter 'kmsInstanceId' to be non-null");
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.resources = Objects.requireNonNull($.resources, "expected parameter 'resources' to be non-null");
+            if ($.accessControlRules == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "accessControlRules");
+            }
+            if ($.kmsInstanceId == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "kmsInstanceId");
+            }
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "permissions");
+            }
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "policyName");
+            }
+            if ($.resources == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "resources");
+            }
             return $;
         }
     }

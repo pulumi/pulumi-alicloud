@@ -6,46 +6,48 @@ package com.pulumi.alicloud.log.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class StoreEncryptConfUserCmkInfo {
     /**
-     * @return role arn.
+     * @return Role arn.
      * 
      */
-    private String arn;
+    private @Nullable String arn;
     /**
      * @return User master key id.
      * 
      */
-    private String cmkKeyId;
+    private @Nullable String cmkKeyId;
     /**
-     * @return Region id where the  user master key id is located.
+     * @return Region id where the user master key id is located.
      * 
      */
-    private String regionId;
+    private @Nullable String regionId;
 
     private StoreEncryptConfUserCmkInfo() {}
     /**
-     * @return role arn.
+     * @return Role arn.
      * 
      */
-    public String arn() {
-        return this.arn;
+    public Optional<String> arn() {
+        return Optional.ofNullable(this.arn);
     }
     /**
      * @return User master key id.
      * 
      */
-    public String cmkKeyId() {
-        return this.cmkKeyId;
+    public Optional<String> cmkKeyId() {
+        return Optional.ofNullable(this.cmkKeyId);
     }
     /**
-     * @return Region id where the  user master key id is located.
+     * @return Region id where the user master key id is located.
      * 
      */
-    public String regionId() {
-        return this.regionId;
+    public Optional<String> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     public static Builder builder() {
@@ -57,9 +59,9 @@ public final class StoreEncryptConfUserCmkInfo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String arn;
-        private String cmkKeyId;
-        private String regionId;
+        private @Nullable String arn;
+        private @Nullable String cmkKeyId;
+        private @Nullable String regionId;
         public Builder() {}
         public Builder(StoreEncryptConfUserCmkInfo defaults) {
     	      Objects.requireNonNull(defaults);
@@ -69,18 +71,21 @@ public final class StoreEncryptConfUserCmkInfo {
         }
 
         @CustomType.Setter
-        public Builder arn(String arn) {
-            this.arn = Objects.requireNonNull(arn);
+        public Builder arn(@Nullable String arn) {
+
+            this.arn = arn;
             return this;
         }
         @CustomType.Setter
-        public Builder cmkKeyId(String cmkKeyId) {
-            this.cmkKeyId = Objects.requireNonNull(cmkKeyId);
+        public Builder cmkKeyId(@Nullable String cmkKeyId) {
+
+            this.cmkKeyId = cmkKeyId;
             return this;
         }
         @CustomType.Setter
-        public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+        public Builder regionId(@Nullable String regionId) {
+
+            this.regionId = regionId;
             return this;
         }
         public StoreEncryptConfUserCmkInfo build() {

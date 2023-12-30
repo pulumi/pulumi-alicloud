@@ -6,6 +6,7 @@ package com.pulumi.alicloud.bp;
 import com.pulumi.alicloud.bp.inputs.StudioApplicationInstanceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -312,8 +313,12 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         public StudioApplicationArgs build() {
-            $.applicationName = Objects.requireNonNull($.applicationName, "expected parameter 'applicationName' to be non-null");
-            $.templateId = Objects.requireNonNull($.templateId, "expected parameter 'templateId' to be non-null");
+            if ($.applicationName == null) {
+                throw new MissingRequiredPropertyException("StudioApplicationArgs", "applicationName");
+            }
+            if ($.templateId == null) {
+                throw new MissingRequiredPropertyException("StudioApplicationArgs", "templateId");
+            }
             return $;
         }
     }

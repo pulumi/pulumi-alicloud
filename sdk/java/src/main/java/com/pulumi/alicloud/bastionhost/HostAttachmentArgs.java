@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class HostAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public HostAttachmentArgs build() {
-            $.hostGroupId = Objects.requireNonNull($.hostGroupId, "expected parameter 'hostGroupId' to be non-null");
-            $.hostId = Objects.requireNonNull($.hostId, "expected parameter 'hostId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.hostGroupId == null) {
+                throw new MissingRequiredPropertyException("HostAttachmentArgs", "hostGroupId");
+            }
+            if ($.hostId == null) {
+                throw new MissingRequiredPropertyException("HostAttachmentArgs", "hostId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("HostAttachmentArgs", "instanceId");
+            }
             return $;
         }
     }

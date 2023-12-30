@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class CustomLineIpSegmentListArgs extends com.pulumi.resources.Reso
         }
 
         public CustomLineIpSegmentListArgs build() {
-            $.endIp = Objects.requireNonNull($.endIp, "expected parameter 'endIp' to be non-null");
-            $.startIp = Objects.requireNonNull($.startIp, "expected parameter 'startIp' to be non-null");
+            if ($.endIp == null) {
+                throw new MissingRequiredPropertyException("CustomLineIpSegmentListArgs", "endIp");
+            }
+            if ($.startIp == null) {
+                throw new MissingRequiredPropertyException("CustomLineIpSegmentListArgs", "startIp");
+            }
             return $;
         }
     }

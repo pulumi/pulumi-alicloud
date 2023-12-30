@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ots.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetTunnelsTunnelChannel {
 
         @CustomType.Setter
         public Builder channelId(String channelId) {
-            this.channelId = Objects.requireNonNull(channelId);
+            if (channelId == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnelChannel", "channelId");
+            }
+            this.channelId = channelId;
             return this;
         }
         @CustomType.Setter
         public Builder channelRpo(Integer channelRpo) {
-            this.channelRpo = Objects.requireNonNull(channelRpo);
+            if (channelRpo == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnelChannel", "channelRpo");
+            }
+            this.channelRpo = channelRpo;
             return this;
         }
         @CustomType.Setter
         public Builder channelStatus(String channelStatus) {
-            this.channelStatus = Objects.requireNonNull(channelStatus);
+            if (channelStatus == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnelChannel", "channelStatus");
+            }
+            this.channelStatus = channelStatus;
             return this;
         }
         @CustomType.Setter
         public Builder channelType(String channelType) {
-            this.channelType = Objects.requireNonNull(channelType);
+            if (channelType == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnelChannel", "channelType");
+            }
+            this.channelType = channelType;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnelChannel", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         public GetTunnelsTunnelChannel build() {

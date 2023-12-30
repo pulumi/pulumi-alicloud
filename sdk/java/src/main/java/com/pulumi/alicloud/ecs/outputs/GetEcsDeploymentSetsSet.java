@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -170,47 +171,74 @@ public final class GetEcsDeploymentSetsSet {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentSetId(String deploymentSetId) {
-            this.deploymentSetId = Objects.requireNonNull(deploymentSetId);
+            if (deploymentSetId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "deploymentSetId");
+            }
+            this.deploymentSetId = deploymentSetId;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentSetName(String deploymentSetName) {
-            this.deploymentSetName = Objects.requireNonNull(deploymentSetName);
+            if (deploymentSetName == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "deploymentSetName");
+            }
+            this.deploymentSetName = deploymentSetName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder granularity(String granularity) {
-            this.granularity = Objects.requireNonNull(granularity);
+            if (granularity == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "granularity");
+            }
+            this.granularity = granularity;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceAmount(Integer instanceAmount) {
-            this.instanceAmount = Objects.requireNonNull(instanceAmount);
+            if (instanceAmount == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "instanceAmount");
+            }
+            this.instanceAmount = instanceAmount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceIds(List<String> instanceIds) {
-            this.instanceIds = Objects.requireNonNull(instanceIds);
+            if (instanceIds == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "instanceIds");
+            }
+            this.instanceIds = instanceIds;
             return this;
         }
         public Builder instanceIds(String... instanceIds) {
@@ -218,7 +246,10 @@ public final class GetEcsDeploymentSetsSet {
         }
         @CustomType.Setter
         public Builder strategy(String strategy) {
-            this.strategy = Objects.requireNonNull(strategy);
+            if (strategy == null) {
+              throw new MissingRequiredPropertyException("GetEcsDeploymentSetsSet", "strategy");
+            }
+            this.strategy = strategy;
             return this;
         }
         public GetEcsDeploymentSetsSet build() {

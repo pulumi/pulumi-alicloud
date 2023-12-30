@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.alicloud.servicecatalog.outputs.GetPortfoliosPortfolio;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -137,12 +138,18 @@ public final class GetPortfoliosResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -150,12 +157,16 @@ public final class GetPortfoliosResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -163,22 +174,28 @@ public final class GetPortfoliosResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder portfolios(List<GetPortfoliosPortfolio> portfolios) {
-            this.portfolios = Objects.requireNonNull(portfolios);
+            if (portfolios == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosResult", "portfolios");
+            }
+            this.portfolios = portfolios;
             return this;
         }
         public Builder portfolios(GetPortfoliosPortfolio... portfolios) {
@@ -186,21 +203,25 @@ public final class GetPortfoliosResult {
         }
         @CustomType.Setter
         public Builder productId(@Nullable String productId) {
+
             this.productId = productId;
             return this;
         }
         @CustomType.Setter
         public Builder scope(@Nullable String scope) {
+
             this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder sortBy(@Nullable String sortBy) {
+
             this.sortBy = sortBy;
             return this;
         }
         @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
+
             this.sortOrder = sortOrder;
             return this;
         }

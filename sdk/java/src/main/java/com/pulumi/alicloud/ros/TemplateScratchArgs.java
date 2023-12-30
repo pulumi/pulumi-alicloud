@@ -9,6 +9,7 @@ import com.pulumi.alicloud.ros.inputs.TemplateScratchSourceResourceGroupArgs;
 import com.pulumi.alicloud.ros.inputs.TemplateScratchSourceTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -360,7 +361,9 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public TemplateScratchArgs build() {
-            $.templateScratchType = Objects.requireNonNull($.templateScratchType, "expected parameter 'templateScratchType' to be non-null");
+            if ($.templateScratchType == null) {
+                throw new MissingRequiredPropertyException("TemplateScratchArgs", "templateScratchType");
+            }
             return $;
         }
     }

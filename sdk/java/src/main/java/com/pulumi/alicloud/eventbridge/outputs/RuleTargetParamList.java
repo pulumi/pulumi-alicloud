@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eventbridge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -142,21 +143,29 @@ public final class RuleTargetParamList {
 
         @CustomType.Setter
         public Builder form(String form) {
-            this.form = Objects.requireNonNull(form);
+            if (form == null) {
+              throw new MissingRequiredPropertyException("RuleTargetParamList", "form");
+            }
+            this.form = form;
             return this;
         }
         @CustomType.Setter
         public Builder resourceKey(String resourceKey) {
-            this.resourceKey = Objects.requireNonNull(resourceKey);
+            if (resourceKey == null) {
+              throw new MissingRequiredPropertyException("RuleTargetParamList", "resourceKey");
+            }
+            this.resourceKey = resourceKey;
             return this;
         }
         @CustomType.Setter
         public Builder template(@Nullable String template) {
+
             this.template = template;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

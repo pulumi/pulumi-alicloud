@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetRegistryEnterpriseReposRepoTag {
 
         @CustomType.Setter
         public Builder digest(String digest) {
-            this.digest = Objects.requireNonNull(digest);
+            if (digest == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepoTag", "digest");
+            }
+            this.digest = digest;
             return this;
         }
         @CustomType.Setter
         public Builder imageCreate(String imageCreate) {
-            this.imageCreate = Objects.requireNonNull(imageCreate);
+            if (imageCreate == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepoTag", "imageCreate");
+            }
+            this.imageCreate = imageCreate;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepoTag", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder imageSize(Integer imageSize) {
-            this.imageSize = Objects.requireNonNull(imageSize);
+            if (imageSize == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepoTag", "imageSize");
+            }
+            this.imageSize = imageSize;
             return this;
         }
         @CustomType.Setter
         public Builder imageUpdate(String imageUpdate) {
-            this.imageUpdate = Objects.requireNonNull(imageUpdate);
+            if (imageUpdate == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepoTag", "imageUpdate");
+            }
+            this.imageUpdate = imageUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepoTag", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tag(String tag) {
-            this.tag = Objects.requireNonNull(tag);
+            if (tag == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepoTag", "tag");
+            }
+            this.tag = tag;
             return this;
         }
         public GetRegistryEnterpriseReposRepoTag build() {

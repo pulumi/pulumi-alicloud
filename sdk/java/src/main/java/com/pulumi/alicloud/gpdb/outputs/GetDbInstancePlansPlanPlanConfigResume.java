@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.gpdb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetDbInstancePlansPlanPlanConfigResume {
 
         @CustomType.Setter
         public Builder executeTime(String executeTime) {
-            this.executeTime = Objects.requireNonNull(executeTime);
+            if (executeTime == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlanPlanConfigResume", "executeTime");
+            }
+            this.executeTime = executeTime;
             return this;
         }
         @CustomType.Setter
         public Builder planCronTime(String planCronTime) {
-            this.planCronTime = Objects.requireNonNull(planCronTime);
+            if (planCronTime == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlanPlanConfigResume", "planCronTime");
+            }
+            this.planCronTime = planCronTime;
             return this;
         }
         @CustomType.Setter
         public Builder planTaskStatus(String planTaskStatus) {
-            this.planTaskStatus = Objects.requireNonNull(planTaskStatus);
+            if (planTaskStatus == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlanPlanConfigResume", "planTaskStatus");
+            }
+            this.planTaskStatus = planTaskStatus;
             return this;
         }
         public GetDbInstancePlansPlanPlanConfigResume build() {

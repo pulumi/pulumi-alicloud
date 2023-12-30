@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.gpdb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetInstancesInstanceIpWhitelist {
 
         @CustomType.Setter
         public Builder ipGroupAttribute(String ipGroupAttribute) {
-            this.ipGroupAttribute = Objects.requireNonNull(ipGroupAttribute);
+            if (ipGroupAttribute == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceIpWhitelist", "ipGroupAttribute");
+            }
+            this.ipGroupAttribute = ipGroupAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder ipGroupName(String ipGroupName) {
-            this.ipGroupName = Objects.requireNonNull(ipGroupName);
+            if (ipGroupName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceIpWhitelist", "ipGroupName");
+            }
+            this.ipGroupName = ipGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder securityIpList(String securityIpList) {
-            this.securityIpList = Objects.requireNonNull(securityIpList);
+            if (securityIpList == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceIpWhitelist", "securityIpList");
+            }
+            this.securityIpList = securityIpList;
             return this;
         }
         public GetInstancesInstanceIpWhitelist build() {

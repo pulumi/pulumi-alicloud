@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mongodb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -87,21 +88,27 @@ public final class ShardingInstanceMongoList {
 
         @CustomType.Setter
         public Builder connectString(@Nullable String connectString) {
+
             this.connectString = connectString;
             return this;
         }
         @CustomType.Setter
         public Builder nodeClass(String nodeClass) {
-            this.nodeClass = Objects.requireNonNull(nodeClass);
+            if (nodeClass == null) {
+              throw new MissingRequiredPropertyException("ShardingInstanceMongoList", "nodeClass");
+            }
+            this.nodeClass = nodeClass;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
+
             this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }

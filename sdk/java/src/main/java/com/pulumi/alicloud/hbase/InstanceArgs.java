@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -954,9 +955,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.coreInstanceType = Objects.requireNonNull($.coreInstanceType, "expected parameter 'coreInstanceType' to be non-null");
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
-            $.masterInstanceType = Objects.requireNonNull($.masterInstanceType, "expected parameter 'masterInstanceType' to be non-null");
+            if ($.coreInstanceType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "coreInstanceType");
+            }
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "engineVersion");
+            }
+            if ($.masterInstanceType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "masterInstanceType");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetUserTenantsTenant {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserTenantsTenant", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetUserTenantsTenant", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tenantName(String tenantName) {
-            this.tenantName = Objects.requireNonNull(tenantName);
+            if (tenantName == null) {
+              throw new MissingRequiredPropertyException("GetUserTenantsTenant", "tenantName");
+            }
+            this.tenantName = tenantName;
             return this;
         }
         @CustomType.Setter
         public Builder tid(String tid) {
-            this.tid = Objects.requireNonNull(tid);
+            if (tid == null) {
+              throw new MissingRequiredPropertyException("GetUserTenantsTenant", "tid");
+            }
+            this.tid = tid;
             return this;
         }
         public GetUserTenantsTenant build() {

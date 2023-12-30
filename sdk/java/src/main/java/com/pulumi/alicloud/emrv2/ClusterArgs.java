@@ -10,6 +10,7 @@ import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterSubscriptionConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -615,12 +616,24 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.applications = Objects.requireNonNull($.applications, "expected parameter 'applications' to be non-null");
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.clusterType = Objects.requireNonNull($.clusterType, "expected parameter 'clusterType' to be non-null");
-            $.nodeAttributes = Objects.requireNonNull($.nodeAttributes, "expected parameter 'nodeAttributes' to be non-null");
-            $.nodeGroups = Objects.requireNonNull($.nodeGroups, "expected parameter 'nodeGroups' to be non-null");
-            $.releaseVersion = Objects.requireNonNull($.releaseVersion, "expected parameter 'releaseVersion' to be non-null");
+            if ($.applications == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "applications");
+            }
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterName");
+            }
+            if ($.clusterType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterType");
+            }
+            if ($.nodeAttributes == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "nodeAttributes");
+            }
+            if ($.nodeGroups == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "nodeGroups");
+            }
+            if ($.releaseVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "releaseVersion");
+            }
             return $;
         }
     }

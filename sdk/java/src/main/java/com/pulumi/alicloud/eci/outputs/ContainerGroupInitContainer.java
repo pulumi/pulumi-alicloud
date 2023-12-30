@@ -233,6 +233,7 @@ public final class ContainerGroupInitContainer {
 
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -241,6 +242,7 @@ public final class ContainerGroupInitContainer {
         }
         @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
+
             this.commands = commands;
             return this;
         }
@@ -249,11 +251,13 @@ public final class ContainerGroupInitContainer {
         }
         @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVars(@Nullable List<ContainerGroupInitContainerEnvironmentVar> environmentVars) {
+
             this.environmentVars = environmentVars;
             return this;
         }
@@ -262,31 +266,37 @@ public final class ContainerGroupInitContainer {
         }
         @CustomType.Setter
         public Builder gpu(@Nullable Integer gpu) {
+
             this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder imagePullPolicy(@Nullable String imagePullPolicy) {
+
             this.imagePullPolicy = imagePullPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
+
             this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable List<ContainerGroupInitContainerPort> ports) {
+
             this.ports = ports;
             return this;
         }
@@ -295,16 +305,19 @@ public final class ContainerGroupInitContainer {
         }
         @CustomType.Setter
         public Builder ready(@Nullable Boolean ready) {
+
             this.ready = ready;
             return this;
         }
         @CustomType.Setter
         public Builder restartCount(@Nullable Integer restartCount) {
+
             this.restartCount = restartCount;
             return this;
         }
         @CustomType.Setter
         public Builder volumeMounts(@Nullable List<ContainerGroupInitContainerVolumeMount> volumeMounts) {
+
             this.volumeMounts = volumeMounts;
             return this;
         }
@@ -313,6 +326,7 @@ public final class ContainerGroupInitContainer {
         }
         @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
+
             this.workingDir = workingDir;
             return this;
         }

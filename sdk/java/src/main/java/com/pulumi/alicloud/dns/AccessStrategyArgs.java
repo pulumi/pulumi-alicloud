@@ -8,6 +8,7 @@ import com.pulumi.alicloud.dns.inputs.AccessStrategyFailoverAddrPoolArgs;
 import com.pulumi.alicloud.dns.inputs.AccessStrategyLineArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -740,12 +741,24 @@ public final class AccessStrategyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public AccessStrategyArgs build() {
-            $.defaultAddrPoolType = Objects.requireNonNull($.defaultAddrPoolType, "expected parameter 'defaultAddrPoolType' to be non-null");
-            $.defaultAddrPools = Objects.requireNonNull($.defaultAddrPools, "expected parameter 'defaultAddrPools' to be non-null");
-            $.defaultMinAvailableAddrNum = Objects.requireNonNull($.defaultMinAvailableAddrNum, "expected parameter 'defaultMinAvailableAddrNum' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.strategyMode = Objects.requireNonNull($.strategyMode, "expected parameter 'strategyMode' to be non-null");
-            $.strategyName = Objects.requireNonNull($.strategyName, "expected parameter 'strategyName' to be non-null");
+            if ($.defaultAddrPoolType == null) {
+                throw new MissingRequiredPropertyException("AccessStrategyArgs", "defaultAddrPoolType");
+            }
+            if ($.defaultAddrPools == null) {
+                throw new MissingRequiredPropertyException("AccessStrategyArgs", "defaultAddrPools");
+            }
+            if ($.defaultMinAvailableAddrNum == null) {
+                throw new MissingRequiredPropertyException("AccessStrategyArgs", "defaultMinAvailableAddrNum");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("AccessStrategyArgs", "instanceId");
+            }
+            if ($.strategyMode == null) {
+                throw new MissingRequiredPropertyException("AccessStrategyArgs", "strategyMode");
+            }
+            if ($.strategyName == null) {
+                throw new MissingRequiredPropertyException("AccessStrategyArgs", "strategyName");
+            }
             return $;
         }
     }

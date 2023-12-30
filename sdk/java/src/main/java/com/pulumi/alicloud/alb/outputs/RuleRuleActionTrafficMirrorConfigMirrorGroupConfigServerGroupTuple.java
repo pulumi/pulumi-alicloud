@@ -44,6 +44,7 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroup
 
         @CustomType.Setter
         public Builder serverGroupId(@Nullable String serverGroupId) {
+
             this.serverGroupId = serverGroupId;
             return this;
         }

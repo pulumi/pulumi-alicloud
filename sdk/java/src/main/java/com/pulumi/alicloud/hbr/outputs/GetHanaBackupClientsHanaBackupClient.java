@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -239,77 +240,122 @@ public final class GetHanaBackupClientsHanaBackupClient {
 
         @CustomType.Setter
         public Builder alertSetting(String alertSetting) {
-            this.alertSetting = Objects.requireNonNull(alertSetting);
+            if (alertSetting == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "alertSetting");
+            }
+            this.alertSetting = alertSetting;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientName(String clientName) {
-            this.clientName = Objects.requireNonNull(clientName);
+            if (clientName == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "clientName");
+            }
+            this.clientName = clientName;
             return this;
         }
         @CustomType.Setter
         public Builder clientType(String clientType) {
-            this.clientType = Objects.requireNonNull(clientType);
+            if (clientType == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "clientType");
+            }
+            this.clientType = clientType;
             return this;
         }
         @CustomType.Setter
         public Builder clientVersion(String clientVersion) {
-            this.clientVersion = Objects.requireNonNull(clientVersion);
+            if (clientVersion == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "clientVersion");
+            }
+            this.clientVersion = clientVersion;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder maxVersion(String maxVersion) {
-            this.maxVersion = Objects.requireNonNull(maxVersion);
+            if (maxVersion == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "maxVersion");
+            }
+            this.maxVersion = maxVersion;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
-            this.statusMessage = Objects.requireNonNull(statusMessage);
+            if (statusMessage == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "statusMessage");
+            }
+            this.statusMessage = statusMessage;
             return this;
         }
         @CustomType.Setter
         public Builder useHttps(Boolean useHttps) {
-            this.useHttps = Objects.requireNonNull(useHttps);
+            if (useHttps == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "useHttps");
+            }
+            this.useHttps = useHttps;
             return this;
         }
         @CustomType.Setter
         public Builder vaultId(String vaultId) {
-            this.vaultId = Objects.requireNonNull(vaultId);
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsHanaBackupClient", "vaultId");
+            }
+            this.vaultId = vaultId;
             return this;
         }
         public GetHanaBackupClientsHanaBackupClient build() {

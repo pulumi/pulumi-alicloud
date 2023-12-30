@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class InstanceBabelfishConfigArgs extends com.pulumi.resources.Reso
         }
 
         public InstanceBabelfishConfigArgs build() {
-            $.babelfishEnabled = Objects.requireNonNull($.babelfishEnabled, "expected parameter 'babelfishEnabled' to be non-null");
-            $.masterUserPassword = Objects.requireNonNull($.masterUserPassword, "expected parameter 'masterUserPassword' to be non-null");
-            $.masterUsername = Objects.requireNonNull($.masterUsername, "expected parameter 'masterUsername' to be non-null");
-            $.migrationMode = Objects.requireNonNull($.migrationMode, "expected parameter 'migrationMode' to be non-null");
+            if ($.babelfishEnabled == null) {
+                throw new MissingRequiredPropertyException("InstanceBabelfishConfigArgs", "babelfishEnabled");
+            }
+            if ($.masterUserPassword == null) {
+                throw new MissingRequiredPropertyException("InstanceBabelfishConfigArgs", "masterUserPassword");
+            }
+            if ($.masterUsername == null) {
+                throw new MissingRequiredPropertyException("InstanceBabelfishConfigArgs", "masterUsername");
+            }
+            if ($.migrationMode == null) {
+                throw new MissingRequiredPropertyException("InstanceBabelfishConfigArgs", "migrationMode");
+            }
             return $;
         }
     }

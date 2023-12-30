@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudstoragegateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -386,132 +387,210 @@ public final class GetGatewayBlockVolumesVolume {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder cacheMode(String cacheMode) {
-            this.cacheMode = Objects.requireNonNull(cacheMode);
+            if (cacheMode == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "cacheMode");
+            }
+            this.cacheMode = cacheMode;
             return this;
         }
         @CustomType.Setter
         public Builder chapEnabled(Boolean chapEnabled) {
-            this.chapEnabled = Objects.requireNonNull(chapEnabled);
+            if (chapEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "chapEnabled");
+            }
+            this.chapEnabled = chapEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder chapInUser(String chapInUser) {
-            this.chapInUser = Objects.requireNonNull(chapInUser);
+            if (chapInUser == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "chapInUser");
+            }
+            this.chapInUser = chapInUser;
             return this;
         }
         @CustomType.Setter
         public Builder chunkSize(Integer chunkSize) {
-            this.chunkSize = Objects.requireNonNull(chunkSize);
+            if (chunkSize == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "chunkSize");
+            }
+            this.chunkSize = chunkSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskId(String diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayBlockVolumeName(String gatewayBlockVolumeName) {
-            this.gatewayBlockVolumeName = Objects.requireNonNull(gatewayBlockVolumeName);
+            if (gatewayBlockVolumeName == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "gatewayBlockVolumeName");
+            }
+            this.gatewayBlockVolumeName = gatewayBlockVolumeName;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
-            this.gatewayId = Objects.requireNonNull(gatewayId);
+            if (gatewayId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "gatewayId");
+            }
+            this.gatewayId = gatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder indexId(String indexId) {
-            this.indexId = Objects.requireNonNull(indexId);
+            if (indexId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "indexId");
+            }
+            this.indexId = indexId;
             return this;
         }
         @CustomType.Setter
         public Builder localPath(String localPath) {
-            this.localPath = Objects.requireNonNull(localPath);
+            if (localPath == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "localPath");
+            }
+            this.localPath = localPath;
             return this;
         }
         @CustomType.Setter
         public Builder lunId(Integer lunId) {
-            this.lunId = Objects.requireNonNull(lunId);
+            if (lunId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "lunId");
+            }
+            this.lunId = lunId;
             return this;
         }
         @CustomType.Setter
         public Builder ossBucketName(String ossBucketName) {
-            this.ossBucketName = Objects.requireNonNull(ossBucketName);
+            if (ossBucketName == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "ossBucketName");
+            }
+            this.ossBucketName = ossBucketName;
             return this;
         }
         @CustomType.Setter
         public Builder ossBucketSsl(Boolean ossBucketSsl) {
-            this.ossBucketSsl = Objects.requireNonNull(ossBucketSsl);
+            if (ossBucketSsl == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "ossBucketSsl");
+            }
+            this.ossBucketSsl = ossBucketSsl;
             return this;
         }
         @CustomType.Setter
         public Builder ossEndpoint(String ossEndpoint) {
-            this.ossEndpoint = Objects.requireNonNull(ossEndpoint);
+            if (ossEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "ossEndpoint");
+            }
+            this.ossEndpoint = ossEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder target(String target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "target");
+            }
+            this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder totalDownload(Integer totalDownload) {
-            this.totalDownload = Objects.requireNonNull(totalDownload);
+            if (totalDownload == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "totalDownload");
+            }
+            this.totalDownload = totalDownload;
             return this;
         }
         @CustomType.Setter
         public Builder totalUpload(Integer totalUpload) {
-            this.totalUpload = Objects.requireNonNull(totalUpload);
+            if (totalUpload == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "totalUpload");
+            }
+            this.totalUpload = totalUpload;
             return this;
         }
         @CustomType.Setter
         public Builder volumeState(Integer volumeState) {
-            this.volumeState = Objects.requireNonNull(volumeState);
+            if (volumeState == null) {
+              throw new MissingRequiredPropertyException("GetGatewayBlockVolumesVolume", "volumeState");
+            }
+            this.volumeState = volumeState;
             return this;
         }
         public GetGatewayBlockVolumesVolume build() {

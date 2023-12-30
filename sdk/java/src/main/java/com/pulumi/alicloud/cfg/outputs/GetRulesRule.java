@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.GetRulesRuleCompliance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -403,17 +404,26 @@ public final class GetRulesRule {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder compliancePackId(String compliancePackId) {
-            this.compliancePackId = Objects.requireNonNull(compliancePackId);
+            if (compliancePackId == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "compliancePackId");
+            }
+            this.compliancePackId = compliancePackId;
             return this;
         }
         @CustomType.Setter
         public Builder compliances(List<GetRulesRuleCompliance> compliances) {
-            this.compliances = Objects.requireNonNull(compliances);
+            if (compliances == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "compliances");
+            }
+            this.compliances = compliances;
             return this;
         }
         public Builder compliances(GetRulesRuleCompliance... compliances) {
@@ -421,72 +431,114 @@ public final class GetRulesRule {
         }
         @CustomType.Setter
         public Builder configRuleArn(String configRuleArn) {
-            this.configRuleArn = Objects.requireNonNull(configRuleArn);
+            if (configRuleArn == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "configRuleArn");
+            }
+            this.configRuleArn = configRuleArn;
             return this;
         }
         @CustomType.Setter
         public Builder configRuleId(String configRuleId) {
-            this.configRuleId = Objects.requireNonNull(configRuleId);
+            if (configRuleId == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "configRuleId");
+            }
+            this.configRuleId = configRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder configRuleState(String configRuleState) {
-            this.configRuleState = Objects.requireNonNull(configRuleState);
+            if (configRuleState == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "configRuleState");
+            }
+            this.configRuleState = configRuleState;
             return this;
         }
         @CustomType.Setter
         public Builder configRuleTriggerTypes(String configRuleTriggerTypes) {
-            this.configRuleTriggerTypes = Objects.requireNonNull(configRuleTriggerTypes);
+            if (configRuleTriggerTypes == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "configRuleTriggerTypes");
+            }
+            this.configRuleTriggerTypes = configRuleTriggerTypes;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder eventSource(String eventSource) {
-            this.eventSource = Objects.requireNonNull(eventSource);
+            if (eventSource == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "eventSource");
+            }
+            this.eventSource = eventSource;
             return this;
         }
         @CustomType.Setter
         public Builder excludeResourceIdsScope(String excludeResourceIdsScope) {
-            this.excludeResourceIdsScope = Objects.requireNonNull(excludeResourceIdsScope);
+            if (excludeResourceIdsScope == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "excludeResourceIdsScope");
+            }
+            this.excludeResourceIdsScope = excludeResourceIdsScope;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inputParameters(Map<String,Object> inputParameters) {
-            this.inputParameters = Objects.requireNonNull(inputParameters);
+            if (inputParameters == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "inputParameters");
+            }
+            this.inputParameters = inputParameters;
             return this;
         }
         @CustomType.Setter
         public Builder maximumExecutionFrequency(String maximumExecutionFrequency) {
-            this.maximumExecutionFrequency = Objects.requireNonNull(maximumExecutionFrequency);
+            if (maximumExecutionFrequency == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "maximumExecutionFrequency");
+            }
+            this.maximumExecutionFrequency = maximumExecutionFrequency;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedTimestamp(String modifiedTimestamp) {
-            this.modifiedTimestamp = Objects.requireNonNull(modifiedTimestamp);
+            if (modifiedTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "modifiedTimestamp");
+            }
+            this.modifiedTimestamp = modifiedTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder regionIdsScope(String regionIdsScope) {
-            this.regionIdsScope = Objects.requireNonNull(regionIdsScope);
+            if (regionIdsScope == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "regionIdsScope");
+            }
+            this.regionIdsScope = regionIdsScope;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupIdsScope(String resourceGroupIdsScope) {
-            this.resourceGroupIdsScope = Objects.requireNonNull(resourceGroupIdsScope);
+            if (resourceGroupIdsScope == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "resourceGroupIdsScope");
+            }
+            this.resourceGroupIdsScope = resourceGroupIdsScope;
             return this;
         }
         @CustomType.Setter
         public Builder resourceTypesScopes(List<String> resourceTypesScopes) {
-            this.resourceTypesScopes = Objects.requireNonNull(resourceTypesScopes);
+            if (resourceTypesScopes == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "resourceTypesScopes");
+            }
+            this.resourceTypesScopes = resourceTypesScopes;
             return this;
         }
         public Builder resourceTypesScopes(String... resourceTypesScopes) {
@@ -494,17 +546,26 @@ public final class GetRulesRule {
         }
         @CustomType.Setter
         public Builder riskLevel(Integer riskLevel) {
-            this.riskLevel = Objects.requireNonNull(riskLevel);
+            if (riskLevel == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "riskLevel");
+            }
+            this.riskLevel = riskLevel;
             return this;
         }
         @CustomType.Setter
         public Builder ruleName(String ruleName) {
-            this.ruleName = Objects.requireNonNull(ruleName);
+            if (ruleName == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "ruleName");
+            }
+            this.ruleName = ruleName;
             return this;
         }
         @CustomType.Setter
         public Builder scopeComplianceResourceTypes(List<String> scopeComplianceResourceTypes) {
-            this.scopeComplianceResourceTypes = Objects.requireNonNull(scopeComplianceResourceTypes);
+            if (scopeComplianceResourceTypes == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "scopeComplianceResourceTypes");
+            }
+            this.scopeComplianceResourceTypes = scopeComplianceResourceTypes;
             return this;
         }
         public Builder scopeComplianceResourceTypes(String... scopeComplianceResourceTypes) {
@@ -512,37 +573,58 @@ public final class GetRulesRule {
         }
         @CustomType.Setter
         public Builder sourceDetailMessageType(String sourceDetailMessageType) {
-            this.sourceDetailMessageType = Objects.requireNonNull(sourceDetailMessageType);
+            if (sourceDetailMessageType == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "sourceDetailMessageType");
+            }
+            this.sourceDetailMessageType = sourceDetailMessageType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceIdentifier(String sourceIdentifier) {
-            this.sourceIdentifier = Objects.requireNonNull(sourceIdentifier);
+            if (sourceIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "sourceIdentifier");
+            }
+            this.sourceIdentifier = sourceIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder sourceMaximumExecutionFrequency(String sourceMaximumExecutionFrequency) {
-            this.sourceMaximumExecutionFrequency = Objects.requireNonNull(sourceMaximumExecutionFrequency);
+            if (sourceMaximumExecutionFrequency == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "sourceMaximumExecutionFrequency");
+            }
+            this.sourceMaximumExecutionFrequency = sourceMaximumExecutionFrequency;
             return this;
         }
         @CustomType.Setter
         public Builder sourceOwner(String sourceOwner) {
-            this.sourceOwner = Objects.requireNonNull(sourceOwner);
+            if (sourceOwner == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "sourceOwner");
+            }
+            this.sourceOwner = sourceOwner;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tagKeyScope(String tagKeyScope) {
-            this.tagKeyScope = Objects.requireNonNull(tagKeyScope);
+            if (tagKeyScope == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "tagKeyScope");
+            }
+            this.tagKeyScope = tagKeyScope;
             return this;
         }
         @CustomType.Setter
         public Builder tagValueScope(String tagValueScope) {
-            this.tagValueScope = Objects.requireNonNull(tagValueScope);
+            if (tagValueScope == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "tagValueScope");
+            }
+            this.tagValueScope = tagValueScope;
             return this;
         }
         public GetRulesRule build() {

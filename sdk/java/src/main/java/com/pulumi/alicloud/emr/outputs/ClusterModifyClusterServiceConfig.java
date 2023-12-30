@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -158,26 +159,33 @@ public final class ClusterModifyClusterServiceConfig {
 
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder configParams(String configParams) {
-            this.configParams = Objects.requireNonNull(configParams);
+            if (configParams == null) {
+              throw new MissingRequiredPropertyException("ClusterModifyClusterServiceConfig", "configParams");
+            }
+            this.configParams = configParams;
             return this;
         }
         @CustomType.Setter
         public Builder configType(@Nullable String configType) {
+
             this.configType = configType;
             return this;
         }
         @CustomType.Setter
         public Builder customConfigParams(@Nullable String customConfigParams) {
+
             this.customConfigParams = customConfigParams;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayClusterIdLists(@Nullable List<String> gatewayClusterIdLists) {
+
             this.gatewayClusterIdLists = gatewayClusterIdLists;
             return this;
         }
@@ -186,22 +194,28 @@ public final class ClusterModifyClusterServiceConfig {
         }
         @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder hostInstanceId(@Nullable String hostInstanceId) {
+
             this.hostInstanceId = hostInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder refreshHostConfig(@Nullable Boolean refreshHostConfig) {
+
             this.refreshHostConfig = refreshHostConfig;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("ClusterModifyClusterServiceConfig", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public ClusterModifyClusterServiceConfig build() {

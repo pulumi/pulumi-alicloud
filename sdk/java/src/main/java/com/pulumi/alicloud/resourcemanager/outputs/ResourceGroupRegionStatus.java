@@ -58,11 +58,13 @@ public final class ResourceGroupRegionStatus {
 
         @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
+
             this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

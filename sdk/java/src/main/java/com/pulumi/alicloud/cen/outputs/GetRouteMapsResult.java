@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetRouteMapsMap;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -142,27 +143,38 @@ public final class GetRouteMapsResult {
 
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsResult", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder cenRegionId(@Nullable String cenRegionId) {
+
             this.cenRegionId = cenRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
+
             this.descriptionRegex = descriptionRegex;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -170,7 +182,10 @@ public final class GetRouteMapsResult {
         }
         @CustomType.Setter
         public Builder maps(List<GetRouteMapsMap> maps) {
-            this.maps = Objects.requireNonNull(maps);
+            if (maps == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsResult", "maps");
+            }
+            this.maps = maps;
             return this;
         }
         public Builder maps(GetRouteMapsMap... maps) {
@@ -178,16 +193,19 @@ public final class GetRouteMapsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transmitDirection(@Nullable String transmitDirection) {
+
             this.transmitDirection = transmitDirection;
             return this;
         }

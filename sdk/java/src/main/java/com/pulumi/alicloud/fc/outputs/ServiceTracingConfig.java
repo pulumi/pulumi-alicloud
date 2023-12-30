@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -58,12 +59,18 @@ public final class ServiceTracingConfig {
 
         @CustomType.Setter
         public Builder params(Map<String,Object> params) {
-            this.params = Objects.requireNonNull(params);
+            if (params == null) {
+              throw new MissingRequiredPropertyException("ServiceTracingConfig", "params");
+            }
+            this.params = params;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ServiceTracingConfig", "type");
+            }
+            this.type = type;
             return this;
         }
         public ServiceTracingConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -192,7 +193,9 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SnapshotArgs build() {
-            $.fileSystemId = Objects.requireNonNull($.fileSystemId, "expected parameter 'fileSystemId' to be non-null");
+            if ($.fileSystemId == null) {
+                throw new MissingRequiredPropertyException("SnapshotArgs", "fileSystemId");
+            }
             return $;
         }
     }

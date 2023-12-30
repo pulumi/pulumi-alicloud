@@ -58,11 +58,13 @@ public final class ConnectionAuthParametersApiKeyAuthParameters {
 
         @CustomType.Setter
         public Builder apiKeyName(@Nullable String apiKeyName) {
+
             this.apiKeyName = apiKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder apiKeyValue(@Nullable String apiKeyValue) {
+
             this.apiKeyValue = apiKeyValue;
             return this;
         }

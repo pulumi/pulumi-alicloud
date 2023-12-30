@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetServiceMeshesMeshMeshConfigAccessLog {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigAccessLog", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigAccessLog", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetServiceMeshesMeshMeshConfigAccessLog build() {

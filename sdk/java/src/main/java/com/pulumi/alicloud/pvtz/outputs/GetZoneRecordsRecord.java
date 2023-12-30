@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.pvtz.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -173,52 +174,82 @@ public final class GetZoneRecordsRecord {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder recordId(String recordId) {
-            this.recordId = Objects.requireNonNull(recordId);
+            if (recordId == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "recordId");
+            }
+            this.recordId = recordId;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder resourceRecord(String resourceRecord) {
-            this.resourceRecord = Objects.requireNonNull(resourceRecord);
+            if (resourceRecord == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "resourceRecord");
+            }
+            this.resourceRecord = resourceRecord;
             return this;
         }
         @CustomType.Setter
         public Builder rr(String rr) {
-            this.rr = Objects.requireNonNull(rr);
+            if (rr == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "rr");
+            }
+            this.rr = rr;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(Integer ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsRecord", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetZoneRecordsRecord build() {

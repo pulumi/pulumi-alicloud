@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.alicloud.ros.outputs.GetStackGroupsGroupParameter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -156,27 +157,42 @@ public final class GetStackGroupsGroup {
 
         @CustomType.Setter
         public Builder administrationRoleName(String administrationRoleName) {
-            this.administrationRoleName = Objects.requireNonNull(administrationRoleName);
+            if (administrationRoleName == null) {
+              throw new MissingRequiredPropertyException("GetStackGroupsGroup", "administrationRoleName");
+            }
+            this.administrationRoleName = administrationRoleName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetStackGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder executionRoleName(String executionRoleName) {
-            this.executionRoleName = Objects.requireNonNull(executionRoleName);
+            if (executionRoleName == null) {
+              throw new MissingRequiredPropertyException("GetStackGroupsGroup", "executionRoleName");
+            }
+            this.executionRoleName = executionRoleName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStackGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(List<GetStackGroupsGroupParameter> parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetStackGroupsGroup", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         public Builder parameters(GetStackGroupsGroupParameter... parameters) {
@@ -184,22 +200,34 @@ public final class GetStackGroupsGroup {
         }
         @CustomType.Setter
         public Builder stackGroupId(String stackGroupId) {
-            this.stackGroupId = Objects.requireNonNull(stackGroupId);
+            if (stackGroupId == null) {
+              throw new MissingRequiredPropertyException("GetStackGroupsGroup", "stackGroupId");
+            }
+            this.stackGroupId = stackGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder stackGroupName(String stackGroupName) {
-            this.stackGroupName = Objects.requireNonNull(stackGroupName);
+            if (stackGroupName == null) {
+              throw new MissingRequiredPropertyException("GetStackGroupsGroup", "stackGroupName");
+            }
+            this.stackGroupName = stackGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetStackGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder templateBody(String templateBody) {
-            this.templateBody = Objects.requireNonNull(templateBody);
+            if (templateBody == null) {
+              throw new MissingRequiredPropertyException("GetStackGroupsGroup", "templateBody");
+            }
+            this.templateBody = templateBody;
             return this;
         }
         public GetStackGroupsGroup build() {

@@ -115,31 +115,37 @@ public final class ServiceMeshMeshConfigOpa {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder limitCpu(@Nullable String limitCpu) {
+
             this.limitCpu = limitCpu;
             return this;
         }
         @CustomType.Setter
         public Builder limitMemory(@Nullable String limitMemory) {
+
             this.limitMemory = limitMemory;
             return this;
         }
         @CustomType.Setter
         public Builder logLevel(@Nullable String logLevel) {
+
             this.logLevel = logLevel;
             return this;
         }
         @CustomType.Setter
         public Builder requestCpu(@Nullable String requestCpu) {
+
             this.requestCpu = requestCpu;
             return this;
         }
         @CustomType.Setter
         public Builder requestMemory(@Nullable String requestMemory) {
+
             this.requestMemory = requestMemory;
             return this;
         }

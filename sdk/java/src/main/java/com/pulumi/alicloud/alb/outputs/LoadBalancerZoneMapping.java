@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.alicloud.alb.outputs.LoadBalancerZoneMappingLoadBalancerAddress;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,6 +74,7 @@ public final class LoadBalancerZoneMapping {
 
         @CustomType.Setter
         public Builder loadBalancerAddresses(@Nullable List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses) {
+
             this.loadBalancerAddresses = loadBalancerAddresses;
             return this;
         }
@@ -81,12 +83,18 @@ public final class LoadBalancerZoneMapping {
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerZoneMapping", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerZoneMapping", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public LoadBalancerZoneMapping build() {

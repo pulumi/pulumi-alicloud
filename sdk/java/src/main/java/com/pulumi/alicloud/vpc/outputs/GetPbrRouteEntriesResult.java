@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetPbrRouteEntriesEntry;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,7 +87,10 @@ public final class GetPbrRouteEntriesResult {
 
         @CustomType.Setter
         public Builder entries(List<GetPbrRouteEntriesEntry> entries) {
-            this.entries = Objects.requireNonNull(entries);
+            if (entries == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesResult", "entries");
+            }
+            this.entries = entries;
             return this;
         }
         public Builder entries(GetPbrRouteEntriesEntry... entries) {
@@ -94,12 +98,18 @@ public final class GetPbrRouteEntriesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -107,12 +117,16 @@ public final class GetPbrRouteEntriesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
-            this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
+            if (vpnGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesResult", "vpnGatewayId");
+            }
+            this.vpnGatewayId = vpnGatewayId;
             return this;
         }
         public GetPbrRouteEntriesResult build() {

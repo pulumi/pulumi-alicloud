@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsLaunchTemplatesTemplate;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -103,17 +104,24 @@ public final class GetEcsLaunchTemplatesResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -121,17 +129,22 @@ public final class GetEcsLaunchTemplatesResult {
         }
         @CustomType.Setter
         public Builder launchTemplateName(@Nullable String launchTemplateName) {
+
             this.launchTemplateName = launchTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -139,22 +152,28 @@ public final class GetEcsLaunchTemplatesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder templateResourceGroupId(@Nullable String templateResourceGroupId) {
+
             this.templateResourceGroupId = templateResourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder templateTags(@Nullable Map<String,Object> templateTags) {
+
             this.templateTags = templateTags;
             return this;
         }
         @CustomType.Setter
         public Builder templates(List<GetEcsLaunchTemplatesTemplate> templates) {
-            this.templates = Objects.requireNonNull(templates);
+            if (templates == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesResult", "templates");
+            }
+            this.templates = templates;
             return this;
         }
         public Builder templates(GetEcsLaunchTemplatesTemplate... templates) {

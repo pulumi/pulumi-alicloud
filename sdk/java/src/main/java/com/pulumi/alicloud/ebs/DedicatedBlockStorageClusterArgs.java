@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ebs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,10 +225,18 @@ public final class DedicatedBlockStorageClusterArgs extends com.pulumi.resources
         }
 
         public DedicatedBlockStorageClusterArgs build() {
-            $.dedicatedBlockStorageClusterName = Objects.requireNonNull($.dedicatedBlockStorageClusterName, "expected parameter 'dedicatedBlockStorageClusterName' to be non-null");
-            $.totalCapacity = Objects.requireNonNull($.totalCapacity, "expected parameter 'totalCapacity' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.dedicatedBlockStorageClusterName == null) {
+                throw new MissingRequiredPropertyException("DedicatedBlockStorageClusterArgs", "dedicatedBlockStorageClusterName");
+            }
+            if ($.totalCapacity == null) {
+                throw new MissingRequiredPropertyException("DedicatedBlockStorageClusterArgs", "totalCapacity");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DedicatedBlockStorageClusterArgs", "type");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("DedicatedBlockStorageClusterArgs", "zoneId");
+            }
             return $;
         }
     }

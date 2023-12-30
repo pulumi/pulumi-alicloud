@@ -8,6 +8,7 @@ import com.pulumi.alicloud.servicemesh.outputs.GetServiceMeshesMeshLoadBalancer;
 import com.pulumi.alicloud.servicemesh.outputs.GetServiceMeshesMeshMeshConfig;
 import com.pulumi.alicloud.servicemesh.outputs.GetServiceMeshesMeshNetwork;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -257,7 +258,10 @@ public final class GetServiceMeshesMesh {
 
         @CustomType.Setter
         public Builder clusters(List<String> clusters) {
-            this.clusters = Objects.requireNonNull(clusters);
+            if (clusters == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "clusters");
+            }
+            this.clusters = clusters;
             return this;
         }
         public Builder clusters(String... clusters) {
@@ -265,17 +269,26 @@ public final class GetServiceMeshesMesh {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder edition(String edition) {
-            this.edition = Objects.requireNonNull(edition);
+            if (edition == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "edition");
+            }
+            this.edition = edition;
             return this;
         }
         @CustomType.Setter
         public Builder endpoints(List<GetServiceMeshesMeshEndpoint> endpoints) {
-            this.endpoints = Objects.requireNonNull(endpoints);
+            if (endpoints == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "endpoints");
+            }
+            this.endpoints = endpoints;
             return this;
         }
         public Builder endpoints(GetServiceMeshesMeshEndpoint... endpoints) {
@@ -283,27 +296,42 @@ public final class GetServiceMeshesMesh {
         }
         @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
-            this.errorMessage = Objects.requireNonNull(errorMessage);
+            if (errorMessage == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "errorMessage");
+            }
+            this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder istioOperatorVersion(String istioOperatorVersion) {
-            this.istioOperatorVersion = Objects.requireNonNull(istioOperatorVersion);
+            if (istioOperatorVersion == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "istioOperatorVersion");
+            }
+            this.istioOperatorVersion = istioOperatorVersion;
             return this;
         }
         @CustomType.Setter
         public Builder kubeConfig(String kubeConfig) {
-            this.kubeConfig = Objects.requireNonNull(kubeConfig);
+            if (kubeConfig == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "kubeConfig");
+            }
+            this.kubeConfig = kubeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancers(List<GetServiceMeshesMeshLoadBalancer> loadBalancers) {
-            this.loadBalancers = Objects.requireNonNull(loadBalancers);
+            if (loadBalancers == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "loadBalancers");
+            }
+            this.loadBalancers = loadBalancers;
             return this;
         }
         public Builder loadBalancers(GetServiceMeshesMeshLoadBalancer... loadBalancers) {
@@ -311,7 +339,10 @@ public final class GetServiceMeshesMesh {
         }
         @CustomType.Setter
         public Builder meshConfigs(List<GetServiceMeshesMeshMeshConfig> meshConfigs) {
-            this.meshConfigs = Objects.requireNonNull(meshConfigs);
+            if (meshConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "meshConfigs");
+            }
+            this.meshConfigs = meshConfigs;
             return this;
         }
         public Builder meshConfigs(GetServiceMeshesMeshMeshConfig... meshConfigs) {
@@ -319,7 +350,10 @@ public final class GetServiceMeshesMesh {
         }
         @CustomType.Setter
         public Builder networks(List<GetServiceMeshesMeshNetwork> networks) {
-            this.networks = Objects.requireNonNull(networks);
+            if (networks == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "networks");
+            }
+            this.networks = networks;
             return this;
         }
         public Builder networks(GetServiceMeshesMeshNetwork... networks) {
@@ -327,27 +361,42 @@ public final class GetServiceMeshesMesh {
         }
         @CustomType.Setter
         public Builder serviceMeshId(String serviceMeshId) {
-            this.serviceMeshId = Objects.requireNonNull(serviceMeshId);
+            if (serviceMeshId == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "serviceMeshId");
+            }
+            this.serviceMeshId = serviceMeshId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceMeshName(String serviceMeshName) {
-            this.serviceMeshName = Objects.requireNonNull(serviceMeshName);
+            if (serviceMeshName == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "serviceMeshName");
+            }
+            this.serviceMeshName = serviceMeshName;
             return this;
         }
         @CustomType.Setter
         public Builder sidecarVersion(String sidecarVersion) {
-            this.sidecarVersion = Objects.requireNonNull(sidecarVersion);
+            if (sidecarVersion == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "sidecarVersion");
+            }
+            this.sidecarVersion = sidecarVersion;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMesh", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetServiceMeshesMesh build() {

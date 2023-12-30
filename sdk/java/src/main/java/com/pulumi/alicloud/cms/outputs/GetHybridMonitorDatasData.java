@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cms.outputs;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorDatasDataLabel;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorDatasDataValue;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,7 +74,10 @@ public final class GetHybridMonitorDatasData {
 
         @CustomType.Setter
         public Builder labels(List<GetHybridMonitorDatasDataLabel> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorDatasData", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         public Builder labels(GetHybridMonitorDatasDataLabel... labels) {
@@ -81,12 +85,18 @@ public final class GetHybridMonitorDatasData {
         }
         @CustomType.Setter
         public Builder metricName(String metricName) {
-            this.metricName = Objects.requireNonNull(metricName);
+            if (metricName == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorDatasData", "metricName");
+            }
+            this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder values(List<GetHybridMonitorDatasDataValue> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorDatasData", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(GetHybridMonitorDatasDataValue... values) {

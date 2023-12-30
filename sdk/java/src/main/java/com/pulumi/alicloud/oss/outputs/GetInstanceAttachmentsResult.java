@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.alicloud.oss.outputs.GetInstanceAttachmentsAttachment;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,7 +115,10 @@ public final class GetInstanceAttachmentsResult {
 
         @CustomType.Setter
         public Builder attachments(List<GetInstanceAttachmentsAttachment> attachments) {
-            this.attachments = Objects.requireNonNull(attachments);
+            if (attachments == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsResult", "attachments");
+            }
+            this.attachments = attachments;
             return this;
         }
         public Builder attachments(GetInstanceAttachmentsAttachment... attachments) {
@@ -122,22 +126,32 @@ public final class GetInstanceAttachmentsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsResult", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -145,12 +159,16 @@ public final class GetInstanceAttachmentsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder vpcIds(List<String> vpcIds) {
-            this.vpcIds = Objects.requireNonNull(vpcIds);
+            if (vpcIds == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsResult", "vpcIds");
+            }
+            this.vpcIds = vpcIds;
             return this;
         }
         public Builder vpcIds(String... vpcIds) {

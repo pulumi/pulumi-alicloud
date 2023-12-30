@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -285,92 +286,146 @@ public final class GetServiceCertificatesCertificate {
 
         @CustomType.Setter
         public Builder buyInAliyun(Boolean buyInAliyun) {
-            this.buyInAliyun = Objects.requireNonNull(buyInAliyun);
+            if (buyInAliyun == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "buyInAliyun");
+            }
+            this.buyInAliyun = buyInAliyun;
             return this;
         }
         @CustomType.Setter
         public Builder cert(String cert) {
-            this.cert = Objects.requireNonNull(cert);
+            if (cert == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "cert");
+            }
+            this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder certId(String certId) {
-            this.certId = Objects.requireNonNull(certId);
+            if (certId == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "certId");
+            }
+            this.certId = certId;
             return this;
         }
         @CustomType.Setter
         public Builder certificateName(String certificateName) {
-            this.certificateName = Objects.requireNonNull(certificateName);
+            if (certificateName == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "certificateName");
+            }
+            this.certificateName = certificateName;
             return this;
         }
         @CustomType.Setter
         public Builder city(String city) {
-            this.city = Objects.requireNonNull(city);
+            if (city == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "city");
+            }
+            this.city = city;
             return this;
         }
         @CustomType.Setter
         public Builder common(String common) {
-            this.common = Objects.requireNonNull(common);
+            if (common == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "common");
+            }
+            this.common = common;
             return this;
         }
         @CustomType.Setter
         public Builder country(String country) {
-            this.country = Objects.requireNonNull(country);
+            if (country == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "country");
+            }
+            this.country = country;
             return this;
         }
         @CustomType.Setter
         public Builder endDate(String endDate) {
-            this.endDate = Objects.requireNonNull(endDate);
+            if (endDate == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "endDate");
+            }
+            this.endDate = endDate;
             return this;
         }
         @CustomType.Setter
         public Builder expired(Boolean expired) {
-            this.expired = Objects.requireNonNull(expired);
+            if (expired == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "expired");
+            }
+            this.expired = expired;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder issuer(String issuer) {
-            this.issuer = Objects.requireNonNull(issuer);
+            if (issuer == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "issuer");
+            }
+            this.issuer = issuer;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder orgName(String orgName) {
-            this.orgName = Objects.requireNonNull(orgName);
+            if (orgName == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "orgName");
+            }
+            this.orgName = orgName;
             return this;
         }
         @CustomType.Setter
         public Builder province(String province) {
-            this.province = Objects.requireNonNull(province);
+            if (province == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "province");
+            }
+            this.province = province;
             return this;
         }
         @CustomType.Setter
         public Builder sans(String sans) {
-            this.sans = Objects.requireNonNull(sans);
+            if (sans == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "sans");
+            }
+            this.sans = sans;
             return this;
         }
         @CustomType.Setter
         public Builder startDate(String startDate) {
-            this.startDate = Objects.requireNonNull(startDate);
+            if (startDate == null) {
+              throw new MissingRequiredPropertyException("GetServiceCertificatesCertificate", "startDate");
+            }
+            this.startDate = startDate;
             return this;
         }
         public GetServiceCertificatesCertificate build() {

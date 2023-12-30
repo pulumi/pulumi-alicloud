@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,8 +162,12 @@ public final class EnterpriseLogicDatabaseArgs extends com.pulumi.resources.Reso
         }
 
         public EnterpriseLogicDatabaseArgs build() {
-            $.alias = Objects.requireNonNull($.alias, "expected parameter 'alias' to be non-null");
-            $.databaseIds = Objects.requireNonNull($.databaseIds, "expected parameter 'databaseIds' to be non-null");
+            if ($.alias == null) {
+                throw new MissingRequiredPropertyException("EnterpriseLogicDatabaseArgs", "alias");
+            }
+            if ($.databaseIds == null) {
+                throw new MissingRequiredPropertyException("EnterpriseLogicDatabaseArgs", "databaseIds");
+            }
             return $;
         }
     }

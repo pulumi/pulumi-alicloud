@@ -87,21 +87,25 @@ public final class ConnectionBgpConfig {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder localAsn(@Nullable String localAsn) {
+
             this.localAsn = localAsn;
             return this;
         }
         @CustomType.Setter
         public Builder localBgpIp(@Nullable String localBgpIp) {
+
             this.localBgpIp = localBgpIp;
             return this;
         }
         @CustomType.Setter
         public Builder tunnelCidr(@Nullable String tunnelCidr) {
+
             this.tunnelCidr = tunnelCidr;
             return this;
         }

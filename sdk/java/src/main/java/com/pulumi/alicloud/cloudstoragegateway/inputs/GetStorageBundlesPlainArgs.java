@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudstoragegateway.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -122,7 +123,9 @@ public final class GetStorageBundlesPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetStorageBundlesPlainArgs build() {
-            $.backendBucketRegionId = Objects.requireNonNull($.backendBucketRegionId, "expected parameter 'backendBucketRegionId' to be non-null");
+            if ($.backendBucketRegionId == null) {
+                throw new MissingRequiredPropertyException("GetStorageBundlesPlainArgs", "backendBucketRegionId");
+            }
             return $;
         }
     }

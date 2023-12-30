@@ -11,6 +11,7 @@ import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleConditionPathConfig;
 import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleConditionQueryStringConfig;
 import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleConditionSourceIpConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -148,7 +149,10 @@ public final class GetRulesRuleRuleCondition {
 
         @CustomType.Setter
         public Builder cookieConfigs(List<GetRulesRuleRuleConditionCookieConfig> cookieConfigs) {
-            this.cookieConfigs = Objects.requireNonNull(cookieConfigs);
+            if (cookieConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleCondition", "cookieConfigs");
+            }
+            this.cookieConfigs = cookieConfigs;
             return this;
         }
         public Builder cookieConfigs(GetRulesRuleRuleConditionCookieConfig... cookieConfigs) {
@@ -156,7 +160,10 @@ public final class GetRulesRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder headerConfigs(List<GetRulesRuleRuleConditionHeaderConfig> headerConfigs) {
-            this.headerConfigs = Objects.requireNonNull(headerConfigs);
+            if (headerConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleCondition", "headerConfigs");
+            }
+            this.headerConfigs = headerConfigs;
             return this;
         }
         public Builder headerConfigs(GetRulesRuleRuleConditionHeaderConfig... headerConfigs) {
@@ -164,7 +171,10 @@ public final class GetRulesRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder hostConfigs(List<GetRulesRuleRuleConditionHostConfig> hostConfigs) {
-            this.hostConfigs = Objects.requireNonNull(hostConfigs);
+            if (hostConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleCondition", "hostConfigs");
+            }
+            this.hostConfigs = hostConfigs;
             return this;
         }
         public Builder hostConfigs(GetRulesRuleRuleConditionHostConfig... hostConfigs) {
@@ -172,7 +182,10 @@ public final class GetRulesRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder methodConfigs(List<GetRulesRuleRuleConditionMethodConfig> methodConfigs) {
-            this.methodConfigs = Objects.requireNonNull(methodConfigs);
+            if (methodConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleCondition", "methodConfigs");
+            }
+            this.methodConfigs = methodConfigs;
             return this;
         }
         public Builder methodConfigs(GetRulesRuleRuleConditionMethodConfig... methodConfigs) {
@@ -180,7 +193,10 @@ public final class GetRulesRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder pathConfigs(List<GetRulesRuleRuleConditionPathConfig> pathConfigs) {
-            this.pathConfigs = Objects.requireNonNull(pathConfigs);
+            if (pathConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleCondition", "pathConfigs");
+            }
+            this.pathConfigs = pathConfigs;
             return this;
         }
         public Builder pathConfigs(GetRulesRuleRuleConditionPathConfig... pathConfigs) {
@@ -188,7 +204,10 @@ public final class GetRulesRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder queryStringConfigs(List<GetRulesRuleRuleConditionQueryStringConfig> queryStringConfigs) {
-            this.queryStringConfigs = Objects.requireNonNull(queryStringConfigs);
+            if (queryStringConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleCondition", "queryStringConfigs");
+            }
+            this.queryStringConfigs = queryStringConfigs;
             return this;
         }
         public Builder queryStringConfigs(GetRulesRuleRuleConditionQueryStringConfig... queryStringConfigs) {
@@ -196,7 +215,10 @@ public final class GetRulesRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder sourceIpConfigs(List<GetRulesRuleRuleConditionSourceIpConfig> sourceIpConfigs) {
-            this.sourceIpConfigs = Objects.requireNonNull(sourceIpConfigs);
+            if (sourceIpConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleCondition", "sourceIpConfigs");
+            }
+            this.sourceIpConfigs = sourceIpConfigs;
             return this;
         }
         public Builder sourceIpConfigs(GetRulesRuleRuleConditionSourceIpConfig... sourceIpConfigs) {
@@ -204,7 +226,10 @@ public final class GetRulesRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleCondition", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetRulesRuleRuleCondition build() {

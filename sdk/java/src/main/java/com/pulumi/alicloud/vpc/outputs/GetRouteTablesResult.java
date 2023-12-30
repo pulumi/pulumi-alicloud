@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetRouteTablesTable;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -211,12 +212,18 @@ public final class GetRouteTablesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -224,12 +231,16 @@ public final class GetRouteTablesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -237,47 +248,58 @@ public final class GetRouteTablesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableName(@Nullable String routeTableName) {
+
             this.routeTableName = routeTableName;
             return this;
         }
         @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
+
             this.routerId = routerId;
             return this;
         }
         @CustomType.Setter
         public Builder routerType(@Nullable String routerType) {
+
             this.routerType = routerType;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tables(List<GetRouteTablesTable> tables) {
-            this.tables = Objects.requireNonNull(tables);
+            if (tables == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesResult", "tables");
+            }
+            this.tables = tables;
             return this;
         }
         public Builder tables(GetRouteTablesTable... tables) {
@@ -285,16 +307,21 @@ public final class GetRouteTablesResult {
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
-            this.totalCount = Objects.requireNonNull(totalCount);
+            if (totalCount == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesResult", "totalCount");
+            }
+            this.totalCount = totalCount;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }

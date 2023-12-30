@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.alicloud.cloudfirewall.outputs.GetAddressBooksBookEcsTag;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -159,7 +160,10 @@ public final class GetAddressBooksBook {
 
         @CustomType.Setter
         public Builder addressLists(List<String> addressLists) {
-            this.addressLists = Objects.requireNonNull(addressLists);
+            if (addressLists == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "addressLists");
+            }
+            this.addressLists = addressLists;
             return this;
         }
         public Builder addressLists(String... addressLists) {
@@ -167,17 +171,26 @@ public final class GetAddressBooksBook {
         }
         @CustomType.Setter
         public Builder autoAddTagEcs(Integer autoAddTagEcs) {
-            this.autoAddTagEcs = Objects.requireNonNull(autoAddTagEcs);
+            if (autoAddTagEcs == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "autoAddTagEcs");
+            }
+            this.autoAddTagEcs = autoAddTagEcs;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder ecsTags(List<GetAddressBooksBookEcsTag> ecsTags) {
-            this.ecsTags = Objects.requireNonNull(ecsTags);
+            if (ecsTags == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "ecsTags");
+            }
+            this.ecsTags = ecsTags;
             return this;
         }
         public Builder ecsTags(GetAddressBooksBookEcsTag... ecsTags) {
@@ -185,27 +198,42 @@ public final class GetAddressBooksBook {
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder groupType(String groupType) {
-            this.groupType = Objects.requireNonNull(groupType);
+            if (groupType == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "groupType");
+            }
+            this.groupType = groupType;
             return this;
         }
         @CustomType.Setter
         public Builder groupUuid(String groupUuid) {
-            this.groupUuid = Objects.requireNonNull(groupUuid);
+            if (groupUuid == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "groupUuid");
+            }
+            this.groupUuid = groupUuid;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder tagRelation(String tagRelation) {
-            this.tagRelation = Objects.requireNonNull(tagRelation);
+            if (tagRelation == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "tagRelation");
+            }
+            this.tagRelation = tagRelation;
             return this;
         }
         public GetAddressBooksBook build() {

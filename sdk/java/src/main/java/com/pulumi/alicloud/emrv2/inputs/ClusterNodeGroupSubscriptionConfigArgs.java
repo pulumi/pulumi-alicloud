@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emrv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,8 +227,12 @@ public final class ClusterNodeGroupSubscriptionConfigArgs extends com.pulumi.res
         }
 
         public ClusterNodeGroupSubscriptionConfigArgs build() {
-            $.paymentDuration = Objects.requireNonNull($.paymentDuration, "expected parameter 'paymentDuration' to be non-null");
-            $.paymentDurationUnit = Objects.requireNonNull($.paymentDurationUnit, "expected parameter 'paymentDurationUnit' to be non-null");
+            if ($.paymentDuration == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupSubscriptionConfigArgs", "paymentDuration");
+            }
+            if ($.paymentDurationUnit == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupSubscriptionConfigArgs", "paymentDurationUnit");
+            }
             return $;
         }
     }

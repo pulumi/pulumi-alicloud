@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.brain.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetIndustrialPidOrganizationsOrganization {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidOrganizationsOrganization", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parentPidOrganizationId(String parentPidOrganizationId) {
-            this.parentPidOrganizationId = Objects.requireNonNull(parentPidOrganizationId);
+            if (parentPidOrganizationId == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidOrganizationsOrganization", "parentPidOrganizationId");
+            }
+            this.parentPidOrganizationId = parentPidOrganizationId;
             return this;
         }
         @CustomType.Setter
         public Builder pidOrganizationId(String pidOrganizationId) {
-            this.pidOrganizationId = Objects.requireNonNull(pidOrganizationId);
+            if (pidOrganizationId == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidOrganizationsOrganization", "pidOrganizationId");
+            }
+            this.pidOrganizationId = pidOrganizationId;
             return this;
         }
         @CustomType.Setter
         public Builder pidOrganizationLevel(Integer pidOrganizationLevel) {
-            this.pidOrganizationLevel = Objects.requireNonNull(pidOrganizationLevel);
+            if (pidOrganizationLevel == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidOrganizationsOrganization", "pidOrganizationLevel");
+            }
+            this.pidOrganizationLevel = pidOrganizationLevel;
             return this;
         }
         @CustomType.Setter
         public Builder pidOrganizationName(String pidOrganizationName) {
-            this.pidOrganizationName = Objects.requireNonNull(pidOrganizationName);
+            if (pidOrganizationName == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidOrganizationsOrganization", "pidOrganizationName");
+            }
+            this.pidOrganizationName = pidOrganizationName;
             return this;
         }
         public GetIndustrialPidOrganizationsOrganization build() {

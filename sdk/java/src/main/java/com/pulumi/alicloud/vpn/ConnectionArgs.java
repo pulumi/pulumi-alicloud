@@ -9,6 +9,7 @@ import com.pulumi.alicloud.vpn.inputs.ConnectionIkeConfigArgs;
 import com.pulumi.alicloud.vpn.inputs.ConnectionIpsecConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -509,10 +510,18 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            $.customerGatewayId = Objects.requireNonNull($.customerGatewayId, "expected parameter 'customerGatewayId' to be non-null");
-            $.localSubnets = Objects.requireNonNull($.localSubnets, "expected parameter 'localSubnets' to be non-null");
-            $.remoteSubnets = Objects.requireNonNull($.remoteSubnets, "expected parameter 'remoteSubnets' to be non-null");
-            $.vpnGatewayId = Objects.requireNonNull($.vpnGatewayId, "expected parameter 'vpnGatewayId' to be non-null");
+            if ($.customerGatewayId == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "customerGatewayId");
+            }
+            if ($.localSubnets == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "localSubnets");
+            }
+            if ($.remoteSubnets == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "remoteSubnets");
+            }
+            if ($.vpnGatewayId == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "vpnGatewayId");
+            }
             return $;
         }
     }

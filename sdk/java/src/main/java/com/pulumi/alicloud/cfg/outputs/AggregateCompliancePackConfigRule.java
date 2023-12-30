@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.AggregateCompliancePackConfigRuleConfigRuleParameter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -59,6 +60,7 @@ public final class AggregateCompliancePackConfigRule {
 
         @CustomType.Setter
         public Builder configRuleParameters(@Nullable List<AggregateCompliancePackConfigRuleConfigRuleParameter> configRuleParameters) {
+
             this.configRuleParameters = configRuleParameters;
             return this;
         }
@@ -67,7 +69,10 @@ public final class AggregateCompliancePackConfigRule {
         }
         @CustomType.Setter
         public Builder managedRuleIdentifier(String managedRuleIdentifier) {
-            this.managedRuleIdentifier = Objects.requireNonNull(managedRuleIdentifier);
+            if (managedRuleIdentifier == null) {
+              throw new MissingRequiredPropertyException("AggregateCompliancePackConfigRule", "managedRuleIdentifier");
+            }
+            this.managedRuleIdentifier = managedRuleIdentifier;
             return this;
         }
         public AggregateCompliancePackConfigRule build() {

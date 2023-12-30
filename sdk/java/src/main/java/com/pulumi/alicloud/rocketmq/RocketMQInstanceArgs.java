@@ -8,6 +8,7 @@ import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceProductInfoArgs;
 import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceSoftwareArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -698,11 +699,21 @@ public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public RocketMQInstanceArgs build() {
-            $.networkInfo = Objects.requireNonNull($.networkInfo, "expected parameter 'networkInfo' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.seriesCode = Objects.requireNonNull($.seriesCode, "expected parameter 'seriesCode' to be non-null");
-            $.serviceCode = Objects.requireNonNull($.serviceCode, "expected parameter 'serviceCode' to be non-null");
-            $.subSeriesCode = Objects.requireNonNull($.subSeriesCode, "expected parameter 'subSeriesCode' to be non-null");
+            if ($.networkInfo == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceArgs", "networkInfo");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceArgs", "paymentType");
+            }
+            if ($.seriesCode == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceArgs", "seriesCode");
+            }
+            if ($.serviceCode == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceArgs", "serviceCode");
+            }
+            if ($.subSeriesCode == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceArgs", "subSeriesCode");
+            }
             return $;
         }
     }

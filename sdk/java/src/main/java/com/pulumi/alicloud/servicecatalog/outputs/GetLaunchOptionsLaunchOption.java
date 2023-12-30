@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.alicloud.servicecatalog.outputs.GetLaunchOptionsLaunchOptionConstraintSummary;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,7 +87,10 @@ public final class GetLaunchOptionsLaunchOption {
 
         @CustomType.Setter
         public Builder constraintSummaries(List<GetLaunchOptionsLaunchOptionConstraintSummary> constraintSummaries) {
-            this.constraintSummaries = Objects.requireNonNull(constraintSummaries);
+            if (constraintSummaries == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsLaunchOption", "constraintSummaries");
+            }
+            this.constraintSummaries = constraintSummaries;
             return this;
         }
         public Builder constraintSummaries(GetLaunchOptionsLaunchOptionConstraintSummary... constraintSummaries) {
@@ -94,17 +98,26 @@ public final class GetLaunchOptionsLaunchOption {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsLaunchOption", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder portfolioId(String portfolioId) {
-            this.portfolioId = Objects.requireNonNull(portfolioId);
+            if (portfolioId == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsLaunchOption", "portfolioId");
+            }
+            this.portfolioId = portfolioId;
             return this;
         }
         @CustomType.Setter
         public Builder portfolioName(String portfolioName) {
-            this.portfolioName = Objects.requireNonNull(portfolioName);
+            if (portfolioName == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsLaunchOption", "portfolioName");
+            }
+            this.portfolioName = portfolioName;
             return this;
         }
         public GetLaunchOptionsLaunchOption build() {

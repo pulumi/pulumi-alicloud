@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetMonitorGroupInstancesInstanceInstance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,10 @@ public final class GetMonitorGroupInstancesInstance {
 
         @CustomType.Setter
         public Builder instances(List<GetMonitorGroupInstancesInstanceInstance> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupInstancesInstance", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(GetMonitorGroupInstancesInstanceInstance... instances) {

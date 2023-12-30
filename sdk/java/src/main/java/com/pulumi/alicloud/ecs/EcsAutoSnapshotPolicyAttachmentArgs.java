@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class EcsAutoSnapshotPolicyAttachmentArgs extends com.pulumi.resour
         }
 
         public EcsAutoSnapshotPolicyAttachmentArgs build() {
-            $.autoSnapshotPolicyId = Objects.requireNonNull($.autoSnapshotPolicyId, "expected parameter 'autoSnapshotPolicyId' to be non-null");
-            $.diskId = Objects.requireNonNull($.diskId, "expected parameter 'diskId' to be non-null");
+            if ($.autoSnapshotPolicyId == null) {
+                throw new MissingRequiredPropertyException("EcsAutoSnapshotPolicyAttachmentArgs", "autoSnapshotPolicyId");
+            }
+            if ($.diskId == null) {
+                throw new MissingRequiredPropertyException("EcsAutoSnapshotPolicyAttachmentArgs", "diskId");
+            }
             return $;
         }
     }

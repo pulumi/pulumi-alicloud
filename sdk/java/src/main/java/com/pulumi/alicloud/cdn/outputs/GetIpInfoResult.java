@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,37 +79,58 @@ public final class GetIpInfoResult {
 
         @CustomType.Setter
         public Builder cdnIp(String cdnIp) {
-            this.cdnIp = Objects.requireNonNull(cdnIp);
+            if (cdnIp == null) {
+              throw new MissingRequiredPropertyException("GetIpInfoResult", "cdnIp");
+            }
+            this.cdnIp = cdnIp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpInfoResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetIpInfoResult", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder isp(String isp) {
-            this.isp = Objects.requireNonNull(isp);
+            if (isp == null) {
+              throw new MissingRequiredPropertyException("GetIpInfoResult", "isp");
+            }
+            this.isp = isp;
             return this;
         }
         @CustomType.Setter
         public Builder ispEname(String ispEname) {
-            this.ispEname = Objects.requireNonNull(ispEname);
+            if (ispEname == null) {
+              throw new MissingRequiredPropertyException("GetIpInfoResult", "ispEname");
+            }
+            this.ispEname = ispEname;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetIpInfoResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder regionEname(String regionEname) {
-            this.regionEname = Objects.requireNonNull(regionEname);
+            if (regionEname == null) {
+              throw new MissingRequiredPropertyException("GetIpInfoResult", "regionEname");
+            }
+            this.regionEname = regionEname;
             return this;
         }
         public GetIpInfoResult build() {

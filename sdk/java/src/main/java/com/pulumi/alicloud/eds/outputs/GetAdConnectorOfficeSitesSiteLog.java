@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetAdConnectorOfficeSitesSiteLog {
 
         @CustomType.Setter
         public Builder level(String level) {
-            this.level = Objects.requireNonNull(level);
+            if (level == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSiteLog", "level");
+            }
+            this.level = level;
             return this;
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSiteLog", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder step(String step) {
-            this.step = Objects.requireNonNull(step);
+            if (step == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSiteLog", "step");
+            }
+            this.step = step;
             return this;
         }
         @CustomType.Setter
         public Builder timeStamp(String timeStamp) {
-            this.timeStamp = Objects.requireNonNull(timeStamp);
+            if (timeStamp == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSiteLog", "timeStamp");
+            }
+            this.timeStamp = timeStamp;
             return this;
         }
         public GetAdConnectorOfficeSitesSiteLog build() {

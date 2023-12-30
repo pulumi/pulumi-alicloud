@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class BucketWebsiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BucketWebsiteArgs build() {
-            $.indexDocument = Objects.requireNonNull($.indexDocument, "expected parameter 'indexDocument' to be non-null");
+            if ($.indexDocument == null) {
+                throw new MissingRequiredPropertyException("BucketWebsiteArgs", "indexDocument");
+            }
             return $;
         }
     }

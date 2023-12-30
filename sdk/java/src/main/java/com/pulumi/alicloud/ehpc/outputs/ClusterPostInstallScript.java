@@ -58,11 +58,13 @@ public final class ClusterPostInstallScript {
 
         @CustomType.Setter
         public Builder args(@Nullable String args) {
+
             this.args = args;
             return this;
         }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
+
             this.url = url;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocal {
 
         @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
-            this.listenerPort = Objects.requireNonNull(listenerPort);
+            if (listenerPort == null) {
+              throw new MissingRequiredPropertyException("GetApplicationLoadBalancersBalancerListenerPortsAndProtocal", "listenerPort");
+            }
+            this.listenerPort = listenerPort;
             return this;
         }
         @CustomType.Setter
         public Builder listenerProtocal(String listenerProtocal) {
-            this.listenerProtocal = Objects.requireNonNull(listenerProtocal);
+            if (listenerProtocal == null) {
+              throw new MissingRequiredPropertyException("GetApplicationLoadBalancersBalancerListenerPortsAndProtocal", "listenerProtocal");
+            }
+            this.listenerProtocal = listenerProtocal;
             return this;
         }
         public GetApplicationLoadBalancersBalancerListenerPortsAndProtocal build() {

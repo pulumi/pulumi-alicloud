@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class ServiceNasConfigMountPoint {
 
         @CustomType.Setter
         public Builder mountDir(String mountDir) {
-            this.mountDir = Objects.requireNonNull(mountDir);
+            if (mountDir == null) {
+              throw new MissingRequiredPropertyException("ServiceNasConfigMountPoint", "mountDir");
+            }
+            this.mountDir = mountDir;
             return this;
         }
         @CustomType.Setter
         public Builder serverAddr(String serverAddr) {
-            this.serverAddr = Objects.requireNonNull(serverAddr);
+            if (serverAddr == null) {
+              throw new MissingRequiredPropertyException("ServiceNasConfigMountPoint", "serverAddr");
+            }
+            this.serverAddr = serverAddr;
             return this;
         }
         public ServiceNasConfigMountPoint build() {

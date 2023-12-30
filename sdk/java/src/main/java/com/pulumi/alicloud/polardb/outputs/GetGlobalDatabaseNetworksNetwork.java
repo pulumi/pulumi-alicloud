@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.alicloud.polardb.outputs.GetGlobalDatabaseNetworksNetworkDbCluster;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -142,12 +143,18 @@ public final class GetGlobalDatabaseNetworksNetwork {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksNetwork", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusters(List<GetGlobalDatabaseNetworksNetworkDbCluster> dbClusters) {
-            this.dbClusters = Objects.requireNonNull(dbClusters);
+            if (dbClusters == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksNetwork", "dbClusters");
+            }
+            this.dbClusters = dbClusters;
             return this;
         }
         public Builder dbClusters(GetGlobalDatabaseNetworksNetworkDbCluster... dbClusters) {
@@ -155,32 +162,50 @@ public final class GetGlobalDatabaseNetworksNetwork {
         }
         @CustomType.Setter
         public Builder dbType(String dbType) {
-            this.dbType = Objects.requireNonNull(dbType);
+            if (dbType == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksNetwork", "dbType");
+            }
+            this.dbType = dbType;
             return this;
         }
         @CustomType.Setter
         public Builder dbVersion(String dbVersion) {
-            this.dbVersion = Objects.requireNonNull(dbVersion);
+            if (dbVersion == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksNetwork", "dbVersion");
+            }
+            this.dbVersion = dbVersion;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksNetwork", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder gdnId(String gdnId) {
-            this.gdnId = Objects.requireNonNull(gdnId);
+            if (gdnId == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksNetwork", "gdnId");
+            }
+            this.gdnId = gdnId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksNetwork", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksNetwork", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetGlobalDatabaseNetworksNetwork build() {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cs;
 import com.pulumi.alicloud.cs.inputs.KubernetesAutoscalerNodepoolArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -274,10 +275,18 @@ public final class KubernetesAutoscalerArgs extends com.pulumi.resources.Resourc
         }
 
         public KubernetesAutoscalerArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.coolDownDuration = Objects.requireNonNull($.coolDownDuration, "expected parameter 'coolDownDuration' to be non-null");
-            $.deferScaleInDuration = Objects.requireNonNull($.deferScaleInDuration, "expected parameter 'deferScaleInDuration' to be non-null");
-            $.utilization = Objects.requireNonNull($.utilization, "expected parameter 'utilization' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("KubernetesAutoscalerArgs", "clusterId");
+            }
+            if ($.coolDownDuration == null) {
+                throw new MissingRequiredPropertyException("KubernetesAutoscalerArgs", "coolDownDuration");
+            }
+            if ($.deferScaleInDuration == null) {
+                throw new MissingRequiredPropertyException("KubernetesAutoscalerArgs", "deferScaleInDuration");
+            }
+            if ($.utilization == null) {
+                throw new MissingRequiredPropertyException("KubernetesAutoscalerArgs", "utilization");
+            }
             return $;
         }
     }

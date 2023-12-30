@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ram;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GroupMembershipArgs build() {
-            $.groupName = Objects.requireNonNull($.groupName, "expected parameter 'groupName' to be non-null");
-            $.userNames = Objects.requireNonNull($.userNames, "expected parameter 'userNames' to be non-null");
+            if ($.groupName == null) {
+                throw new MissingRequiredPropertyException("GroupMembershipArgs", "groupName");
+            }
+            if ($.userNames == null) {
+                throw new MissingRequiredPropertyException("GroupMembershipArgs", "userNames");
+            }
             return $;
         }
     }

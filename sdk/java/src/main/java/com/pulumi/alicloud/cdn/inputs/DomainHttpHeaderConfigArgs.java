@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cdn.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,8 +91,12 @@ public final class DomainHttpHeaderConfigArgs extends com.pulumi.resources.Resou
         }
 
         public DomainHttpHeaderConfigArgs build() {
-            $.headerKey = Objects.requireNonNull($.headerKey, "expected parameter 'headerKey' to be non-null");
-            $.headerValue = Objects.requireNonNull($.headerValue, "expected parameter 'headerValue' to be non-null");
+            if ($.headerKey == null) {
+                throw new MissingRequiredPropertyException("DomainHttpHeaderConfigArgs", "headerKey");
+            }
+            if ($.headerValue == null) {
+                throw new MissingRequiredPropertyException("DomainHttpHeaderConfigArgs", "headerValue");
+            }
             return $;
         }
     }

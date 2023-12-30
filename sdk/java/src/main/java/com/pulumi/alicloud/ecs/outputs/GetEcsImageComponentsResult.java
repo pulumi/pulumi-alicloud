@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsImageComponentsComponent;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -102,7 +103,10 @@ public final class GetEcsImageComponentsResult {
 
         @CustomType.Setter
         public Builder components(List<GetEcsImageComponentsComponent> components) {
-            this.components = Objects.requireNonNull(components);
+            if (components == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsResult", "components");
+            }
+            this.components = components;
             return this;
         }
         public Builder components(GetEcsImageComponentsComponent... components) {
@@ -110,12 +114,18 @@ public final class GetEcsImageComponentsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -123,17 +133,22 @@ public final class GetEcsImageComponentsResult {
         }
         @CustomType.Setter
         public Builder imageComponentName(@Nullable String imageComponentName) {
+
             this.imageComponentName = imageComponentName;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -141,21 +156,25 @@ public final class GetEcsImageComponentsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder owner(@Nullable String owner) {
+
             this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -127,7 +128,10 @@ public final class GetSecurityPoliciesPolicy {
 
         @CustomType.Setter
         public Builder ciphers(List<String> ciphers) {
-            this.ciphers = Objects.requireNonNull(ciphers);
+            if (ciphers == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPoliciesPolicy", "ciphers");
+            }
+            this.ciphers = ciphers;
             return this;
         }
         public Builder ciphers(String... ciphers) {
@@ -135,32 +139,50 @@ public final class GetSecurityPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPoliciesPolicy", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityPolicyId(String securityPolicyId) {
-            this.securityPolicyId = Objects.requireNonNull(securityPolicyId);
+            if (securityPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPoliciesPolicy", "securityPolicyId");
+            }
+            this.securityPolicyId = securityPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder securityPolicyName(String securityPolicyName) {
-            this.securityPolicyName = Objects.requireNonNull(securityPolicyName);
+            if (securityPolicyName == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPoliciesPolicy", "securityPolicyName");
+            }
+            this.securityPolicyName = securityPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPoliciesPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tlsVersions(List<String> tlsVersions) {
-            this.tlsVersions = Objects.requireNonNull(tlsVersions);
+            if (tlsVersions == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPoliciesPolicy", "tlsVersions");
+            }
+            this.tlsVersions = tlsVersions;
             return this;
         }
         public Builder tlsVersions(String... tlsVersions) {

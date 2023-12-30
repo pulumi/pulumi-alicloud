@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -113,32 +114,50 @@ public final class GetChartNamespacesNamespace {
 
         @CustomType.Setter
         public Builder autoCreateRepo(Boolean autoCreateRepo) {
-            this.autoCreateRepo = Objects.requireNonNull(autoCreateRepo);
+            if (autoCreateRepo == null) {
+              throw new MissingRequiredPropertyException("GetChartNamespacesNamespace", "autoCreateRepo");
+            }
+            this.autoCreateRepo = autoCreateRepo;
             return this;
         }
         @CustomType.Setter
         public Builder chartNamespaceId(String chartNamespaceId) {
-            this.chartNamespaceId = Objects.requireNonNull(chartNamespaceId);
+            if (chartNamespaceId == null) {
+              throw new MissingRequiredPropertyException("GetChartNamespacesNamespace", "chartNamespaceId");
+            }
+            this.chartNamespaceId = chartNamespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder defaultRepoType(String defaultRepoType) {
-            this.defaultRepoType = Objects.requireNonNull(defaultRepoType);
+            if (defaultRepoType == null) {
+              throw new MissingRequiredPropertyException("GetChartNamespacesNamespace", "defaultRepoType");
+            }
+            this.defaultRepoType = defaultRepoType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetChartNamespacesNamespace", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetChartNamespacesNamespace", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceName(String namespaceName) {
-            this.namespaceName = Objects.requireNonNull(namespaceName);
+            if (namespaceName == null) {
+              throw new MissingRequiredPropertyException("GetChartNamespacesNamespace", "namespaceName");
+            }
+            this.namespaceName = namespaceName;
             return this;
         }
         public GetChartNamespacesNamespace build() {

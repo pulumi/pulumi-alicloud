@@ -73,16 +73,19 @@ public final class ScalingRuleStepAdjustment {
 
         @CustomType.Setter
         public Builder metricIntervalLowerBound(@Nullable String metricIntervalLowerBound) {
+
             this.metricIntervalLowerBound = metricIntervalLowerBound;
             return this;
         }
         @CustomType.Setter
         public Builder metricIntervalUpperBound(@Nullable String metricIntervalUpperBound) {
+
             this.metricIntervalUpperBound = metricIntervalUpperBound;
             return this;
         }
         @CustomType.Setter
         public Builder scalingAdjustment(@Nullable Integer scalingAdjustment) {
+
             this.scalingAdjustment = scalingAdjustment;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eflo;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -236,10 +237,18 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SubnetArgs build() {
-            $.cidr = Objects.requireNonNull($.cidr, "expected parameter 'cidr' to be non-null");
-            $.subnetName = Objects.requireNonNull($.subnetName, "expected parameter 'subnetName' to be non-null");
-            $.vpdId = Objects.requireNonNull($.vpdId, "expected parameter 'vpdId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.cidr == null) {
+                throw new MissingRequiredPropertyException("SubnetArgs", "cidr");
+            }
+            if ($.subnetName == null) {
+                throw new MissingRequiredPropertyException("SubnetArgs", "subnetName");
+            }
+            if ($.vpdId == null) {
+                throw new MissingRequiredPropertyException("SubnetArgs", "vpdId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("SubnetArgs", "zoneId");
+            }
             return $;
         }
     }

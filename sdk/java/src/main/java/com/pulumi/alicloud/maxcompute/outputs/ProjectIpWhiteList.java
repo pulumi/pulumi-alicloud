@@ -58,11 +58,13 @@ public final class ProjectIpWhiteList {
 
         @CustomType.Setter
         public Builder ipList(@Nullable String ipList) {
+
             this.ipList = ipList;
             return this;
         }
         @CustomType.Setter
         public Builder vpcIpList(@Nullable String vpcIpList) {
+
             this.vpcIpList = vpcIpList;
             return this;
         }

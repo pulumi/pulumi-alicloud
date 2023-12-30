@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetEndpointGroupsGroupPortOverride {
 
         @CustomType.Setter
         public Builder endpointPort(Integer endpointPort) {
-            this.endpointPort = Objects.requireNonNull(endpointPort);
+            if (endpointPort == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupPortOverride", "endpointPort");
+            }
+            this.endpointPort = endpointPort;
             return this;
         }
         @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
-            this.listenerPort = Objects.requireNonNull(listenerPort);
+            if (listenerPort == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroupPortOverride", "listenerPort");
+            }
+            this.listenerPort = listenerPort;
             return this;
         }
         public GetEndpointGroupsGroupPortOverride build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetPrivateZonesZone {
 
         @CustomType.Setter
         public Builder accessRegionId(String accessRegionId) {
-            this.accessRegionId = Objects.requireNonNull(accessRegionId);
+            if (accessRegionId == null) {
+              throw new MissingRequiredPropertyException("GetPrivateZonesZone", "accessRegionId");
+            }
+            this.accessRegionId = accessRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetPrivateZonesZone", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder hostRegionId(String hostRegionId) {
-            this.hostRegionId = Objects.requireNonNull(hostRegionId);
+            if (hostRegionId == null) {
+              throw new MissingRequiredPropertyException("GetPrivateZonesZone", "hostRegionId");
+            }
+            this.hostRegionId = hostRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder hostVpcId(String hostVpcId) {
-            this.hostVpcId = Objects.requireNonNull(hostVpcId);
+            if (hostVpcId == null) {
+              throw new MissingRequiredPropertyException("GetPrivateZonesZone", "hostVpcId");
+            }
+            this.hostVpcId = hostVpcId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrivateZonesZone", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder privateZoneDnsServers(String privateZoneDnsServers) {
-            this.privateZoneDnsServers = Objects.requireNonNull(privateZoneDnsServers);
+            if (privateZoneDnsServers == null) {
+              throw new MissingRequiredPropertyException("GetPrivateZonesZone", "privateZoneDnsServers");
+            }
+            this.privateZoneDnsServers = privateZoneDnsServers;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPrivateZonesZone", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetPrivateZonesZone build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.alicloud.slb.outputs.GetTlsCipherPoliciesPolicyRelateListener;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -142,7 +143,10 @@ public final class GetTlsCipherPoliciesPolicy {
 
         @CustomType.Setter
         public Builder ciphers(List<String> ciphers) {
-            this.ciphers = Objects.requireNonNull(ciphers);
+            if (ciphers == null) {
+              throw new MissingRequiredPropertyException("GetTlsCipherPoliciesPolicy", "ciphers");
+            }
+            this.ciphers = ciphers;
             return this;
         }
         public Builder ciphers(String... ciphers) {
@@ -150,17 +154,26 @@ public final class GetTlsCipherPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetTlsCipherPoliciesPolicy", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTlsCipherPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder relateListeners(List<GetTlsCipherPoliciesPolicyRelateListener> relateListeners) {
-            this.relateListeners = Objects.requireNonNull(relateListeners);
+            if (relateListeners == null) {
+              throw new MissingRequiredPropertyException("GetTlsCipherPoliciesPolicy", "relateListeners");
+            }
+            this.relateListeners = relateListeners;
             return this;
         }
         public Builder relateListeners(GetTlsCipherPoliciesPolicyRelateListener... relateListeners) {
@@ -168,22 +181,34 @@ public final class GetTlsCipherPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTlsCipherPoliciesPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tlsCipherPolicyId(String tlsCipherPolicyId) {
-            this.tlsCipherPolicyId = Objects.requireNonNull(tlsCipherPolicyId);
+            if (tlsCipherPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetTlsCipherPoliciesPolicy", "tlsCipherPolicyId");
+            }
+            this.tlsCipherPolicyId = tlsCipherPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder tlsCipherPolicyName(String tlsCipherPolicyName) {
-            this.tlsCipherPolicyName = Objects.requireNonNull(tlsCipherPolicyName);
+            if (tlsCipherPolicyName == null) {
+              throw new MissingRequiredPropertyException("GetTlsCipherPoliciesPolicy", "tlsCipherPolicyName");
+            }
+            this.tlsCipherPolicyName = tlsCipherPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder tlsVersions(List<String> tlsVersions) {
-            this.tlsVersions = Objects.requireNonNull(tlsVersions);
+            if (tlsVersions == null) {
+              throw new MissingRequiredPropertyException("GetTlsCipherPoliciesPolicy", "tlsVersions");
+            }
+            this.tlsVersions = tlsVersions;
             return this;
         }
         public Builder tlsVersions(String... tlsVersions) {

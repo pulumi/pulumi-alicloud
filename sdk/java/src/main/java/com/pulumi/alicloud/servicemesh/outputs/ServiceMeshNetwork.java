@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,17 +73,24 @@ public final class ServiceMeshNetwork {
 
         @CustomType.Setter
         public Builder securityGroupId(@Nullable String securityGroupId) {
+
             this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("ServiceMeshNetwork", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitcheList(String vswitcheList) {
-            this.vswitcheList = Objects.requireNonNull(vswitcheList);
+            if (vswitcheList == null) {
+              throw new MissingRequiredPropertyException("ServiceMeshNetwork", "vswitcheList");
+            }
+            this.vswitcheList = vswitcheList;
             return this;
         }
         public ServiceMeshNetwork build() {

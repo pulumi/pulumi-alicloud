@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -284,57 +285,90 @@ public final class GetNetworksVpc {
 
         @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
-            this.cidrBlock = Objects.requireNonNull(cidrBlock);
+            if (cidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "cidrBlock");
+            }
+            this.cidrBlock = cidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6CidrBlock(String ipv6CidrBlock) {
-            this.ipv6CidrBlock = Objects.requireNonNull(ipv6CidrBlock);
+            if (ipv6CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "ipv6CidrBlock");
+            }
+            this.ipv6CidrBlock = ipv6CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
-            this.isDefault = Objects.requireNonNull(isDefault);
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
-            this.routeTableId = Objects.requireNonNull(routeTableId);
+            if (routeTableId == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "routeTableId");
+            }
+            this.routeTableId = routeTableId;
             return this;
         }
         @CustomType.Setter
         public Builder routerId(String routerId) {
-            this.routerId = Objects.requireNonNull(routerId);
+            if (routerId == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "routerId");
+            }
+            this.routerId = routerId;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryCidrBlocks(List<String> secondaryCidrBlocks) {
-            this.secondaryCidrBlocks = Objects.requireNonNull(secondaryCidrBlocks);
+            if (secondaryCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "secondaryCidrBlocks");
+            }
+            this.secondaryCidrBlocks = secondaryCidrBlocks;
             return this;
         }
         public Builder secondaryCidrBlocks(String... secondaryCidrBlocks) {
@@ -342,17 +376,26 @@ public final class GetNetworksVpc {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder userCidrs(List<String> userCidrs) {
-            this.userCidrs = Objects.requireNonNull(userCidrs);
+            if (userCidrs == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "userCidrs");
+            }
+            this.userCidrs = userCidrs;
             return this;
         }
         public Builder userCidrs(String... userCidrs) {
@@ -360,22 +403,34 @@ public final class GetNetworksVpc {
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcName(String vpcName) {
-            this.vpcName = Objects.requireNonNull(vpcName);
+            if (vpcName == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "vpcName");
+            }
+            this.vpcName = vpcName;
             return this;
         }
         @CustomType.Setter
         public Builder vrouterId(String vrouterId) {
-            this.vrouterId = Objects.requireNonNull(vrouterId);
+            if (vrouterId == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "vrouterId");
+            }
+            this.vrouterId = vrouterId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
-            this.vswitchIds = Objects.requireNonNull(vswitchIds);
+            if (vswitchIds == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "vswitchIds");
+            }
+            this.vswitchIds = vswitchIds;
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {

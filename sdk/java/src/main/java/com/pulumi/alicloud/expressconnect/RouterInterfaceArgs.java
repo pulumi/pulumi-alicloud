@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -929,11 +930,21 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public RouterInterfaceArgs build() {
-            $.oppositeRegionId = Objects.requireNonNull($.oppositeRegionId, "expected parameter 'oppositeRegionId' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.routerId = Objects.requireNonNull($.routerId, "expected parameter 'routerId' to be non-null");
-            $.routerType = Objects.requireNonNull($.routerType, "expected parameter 'routerType' to be non-null");
-            $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
+            if ($.oppositeRegionId == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "oppositeRegionId");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "role");
+            }
+            if ($.routerId == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "routerId");
+            }
+            if ($.routerType == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "routerType");
+            }
+            if ($.spec == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "spec");
+            }
             return $;
         }
     }

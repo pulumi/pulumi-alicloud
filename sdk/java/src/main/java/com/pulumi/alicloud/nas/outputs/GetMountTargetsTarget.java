@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetMountTargetsTarget {
 
         @CustomType.Setter
         public Builder accessGroupName(String accessGroupName) {
-            this.accessGroupName = Objects.requireNonNull(accessGroupName);
+            if (accessGroupName == null) {
+              throw new MissingRequiredPropertyException("GetMountTargetsTarget", "accessGroupName");
+            }
+            this.accessGroupName = accessGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMountTargetsTarget", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mountTargetDomain(String mountTargetDomain) {
-            this.mountTargetDomain = Objects.requireNonNull(mountTargetDomain);
+            if (mountTargetDomain == null) {
+              throw new MissingRequiredPropertyException("GetMountTargetsTarget", "mountTargetDomain");
+            }
+            this.mountTargetDomain = mountTargetDomain;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetMountTargetsTarget", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetMountTargetsTarget", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetMountTargetsTarget", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetMountTargetsTarget", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetMountTargetsTarget", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetMountTargetsTarget build() {

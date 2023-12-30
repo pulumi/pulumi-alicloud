@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -240,77 +241,122 @@ public final class GetStateConfigurationsConfiguration {
 
         @CustomType.Setter
         public Builder configureMode(String configureMode) {
-            this.configureMode = Objects.requireNonNull(configureMode);
+            if (configureMode == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "configureMode");
+            }
+            this.configureMode = configureMode;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(String parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder scheduleExpression(String scheduleExpression) {
-            this.scheduleExpression = Objects.requireNonNull(scheduleExpression);
+            if (scheduleExpression == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "scheduleExpression");
+            }
+            this.scheduleExpression = scheduleExpression;
             return this;
         }
         @CustomType.Setter
         public Builder scheduleType(String scheduleType) {
-            this.scheduleType = Objects.requireNonNull(scheduleType);
+            if (scheduleType == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "scheduleType");
+            }
+            this.scheduleType = scheduleType;
             return this;
         }
         @CustomType.Setter
         public Builder stateConfigurationId(String stateConfigurationId) {
-            this.stateConfigurationId = Objects.requireNonNull(stateConfigurationId);
+            if (stateConfigurationId == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "stateConfigurationId");
+            }
+            this.stateConfigurationId = stateConfigurationId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder targets(String targets) {
-            this.targets = Objects.requireNonNull(targets);
+            if (targets == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "targets");
+            }
+            this.targets = targets;
             return this;
         }
         @CustomType.Setter
         public Builder templateId(String templateId) {
-            this.templateId = Objects.requireNonNull(templateId);
+            if (templateId == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "templateId");
+            }
+            this.templateId = templateId;
             return this;
         }
         @CustomType.Setter
         public Builder templateName(String templateName) {
-            this.templateName = Objects.requireNonNull(templateName);
+            if (templateName == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "templateName");
+            }
+            this.templateName = templateName;
             return this;
         }
         @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
-            this.templateVersion = Objects.requireNonNull(templateVersion);
+            if (templateVersion == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "templateVersion");
+            }
+            this.templateVersion = templateVersion;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetStateConfigurationsConfiguration build() {

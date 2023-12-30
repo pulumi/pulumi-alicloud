@@ -44,6 +44,7 @@ public final class RuleRuleConditionCookieConfig {
 
         @CustomType.Setter
         public Builder values(@Nullable List<RuleRuleConditionCookieConfigValue> values) {
+
             this.values = values;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.videosurveillance.outputs;
 
 import com.pulumi.alicloud.videosurveillance.outputs.GetSystemGroupsGroupStat;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -241,77 +242,122 @@ public final class GetSystemGroupsGroup {
 
         @CustomType.Setter
         public Builder app(String app) {
-            this.app = Objects.requireNonNull(app);
+            if (app == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "app");
+            }
+            this.app = app;
             return this;
         }
         @CustomType.Setter
         public Builder callback(String callback) {
-            this.callback = Objects.requireNonNull(callback);
+            if (callback == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "callback");
+            }
+            this.callback = callback;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder gbId(String gbId) {
-            this.gbId = Objects.requireNonNull(gbId);
+            if (gbId == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "gbId");
+            }
+            this.gbId = gbId;
             return this;
         }
         @CustomType.Setter
         public Builder gbIp(String gbIp) {
-            this.gbIp = Objects.requireNonNull(gbIp);
+            if (gbIp == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "gbIp");
+            }
+            this.gbIp = gbIp;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inProtocol(String inProtocol) {
-            this.inProtocol = Objects.requireNonNull(inProtocol);
+            if (inProtocol == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "inProtocol");
+            }
+            this.inProtocol = inProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder outProtocol(String outProtocol) {
-            this.outProtocol = Objects.requireNonNull(outProtocol);
+            if (outProtocol == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "outProtocol");
+            }
+            this.outProtocol = outProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder playDomain(String playDomain) {
-            this.playDomain = Objects.requireNonNull(playDomain);
+            if (playDomain == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "playDomain");
+            }
+            this.playDomain = playDomain;
             return this;
         }
         @CustomType.Setter
         public Builder pushDomain(String pushDomain) {
-            this.pushDomain = Objects.requireNonNull(pushDomain);
+            if (pushDomain == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "pushDomain");
+            }
+            this.pushDomain = pushDomain;
             return this;
         }
         @CustomType.Setter
         public Builder stats(List<GetSystemGroupsGroupStat> stats) {
-            this.stats = Objects.requireNonNull(stats);
+            if (stats == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroup", "stats");
+            }
+            this.stats = stats;
             return this;
         }
         public Builder stats(GetSystemGroupsGroupStat... stats) {

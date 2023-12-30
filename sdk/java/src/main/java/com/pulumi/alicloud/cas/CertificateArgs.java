@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -200,8 +201,12 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CertificateArgs build() {
-            $.cert = Objects.requireNonNull($.cert, "expected parameter 'cert' to be non-null");
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
+            if ($.cert == null) {
+                throw new MissingRequiredPropertyException("CertificateArgs", "cert");
+            }
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("CertificateArgs", "key");
+            }
             return $;
         }
     }

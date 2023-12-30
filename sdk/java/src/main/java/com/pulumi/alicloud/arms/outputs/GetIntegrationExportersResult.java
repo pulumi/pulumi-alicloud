@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.alicloud.arms.outputs.GetIntegrationExportersIntegrationExporter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,17 +101,26 @@ public final class GetIntegrationExportersResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -118,7 +128,10 @@ public final class GetIntegrationExportersResult {
         }
         @CustomType.Setter
         public Builder integrationExporters(List<GetIntegrationExportersIntegrationExporter> integrationExporters) {
-            this.integrationExporters = Objects.requireNonNull(integrationExporters);
+            if (integrationExporters == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersResult", "integrationExporters");
+            }
+            this.integrationExporters = integrationExporters;
             return this;
         }
         public Builder integrationExporters(GetIntegrationExportersIntegrationExporter... integrationExporters) {
@@ -126,11 +139,15 @@ public final class GetIntegrationExportersResult {
         }
         @CustomType.Setter
         public Builder integrationType(String integrationType) {
-            this.integrationType = Objects.requireNonNull(integrationType);
+            if (integrationType == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersResult", "integrationType");
+            }
+            this.integrationType = integrationType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudconnect;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class NetworkAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         public NetworkAttachmentArgs build() {
-            $.ccnId = Objects.requireNonNull($.ccnId, "expected parameter 'ccnId' to be non-null");
-            $.sagId = Objects.requireNonNull($.sagId, "expected parameter 'sagId' to be non-null");
+            if ($.ccnId == null) {
+                throw new MissingRequiredPropertyException("NetworkAttachmentArgs", "ccnId");
+            }
+            if ($.sagId == null) {
+                throw new MissingRequiredPropertyException("NetworkAttachmentArgs", "sagId");
+            }
             return $;
         }
     }

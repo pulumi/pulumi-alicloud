@@ -5,6 +5,7 @@ package com.pulumi.alicloud.message.outputs;
 
 import com.pulumi.alicloud.message.outputs.GetServiceQueuesQueue;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -119,12 +120,18 @@ public final class GetServiceQueuesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -132,12 +139,16 @@ public final class GetServiceQueuesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -145,27 +156,34 @@ public final class GetServiceQueuesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder queueName(@Nullable String queueName) {
+
             this.queueName = queueName;
             return this;
         }
         @CustomType.Setter
         public Builder queues(List<GetServiceQueuesQueue> queues) {
-            this.queues = Objects.requireNonNull(queues);
+            if (queues == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesResult", "queues");
+            }
+            this.queues = queues;
             return this;
         }
         public Builder queues(GetServiceQueuesQueue... queues) {

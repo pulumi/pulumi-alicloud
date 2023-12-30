@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kvstore.outputs;
 
 import com.pulumi.alicloud.kvstore.outputs.GetInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -279,42 +280,54 @@ public final class GetInstancesResult {
 
         @CustomType.Setter
         public Builder architectureType(@Nullable String architectureType) {
+
             this.architectureType = architectureType;
             return this;
         }
         @CustomType.Setter
         public Builder editionType(@Nullable String editionType) {
+
             this.editionType = editionType;
             return this;
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(@Nullable String engineVersion) {
+
             this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder expired(@Nullable String expired) {
+
             this.expired = expired;
             return this;
         }
         @CustomType.Setter
         public Builder globalInstance(@Nullable Boolean globalInstance) {
+
             this.globalInstance = globalInstance;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInstancesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -322,17 +335,22 @@ public final class GetInstancesResult {
         }
         @CustomType.Setter
         public Builder instanceClass(@Nullable String instanceClass) {
+
             this.instanceClass = instanceClass;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetInstancesResult", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(GetInstancesInstance... instances) {
@@ -340,12 +358,16 @@ public final class GetInstancesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetInstancesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -353,51 +375,61 @@ public final class GetInstancesResult {
         }
         @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
+
             this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
+
             this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder searchKey(@Nullable String searchKey) {
+
             this.searchKey = searchKey;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
+
             this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

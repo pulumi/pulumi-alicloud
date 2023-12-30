@@ -5,6 +5,7 @@ package com.pulumi.alicloud.clickhouse.outputs;
 
 import com.pulumi.alicloud.clickhouse.outputs.GetBackupPoliciesPolicy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,22 +65,32 @@ public final class GetBackupPoliciesResult {
 
         @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
-            this.dbClusterId = Objects.requireNonNull(dbClusterId);
+            if (dbClusterId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesResult", "dbClusterId");
+            }
+            this.dbClusterId = dbClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder policies(List<GetBackupPoliciesPolicy> policies) {
-            this.policies = Objects.requireNonNull(policies);
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesResult", "policies");
+            }
+            this.policies = policies;
             return this;
         }
         public Builder policies(GetBackupPoliciesPolicy... policies) {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.amqp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -343,12 +344,24 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ExchangeArgs build() {
-            $.autoDeleteState = Objects.requireNonNull($.autoDeleteState, "expected parameter 'autoDeleteState' to be non-null");
-            $.exchangeName = Objects.requireNonNull($.exchangeName, "expected parameter 'exchangeName' to be non-null");
-            $.exchangeType = Objects.requireNonNull($.exchangeType, "expected parameter 'exchangeType' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.internal = Objects.requireNonNull($.internal, "expected parameter 'internal' to be non-null");
-            $.virtualHostName = Objects.requireNonNull($.virtualHostName, "expected parameter 'virtualHostName' to be non-null");
+            if ($.autoDeleteState == null) {
+                throw new MissingRequiredPropertyException("ExchangeArgs", "autoDeleteState");
+            }
+            if ($.exchangeName == null) {
+                throw new MissingRequiredPropertyException("ExchangeArgs", "exchangeName");
+            }
+            if ($.exchangeType == null) {
+                throw new MissingRequiredPropertyException("ExchangeArgs", "exchangeType");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("ExchangeArgs", "instanceId");
+            }
+            if ($.internal == null) {
+                throw new MissingRequiredPropertyException("ExchangeArgs", "internal");
+            }
+            if ($.virtualHostName == null) {
+                throw new MissingRequiredPropertyException("ExchangeArgs", "virtualHostName");
+            }
             return $;
         }
     }

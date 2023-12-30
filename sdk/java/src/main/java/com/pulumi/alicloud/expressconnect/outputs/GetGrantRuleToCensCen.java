@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetGrantRuleToCensCen {
 
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetGrantRuleToCensCen", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder cenOwnerId(Integer cenOwnerId) {
-            this.cenOwnerId = Objects.requireNonNull(cenOwnerId);
+            if (cenOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetGrantRuleToCensCen", "cenOwnerId");
+            }
+            this.cenOwnerId = cenOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGrantRuleToCensCen", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGrantRuleToCensCen", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetGrantRuleToCensCen build() {

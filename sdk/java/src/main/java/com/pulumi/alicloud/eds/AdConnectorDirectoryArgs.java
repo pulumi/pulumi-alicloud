@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -516,12 +517,24 @@ public final class AdConnectorDirectoryArgs extends com.pulumi.resources.Resourc
         }
 
         public AdConnectorDirectoryArgs build() {
-            $.directoryName = Objects.requireNonNull($.directoryName, "expected parameter 'directoryName' to be non-null");
-            $.dnsAddresses = Objects.requireNonNull($.dnsAddresses, "expected parameter 'dnsAddresses' to be non-null");
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
-            $.domainPassword = Objects.requireNonNull($.domainPassword, "expected parameter 'domainPassword' to be non-null");
-            $.domainUserName = Objects.requireNonNull($.domainUserName, "expected parameter 'domainUserName' to be non-null");
-            $.vswitchIds = Objects.requireNonNull($.vswitchIds, "expected parameter 'vswitchIds' to be non-null");
+            if ($.directoryName == null) {
+                throw new MissingRequiredPropertyException("AdConnectorDirectoryArgs", "directoryName");
+            }
+            if ($.dnsAddresses == null) {
+                throw new MissingRequiredPropertyException("AdConnectorDirectoryArgs", "dnsAddresses");
+            }
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("AdConnectorDirectoryArgs", "domainName");
+            }
+            if ($.domainPassword == null) {
+                throw new MissingRequiredPropertyException("AdConnectorDirectoryArgs", "domainPassword");
+            }
+            if ($.domainUserName == null) {
+                throw new MissingRequiredPropertyException("AdConnectorDirectoryArgs", "domainUserName");
+            }
+            if ($.vswitchIds == null) {
+                throw new MissingRequiredPropertyException("AdConnectorDirectoryArgs", "vswitchIds");
+            }
             return $;
         }
     }

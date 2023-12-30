@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -236,8 +237,12 @@ public final class GetRulesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRulesArgs build() {
-            $.frontendPort = Objects.requireNonNull($.frontendPort, "expected parameter 'frontendPort' to be non-null");
-            $.loadBalancerId = Objects.requireNonNull($.loadBalancerId, "expected parameter 'loadBalancerId' to be non-null");
+            if ($.frontendPort == null) {
+                throw new MissingRequiredPropertyException("GetRulesArgs", "frontendPort");
+            }
+            if ($.loadBalancerId == null) {
+                throw new MissingRequiredPropertyException("GetRulesArgs", "loadBalancerId");
+            }
             return $;
         }
     }

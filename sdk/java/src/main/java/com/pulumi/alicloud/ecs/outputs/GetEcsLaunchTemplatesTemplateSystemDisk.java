@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -128,37 +129,58 @@ public final class GetEcsLaunchTemplatesTemplateSystemDisk {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateSystemDisk", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder deleteWithInstance(Boolean deleteWithInstance) {
-            this.deleteWithInstance = Objects.requireNonNull(deleteWithInstance);
+            if (deleteWithInstance == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateSystemDisk", "deleteWithInstance");
+            }
+            this.deleteWithInstance = deleteWithInstance;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateSystemDisk", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder iops(String iops) {
-            this.iops = Objects.requireNonNull(iops);
+            if (iops == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateSystemDisk", "iops");
+            }
+            this.iops = iops;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateSystemDisk", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder performanceLevel(String performanceLevel) {
-            this.performanceLevel = Objects.requireNonNull(performanceLevel);
+            if (performanceLevel == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateSystemDisk", "performanceLevel");
+            }
+            this.performanceLevel = performanceLevel;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateSystemDisk", "size");
+            }
+            this.size = size;
             return this;
         }
         public GetEcsLaunchTemplatesTemplateSystemDisk build() {

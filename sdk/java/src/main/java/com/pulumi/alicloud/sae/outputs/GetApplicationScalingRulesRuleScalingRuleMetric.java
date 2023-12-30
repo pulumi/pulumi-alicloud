@@ -8,6 +8,7 @@ import com.pulumi.alicloud.sae.outputs.GetApplicationScalingRulesRuleScalingRule
 import com.pulumi.alicloud.sae.outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule;
 import com.pulumi.alicloud.sae.outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -117,12 +118,18 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
 
         @CustomType.Setter
         public Builder maxReplicas(Integer maxReplicas) {
-            this.maxReplicas = Objects.requireNonNull(maxReplicas);
+            if (maxReplicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetric", "maxReplicas");
+            }
+            this.maxReplicas = maxReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder metrics(List<GetApplicationScalingRulesRuleScalingRuleMetricMetric> metrics) {
-            this.metrics = Objects.requireNonNull(metrics);
+            if (metrics == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetric", "metrics");
+            }
+            this.metrics = metrics;
             return this;
         }
         public Builder metrics(GetApplicationScalingRulesRuleScalingRuleMetricMetric... metrics) {
@@ -130,7 +137,10 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
         }
         @CustomType.Setter
         public Builder metricsStatuses(List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus> metricsStatuses) {
-            this.metricsStatuses = Objects.requireNonNull(metricsStatuses);
+            if (metricsStatuses == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetric", "metricsStatuses");
+            }
+            this.metricsStatuses = metricsStatuses;
             return this;
         }
         public Builder metricsStatuses(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus... metricsStatuses) {
@@ -138,12 +148,18 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
         }
         @CustomType.Setter
         public Builder minReplicas(Integer minReplicas) {
-            this.minReplicas = Objects.requireNonNull(minReplicas);
+            if (minReplicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetric", "minReplicas");
+            }
+            this.minReplicas = minReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder scaleDownRules(List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule> scaleDownRules) {
-            this.scaleDownRules = Objects.requireNonNull(scaleDownRules);
+            if (scaleDownRules == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetric", "scaleDownRules");
+            }
+            this.scaleDownRules = scaleDownRules;
             return this;
         }
         public Builder scaleDownRules(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule... scaleDownRules) {
@@ -151,7 +167,10 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
         }
         @CustomType.Setter
         public Builder scaleUpRules(List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule> scaleUpRules) {
-            this.scaleUpRules = Objects.requireNonNull(scaleUpRules);
+            if (scaleUpRules == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetric", "scaleUpRules");
+            }
+            this.scaleUpRules = scaleUpRules;
             return this;
         }
         public Builder scaleUpRules(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule... scaleUpRules) {

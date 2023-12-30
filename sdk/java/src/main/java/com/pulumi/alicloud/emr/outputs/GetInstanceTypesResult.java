@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.alicloud.emr.outputs.GetInstanceTypesType;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -131,22 +132,34 @@ public final class GetInstanceTypesResult {
 
         @CustomType.Setter
         public Builder clusterType(String clusterType) {
-            this.clusterType = Objects.requireNonNull(clusterType);
+            if (clusterType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "clusterType");
+            }
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
         public Builder destinationResource(String destinationResource) {
-            this.destinationResource = Objects.requireNonNull(destinationResource);
+            if (destinationResource == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "destinationResource");
+            }
+            this.destinationResource = destinationResource;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -154,26 +167,33 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
-            this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
+            if (instanceChargeType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "instanceChargeType");
+            }
+            this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder supportLocalStorage(@Nullable Boolean supportLocalStorage) {
+
             this.supportLocalStorage = supportLocalStorage;
             return this;
         }
         @CustomType.Setter
         public Builder supportNodeTypes(@Nullable List<String> supportNodeTypes) {
+
             this.supportNodeTypes = supportNodeTypes;
             return this;
         }
@@ -182,7 +202,10 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder types(List<GetInstanceTypesType> types) {
-            this.types = Objects.requireNonNull(types);
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "types");
+            }
+            this.types = types;
             return this;
         }
         public Builder types(GetInstanceTypesType... types) {
@@ -190,6 +213,7 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

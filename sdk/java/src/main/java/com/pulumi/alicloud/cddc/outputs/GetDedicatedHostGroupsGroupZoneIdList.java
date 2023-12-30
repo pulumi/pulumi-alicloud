@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cddc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class GetDedicatedHostGroupsGroupZoneIdList {
 
         @CustomType.Setter
         public Builder zoneIdLists(List<String> zoneIdLists) {
-            this.zoneIdLists = Objects.requireNonNull(zoneIdLists);
+            if (zoneIdLists == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroupZoneIdList", "zoneIdLists");
+            }
+            this.zoneIdLists = zoneIdLists;
             return this;
         }
         public Builder zoneIdLists(String... zoneIdLists) {

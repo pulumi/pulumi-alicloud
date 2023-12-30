@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetServicesServiceLogConfig {
 
         @CustomType.Setter
         public Builder logstore(String logstore) {
-            this.logstore = Objects.requireNonNull(logstore);
+            if (logstore == null) {
+              throw new MissingRequiredPropertyException("GetServicesServiceLogConfig", "logstore");
+            }
+            this.logstore = logstore;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetServicesServiceLogConfig", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetServicesServiceLogConfig build() {

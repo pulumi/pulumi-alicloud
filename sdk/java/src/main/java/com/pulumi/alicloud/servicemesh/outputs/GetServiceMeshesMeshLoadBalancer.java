@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetServiceMeshesMeshLoadBalancer {
 
         @CustomType.Setter
         public Builder apiServerLoadbalancerId(String apiServerLoadbalancerId) {
-            this.apiServerLoadbalancerId = Objects.requireNonNull(apiServerLoadbalancerId);
+            if (apiServerLoadbalancerId == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshLoadBalancer", "apiServerLoadbalancerId");
+            }
+            this.apiServerLoadbalancerId = apiServerLoadbalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder apiServerPublicEip(Boolean apiServerPublicEip) {
-            this.apiServerPublicEip = Objects.requireNonNull(apiServerPublicEip);
+            if (apiServerPublicEip == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshLoadBalancer", "apiServerPublicEip");
+            }
+            this.apiServerPublicEip = apiServerPublicEip;
             return this;
         }
         @CustomType.Setter
         public Builder pilotPublicEip(Boolean pilotPublicEip) {
-            this.pilotPublicEip = Objects.requireNonNull(pilotPublicEip);
+            if (pilotPublicEip == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshLoadBalancer", "pilotPublicEip");
+            }
+            this.pilotPublicEip = pilotPublicEip;
             return this;
         }
         @CustomType.Setter
         public Builder pilotPublicLoadbalancerId(String pilotPublicLoadbalancerId) {
-            this.pilotPublicLoadbalancerId = Objects.requireNonNull(pilotPublicLoadbalancerId);
+            if (pilotPublicLoadbalancerId == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshLoadBalancer", "pilotPublicLoadbalancerId");
+            }
+            this.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
             return this;
         }
         public GetServiceMeshesMeshLoadBalancer build() {

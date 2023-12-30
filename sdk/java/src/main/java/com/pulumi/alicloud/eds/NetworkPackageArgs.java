@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class NetworkPackageArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public NetworkPackageArgs build() {
-            $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
-            $.officeSiteId = Objects.requireNonNull($.officeSiteId, "expected parameter 'officeSiteId' to be non-null");
+            if ($.bandwidth == null) {
+                throw new MissingRequiredPropertyException("NetworkPackageArgs", "bandwidth");
+            }
+            if ($.officeSiteId == null) {
+                throw new MissingRequiredPropertyException("NetworkPackageArgs", "officeSiteId");
+            }
             return $;
         }
     }

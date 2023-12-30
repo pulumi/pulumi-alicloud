@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class AppAttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppAttachmentArgs build() {
-            $.apiId = Objects.requireNonNull($.apiId, "expected parameter 'apiId' to be non-null");
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.stageName = Objects.requireNonNull($.stageName, "expected parameter 'stageName' to be non-null");
+            if ($.apiId == null) {
+                throw new MissingRequiredPropertyException("AppAttachmentArgs", "apiId");
+            }
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("AppAttachmentArgs", "appId");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("AppAttachmentArgs", "groupId");
+            }
+            if ($.stageName == null) {
+                throw new MissingRequiredPropertyException("AppAttachmentArgs", "stageName");
+            }
             return $;
         }
     }

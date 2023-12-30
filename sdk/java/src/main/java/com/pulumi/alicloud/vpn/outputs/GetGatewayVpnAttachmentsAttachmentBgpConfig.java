@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
 
         @CustomType.Setter
         public Builder localAsn(String localAsn) {
-            this.localAsn = Objects.requireNonNull(localAsn);
+            if (localAsn == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentBgpConfig", "localAsn");
+            }
+            this.localAsn = localAsn;
             return this;
         }
         @CustomType.Setter
         public Builder localBgpIp(String localBgpIp) {
-            this.localBgpIp = Objects.requireNonNull(localBgpIp);
+            if (localBgpIp == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentBgpConfig", "localBgpIp");
+            }
+            this.localBgpIp = localBgpIp;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentBgpConfig", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tunnelCidr(String tunnelCidr) {
-            this.tunnelCidr = Objects.requireNonNull(tunnelCidr);
+            if (tunnelCidr == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentBgpConfig", "tunnelCidr");
+            }
+            this.tunnelCidr = tunnelCidr;
             return this;
         }
         public GetGatewayVpnAttachmentsAttachmentBgpConfig build() {

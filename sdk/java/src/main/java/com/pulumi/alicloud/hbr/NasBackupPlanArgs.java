@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -557,13 +558,27 @@ public final class NasBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NasBackupPlanArgs build() {
-            $.backupType = Objects.requireNonNull($.backupType, "expected parameter 'backupType' to be non-null");
-            $.fileSystemId = Objects.requireNonNull($.fileSystemId, "expected parameter 'fileSystemId' to be non-null");
-            $.nasBackupPlanName = Objects.requireNonNull($.nasBackupPlanName, "expected parameter 'nasBackupPlanName' to be non-null");
-            $.paths = Objects.requireNonNull($.paths, "expected parameter 'paths' to be non-null");
-            $.retention = Objects.requireNonNull($.retention, "expected parameter 'retention' to be non-null");
-            $.schedule = Objects.requireNonNull($.schedule, "expected parameter 'schedule' to be non-null");
-            $.vaultId = Objects.requireNonNull($.vaultId, "expected parameter 'vaultId' to be non-null");
+            if ($.backupType == null) {
+                throw new MissingRequiredPropertyException("NasBackupPlanArgs", "backupType");
+            }
+            if ($.fileSystemId == null) {
+                throw new MissingRequiredPropertyException("NasBackupPlanArgs", "fileSystemId");
+            }
+            if ($.nasBackupPlanName == null) {
+                throw new MissingRequiredPropertyException("NasBackupPlanArgs", "nasBackupPlanName");
+            }
+            if ($.paths == null) {
+                throw new MissingRequiredPropertyException("NasBackupPlanArgs", "paths");
+            }
+            if ($.retention == null) {
+                throw new MissingRequiredPropertyException("NasBackupPlanArgs", "retention");
+            }
+            if ($.schedule == null) {
+                throw new MissingRequiredPropertyException("NasBackupPlanArgs", "schedule");
+            }
+            if ($.vaultId == null) {
+                throw new MissingRequiredPropertyException("NasBackupPlanArgs", "vaultId");
+            }
             return $;
         }
     }

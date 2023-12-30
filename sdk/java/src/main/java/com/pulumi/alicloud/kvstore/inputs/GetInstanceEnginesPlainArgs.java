@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kvstore.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -173,7 +174,9 @@ public final class GetInstanceEnginesPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetInstanceEnginesPlainArgs build() {
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetInstanceEnginesPlainArgs", "zoneId");
+            }
             return $;
         }
     }

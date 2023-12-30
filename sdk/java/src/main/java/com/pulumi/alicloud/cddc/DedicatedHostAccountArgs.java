@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cddc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class DedicatedHostAccountArgs extends com.pulumi.resources.Resourc
         }
 
         public DedicatedHostAccountArgs build() {
-            $.accountName = Objects.requireNonNull($.accountName, "expected parameter 'accountName' to be non-null");
-            $.accountPassword = Objects.requireNonNull($.accountPassword, "expected parameter 'accountPassword' to be non-null");
-            $.dedicatedHostId = Objects.requireNonNull($.dedicatedHostId, "expected parameter 'dedicatedHostId' to be non-null");
+            if ($.accountName == null) {
+                throw new MissingRequiredPropertyException("DedicatedHostAccountArgs", "accountName");
+            }
+            if ($.accountPassword == null) {
+                throw new MissingRequiredPropertyException("DedicatedHostAccountArgs", "accountPassword");
+            }
+            if ($.dedicatedHostId == null) {
+                throw new MissingRequiredPropertyException("DedicatedHostAccountArgs", "dedicatedHostId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetReposRepoDomainList {
 
         @CustomType.Setter
         public Builder internal(String internal) {
-            this.internal = Objects.requireNonNull(internal);
+            if (internal == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoDomainList", "internal");
+            }
+            this.internal = internal;
             return this;
         }
         @CustomType.Setter("public")
         public Builder public_(String public_) {
-            this.public_ = Objects.requireNonNull(public_);
+            if (public_ == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoDomainList", "public_");
+            }
+            this.public_ = public_;
             return this;
         }
         @CustomType.Setter
         public Builder vpc(String vpc) {
-            this.vpc = Objects.requireNonNull(vpc);
+            if (vpc == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoDomainList", "vpc");
+            }
+            this.vpc = vpc;
             return this;
         }
         public GetReposRepoDomainList build() {

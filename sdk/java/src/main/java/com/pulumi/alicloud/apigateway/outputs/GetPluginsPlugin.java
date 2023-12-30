@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -156,47 +157,74 @@ public final class GetPluginsPlugin {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetPluginsPlugin", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPluginsPlugin", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPluginsPlugin", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
-            this.modifiedTime = Objects.requireNonNull(modifiedTime);
+            if (modifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetPluginsPlugin", "modifiedTime");
+            }
+            this.modifiedTime = modifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder pluginData(String pluginData) {
-            this.pluginData = Objects.requireNonNull(pluginData);
+            if (pluginData == null) {
+              throw new MissingRequiredPropertyException("GetPluginsPlugin", "pluginData");
+            }
+            this.pluginData = pluginData;
             return this;
         }
         @CustomType.Setter
         public Builder pluginId(String pluginId) {
-            this.pluginId = Objects.requireNonNull(pluginId);
+            if (pluginId == null) {
+              throw new MissingRequiredPropertyException("GetPluginsPlugin", "pluginId");
+            }
+            this.pluginId = pluginId;
             return this;
         }
         @CustomType.Setter
         public Builder pluginName(String pluginName) {
-            this.pluginName = Objects.requireNonNull(pluginName);
+            if (pluginName == null) {
+              throw new MissingRequiredPropertyException("GetPluginsPlugin", "pluginName");
+            }
+            this.pluginName = pluginName;
             return this;
         }
         @CustomType.Setter
         public Builder pluginType(String pluginType) {
-            this.pluginType = Objects.requireNonNull(pluginType);
+            if (pluginType == null) {
+              throw new MissingRequiredPropertyException("GetPluginsPlugin", "pluginType");
+            }
+            this.pluginType = pluginType;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetPluginsPlugin", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetPluginsPlugin build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -300,8 +301,12 @@ public final class CommandArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CommandArgs build() {
-            $.commandContent = Objects.requireNonNull($.commandContent, "expected parameter 'commandContent' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.commandContent == null) {
+                throw new MissingRequiredPropertyException("CommandArgs", "commandContent");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("CommandArgs", "type");
+            }
             return $;
         }
     }

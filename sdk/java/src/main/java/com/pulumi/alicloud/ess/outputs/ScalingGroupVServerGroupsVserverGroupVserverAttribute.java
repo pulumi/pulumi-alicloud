@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class ScalingGroupVServerGroupsVserverGroupVserverAttribute {
 
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("ScalingGroupVServerGroupsVserverGroupVserverAttribute", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder vserverGroupId(String vserverGroupId) {
-            this.vserverGroupId = Objects.requireNonNull(vserverGroupId);
+            if (vserverGroupId == null) {
+              throw new MissingRequiredPropertyException("ScalingGroupVServerGroupsVserverGroupVserverAttribute", "vserverGroupId");
+            }
+            this.vserverGroupId = vserverGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("ScalingGroupVServerGroupsVserverGroupVserverAttribute", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public ScalingGroupVServerGroupsVserverGroupVserverAttribute build() {

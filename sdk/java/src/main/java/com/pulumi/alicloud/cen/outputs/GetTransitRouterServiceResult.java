@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,17 +65,24 @@ public final class GetTransitRouterServiceResult {
 
         @CustomType.Setter
         public Builder enable(@Nullable String enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterServiceResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetTransitRouterServiceResult build() {

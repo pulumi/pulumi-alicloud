@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorDatasData;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -88,7 +89,10 @@ public final class GetHybridMonitorDatasResult {
 
         @CustomType.Setter
         public Builder datas(List<GetHybridMonitorDatasData> datas) {
-            this.datas = Objects.requireNonNull(datas);
+            if (datas == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorDatasResult", "datas");
+            }
+            this.datas = datas;
             return this;
         }
         public Builder datas(GetHybridMonitorDatasData... datas) {
@@ -96,37 +100,54 @@ public final class GetHybridMonitorDatasResult {
         }
         @CustomType.Setter
         public Builder end(String end) {
-            this.end = Objects.requireNonNull(end);
+            if (end == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorDatasResult", "end");
+            }
+            this.end = end;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorDatasResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorDatasResult", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder period(@Nullable String period) {
+
             this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder promSql(String promSql) {
-            this.promSql = Objects.requireNonNull(promSql);
+            if (promSql == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorDatasResult", "promSql");
+            }
+            this.promSql = promSql;
             return this;
         }
         @CustomType.Setter
         public Builder start(String start) {
-            this.start = Objects.requireNonNull(start);
+            if (start == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorDatasResult", "start");
+            }
+            this.start = start;
             return this;
         }
         public GetHybridMonitorDatasResult build() {

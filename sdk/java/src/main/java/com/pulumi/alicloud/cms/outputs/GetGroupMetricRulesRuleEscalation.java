@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cms.outputs.GetGroupMetricRulesRuleEscalationCritical
 import com.pulumi.alicloud.cms.outputs.GetGroupMetricRulesRuleEscalationInfo;
 import com.pulumi.alicloud.cms.outputs.GetGroupMetricRulesRuleEscalationWarn;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -73,7 +74,10 @@ public final class GetGroupMetricRulesRuleEscalation {
 
         @CustomType.Setter
         public Builder criticals(List<GetGroupMetricRulesRuleEscalationCritical> criticals) {
-            this.criticals = Objects.requireNonNull(criticals);
+            if (criticals == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRuleEscalation", "criticals");
+            }
+            this.criticals = criticals;
             return this;
         }
         public Builder criticals(GetGroupMetricRulesRuleEscalationCritical... criticals) {
@@ -81,7 +85,10 @@ public final class GetGroupMetricRulesRuleEscalation {
         }
         @CustomType.Setter
         public Builder infos(List<GetGroupMetricRulesRuleEscalationInfo> infos) {
-            this.infos = Objects.requireNonNull(infos);
+            if (infos == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRuleEscalation", "infos");
+            }
+            this.infos = infos;
             return this;
         }
         public Builder infos(GetGroupMetricRulesRuleEscalationInfo... infos) {
@@ -89,7 +96,10 @@ public final class GetGroupMetricRulesRuleEscalation {
         }
         @CustomType.Setter
         public Builder warns(List<GetGroupMetricRulesRuleEscalationWarn> warns) {
-            this.warns = Objects.requireNonNull(warns);
+            if (warns == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRuleEscalation", "warns");
+            }
+            this.warns = warns;
             return this;
         }
         public Builder warns(GetGroupMetricRulesRuleEscalationWarn... warns) {

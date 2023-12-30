@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
 
         @CustomType.Setter
         public Builder cidrIp(String cidrIp) {
-            this.cidrIp = Objects.requireNonNull(cidrIp);
+            if (cidrIp == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroupAuthorizeSecurityPolicyRule", "cidrIp");
+            }
+            this.cidrIp = cidrIp;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroupAuthorizeSecurityPolicyRule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
-            this.ipProtocol = Objects.requireNonNull(ipProtocol);
+            if (ipProtocol == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroupAuthorizeSecurityPolicyRule", "ipProtocol");
+            }
+            this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder policy(String policy) {
-            this.policy = Objects.requireNonNull(policy);
+            if (policy == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroupAuthorizeSecurityPolicyRule", "policy");
+            }
+            this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder portRange(String portRange) {
-            this.portRange = Objects.requireNonNull(portRange);
+            if (portRange == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroupAuthorizeSecurityPolicyRule", "portRange");
+            }
+            this.portRange = portRange;
             return this;
         }
         @CustomType.Setter
         public Builder priority(String priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroupAuthorizeSecurityPolicyRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroupAuthorizeSecurityPolicyRule", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetPolicyGroupsGroupAuthorizeSecurityPolicyRule build() {

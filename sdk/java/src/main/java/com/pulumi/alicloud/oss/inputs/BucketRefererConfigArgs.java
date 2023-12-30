@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class BucketRefererConfigArgs extends com.pulumi.resources.Resource
         }
 
         public BucketRefererConfigArgs build() {
-            $.referers = Objects.requireNonNull($.referers, "expected parameter 'referers' to be non-null");
+            if ($.referers == null) {
+                throw new MissingRequiredPropertyException("BucketRefererConfigArgs", "referers");
+            }
             return $;
         }
     }

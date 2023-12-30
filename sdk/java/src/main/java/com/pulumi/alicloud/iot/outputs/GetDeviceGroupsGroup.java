@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.iot.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -169,52 +170,82 @@ public final class GetDeviceGroupsGroup {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder deviceActive(String deviceActive) {
-            this.deviceActive = Objects.requireNonNull(deviceActive);
+            if (deviceActive == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "deviceActive");
+            }
+            this.deviceActive = deviceActive;
             return this;
         }
         @CustomType.Setter
         public Builder deviceCount(String deviceCount) {
-            this.deviceCount = Objects.requireNonNull(deviceCount);
+            if (deviceCount == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "deviceCount");
+            }
+            this.deviceCount = deviceCount;
             return this;
         }
         @CustomType.Setter
         public Builder deviceOnline(String deviceOnline) {
-            this.deviceOnline = Objects.requireNonNull(deviceOnline);
+            if (deviceOnline == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "deviceOnline");
+            }
+            this.deviceOnline = deviceOnline;
             return this;
         }
         @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
-            this.errorMessage = Objects.requireNonNull(errorMessage);
+            if (errorMessage == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "errorMessage");
+            }
+            this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
         public Builder groupDesc(String groupDesc) {
-            this.groupDesc = Objects.requireNonNull(groupDesc);
+            if (groupDesc == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "groupDesc");
+            }
+            this.groupDesc = groupDesc;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder success(Boolean success) {
-            this.success = Objects.requireNonNull(success);
+            if (success == null) {
+              throw new MissingRequiredPropertyException("GetDeviceGroupsGroup", "success");
+            }
+            this.success = success;
             return this;
         }
         public GetDeviceGroupsGroup build() {

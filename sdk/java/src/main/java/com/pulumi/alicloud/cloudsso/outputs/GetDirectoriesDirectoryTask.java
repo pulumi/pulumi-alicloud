@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -238,77 +239,122 @@ public final class GetDirectoriesDirectoryTask {
 
         @CustomType.Setter
         public Builder accessConfigurationId(String accessConfigurationId) {
-            this.accessConfigurationId = Objects.requireNonNull(accessConfigurationId);
+            if (accessConfigurationId == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "accessConfigurationId");
+            }
+            this.accessConfigurationId = accessConfigurationId;
             return this;
         }
         @CustomType.Setter
         public Builder accessConfigurationName(String accessConfigurationName) {
-            this.accessConfigurationName = Objects.requireNonNull(accessConfigurationName);
+            if (accessConfigurationName == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "accessConfigurationName");
+            }
+            this.accessConfigurationName = accessConfigurationName;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder failureReason(String failureReason) {
-            this.failureReason = Objects.requireNonNull(failureReason);
+            if (failureReason == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "failureReason");
+            }
+            this.failureReason = failureReason;
             return this;
         }
         @CustomType.Setter
         public Builder principalId(String principalId) {
-            this.principalId = Objects.requireNonNull(principalId);
+            if (principalId == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "principalId");
+            }
+            this.principalId = principalId;
             return this;
         }
         @CustomType.Setter
         public Builder principalName(String principalName) {
-            this.principalName = Objects.requireNonNull(principalName);
+            if (principalName == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "principalName");
+            }
+            this.principalName = principalName;
             return this;
         }
         @CustomType.Setter
         public Builder principalType(String principalType) {
-            this.principalType = Objects.requireNonNull(principalType);
+            if (principalType == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "principalType");
+            }
+            this.principalType = principalType;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder targetId(String targetId) {
-            this.targetId = Objects.requireNonNull(targetId);
+            if (targetId == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "targetId");
+            }
+            this.targetId = targetId;
             return this;
         }
         @CustomType.Setter
         public Builder targetName(String targetName) {
-            this.targetName = Objects.requireNonNull(targetName);
+            if (targetName == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "targetName");
+            }
+            this.targetName = targetName;
             return this;
         }
         @CustomType.Setter
         public Builder targetPath(String targetPath) {
-            this.targetPath = Objects.requireNonNull(targetPath);
+            if (targetPath == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "targetPath");
+            }
+            this.targetPath = targetPath;
             return this;
         }
         @CustomType.Setter
         public Builder targetType(String targetType) {
-            this.targetType = Objects.requireNonNull(targetType);
+            if (targetType == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "targetType");
+            }
+            this.targetType = targetType;
             return this;
         }
         @CustomType.Setter
         public Builder taskId(String taskId) {
-            this.taskId = Objects.requireNonNull(taskId);
+            if (taskId == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "taskId");
+            }
+            this.taskId = taskId;
             return this;
         }
         @CustomType.Setter
         public Builder taskType(String taskType) {
-            this.taskType = Objects.requireNonNull(taskType);
+            if (taskType == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectoryTask", "taskType");
+            }
+            this.taskType = taskType;
             return this;
         }
         public GetDirectoriesDirectoryTask build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetServerGroupsGroupServer {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupServer", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupServer", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder serverId(String serverId) {
-            this.serverId = Objects.requireNonNull(serverId);
+            if (serverId == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupServer", "serverId");
+            }
+            this.serverId = serverId;
             return this;
         }
         @CustomType.Setter
         public Builder serverIp(String serverIp) {
-            this.serverIp = Objects.requireNonNull(serverIp);
+            if (serverIp == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupServer", "serverIp");
+            }
+            this.serverIp = serverIp;
             return this;
         }
         @CustomType.Setter
         public Builder serverType(String serverType) {
-            this.serverType = Objects.requireNonNull(serverType);
+            if (serverType == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupServer", "serverType");
+            }
+            this.serverType = serverType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupServer", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupServer", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public GetServerGroupsGroupServer build() {

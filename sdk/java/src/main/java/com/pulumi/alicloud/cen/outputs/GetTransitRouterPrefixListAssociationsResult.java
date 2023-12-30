@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterPrefixListAssociationsAssociation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -107,7 +108,10 @@ public final class GetTransitRouterPrefixListAssociationsResult {
 
         @CustomType.Setter
         public Builder associations(List<GetTransitRouterPrefixListAssociationsAssociation> associations) {
-            this.associations = Objects.requireNonNull(associations);
+            if (associations == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsResult", "associations");
+            }
+            this.associations = associations;
             return this;
         }
         public Builder associations(GetTransitRouterPrefixListAssociationsAssociation... associations) {
@@ -115,12 +119,18 @@ public final class GetTransitRouterPrefixListAssociationsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -128,42 +138,54 @@ public final class GetTransitRouterPrefixListAssociationsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder ownerUid(@Nullable Integer ownerUid) {
+
             this.ownerUid = ownerUid;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder prefixListId(@Nullable String prefixListId) {
+
             this.prefixListId = prefixListId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsResult", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterTableId(String transitRouterTableId) {
-            this.transitRouterTableId = Objects.requireNonNull(transitRouterTableId);
+            if (transitRouterTableId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsResult", "transitRouterTableId");
+            }
+            this.transitRouterTableId = transitRouterTableId;
             return this;
         }
         public GetTransitRouterPrefixListAssociationsResult build() {

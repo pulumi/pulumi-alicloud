@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ddos;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -223,11 +224,21 @@ public final class BasicThresholdArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public BasicThresholdArgs build() {
-            $.bps = Objects.requireNonNull($.bps, "expected parameter 'bps' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.internetIp = Objects.requireNonNull($.internetIp, "expected parameter 'internetIp' to be non-null");
-            $.pps = Objects.requireNonNull($.pps, "expected parameter 'pps' to be non-null");
+            if ($.bps == null) {
+                throw new MissingRequiredPropertyException("BasicThresholdArgs", "bps");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("BasicThresholdArgs", "instanceId");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("BasicThresholdArgs", "instanceType");
+            }
+            if ($.internetIp == null) {
+                throw new MissingRequiredPropertyException("BasicThresholdArgs", "internetIp");
+            }
+            if ($.pps == null) {
+                throw new MissingRequiredPropertyException("BasicThresholdArgs", "pps");
+            }
             return $;
         }
     }

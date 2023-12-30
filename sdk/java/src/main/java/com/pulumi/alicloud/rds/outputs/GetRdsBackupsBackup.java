@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -359,107 +360,170 @@ public final class GetRdsBackupsBackup {
 
         @CustomType.Setter
         public Builder backupDownloadUrl(String backupDownloadUrl) {
-            this.backupDownloadUrl = Objects.requireNonNull(backupDownloadUrl);
+            if (backupDownloadUrl == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupDownloadUrl");
+            }
+            this.backupDownloadUrl = backupDownloadUrl;
             return this;
         }
         @CustomType.Setter
         public Builder backupEndTime(String backupEndTime) {
-            this.backupEndTime = Objects.requireNonNull(backupEndTime);
+            if (backupEndTime == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupEndTime");
+            }
+            this.backupEndTime = backupEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder backupId(String backupId) {
-            this.backupId = Objects.requireNonNull(backupId);
+            if (backupId == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupId");
+            }
+            this.backupId = backupId;
             return this;
         }
         @CustomType.Setter
         public Builder backupInitiator(String backupInitiator) {
-            this.backupInitiator = Objects.requireNonNull(backupInitiator);
+            if (backupInitiator == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupInitiator");
+            }
+            this.backupInitiator = backupInitiator;
             return this;
         }
         @CustomType.Setter
         public Builder backupIntranetDownloadUrl(String backupIntranetDownloadUrl) {
-            this.backupIntranetDownloadUrl = Objects.requireNonNull(backupIntranetDownloadUrl);
+            if (backupIntranetDownloadUrl == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupIntranetDownloadUrl");
+            }
+            this.backupIntranetDownloadUrl = backupIntranetDownloadUrl;
             return this;
         }
         @CustomType.Setter
         public Builder backupMethod(String backupMethod) {
-            this.backupMethod = Objects.requireNonNull(backupMethod);
+            if (backupMethod == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupMethod");
+            }
+            this.backupMethod = backupMethod;
             return this;
         }
         @CustomType.Setter
         public Builder backupMode(String backupMode) {
-            this.backupMode = Objects.requireNonNull(backupMode);
+            if (backupMode == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupMode");
+            }
+            this.backupMode = backupMode;
             return this;
         }
         @CustomType.Setter
         public Builder backupSize(String backupSize) {
-            this.backupSize = Objects.requireNonNull(backupSize);
+            if (backupSize == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupSize");
+            }
+            this.backupSize = backupSize;
             return this;
         }
         @CustomType.Setter
         public Builder backupStartTime(String backupStartTime) {
-            this.backupStartTime = Objects.requireNonNull(backupStartTime);
+            if (backupStartTime == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupStartTime");
+            }
+            this.backupStartTime = backupStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder backupStatus(String backupStatus) {
-            this.backupStatus = Objects.requireNonNull(backupStatus);
+            if (backupStatus == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupStatus");
+            }
+            this.backupStatus = backupStatus;
             return this;
         }
         @CustomType.Setter
         public Builder backupType(String backupType) {
-            this.backupType = Objects.requireNonNull(backupType);
+            if (backupType == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "backupType");
+            }
+            this.backupType = backupType;
             return this;
         }
         @CustomType.Setter
         public Builder consistentTime(String consistentTime) {
-            this.consistentTime = Objects.requireNonNull(consistentTime);
+            if (consistentTime == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "consistentTime");
+            }
+            this.consistentTime = consistentTime;
             return this;
         }
         @CustomType.Setter
         public Builder copyOnlyBackup(String copyOnlyBackup) {
-            this.copyOnlyBackup = Objects.requireNonNull(copyOnlyBackup);
+            if (copyOnlyBackup == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "copyOnlyBackup");
+            }
+            this.copyOnlyBackup = copyOnlyBackup;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
-            this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
+            if (dbInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "dbInstanceId");
+            }
+            this.dbInstanceId = dbInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder encryption(String encryption) {
-            this.encryption = Objects.requireNonNull(encryption);
+            if (encryption == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "encryption");
+            }
+            this.encryption = encryption;
             return this;
         }
         @CustomType.Setter
         public Builder hostInstanceId(String hostInstanceId) {
-            this.hostInstanceId = Objects.requireNonNull(hostInstanceId);
+            if (hostInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "hostInstanceId");
+            }
+            this.hostInstanceId = hostInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isAvail(Integer isAvail) {
-            this.isAvail = Objects.requireNonNull(isAvail);
+            if (isAvail == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "isAvail");
+            }
+            this.isAvail = isAvail;
             return this;
         }
         @CustomType.Setter
         public Builder metaStatus(String metaStatus) {
-            this.metaStatus = Objects.requireNonNull(metaStatus);
+            if (metaStatus == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "metaStatus");
+            }
+            this.metaStatus = metaStatus;
             return this;
         }
         @CustomType.Setter
         public Builder storageClass(String storageClass) {
-            this.storageClass = Objects.requireNonNull(storageClass);
+            if (storageClass == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "storageClass");
+            }
+            this.storageClass = storageClass;
             return this;
         }
         @CustomType.Setter
         public Builder storeStatus(String storeStatus) {
-            this.storeStatus = Objects.requireNonNull(storeStatus);
+            if (storeStatus == null) {
+              throw new MissingRequiredPropertyException("GetRdsBackupsBackup", "storeStatus");
+            }
+            this.storeStatus = storeStatus;
             return this;
         }
         public GetRdsBackupsBackup build() {

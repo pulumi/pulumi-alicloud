@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fnf;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -262,9 +263,15 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ScheduleArgs build() {
-            $.cronExpression = Objects.requireNonNull($.cronExpression, "expected parameter 'cronExpression' to be non-null");
-            $.flowName = Objects.requireNonNull($.flowName, "expected parameter 'flowName' to be non-null");
-            $.scheduleName = Objects.requireNonNull($.scheduleName, "expected parameter 'scheduleName' to be non-null");
+            if ($.cronExpression == null) {
+                throw new MissingRequiredPropertyException("ScheduleArgs", "cronExpression");
+            }
+            if ($.flowName == null) {
+                throw new MissingRequiredPropertyException("ScheduleArgs", "flowName");
+            }
+            if ($.scheduleName == null) {
+                throw new MissingRequiredPropertyException("ScheduleArgs", "scheduleName");
+            }
             return $;
         }
     }

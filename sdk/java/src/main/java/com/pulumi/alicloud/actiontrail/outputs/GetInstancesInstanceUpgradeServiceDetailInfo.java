@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetInstancesInstanceUpgradeServiceDetailInfo {
 
         @CustomType.Setter
         public Builder current2OpenSourceVersion(String current2OpenSourceVersion) {
-            this.current2OpenSourceVersion = Objects.requireNonNull(current2OpenSourceVersion);
+            if (current2OpenSourceVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceUpgradeServiceDetailInfo", "current2OpenSourceVersion");
+            }
+            this.current2OpenSourceVersion = current2OpenSourceVersion;
             return this;
         }
         public GetInstancesInstanceUpgradeServiceDetailInfo build() {

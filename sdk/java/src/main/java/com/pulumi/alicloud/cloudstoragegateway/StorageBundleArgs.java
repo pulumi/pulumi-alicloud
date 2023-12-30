@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class StorageBundleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StorageBundleArgs build() {
-            $.storageBundleName = Objects.requireNonNull($.storageBundleName, "expected parameter 'storageBundleName' to be non-null");
+            if ($.storageBundleName == null) {
+                throw new MissingRequiredPropertyException("StorageBundleArgs", "storageBundleName");
+            }
             return $;
         }
     }

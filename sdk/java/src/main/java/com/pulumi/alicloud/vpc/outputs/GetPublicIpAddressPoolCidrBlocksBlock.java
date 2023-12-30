@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetPublicIpAddressPoolCidrBlocksBlock {
 
         @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
-            this.cidrBlock = Objects.requireNonNull(cidrBlock);
+            if (cidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolCidrBlocksBlock", "cidrBlock");
+            }
+            this.cidrBlock = cidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolCidrBlocksBlock", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolCidrBlocksBlock", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder publicIpAddressPoolId(String publicIpAddressPoolId) {
-            this.publicIpAddressPoolId = Objects.requireNonNull(publicIpAddressPoolId);
+            if (publicIpAddressPoolId == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolCidrBlocksBlock", "publicIpAddressPoolId");
+            }
+            this.publicIpAddressPoolId = publicIpAddressPoolId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolCidrBlocksBlock", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder totalIpNum(Integer totalIpNum) {
-            this.totalIpNum = Objects.requireNonNull(totalIpNum);
+            if (totalIpNum == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolCidrBlocksBlock", "totalIpNum");
+            }
+            this.totalIpNum = totalIpNum;
             return this;
         }
         @CustomType.Setter
         public Builder usedIpNum(Integer usedIpNum) {
-            this.usedIpNum = Objects.requireNonNull(usedIpNum);
+            if (usedIpNum == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolCidrBlocksBlock", "usedIpNum");
+            }
+            this.usedIpNum = usedIpNum;
             return this;
         }
         public GetPublicIpAddressPoolCidrBlocksBlock build() {

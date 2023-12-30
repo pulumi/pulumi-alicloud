@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emrv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -245,7 +246,9 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
         }
 
         public ClusterBootstrapScriptNodeSelectorArgs build() {
-            $.nodeSelectType = Objects.requireNonNull($.nodeSelectType, "expected parameter 'nodeSelectType' to be non-null");
+            if ($.nodeSelectType == null) {
+                throw new MissingRequiredPropertyException("ClusterBootstrapScriptNodeSelectorArgs", "nodeSelectType");
+            }
             return $;
         }
     }

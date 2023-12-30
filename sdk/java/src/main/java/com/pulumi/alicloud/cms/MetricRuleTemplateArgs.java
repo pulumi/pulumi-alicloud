@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cms;
 import com.pulumi.alicloud.cms.inputs.MetricRuleTemplateAlertTemplateArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -475,7 +476,9 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         public MetricRuleTemplateArgs build() {
-            $.metricRuleTemplateName = Objects.requireNonNull($.metricRuleTemplateName, "expected parameter 'metricRuleTemplateName' to be non-null");
+            if ($.metricRuleTemplateName == null) {
+                throw new MissingRequiredPropertyException("MetricRuleTemplateArgs", "metricRuleTemplateName");
+            }
             return $;
         }
     }

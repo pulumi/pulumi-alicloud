@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudstoragegateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -378,132 +379,210 @@ public final class GetGatewaysGateway {
 
         @CustomType.Setter
         public Builder activatedTime(String activatedTime) {
-            this.activatedTime = Objects.requireNonNull(activatedTime);
+            if (activatedTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "activatedTime");
+            }
+            this.activatedTime = activatedTime;
             return this;
         }
         @CustomType.Setter
         public Builder buyUrl(String buyUrl) {
-            this.buyUrl = Objects.requireNonNull(buyUrl);
+            if (buyUrl == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "buyUrl");
+            }
+            this.buyUrl = buyUrl;
             return this;
         }
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder ecsInstanceId(String ecsInstanceId) {
-            this.ecsInstanceId = Objects.requireNonNull(ecsInstanceId);
+            if (ecsInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "ecsInstanceId");
+            }
+            this.ecsInstanceId = ecsInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder expireStatus(Integer expireStatus) {
-            this.expireStatus = Objects.requireNonNull(expireStatus);
+            if (expireStatus == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "expireStatus");
+            }
+            this.expireStatus = expireStatus;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayClass(String gatewayClass) {
-            this.gatewayClass = Objects.requireNonNull(gatewayClass);
+            if (gatewayClass == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "gatewayClass");
+            }
+            this.gatewayClass = gatewayClass;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
-            this.gatewayId = Objects.requireNonNull(gatewayId);
+            if (gatewayId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "gatewayId");
+            }
+            this.gatewayId = gatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayName(String gatewayName) {
-            this.gatewayName = Objects.requireNonNull(gatewayName);
+            if (gatewayName == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "gatewayName");
+            }
+            this.gatewayName = gatewayName;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayVersion(String gatewayVersion) {
-            this.gatewayVersion = Objects.requireNonNull(gatewayVersion);
+            if (gatewayVersion == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "gatewayVersion");
+            }
+            this.gatewayVersion = gatewayVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder innerIp(String innerIp) {
-            this.innerIp = Objects.requireNonNull(innerIp);
+            if (innerIp == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "innerIp");
+            }
+            this.innerIp = innerIp;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder isReleaseAfterExpiration(Boolean isReleaseAfterExpiration) {
-            this.isReleaseAfterExpiration = Objects.requireNonNull(isReleaseAfterExpiration);
+            if (isReleaseAfterExpiration == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "isReleaseAfterExpiration");
+            }
+            this.isReleaseAfterExpiration = isReleaseAfterExpiration;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder publicNetworkBandwidth(Integer publicNetworkBandwidth) {
-            this.publicNetworkBandwidth = Objects.requireNonNull(publicNetworkBandwidth);
+            if (publicNetworkBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "publicNetworkBandwidth");
+            }
+            this.publicNetworkBandwidth = publicNetworkBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder renewUrl(String renewUrl) {
-            this.renewUrl = Objects.requireNonNull(renewUrl);
+            if (renewUrl == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "renewUrl");
+            }
+            this.renewUrl = renewUrl;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageBundleId(String storageBundleId) {
-            this.storageBundleId = Objects.requireNonNull(storageBundleId);
+            if (storageBundleId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "storageBundleId");
+            }
+            this.storageBundleId = storageBundleId;
             return this;
         }
         @CustomType.Setter
         public Builder taskId(String taskId) {
-            this.taskId = Objects.requireNonNull(taskId);
+            if (taskId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "taskId");
+            }
+            this.taskId = taskId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetGatewaysGateway build() {

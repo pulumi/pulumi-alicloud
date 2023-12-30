@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -280,67 +281,106 @@ public final class GetEcsBackupPlansPlan {
 
         @CustomType.Setter
         public Builder backupType(String backupType) {
-            this.backupType = Objects.requireNonNull(backupType);
+            if (backupType == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "backupType");
+            }
+            this.backupType = backupType;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder createdTime(String createdTime) {
-            this.createdTime = Objects.requireNonNull(createdTime);
+            if (createdTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "createdTime");
+            }
+            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder detail(String detail) {
-            this.detail = Objects.requireNonNull(detail);
+            if (detail == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "detail");
+            }
+            this.detail = detail;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder ecsBackupPlanId(String ecsBackupPlanId) {
-            this.ecsBackupPlanId = Objects.requireNonNull(ecsBackupPlanId);
+            if (ecsBackupPlanId == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "ecsBackupPlanId");
+            }
+            this.ecsBackupPlanId = ecsBackupPlanId;
             return this;
         }
         @CustomType.Setter
         public Builder ecsBackupPlanName(String ecsBackupPlanName) {
-            this.ecsBackupPlanName = Objects.requireNonNull(ecsBackupPlanName);
+            if (ecsBackupPlanName == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "ecsBackupPlanName");
+            }
+            this.ecsBackupPlanName = ecsBackupPlanName;
             return this;
         }
         @CustomType.Setter
         public Builder exclude(String exclude) {
-            this.exclude = Objects.requireNonNull(exclude);
+            if (exclude == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "exclude");
+            }
+            this.exclude = exclude;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder include(String include) {
-            this.include = Objects.requireNonNull(include);
+            if (include == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "include");
+            }
+            this.include = include;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder options(String options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "options");
+            }
+            this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder paths(List<String> paths) {
-            this.paths = Objects.requireNonNull(paths);
+            if (paths == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "paths");
+            }
+            this.paths = paths;
             return this;
         }
         public Builder paths(String... paths) {
@@ -348,32 +388,50 @@ public final class GetEcsBackupPlansPlan {
         }
         @CustomType.Setter
         public Builder retention(String retention) {
-            this.retention = Objects.requireNonNull(retention);
+            if (retention == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "retention");
+            }
+            this.retention = retention;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(String schedule) {
-            this.schedule = Objects.requireNonNull(schedule);
+            if (schedule == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "schedule");
+            }
+            this.schedule = schedule;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         @CustomType.Setter
         public Builder speedLimit(String speedLimit) {
-            this.speedLimit = Objects.requireNonNull(speedLimit);
+            if (speedLimit == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "speedLimit");
+            }
+            this.speedLimit = speedLimit;
             return this;
         }
         @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
-            this.updatedTime = Objects.requireNonNull(updatedTime);
+            if (updatedTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "updatedTime");
+            }
+            this.updatedTime = updatedTime;
             return this;
         }
         @CustomType.Setter
         public Builder vaultId(String vaultId) {
-            this.vaultId = Objects.requireNonNull(vaultId);
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupPlansPlan", "vaultId");
+            }
+            this.vaultId = vaultId;
             return this;
         }
         public GetEcsBackupPlansPlan build() {

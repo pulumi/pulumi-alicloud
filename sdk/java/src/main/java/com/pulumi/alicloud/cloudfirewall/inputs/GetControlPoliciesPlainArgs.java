@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudfirewall.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -308,7 +309,9 @@ public final class GetControlPoliciesPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetControlPoliciesPlainArgs build() {
-            $.direction = Objects.requireNonNull($.direction, "expected parameter 'direction' to be non-null");
+            if ($.direction == null) {
+                throw new MissingRequiredPropertyException("GetControlPoliciesPlainArgs", "direction");
+            }
             return $;
         }
     }

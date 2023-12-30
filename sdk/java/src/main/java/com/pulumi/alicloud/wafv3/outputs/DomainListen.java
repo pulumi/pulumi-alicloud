@@ -265,16 +265,19 @@ public final class DomainListen {
 
         @CustomType.Setter
         public Builder certId(@Nullable String certId) {
+
             this.certId = certId;
             return this;
         }
         @CustomType.Setter
         public Builder cipherSuite(@Nullable Integer cipherSuite) {
+
             this.cipherSuite = cipherSuite;
             return this;
         }
         @CustomType.Setter
         public Builder customCiphers(@Nullable List<String> customCiphers) {
+
             this.customCiphers = customCiphers;
             return this;
         }
@@ -283,26 +286,31 @@ public final class DomainListen {
         }
         @CustomType.Setter
         public Builder enableTlsv3(@Nullable Boolean enableTlsv3) {
+
             this.enableTlsv3 = enableTlsv3;
             return this;
         }
         @CustomType.Setter
         public Builder exclusiveIp(@Nullable Boolean exclusiveIp) {
+
             this.exclusiveIp = exclusiveIp;
             return this;
         }
         @CustomType.Setter
         public Builder focusHttps(@Nullable Boolean focusHttps) {
+
             this.focusHttps = focusHttps;
             return this;
         }
         @CustomType.Setter
         public Builder http2Enabled(@Nullable Boolean http2Enabled) {
+
             this.http2Enabled = http2Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder httpPorts(@Nullable List<Integer> httpPorts) {
+
             this.httpPorts = httpPorts;
             return this;
         }
@@ -311,6 +319,7 @@ public final class DomainListen {
         }
         @CustomType.Setter
         public Builder httpsPorts(@Nullable List<Integer> httpsPorts) {
+
             this.httpsPorts = httpsPorts;
             return this;
         }
@@ -319,26 +328,31 @@ public final class DomainListen {
         }
         @CustomType.Setter
         public Builder ipv6Enabled(@Nullable Boolean ipv6Enabled) {
+
             this.ipv6Enabled = ipv6Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder protectionResource(@Nullable String protectionResource) {
+
             this.protectionResource = protectionResource;
             return this;
         }
         @CustomType.Setter
         public Builder tlsVersion(@Nullable String tlsVersion) {
+
             this.tlsVersion = tlsVersion;
             return this;
         }
         @CustomType.Setter
         public Builder xffHeaderMode(@Nullable Integer xffHeaderMode) {
+
             this.xffHeaderMode = xffHeaderMode;
             return this;
         }
         @CustomType.Setter
         public Builder xffHeaders(@Nullable List<String> xffHeaders) {
+
             this.xffHeaders = xffHeaders;
             return this;
         }

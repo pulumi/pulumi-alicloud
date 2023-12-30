@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.elasticsearch.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -109,67 +110,106 @@ public final class GetInstancesInstance {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder dataNodeAmount(Integer dataNodeAmount) {
-            this.dataNodeAmount = Objects.requireNonNull(dataNodeAmount);
+            if (dataNodeAmount == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "dataNodeAmount");
+            }
+            this.dataNodeAmount = dataNodeAmount;
             return this;
         }
         @CustomType.Setter
         public Builder dataNodeDiskSize(Integer dataNodeDiskSize) {
-            this.dataNodeDiskSize = Objects.requireNonNull(dataNodeDiskSize);
+            if (dataNodeDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "dataNodeDiskSize");
+            }
+            this.dataNodeDiskSize = dataNodeDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder dataNodeDiskType(String dataNodeDiskType) {
-            this.dataNodeDiskType = Objects.requireNonNull(dataNodeDiskType);
+            if (dataNodeDiskType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "dataNodeDiskType");
+            }
+            this.dataNodeDiskType = dataNodeDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder dataNodeSpec(String dataNodeSpec) {
-            this.dataNodeSpec = Objects.requireNonNull(dataNodeSpec);
+            if (dataNodeSpec == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "dataNodeSpec");
+            }
+            this.dataNodeSpec = dataNodeSpec;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
-            this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
+            if (instanceChargeType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceChargeType");
+            }
+            this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "version");
+            }
+            this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetInstancesInstance build() {

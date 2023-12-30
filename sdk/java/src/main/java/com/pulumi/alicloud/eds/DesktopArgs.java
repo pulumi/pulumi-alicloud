@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -757,9 +758,15 @@ public final class DesktopArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DesktopArgs build() {
-            $.bundleId = Objects.requireNonNull($.bundleId, "expected parameter 'bundleId' to be non-null");
-            $.officeSiteId = Objects.requireNonNull($.officeSiteId, "expected parameter 'officeSiteId' to be non-null");
-            $.policyGroupId = Objects.requireNonNull($.policyGroupId, "expected parameter 'policyGroupId' to be non-null");
+            if ($.bundleId == null) {
+                throw new MissingRequiredPropertyException("DesktopArgs", "bundleId");
+            }
+            if ($.officeSiteId == null) {
+                throw new MissingRequiredPropertyException("DesktopArgs", "officeSiteId");
+            }
+            if ($.policyGroupId == null) {
+                throw new MissingRequiredPropertyException("DesktopArgs", "policyGroupId");
+            }
             return $;
         }
     }

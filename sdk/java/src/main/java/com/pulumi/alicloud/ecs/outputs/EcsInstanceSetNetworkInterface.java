@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -100,26 +101,33 @@ public final class EcsInstanceSetNetworkInterface {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaceName(@Nullable String networkInterfaceName) {
+
             this.networkInterfaceName = networkInterfaceName;
             return this;
         }
         @CustomType.Setter
         public Builder primaryIpAddress(@Nullable String primaryIpAddress) {
+
             this.primaryIpAddress = primaryIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("EcsInstanceSetNetworkInterface", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
+
             this.vswitchId = vswitchId;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,7 +227,9 @@ public final class BgpPeerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BgpPeerArgs build() {
-            $.bgpGroupId = Objects.requireNonNull($.bgpGroupId, "expected parameter 'bgpGroupId' to be non-null");
+            if ($.bgpGroupId == null) {
+                throw new MissingRequiredPropertyException("BgpPeerArgs", "bgpGroupId");
+            }
             return $;
         }
     }

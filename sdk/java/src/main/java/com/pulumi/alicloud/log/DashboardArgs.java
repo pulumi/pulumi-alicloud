@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -228,9 +229,15 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DashboardArgs build() {
-            $.charList = Objects.requireNonNull($.charList, "expected parameter 'charList' to be non-null");
-            $.dashboardName = Objects.requireNonNull($.dashboardName, "expected parameter 'dashboardName' to be non-null");
-            $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
+            if ($.charList == null) {
+                throw new MissingRequiredPropertyException("DashboardArgs", "charList");
+            }
+            if ($.dashboardName == null) {
+                throw new MissingRequiredPropertyException("DashboardArgs", "dashboardName");
+            }
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("DashboardArgs", "projectName");
+            }
             return $;
         }
     }

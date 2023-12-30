@@ -105,8 +105,8 @@ class InstanceArgs:
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if topic_quota is not None:
-            warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
-            pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+            warnings.warn("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""", DeprecationWarning)
+            pulumi.log.warn("""topic_quota is deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
         if topic_quota is not None:
             pulumi.set(__self__, "topic_quota", topic_quota)
         if vpc_id is not None:
@@ -341,8 +341,8 @@ class InstanceArgs:
         Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
         Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         """
-        warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
-        pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+        warnings.warn("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""", DeprecationWarning)
+        pulumi.log.warn("""topic_quota is deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
 
         return pulumi.get(self, "topic_quota")
 
@@ -384,19 +384,27 @@ class _InstanceState:
                  disk_type: Optional[pulumi.Input[int]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
                  end_point: Optional[pulumi.Input[str]] = None,
+                 group_left: Optional[pulumi.Input[int]] = None,
+                 group_used: Optional[pulumi.Input[int]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
                  io_max_spec: Optional[pulumi.Input[str]] = None,
+                 is_partition_buy: Optional[pulumi.Input[int]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
+                 partition_left: Optional[pulumi.Input[int]] = None,
                  partition_num: Optional[pulumi.Input[int]] = None,
+                 partition_used: Optional[pulumi.Input[int]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
                  spec_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 topic_left: Optional[pulumi.Input[int]] = None,
+                 topic_num_of_buy: Optional[pulumi.Input[int]] = None,
                  topic_quota: Optional[pulumi.Input[int]] = None,
+                 topic_used: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -410,14 +418,19 @@ class _InstanceState:
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
+        :param pulumi.Input[int] group_left: (Available since v1.214.1) The number of available groups.
+        :param pulumi.Input[int] group_used: (Available since v1.214.1) The number of used groups.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+        :param pulumi.Input[int] is_partition_buy: (Available since v1.214.1) The method that you use to purchase partitions.
         :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        :param pulumi.Input[int] partition_left: (Available since v1.214.1) The number of available partitions.
         :param pulumi.Input[int] partition_num: The number of partitions.
+        :param pulumi.Input[int] partition_used: (Available since v1.214.1) The number of used partitions.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
@@ -432,16 +445,15 @@ class _InstanceState:
                |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
-        :param pulumi.Input[int] status: The status of the instance. Valid values:
-               - 0: pending
-               - 1: deploying
-               - 5: running
-               - 15: expired
+        :param pulumi.Input[int] status: The status of the instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] topic_left: (Available since v1.214.1) The number of available topics.
+        :param pulumi.Input[int] topic_num_of_buy: (Available since v1.214.1) The number of purchased topics.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
+        :param pulumi.Input[int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -458,18 +470,28 @@ class _InstanceState:
             pulumi.set(__self__, "eip_max", eip_max)
         if end_point is not None:
             pulumi.set(__self__, "end_point", end_point)
+        if group_left is not None:
+            pulumi.set(__self__, "group_left", group_left)
+        if group_used is not None:
+            pulumi.set(__self__, "group_used", group_used)
         if io_max is not None:
             pulumi.set(__self__, "io_max", io_max)
         if io_max_spec is not None:
             pulumi.set(__self__, "io_max_spec", io_max_spec)
+        if is_partition_buy is not None:
+            pulumi.set(__self__, "is_partition_buy", is_partition_buy)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if paid_type is not None:
             pulumi.set(__self__, "paid_type", paid_type)
+        if partition_left is not None:
+            pulumi.set(__self__, "partition_left", partition_left)
         if partition_num is not None:
             pulumi.set(__self__, "partition_num", partition_num)
+        if partition_used is not None:
+            pulumi.set(__self__, "partition_used", partition_used)
         if security_group is not None:
             pulumi.set(__self__, "security_group", security_group)
         if selected_zones is not None:
@@ -482,11 +504,17 @@ class _InstanceState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if topic_left is not None:
+            pulumi.set(__self__, "topic_left", topic_left)
+        if topic_num_of_buy is not None:
+            pulumi.set(__self__, "topic_num_of_buy", topic_num_of_buy)
         if topic_quota is not None:
-            warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
-            pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+            warnings.warn("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""", DeprecationWarning)
+            pulumi.log.warn("""topic_quota is deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
         if topic_quota is not None:
             pulumi.set(__self__, "topic_quota", topic_quota)
+        if topic_used is not None:
+            pulumi.set(__self__, "topic_used", topic_used)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -569,6 +597,30 @@ class _InstanceState:
         pulumi.set(self, "end_point", value)
 
     @property
+    @pulumi.getter(name="groupLeft")
+    def group_left(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.214.1) The number of available groups.
+        """
+        return pulumi.get(self, "group_left")
+
+    @group_left.setter
+    def group_left(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_left", value)
+
+    @property
+    @pulumi.getter(name="groupUsed")
+    def group_used(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.214.1) The number of used groups.
+        """
+        return pulumi.get(self, "group_used")
+
+    @group_used.setter
+    def group_used(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "group_used", value)
+
+    @property
     @pulumi.getter(name="ioMax")
     def io_max(self) -> Optional[pulumi.Input[int]]:
         """
@@ -593,6 +645,18 @@ class _InstanceState:
     @io_max_spec.setter
     def io_max_spec(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "io_max_spec", value)
+
+    @property
+    @pulumi.getter(name="isPartitionBuy")
+    def is_partition_buy(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.214.1) The method that you use to purchase partitions.
+        """
+        return pulumi.get(self, "is_partition_buy")
+
+    @is_partition_buy.setter
+    def is_partition_buy(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "is_partition_buy", value)
 
     @property
     @pulumi.getter(name="kmsKeyId")
@@ -631,6 +695,18 @@ class _InstanceState:
         pulumi.set(self, "paid_type", value)
 
     @property
+    @pulumi.getter(name="partitionLeft")
+    def partition_left(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.214.1) The number of available partitions.
+        """
+        return pulumi.get(self, "partition_left")
+
+    @partition_left.setter
+    def partition_left(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partition_left", value)
+
+    @property
     @pulumi.getter(name="partitionNum")
     def partition_num(self) -> Optional[pulumi.Input[int]]:
         """
@@ -641,6 +717,18 @@ class _InstanceState:
     @partition_num.setter
     def partition_num(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "partition_num", value)
+
+    @property
+    @pulumi.getter(name="partitionUsed")
+    def partition_used(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.214.1) The number of used partitions.
+        """
+        return pulumi.get(self, "partition_used")
+
+    @partition_used.setter
+    def partition_used(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partition_used", value)
 
     @property
     @pulumi.getter(name="securityGroup")
@@ -704,11 +792,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[int]]:
         """
-        The status of the instance. Valid values:
-        - 0: pending
-        - 1: deploying
-        - 5: running
-        - 15: expired
+        The status of the instance.
         """
         return pulumi.get(self, "status")
 
@@ -729,6 +813,30 @@ class _InstanceState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="topicLeft")
+    def topic_left(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.214.1) The number of available topics.
+        """
+        return pulumi.get(self, "topic_left")
+
+    @topic_left.setter
+    def topic_left(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "topic_left", value)
+
+    @property
+    @pulumi.getter(name="topicNumOfBuy")
+    def topic_num_of_buy(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.214.1) The number of purchased topics.
+        """
+        return pulumi.get(self, "topic_num_of_buy")
+
+    @topic_num_of_buy.setter
+    def topic_num_of_buy(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "topic_num_of_buy", value)
+
+    @property
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> Optional[pulumi.Input[int]]:
         """
@@ -737,14 +845,26 @@ class _InstanceState:
         Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
         Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         """
-        warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
-        pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+        warnings.warn("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""", DeprecationWarning)
+        pulumi.log.warn("""topic_quota is deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
 
         return pulumi.get(self, "topic_quota")
 
     @topic_quota.setter
     def topic_quota(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "topic_quota", value)
+
+    @property
+    @pulumi.getter(name="topicUsed")
+    def topic_used(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.214.1) The number of used topics.
+        """
+        return pulumi.get(self, "topic_used")
+
+    @topic_used.setter
+    def topic_used(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "topic_used", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -812,10 +932,10 @@ class Instance(pulumi.CustomResource):
         """
         ## Import
 
-        ALIKAFKA instance can be imported using the id, e.g.
+        AliKafka instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
+         $ pulumi import alicloud:alikafka/instance:Instance instance <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -867,10 +987,10 @@ class Instance(pulumi.CustomResource):
         """
         ## Import
 
-        ALIKAFKA instance can be imported using the id, e.g.
+        AliKafka instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
+         $ pulumi import alicloud:alikafka/instance:Instance instance <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -946,7 +1066,15 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["end_point"] = None
+            __props__.__dict__["group_left"] = None
+            __props__.__dict__["group_used"] = None
+            __props__.__dict__["is_partition_buy"] = None
+            __props__.__dict__["partition_left"] = None
+            __props__.__dict__["partition_used"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["topic_left"] = None
+            __props__.__dict__["topic_num_of_buy"] = None
+            __props__.__dict__["topic_used"] = None
         super(Instance, __self__).__init__(
             'alicloud:alikafka/instance:Instance',
             resource_name,
@@ -963,19 +1091,27 @@ class Instance(pulumi.CustomResource):
             disk_type: Optional[pulumi.Input[int]] = None,
             eip_max: Optional[pulumi.Input[int]] = None,
             end_point: Optional[pulumi.Input[str]] = None,
+            group_left: Optional[pulumi.Input[int]] = None,
+            group_used: Optional[pulumi.Input[int]] = None,
             io_max: Optional[pulumi.Input[int]] = None,
             io_max_spec: Optional[pulumi.Input[str]] = None,
+            is_partition_buy: Optional[pulumi.Input[int]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             paid_type: Optional[pulumi.Input[str]] = None,
+            partition_left: Optional[pulumi.Input[int]] = None,
             partition_num: Optional[pulumi.Input[int]] = None,
+            partition_used: Optional[pulumi.Input[int]] = None,
             security_group: Optional[pulumi.Input[str]] = None,
             selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_version: Optional[pulumi.Input[str]] = None,
             spec_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            topic_left: Optional[pulumi.Input[int]] = None,
+            topic_num_of_buy: Optional[pulumi.Input[int]] = None,
             topic_quota: Optional[pulumi.Input[int]] = None,
+            topic_used: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -994,14 +1130,19 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
+        :param pulumi.Input[int] group_left: (Available since v1.214.1) The number of available groups.
+        :param pulumi.Input[int] group_used: (Available since v1.214.1) The number of used groups.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+        :param pulumi.Input[int] is_partition_buy: (Available since v1.214.1) The method that you use to purchase partitions.
         :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
+        :param pulumi.Input[int] partition_left: (Available since v1.214.1) The number of available partitions.
         :param pulumi.Input[int] partition_num: The number of partitions.
+        :param pulumi.Input[int] partition_used: (Available since v1.214.1) The number of used partitions.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
@@ -1016,16 +1157,15 @@ class Instance(pulumi.CustomResource):
                |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
-        :param pulumi.Input[int] status: The status of the instance. Valid values:
-               - 0: pending
-               - 1: deploying
-               - 5: running
-               - 15: expired
+        :param pulumi.Input[int] status: The status of the instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] topic_left: (Available since v1.214.1) The number of available topics.
+        :param pulumi.Input[int] topic_num_of_buy: (Available since v1.214.1) The number of purchased topics.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
+        :param pulumi.Input[int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -1040,19 +1180,27 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["disk_type"] = disk_type
         __props__.__dict__["eip_max"] = eip_max
         __props__.__dict__["end_point"] = end_point
+        __props__.__dict__["group_left"] = group_left
+        __props__.__dict__["group_used"] = group_used
         __props__.__dict__["io_max"] = io_max
         __props__.__dict__["io_max_spec"] = io_max_spec
+        __props__.__dict__["is_partition_buy"] = is_partition_buy
         __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["name"] = name
         __props__.__dict__["paid_type"] = paid_type
+        __props__.__dict__["partition_left"] = partition_left
         __props__.__dict__["partition_num"] = partition_num
+        __props__.__dict__["partition_used"] = partition_used
         __props__.__dict__["security_group"] = security_group
         __props__.__dict__["selected_zones"] = selected_zones
         __props__.__dict__["service_version"] = service_version
         __props__.__dict__["spec_type"] = spec_type
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["topic_left"] = topic_left
+        __props__.__dict__["topic_num_of_buy"] = topic_num_of_buy
         __props__.__dict__["topic_quota"] = topic_quota
+        __props__.__dict__["topic_used"] = topic_used
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
@@ -1109,6 +1257,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "end_point")
 
     @property
+    @pulumi.getter(name="groupLeft")
+    def group_left(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.214.1) The number of available groups.
+        """
+        return pulumi.get(self, "group_left")
+
+    @property
+    @pulumi.getter(name="groupUsed")
+    def group_used(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.214.1) The number of used groups.
+        """
+        return pulumi.get(self, "group_used")
+
+    @property
     @pulumi.getter(name="ioMax")
     def io_max(self) -> pulumi.Output[int]:
         """
@@ -1125,6 +1289,14 @@ class Instance(pulumi.CustomResource):
         - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
         """
         return pulumi.get(self, "io_max_spec")
+
+    @property
+    @pulumi.getter(name="isPartitionBuy")
+    def is_partition_buy(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.214.1) The method that you use to purchase partitions.
+        """
+        return pulumi.get(self, "is_partition_buy")
 
     @property
     @pulumi.getter(name="kmsKeyId")
@@ -1151,12 +1323,28 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "paid_type")
 
     @property
+    @pulumi.getter(name="partitionLeft")
+    def partition_left(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.214.1) The number of available partitions.
+        """
+        return pulumi.get(self, "partition_left")
+
+    @property
     @pulumi.getter(name="partitionNum")
     def partition_num(self) -> pulumi.Output[Optional[int]]:
         """
         The number of partitions.
         """
         return pulumi.get(self, "partition_num")
+
+    @property
+    @pulumi.getter(name="partitionUsed")
+    def partition_used(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.214.1) The number of used partitions.
+        """
+        return pulumi.get(self, "partition_used")
 
     @property
     @pulumi.getter(name="securityGroup")
@@ -1204,11 +1392,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[int]:
         """
-        The status of the instance. Valid values:
-        - 0: pending
-        - 1: deploying
-        - 5: running
-        - 15: expired
+        The status of the instance.
         """
         return pulumi.get(self, "status")
 
@@ -1221,6 +1405,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="topicLeft")
+    def topic_left(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.214.1) The number of available topics.
+        """
+        return pulumi.get(self, "topic_left")
+
+    @property
+    @pulumi.getter(name="topicNumOfBuy")
+    def topic_num_of_buy(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.214.1) The number of purchased topics.
+        """
+        return pulumi.get(self, "topic_num_of_buy")
+
+    @property
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> pulumi.Output[int]:
         """
@@ -1229,10 +1429,18 @@ class Instance(pulumi.CustomResource):
         Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
         Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         """
-        warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
-        pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
+        warnings.warn("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""", DeprecationWarning)
+        pulumi.log.warn("""topic_quota is deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
 
         return pulumi.get(self, "topic_quota")
+
+    @property
+    @pulumi.getter(name="topicUsed")
+    def topic_used(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.214.1) The number of used topics.
+        """
+        return pulumi.get(self, "topic_used")
 
     @property
     @pulumi.getter(name="vpcId")

@@ -8,6 +8,7 @@ import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
 import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -296,10 +297,18 @@ public final class DispatchRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DispatchRuleArgs build() {
-            $.dispatchRuleName = Objects.requireNonNull($.dispatchRuleName, "expected parameter 'dispatchRuleName' to be non-null");
-            $.groupRules = Objects.requireNonNull($.groupRules, "expected parameter 'groupRules' to be non-null");
-            $.labelMatchExpressionGrids = Objects.requireNonNull($.labelMatchExpressionGrids, "expected parameter 'labelMatchExpressionGrids' to be non-null");
-            $.notifyRules = Objects.requireNonNull($.notifyRules, "expected parameter 'notifyRules' to be non-null");
+            if ($.dispatchRuleName == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleArgs", "dispatchRuleName");
+            }
+            if ($.groupRules == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleArgs", "groupRules");
+            }
+            if ($.labelMatchExpressionGrids == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleArgs", "labelMatchExpressionGrids");
+            }
+            if ($.notifyRules == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleArgs", "notifyRules");
+            }
             return $;
         }
     }

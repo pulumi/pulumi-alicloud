@@ -5,6 +5,7 @@ package com.pulumi.alicloud.adb.outputs;
 
 import com.pulumi.alicloud.adb.outputs.GetResourceGroupsGroup;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,17 +101,24 @@ public final class GetResourceGroupsResult {
 
         @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
-            this.dbClusterId = Objects.requireNonNull(dbClusterId);
+            if (dbClusterId == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "dbClusterId");
+            }
+            this.dbClusterId = dbClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(@Nullable String groupName) {
+
             this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder groups(List<GetResourceGroupsGroup> groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         public Builder groups(GetResourceGroupsGroup... groups) {
@@ -118,12 +126,18 @@ public final class GetResourceGroupsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -131,6 +145,7 @@ public final class GetResourceGroupsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

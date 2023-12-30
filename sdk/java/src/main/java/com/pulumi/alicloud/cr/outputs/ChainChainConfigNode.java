@@ -75,11 +75,13 @@ public final class ChainChainConfigNode {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder nodeConfigs(@Nullable List<ChainChainConfigNodeNodeConfig> nodeConfigs) {
+
             this.nodeConfigs = nodeConfigs;
             return this;
         }
@@ -88,6 +90,7 @@ public final class ChainChainConfigNode {
         }
         @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
+
             this.nodeName = nodeName;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.GetAggregateDeliveriesDelivery;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -89,12 +90,18 @@ public final class GetAggregateDeliveriesResult {
 
         @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
-            this.aggregatorId = Objects.requireNonNull(aggregatorId);
+            if (aggregatorId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesResult", "aggregatorId");
+            }
+            this.aggregatorId = aggregatorId;
             return this;
         }
         @CustomType.Setter
         public Builder deliveries(List<GetAggregateDeliveriesDelivery> deliveries) {
-            this.deliveries = Objects.requireNonNull(deliveries);
+            if (deliveries == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesResult", "deliveries");
+            }
+            this.deliveries = deliveries;
             return this;
         }
         public Builder deliveries(GetAggregateDeliveriesDelivery... deliveries) {
@@ -102,12 +109,18 @@ public final class GetAggregateDeliveriesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -115,12 +128,16 @@ public final class GetAggregateDeliveriesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -128,11 +145,13 @@ public final class GetAggregateDeliveriesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable Integer status) {
+
             this.status = status;
             return this;
         }

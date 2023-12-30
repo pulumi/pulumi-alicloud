@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterMulticastDomainsDomain;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -134,7 +135,10 @@ public final class GetTransitRouterMulticastDomainsResult {
 
         @CustomType.Setter
         public Builder domains(List<GetTransitRouterMulticastDomainsDomain> domains) {
-            this.domains = Objects.requireNonNull(domains);
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsResult", "domains");
+            }
+            this.domains = domains;
             return this;
         }
         public Builder domains(GetTransitRouterMulticastDomainsDomain... domains) {
@@ -142,12 +146,18 @@ public final class GetTransitRouterMulticastDomainsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -155,12 +165,16 @@ public final class GetTransitRouterMulticastDomainsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -168,21 +182,27 @@ public final class GetTransitRouterMulticastDomainsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsResult", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterMulticastDomainId(@Nullable String transitRouterMulticastDomainId) {
+
             this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
             return this;
         }

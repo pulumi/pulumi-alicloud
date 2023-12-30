@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -433,142 +434,226 @@ public final class GetVirtualPhysicalConnectionsConnection {
 
         @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
-            this.accessPointId = Objects.requireNonNull(accessPointId);
+            if (accessPointId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "accessPointId");
+            }
+            this.accessPointId = accessPointId;
             return this;
         }
         @CustomType.Setter
         public Builder adLocation(String adLocation) {
-            this.adLocation = Objects.requireNonNull(adLocation);
+            if (adLocation == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "adLocation");
+            }
+            this.adLocation = adLocation;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
-            this.businessStatus = Objects.requireNonNull(businessStatus);
+            if (businessStatus == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "businessStatus");
+            }
+            this.businessStatus = businessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder circuitCode(String circuitCode) {
-            this.circuitCode = Objects.requireNonNull(circuitCode);
+            if (circuitCode == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "circuitCode");
+            }
+            this.circuitCode = circuitCode;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enabledTime(String enabledTime) {
-            this.enabledTime = Objects.requireNonNull(enabledTime);
+            if (enabledTime == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "enabledTime");
+            }
+            this.enabledTime = enabledTime;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder expectSpec(String expectSpec) {
-            this.expectSpec = Objects.requireNonNull(expectSpec);
+            if (expectSpec == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "expectSpec");
+            }
+            this.expectSpec = expectSpec;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lineOperator(String lineOperator) {
-            this.lineOperator = Objects.requireNonNull(lineOperator);
+            if (lineOperator == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "lineOperator");
+            }
+            this.lineOperator = lineOperator;
             return this;
         }
         @CustomType.Setter
         public Builder loaStatus(String loaStatus) {
-            this.loaStatus = Objects.requireNonNull(loaStatus);
+            if (loaStatus == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "loaStatus");
+            }
+            this.loaStatus = loaStatus;
             return this;
         }
         @CustomType.Setter
         public Builder orderMode(String orderMode) {
-            this.orderMode = Objects.requireNonNull(orderMode);
+            if (orderMode == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "orderMode");
+            }
+            this.orderMode = orderMode;
             return this;
         }
         @CustomType.Setter
         public Builder parentPhysicalConnectionAliUid(String parentPhysicalConnectionAliUid) {
-            this.parentPhysicalConnectionAliUid = Objects.requireNonNull(parentPhysicalConnectionAliUid);
+            if (parentPhysicalConnectionAliUid == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "parentPhysicalConnectionAliUid");
+            }
+            this.parentPhysicalConnectionAliUid = parentPhysicalConnectionAliUid;
             return this;
         }
         @CustomType.Setter
         public Builder parentPhysicalConnectionId(String parentPhysicalConnectionId) {
-            this.parentPhysicalConnectionId = Objects.requireNonNull(parentPhysicalConnectionId);
+            if (parentPhysicalConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "parentPhysicalConnectionId");
+            }
+            this.parentPhysicalConnectionId = parentPhysicalConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder peerLocation(String peerLocation) {
-            this.peerLocation = Objects.requireNonNull(peerLocation);
+            if (peerLocation == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "peerLocation");
+            }
+            this.peerLocation = peerLocation;
             return this;
         }
         @CustomType.Setter
         public Builder portNumber(String portNumber) {
-            this.portNumber = Objects.requireNonNull(portNumber);
+            if (portNumber == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "portNumber");
+            }
+            this.portNumber = portNumber;
             return this;
         }
         @CustomType.Setter
         public Builder portType(String portType) {
-            this.portType = Objects.requireNonNull(portType);
+            if (portType == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "portType");
+            }
+            this.portType = portType;
             return this;
         }
         @CustomType.Setter
         public Builder redundantPhysicalConnectionId(String redundantPhysicalConnectionId) {
-            this.redundantPhysicalConnectionId = Objects.requireNonNull(redundantPhysicalConnectionId);
+            if (redundantPhysicalConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "redundantPhysicalConnectionId");
+            }
+            this.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder spec(String spec) {
-            this.spec = Objects.requireNonNull(spec);
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "spec");
+            }
+            this.spec = spec;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder virtualPhysicalConnectionId(String virtualPhysicalConnectionId) {
-            this.virtualPhysicalConnectionId = Objects.requireNonNull(virtualPhysicalConnectionId);
+            if (virtualPhysicalConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "virtualPhysicalConnectionId");
+            }
+            this.virtualPhysicalConnectionId = virtualPhysicalConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder virtualPhysicalConnectionName(String virtualPhysicalConnectionName) {
-            this.virtualPhysicalConnectionName = Objects.requireNonNull(virtualPhysicalConnectionName);
+            if (virtualPhysicalConnectionName == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "virtualPhysicalConnectionName");
+            }
+            this.virtualPhysicalConnectionName = virtualPhysicalConnectionName;
             return this;
         }
         @CustomType.Setter
         public Builder virtualPhysicalConnectionStatus(String virtualPhysicalConnectionStatus) {
-            this.virtualPhysicalConnectionStatus = Objects.requireNonNull(virtualPhysicalConnectionStatus);
+            if (virtualPhysicalConnectionStatus == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "virtualPhysicalConnectionStatus");
+            }
+            this.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
             return this;
         }
         @CustomType.Setter
         public Builder vlanId(Integer vlanId) {
-            this.vlanId = Objects.requireNonNull(vlanId);
+            if (vlanId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "vlanId");
+            }
+            this.vlanId = vlanId;
             return this;
         }
         @CustomType.Setter
         public Builder vpconnAliUid(String vpconnAliUid) {
-            this.vpconnAliUid = Objects.requireNonNull(vpconnAliUid);
+            if (vpconnAliUid == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsConnection", "vpconnAliUid");
+            }
+            this.vpconnAliUid = vpconnAliUid;
             return this;
         }
         public GetVirtualPhysicalConnectionsConnection build() {

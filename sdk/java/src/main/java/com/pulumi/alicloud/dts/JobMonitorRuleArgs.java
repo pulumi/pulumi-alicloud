@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,8 +225,12 @@ public final class JobMonitorRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public JobMonitorRuleArgs build() {
-            $.dtsJobId = Objects.requireNonNull($.dtsJobId, "expected parameter 'dtsJobId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.dtsJobId == null) {
+                throw new MissingRequiredPropertyException("JobMonitorRuleArgs", "dtsJobId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("JobMonitorRuleArgs", "type");
+            }
             return $;
         }
     }

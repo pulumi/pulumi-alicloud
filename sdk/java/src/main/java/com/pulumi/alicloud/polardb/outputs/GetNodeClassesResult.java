@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.alicloud.polardb.outputs.GetNodeClassesClass;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -124,12 +125,16 @@ public final class GetNodeClassesResult {
 
         @CustomType.Setter
         public Builder category(@Nullable String category) {
+
             this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder classes(List<GetNodeClassesClass> classes) {
-            this.classes = Objects.requireNonNull(classes);
+            if (classes == null) {
+              throw new MissingRequiredPropertyException("GetNodeClassesResult", "classes");
+            }
+            this.classes = classes;
             return this;
         }
         public Builder classes(GetNodeClassesClass... classes) {
@@ -137,41 +142,53 @@ public final class GetNodeClassesResult {
         }
         @CustomType.Setter
         public Builder dbNodeClass(@Nullable String dbNodeClass) {
+
             this.dbNodeClass = dbNodeClass;
             return this;
         }
         @CustomType.Setter
         public Builder dbType(@Nullable String dbType) {
+
             this.dbType = dbType;
             return this;
         }
         @CustomType.Setter
         public Builder dbVersion(@Nullable String dbVersion) {
+
             this.dbVersion = dbVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodeClassesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder payType(String payType) {
-            this.payType = Objects.requireNonNull(payType);
+            if (payType == null) {
+              throw new MissingRequiredPropertyException("GetNodeClassesResult", "payType");
+            }
+            this.payType = payType;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
+
             this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

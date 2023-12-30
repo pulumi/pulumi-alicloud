@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -169,17 +170,26 @@ public final class GetRouteServicesService {
 
         @CustomType.Setter
         public Builder accessRegionId(String accessRegionId) {
-            this.accessRegionId = Objects.requireNonNull(accessRegionId);
+            if (accessRegionId == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "accessRegionId");
+            }
+            this.accessRegionId = accessRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder cidrs(List<String> cidrs) {
-            this.cidrs = Objects.requireNonNull(cidrs);
+            if (cidrs == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "cidrs");
+            }
+            this.cidrs = cidrs;
             return this;
         }
         public Builder cidrs(String... cidrs) {
@@ -187,37 +197,58 @@ public final class GetRouteServicesService {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder hostRegionId(String hostRegionId) {
-            this.hostRegionId = Objects.requireNonNull(hostRegionId);
+            if (hostRegionId == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "hostRegionId");
+            }
+            this.hostRegionId = hostRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder hostVpcId(String hostVpcId) {
-            this.hostVpcId = Objects.requireNonNull(hostVpcId);
+            if (hostVpcId == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "hostVpcId");
+            }
+            this.hostVpcId = hostVpcId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updateInterval(String updateInterval) {
-            this.updateInterval = Objects.requireNonNull(updateInterval);
+            if (updateInterval == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesService", "updateInterval");
+            }
+            this.updateInterval = updateInterval;
             return this;
         }
         public GetRouteServicesService build() {

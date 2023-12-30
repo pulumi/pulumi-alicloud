@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga.outputs;
 import com.pulumi.alicloud.ga.outputs.GetEndpointGroupsGroupEndpointConfiguration;
 import com.pulumi.alicloud.ga.outputs.GetEndpointGroupsGroupPortOverride;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -256,12 +257,18 @@ public final class GetEndpointGroupsGroup {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder endpointConfigurations(List<GetEndpointGroupsGroupEndpointConfiguration> endpointConfigurations) {
-            this.endpointConfigurations = Objects.requireNonNull(endpointConfigurations);
+            if (endpointConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "endpointConfigurations");
+            }
+            this.endpointConfigurations = endpointConfigurations;
             return this;
         }
         public Builder endpointConfigurations(GetEndpointGroupsGroupEndpointConfiguration... endpointConfigurations) {
@@ -269,12 +276,18 @@ public final class GetEndpointGroupsGroup {
         }
         @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
-            this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
+            if (endpointGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "endpointGroupId");
+            }
+            this.endpointGroupId = endpointGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointGroupIpLists(List<String> endpointGroupIpLists) {
-            this.endpointGroupIpLists = Objects.requireNonNull(endpointGroupIpLists);
+            if (endpointGroupIpLists == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "endpointGroupIpLists");
+            }
+            this.endpointGroupIpLists = endpointGroupIpLists;
             return this;
         }
         public Builder endpointGroupIpLists(String... endpointGroupIpLists) {
@@ -282,47 +295,74 @@ public final class GetEndpointGroupsGroup {
         }
         @CustomType.Setter
         public Builder endpointGroupRegion(String endpointGroupRegion) {
-            this.endpointGroupRegion = Objects.requireNonNull(endpointGroupRegion);
+            if (endpointGroupRegion == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "endpointGroupRegion");
+            }
+            this.endpointGroupRegion = endpointGroupRegion;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckIntervalSeconds(Integer healthCheckIntervalSeconds) {
-            this.healthCheckIntervalSeconds = Objects.requireNonNull(healthCheckIntervalSeconds);
+            if (healthCheckIntervalSeconds == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "healthCheckIntervalSeconds");
+            }
+            this.healthCheckIntervalSeconds = healthCheckIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckPath(String healthCheckPath) {
-            this.healthCheckPath = Objects.requireNonNull(healthCheckPath);
+            if (healthCheckPath == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "healthCheckPath");
+            }
+            this.healthCheckPath = healthCheckPath;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckPort(Integer healthCheckPort) {
-            this.healthCheckPort = Objects.requireNonNull(healthCheckPort);
+            if (healthCheckPort == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "healthCheckPort");
+            }
+            this.healthCheckPort = healthCheckPort;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckProtocol(String healthCheckProtocol) {
-            this.healthCheckProtocol = Objects.requireNonNull(healthCheckProtocol);
+            if (healthCheckProtocol == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "healthCheckProtocol");
+            }
+            this.healthCheckProtocol = healthCheckProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder portOverrides(List<GetEndpointGroupsGroupPortOverride> portOverrides) {
-            this.portOverrides = Objects.requireNonNull(portOverrides);
+            if (portOverrides == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "portOverrides");
+            }
+            this.portOverrides = portOverrides;
             return this;
         }
         public Builder portOverrides(GetEndpointGroupsGroupPortOverride... portOverrides) {
@@ -330,17 +370,26 @@ public final class GetEndpointGroupsGroup {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder thresholdCount(Integer thresholdCount) {
-            this.thresholdCount = Objects.requireNonNull(thresholdCount);
+            if (thresholdCount == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "thresholdCount");
+            }
+            this.thresholdCount = thresholdCount;
             return this;
         }
         @CustomType.Setter
         public Builder trafficPercentage(Integer trafficPercentage) {
-            this.trafficPercentage = Objects.requireNonNull(trafficPercentage);
+            if (trafficPercentage == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupsGroup", "trafficPercentage");
+            }
+            this.trafficPercentage = trafficPercentage;
             return this;
         }
         public GetEndpointGroupsGroup build() {

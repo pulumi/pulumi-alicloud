@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
         }
 
         public RocketMQInstanceNetworkInfoVpcInfoArgs build() {
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoVpcInfoArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoVpcInfoArgs", "vswitchId");
+            }
             return $;
         }
     }

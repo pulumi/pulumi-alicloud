@@ -44,6 +44,7 @@ public final class NodePoolRollingPolicy {
 
         @CustomType.Setter
         public Builder maxParallelism(@Nullable Integer maxParallelism) {
+
             this.maxParallelism = maxParallelism;
             return this;
         }

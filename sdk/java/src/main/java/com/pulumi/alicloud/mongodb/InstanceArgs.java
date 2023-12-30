@@ -6,6 +6,7 @@ package com.pulumi.alicloud.mongodb;
 import com.pulumi.alicloud.mongodb.inputs.InstanceParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1575,9 +1576,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.dbInstanceClass = Objects.requireNonNull($.dbInstanceClass, "expected parameter 'dbInstanceClass' to be non-null");
-            $.dbInstanceStorage = Objects.requireNonNull($.dbInstanceStorage, "expected parameter 'dbInstanceStorage' to be non-null");
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
+            if ($.dbInstanceClass == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "dbInstanceClass");
+            }
+            if ($.dbInstanceStorage == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "dbInstanceStorage");
+            }
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "engineVersion");
+            }
             return $;
         }
     }

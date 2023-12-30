@@ -5,6 +5,7 @@ package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.alicloud.actiontrail.outputs.GetHistoryDeliveryJobsJobJobStatus;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -163,32 +164,50 @@ public final class GetHistoryDeliveryJobsJob {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder historyDeliveryJobId(String historyDeliveryJobId) {
-            this.historyDeliveryJobId = Objects.requireNonNull(historyDeliveryJobId);
+            if (historyDeliveryJobId == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "historyDeliveryJobId");
+            }
+            this.historyDeliveryJobId = historyDeliveryJobId;
             return this;
         }
         @CustomType.Setter
         public Builder homeRegion(String homeRegion) {
-            this.homeRegion = Objects.requireNonNull(homeRegion);
+            if (homeRegion == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "homeRegion");
+            }
+            this.homeRegion = homeRegion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder jobStatuses(List<GetHistoryDeliveryJobsJobJobStatus> jobStatuses) {
-            this.jobStatuses = Objects.requireNonNull(jobStatuses);
+            if (jobStatuses == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "jobStatuses");
+            }
+            this.jobStatuses = jobStatuses;
             return this;
         }
         public Builder jobStatuses(GetHistoryDeliveryJobsJobJobStatus... jobStatuses) {
@@ -196,22 +215,34 @@ public final class GetHistoryDeliveryJobsJob {
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trailName(String trailName) {
-            this.trailName = Objects.requireNonNull(trailName);
+            if (trailName == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "trailName");
+            }
+            this.trailName = trailName;
             return this;
         }
         @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
-            this.updatedTime = Objects.requireNonNull(updatedTime);
+            if (updatedTime == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsJob", "updatedTime");
+            }
+            this.updatedTime = updatedTime;
             return this;
         }
         public GetHistoryDeliveryJobsJob build() {

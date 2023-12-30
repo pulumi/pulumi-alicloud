@@ -6,6 +6,7 @@ package com.pulumi.alicloud.scdn.outputs;
 import com.pulumi.alicloud.scdn.outputs.GetDomainsDomainCertInfo;
 import com.pulumi.alicloud.scdn.outputs.GetDomainsDomainSource;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -171,7 +172,10 @@ public final class GetDomainsDomain {
 
         @CustomType.Setter
         public Builder certInfos(List<GetDomainsDomainCertInfo> certInfos) {
-            this.certInfos = Objects.requireNonNull(certInfos);
+            if (certInfos == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "certInfos");
+            }
+            this.certInfos = certInfos;
             return this;
         }
         public Builder certInfos(GetDomainsDomainCertInfo... certInfos) {
@@ -179,42 +183,66 @@ public final class GetDomainsDomain {
         }
         @CustomType.Setter
         public Builder cname(String cname) {
-            this.cname = Objects.requireNonNull(cname);
+            if (cname == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "cname");
+            }
+            this.cname = cname;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
-            this.gmtModified = Objects.requireNonNull(gmtModified);
+            if (gmtModified == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "gmtModified");
+            }
+            this.gmtModified = gmtModified;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder sources(List<GetDomainsDomainSource> sources) {
-            this.sources = Objects.requireNonNull(sources);
+            if (sources == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "sources");
+            }
+            this.sources = sources;
             return this;
         }
         public Builder sources(GetDomainsDomainSource... sources) {
@@ -222,7 +250,10 @@ public final class GetDomainsDomain {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetDomainsDomain build() {

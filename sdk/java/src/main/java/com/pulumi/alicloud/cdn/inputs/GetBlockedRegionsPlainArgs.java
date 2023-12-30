@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetBlockedRegionsPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetBlockedRegionsPlainArgs build() {
-            $.language = Objects.requireNonNull($.language, "expected parameter 'language' to be non-null");
+            if ($.language == null) {
+                throw new MissingRequiredPropertyException("GetBlockedRegionsPlainArgs", "language");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -410,14 +411,30 @@ public final class AclRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AclRuleArgs build() {
-            $.aclId = Objects.requireNonNull($.aclId, "expected parameter 'aclId' to be non-null");
-            $.destCidr = Objects.requireNonNull($.destCidr, "expected parameter 'destCidr' to be non-null");
-            $.destPortRange = Objects.requireNonNull($.destPortRange, "expected parameter 'destPortRange' to be non-null");
-            $.direction = Objects.requireNonNull($.direction, "expected parameter 'direction' to be non-null");
-            $.ipProtocol = Objects.requireNonNull($.ipProtocol, "expected parameter 'ipProtocol' to be non-null");
-            $.policy = Objects.requireNonNull($.policy, "expected parameter 'policy' to be non-null");
-            $.sourceCidr = Objects.requireNonNull($.sourceCidr, "expected parameter 'sourceCidr' to be non-null");
-            $.sourcePortRange = Objects.requireNonNull($.sourcePortRange, "expected parameter 'sourcePortRange' to be non-null");
+            if ($.aclId == null) {
+                throw new MissingRequiredPropertyException("AclRuleArgs", "aclId");
+            }
+            if ($.destCidr == null) {
+                throw new MissingRequiredPropertyException("AclRuleArgs", "destCidr");
+            }
+            if ($.destPortRange == null) {
+                throw new MissingRequiredPropertyException("AclRuleArgs", "destPortRange");
+            }
+            if ($.direction == null) {
+                throw new MissingRequiredPropertyException("AclRuleArgs", "direction");
+            }
+            if ($.ipProtocol == null) {
+                throw new MissingRequiredPropertyException("AclRuleArgs", "ipProtocol");
+            }
+            if ($.policy == null) {
+                throw new MissingRequiredPropertyException("AclRuleArgs", "policy");
+            }
+            if ($.sourceCidr == null) {
+                throw new MissingRequiredPropertyException("AclRuleArgs", "sourceCidr");
+            }
+            if ($.sourcePortRange == null) {
+                throw new MissingRequiredPropertyException("AclRuleArgs", "sourcePortRange");
+            }
             return $;
         }
     }

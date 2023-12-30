@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -352,9 +353,15 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetInstanceTypesArgs build() {
-            $.clusterType = Objects.requireNonNull($.clusterType, "expected parameter 'clusterType' to be non-null");
-            $.destinationResource = Objects.requireNonNull($.destinationResource, "expected parameter 'destinationResource' to be non-null");
-            $.instanceChargeType = Objects.requireNonNull($.instanceChargeType, "expected parameter 'instanceChargeType' to be non-null");
+            if ($.clusterType == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesArgs", "clusterType");
+            }
+            if ($.destinationResource == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesArgs", "destinationResource");
+            }
+            if ($.instanceChargeType == null) {
+                throw new MissingRequiredPropertyException("GetInstanceTypesArgs", "instanceChargeType");
+            }
             return $;
         }
     }

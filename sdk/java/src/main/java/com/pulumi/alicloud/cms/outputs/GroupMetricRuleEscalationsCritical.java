@@ -87,21 +87,25 @@ public final class GroupMetricRuleEscalationsCritical {
 
         @CustomType.Setter
         public Builder comparisonOperator(@Nullable String comparisonOperator) {
+
             this.comparisonOperator = comparisonOperator;
             return this;
         }
         @CustomType.Setter
         public Builder statistics(@Nullable String statistics) {
+
             this.statistics = statistics;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable String threshold) {
+
             this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder times(@Nullable Integer times) {
+
             this.times = times;
             return this;
         }

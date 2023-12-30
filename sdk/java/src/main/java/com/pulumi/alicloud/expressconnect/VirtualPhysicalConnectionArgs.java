@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -419,11 +420,21 @@ public final class VirtualPhysicalConnectionArgs extends com.pulumi.resources.Re
         }
 
         public VirtualPhysicalConnectionArgs build() {
-            $.orderMode = Objects.requireNonNull($.orderMode, "expected parameter 'orderMode' to be non-null");
-            $.parentPhysicalConnectionId = Objects.requireNonNull($.parentPhysicalConnectionId, "expected parameter 'parentPhysicalConnectionId' to be non-null");
-            $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
-            $.vlanId = Objects.requireNonNull($.vlanId, "expected parameter 'vlanId' to be non-null");
-            $.vpconnAliUid = Objects.requireNonNull($.vpconnAliUid, "expected parameter 'vpconnAliUid' to be non-null");
+            if ($.orderMode == null) {
+                throw new MissingRequiredPropertyException("VirtualPhysicalConnectionArgs", "orderMode");
+            }
+            if ($.parentPhysicalConnectionId == null) {
+                throw new MissingRequiredPropertyException("VirtualPhysicalConnectionArgs", "parentPhysicalConnectionId");
+            }
+            if ($.spec == null) {
+                throw new MissingRequiredPropertyException("VirtualPhysicalConnectionArgs", "spec");
+            }
+            if ($.vlanId == null) {
+                throw new MissingRequiredPropertyException("VirtualPhysicalConnectionArgs", "vlanId");
+            }
+            if ($.vpconnAliUid == null) {
+                throw new MissingRequiredPropertyException("VirtualPhysicalConnectionArgs", "vpconnAliUid");
+            }
             return $;
         }
     }

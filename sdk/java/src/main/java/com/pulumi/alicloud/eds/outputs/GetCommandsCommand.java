@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.alicloud.eds.outputs.GetCommandsCommandInvokeDesktop;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,27 +129,42 @@ public final class GetCommandsCommand {
 
         @CustomType.Setter
         public Builder commandContent(String commandContent) {
-            this.commandContent = Objects.requireNonNull(commandContent);
+            if (commandContent == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "commandContent");
+            }
+            this.commandContent = commandContent;
             return this;
         }
         @CustomType.Setter
         public Builder commandType(String commandType) {
-            this.commandType = Objects.requireNonNull(commandType);
+            if (commandType == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "commandType");
+            }
+            this.commandType = commandType;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder invokeDesktops(List<GetCommandsCommandInvokeDesktop> invokeDesktops) {
-            this.invokeDesktops = Objects.requireNonNull(invokeDesktops);
+            if (invokeDesktops == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "invokeDesktops");
+            }
+            this.invokeDesktops = invokeDesktops;
             return this;
         }
         public Builder invokeDesktops(GetCommandsCommandInvokeDesktop... invokeDesktops) {
@@ -156,12 +172,18 @@ public final class GetCommandsCommand {
         }
         @CustomType.Setter
         public Builder invokeId(String invokeId) {
-            this.invokeId = Objects.requireNonNull(invokeId);
+            if (invokeId == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "invokeId");
+            }
+            this.invokeId = invokeId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetCommandsCommand build() {

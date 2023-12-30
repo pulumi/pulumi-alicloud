@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ImageSharePermissionArgs extends com.pulumi.resources.Resourc
         }
 
         public ImageSharePermissionArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.imageId = Objects.requireNonNull($.imageId, "expected parameter 'imageId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ImageSharePermissionArgs", "accountId");
+            }
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("ImageSharePermissionArgs", "imageId");
+            }
             return $;
         }
     }

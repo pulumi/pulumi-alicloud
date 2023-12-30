@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -197,62 +198,98 @@ public final class GetBandwidthPackagesPackage {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthPackageId(String bandwidthPackageId) {
-            this.bandwidthPackageId = Objects.requireNonNull(bandwidthPackageId);
+            if (bandwidthPackageId == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "bandwidthPackageId");
+            }
+            this.bandwidthPackageId = bandwidthPackageId;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthPackageName(String bandwidthPackageName) {
-            this.bandwidthPackageName = Objects.requireNonNull(bandwidthPackageName);
+            if (bandwidthPackageName == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "bandwidthPackageName");
+            }
+            this.bandwidthPackageName = bandwidthPackageName;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthType(String bandwidthType) {
-            this.bandwidthType = Objects.requireNonNull(bandwidthType);
+            if (bandwidthType == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "bandwidthType");
+            }
+            this.bandwidthType = bandwidthType;
             return this;
         }
         @CustomType.Setter
         public Builder cbnGeographicRegionIda(String cbnGeographicRegionIda) {
-            this.cbnGeographicRegionIda = Objects.requireNonNull(cbnGeographicRegionIda);
+            if (cbnGeographicRegionIda == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "cbnGeographicRegionIda");
+            }
+            this.cbnGeographicRegionIda = cbnGeographicRegionIda;
             return this;
         }
         @CustomType.Setter
         public Builder cbnGeographicRegionIdb(String cbnGeographicRegionIdb) {
-            this.cbnGeographicRegionIdb = Objects.requireNonNull(cbnGeographicRegionIdb);
+            if (cbnGeographicRegionIdb == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "cbnGeographicRegionIdb");
+            }
+            this.cbnGeographicRegionIdb = cbnGeographicRegionIdb;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthPackagesPackage", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetBandwidthPackagesPackage build() {

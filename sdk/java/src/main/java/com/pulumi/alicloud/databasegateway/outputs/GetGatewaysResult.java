@@ -5,6 +5,7 @@ package com.pulumi.alicloud.databasegateway.outputs;
 
 import com.pulumi.alicloud.databasegateway.outputs.GetGatewaysGateway;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -95,12 +96,16 @@ public final class GetGatewaysResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder gateways(List<GetGatewaysGateway> gateways) {
-            this.gateways = Objects.requireNonNull(gateways);
+            if (gateways == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "gateways");
+            }
+            this.gateways = gateways;
             return this;
         }
         public Builder gateways(GetGatewaysGateway... gateways) {
@@ -108,12 +113,18 @@ public final class GetGatewaysResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -121,12 +132,16 @@ public final class GetGatewaysResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -134,16 +149,19 @@ public final class GetGatewaysResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder searchKey(@Nullable String searchKey) {
+
             this.searchKey = searchKey;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class GetProtocolsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetProtocolsArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetProtocolsArgs", "type");
+            }
             return $;
         }
     }

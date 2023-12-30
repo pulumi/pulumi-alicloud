@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.alicloud.servicemesh.outputs.GetExtensionProvidersProvider;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -120,12 +121,18 @@ public final class GetExtensionProvidersResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -133,12 +140,16 @@ public final class GetExtensionProvidersResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -146,12 +157,16 @@ public final class GetExtensionProvidersResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder providers(List<GetExtensionProvidersProvider> providers) {
-            this.providers = Objects.requireNonNull(providers);
+            if (providers == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersResult", "providers");
+            }
+            this.providers = providers;
             return this;
         }
         public Builder providers(GetExtensionProvidersProvider... providers) {
@@ -159,12 +174,18 @@ public final class GetExtensionProvidersResult {
         }
         @CustomType.Setter
         public Builder serviceMeshId(String serviceMeshId) {
-            this.serviceMeshId = Objects.requireNonNull(serviceMeshId);
+            if (serviceMeshId == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersResult", "serviceMeshId");
+            }
+            this.serviceMeshId = serviceMeshId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetExtensionProvidersResult build() {

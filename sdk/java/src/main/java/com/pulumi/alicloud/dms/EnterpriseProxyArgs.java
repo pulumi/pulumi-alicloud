@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class EnterpriseProxyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public EnterpriseProxyArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("EnterpriseProxyArgs", "instanceId");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("EnterpriseProxyArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("EnterpriseProxyArgs", "username");
+            }
             return $;
         }
     }

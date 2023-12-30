@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -400,7 +401,9 @@ public final class EnterpriseUserArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public EnterpriseUserArgs build() {
-            $.uid = Objects.requireNonNull($.uid, "expected parameter 'uid' to be non-null");
+            if ($.uid == null) {
+                throw new MissingRequiredPropertyException("EnterpriseUserArgs", "uid");
+            }
             return $;
         }
     }

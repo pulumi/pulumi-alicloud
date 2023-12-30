@@ -5,6 +5,7 @@ package com.pulumi.alicloud.message.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -270,7 +271,9 @@ public final class GetServiceSubscriptionsArgs extends com.pulumi.resources.Invo
         }
 
         public GetServiceSubscriptionsArgs build() {
-            $.topicName = Objects.requireNonNull($.topicName, "expected parameter 'topicName' to be non-null");
+            if ($.topicName == null) {
+                throw new MissingRequiredPropertyException("GetServiceSubscriptionsArgs", "topicName");
+            }
             return $;
         }
     }

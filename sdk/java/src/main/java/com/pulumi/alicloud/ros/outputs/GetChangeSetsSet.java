@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.alicloud.ros.outputs.GetChangeSetsSetParameter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -214,42 +215,66 @@ public final class GetChangeSetsSet {
 
         @CustomType.Setter
         public Builder changeSetId(String changeSetId) {
-            this.changeSetId = Objects.requireNonNull(changeSetId);
+            if (changeSetId == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "changeSetId");
+            }
+            this.changeSetId = changeSetId;
             return this;
         }
         @CustomType.Setter
         public Builder changeSetName(String changeSetName) {
-            this.changeSetName = Objects.requireNonNull(changeSetName);
+            if (changeSetName == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "changeSetName");
+            }
+            this.changeSetName = changeSetName;
             return this;
         }
         @CustomType.Setter
         public Builder changeSetType(String changeSetType) {
-            this.changeSetType = Objects.requireNonNull(changeSetType);
+            if (changeSetType == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "changeSetType");
+            }
+            this.changeSetType = changeSetType;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disableRollback(Boolean disableRollback) {
-            this.disableRollback = Objects.requireNonNull(disableRollback);
+            if (disableRollback == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "disableRollback");
+            }
+            this.disableRollback = disableRollback;
             return this;
         }
         @CustomType.Setter
         public Builder executionStatus(String executionStatus) {
-            this.executionStatus = Objects.requireNonNull(executionStatus);
+            if (executionStatus == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "executionStatus");
+            }
+            this.executionStatus = executionStatus;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(List<GetChangeSetsSetParameter> parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         public Builder parameters(GetChangeSetsSetParameter... parameters) {
@@ -257,27 +282,42 @@ public final class GetChangeSetsSet {
         }
         @CustomType.Setter
         public Builder stackId(String stackId) {
-            this.stackId = Objects.requireNonNull(stackId);
+            if (stackId == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "stackId");
+            }
+            this.stackId = stackId;
             return this;
         }
         @CustomType.Setter
         public Builder stackName(String stackName) {
-            this.stackName = Objects.requireNonNull(stackName);
+            if (stackName == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "stackName");
+            }
+            this.stackName = stackName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder templateBody(String templateBody) {
-            this.templateBody = Objects.requireNonNull(templateBody);
+            if (templateBody == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "templateBody");
+            }
+            this.templateBody = templateBody;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutInMinutes(Integer timeoutInMinutes) {
-            this.timeoutInMinutes = Objects.requireNonNull(timeoutInMinutes);
+            if (timeoutInMinutes == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsSet", "timeoutInMinutes");
+            }
+            this.timeoutInMinutes = timeoutInMinutes;
             return this;
         }
         public GetChangeSetsSet build() {

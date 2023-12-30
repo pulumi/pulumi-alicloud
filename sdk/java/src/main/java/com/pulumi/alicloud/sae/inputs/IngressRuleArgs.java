@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sae.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -299,11 +300,21 @@ public final class IngressRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IngressRuleArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.appName = Objects.requireNonNull($.appName, "expected parameter 'appName' to be non-null");
-            $.containerPort = Objects.requireNonNull($.containerPort, "expected parameter 'containerPort' to be non-null");
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("IngressRuleArgs", "appId");
+            }
+            if ($.appName == null) {
+                throw new MissingRequiredPropertyException("IngressRuleArgs", "appName");
+            }
+            if ($.containerPort == null) {
+                throw new MissingRequiredPropertyException("IngressRuleArgs", "containerPort");
+            }
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("IngressRuleArgs", "domain");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("IngressRuleArgs", "path");
+            }
             return $;
         }
     }

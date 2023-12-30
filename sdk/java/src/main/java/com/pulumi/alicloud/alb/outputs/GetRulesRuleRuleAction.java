@@ -11,6 +11,7 @@ import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleActionRewriteConfig;
 import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleActionTrafficLimitConfig;
 import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleActionTrafficMirrorConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -163,7 +164,10 @@ public final class GetRulesRuleRuleAction {
 
         @CustomType.Setter
         public Builder fixedResponseConfigs(List<GetRulesRuleRuleActionFixedResponseConfig> fixedResponseConfigs) {
-            this.fixedResponseConfigs = Objects.requireNonNull(fixedResponseConfigs);
+            if (fixedResponseConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleAction", "fixedResponseConfigs");
+            }
+            this.fixedResponseConfigs = fixedResponseConfigs;
             return this;
         }
         public Builder fixedResponseConfigs(GetRulesRuleRuleActionFixedResponseConfig... fixedResponseConfigs) {
@@ -171,7 +175,10 @@ public final class GetRulesRuleRuleAction {
         }
         @CustomType.Setter
         public Builder forwardGroupConfigs(List<GetRulesRuleRuleActionForwardGroupConfig> forwardGroupConfigs) {
-            this.forwardGroupConfigs = Objects.requireNonNull(forwardGroupConfigs);
+            if (forwardGroupConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleAction", "forwardGroupConfigs");
+            }
+            this.forwardGroupConfigs = forwardGroupConfigs;
             return this;
         }
         public Builder forwardGroupConfigs(GetRulesRuleRuleActionForwardGroupConfig... forwardGroupConfigs) {
@@ -179,7 +186,10 @@ public final class GetRulesRuleRuleAction {
         }
         @CustomType.Setter
         public Builder insertHeaderConfigs(List<GetRulesRuleRuleActionInsertHeaderConfig> insertHeaderConfigs) {
-            this.insertHeaderConfigs = Objects.requireNonNull(insertHeaderConfigs);
+            if (insertHeaderConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleAction", "insertHeaderConfigs");
+            }
+            this.insertHeaderConfigs = insertHeaderConfigs;
             return this;
         }
         public Builder insertHeaderConfigs(GetRulesRuleRuleActionInsertHeaderConfig... insertHeaderConfigs) {
@@ -187,12 +197,18 @@ public final class GetRulesRuleRuleAction {
         }
         @CustomType.Setter
         public Builder order(Integer order) {
-            this.order = Objects.requireNonNull(order);
+            if (order == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleAction", "order");
+            }
+            this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder redirectConfigs(List<GetRulesRuleRuleActionRedirectConfig> redirectConfigs) {
-            this.redirectConfigs = Objects.requireNonNull(redirectConfigs);
+            if (redirectConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleAction", "redirectConfigs");
+            }
+            this.redirectConfigs = redirectConfigs;
             return this;
         }
         public Builder redirectConfigs(GetRulesRuleRuleActionRedirectConfig... redirectConfigs) {
@@ -200,7 +216,10 @@ public final class GetRulesRuleRuleAction {
         }
         @CustomType.Setter
         public Builder rewriteConfigs(List<GetRulesRuleRuleActionRewriteConfig> rewriteConfigs) {
-            this.rewriteConfigs = Objects.requireNonNull(rewriteConfigs);
+            if (rewriteConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleAction", "rewriteConfigs");
+            }
+            this.rewriteConfigs = rewriteConfigs;
             return this;
         }
         public Builder rewriteConfigs(GetRulesRuleRuleActionRewriteConfig... rewriteConfigs) {
@@ -208,7 +227,10 @@ public final class GetRulesRuleRuleAction {
         }
         @CustomType.Setter
         public Builder trafficLimitConfigs(List<GetRulesRuleRuleActionTrafficLimitConfig> trafficLimitConfigs) {
-            this.trafficLimitConfigs = Objects.requireNonNull(trafficLimitConfigs);
+            if (trafficLimitConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleAction", "trafficLimitConfigs");
+            }
+            this.trafficLimitConfigs = trafficLimitConfigs;
             return this;
         }
         public Builder trafficLimitConfigs(GetRulesRuleRuleActionTrafficLimitConfig... trafficLimitConfigs) {
@@ -216,7 +238,10 @@ public final class GetRulesRuleRuleAction {
         }
         @CustomType.Setter
         public Builder trafficMirrorConfigs(List<GetRulesRuleRuleActionTrafficMirrorConfig> trafficMirrorConfigs) {
-            this.trafficMirrorConfigs = Objects.requireNonNull(trafficMirrorConfigs);
+            if (trafficMirrorConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleAction", "trafficMirrorConfigs");
+            }
+            this.trafficMirrorConfigs = trafficMirrorConfigs;
             return this;
         }
         public Builder trafficMirrorConfigs(GetRulesRuleRuleActionTrafficMirrorConfig... trafficMirrorConfigs) {
@@ -224,7 +249,10 @@ public final class GetRulesRuleRuleAction {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleAction", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetRulesRuleRuleAction build() {

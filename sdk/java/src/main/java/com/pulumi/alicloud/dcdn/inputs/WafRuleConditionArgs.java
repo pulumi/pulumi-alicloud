@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class WafRuleConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         public WafRuleConditionArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.opValue = Objects.requireNonNull($.opValue, "expected parameter 'opValue' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("WafRuleConditionArgs", "key");
+            }
+            if ($.opValue == null) {
+                throw new MissingRequiredPropertyException("WafRuleConditionArgs", "opValue");
+            }
             return $;
         }
     }

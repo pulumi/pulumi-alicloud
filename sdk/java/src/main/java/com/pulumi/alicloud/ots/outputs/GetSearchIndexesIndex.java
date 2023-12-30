@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ots.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -211,67 +212,106 @@ public final class GetSearchIndexesIndex {
 
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder currentSyncTimestamp(Integer currentSyncTimestamp) {
-            this.currentSyncTimestamp = Objects.requireNonNull(currentSyncTimestamp);
+            if (currentSyncTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "currentSyncTimestamp");
+            }
+            this.currentSyncTimestamp = currentSyncTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder indexName(String indexName) {
-            this.indexName = Objects.requireNonNull(indexName);
+            if (indexName == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "indexName");
+            }
+            this.indexName = indexName;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder meteringLastUpdateTime(Integer meteringLastUpdateTime) {
-            this.meteringLastUpdateTime = Objects.requireNonNull(meteringLastUpdateTime);
+            if (meteringLastUpdateTime == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "meteringLastUpdateTime");
+            }
+            this.meteringLastUpdateTime = meteringLastUpdateTime;
             return this;
         }
         @CustomType.Setter
         public Builder reservedReadCu(Integer reservedReadCu) {
-            this.reservedReadCu = Objects.requireNonNull(reservedReadCu);
+            if (reservedReadCu == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "reservedReadCu");
+            }
+            this.reservedReadCu = reservedReadCu;
             return this;
         }
         @CustomType.Setter
         public Builder rowCount(Integer rowCount) {
-            this.rowCount = Objects.requireNonNull(rowCount);
+            if (rowCount == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "rowCount");
+            }
+            this.rowCount = rowCount;
             return this;
         }
         @CustomType.Setter
         public Builder schema(String schema) {
-            this.schema = Objects.requireNonNull(schema);
+            if (schema == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "schema");
+            }
+            this.schema = schema;
             return this;
         }
         @CustomType.Setter
         public Builder storageSize(Integer storageSize) {
-            this.storageSize = Objects.requireNonNull(storageSize);
+            if (storageSize == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "storageSize");
+            }
+            this.storageSize = storageSize;
             return this;
         }
         @CustomType.Setter
         public Builder syncPhase(String syncPhase) {
-            this.syncPhase = Objects.requireNonNull(syncPhase);
+            if (syncPhase == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "syncPhase");
+            }
+            this.syncPhase = syncPhase;
             return this;
         }
         @CustomType.Setter
         public Builder tableName(String tableName) {
-            this.tableName = Objects.requireNonNull(tableName);
+            if (tableName == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "tableName");
+            }
+            this.tableName = tableName;
             return this;
         }
         @CustomType.Setter
         public Builder timeToLive(Integer timeToLive) {
-            this.timeToLive = Objects.requireNonNull(timeToLive);
+            if (timeToLive == null) {
+              throw new MissingRequiredPropertyException("GetSearchIndexesIndex", "timeToLive");
+            }
+            this.timeToLive = timeToLive;
             return this;
         }
         public GetSearchIndexesIndex build() {

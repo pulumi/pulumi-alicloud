@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetKeyPairsPair {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKeyPairsPair", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keyPairFingerPrint(String keyPairFingerPrint) {
-            this.keyPairFingerPrint = Objects.requireNonNull(keyPairFingerPrint);
+            if (keyPairFingerPrint == null) {
+              throw new MissingRequiredPropertyException("GetKeyPairsPair", "keyPairFingerPrint");
+            }
+            this.keyPairFingerPrint = keyPairFingerPrint;
             return this;
         }
         @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
-            this.keyPairName = Objects.requireNonNull(keyPairName);
+            if (keyPairName == null) {
+              throw new MissingRequiredPropertyException("GetKeyPairsPair", "keyPairName");
+            }
+            this.keyPairName = keyPairName;
             return this;
         }
         public GetKeyPairsPair build() {

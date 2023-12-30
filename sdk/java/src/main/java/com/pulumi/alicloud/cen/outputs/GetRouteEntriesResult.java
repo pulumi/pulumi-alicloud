@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetRouteEntriesEntry;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -108,12 +109,16 @@ public final class GetRouteEntriesResult {
 
         @CustomType.Setter
         public Builder cidrBlock(@Nullable String cidrBlock) {
+
             this.cidrBlock = cidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder entries(List<GetRouteEntriesEntry> entries) {
-            this.entries = Objects.requireNonNull(entries);
+            if (entries == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesResult", "entries");
+            }
+            this.entries = entries;
             return this;
         }
         public Builder entries(GetRouteEntriesEntry... entries) {
@@ -121,22 +126,32 @@ public final class GetRouteEntriesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesResult", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
-            this.routeTableId = Objects.requireNonNull(routeTableId);
+            if (routeTableId == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesResult", "routeTableId");
+            }
+            this.routeTableId = routeTableId;
             return this;
         }
         public GetRouteEntriesResult build() {

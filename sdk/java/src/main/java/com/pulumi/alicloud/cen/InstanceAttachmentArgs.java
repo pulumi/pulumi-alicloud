@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -270,10 +271,18 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public InstanceAttachmentArgs build() {
-            $.childInstanceId = Objects.requireNonNull($.childInstanceId, "expected parameter 'childInstanceId' to be non-null");
-            $.childInstanceRegionId = Objects.requireNonNull($.childInstanceRegionId, "expected parameter 'childInstanceRegionId' to be non-null");
-            $.childInstanceType = Objects.requireNonNull($.childInstanceType, "expected parameter 'childInstanceType' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.childInstanceId == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "childInstanceId");
+            }
+            if ($.childInstanceRegionId == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "childInstanceRegionId");
+            }
+            if ($.childInstanceType == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "childInstanceType");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "instanceId");
+            }
             return $;
         }
     }

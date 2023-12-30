@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.alicloud.eds.outputs.GetAdConnectorDirectoriesDirectoryAdConnector;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -297,12 +298,18 @@ public final class GetAdConnectorDirectoriesDirectory {
 
         @CustomType.Setter
         public Builder adConnectorDirectoryId(String adConnectorDirectoryId) {
-            this.adConnectorDirectoryId = Objects.requireNonNull(adConnectorDirectoryId);
+            if (adConnectorDirectoryId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "adConnectorDirectoryId");
+            }
+            this.adConnectorDirectoryId = adConnectorDirectoryId;
             return this;
         }
         @CustomType.Setter
         public Builder adConnectors(List<GetAdConnectorDirectoriesDirectoryAdConnector> adConnectors) {
-            this.adConnectors = Objects.requireNonNull(adConnectors);
+            if (adConnectors == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "adConnectors");
+            }
+            this.adConnectors = adConnectors;
             return this;
         }
         public Builder adConnectors(GetAdConnectorDirectoriesDirectoryAdConnector... adConnectors) {
@@ -310,27 +317,42 @@ public final class GetAdConnectorDirectoriesDirectory {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder customSecurityGroupId(String customSecurityGroupId) {
-            this.customSecurityGroupId = Objects.requireNonNull(customSecurityGroupId);
+            if (customSecurityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "customSecurityGroupId");
+            }
+            this.customSecurityGroupId = customSecurityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder directoryName(String directoryName) {
-            this.directoryName = Objects.requireNonNull(directoryName);
+            if (directoryName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "directoryName");
+            }
+            this.directoryName = directoryName;
             return this;
         }
         @CustomType.Setter
         public Builder directoryType(String directoryType) {
-            this.directoryType = Objects.requireNonNull(directoryType);
+            if (directoryType == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "directoryType");
+            }
+            this.directoryType = directoryType;
             return this;
         }
         @CustomType.Setter
         public Builder dnsAddresses(List<String> dnsAddresses) {
-            this.dnsAddresses = Objects.requireNonNull(dnsAddresses);
+            if (dnsAddresses == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "dnsAddresses");
+            }
+            this.dnsAddresses = dnsAddresses;
             return this;
         }
         public Builder dnsAddresses(String... dnsAddresses) {
@@ -338,42 +360,66 @@ public final class GetAdConnectorDirectoriesDirectory {
         }
         @CustomType.Setter
         public Builder dnsUserName(String dnsUserName) {
-            this.dnsUserName = Objects.requireNonNull(dnsUserName);
+            if (dnsUserName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "dnsUserName");
+            }
+            this.dnsUserName = dnsUserName;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder domainUserName(String domainUserName) {
-            this.domainUserName = Objects.requireNonNull(domainUserName);
+            if (domainUserName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "domainUserName");
+            }
+            this.domainUserName = domainUserName;
             return this;
         }
         @CustomType.Setter
         public Builder enableAdminAccess(Boolean enableAdminAccess) {
-            this.enableAdminAccess = Objects.requireNonNull(enableAdminAccess);
+            if (enableAdminAccess == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "enableAdminAccess");
+            }
+            this.enableAdminAccess = enableAdminAccess;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mfaEnabled(Boolean mfaEnabled) {
-            this.mfaEnabled = Objects.requireNonNull(mfaEnabled);
+            if (mfaEnabled == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "mfaEnabled");
+            }
+            this.mfaEnabled = mfaEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subDnsAddresses(List<String> subDnsAddresses) {
-            this.subDnsAddresses = Objects.requireNonNull(subDnsAddresses);
+            if (subDnsAddresses == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "subDnsAddresses");
+            }
+            this.subDnsAddresses = subDnsAddresses;
             return this;
         }
         public Builder subDnsAddresses(String... subDnsAddresses) {
@@ -381,22 +427,34 @@ public final class GetAdConnectorDirectoriesDirectory {
         }
         @CustomType.Setter
         public Builder subDomainName(String subDomainName) {
-            this.subDomainName = Objects.requireNonNull(subDomainName);
+            if (subDomainName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "subDomainName");
+            }
+            this.subDomainName = subDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder trustPassword(String trustPassword) {
-            this.trustPassword = Objects.requireNonNull(trustPassword);
+            if (trustPassword == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "trustPassword");
+            }
+            this.trustPassword = trustPassword;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
-            this.vswitchIds = Objects.requireNonNull(vswitchIds);
+            if (vswitchIds == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectory", "vswitchIds");
+            }
+            this.vswitchIds = vswitchIds;
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {

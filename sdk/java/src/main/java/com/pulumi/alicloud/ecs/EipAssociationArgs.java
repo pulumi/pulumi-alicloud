@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -262,8 +263,12 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public EipAssociationArgs build() {
-            $.allocationId = Objects.requireNonNull($.allocationId, "expected parameter 'allocationId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.allocationId == null) {
+                throw new MissingRequiredPropertyException("EipAssociationArgs", "allocationId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("EipAssociationArgs", "instanceId");
+            }
             return $;
         }
     }

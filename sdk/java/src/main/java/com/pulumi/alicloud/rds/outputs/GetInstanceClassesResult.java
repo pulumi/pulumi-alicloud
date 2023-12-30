@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.alicloud.rds.outputs.GetInstanceClassesInstanceClass;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -153,47 +154,60 @@ public final class GetInstanceClassesResult {
 
         @CustomType.Setter
         public Builder category(@Nullable String category) {
+
             this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder commodityCode(@Nullable String commodityCode) {
+
             this.commodityCode = commodityCode;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceClass(@Nullable String dbInstanceClass) {
+
             this.dbInstanceClass = dbInstanceClass;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceId(@Nullable String dbInstanceId) {
+
             this.dbInstanceId = dbInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceStorageType(@Nullable String dbInstanceStorageType) {
+
             this.dbInstanceStorageType = dbInstanceStorageType;
             return this;
         }
         @CustomType.Setter
         public Builder engine(@Nullable String engine) {
+
             this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(@Nullable String engineVersion) {
+
             this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -201,12 +215,16 @@ public final class GetInstanceClassesResult {
         }
         @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
+
             this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceClasses(List<GetInstanceClassesInstanceClass> instanceClasses) {
-            this.instanceClasses = Objects.requireNonNull(instanceClasses);
+            if (instanceClasses == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesResult", "instanceClasses");
+            }
+            this.instanceClasses = instanceClasses;
             return this;
         }
         public Builder instanceClasses(GetInstanceClassesInstanceClass... instanceClasses) {
@@ -214,26 +232,31 @@ public final class GetInstanceClassesResult {
         }
         @CustomType.Setter
         public Builder multiZone(@Nullable Boolean multiZone) {
+
             this.multiZone = multiZone;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder sortedBy(@Nullable String sortedBy) {
+
             this.sortedBy = sortedBy;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
+
             this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

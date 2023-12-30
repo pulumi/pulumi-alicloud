@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -212,67 +213,106 @@ public final class GetBgpGroupsGroup {
 
         @CustomType.Setter
         public Builder authKey(String authKey) {
-            this.authKey = Objects.requireNonNull(authKey);
+            if (authKey == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "authKey");
+            }
+            this.authKey = authKey;
             return this;
         }
         @CustomType.Setter
         public Builder bgpGroupName(String bgpGroupName) {
-            this.bgpGroupName = Objects.requireNonNull(bgpGroupName);
+            if (bgpGroupName == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "bgpGroupName");
+            }
+            this.bgpGroupName = bgpGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder hold(String hold) {
-            this.hold = Objects.requireNonNull(hold);
+            if (hold == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "hold");
+            }
+            this.hold = hold;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
-            this.ipVersion = Objects.requireNonNull(ipVersion);
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder isFakeAsn(Boolean isFakeAsn) {
-            this.isFakeAsn = Objects.requireNonNull(isFakeAsn);
+            if (isFakeAsn == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "isFakeAsn");
+            }
+            this.isFakeAsn = isFakeAsn;
             return this;
         }
         @CustomType.Setter
         public Builder keepalive(String keepalive) {
-            this.keepalive = Objects.requireNonNull(keepalive);
+            if (keepalive == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "keepalive");
+            }
+            this.keepalive = keepalive;
             return this;
         }
         @CustomType.Setter
         public Builder localAsn(Integer localAsn) {
-            this.localAsn = Objects.requireNonNull(localAsn);
+            if (localAsn == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "localAsn");
+            }
+            this.localAsn = localAsn;
             return this;
         }
         @CustomType.Setter
         public Builder peerAsn(Integer peerAsn) {
-            this.peerAsn = Objects.requireNonNull(peerAsn);
+            if (peerAsn == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "peerAsn");
+            }
+            this.peerAsn = peerAsn;
             return this;
         }
         @CustomType.Setter
         public Builder routeLimit(String routeLimit) {
-            this.routeLimit = Objects.requireNonNull(routeLimit);
+            if (routeLimit == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "routeLimit");
+            }
+            this.routeLimit = routeLimit;
             return this;
         }
         @CustomType.Setter
         public Builder routerId(String routerId) {
-            this.routerId = Objects.requireNonNull(routerId);
+            if (routerId == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "routerId");
+            }
+            this.routerId = routerId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBgpGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBgpGroupsGroup build() {

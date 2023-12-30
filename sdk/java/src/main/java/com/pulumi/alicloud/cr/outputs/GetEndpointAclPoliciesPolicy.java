@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetEndpointAclPoliciesPolicy {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEndpointAclPoliciesPolicy", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder endpointType(String endpointType) {
-            this.endpointType = Objects.requireNonNull(endpointType);
+            if (endpointType == null) {
+              throw new MissingRequiredPropertyException("GetEndpointAclPoliciesPolicy", "endpointType");
+            }
+            this.endpointType = endpointType;
             return this;
         }
         @CustomType.Setter
         public Builder entry(String entry) {
-            this.entry = Objects.requireNonNull(entry);
+            if (entry == null) {
+              throw new MissingRequiredPropertyException("GetEndpointAclPoliciesPolicy", "entry");
+            }
+            this.entry = entry;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEndpointAclPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEndpointAclPoliciesPolicy", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         public GetEndpointAclPoliciesPolicy build() {

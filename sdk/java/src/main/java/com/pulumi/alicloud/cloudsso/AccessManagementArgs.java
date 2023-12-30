@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,12 +299,24 @@ public final class AccessManagementArgs extends com.pulumi.resources.ResourceArg
         }
 
         public AccessManagementArgs build() {
-            $.accessConfigurationId = Objects.requireNonNull($.accessConfigurationId, "expected parameter 'accessConfigurationId' to be non-null");
-            $.directoryId = Objects.requireNonNull($.directoryId, "expected parameter 'directoryId' to be non-null");
-            $.principalId = Objects.requireNonNull($.principalId, "expected parameter 'principalId' to be non-null");
-            $.principalType = Objects.requireNonNull($.principalType, "expected parameter 'principalType' to be non-null");
-            $.targetId = Objects.requireNonNull($.targetId, "expected parameter 'targetId' to be non-null");
-            $.targetType = Objects.requireNonNull($.targetType, "expected parameter 'targetType' to be non-null");
+            if ($.accessConfigurationId == null) {
+                throw new MissingRequiredPropertyException("AccessManagementArgs", "accessConfigurationId");
+            }
+            if ($.directoryId == null) {
+                throw new MissingRequiredPropertyException("AccessManagementArgs", "directoryId");
+            }
+            if ($.principalId == null) {
+                throw new MissingRequiredPropertyException("AccessManagementArgs", "principalId");
+            }
+            if ($.principalType == null) {
+                throw new MissingRequiredPropertyException("AccessManagementArgs", "principalType");
+            }
+            if ($.targetId == null) {
+                throw new MissingRequiredPropertyException("AccessManagementArgs", "targetId");
+            }
+            if ($.targetType == null) {
+                throw new MissingRequiredPropertyException("AccessManagementArgs", "targetType");
+            }
             return $;
         }
     }

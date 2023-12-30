@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetPbrRouteEntriesEntry {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesEntry", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesEntry", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nextHop(String nextHop) {
-            this.nextHop = Objects.requireNonNull(nextHop);
+            if (nextHop == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesEntry", "nextHop");
+            }
+            this.nextHop = nextHop;
             return this;
         }
         @CustomType.Setter
         public Builder routeDest(String routeDest) {
-            this.routeDest = Objects.requireNonNull(routeDest);
+            if (routeDest == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesEntry", "routeDest");
+            }
+            this.routeDest = routeDest;
             return this;
         }
         @CustomType.Setter
         public Builder routeSource(String routeSource) {
-            this.routeSource = Objects.requireNonNull(routeSource);
+            if (routeSource == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesEntry", "routeSource");
+            }
+            this.routeSource = routeSource;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesEntry", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
-            this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
+            if (vpnGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesEntry", "vpnGatewayId");
+            }
+            this.vpnGatewayId = vpnGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("GetPbrRouteEntriesEntry", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public GetPbrRouteEntriesEntry build() {

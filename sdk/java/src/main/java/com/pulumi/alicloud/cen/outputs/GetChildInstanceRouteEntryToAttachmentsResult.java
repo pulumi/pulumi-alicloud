@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetChildInstanceRouteEntryToAttachmentsAttachment;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -136,7 +137,10 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
 
         @CustomType.Setter
         public Builder attachments(List<GetChildInstanceRouteEntryToAttachmentsAttachment> attachments) {
-            this.attachments = Objects.requireNonNull(attachments);
+            if (attachments == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsResult", "attachments");
+            }
+            this.attachments = attachments;
             return this;
         }
         public Builder attachments(GetChildInstanceRouteEntryToAttachmentsAttachment... attachments) {
@@ -144,22 +148,32 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
         }
         @CustomType.Setter
         public Builder cenId(@Nullable String cenId) {
+
             this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder childInstanceRouteTableId(String childInstanceRouteTableId) {
-            this.childInstanceRouteTableId = Objects.requireNonNull(childInstanceRouteTableId);
+            if (childInstanceRouteTableId == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsResult", "childInstanceRouteTableId");
+            }
+            this.childInstanceRouteTableId = childInstanceRouteTableId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -167,17 +181,22 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder serviceType(@Nullable String serviceType) {
+
             this.serviceType = serviceType;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsResult", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         public GetChildInstanceRouteEntryToAttachmentsResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -100,17 +101,26 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
 
         @CustomType.Setter
         public Builder availableMemory(Integer availableMemory) {
-            this.availableMemory = Objects.requireNonNull(availableMemory);
+            if (availableMemory == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity", "availableMemory");
+            }
+            this.availableMemory = availableMemory;
             return this;
         }
         @CustomType.Setter
         public Builder availableVcpus(Integer availableVcpus) {
-            this.availableVcpus = Objects.requireNonNull(availableVcpus);
+            if (availableVcpus == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity", "availableVcpus");
+            }
+            this.availableVcpus = availableVcpus;
             return this;
         }
         @CustomType.Setter
         public Builder localStorageCapacities(List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity> localStorageCapacities) {
-            this.localStorageCapacities = Objects.requireNonNull(localStorageCapacities);
+            if (localStorageCapacities == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity", "localStorageCapacities");
+            }
+            this.localStorageCapacities = localStorageCapacities;
             return this;
         }
         public Builder localStorageCapacities(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity... localStorageCapacities) {
@@ -118,12 +128,18 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
         }
         @CustomType.Setter
         public Builder totalMemory(Integer totalMemory) {
-            this.totalMemory = Objects.requireNonNull(totalMemory);
+            if (totalMemory == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity", "totalMemory");
+            }
+            this.totalMemory = totalMemory;
             return this;
         }
         @CustomType.Setter
         public Builder totalVcpus(Integer totalVcpus) {
-            this.totalVcpus = Objects.requireNonNull(totalVcpus);
+            if (totalVcpus == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity", "totalVcpus");
+            }
+            this.totalVcpus = totalVcpus;
             return this;
         }
         public GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity build() {

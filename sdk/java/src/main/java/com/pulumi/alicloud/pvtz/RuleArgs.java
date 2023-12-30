@@ -6,6 +6,7 @@ package com.pulumi.alicloud.pvtz;
 import com.pulumi.alicloud.pvtz.inputs.RuleForwardIpArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -236,10 +237,18 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RuleArgs build() {
-            $.endpointId = Objects.requireNonNull($.endpointId, "expected parameter 'endpointId' to be non-null");
-            $.forwardIps = Objects.requireNonNull($.forwardIps, "expected parameter 'forwardIps' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
-            $.zoneName = Objects.requireNonNull($.zoneName, "expected parameter 'zoneName' to be non-null");
+            if ($.endpointId == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "endpointId");
+            }
+            if ($.forwardIps == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "forwardIps");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "ruleName");
+            }
+            if ($.zoneName == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "zoneName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -196,62 +197,98 @@ public final class GetBasicAccelerateIpEndpointRelationsRelation {
 
         @CustomType.Setter
         public Builder accelerateIpId(String accelerateIpId) {
-            this.accelerateIpId = Objects.requireNonNull(accelerateIpId);
+            if (accelerateIpId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "accelerateIpId");
+            }
+            this.accelerateIpId = accelerateIpId;
             return this;
         }
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder basicEndpointName(String basicEndpointName) {
-            this.basicEndpointName = Objects.requireNonNull(basicEndpointName);
+            if (basicEndpointName == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "basicEndpointName");
+            }
+            this.basicEndpointName = basicEndpointName;
             return this;
         }
         @CustomType.Setter
         public Builder endpointAddress(String endpointAddress) {
-            this.endpointAddress = Objects.requireNonNull(endpointAddress);
+            if (endpointAddress == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "endpointAddress");
+            }
+            this.endpointAddress = endpointAddress;
             return this;
         }
         @CustomType.Setter
         public Builder endpointId(String endpointId) {
-            this.endpointId = Objects.requireNonNull(endpointId);
+            if (endpointId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "endpointId");
+            }
+            this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointSubAddress(String endpointSubAddress) {
-            this.endpointSubAddress = Objects.requireNonNull(endpointSubAddress);
+            if (endpointSubAddress == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "endpointSubAddress");
+            }
+            this.endpointSubAddress = endpointSubAddress;
             return this;
         }
         @CustomType.Setter
         public Builder endpointSubAddressType(String endpointSubAddressType) {
-            this.endpointSubAddressType = Objects.requireNonNull(endpointSubAddressType);
+            if (endpointSubAddressType == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "endpointSubAddressType");
+            }
+            this.endpointSubAddressType = endpointSubAddressType;
             return this;
         }
         @CustomType.Setter
         public Builder endpointType(String endpointType) {
-            this.endpointType = Objects.requireNonNull(endpointType);
+            if (endpointType == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "endpointType");
+            }
+            this.endpointType = endpointType;
             return this;
         }
         @CustomType.Setter
         public Builder endpointZoneId(String endpointZoneId) {
-            this.endpointZoneId = Objects.requireNonNull(endpointZoneId);
+            if (endpointZoneId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "endpointZoneId");
+            }
+            this.endpointZoneId = endpointZoneId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsRelation", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBasicAccelerateIpEndpointRelationsRelation build() {

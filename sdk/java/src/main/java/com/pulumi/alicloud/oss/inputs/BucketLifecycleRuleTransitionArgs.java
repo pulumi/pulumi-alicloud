@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,7 +227,9 @@ public final class BucketLifecycleRuleTransitionArgs extends com.pulumi.resource
         }
 
         public BucketLifecycleRuleTransitionArgs build() {
-            $.storageClass = Objects.requireNonNull($.storageClass, "expected parameter 'storageClass' to be non-null");
+            if ($.storageClass == null) {
+                throw new MissingRequiredPropertyException("BucketLifecycleRuleTransitionArgs", "storageClass");
+            }
             return $;
         }
     }

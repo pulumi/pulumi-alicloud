@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -198,12 +199,18 @@ public final class GetMscSubSubscriptionsSubscription {
 
         @CustomType.Setter
         public Builder channel(String channel) {
-            this.channel = Objects.requireNonNull(channel);
+            if (channel == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "channel");
+            }
+            this.channel = channel;
             return this;
         }
         @CustomType.Setter
         public Builder contactIds(List<Integer> contactIds) {
-            this.contactIds = Objects.requireNonNull(contactIds);
+            if (contactIds == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "contactIds");
+            }
+            this.contactIds = contactIds;
             return this;
         }
         public Builder contactIds(Integer... contactIds) {
@@ -211,47 +218,74 @@ public final class GetMscSubSubscriptionsSubscription {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder emailStatus(Integer emailStatus) {
-            this.emailStatus = Objects.requireNonNull(emailStatus);
+            if (emailStatus == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "emailStatus");
+            }
+            this.emailStatus = emailStatus;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder itemId(String itemId) {
-            this.itemId = Objects.requireNonNull(itemId);
+            if (itemId == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "itemId");
+            }
+            this.itemId = itemId;
             return this;
         }
         @CustomType.Setter
         public Builder itemName(String itemName) {
-            this.itemName = Objects.requireNonNull(itemName);
+            if (itemName == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "itemName");
+            }
+            this.itemName = itemName;
             return this;
         }
         @CustomType.Setter
         public Builder pmsgStatus(Integer pmsgStatus) {
-            this.pmsgStatus = Objects.requireNonNull(pmsgStatus);
+            if (pmsgStatus == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "pmsgStatus");
+            }
+            this.pmsgStatus = pmsgStatus;
             return this;
         }
         @CustomType.Setter
         public Builder smsStatus(Integer smsStatus) {
-            this.smsStatus = Objects.requireNonNull(smsStatus);
+            if (smsStatus == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "smsStatus");
+            }
+            this.smsStatus = smsStatus;
             return this;
         }
         @CustomType.Setter
         public Builder ttsStatus(Integer ttsStatus) {
-            this.ttsStatus = Objects.requireNonNull(ttsStatus);
+            if (ttsStatus == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "ttsStatus");
+            }
+            this.ttsStatus = ttsStatus;
             return this;
         }
         @CustomType.Setter
         public Builder webhookIds(List<Integer> webhookIds) {
-            this.webhookIds = Objects.requireNonNull(webhookIds);
+            if (webhookIds == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "webhookIds");
+            }
+            this.webhookIds = webhookIds;
             return this;
         }
         public Builder webhookIds(Integer... webhookIds) {
@@ -259,7 +293,10 @@ public final class GetMscSubSubscriptionsSubscription {
         }
         @CustomType.Setter
         public Builder webhookStatus(Integer webhookStatus) {
-            this.webhookStatus = Objects.requireNonNull(webhookStatus);
+            if (webhookStatus == null) {
+              throw new MissingRequiredPropertyException("GetMscSubSubscriptionsSubscription", "webhookStatus");
+            }
+            this.webhookStatus = webhookStatus;
             return this;
         }
         public GetMscSubSubscriptionsSubscription build() {

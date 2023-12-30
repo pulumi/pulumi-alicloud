@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nlb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -185,27 +186,42 @@ public final class GetServerGroupsGroupHealthCheck {
 
         @CustomType.Setter
         public Builder healthCheckConnectPort(Integer healthCheckConnectPort) {
-            this.healthCheckConnectPort = Objects.requireNonNull(healthCheckConnectPort);
+            if (healthCheckConnectPort == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthCheckConnectPort");
+            }
+            this.healthCheckConnectPort = healthCheckConnectPort;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckConnectTimeout(Integer healthCheckConnectTimeout) {
-            this.healthCheckConnectTimeout = Objects.requireNonNull(healthCheckConnectTimeout);
+            if (healthCheckConnectTimeout == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthCheckConnectTimeout");
+            }
+            this.healthCheckConnectTimeout = healthCheckConnectTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckDomain(String healthCheckDomain) {
-            this.healthCheckDomain = Objects.requireNonNull(healthCheckDomain);
+            if (healthCheckDomain == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthCheckDomain");
+            }
+            this.healthCheckDomain = healthCheckDomain;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckEnabled(Boolean healthCheckEnabled) {
-            this.healthCheckEnabled = Objects.requireNonNull(healthCheckEnabled);
+            if (healthCheckEnabled == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthCheckEnabled");
+            }
+            this.healthCheckEnabled = healthCheckEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckHttpCodes(List<String> healthCheckHttpCodes) {
-            this.healthCheckHttpCodes = Objects.requireNonNull(healthCheckHttpCodes);
+            if (healthCheckHttpCodes == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthCheckHttpCodes");
+            }
+            this.healthCheckHttpCodes = healthCheckHttpCodes;
             return this;
         }
         public Builder healthCheckHttpCodes(String... healthCheckHttpCodes) {
@@ -213,32 +229,50 @@ public final class GetServerGroupsGroupHealthCheck {
         }
         @CustomType.Setter
         public Builder healthCheckInterval(Integer healthCheckInterval) {
-            this.healthCheckInterval = Objects.requireNonNull(healthCheckInterval);
+            if (healthCheckInterval == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthCheckInterval");
+            }
+            this.healthCheckInterval = healthCheckInterval;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckType(String healthCheckType) {
-            this.healthCheckType = Objects.requireNonNull(healthCheckType);
+            if (healthCheckType == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthCheckType");
+            }
+            this.healthCheckType = healthCheckType;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckUrl(String healthCheckUrl) {
-            this.healthCheckUrl = Objects.requireNonNull(healthCheckUrl);
+            if (healthCheckUrl == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthCheckUrl");
+            }
+            this.healthCheckUrl = healthCheckUrl;
             return this;
         }
         @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
-            this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
+            if (healthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "healthyThreshold");
+            }
+            this.healthyThreshold = healthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder httpCheckMethod(String httpCheckMethod) {
-            this.httpCheckMethod = Objects.requireNonNull(httpCheckMethod);
+            if (httpCheckMethod == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "httpCheckMethod");
+            }
+            this.httpCheckMethod = httpCheckMethod;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthyThreshold(Integer unhealthyThreshold) {
-            this.unhealthyThreshold = Objects.requireNonNull(unhealthyThreshold);
+            if (unhealthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupHealthCheck", "unhealthyThreshold");
+            }
+            this.unhealthyThreshold = unhealthyThreshold;
             return this;
         }
         public GetServerGroupsGroupHealthCheck build() {

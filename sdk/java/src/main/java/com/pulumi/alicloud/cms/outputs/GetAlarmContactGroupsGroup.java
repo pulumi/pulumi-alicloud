@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -100,12 +101,18 @@ public final class GetAlarmContactGroupsGroup {
 
         @CustomType.Setter
         public Builder alarmContactGroupName(String alarmContactGroupName) {
-            this.alarmContactGroupName = Objects.requireNonNull(alarmContactGroupName);
+            if (alarmContactGroupName == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactGroupsGroup", "alarmContactGroupName");
+            }
+            this.alarmContactGroupName = alarmContactGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder contacts(List<String> contacts) {
-            this.contacts = Objects.requireNonNull(contacts);
+            if (contacts == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactGroupsGroup", "contacts");
+            }
+            this.contacts = contacts;
             return this;
         }
         public Builder contacts(String... contacts) {
@@ -113,17 +120,26 @@ public final class GetAlarmContactGroupsGroup {
         }
         @CustomType.Setter
         public Builder describe(String describe) {
-            this.describe = Objects.requireNonNull(describe);
+            if (describe == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactGroupsGroup", "describe");
+            }
+            this.describe = describe;
             return this;
         }
         @CustomType.Setter
         public Builder enableSubscribed(Boolean enableSubscribed) {
-            this.enableSubscribed = Objects.requireNonNull(enableSubscribed);
+            if (enableSubscribed == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactGroupsGroup", "enableSubscribed");
+            }
+            this.enableSubscribed = enableSubscribed;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetAlarmContactGroupsGroup build() {

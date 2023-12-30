@@ -5,6 +5,7 @@ package com.pulumi.alicloud.waf.outputs;
 
 import com.pulumi.alicloud.waf.outputs.GetDomainsDomainLogHeader;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -297,32 +298,50 @@ public final class GetDomainsDomain {
 
         @CustomType.Setter
         public Builder clusterType(String clusterType) {
-            this.clusterType = Objects.requireNonNull(clusterType);
+            if (clusterType == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "clusterType");
+            }
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
         public Builder cname(String cname) {
-            this.cname = Objects.requireNonNull(cname);
+            if (cname == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "cname");
+            }
+            this.cname = cname;
             return this;
         }
         @CustomType.Setter
         public Builder connectionTime(Integer connectionTime) {
-            this.connectionTime = Objects.requireNonNull(connectionTime);
+            if (connectionTime == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "connectionTime");
+            }
+            this.connectionTime = connectionTime;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder http2Ports(List<String> http2Ports) {
-            this.http2Ports = Objects.requireNonNull(http2Ports);
+            if (http2Ports == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "http2Ports");
+            }
+            this.http2Ports = http2Ports;
             return this;
         }
         public Builder http2Ports(String... http2Ports) {
@@ -330,7 +349,10 @@ public final class GetDomainsDomain {
         }
         @CustomType.Setter
         public Builder httpPorts(List<String> httpPorts) {
-            this.httpPorts = Objects.requireNonNull(httpPorts);
+            if (httpPorts == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "httpPorts");
+            }
+            this.httpPorts = httpPorts;
             return this;
         }
         public Builder httpPorts(String... httpPorts) {
@@ -338,12 +360,18 @@ public final class GetDomainsDomain {
         }
         @CustomType.Setter
         public Builder httpToUserIp(String httpToUserIp) {
-            this.httpToUserIp = Objects.requireNonNull(httpToUserIp);
+            if (httpToUserIp == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "httpToUserIp");
+            }
+            this.httpToUserIp = httpToUserIp;
             return this;
         }
         @CustomType.Setter
         public Builder httpsPorts(List<String> httpsPorts) {
-            this.httpsPorts = Objects.requireNonNull(httpsPorts);
+            if (httpsPorts == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "httpsPorts");
+            }
+            this.httpsPorts = httpsPorts;
             return this;
         }
         public Builder httpsPorts(String... httpsPorts) {
@@ -351,27 +379,42 @@ public final class GetDomainsDomain {
         }
         @CustomType.Setter
         public Builder httpsRedirect(String httpsRedirect) {
-            this.httpsRedirect = Objects.requireNonNull(httpsRedirect);
+            if (httpsRedirect == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "httpsRedirect");
+            }
+            this.httpsRedirect = httpsRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isAccessProduct(String isAccessProduct) {
-            this.isAccessProduct = Objects.requireNonNull(isAccessProduct);
+            if (isAccessProduct == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "isAccessProduct");
+            }
+            this.isAccessProduct = isAccessProduct;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancing(String loadBalancing) {
-            this.loadBalancing = Objects.requireNonNull(loadBalancing);
+            if (loadBalancing == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "loadBalancing");
+            }
+            this.loadBalancing = loadBalancing;
             return this;
         }
         @CustomType.Setter
         public Builder logHeaders(List<GetDomainsDomainLogHeader> logHeaders) {
-            this.logHeaders = Objects.requireNonNull(logHeaders);
+            if (logHeaders == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "logHeaders");
+            }
+            this.logHeaders = logHeaders;
             return this;
         }
         public Builder logHeaders(GetDomainsDomainLogHeader... logHeaders) {
@@ -379,17 +422,26 @@ public final class GetDomainsDomain {
         }
         @CustomType.Setter
         public Builder readTime(Integer readTime) {
-            this.readTime = Objects.requireNonNull(readTime);
+            if (readTime == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "readTime");
+            }
+            this.readTime = readTime;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceIps(List<String> sourceIps) {
-            this.sourceIps = Objects.requireNonNull(sourceIps);
+            if (sourceIps == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "sourceIps");
+            }
+            this.sourceIps = sourceIps;
             return this;
         }
         public Builder sourceIps(String... sourceIps) {
@@ -397,12 +449,18 @@ public final class GetDomainsDomain {
         }
         @CustomType.Setter
         public Builder version(Integer version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "version");
+            }
+            this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder writeTime(Integer writeTime) {
-            this.writeTime = Objects.requireNonNull(writeTime);
+            if (writeTime == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "writeTime");
+            }
+            this.writeTime = writeTime;
             return this;
         }
         public GetDomainsDomain build() {

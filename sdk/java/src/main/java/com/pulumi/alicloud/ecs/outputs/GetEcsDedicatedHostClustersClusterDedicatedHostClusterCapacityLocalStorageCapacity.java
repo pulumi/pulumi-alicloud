@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
 
         @CustomType.Setter
         public Builder availableDisk(Integer availableDisk) {
-            this.availableDisk = Objects.requireNonNull(availableDisk);
+            if (availableDisk == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity", "availableDisk");
+            }
+            this.availableDisk = availableDisk;
             return this;
         }
         @CustomType.Setter
         public Builder dataDiskCategory(String dataDiskCategory) {
-            this.dataDiskCategory = Objects.requireNonNull(dataDiskCategory);
+            if (dataDiskCategory == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity", "dataDiskCategory");
+            }
+            this.dataDiskCategory = dataDiskCategory;
             return this;
         }
         @CustomType.Setter
         public Builder totalDisk(Integer totalDisk) {
-            this.totalDisk = Objects.requireNonNull(totalDisk);
+            if (totalDisk == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity", "totalDisk");
+            }
+            this.totalDisk = totalDisk;
             return this;
         }
         public GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity build() {

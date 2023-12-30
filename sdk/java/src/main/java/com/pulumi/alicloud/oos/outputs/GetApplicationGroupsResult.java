@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.alicloud.oos.outputs.GetApplicationGroupsGroup;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -88,17 +89,24 @@ public final class GetApplicationGroupsResult {
 
         @CustomType.Setter
         public Builder applicationName(String applicationName) {
-            this.applicationName = Objects.requireNonNull(applicationName);
+            if (applicationName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsResult", "applicationName");
+            }
+            this.applicationName = applicationName;
             return this;
         }
         @CustomType.Setter
         public Builder deployRegionId(@Nullable String deployRegionId) {
+
             this.deployRegionId = deployRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder groups(List<GetApplicationGroupsGroup> groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsResult", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         public Builder groups(GetApplicationGroupsGroup... groups) {
@@ -106,12 +114,18 @@ public final class GetApplicationGroupsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -119,12 +133,16 @@ public final class GetApplicationGroupsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -132,6 +150,7 @@ public final class GetApplicationGroupsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

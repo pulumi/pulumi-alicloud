@@ -6270,6 +6270,20 @@ export namespace ess {
          */
         readinessProbeTimeoutSeconds?: pulumi.Input<number>;
         /**
+         * Grant certain permissions to processes within container. Optional values:
+         * - NET_ADMIN: Allow network management tasks to be performed.
+         * - NET_RAW: Allow raw sockets.
+         */
+        securityContextCapabilityAdds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Mounts the container's root filesystem as read-only.
+         */
+        securityContextReadOnlyRootFileSystem?: pulumi.Input<boolean>;
+        /**
+         * Specifies user ID  under which all processes run.
+         */
+        securityContextRunAsUser?: pulumi.Input<number>;
+        /**
          * The structure of volumeMounts. 
          * See `volumeMounts` below for details.
          */
@@ -6281,6 +6295,11 @@ export namespace ess {
     }
 
     export interface EciScalingConfigurationContainerEnvironmentVar {
+        /**
+         * Environment variable value reference. Optional values: 
+         * - status.podIP: IP of pod.
+         */
+        fieldRefFieldPath?: pulumi.Input<string>;
         /**
          * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
          * digits, and underscores (_). It cannot start with a digit.
@@ -6391,6 +6410,20 @@ export namespace ess {
          */
         ports?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainerPort>[]>;
         /**
+         * Grant certain permissions to processes within container. Optional values:
+         * - NET_ADMIN: Allow network management tasks to be performed.
+         * - NET_RAW: Allow raw sockets.
+         */
+        securityContextCapabilityAdds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Mounts the container's root filesystem as read-only.
+         */
+        securityContextReadOnlyRootFileSystem?: pulumi.Input<boolean>;
+        /**
+         * Specifies user ID  under which all processes run.
+         */
+        securityContextRunAsUser?: pulumi.Input<number>;
+        /**
          * The structure of volumeMounts. See `volumeMounts` below for details.
          */
         volumeMounts?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainerVolumeMount>[]>;
@@ -6401,6 +6434,11 @@ export namespace ess {
     }
 
     export interface EciScalingConfigurationInitContainerEnvironmentVar {
+        /**
+         * Environment variable value reference. Optional values: 
+         * - status.podIP: IP of pod.
+         */
+        fieldRefFieldPath?: pulumi.Input<string>;
         /**
          * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
          * digits, and underscores (_). It cannot start with a digit.
@@ -8001,35 +8039,32 @@ export namespace log {
 
     export interface StoreEncryptConf {
         /**
-         * enable encryption. Default `false`
+         * Enable encryption. Default false.
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * Supported encryption type, only supports `default(AES)`,` m4`
+         * Supported encryption type, only supports `default`(AES), `m4`.
          */
         encryptType?: pulumi.Input<string>;
         /**
-         * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ "cmkKeyId": "yourCmkKeyId", "arn": "yourRoleArn", "regionId": "youCmkRegionId" }`. See `userCmkInfo` below.
          */
         userCmkInfo?: pulumi.Input<inputs.log.StoreEncryptConfUserCmkInfo>;
     }
 
     export interface StoreEncryptConfUserCmkInfo {
         /**
-         * role arn.
+         * Role arn.
          */
-        arn: pulumi.Input<string>;
+        arn?: pulumi.Input<string>;
         /**
          * User master key id.
          */
-        cmkKeyId: pulumi.Input<string>;
+        cmkKeyId?: pulumi.Input<string>;
         /**
-         * Region id where the  user master key id is located.
+         * Region id where the user master key id is located.
          */
-        regionId: pulumi.Input<string>;
+        regionId?: pulumi.Input<string>;
     }
 
     export interface StoreIndexFieldSearch {

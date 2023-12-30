@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.edas.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -119,7 +120,9 @@ public final class GetDeployGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetDeployGroupsPlainArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("GetDeployGroupsPlainArgs", "appId");
+            }
             return $;
         }
     }

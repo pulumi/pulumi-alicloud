@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetGreyTagRoutesRouteDubboRuleItem {
 
         @CustomType.Setter
         public Builder cond(String cond) {
-            this.cond = Objects.requireNonNull(cond);
+            if (cond == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRuleItem", "cond");
+            }
+            this.cond = cond;
             return this;
         }
         @CustomType.Setter
         public Builder expr(String expr) {
-            this.expr = Objects.requireNonNull(expr);
+            if (expr == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRuleItem", "expr");
+            }
+            this.expr = expr;
             return this;
         }
         @CustomType.Setter
         public Builder index(Integer index) {
-            this.index = Objects.requireNonNull(index);
+            if (index == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRuleItem", "index");
+            }
+            this.index = index;
             return this;
         }
         @CustomType.Setter
         public Builder operator(String operator) {
-            this.operator = Objects.requireNonNull(operator);
+            if (operator == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRuleItem", "operator");
+            }
+            this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRuleItem", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetGreyTagRoutesRouteDubboRuleItem build() {

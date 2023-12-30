@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.bastionhost.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetHostAccountsAccount {
 
         @CustomType.Setter
         public Builder hasPassword(Boolean hasPassword) {
-            this.hasPassword = Objects.requireNonNull(hasPassword);
+            if (hasPassword == null) {
+              throw new MissingRequiredPropertyException("GetHostAccountsAccount", "hasPassword");
+            }
+            this.hasPassword = hasPassword;
             return this;
         }
         @CustomType.Setter
         public Builder hostAccountId(String hostAccountId) {
-            this.hostAccountId = Objects.requireNonNull(hostAccountId);
+            if (hostAccountId == null) {
+              throw new MissingRequiredPropertyException("GetHostAccountsAccount", "hostAccountId");
+            }
+            this.hostAccountId = hostAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder hostAccountName(String hostAccountName) {
-            this.hostAccountName = Objects.requireNonNull(hostAccountName);
+            if (hostAccountName == null) {
+              throw new MissingRequiredPropertyException("GetHostAccountsAccount", "hostAccountName");
+            }
+            this.hostAccountName = hostAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder hostId(String hostId) {
-            this.hostId = Objects.requireNonNull(hostId);
+            if (hostId == null) {
+              throw new MissingRequiredPropertyException("GetHostAccountsAccount", "hostId");
+            }
+            this.hostId = hostId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHostAccountsAccount", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetHostAccountsAccount", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyFingerprint(String privateKeyFingerprint) {
-            this.privateKeyFingerprint = Objects.requireNonNull(privateKeyFingerprint);
+            if (privateKeyFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetHostAccountsAccount", "privateKeyFingerprint");
+            }
+            this.privateKeyFingerprint = privateKeyFingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder protocolName(String protocolName) {
-            this.protocolName = Objects.requireNonNull(protocolName);
+            if (protocolName == null) {
+              throw new MissingRequiredPropertyException("GetHostAccountsAccount", "protocolName");
+            }
+            this.protocolName = protocolName;
             return this;
         }
         public GetHostAccountsAccount build() {

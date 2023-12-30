@@ -5,6 +5,7 @@ package com.pulumi.alicloud.compute.outputs;
 
 import com.pulumi.alicloud.compute.outputs.GetNestServiceInstancesServiceInstanceService;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -229,52 +230,82 @@ public final class GetNestServiceInstancesServiceInstance {
 
         @CustomType.Setter
         public Builder enableInstanceOps(Boolean enableInstanceOps) {
-            this.enableInstanceOps = Objects.requireNonNull(enableInstanceOps);
+            if (enableInstanceOps == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "enableInstanceOps");
+            }
+            this.enableInstanceOps = enableInstanceOps;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder operatedServiceInstanceId(String operatedServiceInstanceId) {
-            this.operatedServiceInstanceId = Objects.requireNonNull(operatedServiceInstanceId);
+            if (operatedServiceInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "operatedServiceInstanceId");
+            }
+            this.operatedServiceInstanceId = operatedServiceInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder operationEndTime(String operationEndTime) {
-            this.operationEndTime = Objects.requireNonNull(operationEndTime);
+            if (operationEndTime == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "operationEndTime");
+            }
+            this.operationEndTime = operationEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder operationStartTime(String operationStartTime) {
-            this.operationStartTime = Objects.requireNonNull(operationStartTime);
+            if (operationStartTime == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "operationStartTime");
+            }
+            this.operationStartTime = operationStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(String parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder resources(String resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         @CustomType.Setter
         public Builder serviceInstanceId(String serviceInstanceId) {
-            this.serviceInstanceId = Objects.requireNonNull(serviceInstanceId);
+            if (serviceInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "serviceInstanceId");
+            }
+            this.serviceInstanceId = serviceInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceInstanceName(String serviceInstanceName) {
-            this.serviceInstanceName = Objects.requireNonNull(serviceInstanceName);
+            if (serviceInstanceName == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "serviceInstanceName");
+            }
+            this.serviceInstanceName = serviceInstanceName;
             return this;
         }
         @CustomType.Setter
         public Builder services(List<GetNestServiceInstancesServiceInstanceService> services) {
-            this.services = Objects.requireNonNull(services);
+            if (services == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "services");
+            }
+            this.services = services;
             return this;
         }
         public Builder services(GetNestServiceInstancesServiceInstanceService... services) {
@@ -282,22 +313,34 @@ public final class GetNestServiceInstancesServiceInstance {
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "source");
+            }
+            this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder templateName(String templateName) {
-            this.templateName = Objects.requireNonNull(templateName);
+            if (templateName == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "templateName");
+            }
+            this.templateName = templateName;
             return this;
         }
         public GetNestServiceInstancesServiceInstance build() {

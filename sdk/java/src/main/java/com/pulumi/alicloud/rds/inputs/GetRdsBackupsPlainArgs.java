@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -259,7 +260,9 @@ public final class GetRdsBackupsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetRdsBackupsPlainArgs build() {
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("GetRdsBackupsPlainArgs", "dbInstanceId");
+            }
             return $;
         }
     }

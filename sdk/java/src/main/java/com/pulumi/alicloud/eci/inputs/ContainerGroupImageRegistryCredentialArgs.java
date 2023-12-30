@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eci.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ContainerGroupImageRegistryCredentialArgs extends com.pulumi.
         }
 
         public ContainerGroupImageRegistryCredentialArgs build() {
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.server = Objects.requireNonNull($.server, "expected parameter 'server' to be non-null");
-            $.userName = Objects.requireNonNull($.userName, "expected parameter 'userName' to be non-null");
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("ContainerGroupImageRegistryCredentialArgs", "password");
+            }
+            if ($.server == null) {
+                throw new MissingRequiredPropertyException("ContainerGroupImageRegistryCredentialArgs", "server");
+            }
+            if ($.userName == null) {
+                throw new MissingRequiredPropertyException("ContainerGroupImageRegistryCredentialArgs", "userName");
+            }
             return $;
         }
     }

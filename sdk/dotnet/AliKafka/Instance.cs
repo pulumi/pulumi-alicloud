@@ -12,10 +12,10 @@ namespace Pulumi.AliCloud.AliKafka
     /// <summary>
     /// ## Import
     /// 
-    /// ALIKAFKA instance can be imported using the id, e.g.
+    /// AliKafka instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
+    ///  $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/instance:Instance")]
@@ -60,6 +60,18 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> EndPoint { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.214.1) The number of available groups.
+        /// </summary>
+        [Output("groupLeft")]
+        public Output<int> GroupLeft { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.214.1) The number of used groups.
+        /// </summary>
+        [Output("groupUsed")]
+        public Output<int> GroupUsed { get; private set; } = null!;
+
+        /// <summary>
         /// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         /// </summary>
         [Output("ioMax")]
@@ -72,6 +84,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Output("ioMaxSpec")]
         public Output<string> IoMaxSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.214.1) The method that you use to purchase partitions.
+        /// </summary>
+        [Output("isPartitionBuy")]
+        public Output<int> IsPartitionBuy { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
@@ -92,10 +110,22 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string?> PaidType { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.214.1) The number of available partitions.
+        /// </summary>
+        [Output("partitionLeft")]
+        public Output<int> PartitionLeft { get; private set; } = null!;
+
+        /// <summary>
         /// The number of partitions.
         /// </summary>
         [Output("partitionNum")]
         public Output<int?> PartitionNum { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.214.1) The number of used partitions.
+        /// </summary>
+        [Output("partitionUsed")]
+        public Output<int> PartitionUsed { get; private set; } = null!;
 
         /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.
@@ -132,11 +162,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string?> SpecType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the instance. Valid values:
-        /// - 0: pending
-        /// - 1: deploying
-        /// - 5: running
-        /// - 15: expired
+        /// The status of the instance.
         /// </summary>
         [Output("status")]
         public Output<int> Status { get; private set; } = null!;
@@ -148,6 +174,18 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.214.1) The number of available topics.
+        /// </summary>
+        [Output("topicLeft")]
+        public Output<int> TopicLeft { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.214.1) The number of purchased topics.
+        /// </summary>
+        [Output("topicNumOfBuy")]
+        public Output<int> TopicNumOfBuy { get; private set; } = null!;
+
+        /// <summary>
         /// The max num of topic can be creation of the instance.
         /// It has been deprecated since version 1.194.0 and using `partition_num` instead.
         /// Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
@@ -155,6 +193,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Output("topicQuota")]
         public Output<int> TopicQuota { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.214.1) The number of used topics.
+        /// </summary>
+        [Output("topicUsed")]
+        public Output<int> TopicUsed { get; private set; } = null!;
 
         /// <summary>
         /// The VPC ID of the instance.
@@ -416,6 +460,18 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? EndPoint { get; set; }
 
         /// <summary>
+        /// (Available since v1.214.1) The number of available groups.
+        /// </summary>
+        [Input("groupLeft")]
+        public Input<int>? GroupLeft { get; set; }
+
+        /// <summary>
+        /// (Available since v1.214.1) The number of used groups.
+        /// </summary>
+        [Input("groupUsed")]
+        public Input<int>? GroupUsed { get; set; }
+
+        /// <summary>
         /// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         /// </summary>
         [Input("ioMax")]
@@ -428,6 +484,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("ioMaxSpec")]
         public Input<string>? IoMaxSpec { get; set; }
+
+        /// <summary>
+        /// (Available since v1.214.1) The method that you use to purchase partitions.
+        /// </summary>
+        [Input("isPartitionBuy")]
+        public Input<int>? IsPartitionBuy { get; set; }
 
         /// <summary>
         /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
@@ -448,10 +510,22 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? PaidType { get; set; }
 
         /// <summary>
+        /// (Available since v1.214.1) The number of available partitions.
+        /// </summary>
+        [Input("partitionLeft")]
+        public Input<int>? PartitionLeft { get; set; }
+
+        /// <summary>
         /// The number of partitions.
         /// </summary>
         [Input("partitionNum")]
         public Input<int>? PartitionNum { get; set; }
+
+        /// <summary>
+        /// (Available since v1.214.1) The number of used partitions.
+        /// </summary>
+        [Input("partitionUsed")]
+        public Input<int>? PartitionUsed { get; set; }
 
         /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.
@@ -494,11 +568,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? SpecType { get; set; }
 
         /// <summary>
-        /// The status of the instance. Valid values:
-        /// - 0: pending
-        /// - 1: deploying
-        /// - 5: running
-        /// - 15: expired
+        /// The status of the instance.
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
@@ -516,6 +586,18 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
+        /// (Available since v1.214.1) The number of available topics.
+        /// </summary>
+        [Input("topicLeft")]
+        public Input<int>? TopicLeft { get; set; }
+
+        /// <summary>
+        /// (Available since v1.214.1) The number of purchased topics.
+        /// </summary>
+        [Input("topicNumOfBuy")]
+        public Input<int>? TopicNumOfBuy { get; set; }
+
+        /// <summary>
         /// The max num of topic can be creation of the instance.
         /// It has been deprecated since version 1.194.0 and using `partition_num` instead.
         /// Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
@@ -523,6 +605,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("topicQuota")]
         public Input<int>? TopicQuota { get; set; }
+
+        /// <summary>
+        /// (Available since v1.214.1) The number of used topics.
+        /// </summary>
+        [Input("topicUsed")]
+        public Input<int>? TopicUsed { get; set; }
 
         /// <summary>
         /// The VPC ID of the instance.

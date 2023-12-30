@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetClustersClusterDbNode {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterDbNode", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
-            this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
+            if (dbNodeClass == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterDbNode", "dbNodeClass");
+            }
+            this.dbNodeClass = dbNodeClass;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeId(String dbNodeId) {
-            this.dbNodeId = Objects.requireNonNull(dbNodeId);
+            if (dbNodeId == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterDbNode", "dbNodeId");
+            }
+            this.dbNodeId = dbNodeId;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeRole(String dbNodeRole) {
-            this.dbNodeRole = Objects.requireNonNull(dbNodeRole);
+            if (dbNodeRole == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterDbNode", "dbNodeRole");
+            }
+            this.dbNodeRole = dbNodeRole;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeStatus(String dbNodeStatus) {
-            this.dbNodeStatus = Objects.requireNonNull(dbNodeStatus);
+            if (dbNodeStatus == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterDbNode", "dbNodeStatus");
+            }
+            this.dbNodeStatus = dbNodeStatus;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
-            this.maxConnections = Objects.requireNonNull(maxConnections);
+            if (maxConnections == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterDbNode", "maxConnections");
+            }
+            this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxIops(Integer maxIops) {
-            this.maxIops = Objects.requireNonNull(maxIops);
+            if (maxIops == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterDbNode", "maxIops");
+            }
+            this.maxIops = maxIops;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterDbNode", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterDbNode", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetClustersClusterDbNode build() {

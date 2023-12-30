@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rdc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OrganizationArgs build() {
-            $.organizationName = Objects.requireNonNull($.organizationName, "expected parameter 'organizationName' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
+            if ($.organizationName == null) {
+                throw new MissingRequiredPropertyException("OrganizationArgs", "organizationName");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("OrganizationArgs", "source");
+            }
             return $;
         }
     }

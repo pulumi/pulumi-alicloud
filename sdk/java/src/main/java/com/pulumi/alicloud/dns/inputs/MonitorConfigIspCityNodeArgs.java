@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class MonitorConfigIspCityNodeArgs extends com.pulumi.resources.Res
         }
 
         public MonitorConfigIspCityNodeArgs build() {
-            $.cityCode = Objects.requireNonNull($.cityCode, "expected parameter 'cityCode' to be non-null");
-            $.ispCode = Objects.requireNonNull($.ispCode, "expected parameter 'ispCode' to be non-null");
+            if ($.cityCode == null) {
+                throw new MissingRequiredPropertyException("MonitorConfigIspCityNodeArgs", "cityCode");
+            }
+            if ($.ispCode == null) {
+                throw new MissingRequiredPropertyException("MonitorConfigIspCityNodeArgs", "ispCode");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ram.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetSamlProvidersProvider {
 
         @CustomType.Setter
         public Builder arn(String arn) {
-            this.arn = Objects.requireNonNull(arn);
+            if (arn == null) {
+              throw new MissingRequiredPropertyException("GetSamlProvidersProvider", "arn");
+            }
+            this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSamlProvidersProvider", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder encodedsamlMetadataDocument(String encodedsamlMetadataDocument) {
-            this.encodedsamlMetadataDocument = Objects.requireNonNull(encodedsamlMetadataDocument);
+            if (encodedsamlMetadataDocument == null) {
+              throw new MissingRequiredPropertyException("GetSamlProvidersProvider", "encodedsamlMetadataDocument");
+            }
+            this.encodedsamlMetadataDocument = encodedsamlMetadataDocument;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSamlProvidersProvider", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder samlProviderName(String samlProviderName) {
-            this.samlProviderName = Objects.requireNonNull(samlProviderName);
+            if (samlProviderName == null) {
+              throw new MissingRequiredPropertyException("GetSamlProvidersProvider", "samlProviderName");
+            }
+            this.samlProviderName = samlProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder updateDate(String updateDate) {
-            this.updateDate = Objects.requireNonNull(updateDate);
+            if (updateDate == null) {
+              throw new MissingRequiredPropertyException("GetSamlProvidersProvider", "updateDate");
+            }
+            this.updateDate = updateDate;
             return this;
         }
         public GetSamlProvidersProvider build() {

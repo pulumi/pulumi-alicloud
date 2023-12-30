@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -177,52 +178,82 @@ public final class GetGroupsGroup {
 
         @CustomType.Setter
         public Builder billingStatus(String billingStatus) {
-            this.billingStatus = Objects.requireNonNull(billingStatus);
+            if (billingStatus == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "billingStatus");
+            }
+            this.billingStatus = billingStatus;
             return this;
         }
         @CustomType.Setter
         public Builder createdTime(String createdTime) {
-            this.createdTime = Objects.requireNonNull(createdTime);
+            if (createdTime == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "createdTime");
+            }
+            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder illegalStatus(String illegalStatus) {
-            this.illegalStatus = Objects.requireNonNull(illegalStatus);
+            if (illegalStatus == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "illegalStatus");
+            }
+            this.illegalStatus = illegalStatus;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
-            this.modifiedTime = Objects.requireNonNull(modifiedTime);
+            if (modifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "modifiedTime");
+            }
+            this.modifiedTime = modifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder subDomain(String subDomain) {
-            this.subDomain = Objects.requireNonNull(subDomain);
+            if (subDomain == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "subDomain");
+            }
+            this.subDomain = subDomain;
             return this;
         }
         @CustomType.Setter
         public Builder trafficLimit(Integer trafficLimit) {
-            this.trafficLimit = Objects.requireNonNull(trafficLimit);
+            if (trafficLimit == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "trafficLimit");
+            }
+            this.trafficLimit = trafficLimit;
             return this;
         }
         public GetGroupsGroup build() {

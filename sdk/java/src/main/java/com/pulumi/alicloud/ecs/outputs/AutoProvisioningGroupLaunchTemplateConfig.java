@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -100,27 +101,38 @@ public final class AutoProvisioningGroupLaunchTemplateConfig {
 
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder maxPrice(String maxPrice) {
-            this.maxPrice = Objects.requireNonNull(maxPrice);
+            if (maxPrice == null) {
+              throw new MissingRequiredPropertyException("AutoProvisioningGroupLaunchTemplateConfig", "maxPrice");
+            }
+            this.maxPrice = maxPrice;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable String priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("AutoProvisioningGroupLaunchTemplateConfig", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder weightedCapacity(String weightedCapacity) {
-            this.weightedCapacity = Objects.requireNonNull(weightedCapacity);
+            if (weightedCapacity == null) {
+              throw new MissingRequiredPropertyException("AutoProvisioningGroupLaunchTemplateConfig", "weightedCapacity");
+            }
+            this.weightedCapacity = weightedCapacity;
             return this;
         }
         public AutoProvisioningGroupLaunchTemplateConfig build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetBundlesBundleDisk {
 
         @CustomType.Setter
         public Builder diskSize(String diskSize) {
-            this.diskSize = Objects.requireNonNull(diskSize);
+            if (diskSize == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundleDisk", "diskSize");
+            }
+            this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundleDisk", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         public GetBundlesBundleDisk build() {

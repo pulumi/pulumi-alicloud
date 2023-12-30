@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ehpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClustersClusterApplication {
 
         @CustomType.Setter
         public Builder tag(String tag) {
-            this.tag = Objects.requireNonNull(tag);
+            if (tag == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterApplication", "tag");
+            }
+            this.tag = tag;
             return this;
         }
         public GetClustersClusterApplication build() {

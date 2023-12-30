@@ -89,21 +89,25 @@ public final class ConnectionAuthParameters {
 
         @CustomType.Setter
         public Builder apiKeyAuthParameters(@Nullable ConnectionAuthParametersApiKeyAuthParameters apiKeyAuthParameters) {
+
             this.apiKeyAuthParameters = apiKeyAuthParameters;
             return this;
         }
         @CustomType.Setter
         public Builder authorizationType(@Nullable String authorizationType) {
+
             this.authorizationType = authorizationType;
             return this;
         }
         @CustomType.Setter
         public Builder basicAuthParameters(@Nullable ConnectionAuthParametersBasicAuthParameters basicAuthParameters) {
+
             this.basicAuthParameters = basicAuthParameters;
             return this;
         }
         @CustomType.Setter
         public Builder oauthParameters(@Nullable ConnectionAuthParametersOauthParameters oauthParameters) {
+
             this.oauthParameters = oauthParameters;
             return this;
         }

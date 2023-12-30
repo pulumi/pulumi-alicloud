@@ -7,6 +7,7 @@ import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -990,9 +991,15 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ShardingInstanceArgs build() {
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
-            $.mongoLists = Objects.requireNonNull($.mongoLists, "expected parameter 'mongoLists' to be non-null");
-            $.shardLists = Objects.requireNonNull($.shardLists, "expected parameter 'shardLists' to be non-null");
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("ShardingInstanceArgs", "engineVersion");
+            }
+            if ($.mongoLists == null) {
+                throw new MissingRequiredPropertyException("ShardingInstanceArgs", "mongoLists");
+            }
+            if ($.shardLists == null) {
+                throw new MissingRequiredPropertyException("ShardingInstanceArgs", "shardLists");
+            }
             return $;
         }
     }

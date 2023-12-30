@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eventbridge.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -299,8 +300,12 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
         }
 
         public RuleTargetParamListArgs build() {
-            $.form = Objects.requireNonNull($.form, "expected parameter 'form' to be non-null");
-            $.resourceKey = Objects.requireNonNull($.resourceKey, "expected parameter 'resourceKey' to be non-null");
+            if ($.form == null) {
+                throw new MissingRequiredPropertyException("RuleTargetParamListArgs", "form");
+            }
+            if ($.resourceKey == null) {
+                throw new MissingRequiredPropertyException("RuleTargetParamListArgs", "resourceKey");
+            }
             return $;
         }
     }

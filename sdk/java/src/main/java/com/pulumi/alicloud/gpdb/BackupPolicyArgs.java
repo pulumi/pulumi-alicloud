@@ -5,6 +5,7 @@ package com.pulumi.alicloud.gpdb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -319,9 +320,15 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BackupPolicyArgs build() {
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
-            $.preferredBackupPeriod = Objects.requireNonNull($.preferredBackupPeriod, "expected parameter 'preferredBackupPeriod' to be non-null");
-            $.preferredBackupTime = Objects.requireNonNull($.preferredBackupTime, "expected parameter 'preferredBackupTime' to be non-null");
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "dbInstanceId");
+            }
+            if ($.preferredBackupPeriod == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "preferredBackupPeriod");
+            }
+            if ($.preferredBackupTime == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "preferredBackupTime");
+            }
             return $;
         }
     }

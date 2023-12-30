@@ -74,16 +74,19 @@ public final class GroupMetricRuleEscalations {
 
         @CustomType.Setter
         public Builder critical(@Nullable GroupMetricRuleEscalationsCritical critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder info(@Nullable GroupMetricRuleEscalationsInfo info) {
+
             this.info = info;
             return this;
         }
         @CustomType.Setter
         public Builder warn(@Nullable GroupMetricRuleEscalationsWarn warn) {
+
             this.warn = warn;
             return this;
         }

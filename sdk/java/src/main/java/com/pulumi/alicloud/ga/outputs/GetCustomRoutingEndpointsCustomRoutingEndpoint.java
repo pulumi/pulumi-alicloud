@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetCustomRoutingEndpointsCustomRoutingEndpoint {
 
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointsCustomRoutingEndpoint", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder customRoutingEndpointId(String customRoutingEndpointId) {
-            this.customRoutingEndpointId = Objects.requireNonNull(customRoutingEndpointId);
+            if (customRoutingEndpointId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointsCustomRoutingEndpoint", "customRoutingEndpointId");
+            }
+            this.customRoutingEndpointId = customRoutingEndpointId;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointsCustomRoutingEndpoint", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
-            this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
+            if (endpointGroupId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointsCustomRoutingEndpoint", "endpointGroupId");
+            }
+            this.endpointGroupId = endpointGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointsCustomRoutingEndpoint", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointsCustomRoutingEndpoint", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficToEndpointPolicy(String trafficToEndpointPolicy) {
-            this.trafficToEndpointPolicy = Objects.requireNonNull(trafficToEndpointPolicy);
+            if (trafficToEndpointPolicy == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointsCustomRoutingEndpoint", "trafficToEndpointPolicy");
+            }
+            this.trafficToEndpointPolicy = trafficToEndpointPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointsCustomRoutingEndpoint", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetCustomRoutingEndpointsCustomRoutingEndpoint build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class MonitorConfigIspCityNode {
 
         @CustomType.Setter
         public Builder cityCode(String cityCode) {
-            this.cityCode = Objects.requireNonNull(cityCode);
+            if (cityCode == null) {
+              throw new MissingRequiredPropertyException("MonitorConfigIspCityNode", "cityCode");
+            }
+            this.cityCode = cityCode;
             return this;
         }
         @CustomType.Setter
         public Builder ispCode(String ispCode) {
-            this.ispCode = Objects.requireNonNull(ispCode);
+            if (ispCode == null) {
+              throw new MissingRequiredPropertyException("MonitorConfigIspCityNode", "ispCode");
+            }
+            this.ispCode = ispCode;
             return this;
         }
         public MonitorConfigIspCityNode build() {

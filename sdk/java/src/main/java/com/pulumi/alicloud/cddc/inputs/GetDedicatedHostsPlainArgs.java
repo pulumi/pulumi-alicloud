@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cddc.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -322,7 +323,9 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetDedicatedHostsPlainArgs build() {
-            $.dedicatedHostGroupId = Objects.requireNonNull($.dedicatedHostGroupId, "expected parameter 'dedicatedHostGroupId' to be non-null");
+            if ($.dedicatedHostGroupId == null) {
+                throw new MissingRequiredPropertyException("GetDedicatedHostsPlainArgs", "dedicatedHostGroupId");
+            }
             return $;
         }
     }

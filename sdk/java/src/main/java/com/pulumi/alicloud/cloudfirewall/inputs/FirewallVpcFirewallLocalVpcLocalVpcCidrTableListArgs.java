@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudfirewall.inputs;
 import com.pulumi.alicloud.cloudfirewall.inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs extends 
         }
 
         public FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs build() {
-            $.localRouteEntryLists = Objects.requireNonNull($.localRouteEntryLists, "expected parameter 'localRouteEntryLists' to be non-null");
-            $.localRouteTableId = Objects.requireNonNull($.localRouteTableId, "expected parameter 'localRouteTableId' to be non-null");
+            if ($.localRouteEntryLists == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs", "localRouteEntryLists");
+            }
+            if ($.localRouteTableId == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs", "localRouteTableId");
+            }
             return $;
         }
     }

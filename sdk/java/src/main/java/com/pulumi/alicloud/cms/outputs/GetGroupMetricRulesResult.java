@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetGroupMetricRulesRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -119,32 +120,42 @@ public final class GetGroupMetricRulesResult {
 
         @CustomType.Setter
         public Builder dimensions(@Nullable String dimensions) {
+
             this.dimensions = dimensions;
             return this;
         }
         @CustomType.Setter
         public Builder enableState(@Nullable Boolean enableState) {
+
             this.enableState = enableState;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupMetricRuleName(@Nullable String groupMetricRuleName) {
+
             this.groupMetricRuleName = groupMetricRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -152,17 +163,22 @@ public final class GetGroupMetricRulesResult {
         }
         @CustomType.Setter
         public Builder metricName(@Nullable String metricName) {
+
             this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -170,17 +186,22 @@ public final class GetGroupMetricRulesResult {
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder rules(List<GetGroupMetricRulesRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesResult", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetGroupMetricRulesRule... rules) {
@@ -188,6 +209,7 @@ public final class GetGroupMetricRulesResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

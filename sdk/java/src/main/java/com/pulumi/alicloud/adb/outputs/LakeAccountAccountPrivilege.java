@@ -74,16 +74,19 @@ public final class LakeAccountAccountPrivilege {
 
         @CustomType.Setter
         public Builder privilegeObject(@Nullable LakeAccountAccountPrivilegePrivilegeObject privilegeObject) {
+
             this.privilegeObject = privilegeObject;
             return this;
         }
         @CustomType.Setter
         public Builder privilegeType(@Nullable String privilegeType) {
+
             this.privilegeType = privilegeType;
             return this;
         }
         @CustomType.Setter
         public Builder privileges(@Nullable List<String> privileges) {
+
             this.privileges = privileges;
             return this;
         }

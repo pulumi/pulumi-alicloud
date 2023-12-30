@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fnf.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetFlowsFlow {
 
         @CustomType.Setter
         public Builder definition(String definition) {
-            this.definition = Objects.requireNonNull(definition);
+            if (definition == null) {
+              throw new MissingRequiredPropertyException("GetFlowsFlow", "definition");
+            }
+            this.definition = definition;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetFlowsFlow", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder flowId(String flowId) {
-            this.flowId = Objects.requireNonNull(flowId);
+            if (flowId == null) {
+              throw new MissingRequiredPropertyException("GetFlowsFlow", "flowId");
+            }
+            this.flowId = flowId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFlowsFlow", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifiedTime(String lastModifiedTime) {
-            this.lastModifiedTime = Objects.requireNonNull(lastModifiedTime);
+            if (lastModifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetFlowsFlow", "lastModifiedTime");
+            }
+            this.lastModifiedTime = lastModifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetFlowsFlow", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(String roleArn) {
-            this.roleArn = Objects.requireNonNull(roleArn);
+            if (roleArn == null) {
+              throw new MissingRequiredPropertyException("GetFlowsFlow", "roleArn");
+            }
+            this.roleArn = roleArn;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetFlowsFlow", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetFlowsFlow build() {

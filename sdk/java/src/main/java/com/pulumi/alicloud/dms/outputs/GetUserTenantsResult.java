@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.alicloud.dms.outputs.GetUserTenantsTenant;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -108,12 +109,18 @@ public final class GetUserTenantsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserTenantsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetUserTenantsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -121,7 +128,10 @@ public final class GetUserTenantsResult {
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetUserTenantsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -129,17 +139,22 @@ public final class GetUserTenantsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tenants(List<GetUserTenantsTenant> tenants) {
-            this.tenants = Objects.requireNonNull(tenants);
+            if (tenants == null) {
+              throw new MissingRequiredPropertyException("GetUserTenantsResult", "tenants");
+            }
+            this.tenants = tenants;
             return this;
         }
         public Builder tenants(GetUserTenantsTenant... tenants) {

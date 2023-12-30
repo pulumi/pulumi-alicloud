@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cddc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetHostEcsLevelInfosInfo {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetHostEcsLevelInfosInfo", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder ecsClass(String ecsClass) {
-            this.ecsClass = Objects.requireNonNull(ecsClass);
+            if (ecsClass == null) {
+              throw new MissingRequiredPropertyException("GetHostEcsLevelInfosInfo", "ecsClass");
+            }
+            this.ecsClass = ecsClass;
             return this;
         }
         @CustomType.Setter
         public Builder ecsClassCode(String ecsClassCode) {
-            this.ecsClassCode = Objects.requireNonNull(ecsClassCode);
+            if (ecsClassCode == null) {
+              throw new MissingRequiredPropertyException("GetHostEcsLevelInfosInfo", "ecsClassCode");
+            }
+            this.ecsClassCode = ecsClassCode;
             return this;
         }
         @CustomType.Setter
         public Builder resClassCode(String resClassCode) {
-            this.resClassCode = Objects.requireNonNull(resClassCode);
+            if (resClassCode == null) {
+              throw new MissingRequiredPropertyException("GetHostEcsLevelInfosInfo", "resClassCode");
+            }
+            this.resClassCode = resClassCode;
             return this;
         }
         public GetHostEcsLevelInfosInfo build() {

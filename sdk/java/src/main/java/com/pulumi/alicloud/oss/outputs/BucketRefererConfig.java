@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -60,12 +61,16 @@ public final class BucketRefererConfig {
 
         @CustomType.Setter
         public Builder allowEmpty(@Nullable Boolean allowEmpty) {
+
             this.allowEmpty = allowEmpty;
             return this;
         }
         @CustomType.Setter
         public Builder referers(List<String> referers) {
-            this.referers = Objects.requireNonNull(referers);
+            if (referers == null) {
+              throw new MissingRequiredPropertyException("BucketRefererConfig", "referers");
+            }
+            this.referers = referers;
             return this;
         }
         public Builder referers(String... referers) {

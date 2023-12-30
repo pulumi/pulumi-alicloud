@@ -87,21 +87,25 @@ public final class GtmInstanceAlertConfig {
 
         @CustomType.Setter
         public Builder dingtalkNotice(@Nullable Boolean dingtalkNotice) {
+
             this.dingtalkNotice = dingtalkNotice;
             return this;
         }
         @CustomType.Setter
         public Builder emailNotice(@Nullable Boolean emailNotice) {
+
             this.emailNotice = emailNotice;
             return this;
         }
         @CustomType.Setter
         public Builder noticeType(@Nullable String noticeType) {
+
             this.noticeType = noticeType;
             return this;
         }
         @CustomType.Setter
         public Builder smsNotice(@Nullable Boolean smsNotice) {
+
             this.smsNotice = smsNotice;
             return this;
         }

@@ -59,11 +59,13 @@ public final class AccessStrategyFailoverAddrPool {
 
         @CustomType.Setter
         public Builder addrPoolId(@Nullable String addrPoolId) {
+
             this.addrPoolId = addrPoolId;
             return this;
         }
         @CustomType.Setter
         public Builder lbaWeight(@Nullable Integer lbaWeight) {
+
             this.lbaWeight = lbaWeight;
             return this;
         }

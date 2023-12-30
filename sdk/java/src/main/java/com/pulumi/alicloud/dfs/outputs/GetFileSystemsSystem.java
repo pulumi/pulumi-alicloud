@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dfs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -254,82 +255,130 @@ public final class GetFileSystemsSystem {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
-            this.fileSystemId = Objects.requireNonNull(fileSystemId);
+            if (fileSystemId == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "fileSystemId");
+            }
+            this.fileSystemId = fileSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemName(String fileSystemName) {
-            this.fileSystemName = Objects.requireNonNull(fileSystemName);
+            if (fileSystemName == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "fileSystemName");
+            }
+            this.fileSystemName = fileSystemName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mountPointCount(Integer mountPointCount) {
-            this.mountPointCount = Objects.requireNonNull(mountPointCount);
+            if (mountPointCount == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "mountPointCount");
+            }
+            this.mountPointCount = mountPointCount;
             return this;
         }
         @CustomType.Setter
         public Builder numberOfDirectories(Integer numberOfDirectories) {
-            this.numberOfDirectories = Objects.requireNonNull(numberOfDirectories);
+            if (numberOfDirectories == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "numberOfDirectories");
+            }
+            this.numberOfDirectories = numberOfDirectories;
             return this;
         }
         @CustomType.Setter
         public Builder numberOfFiles(Integer numberOfFiles) {
-            this.numberOfFiles = Objects.requireNonNull(numberOfFiles);
+            if (numberOfFiles == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "numberOfFiles");
+            }
+            this.numberOfFiles = numberOfFiles;
             return this;
         }
         @CustomType.Setter
         public Builder protocolType(String protocolType) {
-            this.protocolType = Objects.requireNonNull(protocolType);
+            if (protocolType == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "protocolType");
+            }
+            this.protocolType = protocolType;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedThroughputInMiBps(Integer provisionedThroughputInMiBps) {
-            this.provisionedThroughputInMiBps = Objects.requireNonNull(provisionedThroughputInMiBps);
+            if (provisionedThroughputInMiBps == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "provisionedThroughputInMiBps");
+            }
+            this.provisionedThroughputInMiBps = provisionedThroughputInMiBps;
             return this;
         }
         @CustomType.Setter
         public Builder spaceCapacity(Integer spaceCapacity) {
-            this.spaceCapacity = Objects.requireNonNull(spaceCapacity);
+            if (spaceCapacity == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "spaceCapacity");
+            }
+            this.spaceCapacity = spaceCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder storagePackageId(String storagePackageId) {
-            this.storagePackageId = Objects.requireNonNull(storagePackageId);
+            if (storagePackageId == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "storagePackageId");
+            }
+            this.storagePackageId = storagePackageId;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(String storageType) {
-            this.storageType = Objects.requireNonNull(storageType);
+            if (storageType == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "storageType");
+            }
+            this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder throughputMode(String throughputMode) {
-            this.throughputMode = Objects.requireNonNull(throughputMode);
+            if (throughputMode == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "throughputMode");
+            }
+            this.throughputMode = throughputMode;
             return this;
         }
         @CustomType.Setter
         public Builder usedSpaceSize(Double usedSpaceSize) {
-            this.usedSpaceSize = Objects.requireNonNull(usedSpaceSize);
+            if (usedSpaceSize == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "usedSpaceSize");
+            }
+            this.usedSpaceSize = usedSpaceSize;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetFileSystemsSystem build() {

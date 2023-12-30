@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.alicloud.emr.outputs.GetClustersClusterHostGroupListNodeDiskInfo;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -171,12 +172,18 @@ public final class GetClustersClusterHostGroupListNode {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder diskInfos(List<GetClustersClusterHostGroupListNodeDiskInfo> diskInfos) {
-            this.diskInfos = Objects.requireNonNull(diskInfos);
+            if (diskInfos == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "diskInfos");
+            }
+            this.diskInfos = diskInfos;
             return this;
         }
         public Builder diskInfos(GetClustersClusterHostGroupListNodeDiskInfo... diskInfos) {
@@ -184,42 +191,66 @@ public final class GetClustersClusterHostGroupListNode {
         }
         @CustomType.Setter
         public Builder emrExpiredTime(String emrExpiredTime) {
-            this.emrExpiredTime = Objects.requireNonNull(emrExpiredTime);
+            if (emrExpiredTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "emrExpiredTime");
+            }
+            this.emrExpiredTime = emrExpiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder innerIp(String innerIp) {
-            this.innerIp = Objects.requireNonNull(innerIp);
+            if (innerIp == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "innerIp");
+            }
+            this.innerIp = innerIp;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder pubIp(String pubIp) {
-            this.pubIp = Objects.requireNonNull(pubIp);
+            if (pubIp == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "pubIp");
+            }
+            this.pubIp = pubIp;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder supportIpv6(Boolean supportIpv6) {
-            this.supportIpv6 = Objects.requireNonNull(supportIpv6);
+            if (supportIpv6 == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "supportIpv6");
+            }
+            this.supportIpv6 = supportIpv6;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNode", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetClustersClusterHostGroupListNode build() {

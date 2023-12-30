@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.alicloud.arms.outputs.GetAlertContactGroupsGroup;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -94,22 +95,28 @@ public final class GetAlertContactGroupsResult {
 
         @CustomType.Setter
         public Builder alertContactGroupName(@Nullable String alertContactGroupName) {
+
             this.alertContactGroupName = alertContactGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder contactId(@Nullable String contactId) {
+
             this.contactId = contactId;
             return this;
         }
         @CustomType.Setter
         public Builder contactName(@Nullable String contactName) {
+
             this.contactName = contactName;
             return this;
         }
         @CustomType.Setter
         public Builder groups(List<GetAlertContactGroupsGroup> groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactGroupsResult", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         public Builder groups(GetAlertContactGroupsGroup... groups) {
@@ -117,12 +124,18 @@ public final class GetAlertContactGroupsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactGroupsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -130,12 +143,16 @@ public final class GetAlertContactGroupsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactGroupsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -143,6 +160,7 @@ public final class GetAlertContactGroupsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

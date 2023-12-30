@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.alicloud.cs.outputs.GetClusterCredentialCertificateAuthority;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -128,41 +129,61 @@ public final class GetClusterCredentialResult {
 
         @CustomType.Setter
         public Builder certificateAuthority(GetClusterCredentialCertificateAuthority certificateAuthority) {
-            this.certificateAuthority = Objects.requireNonNull(certificateAuthority);
+            if (certificateAuthority == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialResult", "certificateAuthority");
+            }
+            this.certificateAuthority = certificateAuthority;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialResult", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(String expiration) {
-            this.expiration = Objects.requireNonNull(expiration);
+            if (expiration == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialResult", "expiration");
+            }
+            this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kubeConfig(String kubeConfig) {
-            this.kubeConfig = Objects.requireNonNull(kubeConfig);
+            if (kubeConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialResult", "kubeConfig");
+            }
+            this.kubeConfig = kubeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder temporaryDurationMinutes(@Nullable Integer temporaryDurationMinutes) {
+
             this.temporaryDurationMinutes = temporaryDurationMinutes;
             return this;
         }

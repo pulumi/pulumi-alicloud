@@ -6,6 +6,7 @@ package com.pulumi.alicloud.servicecatalog;
 import com.pulumi.alicloud.servicecatalog.inputs.ProvisionedProductParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -349,10 +350,18 @@ public final class ProvisionedProductArgs extends com.pulumi.resources.ResourceA
         }
 
         public ProvisionedProductArgs build() {
-            $.productId = Objects.requireNonNull($.productId, "expected parameter 'productId' to be non-null");
-            $.productVersionId = Objects.requireNonNull($.productVersionId, "expected parameter 'productVersionId' to be non-null");
-            $.provisionedProductName = Objects.requireNonNull($.provisionedProductName, "expected parameter 'provisionedProductName' to be non-null");
-            $.stackRegionId = Objects.requireNonNull($.stackRegionId, "expected parameter 'stackRegionId' to be non-null");
+            if ($.productId == null) {
+                throw new MissingRequiredPropertyException("ProvisionedProductArgs", "productId");
+            }
+            if ($.productVersionId == null) {
+                throw new MissingRequiredPropertyException("ProvisionedProductArgs", "productVersionId");
+            }
+            if ($.provisionedProductName == null) {
+                throw new MissingRequiredPropertyException("ProvisionedProductArgs", "provisionedProductName");
+            }
+            if ($.stackRegionId == null) {
+                throw new MissingRequiredPropertyException("ProvisionedProductArgs", "stackRegionId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetSecurityGroupRulesRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -156,52 +157,72 @@ public final class GetSecurityGroupRulesResult {
 
         @CustomType.Setter
         public Builder direction(@Nullable String direction) {
+
             this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder groupDesc(String groupDesc) {
-            this.groupDesc = Objects.requireNonNull(groupDesc);
+            if (groupDesc == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesResult", "groupDesc");
+            }
+            this.groupDesc = groupDesc;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesResult", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(@Nullable String ipProtocol) {
+
             this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder nicType(@Nullable String nicType) {
+
             this.nicType = nicType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder policy(@Nullable String policy) {
+
             this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder rules(List<GetSecurityGroupRulesRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesResult", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetSecurityGroupRulesRule... rules) {

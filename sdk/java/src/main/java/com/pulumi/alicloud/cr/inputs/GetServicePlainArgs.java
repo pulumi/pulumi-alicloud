@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -98,7 +99,9 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetServicePlainArgs build() {
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("GetServicePlainArgs", "password");
+            }
             return $;
         }
     }

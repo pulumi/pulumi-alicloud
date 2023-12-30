@@ -101,26 +101,31 @@ public final class ApplicationTomcatConfigV2 {
 
         @CustomType.Setter
         public Builder contextPath(@Nullable String contextPath) {
+
             this.contextPath = contextPath;
             return this;
         }
         @CustomType.Setter
         public Builder maxThreads(@Nullable Integer maxThreads) {
+
             this.maxThreads = maxThreads;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder uriEncoding(@Nullable String uriEncoding) {
+
             this.uriEncoding = uriEncoding;
             return this;
         }
         @CustomType.Setter
         public Builder useBodyEncodingForUri(@Nullable String useBodyEncodingForUri) {
+
             this.useBodyEncodingForUri = useBodyEncodingForUri;
             return this;
         }

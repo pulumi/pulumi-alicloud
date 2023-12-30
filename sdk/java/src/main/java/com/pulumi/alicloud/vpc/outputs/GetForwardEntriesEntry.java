@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -168,52 +169,82 @@ public final class GetForwardEntriesEntry {
 
         @CustomType.Setter
         public Builder externalIp(String externalIp) {
-            this.externalIp = Objects.requireNonNull(externalIp);
+            if (externalIp == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "externalIp");
+            }
+            this.externalIp = externalIp;
             return this;
         }
         @CustomType.Setter
         public Builder externalPort(String externalPort) {
-            this.externalPort = Objects.requireNonNull(externalPort);
+            if (externalPort == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "externalPort");
+            }
+            this.externalPort = externalPort;
             return this;
         }
         @CustomType.Setter
         public Builder forwardEntryId(String forwardEntryId) {
-            this.forwardEntryId = Objects.requireNonNull(forwardEntryId);
+            if (forwardEntryId == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "forwardEntryId");
+            }
+            this.forwardEntryId = forwardEntryId;
             return this;
         }
         @CustomType.Setter
         public Builder forwardEntryName(String forwardEntryName) {
-            this.forwardEntryName = Objects.requireNonNull(forwardEntryName);
+            if (forwardEntryName == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "forwardEntryName");
+            }
+            this.forwardEntryName = forwardEntryName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internalIp(String internalIp) {
-            this.internalIp = Objects.requireNonNull(internalIp);
+            if (internalIp == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "internalIp");
+            }
+            this.internalIp = internalIp;
             return this;
         }
         @CustomType.Setter
         public Builder internalPort(String internalPort) {
-            this.internalPort = Objects.requireNonNull(internalPort);
+            if (internalPort == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "internalPort");
+            }
+            this.internalPort = internalPort;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
-            this.ipProtocol = Objects.requireNonNull(ipProtocol);
+            if (ipProtocol == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "ipProtocol");
+            }
+            this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesEntry", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetForwardEntriesEntry build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -299,9 +300,15 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RecordArgs build() {
-            $.hostRecord = Objects.requireNonNull($.hostRecord, "expected parameter 'hostRecord' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.hostRecord == null) {
+                throw new MissingRequiredPropertyException("RecordArgs", "hostRecord");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("RecordArgs", "type");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("RecordArgs", "value");
+            }
             return $;
         }
     }

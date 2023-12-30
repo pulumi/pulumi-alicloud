@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.alicloud.resourcemanager.outputs.GetSharedTargetsTarget;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,12 +101,18 @@ public final class GetSharedTargetsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSharedTargetsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetSharedTargetsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -113,22 +120,28 @@ public final class GetSharedTargetsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder resourceShareId(@Nullable String resourceShareId) {
+
             this.resourceShareId = resourceShareId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder targets(List<GetSharedTargetsTarget> targets) {
-            this.targets = Objects.requireNonNull(targets);
+            if (targets == null) {
+              throw new MissingRequiredPropertyException("GetSharedTargetsResult", "targets");
+            }
+            this.targets = targets;
             return this;
         }
         public Builder targets(GetSharedTargetsTarget... targets) {

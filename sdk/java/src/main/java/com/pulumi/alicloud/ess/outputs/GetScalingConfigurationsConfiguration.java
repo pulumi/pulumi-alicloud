@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess.outputs;
 import com.pulumi.alicloud.ess.outputs.GetScalingConfigurationsConfigurationDataDisk;
 import com.pulumi.alicloud.ess.outputs.GetScalingConfigurationsConfigurationSpotPriceLimit;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -312,17 +313,26 @@ public final class GetScalingConfigurationsConfiguration {
 
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder creditSpecification(String creditSpecification) {
-            this.creditSpecification = Objects.requireNonNull(creditSpecification);
+            if (creditSpecification == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "creditSpecification");
+            }
+            this.creditSpecification = creditSpecification;
             return this;
         }
         @CustomType.Setter
         public Builder dataDisks(List<GetScalingConfigurationsConfigurationDataDisk> dataDisks) {
-            this.dataDisks = Objects.requireNonNull(dataDisks);
+            if (dataDisks == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "dataDisks");
+            }
+            this.dataDisks = dataDisks;
             return this;
         }
         public Builder dataDisks(GetScalingConfigurationsConfigurationDataDisk... dataDisks) {
@@ -330,67 +340,106 @@ public final class GetScalingConfigurationsConfiguration {
         }
         @CustomType.Setter
         public Builder hostName(String hostName) {
-            this.hostName = Objects.requireNonNull(hostName);
+            if (hostName == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "hostName");
+            }
+            this.hostName = hostName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
-            this.internetChargeType = Objects.requireNonNull(internetChargeType);
+            if (internetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "internetChargeType");
+            }
+            this.internetChargeType = internetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder internetMaxBandwidthIn(Integer internetMaxBandwidthIn) {
-            this.internetMaxBandwidthIn = Objects.requireNonNull(internetMaxBandwidthIn);
+            if (internetMaxBandwidthIn == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "internetMaxBandwidthIn");
+            }
+            this.internetMaxBandwidthIn = internetMaxBandwidthIn;
             return this;
         }
         @CustomType.Setter
         public Builder internetMaxBandwidthOut(Integer internetMaxBandwidthOut) {
-            this.internetMaxBandwidthOut = Objects.requireNonNull(internetMaxBandwidthOut);
+            if (internetMaxBandwidthOut == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "internetMaxBandwidthOut");
+            }
+            this.internetMaxBandwidthOut = internetMaxBandwidthOut;
             return this;
         }
         @CustomType.Setter
         public Builder lifecycleState(String lifecycleState) {
-            this.lifecycleState = Objects.requireNonNull(lifecycleState);
+            if (lifecycleState == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "lifecycleState");
+            }
+            this.lifecycleState = lifecycleState;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
-            this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
+            if (scalingGroupId == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "scalingGroupId");
+            }
+            this.scalingGroupId = scalingGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder spotPriceLimits(List<GetScalingConfigurationsConfigurationSpotPriceLimit> spotPriceLimits) {
-            this.spotPriceLimits = Objects.requireNonNull(spotPriceLimits);
+            if (spotPriceLimits == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "spotPriceLimits");
+            }
+            this.spotPriceLimits = spotPriceLimits;
             return this;
         }
         public Builder spotPriceLimits(GetScalingConfigurationsConfigurationSpotPriceLimit... spotPriceLimits) {
@@ -398,22 +447,34 @@ public final class GetScalingConfigurationsConfiguration {
         }
         @CustomType.Setter
         public Builder spotStrategy(String spotStrategy) {
-            this.spotStrategy = Objects.requireNonNull(spotStrategy);
+            if (spotStrategy == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "spotStrategy");
+            }
+            this.spotStrategy = spotStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder systemDiskCategory(String systemDiskCategory) {
-            this.systemDiskCategory = Objects.requireNonNull(systemDiskCategory);
+            if (systemDiskCategory == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "systemDiskCategory");
+            }
+            this.systemDiskCategory = systemDiskCategory;
             return this;
         }
         @CustomType.Setter
         public Builder systemDiskPerformanceLevel(String systemDiskPerformanceLevel) {
-            this.systemDiskPerformanceLevel = Objects.requireNonNull(systemDiskPerformanceLevel);
+            if (systemDiskPerformanceLevel == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "systemDiskPerformanceLevel");
+            }
+            this.systemDiskPerformanceLevel = systemDiskPerformanceLevel;
             return this;
         }
         @CustomType.Setter
         public Builder systemDiskSize(Integer systemDiskSize) {
-            this.systemDiskSize = Objects.requireNonNull(systemDiskSize);
+            if (systemDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "systemDiskSize");
+            }
+            this.systemDiskSize = systemDiskSize;
             return this;
         }
         public GetScalingConfigurationsConfiguration build() {

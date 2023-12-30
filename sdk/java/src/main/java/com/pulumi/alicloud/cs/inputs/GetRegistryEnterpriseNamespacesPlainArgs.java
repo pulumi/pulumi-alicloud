@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,7 +158,9 @@ public final class GetRegistryEnterpriseNamespacesPlainArgs extends com.pulumi.r
         }
 
         public GetRegistryEnterpriseNamespacesPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetRegistryEnterpriseNamespacesPlainArgs", "instanceId");
+            }
             return $;
         }
     }

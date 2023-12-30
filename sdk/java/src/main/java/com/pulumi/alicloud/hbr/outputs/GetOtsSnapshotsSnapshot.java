@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -322,107 +323,170 @@ public final class GetOtsSnapshotsSnapshot {
 
         @CustomType.Setter
         public Builder actualBytes(String actualBytes) {
-            this.actualBytes = Objects.requireNonNull(actualBytes);
+            if (actualBytes == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "actualBytes");
+            }
+            this.actualBytes = actualBytes;
             return this;
         }
         @CustomType.Setter
         public Builder backupType(String backupType) {
-            this.backupType = Objects.requireNonNull(backupType);
+            if (backupType == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "backupType");
+            }
+            this.backupType = backupType;
             return this;
         }
         @CustomType.Setter
         public Builder bytesTotal(String bytesTotal) {
-            this.bytesTotal = Objects.requireNonNull(bytesTotal);
+            if (bytesTotal == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "bytesTotal");
+            }
+            this.bytesTotal = bytesTotal;
             return this;
         }
         @CustomType.Setter
         public Builder completeTime(String completeTime) {
-            this.completeTime = Objects.requireNonNull(completeTime);
+            if (completeTime == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "completeTime");
+            }
+            this.completeTime = completeTime;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder createdTime(String createdTime) {
-            this.createdTime = Objects.requireNonNull(createdTime);
+            if (createdTime == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "createdTime");
+            }
+            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder jobId(String jobId) {
-            this.jobId = Objects.requireNonNull(jobId);
+            if (jobId == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "jobId");
+            }
+            this.jobId = jobId;
             return this;
         }
         @CustomType.Setter
         public Builder parentSnapshotHash(String parentSnapshotHash) {
-            this.parentSnapshotHash = Objects.requireNonNull(parentSnapshotHash);
+            if (parentSnapshotHash == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "parentSnapshotHash");
+            }
+            this.parentSnapshotHash = parentSnapshotHash;
             return this;
         }
         @CustomType.Setter
         public Builder rangeEnd(String rangeEnd) {
-            this.rangeEnd = Objects.requireNonNull(rangeEnd);
+            if (rangeEnd == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "rangeEnd");
+            }
+            this.rangeEnd = rangeEnd;
             return this;
         }
         @CustomType.Setter
         public Builder rangeStart(String rangeStart) {
-            this.rangeStart = Objects.requireNonNull(rangeStart);
+            if (rangeStart == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "rangeStart");
+            }
+            this.rangeStart = rangeStart;
             return this;
         }
         @CustomType.Setter
         public Builder retention(String retention) {
-            this.retention = Objects.requireNonNull(retention);
+            if (retention == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "retention");
+            }
+            this.retention = retention;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotHash(String snapshotHash) {
-            this.snapshotHash = Objects.requireNonNull(snapshotHash);
+            if (snapshotHash == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "snapshotHash");
+            }
+            this.snapshotHash = snapshotHash;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
-            this.snapshotId = Objects.requireNonNull(snapshotId);
+            if (snapshotId == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "snapshotId");
+            }
+            this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tableName(String tableName) {
-            this.tableName = Objects.requireNonNull(tableName);
+            if (tableName == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "tableName");
+            }
+            this.tableName = tableName;
             return this;
         }
         @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
-            this.updatedTime = Objects.requireNonNull(updatedTime);
+            if (updatedTime == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "updatedTime");
+            }
+            this.updatedTime = updatedTime;
             return this;
         }
         @CustomType.Setter
         public Builder vaultId(String vaultId) {
-            this.vaultId = Objects.requireNonNull(vaultId);
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetOtsSnapshotsSnapshot", "vaultId");
+            }
+            this.vaultId = vaultId;
             return this;
         }
         public GetOtsSnapshotsSnapshot build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -101,16 +102,19 @@ public final class ClusterBootstrapScriptNodeSelector {
 
         @CustomType.Setter
         public Builder nodeGroupId(@Nullable String nodeGroupId) {
+
             this.nodeGroupId = nodeGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroupName(@Nullable String nodeGroupName) {
+
             this.nodeGroupName = nodeGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroupTypes(@Nullable List<String> nodeGroupTypes) {
+
             this.nodeGroupTypes = nodeGroupTypes;
             return this;
         }
@@ -119,6 +123,7 @@ public final class ClusterBootstrapScriptNodeSelector {
         }
         @CustomType.Setter
         public Builder nodeNames(@Nullable List<String> nodeNames) {
+
             this.nodeNames = nodeNames;
             return this;
         }
@@ -127,7 +132,10 @@ public final class ClusterBootstrapScriptNodeSelector {
         }
         @CustomType.Setter
         public Builder nodeSelectType(String nodeSelectType) {
-            this.nodeSelectType = Objects.requireNonNull(nodeSelectType);
+            if (nodeSelectType == null) {
+              throw new MissingRequiredPropertyException("ClusterBootstrapScriptNodeSelector", "nodeSelectType");
+            }
+            this.nodeSelectType = nodeSelectType;
             return this;
         }
         public ClusterBootstrapScriptNodeSelector build() {

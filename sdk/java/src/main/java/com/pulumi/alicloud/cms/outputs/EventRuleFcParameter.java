@@ -100,26 +100,31 @@ public final class EventRuleFcParameter {
 
         @CustomType.Setter
         public Builder arn(@Nullable String arn) {
+
             this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder fcParametersId(@Nullable String fcParametersId) {
+
             this.fcParametersId = fcParametersId;
             return this;
         }
         @CustomType.Setter
         public Builder functionName(@Nullable String functionName) {
+
             this.functionName = functionName;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
+
             this.serviceName = serviceName;
             return this;
         }

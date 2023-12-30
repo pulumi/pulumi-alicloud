@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ehpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -296,97 +297,154 @@ public final class GetJobTemplatesTemplate {
 
         @CustomType.Setter
         public Builder arrayRequest(String arrayRequest) {
-            this.arrayRequest = Objects.requireNonNull(arrayRequest);
+            if (arrayRequest == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "arrayRequest");
+            }
+            this.arrayRequest = arrayRequest;
             return this;
         }
         @CustomType.Setter
         public Builder clockTime(String clockTime) {
-            this.clockTime = Objects.requireNonNull(clockTime);
+            if (clockTime == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "clockTime");
+            }
+            this.clockTime = clockTime;
             return this;
         }
         @CustomType.Setter
         public Builder commandLine(String commandLine) {
-            this.commandLine = Objects.requireNonNull(commandLine);
+            if (commandLine == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "commandLine");
+            }
+            this.commandLine = commandLine;
             return this;
         }
         @CustomType.Setter
         public Builder gpu(Integer gpu) {
-            this.gpu = Objects.requireNonNull(gpu);
+            if (gpu == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "gpu");
+            }
+            this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder jobTemplateId(String jobTemplateId) {
-            this.jobTemplateId = Objects.requireNonNull(jobTemplateId);
+            if (jobTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "jobTemplateId");
+            }
+            this.jobTemplateId = jobTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder jobTemplateName(String jobTemplateName) {
-            this.jobTemplateName = Objects.requireNonNull(jobTemplateName);
+            if (jobTemplateName == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "jobTemplateName");
+            }
+            this.jobTemplateName = jobTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder mem(String mem) {
-            this.mem = Objects.requireNonNull(mem);
+            if (mem == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "mem");
+            }
+            this.mem = mem;
             return this;
         }
         @CustomType.Setter
         public Builder node(Integer node) {
-            this.node = Objects.requireNonNull(node);
+            if (node == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "node");
+            }
+            this.node = node;
             return this;
         }
         @CustomType.Setter
         public Builder packagePath(String packagePath) {
-            this.packagePath = Objects.requireNonNull(packagePath);
+            if (packagePath == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "packagePath");
+            }
+            this.packagePath = packagePath;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder queue(String queue) {
-            this.queue = Objects.requireNonNull(queue);
+            if (queue == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "queue");
+            }
+            this.queue = queue;
             return this;
         }
         @CustomType.Setter
         public Builder reRunable(Boolean reRunable) {
-            this.reRunable = Objects.requireNonNull(reRunable);
+            if (reRunable == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "reRunable");
+            }
+            this.reRunable = reRunable;
             return this;
         }
         @CustomType.Setter
         public Builder runasUser(String runasUser) {
-            this.runasUser = Objects.requireNonNull(runasUser);
+            if (runasUser == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "runasUser");
+            }
+            this.runasUser = runasUser;
             return this;
         }
         @CustomType.Setter
         public Builder stderrRedirectPath(String stderrRedirectPath) {
-            this.stderrRedirectPath = Objects.requireNonNull(stderrRedirectPath);
+            if (stderrRedirectPath == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "stderrRedirectPath");
+            }
+            this.stderrRedirectPath = stderrRedirectPath;
             return this;
         }
         @CustomType.Setter
         public Builder stdoutRedirectPath(String stdoutRedirectPath) {
-            this.stdoutRedirectPath = Objects.requireNonNull(stdoutRedirectPath);
+            if (stdoutRedirectPath == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "stdoutRedirectPath");
+            }
+            this.stdoutRedirectPath = stdoutRedirectPath;
             return this;
         }
         @CustomType.Setter
         public Builder task(Integer task) {
-            this.task = Objects.requireNonNull(task);
+            if (task == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "task");
+            }
+            this.task = task;
             return this;
         }
         @CustomType.Setter
         public Builder thread(Integer thread) {
-            this.thread = Objects.requireNonNull(thread);
+            if (thread == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "thread");
+            }
+            this.thread = thread;
             return this;
         }
         @CustomType.Setter
         public Builder variables(String variables) {
-            this.variables = Objects.requireNonNull(variables);
+            if (variables == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplatesTemplate", "variables");
+            }
+            this.variables = variables;
             return this;
         }
         public GetJobTemplatesTemplate build() {

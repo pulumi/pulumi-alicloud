@@ -86,21 +86,25 @@ public final class ListenerXForwardedFor {
 
         @CustomType.Setter
         public Builder retriveClientIp(@Nullable Boolean retriveClientIp) {
+
             this.retriveClientIp = retriveClientIp;
             return this;
         }
         @CustomType.Setter
         public Builder retriveSlbId(@Nullable Boolean retriveSlbId) {
+
             this.retriveSlbId = retriveSlbId;
             return this;
         }
         @CustomType.Setter
         public Builder retriveSlbIp(@Nullable Boolean retriveSlbIp) {
+
             this.retriveSlbIp = retriveSlbIp;
             return this;
         }
         @CustomType.Setter
         public Builder retriveSlbProto(@Nullable Boolean retriveSlbProto) {
+
             this.retriveSlbProto = retriveSlbProto;
             return this;
         }

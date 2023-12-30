@@ -73,16 +73,19 @@ public final class ApplicationScalingRuleScalingRuleMetricScaleUpRules {
 
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder stabilizationWindowSeconds(@Nullable Integer stabilizationWindowSeconds) {
+
             this.stabilizationWindowSeconds = stabilizationWindowSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder step(@Nullable Integer step) {
+
             this.step = step;
             return this;
         }

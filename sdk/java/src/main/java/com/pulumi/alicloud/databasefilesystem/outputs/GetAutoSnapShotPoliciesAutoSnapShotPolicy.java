@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.databasefilesystem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -184,37 +185,58 @@ public final class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
 
         @CustomType.Setter
         public Builder appliedDbfsNumber(Integer appliedDbfsNumber) {
-            this.appliedDbfsNumber = Objects.requireNonNull(appliedDbfsNumber);
+            if (appliedDbfsNumber == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "appliedDbfsNumber");
+            }
+            this.appliedDbfsNumber = appliedDbfsNumber;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastModified(String lastModified) {
-            this.lastModified = Objects.requireNonNull(lastModified);
+            if (lastModified == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "lastModified");
+            }
+            this.lastModified = lastModified;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(String policyId) {
-            this.policyId = Objects.requireNonNull(policyId);
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "policyId");
+            }
+            this.policyId = policyId;
             return this;
         }
         @CustomType.Setter
         public Builder policyName(String policyName) {
-            this.policyName = Objects.requireNonNull(policyName);
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "policyName");
+            }
+            this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder repeatWeekdays(List<String> repeatWeekdays) {
-            this.repeatWeekdays = Objects.requireNonNull(repeatWeekdays);
+            if (repeatWeekdays == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "repeatWeekdays");
+            }
+            this.repeatWeekdays = repeatWeekdays;
             return this;
         }
         public Builder repeatWeekdays(String... repeatWeekdays) {
@@ -222,22 +244,34 @@ public final class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
         }
         @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
-            this.retentionDays = Objects.requireNonNull(retentionDays);
+            if (retentionDays == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "retentionDays");
+            }
+            this.retentionDays = retentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusDetail(String statusDetail) {
-            this.statusDetail = Objects.requireNonNull(statusDetail);
+            if (statusDetail == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "statusDetail");
+            }
+            this.statusDetail = statusDetail;
             return this;
         }
         @CustomType.Setter
         public Builder timePoints(List<String> timePoints) {
-            this.timePoints = Objects.requireNonNull(timePoints);
+            if (timePoints == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesAutoSnapShotPolicy", "timePoints");
+            }
+            this.timePoints = timePoints;
             return this;
         }
         public Builder timePoints(String... timePoints) {

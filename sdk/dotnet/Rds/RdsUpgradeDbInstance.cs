@@ -17,6 +17,81 @@ namespace Pulumi.AliCloud.Rds
     /// &gt; **NOTE:** Available since v1.153.0+.
     /// 
     /// ## Example Usage
+    /// ### Create a RDS PostgreSQL upgrade instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "PostgreSQL",
+    ///         EngineVersion = "13.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "PostgreSQL",
+    ///         EngineVersion = "13.0",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var exampleCrossRegions = AliCloud.Rds.GetCrossRegions.Invoke();
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
+    ///     {
+    ///         Engine = "PostgreSQL",
+    ///         EngineVersion = "13.0",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceType = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = "terraform-example",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         MonitoringPeriod = 60,
+    ///     });
+    /// 
+    ///     var exampleRdsUpgradeDbInstance = new AliCloud.Rds.RdsUpgradeDbInstance("exampleRdsUpgradeDbInstance", new()
+    ///     {
+    ///         SourceDbInstanceId = exampleInstance.Id,
+    ///         TargetMajorVersion = "14.0",
+    ///         DbInstanceClass = exampleInstance.InstanceType,
+    ///         DbInstanceStorage = exampleInstance.InstanceStorage,
+    ///         DbInstanceStorageType = exampleInstance.DbInstanceStorageType,
+    ///         InstanceNetworkType = "VPC",
+    ///         CollectStatMode = "After",
+    ///         SwitchOver = "false",
+    ///         PaymentType = "PayAsYouGo",
+    ///         DbInstanceDescription = "terraform-example",
+    ///         VswitchId = exampleSwitch.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -9,6 +9,7 @@ import com.pulumi.alicloud.rds.inputs.InstancePgHbaConfArgs;
 import com.pulumi.alicloud.rds.inputs.InstanceServerlessConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -3419,10 +3420,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
-            $.instanceStorage = Objects.requireNonNull($.instanceStorage, "expected parameter 'instanceStorage' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "engine");
+            }
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "engineVersion");
+            }
+            if ($.instanceStorage == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceStorage");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceType");
+            }
             return $;
         }
     }

@@ -135,6 +135,20 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int? ReadinessProbeTimeoutSeconds;
         /// <summary>
+        /// Grant certain permissions to processes within container. Optional values:
+        /// - NET_ADMIN: Allow network management tasks to be performed.
+        /// - NET_RAW: Allow raw sockets.
+        /// </summary>
+        public readonly ImmutableArray<string> SecurityContextCapabilityAdds;
+        /// <summary>
+        /// Mounts the container's root filesystem as read-only.
+        /// </summary>
+        public readonly bool? SecurityContextReadOnlyRootFileSystem;
+        /// <summary>
+        /// Specifies user ID  under which all processes run.
+        /// </summary>
+        public readonly int? SecurityContextRunAsUser;
+        /// <summary>
         /// The structure of volumeMounts. 
         /// See `volume_mounts` below for details.
         /// </summary>
@@ -206,6 +220,12 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             int? readinessProbeTimeoutSeconds,
 
+            ImmutableArray<string> securityContextCapabilityAdds,
+
+            bool? securityContextReadOnlyRootFileSystem,
+
+            int? securityContextRunAsUser,
+
             ImmutableArray<Outputs.EciScalingConfigurationContainerVolumeMount> volumeMounts,
 
             string? workingDir)
@@ -240,6 +260,9 @@ namespace Pulumi.AliCloud.Ess.Outputs
             ReadinessProbeSuccessThreshold = readinessProbeSuccessThreshold;
             ReadinessProbeTcpSocketPort = readinessProbeTcpSocketPort;
             ReadinessProbeTimeoutSeconds = readinessProbeTimeoutSeconds;
+            SecurityContextCapabilityAdds = securityContextCapabilityAdds;
+            SecurityContextReadOnlyRootFileSystem = securityContextReadOnlyRootFileSystem;
+            SecurityContextRunAsUser = securityContextRunAsUser;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
         }

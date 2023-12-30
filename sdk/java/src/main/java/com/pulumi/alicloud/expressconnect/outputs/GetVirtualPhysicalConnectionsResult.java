@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.alicloud.expressconnect.outputs.GetVirtualPhysicalConnectionsConnection;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -176,12 +177,16 @@ public final class GetVirtualPhysicalConnectionsResult {
 
         @CustomType.Setter
         public Builder businessStatus(@Nullable String businessStatus) {
+
             this.businessStatus = businessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder connections(List<GetVirtualPhysicalConnectionsConnection> connections) {
-            this.connections = Objects.requireNonNull(connections);
+            if (connections == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsResult", "connections");
+            }
+            this.connections = connections;
             return this;
         }
         public Builder connections(GetVirtualPhysicalConnectionsConnection... connections) {
@@ -189,12 +194,18 @@ public final class GetVirtualPhysicalConnectionsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -202,17 +213,22 @@ public final class GetVirtualPhysicalConnectionsResult {
         }
         @CustomType.Setter
         public Builder isConfirmed(@Nullable Boolean isConfirmed) {
+
             this.isConfirmed = isConfirmed;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetVirtualPhysicalConnectionsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -220,16 +236,19 @@ public final class GetVirtualPhysicalConnectionsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder parentPhysicalConnectionId(@Nullable String parentPhysicalConnectionId) {
+
             this.parentPhysicalConnectionId = parentPhysicalConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder virtualPhysicalConnectionIds(@Nullable List<String> virtualPhysicalConnectionIds) {
+
             this.virtualPhysicalConnectionIds = virtualPhysicalConnectionIds;
             return this;
         }
@@ -238,11 +257,13 @@ public final class GetVirtualPhysicalConnectionsResult {
         }
         @CustomType.Setter
         public Builder virtualPhysicalConnectionStatus(@Nullable String virtualPhysicalConnectionStatus) {
+
             this.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
             return this;
         }
         @CustomType.Setter
         public Builder vlanIds(@Nullable List<Integer> vlanIds) {
+
             this.vlanIds = vlanIds;
             return this;
         }
@@ -251,6 +272,7 @@ public final class GetVirtualPhysicalConnectionsResult {
         }
         @CustomType.Setter
         public Builder vpconnAliUid(@Nullable String vpconnAliUid) {
+
             this.vpconnAliUid = vpconnAliUid;
             return this;
         }

@@ -16,6 +16,23 @@ public final class EciScalingConfigurationInitContainerEnvironmentVarArgs extend
     public static final EciScalingConfigurationInitContainerEnvironmentVarArgs Empty = new EciScalingConfigurationInitContainerEnvironmentVarArgs();
 
     /**
+     * Environment variable value reference. Optional values:
+     * - status.podIP: IP of pod.
+     * 
+     */
+    @Import(name="fieldRefFieldPath")
+    private @Nullable Output<String> fieldRefFieldPath;
+
+    /**
+     * @return Environment variable value reference. Optional values:
+     * - status.podIP: IP of pod.
+     * 
+     */
+    public Optional<Output<String>> fieldRefFieldPath() {
+        return Optional.ofNullable(this.fieldRefFieldPath);
+    }
+
+    /**
      * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
      * digits, and underscores (_). It cannot start with a digit.
      * 
@@ -50,6 +67,7 @@ public final class EciScalingConfigurationInitContainerEnvironmentVarArgs extend
     private EciScalingConfigurationInitContainerEnvironmentVarArgs() {}
 
     private EciScalingConfigurationInitContainerEnvironmentVarArgs(EciScalingConfigurationInitContainerEnvironmentVarArgs $) {
+        this.fieldRefFieldPath = $.fieldRefFieldPath;
         this.key = $.key;
         this.value = $.value;
     }
@@ -70,6 +88,29 @@ public final class EciScalingConfigurationInitContainerEnvironmentVarArgs extend
 
         public Builder(EciScalingConfigurationInitContainerEnvironmentVarArgs defaults) {
             $ = new EciScalingConfigurationInitContainerEnvironmentVarArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param fieldRefFieldPath Environment variable value reference. Optional values:
+         * - status.podIP: IP of pod.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fieldRefFieldPath(@Nullable Output<String> fieldRefFieldPath) {
+            $.fieldRefFieldPath = fieldRefFieldPath;
+            return this;
+        }
+
+        /**
+         * @param fieldRefFieldPath Environment variable value reference. Optional values:
+         * - status.podIP: IP of pod.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fieldRefFieldPath(String fieldRefFieldPath) {
+            return fieldRefFieldPath(Output.of(fieldRefFieldPath));
         }
 
         /**

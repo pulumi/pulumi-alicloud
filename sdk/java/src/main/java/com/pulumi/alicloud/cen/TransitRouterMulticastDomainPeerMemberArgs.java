@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class TransitRouterMulticastDomainPeerMemberArgs extends com.pulumi
         }
 
         public TransitRouterMulticastDomainPeerMemberArgs build() {
-            $.groupIpAddress = Objects.requireNonNull($.groupIpAddress, "expected parameter 'groupIpAddress' to be non-null");
-            $.peerTransitRouterMulticastDomainId = Objects.requireNonNull($.peerTransitRouterMulticastDomainId, "expected parameter 'peerTransitRouterMulticastDomainId' to be non-null");
-            $.transitRouterMulticastDomainId = Objects.requireNonNull($.transitRouterMulticastDomainId, "expected parameter 'transitRouterMulticastDomainId' to be non-null");
+            if ($.groupIpAddress == null) {
+                throw new MissingRequiredPropertyException("TransitRouterMulticastDomainPeerMemberArgs", "groupIpAddress");
+            }
+            if ($.peerTransitRouterMulticastDomainId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterMulticastDomainPeerMemberArgs", "peerTransitRouterMulticastDomainId");
+            }
+            if ($.transitRouterMulticastDomainId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterMulticastDomainPeerMemberArgs", "transitRouterMulticastDomainId");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.quotas.outputs;
 import com.pulumi.alicloud.quotas.outputs.GetQuotaAlarmsAlarm;
 import com.pulumi.alicloud.quotas.outputs.GetQuotaAlarmsQuotaDimension;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -108,7 +109,10 @@ public final class GetQuotaAlarmsResult {
 
         @CustomType.Setter
         public Builder alarms(List<GetQuotaAlarmsAlarm> alarms) {
-            this.alarms = Objects.requireNonNull(alarms);
+            if (alarms == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsResult", "alarms");
+            }
+            this.alarms = alarms;
             return this;
         }
         public Builder alarms(GetQuotaAlarmsAlarm... alarms) {
@@ -116,17 +120,24 @@ public final class GetQuotaAlarmsResult {
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -134,12 +145,16 @@ public final class GetQuotaAlarmsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -147,26 +162,31 @@ public final class GetQuotaAlarmsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(@Nullable String productCode) {
+
             this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaActionCode(@Nullable String quotaActionCode) {
+
             this.quotaActionCode = quotaActionCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaAlarmName(@Nullable String quotaAlarmName) {
+
             this.quotaAlarmName = quotaAlarmName;
             return this;
         }
         @CustomType.Setter
         public Builder quotaDimensions(@Nullable List<GetQuotaAlarmsQuotaDimension> quotaDimensions) {
+
             this.quotaDimensions = quotaDimensions;
             return this;
         }

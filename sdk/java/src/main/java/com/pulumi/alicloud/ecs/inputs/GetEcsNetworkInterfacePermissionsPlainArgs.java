@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -184,7 +185,9 @@ public final class GetEcsNetworkInterfacePermissionsPlainArgs extends com.pulumi
         }
 
         public GetEcsNetworkInterfacePermissionsPlainArgs build() {
-            $.networkInterfaceId = Objects.requireNonNull($.networkInterfaceId, "expected parameter 'networkInterfaceId' to be non-null");
+            if ($.networkInterfaceId == null) {
+                throw new MissingRequiredPropertyException("GetEcsNetworkInterfacePermissionsPlainArgs", "networkInterfaceId");
+            }
             return $;
         }
     }

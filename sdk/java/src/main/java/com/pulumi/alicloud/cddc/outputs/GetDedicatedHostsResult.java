@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cddc.outputs;
 
 import com.pulumi.alicloud.cddc.outputs.GetDedicatedHostsHost;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -115,27 +116,36 @@ public final class GetDedicatedHostsResult {
 
         @CustomType.Setter
         public Builder allocationStatus(@Nullable String allocationStatus) {
+
             this.allocationStatus = allocationStatus;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostGroupId(String dedicatedHostGroupId) {
-            this.dedicatedHostGroupId = Objects.requireNonNull(dedicatedHostGroupId);
+            if (dedicatedHostGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsResult", "dedicatedHostGroupId");
+            }
+            this.dedicatedHostGroupId = dedicatedHostGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder hostType(@Nullable String hostType) {
+
             this.hostType = hostType;
             return this;
         }
         @CustomType.Setter
         public Builder hosts(List<GetDedicatedHostsHost> hosts) {
-            this.hosts = Objects.requireNonNull(hosts);
+            if (hosts == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsResult", "hosts");
+            }
+            this.hosts = hosts;
             return this;
         }
         public Builder hosts(GetDedicatedHostsHost... hosts) {
@@ -143,12 +153,18 @@ public final class GetDedicatedHostsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -156,26 +172,31 @@ public final class GetDedicatedHostsResult {
         }
         @CustomType.Setter
         public Builder orderId(@Nullable String orderId) {
+
             this.orderId = orderId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

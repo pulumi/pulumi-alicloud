@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,7 +199,9 @@ public final class GetGatewayFileSharesArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetGatewayFileSharesArgs build() {
-            $.gatewayId = Objects.requireNonNull($.gatewayId, "expected parameter 'gatewayId' to be non-null");
+            if ($.gatewayId == null) {
+                throw new MissingRequiredPropertyException("GetGatewayFileSharesArgs", "gatewayId");
+            }
             return $;
         }
     }

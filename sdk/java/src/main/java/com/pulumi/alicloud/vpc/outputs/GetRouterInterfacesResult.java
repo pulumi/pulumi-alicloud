@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetRouterInterfacesInterface;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,12 +199,18 @@ public final class GetRouterInterfacesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -211,7 +218,10 @@ public final class GetRouterInterfacesResult {
         }
         @CustomType.Setter
         public Builder interfaces(List<GetRouterInterfacesInterface> interfaces) {
-            this.interfaces = Objects.requireNonNull(interfaces);
+            if (interfaces == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesResult", "interfaces");
+            }
+            this.interfaces = interfaces;
             return this;
         }
         public Builder interfaces(GetRouterInterfacesInterface... interfaces) {
@@ -219,12 +229,16 @@ public final class GetRouterInterfacesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -232,41 +246,49 @@ public final class GetRouterInterfacesResult {
         }
         @CustomType.Setter
         public Builder oppositeInterfaceId(@Nullable String oppositeInterfaceId) {
+
             this.oppositeInterfaceId = oppositeInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeInterfaceOwnerId(@Nullable String oppositeInterfaceOwnerId) {
+
             this.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder role(@Nullable String role) {
+
             this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
+
             this.routerId = routerId;
             return this;
         }
         @CustomType.Setter
         public Builder routerType(@Nullable String routerType) {
+
             this.routerType = routerType;
             return this;
         }
         @CustomType.Setter
         public Builder specification(@Nullable String specification) {
+
             this.specification = specification;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

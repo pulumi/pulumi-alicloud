@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nlb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -169,52 +170,82 @@ public final class GetServerGroupServerAttachmentsAttachment {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
-            this.serverGroupId = Objects.requireNonNull(serverGroupId);
+            if (serverGroupId == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "serverGroupId");
+            }
+            this.serverGroupId = serverGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder serverId(String serverId) {
-            this.serverId = Objects.requireNonNull(serverId);
+            if (serverId == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "serverId");
+            }
+            this.serverId = serverId;
             return this;
         }
         @CustomType.Setter
         public Builder serverIp(String serverIp) {
-            this.serverIp = Objects.requireNonNull(serverIp);
+            if (serverIp == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "serverIp");
+            }
+            this.serverIp = serverIp;
             return this;
         }
         @CustomType.Setter
         public Builder serverType(String serverType) {
-            this.serverType = Objects.requireNonNull(serverType);
+            if (serverType == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "serverType");
+            }
+            this.serverType = serverType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupServerAttachmentsAttachment", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetServerGroupServerAttachmentsAttachment build() {

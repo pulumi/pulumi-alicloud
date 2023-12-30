@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class ClusterNodeGroupSpotBidPrice {
 
         @CustomType.Setter
         public Builder bidPrice(Integer bidPrice) {
-            this.bidPrice = Objects.requireNonNull(bidPrice);
+            if (bidPrice == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroupSpotBidPrice", "bidPrice");
+            }
+            this.bidPrice = bidPrice;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroupSpotBidPrice", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         public ClusterNodeGroupSpotBidPrice build() {

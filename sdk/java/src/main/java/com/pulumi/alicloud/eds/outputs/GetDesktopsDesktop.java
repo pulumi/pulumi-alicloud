@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -254,37 +255,58 @@ public final class GetDesktopsDesktop {
 
         @CustomType.Setter
         public Builder cpu(Integer cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder desktopId(String desktopId) {
-            this.desktopId = Objects.requireNonNull(desktopId);
+            if (desktopId == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "desktopId");
+            }
+            this.desktopId = desktopId;
             return this;
         }
         @CustomType.Setter
         public Builder desktopName(String desktopName) {
-            this.desktopName = Objects.requireNonNull(desktopName);
+            if (desktopName == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "desktopName");
+            }
+            this.desktopName = desktopName;
             return this;
         }
         @CustomType.Setter
         public Builder desktopType(String desktopType) {
-            this.desktopType = Objects.requireNonNull(desktopType);
+            if (desktopType == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "desktopType");
+            }
+            this.desktopType = desktopType;
             return this;
         }
         @CustomType.Setter
         public Builder directoryId(String directoryId) {
-            this.directoryId = Objects.requireNonNull(directoryId);
+            if (directoryId == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "directoryId");
+            }
+            this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder endUserIds(List<String> endUserIds) {
-            this.endUserIds = Objects.requireNonNull(endUserIds);
+            if (endUserIds == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "endUserIds");
+            }
+            this.endUserIds = endUserIds;
             return this;
         }
         public Builder endUserIds(String... endUserIds) {
@@ -292,47 +314,74 @@ public final class GetDesktopsDesktop {
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder memory(String memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
-            this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
+            if (networkInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "networkInterfaceId");
+            }
+            this.networkInterfaceId = networkInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder policyGroupId(String policyGroupId) {
-            this.policyGroupId = Objects.requireNonNull(policyGroupId);
+            if (policyGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "policyGroupId");
+            }
+            this.policyGroupId = policyGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder systemDiskSize(Integer systemDiskSize) {
-            this.systemDiskSize = Objects.requireNonNull(systemDiskSize);
+            if (systemDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsDesktop", "systemDiskSize");
+            }
+            this.systemDiskSize = systemDiskSize;
             return this;
         }
         public GetDesktopsDesktop build() {

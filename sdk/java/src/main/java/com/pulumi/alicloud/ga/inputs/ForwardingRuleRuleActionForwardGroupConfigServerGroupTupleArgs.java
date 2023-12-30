@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArg
         }
 
         public ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs build() {
-            $.endpointGroupId = Objects.requireNonNull($.endpointGroupId, "expected parameter 'endpointGroupId' to be non-null");
+            if ($.endpointGroupId == null) {
+                throw new MissingRequiredPropertyException("ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs", "endpointGroupId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetDynamicTagGroupsGroupMatchExpress;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,22 +115,34 @@ public final class GetDynamicTagGroupsGroup {
 
         @CustomType.Setter
         public Builder dynamicTagRuleId(String dynamicTagRuleId) {
-            this.dynamicTagRuleId = Objects.requireNonNull(dynamicTagRuleId);
+            if (dynamicTagRuleId == null) {
+              throw new MissingRequiredPropertyException("GetDynamicTagGroupsGroup", "dynamicTagRuleId");
+            }
+            this.dynamicTagRuleId = dynamicTagRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDynamicTagGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder matchExpressFilterRelation(String matchExpressFilterRelation) {
-            this.matchExpressFilterRelation = Objects.requireNonNull(matchExpressFilterRelation);
+            if (matchExpressFilterRelation == null) {
+              throw new MissingRequiredPropertyException("GetDynamicTagGroupsGroup", "matchExpressFilterRelation");
+            }
+            this.matchExpressFilterRelation = matchExpressFilterRelation;
             return this;
         }
         @CustomType.Setter
         public Builder matchExpresses(List<GetDynamicTagGroupsGroupMatchExpress> matchExpresses) {
-            this.matchExpresses = Objects.requireNonNull(matchExpresses);
+            if (matchExpresses == null) {
+              throw new MissingRequiredPropertyException("GetDynamicTagGroupsGroup", "matchExpresses");
+            }
+            this.matchExpresses = matchExpresses;
             return this;
         }
         public Builder matchExpresses(GetDynamicTagGroupsGroupMatchExpress... matchExpresses) {
@@ -137,12 +150,18 @@ public final class GetDynamicTagGroupsGroup {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDynamicTagGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tagKey(String tagKey) {
-            this.tagKey = Objects.requireNonNull(tagKey);
+            if (tagKey == null) {
+              throw new MissingRequiredPropertyException("GetDynamicTagGroupsGroup", "tagKey");
+            }
+            this.tagKey = tagKey;
             return this;
         }
         public GetDynamicTagGroupsGroup build() {

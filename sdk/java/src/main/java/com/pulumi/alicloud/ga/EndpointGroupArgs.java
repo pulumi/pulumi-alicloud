@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ga.inputs.EndpointGroupEndpointConfigurationArgs;
 import com.pulumi.alicloud.ga.inputs.EndpointGroupPortOverridesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -659,10 +660,18 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EndpointGroupArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.endpointConfigurations = Objects.requireNonNull($.endpointConfigurations, "expected parameter 'endpointConfigurations' to be non-null");
-            $.endpointGroupRegion = Objects.requireNonNull($.endpointGroupRegion, "expected parameter 'endpointGroupRegion' to be non-null");
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("EndpointGroupArgs", "acceleratorId");
+            }
+            if ($.endpointConfigurations == null) {
+                throw new MissingRequiredPropertyException("EndpointGroupArgs", "endpointConfigurations");
+            }
+            if ($.endpointGroupRegion == null) {
+                throw new MissingRequiredPropertyException("EndpointGroupArgs", "endpointGroupRegion");
+            }
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("EndpointGroupArgs", "listenerId");
+            }
             return $;
         }
     }

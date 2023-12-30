@@ -7,6 +7,7 @@ import com.pulumi.alicloud.dcdn.inputs.WafRuleConditionArgs;
 import com.pulumi.alicloud.dcdn.inputs.WafRuleRateLimitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -647,8 +648,12 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WafRuleArgs build() {
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("WafRuleArgs", "policyId");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("WafRuleArgs", "ruleName");
+            }
             return $;
         }
     }

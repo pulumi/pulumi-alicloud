@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ddos;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,10 +236,18 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PortArgs build() {
-            $.frontendPort = Objects.requireNonNull($.frontendPort, "expected parameter 'frontendPort' to be non-null");
-            $.frontendProtocol = Objects.requireNonNull($.frontendProtocol, "expected parameter 'frontendProtocol' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.realServers = Objects.requireNonNull($.realServers, "expected parameter 'realServers' to be non-null");
+            if ($.frontendPort == null) {
+                throw new MissingRequiredPropertyException("PortArgs", "frontendPort");
+            }
+            if ($.frontendProtocol == null) {
+                throw new MissingRequiredPropertyException("PortArgs", "frontendProtocol");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("PortArgs", "instanceId");
+            }
+            if ($.realServers == null) {
+                throw new MissingRequiredPropertyException("PortArgs", "realServers");
+            }
             return $;
         }
     }

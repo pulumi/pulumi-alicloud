@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -213,62 +214,98 @@ public final class GetFileSystemsSystem {
 
         @CustomType.Setter
         public Builder capacity(Integer capacity) {
-            this.capacity = Objects.requireNonNull(capacity);
+            if (capacity == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "capacity");
+            }
+            this.capacity = capacity;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder encryptType(Integer encryptType) {
-            this.encryptType = Objects.requireNonNull(encryptType);
+            if (encryptType == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "encryptType");
+            }
+            this.encryptType = encryptType;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemType(String fileSystemType) {
-            this.fileSystemType = Objects.requireNonNull(fileSystemType);
+            if (fileSystemType == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "fileSystemType");
+            }
+            this.fileSystemType = fileSystemType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyId(String kmsKeyId) {
-            this.kmsKeyId = Objects.requireNonNull(kmsKeyId);
+            if (kmsKeyId == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "kmsKeyId");
+            }
+            this.kmsKeyId = kmsKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder meteredSize(Integer meteredSize) {
-            this.meteredSize = Objects.requireNonNull(meteredSize);
+            if (meteredSize == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "meteredSize");
+            }
+            this.meteredSize = meteredSize;
             return this;
         }
         @CustomType.Setter
         public Builder protocolType(String protocolType) {
-            this.protocolType = Objects.requireNonNull(protocolType);
+            if (protocolType == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "protocolType");
+            }
+            this.protocolType = protocolType;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(String storageType) {
-            this.storageType = Objects.requireNonNull(storageType);
+            if (storageType == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "storageType");
+            }
+            this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsSystem", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetFileSystemsSystem build() {

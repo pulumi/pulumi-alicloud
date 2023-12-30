@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,10 +226,18 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public ApiHttpServiceConfigArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.method = Objects.requireNonNull($.method, "expected parameter 'method' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.timeout = Objects.requireNonNull($.timeout, "expected parameter 'timeout' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("ApiHttpServiceConfigArgs", "address");
+            }
+            if ($.method == null) {
+                throw new MissingRequiredPropertyException("ApiHttpServiceConfigArgs", "method");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("ApiHttpServiceConfigArgs", "path");
+            }
+            if ($.timeout == null) {
+                throw new MissingRequiredPropertyException("ApiHttpServiceConfigArgs", "timeout");
+            }
             return $;
         }
     }

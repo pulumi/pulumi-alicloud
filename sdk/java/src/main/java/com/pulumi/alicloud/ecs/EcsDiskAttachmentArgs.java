@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -262,8 +263,12 @@ public final class EcsDiskAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         public EcsDiskAttachmentArgs build() {
-            $.diskId = Objects.requireNonNull($.diskId, "expected parameter 'diskId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.diskId == null) {
+                throw new MissingRequiredPropertyException("EcsDiskAttachmentArgs", "diskId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("EcsDiskAttachmentArgs", "instanceId");
+            }
             return $;
         }
     }

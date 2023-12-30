@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ebs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -216,72 +217,114 @@ public final class GetDiskReplicaPairsPair {
 
         @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destinationDiskId(String destinationDiskId) {
-            this.destinationDiskId = Objects.requireNonNull(destinationDiskId);
+            if (destinationDiskId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "destinationDiskId");
+            }
+            this.destinationDiskId = destinationDiskId;
             return this;
         }
         @CustomType.Setter
         public Builder destinationRegionId(String destinationRegionId) {
-            this.destinationRegionId = Objects.requireNonNull(destinationRegionId);
+            if (destinationRegionId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "destinationRegionId");
+            }
+            this.destinationRegionId = destinationRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder destinationZoneId(String destinationZoneId) {
-            this.destinationZoneId = Objects.requireNonNull(destinationZoneId);
+            if (destinationZoneId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "destinationZoneId");
+            }
+            this.destinationZoneId = destinationZoneId;
             return this;
         }
         @CustomType.Setter
         public Builder diskId(String diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pairName(String pairName) {
-            this.pairName = Objects.requireNonNull(pairName);
+            if (pairName == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "pairName");
+            }
+            this.pairName = pairName;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder replicaPairId(String replicaPairId) {
-            this.replicaPairId = Objects.requireNonNull(replicaPairId);
+            if (replicaPairId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "replicaPairId");
+            }
+            this.replicaPairId = replicaPairId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder rpo(String rpo) {
-            this.rpo = Objects.requireNonNull(rpo);
+            if (rpo == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "rpo");
+            }
+            this.rpo = rpo;
             return this;
         }
         @CustomType.Setter
         public Builder sourceZoneId(String sourceZoneId) {
-            this.sourceZoneId = Objects.requireNonNull(sourceZoneId);
+            if (sourceZoneId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "sourceZoneId");
+            }
+            this.sourceZoneId = sourceZoneId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaPairsPair", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetDiskReplicaPairsPair build() {

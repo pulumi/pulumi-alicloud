@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cfg.inputs;
 import com.pulumi.alicloud.cfg.inputs.CompliancePackConfigRuleConfigRuleParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -125,7 +126,9 @@ public final class CompliancePackConfigRuleArgs extends com.pulumi.resources.Res
         }
 
         public CompliancePackConfigRuleArgs build() {
-            $.managedRuleIdentifier = Objects.requireNonNull($.managedRuleIdentifier, "expected parameter 'managedRuleIdentifier' to be non-null");
+            if ($.managedRuleIdentifier == null) {
+                throw new MissingRequiredPropertyException("CompliancePackConfigRuleArgs", "managedRuleIdentifier");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.alicloud.slb.outputs.GetZonesZoneSupportedResource;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -110,22 +111,34 @@ public final class GetZonesZone {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder masterZoneId(String masterZoneId) {
-            this.masterZoneId = Objects.requireNonNull(masterZoneId);
+            if (masterZoneId == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "masterZoneId");
+            }
+            this.masterZoneId = masterZoneId;
             return this;
         }
         @CustomType.Setter
         public Builder slaveZoneId(String slaveZoneId) {
-            this.slaveZoneId = Objects.requireNonNull(slaveZoneId);
+            if (slaveZoneId == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "slaveZoneId");
+            }
+            this.slaveZoneId = slaveZoneId;
             return this;
         }
         @CustomType.Setter
         public Builder slbSlaveZoneIds(List<String> slbSlaveZoneIds) {
-            this.slbSlaveZoneIds = Objects.requireNonNull(slbSlaveZoneIds);
+            if (slbSlaveZoneIds == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "slbSlaveZoneIds");
+            }
+            this.slbSlaveZoneIds = slbSlaveZoneIds;
             return this;
         }
         public Builder slbSlaveZoneIds(String... slbSlaveZoneIds) {
@@ -133,7 +146,10 @@ public final class GetZonesZone {
         }
         @CustomType.Setter
         public Builder supportedResources(List<GetZonesZoneSupportedResource> supportedResources) {
-            this.supportedResources = Objects.requireNonNull(supportedResources);
+            if (supportedResources == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "supportedResources");
+            }
+            this.supportedResources = supportedResources;
             return this;
         }
         public Builder supportedResources(GetZonesZoneSupportedResource... supportedResources) {

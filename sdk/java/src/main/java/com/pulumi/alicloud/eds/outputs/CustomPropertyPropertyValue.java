@@ -58,11 +58,13 @@ public final class CustomPropertyPropertyValue {
 
         @CustomType.Setter
         public Builder propertyValue(@Nullable String propertyValue) {
+
             this.propertyValue = propertyValue;
             return this;
         }
         @CustomType.Setter
         public Builder propertyValueId(@Nullable String propertyValueId) {
+
             this.propertyValueId = propertyValueId;
             return this;
         }

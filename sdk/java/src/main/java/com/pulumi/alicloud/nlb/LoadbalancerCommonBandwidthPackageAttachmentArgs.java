@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nlb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class LoadbalancerCommonBandwidthPackageAttachmentArgs extends com.
         }
 
         public LoadbalancerCommonBandwidthPackageAttachmentArgs build() {
-            $.bandwidthPackageId = Objects.requireNonNull($.bandwidthPackageId, "expected parameter 'bandwidthPackageId' to be non-null");
-            $.loadBalancerId = Objects.requireNonNull($.loadBalancerId, "expected parameter 'loadBalancerId' to be non-null");
+            if ($.bandwidthPackageId == null) {
+                throw new MissingRequiredPropertyException("LoadbalancerCommonBandwidthPackageAttachmentArgs", "bandwidthPackageId");
+            }
+            if ($.loadBalancerId == null) {
+                throw new MissingRequiredPropertyException("LoadbalancerCommonBandwidthPackageAttachmentArgs", "loadBalancerId");
+            }
             return $;
         }
     }

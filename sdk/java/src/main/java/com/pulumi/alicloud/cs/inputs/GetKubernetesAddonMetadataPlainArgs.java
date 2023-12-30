@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -117,9 +118,15 @@ public final class GetKubernetesAddonMetadataPlainArgs extends com.pulumi.resour
         }
 
         public GetKubernetesAddonMetadataPlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesAddonMetadataPlainArgs", "clusterId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesAddonMetadataPlainArgs", "name");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesAddonMetadataPlainArgs", "version");
+            }
             return $;
         }
     }

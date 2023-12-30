@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -263,8 +264,12 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         public NodePoolScalingConfigArgs build() {
-            $.maxSize = Objects.requireNonNull($.maxSize, "expected parameter 'maxSize' to be non-null");
-            $.minSize = Objects.requireNonNull($.minSize, "expected parameter 'minSize' to be non-null");
+            if ($.maxSize == null) {
+                throw new MissingRequiredPropertyException("NodePoolScalingConfigArgs", "maxSize");
+            }
+            if ($.minSize == null) {
+                throw new MissingRequiredPropertyException("NodePoolScalingConfigArgs", "minSize");
+            }
             return $;
         }
     }

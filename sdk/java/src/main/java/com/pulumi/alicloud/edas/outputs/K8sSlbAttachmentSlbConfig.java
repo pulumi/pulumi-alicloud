@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas.outputs;
 
 import com.pulumi.alicloud.edas.outputs.K8sSlbAttachmentSlbConfigPortMapping;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -116,12 +117,16 @@ public final class K8sSlbAttachmentSlbConfig {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder portMappings(List<K8sSlbAttachmentSlbConfigPortMapping> portMappings) {
-            this.portMappings = Objects.requireNonNull(portMappings);
+            if (portMappings == null) {
+              throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfig", "portMappings");
+            }
+            this.portMappings = portMappings;
             return this;
         }
         public Builder portMappings(K8sSlbAttachmentSlbConfigPortMapping... portMappings) {
@@ -129,22 +134,30 @@ public final class K8sSlbAttachmentSlbConfig {
         }
         @CustomType.Setter
         public Builder scheduler(String scheduler) {
-            this.scheduler = Objects.requireNonNull(scheduler);
+            if (scheduler == null) {
+              throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfig", "scheduler");
+            }
+            this.scheduler = scheduler;
             return this;
         }
         @CustomType.Setter
         public Builder slbId(@Nullable String slbId) {
+
             this.slbId = slbId;
             return this;
         }
         @CustomType.Setter
         public Builder specification(@Nullable String specification) {
+
             this.specification = specification;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfig", "type");
+            }
+            this.type = type;
             return this;
         }
         public K8sSlbAttachmentSlbConfig build() {

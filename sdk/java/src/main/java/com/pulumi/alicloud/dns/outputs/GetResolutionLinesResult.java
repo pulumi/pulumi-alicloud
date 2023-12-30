@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.alicloud.dns.outputs.GetResolutionLinesLine;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -118,22 +119,30 @@ public final class GetResolutionLinesResult {
 
         @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
+
             this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResolutionLinesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lang(@Nullable String lang) {
+
             this.lang = lang;
             return this;
         }
         @CustomType.Setter
         public Builder lineCodes(List<String> lineCodes) {
-            this.lineCodes = Objects.requireNonNull(lineCodes);
+            if (lineCodes == null) {
+              throw new MissingRequiredPropertyException("GetResolutionLinesResult", "lineCodes");
+            }
+            this.lineCodes = lineCodes;
             return this;
         }
         public Builder lineCodes(String... lineCodes) {
@@ -141,7 +150,10 @@ public final class GetResolutionLinesResult {
         }
         @CustomType.Setter
         public Builder lineDisplayNames(List<String> lineDisplayNames) {
-            this.lineDisplayNames = Objects.requireNonNull(lineDisplayNames);
+            if (lineDisplayNames == null) {
+              throw new MissingRequiredPropertyException("GetResolutionLinesResult", "lineDisplayNames");
+            }
+            this.lineDisplayNames = lineDisplayNames;
             return this;
         }
         public Builder lineDisplayNames(String... lineDisplayNames) {
@@ -149,6 +161,7 @@ public final class GetResolutionLinesResult {
         }
         @CustomType.Setter
         public Builder lineNames(@Nullable List<String> lineNames) {
+
             this.lineNames = lineNames;
             return this;
         }
@@ -157,7 +170,10 @@ public final class GetResolutionLinesResult {
         }
         @CustomType.Setter
         public Builder lines(List<GetResolutionLinesLine> lines) {
-            this.lines = Objects.requireNonNull(lines);
+            if (lines == null) {
+              throw new MissingRequiredPropertyException("GetResolutionLinesResult", "lines");
+            }
+            this.lines = lines;
             return this;
         }
         public Builder lines(GetResolutionLinesLine... lines) {
@@ -165,11 +181,13 @@ public final class GetResolutionLinesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder userClientIp(@Nullable String userClientIp) {
+
             this.userClientIp = userClientIp;
             return this;
         }

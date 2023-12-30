@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetFlowlogsFlowlog {
 
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder flowLogId(String flowLogId) {
-            this.flowLogId = Objects.requireNonNull(flowLogId);
+            if (flowLogId == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "flowLogId");
+            }
+            this.flowLogId = flowLogId;
             return this;
         }
         @CustomType.Setter
         public Builder flowLogName(String flowLogName) {
-            this.flowLogName = Objects.requireNonNull(flowLogName);
+            if (flowLogName == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "flowLogName");
+            }
+            this.flowLogName = flowLogName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logStoreName(String logStoreName) {
-            this.logStoreName = Objects.requireNonNull(logStoreName);
+            if (logStoreName == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "logStoreName");
+            }
+            this.logStoreName = logStoreName;
             return this;
         }
         @CustomType.Setter
         public Builder projectName(String projectName) {
-            this.projectName = Objects.requireNonNull(projectName);
+            if (projectName == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "projectName");
+            }
+            this.projectName = projectName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetFlowlogsFlowlog build() {

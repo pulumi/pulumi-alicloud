@@ -156,46 +156,55 @@ public final class GetInstanceClassInfosInfo {
 
         @CustomType.Setter
         public Builder classCode(@Nullable String classCode) {
+
             this.classCode = classCode;
             return this;
         }
         @CustomType.Setter
         public Builder classGroup(@Nullable String classGroup) {
+
             this.classGroup = classGroup;
             return this;
         }
         @CustomType.Setter
         public Builder cpu(@Nullable String cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder instructionSetArch(@Nullable String instructionSetArch) {
+
             this.instructionSetArch = instructionSetArch;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(@Nullable String maxConnections) {
+
             this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxIombps(@Nullable String maxIombps) {
+
             this.maxIombps = maxIombps;
             return this;
         }
         @CustomType.Setter
         public Builder maxIops(@Nullable String maxIops) {
+
             this.maxIops = maxIops;
             return this;
         }
         @CustomType.Setter
         public Builder memoryClass(@Nullable String memoryClass) {
+
             this.memoryClass = memoryClass;
             return this;
         }
         @CustomType.Setter
         public Builder referencePrice(@Nullable String referencePrice) {
+
             this.referencePrice = referencePrice;
             return this;
         }

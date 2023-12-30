@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -199,9 +200,15 @@ public final class ApplicationScaleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ApplicationScaleArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.deployGroup = Objects.requireNonNull($.deployGroup, "expected parameter 'deployGroup' to be non-null");
-            $.ecuInfos = Objects.requireNonNull($.ecuInfos, "expected parameter 'ecuInfos' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("ApplicationScaleArgs", "appId");
+            }
+            if ($.deployGroup == null) {
+                throw new MissingRequiredPropertyException("ApplicationScaleArgs", "deployGroup");
+            }
+            if ($.ecuInfos == null) {
+                throw new MissingRequiredPropertyException("ApplicationScaleArgs", "ecuInfos");
+            }
             return $;
         }
     }

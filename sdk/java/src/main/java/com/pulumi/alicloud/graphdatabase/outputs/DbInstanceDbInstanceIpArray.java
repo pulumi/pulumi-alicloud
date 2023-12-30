@@ -72,16 +72,19 @@ public final class DbInstanceDbInstanceIpArray {
 
         @CustomType.Setter
         public Builder dbInstanceIpArrayAttribute(@Nullable String dbInstanceIpArrayAttribute) {
+
             this.dbInstanceIpArrayAttribute = dbInstanceIpArrayAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceIpArrayName(@Nullable String dbInstanceIpArrayName) {
+
             this.dbInstanceIpArrayName = dbInstanceIpArrayName;
             return this;
         }
         @CustomType.Setter
         public Builder securityIps(@Nullable String securityIps) {
+
             this.securityIps = securityIps;
             return this;
         }

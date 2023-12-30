@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.alicloud.rds.outputs.GetCrossRegionBackupsBackup;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -106,12 +107,16 @@ public final class GetCrossRegionBackupsResult {
 
         @CustomType.Setter
         public Builder backupId(@Nullable String backupId) {
+
             this.backupId = backupId;
             return this;
         }
         @CustomType.Setter
         public Builder backups(List<GetCrossRegionBackupsBackup> backups) {
-            this.backups = Objects.requireNonNull(backups);
+            if (backups == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsResult", "backups");
+            }
+            this.backups = backups;
             return this;
         }
         public Builder backups(GetCrossRegionBackupsBackup... backups) {
@@ -119,32 +124,44 @@ public final class GetCrossRegionBackupsResult {
         }
         @CustomType.Setter
         public Builder crossBackupId(@Nullable String crossBackupId) {
+
             this.crossBackupId = crossBackupId;
             return this;
         }
         @CustomType.Setter
         public Builder crossBackupRegion(@Nullable String crossBackupRegion) {
+
             this.crossBackupRegion = crossBackupRegion;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
-            this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
+            if (dbInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsResult", "dbInstanceId");
+            }
+            this.dbInstanceId = dbInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
+
             this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -152,16 +169,19 @@ public final class GetCrossRegionBackupsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }

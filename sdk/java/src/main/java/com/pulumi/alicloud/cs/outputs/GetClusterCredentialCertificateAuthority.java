@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetClusterCredentialCertificateAuthority {
 
         @CustomType.Setter
         public Builder clientCert(String clientCert) {
-            this.clientCert = Objects.requireNonNull(clientCert);
+            if (clientCert == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialCertificateAuthority", "clientCert");
+            }
+            this.clientCert = clientCert;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(String clientKey) {
-            this.clientKey = Objects.requireNonNull(clientKey);
+            if (clientKey == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialCertificateAuthority", "clientKey");
+            }
+            this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder clusterCert(String clusterCert) {
-            this.clusterCert = Objects.requireNonNull(clusterCert);
+            if (clusterCert == null) {
+              throw new MissingRequiredPropertyException("GetClusterCredentialCertificateAuthority", "clusterCert");
+            }
+            this.clusterCert = clusterCert;
             return this;
         }
         public GetClusterCredentialCertificateAuthority build() {

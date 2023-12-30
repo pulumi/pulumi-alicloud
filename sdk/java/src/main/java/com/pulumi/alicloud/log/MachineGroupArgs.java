@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,8 +236,12 @@ public final class MachineGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MachineGroupArgs build() {
-            $.identifyLists = Objects.requireNonNull($.identifyLists, "expected parameter 'identifyLists' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.identifyLists == null) {
+                throw new MissingRequiredPropertyException("MachineGroupArgs", "identifyLists");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("MachineGroupArgs", "project");
+            }
             return $;
         }
     }

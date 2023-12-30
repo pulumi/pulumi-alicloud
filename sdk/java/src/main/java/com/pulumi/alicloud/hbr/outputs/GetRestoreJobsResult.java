@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.alicloud.hbr.outputs.GetRestoreJobsJob;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -112,12 +113,18 @@ public final class GetRestoreJobsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRestoreJobsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRestoreJobsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -125,7 +132,10 @@ public final class GetRestoreJobsResult {
         }
         @CustomType.Setter
         public Builder jobs(List<GetRestoreJobsJob> jobs) {
-            this.jobs = Objects.requireNonNull(jobs);
+            if (jobs == null) {
+              throw new MissingRequiredPropertyException("GetRestoreJobsResult", "jobs");
+            }
+            this.jobs = jobs;
             return this;
         }
         public Builder jobs(GetRestoreJobsJob... jobs) {
@@ -133,11 +143,13 @@ public final class GetRestoreJobsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder restoreIds(@Nullable List<String> restoreIds) {
+
             this.restoreIds = restoreIds;
             return this;
         }
@@ -146,11 +158,15 @@ public final class GetRestoreJobsResult {
         }
         @CustomType.Setter
         public Builder restoreType(String restoreType) {
-            this.restoreType = Objects.requireNonNull(restoreType);
+            if (restoreType == null) {
+              throw new MissingRequiredPropertyException("GetRestoreJobsResult", "restoreType");
+            }
+            this.restoreType = restoreType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceTypes(@Nullable List<String> sourceTypes) {
+
             this.sourceTypes = sourceTypes;
             return this;
         }
@@ -159,11 +175,13 @@ public final class GetRestoreJobsResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder targetBuckets(@Nullable List<String> targetBuckets) {
+
             this.targetBuckets = targetBuckets;
             return this;
         }
@@ -172,6 +190,7 @@ public final class GetRestoreJobsResult {
         }
         @CustomType.Setter
         public Builder targetFileSystemIds(@Nullable List<String> targetFileSystemIds) {
+
             this.targetFileSystemIds = targetFileSystemIds;
             return this;
         }
@@ -180,6 +199,7 @@ public final class GetRestoreJobsResult {
         }
         @CustomType.Setter
         public Builder targetInstanceIds(@Nullable List<String> targetInstanceIds) {
+
             this.targetInstanceIds = targetInstanceIds;
             return this;
         }
@@ -188,6 +208,7 @@ public final class GetRestoreJobsResult {
         }
         @CustomType.Setter
         public Builder vaultIds(@Nullable List<String> vaultIds) {
+
             this.vaultIds = vaultIds;
             return this;
         }

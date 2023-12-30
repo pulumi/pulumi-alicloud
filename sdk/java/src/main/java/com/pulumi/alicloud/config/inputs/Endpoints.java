@@ -804,646 +804,775 @@ public final class Endpoints {
 
         @CustomType.Setter
         public Builder acr(@Nullable String acr) {
+
             this.acr = acr;
             return this;
         }
         @CustomType.Setter
         public Builder actiontrail(@Nullable String actiontrail) {
+
             this.actiontrail = actiontrail;
             return this;
         }
         @CustomType.Setter
         public Builder adb(@Nullable String adb) {
+
             this.adb = adb;
             return this;
         }
         @CustomType.Setter
         public Builder alb(@Nullable String alb) {
+
             this.alb = alb;
             return this;
         }
         @CustomType.Setter
         public Builder alidfs(@Nullable String alidfs) {
+
             this.alidfs = alidfs;
             return this;
         }
         @CustomType.Setter
         public Builder alidns(@Nullable String alidns) {
+
             this.alidns = alidns;
             return this;
         }
         @CustomType.Setter
         public Builder alikafka(@Nullable String alikafka) {
+
             this.alikafka = alikafka;
             return this;
         }
         @CustomType.Setter
         public Builder apigateway(@Nullable String apigateway) {
+
             this.apigateway = apigateway;
             return this;
         }
         @CustomType.Setter
         public Builder arms(@Nullable String arms) {
+
             this.arms = arms;
             return this;
         }
         @CustomType.Setter
         public Builder bastionhost(@Nullable String bastionhost) {
+
             this.bastionhost = bastionhost;
             return this;
         }
         @CustomType.Setter
         public Builder beebot(@Nullable String beebot) {
+
             this.beebot = beebot;
             return this;
         }
         @CustomType.Setter
         public Builder bpstudio(@Nullable String bpstudio) {
+
             this.bpstudio = bpstudio;
             return this;
         }
         @CustomType.Setter
         public Builder brainIndustrial(@Nullable String brainIndustrial) {
+
             this.brainIndustrial = brainIndustrial;
             return this;
         }
         @CustomType.Setter
         public Builder bssopenapi(@Nullable String bssopenapi) {
+
             this.bssopenapi = bssopenapi;
             return this;
         }
         @CustomType.Setter
         public Builder cas(@Nullable String cas) {
+
             this.cas = cas;
             return this;
         }
         @CustomType.Setter
         public Builder cassandra(@Nullable String cassandra) {
+
             this.cassandra = cassandra;
             return this;
         }
         @CustomType.Setter
         public Builder cbn(@Nullable String cbn) {
+
             this.cbn = cbn;
             return this;
         }
         @CustomType.Setter
         public Builder cbs(@Nullable String cbs) {
+
             this.cbs = cbs;
             return this;
         }
         @CustomType.Setter
         public Builder cddc(@Nullable String cddc) {
+
             this.cddc = cddc;
             return this;
         }
         @CustomType.Setter
         public Builder cdn(@Nullable String cdn) {
+
             this.cdn = cdn;
             return this;
         }
         @CustomType.Setter
         public Builder cds(@Nullable String cds) {
+
             this.cds = cds;
             return this;
         }
         @CustomType.Setter
         public Builder clickhouse(@Nullable String clickhouse) {
+
             this.clickhouse = clickhouse;
             return this;
         }
         @CustomType.Setter
         public Builder cloudauth(@Nullable String cloudauth) {
+
             this.cloudauth = cloudauth;
             return this;
         }
         @CustomType.Setter
         public Builder cloudfirewall(@Nullable String cloudfirewall) {
+
             this.cloudfirewall = cloudfirewall;
             return this;
         }
         @CustomType.Setter
         public Builder cloudfw(@Nullable String cloudfw) {
+
             this.cloudfw = cloudfw;
             return this;
         }
         @CustomType.Setter
         public Builder cloudphone(@Nullable String cloudphone) {
+
             this.cloudphone = cloudphone;
             return this;
         }
         @CustomType.Setter
         public Builder cloudsso(@Nullable String cloudsso) {
+
             this.cloudsso = cloudsso;
             return this;
         }
         @CustomType.Setter
         public Builder cms(@Nullable String cms) {
+
             this.cms = cms;
             return this;
         }
         @CustomType.Setter
         public Builder computenest(@Nullable String computenest) {
+
             this.computenest = computenest;
             return this;
         }
         @CustomType.Setter
         public Builder config(@Nullable String config) {
+
             this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder cr(@Nullable String cr) {
+
             this.cr = cr;
             return this;
         }
         @CustomType.Setter
         public Builder cs(@Nullable String cs) {
+
             this.cs = cs;
             return this;
         }
         @CustomType.Setter
         public Builder das(@Nullable String das) {
+
             this.das = das;
             return this;
         }
         @CustomType.Setter
         public Builder datahub(@Nullable String datahub) {
+
             this.datahub = datahub;
             return this;
         }
         @CustomType.Setter
         public Builder dataworkspublic(@Nullable String dataworkspublic) {
+
             this.dataworkspublic = dataworkspublic;
             return this;
         }
         @CustomType.Setter
         public Builder dbfs(@Nullable String dbfs) {
+
             this.dbfs = dbfs;
             return this;
         }
         @CustomType.Setter
         public Builder dcdn(@Nullable String dcdn) {
+
             this.dcdn = dcdn;
             return this;
         }
         @CustomType.Setter
         public Builder ddosbasic(@Nullable String ddosbasic) {
+
             this.ddosbasic = ddosbasic;
             return this;
         }
         @CustomType.Setter
         public Builder ddosbgp(@Nullable String ddosbgp) {
+
             this.ddosbgp = ddosbgp;
             return this;
         }
         @CustomType.Setter
         public Builder ddoscoo(@Nullable String ddoscoo) {
+
             this.ddoscoo = ddoscoo;
             return this;
         }
         @CustomType.Setter
         public Builder dds(@Nullable String dds) {
+
             this.dds = dds;
             return this;
         }
         @CustomType.Setter
         public Builder devopsrdc(@Nullable String devopsrdc) {
+
             this.devopsrdc = devopsrdc;
             return this;
         }
         @CustomType.Setter
         public Builder dg(@Nullable String dg) {
+
             this.dg = dg;
             return this;
         }
         @CustomType.Setter
         public Builder dm(@Nullable String dm) {
+
             this.dm = dm;
             return this;
         }
         @CustomType.Setter
         public Builder dmsEnterprise(@Nullable String dmsEnterprise) {
+
             this.dmsEnterprise = dmsEnterprise;
             return this;
         }
         @CustomType.Setter
         public Builder dmsenterprise(@Nullable String dmsenterprise) {
+
             this.dmsenterprise = dmsenterprise;
             return this;
         }
         @CustomType.Setter
         public Builder dns(@Nullable String dns) {
+
             this.dns = dns;
             return this;
         }
         @CustomType.Setter
         public Builder drds(@Nullable String drds) {
+
             this.drds = drds;
             return this;
         }
         @CustomType.Setter
         public Builder dts(@Nullable String dts) {
+
             this.dts = dts;
             return this;
         }
         @CustomType.Setter
         public Builder dysms(@Nullable String dysms) {
+
             this.dysms = dysms;
             return this;
         }
         @CustomType.Setter
         public Builder eais(@Nullable String eais) {
+
             this.eais = eais;
             return this;
         }
         @CustomType.Setter
         public Builder ebs(@Nullable String ebs) {
+
             this.ebs = ebs;
             return this;
         }
         @CustomType.Setter
         public Builder eci(@Nullable String eci) {
+
             this.eci = eci;
             return this;
         }
         @CustomType.Setter
         public Builder ecs(@Nullable String ecs) {
+
             this.ecs = ecs;
             return this;
         }
         @CustomType.Setter
         public Builder edas(@Nullable String edas) {
+
             this.edas = edas;
             return this;
         }
         @CustomType.Setter
         public Builder edasschedulerx(@Nullable String edasschedulerx) {
+
             this.edasschedulerx = edasschedulerx;
             return this;
         }
         @CustomType.Setter
         public Builder edsuser(@Nullable String edsuser) {
+
             this.edsuser = edsuser;
             return this;
         }
         @CustomType.Setter
         public Builder eflo(@Nullable String eflo) {
+
             this.eflo = eflo;
             return this;
         }
         @CustomType.Setter
         public Builder ehpc(@Nullable String ehpc) {
+
             this.ehpc = ehpc;
             return this;
         }
         @CustomType.Setter
         public Builder ehs(@Nullable String ehs) {
+
             this.ehs = ehs;
             return this;
         }
         @CustomType.Setter
         public Builder eipanycast(@Nullable String eipanycast) {
+
             this.eipanycast = eipanycast;
             return this;
         }
         @CustomType.Setter
         public Builder elasticsearch(@Nullable String elasticsearch) {
+
             this.elasticsearch = elasticsearch;
             return this;
         }
         @CustomType.Setter
         public Builder emr(@Nullable String emr) {
+
             this.emr = emr;
             return this;
         }
         @CustomType.Setter
         public Builder ens(@Nullable String ens) {
+
             this.ens = ens;
             return this;
         }
         @CustomType.Setter
         public Builder ess(@Nullable String ess) {
+
             this.ess = ess;
             return this;
         }
         @CustomType.Setter
         public Builder eventbridge(@Nullable String eventbridge) {
+
             this.eventbridge = eventbridge;
             return this;
         }
         @CustomType.Setter
         public Builder fc(@Nullable String fc) {
+
             this.fc = fc;
             return this;
         }
         @CustomType.Setter
         public Builder fnf(@Nullable String fnf) {
+
             this.fnf = fnf;
             return this;
         }
         @CustomType.Setter
         public Builder ga(@Nullable String ga) {
+
             this.ga = ga;
             return this;
         }
         @CustomType.Setter
         public Builder gaplus(@Nullable String gaplus) {
+
             this.gaplus = gaplus;
             return this;
         }
         @CustomType.Setter
         public Builder gds(@Nullable String gds) {
+
             this.gds = gds;
             return this;
         }
         @CustomType.Setter
         public Builder gpdb(@Nullable String gpdb) {
+
             this.gpdb = gpdb;
             return this;
         }
         @CustomType.Setter
         public Builder gwsecd(@Nullable String gwsecd) {
+
             this.gwsecd = gwsecd;
             return this;
         }
         @CustomType.Setter
         public Builder hbr(@Nullable String hbr) {
+
             this.hbr = hbr;
             return this;
         }
         @CustomType.Setter
         public Builder hcsSgw(@Nullable String hcsSgw) {
+
             this.hcsSgw = hcsSgw;
             return this;
         }
         @CustomType.Setter
         public Builder hitsdb(@Nullable String hitsdb) {
+
             this.hitsdb = hitsdb;
             return this;
         }
         @CustomType.Setter
         public Builder imm(@Nullable String imm) {
+
             this.imm = imm;
             return this;
         }
         @CustomType.Setter
         public Builder imp(@Nullable String imp) {
+
             this.imp = imp;
             return this;
         }
         @CustomType.Setter
         public Builder ims(@Nullable String ims) {
+
             this.ims = ims;
             return this;
         }
         @CustomType.Setter
         public Builder iot(@Nullable String iot) {
+
             this.iot = iot;
             return this;
         }
         @CustomType.Setter
         public Builder kms(@Nullable String kms) {
+
             this.kms = kms;
             return this;
         }
         @CustomType.Setter
         public Builder kvstore(@Nullable String kvstore) {
+
             this.kvstore = kvstore;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder log(@Nullable String log) {
+
             this.log = log;
             return this;
         }
         @CustomType.Setter
         public Builder market(@Nullable String market) {
+
             this.market = market;
             return this;
         }
         @CustomType.Setter
         public Builder maxcompute(@Nullable String maxcompute) {
+
             this.maxcompute = maxcompute;
             return this;
         }
         @CustomType.Setter
         public Builder mhub(@Nullable String mhub) {
+
             this.mhub = mhub;
             return this;
         }
         @CustomType.Setter
         public Builder mns(@Nullable String mns) {
+
             this.mns = mns;
             return this;
         }
         @CustomType.Setter
         public Builder mscopensubscription(@Nullable String mscopensubscription) {
+
             this.mscopensubscription = mscopensubscription;
             return this;
         }
         @CustomType.Setter
         public Builder mse(@Nullable String mse) {
+
             this.mse = mse;
             return this;
         }
         @CustomType.Setter
         public Builder nas(@Nullable String nas) {
+
             this.nas = nas;
             return this;
         }
         @CustomType.Setter
         public Builder nlb(@Nullable String nlb) {
+
             this.nlb = nlb;
             return this;
         }
         @CustomType.Setter
         public Builder oceanbase(@Nullable String oceanbase) {
+
             this.oceanbase = oceanbase;
             return this;
         }
         @CustomType.Setter
         public Builder ons(@Nullable String ons) {
+
             this.ons = ons;
             return this;
         }
         @CustomType.Setter
         public Builder onsproxy(@Nullable String onsproxy) {
+
             this.onsproxy = onsproxy;
             return this;
         }
         @CustomType.Setter
         public Builder oos(@Nullable String oos) {
+
             this.oos = oos;
             return this;
         }
         @CustomType.Setter
         public Builder opensearch(@Nullable String opensearch) {
+
             this.opensearch = opensearch;
             return this;
         }
         @CustomType.Setter
         public Builder oss(@Nullable String oss) {
+
             this.oss = oss;
             return this;
         }
         @CustomType.Setter
         public Builder ots(@Nullable String ots) {
+
             this.ots = ots;
             return this;
         }
         @CustomType.Setter
         public Builder polardb(@Nullable String polardb) {
+
             this.polardb = polardb;
             return this;
         }
         @CustomType.Setter
         public Builder privatelink(@Nullable String privatelink) {
+
             this.privatelink = privatelink;
             return this;
         }
         @CustomType.Setter
         public Builder pvtz(@Nullable String pvtz) {
+
             this.pvtz = pvtz;
             return this;
         }
         @CustomType.Setter
         public Builder quickbi(@Nullable String quickbi) {
+
             this.quickbi = quickbi;
             return this;
         }
         @CustomType.Setter
         public Builder quotas(@Nullable String quotas) {
+
             this.quotas = quotas;
             return this;
         }
         @CustomType.Setter
         public Builder rKvstore(@Nullable String rKvstore) {
+
             this.rKvstore = rKvstore;
             return this;
         }
         @CustomType.Setter
         public Builder ram(@Nullable String ram) {
+
             this.ram = ram;
             return this;
         }
         @CustomType.Setter
         public Builder rds(@Nullable String rds) {
+
             this.rds = rds;
             return this;
         }
         @CustomType.Setter
         public Builder redisa(@Nullable String redisa) {
+
             this.redisa = redisa;
             return this;
         }
         @CustomType.Setter
         public Builder resourcemanager(@Nullable String resourcemanager) {
+
             this.resourcemanager = resourcemanager;
             return this;
         }
         @CustomType.Setter
         public Builder resourcesharing(@Nullable String resourcesharing) {
+
             this.resourcesharing = resourcesharing;
             return this;
         }
         @CustomType.Setter
         public Builder ros(@Nullable String ros) {
+
             this.ros = ros;
             return this;
         }
         @CustomType.Setter
         public Builder sas(@Nullable String sas) {
+
             this.sas = sas;
             return this;
         }
         @CustomType.Setter
         public Builder scdn(@Nullable String scdn) {
+
             this.scdn = scdn;
             return this;
         }
         @CustomType.Setter
         public Builder sddp(@Nullable String sddp) {
+
             this.sddp = sddp;
             return this;
         }
         @CustomType.Setter
         public Builder serverless(@Nullable String serverless) {
+
             this.serverless = serverless;
             return this;
         }
         @CustomType.Setter
         public Builder servicemesh(@Nullable String servicemesh) {
+
             this.servicemesh = servicemesh;
             return this;
         }
         @CustomType.Setter
         public Builder sgw(@Nullable String sgw) {
+
             this.sgw = sgw;
             return this;
         }
         @CustomType.Setter
         public Builder slb(@Nullable String slb) {
+
             this.slb = slb;
             return this;
         }
         @CustomType.Setter
         public Builder smartag(@Nullable String smartag) {
+
             this.smartag = smartag;
             return this;
         }
         @CustomType.Setter
         public Builder srvcatalog(@Nullable String srvcatalog) {
+
             this.srvcatalog = srvcatalog;
             return this;
         }
         @CustomType.Setter
         public Builder sts(@Nullable String sts) {
+
             this.sts = sts;
             return this;
         }
         @CustomType.Setter
         public Builder swas(@Nullable String swas) {
+
             this.swas = swas;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder vod(@Nullable String vod) {
+
             this.vod = vod;
             return this;
         }
         @CustomType.Setter
         public Builder vpc(@Nullable String vpc) {
+
             this.vpc = vpc;
             return this;
         }
         @CustomType.Setter
         public Builder vpcpeer(@Nullable String vpcpeer) {
+
             this.vpcpeer = vpcpeer;
             return this;
         }
         @CustomType.Setter
         public Builder vs(@Nullable String vs) {
+
             this.vs = vs;
             return this;
         }
         @CustomType.Setter
         public Builder waf(@Nullable String waf) {
+
             this.waf = waf;
             return this;
         }
         @CustomType.Setter
         public Builder wafOpenapi(@Nullable String wafOpenapi) {
+
             this.wafOpenapi = wafOpenapi;
             return this;
         }

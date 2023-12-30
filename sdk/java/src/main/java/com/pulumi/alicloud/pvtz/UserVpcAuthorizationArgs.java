@@ -5,6 +5,7 @@ package com.pulumi.alicloud.pvtz;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class UserVpcAuthorizationArgs extends com.pulumi.resources.Resourc
         }
 
         public UserVpcAuthorizationArgs build() {
-            $.authorizedUserId = Objects.requireNonNull($.authorizedUserId, "expected parameter 'authorizedUserId' to be non-null");
+            if ($.authorizedUserId == null) {
+                throw new MissingRequiredPropertyException("UserVpcAuthorizationArgs", "authorizedUserId");
+            }
             return $;
         }
     }

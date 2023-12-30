@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.alicloud.expressconnect.outputs.GetGrantRuleToCensCen;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -91,7 +92,10 @@ public final class GetGrantRuleToCensResult {
 
         @CustomType.Setter
         public Builder cens(List<GetGrantRuleToCensCen> cens) {
-            this.cens = Objects.requireNonNull(cens);
+            if (cens == null) {
+              throw new MissingRequiredPropertyException("GetGrantRuleToCensResult", "cens");
+            }
+            this.cens = cens;
             return this;
         }
         public Builder cens(GetGrantRuleToCensCen... cens) {
@@ -99,12 +103,18 @@ public final class GetGrantRuleToCensResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGrantRuleToCensResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetGrantRuleToCensResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -112,21 +122,27 @@ public final class GetGrantRuleToCensResult {
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetGrantRuleToCensResult", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }

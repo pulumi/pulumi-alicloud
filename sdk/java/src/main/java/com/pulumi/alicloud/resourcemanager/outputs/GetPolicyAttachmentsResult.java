@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.alicloud.resourcemanager.outputs.GetPolicyAttachmentsAttachment;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -156,7 +157,10 @@ public final class GetPolicyAttachmentsResult {
 
         @CustomType.Setter
         public Builder attachments(List<GetPolicyAttachmentsAttachment> attachments) {
-            this.attachments = Objects.requireNonNull(attachments);
+            if (attachments == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsResult", "attachments");
+            }
+            this.attachments = attachments;
             return this;
         }
         public Builder attachments(GetPolicyAttachmentsAttachment... attachments) {
@@ -164,12 +168,18 @@ public final class GetPolicyAttachmentsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -177,36 +187,43 @@ public final class GetPolicyAttachmentsResult {
         }
         @CustomType.Setter
         public Builder language(@Nullable String language) {
+
             this.language = language;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder policyName(@Nullable String policyName) {
+
             this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder policyType(@Nullable String policyType) {
+
             this.policyType = policyType;
             return this;
         }
         @CustomType.Setter
         public Builder principalName(@Nullable String principalName) {
+
             this.principalName = principalName;
             return this;
         }
         @CustomType.Setter
         public Builder principalType(@Nullable String principalType) {
+
             this.principalType = principalType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }

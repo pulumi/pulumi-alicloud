@@ -106,26 +106,31 @@ public final class DomainCertInfo {
 
         @CustomType.Setter
         public Builder certName(@Nullable String certName) {
+
             this.certName = certName;
             return this;
         }
         @CustomType.Setter
         public Builder certType(@Nullable String certType) {
+
             this.certType = certType;
             return this;
         }
         @CustomType.Setter
         public Builder sslPri(@Nullable String sslPri) {
+
             this.sslPri = sslPri;
             return this;
         }
         @CustomType.Setter
         public Builder sslProtocol(@Nullable String sslProtocol) {
+
             this.sslProtocol = sslProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder sslPub(@Nullable String sslPub) {
+
             this.sslPub = sslPub;
             return this;
         }

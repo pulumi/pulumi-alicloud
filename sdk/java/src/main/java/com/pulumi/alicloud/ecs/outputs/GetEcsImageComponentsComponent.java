@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -184,57 +185,90 @@ public final class GetEcsImageComponentsComponent {
 
         @CustomType.Setter
         public Builder componentType(String componentType) {
-            this.componentType = Objects.requireNonNull(componentType);
+            if (componentType == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "componentType");
+            }
+            this.componentType = componentType;
             return this;
         }
         @CustomType.Setter
         public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+            if (content == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "content");
+            }
+            this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageComponentId(String imageComponentId) {
-            this.imageComponentId = Objects.requireNonNull(imageComponentId);
+            if (imageComponentId == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "imageComponentId");
+            }
+            this.imageComponentId = imageComponentId;
             return this;
         }
         @CustomType.Setter
         public Builder imageComponentName(String imageComponentName) {
-            this.imageComponentName = Objects.requireNonNull(imageComponentName);
+            if (imageComponentName == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "imageComponentName");
+            }
+            this.imageComponentName = imageComponentName;
             return this;
         }
         @CustomType.Setter
         public Builder owner(String owner) {
-            this.owner = Objects.requireNonNull(owner);
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "owner");
+            }
+            this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder systemType(String systemType) {
-            this.systemType = Objects.requireNonNull(systemType);
+            if (systemType == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "systemType");
+            }
+            this.systemType = systemType;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetEcsImageComponentsComponent build() {

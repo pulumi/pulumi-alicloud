@@ -5,6 +5,7 @@ package com.pulumi.alicloud.adb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -1030,8 +1031,12 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DBClusterArgs build() {
-            $.dbClusterCategory = Objects.requireNonNull($.dbClusterCategory, "expected parameter 'dbClusterCategory' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
+            if ($.dbClusterCategory == null) {
+                throw new MissingRequiredPropertyException("DBClusterArgs", "dbClusterCategory");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("DBClusterArgs", "mode");
+            }
             return $;
         }
     }

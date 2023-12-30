@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudauth.outputs;
 
 import com.pulumi.alicloud.cloudauth.outputs.GetFaceConfigsConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,7 +77,10 @@ public final class GetFaceConfigsResult {
 
         @CustomType.Setter
         public Builder configs(List<GetFaceConfigsConfig> configs) {
-            this.configs = Objects.requireNonNull(configs);
+            if (configs == null) {
+              throw new MissingRequiredPropertyException("GetFaceConfigsResult", "configs");
+            }
+            this.configs = configs;
             return this;
         }
         public Builder configs(GetFaceConfigsConfig... configs) {
@@ -84,12 +88,18 @@ public final class GetFaceConfigsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFaceConfigsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetFaceConfigsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -97,12 +107,16 @@ public final class GetFaceConfigsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetFaceConfigsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -110,6 +124,7 @@ public final class GetFaceConfigsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

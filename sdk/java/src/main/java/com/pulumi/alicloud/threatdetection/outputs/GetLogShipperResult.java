@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -134,42 +135,64 @@ public final class GetLogShipperResult {
 
         @CustomType.Setter
         public Builder authStatus(String authStatus) {
-            this.authStatus = Objects.requireNonNull(authStatus);
+            if (authStatus == null) {
+              throw new MissingRequiredPropertyException("GetLogShipperResult", "authStatus");
+            }
+            this.authStatus = authStatus;
             return this;
         }
         @CustomType.Setter
         public Builder buyStatus(String buyStatus) {
-            this.buyStatus = Objects.requireNonNull(buyStatus);
+            if (buyStatus == null) {
+              throw new MissingRequiredPropertyException("GetLogShipperResult", "buyStatus");
+            }
+            this.buyStatus = buyStatus;
             return this;
         }
         @CustomType.Setter
         public Builder enable(@Nullable String enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLogShipperResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder openStatus(String openStatus) {
-            this.openStatus = Objects.requireNonNull(openStatus);
+            if (openStatus == null) {
+              throw new MissingRequiredPropertyException("GetLogShipperResult", "openStatus");
+            }
+            this.openStatus = openStatus;
             return this;
         }
         @CustomType.Setter
         public Builder slsProjectStatus(String slsProjectStatus) {
-            this.slsProjectStatus = Objects.requireNonNull(slsProjectStatus);
+            if (slsProjectStatus == null) {
+              throw new MissingRequiredPropertyException("GetLogShipperResult", "slsProjectStatus");
+            }
+            this.slsProjectStatus = slsProjectStatus;
             return this;
         }
         @CustomType.Setter
         public Builder slsServiceStatus(String slsServiceStatus) {
-            this.slsServiceStatus = Objects.requireNonNull(slsServiceStatus);
+            if (slsServiceStatus == null) {
+              throw new MissingRequiredPropertyException("GetLogShipperResult", "slsServiceStatus");
+            }
+            this.slsServiceStatus = slsServiceStatus;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetLogShipperResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetLogShipperResult build() {

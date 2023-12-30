@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -99,17 +100,26 @@ public final class GetAlertContactGroupsGroup {
 
         @CustomType.Setter
         public Builder alertContactGroupId(String alertContactGroupId) {
-            this.alertContactGroupId = Objects.requireNonNull(alertContactGroupId);
+            if (alertContactGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactGroupsGroup", "alertContactGroupId");
+            }
+            this.alertContactGroupId = alertContactGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder alertContactGroupName(String alertContactGroupName) {
-            this.alertContactGroupName = Objects.requireNonNull(alertContactGroupName);
+            if (alertContactGroupName == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactGroupsGroup", "alertContactGroupName");
+            }
+            this.alertContactGroupName = alertContactGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder contactIds(List<String> contactIds) {
-            this.contactIds = Objects.requireNonNull(contactIds);
+            if (contactIds == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactGroupsGroup", "contactIds");
+            }
+            this.contactIds = contactIds;
             return this;
         }
         public Builder contactIds(String... contactIds) {
@@ -117,12 +127,18 @@ public final class GetAlertContactGroupsGroup {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetAlertContactGroupsGroup build() {

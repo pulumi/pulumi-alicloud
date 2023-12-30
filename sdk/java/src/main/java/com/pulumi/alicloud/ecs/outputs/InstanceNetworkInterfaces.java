@@ -44,6 +44,7 @@ public final class InstanceNetworkInterfaces {
 
         @CustomType.Setter
         public Builder networkInterfaceId(@Nullable String networkInterfaceId) {
+
             this.networkInterfaceId = networkInterfaceId;
             return this;
         }

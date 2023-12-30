@@ -73,16 +73,19 @@ public final class RocketMQInstanceNetworkInfoEndpoint {
 
         @CustomType.Setter
         public Builder endpointType(@Nullable String endpointType) {
+
             this.endpointType = endpointType;
             return this;
         }
         @CustomType.Setter
         public Builder endpointUrl(@Nullable String endpointUrl) {
+
             this.endpointUrl = endpointUrl;
             return this;
         }
         @CustomType.Setter
         public Builder ipWhiteLists(@Nullable List<String> ipWhiteLists) {
+
             this.ipWhiteLists = ipWhiteLists;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetRouteServicesService;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -164,37 +165,50 @@ public final class GetRouteServicesResult {
 
         @CustomType.Setter
         public Builder accessRegionId(@Nullable String accessRegionId) {
+
             this.accessRegionId = accessRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesResult", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder hostRegionId(@Nullable String hostRegionId) {
+
             this.hostRegionId = hostRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder hostVpcId(@Nullable String hostVpcId) {
+
             this.hostVpcId = hostVpcId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -202,12 +216,16 @@ public final class GetRouteServicesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder services(List<GetRouteServicesService> services) {
-            this.services = Objects.requireNonNull(services);
+            if (services == null) {
+              throw new MissingRequiredPropertyException("GetRouteServicesResult", "services");
+            }
+            this.services = services;
             return this;
         }
         public Builder services(GetRouteServicesService... services) {
@@ -215,6 +233,7 @@ public final class GetRouteServicesResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

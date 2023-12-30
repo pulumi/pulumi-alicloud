@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.GetAggregateCompliancePacksPackConfigRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -157,27 +158,42 @@ public final class GetAggregateCompliancePacksPack {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateCompliancePacksPack", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder aggregateCompliancePackName(String aggregateCompliancePackName) {
-            this.aggregateCompliancePackName = Objects.requireNonNull(aggregateCompliancePackName);
+            if (aggregateCompliancePackName == null) {
+              throw new MissingRequiredPropertyException("GetAggregateCompliancePacksPack", "aggregateCompliancePackName");
+            }
+            this.aggregateCompliancePackName = aggregateCompliancePackName;
             return this;
         }
         @CustomType.Setter
         public Builder aggregatorCompliancePackId(String aggregatorCompliancePackId) {
-            this.aggregatorCompliancePackId = Objects.requireNonNull(aggregatorCompliancePackId);
+            if (aggregatorCompliancePackId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateCompliancePacksPack", "aggregatorCompliancePackId");
+            }
+            this.aggregatorCompliancePackId = aggregatorCompliancePackId;
             return this;
         }
         @CustomType.Setter
         public Builder compliancePackTemplateId(String compliancePackTemplateId) {
-            this.compliancePackTemplateId = Objects.requireNonNull(compliancePackTemplateId);
+            if (compliancePackTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateCompliancePacksPack", "compliancePackTemplateId");
+            }
+            this.compliancePackTemplateId = compliancePackTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder configRules(List<GetAggregateCompliancePacksPackConfigRule> configRules) {
-            this.configRules = Objects.requireNonNull(configRules);
+            if (configRules == null) {
+              throw new MissingRequiredPropertyException("GetAggregateCompliancePacksPack", "configRules");
+            }
+            this.configRules = configRules;
             return this;
         }
         public Builder configRules(GetAggregateCompliancePacksPackConfigRule... configRules) {
@@ -185,22 +201,34 @@ public final class GetAggregateCompliancePacksPack {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAggregateCompliancePacksPack", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAggregateCompliancePacksPack", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder riskLevel(Integer riskLevel) {
-            this.riskLevel = Objects.requireNonNull(riskLevel);
+            if (riskLevel == null) {
+              throw new MissingRequiredPropertyException("GetAggregateCompliancePacksPack", "riskLevel");
+            }
+            this.riskLevel = riskLevel;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAggregateCompliancePacksPack", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetAggregateCompliancePacksPack build() {

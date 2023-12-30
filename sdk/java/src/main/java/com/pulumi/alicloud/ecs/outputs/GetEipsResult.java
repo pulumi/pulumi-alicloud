@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.alicloud.ecs.outputs.GetEipsAddress;
 import com.pulumi.alicloud.ecs.outputs.GetEipsEip;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -244,12 +245,16 @@ public final class GetEipsResult {
 
         @CustomType.Setter
         public Builder addressName(@Nullable String addressName) {
+
             this.addressName = addressName;
             return this;
         }
         @CustomType.Setter
         public Builder addresses(List<GetEipsAddress> addresses) {
-            this.addresses = Objects.requireNonNull(addresses);
+            if (addresses == null) {
+              throw new MissingRequiredPropertyException("GetEipsResult", "addresses");
+            }
+            this.addresses = addresses;
             return this;
         }
         public Builder addresses(GetEipsAddress... addresses) {
@@ -257,22 +262,28 @@ public final class GetEipsResult {
         }
         @CustomType.Setter
         public Builder associatedInstanceId(@Nullable String associatedInstanceId) {
+
             this.associatedInstanceId = associatedInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder associatedInstanceType(@Nullable String associatedInstanceType) {
+
             this.associatedInstanceType = associatedInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
+
             this.dryRun = dryRun;
             return this;
         }
         @CustomType.Setter
         public Builder eips(List<GetEipsEip> eips) {
-            this.eips = Objects.requireNonNull(eips);
+            if (eips == null) {
+              throw new MissingRequiredPropertyException("GetEipsResult", "eips");
+            }
+            this.eips = eips;
             return this;
         }
         public Builder eips(GetEipsEip... eips) {
@@ -280,17 +291,24 @@ public final class GetEipsResult {
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEipsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEipsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -298,16 +316,19 @@ public final class GetEipsResult {
         }
         @CustomType.Setter
         public Builder includeReservationData(@Nullable Boolean includeReservationData) {
+
             this.includeReservationData = includeReservationData;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddresses(@Nullable List<String> ipAddresses) {
+
             this.ipAddresses = ipAddresses;
             return this;
         }
@@ -316,22 +337,28 @@ public final class GetEipsResult {
         }
         @CustomType.Setter
         public Builder isp(@Nullable String isp) {
+
             this.isp = isp;
             return this;
         }
         @CustomType.Setter
         public Builder lockReason(@Nullable String lockReason) {
+
             this.lockReason = lockReason;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetEipsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -339,31 +366,37 @@ public final class GetEipsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
+
             this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder segmentInstanceId(@Nullable String segmentInstanceId) {
+
             this.segmentInstanceId = segmentInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

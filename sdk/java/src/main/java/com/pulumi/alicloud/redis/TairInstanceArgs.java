@@ -5,6 +5,7 @@ package com.pulumi.alicloud.redis;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -820,11 +821,21 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TairInstanceArgs build() {
-            $.instanceClass = Objects.requireNonNull($.instanceClass, "expected parameter 'instanceClass' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.instanceClass == null) {
+                throw new MissingRequiredPropertyException("TairInstanceArgs", "instanceClass");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("TairInstanceArgs", "instanceType");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("TairInstanceArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("TairInstanceArgs", "vswitchId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("TairInstanceArgs", "zoneId");
+            }
             return $;
         }
     }

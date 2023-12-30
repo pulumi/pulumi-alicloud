@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.simpleapplicationserver.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class GetServerFirewallRulesPlainArgs extends com.pulumi.resources.
         }
 
         public GetServerFirewallRulesPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetServerFirewallRulesPlainArgs", "instanceId");
+            }
             return $;
         }
     }

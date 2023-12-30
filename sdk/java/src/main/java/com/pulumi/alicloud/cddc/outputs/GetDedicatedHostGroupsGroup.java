@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cddc.outputs;
 import com.pulumi.alicloud.cddc.outputs.GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType;
 import com.pulumi.alicloud.cddc.outputs.GetDedicatedHostGroupsGroupZoneIdList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -425,37 +426,58 @@ public final class GetDedicatedHostGroupsGroup {
 
         @CustomType.Setter
         public Builder allocationPolicy(String allocationPolicy) {
-            this.allocationPolicy = Objects.requireNonNull(allocationPolicy);
+            if (allocationPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "allocationPolicy");
+            }
+            this.allocationPolicy = allocationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder bastionInstanceId(String bastionInstanceId) {
-            this.bastionInstanceId = Objects.requireNonNull(bastionInstanceId);
+            if (bastionInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "bastionInstanceId");
+            }
+            this.bastionInstanceId = bastionInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder cpuAllocateRation(Double cpuAllocateRation) {
-            this.cpuAllocateRation = Objects.requireNonNull(cpuAllocateRation);
+            if (cpuAllocateRation == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "cpuAllocateRation");
+            }
+            this.cpuAllocateRation = cpuAllocateRation;
             return this;
         }
         @CustomType.Setter
         public Builder cpuAllocatedAmount(Double cpuAllocatedAmount) {
-            this.cpuAllocatedAmount = Objects.requireNonNull(cpuAllocatedAmount);
+            if (cpuAllocatedAmount == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "cpuAllocatedAmount");
+            }
+            this.cpuAllocatedAmount = cpuAllocatedAmount;
             return this;
         }
         @CustomType.Setter
         public Builder cpuAllocationRatio(Integer cpuAllocationRatio) {
-            this.cpuAllocationRatio = Objects.requireNonNull(cpuAllocationRatio);
+            if (cpuAllocationRatio == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "cpuAllocationRatio");
+            }
+            this.cpuAllocationRatio = cpuAllocationRatio;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostCountGroupByHostTypes(List<GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType> dedicatedHostCountGroupByHostTypes) {
-            this.dedicatedHostCountGroupByHostTypes = Objects.requireNonNull(dedicatedHostCountGroupByHostTypes);
+            if (dedicatedHostCountGroupByHostTypes == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "dedicatedHostCountGroupByHostTypes");
+            }
+            this.dedicatedHostCountGroupByHostTypes = dedicatedHostCountGroupByHostTypes;
             return this;
         }
         public Builder dedicatedHostCountGroupByHostTypes(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType... dedicatedHostCountGroupByHostTypes) {
@@ -463,107 +485,170 @@ public final class GetDedicatedHostGroupsGroup {
         }
         @CustomType.Setter
         public Builder dedicatedHostGroupDesc(String dedicatedHostGroupDesc) {
-            this.dedicatedHostGroupDesc = Objects.requireNonNull(dedicatedHostGroupDesc);
+            if (dedicatedHostGroupDesc == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "dedicatedHostGroupDesc");
+            }
+            this.dedicatedHostGroupDesc = dedicatedHostGroupDesc;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostGroupId(String dedicatedHostGroupId) {
-            this.dedicatedHostGroupId = Objects.requireNonNull(dedicatedHostGroupId);
+            if (dedicatedHostGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "dedicatedHostGroupId");
+            }
+            this.dedicatedHostGroupId = dedicatedHostGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder deployType(String deployType) {
-            this.deployType = Objects.requireNonNull(deployType);
+            if (deployType == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "deployType");
+            }
+            this.deployType = deployType;
             return this;
         }
         @CustomType.Setter
         public Builder diskAllocateRation(Double diskAllocateRation) {
-            this.diskAllocateRation = Objects.requireNonNull(diskAllocateRation);
+            if (diskAllocateRation == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "diskAllocateRation");
+            }
+            this.diskAllocateRation = diskAllocateRation;
             return this;
         }
         @CustomType.Setter
         public Builder diskAllocatedAmount(Double diskAllocatedAmount) {
-            this.diskAllocatedAmount = Objects.requireNonNull(diskAllocatedAmount);
+            if (diskAllocatedAmount == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "diskAllocatedAmount");
+            }
+            this.diskAllocatedAmount = diskAllocatedAmount;
             return this;
         }
         @CustomType.Setter
         public Builder diskAllocationRatio(Integer diskAllocationRatio) {
-            this.diskAllocationRatio = Objects.requireNonNull(diskAllocationRatio);
+            if (diskAllocationRatio == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "diskAllocationRatio");
+            }
+            this.diskAllocationRatio = diskAllocationRatio;
             return this;
         }
         @CustomType.Setter
         public Builder diskUsedAmount(Double diskUsedAmount) {
-            this.diskUsedAmount = Objects.requireNonNull(diskUsedAmount);
+            if (diskUsedAmount == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "diskUsedAmount");
+            }
+            this.diskUsedAmount = diskUsedAmount;
             return this;
         }
         @CustomType.Setter
         public Builder diskUtility(Double diskUtility) {
-            this.diskUtility = Objects.requireNonNull(diskUtility);
+            if (diskUtility == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "diskUtility");
+            }
+            this.diskUtility = diskUtility;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder hostNumber(Integer hostNumber) {
-            this.hostNumber = Objects.requireNonNull(hostNumber);
+            if (hostNumber == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "hostNumber");
+            }
+            this.hostNumber = hostNumber;
             return this;
         }
         @CustomType.Setter
         public Builder hostReplacePolicy(String hostReplacePolicy) {
-            this.hostReplacePolicy = Objects.requireNonNull(hostReplacePolicy);
+            if (hostReplacePolicy == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "hostReplacePolicy");
+            }
+            this.hostReplacePolicy = hostReplacePolicy;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceNumber(Integer instanceNumber) {
-            this.instanceNumber = Objects.requireNonNull(instanceNumber);
+            if (instanceNumber == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "instanceNumber");
+            }
+            this.instanceNumber = instanceNumber;
             return this;
         }
         @CustomType.Setter
         public Builder memAllocateRation(Double memAllocateRation) {
-            this.memAllocateRation = Objects.requireNonNull(memAllocateRation);
+            if (memAllocateRation == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "memAllocateRation");
+            }
+            this.memAllocateRation = memAllocateRation;
             return this;
         }
         @CustomType.Setter
         public Builder memAllocatedAmount(Double memAllocatedAmount) {
-            this.memAllocatedAmount = Objects.requireNonNull(memAllocatedAmount);
+            if (memAllocatedAmount == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "memAllocatedAmount");
+            }
+            this.memAllocatedAmount = memAllocatedAmount;
             return this;
         }
         @CustomType.Setter
         public Builder memAllocationRatio(Integer memAllocationRatio) {
-            this.memAllocationRatio = Objects.requireNonNull(memAllocationRatio);
+            if (memAllocationRatio == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "memAllocationRatio");
+            }
+            this.memAllocationRatio = memAllocationRatio;
             return this;
         }
         @CustomType.Setter
         public Builder memUsedAmount(Double memUsedAmount) {
-            this.memUsedAmount = Objects.requireNonNull(memUsedAmount);
+            if (memUsedAmount == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "memUsedAmount");
+            }
+            this.memUsedAmount = memUsedAmount;
             return this;
         }
         @CustomType.Setter
         public Builder memUtility(Double memUtility) {
-            this.memUtility = Objects.requireNonNull(memUtility);
+            if (memUtility == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "memUtility");
+            }
+            this.memUtility = memUtility;
             return this;
         }
         @CustomType.Setter
         public Builder text(String text) {
-            this.text = Objects.requireNonNull(text);
+            if (text == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "text");
+            }
+            this.text = text;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneIdLists(List<GetDedicatedHostGroupsGroupZoneIdList> zoneIdLists) {
-            this.zoneIdLists = Objects.requireNonNull(zoneIdLists);
+            if (zoneIdLists == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroup", "zoneIdLists");
+            }
+            this.zoneIdLists = zoneIdLists;
             return this;
         }
         public Builder zoneIdLists(GetDedicatedHostGroupsGroupZoneIdList... zoneIdLists) {

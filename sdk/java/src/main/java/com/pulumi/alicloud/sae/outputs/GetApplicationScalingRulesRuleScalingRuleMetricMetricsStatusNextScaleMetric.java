@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusN
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nextScaleInAverageUtilization(Integer nextScaleInAverageUtilization) {
-            this.nextScaleInAverageUtilization = Objects.requireNonNull(nextScaleInAverageUtilization);
+            if (nextScaleInAverageUtilization == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric", "nextScaleInAverageUtilization");
+            }
+            this.nextScaleInAverageUtilization = nextScaleInAverageUtilization;
             return this;
         }
         @CustomType.Setter
         public Builder nextScaleOutAverageUtilization(Integer nextScaleOutAverageUtilization) {
-            this.nextScaleOutAverageUtilization = Objects.requireNonNull(nextScaleOutAverageUtilization);
+            if (nextScaleOutAverageUtilization == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric", "nextScaleOutAverageUtilization");
+            }
+            this.nextScaleOutAverageUtilization = nextScaleOutAverageUtilization;
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric build() {

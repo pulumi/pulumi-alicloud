@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -153,42 +154,62 @@ public final class DdrInstancePgHbaConf {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("DdrInstancePgHbaConf", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("DdrInstancePgHbaConf", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder mask(@Nullable String mask) {
+
             this.mask = mask;
             return this;
         }
         @CustomType.Setter
         public Builder method(String method) {
-            this.method = Objects.requireNonNull(method);
+            if (method == null) {
+              throw new MissingRequiredPropertyException("DdrInstancePgHbaConf", "method");
+            }
+            this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder option(@Nullable String option) {
+
             this.option = option;
             return this;
         }
         @CustomType.Setter
         public Builder priorityId(Integer priorityId) {
-            this.priorityId = Objects.requireNonNull(priorityId);
+            if (priorityId == null) {
+              throw new MissingRequiredPropertyException("DdrInstancePgHbaConf", "priorityId");
+            }
+            this.priorityId = priorityId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("DdrInstancePgHbaConf", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("DdrInstancePgHbaConf", "user");
+            }
+            this.user = user;
             return this;
         }
         public DdrInstancePgHbaConf build() {

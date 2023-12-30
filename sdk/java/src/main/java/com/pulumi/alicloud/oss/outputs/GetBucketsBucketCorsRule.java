@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -100,7 +101,10 @@ public final class GetBucketsBucketCorsRule {
 
         @CustomType.Setter
         public Builder allowedHeaders(List<String> allowedHeaders) {
-            this.allowedHeaders = Objects.requireNonNull(allowedHeaders);
+            if (allowedHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketCorsRule", "allowedHeaders");
+            }
+            this.allowedHeaders = allowedHeaders;
             return this;
         }
         public Builder allowedHeaders(String... allowedHeaders) {
@@ -108,7 +112,10 @@ public final class GetBucketsBucketCorsRule {
         }
         @CustomType.Setter
         public Builder allowedMethods(List<String> allowedMethods) {
-            this.allowedMethods = Objects.requireNonNull(allowedMethods);
+            if (allowedMethods == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketCorsRule", "allowedMethods");
+            }
+            this.allowedMethods = allowedMethods;
             return this;
         }
         public Builder allowedMethods(String... allowedMethods) {
@@ -116,7 +123,10 @@ public final class GetBucketsBucketCorsRule {
         }
         @CustomType.Setter
         public Builder allowedOrigins(List<String> allowedOrigins) {
-            this.allowedOrigins = Objects.requireNonNull(allowedOrigins);
+            if (allowedOrigins == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketCorsRule", "allowedOrigins");
+            }
+            this.allowedOrigins = allowedOrigins;
             return this;
         }
         public Builder allowedOrigins(String... allowedOrigins) {
@@ -124,7 +134,10 @@ public final class GetBucketsBucketCorsRule {
         }
         @CustomType.Setter
         public Builder exposeHeaders(List<String> exposeHeaders) {
-            this.exposeHeaders = Objects.requireNonNull(exposeHeaders);
+            if (exposeHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketCorsRule", "exposeHeaders");
+            }
+            this.exposeHeaders = exposeHeaders;
             return this;
         }
         public Builder exposeHeaders(String... exposeHeaders) {
@@ -132,7 +145,10 @@ public final class GetBucketsBucketCorsRule {
         }
         @CustomType.Setter
         public Builder maxAgeSeconds(Integer maxAgeSeconds) {
-            this.maxAgeSeconds = Objects.requireNonNull(maxAgeSeconds);
+            if (maxAgeSeconds == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketCorsRule", "maxAgeSeconds");
+            }
+            this.maxAgeSeconds = maxAgeSeconds;
             return this;
         }
         public GetBucketsBucketCorsRule build() {

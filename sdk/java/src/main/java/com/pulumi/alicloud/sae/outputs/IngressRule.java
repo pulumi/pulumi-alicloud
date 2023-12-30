@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -129,36 +130,53 @@ public final class IngressRule {
 
         @CustomType.Setter
         public Builder appId(String appId) {
-            this.appId = Objects.requireNonNull(appId);
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("IngressRule", "appId");
+            }
+            this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder appName(String appName) {
-            this.appName = Objects.requireNonNull(appName);
+            if (appName == null) {
+              throw new MissingRequiredPropertyException("IngressRule", "appName");
+            }
+            this.appName = appName;
             return this;
         }
         @CustomType.Setter
         public Builder backendProtocol(@Nullable String backendProtocol) {
+
             this.backendProtocol = backendProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder containerPort(Integer containerPort) {
-            this.containerPort = Objects.requireNonNull(containerPort);
+            if (containerPort == null) {
+              throw new MissingRequiredPropertyException("IngressRule", "containerPort");
+            }
+            this.containerPort = containerPort;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("IngressRule", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("IngressRule", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder rewritePath(@Nullable String rewritePath) {
+
             this.rewritePath = rewritePath;
             return this;
         }

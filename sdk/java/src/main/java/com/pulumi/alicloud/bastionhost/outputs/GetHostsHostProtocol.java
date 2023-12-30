@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.bastionhost.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetHostsHostProtocol {
 
         @CustomType.Setter
         public Builder hostFingerPrint(String hostFingerPrint) {
-            this.hostFingerPrint = Objects.requireNonNull(hostFingerPrint);
+            if (hostFingerPrint == null) {
+              throw new MissingRequiredPropertyException("GetHostsHostProtocol", "hostFingerPrint");
+            }
+            this.hostFingerPrint = hostFingerPrint;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetHostsHostProtocol", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocolName(String protocolName) {
-            this.protocolName = Objects.requireNonNull(protocolName);
+            if (protocolName == null) {
+              throw new MissingRequiredPropertyException("GetHostsHostProtocol", "protocolName");
+            }
+            this.protocolName = protocolName;
             return this;
         }
         public GetHostsHostProtocol build() {

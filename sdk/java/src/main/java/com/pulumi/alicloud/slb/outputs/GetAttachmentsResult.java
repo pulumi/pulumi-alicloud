@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.alicloud.slb.outputs.GetAttachmentsSlbAttachment;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -78,11 +79,15 @@ public final class GetAttachmentsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAttachmentsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceIds(@Nullable List<String> instanceIds) {
+
             this.instanceIds = instanceIds;
             return this;
         }
@@ -91,17 +96,24 @@ public final class GetAttachmentsResult {
         }
         @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
-            this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetAttachmentsResult", "loadBalancerId");
+            }
+            this.loadBalancerId = loadBalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder slbAttachments(List<GetAttachmentsSlbAttachment> slbAttachments) {
-            this.slbAttachments = Objects.requireNonNull(slbAttachments);
+            if (slbAttachments == null) {
+              throw new MissingRequiredPropertyException("GetAttachmentsResult", "slbAttachments");
+            }
+            this.slbAttachments = slbAttachments;
             return this;
         }
         public Builder slbAttachments(GetAttachmentsSlbAttachment... slbAttachments) {

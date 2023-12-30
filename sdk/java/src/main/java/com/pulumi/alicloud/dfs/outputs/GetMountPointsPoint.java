@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dfs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -182,57 +183,90 @@ public final class GetMountPointsPoint {
 
         @CustomType.Setter
         public Builder accessGroupId(String accessGroupId) {
-            this.accessGroupId = Objects.requireNonNull(accessGroupId);
+            if (accessGroupId == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "accessGroupId");
+            }
+            this.accessGroupId = accessGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
-            this.fileSystemId = Objects.requireNonNull(fileSystemId);
+            if (fileSystemId == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "fileSystemId");
+            }
+            this.fileSystemId = fileSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mountPointDomain(String mountPointDomain) {
-            this.mountPointDomain = Objects.requireNonNull(mountPointDomain);
+            if (mountPointDomain == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "mountPointDomain");
+            }
+            this.mountPointDomain = mountPointDomain;
             return this;
         }
         @CustomType.Setter
         public Builder mountPointId(String mountPointId) {
-            this.mountPointId = Objects.requireNonNull(mountPointId);
+            if (mountPointId == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "mountPointId");
+            }
+            this.mountPointId = mountPointId;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsPoint", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetMountPointsPoint build() {

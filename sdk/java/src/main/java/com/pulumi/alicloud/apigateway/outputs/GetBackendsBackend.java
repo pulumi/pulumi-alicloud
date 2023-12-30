@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -118,37 +119,58 @@ public final class GetBackendsBackend {
 
         @CustomType.Setter
         public Builder backendId(String backendId) {
-            this.backendId = Objects.requireNonNull(backendId);
+            if (backendId == null) {
+              throw new MissingRequiredPropertyException("GetBackendsBackend", "backendId");
+            }
+            this.backendId = backendId;
             return this;
         }
         @CustomType.Setter
         public Builder backendName(String backendName) {
-            this.backendName = Objects.requireNonNull(backendName);
+            if (backendName == null) {
+              throw new MissingRequiredPropertyException("GetBackendsBackend", "backendName");
+            }
+            this.backendName = backendName;
             return this;
         }
         @CustomType.Setter
         public Builder backendType(String backendType) {
-            this.backendType = Objects.requireNonNull(backendType);
+            if (backendType == null) {
+              throw new MissingRequiredPropertyException("GetBackendsBackend", "backendType");
+            }
+            this.backendType = backendType;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetBackendsBackend", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetBackendsBackend", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackendsBackend", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
-            this.modifiedTime = Objects.requireNonNull(modifiedTime);
+            if (modifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetBackendsBackend", "modifiedTime");
+            }
+            this.modifiedTime = modifiedTime;
             return this;
         }
         public GetBackendsBackend build() {

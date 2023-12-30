@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -349,8 +350,12 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TopicArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.messageType = Objects.requireNonNull($.messageType, "expected parameter 'messageType' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("TopicArgs", "instanceId");
+            }
+            if ($.messageType == null) {
+                throw new MissingRequiredPropertyException("TopicArgs", "messageType");
+            }
             return $;
         }
     }

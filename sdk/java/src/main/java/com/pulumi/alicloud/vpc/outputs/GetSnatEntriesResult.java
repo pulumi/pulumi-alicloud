@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetSnatEntriesEntry;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -168,7 +169,10 @@ public final class GetSnatEntriesResult {
 
         @CustomType.Setter
         public Builder entries(List<GetSnatEntriesEntry> entries) {
-            this.entries = Objects.requireNonNull(entries);
+            if (entries == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesResult", "entries");
+            }
+            this.entries = entries;
             return this;
         }
         public Builder entries(GetSnatEntriesEntry... entries) {
@@ -176,12 +180,18 @@ public final class GetSnatEntriesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -189,12 +199,16 @@ public final class GetSnatEntriesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -202,36 +216,45 @@ public final class GetSnatEntriesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder snatEntryName(@Nullable String snatEntryName) {
+
             this.snatEntryName = snatEntryName;
             return this;
         }
         @CustomType.Setter
         public Builder snatIp(@Nullable String snatIp) {
+
             this.snatIp = snatIp;
             return this;
         }
         @CustomType.Setter
         public Builder snatTableId(String snatTableId) {
-            this.snatTableId = Objects.requireNonNull(snatTableId);
+            if (snatTableId == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesResult", "snatTableId");
+            }
+            this.snatTableId = snatTableId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceCidr(@Nullable String sourceCidr) {
+
             this.sourceCidr = sourceCidr;
             return this;
         }
         @CustomType.Setter
         public Builder sourceVswitchId(@Nullable String sourceVswitchId) {
+
             this.sourceVswitchId = sourceVswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

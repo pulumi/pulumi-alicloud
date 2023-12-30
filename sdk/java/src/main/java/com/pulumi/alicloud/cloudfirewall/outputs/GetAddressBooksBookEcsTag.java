@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetAddressBooksBookEcsTag {
 
         @CustomType.Setter
         public Builder tagKey(String tagKey) {
-            this.tagKey = Objects.requireNonNull(tagKey);
+            if (tagKey == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBookEcsTag", "tagKey");
+            }
+            this.tagKey = tagKey;
             return this;
         }
         @CustomType.Setter
         public Builder tagValue(String tagValue) {
-            this.tagValue = Objects.requireNonNull(tagValue);
+            if (tagValue == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBookEcsTag", "tagValue");
+            }
+            this.tagValue = tagValue;
             return this;
         }
         public GetAddressBooksBookEcsTag build() {

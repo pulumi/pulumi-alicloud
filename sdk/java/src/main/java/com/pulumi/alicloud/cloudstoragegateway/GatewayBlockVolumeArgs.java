@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -596,11 +597,21 @@ public final class GatewayBlockVolumeArgs extends com.pulumi.resources.ResourceA
         }
 
         public GatewayBlockVolumeArgs build() {
-            $.gatewayBlockVolumeName = Objects.requireNonNull($.gatewayBlockVolumeName, "expected parameter 'gatewayBlockVolumeName' to be non-null");
-            $.gatewayId = Objects.requireNonNull($.gatewayId, "expected parameter 'gatewayId' to be non-null");
-            $.ossBucketName = Objects.requireNonNull($.ossBucketName, "expected parameter 'ossBucketName' to be non-null");
-            $.ossEndpoint = Objects.requireNonNull($.ossEndpoint, "expected parameter 'ossEndpoint' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.gatewayBlockVolumeName == null) {
+                throw new MissingRequiredPropertyException("GatewayBlockVolumeArgs", "gatewayBlockVolumeName");
+            }
+            if ($.gatewayId == null) {
+                throw new MissingRequiredPropertyException("GatewayBlockVolumeArgs", "gatewayId");
+            }
+            if ($.ossBucketName == null) {
+                throw new MissingRequiredPropertyException("GatewayBlockVolumeArgs", "ossBucketName");
+            }
+            if ($.ossEndpoint == null) {
+                throw new MissingRequiredPropertyException("GatewayBlockVolumeArgs", "ossEndpoint");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("GatewayBlockVolumeArgs", "protocol");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.pvtz.outputs;
 
 import com.pulumi.alicloud.pvtz.outputs.GetZoneRecordsRecord;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,12 +131,18 @@ public final class GetZoneRecordsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -143,22 +150,28 @@ public final class GetZoneRecordsResult {
         }
         @CustomType.Setter
         public Builder keyword(@Nullable String keyword) {
+
             this.keyword = keyword;
             return this;
         }
         @CustomType.Setter
         public Builder lang(@Nullable String lang) {
+
             this.lang = lang;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder records(List<GetZoneRecordsRecord> records) {
-            this.records = Objects.requireNonNull(records);
+            if (records == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsResult", "records");
+            }
+            this.records = records;
             return this;
         }
         public Builder records(GetZoneRecordsRecord... records) {
@@ -166,27 +179,34 @@ public final class GetZoneRecordsResult {
         }
         @CustomType.Setter
         public Builder searchMode(@Nullable String searchMode) {
+
             this.searchMode = searchMode;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder userClientIp(@Nullable String userClientIp) {
+
             this.userClientIp = userClientIp;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetZoneRecordsResult", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetZoneRecordsResult build() {

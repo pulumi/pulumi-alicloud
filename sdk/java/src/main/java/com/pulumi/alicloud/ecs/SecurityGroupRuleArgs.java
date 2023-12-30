@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -533,9 +534,15 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         public SecurityGroupRuleArgs build() {
-            $.ipProtocol = Objects.requireNonNull($.ipProtocol, "expected parameter 'ipProtocol' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.ipProtocol == null) {
+                throw new MissingRequiredPropertyException("SecurityGroupRuleArgs", "ipProtocol");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("SecurityGroupRuleArgs", "securityGroupId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("SecurityGroupRuleArgs", "type");
+            }
             return $;
         }
     }

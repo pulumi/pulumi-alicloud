@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetDedicatedHostsHostOperationLock {
 
         @CustomType.Setter
         public Builder lockReason(String lockReason) {
-            this.lockReason = Objects.requireNonNull(lockReason);
+            if (lockReason == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostOperationLock", "lockReason");
+            }
+            this.lockReason = lockReason;
             return this;
         }
         public GetDedicatedHostsHostOperationLock build() {

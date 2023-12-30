@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class GetPbrRouteEntriesPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetPbrRouteEntriesPlainArgs build() {
-            $.vpnGatewayId = Objects.requireNonNull($.vpnGatewayId, "expected parameter 'vpnGatewayId' to be non-null");
+            if ($.vpnGatewayId == null) {
+                throw new MissingRequiredPropertyException("GetPbrRouteEntriesPlainArgs", "vpnGatewayId");
+            }
             return $;
         }
     }

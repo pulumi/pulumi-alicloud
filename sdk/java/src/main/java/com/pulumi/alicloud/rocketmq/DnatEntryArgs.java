@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,12 +299,24 @@ public final class DnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DnatEntryArgs build() {
-            $.externalPort = Objects.requireNonNull($.externalPort, "expected parameter 'externalPort' to be non-null");
-            $.internalIp = Objects.requireNonNull($.internalIp, "expected parameter 'internalIp' to be non-null");
-            $.internalPort = Objects.requireNonNull($.internalPort, "expected parameter 'internalPort' to be non-null");
-            $.ipProtocol = Objects.requireNonNull($.ipProtocol, "expected parameter 'ipProtocol' to be non-null");
-            $.sagId = Objects.requireNonNull($.sagId, "expected parameter 'sagId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.externalPort == null) {
+                throw new MissingRequiredPropertyException("DnatEntryArgs", "externalPort");
+            }
+            if ($.internalIp == null) {
+                throw new MissingRequiredPropertyException("DnatEntryArgs", "internalIp");
+            }
+            if ($.internalPort == null) {
+                throw new MissingRequiredPropertyException("DnatEntryArgs", "internalPort");
+            }
+            if ($.ipProtocol == null) {
+                throw new MissingRequiredPropertyException("DnatEntryArgs", "ipProtocol");
+            }
+            if ($.sagId == null) {
+                throw new MissingRequiredPropertyException("DnatEntryArgs", "sagId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DnatEntryArgs", "type");
+            }
             return $;
         }
     }

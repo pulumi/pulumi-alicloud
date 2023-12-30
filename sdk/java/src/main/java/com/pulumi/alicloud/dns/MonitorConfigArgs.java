@@ -6,6 +6,7 @@ package com.pulumi.alicloud.dns;
 import com.pulumi.alicloud.dns.inputs.MonitorConfigIspCityNodeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -348,13 +349,27 @@ public final class MonitorConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MonitorConfigArgs build() {
-            $.addrPoolId = Objects.requireNonNull($.addrPoolId, "expected parameter 'addrPoolId' to be non-null");
-            $.evaluationCount = Objects.requireNonNull($.evaluationCount, "expected parameter 'evaluationCount' to be non-null");
-            $.interval = Objects.requireNonNull($.interval, "expected parameter 'interval' to be non-null");
-            $.ispCityNodes = Objects.requireNonNull($.ispCityNodes, "expected parameter 'ispCityNodes' to be non-null");
-            $.monitorExtendInfo = Objects.requireNonNull($.monitorExtendInfo, "expected parameter 'monitorExtendInfo' to be non-null");
-            $.protocolType = Objects.requireNonNull($.protocolType, "expected parameter 'protocolType' to be non-null");
-            $.timeout = Objects.requireNonNull($.timeout, "expected parameter 'timeout' to be non-null");
+            if ($.addrPoolId == null) {
+                throw new MissingRequiredPropertyException("MonitorConfigArgs", "addrPoolId");
+            }
+            if ($.evaluationCount == null) {
+                throw new MissingRequiredPropertyException("MonitorConfigArgs", "evaluationCount");
+            }
+            if ($.interval == null) {
+                throw new MissingRequiredPropertyException("MonitorConfigArgs", "interval");
+            }
+            if ($.ispCityNodes == null) {
+                throw new MissingRequiredPropertyException("MonitorConfigArgs", "ispCityNodes");
+            }
+            if ($.monitorExtendInfo == null) {
+                throw new MissingRequiredPropertyException("MonitorConfigArgs", "monitorExtendInfo");
+            }
+            if ($.protocolType == null) {
+                throw new MissingRequiredPropertyException("MonitorConfigArgs", "protocolType");
+            }
+            if ($.timeout == null) {
+                throw new MissingRequiredPropertyException("MonitorConfigArgs", "timeout");
+            }
             return $;
         }
     }

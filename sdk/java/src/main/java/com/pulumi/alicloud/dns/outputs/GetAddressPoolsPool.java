@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.alicloud.dns.outputs.GetAddressPoolsPoolAddress;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -212,17 +213,26 @@ public final class GetAddressPoolsPool {
 
         @CustomType.Setter
         public Builder addressPoolId(String addressPoolId) {
-            this.addressPoolId = Objects.requireNonNull(addressPoolId);
+            if (addressPoolId == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "addressPoolId");
+            }
+            this.addressPoolId = addressPoolId;
             return this;
         }
         @CustomType.Setter
         public Builder addressPoolName(String addressPoolName) {
-            this.addressPoolName = Objects.requireNonNull(addressPoolName);
+            if (addressPoolName == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "addressPoolName");
+            }
+            this.addressPoolName = addressPoolName;
             return this;
         }
         @CustomType.Setter
         public Builder addresses(List<GetAddressPoolsPoolAddress> addresses) {
-            this.addresses = Objects.requireNonNull(addresses);
+            if (addresses == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "addresses");
+            }
+            this.addresses = addresses;
             return this;
         }
         public Builder addresses(GetAddressPoolsPoolAddress... addresses) {
@@ -230,52 +240,82 @@ public final class GetAddressPoolsPool {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder createTimestamp(String createTimestamp) {
-            this.createTimestamp = Objects.requireNonNull(createTimestamp);
+            if (createTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "createTimestamp");
+            }
+            this.createTimestamp = createTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder lbaStrategy(String lbaStrategy) {
-            this.lbaStrategy = Objects.requireNonNull(lbaStrategy);
+            if (lbaStrategy == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "lbaStrategy");
+            }
+            this.lbaStrategy = lbaStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder monitorConfigId(String monitorConfigId) {
-            this.monitorConfigId = Objects.requireNonNull(monitorConfigId);
+            if (monitorConfigId == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "monitorConfigId");
+            }
+            this.monitorConfigId = monitorConfigId;
             return this;
         }
         @CustomType.Setter
         public Builder monitorStatus(String monitorStatus) {
-            this.monitorStatus = Objects.requireNonNull(monitorStatus);
+            if (monitorStatus == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "monitorStatus");
+            }
+            this.monitorStatus = monitorStatus;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder updateTimestamp(String updateTimestamp) {
-            this.updateTimestamp = Objects.requireNonNull(updateTimestamp);
+            if (updateTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPool", "updateTimestamp");
+            }
+            this.updateTimestamp = updateTimestamp;
             return this;
         }
         public GetAddressPoolsPool build() {

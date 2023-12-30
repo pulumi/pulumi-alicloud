@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ens.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -146,7 +147,9 @@ public final class GetKeyPairsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetKeyPairsPlainArgs build() {
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("GetKeyPairsPlainArgs", "version");
+            }
             return $;
         }
     }

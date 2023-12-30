@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetElasticityAssurancesAssuranceAllocatedResource {
 
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssuranceAllocatedResource", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder totalAmount(Integer totalAmount) {
-            this.totalAmount = Objects.requireNonNull(totalAmount);
+            if (totalAmount == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssuranceAllocatedResource", "totalAmount");
+            }
+            this.totalAmount = totalAmount;
             return this;
         }
         @CustomType.Setter
         public Builder usedAmount(Integer usedAmount) {
-            this.usedAmount = Objects.requireNonNull(usedAmount);
+            if (usedAmount == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssuranceAllocatedResource", "usedAmount");
+            }
+            this.usedAmount = usedAmount;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetElasticityAssurancesAssuranceAllocatedResource", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetElasticityAssurancesAssuranceAllocatedResource build() {

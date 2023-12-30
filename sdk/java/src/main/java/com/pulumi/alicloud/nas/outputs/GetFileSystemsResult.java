@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.alicloud.nas.outputs.GetFileSystemsSystem;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,12 +129,16 @@ public final class GetFileSystemsResult {
 
         @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
+
             this.descriptionRegex = descriptionRegex;
             return this;
         }
         @CustomType.Setter
         public Builder descriptions(List<String> descriptions) {
-            this.descriptions = Objects.requireNonNull(descriptions);
+            if (descriptions == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsResult", "descriptions");
+            }
+            this.descriptions = descriptions;
             return this;
         }
         public Builder descriptions(String... descriptions) {
@@ -141,12 +146,18 @@ public final class GetFileSystemsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -154,22 +165,28 @@ public final class GetFileSystemsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder protocolType(@Nullable String protocolType) {
+
             this.protocolType = protocolType;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
+
             this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder systems(List<GetFileSystemsSystem> systems) {
-            this.systems = Objects.requireNonNull(systems);
+            if (systems == null) {
+              throw new MissingRequiredPropertyException("GetFileSystemsResult", "systems");
+            }
+            this.systems = systems;
             return this;
         }
         public Builder systems(GetFileSystemsSystem... systems) {

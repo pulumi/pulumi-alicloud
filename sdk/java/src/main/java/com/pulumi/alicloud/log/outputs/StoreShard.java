@@ -87,21 +87,25 @@ public final class StoreShard {
 
         @CustomType.Setter
         public Builder beginKey(@Nullable String beginKey) {
+
             this.beginKey = beginKey;
             return this;
         }
         @CustomType.Setter
         public Builder endKey(@Nullable String endKey) {
+
             this.endKey = endKey;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

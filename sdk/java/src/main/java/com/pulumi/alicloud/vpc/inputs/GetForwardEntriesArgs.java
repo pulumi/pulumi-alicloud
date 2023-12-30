@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -457,7 +458,9 @@ public final class GetForwardEntriesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetForwardEntriesArgs build() {
-            $.forwardTableId = Objects.requireNonNull($.forwardTableId, "expected parameter 'forwardTableId' to be non-null");
+            if ($.forwardTableId == null) {
+                throw new MissingRequiredPropertyException("GetForwardEntriesArgs", "forwardTableId");
+            }
             return $;
         }
     }

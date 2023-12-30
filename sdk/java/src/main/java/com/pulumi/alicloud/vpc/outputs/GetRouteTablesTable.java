@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -213,67 +214,106 @@ public final class GetRouteTablesTable {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
-            this.routeTableId = Objects.requireNonNull(routeTableId);
+            if (routeTableId == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "routeTableId");
+            }
+            this.routeTableId = routeTableId;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableName(String routeTableName) {
-            this.routeTableName = Objects.requireNonNull(routeTableName);
+            if (routeTableName == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "routeTableName");
+            }
+            this.routeTableName = routeTableName;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableType(String routeTableType) {
-            this.routeTableType = Objects.requireNonNull(routeTableType);
+            if (routeTableType == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "routeTableType");
+            }
+            this.routeTableType = routeTableType;
             return this;
         }
         @CustomType.Setter
         public Builder routerId(String routerId) {
-            this.routerId = Objects.requireNonNull(routerId);
+            if (routerId == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "routerId");
+            }
+            this.routerId = routerId;
             return this;
         }
         @CustomType.Setter
         public Builder routerType(String routerType) {
-            this.routerType = Objects.requireNonNull(routerType);
+            if (routerType == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "routerType");
+            }
+            this.routerType = routerType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
-            this.vswitchIds = Objects.requireNonNull(vswitchIds);
+            if (vswitchIds == null) {
+              throw new MissingRequiredPropertyException("GetRouteTablesTable", "vswitchIds");
+            }
+            this.vswitchIds = vswitchIds;
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {

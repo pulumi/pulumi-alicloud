@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetCustomPropertiesPropertyPropertyValue {
 
         @CustomType.Setter
         public Builder propertyValue(String propertyValue) {
-            this.propertyValue = Objects.requireNonNull(propertyValue);
+            if (propertyValue == null) {
+              throw new MissingRequiredPropertyException("GetCustomPropertiesPropertyPropertyValue", "propertyValue");
+            }
+            this.propertyValue = propertyValue;
             return this;
         }
         @CustomType.Setter
         public Builder propertyValueId(String propertyValueId) {
-            this.propertyValueId = Objects.requireNonNull(propertyValueId);
+            if (propertyValueId == null) {
+              throw new MissingRequiredPropertyException("GetCustomPropertiesPropertyPropertyValue", "propertyValueId");
+            }
+            this.propertyValueId = propertyValueId;
             return this;
         }
         public GetCustomPropertiesPropertyPropertyValue build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetNatIpCidrsCidr {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsCidr", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsCidr", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
-            this.isDefault = Objects.requireNonNull(isDefault);
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsCidr", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
-            this.natGatewayId = Objects.requireNonNull(natGatewayId);
+            if (natGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsCidr", "natGatewayId");
+            }
+            this.natGatewayId = natGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder natIpCidr(String natIpCidr) {
-            this.natIpCidr = Objects.requireNonNull(natIpCidr);
+            if (natIpCidr == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsCidr", "natIpCidr");
+            }
+            this.natIpCidr = natIpCidr;
             return this;
         }
         @CustomType.Setter
         public Builder natIpCidrDescription(String natIpCidrDescription) {
-            this.natIpCidrDescription = Objects.requireNonNull(natIpCidrDescription);
+            if (natIpCidrDescription == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsCidr", "natIpCidrDescription");
+            }
+            this.natIpCidrDescription = natIpCidrDescription;
             return this;
         }
         @CustomType.Setter
         public Builder natIpCidrId(String natIpCidrId) {
-            this.natIpCidrId = Objects.requireNonNull(natIpCidrId);
+            if (natIpCidrId == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsCidr", "natIpCidrId");
+            }
+            this.natIpCidrId = natIpCidrId;
             return this;
         }
         @CustomType.Setter
         public Builder natIpCidrName(String natIpCidrName) {
-            this.natIpCidrName = Objects.requireNonNull(natIpCidrName);
+            if (natIpCidrName == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsCidr", "natIpCidrName");
+            }
+            this.natIpCidrName = natIpCidrName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsCidr", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetNatIpCidrsCidr build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.alicloud.emrv2.outputs.ClusterBootstrapScriptNodeSelector;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -130,37 +131,56 @@ public final class ClusterBootstrapScript {
 
         @CustomType.Setter
         public Builder executionFailStrategy(String executionFailStrategy) {
-            this.executionFailStrategy = Objects.requireNonNull(executionFailStrategy);
+            if (executionFailStrategy == null) {
+              throw new MissingRequiredPropertyException("ClusterBootstrapScript", "executionFailStrategy");
+            }
+            this.executionFailStrategy = executionFailStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder executionMoment(String executionMoment) {
-            this.executionMoment = Objects.requireNonNull(executionMoment);
+            if (executionMoment == null) {
+              throw new MissingRequiredPropertyException("ClusterBootstrapScript", "executionMoment");
+            }
+            this.executionMoment = executionMoment;
             return this;
         }
         @CustomType.Setter
         public Builder nodeSelector(ClusterBootstrapScriptNodeSelector nodeSelector) {
-            this.nodeSelector = Objects.requireNonNull(nodeSelector);
+            if (nodeSelector == null) {
+              throw new MissingRequiredPropertyException("ClusterBootstrapScript", "nodeSelector");
+            }
+            this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder scriptArgs(String scriptArgs) {
-            this.scriptArgs = Objects.requireNonNull(scriptArgs);
+            if (scriptArgs == null) {
+              throw new MissingRequiredPropertyException("ClusterBootstrapScript", "scriptArgs");
+            }
+            this.scriptArgs = scriptArgs;
             return this;
         }
         @CustomType.Setter
         public Builder scriptName(String scriptName) {
-            this.scriptName = Objects.requireNonNull(scriptName);
+            if (scriptName == null) {
+              throw new MissingRequiredPropertyException("ClusterBootstrapScript", "scriptName");
+            }
+            this.scriptName = scriptName;
             return this;
         }
         @CustomType.Setter
         public Builder scriptPath(String scriptPath) {
-            this.scriptPath = Objects.requireNonNull(scriptPath);
+            if (scriptPath == null) {
+              throw new MissingRequiredPropertyException("ClusterBootstrapScript", "scriptPath");
+            }
+            this.scriptPath = scriptPath;
             return this;
         }
         public ClusterBootstrapScript build() {

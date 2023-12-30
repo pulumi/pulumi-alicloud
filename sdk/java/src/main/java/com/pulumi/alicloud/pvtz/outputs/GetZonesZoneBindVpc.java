@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.pvtz.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,22 +77,34 @@ public final class GetZonesZoneBindVpc {
 
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetZonesZoneBindVpc", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder regionName(String regionName) {
-            this.regionName = Objects.requireNonNull(regionName);
+            if (regionName == null) {
+              throw new MissingRequiredPropertyException("GetZonesZoneBindVpc", "regionName");
+            }
+            this.regionName = regionName;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetZonesZoneBindVpc", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcName(String vpcName) {
-            this.vpcName = Objects.requireNonNull(vpcName);
+            if (vpcName == null) {
+              throw new MissingRequiredPropertyException("GetZonesZoneBindVpc", "vpcName");
+            }
+            this.vpcName = vpcName;
             return this;
         }
         public GetZonesZoneBindVpc build() {

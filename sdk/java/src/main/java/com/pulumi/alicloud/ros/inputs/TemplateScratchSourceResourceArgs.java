@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class TemplateScratchSourceResourceArgs extends com.pulumi.resource
         }
 
         public TemplateScratchSourceResourceArgs build() {
-            $.resourceId = Objects.requireNonNull($.resourceId, "expected parameter 'resourceId' to be non-null");
-            $.resourceType = Objects.requireNonNull($.resourceType, "expected parameter 'resourceType' to be non-null");
+            if ($.resourceId == null) {
+                throw new MissingRequiredPropertyException("TemplateScratchSourceResourceArgs", "resourceId");
+            }
+            if ($.resourceType == null) {
+                throw new MissingRequiredPropertyException("TemplateScratchSourceResourceArgs", "resourceType");
+            }
             return $;
         }
     }

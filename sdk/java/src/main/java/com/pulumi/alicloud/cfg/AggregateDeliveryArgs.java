@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -468,9 +469,15 @@ public final class AggregateDeliveryArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AggregateDeliveryArgs build() {
-            $.aggregatorId = Objects.requireNonNull($.aggregatorId, "expected parameter 'aggregatorId' to be non-null");
-            $.deliveryChannelTargetArn = Objects.requireNonNull($.deliveryChannelTargetArn, "expected parameter 'deliveryChannelTargetArn' to be non-null");
-            $.deliveryChannelType = Objects.requireNonNull($.deliveryChannelType, "expected parameter 'deliveryChannelType' to be non-null");
+            if ($.aggregatorId == null) {
+                throw new MissingRequiredPropertyException("AggregateDeliveryArgs", "aggregatorId");
+            }
+            if ($.deliveryChannelTargetArn == null) {
+                throw new MissingRequiredPropertyException("AggregateDeliveryArgs", "deliveryChannelTargetArn");
+            }
+            if ($.deliveryChannelType == null) {
+                throw new MissingRequiredPropertyException("AggregateDeliveryArgs", "deliveryChannelType");
+            }
             return $;
         }
     }

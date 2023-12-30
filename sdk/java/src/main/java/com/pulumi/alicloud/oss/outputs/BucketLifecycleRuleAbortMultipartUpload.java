@@ -59,11 +59,13 @@ public final class BucketLifecycleRuleAbortMultipartUpload {
 
         @CustomType.Setter
         public Builder createdBeforeDate(@Nullable String createdBeforeDate) {
+
             this.createdBeforeDate = createdBeforeDate;
             return this;
         }
         @CustomType.Setter
         public Builder days(@Nullable Integer days) {
+
             this.days = days;
             return this;
         }

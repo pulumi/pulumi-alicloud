@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.waf.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -126,42 +127,66 @@ public final class GetCertificatesCertificate {
 
         @CustomType.Setter
         public Builder certificateId(String certificateId) {
-            this.certificateId = Objects.requireNonNull(certificateId);
+            if (certificateId == null) {
+              throw new MissingRequiredPropertyException("GetCertificatesCertificate", "certificateId");
+            }
+            this.certificateId = certificateId;
             return this;
         }
         @CustomType.Setter
         public Builder certificateName(String certificateName) {
-            this.certificateName = Objects.requireNonNull(certificateName);
+            if (certificateName == null) {
+              throw new MissingRequiredPropertyException("GetCertificatesCertificate", "certificateName");
+            }
+            this.certificateName = certificateName;
             return this;
         }
         @CustomType.Setter
         public Builder commonName(String commonName) {
-            this.commonName = Objects.requireNonNull(commonName);
+            if (commonName == null) {
+              throw new MissingRequiredPropertyException("GetCertificatesCertificate", "commonName");
+            }
+            this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetCertificatesCertificate", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCertificatesCertificate", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetCertificatesCertificate", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder isUsing(Boolean isUsing) {
-            this.isUsing = Objects.requireNonNull(isUsing);
+            if (isUsing == null) {
+              throw new MissingRequiredPropertyException("GetCertificatesCertificate", "isUsing");
+            }
+            this.isUsing = isUsing;
             return this;
         }
         @CustomType.Setter
         public Builder sans(List<String> sans) {
-            this.sans = Objects.requireNonNull(sans);
+            if (sans == null) {
+              throw new MissingRequiredPropertyException("GetCertificatesCertificate", "sans");
+            }
+            this.sans = sans;
             return this;
         }
         public Builder sans(String... sans) {

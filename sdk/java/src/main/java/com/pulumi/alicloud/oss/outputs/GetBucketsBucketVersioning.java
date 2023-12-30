@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetBucketsBucketVersioning {
 
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketVersioning", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBucketsBucketVersioning build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -316,7 +317,9 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HAVipArgs build() {
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("HAVipArgs", "vswitchId");
+            }
             return $;
         }
     }

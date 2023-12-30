@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.alicloud.arms.outputs.GetAlertContactsContact;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -94,12 +95,16 @@ public final class GetAlertContactsResult {
 
         @CustomType.Setter
         public Builder alertContactName(@Nullable String alertContactName) {
+
             this.alertContactName = alertContactName;
             return this;
         }
         @CustomType.Setter
         public Builder contacts(List<GetAlertContactsContact> contacts) {
-            this.contacts = Objects.requireNonNull(contacts);
+            if (contacts == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsResult", "contacts");
+            }
+            this.contacts = contacts;
             return this;
         }
         public Builder contacts(GetAlertContactsContact... contacts) {
@@ -107,17 +112,24 @@ public final class GetAlertContactsResult {
         }
         @CustomType.Setter
         public Builder email(@Nullable String email) {
+
             this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -125,12 +137,16 @@ public final class GetAlertContactsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -138,11 +154,13 @@ public final class GetAlertContactsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder phoneNum(@Nullable String phoneNum) {
+
             this.phoneNum = phoneNum;
             return this;
         }

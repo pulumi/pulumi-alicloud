@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.bp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetStudioApplicationsApplication {
 
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
-            this.applicationId = Objects.requireNonNull(applicationId);
+            if (applicationId == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsApplication", "applicationId");
+            }
+            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder applicationName(String applicationName) {
-            this.applicationName = Objects.requireNonNull(applicationName);
+            if (applicationName == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsApplication", "applicationName");
+            }
+            this.applicationName = applicationName;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsApplication", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsApplication", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageUrl(String imageUrl) {
-            this.imageUrl = Objects.requireNonNull(imageUrl);
+            if (imageUrl == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsApplication", "imageUrl");
+            }
+            this.imageUrl = imageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsApplication", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsApplication", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder topoUrl(String topoUrl) {
-            this.topoUrl = Objects.requireNonNull(topoUrl);
+            if (topoUrl == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsApplication", "topoUrl");
+            }
+            this.topoUrl = topoUrl;
             return this;
         }
         public GetStudioApplicationsApplication build() {

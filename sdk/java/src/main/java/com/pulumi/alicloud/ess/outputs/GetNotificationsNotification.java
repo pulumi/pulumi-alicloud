@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,17 +86,26 @@ public final class GetNotificationsNotification {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNotificationsNotification", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder notificationArn(String notificationArn) {
-            this.notificationArn = Objects.requireNonNull(notificationArn);
+            if (notificationArn == null) {
+              throw new MissingRequiredPropertyException("GetNotificationsNotification", "notificationArn");
+            }
+            this.notificationArn = notificationArn;
             return this;
         }
         @CustomType.Setter
         public Builder notificationTypes(List<String> notificationTypes) {
-            this.notificationTypes = Objects.requireNonNull(notificationTypes);
+            if (notificationTypes == null) {
+              throw new MissingRequiredPropertyException("GetNotificationsNotification", "notificationTypes");
+            }
+            this.notificationTypes = notificationTypes;
             return this;
         }
         public Builder notificationTypes(String... notificationTypes) {
@@ -103,7 +113,10 @@ public final class GetNotificationsNotification {
         }
         @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
-            this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
+            if (scalingGroupId == null) {
+              throw new MissingRequiredPropertyException("GetNotificationsNotification", "scalingGroupId");
+            }
+            this.scalingGroupId = scalingGroupId;
             return this;
         }
         public GetNotificationsNotification build() {

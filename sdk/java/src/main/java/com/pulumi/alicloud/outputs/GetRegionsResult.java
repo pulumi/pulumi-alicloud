@@ -5,6 +5,7 @@ package com.pulumi.alicloud.outputs;
 
 import com.pulumi.alicloud.outputs.GetRegionsRegion;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -93,17 +94,26 @@ public final class GetRegionsResult {
 
         @CustomType.Setter
         public Builder current(Boolean current) {
-            this.current = Objects.requireNonNull(current);
+            if (current == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "current");
+            }
+            this.current = current;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -111,17 +121,24 @@ public final class GetRegionsResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder regions(List<GetRegionsRegion> regions) {
-            this.regions = Objects.requireNonNull(regions);
+            if (regions == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "regions");
+            }
+            this.regions = regions;
             return this;
         }
         public Builder regions(GetRegionsRegion... regions) {

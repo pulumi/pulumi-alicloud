@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -411,8 +412,12 @@ public final class PrometheusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PrometheusArgs build() {
-            $.clusterType = Objects.requireNonNull($.clusterType, "expected parameter 'clusterType' to be non-null");
-            $.grafanaInstanceId = Objects.requireNonNull($.grafanaInstanceId, "expected parameter 'grafanaInstanceId' to be non-null");
+            if ($.clusterType == null) {
+                throw new MissingRequiredPropertyException("PrometheusArgs", "clusterType");
+            }
+            if ($.grafanaInstanceId == null) {
+                throw new MissingRequiredPropertyException("PrometheusArgs", "grafanaInstanceId");
+            }
             return $;
         }
     }

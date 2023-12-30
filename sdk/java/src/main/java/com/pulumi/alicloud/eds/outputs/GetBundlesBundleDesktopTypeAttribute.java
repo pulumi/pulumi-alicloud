@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetBundlesBundleDesktopTypeAttribute {
 
         @CustomType.Setter
         public Builder cpuCount(Integer cpuCount) {
-            this.cpuCount = Objects.requireNonNull(cpuCount);
+            if (cpuCount == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundleDesktopTypeAttribute", "cpuCount");
+            }
+            this.cpuCount = cpuCount;
             return this;
         }
         @CustomType.Setter
         public Builder gpuCount(String gpuCount) {
-            this.gpuCount = Objects.requireNonNull(gpuCount);
+            if (gpuCount == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundleDesktopTypeAttribute", "gpuCount");
+            }
+            this.gpuCount = gpuCount;
             return this;
         }
         @CustomType.Setter
         public Builder gpuSpec(String gpuSpec) {
-            this.gpuSpec = Objects.requireNonNull(gpuSpec);
+            if (gpuSpec == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundleDesktopTypeAttribute", "gpuSpec");
+            }
+            this.gpuSpec = gpuSpec;
             return this;
         }
         @CustomType.Setter
         public Builder memorySize(String memorySize) {
-            this.memorySize = Objects.requireNonNull(memorySize);
+            if (memorySize == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundleDesktopTypeAttribute", "memorySize");
+            }
+            this.memorySize = memorySize;
             return this;
         }
         public GetBundlesBundleDesktopTypeAttribute build() {

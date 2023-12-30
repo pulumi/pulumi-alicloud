@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -116,31 +117,41 @@ public final class NodePoolScalingConfig {
 
         @CustomType.Setter
         public Builder eipBandwidth(@Nullable Integer eipBandwidth) {
+
             this.eipBandwidth = eipBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder eipInternetChargeType(@Nullable String eipInternetChargeType) {
+
             this.eipInternetChargeType = eipInternetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder isBondEip(@Nullable Boolean isBondEip) {
+
             this.isBondEip = isBondEip;
             return this;
         }
         @CustomType.Setter
         public Builder maxSize(Integer maxSize) {
-            this.maxSize = Objects.requireNonNull(maxSize);
+            if (maxSize == null) {
+              throw new MissingRequiredPropertyException("NodePoolScalingConfig", "maxSize");
+            }
+            this.maxSize = maxSize;
             return this;
         }
         @CustomType.Setter
         public Builder minSize(Integer minSize) {
-            this.minSize = Objects.requireNonNull(minSize);
+            if (minSize == null) {
+              throw new MissingRequiredPropertyException("NodePoolScalingConfig", "minSize");
+            }
+            this.minSize = minSize;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

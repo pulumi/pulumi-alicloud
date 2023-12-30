@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas.outputs;
 
 import com.pulumi.alicloud.edas.outputs.K8sSlbAttachmentSlbConfigPortMappingServicePort;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,17 +74,24 @@ public final class K8sSlbAttachmentSlbConfigPortMapping {
 
         @CustomType.Setter
         public Builder certId(@Nullable String certId) {
+
             this.certId = certId;
             return this;
         }
         @CustomType.Setter
         public Builder loadbalancerProtocol(String loadbalancerProtocol) {
-            this.loadbalancerProtocol = Objects.requireNonNull(loadbalancerProtocol);
+            if (loadbalancerProtocol == null) {
+              throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigPortMapping", "loadbalancerProtocol");
+            }
+            this.loadbalancerProtocol = loadbalancerProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder servicePort(K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort) {
-            this.servicePort = Objects.requireNonNull(servicePort);
+            if (servicePort == null) {
+              throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigPortMapping", "servicePort");
+            }
+            this.servicePort = servicePort;
             return this;
         }
         public K8sSlbAttachmentSlbConfigPortMapping build() {

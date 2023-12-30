@@ -7,6 +7,7 @@ import com.pulumi.alicloud.alb.inputs.RuleRuleActionArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleConditionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -323,11 +324,21 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RuleArgs build() {
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.ruleActions = Objects.requireNonNull($.ruleActions, "expected parameter 'ruleActions' to be non-null");
-            $.ruleConditions = Objects.requireNonNull($.ruleConditions, "expected parameter 'ruleConditions' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "listenerId");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "priority");
+            }
+            if ($.ruleActions == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "ruleActions");
+            }
+            if ($.ruleConditions == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "ruleConditions");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "ruleName");
+            }
             return $;
         }
     }

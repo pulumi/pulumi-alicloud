@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -781,11 +782,21 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         public VirtualBorderRouterArgs build() {
-            $.localGatewayIp = Objects.requireNonNull($.localGatewayIp, "expected parameter 'localGatewayIp' to be non-null");
-            $.peerGatewayIp = Objects.requireNonNull($.peerGatewayIp, "expected parameter 'peerGatewayIp' to be non-null");
-            $.peeringSubnetMask = Objects.requireNonNull($.peeringSubnetMask, "expected parameter 'peeringSubnetMask' to be non-null");
-            $.physicalConnectionId = Objects.requireNonNull($.physicalConnectionId, "expected parameter 'physicalConnectionId' to be non-null");
-            $.vlanId = Objects.requireNonNull($.vlanId, "expected parameter 'vlanId' to be non-null");
+            if ($.localGatewayIp == null) {
+                throw new MissingRequiredPropertyException("VirtualBorderRouterArgs", "localGatewayIp");
+            }
+            if ($.peerGatewayIp == null) {
+                throw new MissingRequiredPropertyException("VirtualBorderRouterArgs", "peerGatewayIp");
+            }
+            if ($.peeringSubnetMask == null) {
+                throw new MissingRequiredPropertyException("VirtualBorderRouterArgs", "peeringSubnetMask");
+            }
+            if ($.physicalConnectionId == null) {
+                throw new MissingRequiredPropertyException("VirtualBorderRouterArgs", "physicalConnectionId");
+            }
+            if ($.vlanId == null) {
+                throw new MissingRequiredPropertyException("VirtualBorderRouterArgs", "vlanId");
+            }
             return $;
         }
     }

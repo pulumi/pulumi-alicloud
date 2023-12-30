@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,10 +226,18 @@ public final class ChildInstanceRouteEntryToAttachmentArgs extends com.pulumi.re
         }
 
         public ChildInstanceRouteEntryToAttachmentArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.childInstanceRouteTableId = Objects.requireNonNull($.childInstanceRouteTableId, "expected parameter 'childInstanceRouteTableId' to be non-null");
-            $.destinationCidrBlock = Objects.requireNonNull($.destinationCidrBlock, "expected parameter 'destinationCidrBlock' to be non-null");
-            $.transitRouterAttachmentId = Objects.requireNonNull($.transitRouterAttachmentId, "expected parameter 'transitRouterAttachmentId' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("ChildInstanceRouteEntryToAttachmentArgs", "cenId");
+            }
+            if ($.childInstanceRouteTableId == null) {
+                throw new MissingRequiredPropertyException("ChildInstanceRouteEntryToAttachmentArgs", "childInstanceRouteTableId");
+            }
+            if ($.destinationCidrBlock == null) {
+                throw new MissingRequiredPropertyException("ChildInstanceRouteEntryToAttachmentArgs", "destinationCidrBlock");
+            }
+            if ($.transitRouterAttachmentId == null) {
+                throw new MissingRequiredPropertyException("ChildInstanceRouteEntryToAttachmentArgs", "transitRouterAttachmentId");
+            }
             return $;
         }
     }

@@ -58,11 +58,13 @@ public final class VvpInstanceResourceSpec {
 
         @CustomType.Setter
         public Builder cpu(@Nullable Integer cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder memoryGb(@Nullable Integer memoryGb) {
+
             this.memoryGb = memoryGb;
             return this;
         }

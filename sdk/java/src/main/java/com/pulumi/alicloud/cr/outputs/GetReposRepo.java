@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cr.outputs;
 import com.pulumi.alicloud.cr.outputs.GetReposRepoDomainList;
 import com.pulumi.alicloud.cr.outputs.GetReposRepoTag;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -115,32 +116,50 @@ public final class GetReposRepo {
 
         @CustomType.Setter
         public Builder domainList(GetReposRepoDomainList domainList) {
-            this.domainList = Objects.requireNonNull(domainList);
+            if (domainList == null) {
+              throw new MissingRequiredPropertyException("GetReposRepo", "domainList");
+            }
+            this.domainList = domainList;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetReposRepo", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetReposRepo", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder repoType(String repoType) {
-            this.repoType = Objects.requireNonNull(repoType);
+            if (repoType == null) {
+              throw new MissingRequiredPropertyException("GetReposRepo", "repoType");
+            }
+            this.repoType = repoType;
             return this;
         }
         @CustomType.Setter
         public Builder summary(String summary) {
-            this.summary = Objects.requireNonNull(summary);
+            if (summary == null) {
+              throw new MissingRequiredPropertyException("GetReposRepo", "summary");
+            }
+            this.summary = summary;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<GetReposRepoTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetReposRepo", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetReposRepoTag... tags) {

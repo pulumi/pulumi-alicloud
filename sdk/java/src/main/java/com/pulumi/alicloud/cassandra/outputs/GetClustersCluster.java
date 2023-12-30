@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cassandra.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -192,61 +193,95 @@ public final class GetClustersCluster {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder createdTime(String createdTime) {
-            this.createdTime = Objects.requireNonNull(createdTime);
+            if (createdTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "createdTime");
+            }
+            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder dataCenterCount(Integer dataCenterCount) {
-            this.dataCenterCount = Objects.requireNonNull(dataCenterCount);
+            if (dataCenterCount == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dataCenterCount");
+            }
+            this.dataCenterCount = dataCenterCount;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lockMode(String lockMode) {
-            this.lockMode = Objects.requireNonNull(lockMode);
+            if (lockMode == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "lockMode");
+            }
+            this.lockMode = lockMode;
             return this;
         }
         @CustomType.Setter
         public Builder majorVersion(String majorVersion) {
-            this.majorVersion = Objects.requireNonNull(majorVersion);
+            if (majorVersion == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "majorVersion");
+            }
+            this.majorVersion = majorVersion;
             return this;
         }
         @CustomType.Setter
         public Builder minorVersion(String minorVersion) {
-            this.minorVersion = Objects.requireNonNull(minorVersion);
+            if (minorVersion == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "minorVersion");
+            }
+            this.minorVersion = minorVersion;
             return this;
         }
         @CustomType.Setter
         public Builder payType(String payType) {
-            this.payType = Objects.requireNonNull(payType);
+            if (payType == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "payType");
+            }
+            this.payType = payType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

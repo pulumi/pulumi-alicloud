@@ -10,6 +10,7 @@ import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerReadinessProbeArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerVolumeMountArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -710,8 +711,12 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         public ContainerGroupContainerArgs build() {
-            $.image = Objects.requireNonNull($.image, "expected parameter 'image' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.image == null) {
+                throw new MissingRequiredPropertyException("ContainerGroupContainerArgs", "image");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ContainerGroupContainerArgs", "name");
+            }
             return $;
         }
     }

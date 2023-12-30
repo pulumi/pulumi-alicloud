@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class GetCiphertextArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetCiphertextArgs build() {
-            $.keyId = Objects.requireNonNull($.keyId, "expected parameter 'keyId' to be non-null");
-            $.plaintext = Objects.requireNonNull($.plaintext, "expected parameter 'plaintext' to be non-null");
+            if ($.keyId == null) {
+                throw new MissingRequiredPropertyException("GetCiphertextArgs", "keyId");
+            }
+            if ($.plaintext == null) {
+                throw new MissingRequiredPropertyException("GetCiphertextArgs", "plaintext");
+            }
             return $;
         }
     }

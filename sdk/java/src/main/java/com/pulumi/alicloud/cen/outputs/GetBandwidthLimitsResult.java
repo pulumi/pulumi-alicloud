@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetBandwidthLimitsLimit;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,11 +73,15 @@ public final class GetBandwidthLimitsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthLimitsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceIds(@Nullable List<String> instanceIds) {
+
             this.instanceIds = instanceIds;
             return this;
         }
@@ -85,7 +90,10 @@ public final class GetBandwidthLimitsResult {
         }
         @CustomType.Setter
         public Builder limits(List<GetBandwidthLimitsLimit> limits) {
-            this.limits = Objects.requireNonNull(limits);
+            if (limits == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthLimitsResult", "limits");
+            }
+            this.limits = limits;
             return this;
         }
         public Builder limits(GetBandwidthLimitsLimit... limits) {
@@ -93,6 +101,7 @@ public final class GetBandwidthLimitsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

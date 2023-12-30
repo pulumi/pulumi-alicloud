@@ -51,14 +51,29 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determines whether to enable Web Tracking. Default `false`.
+     * Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<Integer> createTime;
+
+    /**
+     * @return Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+     * 
+     */
+    public Optional<Output<Integer>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
      * 
      */
     @Import(name="enableWebTracking")
     private @Nullable Output<Boolean> enableWebTracking;
 
     /**
-     * @return Determines whether to enable Web Tracking. Default `false`.
+     * @return Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
      * 
      */
     public Optional<Output<Boolean>> enableWebTracking() {
@@ -66,14 +81,14 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+     * Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
      * 
      */
     @Import(name="encryptConf")
     private @Nullable Output<StoreEncryptConfArgs> encryptConf;
 
     /**
-     * @return Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+     * @return Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
      * 
      */
     public Optional<Output<StoreEncryptConfArgs>> encryptConf() {
@@ -81,18 +96,33 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     * The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
      * 
      */
     @Import(name="hotTtl")
     private @Nullable Output<Integer> hotTtl;
 
     /**
-     * @return The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     * @return The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
      * 
      */
     public Optional<Output<Integer>> hotTtl() {
         return Optional.ofNullable(this.hotTtl);
+    }
+
+    /**
+     * The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+     * 
+     */
+    @Import(name="logstoreName")
+    private @Nullable Output<String> logstoreName;
+
+    /**
+     * @return The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+     * 
+     */
+    public Optional<Output<String>> logstoreName() {
+        return Optional.ofNullable(this.logstoreName);
     }
 
     /**
@@ -111,14 +141,14 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The mode of storage. Default to `standard`, must be `standard` or `query`.
+     * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The mode of storage. Default to `standard`, must be `standard` or `query`.
+     * @return The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -126,44 +156,75 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The log store, which is unique in the same project.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.215.0. New field &#39;logstore_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The log store, which is unique in the same project.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.215.0. New field &#39;logstore_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The project name to the log store belongs.
+     * . Field &#39;project&#39; has been deprecated from provider version 1.215.0. New field &#39;project_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead. */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project name to the log store belongs.
+     * @return . Field &#39;project&#39; has been deprecated from provider version 1.215.0. New field &#39;project_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead. */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+     * The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+     * 
+     */
+    @Import(name="projectName")
+    private @Nullable Output<String> projectName;
+
+    /**
+     * @return The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+     * 
+     */
+    public Optional<Output<String>> projectName() {
+        return Optional.ofNullable(this.projectName);
+    }
+
+    /**
+     * The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
      * 
      */
     @Import(name="retentionPeriod")
     private @Nullable Output<Integer> retentionPeriod;
 
     /**
-     * @return The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+     * @return The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
      * 
      */
     public Optional<Output<Integer>> retentionPeriod() {
@@ -171,14 +232,14 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+     * The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
      * 
      */
     @Import(name="shardCount")
     private @Nullable Output<Integer> shardCount;
 
     /**
-     * @return The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+     * @return The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
      * 
      */
     public Optional<Output<Integer>> shardCount() {
@@ -203,12 +264,16 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     /**
      * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="telemetryType")
     private @Nullable Output<String> telemetryType;
 
     /**
      * @return Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> telemetryType() {
@@ -220,13 +285,16 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     private StoreState(StoreState $) {
         this.appendMeta = $.appendMeta;
         this.autoSplit = $.autoSplit;
+        this.createTime = $.createTime;
         this.enableWebTracking = $.enableWebTracking;
         this.encryptConf = $.encryptConf;
         this.hotTtl = $.hotTtl;
+        this.logstoreName = $.logstoreName;
         this.maxSplitShardCount = $.maxSplitShardCount;
         this.mode = $.mode;
         this.name = $.name;
         this.project = $.project;
+        this.projectName = $.projectName;
         this.retentionPeriod = $.retentionPeriod;
         this.shardCount = $.shardCount;
         this.shards = $.shards;
@@ -294,7 +362,28 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableWebTracking Determines whether to enable Web Tracking. Default `false`.
+         * @param createTime Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<Integer> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(Integer createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param enableWebTracking Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
          * 
          * @return builder
          * 
@@ -305,7 +394,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableWebTracking Determines whether to enable Web Tracking. Default `false`.
+         * @param enableWebTracking Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
          * 
          * @return builder
          * 
@@ -315,7 +404,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptConf Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+         * @param encryptConf Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
          * 
          * @return builder
          * 
@@ -326,7 +415,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptConf Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+         * @param encryptConf Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
          * 
          * @return builder
          * 
@@ -336,7 +425,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotTtl The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+         * @param hotTtl The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
          * 
          * @return builder
          * 
@@ -347,13 +436,34 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotTtl The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+         * @param hotTtl The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
          * 
          * @return builder
          * 
          */
         public Builder hotTtl(Integer hotTtl) {
             return hotTtl(Output.of(hotTtl));
+        }
+
+        /**
+         * @param logstoreName The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logstoreName(@Nullable Output<String> logstoreName) {
+            $.logstoreName = logstoreName;
+            return this;
+        }
+
+        /**
+         * @param logstoreName The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logstoreName(String logstoreName) {
+            return logstoreName(Output.of(logstoreName));
         }
 
         /**
@@ -378,7 +488,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`.
+         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
          * 
          * @return builder
          * 
@@ -389,7 +499,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`.
+         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
          * 
          * @return builder
          * 
@@ -399,49 +509,86 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The log store, which is unique in the same project.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.215.0. New field &#39;logstore_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The log store, which is unique in the same project.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.215.0. New field &#39;logstore_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param project The project name to the log store belongs.
+         * @param project . Field &#39;project&#39; has been deprecated from provider version 1.215.0. New field &#39;project_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead. */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
         /**
-         * @param project The project name to the log store belongs.
+         * @param project . Field &#39;project&#39; has been deprecated from provider version 1.215.0. New field &#39;project_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead. */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param retentionPeriod The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+         * @param projectName The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectName(@Nullable Output<String> projectName) {
+            $.projectName = projectName;
+            return this;
+        }
+
+        /**
+         * @param projectName The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectName(String projectName) {
+            return projectName(Output.of(projectName));
+        }
+
+        /**
+         * @param retentionPeriod The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
          * 
          * @return builder
          * 
@@ -452,7 +599,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionPeriod The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+         * @param retentionPeriod The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
          * 
          * @return builder
          * 
@@ -462,7 +609,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param shardCount The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+         * @param shardCount The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
          * 
          * @return builder
          * 
@@ -473,7 +620,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param shardCount The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+         * @param shardCount The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
          * 
          * @return builder
          * 
@@ -516,6 +663,8 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param telemetryType Determines whether store type is metric. `Metrics` means metric store, empty means log store.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -526,6 +675,8 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param telemetryType Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

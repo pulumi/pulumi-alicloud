@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecp.outputs;
 
 import com.pulumi.alicloud.ecp.outputs.GetInstanceTypesInstanceType;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,12 +59,18 @@ public final class GetInstanceTypesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTypes(List<GetInstanceTypesInstanceType> instanceTypes) {
-            this.instanceTypes = Objects.requireNonNull(instanceTypes);
+            if (instanceTypes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "instanceTypes");
+            }
+            this.instanceTypes = instanceTypes;
             return this;
         }
         public Builder instanceTypes(GetInstanceTypesInstanceType... instanceTypes) {
@@ -71,6 +78,7 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

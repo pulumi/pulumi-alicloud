@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -631,15 +632,33 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ControlPolicyArgs build() {
-            $.aclAction = Objects.requireNonNull($.aclAction, "expected parameter 'aclAction' to be non-null");
-            $.applicationName = Objects.requireNonNull($.applicationName, "expected parameter 'applicationName' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
-            $.destinationType = Objects.requireNonNull($.destinationType, "expected parameter 'destinationType' to be non-null");
-            $.direction = Objects.requireNonNull($.direction, "expected parameter 'direction' to be non-null");
-            $.proto = Objects.requireNonNull($.proto, "expected parameter 'proto' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
-            $.sourceType = Objects.requireNonNull($.sourceType, "expected parameter 'sourceType' to be non-null");
+            if ($.aclAction == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "aclAction");
+            }
+            if ($.applicationName == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "applicationName");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "description");
+            }
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "destination");
+            }
+            if ($.destinationType == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "destinationType");
+            }
+            if ($.direction == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "direction");
+            }
+            if ($.proto == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "proto");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "source");
+            }
+            if ($.sourceType == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "sourceType");
+            }
             return $;
         }
     }

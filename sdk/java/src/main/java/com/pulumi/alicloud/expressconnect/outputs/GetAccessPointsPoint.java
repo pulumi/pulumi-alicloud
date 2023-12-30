@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.alicloud.expressconnect.outputs.GetAccessPointsPointAccessPointFeatureModel;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -170,7 +171,10 @@ public final class GetAccessPointsPoint {
 
         @CustomType.Setter
         public Builder accessPointFeatureModels(List<GetAccessPointsPointAccessPointFeatureModel> accessPointFeatureModels) {
-            this.accessPointFeatureModels = Objects.requireNonNull(accessPointFeatureModels);
+            if (accessPointFeatureModels == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "accessPointFeatureModels");
+            }
+            this.accessPointFeatureModels = accessPointFeatureModels;
             return this;
         }
         public Builder accessPointFeatureModels(GetAccessPointsPointAccessPointFeatureModel... accessPointFeatureModels) {
@@ -178,47 +182,74 @@ public final class GetAccessPointsPoint {
         }
         @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
-            this.accessPointId = Objects.requireNonNull(accessPointId);
+            if (accessPointId == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "accessPointId");
+            }
+            this.accessPointId = accessPointId;
             return this;
         }
         @CustomType.Setter
         public Builder accessPointName(String accessPointName) {
-            this.accessPointName = Objects.requireNonNull(accessPointName);
+            if (accessPointName == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "accessPointName");
+            }
+            this.accessPointName = accessPointName;
             return this;
         }
         @CustomType.Setter
         public Builder attachedRegionNo(String attachedRegionNo) {
-            this.attachedRegionNo = Objects.requireNonNull(attachedRegionNo);
+            if (attachedRegionNo == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "attachedRegionNo");
+            }
+            this.attachedRegionNo = attachedRegionNo;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder hostOperator(String hostOperator) {
-            this.hostOperator = Objects.requireNonNull(hostOperator);
+            if (hostOperator == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "hostOperator");
+            }
+            this.hostOperator = hostOperator;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPoint", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetAccessPointsPoint build() {

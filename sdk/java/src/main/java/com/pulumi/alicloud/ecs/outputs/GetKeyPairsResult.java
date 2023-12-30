@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.alicloud.ecs.outputs.GetKeyPairsKeyPair;
 import com.pulumi.alicloud.ecs.outputs.GetKeyPairsPair;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -151,17 +152,24 @@ public final class GetKeyPairsResult {
 
         @CustomType.Setter
         public Builder fingerPrint(@Nullable String fingerPrint) {
+
             this.fingerPrint = fingerPrint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKeyPairsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetKeyPairsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -169,7 +177,10 @@ public final class GetKeyPairsResult {
         }
         @CustomType.Setter
         public Builder keyPairs(List<GetKeyPairsKeyPair> keyPairs) {
-            this.keyPairs = Objects.requireNonNull(keyPairs);
+            if (keyPairs == null) {
+              throw new MissingRequiredPropertyException("GetKeyPairsResult", "keyPairs");
+            }
+            this.keyPairs = keyPairs;
             return this;
         }
         public Builder keyPairs(GetKeyPairsKeyPair... keyPairs) {
@@ -177,12 +188,16 @@ public final class GetKeyPairsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetKeyPairsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -190,12 +205,16 @@ public final class GetKeyPairsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pairs(List<GetKeyPairsPair> pairs) {
-            this.pairs = Objects.requireNonNull(pairs);
+            if (pairs == null) {
+              throw new MissingRequiredPropertyException("GetKeyPairsResult", "pairs");
+            }
+            this.pairs = pairs;
             return this;
         }
         public Builder pairs(GetKeyPairsPair... pairs) {
@@ -203,11 +222,13 @@ public final class GetKeyPairsResult {
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

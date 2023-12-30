@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess;
 import com.pulumi.alicloud.ess.inputs.ScalingRuleStepAdjustmentArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -485,7 +486,9 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ScalingRuleArgs build() {
-            $.scalingGroupId = Objects.requireNonNull($.scalingGroupId, "expected parameter 'scalingGroupId' to be non-null");
+            if ($.scalingGroupId == null) {
+                throw new MissingRequiredPropertyException("ScalingRuleArgs", "scalingGroupId");
+            }
             return $;
         }
     }

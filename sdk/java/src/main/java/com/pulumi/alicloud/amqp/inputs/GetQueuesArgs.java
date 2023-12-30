@@ -5,6 +5,7 @@ package com.pulumi.alicloud.amqp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,8 +236,12 @@ public final class GetQueuesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetQueuesArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.virtualHostName = Objects.requireNonNull($.virtualHostName, "expected parameter 'virtualHostName' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetQueuesArgs", "instanceId");
+            }
+            if ($.virtualHostName == null) {
+                throw new MissingRequiredPropertyException("GetQueuesArgs", "virtualHostName");
+            }
             return $;
         }
     }

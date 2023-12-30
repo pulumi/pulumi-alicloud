@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eventbridge;
 import com.pulumi.alicloud.eventbridge.inputs.ApiDestinationHttpApiParametersArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -188,9 +189,15 @@ public final class ApiDestinationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ApiDestinationArgs build() {
-            $.apiDestinationName = Objects.requireNonNull($.apiDestinationName, "expected parameter 'apiDestinationName' to be non-null");
-            $.connectionName = Objects.requireNonNull($.connectionName, "expected parameter 'connectionName' to be non-null");
-            $.httpApiParameters = Objects.requireNonNull($.httpApiParameters, "expected parameter 'httpApiParameters' to be non-null");
+            if ($.apiDestinationName == null) {
+                throw new MissingRequiredPropertyException("ApiDestinationArgs", "apiDestinationName");
+            }
+            if ($.connectionName == null) {
+                throw new MissingRequiredPropertyException("ApiDestinationArgs", "connectionName");
+            }
+            if ($.httpApiParameters == null) {
+                throw new MissingRequiredPropertyException("ApiDestinationArgs", "httpApiParameters");
+            }
             return $;
         }
     }

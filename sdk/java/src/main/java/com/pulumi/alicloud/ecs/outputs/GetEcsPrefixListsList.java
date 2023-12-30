@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsPrefixListsListEntry;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -149,27 +150,42 @@ public final class GetEcsPrefixListsList {
 
         @CustomType.Setter
         public Builder addressFamily(String addressFamily) {
-            this.addressFamily = Objects.requireNonNull(addressFamily);
+            if (addressFamily == null) {
+              throw new MissingRequiredPropertyException("GetEcsPrefixListsList", "addressFamily");
+            }
+            this.addressFamily = addressFamily;
             return this;
         }
         @CustomType.Setter
         public Builder associationCount(Integer associationCount) {
-            this.associationCount = Objects.requireNonNull(associationCount);
+            if (associationCount == null) {
+              throw new MissingRequiredPropertyException("GetEcsPrefixListsList", "associationCount");
+            }
+            this.associationCount = associationCount;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsPrefixListsList", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsPrefixListsList", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder entries(List<GetEcsPrefixListsListEntry> entries) {
-            this.entries = Objects.requireNonNull(entries);
+            if (entries == null) {
+              throw new MissingRequiredPropertyException("GetEcsPrefixListsList", "entries");
+            }
+            this.entries = entries;
             return this;
         }
         public Builder entries(GetEcsPrefixListsListEntry... entries) {
@@ -177,22 +193,34 @@ public final class GetEcsPrefixListsList {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsPrefixListsList", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maxEntries(Integer maxEntries) {
-            this.maxEntries = Objects.requireNonNull(maxEntries);
+            if (maxEntries == null) {
+              throw new MissingRequiredPropertyException("GetEcsPrefixListsList", "maxEntries");
+            }
+            this.maxEntries = maxEntries;
             return this;
         }
         @CustomType.Setter
         public Builder prefixListId(String prefixListId) {
-            this.prefixListId = Objects.requireNonNull(prefixListId);
+            if (prefixListId == null) {
+              throw new MissingRequiredPropertyException("GetEcsPrefixListsList", "prefixListId");
+            }
+            this.prefixListId = prefixListId;
             return this;
         }
         @CustomType.Setter
         public Builder prefixListName(String prefixListName) {
-            this.prefixListName = Objects.requireNonNull(prefixListName);
+            if (prefixListName == null) {
+              throw new MissingRequiredPropertyException("GetEcsPrefixListsList", "prefixListName");
+            }
+            this.prefixListName = prefixListName;
             return this;
         }
         public GetEcsPrefixListsList build() {

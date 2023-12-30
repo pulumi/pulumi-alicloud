@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetPrometheusMonitoringsPrometheusMonitoring {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsPrometheusMonitoring", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder configYaml(String configYaml) {
-            this.configYaml = Objects.requireNonNull(configYaml);
+            if (configYaml == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsPrometheusMonitoring", "configYaml");
+            }
+            this.configYaml = configYaml;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsPrometheusMonitoring", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder monitoringName(String monitoringName) {
-            this.monitoringName = Objects.requireNonNull(monitoringName);
+            if (monitoringName == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsPrometheusMonitoring", "monitoringName");
+            }
+            this.monitoringName = monitoringName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsPrometheusMonitoring", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsPrometheusMonitoring", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetPrometheusMonitoringsPrometheusMonitoring build() {

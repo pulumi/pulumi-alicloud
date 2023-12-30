@@ -5,6 +5,7 @@ package com.pulumi.alicloud.elasticsearch.outputs;
 
 import com.pulumi.alicloud.elasticsearch.outputs.GetInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -90,12 +91,16 @@ public final class GetInstancesResult {
 
         @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
+
             this.descriptionRegex = descriptionRegex;
             return this;
         }
         @CustomType.Setter
         public Builder descriptions(List<String> descriptions) {
-            this.descriptions = Objects.requireNonNull(descriptions);
+            if (descriptions == null) {
+              throw new MissingRequiredPropertyException("GetInstancesResult", "descriptions");
+            }
+            this.descriptions = descriptions;
             return this;
         }
         public Builder descriptions(String... descriptions) {
@@ -103,12 +108,18 @@ public final class GetInstancesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInstancesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -116,7 +127,10 @@ public final class GetInstancesResult {
         }
         @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetInstancesResult", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(GetInstancesInstance... instances) {
@@ -124,16 +138,19 @@ public final class GetInstancesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

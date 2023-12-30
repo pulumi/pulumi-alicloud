@@ -42,11 +42,13 @@ public final class AclEntryList {
 
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder entry(@Nullable String entry) {
+
             this.entry = entry;
             return this;
         }

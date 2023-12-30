@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rocketmq.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -143,42 +144,66 @@ public final class GetGroupsGroup {
 
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder groupType(String groupType) {
-            this.groupType = Objects.requireNonNull(groupType);
+            if (groupType == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "groupType");
+            }
+            this.groupType = groupType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder independentNaming(Boolean independentNaming) {
-            this.independentNaming = Objects.requireNonNull(independentNaming);
+            if (independentNaming == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "independentNaming");
+            }
+            this.independentNaming = independentNaming;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder owner(String owner) {
-            this.owner = Objects.requireNonNull(owner);
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "owner");
+            }
+            this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetGroupsGroup build() {

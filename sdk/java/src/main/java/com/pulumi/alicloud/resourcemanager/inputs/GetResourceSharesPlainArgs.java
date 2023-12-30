@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -211,7 +212,9 @@ public final class GetResourceSharesPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetResourceSharesPlainArgs build() {
-            $.resourceShareOwner = Objects.requireNonNull($.resourceShareOwner, "expected parameter 'resourceShareOwner' to be non-null");
+            if ($.resourceShareOwner == null) {
+                throw new MissingRequiredPropertyException("GetResourceSharesPlainArgs", "resourceShareOwner");
+            }
             return $;
         }
     }

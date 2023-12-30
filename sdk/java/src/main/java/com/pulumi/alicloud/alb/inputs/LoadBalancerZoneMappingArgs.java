@@ -6,6 +6,7 @@ package com.pulumi.alicloud.alb.inputs;
 import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingLoadBalancerAddressArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -162,8 +163,12 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         public LoadBalancerZoneMappingArgs build() {
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerZoneMappingArgs", "vswitchId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerZoneMappingArgs", "zoneId");
+            }
             return $;
         }
     }

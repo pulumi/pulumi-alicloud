@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.marketplace.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -239,77 +240,122 @@ public final class GetProductsProduct {
 
         @CustomType.Setter
         public Builder categoryId(Integer categoryId) {
-            this.categoryId = Objects.requireNonNull(categoryId);
+            if (categoryId == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "categoryId");
+            }
+            this.categoryId = categoryId;
             return this;
         }
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryDate(String deliveryDate) {
-            this.deliveryDate = Objects.requireNonNull(deliveryDate);
+            if (deliveryDate == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "deliveryDate");
+            }
+            this.deliveryDate = deliveryDate;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryWay(String deliveryWay) {
-            this.deliveryWay = Objects.requireNonNull(deliveryWay);
+            if (deliveryWay == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "deliveryWay");
+            }
+            this.deliveryWay = deliveryWay;
             return this;
         }
         @CustomType.Setter
         public Builder imageUrl(String imageUrl) {
-            this.imageUrl = Objects.requireNonNull(imageUrl);
+            if (imageUrl == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "imageUrl");
+            }
+            this.imageUrl = imageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder operationSystem(String operationSystem) {
-            this.operationSystem = Objects.requireNonNull(operationSystem);
+            if (operationSystem == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "operationSystem");
+            }
+            this.operationSystem = operationSystem;
             return this;
         }
         @CustomType.Setter
         public Builder score(String score) {
-            this.score = Objects.requireNonNull(score);
+            if (score == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "score");
+            }
+            this.score = score;
             return this;
         }
         @CustomType.Setter
         public Builder shortDescription(String shortDescription) {
-            this.shortDescription = Objects.requireNonNull(shortDescription);
+            if (shortDescription == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "shortDescription");
+            }
+            this.shortDescription = shortDescription;
             return this;
         }
         @CustomType.Setter
         public Builder suggestedPrice(String suggestedPrice) {
-            this.suggestedPrice = Objects.requireNonNull(suggestedPrice);
+            if (suggestedPrice == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "suggestedPrice");
+            }
+            this.suggestedPrice = suggestedPrice;
             return this;
         }
         @CustomType.Setter
         public Builder supplierId(Integer supplierId) {
-            this.supplierId = Objects.requireNonNull(supplierId);
+            if (supplierId == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "supplierId");
+            }
+            this.supplierId = supplierId;
             return this;
         }
         @CustomType.Setter
         public Builder supplierName(String supplierName) {
-            this.supplierName = Objects.requireNonNull(supplierName);
+            if (supplierName == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "supplierName");
+            }
+            this.supplierName = supplierName;
             return this;
         }
         @CustomType.Setter
         public Builder tags(String tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder targetUrl(String targetUrl) {
-            this.targetUrl = Objects.requireNonNull(targetUrl);
+            if (targetUrl == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "targetUrl");
+            }
+            this.targetUrl = targetUrl;
             return this;
         }
         @CustomType.Setter
         public Builder warrantyDate(String warrantyDate) {
-            this.warrantyDate = Objects.requireNonNull(warrantyDate);
+            if (warrantyDate == null) {
+              throw new MissingRequiredPropertyException("GetProductsProduct", "warrantyDate");
+            }
+            this.warrantyDate = warrantyDate;
             return this;
         }
         public GetProductsProduct build() {

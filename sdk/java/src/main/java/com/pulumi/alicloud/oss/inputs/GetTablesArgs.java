@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,7 +199,9 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetTablesArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("GetTablesArgs", "instanceName");
+            }
             return $;
         }
     }

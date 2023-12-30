@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,7 +226,9 @@ public final class GetVbrHealthChecksArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetVbrHealthChecksArgs build() {
-            $.vbrInstanceRegionId = Objects.requireNonNull($.vbrInstanceRegionId, "expected parameter 'vbrInstanceRegionId' to be non-null");
+            if ($.vbrInstanceRegionId == null) {
+                throw new MissingRequiredPropertyException("GetVbrHealthChecksArgs", "vbrInstanceRegionId");
+            }
             return $;
         }
     }

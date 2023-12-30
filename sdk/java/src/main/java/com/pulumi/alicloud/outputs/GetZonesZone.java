@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -135,7 +136,10 @@ public final class GetZonesZone {
 
         @CustomType.Setter
         public Builder availableDiskCategories(List<String> availableDiskCategories) {
-            this.availableDiskCategories = Objects.requireNonNull(availableDiskCategories);
+            if (availableDiskCategories == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "availableDiskCategories");
+            }
+            this.availableDiskCategories = availableDiskCategories;
             return this;
         }
         public Builder availableDiskCategories(String... availableDiskCategories) {
@@ -143,7 +147,10 @@ public final class GetZonesZone {
         }
         @CustomType.Setter
         public Builder availableInstanceTypes(List<String> availableInstanceTypes) {
-            this.availableInstanceTypes = Objects.requireNonNull(availableInstanceTypes);
+            if (availableInstanceTypes == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "availableInstanceTypes");
+            }
+            this.availableInstanceTypes = availableInstanceTypes;
             return this;
         }
         public Builder availableInstanceTypes(String... availableInstanceTypes) {
@@ -151,7 +158,10 @@ public final class GetZonesZone {
         }
         @CustomType.Setter
         public Builder availableResourceCreations(List<String> availableResourceCreations) {
-            this.availableResourceCreations = Objects.requireNonNull(availableResourceCreations);
+            if (availableResourceCreations == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "availableResourceCreations");
+            }
+            this.availableResourceCreations = availableResourceCreations;
             return this;
         }
         public Builder availableResourceCreations(String... availableResourceCreations) {
@@ -159,17 +169,26 @@ public final class GetZonesZone {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localName(String localName) {
-            this.localName = Objects.requireNonNull(localName);
+            if (localName == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "localName");
+            }
+            this.localName = localName;
             return this;
         }
         @CustomType.Setter
         public Builder multiZoneIds(List<String> multiZoneIds) {
-            this.multiZoneIds = Objects.requireNonNull(multiZoneIds);
+            if (multiZoneIds == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "multiZoneIds");
+            }
+            this.multiZoneIds = multiZoneIds;
             return this;
         }
         public Builder multiZoneIds(String... multiZoneIds) {
@@ -177,7 +196,10 @@ public final class GetZonesZone {
         }
         @CustomType.Setter
         public Builder slbSlaveZoneIds(List<String> slbSlaveZoneIds) {
-            this.slbSlaveZoneIds = Objects.requireNonNull(slbSlaveZoneIds);
+            if (slbSlaveZoneIds == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "slbSlaveZoneIds");
+            }
+            this.slbSlaveZoneIds = slbSlaveZoneIds;
             return this;
         }
         public Builder slbSlaveZoneIds(String... slbSlaveZoneIds) {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,47 +152,74 @@ public final class GetDhcpOptionsSetsSet {
 
         @CustomType.Setter
         public Builder associateVpcCount(Integer associateVpcCount) {
-            this.associateVpcCount = Objects.requireNonNull(associateVpcCount);
+            if (associateVpcCount == null) {
+              throw new MissingRequiredPropertyException("GetDhcpOptionsSetsSet", "associateVpcCount");
+            }
+            this.associateVpcCount = associateVpcCount;
             return this;
         }
         @CustomType.Setter
         public Builder dhcpOptionsSetDescription(String dhcpOptionsSetDescription) {
-            this.dhcpOptionsSetDescription = Objects.requireNonNull(dhcpOptionsSetDescription);
+            if (dhcpOptionsSetDescription == null) {
+              throw new MissingRequiredPropertyException("GetDhcpOptionsSetsSet", "dhcpOptionsSetDescription");
+            }
+            this.dhcpOptionsSetDescription = dhcpOptionsSetDescription;
             return this;
         }
         @CustomType.Setter
         public Builder dhcpOptionsSetId(String dhcpOptionsSetId) {
-            this.dhcpOptionsSetId = Objects.requireNonNull(dhcpOptionsSetId);
+            if (dhcpOptionsSetId == null) {
+              throw new MissingRequiredPropertyException("GetDhcpOptionsSetsSet", "dhcpOptionsSetId");
+            }
+            this.dhcpOptionsSetId = dhcpOptionsSetId;
             return this;
         }
         @CustomType.Setter
         public Builder dhcpOptionsSetName(String dhcpOptionsSetName) {
-            this.dhcpOptionsSetName = Objects.requireNonNull(dhcpOptionsSetName);
+            if (dhcpOptionsSetName == null) {
+              throw new MissingRequiredPropertyException("GetDhcpOptionsSetsSet", "dhcpOptionsSetName");
+            }
+            this.dhcpOptionsSetName = dhcpOptionsSetName;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetDhcpOptionsSetsSet", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder domainNameServers(String domainNameServers) {
-            this.domainNameServers = Objects.requireNonNull(domainNameServers);
+            if (domainNameServers == null) {
+              throw new MissingRequiredPropertyException("GetDhcpOptionsSetsSet", "domainNameServers");
+            }
+            this.domainNameServers = domainNameServers;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDhcpOptionsSetsSet", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ownerId(String ownerId) {
-            this.ownerId = Objects.requireNonNull(ownerId);
+            if (ownerId == null) {
+              throw new MissingRequiredPropertyException("GetDhcpOptionsSetsSet", "ownerId");
+            }
+            this.ownerId = ownerId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDhcpOptionsSetsSet", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetDhcpOptionsSetsSet build() {

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
 import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -267,7 +268,9 @@ public final class GetPolicyDocumentStatementArgs extends com.pulumi.resources.R
         }
 
         public GetPolicyDocumentStatementArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
+            if ($.actions == null) {
+                throw new MissingRequiredPropertyException("GetPolicyDocumentStatementArgs", "actions");
+            }
             return $;
         }
     }

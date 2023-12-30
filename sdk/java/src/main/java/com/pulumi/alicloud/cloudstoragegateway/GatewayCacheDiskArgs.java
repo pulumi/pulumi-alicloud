@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class GatewayCacheDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         public GatewayCacheDiskArgs build() {
-            $.cacheDiskSizeInGb = Objects.requireNonNull($.cacheDiskSizeInGb, "expected parameter 'cacheDiskSizeInGb' to be non-null");
-            $.gatewayId = Objects.requireNonNull($.gatewayId, "expected parameter 'gatewayId' to be non-null");
+            if ($.cacheDiskSizeInGb == null) {
+                throw new MissingRequiredPropertyException("GatewayCacheDiskArgs", "cacheDiskSizeInGb");
+            }
+            if ($.gatewayId == null) {
+                throw new MissingRequiredPropertyException("GatewayCacheDiskArgs", "gatewayId");
+            }
             return $;
         }
     }

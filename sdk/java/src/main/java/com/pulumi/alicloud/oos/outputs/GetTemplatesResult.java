@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.alicloud.oos.outputs.GetTemplatesTemplate;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -169,37 +170,48 @@ public final class GetTemplatesResult {
 
         @CustomType.Setter
         public Builder category(@Nullable String category) {
+
             this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder createdBy(@Nullable String createdBy) {
+
             this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder createdDate(@Nullable String createdDate) {
+
             this.createdDate = createdDate;
             return this;
         }
         @CustomType.Setter
         public Builder createdDateAfter(@Nullable String createdDateAfter) {
+
             this.createdDateAfter = createdDateAfter;
             return this;
         }
         @CustomType.Setter
         public Builder hasTrigger(@Nullable Boolean hasTrigger) {
+
             this.hasTrigger = hasTrigger;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -207,12 +219,16 @@ public final class GetTemplatesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -220,42 +236,52 @@ public final class GetTemplatesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder shareType(@Nullable String shareType) {
+
             this.shareType = shareType;
             return this;
         }
         @CustomType.Setter
         public Builder sortField(@Nullable String sortField) {
+
             this.sortField = sortField;
             return this;
         }
         @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
+
             this.sortOrder = sortOrder;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder templateFormat(@Nullable String templateFormat) {
+
             this.templateFormat = templateFormat;
             return this;
         }
         @CustomType.Setter
         public Builder templateType(@Nullable String templateType) {
+
             this.templateType = templateType;
             return this;
         }
         @CustomType.Setter
         public Builder templates(List<GetTemplatesTemplate> templates) {
-            this.templates = Objects.requireNonNull(templates);
+            if (templates == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesResult", "templates");
+            }
+            this.templates = templates;
             return this;
         }
         public Builder templates(GetTemplatesTemplate... templates) {

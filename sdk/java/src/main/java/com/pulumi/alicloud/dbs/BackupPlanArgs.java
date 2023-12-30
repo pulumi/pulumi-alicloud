@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dbs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1447,11 +1448,21 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BackupPlanArgs build() {
-            $.backupMethod = Objects.requireNonNull($.backupMethod, "expected parameter 'backupMethod' to be non-null");
-            $.backupPlanName = Objects.requireNonNull($.backupPlanName, "expected parameter 'backupPlanName' to be non-null");
-            $.databaseType = Objects.requireNonNull($.databaseType, "expected parameter 'databaseType' to be non-null");
-            $.instanceClass = Objects.requireNonNull($.instanceClass, "expected parameter 'instanceClass' to be non-null");
-            $.sourceEndpointInstanceType = Objects.requireNonNull($.sourceEndpointInstanceType, "expected parameter 'sourceEndpointInstanceType' to be non-null");
+            if ($.backupMethod == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "backupMethod");
+            }
+            if ($.backupPlanName == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "backupPlanName");
+            }
+            if ($.databaseType == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "databaseType");
+            }
+            if ($.instanceClass == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "instanceClass");
+            }
+            if ($.sourceEndpointInstanceType == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "sourceEndpointInstanceType");
+            }
             return $;
         }
     }

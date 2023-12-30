@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -272,7 +273,9 @@ public final class GetPrometheusMonitoringsArgs extends com.pulumi.resources.Inv
         }
 
         public GetPrometheusMonitoringsArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetPrometheusMonitoringsArgs", "clusterId");
+            }
             return $;
         }
     }

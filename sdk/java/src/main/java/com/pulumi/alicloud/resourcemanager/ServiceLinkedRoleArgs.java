@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class ServiceLinkedRoleArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ServiceLinkedRoleArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ServiceLinkedRoleArgs", "serviceName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetNatIpsIp {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNatIpsIp", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
-            this.isDefault = Objects.requireNonNull(isDefault);
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetNatIpsIp", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
-            this.natGatewayId = Objects.requireNonNull(natGatewayId);
+            if (natGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetNatIpsIp", "natGatewayId");
+            }
+            this.natGatewayId = natGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder natIp(String natIp) {
-            this.natIp = Objects.requireNonNull(natIp);
+            if (natIp == null) {
+              throw new MissingRequiredPropertyException("GetNatIpsIp", "natIp");
+            }
+            this.natIp = natIp;
             return this;
         }
         @CustomType.Setter
         public Builder natIpCidr(String natIpCidr) {
-            this.natIpCidr = Objects.requireNonNull(natIpCidr);
+            if (natIpCidr == null) {
+              throw new MissingRequiredPropertyException("GetNatIpsIp", "natIpCidr");
+            }
+            this.natIpCidr = natIpCidr;
             return this;
         }
         @CustomType.Setter
         public Builder natIpDescription(String natIpDescription) {
-            this.natIpDescription = Objects.requireNonNull(natIpDescription);
+            if (natIpDescription == null) {
+              throw new MissingRequiredPropertyException("GetNatIpsIp", "natIpDescription");
+            }
+            this.natIpDescription = natIpDescription;
             return this;
         }
         @CustomType.Setter
         public Builder natIpId(String natIpId) {
-            this.natIpId = Objects.requireNonNull(natIpId);
+            if (natIpId == null) {
+              throw new MissingRequiredPropertyException("GetNatIpsIp", "natIpId");
+            }
+            this.natIpId = natIpId;
             return this;
         }
         @CustomType.Setter
         public Builder natIpName(String natIpName) {
-            this.natIpName = Objects.requireNonNull(natIpName);
+            if (natIpName == null) {
+              throw new MissingRequiredPropertyException("GetNatIpsIp", "natIpName");
+            }
+            this.natIpName = natIpName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNatIpsIp", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetNatIpsIp build() {

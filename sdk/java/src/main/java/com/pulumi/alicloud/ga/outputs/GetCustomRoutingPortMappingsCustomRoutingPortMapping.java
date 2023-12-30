@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -171,17 +172,26 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
 
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder acceleratorPort(Integer acceleratorPort) {
-            this.acceleratorPort = Objects.requireNonNull(acceleratorPort);
+            if (acceleratorPort == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "acceleratorPort");
+            }
+            this.acceleratorPort = acceleratorPort;
             return this;
         }
         @CustomType.Setter
         public Builder destinationSocketAddresses(List<GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress> destinationSocketAddresses) {
-            this.destinationSocketAddresses = Objects.requireNonNull(destinationSocketAddresses);
+            if (destinationSocketAddresses == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "destinationSocketAddresses");
+            }
+            this.destinationSocketAddresses = destinationSocketAddresses;
             return this;
         }
         public Builder destinationSocketAddresses(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress... destinationSocketAddresses) {
@@ -189,27 +199,42 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
         }
         @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
-            this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
+            if (endpointGroupId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "endpointGroupId");
+            }
+            this.endpointGroupId = endpointGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointGroupRegion(String endpointGroupRegion) {
-            this.endpointGroupRegion = Objects.requireNonNull(endpointGroupRegion);
+            if (endpointGroupRegion == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "endpointGroupRegion");
+            }
+            this.endpointGroupRegion = endpointGroupRegion;
             return this;
         }
         @CustomType.Setter
         public Builder endpointId(String endpointId) {
-            this.endpointId = Objects.requireNonNull(endpointId);
+            if (endpointId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "endpointId");
+            }
+            this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder protocols(List<String> protocols) {
-            this.protocols = Objects.requireNonNull(protocols);
+            if (protocols == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "protocols");
+            }
+            this.protocols = protocols;
             return this;
         }
         public Builder protocols(String... protocols) {
@@ -217,12 +242,18 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vswitch(String vswitch) {
-            this.vswitch = Objects.requireNonNull(vswitch);
+            if (vswitch == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsCustomRoutingPortMapping", "vswitch");
+            }
+            this.vswitch = vswitch;
             return this;
         }
         public GetCustomRoutingPortMappingsCustomRoutingPortMapping build() {

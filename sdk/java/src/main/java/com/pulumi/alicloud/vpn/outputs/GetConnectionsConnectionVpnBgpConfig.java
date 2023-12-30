@@ -129,36 +129,43 @@ public final class GetConnectionsConnectionVpnBgpConfig {
 
         @CustomType.Setter
         public Builder authKey(@Nullable String authKey) {
+
             this.authKey = authKey;
             return this;
         }
         @CustomType.Setter
         public Builder localAsn(@Nullable Integer localAsn) {
+
             this.localAsn = localAsn;
             return this;
         }
         @CustomType.Setter
         public Builder localBgpIp(@Nullable String localBgpIp) {
+
             this.localBgpIp = localBgpIp;
             return this;
         }
         @CustomType.Setter
         public Builder peerAsn(@Nullable Integer peerAsn) {
+
             this.peerAsn = peerAsn;
             return this;
         }
         @CustomType.Setter
         public Builder peerBgpIp(@Nullable String peerBgpIp) {
+
             this.peerBgpIp = peerBgpIp;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tunnelCidr(@Nullable String tunnelCidr) {
+
             this.tunnelCidr = tunnelCidr;
             return this;
         }

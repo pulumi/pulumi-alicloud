@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class GetInstancesInstanceAllowedListInternetList {
 
         @CustomType.Setter
         public Builder allowedIpLists(List<String> allowedIpLists) {
-            this.allowedIpLists = Objects.requireNonNull(allowedIpLists);
+            if (allowedIpLists == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAllowedListInternetList", "allowedIpLists");
+            }
+            this.allowedIpLists = allowedIpLists;
             return this;
         }
         public Builder allowedIpLists(String... allowedIpLists) {
@@ -65,7 +69,10 @@ public final class GetInstancesInstanceAllowedListInternetList {
         }
         @CustomType.Setter
         public Builder portRange(String portRange) {
-            this.portRange = Objects.requireNonNull(portRange);
+            if (portRange == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAllowedListInternetList", "portRange");
+            }
+            this.portRange = portRange;
             return this;
         }
         public GetInstancesInstanceAllowedListInternetList build() {

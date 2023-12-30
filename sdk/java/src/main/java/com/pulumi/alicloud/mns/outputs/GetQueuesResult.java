@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mns.outputs;
 
 import com.pulumi.alicloud.mns.outputs.GetQueuesQueue;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,17 +87,24 @@ public final class GetQueuesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQueuesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder namePrefix(@Nullable String namePrefix) {
+
             this.namePrefix = namePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetQueuesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -104,12 +112,16 @@ public final class GetQueuesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder queues(List<GetQueuesQueue> queues) {
-            this.queues = Objects.requireNonNull(queues);
+            if (queues == null) {
+              throw new MissingRequiredPropertyException("GetQueuesResult", "queues");
+            }
+            this.queues = queues;
             return this;
         }
         public Builder queues(GetQueuesQueue... queues) {

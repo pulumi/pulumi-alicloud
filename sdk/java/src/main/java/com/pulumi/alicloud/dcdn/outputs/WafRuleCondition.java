@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dcdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,21 +87,29 @@ public final class WafRuleCondition {
 
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("WafRuleCondition", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder opValue(String opValue) {
-            this.opValue = Objects.requireNonNull(opValue);
+            if (opValue == null) {
+              throw new MissingRequiredPropertyException("WafRuleCondition", "opValue");
+            }
+            this.opValue = opValue;
             return this;
         }
         @CustomType.Setter
         public Builder subKey(@Nullable String subKey) {
+
             this.subKey = subKey;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable String values) {
+
             this.values = values;
             return this;
         }

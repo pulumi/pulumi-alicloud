@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eds.outputs;
 import com.pulumi.alicloud.eds.outputs.GetPolicyGroupsGroupAuthorizeAccessPolicyRule;
 import com.pulumi.alicloud.eds.outputs.GetPolicyGroupsGroupAuthorizeSecurityPolicyRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -354,7 +355,10 @@ public final class GetPolicyGroupsGroup {
 
         @CustomType.Setter
         public Builder authorizeAccessPolicyRules(List<GetPolicyGroupsGroupAuthorizeAccessPolicyRule> authorizeAccessPolicyRules) {
-            this.authorizeAccessPolicyRules = Objects.requireNonNull(authorizeAccessPolicyRules);
+            if (authorizeAccessPolicyRules == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "authorizeAccessPolicyRules");
+            }
+            this.authorizeAccessPolicyRules = authorizeAccessPolicyRules;
             return this;
         }
         public Builder authorizeAccessPolicyRules(GetPolicyGroupsGroupAuthorizeAccessPolicyRule... authorizeAccessPolicyRules) {
@@ -362,7 +366,10 @@ public final class GetPolicyGroupsGroup {
         }
         @CustomType.Setter
         public Builder authorizeSecurityPolicyRules(List<GetPolicyGroupsGroupAuthorizeSecurityPolicyRule> authorizeSecurityPolicyRules) {
-            this.authorizeSecurityPolicyRules = Objects.requireNonNull(authorizeSecurityPolicyRules);
+            if (authorizeSecurityPolicyRules == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "authorizeSecurityPolicyRules");
+            }
+            this.authorizeSecurityPolicyRules = authorizeSecurityPolicyRules;
             return this;
         }
         public Builder authorizeSecurityPolicyRules(GetPolicyGroupsGroupAuthorizeSecurityPolicyRule... authorizeSecurityPolicyRules) {
@@ -370,107 +377,170 @@ public final class GetPolicyGroupsGroup {
         }
         @CustomType.Setter
         public Builder cameraRedirect(String cameraRedirect) {
-            this.cameraRedirect = Objects.requireNonNull(cameraRedirect);
+            if (cameraRedirect == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "cameraRedirect");
+            }
+            this.cameraRedirect = cameraRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder clipboard(String clipboard) {
-            this.clipboard = Objects.requireNonNull(clipboard);
+            if (clipboard == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "clipboard");
+            }
+            this.clipboard = clipboard;
             return this;
         }
         @CustomType.Setter
         public Builder domainList(String domainList) {
-            this.domainList = Objects.requireNonNull(domainList);
+            if (domainList == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "domainList");
+            }
+            this.domainList = domainList;
             return this;
         }
         @CustomType.Setter
         public Builder edsCount(Integer edsCount) {
-            this.edsCount = Objects.requireNonNull(edsCount);
+            if (edsCount == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "edsCount");
+            }
+            this.edsCount = edsCount;
             return this;
         }
         @CustomType.Setter
         public Builder htmlAccess(String htmlAccess) {
-            this.htmlAccess = Objects.requireNonNull(htmlAccess);
+            if (htmlAccess == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "htmlAccess");
+            }
+            this.htmlAccess = htmlAccess;
             return this;
         }
         @CustomType.Setter
         public Builder htmlFileTransfer(String htmlFileTransfer) {
-            this.htmlFileTransfer = Objects.requireNonNull(htmlFileTransfer);
+            if (htmlFileTransfer == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "htmlFileTransfer");
+            }
+            this.htmlFileTransfer = htmlFileTransfer;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localDrive(String localDrive) {
-            this.localDrive = Objects.requireNonNull(localDrive);
+            if (localDrive == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "localDrive");
+            }
+            this.localDrive = localDrive;
             return this;
         }
         @CustomType.Setter
         public Builder policyGroupId(String policyGroupId) {
-            this.policyGroupId = Objects.requireNonNull(policyGroupId);
+            if (policyGroupId == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "policyGroupId");
+            }
+            this.policyGroupId = policyGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder policyGroupName(String policyGroupName) {
-            this.policyGroupName = Objects.requireNonNull(policyGroupName);
+            if (policyGroupName == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "policyGroupName");
+            }
+            this.policyGroupName = policyGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder policyGroupType(String policyGroupType) {
-            this.policyGroupType = Objects.requireNonNull(policyGroupType);
+            if (policyGroupType == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "policyGroupType");
+            }
+            this.policyGroupType = policyGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder recording(String recording) {
-            this.recording = Objects.requireNonNull(recording);
+            if (recording == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "recording");
+            }
+            this.recording = recording;
             return this;
         }
         @CustomType.Setter
         public Builder recordingEndTime(String recordingEndTime) {
-            this.recordingEndTime = Objects.requireNonNull(recordingEndTime);
+            if (recordingEndTime == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "recordingEndTime");
+            }
+            this.recordingEndTime = recordingEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder recordingFps(Integer recordingFps) {
-            this.recordingFps = Objects.requireNonNull(recordingFps);
+            if (recordingFps == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "recordingFps");
+            }
+            this.recordingFps = recordingFps;
             return this;
         }
         @CustomType.Setter
         public Builder recordingStartTime(String recordingStartTime) {
-            this.recordingStartTime = Objects.requireNonNull(recordingStartTime);
+            if (recordingStartTime == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "recordingStartTime");
+            }
+            this.recordingStartTime = recordingStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder usbRedirect(String usbRedirect) {
-            this.usbRedirect = Objects.requireNonNull(usbRedirect);
+            if (usbRedirect == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "usbRedirect");
+            }
+            this.usbRedirect = usbRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder visualQuality(String visualQuality) {
-            this.visualQuality = Objects.requireNonNull(visualQuality);
+            if (visualQuality == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "visualQuality");
+            }
+            this.visualQuality = visualQuality;
             return this;
         }
         @CustomType.Setter
         public Builder watermark(String watermark) {
-            this.watermark = Objects.requireNonNull(watermark);
+            if (watermark == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "watermark");
+            }
+            this.watermark = watermark;
             return this;
         }
         @CustomType.Setter
         public Builder watermarkTransparency(String watermarkTransparency) {
-            this.watermarkTransparency = Objects.requireNonNull(watermarkTransparency);
+            if (watermarkTransparency == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "watermarkTransparency");
+            }
+            this.watermarkTransparency = watermarkTransparency;
             return this;
         }
         @CustomType.Setter
         public Builder watermarkType(String watermarkType) {
-            this.watermarkType = Objects.requireNonNull(watermarkType);
+            if (watermarkType == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroup", "watermarkType");
+            }
+            this.watermarkType = watermarkType;
             return this;
         }
         public GetPolicyGroupsGroup build() {

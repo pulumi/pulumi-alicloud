@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -372,87 +373,138 @@ public final class GetVaultsVault {
 
         @CustomType.Setter
         public Builder bucketName(String bucketName) {
-            this.bucketName = Objects.requireNonNull(bucketName);
+            if (bucketName == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "bucketName");
+            }
+            this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder bytesDone(String bytesDone) {
-            this.bytesDone = Objects.requireNonNull(bytesDone);
+            if (bytesDone == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "bytesDone");
+            }
+            this.bytesDone = bytesDone;
             return this;
         }
         @CustomType.Setter
         public Builder createdTime(String createdTime) {
-            this.createdTime = Objects.requireNonNull(createdTime);
+            if (createdTime == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "createdTime");
+            }
+            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder dedup(Boolean dedup) {
-            this.dedup = Objects.requireNonNull(dedup);
+            if (dedup == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "dedup");
+            }
+            this.dedup = dedup;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder indexAvailable(Boolean indexAvailable) {
-            this.indexAvailable = Objects.requireNonNull(indexAvailable);
+            if (indexAvailable == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "indexAvailable");
+            }
+            this.indexAvailable = indexAvailable;
             return this;
         }
         @CustomType.Setter
         public Builder indexLevel(String indexLevel) {
-            this.indexLevel = Objects.requireNonNull(indexLevel);
+            if (indexLevel == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "indexLevel");
+            }
+            this.indexLevel = indexLevel;
             return this;
         }
         @CustomType.Setter
         public Builder indexUpdateTime(String indexUpdateTime) {
-            this.indexUpdateTime = Objects.requireNonNull(indexUpdateTime);
+            if (indexUpdateTime == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "indexUpdateTime");
+            }
+            this.indexUpdateTime = indexUpdateTime;
             return this;
         }
         @CustomType.Setter
         public Builder latestReplicationTime(String latestReplicationTime) {
-            this.latestReplicationTime = Objects.requireNonNull(latestReplicationTime);
+            if (latestReplicationTime == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "latestReplicationTime");
+            }
+            this.latestReplicationTime = latestReplicationTime;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder replication(Boolean replication) {
-            this.replication = Objects.requireNonNull(replication);
+            if (replication == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "replication");
+            }
+            this.replication = replication;
             return this;
         }
         @CustomType.Setter
         public Builder replicationSourceRegionId(String replicationSourceRegionId) {
-            this.replicationSourceRegionId = Objects.requireNonNull(replicationSourceRegionId);
+            if (replicationSourceRegionId == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "replicationSourceRegionId");
+            }
+            this.replicationSourceRegionId = replicationSourceRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder replicationSourceVaultId(String replicationSourceVaultId) {
-            this.replicationSourceVaultId = Objects.requireNonNull(replicationSourceVaultId);
+            if (replicationSourceVaultId == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "replicationSourceVaultId");
+            }
+            this.replicationSourceVaultId = replicationSourceVaultId;
             return this;
         }
         @CustomType.Setter
         public Builder retention(String retention) {
-            this.retention = Objects.requireNonNull(retention);
+            if (retention == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "retention");
+            }
+            this.retention = retention;
             return this;
         }
         @CustomType.Setter
         public Builder searchEnabled(Boolean searchEnabled) {
-            this.searchEnabled = Objects.requireNonNull(searchEnabled);
+            if (searchEnabled == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "searchEnabled");
+            }
+            this.searchEnabled = searchEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder sourceTypes(List<String> sourceTypes) {
-            this.sourceTypes = Objects.requireNonNull(sourceTypes);
+            if (sourceTypes == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "sourceTypes");
+            }
+            this.sourceTypes = sourceTypes;
             return this;
         }
         public Builder sourceTypes(String... sourceTypes) {
@@ -460,42 +512,66 @@ public final class GetVaultsVault {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageSize(String storageSize) {
-            this.storageSize = Objects.requireNonNull(storageSize);
+            if (storageSize == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "storageSize");
+            }
+            this.storageSize = storageSize;
             return this;
         }
         @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
-            this.updatedTime = Objects.requireNonNull(updatedTime);
+            if (updatedTime == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "updatedTime");
+            }
+            this.updatedTime = updatedTime;
             return this;
         }
         @CustomType.Setter
         public Builder vaultId(String vaultId) {
-            this.vaultId = Objects.requireNonNull(vaultId);
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "vaultId");
+            }
+            this.vaultId = vaultId;
             return this;
         }
         @CustomType.Setter
         public Builder vaultName(String vaultName) {
-            this.vaultName = Objects.requireNonNull(vaultName);
+            if (vaultName == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "vaultName");
+            }
+            this.vaultName = vaultName;
             return this;
         }
         @CustomType.Setter
         public Builder vaultStatusMessage(String vaultStatusMessage) {
-            this.vaultStatusMessage = Objects.requireNonNull(vaultStatusMessage);
+            if (vaultStatusMessage == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "vaultStatusMessage");
+            }
+            this.vaultStatusMessage = vaultStatusMessage;
             return this;
         }
         @CustomType.Setter
         public Builder vaultStorageClass(String vaultStorageClass) {
-            this.vaultStorageClass = Objects.requireNonNull(vaultStorageClass);
+            if (vaultStorageClass == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "vaultStorageClass");
+            }
+            this.vaultStorageClass = vaultStorageClass;
             return this;
         }
         @CustomType.Setter
         public Builder vaultType(String vaultType) {
-            this.vaultType = Objects.requireNonNull(vaultType);
+            if (vaultType == null) {
+              throw new MissingRequiredPropertyException("GetVaultsVault", "vaultType");
+            }
+            this.vaultType = vaultType;
             return this;
         }
         public GetVaultsVault build() {

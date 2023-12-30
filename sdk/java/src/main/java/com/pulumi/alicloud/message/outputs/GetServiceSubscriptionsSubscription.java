@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.message.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -183,57 +184,90 @@ public final class GetServiceSubscriptionsSubscription {
 
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder filterTag(String filterTag) {
-            this.filterTag = Objects.requireNonNull(filterTag);
+            if (filterTag == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "filterTag");
+            }
+            this.filterTag = filterTag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifyTime(Integer lastModifyTime) {
-            this.lastModifyTime = Objects.requireNonNull(lastModifyTime);
+            if (lastModifyTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "lastModifyTime");
+            }
+            this.lastModifyTime = lastModifyTime;
             return this;
         }
         @CustomType.Setter
         public Builder notifyContentFormat(String notifyContentFormat) {
-            this.notifyContentFormat = Objects.requireNonNull(notifyContentFormat);
+            if (notifyContentFormat == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "notifyContentFormat");
+            }
+            this.notifyContentFormat = notifyContentFormat;
             return this;
         }
         @CustomType.Setter
         public Builder notifyStrategy(String notifyStrategy) {
-            this.notifyStrategy = Objects.requireNonNull(notifyStrategy);
+            if (notifyStrategy == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "notifyStrategy");
+            }
+            this.notifyStrategy = notifyStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionName(String subscriptionName) {
-            this.subscriptionName = Objects.requireNonNull(subscriptionName);
+            if (subscriptionName == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "subscriptionName");
+            }
+            this.subscriptionName = subscriptionName;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionUrl(String subscriptionUrl) {
-            this.subscriptionUrl = Objects.requireNonNull(subscriptionUrl);
+            if (subscriptionUrl == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "subscriptionUrl");
+            }
+            this.subscriptionUrl = subscriptionUrl;
             return this;
         }
         @CustomType.Setter
         public Builder topicName(String topicName) {
-            this.topicName = Objects.requireNonNull(topicName);
+            if (topicName == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "topicName");
+            }
+            this.topicName = topicName;
             return this;
         }
         @CustomType.Setter
         public Builder topicOwner(String topicOwner) {
-            this.topicOwner = Objects.requireNonNull(topicOwner);
+            if (topicOwner == null) {
+              throw new MissingRequiredPropertyException("GetServiceSubscriptionsSubscription", "topicOwner");
+            }
+            this.topicOwner = topicOwner;
             return this;
         }
         public GetServiceSubscriptionsSubscription build() {

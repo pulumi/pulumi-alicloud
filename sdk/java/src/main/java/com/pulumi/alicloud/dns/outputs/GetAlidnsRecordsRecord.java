@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -198,62 +199,98 @@ public final class GetAlidnsRecordsRecord {
 
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder line(String line) {
-            this.line = Objects.requireNonNull(line);
+            if (line == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "line");
+            }
+            this.line = line;
             return this;
         }
         @CustomType.Setter
         public Builder locked(Boolean locked) {
-            this.locked = Objects.requireNonNull(locked);
+            if (locked == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "locked");
+            }
+            this.locked = locked;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder recordId(String recordId) {
-            this.recordId = Objects.requireNonNull(recordId);
+            if (recordId == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "recordId");
+            }
+            this.recordId = recordId;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder rr(String rr) {
-            this.rr = Objects.requireNonNull(rr);
+            if (rr == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "rr");
+            }
+            this.rr = rr;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(Integer ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsRecord", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetAlidnsRecordsRecord build() {

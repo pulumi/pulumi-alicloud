@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.adb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -322,107 +323,170 @@ public final class GetDBClusterLakeVersionsVersion {
 
         @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
-            this.commodityCode = Objects.requireNonNull(commodityCode);
+            if (commodityCode == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "commodityCode");
+            }
+            this.commodityCode = commodityCode;
             return this;
         }
         @CustomType.Setter
         public Builder computeResource(String computeResource) {
-            this.computeResource = Objects.requireNonNull(computeResource);
+            if (computeResource == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "computeResource");
+            }
+            this.computeResource = computeResource;
             return this;
         }
         @CustomType.Setter
         public Builder connectionString(String connectionString) {
-            this.connectionString = Objects.requireNonNull(connectionString);
+            if (connectionString == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "connectionString");
+            }
+            this.connectionString = connectionString;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
-            this.dbClusterId = Objects.requireNonNull(dbClusterId);
+            if (dbClusterId == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "dbClusterId");
+            }
+            this.dbClusterId = dbClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterVersion(String dbClusterVersion) {
-            this.dbClusterVersion = Objects.requireNonNull(dbClusterVersion);
+            if (dbClusterVersion == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "dbClusterVersion");
+            }
+            this.dbClusterVersion = dbClusterVersion;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
-            this.engineVersion = Objects.requireNonNull(engineVersion);
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder expired(String expired) {
-            this.expired = Objects.requireNonNull(expired);
+            if (expired == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "expired");
+            }
+            this.expired = expired;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lockMode(String lockMode) {
-            this.lockMode = Objects.requireNonNull(lockMode);
+            if (lockMode == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "lockMode");
+            }
+            this.lockMode = lockMode;
             return this;
         }
         @CustomType.Setter
         public Builder lockReason(String lockReason) {
-            this.lockReason = Objects.requireNonNull(lockReason);
+            if (lockReason == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "lockReason");
+            }
+            this.lockReason = lockReason;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder port(String port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageResource(String storageResource) {
-            this.storageResource = Objects.requireNonNull(storageResource);
+            if (storageResource == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "storageResource");
+            }
+            this.storageResource = storageResource;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetDBClusterLakeVersionsVersion", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetDBClusterLakeVersionsVersion build() {

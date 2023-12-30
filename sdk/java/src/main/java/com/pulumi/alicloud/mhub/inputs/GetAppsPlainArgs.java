@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mhub.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -212,7 +213,9 @@ public final class GetAppsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetAppsPlainArgs build() {
-            $.productId = Objects.requireNonNull($.productId, "expected parameter 'productId' to be non-null");
+            if ($.productId == null) {
+                throw new MissingRequiredPropertyException("GetAppsPlainArgs", "productId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.alicloud.hbr.outputs.GetSnapshotsSnapshot;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -131,37 +132,48 @@ public final class GetSnapshotsResult {
 
         @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
+
             this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder completeTime(@Nullable String completeTime) {
+
             this.completeTime = completeTime;
             return this;
         }
         @CustomType.Setter
         public Builder completeTimeChecker(@Nullable String completeTimeChecker) {
+
             this.completeTimeChecker = completeTimeChecker;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemId(@Nullable String fileSystemId) {
+
             this.fileSystemId = fileSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -169,27 +181,34 @@ public final class GetSnapshotsResult {
         }
         @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
+
             this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder limit(@Nullable Integer limit) {
+
             this.limit = limit;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder query(@Nullable String query) {
+
             this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder snapshots(List<GetSnapshotsSnapshot> snapshots) {
-            this.snapshots = Objects.requireNonNull(snapshots);
+            if (snapshots == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsResult", "snapshots");
+            }
+            this.snapshots = snapshots;
             return this;
         }
         public Builder snapshots(GetSnapshotsSnapshot... snapshots) {
@@ -197,17 +216,24 @@ public final class GetSnapshotsResult {
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsResult", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vaultId(String vaultId) {
-            this.vaultId = Objects.requireNonNull(vaultId);
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsResult", "vaultId");
+            }
+            this.vaultId = vaultId;
             return this;
         }
         public GetSnapshotsResult build() {

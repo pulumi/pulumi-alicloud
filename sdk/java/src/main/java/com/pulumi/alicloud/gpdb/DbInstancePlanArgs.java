@@ -6,6 +6,7 @@ package com.pulumi.alicloud.gpdb;
 import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -384,11 +385,21 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public DbInstancePlanArgs build() {
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
-            $.dbInstancePlanName = Objects.requireNonNull($.dbInstancePlanName, "expected parameter 'dbInstancePlanName' to be non-null");
-            $.planConfigs = Objects.requireNonNull($.planConfigs, "expected parameter 'planConfigs' to be non-null");
-            $.planScheduleType = Objects.requireNonNull($.planScheduleType, "expected parameter 'planScheduleType' to be non-null");
-            $.planType = Objects.requireNonNull($.planType, "expected parameter 'planType' to be non-null");
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("DbInstancePlanArgs", "dbInstanceId");
+            }
+            if ($.dbInstancePlanName == null) {
+                throw new MissingRequiredPropertyException("DbInstancePlanArgs", "dbInstancePlanName");
+            }
+            if ($.planConfigs == null) {
+                throw new MissingRequiredPropertyException("DbInstancePlanArgs", "planConfigs");
+            }
+            if ($.planScheduleType == null) {
+                throw new MissingRequiredPropertyException("DbInstancePlanArgs", "planScheduleType");
+            }
+            if ($.planType == null) {
+                throw new MissingRequiredPropertyException("DbInstancePlanArgs", "planType");
+            }
             return $;
         }
     }

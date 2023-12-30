@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1486,10 +1487,18 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public SubscriptionJobArgs build() {
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.sourceEndpointEngineName = Objects.requireNonNull($.sourceEndpointEngineName, "expected parameter 'sourceEndpointEngineName' to be non-null");
-            $.sourceEndpointInstanceType = Objects.requireNonNull($.sourceEndpointInstanceType, "expected parameter 'sourceEndpointInstanceType' to be non-null");
-            $.sourceEndpointRegion = Objects.requireNonNull($.sourceEndpointRegion, "expected parameter 'sourceEndpointRegion' to be non-null");
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("SubscriptionJobArgs", "paymentType");
+            }
+            if ($.sourceEndpointEngineName == null) {
+                throw new MissingRequiredPropertyException("SubscriptionJobArgs", "sourceEndpointEngineName");
+            }
+            if ($.sourceEndpointInstanceType == null) {
+                throw new MissingRequiredPropertyException("SubscriptionJobArgs", "sourceEndpointInstanceType");
+            }
+            if ($.sourceEndpointRegion == null) {
+                throw new MissingRequiredPropertyException("SubscriptionJobArgs", "sourceEndpointRegion");
+            }
             return $;
         }
     }

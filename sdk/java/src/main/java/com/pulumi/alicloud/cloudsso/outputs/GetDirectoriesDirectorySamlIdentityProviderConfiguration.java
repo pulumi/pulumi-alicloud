@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetDirectoriesDirectorySamlIdentityProviderConfiguration {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectorySamlIdentityProviderConfiguration", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder encodedMetadataDocument(String encodedMetadataDocument) {
-            this.encodedMetadataDocument = Objects.requireNonNull(encodedMetadataDocument);
+            if (encodedMetadataDocument == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectorySamlIdentityProviderConfiguration", "encodedMetadataDocument");
+            }
+            this.encodedMetadataDocument = encodedMetadataDocument;
             return this;
         }
         @CustomType.Setter
         public Builder entityId(String entityId) {
-            this.entityId = Objects.requireNonNull(entityId);
+            if (entityId == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectorySamlIdentityProviderConfiguration", "entityId");
+            }
+            this.entityId = entityId;
             return this;
         }
         @CustomType.Setter
         public Builder loginUrl(String loginUrl) {
-            this.loginUrl = Objects.requireNonNull(loginUrl);
+            if (loginUrl == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectorySamlIdentityProviderConfiguration", "loginUrl");
+            }
+            this.loginUrl = loginUrl;
             return this;
         }
         @CustomType.Setter
         public Builder ssoStatus(String ssoStatus) {
-            this.ssoStatus = Objects.requireNonNull(ssoStatus);
+            if (ssoStatus == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectorySamlIdentityProviderConfiguration", "ssoStatus");
+            }
+            this.ssoStatus = ssoStatus;
             return this;
         }
         public GetDirectoriesDirectorySamlIdentityProviderConfiguration build() {

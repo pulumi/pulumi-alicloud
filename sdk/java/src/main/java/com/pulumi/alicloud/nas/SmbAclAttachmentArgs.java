@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -392,9 +393,15 @@ public final class SmbAclAttachmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SmbAclAttachmentArgs build() {
-            $.fileSystemId = Objects.requireNonNull($.fileSystemId, "expected parameter 'fileSystemId' to be non-null");
-            $.keytab = Objects.requireNonNull($.keytab, "expected parameter 'keytab' to be non-null");
-            $.keytabMd5 = Objects.requireNonNull($.keytabMd5, "expected parameter 'keytabMd5' to be non-null");
+            if ($.fileSystemId == null) {
+                throw new MissingRequiredPropertyException("SmbAclAttachmentArgs", "fileSystemId");
+            }
+            if ($.keytab == null) {
+                throw new MissingRequiredPropertyException("SmbAclAttachmentArgs", "keytab");
+            }
+            if ($.keytabMd5 == null) {
+                throw new MissingRequiredPropertyException("SmbAclAttachmentArgs", "keytabMd5");
+            }
             return $;
         }
     }

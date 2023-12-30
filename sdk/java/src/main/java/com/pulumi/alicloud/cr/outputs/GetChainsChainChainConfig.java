@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cr.outputs;
 import com.pulumi.alicloud.cr.outputs.GetChainsChainChainConfigNode;
 import com.pulumi.alicloud.cr.outputs.GetChainsChainChainConfigRouter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -58,7 +59,10 @@ public final class GetChainsChainChainConfig {
 
         @CustomType.Setter
         public Builder nodes(List<GetChainsChainChainConfigNode> nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfig", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetChainsChainChainConfigNode... nodes) {
@@ -66,7 +70,10 @@ public final class GetChainsChainChainConfig {
         }
         @CustomType.Setter
         public Builder routers(List<GetChainsChainChainConfigRouter> routers) {
-            this.routers = Objects.requireNonNull(routers);
+            if (routers == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfig", "routers");
+            }
+            this.routers = routers;
             return this;
         }
         public Builder routers(GetChainsChainChainConfigRouter... routers) {

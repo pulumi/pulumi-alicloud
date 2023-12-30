@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -269,11 +270,21 @@ public final class RemediationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RemediationArgs build() {
-            $.configRuleId = Objects.requireNonNull($.configRuleId, "expected parameter 'configRuleId' to be non-null");
-            $.invokeType = Objects.requireNonNull($.invokeType, "expected parameter 'invokeType' to be non-null");
-            $.params = Objects.requireNonNull($.params, "expected parameter 'params' to be non-null");
-            $.remediationTemplateId = Objects.requireNonNull($.remediationTemplateId, "expected parameter 'remediationTemplateId' to be non-null");
-            $.remediationType = Objects.requireNonNull($.remediationType, "expected parameter 'remediationType' to be non-null");
+            if ($.configRuleId == null) {
+                throw new MissingRequiredPropertyException("RemediationArgs", "configRuleId");
+            }
+            if ($.invokeType == null) {
+                throw new MissingRequiredPropertyException("RemediationArgs", "invokeType");
+            }
+            if ($.params == null) {
+                throw new MissingRequiredPropertyException("RemediationArgs", "params");
+            }
+            if ($.remediationTemplateId == null) {
+                throw new MissingRequiredPropertyException("RemediationArgs", "remediationTemplateId");
+            }
+            if ($.remediationType == null) {
+                throw new MissingRequiredPropertyException("RemediationArgs", "remediationType");
+            }
             return $;
         }
     }

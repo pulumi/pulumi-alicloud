@@ -5,6 +5,7 @@ package com.pulumi.alicloud.privatelink.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class GetVpcEndpointServiceResourcesArgs extends com.pulumi.resourc
         }
 
         public GetVpcEndpointServiceResourcesArgs build() {
-            $.serviceId = Objects.requireNonNull($.serviceId, "expected parameter 'serviceId' to be non-null");
+            if ($.serviceId == null) {
+                throw new MissingRequiredPropertyException("GetVpcEndpointServiceResourcesArgs", "serviceId");
+            }
             return $;
         }
     }

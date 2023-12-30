@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -226,72 +227,114 @@ public final class GetBaseInstancesInstance {
 
         @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
-            this.commodityCode = Objects.requireNonNull(commodityCode);
+            if (commodityCode == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "commodityCode");
+            }
+            this.commodityCode = commodityCode;
             return this;
         }
         @CustomType.Setter
         public Builder cpu(Integer cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(String diskSize) {
-            this.diskSize = Objects.requireNonNull(diskSize);
+            if (diskSize == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "diskSize");
+            }
+            this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
-            this.instanceClass = Objects.requireNonNull(instanceClass);
+            if (instanceClass == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "instanceClass");
+            }
+            this.instanceClass = instanceClass;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder nodeNum(String nodeNum) {
-            this.nodeNum = Objects.requireNonNull(nodeNum);
+            if (nodeNum == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "nodeNum");
+            }
+            this.nodeNum = nodeNum;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder series(String series) {
-            this.series = Objects.requireNonNull(series);
+            if (series == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "series");
+            }
+            this.series = series;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder zones(List<String> zones) {
-            this.zones = Objects.requireNonNull(zones);
+            if (zones == null) {
+              throw new MissingRequiredPropertyException("GetBaseInstancesInstance", "zones");
+            }
+            this.zones = zones;
             return this;
         }
         public Builder zones(String... zones) {

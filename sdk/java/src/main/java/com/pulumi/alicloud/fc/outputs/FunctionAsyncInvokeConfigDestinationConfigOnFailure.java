@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class FunctionAsyncInvokeConfigDestinationConfigOnFailure {
 
         @CustomType.Setter
         public Builder destination(String destination) {
-            this.destination = Objects.requireNonNull(destination);
+            if (destination == null) {
+              throw new MissingRequiredPropertyException("FunctionAsyncInvokeConfigDestinationConfigOnFailure", "destination");
+            }
+            this.destination = destination;
             return this;
         }
         public FunctionAsyncInvokeConfigDestinationConfigOnFailure build() {

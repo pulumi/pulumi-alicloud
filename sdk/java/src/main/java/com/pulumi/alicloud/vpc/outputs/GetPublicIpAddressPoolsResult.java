@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetPublicIpAddressPoolsPool;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,12 +101,18 @@ public final class GetPublicIpAddressPoolsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -113,17 +120,22 @@ public final class GetPublicIpAddressPoolsResult {
         }
         @CustomType.Setter
         public Builder isp(@Nullable String isp) {
+
             this.isp = isp;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -131,12 +143,16 @@ public final class GetPublicIpAddressPoolsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pools(List<GetPublicIpAddressPoolsPool> pools) {
-            this.pools = Objects.requireNonNull(pools);
+            if (pools == null) {
+              throw new MissingRequiredPropertyException("GetPublicIpAddressPoolsResult", "pools");
+            }
+            this.pools = pools;
             return this;
         }
         public Builder pools(GetPublicIpAddressPoolsPool... pools) {
@@ -144,6 +160,7 @@ public final class GetPublicIpAddressPoolsResult {
         }
         @CustomType.Setter
         public Builder publicIpAddressPoolIds(@Nullable List<String> publicIpAddressPoolIds) {
+
             this.publicIpAddressPoolIds = publicIpAddressPoolIds;
             return this;
         }
@@ -152,11 +169,13 @@ public final class GetPublicIpAddressPoolsResult {
         }
         @CustomType.Setter
         public Builder publicIpAddressPoolName(@Nullable String publicIpAddressPoolName) {
+
             this.publicIpAddressPoolName = publicIpAddressPoolName;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetForwardEntriesEntry;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -204,7 +205,10 @@ public final class GetForwardEntriesResult {
 
         @CustomType.Setter
         public Builder entries(List<GetForwardEntriesEntry> entries) {
-            this.entries = Objects.requireNonNull(entries);
+            if (entries == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesResult", "entries");
+            }
+            this.entries = entries;
             return this;
         }
         public Builder entries(GetForwardEntriesEntry... entries) {
@@ -212,32 +216,44 @@ public final class GetForwardEntriesResult {
         }
         @CustomType.Setter
         public Builder externalIp(@Nullable String externalIp) {
+
             this.externalIp = externalIp;
             return this;
         }
         @CustomType.Setter
         public Builder externalPort(@Nullable String externalPort) {
+
             this.externalPort = externalPort;
             return this;
         }
         @CustomType.Setter
         public Builder forwardEntryName(@Nullable String forwardEntryName) {
+
             this.forwardEntryName = forwardEntryName;
             return this;
         }
         @CustomType.Setter
         public Builder forwardTableId(String forwardTableId) {
-            this.forwardTableId = Objects.requireNonNull(forwardTableId);
+            if (forwardTableId == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesResult", "forwardTableId");
+            }
+            this.forwardTableId = forwardTableId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -245,27 +261,34 @@ public final class GetForwardEntriesResult {
         }
         @CustomType.Setter
         public Builder internalIp(@Nullable String internalIp) {
+
             this.internalIp = internalIp;
             return this;
         }
         @CustomType.Setter
         public Builder internalPort(@Nullable String internalPort) {
+
             this.internalPort = internalPort;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(@Nullable String ipProtocol) {
+
             this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetForwardEntriesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -273,11 +296,13 @@ public final class GetForwardEntriesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

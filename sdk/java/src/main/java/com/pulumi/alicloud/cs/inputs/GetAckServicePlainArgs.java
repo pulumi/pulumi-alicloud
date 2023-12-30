@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -98,7 +99,9 @@ public final class GetAckServicePlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetAckServicePlainArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetAckServicePlainArgs", "type");
+            }
             return $;
         }
     }

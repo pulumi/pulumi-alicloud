@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -447,13 +448,27 @@ public final class QosPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public QosPolicyArgs build() {
-            $.destCidr = Objects.requireNonNull($.destCidr, "expected parameter 'destCidr' to be non-null");
-            $.destPortRange = Objects.requireNonNull($.destPortRange, "expected parameter 'destPortRange' to be non-null");
-            $.ipProtocol = Objects.requireNonNull($.ipProtocol, "expected parameter 'ipProtocol' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.qosId = Objects.requireNonNull($.qosId, "expected parameter 'qosId' to be non-null");
-            $.sourceCidr = Objects.requireNonNull($.sourceCidr, "expected parameter 'sourceCidr' to be non-null");
-            $.sourcePortRange = Objects.requireNonNull($.sourcePortRange, "expected parameter 'sourcePortRange' to be non-null");
+            if ($.destCidr == null) {
+                throw new MissingRequiredPropertyException("QosPolicyArgs", "destCidr");
+            }
+            if ($.destPortRange == null) {
+                throw new MissingRequiredPropertyException("QosPolicyArgs", "destPortRange");
+            }
+            if ($.ipProtocol == null) {
+                throw new MissingRequiredPropertyException("QosPolicyArgs", "ipProtocol");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("QosPolicyArgs", "priority");
+            }
+            if ($.qosId == null) {
+                throw new MissingRequiredPropertyException("QosPolicyArgs", "qosId");
+            }
+            if ($.sourceCidr == null) {
+                throw new MissingRequiredPropertyException("QosPolicyArgs", "sourceCidr");
+            }
+            if ($.sourcePortRange == null) {
+                throw new MissingRequiredPropertyException("QosPolicyArgs", "sourcePortRange");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "acceleratorId");
+            }
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "domain");
+            }
             return $;
         }
     }

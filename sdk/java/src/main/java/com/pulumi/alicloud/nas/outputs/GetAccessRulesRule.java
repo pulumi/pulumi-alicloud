@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetAccessRulesRule {
 
         @CustomType.Setter
         public Builder accessRuleId(String accessRuleId) {
-            this.accessRuleId = Objects.requireNonNull(accessRuleId);
+            if (accessRuleId == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "accessRuleId");
+            }
+            this.accessRuleId = accessRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder rwAccess(String rwAccess) {
-            this.rwAccess = Objects.requireNonNull(rwAccess);
+            if (rwAccess == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "rwAccess");
+            }
+            this.rwAccess = rwAccess;
             return this;
         }
         @CustomType.Setter
         public Builder sourceCidrIp(String sourceCidrIp) {
-            this.sourceCidrIp = Objects.requireNonNull(sourceCidrIp);
+            if (sourceCidrIp == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "sourceCidrIp");
+            }
+            this.sourceCidrIp = sourceCidrIp;
             return this;
         }
         @CustomType.Setter
         public Builder userAccess(String userAccess) {
-            this.userAccess = Objects.requireNonNull(userAccess);
+            if (userAccess == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "userAccess");
+            }
+            this.userAccess = userAccess;
             return this;
         }
         public GetAccessRulesRule build() {

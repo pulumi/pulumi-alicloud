@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -127,37 +128,58 @@ public final class GetHoneypotNodesNode {
 
         @CustomType.Setter
         public Builder allowHoneypotAccessInternet(Boolean allowHoneypotAccessInternet) {
-            this.allowHoneypotAccessInternet = Objects.requireNonNull(allowHoneypotAccessInternet);
+            if (allowHoneypotAccessInternet == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotNodesNode", "allowHoneypotAccessInternet");
+            }
+            this.allowHoneypotAccessInternet = allowHoneypotAccessInternet;
             return this;
         }
         @CustomType.Setter
         public Builder availableProbeNum(Integer availableProbeNum) {
-            this.availableProbeNum = Objects.requireNonNull(availableProbeNum);
+            if (availableProbeNum == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotNodesNode", "availableProbeNum");
+            }
+            this.availableProbeNum = availableProbeNum;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotNodesNode", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotNodesNode", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(String nodeId) {
-            this.nodeId = Objects.requireNonNull(nodeId);
+            if (nodeId == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotNodesNode", "nodeId");
+            }
+            this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotNodesNode", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupProbeIpLists(List<String> securityGroupProbeIpLists) {
-            this.securityGroupProbeIpLists = Objects.requireNonNull(securityGroupProbeIpLists);
+            if (securityGroupProbeIpLists == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotNodesNode", "securityGroupProbeIpLists");
+            }
+            this.securityGroupProbeIpLists = securityGroupProbeIpLists;
             return this;
         }
         public Builder securityGroupProbeIpLists(String... securityGroupProbeIpLists) {
@@ -165,7 +187,10 @@ public final class GetHoneypotNodesNode {
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotNodesNode", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetHoneypotNodesNode build() {

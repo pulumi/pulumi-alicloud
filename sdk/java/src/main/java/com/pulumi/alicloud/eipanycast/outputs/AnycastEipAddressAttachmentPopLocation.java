@@ -44,6 +44,7 @@ public final class AnycastEipAddressAttachmentPopLocation {
 
         @CustomType.Setter
         public Builder popLocation(@Nullable String popLocation) {
+
             this.popLocation = popLocation;
             return this;
         }

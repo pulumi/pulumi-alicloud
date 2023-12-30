@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetAccessStrategiesStrategyFailoverAddrPool {
 
         @CustomType.Setter
         public Builder addrCount(Integer addrCount) {
-            this.addrCount = Objects.requireNonNull(addrCount);
+            if (addrCount == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategyFailoverAddrPool", "addrCount");
+            }
+            this.addrCount = addrCount;
             return this;
         }
         @CustomType.Setter
         public Builder addrPoolId(String addrPoolId) {
-            this.addrPoolId = Objects.requireNonNull(addrPoolId);
+            if (addrPoolId == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategyFailoverAddrPool", "addrPoolId");
+            }
+            this.addrPoolId = addrPoolId;
             return this;
         }
         @CustomType.Setter
         public Builder lbaWeight(Integer lbaWeight) {
-            this.lbaWeight = Objects.requireNonNull(lbaWeight);
+            if (lbaWeight == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategyFailoverAddrPool", "lbaWeight");
+            }
+            this.lbaWeight = lbaWeight;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesStrategyFailoverAddrPool", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetAccessStrategiesStrategyFailoverAddrPool build() {

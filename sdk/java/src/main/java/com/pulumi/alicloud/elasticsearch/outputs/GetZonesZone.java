@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.elasticsearch.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetZonesZone {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder multiZoneIds(List<String> multiZoneIds) {
-            this.multiZoneIds = Objects.requireNonNull(multiZoneIds);
+            if (multiZoneIds == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "multiZoneIds");
+            }
+            this.multiZoneIds = multiZoneIds;
             return this;
         }
         public Builder multiZoneIds(String... multiZoneIds) {

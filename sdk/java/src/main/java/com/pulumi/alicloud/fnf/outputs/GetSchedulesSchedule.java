@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fnf.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetSchedulesSchedule {
 
         @CustomType.Setter
         public Builder cronExpression(String cronExpression) {
-            this.cronExpression = Objects.requireNonNull(cronExpression);
+            if (cronExpression == null) {
+              throw new MissingRequiredPropertyException("GetSchedulesSchedule", "cronExpression");
+            }
+            this.cronExpression = cronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSchedulesSchedule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enable(Boolean enable) {
-            this.enable = Objects.requireNonNull(enable);
+            if (enable == null) {
+              throw new MissingRequiredPropertyException("GetSchedulesSchedule", "enable");
+            }
+            this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSchedulesSchedule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifiedTime(String lastModifiedTime) {
-            this.lastModifiedTime = Objects.requireNonNull(lastModifiedTime);
+            if (lastModifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetSchedulesSchedule", "lastModifiedTime");
+            }
+            this.lastModifiedTime = lastModifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder payload(String payload) {
-            this.payload = Objects.requireNonNull(payload);
+            if (payload == null) {
+              throw new MissingRequiredPropertyException("GetSchedulesSchedule", "payload");
+            }
+            this.payload = payload;
             return this;
         }
         @CustomType.Setter
         public Builder scheduleId(String scheduleId) {
-            this.scheduleId = Objects.requireNonNull(scheduleId);
+            if (scheduleId == null) {
+              throw new MissingRequiredPropertyException("GetSchedulesSchedule", "scheduleId");
+            }
+            this.scheduleId = scheduleId;
             return this;
         }
         @CustomType.Setter
         public Builder scheduleName(String scheduleName) {
-            this.scheduleName = Objects.requireNonNull(scheduleName);
+            if (scheduleName == null) {
+              throw new MissingRequiredPropertyException("GetSchedulesSchedule", "scheduleName");
+            }
+            this.scheduleName = scheduleName;
             return this;
         }
         public GetSchedulesSchedule build() {

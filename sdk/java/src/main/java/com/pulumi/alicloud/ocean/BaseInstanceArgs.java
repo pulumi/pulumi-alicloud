@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -759,11 +760,21 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BaseInstanceArgs build() {
-            $.diskSize = Objects.requireNonNull($.diskSize, "expected parameter 'diskSize' to be non-null");
-            $.instanceClass = Objects.requireNonNull($.instanceClass, "expected parameter 'instanceClass' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.series = Objects.requireNonNull($.series, "expected parameter 'series' to be non-null");
-            $.zones = Objects.requireNonNull($.zones, "expected parameter 'zones' to be non-null");
+            if ($.diskSize == null) {
+                throw new MissingRequiredPropertyException("BaseInstanceArgs", "diskSize");
+            }
+            if ($.instanceClass == null) {
+                throw new MissingRequiredPropertyException("BaseInstanceArgs", "instanceClass");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("BaseInstanceArgs", "paymentType");
+            }
+            if ($.series == null) {
+                throw new MissingRequiredPropertyException("BaseInstanceArgs", "series");
+            }
+            if ($.zones == null) {
+                throw new MissingRequiredPropertyException("BaseInstanceArgs", "zones");
+            }
             return $;
         }
     }

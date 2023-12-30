@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -112,37 +113,54 @@ public final class GetServiceResult {
 
         @CustomType.Setter
         public Builder changingAffectTime(String changingAffectTime) {
-            this.changingAffectTime = Objects.requireNonNull(changingAffectTime);
+            if (changingAffectTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "changingAffectTime");
+            }
+            this.changingAffectTime = changingAffectTime;
             return this;
         }
         @CustomType.Setter
         public Builder changingChargeType(String changingChargeType) {
-            this.changingChargeType = Objects.requireNonNull(changingChargeType);
+            if (changingChargeType == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "changingChargeType");
+            }
+            this.changingChargeType = changingChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder enable(@Nullable String enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetChargeType(@Nullable String internetChargeType) {
+
             this.internetChargeType = internetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder openingTime(String openingTime) {
-            this.openingTime = Objects.requireNonNull(openingTime);
+            if (openingTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "openingTime");
+            }
+            this.openingTime = openingTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetServiceResult build() {

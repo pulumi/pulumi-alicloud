@@ -7,6 +7,7 @@ import com.pulumi.alicloud.vpc.outputs.GetNetworkAclsAclEgressAclEntry;
 import com.pulumi.alicloud.vpc.outputs.GetNetworkAclsAclIngressAclEntry;
 import com.pulumi.alicloud.vpc.outputs.GetNetworkAclsAclResource;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -158,12 +159,18 @@ public final class GetNetworkAclsAcl {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAcl", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder egressAclEntries(List<GetNetworkAclsAclEgressAclEntry> egressAclEntries) {
-            this.egressAclEntries = Objects.requireNonNull(egressAclEntries);
+            if (egressAclEntries == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAcl", "egressAclEntries");
+            }
+            this.egressAclEntries = egressAclEntries;
             return this;
         }
         public Builder egressAclEntries(GetNetworkAclsAclEgressAclEntry... egressAclEntries) {
@@ -171,12 +178,18 @@ public final class GetNetworkAclsAcl {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAcl", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ingressAclEntries(List<GetNetworkAclsAclIngressAclEntry> ingressAclEntries) {
-            this.ingressAclEntries = Objects.requireNonNull(ingressAclEntries);
+            if (ingressAclEntries == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAcl", "ingressAclEntries");
+            }
+            this.ingressAclEntries = ingressAclEntries;
             return this;
         }
         public Builder ingressAclEntries(GetNetworkAclsAclIngressAclEntry... ingressAclEntries) {
@@ -184,17 +197,26 @@ public final class GetNetworkAclsAcl {
         }
         @CustomType.Setter
         public Builder networkAclId(String networkAclId) {
-            this.networkAclId = Objects.requireNonNull(networkAclId);
+            if (networkAclId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAcl", "networkAclId");
+            }
+            this.networkAclId = networkAclId;
             return this;
         }
         @CustomType.Setter
         public Builder networkAclName(String networkAclName) {
-            this.networkAclName = Objects.requireNonNull(networkAclName);
+            if (networkAclName == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAcl", "networkAclName");
+            }
+            this.networkAclName = networkAclName;
             return this;
         }
         @CustomType.Setter
         public Builder resources(List<GetNetworkAclsAclResource> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAcl", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(GetNetworkAclsAclResource... resources) {
@@ -202,12 +224,18 @@ public final class GetNetworkAclsAcl {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAcl", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAcl", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetNetworkAclsAcl build() {

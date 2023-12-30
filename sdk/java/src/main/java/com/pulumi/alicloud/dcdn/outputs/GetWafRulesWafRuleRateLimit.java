@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn.outputs;
 
 import com.pulumi.alicloud.dcdn.outputs.GetWafRulesWafRuleRateLimitStatus;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -115,12 +116,18 @@ public final class GetWafRulesWafRuleRateLimit {
 
         @CustomType.Setter
         public Builder interval(Integer interval) {
-            this.interval = Objects.requireNonNull(interval);
+            if (interval == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRuleRateLimit", "interval");
+            }
+            this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder statuses(List<GetWafRulesWafRuleRateLimitStatus> statuses) {
-            this.statuses = Objects.requireNonNull(statuses);
+            if (statuses == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRuleRateLimit", "statuses");
+            }
+            this.statuses = statuses;
             return this;
         }
         public Builder statuses(GetWafRulesWafRuleRateLimitStatus... statuses) {
@@ -128,22 +135,34 @@ public final class GetWafRulesWafRuleRateLimit {
         }
         @CustomType.Setter
         public Builder subKey(String subKey) {
-            this.subKey = Objects.requireNonNull(subKey);
+            if (subKey == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRuleRateLimit", "subKey");
+            }
+            this.subKey = subKey;
             return this;
         }
         @CustomType.Setter
         public Builder target(String target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRuleRateLimit", "target");
+            }
+            this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(Integer threshold) {
-            this.threshold = Objects.requireNonNull(threshold);
+            if (threshold == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRuleRateLimit", "threshold");
+            }
+            this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(Integer ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRuleRateLimit", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         public GetWafRulesWafRuleRateLimit build() {

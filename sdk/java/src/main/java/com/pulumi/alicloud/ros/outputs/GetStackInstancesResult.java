@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.alicloud.ros.outputs.GetStackInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -95,17 +96,24 @@ public final class GetStackInstancesResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -113,7 +121,10 @@ public final class GetStackInstancesResult {
         }
         @CustomType.Setter
         public Builder instances(List<GetStackInstancesInstance> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesResult", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(GetStackInstancesInstance... instances) {
@@ -121,26 +132,33 @@ public final class GetStackInstancesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder stackGroupName(String stackGroupName) {
-            this.stackGroupName = Objects.requireNonNull(stackGroupName);
+            if (stackGroupName == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesResult", "stackGroupName");
+            }
+            this.stackGroupName = stackGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder stackInstanceAccountId(@Nullable String stackInstanceAccountId) {
+
             this.stackInstanceAccountId = stackInstanceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder stackInstanceRegionId(@Nullable String stackInstanceRegionId) {
+
             this.stackInstanceRegionId = stackInstanceRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

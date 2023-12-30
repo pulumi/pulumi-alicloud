@@ -6,6 +6,7 @@ package com.pulumi.alicloud.sae.outputs;
 import com.pulumi.alicloud.sae.outputs.GetApplicationsApplicationMountDesc;
 import com.pulumi.alicloud.sae.outputs.GetApplicationsApplicationOssMountDetail;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -758,112 +759,178 @@ public final class GetApplicationsApplication {
 
         @CustomType.Setter
         public Builder acrAssumeRoleArn(String acrAssumeRoleArn) {
-            this.acrAssumeRoleArn = Objects.requireNonNull(acrAssumeRoleArn);
+            if (acrAssumeRoleArn == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "acrAssumeRoleArn");
+            }
+            this.acrAssumeRoleArn = acrAssumeRoleArn;
             return this;
         }
         @CustomType.Setter
         public Builder acrInstanceId(String acrInstanceId) {
-            this.acrInstanceId = Objects.requireNonNull(acrInstanceId);
+            if (acrInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "acrInstanceId");
+            }
+            this.acrInstanceId = acrInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder appDescription(String appDescription) {
-            this.appDescription = Objects.requireNonNull(appDescription);
+            if (appDescription == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "appDescription");
+            }
+            this.appDescription = appDescription;
             return this;
         }
         @CustomType.Setter
         public Builder appName(String appName) {
-            this.appName = Objects.requireNonNull(appName);
+            if (appName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "appName");
+            }
+            this.appName = appName;
             return this;
         }
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
-            this.applicationId = Objects.requireNonNull(applicationId);
+            if (applicationId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "applicationId");
+            }
+            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder command(String command) {
-            this.command = Objects.requireNonNull(command);
+            if (command == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "command");
+            }
+            this.command = command;
             return this;
         }
         @CustomType.Setter
         public Builder commandArgs(String commandArgs) {
-            this.commandArgs = Objects.requireNonNull(commandArgs);
+            if (commandArgs == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "commandArgs");
+            }
+            this.commandArgs = commandArgs;
             return this;
         }
         @CustomType.Setter
         public Builder configMapMountDesc(String configMapMountDesc) {
-            this.configMapMountDesc = Objects.requireNonNull(configMapMountDesc);
+            if (configMapMountDesc == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "configMapMountDesc");
+            }
+            this.configMapMountDesc = configMapMountDesc;
             return this;
         }
         @CustomType.Setter
         public Builder cpu(Integer cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder customHostAlias(String customHostAlias) {
-            this.customHostAlias = Objects.requireNonNull(customHostAlias);
+            if (customHostAlias == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "customHostAlias");
+            }
+            this.customHostAlias = customHostAlias;
             return this;
         }
         @CustomType.Setter
         public Builder edasContainerVersion(String edasContainerVersion) {
-            this.edasContainerVersion = Objects.requireNonNull(edasContainerVersion);
+            if (edasContainerVersion == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "edasContainerVersion");
+            }
+            this.edasContainerVersion = edasContainerVersion;
             return this;
         }
         @CustomType.Setter
         public Builder envs(String envs) {
-            this.envs = Objects.requireNonNull(envs);
+            if (envs == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "envs");
+            }
+            this.envs = envs;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageUrl(String imageUrl) {
-            this.imageUrl = Objects.requireNonNull(imageUrl);
+            if (imageUrl == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "imageUrl");
+            }
+            this.imageUrl = imageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder jarStartArgs(String jarStartArgs) {
-            this.jarStartArgs = Objects.requireNonNull(jarStartArgs);
+            if (jarStartArgs == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "jarStartArgs");
+            }
+            this.jarStartArgs = jarStartArgs;
             return this;
         }
         @CustomType.Setter
         public Builder jarStartOptions(String jarStartOptions) {
-            this.jarStartOptions = Objects.requireNonNull(jarStartOptions);
+            if (jarStartOptions == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "jarStartOptions");
+            }
+            this.jarStartOptions = jarStartOptions;
             return this;
         }
         @CustomType.Setter
         public Builder jdk(String jdk) {
-            this.jdk = Objects.requireNonNull(jdk);
+            if (jdk == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "jdk");
+            }
+            this.jdk = jdk;
             return this;
         }
         @CustomType.Setter
         public Builder liveness(String liveness) {
-            this.liveness = Objects.requireNonNull(liveness);
+            if (liveness == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "liveness");
+            }
+            this.liveness = liveness;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder minReadyInstances(Integer minReadyInstances) {
-            this.minReadyInstances = Objects.requireNonNull(minReadyInstances);
+            if (minReadyInstances == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "minReadyInstances");
+            }
+            this.minReadyInstances = minReadyInstances;
             return this;
         }
         @CustomType.Setter
         public Builder mountDescs(List<GetApplicationsApplicationMountDesc> mountDescs) {
-            this.mountDescs = Objects.requireNonNull(mountDescs);
+            if (mountDescs == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "mountDescs");
+            }
+            this.mountDescs = mountDescs;
             return this;
         }
         public Builder mountDescs(GetApplicationsApplicationMountDesc... mountDescs) {
@@ -871,37 +938,58 @@ public final class GetApplicationsApplication {
         }
         @CustomType.Setter
         public Builder mountHost(String mountHost) {
-            this.mountHost = Objects.requireNonNull(mountHost);
+            if (mountHost == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "mountHost");
+            }
+            this.mountHost = mountHost;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder nasId(String nasId) {
-            this.nasId = Objects.requireNonNull(nasId);
+            if (nasId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "nasId");
+            }
+            this.nasId = nasId;
             return this;
         }
         @CustomType.Setter
         public Builder ossAkId(String ossAkId) {
-            this.ossAkId = Objects.requireNonNull(ossAkId);
+            if (ossAkId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "ossAkId");
+            }
+            this.ossAkId = ossAkId;
             return this;
         }
         @CustomType.Setter
         public Builder ossAkSecret(String ossAkSecret) {
-            this.ossAkSecret = Objects.requireNonNull(ossAkSecret);
+            if (ossAkSecret == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "ossAkSecret");
+            }
+            this.ossAkSecret = ossAkSecret;
             return this;
         }
         @CustomType.Setter
         public Builder ossMountDescs(String ossMountDescs) {
-            this.ossMountDescs = Objects.requireNonNull(ossMountDescs);
+            if (ossMountDescs == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "ossMountDescs");
+            }
+            this.ossMountDescs = ossMountDescs;
             return this;
         }
         @CustomType.Setter
         public Builder ossMountDetails(List<GetApplicationsApplicationOssMountDetail> ossMountDetails) {
-            this.ossMountDetails = Objects.requireNonNull(ossMountDetails);
+            if (ossMountDetails == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "ossMountDetails");
+            }
+            this.ossMountDetails = ossMountDetails;
             return this;
         }
         public Builder ossMountDetails(GetApplicationsApplicationOssMountDetail... ossMountDetails) {
@@ -909,127 +997,202 @@ public final class GetApplicationsApplication {
         }
         @CustomType.Setter
         public Builder packageType(String packageType) {
-            this.packageType = Objects.requireNonNull(packageType);
+            if (packageType == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "packageType");
+            }
+            this.packageType = packageType;
             return this;
         }
         @CustomType.Setter
         public Builder packageUrl(String packageUrl) {
-            this.packageUrl = Objects.requireNonNull(packageUrl);
+            if (packageUrl == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "packageUrl");
+            }
+            this.packageUrl = packageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder packageVersion(String packageVersion) {
-            this.packageVersion = Objects.requireNonNull(packageVersion);
+            if (packageVersion == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "packageVersion");
+            }
+            this.packageVersion = packageVersion;
             return this;
         }
         @CustomType.Setter
         public Builder phpArmsConfigLocation(String phpArmsConfigLocation) {
-            this.phpArmsConfigLocation = Objects.requireNonNull(phpArmsConfigLocation);
+            if (phpArmsConfigLocation == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "phpArmsConfigLocation");
+            }
+            this.phpArmsConfigLocation = phpArmsConfigLocation;
             return this;
         }
         @CustomType.Setter
         public Builder phpConfig(String phpConfig) {
-            this.phpConfig = Objects.requireNonNull(phpConfig);
+            if (phpConfig == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "phpConfig");
+            }
+            this.phpConfig = phpConfig;
             return this;
         }
         @CustomType.Setter
         public Builder phpConfigLocation(String phpConfigLocation) {
-            this.phpConfigLocation = Objects.requireNonNull(phpConfigLocation);
+            if (phpConfigLocation == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "phpConfigLocation");
+            }
+            this.phpConfigLocation = phpConfigLocation;
             return this;
         }
         @CustomType.Setter
         public Builder postStart(String postStart) {
-            this.postStart = Objects.requireNonNull(postStart);
+            if (postStart == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "postStart");
+            }
+            this.postStart = postStart;
             return this;
         }
         @CustomType.Setter
         public Builder preStop(String preStop) {
-            this.preStop = Objects.requireNonNull(preStop);
+            if (preStop == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "preStop");
+            }
+            this.preStop = preStop;
             return this;
         }
         @CustomType.Setter
         public Builder readiness(String readiness) {
-            this.readiness = Objects.requireNonNull(readiness);
+            if (readiness == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "readiness");
+            }
+            this.readiness = readiness;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder replicas(Integer replicas) {
-            this.replicas = Objects.requireNonNull(replicas);
+            if (replicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "replicas");
+            }
+            this.replicas = replicas;
             return this;
         }
         @CustomType.Setter
         public Builder repoName(String repoName) {
-            this.repoName = Objects.requireNonNull(repoName);
+            if (repoName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "repoName");
+            }
+            this.repoName = repoName;
             return this;
         }
         @CustomType.Setter
         public Builder repoNamespace(String repoNamespace) {
-            this.repoNamespace = Objects.requireNonNull(repoNamespace);
+            if (repoNamespace == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "repoNamespace");
+            }
+            this.repoNamespace = repoNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder repoOriginType(String repoOriginType) {
-            this.repoOriginType = Objects.requireNonNull(repoOriginType);
+            if (repoOriginType == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "repoOriginType");
+            }
+            this.repoOriginType = repoOriginType;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder slsConfigs(String slsConfigs) {
-            this.slsConfigs = Objects.requireNonNull(slsConfigs);
+            if (slsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "slsConfigs");
+            }
+            this.slsConfigs = slsConfigs;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder terminationGracePeriodSeconds(Integer terminationGracePeriodSeconds) {
-            this.terminationGracePeriodSeconds = Objects.requireNonNull(terminationGracePeriodSeconds);
+            if (terminationGracePeriodSeconds == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "terminationGracePeriodSeconds");
+            }
+            this.terminationGracePeriodSeconds = terminationGracePeriodSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder timezone(String timezone) {
-            this.timezone = Objects.requireNonNull(timezone);
+            if (timezone == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "timezone");
+            }
+            this.timezone = timezone;
             return this;
         }
         @CustomType.Setter
         public Builder tomcatConfig(String tomcatConfig) {
-            this.tomcatConfig = Objects.requireNonNull(tomcatConfig);
+            if (tomcatConfig == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "tomcatConfig");
+            }
+            this.tomcatConfig = tomcatConfig;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder warStartOptions(String warStartOptions) {
-            this.warStartOptions = Objects.requireNonNull(warStartOptions);
+            if (warStartOptions == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "warStartOptions");
+            }
+            this.warStartOptions = warStartOptions;
             return this;
         }
         @CustomType.Setter
         public Builder webContainer(String webContainer) {
-            this.webContainer = Objects.requireNonNull(webContainer);
+            if (webContainer == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "webContainer");
+            }
+            this.webContainer = webContainer;
             return this;
         }
         public GetApplicationsApplication build() {

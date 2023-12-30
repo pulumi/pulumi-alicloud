@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetProvisionedProductsProvisionedProductOutput {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProductOutput", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder outputKey(String outputKey) {
-            this.outputKey = Objects.requireNonNull(outputKey);
+            if (outputKey == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProductOutput", "outputKey");
+            }
+            this.outputKey = outputKey;
             return this;
         }
         @CustomType.Setter
         public Builder outputValue(String outputValue) {
-            this.outputValue = Objects.requireNonNull(outputValue);
+            if (outputValue == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProvisionedProductOutput", "outputValue");
+            }
+            this.outputValue = outputValue;
             return this;
         }
         public GetProvisionedProductsProvisionedProductOutput build() {

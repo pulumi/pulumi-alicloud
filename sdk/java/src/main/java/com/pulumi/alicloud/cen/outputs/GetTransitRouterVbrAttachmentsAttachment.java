@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -139,47 +140,74 @@ public final class GetTransitRouterVbrAttachmentsAttachment {
 
         @CustomType.Setter
         public Builder autoPublishRouteEnabled(Boolean autoPublishRouteEnabled) {
-            this.autoPublishRouteEnabled = Objects.requireNonNull(autoPublishRouteEnabled);
+            if (autoPublishRouteEnabled == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVbrAttachmentsAttachment", "autoPublishRouteEnabled");
+            }
+            this.autoPublishRouteEnabled = autoPublishRouteEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVbrAttachmentsAttachment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVbrAttachmentsAttachment", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVbrAttachmentsAttachment", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentDescription(String transitRouterAttachmentDescription) {
-            this.transitRouterAttachmentDescription = Objects.requireNonNull(transitRouterAttachmentDescription);
+            if (transitRouterAttachmentDescription == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVbrAttachmentsAttachment", "transitRouterAttachmentDescription");
+            }
+            this.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVbrAttachmentsAttachment", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
-            this.transitRouterAttachmentName = Objects.requireNonNull(transitRouterAttachmentName);
+            if (transitRouterAttachmentName == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVbrAttachmentsAttachment", "transitRouterAttachmentName");
+            }
+            this.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
         }
         @CustomType.Setter
         public Builder vbrId(String vbrId) {
-            this.vbrId = Objects.requireNonNull(vbrId);
+            if (vbrId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVbrAttachmentsAttachment", "vbrId");
+            }
+            this.vbrId = vbrId;
             return this;
         }
         @CustomType.Setter
         public Builder vbrOwnerId(String vbrOwnerId) {
-            this.vbrOwnerId = Objects.requireNonNull(vbrOwnerId);
+            if (vbrOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVbrAttachmentsAttachment", "vbrOwnerId");
+            }
+            this.vbrOwnerId = vbrOwnerId;
             return this;
         }
         public GetTransitRouterVbrAttachmentsAttachment build() {

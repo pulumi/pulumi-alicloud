@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.alicloud.cs.outputs.GetRegistryEnterpriseReposRepoTag;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,37 +129,58 @@ public final class GetRegistryEnterpriseReposRepo {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepo", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepo", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepo", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepo", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder repoType(String repoType) {
-            this.repoType = Objects.requireNonNull(repoType);
+            if (repoType == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepo", "repoType");
+            }
+            this.repoType = repoType;
             return this;
         }
         @CustomType.Setter
         public Builder summary(String summary) {
-            this.summary = Objects.requireNonNull(summary);
+            if (summary == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepo", "summary");
+            }
+            this.summary = summary;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<GetRegistryEnterpriseReposRepoTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseReposRepo", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetRegistryEnterpriseReposRepoTag... tags) {

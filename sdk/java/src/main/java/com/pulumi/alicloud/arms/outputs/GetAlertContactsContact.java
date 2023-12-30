@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetAlertContactsContact {
 
         @CustomType.Setter
         public Builder alertContactId(String alertContactId) {
-            this.alertContactId = Objects.requireNonNull(alertContactId);
+            if (alertContactId == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsContact", "alertContactId");
+            }
+            this.alertContactId = alertContactId;
             return this;
         }
         @CustomType.Setter
         public Builder alertContactName(String alertContactName) {
-            this.alertContactName = Objects.requireNonNull(alertContactName);
+            if (alertContactName == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsContact", "alertContactName");
+            }
+            this.alertContactName = alertContactName;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsContact", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dingRobotWebhookUrl(String dingRobotWebhookUrl) {
-            this.dingRobotWebhookUrl = Objects.requireNonNull(dingRobotWebhookUrl);
+            if (dingRobotWebhookUrl == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsContact", "dingRobotWebhookUrl");
+            }
+            this.dingRobotWebhookUrl = dingRobotWebhookUrl;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsContact", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsContact", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder phoneNum(String phoneNum) {
-            this.phoneNum = Objects.requireNonNull(phoneNum);
+            if (phoneNum == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsContact", "phoneNum");
+            }
+            this.phoneNum = phoneNum;
             return this;
         }
         @CustomType.Setter
         public Builder systemNoc(Boolean systemNoc) {
-            this.systemNoc = Objects.requireNonNull(systemNoc);
+            if (systemNoc == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsContact", "systemNoc");
+            }
+            this.systemNoc = systemNoc;
             return this;
         }
         @CustomType.Setter
         public Builder webhook(String webhook) {
-            this.webhook = Objects.requireNonNull(webhook);
+            if (webhook == null) {
+              throw new MissingRequiredPropertyException("GetAlertContactsContact", "webhook");
+            }
+            this.webhook = webhook;
             return this;
         }
         public GetAlertContactsContact build() {

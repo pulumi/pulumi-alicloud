@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -227,57 +228,90 @@ public final class GetTrafficMirrorSessionsSession {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder packetLength(Integer packetLength) {
-            this.packetLength = Objects.requireNonNull(packetLength);
+            if (packetLength == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "packetLength");
+            }
+            this.packetLength = packetLength;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorFilterId(String trafficMirrorFilterId) {
-            this.trafficMirrorFilterId = Objects.requireNonNull(trafficMirrorFilterId);
+            if (trafficMirrorFilterId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "trafficMirrorFilterId");
+            }
+            this.trafficMirrorFilterId = trafficMirrorFilterId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorSessionBusinessStatus(String trafficMirrorSessionBusinessStatus) {
-            this.trafficMirrorSessionBusinessStatus = Objects.requireNonNull(trafficMirrorSessionBusinessStatus);
+            if (trafficMirrorSessionBusinessStatus == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "trafficMirrorSessionBusinessStatus");
+            }
+            this.trafficMirrorSessionBusinessStatus = trafficMirrorSessionBusinessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorSessionDescription(String trafficMirrorSessionDescription) {
-            this.trafficMirrorSessionDescription = Objects.requireNonNull(trafficMirrorSessionDescription);
+            if (trafficMirrorSessionDescription == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "trafficMirrorSessionDescription");
+            }
+            this.trafficMirrorSessionDescription = trafficMirrorSessionDescription;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorSessionId(String trafficMirrorSessionId) {
-            this.trafficMirrorSessionId = Objects.requireNonNull(trafficMirrorSessionId);
+            if (trafficMirrorSessionId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "trafficMirrorSessionId");
+            }
+            this.trafficMirrorSessionId = trafficMirrorSessionId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorSessionName(String trafficMirrorSessionName) {
-            this.trafficMirrorSessionName = Objects.requireNonNull(trafficMirrorSessionName);
+            if (trafficMirrorSessionName == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "trafficMirrorSessionName");
+            }
+            this.trafficMirrorSessionName = trafficMirrorSessionName;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorSourceIds(List<String> trafficMirrorSourceIds) {
-            this.trafficMirrorSourceIds = Objects.requireNonNull(trafficMirrorSourceIds);
+            if (trafficMirrorSourceIds == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "trafficMirrorSourceIds");
+            }
+            this.trafficMirrorSourceIds = trafficMirrorSourceIds;
             return this;
         }
         public Builder trafficMirrorSourceIds(String... trafficMirrorSourceIds) {
@@ -285,17 +319,26 @@ public final class GetTrafficMirrorSessionsSession {
         }
         @CustomType.Setter
         public Builder trafficMirrorTargetId(String trafficMirrorTargetId) {
-            this.trafficMirrorTargetId = Objects.requireNonNull(trafficMirrorTargetId);
+            if (trafficMirrorTargetId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "trafficMirrorTargetId");
+            }
+            this.trafficMirrorTargetId = trafficMirrorTargetId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorTargetType(String trafficMirrorTargetType) {
-            this.trafficMirrorTargetType = Objects.requireNonNull(trafficMirrorTargetType);
+            if (trafficMirrorTargetType == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "trafficMirrorTargetType");
+            }
+            this.trafficMirrorTargetType = trafficMirrorTargetType;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetworkId(Integer virtualNetworkId) {
-            this.virtualNetworkId = Objects.requireNonNull(virtualNetworkId);
+            if (virtualNetworkId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsSession", "virtualNetworkId");
+            }
+            this.virtualNetworkId = virtualNetworkId;
             return this;
         }
         public GetTrafficMirrorSessionsSession build() {

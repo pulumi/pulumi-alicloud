@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bss.outputs;
 
 import com.pulumi.alicloud.bss.outputs.GetOpenApiPricingModulesModule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -110,12 +111,18 @@ public final class GetOpenApiPricingModulesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiPricingModulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiPricingModulesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -123,7 +130,10 @@ public final class GetOpenApiPricingModulesResult {
         }
         @CustomType.Setter
         public Builder modules(List<GetOpenApiPricingModulesModule> modules) {
-            this.modules = Objects.requireNonNull(modules);
+            if (modules == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiPricingModulesResult", "modules");
+            }
+            this.modules = modules;
             return this;
         }
         public Builder modules(GetOpenApiPricingModulesModule... modules) {
@@ -131,12 +141,16 @@ public final class GetOpenApiPricingModulesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiPricingModulesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -144,22 +158,30 @@ public final class GetOpenApiPricingModulesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiPricingModulesResult", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder productType(@Nullable String productType) {
+
             this.productType = productType;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionType(String subscriptionType) {
-            this.subscriptionType = Objects.requireNonNull(subscriptionType);
+            if (subscriptionType == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiPricingModulesResult", "subscriptionType");
+            }
+            this.subscriptionType = subscriptionType;
             return this;
         }
         public GetOpenApiPricingModulesResult build() {

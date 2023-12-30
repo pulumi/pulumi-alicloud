@@ -6,6 +6,7 @@ package com.pulumi.alicloud.pvtz;
 import com.pulumi.alicloud.pvtz.inputs.EndpointIpConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -234,11 +235,21 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EndpointArgs build() {
-            $.endpointName = Objects.requireNonNull($.endpointName, "expected parameter 'endpointName' to be non-null");
-            $.ipConfigs = Objects.requireNonNull($.ipConfigs, "expected parameter 'ipConfigs' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vpcRegionId = Objects.requireNonNull($.vpcRegionId, "expected parameter 'vpcRegionId' to be non-null");
+            if ($.endpointName == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "endpointName");
+            }
+            if ($.ipConfigs == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "ipConfigs");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "securityGroupId");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "vpcId");
+            }
+            if ($.vpcRegionId == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "vpcRegionId");
+            }
             return $;
         }
     }

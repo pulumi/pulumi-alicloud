@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dts.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class GetConsumerChannelsPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetConsumerChannelsPlainArgs build() {
-            $.dtsInstanceId = Objects.requireNonNull($.dtsInstanceId, "expected parameter 'dtsInstanceId' to be non-null");
+            if ($.dtsInstanceId == null) {
+                throw new MissingRequiredPropertyException("GetConsumerChannelsPlainArgs", "dtsInstanceId");
+            }
             return $;
         }
     }

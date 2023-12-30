@@ -44,6 +44,7 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
 
         @CustomType.Setter
         public Builder serverGroupTuples(@Nullable List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples) {
+
             this.serverGroupTuples = serverGroupTuples;
             return this;
         }

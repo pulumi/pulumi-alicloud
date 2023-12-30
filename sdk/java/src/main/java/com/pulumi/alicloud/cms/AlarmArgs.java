@@ -9,6 +9,7 @@ import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
 import com.pulumi.alicloud.cms.inputs.AlarmPrometheusArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1006,9 +1007,15 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AlarmArgs build() {
-            $.contactGroups = Objects.requireNonNull($.contactGroups, "expected parameter 'contactGroups' to be non-null");
-            $.metric = Objects.requireNonNull($.metric, "expected parameter 'metric' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.contactGroups == null) {
+                throw new MissingRequiredPropertyException("AlarmArgs", "contactGroups");
+            }
+            if ($.metric == null) {
+                throw new MissingRequiredPropertyException("AlarmArgs", "metric");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("AlarmArgs", "project");
+            }
             return $;
         }
     }

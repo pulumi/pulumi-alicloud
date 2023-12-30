@@ -74,6 +74,7 @@ public final class ApplicationKafkaConfigs {
 
         @CustomType.Setter
         public Builder kafkaConfigs(@Nullable List<ApplicationKafkaConfigsKafkaConfig> kafkaConfigs) {
+
             this.kafkaConfigs = kafkaConfigs;
             return this;
         }
@@ -82,11 +83,13 @@ public final class ApplicationKafkaConfigs {
         }
         @CustomType.Setter
         public Builder kafkaEndpoint(@Nullable String kafkaEndpoint) {
+
             this.kafkaEndpoint = kafkaEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaInstanceId(@Nullable String kafkaInstanceId) {
+
             this.kafkaInstanceId = kafkaInstanceId;
             return this;
         }

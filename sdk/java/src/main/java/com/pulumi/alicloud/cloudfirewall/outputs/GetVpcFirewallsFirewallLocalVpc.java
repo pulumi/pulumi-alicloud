@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -104,17 +105,26 @@ public final class GetVpcFirewallsFirewallLocalVpc {
 
         @CustomType.Setter
         public Builder eniId(String eniId) {
-            this.eniId = Objects.requireNonNull(eniId);
+            if (eniId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewallLocalVpc", "eniId");
+            }
+            this.eniId = eniId;
             return this;
         }
         @CustomType.Setter
         public Builder eniPrivateIpAddress(String eniPrivateIpAddress) {
-            this.eniPrivateIpAddress = Objects.requireNonNull(eniPrivateIpAddress);
+            if (eniPrivateIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewallLocalVpc", "eniPrivateIpAddress");
+            }
+            this.eniPrivateIpAddress = eniPrivateIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder localVpcCidrTableLists(List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists) {
-            this.localVpcCidrTableLists = Objects.requireNonNull(localVpcCidrTableLists);
+            if (localVpcCidrTableLists == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewallLocalVpc", "localVpcCidrTableLists");
+            }
+            this.localVpcCidrTableLists = localVpcCidrTableLists;
             return this;
         }
         public Builder localVpcCidrTableLists(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList... localVpcCidrTableLists) {
@@ -122,22 +132,34 @@ public final class GetVpcFirewallsFirewallLocalVpc {
         }
         @CustomType.Setter
         public Builder regionNo(String regionNo) {
-            this.regionNo = Objects.requireNonNull(regionNo);
+            if (regionNo == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewallLocalVpc", "regionNo");
+            }
+            this.regionNo = regionNo;
             return this;
         }
         @CustomType.Setter
         public Builder routerInterfaceId(String routerInterfaceId) {
-            this.routerInterfaceId = Objects.requireNonNull(routerInterfaceId);
+            if (routerInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewallLocalVpc", "routerInterfaceId");
+            }
+            this.routerInterfaceId = routerInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewallLocalVpc", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcName(String vpcName) {
-            this.vpcName = Objects.requireNonNull(vpcName);
+            if (vpcName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewallLocalVpc", "vpcName");
+            }
+            this.vpcName = vpcName;
             return this;
         }
         public GetVpcFirewallsFirewallLocalVpc build() {

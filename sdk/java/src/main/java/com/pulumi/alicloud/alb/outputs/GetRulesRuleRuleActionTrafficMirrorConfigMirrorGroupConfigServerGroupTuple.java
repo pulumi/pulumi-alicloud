@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigSer
 
         @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
-            this.serverGroupId = Objects.requireNonNull(serverGroupId);
+            if (serverGroupId == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple", "serverGroupId");
+            }
+            this.serverGroupId = serverGroupId;
             return this;
         }
         public GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple build() {

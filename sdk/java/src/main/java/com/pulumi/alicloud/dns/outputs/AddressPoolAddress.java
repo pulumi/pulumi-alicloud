@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -101,26 +102,37 @@ public final class AddressPoolAddress {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("AddressPoolAddress", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder attributeInfo(String attributeInfo) {
-            this.attributeInfo = Objects.requireNonNull(attributeInfo);
+            if (attributeInfo == null) {
+              throw new MissingRequiredPropertyException("AddressPoolAddress", "attributeInfo");
+            }
+            this.attributeInfo = attributeInfo;
             return this;
         }
         @CustomType.Setter
         public Builder lbaWeight(@Nullable Integer lbaWeight) {
+
             this.lbaWeight = lbaWeight;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("AddressPoolAddress", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder remark(@Nullable String remark) {
+
             this.remark = remark;
             return this;
         }

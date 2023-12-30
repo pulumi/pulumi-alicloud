@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetCompliancePacksPackConfigRuleConfigRuleParameter {
 
         @CustomType.Setter
         public Builder parameterName(String parameterName) {
-            this.parameterName = Objects.requireNonNull(parameterName);
+            if (parameterName == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPackConfigRuleConfigRuleParameter", "parameterName");
+            }
+            this.parameterName = parameterName;
             return this;
         }
         @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
-            this.parameterValue = Objects.requireNonNull(parameterValue);
+            if (parameterValue == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPackConfigRuleConfigRuleParameter", "parameterValue");
+            }
+            this.parameterValue = parameterValue;
             return this;
         }
         @CustomType.Setter
         public Builder required(Boolean required) {
-            this.required = Objects.requireNonNull(required);
+            if (required == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPackConfigRuleConfigRuleParameter", "required");
+            }
+            this.required = required;
             return this;
         }
         public GetCompliancePacksPackConfigRuleConfigRuleParameter build() {

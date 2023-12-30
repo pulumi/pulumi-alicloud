@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.simpleapplicationserver.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -154,47 +155,74 @@ public final class GetServerSnapshotsSnapshot {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetServerSnapshotsSnapshot", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder diskId(String diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetServerSnapshotsSnapshot", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerSnapshotsSnapshot", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder progress(String progress) {
-            this.progress = Objects.requireNonNull(progress);
+            if (progress == null) {
+              throw new MissingRequiredPropertyException("GetServerSnapshotsSnapshot", "progress");
+            }
+            this.progress = progress;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetServerSnapshotsSnapshot", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
-            this.snapshotId = Objects.requireNonNull(snapshotId);
+            if (snapshotId == null) {
+              throw new MissingRequiredPropertyException("GetServerSnapshotsSnapshot", "snapshotId");
+            }
+            this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotName(String snapshotName) {
-            this.snapshotName = Objects.requireNonNull(snapshotName);
+            if (snapshotName == null) {
+              throw new MissingRequiredPropertyException("GetServerSnapshotsSnapshot", "snapshotName");
+            }
+            this.snapshotName = snapshotName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDiskType(String sourceDiskType) {
-            this.sourceDiskType = Objects.requireNonNull(sourceDiskType);
+            if (sourceDiskType == null) {
+              throw new MissingRequiredPropertyException("GetServerSnapshotsSnapshot", "sourceDiskType");
+            }
+            this.sourceDiskType = sourceDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServerSnapshotsSnapshot", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetServerSnapshotsSnapshot build() {

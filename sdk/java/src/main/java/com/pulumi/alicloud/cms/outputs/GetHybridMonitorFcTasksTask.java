@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetHybridMonitorFcTasksTask {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorFcTasksTask", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder hybridMonitorFcTaskId(String hybridMonitorFcTaskId) {
-            this.hybridMonitorFcTaskId = Objects.requireNonNull(hybridMonitorFcTaskId);
+            if (hybridMonitorFcTaskId == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorFcTasksTask", "hybridMonitorFcTaskId");
+            }
+            this.hybridMonitorFcTaskId = hybridMonitorFcTaskId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorFcTasksTask", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorFcTasksTask", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder targetUserId(String targetUserId) {
-            this.targetUserId = Objects.requireNonNull(targetUserId);
+            if (targetUserId == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorFcTasksTask", "targetUserId");
+            }
+            this.targetUserId = targetUserId;
             return this;
         }
         @CustomType.Setter
         public Builder yarmConfig(String yarmConfig) {
-            this.yarmConfig = Objects.requireNonNull(yarmConfig);
+            if (yarmConfig == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorFcTasksTask", "yarmConfig");
+            }
+            this.yarmConfig = yarmConfig;
             return this;
         }
         public GetHybridMonitorFcTasksTask build() {

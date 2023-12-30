@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -84,17 +85,26 @@ public final class GetListenersListenerAccessLogTracingConfig {
 
         @CustomType.Setter
         public Builder tracingEnabled(Boolean tracingEnabled) {
-            this.tracingEnabled = Objects.requireNonNull(tracingEnabled);
+            if (tracingEnabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerAccessLogTracingConfig", "tracingEnabled");
+            }
+            this.tracingEnabled = tracingEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder tracingSample(Integer tracingSample) {
-            this.tracingSample = Objects.requireNonNull(tracingSample);
+            if (tracingSample == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerAccessLogTracingConfig", "tracingSample");
+            }
+            this.tracingSample = tracingSample;
             return this;
         }
         @CustomType.Setter
         public Builder tracingType(String tracingType) {
-            this.tracingType = Objects.requireNonNull(tracingType);
+            if (tracingType == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerAccessLogTracingConfig", "tracingType");
+            }
+            this.tracingType = tracingType;
             return this;
         }
         public GetListenersListenerAccessLogTracingConfig build() {

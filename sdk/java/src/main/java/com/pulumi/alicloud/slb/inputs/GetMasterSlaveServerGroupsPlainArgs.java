@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,7 +158,9 @@ public final class GetMasterSlaveServerGroupsPlainArgs extends com.pulumi.resour
         }
 
         public GetMasterSlaveServerGroupsPlainArgs build() {
-            $.loadBalancerId = Objects.requireNonNull($.loadBalancerId, "expected parameter 'loadBalancerId' to be non-null");
+            if ($.loadBalancerId == null) {
+                throw new MissingRequiredPropertyException("GetMasterSlaveServerGroupsPlainArgs", "loadBalancerId");
+            }
             return $;
         }
     }

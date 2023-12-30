@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mongodb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -89,21 +90,29 @@ public final class ShardingInstanceShardList {
 
         @CustomType.Setter
         public Builder nodeClass(String nodeClass) {
-            this.nodeClass = Objects.requireNonNull(nodeClass);
+            if (nodeClass == null) {
+              throw new MissingRequiredPropertyException("ShardingInstanceShardList", "nodeClass");
+            }
+            this.nodeClass = nodeClass;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
+
             this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeStorage(Integer nodeStorage) {
-            this.nodeStorage = Objects.requireNonNull(nodeStorage);
+            if (nodeStorage == null) {
+              throw new MissingRequiredPropertyException("ShardingInstanceShardList", "nodeStorage");
+            }
+            this.nodeStorage = nodeStorage;
             return this;
         }
         @CustomType.Setter
         public Builder readonlyReplicas(@Nullable Integer readonlyReplicas) {
+
             this.readonlyReplicas = readonlyReplicas;
             return this;
         }

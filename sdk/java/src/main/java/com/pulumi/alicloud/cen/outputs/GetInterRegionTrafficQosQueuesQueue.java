@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -134,7 +135,10 @@ public final class GetInterRegionTrafficQosQueuesQueue {
 
         @CustomType.Setter
         public Builder dscps(List<String> dscps) {
-            this.dscps = Objects.requireNonNull(dscps);
+            if (dscps == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosQueuesQueue", "dscps");
+            }
+            this.dscps = dscps;
             return this;
         }
         public Builder dscps(String... dscps) {
@@ -142,37 +146,58 @@ public final class GetInterRegionTrafficQosQueuesQueue {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosQueuesQueue", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder interRegionTrafficQosQueueDescription(String interRegionTrafficQosQueueDescription) {
-            this.interRegionTrafficQosQueueDescription = Objects.requireNonNull(interRegionTrafficQosQueueDescription);
+            if (interRegionTrafficQosQueueDescription == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosQueuesQueue", "interRegionTrafficQosQueueDescription");
+            }
+            this.interRegionTrafficQosQueueDescription = interRegionTrafficQosQueueDescription;
             return this;
         }
         @CustomType.Setter
         public Builder interRegionTrafficQosQueueId(String interRegionTrafficQosQueueId) {
-            this.interRegionTrafficQosQueueId = Objects.requireNonNull(interRegionTrafficQosQueueId);
+            if (interRegionTrafficQosQueueId == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosQueuesQueue", "interRegionTrafficQosQueueId");
+            }
+            this.interRegionTrafficQosQueueId = interRegionTrafficQosQueueId;
             return this;
         }
         @CustomType.Setter
         public Builder interRegionTrafficQosQueueName(String interRegionTrafficQosQueueName) {
-            this.interRegionTrafficQosQueueName = Objects.requireNonNull(interRegionTrafficQosQueueName);
+            if (interRegionTrafficQosQueueName == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosQueuesQueue", "interRegionTrafficQosQueueName");
+            }
+            this.interRegionTrafficQosQueueName = interRegionTrafficQosQueueName;
             return this;
         }
         @CustomType.Setter
         public Builder remainBandwidthPercent(Integer remainBandwidthPercent) {
-            this.remainBandwidthPercent = Objects.requireNonNull(remainBandwidthPercent);
+            if (remainBandwidthPercent == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosQueuesQueue", "remainBandwidthPercent");
+            }
+            this.remainBandwidthPercent = remainBandwidthPercent;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosQueuesQueue", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trafficQosPolicyId(String trafficQosPolicyId) {
-            this.trafficQosPolicyId = Objects.requireNonNull(trafficQosPolicyId);
+            if (trafficQosPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosQueuesQueue", "trafficQosPolicyId");
+            }
+            this.trafficQosPolicyId = trafficQosPolicyId;
             return this;
         }
         public GetInterRegionTrafficQosQueuesQueue build() {

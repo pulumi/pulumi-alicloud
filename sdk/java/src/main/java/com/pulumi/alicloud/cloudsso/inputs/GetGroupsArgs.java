@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,7 +236,9 @@ public final class GetGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetGroupsArgs build() {
-            $.directoryId = Objects.requireNonNull($.directoryId, "expected parameter 'directoryId' to be non-null");
+            if ($.directoryId == null) {
+                throw new MissingRequiredPropertyException("GetGroupsArgs", "directoryId");
+            }
             return $;
         }
     }

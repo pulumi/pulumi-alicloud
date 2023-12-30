@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -496,7 +497,9 @@ public final class HanaInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HanaInstanceArgs build() {
-            $.vaultId = Objects.requireNonNull($.vaultId, "expected parameter 'vaultId' to be non-null");
+            if ($.vaultId == null) {
+                throw new MissingRequiredPropertyException("HanaInstanceArgs", "vaultId");
+            }
             return $;
         }
     }

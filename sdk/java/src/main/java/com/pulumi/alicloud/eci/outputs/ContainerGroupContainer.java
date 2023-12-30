@@ -9,6 +9,7 @@ import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerPort;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerReadinessProbe;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerVolumeMount;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -263,6 +264,7 @@ public final class ContainerGroupContainer {
 
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -271,6 +273,7 @@ public final class ContainerGroupContainer {
         }
         @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
+
             this.commands = commands;
             return this;
         }
@@ -279,11 +282,13 @@ public final class ContainerGroupContainer {
         }
         @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVars(@Nullable List<ContainerGroupContainerEnvironmentVar> environmentVars) {
+
             this.environmentVars = environmentVars;
             return this;
         }
@@ -292,21 +297,27 @@ public final class ContainerGroupContainer {
         }
         @CustomType.Setter
         public Builder gpu(@Nullable Integer gpu) {
+
             this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("ContainerGroupContainer", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder imagePullPolicy(@Nullable String imagePullPolicy) {
+
             this.imagePullPolicy = imagePullPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbes(@Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes) {
+
             this.livenessProbes = livenessProbes;
             return this;
         }
@@ -315,16 +326,21 @@ public final class ContainerGroupContainer {
         }
         @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
+
             this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ContainerGroupContainer", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable List<ContainerGroupContainerPort> ports) {
+
             this.ports = ports;
             return this;
         }
@@ -333,6 +349,7 @@ public final class ContainerGroupContainer {
         }
         @CustomType.Setter
         public Builder readinessProbes(@Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes) {
+
             this.readinessProbes = readinessProbes;
             return this;
         }
@@ -341,16 +358,19 @@ public final class ContainerGroupContainer {
         }
         @CustomType.Setter
         public Builder ready(@Nullable Boolean ready) {
+
             this.ready = ready;
             return this;
         }
         @CustomType.Setter
         public Builder restartCount(@Nullable Integer restartCount) {
+
             this.restartCount = restartCount;
             return this;
         }
         @CustomType.Setter
         public Builder volumeMounts(@Nullable List<ContainerGroupContainerVolumeMount> volumeMounts) {
+
             this.volumeMounts = volumeMounts;
             return this;
         }
@@ -359,6 +379,7 @@ public final class ContainerGroupContainer {
         }
         @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
+
             this.workingDir = workingDir;
             return this;
         }

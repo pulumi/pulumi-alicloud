@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -197,10 +198,18 @@ public final class CustomRoutingEndpointGroupDestinationArgs extends com.pulumi.
         }
 
         public CustomRoutingEndpointGroupDestinationArgs build() {
-            $.endpointGroupId = Objects.requireNonNull($.endpointGroupId, "expected parameter 'endpointGroupId' to be non-null");
-            $.fromPort = Objects.requireNonNull($.fromPort, "expected parameter 'fromPort' to be non-null");
-            $.protocols = Objects.requireNonNull($.protocols, "expected parameter 'protocols' to be non-null");
-            $.toPort = Objects.requireNonNull($.toPort, "expected parameter 'toPort' to be non-null");
+            if ($.endpointGroupId == null) {
+                throw new MissingRequiredPropertyException("CustomRoutingEndpointGroupDestinationArgs", "endpointGroupId");
+            }
+            if ($.fromPort == null) {
+                throw new MissingRequiredPropertyException("CustomRoutingEndpointGroupDestinationArgs", "fromPort");
+            }
+            if ($.protocols == null) {
+                throw new MissingRequiredPropertyException("CustomRoutingEndpointGroupDestinationArgs", "protocols");
+            }
+            if ($.toPort == null) {
+                throw new MissingRequiredPropertyException("CustomRoutingEndpointGroupDestinationArgs", "toPort");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kms.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class GetKeyVersionsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetKeyVersionsPlainArgs build() {
-            $.keyId = Objects.requireNonNull($.keyId, "expected parameter 'keyId' to be non-null");
+            if ($.keyId == null) {
+                throw new MissingRequiredPropertyException("GetKeyVersionsPlainArgs", "keyId");
+            }
             return $;
         }
     }

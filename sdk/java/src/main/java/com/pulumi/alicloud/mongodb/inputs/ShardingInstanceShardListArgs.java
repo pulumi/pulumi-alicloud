@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mongodb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -192,8 +193,12 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         public ShardingInstanceShardListArgs build() {
-            $.nodeClass = Objects.requireNonNull($.nodeClass, "expected parameter 'nodeClass' to be non-null");
-            $.nodeStorage = Objects.requireNonNull($.nodeStorage, "expected parameter 'nodeStorage' to be non-null");
+            if ($.nodeClass == null) {
+                throw new MissingRequiredPropertyException("ShardingInstanceShardListArgs", "nodeClass");
+            }
+            if ($.nodeStorage == null) {
+                throw new MissingRequiredPropertyException("ShardingInstanceShardListArgs", "nodeStorage");
+            }
             return $;
         }
     }

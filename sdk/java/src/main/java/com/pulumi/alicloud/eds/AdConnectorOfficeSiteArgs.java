@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -765,11 +766,21 @@ public final class AdConnectorOfficeSiteArgs extends com.pulumi.resources.Resour
         }
 
         public AdConnectorOfficeSiteArgs build() {
-            $.adConnectorOfficeSiteName = Objects.requireNonNull($.adConnectorOfficeSiteName, "expected parameter 'adConnectorOfficeSiteName' to be non-null");
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.cidrBlock = Objects.requireNonNull($.cidrBlock, "expected parameter 'cidrBlock' to be non-null");
-            $.dnsAddresses = Objects.requireNonNull($.dnsAddresses, "expected parameter 'dnsAddresses' to be non-null");
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
+            if ($.adConnectorOfficeSiteName == null) {
+                throw new MissingRequiredPropertyException("AdConnectorOfficeSiteArgs", "adConnectorOfficeSiteName");
+            }
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("AdConnectorOfficeSiteArgs", "cenId");
+            }
+            if ($.cidrBlock == null) {
+                throw new MissingRequiredPropertyException("AdConnectorOfficeSiteArgs", "cidrBlock");
+            }
+            if ($.dnsAddresses == null) {
+                throw new MissingRequiredPropertyException("AdConnectorOfficeSiteArgs", "dnsAddresses");
+            }
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("AdConnectorOfficeSiteArgs", "domainName");
+            }
             return $;
         }
     }

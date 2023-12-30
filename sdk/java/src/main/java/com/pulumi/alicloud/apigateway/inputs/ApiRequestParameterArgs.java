@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -335,12 +336,24 @@ public final class ApiRequestParameterArgs extends com.pulumi.resources.Resource
         }
 
         public ApiRequestParameterArgs build() {
-            $.in = Objects.requireNonNull($.in, "expected parameter 'in' to be non-null");
-            $.inService = Objects.requireNonNull($.inService, "expected parameter 'inService' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.nameService = Objects.requireNonNull($.nameService, "expected parameter 'nameService' to be non-null");
-            $.required = Objects.requireNonNull($.required, "expected parameter 'required' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.in == null) {
+                throw new MissingRequiredPropertyException("ApiRequestParameterArgs", "in");
+            }
+            if ($.inService == null) {
+                throw new MissingRequiredPropertyException("ApiRequestParameterArgs", "inService");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ApiRequestParameterArgs", "name");
+            }
+            if ($.nameService == null) {
+                throw new MissingRequiredPropertyException("ApiRequestParameterArgs", "nameService");
+            }
+            if ($.required == null) {
+                throw new MissingRequiredPropertyException("ApiRequestParameterArgs", "required");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ApiRequestParameterArgs", "type");
+            }
             return $;
         }
     }

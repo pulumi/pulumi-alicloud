@@ -104,26 +104,31 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
 
         @CustomType.Setter
         public Builder alias(@Nullable String alias) {
+
             this.alias = alias;
             return this;
         }
         @CustomType.Setter
         public Builder function(@Nullable String function) {
+
             this.function = function;
             return this;
         }
         @CustomType.Setter
         public Builder parameterOne(@Nullable String parameterOne) {
+
             this.parameterOne = parameterOne;
             return this;
         }
         @CustomType.Setter
         public Builder parameterTwo(@Nullable String parameterTwo) {
+
             this.parameterTwo = parameterTwo;
             return this;
         }
         @CustomType.Setter
         public Builder slsKeyName(@Nullable String slsKeyName) {
+
             this.slsKeyName = slsKeyName;
             return this;
         }

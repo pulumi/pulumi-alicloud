@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetMetricRuleTemplatesTemplateAlertTemplateEscalation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -120,12 +121,18 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplate {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplate", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder escalations(List<GetMetricRuleTemplatesTemplateAlertTemplateEscalation> escalations) {
-            this.escalations = Objects.requireNonNull(escalations);
+            if (escalations == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplate", "escalations");
+            }
+            this.escalations = escalations;
             return this;
         }
         public Builder escalations(GetMetricRuleTemplatesTemplateAlertTemplateEscalation... escalations) {
@@ -133,27 +140,42 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplate {
         }
         @CustomType.Setter
         public Builder metricName(String metricName) {
-            this.metricName = Objects.requireNonNull(metricName);
+            if (metricName == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplate", "metricName");
+            }
+            this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplate", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder ruleName(String ruleName) {
-            this.ruleName = Objects.requireNonNull(ruleName);
+            if (ruleName == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplate", "ruleName");
+            }
+            this.ruleName = ruleName;
             return this;
         }
         @CustomType.Setter
         public Builder selector(String selector) {
-            this.selector = Objects.requireNonNull(selector);
+            if (selector == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplate", "selector");
+            }
+            this.selector = selector;
             return this;
         }
         @CustomType.Setter
         public Builder webhook(String webhook) {
-            this.webhook = Objects.requireNonNull(webhook);
+            if (webhook == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplate", "webhook");
+            }
+            this.webhook = webhook;
             return this;
         }
         public GetMetricRuleTemplatesTemplateAlertTemplate build() {

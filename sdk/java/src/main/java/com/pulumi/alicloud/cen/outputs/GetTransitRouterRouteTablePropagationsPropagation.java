@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,27 +91,42 @@ public final class GetTransitRouterRouteTablePropagationsPropagation {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablePropagationsPropagation", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceId(String resourceId) {
-            this.resourceId = Objects.requireNonNull(resourceId);
+            if (resourceId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablePropagationsPropagation", "resourceId");
+            }
+            this.resourceId = resourceId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablePropagationsPropagation", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablePropagationsPropagation", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablePropagationsPropagation", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         public GetTransitRouterRouteTablePropagationsPropagation build() {

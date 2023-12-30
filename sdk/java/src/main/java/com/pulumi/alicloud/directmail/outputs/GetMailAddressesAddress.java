@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.directmail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -210,67 +211,106 @@ public final class GetMailAddressesAddress {
 
         @CustomType.Setter
         public Builder accountName(String accountName) {
-            this.accountName = Objects.requireNonNull(accountName);
+            if (accountName == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "accountName");
+            }
+            this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dailyCount(String dailyCount) {
-            this.dailyCount = Objects.requireNonNull(dailyCount);
+            if (dailyCount == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "dailyCount");
+            }
+            this.dailyCount = dailyCount;
             return this;
         }
         @CustomType.Setter
         public Builder dailyReqCount(String dailyReqCount) {
-            this.dailyReqCount = Objects.requireNonNull(dailyReqCount);
+            if (dailyReqCount == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "dailyReqCount");
+            }
+            this.dailyReqCount = dailyReqCount;
             return this;
         }
         @CustomType.Setter
         public Builder domainStatus(String domainStatus) {
-            this.domainStatus = Objects.requireNonNull(domainStatus);
+            if (domainStatus == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "domainStatus");
+            }
+            this.domainStatus = domainStatus;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mailAddressId(String mailAddressId) {
-            this.mailAddressId = Objects.requireNonNull(mailAddressId);
+            if (mailAddressId == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "mailAddressId");
+            }
+            this.mailAddressId = mailAddressId;
             return this;
         }
         @CustomType.Setter
         public Builder monthCount(String monthCount) {
-            this.monthCount = Objects.requireNonNull(monthCount);
+            if (monthCount == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "monthCount");
+            }
+            this.monthCount = monthCount;
             return this;
         }
         @CustomType.Setter
         public Builder monthReqCount(String monthReqCount) {
-            this.monthReqCount = Objects.requireNonNull(monthReqCount);
+            if (monthReqCount == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "monthReqCount");
+            }
+            this.monthReqCount = monthReqCount;
             return this;
         }
         @CustomType.Setter
         public Builder replyAddress(String replyAddress) {
-            this.replyAddress = Objects.requireNonNull(replyAddress);
+            if (replyAddress == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "replyAddress");
+            }
+            this.replyAddress = replyAddress;
             return this;
         }
         @CustomType.Setter
         public Builder replyStatus(String replyStatus) {
-            this.replyStatus = Objects.requireNonNull(replyStatus);
+            if (replyStatus == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "replyStatus");
+            }
+            this.replyStatus = replyStatus;
             return this;
         }
         @CustomType.Setter
         public Builder sendtype(String sendtype) {
-            this.sendtype = Objects.requireNonNull(sendtype);
+            if (sendtype == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "sendtype");
+            }
+            this.sendtype = sendtype;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesAddress", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetMailAddressesAddress build() {

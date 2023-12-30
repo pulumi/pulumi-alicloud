@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.directmail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetReceiversReceiverse {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetReceiversReceiverse", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetReceiversReceiverse", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetReceiversReceiverse", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder receiversAlias(String receiversAlias) {
-            this.receiversAlias = Objects.requireNonNull(receiversAlias);
+            if (receiversAlias == null) {
+              throw new MissingRequiredPropertyException("GetReceiversReceiverse", "receiversAlias");
+            }
+            this.receiversAlias = receiversAlias;
             return this;
         }
         @CustomType.Setter
         public Builder receiversId(String receiversId) {
-            this.receiversId = Objects.requireNonNull(receiversId);
+            if (receiversId == null) {
+              throw new MissingRequiredPropertyException("GetReceiversReceiverse", "receiversId");
+            }
+            this.receiversId = receiversId;
             return this;
         }
         @CustomType.Setter
         public Builder receiversName(String receiversName) {
-            this.receiversName = Objects.requireNonNull(receiversName);
+            if (receiversName == null) {
+              throw new MissingRequiredPropertyException("GetReceiversReceiverse", "receiversName");
+            }
+            this.receiversName = receiversName;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetReceiversReceiverse", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetReceiversReceiverse build() {

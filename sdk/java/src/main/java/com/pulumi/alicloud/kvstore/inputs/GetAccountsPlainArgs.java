@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kvstore.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -159,7 +160,9 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetAccountsPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetAccountsPlainArgs", "instanceId");
+            }
             return $;
         }
     }

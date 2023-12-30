@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.bss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -102,27 +103,42 @@ public final class GetOpenApiProductsProduct {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiProductsProduct", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiProductsProduct", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder productName(String productName) {
-            this.productName = Objects.requireNonNull(productName);
+            if (productName == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiProductsProduct", "productName");
+            }
+            this.productName = productName;
             return this;
         }
         @CustomType.Setter
         public Builder productType(String productType) {
-            this.productType = Objects.requireNonNull(productType);
+            if (productType == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiProductsProduct", "productType");
+            }
+            this.productType = productType;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionType(String subscriptionType) {
-            this.subscriptionType = Objects.requireNonNull(subscriptionType);
+            if (subscriptionType == null) {
+              throw new MissingRequiredPropertyException("GetOpenApiProductsProduct", "subscriptionType");
+            }
+            this.subscriptionType = subscriptionType;
             return this;
         }
         public GetOpenApiProductsProduct build() {

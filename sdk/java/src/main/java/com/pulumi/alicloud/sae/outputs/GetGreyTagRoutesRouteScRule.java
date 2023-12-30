@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.alicloud.sae.outputs.GetGreyTagRoutesRouteScRuleItem;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,12 +73,18 @@ public final class GetGreyTagRoutesRouteScRule {
 
         @CustomType.Setter
         public Builder condition(String condition) {
-            this.condition = Objects.requireNonNull(condition);
+            if (condition == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteScRule", "condition");
+            }
+            this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder items(List<GetGreyTagRoutesRouteScRuleItem> items) {
-            this.items = Objects.requireNonNull(items);
+            if (items == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteScRule", "items");
+            }
+            this.items = items;
             return this;
         }
         public Builder items(GetGreyTagRoutesRouteScRuleItem... items) {
@@ -85,7 +92,10 @@ public final class GetGreyTagRoutesRouteScRule {
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteScRule", "path");
+            }
+            this.path = path;
             return this;
         }
         public GetGreyTagRoutesRouteScRule build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,7 +262,9 @@ public final class GetSecurityGroupRulesArgs extends com.pulumi.resources.Invoke
         }
 
         public GetSecurityGroupRulesArgs build() {
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("GetSecurityGroupRulesArgs", "groupId");
+            }
             return $;
         }
     }

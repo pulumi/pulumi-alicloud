@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -451,42 +452,66 @@ public final class GetRouteMapsMap {
 
         @CustomType.Setter
         public Builder asPathMatchMode(String asPathMatchMode) {
-            this.asPathMatchMode = Objects.requireNonNull(asPathMatchMode);
+            if (asPathMatchMode == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "asPathMatchMode");
+            }
+            this.asPathMatchMode = asPathMatchMode;
             return this;
         }
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder cenRegionId(String cenRegionId) {
-            this.cenRegionId = Objects.requireNonNull(cenRegionId);
+            if (cenRegionId == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "cenRegionId");
+            }
+            this.cenRegionId = cenRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder cidrMatchMode(String cidrMatchMode) {
-            this.cidrMatchMode = Objects.requireNonNull(cidrMatchMode);
+            if (cidrMatchMode == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "cidrMatchMode");
+            }
+            this.cidrMatchMode = cidrMatchMode;
             return this;
         }
         @CustomType.Setter
         public Builder communityMatchMode(String communityMatchMode) {
-            this.communityMatchMode = Objects.requireNonNull(communityMatchMode);
+            if (communityMatchMode == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "communityMatchMode");
+            }
+            this.communityMatchMode = communityMatchMode;
             return this;
         }
         @CustomType.Setter
         public Builder communityOperateMode(String communityOperateMode) {
-            this.communityOperateMode = Objects.requireNonNull(communityOperateMode);
+            if (communityOperateMode == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "communityOperateMode");
+            }
+            this.communityOperateMode = communityOperateMode;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destinationChildInstanceTypes(List<String> destinationChildInstanceTypes) {
-            this.destinationChildInstanceTypes = Objects.requireNonNull(destinationChildInstanceTypes);
+            if (destinationChildInstanceTypes == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "destinationChildInstanceTypes");
+            }
+            this.destinationChildInstanceTypes = destinationChildInstanceTypes;
             return this;
         }
         public Builder destinationChildInstanceTypes(String... destinationChildInstanceTypes) {
@@ -494,7 +519,10 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder destinationCidrBlocks(List<String> destinationCidrBlocks) {
-            this.destinationCidrBlocks = Objects.requireNonNull(destinationCidrBlocks);
+            if (destinationCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "destinationCidrBlocks");
+            }
+            this.destinationCidrBlocks = destinationCidrBlocks;
             return this;
         }
         public Builder destinationCidrBlocks(String... destinationCidrBlocks) {
@@ -502,7 +530,10 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder destinationInstanceIds(List<String> destinationInstanceIds) {
-            this.destinationInstanceIds = Objects.requireNonNull(destinationInstanceIds);
+            if (destinationInstanceIds == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "destinationInstanceIds");
+            }
+            this.destinationInstanceIds = destinationInstanceIds;
             return this;
         }
         public Builder destinationInstanceIds(String... destinationInstanceIds) {
@@ -510,12 +541,18 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder destinationInstanceIdsReverseMatch(Boolean destinationInstanceIdsReverseMatch) {
-            this.destinationInstanceIdsReverseMatch = Objects.requireNonNull(destinationInstanceIdsReverseMatch);
+            if (destinationInstanceIdsReverseMatch == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "destinationInstanceIdsReverseMatch");
+            }
+            this.destinationInstanceIdsReverseMatch = destinationInstanceIdsReverseMatch;
             return this;
         }
         @CustomType.Setter
         public Builder destinationRouteTableIds(List<String> destinationRouteTableIds) {
-            this.destinationRouteTableIds = Objects.requireNonNull(destinationRouteTableIds);
+            if (destinationRouteTableIds == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "destinationRouteTableIds");
+            }
+            this.destinationRouteTableIds = destinationRouteTableIds;
             return this;
         }
         public Builder destinationRouteTableIds(String... destinationRouteTableIds) {
@@ -523,17 +560,26 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mapResult(String mapResult) {
-            this.mapResult = Objects.requireNonNull(mapResult);
+            if (mapResult == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "mapResult");
+            }
+            this.mapResult = mapResult;
             return this;
         }
         @CustomType.Setter
         public Builder matchAsns(List<String> matchAsns) {
-            this.matchAsns = Objects.requireNonNull(matchAsns);
+            if (matchAsns == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "matchAsns");
+            }
+            this.matchAsns = matchAsns;
             return this;
         }
         public Builder matchAsns(String... matchAsns) {
@@ -541,7 +587,10 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder matchCommunitySets(List<String> matchCommunitySets) {
-            this.matchCommunitySets = Objects.requireNonNull(matchCommunitySets);
+            if (matchCommunitySets == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "matchCommunitySets");
+            }
+            this.matchCommunitySets = matchCommunitySets;
             return this;
         }
         public Builder matchCommunitySets(String... matchCommunitySets) {
@@ -549,12 +598,18 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder nextPriority(Integer nextPriority) {
-            this.nextPriority = Objects.requireNonNull(nextPriority);
+            if (nextPriority == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "nextPriority");
+            }
+            this.nextPriority = nextPriority;
             return this;
         }
         @CustomType.Setter
         public Builder operateCommunitySets(List<String> operateCommunitySets) {
-            this.operateCommunitySets = Objects.requireNonNull(operateCommunitySets);
+            if (operateCommunitySets == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "operateCommunitySets");
+            }
+            this.operateCommunitySets = operateCommunitySets;
             return this;
         }
         public Builder operateCommunitySets(String... operateCommunitySets) {
@@ -562,12 +617,18 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder preference(Integer preference) {
-            this.preference = Objects.requireNonNull(preference);
+            if (preference == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "preference");
+            }
+            this.preference = preference;
             return this;
         }
         @CustomType.Setter
         public Builder prependAsPaths(List<String> prependAsPaths) {
-            this.prependAsPaths = Objects.requireNonNull(prependAsPaths);
+            if (prependAsPaths == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "prependAsPaths");
+            }
+            this.prependAsPaths = prependAsPaths;
             return this;
         }
         public Builder prependAsPaths(String... prependAsPaths) {
@@ -575,17 +636,26 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder routeMapId(String routeMapId) {
-            this.routeMapId = Objects.requireNonNull(routeMapId);
+            if (routeMapId == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "routeMapId");
+            }
+            this.routeMapId = routeMapId;
             return this;
         }
         @CustomType.Setter
         public Builder routeTypes(List<String> routeTypes) {
-            this.routeTypes = Objects.requireNonNull(routeTypes);
+            if (routeTypes == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "routeTypes");
+            }
+            this.routeTypes = routeTypes;
             return this;
         }
         public Builder routeTypes(String... routeTypes) {
@@ -593,7 +663,10 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder sourceChildInstanceTypes(List<String> sourceChildInstanceTypes) {
-            this.sourceChildInstanceTypes = Objects.requireNonNull(sourceChildInstanceTypes);
+            if (sourceChildInstanceTypes == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "sourceChildInstanceTypes");
+            }
+            this.sourceChildInstanceTypes = sourceChildInstanceTypes;
             return this;
         }
         public Builder sourceChildInstanceTypes(String... sourceChildInstanceTypes) {
@@ -601,7 +674,10 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder sourceInstanceIds(List<String> sourceInstanceIds) {
-            this.sourceInstanceIds = Objects.requireNonNull(sourceInstanceIds);
+            if (sourceInstanceIds == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "sourceInstanceIds");
+            }
+            this.sourceInstanceIds = sourceInstanceIds;
             return this;
         }
         public Builder sourceInstanceIds(String... sourceInstanceIds) {
@@ -609,12 +685,18 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder sourceInstanceIdsReverseMatch(Boolean sourceInstanceIdsReverseMatch) {
-            this.sourceInstanceIdsReverseMatch = Objects.requireNonNull(sourceInstanceIdsReverseMatch);
+            if (sourceInstanceIdsReverseMatch == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "sourceInstanceIdsReverseMatch");
+            }
+            this.sourceInstanceIdsReverseMatch = sourceInstanceIdsReverseMatch;
             return this;
         }
         @CustomType.Setter
         public Builder sourceRegionIds(List<String> sourceRegionIds) {
-            this.sourceRegionIds = Objects.requireNonNull(sourceRegionIds);
+            if (sourceRegionIds == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "sourceRegionIds");
+            }
+            this.sourceRegionIds = sourceRegionIds;
             return this;
         }
         public Builder sourceRegionIds(String... sourceRegionIds) {
@@ -622,7 +704,10 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder sourceRouteTableIds(List<String> sourceRouteTableIds) {
-            this.sourceRouteTableIds = Objects.requireNonNull(sourceRouteTableIds);
+            if (sourceRouteTableIds == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "sourceRouteTableIds");
+            }
+            this.sourceRouteTableIds = sourceRouteTableIds;
             return this;
         }
         public Builder sourceRouteTableIds(String... sourceRouteTableIds) {
@@ -630,12 +715,18 @@ public final class GetRouteMapsMap {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transmitDirection(String transmitDirection) {
-            this.transmitDirection = Objects.requireNonNull(transmitDirection);
+            if (transmitDirection == null) {
+              throw new MissingRequiredPropertyException("GetRouteMapsMap", "transmitDirection");
+            }
+            this.transmitDirection = transmitDirection;
             return this;
         }
         public GetRouteMapsMap build() {

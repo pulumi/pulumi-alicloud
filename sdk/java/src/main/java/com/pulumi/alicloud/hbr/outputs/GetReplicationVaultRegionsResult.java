@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.alicloud.hbr.outputs.GetReplicationVaultRegionsRegion;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,17 +59,24 @@ public final class GetReplicationVaultRegionsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetReplicationVaultRegionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder regions(List<GetReplicationVaultRegionsRegion> regions) {
-            this.regions = Objects.requireNonNull(regions);
+            if (regions == null) {
+              throw new MissingRequiredPropertyException("GetReplicationVaultRegionsResult", "regions");
+            }
+            this.regions = regions;
             return this;
         }
         public Builder regions(GetReplicationVaultRegionsRegion... regions) {

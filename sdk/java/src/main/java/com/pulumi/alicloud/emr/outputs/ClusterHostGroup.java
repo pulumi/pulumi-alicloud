@@ -248,81 +248,97 @@ public final class ClusterHostGroup {
 
         @CustomType.Setter
         public Builder autoRenew(@Nullable Boolean autoRenew) {
+
             this.autoRenew = autoRenew;
             return this;
         }
         @CustomType.Setter
         public Builder chargeType(@Nullable String chargeType) {
+
             this.chargeType = chargeType;
             return this;
         }
         @CustomType.Setter
         public Builder decommissionTimeout(@Nullable Integer decommissionTimeout) {
+
             this.decommissionTimeout = decommissionTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder diskCapacity(@Nullable String diskCapacity) {
+
             this.diskCapacity = diskCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder diskCount(@Nullable String diskCount) {
+
             this.diskCount = diskCount;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder enableGracefulDecommission(@Nullable Boolean enableGracefulDecommission) {
+
             this.enableGracefulDecommission = enableGracefulDecommission;
             return this;
         }
         @CustomType.Setter
         public Builder gpuDriver(@Nullable String gpuDriver) {
+
             this.gpuDriver = gpuDriver;
             return this;
         }
         @CustomType.Setter
         public Builder hostGroupName(@Nullable String hostGroupName) {
+
             this.hostGroupName = hostGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder hostGroupType(@Nullable String hostGroupType) {
+
             this.hostGroupType = hostGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceList(@Nullable String instanceList) {
+
             this.instanceList = instanceList;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(@Nullable String nodeCount) {
+
             this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder period(@Nullable Integer period) {
+
             this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder sysDiskCapacity(@Nullable String sysDiskCapacity) {
+
             this.sysDiskCapacity = sysDiskCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder sysDiskType(@Nullable String sysDiskType) {
+
             this.sysDiskType = sysDiskType;
             return this;
         }

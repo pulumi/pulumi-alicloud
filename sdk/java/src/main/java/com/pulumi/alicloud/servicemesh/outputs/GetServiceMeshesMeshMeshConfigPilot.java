@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetServiceMeshesMeshMeshConfigPilot {
 
         @CustomType.Setter
         public Builder http10Enabled(Boolean http10Enabled) {
-            this.http10Enabled = Objects.requireNonNull(http10Enabled);
+            if (http10Enabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigPilot", "http10Enabled");
+            }
+            this.http10Enabled = http10Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder traceSampling(Double traceSampling) {
-            this.traceSampling = Objects.requireNonNull(traceSampling);
+            if (traceSampling == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigPilot", "traceSampling");
+            }
+            this.traceSampling = traceSampling;
             return this;
         }
         public GetServiceMeshesMeshMeshConfigPilot build() {

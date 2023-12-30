@@ -6,6 +6,7 @@ package com.pulumi.alicloud.servicecatalog.outputs;
 import com.pulumi.alicloud.servicecatalog.outputs.GetLaunchOptionsLaunchOption;
 import com.pulumi.alicloud.servicecatalog.outputs.GetLaunchOptionsOption;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -107,12 +108,18 @@ public final class GetLaunchOptionsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -120,7 +127,10 @@ public final class GetLaunchOptionsResult {
         }
         @CustomType.Setter
         public Builder launchOptions(List<GetLaunchOptionsLaunchOption> launchOptions) {
-            this.launchOptions = Objects.requireNonNull(launchOptions);
+            if (launchOptions == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsResult", "launchOptions");
+            }
+            this.launchOptions = launchOptions;
             return this;
         }
         public Builder launchOptions(GetLaunchOptionsLaunchOption... launchOptions) {
@@ -128,12 +138,16 @@ public final class GetLaunchOptionsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder options(List<GetLaunchOptionsOption> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsResult", "options");
+            }
+            this.options = options;
             return this;
         }
         public Builder options(GetLaunchOptionsOption... options) {
@@ -141,12 +155,16 @@ public final class GetLaunchOptionsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder productId(String productId) {
-            this.productId = Objects.requireNonNull(productId);
+            if (productId == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsResult", "productId");
+            }
+            this.productId = productId;
             return this;
         }
         public GetLaunchOptionsResult build() {

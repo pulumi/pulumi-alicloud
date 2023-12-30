@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.alicloud.resourcemanager.outputs.GetResourceDirectoriesDirectory;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -66,7 +67,10 @@ public final class GetResourceDirectoriesResult {
 
         @CustomType.Setter
         public Builder directories(List<GetResourceDirectoriesDirectory> directories) {
-            this.directories = Objects.requireNonNull(directories);
+            if (directories == null) {
+              throw new MissingRequiredPropertyException("GetResourceDirectoriesResult", "directories");
+            }
+            this.directories = directories;
             return this;
         }
         public Builder directories(GetResourceDirectoriesDirectory... directories) {
@@ -74,11 +78,15 @@ public final class GetResourceDirectoriesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceDirectoriesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

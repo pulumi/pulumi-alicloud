@@ -74,11 +74,13 @@ public final class GreyTagRouteScRule {
 
         @CustomType.Setter
         public Builder condition(@Nullable String condition) {
+
             this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder items(@Nullable List<GreyTagRouteScRuleItem> items) {
+
             this.items = items;
             return this;
         }
@@ -87,6 +89,7 @@ public final class GreyTagRouteScRule {
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }

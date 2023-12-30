@@ -8,6 +8,7 @@ import com.pulumi.alicloud.ehpc.inputs.ClusterApplicationArgs;
 import com.pulumi.alicloud.ehpc.inputs.ClusterPostInstallScriptArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -2271,13 +2272,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.computeCount = Objects.requireNonNull($.computeCount, "expected parameter 'computeCount' to be non-null");
-            $.computeInstanceType = Objects.requireNonNull($.computeInstanceType, "expected parameter 'computeInstanceType' to be non-null");
-            $.loginCount = Objects.requireNonNull($.loginCount, "expected parameter 'loginCount' to be non-null");
-            $.loginInstanceType = Objects.requireNonNull($.loginInstanceType, "expected parameter 'loginInstanceType' to be non-null");
-            $.managerInstanceType = Objects.requireNonNull($.managerInstanceType, "expected parameter 'managerInstanceType' to be non-null");
-            $.osTag = Objects.requireNonNull($.osTag, "expected parameter 'osTag' to be non-null");
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterName");
+            }
+            if ($.computeCount == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "computeCount");
+            }
+            if ($.computeInstanceType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "computeInstanceType");
+            }
+            if ($.loginCount == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "loginCount");
+            }
+            if ($.loginInstanceType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "loginInstanceType");
+            }
+            if ($.managerInstanceType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "managerInstanceType");
+            }
+            if ($.osTag == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "osTag");
+            }
             return $;
         }
     }

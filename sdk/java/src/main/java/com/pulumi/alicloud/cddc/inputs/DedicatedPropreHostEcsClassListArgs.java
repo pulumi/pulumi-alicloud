@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cddc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -368,9 +369,15 @@ public final class DedicatedPropreHostEcsClassListArgs extends com.pulumi.resour
         }
 
         public DedicatedPropreHostEcsClassListArgs build() {
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.sysDiskCapacity = Objects.requireNonNull($.sysDiskCapacity, "expected parameter 'sysDiskCapacity' to be non-null");
-            $.sysDiskType = Objects.requireNonNull($.sysDiskType, "expected parameter 'sysDiskType' to be non-null");
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostEcsClassListArgs", "instanceType");
+            }
+            if ($.sysDiskCapacity == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostEcsClassListArgs", "sysDiskCapacity");
+            }
+            if ($.sysDiskType == null) {
+                throw new MissingRequiredPropertyException("DedicatedPropreHostEcsClassListArgs", "sysDiskType");
+            }
             return $;
         }
     }

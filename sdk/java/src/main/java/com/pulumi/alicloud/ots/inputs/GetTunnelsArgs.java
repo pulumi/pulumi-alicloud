@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ots.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,8 +236,12 @@ public final class GetTunnelsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetTunnelsArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.tableName = Objects.requireNonNull($.tableName, "expected parameter 'tableName' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("GetTunnelsArgs", "instanceName");
+            }
+            if ($.tableName == null) {
+                throw new MissingRequiredPropertyException("GetTunnelsArgs", "tableName");
+            }
             return $;
         }
     }

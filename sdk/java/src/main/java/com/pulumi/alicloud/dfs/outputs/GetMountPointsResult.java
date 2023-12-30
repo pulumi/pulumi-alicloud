@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dfs.outputs;
 
 import com.pulumi.alicloud.dfs.outputs.GetMountPointsPoint;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,17 +77,26 @@ public final class GetMountPointsResult {
 
         @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
-            this.fileSystemId = Objects.requireNonNull(fileSystemId);
+            if (fileSystemId == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsResult", "fileSystemId");
+            }
+            this.fileSystemId = fileSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -94,12 +104,16 @@ public final class GetMountPointsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder points(List<GetMountPointsPoint> points) {
-            this.points = Objects.requireNonNull(points);
+            if (points == null) {
+              throw new MissingRequiredPropertyException("GetMountPointsResult", "points");
+            }
+            this.points = points;
             return this;
         }
         public Builder points(GetMountPointsPoint... points) {
@@ -107,6 +121,7 @@ public final class GetMountPointsResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

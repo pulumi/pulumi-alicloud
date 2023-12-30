@@ -142,41 +142,49 @@ public final class GatewaySlbList {
 
         @CustomType.Setter
         public Builder associateId(@Nullable String associateId) {
+
             this.associateId = associateId;
             return this;
         }
         @CustomType.Setter
         public Builder gatewaySlbMode(@Nullable String gatewaySlbMode) {
+
             this.gatewaySlbMode = gatewaySlbMode;
             return this;
         }
         @CustomType.Setter
         public Builder gatewaySlbStatus(@Nullable String gatewaySlbStatus) {
+
             this.gatewaySlbStatus = gatewaySlbStatus;
             return this;
         }
         @CustomType.Setter
         public Builder gmtCreate(@Nullable String gmtCreate) {
+
             this.gmtCreate = gmtCreate;
             return this;
         }
         @CustomType.Setter
         public Builder slbId(@Nullable String slbId) {
+
             this.slbId = slbId;
             return this;
         }
         @CustomType.Setter
         public Builder slbIp(@Nullable String slbIp) {
+
             this.slbIp = slbIp;
             return this;
         }
         @CustomType.Setter
         public Builder slbPort(@Nullable String slbPort) {
+
             this.slbPort = slbPort;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

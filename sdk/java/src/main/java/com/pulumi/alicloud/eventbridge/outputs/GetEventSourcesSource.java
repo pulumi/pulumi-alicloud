@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eventbridge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -121,37 +122,58 @@ public final class GetEventSourcesSource {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEventSourcesSource", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder eventSourceName(String eventSourceName) {
-            this.eventSourceName = Objects.requireNonNull(eventSourceName);
+            if (eventSourceName == null) {
+              throw new MissingRequiredPropertyException("GetEventSourcesSource", "eventSourceName");
+            }
+            this.eventSourceName = eventSourceName;
             return this;
         }
         @CustomType.Setter
         public Builder externalSourceConfig(Map<String,Object> externalSourceConfig) {
-            this.externalSourceConfig = Objects.requireNonNull(externalSourceConfig);
+            if (externalSourceConfig == null) {
+              throw new MissingRequiredPropertyException("GetEventSourcesSource", "externalSourceConfig");
+            }
+            this.externalSourceConfig = externalSourceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder externalSourceType(String externalSourceType) {
-            this.externalSourceType = Objects.requireNonNull(externalSourceType);
+            if (externalSourceType == null) {
+              throw new MissingRequiredPropertyException("GetEventSourcesSource", "externalSourceType");
+            }
+            this.externalSourceType = externalSourceType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEventSourcesSource", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder linkedExternalSource(Boolean linkedExternalSource) {
-            this.linkedExternalSource = Objects.requireNonNull(linkedExternalSource);
+            if (linkedExternalSource == null) {
+              throw new MissingRequiredPropertyException("GetEventSourcesSource", "linkedExternalSource");
+            }
+            this.linkedExternalSource = linkedExternalSource;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetEventSourcesSource", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetEventSourcesSource build() {

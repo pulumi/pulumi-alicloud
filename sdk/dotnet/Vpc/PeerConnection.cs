@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Peer Connection resource. Vpc peer connection.
+    /// Provides a VPC Peer Connection resource.
     /// 
     /// For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
     /// 
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+        /// The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -129,15 +129,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to PreCheck only this request. Value:
-        /// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-        /// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+        /// Whether to PreCheck only this request. Default value: `false`. Valid values:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
         /// </summary>
         [Output("peerConnectionName")]
         public Output<string?> PeerConnectionName { get; private set; } = null!;
@@ -149,19 +147,19 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the VPC peer connection.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tags of PrefixList.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// You must create a VPC ID on the initiator of a VPC peer connection.
+        /// The ID of the requester VPC.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -248,15 +246,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to PreCheck only this request. Value:
-        /// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-        /// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+        /// Whether to PreCheck only this request. Default value: `false`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
         /// </summary>
         [Input("peerConnectionName")]
         public Input<string>? PeerConnectionName { get; set; }
@@ -268,7 +264,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the VPC peer connection.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -277,7 +273,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tags of PrefixList.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -286,7 +282,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// You must create a VPC ID on the initiator of a VPC peer connection.
+        /// The ID of the requester VPC.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -329,7 +325,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+        /// The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -341,15 +337,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to PreCheck only this request. Value:
-        /// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-        /// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+        /// Whether to PreCheck only this request. Default value: `false`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
         /// </summary>
         [Input("peerConnectionName")]
         public Input<string>? PeerConnectionName { get; set; }
@@ -361,7 +355,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the VPC peer connection.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -370,7 +364,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tags of PrefixList.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -379,7 +373,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// You must create a VPC ID on the initiator of a VPC peer connection.
+        /// The ID of the requester VPC.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

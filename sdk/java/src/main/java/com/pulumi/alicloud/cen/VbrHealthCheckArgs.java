@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -344,10 +345,18 @@ public final class VbrHealthCheckArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public VbrHealthCheckArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.healthCheckTargetIp = Objects.requireNonNull($.healthCheckTargetIp, "expected parameter 'healthCheckTargetIp' to be non-null");
-            $.vbrInstanceId = Objects.requireNonNull($.vbrInstanceId, "expected parameter 'vbrInstanceId' to be non-null");
-            $.vbrInstanceRegionId = Objects.requireNonNull($.vbrInstanceRegionId, "expected parameter 'vbrInstanceRegionId' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("VbrHealthCheckArgs", "cenId");
+            }
+            if ($.healthCheckTargetIp == null) {
+                throw new MissingRequiredPropertyException("VbrHealthCheckArgs", "healthCheckTargetIp");
+            }
+            if ($.vbrInstanceId == null) {
+                throw new MissingRequiredPropertyException("VbrHealthCheckArgs", "vbrInstanceId");
+            }
+            if ($.vbrInstanceRegionId == null) {
+                throw new MissingRequiredPropertyException("VbrHealthCheckArgs", "vbrInstanceRegionId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.gpdb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -735,13 +736,27 @@ public final class ElasticInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ElasticInstanceArgs build() {
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
-            $.instanceSpec = Objects.requireNonNull($.instanceSpec, "expected parameter 'instanceSpec' to be non-null");
-            $.segNodeNum = Objects.requireNonNull($.segNodeNum, "expected parameter 'segNodeNum' to be non-null");
-            $.segStorageType = Objects.requireNonNull($.segStorageType, "expected parameter 'segStorageType' to be non-null");
-            $.storageSize = Objects.requireNonNull($.storageSize, "expected parameter 'storageSize' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("ElasticInstanceArgs", "engine");
+            }
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("ElasticInstanceArgs", "engineVersion");
+            }
+            if ($.instanceSpec == null) {
+                throw new MissingRequiredPropertyException("ElasticInstanceArgs", "instanceSpec");
+            }
+            if ($.segNodeNum == null) {
+                throw new MissingRequiredPropertyException("ElasticInstanceArgs", "segNodeNum");
+            }
+            if ($.segStorageType == null) {
+                throw new MissingRequiredPropertyException("ElasticInstanceArgs", "segStorageType");
+            }
+            if ($.storageSize == null) {
+                throw new MissingRequiredPropertyException("ElasticInstanceArgs", "storageSize");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("ElasticInstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

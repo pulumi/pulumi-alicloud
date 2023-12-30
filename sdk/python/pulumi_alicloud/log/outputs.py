@@ -939,12 +939,9 @@ class StoreEncryptConf(dict):
                  encrypt_type: Optional[str] = None,
                  user_cmk_info: Optional['outputs.StoreEncryptConfUserCmkInfo'] = None):
         """
-        :param bool enable: enable encryption. Default `false`
-        :param str encrypt_type: Supported encryption type, only supports `default(AES)`,` m4`
-        :param 'StoreEncryptConfUserCmkInfoArgs' user_cmk_info: User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-               ```python
-               import pulumi
-               ```
+        :param bool enable: Enable encryption. Default false.
+        :param str encrypt_type: Supported encryption type, only supports `default`(AES), `m4`.
+        :param 'StoreEncryptConfUserCmkInfoArgs' user_cmk_info: User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -957,7 +954,7 @@ class StoreEncryptConf(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        enable encryption. Default `false`
+        Enable encryption. Default false.
         """
         return pulumi.get(self, "enable")
 
@@ -965,7 +962,7 @@ class StoreEncryptConf(dict):
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> Optional[str]:
         """
-        Supported encryption type, only supports `default(AES)`,` m4`
+        Supported encryption type, only supports `default`(AES), `m4`.
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -973,10 +970,7 @@ class StoreEncryptConf(dict):
     @pulumi.getter(name="userCmkInfo")
     def user_cmk_info(self) -> Optional['outputs.StoreEncryptConfUserCmkInfo']:
         """
-        User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-        ```python
-        import pulumi
-        ```
+        User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
         """
         return pulumi.get(self, "user_cmk_info")
 
@@ -1003,29 +997,32 @@ class StoreEncryptConfUserCmkInfo(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 arn: str,
-                 cmk_key_id: str,
-                 region_id: str):
+                 arn: Optional[str] = None,
+                 cmk_key_id: Optional[str] = None,
+                 region_id: Optional[str] = None):
         """
-        :param str arn: role arn.
+        :param str arn: Role arn.
         :param str cmk_key_id: User master key id.
-        :param str region_id: Region id where the  user master key id is located.
+        :param str region_id: Region id where the user master key id is located.
         """
-        pulumi.set(__self__, "arn", arn)
-        pulumi.set(__self__, "cmk_key_id", cmk_key_id)
-        pulumi.set(__self__, "region_id", region_id)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if cmk_key_id is not None:
+            pulumi.set(__self__, "cmk_key_id", cmk_key_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> Optional[str]:
         """
-        role arn.
+        Role arn.
         """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="cmkKeyId")
-    def cmk_key_id(self) -> str:
+    def cmk_key_id(self) -> Optional[str]:
         """
         User master key id.
         """
@@ -1033,9 +1030,9 @@ class StoreEncryptConfUserCmkInfo(dict):
 
     @property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> str:
+    def region_id(self) -> Optional[str]:
         """
-        Region id where the  user master key id is located.
+        Region id where the user master key id is located.
         """
         return pulumi.get(self, "region_id")
 

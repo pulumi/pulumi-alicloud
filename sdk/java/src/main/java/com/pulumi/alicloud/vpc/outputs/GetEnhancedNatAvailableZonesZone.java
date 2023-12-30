@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetEnhancedNatAvailableZonesZone {
 
         @CustomType.Setter
         public Builder localName(String localName) {
-            this.localName = Objects.requireNonNull(localName);
+            if (localName == null) {
+              throw new MissingRequiredPropertyException("GetEnhancedNatAvailableZonesZone", "localName");
+            }
+            this.localName = localName;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetEnhancedNatAvailableZonesZone", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetEnhancedNatAvailableZonesZone build() {

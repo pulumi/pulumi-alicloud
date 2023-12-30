@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.alicloud.emr.outputs.GetDiskTypesType;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -110,22 +111,34 @@ public final class GetDiskTypesResult {
 
         @CustomType.Setter
         public Builder clusterType(String clusterType) {
-            this.clusterType = Objects.requireNonNull(clusterType);
+            if (clusterType == null) {
+              throw new MissingRequiredPropertyException("GetDiskTypesResult", "clusterType");
+            }
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
         public Builder destinationResource(String destinationResource) {
-            this.destinationResource = Objects.requireNonNull(destinationResource);
+            if (destinationResource == null) {
+              throw new MissingRequiredPropertyException("GetDiskTypesResult", "destinationResource");
+            }
+            this.destinationResource = destinationResource;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDiskTypesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetDiskTypesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -133,22 +146,32 @@ public final class GetDiskTypesResult {
         }
         @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
-            this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
+            if (instanceChargeType == null) {
+              throw new MissingRequiredPropertyException("GetDiskTypesResult", "instanceChargeType");
+            }
+            this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetDiskTypesResult", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder types(List<GetDiskTypesType> types) {
-            this.types = Objects.requireNonNull(types);
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetDiskTypesResult", "types");
+            }
+            this.types = types;
             return this;
         }
         public Builder types(GetDiskTypesType... types) {
@@ -156,6 +179,7 @@ public final class GetDiskTypesResult {
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

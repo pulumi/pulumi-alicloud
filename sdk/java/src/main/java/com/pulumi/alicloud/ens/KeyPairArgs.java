@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ens;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class KeyPairArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public KeyPairArgs build() {
-            $.keyPairName = Objects.requireNonNull($.keyPairName, "expected parameter 'keyPairName' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.keyPairName == null) {
+                throw new MissingRequiredPropertyException("KeyPairArgs", "keyPairName");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("KeyPairArgs", "version");
+            }
             return $;
         }
     }

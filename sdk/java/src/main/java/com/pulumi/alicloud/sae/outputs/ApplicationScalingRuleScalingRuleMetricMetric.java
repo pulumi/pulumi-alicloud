@@ -135,31 +135,37 @@ public final class ApplicationScalingRuleScalingRuleMetricMetric {
 
         @CustomType.Setter
         public Builder metricTargetAverageUtilization(@Nullable Integer metricTargetAverageUtilization) {
+
             this.metricTargetAverageUtilization = metricTargetAverageUtilization;
             return this;
         }
         @CustomType.Setter
         public Builder metricType(@Nullable String metricType) {
+
             this.metricType = metricType;
             return this;
         }
         @CustomType.Setter
         public Builder slbId(@Nullable String slbId) {
+
             this.slbId = slbId;
             return this;
         }
         @CustomType.Setter
         public Builder slbLogStore(@Nullable String slbLogStore) {
+
             this.slbLogStore = slbLogStore;
             return this;
         }
         @CustomType.Setter
         public Builder slbProject(@Nullable String slbProject) {
+
             this.slbProject = slbProject;
             return this;
         }
         @CustomType.Setter
         public Builder vport(@Nullable String vport) {
+
             this.vport = vport;
             return this;
         }

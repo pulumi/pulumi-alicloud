@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.alicloud.servicecatalog.outputs.GetEndUserProductsEndUserProduct;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -111,7 +112,10 @@ public final class GetEndUserProductsResult {
 
         @CustomType.Setter
         public Builder endUserProducts(List<GetEndUserProductsEndUserProduct> endUserProducts) {
-            this.endUserProducts = Objects.requireNonNull(endUserProducts);
+            if (endUserProducts == null) {
+              throw new MissingRequiredPropertyException("GetEndUserProductsResult", "endUserProducts");
+            }
+            this.endUserProducts = endUserProducts;
             return this;
         }
         public Builder endUserProducts(GetEndUserProductsEndUserProduct... endUserProducts) {
@@ -119,12 +123,18 @@ public final class GetEndUserProductsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEndUserProductsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEndUserProductsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -132,31 +142,37 @@ public final class GetEndUserProductsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder sortBy(@Nullable String sortBy) {
+
             this.sortBy = sortBy;
             return this;
         }
         @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
+
             this.sortOrder = sortOrder;
             return this;
         }

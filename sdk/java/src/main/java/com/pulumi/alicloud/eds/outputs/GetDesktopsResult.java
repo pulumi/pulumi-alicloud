@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.alicloud.eds.outputs.GetDesktopsDesktop;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -106,12 +107,16 @@ public final class GetDesktopsResult {
 
         @CustomType.Setter
         public Builder desktopName(@Nullable String desktopName) {
+
             this.desktopName = desktopName;
             return this;
         }
         @CustomType.Setter
         public Builder desktops(List<GetDesktopsDesktop> desktops) {
-            this.desktops = Objects.requireNonNull(desktops);
+            if (desktops == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsResult", "desktops");
+            }
+            this.desktops = desktops;
             return this;
         }
         public Builder desktops(GetDesktopsDesktop... desktops) {
@@ -119,6 +124,7 @@ public final class GetDesktopsResult {
         }
         @CustomType.Setter
         public Builder endUserIds(@Nullable List<String> endUserIds) {
+
             this.endUserIds = endUserIds;
             return this;
         }
@@ -127,12 +133,18 @@ public final class GetDesktopsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -140,12 +152,16 @@ public final class GetDesktopsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetDesktopsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -153,21 +169,25 @@ public final class GetDesktopsResult {
         }
         @CustomType.Setter
         public Builder officeSiteId(@Nullable String officeSiteId) {
+
             this.officeSiteId = officeSiteId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder policyGroupId(@Nullable String policyGroupId) {
+
             this.policyGroupId = policyGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

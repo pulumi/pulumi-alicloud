@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetLifecycleHooksHook {
 
         @CustomType.Setter
         public Builder defaultResult(String defaultResult) {
-            this.defaultResult = Objects.requireNonNull(defaultResult);
+            if (defaultResult == null) {
+              throw new MissingRequiredPropertyException("GetLifecycleHooksHook", "defaultResult");
+            }
+            this.defaultResult = defaultResult;
             return this;
         }
         @CustomType.Setter
         public Builder heartbeatTimeout(Integer heartbeatTimeout) {
-            this.heartbeatTimeout = Objects.requireNonNull(heartbeatTimeout);
+            if (heartbeatTimeout == null) {
+              throw new MissingRequiredPropertyException("GetLifecycleHooksHook", "heartbeatTimeout");
+            }
+            this.heartbeatTimeout = heartbeatTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLifecycleHooksHook", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lifecycleTransition(String lifecycleTransition) {
-            this.lifecycleTransition = Objects.requireNonNull(lifecycleTransition);
+            if (lifecycleTransition == null) {
+              throw new MissingRequiredPropertyException("GetLifecycleHooksHook", "lifecycleTransition");
+            }
+            this.lifecycleTransition = lifecycleTransition;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetLifecycleHooksHook", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notificationArn(String notificationArn) {
-            this.notificationArn = Objects.requireNonNull(notificationArn);
+            if (notificationArn == null) {
+              throw new MissingRequiredPropertyException("GetLifecycleHooksHook", "notificationArn");
+            }
+            this.notificationArn = notificationArn;
             return this;
         }
         @CustomType.Setter
         public Builder notificationMetadata(String notificationMetadata) {
-            this.notificationMetadata = Objects.requireNonNull(notificationMetadata);
+            if (notificationMetadata == null) {
+              throw new MissingRequiredPropertyException("GetLifecycleHooksHook", "notificationMetadata");
+            }
+            this.notificationMetadata = notificationMetadata;
             return this;
         }
         @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
-            this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
+            if (scalingGroupId == null) {
+              throw new MissingRequiredPropertyException("GetLifecycleHooksHook", "scalingGroupId");
+            }
+            this.scalingGroupId = scalingGroupId;
             return this;
         }
         public GetLifecycleHooksHook build() {

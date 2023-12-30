@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -271,7 +272,9 @@ public final class AlidnsDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AlidnsDomainArgs build() {
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("AlidnsDomainArgs", "domainName");
+            }
             return $;
         }
     }

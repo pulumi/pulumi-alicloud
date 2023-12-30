@@ -6,6 +6,7 @@ package com.pulumi.alicloud.quotas.outputs;
 import com.pulumi.alicloud.quotas.outputs.GetApplicationInfosApplication;
 import com.pulumi.alicloud.quotas.outputs.GetApplicationInfosDimension;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -108,7 +109,10 @@ public final class GetApplicationInfosResult {
 
         @CustomType.Setter
         public Builder applications(List<GetApplicationInfosApplication> applications) {
-            this.applications = Objects.requireNonNull(applications);
+            if (applications == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosResult", "applications");
+            }
+            this.applications = applications;
             return this;
         }
         public Builder applications(GetApplicationInfosApplication... applications) {
@@ -116,6 +120,7 @@ public final class GetApplicationInfosResult {
         }
         @CustomType.Setter
         public Builder dimensions(@Nullable List<GetApplicationInfosDimension> dimensions) {
+
             this.dimensions = dimensions;
             return this;
         }
@@ -124,17 +129,24 @@ public final class GetApplicationInfosResult {
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -142,31 +154,39 @@ public final class GetApplicationInfosResult {
         }
         @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
+
             this.keyWord = keyWord;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosResult", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaActionCode(@Nullable String quotaActionCode) {
+
             this.quotaActionCode = quotaActionCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaCategory(@Nullable String quotaCategory) {
+
             this.quotaCategory = quotaCategory;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

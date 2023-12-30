@@ -6,6 +6,7 @@ package com.pulumi.alicloud.hbr;
 import com.pulumi.alicloud.hbr.inputs.RestoreJobOtsDetailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -966,11 +967,21 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RestoreJobArgs build() {
-            $.restoreType = Objects.requireNonNull($.restoreType, "expected parameter 'restoreType' to be non-null");
-            $.snapshotHash = Objects.requireNonNull($.snapshotHash, "expected parameter 'snapshotHash' to be non-null");
-            $.snapshotId = Objects.requireNonNull($.snapshotId, "expected parameter 'snapshotId' to be non-null");
-            $.sourceType = Objects.requireNonNull($.sourceType, "expected parameter 'sourceType' to be non-null");
-            $.vaultId = Objects.requireNonNull($.vaultId, "expected parameter 'vaultId' to be non-null");
+            if ($.restoreType == null) {
+                throw new MissingRequiredPropertyException("RestoreJobArgs", "restoreType");
+            }
+            if ($.snapshotHash == null) {
+                throw new MissingRequiredPropertyException("RestoreJobArgs", "snapshotHash");
+            }
+            if ($.snapshotId == null) {
+                throw new MissingRequiredPropertyException("RestoreJobArgs", "snapshotId");
+            }
+            if ($.sourceType == null) {
+                throw new MissingRequiredPropertyException("RestoreJobArgs", "sourceType");
+            }
+            if ($.vaultId == null) {
+                throw new MissingRequiredPropertyException("RestoreJobArgs", "vaultId");
+            }
             return $;
         }
     }

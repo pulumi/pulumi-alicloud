@@ -8,6 +8,7 @@ import com.pulumi.alicloud.ecs.inputs.EcsInstanceSetExcludeInstanceFilterArgs;
 import com.pulumi.alicloud.ecs.inputs.EcsInstanceSetNetworkInterfaceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -1721,9 +1722,15 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public EcsInstanceSetArgs build() {
-            $.imageId = Objects.requireNonNull($.imageId, "expected parameter 'imageId' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.securityGroupIds = Objects.requireNonNull($.securityGroupIds, "expected parameter 'securityGroupIds' to be non-null");
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("EcsInstanceSetArgs", "imageId");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("EcsInstanceSetArgs", "instanceType");
+            }
+            if ($.securityGroupIds == null) {
+                throw new MissingRequiredPropertyException("EcsInstanceSetArgs", "securityGroupIds");
+            }
             return $;
         }
     }

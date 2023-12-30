@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,8 +225,12 @@ public final class ResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ResourceArgs build() {
-            $.schema = Objects.requireNonNull($.schema, "expected parameter 'schema' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.schema == null) {
+                throw new MissingRequiredPropertyException("ResourceArgs", "schema");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ResourceArgs", "type");
+            }
             return $;
         }
     }

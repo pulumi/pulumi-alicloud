@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetLoadBalancersBalancerLoadBalancerOperationLock {
 
         @CustomType.Setter
         public Builder lockReason(String lockReason) {
-            this.lockReason = Objects.requireNonNull(lockReason);
+            if (lockReason == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerLoadBalancerOperationLock", "lockReason");
+            }
+            this.lockReason = lockReason;
             return this;
         }
         @CustomType.Setter
         public Builder lockType(String lockType) {
-            this.lockType = Objects.requireNonNull(lockType);
+            if (lockType == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerLoadBalancerOperationLock", "lockType");
+            }
+            this.lockType = lockType;
             return this;
         }
         public GetLoadBalancersBalancerLoadBalancerOperationLock build() {

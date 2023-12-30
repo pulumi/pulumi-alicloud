@@ -59,11 +59,13 @@ public final class ConsumerGroupConsumeRetryPolicy {
 
         @CustomType.Setter
         public Builder maxRetryTimes(@Nullable Integer maxRetryTimes) {
+
             this.maxRetryTimes = maxRetryTimes;
             return this;
         }
         @CustomType.Setter
         public Builder retryPolicy(@Nullable String retryPolicy) {
+
             this.retryPolicy = retryPolicy;
             return this;
         }

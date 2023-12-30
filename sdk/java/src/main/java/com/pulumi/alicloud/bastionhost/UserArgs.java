@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -542,9 +543,15 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
-            $.userName = Objects.requireNonNull($.userName, "expected parameter 'userName' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "instanceId");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "source");
+            }
+            if ($.userName == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "userName");
+            }
             return $;
         }
     }

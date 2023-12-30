@@ -14,6 +14,11 @@ namespace Pulumi.AliCloud.Ess.Outputs
     public sealed class EciScalingConfigurationContainerEnvironmentVar
     {
         /// <summary>
+        /// Environment variable value reference. Optional values: 
+        /// - status.podIP: IP of pod.
+        /// </summary>
+        public readonly string? FieldRefFieldPath;
+        /// <summary>
         /// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
         /// digits, and underscores (_). It cannot start with a digit.
         /// </summary>
@@ -25,10 +30,13 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
         [OutputConstructor]
         private EciScalingConfigurationContainerEnvironmentVar(
+            string? fieldRefFieldPath,
+
             string? key,
 
             string? value)
         {
+            FieldRefFieldPath = fieldRefFieldPath;
             Key = key;
             Value = value;
         }

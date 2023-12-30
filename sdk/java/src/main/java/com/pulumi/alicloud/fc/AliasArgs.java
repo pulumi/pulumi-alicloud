@@ -6,6 +6,7 @@ package com.pulumi.alicloud.fc;
 import com.pulumi.alicloud.fc.inputs.AliasRoutingConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -225,9 +226,15 @@ public final class AliasArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AliasArgs build() {
-            $.aliasName = Objects.requireNonNull($.aliasName, "expected parameter 'aliasName' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.serviceVersion = Objects.requireNonNull($.serviceVersion, "expected parameter 'serviceVersion' to be non-null");
+            if ($.aliasName == null) {
+                throw new MissingRequiredPropertyException("AliasArgs", "aliasName");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("AliasArgs", "serviceName");
+            }
+            if ($.serviceVersion == null) {
+                throw new MissingRequiredPropertyException("AliasArgs", "serviceVersion");
+            }
             return $;
         }
     }

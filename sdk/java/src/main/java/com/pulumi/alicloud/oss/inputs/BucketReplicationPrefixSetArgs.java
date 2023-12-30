@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,7 +96,9 @@ public final class BucketReplicationPrefixSetArgs extends com.pulumi.resources.R
         }
 
         public BucketReplicationPrefixSetArgs build() {
-            $.prefixes = Objects.requireNonNull($.prefixes, "expected parameter 'prefixes' to be non-null");
+            if ($.prefixes == null) {
+                throw new MissingRequiredPropertyException("BucketReplicationPrefixSetArgs", "prefixes");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
 
         @CustomType.Setter
         public Builder metricTargetAverageUtilization(Integer metricTargetAverageUtilization) {
-            this.metricTargetAverageUtilization = Objects.requireNonNull(metricTargetAverageUtilization);
+            if (metricTargetAverageUtilization == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetric", "metricTargetAverageUtilization");
+            }
+            this.metricTargetAverageUtilization = metricTargetAverageUtilization;
             return this;
         }
         @CustomType.Setter
         public Builder metricType(String metricType) {
-            this.metricType = Objects.requireNonNull(metricType);
+            if (metricType == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetric", "metricType");
+            }
+            this.metricType = metricType;
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleMetricMetric build() {

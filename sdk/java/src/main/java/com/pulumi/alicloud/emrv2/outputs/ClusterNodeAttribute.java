@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -129,37 +130,54 @@ public final class ClusterNodeAttribute {
 
         @CustomType.Setter
         public Builder dataDiskEncrypted(@Nullable Boolean dataDiskEncrypted) {
+
             this.dataDiskEncrypted = dataDiskEncrypted;
             return this;
         }
         @CustomType.Setter
         public Builder dataDiskKmsKeyId(@Nullable String dataDiskKmsKeyId) {
+
             this.dataDiskKmsKeyId = dataDiskKmsKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
-            this.keyPairName = Objects.requireNonNull(keyPairName);
+            if (keyPairName == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeAttribute", "keyPairName");
+            }
+            this.keyPairName = keyPairName;
             return this;
         }
         @CustomType.Setter
         public Builder ramRole(String ramRole) {
-            this.ramRole = Objects.requireNonNull(ramRole);
+            if (ramRole == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeAttribute", "ramRole");
+            }
+            this.ramRole = ramRole;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeAttribute", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeAttribute", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeAttribute", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public ClusterNodeAttribute build() {

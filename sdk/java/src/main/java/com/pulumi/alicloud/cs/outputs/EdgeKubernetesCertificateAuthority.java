@@ -72,16 +72,19 @@ public final class EdgeKubernetesCertificateAuthority {
 
         @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
+
             this.clientCert = clientCert;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
+
             this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder clusterCert(@Nullable String clusterCert) {
+
             this.clusterCert = clusterCert;
             return this;
         }

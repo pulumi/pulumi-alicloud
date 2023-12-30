@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.maxcompute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetProjectsProjectIpWhiteList {
 
         @CustomType.Setter
         public Builder ipList(String ipList) {
-            this.ipList = Objects.requireNonNull(ipList);
+            if (ipList == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectIpWhiteList", "ipList");
+            }
+            this.ipList = ipList;
             return this;
         }
         @CustomType.Setter
         public Builder vpcIpList(String vpcIpList) {
-            this.vpcIpList = Objects.requireNonNull(vpcIpList);
+            if (vpcIpList == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectIpWhiteList", "vpcIpList");
+            }
+            this.vpcIpList = vpcIpList;
             return this;
         }
         public GetProjectsProjectIpWhiteList build() {

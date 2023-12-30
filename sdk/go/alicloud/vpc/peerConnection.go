@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Peer Connection resource. Vpc peer connection.
+// Provides a VPC Peer Connection resource.
 //
 // For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
 //
@@ -113,23 +113,21 @@ type PeerConnection struct {
 	AcceptingVpcId pulumi.StringOutput `pulumi:"acceptingVpcId"`
 	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
-	// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+	// The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to PreCheck only this request. Value:
-	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+	// Whether to PreCheck only this request. Default value: `false`. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName pulumi.StringPtrOutput `pulumi:"peerConnectionName"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the VPC peer connection.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The tags of PrefixList.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// You must create a VPC ID on the initiator of a VPC peer connection.
+	// The ID of the requester VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -185,23 +183,21 @@ type peerConnectionState struct {
 	AcceptingVpcId *string `pulumi:"acceptingVpcId"`
 	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+	// The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
 	CreateTime *string `pulumi:"createTime"`
 	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// Whether to PreCheck only this request. Value:
-	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+	// Whether to PreCheck only this request. Default value: `false`. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName *string `pulumi:"peerConnectionName"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the VPC peer connection.
 	Status *string `pulumi:"status"`
-	// The tags of PrefixList.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// You must create a VPC ID on the initiator of a VPC peer connection.
+	// The ID of the requester VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -219,23 +215,21 @@ type PeerConnectionState struct {
 	AcceptingVpcId pulumi.StringPtrInput
 	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
 	Bandwidth pulumi.IntPtrInput
-	// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+	// The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
 	CreateTime pulumi.StringPtrInput
 	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// Whether to PreCheck only this request. Value:
-	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+	// Whether to PreCheck only this request. Default value: `false`. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the VPC peer connection.
 	Status pulumi.StringPtrInput
-	// The tags of PrefixList.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// You must create a VPC ID on the initiator of a VPC peer connection.
+	// The ID of the requester VPC.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -259,19 +253,17 @@ type peerConnectionArgs struct {
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// Whether to PreCheck only this request. Value:
-	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+	// Whether to PreCheck only this request. Default value: `false`. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName *string `pulumi:"peerConnectionName"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the VPC peer connection.
 	Status *string `pulumi:"status"`
-	// The tags of PrefixList.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// You must create a VPC ID on the initiator of a VPC peer connection.
+	// The ID of the requester VPC.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -292,19 +284,17 @@ type PeerConnectionArgs struct {
 	Bandwidth pulumi.IntPtrInput
 	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// Whether to PreCheck only this request. Value:
-	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+	// Whether to PreCheck only this request. Default value: `false`. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the VPC peer connection.
 	Status pulumi.StringPtrInput
-	// The tags of PrefixList.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// You must create a VPC ID on the initiator of a VPC peer connection.
+	// The ID of the requester VPC.
 	VpcId pulumi.StringInput
 }
 
@@ -420,7 +410,7 @@ func (o PeerConnectionOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+// The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
 func (o PeerConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -430,14 +420,12 @@ func (o PeerConnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Whether to PreCheck only this request. Value:
-// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+// Whether to PreCheck only this request. Default value: `false`. Valid values:
 func (o PeerConnectionOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 func (o PeerConnectionOutput) PeerConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringPtrOutput { return v.PeerConnectionName }).(pulumi.StringPtrOutput)
 }
@@ -447,17 +435,17 @@ func (o PeerConnectionOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the VPC peer connection.
 func (o PeerConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tags of PrefixList.
+// A mapping of tags to assign to the resource.
 func (o PeerConnectionOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// You must create a VPC ID on the initiator of a VPC peer connection.
+// The ID of the requester VPC.
 func (o PeerConnectionOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

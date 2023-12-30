@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -275,67 +276,106 @@ public final class GetLoadBalancersSlb {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internet(Boolean internet) {
-            this.internet = Objects.requireNonNull(internet);
+            if (internet == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "internet");
+            }
+            this.internet = internet;
             return this;
         }
         @CustomType.Setter
         public Builder masterAvailabilityZone(String masterAvailabilityZone) {
-            this.masterAvailabilityZone = Objects.requireNonNull(masterAvailabilityZone);
+            if (masterAvailabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "masterAvailabilityZone");
+            }
+            this.masterAvailabilityZone = masterAvailabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder slaveAvailabilityZone(String slaveAvailabilityZone) {
-            this.slaveAvailabilityZone = Objects.requireNonNull(slaveAvailabilityZone);
+            if (slaveAvailabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "slaveAvailabilityZone");
+            }
+            this.slaveAvailabilityZone = slaveAvailabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetLoadBalancersSlb build() {

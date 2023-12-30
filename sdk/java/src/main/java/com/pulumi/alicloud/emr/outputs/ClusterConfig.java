@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class ClusterConfig {
 
         @CustomType.Setter
         public Builder configKey(String configKey) {
-            this.configKey = Objects.requireNonNull(configKey);
+            if (configKey == null) {
+              throw new MissingRequiredPropertyException("ClusterConfig", "configKey");
+            }
+            this.configKey = configKey;
             return this;
         }
         @CustomType.Setter
         public Builder configValue(String configValue) {
-            this.configValue = Objects.requireNonNull(configValue);
+            if (configValue == null) {
+              throw new MissingRequiredPropertyException("ClusterConfig", "configValue");
+            }
+            this.configValue = configValue;
             return this;
         }
         @CustomType.Setter
         public Builder fileName(String fileName) {
-            this.fileName = Objects.requireNonNull(fileName);
+            if (fileName == null) {
+              throw new MissingRequiredPropertyException("ClusterConfig", "fileName");
+            }
+            this.fileName = fileName;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("ClusterConfig", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public ClusterConfig build() {

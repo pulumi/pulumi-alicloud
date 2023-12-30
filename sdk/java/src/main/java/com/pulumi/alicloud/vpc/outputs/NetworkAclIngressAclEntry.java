@@ -128,31 +128,37 @@ public final class NetworkAclIngressAclEntry {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder networkAclEntryName(@Nullable String networkAclEntryName) {
+
             this.networkAclEntryName = networkAclEntryName;
             return this;
         }
         @CustomType.Setter
         public Builder policy(@Nullable String policy) {
+
             this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable String port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
+
             this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder sourceCidrIp(@Nullable String sourceCidrIp) {
+
             this.sourceCidrIp = sourceCidrIp;
             return this;
         }

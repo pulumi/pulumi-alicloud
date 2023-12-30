@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -224,77 +225,122 @@ public final class GetClassDetailsResult {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder classCode(String classCode) {
-            this.classCode = Objects.requireNonNull(classCode);
+            if (classCode == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "classCode");
+            }
+            this.classCode = classCode;
             return this;
         }
         @CustomType.Setter
         public Builder classGroup(String classGroup) {
-            this.classGroup = Objects.requireNonNull(classGroup);
+            if (classGroup == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "classGroup");
+            }
+            this.classGroup = classGroup;
             return this;
         }
         @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
-            this.commodityCode = Objects.requireNonNull(commodityCode);
+            if (commodityCode == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "commodityCode");
+            }
+            this.commodityCode = commodityCode;
             return this;
         }
         @CustomType.Setter
         public Builder cpu(String cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceStorageType(String dbInstanceStorageType) {
-            this.dbInstanceStorageType = Objects.requireNonNull(dbInstanceStorageType);
+            if (dbInstanceStorageType == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "dbInstanceStorageType");
+            }
+            this.dbInstanceStorageType = dbInstanceStorageType;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
-            this.engineVersion = Objects.requireNonNull(engineVersion);
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instructionSetArch(String instructionSetArch) {
-            this.instructionSetArch = Objects.requireNonNull(instructionSetArch);
+            if (instructionSetArch == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "instructionSetArch");
+            }
+            this.instructionSetArch = instructionSetArch;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(String maxConnections) {
-            this.maxConnections = Objects.requireNonNull(maxConnections);
+            if (maxConnections == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "maxConnections");
+            }
+            this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxIombps(String maxIombps) {
-            this.maxIombps = Objects.requireNonNull(maxIombps);
+            if (maxIombps == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "maxIombps");
+            }
+            this.maxIombps = maxIombps;
             return this;
         }
         @CustomType.Setter
         public Builder maxIops(String maxIops) {
-            this.maxIops = Objects.requireNonNull(maxIops);
+            if (maxIops == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "maxIops");
+            }
+            this.maxIops = maxIops;
             return this;
         }
         @CustomType.Setter
         public Builder memoryClass(String memoryClass) {
-            this.memoryClass = Objects.requireNonNull(memoryClass);
+            if (memoryClass == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "memoryClass");
+            }
+            this.memoryClass = memoryClass;
             return this;
         }
         @CustomType.Setter
         public Builder referencePrice(String referencePrice) {
-            this.referencePrice = Objects.requireNonNull(referencePrice);
+            if (referencePrice == null) {
+              throw new MissingRequiredPropertyException("GetClassDetailsResult", "referencePrice");
+            }
+            this.referencePrice = referencePrice;
             return this;
         }
         public GetClassDetailsResult build() {

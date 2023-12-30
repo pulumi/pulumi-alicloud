@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,9 +262,15 @@ public final class AddonReleaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AddonReleaseArgs build() {
-            $.addonName = Objects.requireNonNull($.addonName, "expected parameter 'addonName' to be non-null");
-            $.addonVersion = Objects.requireNonNull($.addonVersion, "expected parameter 'addonVersion' to be non-null");
-            $.environmentId = Objects.requireNonNull($.environmentId, "expected parameter 'environmentId' to be non-null");
+            if ($.addonName == null) {
+                throw new MissingRequiredPropertyException("AddonReleaseArgs", "addonName");
+            }
+            if ($.addonVersion == null) {
+                throw new MissingRequiredPropertyException("AddonReleaseArgs", "addonVersion");
+            }
+            if ($.environmentId == null) {
+                throw new MissingRequiredPropertyException("AddonReleaseArgs", "environmentId");
+            }
             return $;
         }
     }

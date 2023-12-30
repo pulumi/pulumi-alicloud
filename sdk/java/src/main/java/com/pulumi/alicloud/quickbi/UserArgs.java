@@ -5,6 +5,7 @@ package com.pulumi.alicloud.quickbi;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -262,11 +263,21 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.accountName = Objects.requireNonNull($.accountName, "expected parameter 'accountName' to be non-null");
-            $.adminUser = Objects.requireNonNull($.adminUser, "expected parameter 'adminUser' to be non-null");
-            $.authAdminUser = Objects.requireNonNull($.authAdminUser, "expected parameter 'authAdminUser' to be non-null");
-            $.nickName = Objects.requireNonNull($.nickName, "expected parameter 'nickName' to be non-null");
-            $.userType = Objects.requireNonNull($.userType, "expected parameter 'userType' to be non-null");
+            if ($.accountName == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "accountName");
+            }
+            if ($.adminUser == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "adminUser");
+            }
+            if ($.authAdminUser == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "authAdminUser");
+            }
+            if ($.nickName == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "nickName");
+            }
+            if ($.userType == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "userType");
+            }
             return $;
         }
     }

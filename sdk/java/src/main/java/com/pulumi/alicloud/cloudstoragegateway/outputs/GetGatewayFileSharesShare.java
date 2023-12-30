@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudstoragegateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -898,312 +899,498 @@ public final class GetGatewayFileSharesShare {
 
         @CustomType.Setter
         public Builder accessBasedEnumeration(Boolean accessBasedEnumeration) {
-            this.accessBasedEnumeration = Objects.requireNonNull(accessBasedEnumeration);
+            if (accessBasedEnumeration == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "accessBasedEnumeration");
+            }
+            this.accessBasedEnumeration = accessBasedEnumeration;
             return this;
         }
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder backendLimit(Integer backendLimit) {
-            this.backendLimit = Objects.requireNonNull(backendLimit);
+            if (backendLimit == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "backendLimit");
+            }
+            this.backendLimit = backendLimit;
             return this;
         }
         @CustomType.Setter
         public Builder browsable(Boolean browsable) {
-            this.browsable = Objects.requireNonNull(browsable);
+            if (browsable == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "browsable");
+            }
+            this.browsable = browsable;
             return this;
         }
         @CustomType.Setter
         public Builder bucketInfos(String bucketInfos) {
-            this.bucketInfos = Objects.requireNonNull(bucketInfos);
+            if (bucketInfos == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "bucketInfos");
+            }
+            this.bucketInfos = bucketInfos;
             return this;
         }
         @CustomType.Setter
         public Builder bucketsStub(Boolean bucketsStub) {
-            this.bucketsStub = Objects.requireNonNull(bucketsStub);
+            if (bucketsStub == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "bucketsStub");
+            }
+            this.bucketsStub = bucketsStub;
             return this;
         }
         @CustomType.Setter
         public Builder bypassCacheRead(Boolean bypassCacheRead) {
-            this.bypassCacheRead = Objects.requireNonNull(bypassCacheRead);
+            if (bypassCacheRead == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "bypassCacheRead");
+            }
+            this.bypassCacheRead = bypassCacheRead;
             return this;
         }
         @CustomType.Setter
         public Builder cacheMode(String cacheMode) {
-            this.cacheMode = Objects.requireNonNull(cacheMode);
+            if (cacheMode == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "cacheMode");
+            }
+            this.cacheMode = cacheMode;
             return this;
         }
         @CustomType.Setter
         public Builder clientSideCmk(String clientSideCmk) {
-            this.clientSideCmk = Objects.requireNonNull(clientSideCmk);
+            if (clientSideCmk == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "clientSideCmk");
+            }
+            this.clientSideCmk = clientSideCmk;
             return this;
         }
         @CustomType.Setter
         public Builder clientSideEncryption(Boolean clientSideEncryption) {
-            this.clientSideEncryption = Objects.requireNonNull(clientSideEncryption);
+            if (clientSideEncryption == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "clientSideEncryption");
+            }
+            this.clientSideEncryption = clientSideEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder directIo(Boolean directIo) {
-            this.directIo = Objects.requireNonNull(directIo);
+            if (directIo == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "directIo");
+            }
+            this.directIo = directIo;
             return this;
         }
         @CustomType.Setter
         public Builder diskId(String diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder downloadLimit(Integer downloadLimit) {
-            this.downloadLimit = Objects.requireNonNull(downloadLimit);
+            if (downloadLimit == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "downloadLimit");
+            }
+            this.downloadLimit = downloadLimit;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder expressSyncId(String expressSyncId) {
-            this.expressSyncId = Objects.requireNonNull(expressSyncId);
+            if (expressSyncId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "expressSyncId");
+            }
+            this.expressSyncId = expressSyncId;
             return this;
         }
         @CustomType.Setter
         public Builder fastReclaim(Boolean fastReclaim) {
-            this.fastReclaim = Objects.requireNonNull(fastReclaim);
+            if (fastReclaim == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "fastReclaim");
+            }
+            this.fastReclaim = fastReclaim;
             return this;
         }
         @CustomType.Setter
         public Builder feLimit(Integer feLimit) {
-            this.feLimit = Objects.requireNonNull(feLimit);
+            if (feLimit == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "feLimit");
+            }
+            this.feLimit = feLimit;
             return this;
         }
         @CustomType.Setter
         public Builder fileNumLimit(String fileNumLimit) {
-            this.fileNumLimit = Objects.requireNonNull(fileNumLimit);
+            if (fileNumLimit == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "fileNumLimit");
+            }
+            this.fileNumLimit = fileNumLimit;
             return this;
         }
         @CustomType.Setter
         public Builder fsSizeLimit(String fsSizeLimit) {
-            this.fsSizeLimit = Objects.requireNonNull(fsSizeLimit);
+            if (fsSizeLimit == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "fsSizeLimit");
+            }
+            this.fsSizeLimit = fsSizeLimit;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayFileShareName(String gatewayFileShareName) {
-            this.gatewayFileShareName = Objects.requireNonNull(gatewayFileShareName);
+            if (gatewayFileShareName == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "gatewayFileShareName");
+            }
+            this.gatewayFileShareName = gatewayFileShareName;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
-            this.gatewayId = Objects.requireNonNull(gatewayId);
+            if (gatewayId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "gatewayId");
+            }
+            this.gatewayId = gatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreDelete(Boolean ignoreDelete) {
-            this.ignoreDelete = Objects.requireNonNull(ignoreDelete);
+            if (ignoreDelete == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "ignoreDelete");
+            }
+            this.ignoreDelete = ignoreDelete;
             return this;
         }
         @CustomType.Setter
         public Builder inPlace(Boolean inPlace) {
-            this.inPlace = Objects.requireNonNull(inPlace);
+            if (inPlace == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "inPlace");
+            }
+            this.inPlace = inPlace;
             return this;
         }
         @CustomType.Setter
         public Builder inRate(String inRate) {
-            this.inRate = Objects.requireNonNull(inRate);
+            if (inRate == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "inRate");
+            }
+            this.inRate = inRate;
             return this;
         }
         @CustomType.Setter
         public Builder indexId(String indexId) {
-            this.indexId = Objects.requireNonNull(indexId);
+            if (indexId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "indexId");
+            }
+            this.indexId = indexId;
             return this;
         }
         @CustomType.Setter
         public Builder kmsRotatePeriod(Integer kmsRotatePeriod) {
-            this.kmsRotatePeriod = Objects.requireNonNull(kmsRotatePeriod);
+            if (kmsRotatePeriod == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "kmsRotatePeriod");
+            }
+            this.kmsRotatePeriod = kmsRotatePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder lagPeriod(String lagPeriod) {
-            this.lagPeriod = Objects.requireNonNull(lagPeriod);
+            if (lagPeriod == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "lagPeriod");
+            }
+            this.lagPeriod = lagPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder localPath(String localPath) {
-            this.localPath = Objects.requireNonNull(localPath);
+            if (localPath == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "localPath");
+            }
+            this.localPath = localPath;
             return this;
         }
         @CustomType.Setter
         public Builder mnsHealth(String mnsHealth) {
-            this.mnsHealth = Objects.requireNonNull(mnsHealth);
+            if (mnsHealth == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "mnsHealth");
+            }
+            this.mnsHealth = mnsHealth;
             return this;
         }
         @CustomType.Setter
         public Builder nfsV4Optimization(Boolean nfsV4Optimization) {
-            this.nfsV4Optimization = Objects.requireNonNull(nfsV4Optimization);
+            if (nfsV4Optimization == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "nfsV4Optimization");
+            }
+            this.nfsV4Optimization = nfsV4Optimization;
             return this;
         }
         @CustomType.Setter
         public Builder obsoleteBuckets(String obsoleteBuckets) {
-            this.obsoleteBuckets = Objects.requireNonNull(obsoleteBuckets);
+            if (obsoleteBuckets == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "obsoleteBuckets");
+            }
+            this.obsoleteBuckets = obsoleteBuckets;
             return this;
         }
         @CustomType.Setter
         public Builder ossBucketName(String ossBucketName) {
-            this.ossBucketName = Objects.requireNonNull(ossBucketName);
+            if (ossBucketName == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "ossBucketName");
+            }
+            this.ossBucketName = ossBucketName;
             return this;
         }
         @CustomType.Setter
         public Builder ossBucketSsl(Boolean ossBucketSsl) {
-            this.ossBucketSsl = Objects.requireNonNull(ossBucketSsl);
+            if (ossBucketSsl == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "ossBucketSsl");
+            }
+            this.ossBucketSsl = ossBucketSsl;
             return this;
         }
         @CustomType.Setter
         public Builder ossEndpoint(String ossEndpoint) {
-            this.ossEndpoint = Objects.requireNonNull(ossEndpoint);
+            if (ossEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "ossEndpoint");
+            }
+            this.ossEndpoint = ossEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder ossHealth(String ossHealth) {
-            this.ossHealth = Objects.requireNonNull(ossHealth);
+            if (ossHealth == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "ossHealth");
+            }
+            this.ossHealth = ossHealth;
             return this;
         }
         @CustomType.Setter
         public Builder ossUsed(String ossUsed) {
-            this.ossUsed = Objects.requireNonNull(ossUsed);
+            if (ossUsed == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "ossUsed");
+            }
+            this.ossUsed = ossUsed;
             return this;
         }
         @CustomType.Setter
         public Builder outRate(String outRate) {
-            this.outRate = Objects.requireNonNull(outRate);
+            if (outRate == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "outRate");
+            }
+            this.outRate = outRate;
             return this;
         }
         @CustomType.Setter
         public Builder partialSyncPaths(String partialSyncPaths) {
-            this.partialSyncPaths = Objects.requireNonNull(partialSyncPaths);
+            if (partialSyncPaths == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "partialSyncPaths");
+            }
+            this.partialSyncPaths = partialSyncPaths;
             return this;
         }
         @CustomType.Setter
         public Builder pathPrefix(String pathPrefix) {
-            this.pathPrefix = Objects.requireNonNull(pathPrefix);
+            if (pathPrefix == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "pathPrefix");
+            }
+            this.pathPrefix = pathPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder pollingInterval(Integer pollingInterval) {
-            this.pollingInterval = Objects.requireNonNull(pollingInterval);
+            if (pollingInterval == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "pollingInterval");
+            }
+            this.pollingInterval = pollingInterval;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder remainingMetaSpace(String remainingMetaSpace) {
-            this.remainingMetaSpace = Objects.requireNonNull(remainingMetaSpace);
+            if (remainingMetaSpace == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "remainingMetaSpace");
+            }
+            this.remainingMetaSpace = remainingMetaSpace;
             return this;
         }
         @CustomType.Setter
         public Builder remoteSync(Boolean remoteSync) {
-            this.remoteSync = Objects.requireNonNull(remoteSync);
+            if (remoteSync == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "remoteSync");
+            }
+            this.remoteSync = remoteSync;
             return this;
         }
         @CustomType.Setter
         public Builder remoteSyncDownload(Boolean remoteSyncDownload) {
-            this.remoteSyncDownload = Objects.requireNonNull(remoteSyncDownload);
+            if (remoteSyncDownload == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "remoteSyncDownload");
+            }
+            this.remoteSyncDownload = remoteSyncDownload;
             return this;
         }
         @CustomType.Setter
         public Builder roClientList(String roClientList) {
-            this.roClientList = Objects.requireNonNull(roClientList);
+            if (roClientList == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "roClientList");
+            }
+            this.roClientList = roClientList;
             return this;
         }
         @CustomType.Setter
         public Builder roUserList(String roUserList) {
-            this.roUserList = Objects.requireNonNull(roUserList);
+            if (roUserList == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "roUserList");
+            }
+            this.roUserList = roUserList;
             return this;
         }
         @CustomType.Setter
         public Builder rwClientList(String rwClientList) {
-            this.rwClientList = Objects.requireNonNull(rwClientList);
+            if (rwClientList == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "rwClientList");
+            }
+            this.rwClientList = rwClientList;
             return this;
         }
         @CustomType.Setter
         public Builder rwUserList(String rwUserList) {
-            this.rwUserList = Objects.requireNonNull(rwUserList);
+            if (rwUserList == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "rwUserList");
+            }
+            this.rwUserList = rwUserList;
             return this;
         }
         @CustomType.Setter
         public Builder serverSideCmk(String serverSideCmk) {
-            this.serverSideCmk = Objects.requireNonNull(serverSideCmk);
+            if (serverSideCmk == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "serverSideCmk");
+            }
+            this.serverSideCmk = serverSideCmk;
             return this;
         }
         @CustomType.Setter
         public Builder serverSideEncryption(Boolean serverSideEncryption) {
-            this.serverSideEncryption = Objects.requireNonNull(serverSideEncryption);
+            if (serverSideEncryption == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "serverSideEncryption");
+            }
+            this.serverSideEncryption = serverSideEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder size(String size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder squash(String squash) {
-            this.squash = Objects.requireNonNull(squash);
+            if (squash == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "squash");
+            }
+            this.squash = squash;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder supportArchive(Boolean supportArchive) {
-            this.supportArchive = Objects.requireNonNull(supportArchive);
+            if (supportArchive == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "supportArchive");
+            }
+            this.supportArchive = supportArchive;
             return this;
         }
         @CustomType.Setter
         public Builder syncProgress(Integer syncProgress) {
-            this.syncProgress = Objects.requireNonNull(syncProgress);
+            if (syncProgress == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "syncProgress");
+            }
+            this.syncProgress = syncProgress;
             return this;
         }
         @CustomType.Setter
         public Builder totalDownload(String totalDownload) {
-            this.totalDownload = Objects.requireNonNull(totalDownload);
+            if (totalDownload == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "totalDownload");
+            }
+            this.totalDownload = totalDownload;
             return this;
         }
         @CustomType.Setter
         public Builder totalUpload(String totalUpload) {
-            this.totalUpload = Objects.requireNonNull(totalUpload);
+            if (totalUpload == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "totalUpload");
+            }
+            this.totalUpload = totalUpload;
             return this;
         }
         @CustomType.Setter
         public Builder transferAcceleration(Boolean transferAcceleration) {
-            this.transferAcceleration = Objects.requireNonNull(transferAcceleration);
+            if (transferAcceleration == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "transferAcceleration");
+            }
+            this.transferAcceleration = transferAcceleration;
             return this;
         }
         @CustomType.Setter
         public Builder used(String used) {
-            this.used = Objects.requireNonNull(used);
+            if (used == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "used");
+            }
+            this.used = used;
             return this;
         }
         @CustomType.Setter
         public Builder windowsAcl(Boolean windowsAcl) {
-            this.windowsAcl = Objects.requireNonNull(windowsAcl);
+            if (windowsAcl == null) {
+              throw new MissingRequiredPropertyException("GetGatewayFileSharesShare", "windowsAcl");
+            }
+            this.windowsAcl = windowsAcl;
             return this;
         }
         public GetGatewayFileSharesShare build() {

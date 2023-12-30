@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -390,7 +391,9 @@ public final class EcsInstanceSetDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         public EcsInstanceSetDataDiskArgs build() {
-            $.diskSize = Objects.requireNonNull($.diskSize, "expected parameter 'diskSize' to be non-null");
+            if ($.diskSize == null) {
+                throw new MissingRequiredPropertyException("EcsInstanceSetDataDiskArgs", "diskSize");
+            }
             return $;
         }
     }

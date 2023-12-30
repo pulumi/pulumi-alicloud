@@ -11,6 +11,7 @@ import com.pulumi.alicloud.eci.outputs.GetContainerGroupsGroupHostAlias;
 import com.pulumi.alicloud.eci.outputs.GetContainerGroupsGroupInitContainer;
 import com.pulumi.alicloud.eci.outputs.GetContainerGroupsGroupVolume;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.Object;
@@ -452,17 +453,26 @@ public final class GetContainerGroupsGroup {
 
         @CustomType.Setter
         public Builder containerGroupId(String containerGroupId) {
-            this.containerGroupId = Objects.requireNonNull(containerGroupId);
+            if (containerGroupId == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "containerGroupId");
+            }
+            this.containerGroupId = containerGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder containerGroupName(String containerGroupName) {
-            this.containerGroupName = Objects.requireNonNull(containerGroupName);
+            if (containerGroupName == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "containerGroupName");
+            }
+            this.containerGroupName = containerGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder containers(List<GetContainerGroupsGroupContainer> containers) {
-            this.containers = Objects.requireNonNull(containers);
+            if (containers == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "containers");
+            }
+            this.containers = containers;
             return this;
         }
         public Builder containers(GetContainerGroupsGroupContainer... containers) {
@@ -470,17 +480,26 @@ public final class GetContainerGroupsGroup {
         }
         @CustomType.Setter
         public Builder cpu(Double cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder discount(Integer discount) {
-            this.discount = Objects.requireNonNull(discount);
+            if (discount == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "discount");
+            }
+            this.discount = discount;
             return this;
         }
         @CustomType.Setter
         public Builder dnsConfigs(List<GetContainerGroupsGroupDnsConfig> dnsConfigs) {
-            this.dnsConfigs = Objects.requireNonNull(dnsConfigs);
+            if (dnsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "dnsConfigs");
+            }
+            this.dnsConfigs = dnsConfigs;
             return this;
         }
         public Builder dnsConfigs(GetContainerGroupsGroupDnsConfig... dnsConfigs) {
@@ -488,7 +507,10 @@ public final class GetContainerGroupsGroup {
         }
         @CustomType.Setter
         public Builder eciSecurityContexts(List<GetContainerGroupsGroupEciSecurityContext> eciSecurityContexts) {
-            this.eciSecurityContexts = Objects.requireNonNull(eciSecurityContexts);
+            if (eciSecurityContexts == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "eciSecurityContexts");
+            }
+            this.eciSecurityContexts = eciSecurityContexts;
             return this;
         }
         public Builder eciSecurityContexts(GetContainerGroupsGroupEciSecurityContext... eciSecurityContexts) {
@@ -496,12 +518,18 @@ public final class GetContainerGroupsGroup {
         }
         @CustomType.Setter
         public Builder eniInstanceId(String eniInstanceId) {
-            this.eniInstanceId = Objects.requireNonNull(eniInstanceId);
+            if (eniInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "eniInstanceId");
+            }
+            this.eniInstanceId = eniInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder events(List<GetContainerGroupsGroupEvent> events) {
-            this.events = Objects.requireNonNull(events);
+            if (events == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "events");
+            }
+            this.events = events;
             return this;
         }
         public Builder events(GetContainerGroupsGroupEvent... events) {
@@ -509,17 +537,26 @@ public final class GetContainerGroupsGroup {
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder failedTime(String failedTime) {
-            this.failedTime = Objects.requireNonNull(failedTime);
+            if (failedTime == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "failedTime");
+            }
+            this.failedTime = failedTime;
             return this;
         }
         @CustomType.Setter
         public Builder hostAliases(List<GetContainerGroupsGroupHostAlias> hostAliases) {
-            this.hostAliases = Objects.requireNonNull(hostAliases);
+            if (hostAliases == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "hostAliases");
+            }
+            this.hostAliases = hostAliases;
             return this;
         }
         public Builder hostAliases(GetContainerGroupsGroupHostAlias... hostAliases) {
@@ -527,12 +564,18 @@ public final class GetContainerGroupsGroup {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder initContainers(List<GetContainerGroupsGroupInitContainer> initContainers) {
-            this.initContainers = Objects.requireNonNull(initContainers);
+            if (initContainers == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "initContainers");
+            }
+            this.initContainers = initContainers;
             return this;
         }
         public Builder initContainers(GetContainerGroupsGroupInitContainer... initContainers) {
@@ -540,67 +583,106 @@ public final class GetContainerGroupsGroup {
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder internetIp(String internetIp) {
-            this.internetIp = Objects.requireNonNull(internetIp);
+            if (internetIp == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "internetIp");
+            }
+            this.internetIp = internetIp;
             return this;
         }
         @CustomType.Setter
         public Builder intranetIp(String intranetIp) {
-            this.intranetIp = Objects.requireNonNull(intranetIp);
+            if (intranetIp == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "intranetIp");
+            }
+            this.intranetIp = intranetIp;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
-            this.ipv6Address = Objects.requireNonNull(ipv6Address);
+            if (ipv6Address == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "ipv6Address");
+            }
+            this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Double memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder ramRoleName(String ramRoleName) {
-            this.ramRoleName = Objects.requireNonNull(ramRoleName);
+            if (ramRoleName == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "ramRoleName");
+            }
+            this.ramRoleName = ramRoleName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder restartPolicy(String restartPolicy) {
-            this.restartPolicy = Objects.requireNonNull(restartPolicy);
+            if (restartPolicy == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "restartPolicy");
+            }
+            this.restartPolicy = restartPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder succeededTime(String succeededTime) {
-            this.succeededTime = Objects.requireNonNull(succeededTime);
+            if (succeededTime == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "succeededTime");
+            }
+            this.succeededTime = succeededTime;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(List<GetContainerGroupsGroupVolume> volumes) {
-            this.volumes = Objects.requireNonNull(volumes);
+            if (volumes == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "volumes");
+            }
+            this.volumes = volumes;
             return this;
         }
         public Builder volumes(GetContainerGroupsGroupVolume... volumes) {
@@ -608,17 +690,26 @@ public final class GetContainerGroupsGroup {
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetContainerGroupsGroup build() {

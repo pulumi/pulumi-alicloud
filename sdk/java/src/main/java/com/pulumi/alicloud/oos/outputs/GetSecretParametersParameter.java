@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -241,77 +242,122 @@ public final class GetSecretParametersParameter {
 
         @CustomType.Setter
         public Builder constraints(String constraints) {
-            this.constraints = Objects.requireNonNull(constraints);
+            if (constraints == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "constraints");
+            }
+            this.constraints = constraints;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder createdBy(String createdBy) {
-            this.createdBy = Objects.requireNonNull(createdBy);
+            if (createdBy == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "createdBy");
+            }
+            this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keyId(String keyId) {
-            this.keyId = Objects.requireNonNull(keyId);
+            if (keyId == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "keyId");
+            }
+            this.keyId = keyId;
             return this;
         }
         @CustomType.Setter
         public Builder parameterVersion(Integer parameterVersion) {
-            this.parameterVersion = Objects.requireNonNull(parameterVersion);
+            if (parameterVersion == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "parameterVersion");
+            }
+            this.parameterVersion = parameterVersion;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder secretParameterId(String secretParameterId) {
-            this.secretParameterId = Objects.requireNonNull(secretParameterId);
+            if (secretParameterId == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "secretParameterId");
+            }
+            this.secretParameterId = secretParameterId;
             return this;
         }
         @CustomType.Setter
         public Builder secretParameterName(String secretParameterName) {
-            this.secretParameterName = Objects.requireNonNull(secretParameterName);
+            if (secretParameterName == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "secretParameterName");
+            }
+            this.secretParameterName = secretParameterName;
             return this;
         }
         @CustomType.Setter
         public Builder shareType(String shareType) {
-            this.shareType = Objects.requireNonNull(shareType);
+            if (shareType == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "shareType");
+            }
+            this.shareType = shareType;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updatedBy(String updatedBy) {
-            this.updatedBy = Objects.requireNonNull(updatedBy);
+            if (updatedBy == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "updatedBy");
+            }
+            this.updatedBy = updatedBy;
             return this;
         }
         @CustomType.Setter
         public Builder updatedDate(String updatedDate) {
-            this.updatedDate = Objects.requireNonNull(updatedDate);
+            if (updatedDate == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "updatedDate");
+            }
+            this.updatedDate = updatedDate;
             return this;
         }
         public GetSecretParametersParameter build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -494,8 +495,12 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         public TransitRouterVbrAttachmentArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.vbrId = Objects.requireNonNull($.vbrId, "expected parameter 'vbrId' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVbrAttachmentArgs", "cenId");
+            }
+            if ($.vbrId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVbrAttachmentArgs", "vbrId");
+            }
             return $;
         }
     }

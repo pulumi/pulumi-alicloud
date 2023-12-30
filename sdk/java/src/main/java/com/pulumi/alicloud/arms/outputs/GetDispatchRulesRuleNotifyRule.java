@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.alicloud.arms.outputs.GetDispatchRulesRuleNotifyRuleNotifyObject;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +59,10 @@ public final class GetDispatchRulesRuleNotifyRule {
 
         @CustomType.Setter
         public Builder notifyChannels(List<String> notifyChannels) {
-            this.notifyChannels = Objects.requireNonNull(notifyChannels);
+            if (notifyChannels == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRuleNotifyRule", "notifyChannels");
+            }
+            this.notifyChannels = notifyChannels;
             return this;
         }
         public Builder notifyChannels(String... notifyChannels) {
@@ -66,7 +70,10 @@ public final class GetDispatchRulesRuleNotifyRule {
         }
         @CustomType.Setter
         public Builder notifyObjects(List<GetDispatchRulesRuleNotifyRuleNotifyObject> notifyObjects) {
-            this.notifyObjects = Objects.requireNonNull(notifyObjects);
+            if (notifyObjects == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRuleNotifyRule", "notifyObjects");
+            }
+            this.notifyObjects = notifyObjects;
             return this;
         }
         public Builder notifyObjects(GetDispatchRulesRuleNotifyRuleNotifyObject... notifyObjects) {

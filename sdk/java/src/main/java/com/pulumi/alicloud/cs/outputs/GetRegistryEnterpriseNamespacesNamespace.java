@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetRegistryEnterpriseNamespacesNamespace {
 
         @CustomType.Setter
         public Builder autoCreate(Boolean autoCreate) {
-            this.autoCreate = Objects.requireNonNull(autoCreate);
+            if (autoCreate == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseNamespacesNamespace", "autoCreate");
+            }
+            this.autoCreate = autoCreate;
             return this;
         }
         @CustomType.Setter
         public Builder defaultVisibility(String defaultVisibility) {
-            this.defaultVisibility = Objects.requireNonNull(defaultVisibility);
+            if (defaultVisibility == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseNamespacesNamespace", "defaultVisibility");
+            }
+            this.defaultVisibility = defaultVisibility;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseNamespacesNamespace", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseNamespacesNamespace", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseNamespacesNamespace", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseNamespacesNamespace", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceName(String namespaceName) {
-            this.namespaceName = Objects.requireNonNull(namespaceName);
+            if (namespaceName == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseNamespacesNamespace", "namespaceName");
+            }
+            this.namespaceName = namespaceName;
             return this;
         }
         public GetRegistryEnterpriseNamespacesNamespace build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ots;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -320,12 +321,24 @@ public final class SecondaryIndexArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public SecondaryIndexArgs build() {
-            $.includeBaseData = Objects.requireNonNull($.includeBaseData, "expected parameter 'includeBaseData' to be non-null");
-            $.indexName = Objects.requireNonNull($.indexName, "expected parameter 'indexName' to be non-null");
-            $.indexType = Objects.requireNonNull($.indexType, "expected parameter 'indexType' to be non-null");
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.primaryKeys = Objects.requireNonNull($.primaryKeys, "expected parameter 'primaryKeys' to be non-null");
-            $.tableName = Objects.requireNonNull($.tableName, "expected parameter 'tableName' to be non-null");
+            if ($.includeBaseData == null) {
+                throw new MissingRequiredPropertyException("SecondaryIndexArgs", "includeBaseData");
+            }
+            if ($.indexName == null) {
+                throw new MissingRequiredPropertyException("SecondaryIndexArgs", "indexName");
+            }
+            if ($.indexType == null) {
+                throw new MissingRequiredPropertyException("SecondaryIndexArgs", "indexType");
+            }
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("SecondaryIndexArgs", "instanceName");
+            }
+            if ($.primaryKeys == null) {
+                throw new MissingRequiredPropertyException("SecondaryIndexArgs", "primaryKeys");
+            }
+            if ($.tableName == null) {
+                throw new MissingRequiredPropertyException("SecondaryIndexArgs", "tableName");
+            }
             return $;
         }
     }

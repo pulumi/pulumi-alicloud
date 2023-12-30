@@ -55,21 +55,25 @@ public final class DomainAuthConfig {
 
         @CustomType.Setter
         public Builder authType(@Nullable String authType) {
+
             this.authType = authType;
             return this;
         }
         @CustomType.Setter
         public Builder masterKey(@Nullable String masterKey) {
+
             this.masterKey = masterKey;
             return this;
         }
         @CustomType.Setter
         public Builder slaveKey(@Nullable String slaveKey) {
+
             this.slaveKey = slaveKey;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
+
             this.timeout = timeout;
             return this;
         }

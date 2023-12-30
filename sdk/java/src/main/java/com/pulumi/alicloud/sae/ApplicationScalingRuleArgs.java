@@ -7,6 +7,7 @@ import com.pulumi.alicloud.sae.inputs.ApplicationScalingRuleScalingRuleMetricArg
 import com.pulumi.alicloud.sae.inputs.ApplicationScalingRuleScalingRuleTimerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -339,9 +340,15 @@ public final class ApplicationScalingRuleArgs extends com.pulumi.resources.Resou
         }
 
         public ApplicationScalingRuleArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.scalingRuleName = Objects.requireNonNull($.scalingRuleName, "expected parameter 'scalingRuleName' to be non-null");
-            $.scalingRuleType = Objects.requireNonNull($.scalingRuleType, "expected parameter 'scalingRuleType' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("ApplicationScalingRuleArgs", "appId");
+            }
+            if ($.scalingRuleName == null) {
+                throw new MissingRequiredPropertyException("ApplicationScalingRuleArgs", "scalingRuleName");
+            }
+            if ($.scalingRuleType == null) {
+                throw new MissingRequiredPropertyException("ApplicationScalingRuleArgs", "scalingRuleType");
+            }
             return $;
         }
     }

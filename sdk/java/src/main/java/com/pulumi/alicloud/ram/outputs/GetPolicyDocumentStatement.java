@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ram.outputs;
 import com.pulumi.alicloud.ram.outputs.GetPolicyDocumentStatementCondition;
 import com.pulumi.alicloud.ram.outputs.GetPolicyDocumentStatementPrincipal;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -103,7 +104,10 @@ public final class GetPolicyDocumentStatement {
 
         @CustomType.Setter
         public Builder actions(List<String> actions) {
-            this.actions = Objects.requireNonNull(actions);
+            if (actions == null) {
+              throw new MissingRequiredPropertyException("GetPolicyDocumentStatement", "actions");
+            }
+            this.actions = actions;
             return this;
         }
         public Builder actions(String... actions) {
@@ -111,6 +115,7 @@ public final class GetPolicyDocumentStatement {
         }
         @CustomType.Setter
         public Builder conditions(@Nullable List<GetPolicyDocumentStatementCondition> conditions) {
+
             this.conditions = conditions;
             return this;
         }
@@ -119,11 +124,13 @@ public final class GetPolicyDocumentStatement {
         }
         @CustomType.Setter
         public Builder effect(@Nullable String effect) {
+
             this.effect = effect;
             return this;
         }
         @CustomType.Setter
         public Builder principals(@Nullable List<GetPolicyDocumentStatementPrincipal> principals) {
+
             this.principals = principals;
             return this;
         }
@@ -132,6 +139,7 @@ public final class GetPolicyDocumentStatement {
         }
         @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
+
             this.resources = resources;
             return this;
         }

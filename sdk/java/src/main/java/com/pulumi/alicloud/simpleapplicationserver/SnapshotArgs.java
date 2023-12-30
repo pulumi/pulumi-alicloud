@@ -5,6 +5,7 @@ package com.pulumi.alicloud.simpleapplicationserver;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SnapshotArgs build() {
-            $.diskId = Objects.requireNonNull($.diskId, "expected parameter 'diskId' to be non-null");
-            $.snapshotName = Objects.requireNonNull($.snapshotName, "expected parameter 'snapshotName' to be non-null");
+            if ($.diskId == null) {
+                throw new MissingRequiredPropertyException("SnapshotArgs", "diskId");
+            }
+            if ($.snapshotName == null) {
+                throw new MissingRequiredPropertyException("SnapshotArgs", "snapshotName");
+            }
             return $;
         }
     }

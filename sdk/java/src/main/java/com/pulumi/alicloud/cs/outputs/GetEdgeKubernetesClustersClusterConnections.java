@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetEdgeKubernetesClustersClusterConnections {
 
         @CustomType.Setter
         public Builder apiServerInternet(String apiServerInternet) {
-            this.apiServerInternet = Objects.requireNonNull(apiServerInternet);
+            if (apiServerInternet == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersClusterConnections", "apiServerInternet");
+            }
+            this.apiServerInternet = apiServerInternet;
             return this;
         }
         @CustomType.Setter
         public Builder apiServerIntranet(String apiServerIntranet) {
-            this.apiServerIntranet = Objects.requireNonNull(apiServerIntranet);
+            if (apiServerIntranet == null) {
+              throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersClusterConnections", "apiServerIntranet");
+            }
+            this.apiServerIntranet = apiServerIntranet;
             return this;
         }
         public GetEdgeKubernetesClustersClusterConnections build() {

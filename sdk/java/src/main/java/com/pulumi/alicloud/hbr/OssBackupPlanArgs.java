@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -448,12 +449,24 @@ public final class OssBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OssBackupPlanArgs build() {
-            $.backupType = Objects.requireNonNull($.backupType, "expected parameter 'backupType' to be non-null");
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.ossBackupPlanName = Objects.requireNonNull($.ossBackupPlanName, "expected parameter 'ossBackupPlanName' to be non-null");
-            $.retention = Objects.requireNonNull($.retention, "expected parameter 'retention' to be non-null");
-            $.schedule = Objects.requireNonNull($.schedule, "expected parameter 'schedule' to be non-null");
-            $.vaultId = Objects.requireNonNull($.vaultId, "expected parameter 'vaultId' to be non-null");
+            if ($.backupType == null) {
+                throw new MissingRequiredPropertyException("OssBackupPlanArgs", "backupType");
+            }
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("OssBackupPlanArgs", "bucket");
+            }
+            if ($.ossBackupPlanName == null) {
+                throw new MissingRequiredPropertyException("OssBackupPlanArgs", "ossBackupPlanName");
+            }
+            if ($.retention == null) {
+                throw new MissingRequiredPropertyException("OssBackupPlanArgs", "retention");
+            }
+            if ($.schedule == null) {
+                throw new MissingRequiredPropertyException("OssBackupPlanArgs", "schedule");
+            }
+            if ($.vaultId == null) {
+                throw new MissingRequiredPropertyException("OssBackupPlanArgs", "vaultId");
+            }
             return $;
         }
     }

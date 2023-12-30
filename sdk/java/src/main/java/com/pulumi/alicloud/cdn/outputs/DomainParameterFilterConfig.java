@@ -43,11 +43,13 @@ public final class DomainParameterFilterConfig {
 
         @CustomType.Setter
         public Builder enable(@Nullable String enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder hashKeyArgs(@Nullable List<String> hashKeyArgs) {
+
             this.hashKeyArgs = hashKeyArgs;
             return this;
         }

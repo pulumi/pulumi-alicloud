@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cr.outputs;
 import com.pulumi.alicloud.cr.outputs.GetChainsChainChainConfigRouterFrom;
 import com.pulumi.alicloud.cr.outputs.GetChainsChainChainConfigRouterTo;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -58,7 +59,10 @@ public final class GetChainsChainChainConfigRouter {
 
         @CustomType.Setter
         public Builder froms(List<GetChainsChainChainConfigRouterFrom> froms) {
-            this.froms = Objects.requireNonNull(froms);
+            if (froms == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfigRouter", "froms");
+            }
+            this.froms = froms;
             return this;
         }
         public Builder froms(GetChainsChainChainConfigRouterFrom... froms) {
@@ -66,7 +70,10 @@ public final class GetChainsChainChainConfigRouter {
         }
         @CustomType.Setter
         public Builder tos(List<GetChainsChainChainConfigRouterTo> tos) {
-            this.tos = Objects.requireNonNull(tos);
+            if (tos == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfigRouter", "tos");
+            }
+            this.tos = tos;
             return this;
         }
         public Builder tos(GetChainsChainChainConfigRouterTo... tos) {

@@ -63,6 +63,7 @@ public final class ChainChainConfig {
 
         @CustomType.Setter
         public Builder nodes(@Nullable List<ChainChainConfigNode> nodes) {
+
             this.nodes = nodes;
             return this;
         }
@@ -71,6 +72,7 @@ public final class ChainChainConfig {
         }
         @CustomType.Setter
         public Builder routers(@Nullable List<ChainChainConfigRouter> routers) {
+
             this.routers = routers;
             return this;
         }

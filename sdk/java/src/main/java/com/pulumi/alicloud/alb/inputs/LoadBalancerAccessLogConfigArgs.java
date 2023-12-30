@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
         }
 
         public LoadBalancerAccessLogConfigArgs build() {
-            $.logProject = Objects.requireNonNull($.logProject, "expected parameter 'logProject' to be non-null");
-            $.logStore = Objects.requireNonNull($.logStore, "expected parameter 'logStore' to be non-null");
+            if ($.logProject == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerAccessLogConfigArgs", "logProject");
+            }
+            if ($.logStore == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerAccessLogConfigArgs", "logStore");
+            }
             return $;
         }
     }

@@ -8,6 +8,7 @@ import com.pulumi.alicloud.cms.outputs.GetHybridMonitorSlsTasksTaskSlsProcessCon
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -88,7 +89,10 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
 
         @CustomType.Setter
         public Builder expresses(List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses) {
-            this.expresses = Objects.requireNonNull(expresses);
+            if (expresses == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfig", "expresses");
+            }
+            this.expresses = expresses;
             return this;
         }
         public Builder expresses(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress... expresses) {
@@ -96,7 +100,10 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
         }
         @CustomType.Setter
         public Builder filters(List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter> filters) {
-            this.filters = Objects.requireNonNull(filters);
+            if (filters == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfig", "filters");
+            }
+            this.filters = filters;
             return this;
         }
         public Builder filters(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter... filters) {
@@ -104,7 +111,10 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
         }
         @CustomType.Setter
         public Builder groupBies(List<GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy> groupBies) {
-            this.groupBies = Objects.requireNonNull(groupBies);
+            if (groupBies == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfig", "groupBies");
+            }
+            this.groupBies = groupBies;
             return this;
         }
         public Builder groupBies(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy... groupBies) {
@@ -112,7 +122,10 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
         }
         @CustomType.Setter
         public Builder statistics(List<GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic> statistics) {
-            this.statistics = Objects.requireNonNull(statistics);
+            if (statistics == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfig", "statistics");
+            }
+            this.statistics = statistics;
             return this;
         }
         public Builder statistics(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic... statistics) {

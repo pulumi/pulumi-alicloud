@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetAliasesAlias {
 
         @CustomType.Setter
         public Builder aliasName(String aliasName) {
-            this.aliasName = Objects.requireNonNull(aliasName);
+            if (aliasName == null) {
+              throw new MissingRequiredPropertyException("GetAliasesAlias", "aliasName");
+            }
+            this.aliasName = aliasName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAliasesAlias", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keyId(String keyId) {
-            this.keyId = Objects.requireNonNull(keyId);
+            if (keyId == null) {
+              throw new MissingRequiredPropertyException("GetAliasesAlias", "keyId");
+            }
+            this.keyId = keyId;
             return this;
         }
         public GetAliasesAlias build() {

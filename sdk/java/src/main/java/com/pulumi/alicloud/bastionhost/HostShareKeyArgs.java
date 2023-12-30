@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class HostShareKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HostShareKeyArgs build() {
-            $.hostShareKeyName = Objects.requireNonNull($.hostShareKeyName, "expected parameter 'hostShareKeyName' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.privateKey = Objects.requireNonNull($.privateKey, "expected parameter 'privateKey' to be non-null");
+            if ($.hostShareKeyName == null) {
+                throw new MissingRequiredPropertyException("HostShareKeyArgs", "hostShareKeyName");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("HostShareKeyArgs", "instanceId");
+            }
+            if ($.privateKey == null) {
+                throw new MissingRequiredPropertyException("HostShareKeyArgs", "privateKey");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -168,52 +169,82 @@ public final class GetApplicationGroupsGroup {
 
         @CustomType.Setter
         public Builder applicationGroupName(String applicationGroupName) {
-            this.applicationGroupName = Objects.requireNonNull(applicationGroupName);
+            if (applicationGroupName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "applicationGroupName");
+            }
+            this.applicationGroupName = applicationGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder applicationName(String applicationName) {
-            this.applicationName = Objects.requireNonNull(applicationName);
+            if (applicationName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "applicationName");
+            }
+            this.applicationName = applicationName;
             return this;
         }
         @CustomType.Setter
         public Builder cmsGroupId(String cmsGroupId) {
-            this.cmsGroupId = Objects.requireNonNull(cmsGroupId);
+            if (cmsGroupId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "cmsGroupId");
+            }
+            this.cmsGroupId = cmsGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder deployRegionId(String deployRegionId) {
-            this.deployRegionId = Objects.requireNonNull(deployRegionId);
+            if (deployRegionId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "deployRegionId");
+            }
+            this.deployRegionId = deployRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder importTagKey(String importTagKey) {
-            this.importTagKey = Objects.requireNonNull(importTagKey);
+            if (importTagKey == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "importTagKey");
+            }
+            this.importTagKey = importTagKey;
             return this;
         }
         @CustomType.Setter
         public Builder importTagValue(String importTagValue) {
-            this.importTagValue = Objects.requireNonNull(importTagValue);
+            if (importTagValue == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "importTagValue");
+            }
+            this.importTagValue = importTagValue;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetApplicationGroupsGroup", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetApplicationGroupsGroup build() {

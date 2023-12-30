@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,7 +188,9 @@ public final class GetControlPolicyAttachmentsArgs extends com.pulumi.resources.
         }
 
         public GetControlPolicyAttachmentsArgs build() {
-            $.targetId = Objects.requireNonNull($.targetId, "expected parameter 'targetId' to be non-null");
+            if ($.targetId == null) {
+                throw new MissingRequiredPropertyException("GetControlPolicyAttachmentsArgs", "targetId");
+            }
             return $;
         }
     }

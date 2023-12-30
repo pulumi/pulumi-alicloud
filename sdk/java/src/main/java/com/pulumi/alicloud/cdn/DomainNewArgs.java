@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cdn.inputs.DomainNewCertificateConfigArgs;
 import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -366,9 +367,15 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainNewArgs build() {
-            $.cdnType = Objects.requireNonNull($.cdnType, "expected parameter 'cdnType' to be non-null");
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
-            $.sources = Objects.requireNonNull($.sources, "expected parameter 'sources' to be non-null");
+            if ($.cdnType == null) {
+                throw new MissingRequiredPropertyException("DomainNewArgs", "cdnType");
+            }
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("DomainNewArgs", "domainName");
+            }
+            if ($.sources == null) {
+                throw new MissingRequiredPropertyException("DomainNewArgs", "sources");
+            }
             return $;
         }
     }

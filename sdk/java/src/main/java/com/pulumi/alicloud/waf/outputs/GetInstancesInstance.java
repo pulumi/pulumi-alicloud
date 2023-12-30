@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.waf.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -133,42 +134,66 @@ public final class GetInstancesInstance {
 
         @CustomType.Setter
         public Builder endDate(Integer endDate) {
-            this.endDate = Objects.requireNonNull(endDate);
+            if (endDate == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "endDate");
+            }
+            this.endDate = endDate;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inDebt(Integer inDebt) {
-            this.inDebt = Objects.requireNonNull(inDebt);
+            if (inDebt == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "inDebt");
+            }
+            this.inDebt = inDebt;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder remainDay(Integer remainDay) {
-            this.remainDay = Objects.requireNonNull(remainDay);
+            if (remainDay == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "remainDay");
+            }
+            this.remainDay = remainDay;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionType(String subscriptionType) {
-            this.subscriptionType = Objects.requireNonNull(subscriptionType);
+            if (subscriptionType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "subscriptionType");
+            }
+            this.subscriptionType = subscriptionType;
             return this;
         }
         @CustomType.Setter
         public Builder trial(Integer trial) {
-            this.trial = Objects.requireNonNull(trial);
+            if (trial == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "trial");
+            }
+            this.trial = trial;
             return this;
         }
         public GetInstancesInstance build() {

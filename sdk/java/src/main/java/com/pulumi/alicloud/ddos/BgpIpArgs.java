@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ddos;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class BgpIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BgpIpArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.ip = Objects.requireNonNull($.ip, "expected parameter 'ip' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("BgpIpArgs", "instanceId");
+            }
+            if ($.ip == null) {
+                throw new MissingRequiredPropertyException("BgpIpArgs", "ip");
+            }
             return $;
         }
     }

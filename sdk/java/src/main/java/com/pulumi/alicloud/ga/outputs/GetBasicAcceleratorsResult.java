@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetBasicAcceleratorsAccelerator;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -125,12 +126,16 @@ public final class GetBasicAcceleratorsResult {
 
         @CustomType.Setter
         public Builder acceleratorId(@Nullable String acceleratorId) {
+
             this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder accelerators(List<GetBasicAcceleratorsAccelerator> accelerators) {
-            this.accelerators = Objects.requireNonNull(accelerators);
+            if (accelerators == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsResult", "accelerators");
+            }
+            this.accelerators = accelerators;
             return this;
         }
         public Builder accelerators(GetBasicAcceleratorsAccelerator... accelerators) {
@@ -138,12 +143,18 @@ public final class GetBasicAcceleratorsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -151,12 +162,16 @@ public final class GetBasicAcceleratorsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -164,21 +179,25 @@ public final class GetBasicAcceleratorsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

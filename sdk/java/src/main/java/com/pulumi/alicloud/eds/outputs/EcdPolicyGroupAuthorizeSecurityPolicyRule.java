@@ -128,36 +128,43 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRule {
 
         @CustomType.Setter
         public Builder cidrIp(@Nullable String cidrIp) {
+
             this.cidrIp = cidrIp;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(@Nullable String ipProtocol) {
+
             this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder policy(@Nullable String policy) {
+
             this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder portRange(@Nullable String portRange) {
+
             this.portRange = portRange;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable String priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ens.inputs.InstanceDataDiskArgs;
 import com.pulumi.alicloud.ens.inputs.InstanceSystemDiskArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -979,10 +980,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.internetMaxBandwidthOut = Objects.requireNonNull($.internetMaxBandwidthOut, "expected parameter 'internetMaxBandwidthOut' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.scheduleAreaLevel = Objects.requireNonNull($.scheduleAreaLevel, "expected parameter 'scheduleAreaLevel' to be non-null");
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceType");
+            }
+            if ($.internetMaxBandwidthOut == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "internetMaxBandwidthOut");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
+            }
+            if ($.scheduleAreaLevel == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "scheduleAreaLevel");
+            }
             return $;
         }
     }

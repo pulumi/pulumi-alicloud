@@ -5,6 +5,7 @@ package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.alicloud.actiontrail.outputs.GetHistoryDeliveryJobsJob;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -78,17 +79,24 @@ public final class GetHistoryDeliveryJobsResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -96,7 +104,10 @@ public final class GetHistoryDeliveryJobsResult {
         }
         @CustomType.Setter
         public Builder jobs(List<GetHistoryDeliveryJobsJob> jobs) {
-            this.jobs = Objects.requireNonNull(jobs);
+            if (jobs == null) {
+              throw new MissingRequiredPropertyException("GetHistoryDeliveryJobsResult", "jobs");
+            }
+            this.jobs = jobs;
             return this;
         }
         public Builder jobs(GetHistoryDeliveryJobsJob... jobs) {
@@ -104,11 +115,13 @@ public final class GetHistoryDeliveryJobsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable Integer status) {
+
             this.status = status;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.clickhouse.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetRegionsRegionZoneId {
 
         @CustomType.Setter
         public Builder vpcEnabled(Boolean vpcEnabled) {
-            this.vpcEnabled = Objects.requireNonNull(vpcEnabled);
+            if (vpcEnabled == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegionZoneId", "vpcEnabled");
+            }
+            this.vpcEnabled = vpcEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegionZoneId", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetRegionsRegionZoneId build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
@@ -240,8 +241,12 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         }
 
         public InstanceServerlessConfigArgs build() {
-            $.maxCapacity = Objects.requireNonNull($.maxCapacity, "expected parameter 'maxCapacity' to be non-null");
-            $.minCapacity = Objects.requireNonNull($.minCapacity, "expected parameter 'minCapacity' to be non-null");
+            if ($.maxCapacity == null) {
+                throw new MissingRequiredPropertyException("InstanceServerlessConfigArgs", "maxCapacity");
+            }
+            if ($.minCapacity == null) {
+                throw new MissingRequiredPropertyException("InstanceServerlessConfigArgs", "minCapacity");
+            }
             return $;
         }
     }

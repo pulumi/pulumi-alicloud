@@ -105,26 +105,31 @@ public final class ImageImportDiskDeviceMapping {
 
         @CustomType.Setter
         public Builder device(@Nullable String device) {
+
             this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder diskImageSize(@Nullable Integer diskImageSize) {
+
             this.diskImageSize = diskImageSize;
             return this;
         }
         @CustomType.Setter
         public Builder format(@Nullable String format) {
+
             this.format = format;
             return this;
         }
         @CustomType.Setter
         public Builder ossBucket(@Nullable String ossBucket) {
+
             this.ossBucket = ossBucket;
             return this;
         }
         @CustomType.Setter
         public Builder ossObject(@Nullable String ossObject) {
+
             this.ossObject = ossObject;
             return this;
         }

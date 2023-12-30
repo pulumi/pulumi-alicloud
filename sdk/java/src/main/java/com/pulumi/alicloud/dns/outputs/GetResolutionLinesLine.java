@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -62,17 +63,26 @@ public final class GetResolutionLinesLine {
 
         @CustomType.Setter
         public Builder lineCode(String lineCode) {
-            this.lineCode = Objects.requireNonNull(lineCode);
+            if (lineCode == null) {
+              throw new MissingRequiredPropertyException("GetResolutionLinesLine", "lineCode");
+            }
+            this.lineCode = lineCode;
             return this;
         }
         @CustomType.Setter
         public Builder lineDisplayName(String lineDisplayName) {
-            this.lineDisplayName = Objects.requireNonNull(lineDisplayName);
+            if (lineDisplayName == null) {
+              throw new MissingRequiredPropertyException("GetResolutionLinesLine", "lineDisplayName");
+            }
+            this.lineDisplayName = lineDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder lineName(String lineName) {
-            this.lineName = Objects.requireNonNull(lineName);
+            if (lineName == null) {
+              throw new MissingRequiredPropertyException("GetResolutionLinesLine", "lineName");
+            }
+            this.lineName = lineName;
             return this;
         }
         public GetResolutionLinesLine build() {

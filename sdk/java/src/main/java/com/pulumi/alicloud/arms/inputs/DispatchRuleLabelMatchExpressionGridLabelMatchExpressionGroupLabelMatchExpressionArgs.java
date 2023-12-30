@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -188,9 +189,15 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
         }
 
         public DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.operator = Objects.requireNonNull($.operator, "expected parameter 'operator' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs", "key");
+            }
+            if ($.operator == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs", "operator");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs", "value");
+            }
             return $;
         }
     }

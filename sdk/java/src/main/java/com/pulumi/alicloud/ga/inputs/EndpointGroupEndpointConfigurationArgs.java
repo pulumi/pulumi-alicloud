@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -230,9 +231,15 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         public EndpointGroupEndpointConfigurationArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("EndpointGroupEndpointConfigurationArgs", "endpoint");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("EndpointGroupEndpointConfigurationArgs", "type");
+            }
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("EndpointGroupEndpointConfigurationArgs", "weight");
+            }
             return $;
         }
     }

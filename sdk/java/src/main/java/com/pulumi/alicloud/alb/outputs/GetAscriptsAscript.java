@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.alicloud.alb.outputs.GetAscriptsAscriptExtAttribute;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -169,27 +170,42 @@ public final class GetAscriptsAscript {
 
         @CustomType.Setter
         public Builder ascriptId(String ascriptId) {
-            this.ascriptId = Objects.requireNonNull(ascriptId);
+            if (ascriptId == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "ascriptId");
+            }
+            this.ascriptId = ascriptId;
             return this;
         }
         @CustomType.Setter
         public Builder ascriptName(String ascriptName) {
-            this.ascriptName = Objects.requireNonNull(ascriptName);
+            if (ascriptName == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "ascriptName");
+            }
+            this.ascriptName = ascriptName;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder extAttributeEnabled(Boolean extAttributeEnabled) {
-            this.extAttributeEnabled = Objects.requireNonNull(extAttributeEnabled);
+            if (extAttributeEnabled == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "extAttributeEnabled");
+            }
+            this.extAttributeEnabled = extAttributeEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder extAttributes(List<GetAscriptsAscriptExtAttribute> extAttributes) {
-            this.extAttributes = Objects.requireNonNull(extAttributes);
+            if (extAttributes == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "extAttributes");
+            }
+            this.extAttributes = extAttributes;
             return this;
         }
         public Builder extAttributes(GetAscriptsAscriptExtAttribute... extAttributes) {
@@ -197,32 +213,50 @@ public final class GetAscriptsAscript {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
-            this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "loadBalancerId");
+            }
+            this.loadBalancerId = loadBalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder position(String position) {
-            this.position = Objects.requireNonNull(position);
+            if (position == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "position");
+            }
+            this.position = position;
             return this;
         }
         @CustomType.Setter
         public Builder scriptContent(String scriptContent) {
-            this.scriptContent = Objects.requireNonNull(scriptContent);
+            if (scriptContent == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "scriptContent");
+            }
+            this.scriptContent = scriptContent;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscript", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetAscriptsAscript build() {

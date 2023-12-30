@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mhub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -168,52 +169,82 @@ public final class GetAppsApp {
 
         @CustomType.Setter
         public Builder appKey(String appKey) {
-            this.appKey = Objects.requireNonNull(appKey);
+            if (appKey == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "appKey");
+            }
+            this.appKey = appKey;
             return this;
         }
         @CustomType.Setter
         public Builder appName(String appName) {
-            this.appName = Objects.requireNonNull(appName);
+            if (appName == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "appName");
+            }
+            this.appName = appName;
             return this;
         }
         @CustomType.Setter
         public Builder bundleId(String bundleId) {
-            this.bundleId = Objects.requireNonNull(bundleId);
+            if (bundleId == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "bundleId");
+            }
+            this.bundleId = bundleId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder encodedIcon(String encodedIcon) {
-            this.encodedIcon = Objects.requireNonNull(encodedIcon);
+            if (encodedIcon == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "encodedIcon");
+            }
+            this.encodedIcon = encodedIcon;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder industryId(String industryId) {
-            this.industryId = Objects.requireNonNull(industryId);
+            if (industryId == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "industryId");
+            }
+            this.industryId = industryId;
             return this;
         }
         @CustomType.Setter
         public Builder packageName(String packageName) {
-            this.packageName = Objects.requireNonNull(packageName);
+            if (packageName == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "packageName");
+            }
+            this.packageName = packageName;
             return this;
         }
         @CustomType.Setter
         public Builder productId(String productId) {
-            this.productId = Objects.requireNonNull(productId);
+            if (productId == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "productId");
+            }
+            this.productId = productId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetAppsApp build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nlb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -128,37 +129,48 @@ public final class LoadBalancerZoneMapping {
 
         @CustomType.Setter
         public Builder allocationId(@Nullable String allocationId) {
+
             this.allocationId = allocationId;
             return this;
         }
         @CustomType.Setter
         public Builder eniId(@Nullable String eniId) {
+
             this.eniId = eniId;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(@Nullable String ipv6Address) {
+
             this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpv4Address(@Nullable String privateIpv4Address) {
+
             this.privateIpv4Address = privateIpv4Address;
             return this;
         }
         @CustomType.Setter
         public Builder publicIpv4Address(@Nullable String publicIpv4Address) {
+
             this.publicIpv4Address = publicIpv4Address;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerZoneMapping", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerZoneMapping", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public LoadBalancerZoneMapping build() {

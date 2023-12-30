@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn.outputs;
 
 import com.pulumi.alicloud.dcdn.outputs.GetWafDomainsDomain;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -77,7 +78,10 @@ public final class GetWafDomainsResult {
 
         @CustomType.Setter
         public Builder domains(List<GetWafDomainsDomain> domains) {
-            this.domains = Objects.requireNonNull(domains);
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetWafDomainsResult", "domains");
+            }
+            this.domains = domains;
             return this;
         }
         public Builder domains(GetWafDomainsDomain... domains) {
@@ -85,17 +89,24 @@ public final class GetWafDomainsResult {
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWafDomainsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetWafDomainsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -103,11 +114,13 @@ public final class GetWafDomainsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder queryArgs(@Nullable String queryArgs) {
+
             this.queryArgs = queryArgs;
             return this;
         }

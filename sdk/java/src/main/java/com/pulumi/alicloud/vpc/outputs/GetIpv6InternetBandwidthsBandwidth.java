@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetIpv6InternetBandwidthsBandwidth {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetIpv6InternetBandwidthsBandwidth", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpv6InternetBandwidthsBandwidth", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
-            this.internetChargeType = Objects.requireNonNull(internetChargeType);
+            if (internetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetIpv6InternetBandwidthsBandwidth", "internetChargeType");
+            }
+            this.internetChargeType = internetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6AddressId(String ipv6AddressId) {
-            this.ipv6AddressId = Objects.requireNonNull(ipv6AddressId);
+            if (ipv6AddressId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6InternetBandwidthsBandwidth", "ipv6AddressId");
+            }
+            this.ipv6AddressId = ipv6AddressId;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6GatewayId(String ipv6GatewayId) {
-            this.ipv6GatewayId = Objects.requireNonNull(ipv6GatewayId);
+            if (ipv6GatewayId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6InternetBandwidthsBandwidth", "ipv6GatewayId");
+            }
+            this.ipv6GatewayId = ipv6GatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6InternetBandwidthId(String ipv6InternetBandwidthId) {
-            this.ipv6InternetBandwidthId = Objects.requireNonNull(ipv6InternetBandwidthId);
+            if (ipv6InternetBandwidthId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6InternetBandwidthsBandwidth", "ipv6InternetBandwidthId");
+            }
+            this.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetIpv6InternetBandwidthsBandwidth", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetIpv6InternetBandwidthsBandwidth", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetIpv6InternetBandwidthsBandwidth build() {

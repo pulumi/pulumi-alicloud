@@ -6,6 +6,7 @@ package com.pulumi.alicloud.log;
 import com.pulumi.alicloud.log.inputs.OssShipperParquetConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -650,14 +651,30 @@ public final class OssShipperArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OssShipperArgs build() {
-            $.bufferInterval = Objects.requireNonNull($.bufferInterval, "expected parameter 'bufferInterval' to be non-null");
-            $.bufferSize = Objects.requireNonNull($.bufferSize, "expected parameter 'bufferSize' to be non-null");
-            $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
-            $.logstoreName = Objects.requireNonNull($.logstoreName, "expected parameter 'logstoreName' to be non-null");
-            $.ossBucket = Objects.requireNonNull($.ossBucket, "expected parameter 'ossBucket' to be non-null");
-            $.pathFormat = Objects.requireNonNull($.pathFormat, "expected parameter 'pathFormat' to be non-null");
-            $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
-            $.shipperName = Objects.requireNonNull($.shipperName, "expected parameter 'shipperName' to be non-null");
+            if ($.bufferInterval == null) {
+                throw new MissingRequiredPropertyException("OssShipperArgs", "bufferInterval");
+            }
+            if ($.bufferSize == null) {
+                throw new MissingRequiredPropertyException("OssShipperArgs", "bufferSize");
+            }
+            if ($.format == null) {
+                throw new MissingRequiredPropertyException("OssShipperArgs", "format");
+            }
+            if ($.logstoreName == null) {
+                throw new MissingRequiredPropertyException("OssShipperArgs", "logstoreName");
+            }
+            if ($.ossBucket == null) {
+                throw new MissingRequiredPropertyException("OssShipperArgs", "ossBucket");
+            }
+            if ($.pathFormat == null) {
+                throw new MissingRequiredPropertyException("OssShipperArgs", "pathFormat");
+            }
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("OssShipperArgs", "projectName");
+            }
+            if ($.shipperName == null) {
+                throw new MissingRequiredPropertyException("OssShipperArgs", "shipperName");
+            }
             return $;
         }
     }

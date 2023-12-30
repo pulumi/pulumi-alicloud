@@ -7,6 +7,7 @@ import com.pulumi.alicloud.vpn.inputs.IpsecServerIkeConfigArgs;
 import com.pulumi.alicloud.vpn.inputs.IpsecServerIpsecConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -433,9 +434,15 @@ public final class IpsecServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IpsecServerArgs build() {
-            $.clientIpPool = Objects.requireNonNull($.clientIpPool, "expected parameter 'clientIpPool' to be non-null");
-            $.localSubnet = Objects.requireNonNull($.localSubnet, "expected parameter 'localSubnet' to be non-null");
-            $.vpnGatewayId = Objects.requireNonNull($.vpnGatewayId, "expected parameter 'vpnGatewayId' to be non-null");
+            if ($.clientIpPool == null) {
+                throw new MissingRequiredPropertyException("IpsecServerArgs", "clientIpPool");
+            }
+            if ($.localSubnet == null) {
+                throw new MissingRequiredPropertyException("IpsecServerArgs", "localSubnet");
+            }
+            if ($.vpnGatewayId == null) {
+                throw new MissingRequiredPropertyException("IpsecServerArgs", "vpnGatewayId");
+            }
             return $;
         }
     }

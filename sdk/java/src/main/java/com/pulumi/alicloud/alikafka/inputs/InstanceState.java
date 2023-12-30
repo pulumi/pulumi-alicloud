@@ -114,6 +114,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.214.1) The number of available groups.
+     * 
+     */
+    @Import(name="groupLeft")
+    private @Nullable Output<Integer> groupLeft;
+
+    /**
+     * @return (Available since v1.214.1) The number of available groups.
+     * 
+     */
+    public Optional<Output<Integer>> groupLeft() {
+        return Optional.ofNullable(this.groupLeft);
+    }
+
+    /**
+     * (Available since v1.214.1) The number of used groups.
+     * 
+     */
+    @Import(name="groupUsed")
+    private @Nullable Output<Integer> groupUsed;
+
+    /**
+     * @return (Available since v1.214.1) The number of used groups.
+     * 
+     */
+    public Optional<Output<Integer>> groupUsed() {
+        return Optional.ofNullable(this.groupUsed);
+    }
+
+    /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      * 
      */
@@ -145,6 +175,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> ioMaxSpec() {
         return Optional.ofNullable(this.ioMaxSpec);
+    }
+
+    /**
+     * (Available since v1.214.1) The method that you use to purchase partitions.
+     * 
+     */
+    @Import(name="isPartitionBuy")
+    private @Nullable Output<Integer> isPartitionBuy;
+
+    /**
+     * @return (Available since v1.214.1) The method that you use to purchase partitions.
+     * 
+     */
+    public Optional<Output<Integer>> isPartitionBuy() {
+        return Optional.ofNullable(this.isPartitionBuy);
     }
 
     /**
@@ -193,6 +238,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.214.1) The number of available partitions.
+     * 
+     */
+    @Import(name="partitionLeft")
+    private @Nullable Output<Integer> partitionLeft;
+
+    /**
+     * @return (Available since v1.214.1) The number of available partitions.
+     * 
+     */
+    public Optional<Output<Integer>> partitionLeft() {
+        return Optional.ofNullable(this.partitionLeft);
+    }
+
+    /**
      * The number of partitions.
      * 
      */
@@ -205,6 +265,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> partitionNum() {
         return Optional.ofNullable(this.partitionNum);
+    }
+
+    /**
+     * (Available since v1.214.1) The number of used partitions.
+     * 
+     */
+    @Import(name="partitionUsed")
+    private @Nullable Output<Integer> partitionUsed;
+
+    /**
+     * @return (Available since v1.214.1) The number of used partitions.
+     * 
+     */
+    public Optional<Output<Integer>> partitionUsed() {
+        return Optional.ofNullable(this.partitionUsed);
     }
 
     /**
@@ -288,22 +363,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the instance. Valid values:
-     * - 0: pending
-     * - 1: deploying
-     * - 5: running
-     * - 15: expired
+     * The status of the instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<Integer> status;
 
     /**
-     * @return The status of the instance. Valid values:
-     * - 0: pending
-     * - 1: deploying
-     * - 5: running
-     * - 15: expired
+     * @return The status of the instance.
      * 
      */
     public Optional<Output<Integer>> status() {
@@ -326,16 +393,46 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.214.1) The number of available topics.
+     * 
+     */
+    @Import(name="topicLeft")
+    private @Nullable Output<Integer> topicLeft;
+
+    /**
+     * @return (Available since v1.214.1) The number of available topics.
+     * 
+     */
+    public Optional<Output<Integer>> topicLeft() {
+        return Optional.ofNullable(this.topicLeft);
+    }
+
+    /**
+     * (Available since v1.214.1) The number of purchased topics.
+     * 
+     */
+    @Import(name="topicNumOfBuy")
+    private @Nullable Output<Integer> topicNumOfBuy;
+
+    /**
+     * @return (Available since v1.214.1) The number of purchased topics.
+     * 
+     */
+    public Optional<Output<Integer>> topicNumOfBuy() {
+        return Optional.ofNullable(this.topicNumOfBuy);
+    }
+
+    /**
      * The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partition_num` instead.
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
      * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
      * 
      * @deprecated
-     * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+     * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
      * 
      */
-    @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+    @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
     @Import(name="topicQuota")
     private @Nullable Output<Integer> topicQuota;
 
@@ -346,12 +443,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
      * 
      * @deprecated
-     * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+     * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
      * 
      */
-    @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+    @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
     public Optional<Output<Integer>> topicQuota() {
         return Optional.ofNullable(this.topicQuota);
+    }
+
+    /**
+     * (Available since v1.214.1) The number of used topics.
+     * 
+     */
+    @Import(name="topicUsed")
+    private @Nullable Output<Integer> topicUsed;
+
+    /**
+     * @return (Available since v1.214.1) The number of used topics.
+     * 
+     */
+    public Optional<Output<Integer>> topicUsed() {
+        return Optional.ofNullable(this.topicUsed);
     }
 
     /**
@@ -408,19 +520,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.diskType = $.diskType;
         this.eipMax = $.eipMax;
         this.endPoint = $.endPoint;
+        this.groupLeft = $.groupLeft;
+        this.groupUsed = $.groupUsed;
         this.ioMax = $.ioMax;
         this.ioMaxSpec = $.ioMaxSpec;
+        this.isPartitionBuy = $.isPartitionBuy;
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.paidType = $.paidType;
+        this.partitionLeft = $.partitionLeft;
         this.partitionNum = $.partitionNum;
+        this.partitionUsed = $.partitionUsed;
         this.securityGroup = $.securityGroup;
         this.selectedZones = $.selectedZones;
         this.serviceVersion = $.serviceVersion;
         this.specType = $.specType;
         this.status = $.status;
         this.tags = $.tags;
+        this.topicLeft = $.topicLeft;
+        this.topicNumOfBuy = $.topicNumOfBuy;
         this.topicQuota = $.topicQuota;
+        this.topicUsed = $.topicUsed;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
@@ -575,6 +695,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param groupLeft (Available since v1.214.1) The number of available groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupLeft(@Nullable Output<Integer> groupLeft) {
+            $.groupLeft = groupLeft;
+            return this;
+        }
+
+        /**
+         * @param groupLeft (Available since v1.214.1) The number of available groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupLeft(Integer groupLeft) {
+            return groupLeft(Output.of(groupLeft));
+        }
+
+        /**
+         * @param groupUsed (Available since v1.214.1) The number of used groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupUsed(@Nullable Output<Integer> groupUsed) {
+            $.groupUsed = groupUsed;
+            return this;
+        }
+
+        /**
+         * @param groupUsed (Available since v1.214.1) The number of used groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupUsed(Integer groupUsed) {
+            return groupUsed(Output.of(groupUsed));
+        }
+
+        /**
          * @param ioMax The max value of io of the instance. When modify this value, it only support adjust to a greater value.
          * 
          * @return builder
@@ -618,6 +780,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ioMaxSpec(String ioMaxSpec) {
             return ioMaxSpec(Output.of(ioMaxSpec));
+        }
+
+        /**
+         * @param isPartitionBuy (Available since v1.214.1) The method that you use to purchase partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isPartitionBuy(@Nullable Output<Integer> isPartitionBuy) {
+            $.isPartitionBuy = isPartitionBuy;
+            return this;
+        }
+
+        /**
+         * @param isPartitionBuy (Available since v1.214.1) The method that you use to purchase partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isPartitionBuy(Integer isPartitionBuy) {
+            return isPartitionBuy(Output.of(isPartitionBuy));
         }
 
         /**
@@ -684,6 +867,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param partitionLeft (Available since v1.214.1) The number of available partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitionLeft(@Nullable Output<Integer> partitionLeft) {
+            $.partitionLeft = partitionLeft;
+            return this;
+        }
+
+        /**
+         * @param partitionLeft (Available since v1.214.1) The number of available partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitionLeft(Integer partitionLeft) {
+            return partitionLeft(Output.of(partitionLeft));
+        }
+
+        /**
          * @param partitionNum The number of partitions.
          * 
          * @return builder
@@ -702,6 +906,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder partitionNum(Integer partitionNum) {
             return partitionNum(Output.of(partitionNum));
+        }
+
+        /**
+         * @param partitionUsed (Available since v1.214.1) The number of used partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitionUsed(@Nullable Output<Integer> partitionUsed) {
+            $.partitionUsed = partitionUsed;
+            return this;
+        }
+
+        /**
+         * @param partitionUsed (Available since v1.214.1) The number of used partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitionUsed(Integer partitionUsed) {
+            return partitionUsed(Output.of(partitionUsed));
         }
 
         /**
@@ -829,11 +1054,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the instance. Valid values:
-         * - 0: pending
-         * - 1: deploying
-         * - 5: running
-         * - 15: expired
+         * @param status The status of the instance.
          * 
          * @return builder
          * 
@@ -844,11 +1065,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the instance. Valid values:
-         * - 0: pending
-         * - 1: deploying
-         * - 5: running
-         * - 15: expired
+         * @param status The status of the instance.
          * 
          * @return builder
          * 
@@ -879,6 +1096,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param topicLeft (Available since v1.214.1) The number of available topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicLeft(@Nullable Output<Integer> topicLeft) {
+            $.topicLeft = topicLeft;
+            return this;
+        }
+
+        /**
+         * @param topicLeft (Available since v1.214.1) The number of available topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicLeft(Integer topicLeft) {
+            return topicLeft(Output.of(topicLeft));
+        }
+
+        /**
+         * @param topicNumOfBuy (Available since v1.214.1) The number of purchased topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicNumOfBuy(@Nullable Output<Integer> topicNumOfBuy) {
+            $.topicNumOfBuy = topicNumOfBuy;
+            return this;
+        }
+
+        /**
+         * @param topicNumOfBuy (Available since v1.214.1) The number of purchased topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicNumOfBuy(Integer topicNumOfBuy) {
+            return topicNumOfBuy(Output.of(topicNumOfBuy));
+        }
+
+        /**
          * @param topicQuota The max num of topic can be creation of the instance.
          * It has been deprecated since version 1.194.0 and using `partition_num` instead.
          * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
@@ -887,10 +1146,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+         * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
          * 
          */
-        @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+        @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
         public Builder topicQuota(@Nullable Output<Integer> topicQuota) {
             $.topicQuota = topicQuota;
             return this;
@@ -905,12 +1164,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+         * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
          * 
          */
-        @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+        @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
         public Builder topicQuota(Integer topicQuota) {
             return topicQuota(Output.of(topicQuota));
+        }
+
+        /**
+         * @param topicUsed (Available since v1.214.1) The number of used topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicUsed(@Nullable Output<Integer> topicUsed) {
+            $.topicUsed = topicUsed;
+            return this;
+        }
+
+        /**
+         * @param topicUsed (Available since v1.214.1) The number of used topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicUsed(Integer topicUsed) {
+            return topicUsed(Output.of(topicUsed));
         }
 
         /**

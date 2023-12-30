@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class EcsSessionManagerStatusArgs extends com.pulumi.resources.Reso
         }
 
         public EcsSessionManagerStatusArgs build() {
-            $.sessionManagerStatusName = Objects.requireNonNull($.sessionManagerStatusName, "expected parameter 'sessionManagerStatusName' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
+            if ($.sessionManagerStatusName == null) {
+                throw new MissingRequiredPropertyException("EcsSessionManagerStatusArgs", "sessionManagerStatusName");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("EcsSessionManagerStatusArgs", "status");
+            }
             return $;
         }
     }

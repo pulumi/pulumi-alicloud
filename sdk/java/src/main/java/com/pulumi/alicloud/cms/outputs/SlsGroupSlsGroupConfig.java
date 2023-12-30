@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,21 +87,31 @@ public final class SlsGroupSlsGroupConfig {
 
         @CustomType.Setter
         public Builder slsLogstore(String slsLogstore) {
-            this.slsLogstore = Objects.requireNonNull(slsLogstore);
+            if (slsLogstore == null) {
+              throw new MissingRequiredPropertyException("SlsGroupSlsGroupConfig", "slsLogstore");
+            }
+            this.slsLogstore = slsLogstore;
             return this;
         }
         @CustomType.Setter
         public Builder slsProject(String slsProject) {
-            this.slsProject = Objects.requireNonNull(slsProject);
+            if (slsProject == null) {
+              throw new MissingRequiredPropertyException("SlsGroupSlsGroupConfig", "slsProject");
+            }
+            this.slsProject = slsProject;
             return this;
         }
         @CustomType.Setter
         public Builder slsRegion(String slsRegion) {
-            this.slsRegion = Objects.requireNonNull(slsRegion);
+            if (slsRegion == null) {
+              throw new MissingRequiredPropertyException("SlsGroupSlsGroupConfig", "slsRegion");
+            }
+            this.slsRegion = slsRegion;
             return this;
         }
         @CustomType.Setter
         public Builder slsUserId(@Nullable String slsUserId) {
+
             this.slsUserId = slsUserId;
             return this;
         }

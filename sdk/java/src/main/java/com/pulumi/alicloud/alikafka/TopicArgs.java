@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alikafka;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -110,14 +111,14 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      * 
      */
     @Import(name="topic", required=true)
     private Output<String> topic;
 
     /**
-     * @return Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+     * @return Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      * 
      */
     public Output<String> topic() {
@@ -281,7 +282,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
          * 
          * @return builder
          * 
@@ -292,7 +293,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
          * 
          * @return builder
          * 
@@ -302,9 +303,15 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TopicArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.remark = Objects.requireNonNull($.remark, "expected parameter 'remark' to be non-null");
-            $.topic = Objects.requireNonNull($.topic, "expected parameter 'topic' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("TopicArgs", "instanceId");
+            }
+            if ($.remark == null) {
+                throw new MissingRequiredPropertyException("TopicArgs", "remark");
+            }
+            if ($.topic == null) {
+                throw new MissingRequiredPropertyException("TopicArgs", "topic");
+            }
             return $;
         }
     }

@@ -86,16 +86,19 @@ public final class ListenerAccessLogTracingConfig {
 
         @CustomType.Setter
         public Builder tracingEnabled(@Nullable Boolean tracingEnabled) {
+
             this.tracingEnabled = tracingEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder tracingSample(@Nullable Integer tracingSample) {
+
             this.tracingSample = tracingSample;
             return this;
         }
         @CustomType.Setter
         public Builder tracingType(@Nullable String tracingType) {
+
             this.tracingType = tracingType;
             return this;
         }

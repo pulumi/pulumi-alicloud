@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.alicloud.cloudfirewall.outputs.GetControlPoliciesPolicy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -190,37 +191,50 @@ public final class GetControlPoliciesResult {
 
         @CustomType.Setter
         public Builder aclAction(@Nullable String aclAction) {
+
             this.aclAction = aclAction;
             return this;
         }
         @CustomType.Setter
         public Builder aclUuid(@Nullable String aclUuid) {
+
             this.aclUuid = aclUuid;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destination(@Nullable String destination) {
+
             this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder direction(String direction) {
-            this.direction = Objects.requireNonNull(direction);
+            if (direction == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesResult", "direction");
+            }
+            this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -228,22 +242,28 @@ public final class GetControlPoliciesResult {
         }
         @CustomType.Setter
         public Builder ipVersion(@Nullable String ipVersion) {
+
             this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder lang(@Nullable String lang) {
+
             this.lang = lang;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder policies(List<GetControlPoliciesPolicy> policies) {
-            this.policies = Objects.requireNonNull(policies);
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesResult", "policies");
+            }
+            this.policies = policies;
             return this;
         }
         public Builder policies(GetControlPoliciesPolicy... policies) {
@@ -251,11 +271,13 @@ public final class GetControlPoliciesResult {
         }
         @CustomType.Setter
         public Builder proto(@Nullable String proto) {
+
             this.proto = proto;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }

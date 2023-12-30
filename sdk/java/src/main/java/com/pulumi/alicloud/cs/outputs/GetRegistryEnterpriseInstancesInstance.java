@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -197,32 +198,50 @@ public final class GetRegistryEnterpriseInstancesInstance {
 
         @CustomType.Setter
         public Builder authorizationToken(String authorizationToken) {
-            this.authorizationToken = Objects.requireNonNull(authorizationToken);
+            if (authorizationToken == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "authorizationToken");
+            }
+            this.authorizationToken = authorizationToken;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceQuota(String namespaceQuota) {
-            this.namespaceQuota = Objects.requireNonNull(namespaceQuota);
+            if (namespaceQuota == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "namespaceQuota");
+            }
+            this.namespaceQuota = namespaceQuota;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceUsage(String namespaceUsage) {
-            this.namespaceUsage = Objects.requireNonNull(namespaceUsage);
+            if (namespaceUsage == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "namespaceUsage");
+            }
+            this.namespaceUsage = namespaceUsage;
             return this;
         }
         @CustomType.Setter
         public Builder publicEndpoints(List<String> publicEndpoints) {
-            this.publicEndpoints = Objects.requireNonNull(publicEndpoints);
+            if (publicEndpoints == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "publicEndpoints");
+            }
+            this.publicEndpoints = publicEndpoints;
             return this;
         }
         public Builder publicEndpoints(String... publicEndpoints) {
@@ -230,32 +249,50 @@ public final class GetRegistryEnterpriseInstancesInstance {
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder repoQuota(String repoQuota) {
-            this.repoQuota = Objects.requireNonNull(repoQuota);
+            if (repoQuota == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "repoQuota");
+            }
+            this.repoQuota = repoQuota;
             return this;
         }
         @CustomType.Setter
         public Builder repoUsage(String repoUsage) {
-            this.repoUsage = Objects.requireNonNull(repoUsage);
+            if (repoUsage == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "repoUsage");
+            }
+            this.repoUsage = repoUsage;
             return this;
         }
         @CustomType.Setter
         public Builder specification(String specification) {
-            this.specification = Objects.requireNonNull(specification);
+            if (specification == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "specification");
+            }
+            this.specification = specification;
             return this;
         }
         @CustomType.Setter
         public Builder tempUsername(String tempUsername) {
-            this.tempUsername = Objects.requireNonNull(tempUsername);
+            if (tempUsername == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "tempUsername");
+            }
+            this.tempUsername = tempUsername;
             return this;
         }
         @CustomType.Setter
         public Builder vpcEndpoints(List<String> vpcEndpoints) {
-            this.vpcEndpoints = Objects.requireNonNull(vpcEndpoints);
+            if (vpcEndpoints == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseInstancesInstance", "vpcEndpoints");
+            }
+            this.vpcEndpoints = vpcEndpoints;
             return this;
         }
         public Builder vpcEndpoints(String... vpcEndpoints) {

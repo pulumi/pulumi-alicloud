@@ -6,6 +6,7 @@ package com.pulumi.alicloud.polardb;
 import com.pulumi.alicloud.polardb.inputs.ParameterGroupParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -236,9 +237,15 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ParameterGroupArgs build() {
-            $.dbType = Objects.requireNonNull($.dbType, "expected parameter 'dbType' to be non-null");
-            $.dbVersion = Objects.requireNonNull($.dbVersion, "expected parameter 'dbVersion' to be non-null");
-            $.parameters = Objects.requireNonNull($.parameters, "expected parameter 'parameters' to be non-null");
+            if ($.dbType == null) {
+                throw new MissingRequiredPropertyException("ParameterGroupArgs", "dbType");
+            }
+            if ($.dbVersion == null) {
+                throw new MissingRequiredPropertyException("ParameterGroupArgs", "dbVersion");
+            }
+            if ($.parameters == null) {
+                throw new MissingRequiredPropertyException("ParameterGroupArgs", "parameters");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudfirewall;
 import com.pulumi.alicloud.cloudfirewall.inputs.AddressBookEcsTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -362,9 +363,15 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AddressBookArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.groupName = Objects.requireNonNull($.groupName, "expected parameter 'groupName' to be non-null");
-            $.groupType = Objects.requireNonNull($.groupType, "expected parameter 'groupType' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("AddressBookArgs", "description");
+            }
+            if ($.groupName == null) {
+                throw new MissingRequiredPropertyException("AddressBookArgs", "groupName");
+            }
+            if ($.groupType == null) {
+                throw new MissingRequiredPropertyException("AddressBookArgs", "groupType");
+            }
             return $;
         }
     }

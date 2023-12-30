@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -88,12 +89,18 @@ public final class ServerGroupServer {
 
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("ServerGroupServer", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder serverIds(List<String> serverIds) {
-            this.serverIds = Objects.requireNonNull(serverIds);
+            if (serverIds == null) {
+              throw new MissingRequiredPropertyException("ServerGroupServer", "serverIds");
+            }
+            this.serverIds = serverIds;
             return this;
         }
         public Builder serverIds(String... serverIds) {
@@ -101,11 +108,13 @@ public final class ServerGroupServer {
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
+
             this.weight = weight;
             return this;
         }

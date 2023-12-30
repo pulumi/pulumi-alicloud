@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -240,8 +241,12 @@ public final class CopyImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CopyImageArgs build() {
-            $.sourceImageId = Objects.requireNonNull($.sourceImageId, "expected parameter 'sourceImageId' to be non-null");
-            $.sourceRegionId = Objects.requireNonNull($.sourceRegionId, "expected parameter 'sourceRegionId' to be non-null");
+            if ($.sourceImageId == null) {
+                throw new MissingRequiredPropertyException("CopyImageArgs", "sourceImageId");
+            }
+            if ($.sourceRegionId == null) {
+                throw new MissingRequiredPropertyException("CopyImageArgs", "sourceRegionId");
+            }
             return $;
         }
     }

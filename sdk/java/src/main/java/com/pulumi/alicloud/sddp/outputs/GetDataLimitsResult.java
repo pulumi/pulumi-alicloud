@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sddp.outputs;
 
 import com.pulumi.alicloud.sddp.outputs.GetDataLimitsLimit;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,12 +77,18 @@ public final class GetDataLimitsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -89,7 +96,10 @@ public final class GetDataLimitsResult {
         }
         @CustomType.Setter
         public Builder limits(List<GetDataLimitsLimit> limits) {
-            this.limits = Objects.requireNonNull(limits);
+            if (limits == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsResult", "limits");
+            }
+            this.limits = limits;
             return this;
         }
         public Builder limits(GetDataLimitsLimit... limits) {
@@ -97,16 +107,19 @@ public final class GetDataLimitsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder parentId(@Nullable String parentId) {
+
             this.parentId = parentId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
+
             this.resourceType = resourceType;
             return this;
         }

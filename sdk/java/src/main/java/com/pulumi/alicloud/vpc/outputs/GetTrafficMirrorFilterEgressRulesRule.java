@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -183,57 +184,90 @@ public final class GetTrafficMirrorFilterEgressRulesRule {
 
         @CustomType.Setter
         public Builder destinationCidrBlock(String destinationCidrBlock) {
-            this.destinationCidrBlock = Objects.requireNonNull(destinationCidrBlock);
+            if (destinationCidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "destinationCidrBlock");
+            }
+            this.destinationCidrBlock = destinationCidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder destinationPortRange(String destinationPortRange) {
-            this.destinationPortRange = Objects.requireNonNull(destinationPortRange);
+            if (destinationPortRange == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "destinationPortRange");
+            }
+            this.destinationPortRange = destinationPortRange;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder ruleAction(String ruleAction) {
-            this.ruleAction = Objects.requireNonNull(ruleAction);
+            if (ruleAction == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "ruleAction");
+            }
+            this.ruleAction = ruleAction;
             return this;
         }
         @CustomType.Setter
         public Builder sourceCidrBlock(String sourceCidrBlock) {
-            this.sourceCidrBlock = Objects.requireNonNull(sourceCidrBlock);
+            if (sourceCidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "sourceCidrBlock");
+            }
+            this.sourceCidrBlock = sourceCidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder sourcePortRange(String sourcePortRange) {
-            this.sourcePortRange = Objects.requireNonNull(sourcePortRange);
+            if (sourcePortRange == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "sourcePortRange");
+            }
+            this.sourcePortRange = sourcePortRange;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorFilterId(String trafficMirrorFilterId) {
-            this.trafficMirrorFilterId = Objects.requireNonNull(trafficMirrorFilterId);
+            if (trafficMirrorFilterId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "trafficMirrorFilterId");
+            }
+            this.trafficMirrorFilterId = trafficMirrorFilterId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorFilterRuleId(String trafficMirrorFilterRuleId) {
-            this.trafficMirrorFilterRuleId = Objects.requireNonNull(trafficMirrorFilterRuleId);
+            if (trafficMirrorFilterRuleId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterEgressRulesRule", "trafficMirrorFilterRuleId");
+            }
+            this.trafficMirrorFilterRuleId = trafficMirrorFilterRuleId;
             return this;
         }
         public GetTrafficMirrorFilterEgressRulesRule build() {

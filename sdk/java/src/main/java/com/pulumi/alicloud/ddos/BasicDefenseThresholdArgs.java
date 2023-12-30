@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ddos;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -300,9 +301,15 @@ public final class BasicDefenseThresholdArgs extends com.pulumi.resources.Resour
         }
 
         public BasicDefenseThresholdArgs build() {
-            $.ddosType = Objects.requireNonNull($.ddosType, "expected parameter 'ddosType' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
+            if ($.ddosType == null) {
+                throw new MissingRequiredPropertyException("BasicDefenseThresholdArgs", "ddosType");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("BasicDefenseThresholdArgs", "instanceId");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("BasicDefenseThresholdArgs", "instanceType");
+            }
             return $;
         }
     }

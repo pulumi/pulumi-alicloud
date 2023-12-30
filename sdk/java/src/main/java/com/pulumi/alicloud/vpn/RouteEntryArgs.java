@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -224,11 +225,21 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouteEntryArgs build() {
-            $.nextHop = Objects.requireNonNull($.nextHop, "expected parameter 'nextHop' to be non-null");
-            $.publishVpc = Objects.requireNonNull($.publishVpc, "expected parameter 'publishVpc' to be non-null");
-            $.routeDest = Objects.requireNonNull($.routeDest, "expected parameter 'routeDest' to be non-null");
-            $.vpnGatewayId = Objects.requireNonNull($.vpnGatewayId, "expected parameter 'vpnGatewayId' to be non-null");
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.nextHop == null) {
+                throw new MissingRequiredPropertyException("RouteEntryArgs", "nextHop");
+            }
+            if ($.publishVpc == null) {
+                throw new MissingRequiredPropertyException("RouteEntryArgs", "publishVpc");
+            }
+            if ($.routeDest == null) {
+                throw new MissingRequiredPropertyException("RouteEntryArgs", "routeDest");
+            }
+            if ($.vpnGatewayId == null) {
+                throw new MissingRequiredPropertyException("RouteEntryArgs", "vpnGatewayId");
+            }
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("RouteEntryArgs", "weight");
+            }
             return $;
         }
     }

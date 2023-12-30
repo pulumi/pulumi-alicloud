@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotPresetsPresetMeta;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,22 +115,34 @@ public final class GetHoneypotPresetsPreset {
 
         @CustomType.Setter
         public Builder honeypotImageName(String honeypotImageName) {
-            this.honeypotImageName = Objects.requireNonNull(honeypotImageName);
+            if (honeypotImageName == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotPresetsPreset", "honeypotImageName");
+            }
+            this.honeypotImageName = honeypotImageName;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotPresetId(String honeypotPresetId) {
-            this.honeypotPresetId = Objects.requireNonNull(honeypotPresetId);
+            if (honeypotPresetId == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotPresetsPreset", "honeypotPresetId");
+            }
+            this.honeypotPresetId = honeypotPresetId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotPresetsPreset", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metas(List<GetHoneypotPresetsPresetMeta> metas) {
-            this.metas = Objects.requireNonNull(metas);
+            if (metas == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotPresetsPreset", "metas");
+            }
+            this.metas = metas;
             return this;
         }
         public Builder metas(GetHoneypotPresetsPresetMeta... metas) {
@@ -137,12 +150,18 @@ public final class GetHoneypotPresetsPreset {
         }
         @CustomType.Setter
         public Builder nodeId(String nodeId) {
-            this.nodeId = Objects.requireNonNull(nodeId);
+            if (nodeId == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotPresetsPreset", "nodeId");
+            }
+            this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder presetName(String presetName) {
-            this.presetName = Objects.requireNonNull(presetName);
+            if (presetName == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotPresetsPreset", "presetName");
+            }
+            this.presetName = presetName;
             return this;
         }
         public GetHoneypotPresetsPreset build() {

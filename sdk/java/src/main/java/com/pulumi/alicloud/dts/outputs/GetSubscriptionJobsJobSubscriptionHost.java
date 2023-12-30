@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dts.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetSubscriptionJobsJobSubscriptionHost {
 
         @CustomType.Setter
         public Builder privateHost(String privateHost) {
-            this.privateHost = Objects.requireNonNull(privateHost);
+            if (privateHost == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJobSubscriptionHost", "privateHost");
+            }
+            this.privateHost = privateHost;
             return this;
         }
         @CustomType.Setter
         public Builder publicHost(String publicHost) {
-            this.publicHost = Objects.requireNonNull(publicHost);
+            if (publicHost == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJobSubscriptionHost", "publicHost");
+            }
+            this.publicHost = publicHost;
             return this;
         }
         @CustomType.Setter
         public Builder vpcHost(String vpcHost) {
-            this.vpcHost = Objects.requireNonNull(vpcHost);
+            if (vpcHost == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJobSubscriptionHost", "vpcHost");
+            }
+            this.vpcHost = vpcHost;
             return this;
         }
         public GetSubscriptionJobsJobSubscriptionHost build() {

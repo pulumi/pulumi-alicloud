@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpn.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -270,7 +271,9 @@ public final class GetGatewayVcoRoutesArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetGatewayVcoRoutesArgs build() {
-            $.vpnConnectionId = Objects.requireNonNull($.vpnConnectionId, "expected parameter 'vpnConnectionId' to be non-null");
+            if ($.vpnConnectionId == null) {
+                throw new MissingRequiredPropertyException("GetGatewayVcoRoutesArgs", "vpnConnectionId");
+            }
             return $;
         }
     }

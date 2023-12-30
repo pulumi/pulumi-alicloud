@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -262,9 +263,15 @@ public final class GetKubernetesPermissionPermissionArgs extends com.pulumi.reso
         }
 
         public GetKubernetesPermissionPermissionArgs build() {
-            $.resourceId = Objects.requireNonNull($.resourceId, "expected parameter 'resourceId' to be non-null");
-            $.resourceType = Objects.requireNonNull($.resourceType, "expected parameter 'resourceType' to be non-null");
-            $.roleName = Objects.requireNonNull($.roleName, "expected parameter 'roleName' to be non-null");
+            if ($.resourceId == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesPermissionPermissionArgs", "resourceId");
+            }
+            if ($.resourceType == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesPermissionPermissionArgs", "resourceType");
+            }
+            if ($.roleName == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesPermissionPermissionArgs", "roleName");
+            }
             return $;
         }
     }

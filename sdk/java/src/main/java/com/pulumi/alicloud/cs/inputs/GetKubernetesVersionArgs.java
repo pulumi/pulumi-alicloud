@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class GetKubernetesVersionArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetKubernetesVersionArgs build() {
-            $.clusterType = Objects.requireNonNull($.clusterType, "expected parameter 'clusterType' to be non-null");
+            if ($.clusterType == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesVersionArgs", "clusterType");
+            }
             return $;
         }
     }

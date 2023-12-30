@@ -6,6 +6,7 @@ package com.pulumi.alicloud.hologram;
 import com.pulumi.alicloud.hologram.inputs.InstanceEndpointArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -809,10 +810,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceName");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceType");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "zoneId");
+            }
             return $;
         }
     }

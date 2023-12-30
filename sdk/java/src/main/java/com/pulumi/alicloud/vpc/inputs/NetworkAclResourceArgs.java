@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class NetworkAclResourceArgs extends com.pulumi.resources.ResourceA
         }
 
         public NetworkAclResourceArgs build() {
-            $.resourceId = Objects.requireNonNull($.resourceId, "expected parameter 'resourceId' to be non-null");
-            $.resourceType = Objects.requireNonNull($.resourceType, "expected parameter 'resourceType' to be non-null");
+            if ($.resourceId == null) {
+                throw new MissingRequiredPropertyException("NetworkAclResourceArgs", "resourceId");
+            }
+            if ($.resourceType == null) {
+                throw new MissingRequiredPropertyException("NetworkAclResourceArgs", "resourceType");
+            }
             return $;
         }
     }

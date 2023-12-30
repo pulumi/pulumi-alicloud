@@ -13,6 +13,7 @@ import com.pulumi.alicloud.alb.outputs.RuleRuleActionRewriteConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionTrafficLimitConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionTrafficMirrorConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -200,57 +201,72 @@ public final class RuleRuleAction {
 
         @CustomType.Setter
         public Builder corsConfig(@Nullable RuleRuleActionCorsConfig corsConfig) {
+
             this.corsConfig = corsConfig;
             return this;
         }
         @CustomType.Setter
         public Builder fixedResponseConfig(@Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig) {
+
             this.fixedResponseConfig = fixedResponseConfig;
             return this;
         }
         @CustomType.Setter
         public Builder forwardGroupConfig(@Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig) {
+
             this.forwardGroupConfig = forwardGroupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder insertHeaderConfig(@Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig) {
+
             this.insertHeaderConfig = insertHeaderConfig;
             return this;
         }
         @CustomType.Setter
         public Builder order(Integer order) {
-            this.order = Objects.requireNonNull(order);
+            if (order == null) {
+              throw new MissingRequiredPropertyException("RuleRuleAction", "order");
+            }
+            this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder redirectConfig(@Nullable RuleRuleActionRedirectConfig redirectConfig) {
+
             this.redirectConfig = redirectConfig;
             return this;
         }
         @CustomType.Setter
         public Builder removeHeaderConfig(@Nullable RuleRuleActionRemoveHeaderConfig removeHeaderConfig) {
+
             this.removeHeaderConfig = removeHeaderConfig;
             return this;
         }
         @CustomType.Setter
         public Builder rewriteConfig(@Nullable RuleRuleActionRewriteConfig rewriteConfig) {
+
             this.rewriteConfig = rewriteConfig;
             return this;
         }
         @CustomType.Setter
         public Builder trafficLimitConfig(@Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig) {
+
             this.trafficLimitConfig = trafficLimitConfig;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorConfig(@Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig) {
+
             this.trafficMirrorConfig = trafficMirrorConfig;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("RuleRuleAction", "type");
+            }
+            this.type = type;
             return this;
         }
         public RuleRuleAction build() {

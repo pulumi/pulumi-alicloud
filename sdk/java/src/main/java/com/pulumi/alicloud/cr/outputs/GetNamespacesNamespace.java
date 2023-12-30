@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetNamespacesNamespace {
 
         @CustomType.Setter
         public Builder autoCreate(Boolean autoCreate) {
-            this.autoCreate = Objects.requireNonNull(autoCreate);
+            if (autoCreate == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "autoCreate");
+            }
+            this.autoCreate = autoCreate;
             return this;
         }
         @CustomType.Setter
         public Builder defaultVisibility(String defaultVisibility) {
-            this.defaultVisibility = Objects.requireNonNull(defaultVisibility);
+            if (defaultVisibility == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "defaultVisibility");
+            }
+            this.defaultVisibility = defaultVisibility;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetNamespacesNamespace build() {

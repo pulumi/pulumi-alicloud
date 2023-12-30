@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetVbrHealthChecksCheck;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -129,12 +130,16 @@ public final class GetVbrHealthChecksResult {
 
         @CustomType.Setter
         public Builder cenId(@Nullable String cenId) {
+
             this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder checks(List<GetVbrHealthChecksCheck> checks) {
-            this.checks = Objects.requireNonNull(checks);
+            if (checks == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksResult", "checks");
+            }
+            this.checks = checks;
             return this;
         }
         public Builder checks(GetVbrHealthChecksCheck... checks) {
@@ -142,12 +147,18 @@ public final class GetVbrHealthChecksResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -155,22 +166,28 @@ public final class GetVbrHealthChecksResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder vbrInstanceId(@Nullable String vbrInstanceId) {
+
             this.vbrInstanceId = vbrInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder vbrInstanceOwnerId(@Nullable Integer vbrInstanceOwnerId) {
+
             this.vbrInstanceOwnerId = vbrInstanceOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder vbrInstanceRegionId(String vbrInstanceRegionId) {
-            this.vbrInstanceRegionId = Objects.requireNonNull(vbrInstanceRegionId);
+            if (vbrInstanceRegionId == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksResult", "vbrInstanceRegionId");
+            }
+            this.vbrInstanceRegionId = vbrInstanceRegionId;
             return this;
         }
         public GetVbrHealthChecksResult build() {

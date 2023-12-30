@@ -58,11 +58,13 @@ public final class DbInstancePlanPlanConfigResume {
 
         @CustomType.Setter
         public Builder executeTime(@Nullable String executeTime) {
+
             this.executeTime = executeTime;
             return this;
         }
         @CustomType.Setter
         public Builder planCronTime(@Nullable String planCronTime) {
+
             this.planCronTime = planCronTime;
             return this;
         }

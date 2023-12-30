@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,11 +299,21 @@ public final class LogTailConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LogTailConfigArgs build() {
-            $.inputDetail = Objects.requireNonNull($.inputDetail, "expected parameter 'inputDetail' to be non-null");
-            $.inputType = Objects.requireNonNull($.inputType, "expected parameter 'inputType' to be non-null");
-            $.logstore = Objects.requireNonNull($.logstore, "expected parameter 'logstore' to be non-null");
-            $.outputType = Objects.requireNonNull($.outputType, "expected parameter 'outputType' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.inputDetail == null) {
+                throw new MissingRequiredPropertyException("LogTailConfigArgs", "inputDetail");
+            }
+            if ($.inputType == null) {
+                throw new MissingRequiredPropertyException("LogTailConfigArgs", "inputType");
+            }
+            if ($.logstore == null) {
+                throw new MissingRequiredPropertyException("LogTailConfigArgs", "logstore");
+            }
+            if ($.outputType == null) {
+                throw new MissingRequiredPropertyException("LogTailConfigArgs", "outputType");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("LogTailConfigArgs", "project");
+            }
             return $;
         }
     }

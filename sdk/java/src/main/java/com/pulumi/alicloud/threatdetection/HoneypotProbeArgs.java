@@ -6,6 +6,7 @@ package com.pulumi.alicloud.threatdetection;
 import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -469,9 +470,15 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HoneypotProbeArgs build() {
-            $.controlNodeId = Objects.requireNonNull($.controlNodeId, "expected parameter 'controlNodeId' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.probeType = Objects.requireNonNull($.probeType, "expected parameter 'probeType' to be non-null");
+            if ($.controlNodeId == null) {
+                throw new MissingRequiredPropertyException("HoneypotProbeArgs", "controlNodeId");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("HoneypotProbeArgs", "displayName");
+            }
+            if ($.probeType == null) {
+                throw new MissingRequiredPropertyException("HoneypotProbeArgs", "probeType");
+            }
             return $;
         }
     }

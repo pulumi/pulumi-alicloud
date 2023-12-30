@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga.outputs;
 import com.pulumi.alicloud.ga.outputs.GetBasicAcceleratorsAcceleratorBasicBandwidthPackage;
 import com.pulumi.alicloud.ga.outputs.GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -228,22 +229,34 @@ public final class GetBasicAcceleratorsAccelerator {
 
         @CustomType.Setter
         public Builder bandwidthBillingType(String bandwidthBillingType) {
-            this.bandwidthBillingType = Objects.requireNonNull(bandwidthBillingType);
+            if (bandwidthBillingType == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "bandwidthBillingType");
+            }
+            this.bandwidthBillingType = bandwidthBillingType;
             return this;
         }
         @CustomType.Setter
         public Builder basicAcceleratorId(String basicAcceleratorId) {
-            this.basicAcceleratorId = Objects.requireNonNull(basicAcceleratorId);
+            if (basicAcceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "basicAcceleratorId");
+            }
+            this.basicAcceleratorId = basicAcceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder basicAcceleratorName(String basicAcceleratorName) {
-            this.basicAcceleratorName = Objects.requireNonNull(basicAcceleratorName);
+            if (basicAcceleratorName == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "basicAcceleratorName");
+            }
+            this.basicAcceleratorName = basicAcceleratorName;
             return this;
         }
         @CustomType.Setter
         public Builder basicBandwidthPackages(List<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages) {
-            this.basicBandwidthPackages = Objects.requireNonNull(basicBandwidthPackages);
+            if (basicBandwidthPackages == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "basicBandwidthPackages");
+            }
+            this.basicBandwidthPackages = basicBandwidthPackages;
             return this;
         }
         public Builder basicBandwidthPackages(GetBasicAcceleratorsAcceleratorBasicBandwidthPackage... basicBandwidthPackages) {
@@ -251,22 +264,34 @@ public final class GetBasicAcceleratorsAccelerator {
         }
         @CustomType.Setter
         public Builder basicEndpointGroupId(String basicEndpointGroupId) {
-            this.basicEndpointGroupId = Objects.requireNonNull(basicEndpointGroupId);
+            if (basicEndpointGroupId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "basicEndpointGroupId");
+            }
+            this.basicEndpointGroupId = basicEndpointGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder basicIpSetId(String basicIpSetId) {
-            this.basicIpSetId = Objects.requireNonNull(basicIpSetId);
+            if (basicIpSetId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "basicIpSetId");
+            }
+            this.basicIpSetId = basicIpSetId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder crossDomainBandwidthPackages(List<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages) {
-            this.crossDomainBandwidthPackages = Objects.requireNonNull(crossDomainBandwidthPackages);
+            if (crossDomainBandwidthPackages == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "crossDomainBandwidthPackages");
+            }
+            this.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
             return this;
         }
         public Builder crossDomainBandwidthPackages(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage... crossDomainBandwidthPackages) {
@@ -274,32 +299,50 @@ public final class GetBasicAcceleratorsAccelerator {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(Integer expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
-            this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
+            if (instanceChargeType == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "instanceChargeType");
+            }
+            this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAccelerator", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBasicAcceleratorsAccelerator build() {

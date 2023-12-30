@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -127,8 +128,12 @@ public final class Ipv4CidrBlockArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public Ipv4CidrBlockArgs build() {
-            $.secondaryCidrBlock = Objects.requireNonNull($.secondaryCidrBlock, "expected parameter 'secondaryCidrBlock' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.secondaryCidrBlock == null) {
+                throw new MissingRequiredPropertyException("Ipv4CidrBlockArgs", "secondaryCidrBlock");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("Ipv4CidrBlockArgs", "vpcId");
+            }
             return $;
         }
     }

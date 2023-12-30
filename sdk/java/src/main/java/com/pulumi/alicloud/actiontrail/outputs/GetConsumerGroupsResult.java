@@ -5,6 +5,7 @@ package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.alicloud.actiontrail.outputs.GetConsumerGroupsGroup;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -112,12 +113,16 @@ public final class GetConsumerGroupsResult {
 
         @CustomType.Setter
         public Builder consumerIdRegex(@Nullable String consumerIdRegex) {
+
             this.consumerIdRegex = consumerIdRegex;
             return this;
         }
         @CustomType.Setter
         public Builder consumerIds(List<String> consumerIds) {
-            this.consumerIds = Objects.requireNonNull(consumerIds);
+            if (consumerIds == null) {
+              throw new MissingRequiredPropertyException("GetConsumerGroupsResult", "consumerIds");
+            }
+            this.consumerIds = consumerIds;
             return this;
         }
         public Builder consumerIds(String... consumerIds) {
@@ -125,7 +130,10 @@ public final class GetConsumerGroupsResult {
         }
         @CustomType.Setter
         public Builder groups(List<GetConsumerGroupsGroup> groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetConsumerGroupsResult", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         public Builder groups(GetConsumerGroupsGroup... groups) {
@@ -133,12 +141,18 @@ public final class GetConsumerGroupsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConsumerGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetConsumerGroupsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -146,12 +160,18 @@ public final class GetConsumerGroupsResult {
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetConsumerGroupsResult", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetConsumerGroupsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -159,6 +179,7 @@ public final class GetConsumerGroupsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.alicloud.arms.outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,10 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
 
         @CustomType.Setter
         public Builder labelMatchExpressions(List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression> labelMatchExpressions) {
-            this.labelMatchExpressions = Objects.requireNonNull(labelMatchExpressions);
+            if (labelMatchExpressions == null) {
+              throw new MissingRequiredPropertyException("DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup", "labelMatchExpressions");
+            }
+            this.labelMatchExpressions = labelMatchExpressions;
             return this;
         }
         public Builder labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression... labelMatchExpressions) {

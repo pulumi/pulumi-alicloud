@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -223,11 +224,21 @@ public final class IpaDomainSourceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public IpaDomainSourceArgs build() {
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("IpaDomainSourceArgs", "content");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("IpaDomainSourceArgs", "port");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("IpaDomainSourceArgs", "priority");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("IpaDomainSourceArgs", "type");
+            }
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("IpaDomainSourceArgs", "weight");
+            }
             return $;
         }
     }

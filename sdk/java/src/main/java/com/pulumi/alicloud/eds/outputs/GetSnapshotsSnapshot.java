@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -197,62 +198,98 @@ public final class GetSnapshotsSnapshot {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder desktopId(String desktopId) {
-            this.desktopId = Objects.requireNonNull(desktopId);
+            if (desktopId == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "desktopId");
+            }
+            this.desktopId = desktopId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder progress(String progress) {
-            this.progress = Objects.requireNonNull(progress);
+            if (progress == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "progress");
+            }
+            this.progress = progress;
             return this;
         }
         @CustomType.Setter
         public Builder remainTime(Integer remainTime) {
-            this.remainTime = Objects.requireNonNull(remainTime);
+            if (remainTime == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "remainTime");
+            }
+            this.remainTime = remainTime;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
-            this.snapshotId = Objects.requireNonNull(snapshotId);
+            if (snapshotId == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "snapshotId");
+            }
+            this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotName(String snapshotName) {
-            this.snapshotName = Objects.requireNonNull(snapshotName);
+            if (snapshotName == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "snapshotName");
+            }
+            this.snapshotName = snapshotName;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotType(String snapshotType) {
-            this.snapshotType = Objects.requireNonNull(snapshotType);
+            if (snapshotType == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "snapshotType");
+            }
+            this.snapshotType = snapshotType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDiskSize(String sourceDiskSize) {
-            this.sourceDiskSize = Objects.requireNonNull(sourceDiskSize);
+            if (sourceDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "sourceDiskSize");
+            }
+            this.sourceDiskSize = sourceDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDiskType(String sourceDiskType) {
-            this.sourceDiskType = Objects.requireNonNull(sourceDiskType);
+            if (sourceDiskType == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "sourceDiskType");
+            }
+            this.sourceDiskType = sourceDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetSnapshotsSnapshot build() {

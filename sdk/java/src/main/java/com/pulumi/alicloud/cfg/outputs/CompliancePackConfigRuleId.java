@@ -44,6 +44,7 @@ public final class CompliancePackConfigRuleId {
 
         @CustomType.Setter
         public Builder configRuleId(@Nullable String configRuleId) {
+
             this.configRuleId = configRuleId;
             return this;
         }

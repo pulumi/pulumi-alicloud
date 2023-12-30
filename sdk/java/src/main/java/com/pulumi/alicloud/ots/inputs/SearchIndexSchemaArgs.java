@@ -8,6 +8,7 @@ import com.pulumi.alicloud.ots.inputs.SearchIndexSchemaIndexSettingArgs;
 import com.pulumi.alicloud.ots.inputs.SearchIndexSchemaIndexSortArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -183,7 +184,9 @@ public final class SearchIndexSchemaArgs extends com.pulumi.resources.ResourceAr
         }
 
         public SearchIndexSchemaArgs build() {
-            $.fieldSchemas = Objects.requireNonNull($.fieldSchemas, "expected parameter 'fieldSchemas' to be non-null");
+            if ($.fieldSchemas == null) {
+                throw new MissingRequiredPropertyException("SearchIndexSchemaArgs", "fieldSchemas");
+            }
             return $;
         }
     }

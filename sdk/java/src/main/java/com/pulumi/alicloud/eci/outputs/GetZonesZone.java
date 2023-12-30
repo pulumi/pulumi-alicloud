@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetZonesZone {
 
         @CustomType.Setter
         public Builder regionEndpoint(String regionEndpoint) {
-            this.regionEndpoint = Objects.requireNonNull(regionEndpoint);
+            if (regionEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "regionEndpoint");
+            }
+            this.regionEndpoint = regionEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder zoneIds(List<String> zoneIds) {
-            this.zoneIds = Objects.requireNonNull(zoneIds);
+            if (zoneIds == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "zoneIds");
+            }
+            this.zoneIds = zoneIds;
             return this;
         }
         public Builder zoneIds(String... zoneIds) {

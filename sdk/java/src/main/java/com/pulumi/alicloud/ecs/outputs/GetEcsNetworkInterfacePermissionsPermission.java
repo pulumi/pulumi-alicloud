@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetEcsNetworkInterfacePermissionsPermission {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacePermissionsPermission", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacePermissionsPermission", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
-            this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
+            if (networkInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacePermissionsPermission", "networkInterfaceId");
+            }
+            this.networkInterfaceId = networkInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfacePermissionId(String networkInterfacePermissionId) {
-            this.networkInterfacePermissionId = Objects.requireNonNull(networkInterfacePermissionId);
+            if (networkInterfacePermissionId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacePermissionsPermission", "networkInterfacePermissionId");
+            }
+            this.networkInterfacePermissionId = networkInterfacePermissionId;
             return this;
         }
         @CustomType.Setter
         public Builder permission(String permission) {
-            this.permission = Objects.requireNonNull(permission);
+            if (permission == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacePermissionsPermission", "permission");
+            }
+            this.permission = permission;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacePermissionsPermission", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacePermissionsPermission", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetEcsNetworkInterfacePermissionsPermission build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.alicloud.ros.outputs.GetChangeSetsSet;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -101,22 +102,30 @@ public final class GetChangeSetsResult {
 
         @CustomType.Setter
         public Builder changeSetName(@Nullable String changeSetName) {
+
             this.changeSetName = changeSetName;
             return this;
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -124,12 +133,16 @@ public final class GetChangeSetsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -137,12 +150,16 @@ public final class GetChangeSetsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder sets(List<GetChangeSetsSet> sets) {
-            this.sets = Objects.requireNonNull(sets);
+            if (sets == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsResult", "sets");
+            }
+            this.sets = sets;
             return this;
         }
         public Builder sets(GetChangeSetsSet... sets) {
@@ -150,11 +167,15 @@ public final class GetChangeSetsResult {
         }
         @CustomType.Setter
         public Builder stackId(String stackId) {
-            this.stackId = Objects.requireNonNull(stackId);
+            if (stackId == null) {
+              throw new MissingRequiredPropertyException("GetChangeSetsResult", "stackId");
+            }
+            this.stackId = stackId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

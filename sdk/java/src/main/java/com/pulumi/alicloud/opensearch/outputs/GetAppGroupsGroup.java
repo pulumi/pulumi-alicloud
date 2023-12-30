@@ -5,6 +5,7 @@ package com.pulumi.alicloud.opensearch.outputs;
 
 import com.pulumi.alicloud.opensearch.outputs.GetAppGroupsGroupQuota;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -387,107 +388,170 @@ public final class GetAppGroupsGroup {
 
         @CustomType.Setter
         public Builder appGroupId(String appGroupId) {
-            this.appGroupId = Objects.requireNonNull(appGroupId);
+            if (appGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "appGroupId");
+            }
+            this.appGroupId = appGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder appGroupName(String appGroupName) {
-            this.appGroupName = Objects.requireNonNull(appGroupName);
+            if (appGroupName == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "appGroupName");
+            }
+            this.appGroupName = appGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder chargeWay(Integer chargeWay) {
-            this.chargeWay = Objects.requireNonNull(chargeWay);
+            if (chargeWay == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "chargeWay");
+            }
+            this.chargeWay = chargeWay;
             return this;
         }
         @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
-            this.commodityCode = Objects.requireNonNull(commodityCode);
+            if (commodityCode == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "commodityCode");
+            }
+            this.commodityCode = commodityCode;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder currentVersion(String currentVersion) {
-            this.currentVersion = Objects.requireNonNull(currentVersion);
+            if (currentVersion == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "currentVersion");
+            }
+            this.currentVersion = currentVersion;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder expireOn(String expireOn) {
-            this.expireOn = Objects.requireNonNull(expireOn);
+            if (expireOn == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "expireOn");
+            }
+            this.expireOn = expireOn;
             return this;
         }
         @CustomType.Setter
         public Builder firstRankAlgoDeploymentId(Integer firstRankAlgoDeploymentId) {
-            this.firstRankAlgoDeploymentId = Objects.requireNonNull(firstRankAlgoDeploymentId);
+            if (firstRankAlgoDeploymentId == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "firstRankAlgoDeploymentId");
+            }
+            this.firstRankAlgoDeploymentId = firstRankAlgoDeploymentId;
             return this;
         }
         @CustomType.Setter
         public Builder hasPendingQuotaReviewTask(Integer hasPendingQuotaReviewTask) {
-            this.hasPendingQuotaReviewTask = Objects.requireNonNull(hasPendingQuotaReviewTask);
+            if (hasPendingQuotaReviewTask == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "hasPendingQuotaReviewTask");
+            }
+            this.hasPendingQuotaReviewTask = hasPendingQuotaReviewTask;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder lockMode(String lockMode) {
-            this.lockMode = Objects.requireNonNull(lockMode);
+            if (lockMode == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "lockMode");
+            }
+            this.lockMode = lockMode;
             return this;
         }
         @CustomType.Setter
         public Builder lockedByExpiration(Integer lockedByExpiration) {
-            this.lockedByExpiration = Objects.requireNonNull(lockedByExpiration);
+            if (lockedByExpiration == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "lockedByExpiration");
+            }
+            this.lockedByExpiration = lockedByExpiration;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder pendingSecondRankAlgoDeploymentId(Integer pendingSecondRankAlgoDeploymentId) {
-            this.pendingSecondRankAlgoDeploymentId = Objects.requireNonNull(pendingSecondRankAlgoDeploymentId);
+            if (pendingSecondRankAlgoDeploymentId == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "pendingSecondRankAlgoDeploymentId");
+            }
+            this.pendingSecondRankAlgoDeploymentId = pendingSecondRankAlgoDeploymentId;
             return this;
         }
         @CustomType.Setter
         public Builder processingOrderId(String processingOrderId) {
-            this.processingOrderId = Objects.requireNonNull(processingOrderId);
+            if (processingOrderId == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "processingOrderId");
+            }
+            this.processingOrderId = processingOrderId;
             return this;
         }
         @CustomType.Setter
         public Builder produced(Integer produced) {
-            this.produced = Objects.requireNonNull(produced);
+            if (produced == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "produced");
+            }
+            this.produced = produced;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder quotas(List<GetAppGroupsGroupQuota> quotas) {
-            this.quotas = Objects.requireNonNull(quotas);
+            if (quotas == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "quotas");
+            }
+            this.quotas = quotas;
             return this;
         }
         public Builder quotas(GetAppGroupsGroupQuota... quotas) {
@@ -495,27 +559,42 @@ public final class GetAppGroupsGroup {
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder secondRankAlgoDeploymentId(Integer secondRankAlgoDeploymentId) {
-            this.secondRankAlgoDeploymentId = Objects.requireNonNull(secondRankAlgoDeploymentId);
+            if (secondRankAlgoDeploymentId == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "secondRankAlgoDeploymentId");
+            }
+            this.secondRankAlgoDeploymentId = secondRankAlgoDeploymentId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder switchedTime(Integer switchedTime) {
-            this.switchedTime = Objects.requireNonNull(switchedTime);
+            if (switchedTime == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "switchedTime");
+            }
+            this.switchedTime = switchedTime;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroup", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetAppGroupsGroup build() {

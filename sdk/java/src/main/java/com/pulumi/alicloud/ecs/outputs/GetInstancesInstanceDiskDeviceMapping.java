@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -113,32 +114,50 @@ public final class GetInstancesInstanceDiskDeviceMapping {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDiskDeviceMapping", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder device(String device) {
-            this.device = Objects.requireNonNull(device);
+            if (device == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDiskDeviceMapping", "device");
+            }
+            this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder diskId(String diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDiskDeviceMapping", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskName(String diskName) {
-            this.diskName = Objects.requireNonNull(diskName);
+            if (diskName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDiskDeviceMapping", "diskName");
+            }
+            this.diskName = diskName;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDiskDeviceMapping", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceDiskDeviceMapping", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetInstancesInstanceDiskDeviceMapping build() {

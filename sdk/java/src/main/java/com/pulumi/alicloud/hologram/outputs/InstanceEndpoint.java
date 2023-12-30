@@ -129,36 +129,43 @@ public final class InstanceEndpoint {
 
         @CustomType.Setter
         public Builder alternativeEndpoints(@Nullable String alternativeEndpoints) {
+
             this.alternativeEndpoints = alternativeEndpoints;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
+
             this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcInstanceId(@Nullable String vpcInstanceId) {
+
             this.vpcInstanceId = vpcInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
+
             this.vswitchId = vswitchId;
             return this;
         }

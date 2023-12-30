@@ -6,6 +6,7 @@ package com.pulumi.alicloud.alb.outputs;
 import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleAction;
 import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleCondition;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -158,27 +159,42 @@ public final class GetRulesRule {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
-            this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "loadBalancerId");
+            }
+            this.loadBalancerId = loadBalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder ruleActions(List<GetRulesRuleRuleAction> ruleActions) {
-            this.ruleActions = Objects.requireNonNull(ruleActions);
+            if (ruleActions == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "ruleActions");
+            }
+            this.ruleActions = ruleActions;
             return this;
         }
         public Builder ruleActions(GetRulesRuleRuleAction... ruleActions) {
@@ -186,7 +202,10 @@ public final class GetRulesRule {
         }
         @CustomType.Setter
         public Builder ruleConditions(List<GetRulesRuleRuleCondition> ruleConditions) {
-            this.ruleConditions = Objects.requireNonNull(ruleConditions);
+            if (ruleConditions == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "ruleConditions");
+            }
+            this.ruleConditions = ruleConditions;
             return this;
         }
         public Builder ruleConditions(GetRulesRuleRuleCondition... ruleConditions) {
@@ -194,17 +213,26 @@ public final class GetRulesRule {
         }
         @CustomType.Setter
         public Builder ruleId(String ruleId) {
-            this.ruleId = Objects.requireNonNull(ruleId);
+            if (ruleId == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "ruleId");
+            }
+            this.ruleId = ruleId;
             return this;
         }
         @CustomType.Setter
         public Builder ruleName(String ruleName) {
-            this.ruleName = Objects.requireNonNull(ruleName);
+            if (ruleName == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "ruleName");
+            }
+            this.ruleName = ruleName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetRulesRule build() {

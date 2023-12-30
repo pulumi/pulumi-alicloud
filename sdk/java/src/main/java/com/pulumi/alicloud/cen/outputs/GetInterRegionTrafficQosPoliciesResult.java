@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetInterRegionTrafficQosPoliciesPolicy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -152,12 +153,18 @@ public final class GetInterRegionTrafficQosPoliciesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -165,12 +172,16 @@ public final class GetInterRegionTrafficQosPoliciesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -178,12 +189,16 @@ public final class GetInterRegionTrafficQosPoliciesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder policies(List<GetInterRegionTrafficQosPoliciesPolicy> policies) {
-            this.policies = Objects.requireNonNull(policies);
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesResult", "policies");
+            }
+            this.policies = policies;
             return this;
         }
         public Builder policies(GetInterRegionTrafficQosPoliciesPolicy... policies) {
@@ -191,32 +206,42 @@ public final class GetInterRegionTrafficQosPoliciesResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trafficQosPolicyDescription(@Nullable String trafficQosPolicyDescription) {
+
             this.trafficQosPolicyDescription = trafficQosPolicyDescription;
             return this;
         }
         @CustomType.Setter
         public Builder trafficQosPolicyId(@Nullable String trafficQosPolicyId) {
+
             this.trafficQosPolicyId = trafficQosPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficQosPolicyName(@Nullable String trafficQosPolicyName) {
+
             this.trafficQosPolicyName = trafficQosPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesResult", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesResult", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         public GetInterRegionTrafficQosPoliciesResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eipanycast.outputs;
 
 import com.pulumi.alicloud.eipanycast.outputs.GetAnycastEipAddressesAddressAnycastEipBindInfoList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -227,17 +228,26 @@ public final class GetAnycastEipAddressesAddress {
 
         @CustomType.Setter
         public Builder aliUid(Integer aliUid) {
-            this.aliUid = Objects.requireNonNull(aliUid);
+            if (aliUid == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "aliUid");
+            }
+            this.aliUid = aliUid;
             return this;
         }
         @CustomType.Setter
         public Builder anycastEipAddressName(String anycastEipAddressName) {
-            this.anycastEipAddressName = Objects.requireNonNull(anycastEipAddressName);
+            if (anycastEipAddressName == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "anycastEipAddressName");
+            }
+            this.anycastEipAddressName = anycastEipAddressName;
             return this;
         }
         @CustomType.Setter
         public Builder anycastEipBindInfoLists(List<GetAnycastEipAddressesAddressAnycastEipBindInfoList> anycastEipBindInfoLists) {
-            this.anycastEipBindInfoLists = Objects.requireNonNull(anycastEipBindInfoLists);
+            if (anycastEipBindInfoLists == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "anycastEipBindInfoLists");
+            }
+            this.anycastEipBindInfoLists = anycastEipBindInfoLists;
             return this;
         }
         public Builder anycastEipBindInfoLists(GetAnycastEipAddressesAddressAnycastEipBindInfoList... anycastEipBindInfoLists) {
@@ -245,57 +255,90 @@ public final class GetAnycastEipAddressesAddress {
         }
         @CustomType.Setter
         public Builder anycastId(String anycastId) {
-            this.anycastId = Objects.requireNonNull(anycastId);
+            if (anycastId == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "anycastId");
+            }
+            this.anycastId = anycastId;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder bid(String bid) {
-            this.bid = Objects.requireNonNull(bid);
+            if (bid == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "bid");
+            }
+            this.bid = bid;
             return this;
         }
         @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
-            this.businessStatus = Objects.requireNonNull(businessStatus);
+            if (businessStatus == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "businessStatus");
+            }
+            this.businessStatus = businessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
-            this.internetChargeType = Objects.requireNonNull(internetChargeType);
+            if (internetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "internetChargeType");
+            }
+            this.internetChargeType = internetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder serviceLocation(String serviceLocation) {
-            this.serviceLocation = Objects.requireNonNull(serviceLocation);
+            if (serviceLocation == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "serviceLocation");
+            }
+            this.serviceLocation = serviceLocation;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddress", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetAnycastEipAddressesAddress build() {

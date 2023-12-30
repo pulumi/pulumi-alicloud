@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds;
 import com.pulumi.alicloud.rds.inputs.RdsDbProxyReadOnlyInstanceWeightArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -834,11 +835,21 @@ public final class RdsDbProxyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RdsDbProxyArgs build() {
-            $.dbProxyInstanceNum = Objects.requireNonNull($.dbProxyInstanceNum, "expected parameter 'dbProxyInstanceNum' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.instanceNetworkType = Objects.requireNonNull($.instanceNetworkType, "expected parameter 'instanceNetworkType' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.dbProxyInstanceNum == null) {
+                throw new MissingRequiredPropertyException("RdsDbProxyArgs", "dbProxyInstanceNum");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("RdsDbProxyArgs", "instanceId");
+            }
+            if ($.instanceNetworkType == null) {
+                throw new MissingRequiredPropertyException("RdsDbProxyArgs", "instanceNetworkType");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("RdsDbProxyArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("RdsDbProxyArgs", "vswitchId");
+            }
             return $;
         }
     }

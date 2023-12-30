@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -508,10 +509,18 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public RouterInterfaceArgs build() {
-            $.oppositeRegion = Objects.requireNonNull($.oppositeRegion, "expected parameter 'oppositeRegion' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.routerId = Objects.requireNonNull($.routerId, "expected parameter 'routerId' to be non-null");
-            $.routerType = Objects.requireNonNull($.routerType, "expected parameter 'routerType' to be non-null");
+            if ($.oppositeRegion == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "oppositeRegion");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "role");
+            }
+            if ($.routerId == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "routerId");
+            }
+            if ($.routerType == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "routerType");
+            }
             return $;
         }
     }

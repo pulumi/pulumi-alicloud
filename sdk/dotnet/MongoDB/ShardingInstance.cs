@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The virtual switch ID to launch DB instances in one VPC.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string?> VswitchId { get; private set; } = null!;
+        public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.

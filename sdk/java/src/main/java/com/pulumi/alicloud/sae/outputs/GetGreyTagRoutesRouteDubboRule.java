@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.alicloud.sae.outputs.GetGreyTagRoutesRouteDubboRuleItem;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,17 +115,26 @@ public final class GetGreyTagRoutesRouteDubboRule {
 
         @CustomType.Setter
         public Builder condition(String condition) {
-            this.condition = Objects.requireNonNull(condition);
+            if (condition == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRule", "condition");
+            }
+            this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRule", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder items(List<GetGreyTagRoutesRouteDubboRuleItem> items) {
-            this.items = Objects.requireNonNull(items);
+            if (items == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRule", "items");
+            }
+            this.items = items;
             return this;
         }
         public Builder items(GetGreyTagRoutesRouteDubboRuleItem... items) {
@@ -132,17 +142,26 @@ public final class GetGreyTagRoutesRouteDubboRule {
         }
         @CustomType.Setter
         public Builder methodName(String methodName) {
-            this.methodName = Objects.requireNonNull(methodName);
+            if (methodName == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRule", "methodName");
+            }
+            this.methodName = methodName;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRule", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRouteDubboRule", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetGreyTagRoutesRouteDubboRule build() {

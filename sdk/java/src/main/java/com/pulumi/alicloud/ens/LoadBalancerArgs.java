@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ens;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,11 +262,21 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LoadBalancerArgs build() {
-            $.ensRegionId = Objects.requireNonNull($.ensRegionId, "expected parameter 'ensRegionId' to be non-null");
-            $.loadBalancerSpec = Objects.requireNonNull($.loadBalancerSpec, "expected parameter 'loadBalancerSpec' to be non-null");
-            $.networkId = Objects.requireNonNull($.networkId, "expected parameter 'networkId' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.ensRegionId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "ensRegionId");
+            }
+            if ($.loadBalancerSpec == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "loadBalancerSpec");
+            }
+            if ($.networkId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "networkId");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "paymentType");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "vswitchId");
+            }
             return $;
         }
     }

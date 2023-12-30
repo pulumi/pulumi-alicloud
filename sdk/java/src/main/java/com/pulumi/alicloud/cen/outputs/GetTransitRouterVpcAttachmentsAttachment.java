@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMapping;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -170,52 +171,82 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentDescription(String transitRouterAttachmentDescription) {
-            this.transitRouterAttachmentDescription = Objects.requireNonNull(transitRouterAttachmentDescription);
+            if (transitRouterAttachmentDescription == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "transitRouterAttachmentDescription");
+            }
+            this.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
-            this.transitRouterAttachmentName = Objects.requireNonNull(transitRouterAttachmentName);
+            if (transitRouterAttachmentName == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "transitRouterAttachmentName");
+            }
+            this.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcOwnerId(String vpcOwnerId) {
-            this.vpcOwnerId = Objects.requireNonNull(vpcOwnerId);
+            if (vpcOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "vpcOwnerId");
+            }
+            this.vpcOwnerId = vpcOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneMappings(List<GetTransitRouterVpcAttachmentsAttachmentZoneMapping> zoneMappings) {
-            this.zoneMappings = Objects.requireNonNull(zoneMappings);
+            if (zoneMappings == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "zoneMappings");
+            }
+            this.zoneMappings = zoneMappings;
             return this;
         }
         public Builder zoneMappings(GetTransitRouterVpcAttachmentsAttachmentZoneMapping... zoneMappings) {

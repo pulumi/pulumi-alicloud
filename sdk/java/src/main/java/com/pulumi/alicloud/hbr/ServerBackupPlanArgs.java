@@ -6,6 +6,7 @@ package com.pulumi.alicloud.hbr;
 import com.pulumi.alicloud.hbr.inputs.ServerBackupPlanDetailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -386,11 +387,21 @@ public final class ServerBackupPlanArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ServerBackupPlanArgs build() {
-            $.details = Objects.requireNonNull($.details, "expected parameter 'details' to be non-null");
-            $.ecsServerBackupPlanName = Objects.requireNonNull($.ecsServerBackupPlanName, "expected parameter 'ecsServerBackupPlanName' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.retention = Objects.requireNonNull($.retention, "expected parameter 'retention' to be non-null");
-            $.schedule = Objects.requireNonNull($.schedule, "expected parameter 'schedule' to be non-null");
+            if ($.details == null) {
+                throw new MissingRequiredPropertyException("ServerBackupPlanArgs", "details");
+            }
+            if ($.ecsServerBackupPlanName == null) {
+                throw new MissingRequiredPropertyException("ServerBackupPlanArgs", "ecsServerBackupPlanName");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("ServerBackupPlanArgs", "instanceId");
+            }
+            if ($.retention == null) {
+                throw new MissingRequiredPropertyException("ServerBackupPlanArgs", "retention");
+            }
+            if ($.schedule == null) {
+                throw new MissingRequiredPropertyException("ServerBackupPlanArgs", "schedule");
+            }
             return $;
         }
     }

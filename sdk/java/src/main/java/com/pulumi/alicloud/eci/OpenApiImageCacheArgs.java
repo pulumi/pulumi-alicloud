@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eci;
 import com.pulumi.alicloud.eci.inputs.OpenApiImageCacheImageRegistryCredentialArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -220,10 +221,18 @@ public final class OpenApiImageCacheArgs extends com.pulumi.resources.ResourceAr
         }
 
         public OpenApiImageCacheArgs build() {
-            $.imageCacheName = Objects.requireNonNull($.imageCacheName, "expected parameter 'imageCacheName' to be non-null");
-            $.images = Objects.requireNonNull($.images, "expected parameter 'images' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.imageCacheName == null) {
+                throw new MissingRequiredPropertyException("OpenApiImageCacheArgs", "imageCacheName");
+            }
+            if ($.images == null) {
+                throw new MissingRequiredPropertyException("OpenApiImageCacheArgs", "images");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("OpenApiImageCacheArgs", "securityGroupId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("OpenApiImageCacheArgs", "vswitchId");
+            }
             return $;
         }
     }

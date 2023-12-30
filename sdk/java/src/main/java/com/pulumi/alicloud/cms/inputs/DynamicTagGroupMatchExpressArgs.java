@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class DynamicTagGroupMatchExpressArgs extends com.pulumi.resources.
         }
 
         public DynamicTagGroupMatchExpressArgs build() {
-            $.tagValue = Objects.requireNonNull($.tagValue, "expected parameter 'tagValue' to be non-null");
-            $.tagValueMatchFunction = Objects.requireNonNull($.tagValueMatchFunction, "expected parameter 'tagValueMatchFunction' to be non-null");
+            if ($.tagValue == null) {
+                throw new MissingRequiredPropertyException("DynamicTagGroupMatchExpressArgs", "tagValue");
+            }
+            if ($.tagValueMatchFunction == null) {
+                throw new MissingRequiredPropertyException("DynamicTagGroupMatchExpressArgs", "tagValueMatchFunction");
+            }
             return $;
         }
     }

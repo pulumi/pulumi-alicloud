@@ -110,9 +110,17 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly active!: pulumi.Output<boolean | undefined>;
     /**
+     * The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+     */
+    public readonly activeDeadlineSeconds!: pulumi.Output<number | undefined>;
+    /**
      * Whether create eip automatically.
      */
     public readonly autoCreateEip!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether to automatically match the image cache.
+     */
+    public readonly autoMatchImageCache!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the container group.
      */
@@ -147,6 +155,10 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly enableSls!: pulumi.Output<boolean | undefined>;
     /**
+     * The size of ephemeral storage.
+     */
+    public readonly ephemeralStorage!: pulumi.Output<number | undefined>;
+    /**
      * The eci scaling configuration will be deleted forcibly with deleting its scaling group.
      * Default to false.
      */
@@ -165,6 +177,10 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly imageRegistryCredentials!: pulumi.Output<outputs.ess.EciScalingConfigurationImageRegistryCredential[] | undefined>;
     /**
+     * The ID of image cache.
+     */
+    public readonly imageSnapshotId!: pulumi.Output<string | undefined>;
+    /**
      * Ingress bandwidth.
      */
     public readonly ingressBandwidth!: pulumi.Output<number | undefined>;
@@ -172,6 +188,14 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      * The list of initContainers. See `initContainers` below for details.
      */
     public readonly initContainers!: pulumi.Output<outputs.ess.EciScalingConfigurationInitContainer[] | undefined>;
+    /**
+     * Number of IPv6 addresses.
+     */
+    public readonly ipv6AddressCount!: pulumi.Output<number | undefined>;
+    /**
+     * The weight of an ECI instance attached to the Server Group.
+     */
+    public readonly loadBalancerWeight!: pulumi.Output<number | undefined>;
     /**
      * The amount of memory resources allocated to the container group.
      */
@@ -222,6 +246,10 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * The program's buffering time before closing.
+     */
+    public readonly terminationGracePeriodSeconds!: pulumi.Output<number | undefined>;
+    /**
      * The list of volumes. See `volumes` below for details.
      */
     public readonly volumes!: pulumi.Output<outputs.ess.EciScalingConfigurationVolume[] | undefined>;
@@ -241,7 +269,9 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             const state = argsOrState as EciScalingConfigurationState | undefined;
             resourceInputs["acrRegistryInfos"] = state ? state.acrRegistryInfos : undefined;
             resourceInputs["active"] = state ? state.active : undefined;
+            resourceInputs["activeDeadlineSeconds"] = state ? state.activeDeadlineSeconds : undefined;
             resourceInputs["autoCreateEip"] = state ? state.autoCreateEip : undefined;
+            resourceInputs["autoMatchImageCache"] = state ? state.autoMatchImageCache : undefined;
             resourceInputs["containerGroupName"] = state ? state.containerGroupName : undefined;
             resourceInputs["containers"] = state ? state.containers : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
@@ -250,12 +280,16 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["egressBandwidth"] = state ? state.egressBandwidth : undefined;
             resourceInputs["eipBandwidth"] = state ? state.eipBandwidth : undefined;
             resourceInputs["enableSls"] = state ? state.enableSls : undefined;
+            resourceInputs["ephemeralStorage"] = state ? state.ephemeralStorage : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["hostAliases"] = state ? state.hostAliases : undefined;
             resourceInputs["hostName"] = state ? state.hostName : undefined;
             resourceInputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
+            resourceInputs["imageSnapshotId"] = state ? state.imageSnapshotId : undefined;
             resourceInputs["ingressBandwidth"] = state ? state.ingressBandwidth : undefined;
             resourceInputs["initContainers"] = state ? state.initContainers : undefined;
+            resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
+            resourceInputs["loadBalancerWeight"] = state ? state.loadBalancerWeight : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
             resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -266,6 +300,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
             resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["terminationGracePeriodSeconds"] = state ? state.terminationGracePeriodSeconds : undefined;
             resourceInputs["volumes"] = state ? state.volumes : undefined;
         } else {
             const args = argsOrState as EciScalingConfigurationArgs | undefined;
@@ -274,7 +309,9 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             }
             resourceInputs["acrRegistryInfos"] = args ? args.acrRegistryInfos : undefined;
             resourceInputs["active"] = args ? args.active : undefined;
+            resourceInputs["activeDeadlineSeconds"] = args ? args.activeDeadlineSeconds : undefined;
             resourceInputs["autoCreateEip"] = args ? args.autoCreateEip : undefined;
+            resourceInputs["autoMatchImageCache"] = args ? args.autoMatchImageCache : undefined;
             resourceInputs["containerGroupName"] = args ? args.containerGroupName : undefined;
             resourceInputs["containers"] = args ? args.containers : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
@@ -283,12 +320,16 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["egressBandwidth"] = args ? args.egressBandwidth : undefined;
             resourceInputs["eipBandwidth"] = args ? args.eipBandwidth : undefined;
             resourceInputs["enableSls"] = args ? args.enableSls : undefined;
+            resourceInputs["ephemeralStorage"] = args ? args.ephemeralStorage : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["hostAliases"] = args ? args.hostAliases : undefined;
             resourceInputs["hostName"] = args ? args.hostName : undefined;
             resourceInputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
+            resourceInputs["imageSnapshotId"] = args ? args.imageSnapshotId : undefined;
             resourceInputs["ingressBandwidth"] = args ? args.ingressBandwidth : undefined;
             resourceInputs["initContainers"] = args ? args.initContainers : undefined;
+            resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
+            resourceInputs["loadBalancerWeight"] = args ? args.loadBalancerWeight : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
             resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -299,6 +340,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
             resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["terminationGracePeriodSeconds"] = args ? args.terminationGracePeriodSeconds : undefined;
             resourceInputs["volumes"] = args ? args.volumes : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -320,9 +362,17 @@ export interface EciScalingConfigurationState {
      */
     active?: pulumi.Input<boolean>;
     /**
+     * The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+     */
+    activeDeadlineSeconds?: pulumi.Input<number>;
+    /**
      * Whether create eip automatically.
      */
     autoCreateEip?: pulumi.Input<boolean>;
+    /**
+     * Whether to automatically match the image cache.
+     */
+    autoMatchImageCache?: pulumi.Input<boolean>;
     /**
      * The name of the container group.
      */
@@ -357,6 +407,10 @@ export interface EciScalingConfigurationState {
      */
     enableSls?: pulumi.Input<boolean>;
     /**
+     * The size of ephemeral storage.
+     */
+    ephemeralStorage?: pulumi.Input<number>;
+    /**
      * The eci scaling configuration will be deleted forcibly with deleting its scaling group.
      * Default to false.
      */
@@ -375,6 +429,10 @@ export interface EciScalingConfigurationState {
      */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationImageRegistryCredential>[]>;
     /**
+     * The ID of image cache.
+     */
+    imageSnapshotId?: pulumi.Input<string>;
+    /**
      * Ingress bandwidth.
      */
     ingressBandwidth?: pulumi.Input<number>;
@@ -382,6 +440,14 @@ export interface EciScalingConfigurationState {
      * The list of initContainers. See `initContainers` below for details.
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
+    /**
+     * Number of IPv6 addresses.
+     */
+    ipv6AddressCount?: pulumi.Input<number>;
+    /**
+     * The weight of an ECI instance attached to the Server Group.
+     */
+    loadBalancerWeight?: pulumi.Input<number>;
     /**
      * The amount of memory resources allocated to the container group.
      */
@@ -432,6 +498,10 @@ export interface EciScalingConfigurationState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
+     * The program's buffering time before closing.
+     */
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    /**
      * The list of volumes. See `volumes` below for details.
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationVolume>[]>;
@@ -451,9 +521,17 @@ export interface EciScalingConfigurationArgs {
      */
     active?: pulumi.Input<boolean>;
     /**
+     * The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+     */
+    activeDeadlineSeconds?: pulumi.Input<number>;
+    /**
      * Whether create eip automatically.
      */
     autoCreateEip?: pulumi.Input<boolean>;
+    /**
+     * Whether to automatically match the image cache.
+     */
+    autoMatchImageCache?: pulumi.Input<boolean>;
     /**
      * The name of the container group.
      */
@@ -488,6 +566,10 @@ export interface EciScalingConfigurationArgs {
      */
     enableSls?: pulumi.Input<boolean>;
     /**
+     * The size of ephemeral storage.
+     */
+    ephemeralStorage?: pulumi.Input<number>;
+    /**
      * The eci scaling configuration will be deleted forcibly with deleting its scaling group.
      * Default to false.
      */
@@ -506,6 +588,10 @@ export interface EciScalingConfigurationArgs {
      */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationImageRegistryCredential>[]>;
     /**
+     * The ID of image cache.
+     */
+    imageSnapshotId?: pulumi.Input<string>;
+    /**
      * Ingress bandwidth.
      */
     ingressBandwidth?: pulumi.Input<number>;
@@ -513,6 +599,14 @@ export interface EciScalingConfigurationArgs {
      * The list of initContainers. See `initContainers` below for details.
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
+    /**
+     * Number of IPv6 addresses.
+     */
+    ipv6AddressCount?: pulumi.Input<number>;
+    /**
+     * The weight of an ECI instance attached to the Server Group.
+     */
+    loadBalancerWeight?: pulumi.Input<number>;
     /**
      * The amount of memory resources allocated to the container group.
      */
@@ -562,6 +656,10 @@ export interface EciScalingConfigurationArgs {
      * a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The program's buffering time before closing.
+     */
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
     /**
      * The list of volumes. See `volumes` below for details.
      */

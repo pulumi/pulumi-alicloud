@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -245,8 +246,12 @@ public final class AlertNotificationListArgs extends com.pulumi.resources.Resour
         }
 
         public AlertNotificationListArgs build() {
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("AlertNotificationListArgs", "content");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AlertNotificationListArgs", "type");
+            }
             return $;
         }
     }

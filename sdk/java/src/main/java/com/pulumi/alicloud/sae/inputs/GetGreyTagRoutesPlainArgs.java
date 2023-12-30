@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,7 +158,9 @@ public final class GetGreyTagRoutesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetGreyTagRoutesPlainArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("GetGreyTagRoutesPlainArgs", "appId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class ApiMockServiceConfig {
 
         @CustomType.Setter
         public Builder aoneName(@Nullable String aoneName) {
+
             this.aoneName = aoneName;
             return this;
         }
         @CustomType.Setter
         public Builder result(String result) {
-            this.result = Objects.requireNonNull(result);
+            if (result == null) {
+              throw new MissingRequiredPropertyException("ApiMockServiceConfig", "result");
+            }
+            this.result = result;
             return this;
         }
         public ApiMockServiceConfig build() {

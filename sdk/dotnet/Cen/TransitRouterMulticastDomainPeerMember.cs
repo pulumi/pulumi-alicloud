@@ -30,27 +30,39 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultRegion = config.Get("defaultRegion") ?? "cn-hangzhou";
-    ///     var peerRegion = config.Get("peerRegion") ?? "cn-beijing";
     ///     var hz = new AliCloud.Provider("hz", new()
     ///     {
-    ///         Region = defaultRegion,
+    ///         Region = "cn-hangzhou",
     ///     });
     /// 
-    ///     var bj = new AliCloud.Provider("bj", new()
+    ///     var qd = new AliCloud.Provider("qd", new()
     ///     {
-    ///         Region = peerRegion,
+    ///         Region = "cn-qingdao",
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
     ///     {
     ///         CenInstanceName = name,
-    ///         ProtectionLevel = "REDUCED",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Cen.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 5,
+    ///         CenBandwidthPackageName = name,
+    ///         GeographicRegionAId = "China",
+    ///         GeographicRegionBId = "China",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
     ///     });
     /// 
     ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         CenId = defaultBandwidthPackageAttachment.InstanceId,
+    ///         SupportMulticast = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Hz,
@@ -58,16 +70,33 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var peerTransitRouter = new AliCloud.Cen.TransitRouter("peerTransitRouter", new()
     ///     {
-    ///         CenId = defaultTransitRouter.CenId,
+    ///         CenId = defaultBandwidthPackageAttachment.InstanceId,
+    ///         SupportMulticast = true,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Bj,
+    ///         Provider = alicloud.Qd,
+    ///     });
+    /// 
+    ///     var defaultTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", new()
+    ///     {
+    ///         CenId = defaultBandwidthPackageAttachment.InstanceId,
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         PeerTransitRouterId = peerTransitRouter.TransitRouterId,
+    ///         PeerTransitRouterRegionId = "cn-qingdao",
+    ///         CenBandwidthPackageId = defaultBandwidthPackageAttachment.BandwidthPackageId,
+    ///         Bandwidth = 5,
+    ///         TransitRouterAttachmentDescription = name,
+    ///         TransitRouterAttachmentName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
     ///     });
     /// 
     ///     var defaultTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", new()
     ///     {
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterId = defaultTransitRouterPeerAttachment.TransitRouterId,
     ///         TransitRouterMulticastDomainName = name,
+    ///         TransitRouterMulticastDomainDescription = name,
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Hz,
@@ -75,18 +104,19 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var peerTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("peerTransitRouterMulticastDomain", new()
     ///     {
-    ///         TransitRouterId = peerTransitRouter.TransitRouterId,
+    ///         TransitRouterId = defaultTransitRouterPeerAttachment.PeerTransitRouterId,
     ///         TransitRouterMulticastDomainName = name,
+    ///         TransitRouterMulticastDomainDescription = name,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Bj,
+    ///         Provider = alicloud.Qd,
     ///     });
     /// 
     ///     var defaultTransitRouterMulticastDomainPeerMember = new AliCloud.Cen.TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember", new()
     ///     {
-    ///         PeerTransitRouterMulticastDomainId = peerTransitRouterMulticastDomain.Id,
     ///         TransitRouterMulticastDomainId = defaultTransitRouterMulticastDomain.Id,
-    ///         GroupIpAddress = "239.1.1.1",
+    ///         PeerTransitRouterMulticastDomainId = peerTransitRouterMulticastDomain.Id,
+    ///         GroupIpAddress = "224.0.0.1",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Hz,

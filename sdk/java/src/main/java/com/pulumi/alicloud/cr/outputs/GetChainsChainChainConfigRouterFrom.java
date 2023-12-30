@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetChainsChainChainConfigRouterFrom {
 
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfigRouterFrom", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         public GetChainsChainChainConfigRouterFrom build() {

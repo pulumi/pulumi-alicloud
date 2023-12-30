@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -253,82 +254,130 @@ public final class GetNasFileSystemsSystem {
 
         @CustomType.Setter
         public Builder capacity(String capacity) {
-            this.capacity = Objects.requireNonNull(capacity);
+            if (capacity == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "capacity");
+            }
+            this.capacity = capacity;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
-            this.fileSystemId = Objects.requireNonNull(fileSystemId);
+            if (fileSystemId == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "fileSystemId");
+            }
+            this.fileSystemId = fileSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemType(String fileSystemType) {
-            this.fileSystemType = Objects.requireNonNull(fileSystemType);
+            if (fileSystemType == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "fileSystemType");
+            }
+            this.fileSystemType = fileSystemType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder meteredSize(String meteredSize) {
-            this.meteredSize = Objects.requireNonNull(meteredSize);
+            if (meteredSize == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "meteredSize");
+            }
+            this.meteredSize = meteredSize;
             return this;
         }
         @CustomType.Setter
         public Builder mountTargetDomain(String mountTargetDomain) {
-            this.mountTargetDomain = Objects.requireNonNull(mountTargetDomain);
+            if (mountTargetDomain == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "mountTargetDomain");
+            }
+            this.mountTargetDomain = mountTargetDomain;
             return this;
         }
         @CustomType.Setter
         public Builder mountTargetStatus(String mountTargetStatus) {
-            this.mountTargetStatus = Objects.requireNonNull(mountTargetStatus);
+            if (mountTargetStatus == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "mountTargetStatus");
+            }
+            this.mountTargetStatus = mountTargetStatus;
             return this;
         }
         @CustomType.Setter
         public Builder nasFileSystemName(String nasFileSystemName) {
-            this.nasFileSystemName = Objects.requireNonNull(nasFileSystemName);
+            if (nasFileSystemName == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "nasFileSystemName");
+            }
+            this.nasFileSystemName = nasFileSystemName;
             return this;
         }
         @CustomType.Setter
         public Builder officeSiteId(String officeSiteId) {
-            this.officeSiteId = Objects.requireNonNull(officeSiteId);
+            if (officeSiteId == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "officeSiteId");
+            }
+            this.officeSiteId = officeSiteId;
             return this;
         }
         @CustomType.Setter
         public Builder officeSiteName(String officeSiteName) {
-            this.officeSiteName = Objects.requireNonNull(officeSiteName);
+            if (officeSiteName == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "officeSiteName");
+            }
+            this.officeSiteName = officeSiteName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(String storageType) {
-            this.storageType = Objects.requireNonNull(storageType);
+            if (storageType == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "storageType");
+            }
+            this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder supportAcl(Boolean supportAcl) {
-            this.supportAcl = Objects.requireNonNull(supportAcl);
+            if (supportAcl == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "supportAcl");
+            }
+            this.supportAcl = supportAcl;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetNasFileSystemsSystem", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetNasFileSystemsSystem build() {

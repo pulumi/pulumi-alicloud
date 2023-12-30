@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -183,7 +184,10 @@ public final class GetHavipsHavip {
 
         @CustomType.Setter
         public Builder associatedEipAddresses(List<String> associatedEipAddresses) {
-            this.associatedEipAddresses = Objects.requireNonNull(associatedEipAddresses);
+            if (associatedEipAddresses == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "associatedEipAddresses");
+            }
+            this.associatedEipAddresses = associatedEipAddresses;
             return this;
         }
         public Builder associatedEipAddresses(String... associatedEipAddresses) {
@@ -191,7 +195,10 @@ public final class GetHavipsHavip {
         }
         @CustomType.Setter
         public Builder associatedInstances(List<String> associatedInstances) {
-            this.associatedInstances = Objects.requireNonNull(associatedInstances);
+            if (associatedInstances == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "associatedInstances");
+            }
+            this.associatedInstances = associatedInstances;
             return this;
         }
         public Builder associatedInstances(String... associatedInstances) {
@@ -199,47 +206,74 @@ public final class GetHavipsHavip {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder havipId(String havipId) {
-            this.havipId = Objects.requireNonNull(havipId);
+            if (havipId == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "havipId");
+            }
+            this.havipId = havipId;
             return this;
         }
         @CustomType.Setter
         public Builder havipName(String havipName) {
-            this.havipName = Objects.requireNonNull(havipName);
+            if (havipName == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "havipName");
+            }
+            this.havipName = havipName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder masterInstanceId(String masterInstanceId) {
-            this.masterInstanceId = Objects.requireNonNull(masterInstanceId);
+            if (masterInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "masterInstanceId");
+            }
+            this.masterInstanceId = masterInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetHavipsHavip", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetHavipsHavip build() {

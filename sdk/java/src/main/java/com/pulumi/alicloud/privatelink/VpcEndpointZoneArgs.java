@@ -5,6 +5,7 @@ package com.pulumi.alicloud.privatelink;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -233,8 +234,12 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public VpcEndpointZoneArgs build() {
-            $.endpointId = Objects.requireNonNull($.endpointId, "expected parameter 'endpointId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.endpointId == null) {
+                throw new MissingRequiredPropertyException("VpcEndpointZoneArgs", "endpointId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("VpcEndpointZoneArgs", "vswitchId");
+            }
             return $;
         }
     }

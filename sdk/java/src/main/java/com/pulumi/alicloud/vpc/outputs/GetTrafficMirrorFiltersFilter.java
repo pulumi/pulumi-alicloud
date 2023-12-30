@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetTrafficMirrorFiltersFilter {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFiltersFilter", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFiltersFilter", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorFilterDescription(String trafficMirrorFilterDescription) {
-            this.trafficMirrorFilterDescription = Objects.requireNonNull(trafficMirrorFilterDescription);
+            if (trafficMirrorFilterDescription == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFiltersFilter", "trafficMirrorFilterDescription");
+            }
+            this.trafficMirrorFilterDescription = trafficMirrorFilterDescription;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorFilterId(String trafficMirrorFilterId) {
-            this.trafficMirrorFilterId = Objects.requireNonNull(trafficMirrorFilterId);
+            if (trafficMirrorFilterId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFiltersFilter", "trafficMirrorFilterId");
+            }
+            this.trafficMirrorFilterId = trafficMirrorFilterId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorFilterName(String trafficMirrorFilterName) {
-            this.trafficMirrorFilterName = Objects.requireNonNull(trafficMirrorFilterName);
+            if (trafficMirrorFilterName == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFiltersFilter", "trafficMirrorFilterName");
+            }
+            this.trafficMirrorFilterName = trafficMirrorFilterName;
             return this;
         }
         public GetTrafficMirrorFiltersFilter build() {

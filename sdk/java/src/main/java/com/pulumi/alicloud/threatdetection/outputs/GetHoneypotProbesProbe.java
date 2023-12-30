@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotProbesProbeHoneypotBindList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -191,22 +192,34 @@ public final class GetHoneypotProbesProbe {
 
         @CustomType.Setter
         public Builder arp(Boolean arp) {
-            this.arp = Objects.requireNonNull(arp);
+            if (arp == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "arp");
+            }
+            this.arp = arp;
             return this;
         }
         @CustomType.Setter
         public Builder controlNodeId(String controlNodeId) {
-            this.controlNodeId = Objects.requireNonNull(controlNodeId);
+            if (controlNodeId == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "controlNodeId");
+            }
+            this.controlNodeId = controlNodeId;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotBindLists(List<GetHoneypotProbesProbeHoneypotBindList> honeypotBindLists) {
-            this.honeypotBindLists = Objects.requireNonNull(honeypotBindLists);
+            if (honeypotBindLists == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "honeypotBindLists");
+            }
+            this.honeypotBindLists = honeypotBindLists;
             return this;
         }
         public Builder honeypotBindLists(GetHoneypotProbesProbeHoneypotBindList... honeypotBindLists) {
@@ -214,27 +227,42 @@ public final class GetHoneypotProbesProbe {
         }
         @CustomType.Setter
         public Builder honeypotProbeId(String honeypotProbeId) {
-            this.honeypotProbeId = Objects.requireNonNull(honeypotProbeId);
+            if (honeypotProbeId == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "honeypotProbeId");
+            }
+            this.honeypotProbeId = honeypotProbeId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ping(Boolean ping) {
-            this.ping = Objects.requireNonNull(ping);
+            if (ping == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "ping");
+            }
+            this.ping = ping;
             return this;
         }
         @CustomType.Setter
         public Builder probeType(String probeType) {
-            this.probeType = Objects.requireNonNull(probeType);
+            if (probeType == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "probeType");
+            }
+            this.probeType = probeType;
             return this;
         }
         @CustomType.Setter
         public Builder serviceIpLists(List<String> serviceIpLists) {
-            this.serviceIpLists = Objects.requireNonNull(serviceIpLists);
+            if (serviceIpLists == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "serviceIpLists");
+            }
+            this.serviceIpLists = serviceIpLists;
             return this;
         }
         public Builder serviceIpLists(String... serviceIpLists) {
@@ -242,17 +270,26 @@ public final class GetHoneypotProbesProbe {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbe", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetHoneypotProbesProbe build() {

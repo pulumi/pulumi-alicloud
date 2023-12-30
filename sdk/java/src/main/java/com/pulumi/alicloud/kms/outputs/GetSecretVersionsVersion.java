@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetSecretVersionsVersion {
 
         @CustomType.Setter
         public Builder secretData(String secretData) {
-            this.secretData = Objects.requireNonNull(secretData);
+            if (secretData == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionsVersion", "secretData");
+            }
+            this.secretData = secretData;
             return this;
         }
         @CustomType.Setter
         public Builder secretDataType(String secretDataType) {
-            this.secretDataType = Objects.requireNonNull(secretDataType);
+            if (secretDataType == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionsVersion", "secretDataType");
+            }
+            this.secretDataType = secretDataType;
             return this;
         }
         @CustomType.Setter
         public Builder secretName(String secretName) {
-            this.secretName = Objects.requireNonNull(secretName);
+            if (secretName == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionsVersion", "secretName");
+            }
+            this.secretName = secretName;
             return this;
         }
         @CustomType.Setter
         public Builder versionId(String versionId) {
-            this.versionId = Objects.requireNonNull(versionId);
+            if (versionId == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionsVersion", "versionId");
+            }
+            this.versionId = versionId;
             return this;
         }
         @CustomType.Setter
         public Builder versionStages(List<String> versionStages) {
-            this.versionStages = Objects.requireNonNull(versionStages);
+            if (versionStages == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionsVersion", "versionStages");
+            }
+            this.versionStages = versionStages;
             return this;
         }
         public Builder versionStages(String... versionStages) {

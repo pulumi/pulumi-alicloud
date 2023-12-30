@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -124,7 +125,9 @@ public final class AlertContactGroupArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AlertContactGroupArgs build() {
-            $.alertContactGroupName = Objects.requireNonNull($.alertContactGroupName, "expected parameter 'alertContactGroupName' to be non-null");
+            if ($.alertContactGroupName == null) {
+                throw new MissingRequiredPropertyException("AlertContactGroupArgs", "alertContactGroupName");
+            }
             return $;
         }
     }

@@ -86,21 +86,25 @@ public final class NestServiceInstanceOperationMetadata {
 
         @CustomType.Setter
         public Builder operatedServiceInstanceId(@Nullable String operatedServiceInstanceId) {
+
             this.operatedServiceInstanceId = operatedServiceInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder operationEndTime(@Nullable String operationEndTime) {
+
             this.operationEndTime = operationEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder operationStartTime(@Nullable String operationStartTime) {
+
             this.operationStartTime = operationStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder resources(@Nullable String resources) {
+
             this.resources = resources;
             return this;
         }

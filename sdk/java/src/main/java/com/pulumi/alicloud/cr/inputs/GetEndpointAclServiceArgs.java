@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cr.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -204,9 +205,15 @@ public final class GetEndpointAclServiceArgs extends com.pulumi.resources.Invoke
         }
 
         public GetEndpointAclServiceArgs build() {
-            $.enable = Objects.requireNonNull($.enable, "expected parameter 'enable' to be non-null");
-            $.endpointType = Objects.requireNonNull($.endpointType, "expected parameter 'endpointType' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.enable == null) {
+                throw new MissingRequiredPropertyException("GetEndpointAclServiceArgs", "enable");
+            }
+            if ($.endpointType == null) {
+                throw new MissingRequiredPropertyException("GetEndpointAclServiceArgs", "endpointType");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetEndpointAclServiceArgs", "instanceId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HandshakeArgs build() {
-            $.targetEntity = Objects.requireNonNull($.targetEntity, "expected parameter 'targetEntity' to be non-null");
-            $.targetType = Objects.requireNonNull($.targetType, "expected parameter 'targetType' to be non-null");
+            if ($.targetEntity == null) {
+                throw new MissingRequiredPropertyException("HandshakeArgs", "targetEntity");
+            }
+            if ($.targetType == null) {
+                throw new MissingRequiredPropertyException("HandshakeArgs", "targetType");
+            }
             return $;
         }
     }

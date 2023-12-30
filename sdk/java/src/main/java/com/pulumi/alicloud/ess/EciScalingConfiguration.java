@@ -162,6 +162,20 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.active);
     }
     /**
+     * The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+     * 
+     */
+    @Export(name="activeDeadlineSeconds", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> activeDeadlineSeconds;
+
+    /**
+     * @return The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+     * 
+     */
+    public Output<Optional<Integer>> activeDeadlineSeconds() {
+        return Codegen.optional(this.activeDeadlineSeconds);
+    }
+    /**
      * Whether create eip automatically.
      * 
      */
@@ -174,6 +188,20 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<Boolean>> autoCreateEip() {
         return Codegen.optional(this.autoCreateEip);
+    }
+    /**
+     * Whether to automatically match the image cache.
+     * 
+     */
+    @Export(name="autoMatchImageCache", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoMatchImageCache;
+
+    /**
+     * @return Whether to automatically match the image cache.
+     * 
+     */
+    public Output<Optional<Boolean>> autoMatchImageCache() {
+        return Codegen.optional(this.autoMatchImageCache);
     }
     /**
      * The name of the container group.
@@ -290,6 +318,20 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.enableSls);
     }
     /**
+     * The size of ephemeral storage.
+     * 
+     */
+    @Export(name="ephemeralStorage", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> ephemeralStorage;
+
+    /**
+     * @return The size of ephemeral storage.
+     * 
+     */
+    public Output<Optional<Integer>> ephemeralStorage() {
+        return Codegen.optional(this.ephemeralStorage);
+    }
+    /**
      * The eci scaling configuration will be deleted forcibly with deleting its scaling group.
      * Default to false.
      * 
@@ -350,6 +392,20 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.imageRegistryCredentials);
     }
     /**
+     * The ID of image cache.
+     * 
+     */
+    @Export(name="imageSnapshotId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> imageSnapshotId;
+
+    /**
+     * @return The ID of image cache.
+     * 
+     */
+    public Output<Optional<String>> imageSnapshotId() {
+        return Codegen.optional(this.imageSnapshotId);
+    }
+    /**
      * Ingress bandwidth.
      * 
      */
@@ -376,6 +432,34 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<List<EciScalingConfigurationInitContainer>>> initContainers() {
         return Codegen.optional(this.initContainers);
+    }
+    /**
+     * Number of IPv6 addresses.
+     * 
+     */
+    @Export(name="ipv6AddressCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> ipv6AddressCount;
+
+    /**
+     * @return Number of IPv6 addresses.
+     * 
+     */
+    public Output<Optional<Integer>> ipv6AddressCount() {
+        return Codegen.optional(this.ipv6AddressCount);
+    }
+    /**
+     * The weight of an ECI instance attached to the Server Group.
+     * 
+     */
+    @Export(name="loadBalancerWeight", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> loadBalancerWeight;
+
+    /**
+     * @return The weight of an ECI instance attached to the Server Group.
+     * 
+     */
+    public Output<Optional<Integer>> loadBalancerWeight() {
+        return Codegen.optional(this.loadBalancerWeight);
     }
     /**
      * The amount of memory resources allocated to the container group.
@@ -534,6 +618,20 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * The program&#39;s buffering time before closing.
+     * 
+     */
+    @Export(name="terminationGracePeriodSeconds", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> terminationGracePeriodSeconds;
+
+    /**
+     * @return The program&#39;s buffering time before closing.
+     * 
+     */
+    public Output<Optional<Integer>> terminationGracePeriodSeconds() {
+        return Codegen.optional(this.terminationGracePeriodSeconds);
     }
     /**
      * The list of volumes. See `volumes` below for details.

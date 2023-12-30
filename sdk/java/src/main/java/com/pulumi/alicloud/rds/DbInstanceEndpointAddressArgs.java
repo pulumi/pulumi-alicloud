@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class DbInstanceEndpointAddressArgs extends com.pulumi.resources.Re
         }
 
         public DbInstanceEndpointAddressArgs build() {
-            $.connectionStringPrefix = Objects.requireNonNull($.connectionStringPrefix, "expected parameter 'connectionStringPrefix' to be non-null");
-            $.dbInstanceEndpointId = Objects.requireNonNull($.dbInstanceEndpointId, "expected parameter 'dbInstanceEndpointId' to be non-null");
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.connectionStringPrefix == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointAddressArgs", "connectionStringPrefix");
+            }
+            if ($.dbInstanceEndpointId == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointAddressArgs", "dbInstanceEndpointId");
+            }
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointAddressArgs", "dbInstanceId");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointAddressArgs", "port");
+            }
             return $;
         }
     }

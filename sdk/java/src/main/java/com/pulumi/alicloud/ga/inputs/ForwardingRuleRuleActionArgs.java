@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga.inputs;
 import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleActionForwardGroupConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -193,8 +194,12 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
         }
 
         public ForwardingRuleRuleActionArgs build() {
-            $.order = Objects.requireNonNull($.order, "expected parameter 'order' to be non-null");
-            $.ruleActionType = Objects.requireNonNull($.ruleActionType, "expected parameter 'ruleActionType' to be non-null");
+            if ($.order == null) {
+                throw new MissingRequiredPropertyException("ForwardingRuleRuleActionArgs", "order");
+            }
+            if ($.ruleActionType == null) {
+                throw new MissingRequiredPropertyException("ForwardingRuleRuleActionArgs", "ruleActionType");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetScalingConfigurationsConfigurationSpotPriceLimit {
 
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfigurationSpotPriceLimit", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder priceLimit(Double priceLimit) {
-            this.priceLimit = Objects.requireNonNull(priceLimit);
+            if (priceLimit == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfigurationSpotPriceLimit", "priceLimit");
+            }
+            this.priceLimit = priceLimit;
             return this;
         }
         public GetScalingConfigurationsConfigurationSpotPriceLimit build() {

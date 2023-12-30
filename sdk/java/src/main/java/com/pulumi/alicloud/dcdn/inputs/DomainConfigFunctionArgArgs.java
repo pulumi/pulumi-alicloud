@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class DomainConfigFunctionArgArgs extends com.pulumi.resources.Reso
         }
 
         public DomainConfigFunctionArgArgs build() {
-            $.argName = Objects.requireNonNull($.argName, "expected parameter 'argName' to be non-null");
-            $.argValue = Objects.requireNonNull($.argValue, "expected parameter 'argValue' to be non-null");
+            if ($.argName == null) {
+                throw new MissingRequiredPropertyException("DomainConfigFunctionArgArgs", "argName");
+            }
+            if ($.argValue == null) {
+                throw new MissingRequiredPropertyException("DomainConfigFunctionArgArgs", "argValue");
+            }
             return $;
         }
     }

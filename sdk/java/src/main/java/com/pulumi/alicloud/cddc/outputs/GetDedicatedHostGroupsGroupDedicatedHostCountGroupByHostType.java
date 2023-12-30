@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cddc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType 
 
         @CustomType.Setter
         public Builder placeHolder(String placeHolder) {
-            this.placeHolder = Objects.requireNonNull(placeHolder);
+            if (placeHolder == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType", "placeHolder");
+            }
+            this.placeHolder = placeHolder;
             return this;
         }
         public GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType build() {

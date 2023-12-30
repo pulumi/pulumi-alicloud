@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateNetworkInterface", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateNetworkInterface", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder primaryIp(String primaryIp) {
-            this.primaryIp = Objects.requireNonNull(primaryIp);
+            if (primaryIp == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateNetworkInterface", "primaryIp");
+            }
+            this.primaryIp = primaryIp;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateNetworkInterface", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplateNetworkInterface", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetEcsLaunchTemplatesTemplateNetworkInterface build() {

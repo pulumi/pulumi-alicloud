@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -241,77 +242,122 @@ public final class GetTemplatesTemplate {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder createdBy(String createdBy) {
-            this.createdBy = Objects.requireNonNull(createdBy);
+            if (createdBy == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "createdBy");
+            }
+            this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder createdDate(String createdDate) {
-            this.createdDate = Objects.requireNonNull(createdDate);
+            if (createdDate == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "createdDate");
+            }
+            this.createdDate = createdDate;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder hasTrigger(Boolean hasTrigger) {
-            this.hasTrigger = Objects.requireNonNull(hasTrigger);
+            if (hasTrigger == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "hasTrigger");
+            }
+            this.hasTrigger = hasTrigger;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder shareType(String shareType) {
-            this.shareType = Objects.requireNonNull(shareType);
+            if (shareType == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "shareType");
+            }
+            this.shareType = shareType;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder templateFormat(String templateFormat) {
-            this.templateFormat = Objects.requireNonNull(templateFormat);
+            if (templateFormat == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "templateFormat");
+            }
+            this.templateFormat = templateFormat;
             return this;
         }
         @CustomType.Setter
         public Builder templateId(String templateId) {
-            this.templateId = Objects.requireNonNull(templateId);
+            if (templateId == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "templateId");
+            }
+            this.templateId = templateId;
             return this;
         }
         @CustomType.Setter
         public Builder templateName(String templateName) {
-            this.templateName = Objects.requireNonNull(templateName);
+            if (templateName == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "templateName");
+            }
+            this.templateName = templateName;
             return this;
         }
         @CustomType.Setter
         public Builder templateType(String templateType) {
-            this.templateType = Objects.requireNonNull(templateType);
+            if (templateType == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "templateType");
+            }
+            this.templateType = templateType;
             return this;
         }
         @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
-            this.templateVersion = Objects.requireNonNull(templateVersion);
+            if (templateVersion == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "templateVersion");
+            }
+            this.templateVersion = templateVersion;
             return this;
         }
         @CustomType.Setter
         public Builder updatedBy(String updatedBy) {
-            this.updatedBy = Objects.requireNonNull(updatedBy);
+            if (updatedBy == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "updatedBy");
+            }
+            this.updatedBy = updatedBy;
             return this;
         }
         @CustomType.Setter
         public Builder updatedDate(String updatedDate) {
-            this.updatedDate = Objects.requireNonNull(updatedDate);
+            if (updatedDate == null) {
+              throw new MissingRequiredPropertyException("GetTemplatesTemplate", "updatedDate");
+            }
+            this.updatedDate = updatedDate;
             return this;
         }
         public GetTemplatesTemplate build() {

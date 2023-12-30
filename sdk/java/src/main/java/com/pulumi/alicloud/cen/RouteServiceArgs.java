@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -269,11 +270,21 @@ public final class RouteServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouteServiceArgs build() {
-            $.accessRegionId = Objects.requireNonNull($.accessRegionId, "expected parameter 'accessRegionId' to be non-null");
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.hostRegionId = Objects.requireNonNull($.hostRegionId, "expected parameter 'hostRegionId' to be non-null");
-            $.hostVpcId = Objects.requireNonNull($.hostVpcId, "expected parameter 'hostVpcId' to be non-null");
+            if ($.accessRegionId == null) {
+                throw new MissingRequiredPropertyException("RouteServiceArgs", "accessRegionId");
+            }
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("RouteServiceArgs", "cenId");
+            }
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("RouteServiceArgs", "host");
+            }
+            if ($.hostRegionId == null) {
+                throw new MissingRequiredPropertyException("RouteServiceArgs", "hostRegionId");
+            }
+            if ($.hostVpcId == null) {
+                throw new MissingRequiredPropertyException("RouteServiceArgs", "hostVpcId");
+            }
             return $;
         }
     }

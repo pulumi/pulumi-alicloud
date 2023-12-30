@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetGatewayVcoRoutesRoute {
 
         @CustomType.Setter
         public Builder asPath(String asPath) {
-            this.asPath = Objects.requireNonNull(asPath);
+            if (asPath == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVcoRoutesRoute", "asPath");
+            }
+            this.asPath = asPath;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVcoRoutesRoute", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVcoRoutesRoute", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nextHop(String nextHop) {
-            this.nextHop = Objects.requireNonNull(nextHop);
+            if (nextHop == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVcoRoutesRoute", "nextHop");
+            }
+            this.nextHop = nextHop;
             return this;
         }
         @CustomType.Setter
         public Builder routeDest(String routeDest) {
-            this.routeDest = Objects.requireNonNull(routeDest);
+            if (routeDest == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVcoRoutesRoute", "routeDest");
+            }
+            this.routeDest = routeDest;
             return this;
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVcoRoutesRoute", "source");
+            }
+            this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVcoRoutesRoute", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpnConnectionId(String vpnConnectionId) {
-            this.vpnConnectionId = Objects.requireNonNull(vpnConnectionId);
+            if (vpnConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVcoRoutesRoute", "vpnConnectionId");
+            }
+            this.vpnConnectionId = vpnConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVcoRoutesRoute", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public GetGatewayVcoRoutesRoute build() {

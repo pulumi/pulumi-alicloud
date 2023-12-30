@@ -6,6 +6,7 @@ package com.pulumi.alicloud.dns;
 import com.pulumi.alicloud.dns.inputs.AddressPoolAddressArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -234,11 +235,21 @@ public final class AddressPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AddressPoolArgs build() {
-            $.addressPoolName = Objects.requireNonNull($.addressPoolName, "expected parameter 'addressPoolName' to be non-null");
-            $.addresses = Objects.requireNonNull($.addresses, "expected parameter 'addresses' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.lbaStrategy = Objects.requireNonNull($.lbaStrategy, "expected parameter 'lbaStrategy' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.addressPoolName == null) {
+                throw new MissingRequiredPropertyException("AddressPoolArgs", "addressPoolName");
+            }
+            if ($.addresses == null) {
+                throw new MissingRequiredPropertyException("AddressPoolArgs", "addresses");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("AddressPoolArgs", "instanceId");
+            }
+            if ($.lbaStrategy == null) {
+                throw new MissingRequiredPropertyException("AddressPoolArgs", "lbaStrategy");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AddressPoolArgs", "type");
+            }
             return $;
         }
     }

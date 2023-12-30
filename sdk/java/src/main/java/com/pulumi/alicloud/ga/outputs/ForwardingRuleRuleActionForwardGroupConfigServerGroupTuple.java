@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
 
         @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
-            this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
+            if (endpointGroupId == null) {
+              throw new MissingRequiredPropertyException("ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple", "endpointGroupId");
+            }
+            this.endpointGroupId = endpointGroupId;
             return this;
         }
         public ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple build() {

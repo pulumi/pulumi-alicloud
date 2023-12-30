@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.edas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetApplicationsApplication {
 
         @CustomType.Setter
         public Builder appId(String appId) {
-            this.appId = Objects.requireNonNull(appId);
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "appId");
+            }
+            this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder appName(String appName) {
-            this.appName = Objects.requireNonNull(appName);
+            if (appName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "appName");
+            }
+            this.appName = appName;
             return this;
         }
         @CustomType.Setter
         public Builder applicationType(String applicationType) {
-            this.applicationType = Objects.requireNonNull(applicationType);
+            if (applicationType == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "applicationType");
+            }
+            this.applicationType = applicationType;
             return this;
         }
         @CustomType.Setter
         public Builder buildPackageId(Integer buildPackageId) {
-            this.buildPackageId = Objects.requireNonNull(buildPackageId);
+            if (buildPackageId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "buildPackageId");
+            }
+            this.buildPackageId = buildPackageId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterType(Integer clusterType) {
-            this.clusterType = Objects.requireNonNull(clusterType);
+            if (clusterType == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "clusterType");
+            }
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplication", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         public GetApplicationsApplication build() {

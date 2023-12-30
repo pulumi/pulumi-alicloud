@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class ClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterConfigArgs build() {
-            $.configKey = Objects.requireNonNull($.configKey, "expected parameter 'configKey' to be non-null");
-            $.configValue = Objects.requireNonNull($.configValue, "expected parameter 'configValue' to be non-null");
-            $.fileName = Objects.requireNonNull($.fileName, "expected parameter 'fileName' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.configKey == null) {
+                throw new MissingRequiredPropertyException("ClusterConfigArgs", "configKey");
+            }
+            if ($.configValue == null) {
+                throw new MissingRequiredPropertyException("ClusterConfigArgs", "configValue");
+            }
+            if ($.fileName == null) {
+                throw new MissingRequiredPropertyException("ClusterConfigArgs", "fileName");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ClusterConfigArgs", "serviceName");
+            }
             return $;
         }
     }

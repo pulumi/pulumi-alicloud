@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cdn.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -125,9 +126,15 @@ public final class DomainCacheConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         public DomainCacheConfigArgs build() {
-            $.cacheContent = Objects.requireNonNull($.cacheContent, "expected parameter 'cacheContent' to be non-null");
-            $.cacheType = Objects.requireNonNull($.cacheType, "expected parameter 'cacheType' to be non-null");
-            $.ttl = Objects.requireNonNull($.ttl, "expected parameter 'ttl' to be non-null");
+            if ($.cacheContent == null) {
+                throw new MissingRequiredPropertyException("DomainCacheConfigArgs", "cacheContent");
+            }
+            if ($.cacheType == null) {
+                throw new MissingRequiredPropertyException("DomainCacheConfigArgs", "cacheType");
+            }
+            if ($.ttl == null) {
+                throw new MissingRequiredPropertyException("DomainCacheConfigArgs", "ttl");
+            }
             return $;
         }
     }

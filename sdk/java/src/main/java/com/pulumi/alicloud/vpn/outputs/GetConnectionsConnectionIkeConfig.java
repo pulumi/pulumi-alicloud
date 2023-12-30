@@ -157,46 +157,55 @@ public final class GetConnectionsConnectionIkeConfig {
 
         @CustomType.Setter
         public Builder ikeAuthAlg(@Nullable String ikeAuthAlg) {
+
             this.ikeAuthAlg = ikeAuthAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ikeEncAlg(@Nullable String ikeEncAlg) {
+
             this.ikeEncAlg = ikeEncAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ikeLifetime(@Nullable Integer ikeLifetime) {
+
             this.ikeLifetime = ikeLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder ikeLocalId(@Nullable String ikeLocalId) {
+
             this.ikeLocalId = ikeLocalId;
             return this;
         }
         @CustomType.Setter
         public Builder ikeMode(@Nullable String ikeMode) {
+
             this.ikeMode = ikeMode;
             return this;
         }
         @CustomType.Setter
         public Builder ikePfs(@Nullable String ikePfs) {
+
             this.ikePfs = ikePfs;
             return this;
         }
         @CustomType.Setter
         public Builder ikeRemoteId(@Nullable String ikeRemoteId) {
+
             this.ikeRemoteId = ikeRemoteId;
             return this;
         }
         @CustomType.Setter
         public Builder ikeVersion(@Nullable String ikeVersion) {
+
             this.ikeVersion = ikeVersion;
             return this;
         }
         @CustomType.Setter
         public Builder psk(@Nullable String psk) {
+
             this.psk = psk;
             return this;
         }

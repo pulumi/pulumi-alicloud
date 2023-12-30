@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetAccessConfigurationsConfigurationPermissionPolicy {
 
         @CustomType.Setter
         public Builder addTime(String addTime) {
-            this.addTime = Objects.requireNonNull(addTime);
+            if (addTime == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfigurationPermissionPolicy", "addTime");
+            }
+            this.addTime = addTime;
             return this;
         }
         @CustomType.Setter
         public Builder permissionPolicyDocument(String permissionPolicyDocument) {
-            this.permissionPolicyDocument = Objects.requireNonNull(permissionPolicyDocument);
+            if (permissionPolicyDocument == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfigurationPermissionPolicy", "permissionPolicyDocument");
+            }
+            this.permissionPolicyDocument = permissionPolicyDocument;
             return this;
         }
         @CustomType.Setter
         public Builder permissionPolicyName(String permissionPolicyName) {
-            this.permissionPolicyName = Objects.requireNonNull(permissionPolicyName);
+            if (permissionPolicyName == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfigurationPermissionPolicy", "permissionPolicyName");
+            }
+            this.permissionPolicyName = permissionPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder permissionPolicyType(String permissionPolicyType) {
-            this.permissionPolicyType = Objects.requireNonNull(permissionPolicyType);
+            if (permissionPolicyType == null) {
+              throw new MissingRequiredPropertyException("GetAccessConfigurationsConfigurationPermissionPolicy", "permissionPolicyType");
+            }
+            this.permissionPolicyType = permissionPolicyType;
             return this;
         }
         public GetAccessConfigurationsConfigurationPermissionPolicy build() {

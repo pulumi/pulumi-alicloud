@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,8 +226,12 @@ public final class TransitRouterCidrArgs extends com.pulumi.resources.ResourceAr
         }
 
         public TransitRouterCidrArgs build() {
-            $.cidr = Objects.requireNonNull($.cidr, "expected parameter 'cidr' to be non-null");
-            $.transitRouterId = Objects.requireNonNull($.transitRouterId, "expected parameter 'transitRouterId' to be non-null");
+            if ($.cidr == null) {
+                throw new MissingRequiredPropertyException("TransitRouterCidrArgs", "cidr");
+            }
+            if ($.transitRouterId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterCidrArgs", "transitRouterId");
+            }
             return $;
         }
     }

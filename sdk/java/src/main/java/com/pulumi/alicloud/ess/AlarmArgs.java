@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -572,10 +573,18 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AlarmArgs build() {
-            $.alarmActions = Objects.requireNonNull($.alarmActions, "expected parameter 'alarmActions' to be non-null");
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.scalingGroupId = Objects.requireNonNull($.scalingGroupId, "expected parameter 'scalingGroupId' to be non-null");
-            $.threshold = Objects.requireNonNull($.threshold, "expected parameter 'threshold' to be non-null");
+            if ($.alarmActions == null) {
+                throw new MissingRequiredPropertyException("AlarmArgs", "alarmActions");
+            }
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("AlarmArgs", "metricName");
+            }
+            if ($.scalingGroupId == null) {
+                throw new MissingRequiredPropertyException("AlarmArgs", "scalingGroupId");
+            }
+            if ($.threshold == null) {
+                throw new MissingRequiredPropertyException("AlarmArgs", "threshold");
+            }
             return $;
         }
     }

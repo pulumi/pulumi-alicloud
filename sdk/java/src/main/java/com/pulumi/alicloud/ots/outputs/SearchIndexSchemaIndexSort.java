@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ots.outputs;
 
 import com.pulumi.alicloud.ots.outputs.SearchIndexSchemaIndexSortSorter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,10 @@ public final class SearchIndexSchemaIndexSort {
 
         @CustomType.Setter
         public Builder sorters(List<SearchIndexSchemaIndexSortSorter> sorters) {
-            this.sorters = Objects.requireNonNull(sorters);
+            if (sorters == null) {
+              throw new MissingRequiredPropertyException("SearchIndexSchemaIndexSort", "sorters");
+            }
+            this.sorters = sorters;
             return this;
         }
         public Builder sorters(SearchIndexSchemaIndexSortSorter... sorters) {

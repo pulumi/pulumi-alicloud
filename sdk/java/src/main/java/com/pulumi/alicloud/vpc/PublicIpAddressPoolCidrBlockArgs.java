@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class PublicIpAddressPoolCidrBlockArgs extends com.pulumi.resources
         }
 
         public PublicIpAddressPoolCidrBlockArgs build() {
-            $.publicIpAddressPoolId = Objects.requireNonNull($.publicIpAddressPoolId, "expected parameter 'publicIpAddressPoolId' to be non-null");
+            if ($.publicIpAddressPoolId == null) {
+                throw new MissingRequiredPropertyException("PublicIpAddressPoolCidrBlockArgs", "publicIpAddressPoolId");
+            }
             return $;
         }
     }

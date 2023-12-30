@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -105,8 +106,12 @@ public final class GetRegionRouteEntriesPlainArgs extends com.pulumi.resources.I
         }
 
         public GetRegionRouteEntriesPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.regionId = Objects.requireNonNull($.regionId, "expected parameter 'regionId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetRegionRouteEntriesPlainArgs", "instanceId");
+            }
+            if ($.regionId == null) {
+                throw new MissingRequiredPropertyException("GetRegionRouteEntriesPlainArgs", "regionId");
+            }
             return $;
         }
     }

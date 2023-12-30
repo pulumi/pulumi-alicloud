@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetTrafficMarkingPoliciesPolicy {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMarkingPoliciesPolicy", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMarkingPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder markingDscp(Integer markingDscp) {
-            this.markingDscp = Objects.requireNonNull(markingDscp);
+            if (markingDscp == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMarkingPoliciesPolicy", "markingDscp");
+            }
+            this.markingDscp = markingDscp;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMarkingPoliciesPolicy", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMarkingPoliciesPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMarkingPolicyId(String trafficMarkingPolicyId) {
-            this.trafficMarkingPolicyId = Objects.requireNonNull(trafficMarkingPolicyId);
+            if (trafficMarkingPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMarkingPoliciesPolicy", "trafficMarkingPolicyId");
+            }
+            this.trafficMarkingPolicyId = trafficMarkingPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMarkingPolicyName(String trafficMarkingPolicyName) {
-            this.trafficMarkingPolicyName = Objects.requireNonNull(trafficMarkingPolicyName);
+            if (trafficMarkingPolicyName == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMarkingPoliciesPolicy", "trafficMarkingPolicyName");
+            }
+            this.trafficMarkingPolicyName = trafficMarkingPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMarkingPoliciesPolicy", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         public GetTrafficMarkingPoliciesPolicy build() {

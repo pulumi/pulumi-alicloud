@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -368,13 +369,27 @@ public final class BaselineStrategyArgs extends com.pulumi.resources.ResourceArg
         }
 
         public BaselineStrategyArgs build() {
-            $.baselineStrategyName = Objects.requireNonNull($.baselineStrategyName, "expected parameter 'baselineStrategyName' to be non-null");
-            $.customType = Objects.requireNonNull($.customType, "expected parameter 'customType' to be non-null");
-            $.cycleDays = Objects.requireNonNull($.cycleDays, "expected parameter 'cycleDays' to be non-null");
-            $.endTime = Objects.requireNonNull($.endTime, "expected parameter 'endTime' to be non-null");
-            $.riskSubTypeName = Objects.requireNonNull($.riskSubTypeName, "expected parameter 'riskSubTypeName' to be non-null");
-            $.startTime = Objects.requireNonNull($.startTime, "expected parameter 'startTime' to be non-null");
-            $.targetType = Objects.requireNonNull($.targetType, "expected parameter 'targetType' to be non-null");
+            if ($.baselineStrategyName == null) {
+                throw new MissingRequiredPropertyException("BaselineStrategyArgs", "baselineStrategyName");
+            }
+            if ($.customType == null) {
+                throw new MissingRequiredPropertyException("BaselineStrategyArgs", "customType");
+            }
+            if ($.cycleDays == null) {
+                throw new MissingRequiredPropertyException("BaselineStrategyArgs", "cycleDays");
+            }
+            if ($.endTime == null) {
+                throw new MissingRequiredPropertyException("BaselineStrategyArgs", "endTime");
+            }
+            if ($.riskSubTypeName == null) {
+                throw new MissingRequiredPropertyException("BaselineStrategyArgs", "riskSubTypeName");
+            }
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("BaselineStrategyArgs", "startTime");
+            }
+            if ($.targetType == null) {
+                throw new MissingRequiredPropertyException("BaselineStrategyArgs", "targetType");
+            }
             return $;
         }
     }

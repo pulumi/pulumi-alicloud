@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.log.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -174,51 +175,69 @@ public final class EtlEtlSink {
 
         @CustomType.Setter
         public Builder accessKeyId(@Nullable String accessKeyId) {
+
             this.accessKeyId = accessKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder accessKeySecret(@Nullable String accessKeySecret) {
+
             this.accessKeySecret = accessKeySecret;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("EtlEtlSink", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder kmsEncryptedAccessKeyId(@Nullable String kmsEncryptedAccessKeyId) {
+
             this.kmsEncryptedAccessKeyId = kmsEncryptedAccessKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder kmsEncryptedAccessKeySecret(@Nullable String kmsEncryptedAccessKeySecret) {
+
             this.kmsEncryptedAccessKeySecret = kmsEncryptedAccessKeySecret;
             return this;
         }
         @CustomType.Setter
         public Builder logstore(String logstore) {
-            this.logstore = Objects.requireNonNull(logstore);
+            if (logstore == null) {
+              throw new MissingRequiredPropertyException("EtlEtlSink", "logstore");
+            }
+            this.logstore = logstore;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("EtlEtlSink", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("EtlEtlSink", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
+
             this.roleArn = roleArn;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

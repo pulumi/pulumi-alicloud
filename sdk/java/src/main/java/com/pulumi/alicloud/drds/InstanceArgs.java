@@ -5,6 +5,7 @@ package com.pulumi.alicloud.drds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -380,11 +381,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.instanceSeries = Objects.requireNonNull($.instanceSeries, "expected parameter 'instanceSeries' to be non-null");
-            $.specification = Objects.requireNonNull($.specification, "expected parameter 'specification' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "description");
+            }
+            if ($.instanceSeries == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceSeries");
+            }
+            if ($.specification == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "specification");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vswitchId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "zoneId");
+            }
             return $;
         }
     }

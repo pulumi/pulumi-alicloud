@@ -12,6 +12,7 @@ import com.pulumi.alicloud.cms.inputs.EventRuleSlsParameterArgs;
 import com.pulumi.alicloud.cms.inputs.EventRuleWebhookParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -552,8 +553,12 @@ public final class EventRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EventRuleArgs build() {
-            $.eventPattern = Objects.requireNonNull($.eventPattern, "expected parameter 'eventPattern' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
+            if ($.eventPattern == null) {
+                throw new MissingRequiredPropertyException("EventRuleArgs", "eventPattern");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("EventRuleArgs", "ruleName");
+            }
             return $;
         }
     }

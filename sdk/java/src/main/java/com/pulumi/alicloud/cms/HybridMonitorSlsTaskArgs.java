@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cms.inputs.HybridMonitorSlsTaskAttachLabelArgs;
 import com.pulumi.alicloud.cms.inputs.HybridMonitorSlsTaskSlsProcessConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -312,10 +313,18 @@ public final class HybridMonitorSlsTaskArgs extends com.pulumi.resources.Resourc
         }
 
         public HybridMonitorSlsTaskArgs build() {
-            $.collectTargetType = Objects.requireNonNull($.collectTargetType, "expected parameter 'collectTargetType' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.slsProcessConfig = Objects.requireNonNull($.slsProcessConfig, "expected parameter 'slsProcessConfig' to be non-null");
-            $.taskName = Objects.requireNonNull($.taskName, "expected parameter 'taskName' to be non-null");
+            if ($.collectTargetType == null) {
+                throw new MissingRequiredPropertyException("HybridMonitorSlsTaskArgs", "collectTargetType");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("HybridMonitorSlsTaskArgs", "namespace");
+            }
+            if ($.slsProcessConfig == null) {
+                throw new MissingRequiredPropertyException("HybridMonitorSlsTaskArgs", "slsProcessConfig");
+            }
+            if ($.taskName == null) {
+                throw new MissingRequiredPropertyException("HybridMonitorSlsTaskArgs", "taskName");
+            }
             return $;
         }
     }

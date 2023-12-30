@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eds;
 import com.pulumi.alicloud.eds.inputs.CustomPropertyPropertyValueArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -125,7 +126,9 @@ public final class CustomPropertyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public CustomPropertyArgs build() {
-            $.propertyKey = Objects.requireNonNull($.propertyKey, "expected parameter 'propertyKey' to be non-null");
+            if ($.propertyKey == null) {
+                throw new MissingRequiredPropertyException("CustomPropertyArgs", "propertyKey");
+            }
             return $;
         }
     }

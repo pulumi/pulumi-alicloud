@@ -6,6 +6,7 @@ package com.pulumi.alicloud.pvtz;
 import com.pulumi.alicloud.pvtz.inputs.RuleAttachmentVpcArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class RuleAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public RuleAttachmentArgs build() {
-            $.ruleId = Objects.requireNonNull($.ruleId, "expected parameter 'ruleId' to be non-null");
-            $.vpcs = Objects.requireNonNull($.vpcs, "expected parameter 'vpcs' to be non-null");
+            if ($.ruleId == null) {
+                throw new MissingRequiredPropertyException("RuleAttachmentArgs", "ruleId");
+            }
+            if ($.vpcs == null) {
+                throw new MissingRequiredPropertyException("RuleAttachmentArgs", "vpcs");
+            }
             return $;
         }
     }

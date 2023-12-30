@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsInvocationsInvocationInvokeInstance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -245,52 +246,82 @@ public final class GetEcsInvocationsInvocation {
 
         @CustomType.Setter
         public Builder commandContent(String commandContent) {
-            this.commandContent = Objects.requireNonNull(commandContent);
+            if (commandContent == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "commandContent");
+            }
+            this.commandContent = commandContent;
             return this;
         }
         @CustomType.Setter
         public Builder commandId(String commandId) {
-            this.commandId = Objects.requireNonNull(commandId);
+            if (commandId == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "commandId");
+            }
+            this.commandId = commandId;
             return this;
         }
         @CustomType.Setter
         public Builder commandName(String commandName) {
-            this.commandName = Objects.requireNonNull(commandName);
+            if (commandName == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "commandName");
+            }
+            this.commandName = commandName;
             return this;
         }
         @CustomType.Setter
         public Builder commandType(String commandType) {
-            this.commandType = Objects.requireNonNull(commandType);
+            if (commandType == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "commandType");
+            }
+            this.commandType = commandType;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder frequency(String frequency) {
-            this.frequency = Objects.requireNonNull(frequency);
+            if (frequency == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "frequency");
+            }
+            this.frequency = frequency;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder invocationId(String invocationId) {
-            this.invocationId = Objects.requireNonNull(invocationId);
+            if (invocationId == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "invocationId");
+            }
+            this.invocationId = invocationId;
             return this;
         }
         @CustomType.Setter
         public Builder invocationStatus(String invocationStatus) {
-            this.invocationStatus = Objects.requireNonNull(invocationStatus);
+            if (invocationStatus == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "invocationStatus");
+            }
+            this.invocationStatus = invocationStatus;
             return this;
         }
         @CustomType.Setter
         public Builder invokeInstances(List<GetEcsInvocationsInvocationInvokeInstance> invokeInstances) {
-            this.invokeInstances = Objects.requireNonNull(invokeInstances);
+            if (invokeInstances == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "invokeInstances");
+            }
+            this.invokeInstances = invokeInstances;
             return this;
         }
         public Builder invokeInstances(GetEcsInvocationsInvocationInvokeInstance... invokeInstances) {
@@ -298,27 +329,42 @@ public final class GetEcsInvocationsInvocation {
         }
         @CustomType.Setter
         public Builder invokeStatus(String invokeStatus) {
-            this.invokeStatus = Objects.requireNonNull(invokeStatus);
+            if (invokeStatus == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "invokeStatus");
+            }
+            this.invokeStatus = invokeStatus;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(String parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder repeatMode(String repeatMode) {
-            this.repeatMode = Objects.requireNonNull(repeatMode);
+            if (repeatMode == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "repeatMode");
+            }
+            this.repeatMode = repeatMode;
             return this;
         }
         @CustomType.Setter
         public Builder timed(Boolean timed) {
-            this.timed = Objects.requireNonNull(timed);
+            if (timed == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "timed");
+            }
+            this.timed = timed;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocation", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetEcsInvocationsInvocation build() {

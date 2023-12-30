@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class FileUploadLimitArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public FileUploadLimitArgs build() {
-            $.limit = Objects.requireNonNull($.limit, "expected parameter 'limit' to be non-null");
+            if ($.limit == null) {
+                throw new MissingRequiredPropertyException("FileUploadLimitArgs", "limit");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.alicloud.cs.outputs.GetKubernetesVersionMetadataRuntime;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +59,10 @@ public final class GetKubernetesVersionMetadata {
 
         @CustomType.Setter
         public Builder runtimes(List<GetKubernetesVersionMetadataRuntime> runtimes) {
-            this.runtimes = Objects.requireNonNull(runtimes);
+            if (runtimes == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesVersionMetadata", "runtimes");
+            }
+            this.runtimes = runtimes;
             return this;
         }
         public Builder runtimes(GetKubernetesVersionMetadataRuntime... runtimes) {
@@ -66,7 +70,10 @@ public final class GetKubernetesVersionMetadata {
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesVersionMetadata", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetKubernetesVersionMetadata build() {

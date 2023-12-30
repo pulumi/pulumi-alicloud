@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetServiceMeshesMeshMeshConfigPrometheus {
 
         @CustomType.Setter
         public Builder externalUrl(String externalUrl) {
-            this.externalUrl = Objects.requireNonNull(externalUrl);
+            if (externalUrl == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigPrometheus", "externalUrl");
+            }
+            this.externalUrl = externalUrl;
             return this;
         }
         @CustomType.Setter
         public Builder useExternal(Boolean useExternal) {
-            this.useExternal = Objects.requireNonNull(useExternal);
+            if (useExternal == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigPrometheus", "useExternal");
+            }
+            this.useExternal = useExternal;
             return this;
         }
         public GetServiceMeshesMeshMeshConfigPrometheus build() {

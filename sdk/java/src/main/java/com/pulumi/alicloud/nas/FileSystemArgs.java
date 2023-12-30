@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -493,8 +494,12 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FileSystemArgs build() {
-            $.protocolType = Objects.requireNonNull($.protocolType, "expected parameter 'protocolType' to be non-null");
-            $.storageType = Objects.requireNonNull($.storageType, "expected parameter 'storageType' to be non-null");
+            if ($.protocolType == null) {
+                throw new MissingRequiredPropertyException("FileSystemArgs", "protocolType");
+            }
+            if ($.storageType == null) {
+                throw new MissingRequiredPropertyException("FileSystemArgs", "storageType");
+            }
             return $;
         }
     }

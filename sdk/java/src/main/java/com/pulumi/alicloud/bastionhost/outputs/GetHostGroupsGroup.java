@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.bastionhost.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetHostGroupsGroup {
 
         @CustomType.Setter
         public Builder comment(String comment) {
-            this.comment = Objects.requireNonNull(comment);
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetHostGroupsGroup", "comment");
+            }
+            this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder hostGroupId(String hostGroupId) {
-            this.hostGroupId = Objects.requireNonNull(hostGroupId);
+            if (hostGroupId == null) {
+              throw new MissingRequiredPropertyException("GetHostGroupsGroup", "hostGroupId");
+            }
+            this.hostGroupId = hostGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder hostGroupName(String hostGroupName) {
-            this.hostGroupName = Objects.requireNonNull(hostGroupName);
+            if (hostGroupName == null) {
+              throw new MissingRequiredPropertyException("GetHostGroupsGroup", "hostGroupName");
+            }
+            this.hostGroupName = hostGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHostGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetHostGroupsGroup", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         public GetHostGroupsGroup build() {

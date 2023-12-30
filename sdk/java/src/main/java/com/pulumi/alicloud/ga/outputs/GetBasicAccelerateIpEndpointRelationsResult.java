@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetBasicAccelerateIpEndpointRelationsRelation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,27 +129,38 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
 
         @CustomType.Setter
         public Builder accelerateIpId(@Nullable String accelerateIpId) {
+
             this.accelerateIpId = accelerateIpId;
             return this;
         }
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsResult", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointId(@Nullable String endpointId) {
+
             this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -156,12 +168,16 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder relations(List<GetBasicAccelerateIpEndpointRelationsRelation> relations) {
-            this.relations = Objects.requireNonNull(relations);
+            if (relations == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpEndpointRelationsResult", "relations");
+            }
+            this.relations = relations;
             return this;
         }
         public Builder relations(GetBasicAccelerateIpEndpointRelationsRelation... relations) {
@@ -169,6 +185,7 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

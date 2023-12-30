@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetDelegatedAdministratorsAdministrator {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetDelegatedAdministratorsAdministrator", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder delegationEnabledTime(String delegationEnabledTime) {
-            this.delegationEnabledTime = Objects.requireNonNull(delegationEnabledTime);
+            if (delegationEnabledTime == null) {
+              throw new MissingRequiredPropertyException("GetDelegatedAdministratorsAdministrator", "delegationEnabledTime");
+            }
+            this.delegationEnabledTime = delegationEnabledTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDelegatedAdministratorsAdministrator", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder servicePrincipal(String servicePrincipal) {
-            this.servicePrincipal = Objects.requireNonNull(servicePrincipal);
+            if (servicePrincipal == null) {
+              throw new MissingRequiredPropertyException("GetDelegatedAdministratorsAdministrator", "servicePrincipal");
+            }
+            this.servicePrincipal = servicePrincipal;
             return this;
         }
         public GetDelegatedAdministratorsAdministrator build() {

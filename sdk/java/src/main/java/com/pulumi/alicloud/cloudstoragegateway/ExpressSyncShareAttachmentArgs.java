@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ExpressSyncShareAttachmentArgs extends com.pulumi.resources.R
         }
 
         public ExpressSyncShareAttachmentArgs build() {
-            $.expressSyncId = Objects.requireNonNull($.expressSyncId, "expected parameter 'expressSyncId' to be non-null");
-            $.gatewayId = Objects.requireNonNull($.gatewayId, "expected parameter 'gatewayId' to be non-null");
-            $.shareName = Objects.requireNonNull($.shareName, "expected parameter 'shareName' to be non-null");
+            if ($.expressSyncId == null) {
+                throw new MissingRequiredPropertyException("ExpressSyncShareAttachmentArgs", "expressSyncId");
+            }
+            if ($.gatewayId == null) {
+                throw new MissingRequiredPropertyException("ExpressSyncShareAttachmentArgs", "gatewayId");
+            }
+            if ($.shareName == null) {
+                throw new MissingRequiredPropertyException("ExpressSyncShareAttachmentArgs", "shareName");
+            }
             return $;
         }
     }

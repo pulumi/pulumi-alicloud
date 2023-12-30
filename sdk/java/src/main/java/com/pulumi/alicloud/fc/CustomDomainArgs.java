@@ -7,6 +7,7 @@ import com.pulumi.alicloud.fc.inputs.CustomDomainCertConfigArgs;
 import com.pulumi.alicloud.fc.inputs.CustomDomainRouteConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -200,8 +201,12 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CustomDomainArgs build() {
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("CustomDomainArgs", "domainName");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("CustomDomainArgs", "protocol");
+            }
             return $;
         }
     }

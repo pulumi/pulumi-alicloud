@@ -5,6 +5,7 @@ package com.pulumi.alicloud.databasefilesystem.outputs;
 
 import com.pulumi.alicloud.databasefilesystem.outputs.GetAutoSnapShotPoliciesAutoSnapShotPolicy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -113,7 +114,10 @@ public final class GetAutoSnapShotPoliciesResult {
 
         @CustomType.Setter
         public Builder autoSnapShotPolicies(List<GetAutoSnapShotPoliciesAutoSnapShotPolicy> autoSnapShotPolicies) {
-            this.autoSnapShotPolicies = Objects.requireNonNull(autoSnapShotPolicies);
+            if (autoSnapShotPolicies == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesResult", "autoSnapShotPolicies");
+            }
+            this.autoSnapShotPolicies = autoSnapShotPolicies;
             return this;
         }
         public Builder autoSnapShotPolicies(GetAutoSnapShotPoliciesAutoSnapShotPolicy... autoSnapShotPolicies) {
@@ -121,12 +125,18 @@ public final class GetAutoSnapShotPoliciesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -134,12 +144,16 @@ public final class GetAutoSnapShotPoliciesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapShotPoliciesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -147,16 +161,19 @@ public final class GetAutoSnapShotPoliciesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }

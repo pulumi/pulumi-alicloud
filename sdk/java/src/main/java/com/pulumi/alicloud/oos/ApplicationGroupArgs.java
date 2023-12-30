@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oos;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -265,9 +266,15 @@ public final class ApplicationGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ApplicationGroupArgs build() {
-            $.applicationGroupName = Objects.requireNonNull($.applicationGroupName, "expected parameter 'applicationGroupName' to be non-null");
-            $.applicationName = Objects.requireNonNull($.applicationName, "expected parameter 'applicationName' to be non-null");
-            $.deployRegionId = Objects.requireNonNull($.deployRegionId, "expected parameter 'deployRegionId' to be non-null");
+            if ($.applicationGroupName == null) {
+                throw new MissingRequiredPropertyException("ApplicationGroupArgs", "applicationGroupName");
+            }
+            if ($.applicationName == null) {
+                throw new MissingRequiredPropertyException("ApplicationGroupArgs", "applicationName");
+            }
+            if ($.deployRegionId == null) {
+                throw new MissingRequiredPropertyException("ApplicationGroupArgs", "deployRegionId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -273,8 +274,12 @@ public final class TopicSubscriptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         public TopicSubscriptionArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
-            $.topicName = Objects.requireNonNull($.topicName, "expected parameter 'topicName' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("TopicSubscriptionArgs", "endpoint");
+            }
+            if ($.topicName == null) {
+                throw new MissingRequiredPropertyException("TopicSubscriptionArgs", "topicName");
+            }
             return $;
         }
     }

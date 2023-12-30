@@ -59,11 +59,13 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder excludeNamespaces(@Nullable String excludeNamespaces) {
+
             this.excludeNamespaces = excludeNamespaces;
             return this;
         }

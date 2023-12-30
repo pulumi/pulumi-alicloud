@@ -6,6 +6,7 @@ package com.pulumi.alicloud.sae;
 import com.pulumi.alicloud.sae.inputs.LoadBalancerIntranetIntranetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -162,8 +163,12 @@ public final class LoadBalancerIntranetArgs extends com.pulumi.resources.Resourc
         }
 
         public LoadBalancerIntranetArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.intranets = Objects.requireNonNull($.intranets, "expected parameter 'intranets' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerIntranetArgs", "appId");
+            }
+            if ($.intranets == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerIntranetArgs", "intranets");
+            }
             return $;
         }
     }

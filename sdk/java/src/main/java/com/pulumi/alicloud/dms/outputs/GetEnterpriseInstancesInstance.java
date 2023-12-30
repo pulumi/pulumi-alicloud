@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -349,122 +350,194 @@ public final class GetEnterpriseInstancesInstance {
 
         @CustomType.Setter
         public Builder dataLinkName(String dataLinkName) {
-            this.dataLinkName = Objects.requireNonNull(dataLinkName);
+            if (dataLinkName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "dataLinkName");
+            }
+            this.dataLinkName = dataLinkName;
             return this;
         }
         @CustomType.Setter
         public Builder databasePassword(String databasePassword) {
-            this.databasePassword = Objects.requireNonNull(databasePassword);
+            if (databasePassword == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "databasePassword");
+            }
+            this.databasePassword = databasePassword;
             return this;
         }
         @CustomType.Setter
         public Builder databaseUser(String databaseUser) {
-            this.databaseUser = Objects.requireNonNull(databaseUser);
+            if (databaseUser == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "databaseUser");
+            }
+            this.databaseUser = databaseUser;
             return this;
         }
         @CustomType.Setter
         public Builder dbaId(String dbaId) {
-            this.dbaId = Objects.requireNonNull(dbaId);
+            if (dbaId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "dbaId");
+            }
+            this.dbaId = dbaId;
             return this;
         }
         @CustomType.Setter
         public Builder dbaNickName(String dbaNickName) {
-            this.dbaNickName = Objects.requireNonNull(dbaNickName);
+            if (dbaNickName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "dbaNickName");
+            }
+            this.dbaNickName = dbaNickName;
             return this;
         }
         @CustomType.Setter
         public Builder ddlOnline(Integer ddlOnline) {
-            this.ddlOnline = Objects.requireNonNull(ddlOnline);
+            if (ddlOnline == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "ddlOnline");
+            }
+            this.ddlOnline = ddlOnline;
             return this;
         }
         @CustomType.Setter
         public Builder ecsInstanceId(String ecsInstanceId) {
-            this.ecsInstanceId = Objects.requireNonNull(ecsInstanceId);
+            if (ecsInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "ecsInstanceId");
+            }
+            this.ecsInstanceId = ecsInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder ecsRegion(String ecsRegion) {
-            this.ecsRegion = Objects.requireNonNull(ecsRegion);
+            if (ecsRegion == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "ecsRegion");
+            }
+            this.ecsRegion = ecsRegion;
             return this;
         }
         @CustomType.Setter
         public Builder envType(String envType) {
-            this.envType = Objects.requireNonNull(envType);
+            if (envType == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "envType");
+            }
+            this.envType = envType;
             return this;
         }
         @CustomType.Setter
         public Builder exportTimeout(Integer exportTimeout) {
-            this.exportTimeout = Objects.requireNonNull(exportTimeout);
+            if (exportTimeout == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "exportTimeout");
+            }
+            this.exportTimeout = exportTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceAlias(String instanceAlias) {
-            this.instanceAlias = Objects.requireNonNull(instanceAlias);
+            if (instanceAlias == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "instanceAlias");
+            }
+            this.instanceAlias = instanceAlias;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder instanceSource(String instanceSource) {
-            this.instanceSource = Objects.requireNonNull(instanceSource);
+            if (instanceSource == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "instanceSource");
+            }
+            this.instanceSource = instanceSource;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder queryTimeout(Integer queryTimeout) {
-            this.queryTimeout = Objects.requireNonNull(queryTimeout);
+            if (queryTimeout == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "queryTimeout");
+            }
+            this.queryTimeout = queryTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder safeRuleId(String safeRuleId) {
-            this.safeRuleId = Objects.requireNonNull(safeRuleId);
+            if (safeRuleId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "safeRuleId");
+            }
+            this.safeRuleId = safeRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder sid(String sid) {
-            this.sid = Objects.requireNonNull(sid);
+            if (sid == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "sid");
+            }
+            this.sid = sid;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder useDsql(Integer useDsql) {
-            this.useDsql = Objects.requireNonNull(useDsql);
+            if (useDsql == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "useDsql");
+            }
+            this.useDsql = useDsql;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesInstance", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetEnterpriseInstancesInstance build() {

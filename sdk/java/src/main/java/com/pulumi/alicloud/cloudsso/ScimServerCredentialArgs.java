@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class ScimServerCredentialArgs extends com.pulumi.resources.Resourc
         }
 
         public ScimServerCredentialArgs build() {
-            $.directoryId = Objects.requireNonNull($.directoryId, "expected parameter 'directoryId' to be non-null");
+            if ($.directoryId == null) {
+                throw new MissingRequiredPropertyException("ScimServerCredentialArgs", "directoryId");
+            }
             return $;
         }
     }

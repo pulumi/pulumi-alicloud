@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.alicloud.dms.outputs.GetEnterpriseInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -181,17 +182,24 @@ public final class GetEnterpriseInstancesResult {
 
         @CustomType.Setter
         public Builder envType(@Nullable String envType) {
+
             this.envType = envType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -199,22 +207,28 @@ public final class GetEnterpriseInstancesResult {
         }
         @CustomType.Setter
         public Builder instanceAliasRegex(@Nullable String instanceAliasRegex) {
+
             this.instanceAliasRegex = instanceAliasRegex;
             return this;
         }
         @CustomType.Setter
         public Builder instanceSource(@Nullable String instanceSource) {
+
             this.instanceSource = instanceSource;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder instances(List<GetEnterpriseInstancesInstance> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesResult", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(GetEnterpriseInstancesInstance... instances) {
@@ -222,12 +236,16 @@ public final class GetEnterpriseInstancesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseInstancesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -235,26 +253,31 @@ public final class GetEnterpriseInstancesResult {
         }
         @CustomType.Setter
         public Builder netType(@Nullable String netType) {
+
             this.netType = netType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder searchKey(@Nullable String searchKey) {
+
             this.searchKey = searchKey;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tid(@Nullable Integer tid) {
+
             this.tid = tid;
             return this;
         }

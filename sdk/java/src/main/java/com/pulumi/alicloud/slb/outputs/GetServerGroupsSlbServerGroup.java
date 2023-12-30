@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.alicloud.slb.outputs.GetServerGroupsSlbServerGroupServer;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,17 +73,26 @@ public final class GetServerGroupsSlbServerGroup {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsSlbServerGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsSlbServerGroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder servers(List<GetServerGroupsSlbServerGroupServer> servers) {
-            this.servers = Objects.requireNonNull(servers);
+            if (servers == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsSlbServerGroup", "servers");
+            }
+            this.servers = servers;
             return this;
         }
         public Builder servers(GetServerGroupsSlbServerGroupServer... servers) {

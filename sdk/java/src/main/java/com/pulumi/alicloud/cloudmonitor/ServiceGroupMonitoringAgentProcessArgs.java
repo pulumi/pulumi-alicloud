@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cloudmonitor.inputs.ServiceGroupMonitoringAgentProces
 import com.pulumi.alicloud.cloudmonitor.inputs.ServiceGroupMonitoringAgentProcessMatchExpressArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -247,9 +248,15 @@ public final class ServiceGroupMonitoringAgentProcessArgs extends com.pulumi.res
         }
 
         public ServiceGroupMonitoringAgentProcessArgs build() {
-            $.alertConfigs = Objects.requireNonNull($.alertConfigs, "expected parameter 'alertConfigs' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.processName = Objects.requireNonNull($.processName, "expected parameter 'processName' to be non-null");
+            if ($.alertConfigs == null) {
+                throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessArgs", "alertConfigs");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessArgs", "groupId");
+            }
+            if ($.processName == null) {
+                throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessArgs", "processName");
+            }
             return $;
         }
     }

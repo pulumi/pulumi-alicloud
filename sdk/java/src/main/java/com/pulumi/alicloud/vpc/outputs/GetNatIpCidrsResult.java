@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetNatIpCidrsCidr;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,7 +101,10 @@ public final class GetNatIpCidrsResult {
 
         @CustomType.Setter
         public Builder cidrs(List<GetNatIpCidrsCidr> cidrs) {
-            this.cidrs = Objects.requireNonNull(cidrs);
+            if (cidrs == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsResult", "cidrs");
+            }
+            this.cidrs = cidrs;
             return this;
         }
         public Builder cidrs(GetNatIpCidrsCidr... cidrs) {
@@ -108,12 +112,18 @@ public final class GetNatIpCidrsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -121,12 +131,16 @@ public final class GetNatIpCidrsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -134,11 +148,15 @@ public final class GetNatIpCidrsResult {
         }
         @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
-            this.natGatewayId = Objects.requireNonNull(natGatewayId);
+            if (natGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetNatIpCidrsResult", "natGatewayId");
+            }
+            this.natGatewayId = natGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder natIpCidrNames(@Nullable List<String> natIpCidrNames) {
+
             this.natIpCidrNames = natIpCidrNames;
             return this;
         }
@@ -147,6 +165,7 @@ public final class GetNatIpCidrsResult {
         }
         @CustomType.Setter
         public Builder natIpCidrs(@Nullable List<String> natIpCidrs) {
+
             this.natIpCidrs = natIpCidrs;
             return this;
         }
@@ -155,11 +174,13 @@ public final class GetNatIpCidrsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

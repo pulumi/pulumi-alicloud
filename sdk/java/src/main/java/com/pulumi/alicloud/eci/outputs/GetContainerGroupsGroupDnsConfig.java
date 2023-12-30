@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.alicloud.eci.outputs.GetContainerGroupsGroupDnsConfigOption;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,7 +73,10 @@ public final class GetContainerGroupsGroupDnsConfig {
 
         @CustomType.Setter
         public Builder nameServers(List<String> nameServers) {
-            this.nameServers = Objects.requireNonNull(nameServers);
+            if (nameServers == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupDnsConfig", "nameServers");
+            }
+            this.nameServers = nameServers;
             return this;
         }
         public Builder nameServers(String... nameServers) {
@@ -80,7 +84,10 @@ public final class GetContainerGroupsGroupDnsConfig {
         }
         @CustomType.Setter
         public Builder options(List<GetContainerGroupsGroupDnsConfigOption> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupDnsConfig", "options");
+            }
+            this.options = options;
             return this;
         }
         public Builder options(GetContainerGroupsGroupDnsConfigOption... options) {
@@ -88,7 +95,10 @@ public final class GetContainerGroupsGroupDnsConfig {
         }
         @CustomType.Setter
         public Builder searches(List<String> searches) {
-            this.searches = Objects.requireNonNull(searches);
+            if (searches == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupDnsConfig", "searches");
+            }
+            this.searches = searches;
             return this;
         }
         public Builder searches(String... searches) {

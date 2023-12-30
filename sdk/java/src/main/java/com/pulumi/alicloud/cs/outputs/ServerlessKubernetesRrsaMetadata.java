@@ -87,21 +87,25 @@ public final class ServerlessKubernetesRrsaMetadata {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder ramOidcProviderArn(@Nullable String ramOidcProviderArn) {
+
             this.ramOidcProviderArn = ramOidcProviderArn;
             return this;
         }
         @CustomType.Setter
         public Builder ramOidcProviderName(@Nullable String ramOidcProviderName) {
+
             this.ramOidcProviderName = ramOidcProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder rrsaOidcIssuerUrl(@Nullable String rrsaOidcIssuerUrl) {
+
             this.rrsaOidcIssuerUrl = rrsaOidcIssuerUrl;
             return this;
         }

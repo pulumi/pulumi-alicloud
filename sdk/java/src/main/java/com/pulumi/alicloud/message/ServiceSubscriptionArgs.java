@@ -5,6 +5,7 @@ package com.pulumi.alicloud.message;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -310,10 +311,18 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
         }
 
         public ServiceSubscriptionArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
-            $.pushType = Objects.requireNonNull($.pushType, "expected parameter 'pushType' to be non-null");
-            $.subscriptionName = Objects.requireNonNull($.subscriptionName, "expected parameter 'subscriptionName' to be non-null");
-            $.topicName = Objects.requireNonNull($.topicName, "expected parameter 'topicName' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("ServiceSubscriptionArgs", "endpoint");
+            }
+            if ($.pushType == null) {
+                throw new MissingRequiredPropertyException("ServiceSubscriptionArgs", "pushType");
+            }
+            if ($.subscriptionName == null) {
+                throw new MissingRequiredPropertyException("ServiceSubscriptionArgs", "subscriptionName");
+            }
+            if ($.topicName == null) {
+                throw new MissingRequiredPropertyException("ServiceSubscriptionArgs", "topicName");
+            }
             return $;
         }
     }

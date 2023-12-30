@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -169,52 +170,82 @@ public final class GetDesktopTypesType {
 
         @CustomType.Setter
         public Builder cpuCount(String cpuCount) {
-            this.cpuCount = Objects.requireNonNull(cpuCount);
+            if (cpuCount == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "cpuCount");
+            }
+            this.cpuCount = cpuCount;
             return this;
         }
         @CustomType.Setter
         public Builder dataDiskSize(String dataDiskSize) {
-            this.dataDiskSize = Objects.requireNonNull(dataDiskSize);
+            if (dataDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "dataDiskSize");
+            }
+            this.dataDiskSize = dataDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder desktopTypeId(String desktopTypeId) {
-            this.desktopTypeId = Objects.requireNonNull(desktopTypeId);
+            if (desktopTypeId == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "desktopTypeId");
+            }
+            this.desktopTypeId = desktopTypeId;
             return this;
         }
         @CustomType.Setter
         public Builder gpuCount(Double gpuCount) {
-            this.gpuCount = Objects.requireNonNull(gpuCount);
+            if (gpuCount == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "gpuCount");
+            }
+            this.gpuCount = gpuCount;
             return this;
         }
         @CustomType.Setter
         public Builder gpuSpec(String gpuSpec) {
-            this.gpuSpec = Objects.requireNonNull(gpuSpec);
+            if (gpuSpec == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "gpuSpec");
+            }
+            this.gpuSpec = gpuSpec;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTypeFamily(String instanceTypeFamily) {
-            this.instanceTypeFamily = Objects.requireNonNull(instanceTypeFamily);
+            if (instanceTypeFamily == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "instanceTypeFamily");
+            }
+            this.instanceTypeFamily = instanceTypeFamily;
             return this;
         }
         @CustomType.Setter
         public Builder memorySize(String memorySize) {
-            this.memorySize = Objects.requireNonNull(memorySize);
+            if (memorySize == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "memorySize");
+            }
+            this.memorySize = memorySize;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder systemDiskSize(String systemDiskSize) {
-            this.systemDiskSize = Objects.requireNonNull(systemDiskSize);
+            if (systemDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesType", "systemDiskSize");
+            }
+            this.systemDiskSize = systemDiskSize;
             return this;
         }
         public GetDesktopTypesType build() {

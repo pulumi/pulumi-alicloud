@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetLoadBalancersBalancerLoadBalancerBillingConfig {
 
         @CustomType.Setter
         public Builder payType(String payType) {
-            this.payType = Objects.requireNonNull(payType);
+            if (payType == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerLoadBalancerBillingConfig", "payType");
+            }
+            this.payType = payType;
             return this;
         }
         public GetLoadBalancersBalancerLoadBalancerBillingConfig build() {

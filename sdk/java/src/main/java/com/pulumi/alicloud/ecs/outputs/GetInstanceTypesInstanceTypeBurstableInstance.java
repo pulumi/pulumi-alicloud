@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetInstanceTypesInstanceTypeBurstableInstance {
 
         @CustomType.Setter
         public Builder baselineCredit(String baselineCredit) {
-            this.baselineCredit = Objects.requireNonNull(baselineCredit);
+            if (baselineCredit == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceTypeBurstableInstance", "baselineCredit");
+            }
+            this.baselineCredit = baselineCredit;
             return this;
         }
         @CustomType.Setter
         public Builder initialCredit(String initialCredit) {
-            this.initialCredit = Objects.requireNonNull(initialCredit);
+            if (initialCredit == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceTypeBurstableInstance", "initialCredit");
+            }
+            this.initialCredit = initialCredit;
             return this;
         }
         public GetInstanceTypesInstanceTypeBurstableInstance build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -412,27 +413,42 @@ public final class GetScalingGroupsGroup {
 
         @CustomType.Setter
         public Builder activeCapacity(Integer activeCapacity) {
-            this.activeCapacity = Objects.requireNonNull(activeCapacity);
+            if (activeCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "activeCapacity");
+            }
+            this.activeCapacity = activeCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder activeScalingConfiguration(String activeScalingConfiguration) {
-            this.activeScalingConfiguration = Objects.requireNonNull(activeScalingConfiguration);
+            if (activeScalingConfiguration == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "activeScalingConfiguration");
+            }
+            this.activeScalingConfiguration = activeScalingConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder cooldownTime(Integer cooldownTime) {
-            this.cooldownTime = Objects.requireNonNull(cooldownTime);
+            if (cooldownTime == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "cooldownTime");
+            }
+            this.cooldownTime = cooldownTime;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceIds(List<String> dbInstanceIds) {
-            this.dbInstanceIds = Objects.requireNonNull(dbInstanceIds);
+            if (dbInstanceIds == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "dbInstanceIds");
+            }
+            this.dbInstanceIds = dbInstanceIds;
             return this;
         }
         public Builder dbInstanceIds(String... dbInstanceIds) {
@@ -440,37 +456,58 @@ public final class GetScalingGroupsGroup {
         }
         @CustomType.Setter
         public Builder groupDeletionProtection(Boolean groupDeletionProtection) {
-            this.groupDeletionProtection = Objects.requireNonNull(groupDeletionProtection);
+            if (groupDeletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "groupDeletionProtection");
+            }
+            this.groupDeletionProtection = groupDeletionProtection;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckType(String healthCheckType) {
-            this.healthCheckType = Objects.requireNonNull(healthCheckType);
+            if (healthCheckType == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "healthCheckType");
+            }
+            this.healthCheckType = healthCheckType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder launchTemplateId(String launchTemplateId) {
-            this.launchTemplateId = Objects.requireNonNull(launchTemplateId);
+            if (launchTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "launchTemplateId");
+            }
+            this.launchTemplateId = launchTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder launchTemplateVersion(String launchTemplateVersion) {
-            this.launchTemplateVersion = Objects.requireNonNull(launchTemplateVersion);
+            if (launchTemplateVersion == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "launchTemplateVersion");
+            }
+            this.launchTemplateVersion = launchTemplateVersion;
             return this;
         }
         @CustomType.Setter
         public Builder lifecycleState(String lifecycleState) {
-            this.lifecycleState = Objects.requireNonNull(lifecycleState);
+            if (lifecycleState == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "lifecycleState");
+            }
+            this.lifecycleState = lifecycleState;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerIds(List<String> loadBalancerIds) {
-            this.loadBalancerIds = Objects.requireNonNull(loadBalancerIds);
+            if (loadBalancerIds == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "loadBalancerIds");
+            }
+            this.loadBalancerIds = loadBalancerIds;
             return this;
         }
         public Builder loadBalancerIds(String... loadBalancerIds) {
@@ -478,37 +515,58 @@ public final class GetScalingGroupsGroup {
         }
         @CustomType.Setter
         public Builder maxSize(Integer maxSize) {
-            this.maxSize = Objects.requireNonNull(maxSize);
+            if (maxSize == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "maxSize");
+            }
+            this.maxSize = maxSize;
             return this;
         }
         @CustomType.Setter
         public Builder minSize(Integer minSize) {
-            this.minSize = Objects.requireNonNull(minSize);
+            if (minSize == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "minSize");
+            }
+            this.minSize = minSize;
             return this;
         }
         @CustomType.Setter
         public Builder modificationTime(String modificationTime) {
-            this.modificationTime = Objects.requireNonNull(modificationTime);
+            if (modificationTime == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "modificationTime");
+            }
+            this.modificationTime = modificationTime;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder pendingCapacity(Integer pendingCapacity) {
-            this.pendingCapacity = Objects.requireNonNull(pendingCapacity);
+            if (pendingCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "pendingCapacity");
+            }
+            this.pendingCapacity = pendingCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder removalPolicies(List<String> removalPolicies) {
-            this.removalPolicies = Objects.requireNonNull(removalPolicies);
+            if (removalPolicies == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "removalPolicies");
+            }
+            this.removalPolicies = removalPolicies;
             return this;
         }
         public Builder removalPolicies(String... removalPolicies) {
@@ -516,12 +574,18 @@ public final class GetScalingGroupsGroup {
         }
         @CustomType.Setter
         public Builder removingCapacity(Integer removingCapacity) {
-            this.removingCapacity = Objects.requireNonNull(removingCapacity);
+            if (removingCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "removingCapacity");
+            }
+            this.removingCapacity = removingCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder suspendedProcesses(List<String> suspendedProcesses) {
-            this.suspendedProcesses = Objects.requireNonNull(suspendedProcesses);
+            if (suspendedProcesses == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "suspendedProcesses");
+            }
+            this.suspendedProcesses = suspendedProcesses;
             return this;
         }
         public Builder suspendedProcesses(String... suspendedProcesses) {
@@ -529,32 +593,48 @@ public final class GetScalingGroupsGroup {
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder totalCapacity(Integer totalCapacity) {
-            this.totalCapacity = Objects.requireNonNull(totalCapacity);
+            if (totalCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "totalCapacity");
+            }
+            this.totalCapacity = totalCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder totalInstanceCount(Integer totalInstanceCount) {
-            this.totalInstanceCount = Objects.requireNonNull(totalInstanceCount);
+            if (totalInstanceCount == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "totalInstanceCount");
+            }
+            this.totalInstanceCount = totalInstanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
-            this.vswitchIds = Objects.requireNonNull(vswitchIds);
+            if (vswitchIds == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "vswitchIds");
+            }
+            this.vswitchIds = vswitchIds;
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {

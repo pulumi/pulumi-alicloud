@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dfs.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,7 +158,9 @@ public final class GetMountPointsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetMountPointsPlainArgs build() {
-            $.fileSystemId = Objects.requireNonNull($.fileSystemId, "expected parameter 'fileSystemId' to be non-null");
+            if ($.fileSystemId == null) {
+                throw new MissingRequiredPropertyException("GetMountPointsPlainArgs", "fileSystemId");
+            }
             return $;
         }
     }

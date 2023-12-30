@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cddc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -450,152 +451,242 @@ public final class GetDedicatedHostsHost {
 
         @CustomType.Setter
         public Builder allocationStatus(String allocationStatus) {
-            this.allocationStatus = Objects.requireNonNull(allocationStatus);
+            if (allocationStatus == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "allocationStatus");
+            }
+            this.allocationStatus = allocationStatus;
             return this;
         }
         @CustomType.Setter
         public Builder bastionInstanceId(String bastionInstanceId) {
-            this.bastionInstanceId = Objects.requireNonNull(bastionInstanceId);
+            if (bastionInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "bastionInstanceId");
+            }
+            this.bastionInstanceId = bastionInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder cpuAllocationRatio(String cpuAllocationRatio) {
-            this.cpuAllocationRatio = Objects.requireNonNull(cpuAllocationRatio);
+            if (cpuAllocationRatio == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "cpuAllocationRatio");
+            }
+            this.cpuAllocationRatio = cpuAllocationRatio;
             return this;
         }
         @CustomType.Setter
         public Builder cpuUsed(String cpuUsed) {
-            this.cpuUsed = Objects.requireNonNull(cpuUsed);
+            if (cpuUsed == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "cpuUsed");
+            }
+            this.cpuUsed = cpuUsed;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostGroupId(String dedicatedHostGroupId) {
-            this.dedicatedHostGroupId = Objects.requireNonNull(dedicatedHostGroupId);
+            if (dedicatedHostGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "dedicatedHostGroupId");
+            }
+            this.dedicatedHostGroupId = dedicatedHostGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostId(String dedicatedHostId) {
-            this.dedicatedHostId = Objects.requireNonNull(dedicatedHostId);
+            if (dedicatedHostId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "dedicatedHostId");
+            }
+            this.dedicatedHostId = dedicatedHostId;
             return this;
         }
         @CustomType.Setter
         public Builder diskAllocationRatio(String diskAllocationRatio) {
-            this.diskAllocationRatio = Objects.requireNonNull(diskAllocationRatio);
+            if (diskAllocationRatio == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "diskAllocationRatio");
+            }
+            this.diskAllocationRatio = diskAllocationRatio;
             return this;
         }
         @CustomType.Setter
         public Builder ecsClassCode(String ecsClassCode) {
-            this.ecsClassCode = Objects.requireNonNull(ecsClassCode);
+            if (ecsClassCode == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "ecsClassCode");
+            }
+            this.ecsClassCode = ecsClassCode;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder hostClass(String hostClass) {
-            this.hostClass = Objects.requireNonNull(hostClass);
+            if (hostClass == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "hostClass");
+            }
+            this.hostClass = hostClass;
             return this;
         }
         @CustomType.Setter
         public Builder hostCpu(String hostCpu) {
-            this.hostCpu = Objects.requireNonNull(hostCpu);
+            if (hostCpu == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "hostCpu");
+            }
+            this.hostCpu = hostCpu;
             return this;
         }
         @CustomType.Setter
         public Builder hostMem(String hostMem) {
-            this.hostMem = Objects.requireNonNull(hostMem);
+            if (hostMem == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "hostMem");
+            }
+            this.hostMem = hostMem;
             return this;
         }
         @CustomType.Setter
         public Builder hostName(String hostName) {
-            this.hostName = Objects.requireNonNull(hostName);
+            if (hostName == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "hostName");
+            }
+            this.hostName = hostName;
             return this;
         }
         @CustomType.Setter
         public Builder hostStorage(String hostStorage) {
-            this.hostStorage = Objects.requireNonNull(hostStorage);
+            if (hostStorage == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "hostStorage");
+            }
+            this.hostStorage = hostStorage;
             return this;
         }
         @CustomType.Setter
         public Builder hostType(String hostType) {
-            this.hostType = Objects.requireNonNull(hostType);
+            if (hostType == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "hostType");
+            }
+            this.hostType = hostType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageCategory(String imageCategory) {
-            this.imageCategory = Objects.requireNonNull(imageCategory);
+            if (imageCategory == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "imageCategory");
+            }
+            this.imageCategory = imageCategory;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder memAllocationRatio(String memAllocationRatio) {
-            this.memAllocationRatio = Objects.requireNonNull(memAllocationRatio);
+            if (memAllocationRatio == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "memAllocationRatio");
+            }
+            this.memAllocationRatio = memAllocationRatio;
             return this;
         }
         @CustomType.Setter
         public Builder memoryUsed(String memoryUsed) {
-            this.memoryUsed = Objects.requireNonNull(memoryUsed);
+            if (memoryUsed == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "memoryUsed");
+            }
+            this.memoryUsed = memoryUsed;
             return this;
         }
         @CustomType.Setter
         public Builder openPermission(String openPermission) {
-            this.openPermission = Objects.requireNonNull(openPermission);
+            if (openPermission == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "openPermission");
+            }
+            this.openPermission = openPermission;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageUsed(String storageUsed) {
-            this.storageUsed = Objects.requireNonNull(storageUsed);
+            if (storageUsed == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "storageUsed");
+            }
+            this.storageUsed = storageUsed;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetDedicatedHostsHost build() {

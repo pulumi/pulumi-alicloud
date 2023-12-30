@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -236,8 +237,12 @@ public final class RamDirectoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RamDirectoryArgs build() {
-            $.ramDirectoryName = Objects.requireNonNull($.ramDirectoryName, "expected parameter 'ramDirectoryName' to be non-null");
-            $.vswitchIds = Objects.requireNonNull($.vswitchIds, "expected parameter 'vswitchIds' to be non-null");
+            if ($.ramDirectoryName == null) {
+                throw new MissingRequiredPropertyException("RamDirectoryArgs", "ramDirectoryName");
+            }
+            if ($.vswitchIds == null) {
+                throw new MissingRequiredPropertyException("RamDirectoryArgs", "vswitchIds");
+            }
             return $;
         }
     }

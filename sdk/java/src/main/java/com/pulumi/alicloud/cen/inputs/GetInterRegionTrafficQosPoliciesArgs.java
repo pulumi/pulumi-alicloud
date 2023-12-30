@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -383,8 +384,12 @@ public final class GetInterRegionTrafficQosPoliciesArgs extends com.pulumi.resou
         }
 
         public GetInterRegionTrafficQosPoliciesArgs build() {
-            $.transitRouterAttachmentId = Objects.requireNonNull($.transitRouterAttachmentId, "expected parameter 'transitRouterAttachmentId' to be non-null");
-            $.transitRouterId = Objects.requireNonNull($.transitRouterId, "expected parameter 'transitRouterId' to be non-null");
+            if ($.transitRouterAttachmentId == null) {
+                throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesArgs", "transitRouterAttachmentId");
+            }
+            if ($.transitRouterId == null) {
+                throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesArgs", "transitRouterId");
+            }
             return $;
         }
     }

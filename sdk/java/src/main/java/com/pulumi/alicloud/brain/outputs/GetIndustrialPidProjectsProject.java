@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.brain.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetIndustrialPidProjectsProject {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidProjectsProject", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pidOrganizationId(String pidOrganizationId) {
-            this.pidOrganizationId = Objects.requireNonNull(pidOrganizationId);
+            if (pidOrganizationId == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidProjectsProject", "pidOrganizationId");
+            }
+            this.pidOrganizationId = pidOrganizationId;
             return this;
         }
         @CustomType.Setter
         public Builder pidProjectDesc(String pidProjectDesc) {
-            this.pidProjectDesc = Objects.requireNonNull(pidProjectDesc);
+            if (pidProjectDesc == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidProjectsProject", "pidProjectDesc");
+            }
+            this.pidProjectDesc = pidProjectDesc;
             return this;
         }
         @CustomType.Setter
         public Builder pidProjectId(String pidProjectId) {
-            this.pidProjectId = Objects.requireNonNull(pidProjectId);
+            if (pidProjectId == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidProjectsProject", "pidProjectId");
+            }
+            this.pidProjectId = pidProjectId;
             return this;
         }
         @CustomType.Setter
         public Builder pidProjectName(String pidProjectName) {
-            this.pidProjectName = Objects.requireNonNull(pidProjectName);
+            if (pidProjectName == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidProjectsProject", "pidProjectName");
+            }
+            this.pidProjectName = pidProjectName;
             return this;
         }
         public GetIndustrialPidProjectsProject build() {

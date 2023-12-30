@@ -14,6 +14,63 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available since v1.153.0+.
  *
  * ## Example Usage
+ * ### Create a RDS PostgreSQL upgrade instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleZones = alicloud.rds.getZones({
+ *     engine: "PostgreSQL",
+ *     engineVersion: "13.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleInstanceClasses = exampleZones.then(exampleZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: exampleZones.zones?.[0]?.id,
+ *     engine: "PostgreSQL",
+ *     engineVersion: "13.0",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const exampleCrossRegions = alicloud.rds.getCrossRegions({});
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     vswitchName: "terraform-example",
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
+ *     engine: "PostgreSQL",
+ *     engineVersion: "13.0",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: "terraform-example",
+ *     vswitchId: exampleSwitch.id,
+ *     monitoringPeriod: 60,
+ * });
+ * const exampleRdsUpgradeDbInstance = new alicloud.rds.RdsUpgradeDbInstance("exampleRdsUpgradeDbInstance", {
+ *     sourceDbInstanceId: exampleInstance.id,
+ *     targetMajorVersion: "14.0",
+ *     dbInstanceClass: exampleInstance.instanceType,
+ *     dbInstanceStorage: exampleInstance.instanceStorage,
+ *     dbInstanceStorageType: exampleInstance.dbInstanceStorageType,
+ *     instanceNetworkType: "VPC",
+ *     collectStatMode: "After",
+ *     switchOver: "false",
+ *     paymentType: "PayAsYouGo",
+ *     dbInstanceDescription: "terraform-example",
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * ```
  *
  * ## Import
  *

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -373,8 +374,12 @@ public final class EcsInvocationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EcsInvocationArgs build() {
-            $.commandId = Objects.requireNonNull($.commandId, "expected parameter 'commandId' to be non-null");
-            $.instanceIds = Objects.requireNonNull($.instanceIds, "expected parameter 'instanceIds' to be non-null");
+            if ($.commandId == null) {
+                throw new MissingRequiredPropertyException("EcsInvocationArgs", "commandId");
+            }
+            if ($.instanceIds == null) {
+                throw new MissingRequiredPropertyException("EcsInvocationArgs", "instanceIds");
+            }
             return $;
         }
     }

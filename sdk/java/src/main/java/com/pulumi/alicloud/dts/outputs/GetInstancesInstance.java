@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dts.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -219,72 +220,112 @@ public final class GetInstancesInstance {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointEngineName(String destinationEndpointEngineName) {
-            this.destinationEndpointEngineName = Objects.requireNonNull(destinationEndpointEngineName);
+            if (destinationEndpointEngineName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "destinationEndpointEngineName");
+            }
+            this.destinationEndpointEngineName = destinationEndpointEngineName;
             return this;
         }
         @CustomType.Setter
         public Builder destinationRegion(String destinationRegion) {
-            this.destinationRegion = Objects.requireNonNull(destinationRegion);
+            if (destinationRegion == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "destinationRegion");
+            }
+            this.destinationRegion = destinationRegion;
             return this;
         }
         @CustomType.Setter
         public Builder dtsInstanceId(String dtsInstanceId) {
-            this.dtsInstanceId = Objects.requireNonNull(dtsInstanceId);
+            if (dtsInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "dtsInstanceId");
+            }
+            this.dtsInstanceId = dtsInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
-            this.instanceClass = Objects.requireNonNull(instanceClass);
+            if (instanceClass == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceClass");
+            }
+            this.instanceClass = instanceClass;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointEngineName(String sourceEndpointEngineName) {
-            this.sourceEndpointEngineName = Objects.requireNonNull(sourceEndpointEngineName);
+            if (sourceEndpointEngineName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "sourceEndpointEngineName");
+            }
+            this.sourceEndpointEngineName = sourceEndpointEngineName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceRegion(String sourceRegion) {
-            this.sourceRegion = Objects.requireNonNull(sourceRegion);
+            if (sourceRegion == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "sourceRegion");
+            }
+            this.sourceRegion = sourceRegion;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetInstancesInstance build() {

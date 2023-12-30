@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cen;
 import com.pulumi.alicloud.cen.inputs.TransitRouterVpnAttachmentZoneArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -387,9 +388,15 @@ public final class TransitRouterVpnAttachmentArgs extends com.pulumi.resources.R
         }
 
         public TransitRouterVpnAttachmentArgs build() {
-            $.transitRouterId = Objects.requireNonNull($.transitRouterId, "expected parameter 'transitRouterId' to be non-null");
-            $.vpnId = Objects.requireNonNull($.vpnId, "expected parameter 'vpnId' to be non-null");
-            $.zones = Objects.requireNonNull($.zones, "expected parameter 'zones' to be non-null");
+            if ($.transitRouterId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVpnAttachmentArgs", "transitRouterId");
+            }
+            if ($.vpnId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVpnAttachmentArgs", "vpnId");
+            }
+            if ($.zones == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVpnAttachmentArgs", "zones");
+            }
             return $;
         }
     }

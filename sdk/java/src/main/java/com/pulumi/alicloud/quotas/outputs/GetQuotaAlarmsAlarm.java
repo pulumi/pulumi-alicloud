@@ -5,6 +5,7 @@ package com.pulumi.alicloud.quotas.outputs;
 
 import com.pulumi.alicloud.quotas.outputs.GetQuotaAlarmsAlarmQuotaDimension;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -157,32 +158,50 @@ public final class GetQuotaAlarmsAlarm {
 
         @CustomType.Setter
         public Builder alarmId(String alarmId) {
-            this.alarmId = Objects.requireNonNull(alarmId);
+            if (alarmId == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsAlarm", "alarmId");
+            }
+            this.alarmId = alarmId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsAlarm", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsAlarm", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaActionCode(String quotaActionCode) {
-            this.quotaActionCode = Objects.requireNonNull(quotaActionCode);
+            if (quotaActionCode == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsAlarm", "quotaActionCode");
+            }
+            this.quotaActionCode = quotaActionCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaAlarmName(String quotaAlarmName) {
-            this.quotaAlarmName = Objects.requireNonNull(quotaAlarmName);
+            if (quotaAlarmName == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsAlarm", "quotaAlarmName");
+            }
+            this.quotaAlarmName = quotaAlarmName;
             return this;
         }
         @CustomType.Setter
         public Builder quotaDimensions(List<GetQuotaAlarmsAlarmQuotaDimension> quotaDimensions) {
-            this.quotaDimensions = Objects.requireNonNull(quotaDimensions);
+            if (quotaDimensions == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsAlarm", "quotaDimensions");
+            }
+            this.quotaDimensions = quotaDimensions;
             return this;
         }
         public Builder quotaDimensions(GetQuotaAlarmsAlarmQuotaDimension... quotaDimensions) {
@@ -190,17 +209,26 @@ public final class GetQuotaAlarmsAlarm {
         }
         @CustomType.Setter
         public Builder threshold(Double threshold) {
-            this.threshold = Objects.requireNonNull(threshold);
+            if (threshold == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsAlarm", "threshold");
+            }
+            this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder thresholdPercent(Double thresholdPercent) {
-            this.thresholdPercent = Objects.requireNonNull(thresholdPercent);
+            if (thresholdPercent == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsAlarm", "thresholdPercent");
+            }
+            this.thresholdPercent = thresholdPercent;
             return this;
         }
         @CustomType.Setter
         public Builder webHook(String webHook) {
-            this.webHook = Objects.requireNonNull(webHook);
+            if (webHook == null) {
+              throw new MissingRequiredPropertyException("GetQuotaAlarmsAlarm", "webHook");
+            }
+            this.webHook = webHook;
             return this;
         }
         public GetQuotaAlarmsAlarm build() {

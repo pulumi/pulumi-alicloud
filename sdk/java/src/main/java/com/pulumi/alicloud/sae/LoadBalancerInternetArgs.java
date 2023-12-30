@@ -6,6 +6,7 @@ package com.pulumi.alicloud.sae;
 import com.pulumi.alicloud.sae.inputs.LoadBalancerInternetInternetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -162,8 +163,12 @@ public final class LoadBalancerInternetArgs extends com.pulumi.resources.Resourc
         }
 
         public LoadBalancerInternetArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.internets = Objects.requireNonNull($.internets, "expected parameter 'internets' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerInternetArgs", "appId");
+            }
+            if ($.internets == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerInternetArgs", "internets");
+            }
             return $;
         }
     }

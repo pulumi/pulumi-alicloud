@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetIpsecServersServerIkeConfig {
 
         @CustomType.Setter
         public Builder ikeAuthAlg(String ikeAuthAlg) {
-            this.ikeAuthAlg = Objects.requireNonNull(ikeAuthAlg);
+            if (ikeAuthAlg == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIkeConfig", "ikeAuthAlg");
+            }
+            this.ikeAuthAlg = ikeAuthAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ikeEncAlg(String ikeEncAlg) {
-            this.ikeEncAlg = Objects.requireNonNull(ikeEncAlg);
+            if (ikeEncAlg == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIkeConfig", "ikeEncAlg");
+            }
+            this.ikeEncAlg = ikeEncAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ikeLifetime(Integer ikeLifetime) {
-            this.ikeLifetime = Objects.requireNonNull(ikeLifetime);
+            if (ikeLifetime == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIkeConfig", "ikeLifetime");
+            }
+            this.ikeLifetime = ikeLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder ikeMode(String ikeMode) {
-            this.ikeMode = Objects.requireNonNull(ikeMode);
+            if (ikeMode == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIkeConfig", "ikeMode");
+            }
+            this.ikeMode = ikeMode;
             return this;
         }
         @CustomType.Setter
         public Builder ikePfs(String ikePfs) {
-            this.ikePfs = Objects.requireNonNull(ikePfs);
+            if (ikePfs == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIkeConfig", "ikePfs");
+            }
+            this.ikePfs = ikePfs;
             return this;
         }
         @CustomType.Setter
         public Builder ikeVersion(String ikeVersion) {
-            this.ikeVersion = Objects.requireNonNull(ikeVersion);
+            if (ikeVersion == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIkeConfig", "ikeVersion");
+            }
+            this.ikeVersion = ikeVersion;
             return this;
         }
         @CustomType.Setter
         public Builder localId(String localId) {
-            this.localId = Objects.requireNonNull(localId);
+            if (localId == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIkeConfig", "localId");
+            }
+            this.localId = localId;
             return this;
         }
         @CustomType.Setter
         public Builder remoteId(String remoteId) {
-            this.remoteId = Objects.requireNonNull(remoteId);
+            if (remoteId == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIkeConfig", "remoteId");
+            }
+            this.remoteId = remoteId;
             return this;
         }
         public GetIpsecServersServerIkeConfig build() {

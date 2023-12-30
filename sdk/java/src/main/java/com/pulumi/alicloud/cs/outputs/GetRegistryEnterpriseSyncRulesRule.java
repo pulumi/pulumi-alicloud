@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -224,72 +225,114 @@ public final class GetRegistryEnterpriseSyncRulesRule {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceName(String namespaceName) {
-            this.namespaceName = Objects.requireNonNull(namespaceName);
+            if (namespaceName == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "namespaceName");
+            }
+            this.namespaceName = namespaceName;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder repoName(String repoName) {
-            this.repoName = Objects.requireNonNull(repoName);
+            if (repoName == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "repoName");
+            }
+            this.repoName = repoName;
             return this;
         }
         @CustomType.Setter
         public Builder syncDirection(String syncDirection) {
-            this.syncDirection = Objects.requireNonNull(syncDirection);
+            if (syncDirection == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "syncDirection");
+            }
+            this.syncDirection = syncDirection;
             return this;
         }
         @CustomType.Setter
         public Builder syncScope(String syncScope) {
-            this.syncScope = Objects.requireNonNull(syncScope);
+            if (syncScope == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "syncScope");
+            }
+            this.syncScope = syncScope;
             return this;
         }
         @CustomType.Setter
         public Builder syncTrigger(String syncTrigger) {
-            this.syncTrigger = Objects.requireNonNull(syncTrigger);
+            if (syncTrigger == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "syncTrigger");
+            }
+            this.syncTrigger = syncTrigger;
             return this;
         }
         @CustomType.Setter
         public Builder tagFilter(String tagFilter) {
-            this.tagFilter = Objects.requireNonNull(tagFilter);
+            if (tagFilter == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "tagFilter");
+            }
+            this.tagFilter = tagFilter;
             return this;
         }
         @CustomType.Setter
         public Builder targetInstanceId(String targetInstanceId) {
-            this.targetInstanceId = Objects.requireNonNull(targetInstanceId);
+            if (targetInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "targetInstanceId");
+            }
+            this.targetInstanceId = targetInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder targetNamespaceName(String targetNamespaceName) {
-            this.targetNamespaceName = Objects.requireNonNull(targetNamespaceName);
+            if (targetNamespaceName == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "targetNamespaceName");
+            }
+            this.targetNamespaceName = targetNamespaceName;
             return this;
         }
         @CustomType.Setter
         public Builder targetRegionId(String targetRegionId) {
-            this.targetRegionId = Objects.requireNonNull(targetRegionId);
+            if (targetRegionId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "targetRegionId");
+            }
+            this.targetRegionId = targetRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder targetRepoName(String targetRepoName) {
-            this.targetRepoName = Objects.requireNonNull(targetRepoName);
+            if (targetRepoName == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesRule", "targetRepoName");
+            }
+            this.targetRepoName = targetRepoName;
             return this;
         }
         public GetRegistryEnterpriseSyncRulesRule build() {

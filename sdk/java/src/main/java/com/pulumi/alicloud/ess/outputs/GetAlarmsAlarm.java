@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -257,7 +258,10 @@ public final class GetAlarmsAlarm {
 
         @CustomType.Setter
         public Builder alarmActions(List<String> alarmActions) {
-            this.alarmActions = Objects.requireNonNull(alarmActions);
+            if (alarmActions == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "alarmActions");
+            }
+            this.alarmActions = alarmActions;
             return this;
         }
         public Builder alarmActions(String... alarmActions) {
@@ -265,77 +269,122 @@ public final class GetAlarmsAlarm {
         }
         @CustomType.Setter
         public Builder cloudMonitorGroupId(Integer cloudMonitorGroupId) {
-            this.cloudMonitorGroupId = Objects.requireNonNull(cloudMonitorGroupId);
+            if (cloudMonitorGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "cloudMonitorGroupId");
+            }
+            this.cloudMonitorGroupId = cloudMonitorGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder comparisonOperator(String comparisonOperator) {
-            this.comparisonOperator = Objects.requireNonNull(comparisonOperator);
+            if (comparisonOperator == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "comparisonOperator");
+            }
+            this.comparisonOperator = comparisonOperator;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(Map<String,Object> dimensions) {
-            this.dimensions = Objects.requireNonNull(dimensions);
+            if (dimensions == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "dimensions");
+            }
+            this.dimensions = dimensions;
             return this;
         }
         @CustomType.Setter
         public Builder enable(Boolean enable) {
-            this.enable = Objects.requireNonNull(enable);
+            if (enable == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "enable");
+            }
+            this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder evaluationCount(Integer evaluationCount) {
-            this.evaluationCount = Objects.requireNonNull(evaluationCount);
+            if (evaluationCount == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "evaluationCount");
+            }
+            this.evaluationCount = evaluationCount;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metricName(String metricName) {
-            this.metricName = Objects.requireNonNull(metricName);
+            if (metricName == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "metricName");
+            }
+            this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder metricType(String metricType) {
-            this.metricType = Objects.requireNonNull(metricType);
+            if (metricType == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "metricType");
+            }
+            this.metricType = metricType;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder period(Integer period) {
-            this.period = Objects.requireNonNull(period);
+            if (period == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "period");
+            }
+            this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
-            this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
+            if (scalingGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "scalingGroupId");
+            }
+            this.scalingGroupId = scalingGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder statistics(String statistics) {
-            this.statistics = Objects.requireNonNull(statistics);
+            if (statistics == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "statistics");
+            }
+            this.statistics = statistics;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(String threshold) {
-            this.threshold = Objects.requireNonNull(threshold);
+            if (threshold == null) {
+              throw new MissingRequiredPropertyException("GetAlarmsAlarm", "threshold");
+            }
+            this.threshold = threshold;
             return this;
         }
         public GetAlarmsAlarm build() {

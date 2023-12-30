@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -215,7 +216,9 @@ public final class EcsKeyPairAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         public EcsKeyPairAttachmentArgs build() {
-            $.instanceIds = Objects.requireNonNull($.instanceIds, "expected parameter 'instanceIds' to be non-null");
+            if ($.instanceIds == null) {
+                throw new MissingRequiredPropertyException("EcsKeyPairAttachmentArgs", "instanceIds");
+            }
             return $;
         }
     }

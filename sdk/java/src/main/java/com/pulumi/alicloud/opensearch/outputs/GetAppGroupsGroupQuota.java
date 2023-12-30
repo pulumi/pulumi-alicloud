@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.opensearch.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,17 +85,26 @@ public final class GetAppGroupsGroupQuota {
 
         @CustomType.Setter
         public Builder computeResource(String computeResource) {
-            this.computeResource = Objects.requireNonNull(computeResource);
+            if (computeResource == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroupQuota", "computeResource");
+            }
+            this.computeResource = computeResource;
             return this;
         }
         @CustomType.Setter
         public Builder docSize(String docSize) {
-            this.docSize = Objects.requireNonNull(docSize);
+            if (docSize == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroupQuota", "docSize");
+            }
+            this.docSize = docSize;
             return this;
         }
         @CustomType.Setter
         public Builder spec(String spec) {
-            this.spec = Objects.requireNonNull(spec);
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetAppGroupsGroupQuota", "spec");
+            }
+            this.spec = spec;
             return this;
         }
         public GetAppGroupsGroupQuota build() {

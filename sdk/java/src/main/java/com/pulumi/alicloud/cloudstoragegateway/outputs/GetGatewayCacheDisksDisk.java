@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudstoragegateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -184,57 +185,90 @@ public final class GetGatewayCacheDisksDisk {
 
         @CustomType.Setter
         public Builder cacheDiskCategory(String cacheDiskCategory) {
-            this.cacheDiskCategory = Objects.requireNonNull(cacheDiskCategory);
+            if (cacheDiskCategory == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "cacheDiskCategory");
+            }
+            this.cacheDiskCategory = cacheDiskCategory;
             return this;
         }
         @CustomType.Setter
         public Builder cacheDiskSizeInGb(Integer cacheDiskSizeInGb) {
-            this.cacheDiskSizeInGb = Objects.requireNonNull(cacheDiskSizeInGb);
+            if (cacheDiskSizeInGb == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "cacheDiskSizeInGb");
+            }
+            this.cacheDiskSizeInGb = cacheDiskSizeInGb;
             return this;
         }
         @CustomType.Setter
         public Builder cacheId(String cacheId) {
-            this.cacheId = Objects.requireNonNull(cacheId);
+            if (cacheId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "cacheId");
+            }
+            this.cacheId = cacheId;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(Integer expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
-            this.gatewayId = Objects.requireNonNull(gatewayId);
+            if (gatewayId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "gatewayId");
+            }
+            this.gatewayId = gatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder iops(Integer iops) {
-            this.iops = Objects.requireNonNull(iops);
+            if (iops == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "iops");
+            }
+            this.iops = iops;
             return this;
         }
         @CustomType.Setter
         public Builder isUsed(Boolean isUsed) {
-            this.isUsed = Objects.requireNonNull(isUsed);
+            if (isUsed == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "isUsed");
+            }
+            this.isUsed = isUsed;
             return this;
         }
         @CustomType.Setter
         public Builder localFilePath(String localFilePath) {
-            this.localFilePath = Objects.requireNonNull(localFilePath);
+            if (localFilePath == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "localFilePath");
+            }
+            this.localFilePath = localFilePath;
             return this;
         }
         @CustomType.Setter
         public Builder renewUrl(String renewUrl) {
-            this.renewUrl = Objects.requireNonNull(renewUrl);
+            if (renewUrl == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "renewUrl");
+            }
+            this.renewUrl = renewUrl;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksDisk", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetGatewayCacheDisksDisk build() {

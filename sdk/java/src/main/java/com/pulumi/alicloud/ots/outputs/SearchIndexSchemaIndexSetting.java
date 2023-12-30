@@ -44,6 +44,7 @@ public final class SearchIndexSchemaIndexSetting {
 
         @CustomType.Setter
         public Builder routingFields(@Nullable List<String> routingFields) {
+
             this.routingFields = routingFields;
             return this;
         }

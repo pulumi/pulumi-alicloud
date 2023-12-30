@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.quotas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -213,12 +214,18 @@ public final class GetQuotasQuota {
 
         @CustomType.Setter
         public Builder adjustable(Boolean adjustable) {
-            this.adjustable = Objects.requireNonNull(adjustable);
+            if (adjustable == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "adjustable");
+            }
+            this.adjustable = adjustable;
             return this;
         }
         @CustomType.Setter
         public Builder applicableRanges(List<String> applicableRanges) {
-            this.applicableRanges = Objects.requireNonNull(applicableRanges);
+            if (applicableRanges == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "applicableRanges");
+            }
+            this.applicableRanges = applicableRanges;
             return this;
         }
         public Builder applicableRanges(String... applicableRanges) {
@@ -226,57 +233,90 @@ public final class GetQuotasQuota {
         }
         @CustomType.Setter
         public Builder applicableType(String applicableType) {
-            this.applicableType = Objects.requireNonNull(applicableType);
+            if (applicableType == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "applicableType");
+            }
+            this.applicableType = applicableType;
             return this;
         }
         @CustomType.Setter
         public Builder consumable(Boolean consumable) {
-            this.consumable = Objects.requireNonNull(consumable);
+            if (consumable == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "consumable");
+            }
+            this.consumable = consumable;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder quotaActionCode(String quotaActionCode) {
-            this.quotaActionCode = Objects.requireNonNull(quotaActionCode);
+            if (quotaActionCode == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "quotaActionCode");
+            }
+            this.quotaActionCode = quotaActionCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaDescription(String quotaDescription) {
-            this.quotaDescription = Objects.requireNonNull(quotaDescription);
+            if (quotaDescription == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "quotaDescription");
+            }
+            this.quotaDescription = quotaDescription;
             return this;
         }
         @CustomType.Setter
         public Builder quotaName(String quotaName) {
-            this.quotaName = Objects.requireNonNull(quotaName);
+            if (quotaName == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "quotaName");
+            }
+            this.quotaName = quotaName;
             return this;
         }
         @CustomType.Setter
         public Builder quotaType(String quotaType) {
-            this.quotaType = Objects.requireNonNull(quotaType);
+            if (quotaType == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "quotaType");
+            }
+            this.quotaType = quotaType;
             return this;
         }
         @CustomType.Setter
         public Builder quotaUnit(String quotaUnit) {
-            this.quotaUnit = Objects.requireNonNull(quotaUnit);
+            if (quotaUnit == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "quotaUnit");
+            }
+            this.quotaUnit = quotaUnit;
             return this;
         }
         @CustomType.Setter
         public Builder totalQuota(Double totalQuota) {
-            this.totalQuota = Objects.requireNonNull(totalQuota);
+            if (totalQuota == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "totalQuota");
+            }
+            this.totalQuota = totalQuota;
             return this;
         }
         @CustomType.Setter
         public Builder totalUsage(Double totalUsage) {
-            this.totalUsage = Objects.requireNonNull(totalUsage);
+            if (totalUsage == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "totalUsage");
+            }
+            this.totalUsage = totalUsage;
             return this;
         }
         @CustomType.Setter
         public Builder unadjustableDetail(String unadjustableDetail) {
-            this.unadjustableDetail = Objects.requireNonNull(unadjustableDetail);
+            if (unadjustableDetail == null) {
+              throw new MissingRequiredPropertyException("GetQuotasQuota", "unadjustableDetail");
+            }
+            this.unadjustableDetail = unadjustableDetail;
             return this;
         }
         public GetQuotasQuota build() {

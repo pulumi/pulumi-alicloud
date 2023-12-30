@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -211,67 +212,106 @@ public final class GetMscSubContactsContact {
 
         @CustomType.Setter
         public Builder accountUid(String accountUid) {
-            this.accountUid = Objects.requireNonNull(accountUid);
+            if (accountUid == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "accountUid");
+            }
+            this.accountUid = accountUid;
             return this;
         }
         @CustomType.Setter
         public Builder contactId(String contactId) {
-            this.contactId = Objects.requireNonNull(contactId);
+            if (contactId == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "contactId");
+            }
+            this.contactId = contactId;
             return this;
         }
         @CustomType.Setter
         public Builder contactName(String contactName) {
-            this.contactName = Objects.requireNonNull(contactName);
+            if (contactName == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "contactName");
+            }
+            this.contactName = contactName;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isAccount(Boolean isAccount) {
-            this.isAccount = Objects.requireNonNull(isAccount);
+            if (isAccount == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "isAccount");
+            }
+            this.isAccount = isAccount;
             return this;
         }
         @CustomType.Setter
         public Builder isObsolete(Boolean isObsolete) {
-            this.isObsolete = Objects.requireNonNull(isObsolete);
+            if (isObsolete == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "isObsolete");
+            }
+            this.isObsolete = isObsolete;
             return this;
         }
         @CustomType.Setter
         public Builder isVerifiedEmail(Boolean isVerifiedEmail) {
-            this.isVerifiedEmail = Objects.requireNonNull(isVerifiedEmail);
+            if (isVerifiedEmail == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "isVerifiedEmail");
+            }
+            this.isVerifiedEmail = isVerifiedEmail;
             return this;
         }
         @CustomType.Setter
         public Builder isVerifiedMobile(Boolean isVerifiedMobile) {
-            this.isVerifiedMobile = Objects.requireNonNull(isVerifiedMobile);
+            if (isVerifiedMobile == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "isVerifiedMobile");
+            }
+            this.isVerifiedMobile = isVerifiedMobile;
             return this;
         }
         @CustomType.Setter
         public Builder lastEmailVerificationTimeStamp(String lastEmailVerificationTimeStamp) {
-            this.lastEmailVerificationTimeStamp = Objects.requireNonNull(lastEmailVerificationTimeStamp);
+            if (lastEmailVerificationTimeStamp == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "lastEmailVerificationTimeStamp");
+            }
+            this.lastEmailVerificationTimeStamp = lastEmailVerificationTimeStamp;
             return this;
         }
         @CustomType.Setter
         public Builder lastMobileVerificationTimeStamp(String lastMobileVerificationTimeStamp) {
-            this.lastMobileVerificationTimeStamp = Objects.requireNonNull(lastMobileVerificationTimeStamp);
+            if (lastMobileVerificationTimeStamp == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "lastMobileVerificationTimeStamp");
+            }
+            this.lastMobileVerificationTimeStamp = lastMobileVerificationTimeStamp;
             return this;
         }
         @CustomType.Setter
         public Builder mobile(String mobile) {
-            this.mobile = Objects.requireNonNull(mobile);
+            if (mobile == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "mobile");
+            }
+            this.mobile = mobile;
             return this;
         }
         @CustomType.Setter
         public Builder position(String position) {
-            this.position = Objects.requireNonNull(position);
+            if (position == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactsContact", "position");
+            }
+            this.position = position;
             return this;
         }
         public GetMscSubContactsContact build() {

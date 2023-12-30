@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ram.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetPolicyDocumentStatementPrincipal {
 
         @CustomType.Setter
         public Builder entity(String entity) {
-            this.entity = Objects.requireNonNull(entity);
+            if (entity == null) {
+              throw new MissingRequiredPropertyException("GetPolicyDocumentStatementPrincipal", "entity");
+            }
+            this.entity = entity;
             return this;
         }
         @CustomType.Setter
         public Builder identifiers(List<String> identifiers) {
-            this.identifiers = Objects.requireNonNull(identifiers);
+            if (identifiers == null) {
+              throw new MissingRequiredPropertyException("GetPolicyDocumentStatementPrincipal", "identifiers");
+            }
+            this.identifiers = identifiers;
             return this;
         }
         public Builder identifiers(String... identifiers) {

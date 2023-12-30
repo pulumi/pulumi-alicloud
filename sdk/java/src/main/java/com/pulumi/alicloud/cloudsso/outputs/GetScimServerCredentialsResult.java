@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.alicloud.cloudsso.outputs.GetScimServerCredentialsCredential;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,7 +77,10 @@ public final class GetScimServerCredentialsResult {
 
         @CustomType.Setter
         public Builder credentials(List<GetScimServerCredentialsCredential> credentials) {
-            this.credentials = Objects.requireNonNull(credentials);
+            if (credentials == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsResult", "credentials");
+            }
+            this.credentials = credentials;
             return this;
         }
         public Builder credentials(GetScimServerCredentialsCredential... credentials) {
@@ -84,17 +88,26 @@ public final class GetScimServerCredentialsResult {
         }
         @CustomType.Setter
         public Builder directoryId(String directoryId) {
-            this.directoryId = Objects.requireNonNull(directoryId);
+            if (directoryId == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsResult", "directoryId");
+            }
+            this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -102,11 +115,13 @@ public final class GetScimServerCredentialsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

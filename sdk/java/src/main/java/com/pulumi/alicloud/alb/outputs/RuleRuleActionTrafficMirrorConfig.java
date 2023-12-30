@@ -59,11 +59,13 @@ public final class RuleRuleActionTrafficMirrorConfig {
 
         @CustomType.Setter
         public Builder mirrorGroupConfig(@Nullable RuleRuleActionTrafficMirrorConfigMirrorGroupConfig mirrorGroupConfig) {
+
             this.mirrorGroupConfig = mirrorGroupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder targetType(@Nullable String targetType) {
+
             this.targetType = targetType;
             return this;
         }

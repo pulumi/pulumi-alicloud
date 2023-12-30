@@ -58,11 +58,13 @@ public final class AclAclEntry {
 
         @CustomType.Setter
         public Builder entry(@Nullable String entry) {
+
             this.entry = entry;
             return this;
         }
         @CustomType.Setter
         public Builder entryDescription(@Nullable String entryDescription) {
+
             this.entryDescription = entryDescription;
             return this;
         }

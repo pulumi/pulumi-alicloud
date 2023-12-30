@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudstoragegateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -132,42 +133,66 @@ public final class GetExpressSyncsSync {
 
         @CustomType.Setter
         public Builder bucketName(String bucketName) {
-            this.bucketName = Objects.requireNonNull(bucketName);
+            if (bucketName == null) {
+              throw new MissingRequiredPropertyException("GetExpressSyncsSync", "bucketName");
+            }
+            this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder bucketPrefix(String bucketPrefix) {
-            this.bucketPrefix = Objects.requireNonNull(bucketPrefix);
+            if (bucketPrefix == null) {
+              throw new MissingRequiredPropertyException("GetExpressSyncsSync", "bucketPrefix");
+            }
+            this.bucketPrefix = bucketPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder bucketRegion(String bucketRegion) {
-            this.bucketRegion = Objects.requireNonNull(bucketRegion);
+            if (bucketRegion == null) {
+              throw new MissingRequiredPropertyException("GetExpressSyncsSync", "bucketRegion");
+            }
+            this.bucketRegion = bucketRegion;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetExpressSyncsSync", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expressSyncId(String expressSyncId) {
-            this.expressSyncId = Objects.requireNonNull(expressSyncId);
+            if (expressSyncId == null) {
+              throw new MissingRequiredPropertyException("GetExpressSyncsSync", "expressSyncId");
+            }
+            this.expressSyncId = expressSyncId;
             return this;
         }
         @CustomType.Setter
         public Builder expressSyncName(String expressSyncName) {
-            this.expressSyncName = Objects.requireNonNull(expressSyncName);
+            if (expressSyncName == null) {
+              throw new MissingRequiredPropertyException("GetExpressSyncsSync", "expressSyncName");
+            }
+            this.expressSyncName = expressSyncName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetExpressSyncsSync", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mnsTopic(String mnsTopic) {
-            this.mnsTopic = Objects.requireNonNull(mnsTopic);
+            if (mnsTopic == null) {
+              throw new MissingRequiredPropertyException("GetExpressSyncsSync", "mnsTopic");
+            }
+            this.mnsTopic = mnsTopic;
             return this;
         }
         public GetExpressSyncsSync build() {

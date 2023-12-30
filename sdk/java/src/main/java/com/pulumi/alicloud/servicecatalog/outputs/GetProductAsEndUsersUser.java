@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetProductAsEndUsersUser {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetProductAsEndUsersUser", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProductAsEndUsersUser", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder hasDefaultLaunchOption(Boolean hasDefaultLaunchOption) {
-            this.hasDefaultLaunchOption = Objects.requireNonNull(hasDefaultLaunchOption);
+            if (hasDefaultLaunchOption == null) {
+              throw new MissingRequiredPropertyException("GetProductAsEndUsersUser", "hasDefaultLaunchOption");
+            }
+            this.hasDefaultLaunchOption = hasDefaultLaunchOption;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProductAsEndUsersUser", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder productArn(String productArn) {
-            this.productArn = Objects.requireNonNull(productArn);
+            if (productArn == null) {
+              throw new MissingRequiredPropertyException("GetProductAsEndUsersUser", "productArn");
+            }
+            this.productArn = productArn;
             return this;
         }
         @CustomType.Setter
         public Builder productId(String productId) {
-            this.productId = Objects.requireNonNull(productId);
+            if (productId == null) {
+              throw new MissingRequiredPropertyException("GetProductAsEndUsersUser", "productId");
+            }
+            this.productId = productId;
             return this;
         }
         @CustomType.Setter
         public Builder productName(String productName) {
-            this.productName = Objects.requireNonNull(productName);
+            if (productName == null) {
+              throw new MissingRequiredPropertyException("GetProductAsEndUsersUser", "productName");
+            }
+            this.productName = productName;
             return this;
         }
         @CustomType.Setter
         public Builder productType(String productType) {
-            this.productType = Objects.requireNonNull(productType);
+            if (productType == null) {
+              throw new MissingRequiredPropertyException("GetProductAsEndUsersUser", "productType");
+            }
+            this.productType = productType;
             return this;
         }
         @CustomType.Setter
         public Builder providerName(String providerName) {
-            this.providerName = Objects.requireNonNull(providerName);
+            if (providerName == null) {
+              throw new MissingRequiredPropertyException("GetProductAsEndUsersUser", "providerName");
+            }
+            this.providerName = providerName;
             return this;
         }
         public GetProductAsEndUsersUser build() {

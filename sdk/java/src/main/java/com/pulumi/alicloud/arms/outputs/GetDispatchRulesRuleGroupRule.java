@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -92,22 +93,34 @@ public final class GetDispatchRulesRuleGroupRule {
 
         @CustomType.Setter
         public Builder groupId(Integer groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRuleGroupRule", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupInterval(Integer groupInterval) {
-            this.groupInterval = Objects.requireNonNull(groupInterval);
+            if (groupInterval == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRuleGroupRule", "groupInterval");
+            }
+            this.groupInterval = groupInterval;
             return this;
         }
         @CustomType.Setter
         public Builder groupWaitTime(Integer groupWaitTime) {
-            this.groupWaitTime = Objects.requireNonNull(groupWaitTime);
+            if (groupWaitTime == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRuleGroupRule", "groupWaitTime");
+            }
+            this.groupWaitTime = groupWaitTime;
             return this;
         }
         @CustomType.Setter
         public Builder groupingFields(List<String> groupingFields) {
-            this.groupingFields = Objects.requireNonNull(groupingFields);
+            if (groupingFields == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRuleGroupRule", "groupingFields");
+            }
+            this.groupingFields = groupingFields;
             return this;
         }
         public Builder groupingFields(String... groupingFields) {
@@ -115,7 +128,10 @@ public final class GetDispatchRulesRuleGroupRule {
         }
         @CustomType.Setter
         public Builder repeatInterval(Integer repeatInterval) {
-            this.repeatInterval = Objects.requireNonNull(repeatInterval);
+            if (repeatInterval == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRuleGroupRule", "repeatInterval");
+            }
+            this.repeatInterval = repeatInterval;
             return this;
         }
         public GetDispatchRulesRuleGroupRule build() {

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleConditionHostConfigArgs;
 import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleConditionPathConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -163,7 +164,9 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         public ForwardingRuleRuleConditionArgs build() {
-            $.ruleConditionType = Objects.requireNonNull($.ruleConditionType, "expected parameter 'ruleConditionType' to be non-null");
+            if ($.ruleConditionType == null) {
+                throw new MissingRequiredPropertyException("ForwardingRuleRuleConditionArgs", "ruleConditionType");
+            }
             return $;
         }
     }

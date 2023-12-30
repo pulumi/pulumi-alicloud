@@ -146,41 +146,49 @@ public final class ProjectProperties {
 
         @CustomType.Setter
         public Builder allowFullScan(@Nullable Boolean allowFullScan) {
+
             this.allowFullScan = allowFullScan;
             return this;
         }
         @CustomType.Setter
         public Builder enableDecimal2(@Nullable Boolean enableDecimal2) {
+
             this.enableDecimal2 = enableDecimal2;
             return this;
         }
         @CustomType.Setter
         public Builder encryption(@Nullable ProjectPropertiesEncryption encryption) {
+
             this.encryption = encryption;
             return this;
         }
         @CustomType.Setter
         public Builder retentionDays(@Nullable Integer retentionDays) {
+
             this.retentionDays = retentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder sqlMeteringMax(@Nullable String sqlMeteringMax) {
+
             this.sqlMeteringMax = sqlMeteringMax;
             return this;
         }
         @CustomType.Setter
         public Builder tableLifecycle(@Nullable ProjectPropertiesTableLifecycle tableLifecycle) {
+
             this.tableLifecycle = tableLifecycle;
             return this;
         }
         @CustomType.Setter
         public Builder timezone(@Nullable String timezone) {
+
             this.timezone = timezone;
             return this;
         }
         @CustomType.Setter
         public Builder typeSystem(@Nullable String typeSystem) {
+
             this.typeSystem = typeSystem;
             return this;
         }

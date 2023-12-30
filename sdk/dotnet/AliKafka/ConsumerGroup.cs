@@ -26,26 +26,31 @@ namespace Pulumi.AliCloud.AliKafka
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         AvailableResourceCreation = "VSwitch",
+    ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
@@ -55,13 +60,15 @@ namespace Pulumi.AliCloud.AliKafka
     ///         DiskSize = 500,
     ///         DeployType = 5,
     ///         IoMax = 20,
-    ///         VswitchId = defaultSwitch.Id,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SecurityGroup = defaultSecurityGroup.Id,
     ///     });
     /// 
     ///     var defaultConsumerGroup = new AliCloud.AliKafka.ConsumerGroup("defaultConsumerGroup", new()
     ///     {
-    ///         ConsumerId = name,
     ///         InstanceId = defaultInstance.Id,
+    ///         ConsumerId = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         Description = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///     });
     /// 
     /// });

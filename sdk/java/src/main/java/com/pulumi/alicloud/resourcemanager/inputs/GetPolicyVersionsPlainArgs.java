@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -185,8 +186,12 @@ public final class GetPolicyVersionsPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetPolicyVersionsPlainArgs build() {
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.policyType = Objects.requireNonNull($.policyType, "expected parameter 'policyType' to be non-null");
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("GetPolicyVersionsPlainArgs", "policyName");
+            }
+            if ($.policyType == null) {
+                throw new MissingRequiredPropertyException("GetPolicyVersionsPlainArgs", "policyType");
+            }
             return $;
         }
     }

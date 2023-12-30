@@ -128,36 +128,43 @@ public final class InstanceReplicaSet {
 
         @CustomType.Setter
         public Builder connectionDomain(@Nullable String connectionDomain) {
+
             this.connectionDomain = connectionDomain;
             return this;
         }
         @CustomType.Setter
         public Builder connectionPort(@Nullable String connectionPort) {
+
             this.connectionPort = connectionPort;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
+
             this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder replicaSetRole(@Nullable String replicaSetRole) {
+
             this.replicaSetRole = replicaSetRole;
             return this;
         }
         @CustomType.Setter
         public Builder vpcCloudInstanceId(@Nullable String vpcCloudInstanceId) {
+
             this.vpcCloudInstanceId = vpcCloudInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
+
             this.vswitchId = vswitchId;
             return this;
         }

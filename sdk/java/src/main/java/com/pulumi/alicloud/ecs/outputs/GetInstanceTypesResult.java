@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetInstanceTypesInstanceType;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -203,37 +204,48 @@ public final class GetInstanceTypesResult {
 
         @CustomType.Setter
         public Builder availabilityZone(@Nullable String availabilityZone) {
+
             this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder cpuCoreCount(@Nullable Integer cpuCoreCount) {
+
             this.cpuCoreCount = cpuCoreCount;
             return this;
         }
         @CustomType.Setter
         public Builder eniAmount(@Nullable Integer eniAmount) {
+
             this.eniAmount = eniAmount;
             return this;
         }
         @CustomType.Setter
         public Builder gpuAmount(@Nullable Integer gpuAmount) {
+
             this.gpuAmount = gpuAmount;
             return this;
         }
         @CustomType.Setter
         public Builder gpuSpec(@Nullable String gpuSpec) {
+
             this.gpuSpec = gpuSpec;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -241,22 +253,28 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
+
             this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
+
             this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTypeFamily(@Nullable String instanceTypeFamily) {
+
             this.instanceTypeFamily = instanceTypeFamily;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTypes(List<GetInstanceTypesInstanceType> instanceTypes) {
-            this.instanceTypes = Objects.requireNonNull(instanceTypes);
+            if (instanceTypes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "instanceTypes");
+            }
+            this.instanceTypes = instanceTypes;
             return this;
         }
         public Builder instanceTypes(GetInstanceTypesInstanceType... instanceTypes) {
@@ -264,46 +282,55 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder isOutdated(@Nullable Boolean isOutdated) {
+
             this.isOutdated = isOutdated;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesNodeRole(@Nullable String kubernetesNodeRole) {
+
             this.kubernetesNodeRole = kubernetesNodeRole;
             return this;
         }
         @CustomType.Setter
         public Builder memorySize(@Nullable Double memorySize) {
+
             this.memorySize = memorySize;
             return this;
         }
         @CustomType.Setter
         public Builder minimumEniIpv6AddressQuantity(@Nullable Integer minimumEniIpv6AddressQuantity) {
+
             this.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
+
             this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder sortedBy(@Nullable String sortedBy) {
+
             this.sortedBy = sortedBy;
             return this;
         }
         @CustomType.Setter
         public Builder spotStrategy(@Nullable String spotStrategy) {
+
             this.spotStrategy = spotStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder systemDiskCategory(@Nullable String systemDiskCategory) {
+
             this.systemDiskCategory = systemDiskCategory;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mse;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class ZnodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZnodeArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("ZnodeArgs", "clusterId");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("ZnodeArgs", "path");
+            }
             return $;
         }
     }

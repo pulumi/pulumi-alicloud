@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -311,9 +312,15 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DeliveryChannelArgs build() {
-            $.deliveryChannelAssumeRoleArn = Objects.requireNonNull($.deliveryChannelAssumeRoleArn, "expected parameter 'deliveryChannelAssumeRoleArn' to be non-null");
-            $.deliveryChannelTargetArn = Objects.requireNonNull($.deliveryChannelTargetArn, "expected parameter 'deliveryChannelTargetArn' to be non-null");
-            $.deliveryChannelType = Objects.requireNonNull($.deliveryChannelType, "expected parameter 'deliveryChannelType' to be non-null");
+            if ($.deliveryChannelAssumeRoleArn == null) {
+                throw new MissingRequiredPropertyException("DeliveryChannelArgs", "deliveryChannelAssumeRoleArn");
+            }
+            if ($.deliveryChannelTargetArn == null) {
+                throw new MissingRequiredPropertyException("DeliveryChannelArgs", "deliveryChannelTargetArn");
+            }
+            if ($.deliveryChannelType == null) {
+                throw new MissingRequiredPropertyException("DeliveryChannelArgs", "deliveryChannelType");
+            }
             return $;
         }
     }

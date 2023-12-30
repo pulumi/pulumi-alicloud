@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -184,8 +185,12 @@ public final class GetForwardingRulesPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetForwardingRulesPlainArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("GetForwardingRulesPlainArgs", "acceleratorId");
+            }
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("GetForwardingRulesPlainArgs", "listenerId");
+            }
             return $;
         }
     }

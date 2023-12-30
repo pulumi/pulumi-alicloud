@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.alicloud.servicemesh.outputs.GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -143,17 +144,26 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjector {
 
         @CustomType.Setter
         public Builder autoInjectionPolicyEnabled(Boolean autoInjectionPolicyEnabled) {
-            this.autoInjectionPolicyEnabled = Objects.requireNonNull(autoInjectionPolicyEnabled);
+            if (autoInjectionPolicyEnabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjector", "autoInjectionPolicyEnabled");
+            }
+            this.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder enableNamespacesByDefault(Boolean enableNamespacesByDefault) {
-            this.enableNamespacesByDefault = Objects.requireNonNull(enableNamespacesByDefault);
+            if (enableNamespacesByDefault == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjector", "enableNamespacesByDefault");
+            }
+            this.enableNamespacesByDefault = enableNamespacesByDefault;
             return this;
         }
         @CustomType.Setter
         public Builder initCniConfigurations(List<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfigurations) {
-            this.initCniConfigurations = Objects.requireNonNull(initCniConfigurations);
+            if (initCniConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjector", "initCniConfigurations");
+            }
+            this.initCniConfigurations = initCniConfigurations;
             return this;
         }
         public Builder initCniConfigurations(GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration... initCniConfigurations) {
@@ -161,27 +171,42 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjector {
         }
         @CustomType.Setter
         public Builder limitCpu(String limitCpu) {
-            this.limitCpu = Objects.requireNonNull(limitCpu);
+            if (limitCpu == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjector", "limitCpu");
+            }
+            this.limitCpu = limitCpu;
             return this;
         }
         @CustomType.Setter
         public Builder limitMemory(String limitMemory) {
-            this.limitMemory = Objects.requireNonNull(limitMemory);
+            if (limitMemory == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjector", "limitMemory");
+            }
+            this.limitMemory = limitMemory;
             return this;
         }
         @CustomType.Setter
         public Builder requestCpu(String requestCpu) {
-            this.requestCpu = Objects.requireNonNull(requestCpu);
+            if (requestCpu == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjector", "requestCpu");
+            }
+            this.requestCpu = requestCpu;
             return this;
         }
         @CustomType.Setter
         public Builder requestMemory(String requestMemory) {
-            this.requestMemory = Objects.requireNonNull(requestMemory);
+            if (requestMemory == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjector", "requestMemory");
+            }
+            this.requestMemory = requestMemory;
             return this;
         }
         @CustomType.Setter
         public Builder sidecarInjectorWebhookAsYaml(String sidecarInjectorWebhookAsYaml) {
-            this.sidecarInjectorWebhookAsYaml = Objects.requireNonNull(sidecarInjectorWebhookAsYaml);
+            if (sidecarInjectorWebhookAsYaml == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjector", "sidecarInjectorWebhookAsYaml");
+            }
+            this.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
             return this;
         }
         public GetServiceMeshesMeshMeshConfigSidecarInjector build() {

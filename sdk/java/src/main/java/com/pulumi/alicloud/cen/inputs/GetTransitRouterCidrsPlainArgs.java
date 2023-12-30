@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -184,7 +185,9 @@ public final class GetTransitRouterCidrsPlainArgs extends com.pulumi.resources.I
         }
 
         public GetTransitRouterCidrsPlainArgs build() {
-            $.transitRouterId = Objects.requireNonNull($.transitRouterId, "expected parameter 'transitRouterId' to be non-null");
+            if ($.transitRouterId == null) {
+                throw new MissingRequiredPropertyException("GetTransitRouterCidrsPlainArgs", "transitRouterId");
+            }
             return $;
         }
     }

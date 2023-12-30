@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -496,11 +497,21 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FlowLogArgs build() {
-            $.logStoreName = Objects.requireNonNull($.logStoreName, "expected parameter 'logStoreName' to be non-null");
-            $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
-            $.resourceId = Objects.requireNonNull($.resourceId, "expected parameter 'resourceId' to be non-null");
-            $.resourceType = Objects.requireNonNull($.resourceType, "expected parameter 'resourceType' to be non-null");
-            $.trafficType = Objects.requireNonNull($.trafficType, "expected parameter 'trafficType' to be non-null");
+            if ($.logStoreName == null) {
+                throw new MissingRequiredPropertyException("FlowLogArgs", "logStoreName");
+            }
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("FlowLogArgs", "projectName");
+            }
+            if ($.resourceId == null) {
+                throw new MissingRequiredPropertyException("FlowLogArgs", "resourceId");
+            }
+            if ($.resourceType == null) {
+                throw new MissingRequiredPropertyException("FlowLogArgs", "resourceType");
+            }
+            if ($.trafficType == null) {
+                throw new MissingRequiredPropertyException("FlowLogArgs", "trafficType");
+            }
             return $;
         }
     }

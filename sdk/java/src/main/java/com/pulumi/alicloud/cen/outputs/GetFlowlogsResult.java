@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetFlowlogsFlowlog;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -162,17 +163,22 @@ public final class GetFlowlogsResult {
 
         @CustomType.Setter
         public Builder cenId(@Nullable String cenId) {
+
             this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder flowlogs(List<GetFlowlogsFlowlog> flowlogs) {
-            this.flowlogs = Objects.requireNonNull(flowlogs);
+            if (flowlogs == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsResult", "flowlogs");
+            }
+            this.flowlogs = flowlogs;
             return this;
         }
         public Builder flowlogs(GetFlowlogsFlowlog... flowlogs) {
@@ -180,12 +186,18 @@ public final class GetFlowlogsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -193,17 +205,22 @@ public final class GetFlowlogsResult {
         }
         @CustomType.Setter
         public Builder logStoreName(@Nullable String logStoreName) {
+
             this.logStoreName = logStoreName;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -211,16 +228,19 @@ public final class GetFlowlogsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder projectName(@Nullable String projectName) {
+
             this.projectName = projectName;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

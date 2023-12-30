@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -227,7 +228,9 @@ public final class RocketMQInstanceProductInfoArgs extends com.pulumi.resources.
         }
 
         public RocketMQInstanceProductInfoArgs build() {
-            $.msgProcessSpec = Objects.requireNonNull($.msgProcessSpec, "expected parameter 'msgProcessSpec' to be non-null");
+            if ($.msgProcessSpec == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceProductInfoArgs", "msgProcessSpec");
+            }
             return $;
         }
     }

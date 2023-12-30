@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,7 +152,9 @@ public final class HoneypotPresetMetaArgs extends com.pulumi.resources.ResourceA
         }
 
         public HoneypotPresetMetaArgs build() {
-            $.burp = Objects.requireNonNull($.burp, "expected parameter 'burp' to be non-null");
+            if ($.burp == null) {
+                throw new MissingRequiredPropertyException("HoneypotPresetMetaArgs", "burp");
+            }
             return $;
         }
     }

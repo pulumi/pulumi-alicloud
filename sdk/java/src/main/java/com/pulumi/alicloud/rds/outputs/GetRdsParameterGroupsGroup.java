@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.alicloud.rds.outputs.GetRdsParameterGroupsGroupParamDetail;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -91,32 +92,50 @@ public final class GetRdsParameterGroupsGroup {
 
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
-            this.engineVersion = Objects.requireNonNull(engineVersion);
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder forceRestart(Integer forceRestart) {
-            this.forceRestart = Objects.requireNonNull(forceRestart);
+            if (forceRestart == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "forceRestart");
+            }
+            this.forceRestart = forceRestart;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder paramCounts(Integer paramCounts) {
-            this.paramCounts = Objects.requireNonNull(paramCounts);
+            if (paramCounts == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "paramCounts");
+            }
+            this.paramCounts = paramCounts;
             return this;
         }
         @CustomType.Setter
         public Builder paramDetails(List<GetRdsParameterGroupsGroupParamDetail> paramDetails) {
-            this.paramDetails = Objects.requireNonNull(paramDetails);
+            if (paramDetails == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "paramDetails");
+            }
+            this.paramDetails = paramDetails;
             return this;
         }
         public Builder paramDetails(GetRdsParameterGroupsGroupParamDetail... paramDetails) {
@@ -124,22 +143,34 @@ public final class GetRdsParameterGroupsGroup {
         }
         @CustomType.Setter
         public Builder parameterGroupDesc(String parameterGroupDesc) {
-            this.parameterGroupDesc = Objects.requireNonNull(parameterGroupDesc);
+            if (parameterGroupDesc == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "parameterGroupDesc");
+            }
+            this.parameterGroupDesc = parameterGroupDesc;
             return this;
         }
         @CustomType.Setter
         public Builder parameterGroupId(String parameterGroupId) {
-            this.parameterGroupId = Objects.requireNonNull(parameterGroupId);
+            if (parameterGroupId == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "parameterGroupId");
+            }
+            this.parameterGroupId = parameterGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder parameterGroupName(String parameterGroupName) {
-            this.parameterGroupName = Objects.requireNonNull(parameterGroupName);
+            if (parameterGroupName == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "parameterGroupName");
+            }
+            this.parameterGroupName = parameterGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder parameterGroupType(Integer parameterGroupType) {
-            this.parameterGroupType = Objects.requireNonNull(parameterGroupType);
+            if (parameterGroupType == null) {
+              throw new MissingRequiredPropertyException("GetRdsParameterGroupsGroup", "parameterGroupType");
+            }
+            this.parameterGroupType = parameterGroupType;
             return this;
         }
         public GetRdsParameterGroupsGroup build() {

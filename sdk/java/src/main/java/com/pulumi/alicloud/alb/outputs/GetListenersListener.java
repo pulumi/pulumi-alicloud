@@ -10,6 +10,7 @@ import com.pulumi.alicloud.alb.outputs.GetListenersListenerDefaultAction;
 import com.pulumi.alicloud.alb.outputs.GetListenersListenerQuicConfig;
 import com.pulumi.alicloud.alb.outputs.GetListenersListenerXforwardedForConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -343,12 +344,18 @@ public final class GetListenersListener {
 
         @CustomType.Setter
         public Builder accessLogRecordCustomizedHeadersEnabled(Boolean accessLogRecordCustomizedHeadersEnabled) {
-            this.accessLogRecordCustomizedHeadersEnabled = Objects.requireNonNull(accessLogRecordCustomizedHeadersEnabled);
+            if (accessLogRecordCustomizedHeadersEnabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "accessLogRecordCustomizedHeadersEnabled");
+            }
+            this.accessLogRecordCustomizedHeadersEnabled = accessLogRecordCustomizedHeadersEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder accessLogTracingConfigs(List<GetListenersListenerAccessLogTracingConfig> accessLogTracingConfigs) {
-            this.accessLogTracingConfigs = Objects.requireNonNull(accessLogTracingConfigs);
+            if (accessLogTracingConfigs == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "accessLogTracingConfigs");
+            }
+            this.accessLogTracingConfigs = accessLogTracingConfigs;
             return this;
         }
         public Builder accessLogTracingConfigs(GetListenersListenerAccessLogTracingConfig... accessLogTracingConfigs) {
@@ -356,7 +363,10 @@ public final class GetListenersListener {
         }
         @CustomType.Setter
         public Builder aclConfigs(List<GetListenersListenerAclConfig> aclConfigs) {
-            this.aclConfigs = Objects.requireNonNull(aclConfigs);
+            if (aclConfigs == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "aclConfigs");
+            }
+            this.aclConfigs = aclConfigs;
             return this;
         }
         public Builder aclConfigs(GetListenersListenerAclConfig... aclConfigs) {
@@ -364,7 +374,10 @@ public final class GetListenersListener {
         }
         @CustomType.Setter
         public Builder certificates(List<GetListenersListenerCertificate> certificates) {
-            this.certificates = Objects.requireNonNull(certificates);
+            if (certificates == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "certificates");
+            }
+            this.certificates = certificates;
             return this;
         }
         public Builder certificates(GetListenersListenerCertificate... certificates) {
@@ -372,7 +385,10 @@ public final class GetListenersListener {
         }
         @CustomType.Setter
         public Builder defaultActions(List<GetListenersListenerDefaultAction> defaultActions) {
-            this.defaultActions = Objects.requireNonNull(defaultActions);
+            if (defaultActions == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "defaultActions");
+            }
+            this.defaultActions = defaultActions;
             return this;
         }
         public Builder defaultActions(GetListenersListenerDefaultAction... defaultActions) {
@@ -380,62 +396,98 @@ public final class GetListenersListener {
         }
         @CustomType.Setter
         public Builder gzipEnabled(Boolean gzipEnabled) {
-            this.gzipEnabled = Objects.requireNonNull(gzipEnabled);
+            if (gzipEnabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "gzipEnabled");
+            }
+            this.gzipEnabled = gzipEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder http2Enabled(Boolean http2Enabled) {
-            this.http2Enabled = Objects.requireNonNull(http2Enabled);
+            if (http2Enabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "http2Enabled");
+            }
+            this.http2Enabled = http2Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder idleTimeout(Integer idleTimeout) {
-            this.idleTimeout = Objects.requireNonNull(idleTimeout);
+            if (idleTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "idleTimeout");
+            }
+            this.idleTimeout = idleTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder listenerDescription(String listenerDescription) {
-            this.listenerDescription = Objects.requireNonNull(listenerDescription);
+            if (listenerDescription == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "listenerDescription");
+            }
+            this.listenerDescription = listenerDescription;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
-            this.listenerPort = Objects.requireNonNull(listenerPort);
+            if (listenerPort == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "listenerPort");
+            }
+            this.listenerPort = listenerPort;
             return this;
         }
         @CustomType.Setter
         public Builder listenerProtocol(String listenerProtocol) {
-            this.listenerProtocol = Objects.requireNonNull(listenerProtocol);
+            if (listenerProtocol == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "listenerProtocol");
+            }
+            this.listenerProtocol = listenerProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
-            this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "loadBalancerId");
+            }
+            this.loadBalancerId = loadBalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder maxResults(String maxResults) {
-            this.maxResults = Objects.requireNonNull(maxResults);
+            if (maxResults == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "maxResults");
+            }
+            this.maxResults = maxResults;
             return this;
         }
         @CustomType.Setter
         public Builder nextToken(String nextToken) {
-            this.nextToken = Objects.requireNonNull(nextToken);
+            if (nextToken == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "nextToken");
+            }
+            this.nextToken = nextToken;
             return this;
         }
         @CustomType.Setter
         public Builder quicConfigs(List<GetListenersListenerQuicConfig> quicConfigs) {
-            this.quicConfigs = Objects.requireNonNull(quicConfigs);
+            if (quicConfigs == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "quicConfigs");
+            }
+            this.quicConfigs = quicConfigs;
             return this;
         }
         public Builder quicConfigs(GetListenersListenerQuicConfig... quicConfigs) {
@@ -443,22 +495,34 @@ public final class GetListenersListener {
         }
         @CustomType.Setter
         public Builder requestTimeout(Integer requestTimeout) {
-            this.requestTimeout = Objects.requireNonNull(requestTimeout);
+            if (requestTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "requestTimeout");
+            }
+            this.requestTimeout = requestTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder securityPolicyId(String securityPolicyId) {
-            this.securityPolicyId = Objects.requireNonNull(securityPolicyId);
+            if (securityPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "securityPolicyId");
+            }
+            this.securityPolicyId = securityPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedForConfigs(List<GetListenersListenerXforwardedForConfig> xforwardedForConfigs) {
-            this.xforwardedForConfigs = Objects.requireNonNull(xforwardedForConfigs);
+            if (xforwardedForConfigs == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "xforwardedForConfigs");
+            }
+            this.xforwardedForConfigs = xforwardedForConfigs;
             return this;
         }
         public Builder xforwardedForConfigs(GetListenersListenerXforwardedForConfig... xforwardedForConfigs) {

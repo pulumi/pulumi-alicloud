@@ -7,6 +7,7 @@ import com.pulumi.alicloud.vpc.inputs.NetworkAclEntriesEgressArgs;
 import com.pulumi.alicloud.vpc.inputs.NetworkAclEntriesIngressArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -173,7 +174,9 @@ public final class NetworkAclEntriesArgs extends com.pulumi.resources.ResourceAr
         }
 
         public NetworkAclEntriesArgs build() {
-            $.networkAclId = Objects.requireNonNull($.networkAclId, "expected parameter 'networkAclId' to be non-null");
+            if ($.networkAclId == null) {
+                throw new MissingRequiredPropertyException("NetworkAclEntriesArgs", "networkAclId");
+            }
             return $;
         }
     }

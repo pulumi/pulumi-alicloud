@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetImagesImageDiskDeviceMapping;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -331,22 +332,34 @@ public final class GetImagesImage {
 
         @CustomType.Setter
         public Builder architecture(String architecture) {
-            this.architecture = Objects.requireNonNull(architecture);
+            if (architecture == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "architecture");
+            }
+            this.architecture = architecture;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskDeviceMappings(List<GetImagesImageDiskDeviceMapping> diskDeviceMappings) {
-            this.diskDeviceMappings = Objects.requireNonNull(diskDeviceMappings);
+            if (diskDeviceMappings == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "diskDeviceMappings");
+            }
+            this.diskDeviceMappings = diskDeviceMappings;
             return this;
         }
         public Builder diskDeviceMappings(GetImagesImageDiskDeviceMapping... diskDeviceMappings) {
@@ -354,102 +367,160 @@ public final class GetImagesImage {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder imageOwnerAlias(String imageOwnerAlias) {
-            this.imageOwnerAlias = Objects.requireNonNull(imageOwnerAlias);
+            if (imageOwnerAlias == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "imageOwnerAlias");
+            }
+            this.imageOwnerAlias = imageOwnerAlias;
             return this;
         }
         @CustomType.Setter
         public Builder imageVersion(String imageVersion) {
-            this.imageVersion = Objects.requireNonNull(imageVersion);
+            if (imageVersion == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "imageVersion");
+            }
+            this.imageVersion = imageVersion;
             return this;
         }
         @CustomType.Setter
         public Builder isCopied(Boolean isCopied) {
-            this.isCopied = Objects.requireNonNull(isCopied);
+            if (isCopied == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "isCopied");
+            }
+            this.isCopied = isCopied;
             return this;
         }
         @CustomType.Setter
         public Builder isSelfShared(String isSelfShared) {
-            this.isSelfShared = Objects.requireNonNull(isSelfShared);
+            if (isSelfShared == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "isSelfShared");
+            }
+            this.isSelfShared = isSelfShared;
             return this;
         }
         @CustomType.Setter
         public Builder isSubscribed(Boolean isSubscribed) {
-            this.isSubscribed = Objects.requireNonNull(isSubscribed);
+            if (isSubscribed == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "isSubscribed");
+            }
+            this.isSubscribed = isSubscribed;
             return this;
         }
         @CustomType.Setter
         public Builder isSupportIoOptimized(Boolean isSupportIoOptimized) {
-            this.isSupportIoOptimized = Objects.requireNonNull(isSupportIoOptimized);
+            if (isSupportIoOptimized == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "isSupportIoOptimized");
+            }
+            this.isSupportIoOptimized = isSupportIoOptimized;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder osName(String osName) {
-            this.osName = Objects.requireNonNull(osName);
+            if (osName == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "osName");
+            }
+            this.osName = osName;
             return this;
         }
         @CustomType.Setter
         public Builder osNameEn(String osNameEn) {
-            this.osNameEn = Objects.requireNonNull(osNameEn);
+            if (osNameEn == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "osNameEn");
+            }
+            this.osNameEn = osNameEn;
             return this;
         }
         @CustomType.Setter
         public Builder osType(String osType) {
-            this.osType = Objects.requireNonNull(osType);
+            if (osType == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "osType");
+            }
+            this.osType = osType;
             return this;
         }
         @CustomType.Setter
         public Builder platform(String platform) {
-            this.platform = Objects.requireNonNull(platform);
+            if (platform == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "platform");
+            }
+            this.platform = platform;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder progress(String progress) {
-            this.progress = Objects.requireNonNull(progress);
+            if (progress == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "progress");
+            }
+            this.progress = progress;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder usage(String usage) {
-            this.usage = Objects.requireNonNull(usage);
+            if (usage == null) {
+              throw new MissingRequiredPropertyException("GetImagesImage", "usage");
+            }
+            this.usage = usage;
             return this;
         }
         public GetImagesImage build() {

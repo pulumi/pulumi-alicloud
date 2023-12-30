@@ -60,6 +60,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilter {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -68,6 +69,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilter {
         }
         @CustomType.Setter
         public Builder relation(@Nullable String relation) {
+
             this.relation = relation;
             return this;
         }

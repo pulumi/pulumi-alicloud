@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -645,13 +646,27 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
         }
 
         public AggregateConfigRuleArgs build() {
-            $.aggregateConfigRuleName = Objects.requireNonNull($.aggregateConfigRuleName, "expected parameter 'aggregateConfigRuleName' to be non-null");
-            $.aggregatorId = Objects.requireNonNull($.aggregatorId, "expected parameter 'aggregatorId' to be non-null");
-            $.configRuleTriggerTypes = Objects.requireNonNull($.configRuleTriggerTypes, "expected parameter 'configRuleTriggerTypes' to be non-null");
-            $.resourceTypesScopes = Objects.requireNonNull($.resourceTypesScopes, "expected parameter 'resourceTypesScopes' to be non-null");
-            $.riskLevel = Objects.requireNonNull($.riskLevel, "expected parameter 'riskLevel' to be non-null");
-            $.sourceIdentifier = Objects.requireNonNull($.sourceIdentifier, "expected parameter 'sourceIdentifier' to be non-null");
-            $.sourceOwner = Objects.requireNonNull($.sourceOwner, "expected parameter 'sourceOwner' to be non-null");
+            if ($.aggregateConfigRuleName == null) {
+                throw new MissingRequiredPropertyException("AggregateConfigRuleArgs", "aggregateConfigRuleName");
+            }
+            if ($.aggregatorId == null) {
+                throw new MissingRequiredPropertyException("AggregateConfigRuleArgs", "aggregatorId");
+            }
+            if ($.configRuleTriggerTypes == null) {
+                throw new MissingRequiredPropertyException("AggregateConfigRuleArgs", "configRuleTriggerTypes");
+            }
+            if ($.resourceTypesScopes == null) {
+                throw new MissingRequiredPropertyException("AggregateConfigRuleArgs", "resourceTypesScopes");
+            }
+            if ($.riskLevel == null) {
+                throw new MissingRequiredPropertyException("AggregateConfigRuleArgs", "riskLevel");
+            }
+            if ($.sourceIdentifier == null) {
+                throw new MissingRequiredPropertyException("AggregateConfigRuleArgs", "sourceIdentifier");
+            }
+            if ($.sourceOwner == null) {
+                throw new MissingRequiredPropertyException("AggregateConfigRuleArgs", "sourceOwner");
+            }
             return $;
         }
     }

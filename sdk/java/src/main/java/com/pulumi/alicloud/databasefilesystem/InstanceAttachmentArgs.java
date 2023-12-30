@@ -5,6 +5,7 @@ package com.pulumi.alicloud.databasefilesystem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public InstanceAttachmentArgs build() {
-            $.ecsId = Objects.requireNonNull($.ecsId, "expected parameter 'ecsId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.ecsId == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "ecsId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "instanceId");
+            }
             return $;
         }
     }

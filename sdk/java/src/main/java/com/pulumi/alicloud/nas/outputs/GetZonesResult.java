@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.alicloud.nas.outputs.GetZonesZone;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,22 +73,30 @@ public final class GetZonesResult {
 
         @CustomType.Setter
         public Builder fileSystemType(@Nullable String fileSystemType) {
+
             this.fileSystemType = fileSystemType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
-            this.zones = Objects.requireNonNull(zones);
+            if (zones == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "zones");
+            }
+            this.zones = zones;
             return this;
         }
         public Builder zones(GetZonesZone... zones) {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ebs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -299,10 +300,18 @@ public final class DiskReplicaGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DiskReplicaGroupArgs build() {
-            $.destinationRegionId = Objects.requireNonNull($.destinationRegionId, "expected parameter 'destinationRegionId' to be non-null");
-            $.destinationZoneId = Objects.requireNonNull($.destinationZoneId, "expected parameter 'destinationZoneId' to be non-null");
-            $.sourceRegionId = Objects.requireNonNull($.sourceRegionId, "expected parameter 'sourceRegionId' to be non-null");
-            $.sourceZoneId = Objects.requireNonNull($.sourceZoneId, "expected parameter 'sourceZoneId' to be non-null");
+            if ($.destinationRegionId == null) {
+                throw new MissingRequiredPropertyException("DiskReplicaGroupArgs", "destinationRegionId");
+            }
+            if ($.destinationZoneId == null) {
+                throw new MissingRequiredPropertyException("DiskReplicaGroupArgs", "destinationZoneId");
+            }
+            if ($.sourceRegionId == null) {
+                throw new MissingRequiredPropertyException("DiskReplicaGroupArgs", "sourceRegionId");
+            }
+            if ($.sourceZoneId == null) {
+                throw new MissingRequiredPropertyException("DiskReplicaGroupArgs", "sourceZoneId");
+            }
             return $;
         }
     }

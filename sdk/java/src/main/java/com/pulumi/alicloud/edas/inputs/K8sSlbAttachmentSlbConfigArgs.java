@@ -6,6 +6,7 @@ package com.pulumi.alicloud.edas.inputs;
 import com.pulumi.alicloud.edas.inputs.K8sSlbAttachmentSlbConfigPortMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -273,9 +274,15 @@ public final class K8sSlbAttachmentSlbConfigArgs extends com.pulumi.resources.Re
         }
 
         public K8sSlbAttachmentSlbConfigArgs build() {
-            $.portMappings = Objects.requireNonNull($.portMappings, "expected parameter 'portMappings' to be non-null");
-            $.scheduler = Objects.requireNonNull($.scheduler, "expected parameter 'scheduler' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.portMappings == null) {
+                throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigArgs", "portMappings");
+            }
+            if ($.scheduler == null) {
+                throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigArgs", "scheduler");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigArgs", "type");
+            }
             return $;
         }
     }

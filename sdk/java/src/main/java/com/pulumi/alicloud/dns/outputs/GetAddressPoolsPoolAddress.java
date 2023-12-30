@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetAddressPoolsPoolAddress {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPoolAddress", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder attributeInfo(String attributeInfo) {
-            this.attributeInfo = Objects.requireNonNull(attributeInfo);
+            if (attributeInfo == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPoolAddress", "attributeInfo");
+            }
+            this.attributeInfo = attributeInfo;
             return this;
         }
         @CustomType.Setter
         public Builder lbaWeight(Integer lbaWeight) {
-            this.lbaWeight = Objects.requireNonNull(lbaWeight);
+            if (lbaWeight == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPoolAddress", "lbaWeight");
+            }
+            this.lbaWeight = lbaWeight;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPoolAddress", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetAddressPoolsPoolAddress", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         public GetAddressPoolsPoolAddress build() {

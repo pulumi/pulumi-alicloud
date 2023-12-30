@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.brain.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -153,52 +154,82 @@ public final class GetIndustrialPidLoopsLoop {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pidLoopConfiguration(String pidLoopConfiguration) {
-            this.pidLoopConfiguration = Objects.requireNonNull(pidLoopConfiguration);
+            if (pidLoopConfiguration == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "pidLoopConfiguration");
+            }
+            this.pidLoopConfiguration = pidLoopConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder pidLoopDcsType(String pidLoopDcsType) {
-            this.pidLoopDcsType = Objects.requireNonNull(pidLoopDcsType);
+            if (pidLoopDcsType == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "pidLoopDcsType");
+            }
+            this.pidLoopDcsType = pidLoopDcsType;
             return this;
         }
         @CustomType.Setter
         public Builder pidLoopDesc(String pidLoopDesc) {
-            this.pidLoopDesc = Objects.requireNonNull(pidLoopDesc);
+            if (pidLoopDesc == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "pidLoopDesc");
+            }
+            this.pidLoopDesc = pidLoopDesc;
             return this;
         }
         @CustomType.Setter
         public Builder pidLoopId(String pidLoopId) {
-            this.pidLoopId = Objects.requireNonNull(pidLoopId);
+            if (pidLoopId == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "pidLoopId");
+            }
+            this.pidLoopId = pidLoopId;
             return this;
         }
         @CustomType.Setter
         public Builder pidLoopIsCrucial(Boolean pidLoopIsCrucial) {
-            this.pidLoopIsCrucial = Objects.requireNonNull(pidLoopIsCrucial);
+            if (pidLoopIsCrucial == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "pidLoopIsCrucial");
+            }
+            this.pidLoopIsCrucial = pidLoopIsCrucial;
             return this;
         }
         @CustomType.Setter
         public Builder pidLoopName(String pidLoopName) {
-            this.pidLoopName = Objects.requireNonNull(pidLoopName);
+            if (pidLoopName == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "pidLoopName");
+            }
+            this.pidLoopName = pidLoopName;
             return this;
         }
         @CustomType.Setter
         public Builder pidLoopType(String pidLoopType) {
-            this.pidLoopType = Objects.requireNonNull(pidLoopType);
+            if (pidLoopType == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "pidLoopType");
+            }
+            this.pidLoopType = pidLoopType;
             return this;
         }
         @CustomType.Setter
         public Builder pidProjectId(String pidProjectId) {
-            this.pidProjectId = Objects.requireNonNull(pidProjectId);
+            if (pidProjectId == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "pidProjectId");
+            }
+            this.pidProjectId = pidProjectId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetIndustrialPidLoopsLoop", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetIndustrialPidLoopsLoop build() {

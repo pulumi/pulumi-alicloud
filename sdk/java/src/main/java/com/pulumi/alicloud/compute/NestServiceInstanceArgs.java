@@ -7,6 +7,7 @@ import com.pulumi.alicloud.compute.inputs.NestServiceInstanceCommodityArgs;
 import com.pulumi.alicloud.compute.inputs.NestServiceInstanceOperationMetadataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -525,8 +526,12 @@ public final class NestServiceInstanceArgs extends com.pulumi.resources.Resource
         }
 
         public NestServiceInstanceArgs build() {
-            $.serviceId = Objects.requireNonNull($.serviceId, "expected parameter 'serviceId' to be non-null");
-            $.serviceVersion = Objects.requireNonNull($.serviceVersion, "expected parameter 'serviceVersion' to be non-null");
+            if ($.serviceId == null) {
+                throw new MissingRequiredPropertyException("NestServiceInstanceArgs", "serviceId");
+            }
+            if ($.serviceVersion == null) {
+                throw new MissingRequiredPropertyException("NestServiceInstanceArgs", "serviceVersion");
+            }
             return $;
         }
     }

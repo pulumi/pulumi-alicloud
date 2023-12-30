@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudmonitor.outputs;
 
 import com.pulumi.alicloud.cloudmonitor.outputs.ServiceGroupMonitoringAgentProcessAlertConfigTargetList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -159,31 +160,43 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfig {
 
         @CustomType.Setter
         public Builder comparisonOperator(String comparisonOperator) {
-            this.comparisonOperator = Objects.requireNonNull(comparisonOperator);
+            if (comparisonOperator == null) {
+              throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfig", "comparisonOperator");
+            }
+            this.comparisonOperator = comparisonOperator;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveInterval(@Nullable String effectiveInterval) {
+
             this.effectiveInterval = effectiveInterval;
             return this;
         }
         @CustomType.Setter
         public Builder escalationsLevel(String escalationsLevel) {
-            this.escalationsLevel = Objects.requireNonNull(escalationsLevel);
+            if (escalationsLevel == null) {
+              throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfig", "escalationsLevel");
+            }
+            this.escalationsLevel = escalationsLevel;
             return this;
         }
         @CustomType.Setter
         public Builder silenceTime(@Nullable Integer silenceTime) {
+
             this.silenceTime = silenceTime;
             return this;
         }
         @CustomType.Setter
         public Builder statistics(String statistics) {
-            this.statistics = Objects.requireNonNull(statistics);
+            if (statistics == null) {
+              throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfig", "statistics");
+            }
+            this.statistics = statistics;
             return this;
         }
         @CustomType.Setter
         public Builder targetLists(@Nullable List<ServiceGroupMonitoringAgentProcessAlertConfigTargetList> targetLists) {
+
             this.targetLists = targetLists;
             return this;
         }
@@ -192,16 +205,23 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfig {
         }
         @CustomType.Setter
         public Builder threshold(String threshold) {
-            this.threshold = Objects.requireNonNull(threshold);
+            if (threshold == null) {
+              throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfig", "threshold");
+            }
+            this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder times(String times) {
-            this.times = Objects.requireNonNull(times);
+            if (times == null) {
+              throw new MissingRequiredPropertyException("ServiceGroupMonitoringAgentProcessAlertConfig", "times");
+            }
+            this.times = times;
             return this;
         }
         @CustomType.Setter
         public Builder webhook(@Nullable String webhook) {
+
             this.webhook = webhook;
             return this;
         }

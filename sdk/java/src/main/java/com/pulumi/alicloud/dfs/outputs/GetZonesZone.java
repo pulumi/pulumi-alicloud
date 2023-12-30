@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dfs.outputs;
 
 import com.pulumi.alicloud.dfs.outputs.GetZonesZoneOption;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +59,10 @@ public final class GetZonesZone {
 
         @CustomType.Setter
         public Builder options(List<GetZonesZoneOption> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "options");
+            }
+            this.options = options;
             return this;
         }
         public Builder options(GetZonesZoneOption... options) {
@@ -66,7 +70,10 @@ public final class GetZonesZone {
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetZonesZone build() {

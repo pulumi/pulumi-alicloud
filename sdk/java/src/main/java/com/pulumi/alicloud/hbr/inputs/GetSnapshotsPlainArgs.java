@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -373,8 +374,12 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetSnapshotsPlainArgs build() {
-            $.sourceType = Objects.requireNonNull($.sourceType, "expected parameter 'sourceType' to be non-null");
-            $.vaultId = Objects.requireNonNull($.vaultId, "expected parameter 'vaultId' to be non-null");
+            if ($.sourceType == null) {
+                throw new MissingRequiredPropertyException("GetSnapshotsPlainArgs", "sourceType");
+            }
+            if ($.vaultId == null) {
+                throw new MissingRequiredPropertyException("GetSnapshotsPlainArgs", "vaultId");
+            }
             return $;
         }
     }

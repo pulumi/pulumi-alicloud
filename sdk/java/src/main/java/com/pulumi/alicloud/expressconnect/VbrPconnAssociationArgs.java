@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -419,9 +420,15 @@ public final class VbrPconnAssociationArgs extends com.pulumi.resources.Resource
         }
 
         public VbrPconnAssociationArgs build() {
-            $.physicalConnectionId = Objects.requireNonNull($.physicalConnectionId, "expected parameter 'physicalConnectionId' to be non-null");
-            $.vbrId = Objects.requireNonNull($.vbrId, "expected parameter 'vbrId' to be non-null");
-            $.vlanId = Objects.requireNonNull($.vlanId, "expected parameter 'vlanId' to be non-null");
+            if ($.physicalConnectionId == null) {
+                throw new MissingRequiredPropertyException("VbrPconnAssociationArgs", "physicalConnectionId");
+            }
+            if ($.vbrId == null) {
+                throw new MissingRequiredPropertyException("VbrPconnAssociationArgs", "vbrId");
+            }
+            if ($.vlanId == null) {
+                throw new MissingRequiredPropertyException("VbrPconnAssociationArgs", "vlanId");
+            }
             return $;
         }
     }

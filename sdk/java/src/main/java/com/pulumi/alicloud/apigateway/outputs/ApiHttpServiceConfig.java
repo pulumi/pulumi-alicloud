@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -101,27 +102,40 @@ public final class ApiHttpServiceConfig {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("ApiHttpServiceConfig", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder aoneName(@Nullable String aoneName) {
+
             this.aoneName = aoneName;
             return this;
         }
         @CustomType.Setter
         public Builder method(String method) {
-            this.method = Objects.requireNonNull(method);
+            if (method == null) {
+              throw new MissingRequiredPropertyException("ApiHttpServiceConfig", "method");
+            }
+            this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("ApiHttpServiceConfig", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(Integer timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("ApiHttpServiceConfig", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         public ApiHttpServiceConfig build() {

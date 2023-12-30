@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +59,10 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfig {
 
         @CustomType.Setter
         public Builder mirrorGroupConfigs(List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig> mirrorGroupConfigs) {
-            this.mirrorGroupConfigs = Objects.requireNonNull(mirrorGroupConfigs);
+            if (mirrorGroupConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleActionTrafficMirrorConfig", "mirrorGroupConfigs");
+            }
+            this.mirrorGroupConfigs = mirrorGroupConfigs;
             return this;
         }
         public Builder mirrorGroupConfigs(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig... mirrorGroupConfigs) {
@@ -66,7 +70,10 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfig {
         }
         @CustomType.Setter
         public Builder targetType(String targetType) {
-            this.targetType = Objects.requireNonNull(targetType);
+            if (targetType == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleActionTrafficMirrorConfig", "targetType");
+            }
+            this.targetType = targetType;
             return this;
         }
         public GetRulesRuleRuleActionTrafficMirrorConfig build() {

@@ -74,16 +74,19 @@ public final class AppGroupOrder {
 
         @CustomType.Setter
         public Builder autoRenew(@Nullable Boolean autoRenew) {
+
             this.autoRenew = autoRenew;
             return this;
         }
         @CustomType.Setter
         public Builder duration(@Nullable Integer duration) {
+
             this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder pricingCycle(@Nullable String pricingCycle) {
+
             this.pricingCycle = pricingCycle;
             return this;
         }

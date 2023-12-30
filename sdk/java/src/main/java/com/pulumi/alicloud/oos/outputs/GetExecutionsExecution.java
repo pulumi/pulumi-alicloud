@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -323,107 +324,170 @@ public final class GetExecutionsExecution {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder counters(String counters) {
-            this.counters = Objects.requireNonNull(counters);
+            if (counters == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "counters");
+            }
+            this.counters = counters;
             return this;
         }
         @CustomType.Setter
         public Builder createDate(String createDate) {
-            this.createDate = Objects.requireNonNull(createDate);
+            if (createDate == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "createDate");
+            }
+            this.createDate = createDate;
             return this;
         }
         @CustomType.Setter
         public Builder endDate(String endDate) {
-            this.endDate = Objects.requireNonNull(endDate);
+            if (endDate == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "endDate");
+            }
+            this.endDate = endDate;
             return this;
         }
         @CustomType.Setter
         public Builder executedBy(String executedBy) {
-            this.executedBy = Objects.requireNonNull(executedBy);
+            if (executedBy == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "executedBy");
+            }
+            this.executedBy = executedBy;
             return this;
         }
         @CustomType.Setter
         public Builder executionId(String executionId) {
-            this.executionId = Objects.requireNonNull(executionId);
+            if (executionId == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "executionId");
+            }
+            this.executionId = executionId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isParent(Boolean isParent) {
-            this.isParent = Objects.requireNonNull(isParent);
+            if (isParent == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "isParent");
+            }
+            this.isParent = isParent;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder outputs(String outputs) {
-            this.outputs = Objects.requireNonNull(outputs);
+            if (outputs == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "outputs");
+            }
+            this.outputs = outputs;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(String parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder parentExecutionId(String parentExecutionId) {
-            this.parentExecutionId = Objects.requireNonNull(parentExecutionId);
+            if (parentExecutionId == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "parentExecutionId");
+            }
+            this.parentExecutionId = parentExecutionId;
             return this;
         }
         @CustomType.Setter
         public Builder ramRole(String ramRole) {
-            this.ramRole = Objects.requireNonNull(ramRole);
+            if (ramRole == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "ramRole");
+            }
+            this.ramRole = ramRole;
             return this;
         }
         @CustomType.Setter
         public Builder startDate(String startDate) {
-            this.startDate = Objects.requireNonNull(startDate);
+            if (startDate == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "startDate");
+            }
+            this.startDate = startDate;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
-            this.statusMessage = Objects.requireNonNull(statusMessage);
+            if (statusMessage == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "statusMessage");
+            }
+            this.statusMessage = statusMessage;
             return this;
         }
         @CustomType.Setter
         public Builder statusReason(String statusReason) {
-            this.statusReason = Objects.requireNonNull(statusReason);
+            if (statusReason == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "statusReason");
+            }
+            this.statusReason = statusReason;
             return this;
         }
         @CustomType.Setter
         public Builder templateId(String templateId) {
-            this.templateId = Objects.requireNonNull(templateId);
+            if (templateId == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "templateId");
+            }
+            this.templateId = templateId;
             return this;
         }
         @CustomType.Setter
         public Builder templateName(String templateName) {
-            this.templateName = Objects.requireNonNull(templateName);
+            if (templateName == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "templateName");
+            }
+            this.templateName = templateName;
             return this;
         }
         @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
-            this.templateVersion = Objects.requireNonNull(templateVersion);
+            if (templateVersion == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "templateVersion");
+            }
+            this.templateVersion = templateVersion;
             return this;
         }
         @CustomType.Setter
         public Builder updateDate(String updateDate) {
-            this.updateDate = Objects.requireNonNull(updateDate);
+            if (updateDate == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "updateDate");
+            }
+            this.updateDate = updateDate;
             return this;
         }
         public GetExecutionsExecution build() {

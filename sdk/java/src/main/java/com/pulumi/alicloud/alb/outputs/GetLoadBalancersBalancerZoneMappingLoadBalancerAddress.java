@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerZoneMappingLoadBalancerAddress", "address");
+            }
+            this.address = address;
             return this;
         }
         public GetLoadBalancersBalancerZoneMappingLoadBalancerAddress build() {

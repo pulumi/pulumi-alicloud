@@ -5,6 +5,7 @@ package com.pulumi.alicloud.wafv3.outputs;
 
 import com.pulumi.alicloud.wafv3.outputs.DomainRedirectRequestHeader;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -244,6 +245,7 @@ public final class DomainRedirect {
 
         @CustomType.Setter
         public Builder backends(@Nullable List<String> backends) {
+
             this.backends = backends;
             return this;
         }
@@ -252,41 +254,51 @@ public final class DomainRedirect {
         }
         @CustomType.Setter
         public Builder connectTimeout(@Nullable Integer connectTimeout) {
+
             this.connectTimeout = connectTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder focusHttpBackend(@Nullable Boolean focusHttpBackend) {
+
             this.focusHttpBackend = focusHttpBackend;
             return this;
         }
         @CustomType.Setter
         public Builder keepalive(@Nullable Boolean keepalive) {
+
             this.keepalive = keepalive;
             return this;
         }
         @CustomType.Setter
         public Builder keepaliveRequests(@Nullable Integer keepaliveRequests) {
+
             this.keepaliveRequests = keepaliveRequests;
             return this;
         }
         @CustomType.Setter
         public Builder keepaliveTimeout(@Nullable Integer keepaliveTimeout) {
+
             this.keepaliveTimeout = keepaliveTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder loadbalance(String loadbalance) {
-            this.loadbalance = Objects.requireNonNull(loadbalance);
+            if (loadbalance == null) {
+              throw new MissingRequiredPropertyException("DomainRedirect", "loadbalance");
+            }
+            this.loadbalance = loadbalance;
             return this;
         }
         @CustomType.Setter
         public Builder readTimeout(@Nullable Integer readTimeout) {
+
             this.readTimeout = readTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder requestHeaders(@Nullable List<DomainRedirectRequestHeader> requestHeaders) {
+
             this.requestHeaders = requestHeaders;
             return this;
         }
@@ -295,21 +307,25 @@ public final class DomainRedirect {
         }
         @CustomType.Setter
         public Builder retry(@Nullable Boolean retry) {
+
             this.retry = retry;
             return this;
         }
         @CustomType.Setter
         public Builder sniEnabled(@Nullable Boolean sniEnabled) {
+
             this.sniEnabled = sniEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder sniHost(@Nullable String sniHost) {
+
             this.sniHost = sniHost;
             return this;
         }
         @CustomType.Setter
         public Builder writeTimeout(@Nullable Integer writeTimeout) {
+
             this.writeTimeout = writeTimeout;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dfs.outputs;
 
 import com.pulumi.alicloud.dfs.outputs.GetAccessRulesRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -70,17 +71,26 @@ public final class GetAccessRulesResult {
 
         @CustomType.Setter
         public Builder accessGroupId(String accessGroupId) {
-            this.accessGroupId = Objects.requireNonNull(accessGroupId);
+            if (accessGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesResult", "accessGroupId");
+            }
+            this.accessGroupId = accessGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -88,12 +98,16 @@ public final class GetAccessRulesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder rules(List<GetAccessRulesRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesResult", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetAccessRulesRule... rules) {

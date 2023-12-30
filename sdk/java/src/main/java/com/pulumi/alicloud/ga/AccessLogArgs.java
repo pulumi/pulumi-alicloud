@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -259,12 +260,24 @@ public final class AccessLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccessLogArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.endpointGroupId = Objects.requireNonNull($.endpointGroupId, "expected parameter 'endpointGroupId' to be non-null");
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
-            $.slsLogStoreName = Objects.requireNonNull($.slsLogStoreName, "expected parameter 'slsLogStoreName' to be non-null");
-            $.slsProjectName = Objects.requireNonNull($.slsProjectName, "expected parameter 'slsProjectName' to be non-null");
-            $.slsRegionId = Objects.requireNonNull($.slsRegionId, "expected parameter 'slsRegionId' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("AccessLogArgs", "acceleratorId");
+            }
+            if ($.endpointGroupId == null) {
+                throw new MissingRequiredPropertyException("AccessLogArgs", "endpointGroupId");
+            }
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("AccessLogArgs", "listenerId");
+            }
+            if ($.slsLogStoreName == null) {
+                throw new MissingRequiredPropertyException("AccessLogArgs", "slsLogStoreName");
+            }
+            if ($.slsProjectName == null) {
+                throw new MissingRequiredPropertyException("AccessLogArgs", "slsProjectName");
+            }
+            if ($.slsRegionId == null) {
+                throw new MissingRequiredPropertyException("AccessLogArgs", "slsRegionId");
+            }
             return $;
         }
     }

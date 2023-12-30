@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetVpcFirewallCensCenLocalVpcEniList {
 
         @CustomType.Setter
         public Builder eniId(String eniId) {
-            this.eniId = Objects.requireNonNull(eniId);
+            if (eniId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpcEniList", "eniId");
+            }
+            this.eniId = eniId;
             return this;
         }
         @CustomType.Setter
         public Builder eniPrivateIpAddress(String eniPrivateIpAddress) {
-            this.eniPrivateIpAddress = Objects.requireNonNull(eniPrivateIpAddress);
+            if (eniPrivateIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpcEniList", "eniPrivateIpAddress");
+            }
+            this.eniPrivateIpAddress = eniPrivateIpAddress;
             return this;
         }
         public GetVpcFirewallCensCenLocalVpcEniList build() {

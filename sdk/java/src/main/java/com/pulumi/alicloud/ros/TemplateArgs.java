@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -226,7 +227,9 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TemplateArgs build() {
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("TemplateArgs", "templateName");
+            }
             return $;
         }
     }

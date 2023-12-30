@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ddos;
 import com.pulumi.alicloud.ddos.inputs.SchedulerRuleRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -249,9 +250,15 @@ public final class SchedulerRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SchedulerRuleArgs build() {
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
-            $.ruleType = Objects.requireNonNull($.ruleType, "expected parameter 'ruleType' to be non-null");
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("SchedulerRuleArgs", "ruleName");
+            }
+            if ($.ruleType == null) {
+                throw new MissingRequiredPropertyException("SchedulerRuleArgs", "ruleType");
+            }
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("SchedulerRuleArgs", "rules");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetAscriptsAscriptExtAttribute {
 
         @CustomType.Setter
         public Builder attributeKey(String attributeKey) {
-            this.attributeKey = Objects.requireNonNull(attributeKey);
+            if (attributeKey == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscriptExtAttribute", "attributeKey");
+            }
+            this.attributeKey = attributeKey;
             return this;
         }
         @CustomType.Setter
         public Builder attributeValue(String attributeValue) {
-            this.attributeValue = Objects.requireNonNull(attributeValue);
+            if (attributeValue == null) {
+              throw new MissingRequiredPropertyException("GetAscriptsAscriptExtAttribute", "attributeValue");
+            }
+            this.attributeValue = attributeValue;
             return this;
         }
         public GetAscriptsAscriptExtAttribute build() {

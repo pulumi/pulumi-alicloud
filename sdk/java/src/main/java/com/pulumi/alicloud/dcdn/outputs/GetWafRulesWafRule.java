@@ -6,6 +6,7 @@ package com.pulumi.alicloud.dcdn.outputs;
 import com.pulumi.alicloud.dcdn.outputs.GetWafRulesWafRuleCondition;
 import com.pulumi.alicloud.dcdn.outputs.GetWafRulesWafRuleRateLimit;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -297,22 +298,34 @@ public final class GetWafRulesWafRule {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder ccStatus(String ccStatus) {
-            this.ccStatus = Objects.requireNonNull(ccStatus);
+            if (ccStatus == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "ccStatus");
+            }
+            this.ccStatus = ccStatus;
             return this;
         }
         @CustomType.Setter
         public Builder cnRegionList(String cnRegionList) {
-            this.cnRegionList = Objects.requireNonNull(cnRegionList);
+            if (cnRegionList == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "cnRegionList");
+            }
+            this.cnRegionList = cnRegionList;
             return this;
         }
         @CustomType.Setter
         public Builder conditions(List<GetWafRulesWafRuleCondition> conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         public Builder conditions(GetWafRulesWafRuleCondition... conditions) {
@@ -320,37 +333,58 @@ public final class GetWafRulesWafRule {
         }
         @CustomType.Setter
         public Builder defenseScene(String defenseScene) {
-            this.defenseScene = Objects.requireNonNull(defenseScene);
+            if (defenseScene == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "defenseScene");
+            }
+            this.defenseScene = defenseScene;
             return this;
         }
         @CustomType.Setter
         public Builder effect(String effect) {
-            this.effect = Objects.requireNonNull(effect);
+            if (effect == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "effect");
+            }
+            this.effect = effect;
             return this;
         }
         @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
-            this.gmtModified = Objects.requireNonNull(gmtModified);
+            if (gmtModified == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "gmtModified");
+            }
+            this.gmtModified = gmtModified;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder otherRegionList(String otherRegionList) {
-            this.otherRegionList = Objects.requireNonNull(otherRegionList);
+            if (otherRegionList == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "otherRegionList");
+            }
+            this.otherRegionList = otherRegionList;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(String policyId) {
-            this.policyId = Objects.requireNonNull(policyId);
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "policyId");
+            }
+            this.policyId = policyId;
             return this;
         }
         @CustomType.Setter
         public Builder rateLimits(List<GetWafRulesWafRuleRateLimit> rateLimits) {
-            this.rateLimits = Objects.requireNonNull(rateLimits);
+            if (rateLimits == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "rateLimits");
+            }
+            this.rateLimits = rateLimits;
             return this;
         }
         public Builder rateLimits(GetWafRulesWafRuleRateLimit... rateLimits) {
@@ -358,7 +392,10 @@ public final class GetWafRulesWafRule {
         }
         @CustomType.Setter
         public Builder regularRules(List<String> regularRules) {
-            this.regularRules = Objects.requireNonNull(regularRules);
+            if (regularRules == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "regularRules");
+            }
+            this.regularRules = regularRules;
             return this;
         }
         public Builder regularRules(String... regularRules) {
@@ -366,7 +403,10 @@ public final class GetWafRulesWafRule {
         }
         @CustomType.Setter
         public Builder regularTypes(List<String> regularTypes) {
-            this.regularTypes = Objects.requireNonNull(regularTypes);
+            if (regularTypes == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "regularTypes");
+            }
+            this.regularTypes = regularTypes;
             return this;
         }
         public Builder regularTypes(String... regularTypes) {
@@ -374,7 +414,10 @@ public final class GetWafRulesWafRule {
         }
         @CustomType.Setter
         public Builder remoteAddrs(List<String> remoteAddrs) {
-            this.remoteAddrs = Objects.requireNonNull(remoteAddrs);
+            if (remoteAddrs == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "remoteAddrs");
+            }
+            this.remoteAddrs = remoteAddrs;
             return this;
         }
         public Builder remoteAddrs(String... remoteAddrs) {
@@ -382,12 +425,18 @@ public final class GetWafRulesWafRule {
         }
         @CustomType.Setter
         public Builder ruleName(String ruleName) {
-            this.ruleName = Objects.requireNonNull(ruleName);
+            if (ruleName == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "ruleName");
+            }
+            this.ruleName = ruleName;
             return this;
         }
         @CustomType.Setter
         public Builder scenes(List<String> scenes) {
-            this.scenes = Objects.requireNonNull(scenes);
+            if (scenes == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "scenes");
+            }
+            this.scenes = scenes;
             return this;
         }
         public Builder scenes(String... scenes) {
@@ -395,17 +444,26 @@ public final class GetWafRulesWafRule {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder wafGroupIds(String wafGroupIds) {
-            this.wafGroupIds = Objects.requireNonNull(wafGroupIds);
+            if (wafGroupIds == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "wafGroupIds");
+            }
+            this.wafGroupIds = wafGroupIds;
             return this;
         }
         @CustomType.Setter
         public Builder wafRuleId(String wafRuleId) {
-            this.wafRuleId = Objects.requireNonNull(wafRuleId);
+            if (wafRuleId == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRule", "wafRuleId");
+            }
+            this.wafRuleId = wafRuleId;
             return this;
         }
         public GetWafRulesWafRule build() {

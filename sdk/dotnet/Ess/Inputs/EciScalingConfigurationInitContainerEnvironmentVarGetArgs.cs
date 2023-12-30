@@ -13,6 +13,13 @@ namespace Pulumi.AliCloud.Ess.Inputs
     public sealed class EciScalingConfigurationInitContainerEnvironmentVarGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Environment variable value reference. Optional values: 
+        /// - status.podIP: IP of pod.
+        /// </summary>
+        [Input("fieldRefFieldPath")]
+        public Input<string>? FieldRefFieldPath { get; set; }
+
+        /// <summary>
         /// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
         /// digits, and underscores (_). It cannot start with a digit.
         /// </summary>

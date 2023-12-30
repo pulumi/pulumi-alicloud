@@ -6,6 +6,7 @@ package com.pulumi.alicloud.quotas;
 import com.pulumi.alicloud.quotas.inputs.QuotaApplicationDimensionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -492,10 +493,18 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         public QuotaApplicationArgs build() {
-            $.desireValue = Objects.requireNonNull($.desireValue, "expected parameter 'desireValue' to be non-null");
-            $.productCode = Objects.requireNonNull($.productCode, "expected parameter 'productCode' to be non-null");
-            $.quotaActionCode = Objects.requireNonNull($.quotaActionCode, "expected parameter 'quotaActionCode' to be non-null");
-            $.reason = Objects.requireNonNull($.reason, "expected parameter 'reason' to be non-null");
+            if ($.desireValue == null) {
+                throw new MissingRequiredPropertyException("QuotaApplicationArgs", "desireValue");
+            }
+            if ($.productCode == null) {
+                throw new MissingRequiredPropertyException("QuotaApplicationArgs", "productCode");
+            }
+            if ($.quotaActionCode == null) {
+                throw new MissingRequiredPropertyException("QuotaApplicationArgs", "quotaActionCode");
+            }
+            if ($.reason == null) {
+                throw new MissingRequiredPropertyException("QuotaApplicationArgs", "reason");
+            }
             return $;
         }
     }

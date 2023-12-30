@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -226,7 +227,10 @@ public final class GetHealthCheckTemplatesTemplate {
 
         @CustomType.Setter
         public Builder healthCheckCodes(List<String> healthCheckCodes) {
-            this.healthCheckCodes = Objects.requireNonNull(healthCheckCodes);
+            if (healthCheckCodes == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckCodes");
+            }
+            this.healthCheckCodes = healthCheckCodes;
             return this;
         }
         public Builder healthCheckCodes(String... healthCheckCodes) {
@@ -234,67 +238,106 @@ public final class GetHealthCheckTemplatesTemplate {
         }
         @CustomType.Setter
         public Builder healthCheckConnectPort(Integer healthCheckConnectPort) {
-            this.healthCheckConnectPort = Objects.requireNonNull(healthCheckConnectPort);
+            if (healthCheckConnectPort == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckConnectPort");
+            }
+            this.healthCheckConnectPort = healthCheckConnectPort;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckHost(String healthCheckHost) {
-            this.healthCheckHost = Objects.requireNonNull(healthCheckHost);
+            if (healthCheckHost == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckHost");
+            }
+            this.healthCheckHost = healthCheckHost;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckHttpVersion(String healthCheckHttpVersion) {
-            this.healthCheckHttpVersion = Objects.requireNonNull(healthCheckHttpVersion);
+            if (healthCheckHttpVersion == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckHttpVersion");
+            }
+            this.healthCheckHttpVersion = healthCheckHttpVersion;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckInterval(Integer healthCheckInterval) {
-            this.healthCheckInterval = Objects.requireNonNull(healthCheckInterval);
+            if (healthCheckInterval == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckInterval");
+            }
+            this.healthCheckInterval = healthCheckInterval;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckMethod(String healthCheckMethod) {
-            this.healthCheckMethod = Objects.requireNonNull(healthCheckMethod);
+            if (healthCheckMethod == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckMethod");
+            }
+            this.healthCheckMethod = healthCheckMethod;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckPath(String healthCheckPath) {
-            this.healthCheckPath = Objects.requireNonNull(healthCheckPath);
+            if (healthCheckPath == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckPath");
+            }
+            this.healthCheckPath = healthCheckPath;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckProtocol(String healthCheckProtocol) {
-            this.healthCheckProtocol = Objects.requireNonNull(healthCheckProtocol);
+            if (healthCheckProtocol == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckProtocol");
+            }
+            this.healthCheckProtocol = healthCheckProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckTemplateId(String healthCheckTemplateId) {
-            this.healthCheckTemplateId = Objects.requireNonNull(healthCheckTemplateId);
+            if (healthCheckTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckTemplateId");
+            }
+            this.healthCheckTemplateId = healthCheckTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckTemplateName(String healthCheckTemplateName) {
-            this.healthCheckTemplateName = Objects.requireNonNull(healthCheckTemplateName);
+            if (healthCheckTemplateName == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckTemplateName");
+            }
+            this.healthCheckTemplateName = healthCheckTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckTimeout(Integer healthCheckTimeout) {
-            this.healthCheckTimeout = Objects.requireNonNull(healthCheckTimeout);
+            if (healthCheckTimeout == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthCheckTimeout");
+            }
+            this.healthCheckTimeout = healthCheckTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
-            this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
+            if (healthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "healthyThreshold");
+            }
+            this.healthyThreshold = healthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthyThreshold(Integer unhealthyThreshold) {
-            this.unhealthyThreshold = Objects.requireNonNull(unhealthyThreshold);
+            if (unhealthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTemplatesTemplate", "unhealthyThreshold");
+            }
+            this.unhealthyThreshold = unhealthyThreshold;
             return this;
         }
         public GetHealthCheckTemplatesTemplate build() {

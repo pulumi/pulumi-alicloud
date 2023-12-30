@@ -5,6 +5,7 @@ package com.pulumi.alicloud.amqp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class StaticAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StaticAccountArgs build() {
-            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
+            if ($.accessKey == null) {
+                throw new MissingRequiredPropertyException("StaticAccountArgs", "accessKey");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("StaticAccountArgs", "instanceId");
+            }
+            if ($.secretKey == null) {
+                throw new MissingRequiredPropertyException("StaticAccountArgs", "secretKey");
+            }
             return $;
         }
     }

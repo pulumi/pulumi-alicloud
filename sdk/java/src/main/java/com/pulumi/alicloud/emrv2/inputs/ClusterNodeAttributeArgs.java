@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emrv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -299,11 +300,21 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
         }
 
         public ClusterNodeAttributeArgs build() {
-            $.keyPairName = Objects.requireNonNull($.keyPairName, "expected parameter 'keyPairName' to be non-null");
-            $.ramRole = Objects.requireNonNull($.ramRole, "expected parameter 'ramRole' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.keyPairName == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeAttributeArgs", "keyPairName");
+            }
+            if ($.ramRole == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeAttributeArgs", "ramRole");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeAttributeArgs", "securityGroupId");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeAttributeArgs", "vpcId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeAttributeArgs", "zoneId");
+            }
             return $;
         }
     }

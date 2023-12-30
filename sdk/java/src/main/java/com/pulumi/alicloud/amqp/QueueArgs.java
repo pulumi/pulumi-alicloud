@@ -5,6 +5,7 @@ package com.pulumi.alicloud.amqp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -500,9 +501,15 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public QueueArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.queueName = Objects.requireNonNull($.queueName, "expected parameter 'queueName' to be non-null");
-            $.virtualHostName = Objects.requireNonNull($.virtualHostName, "expected parameter 'virtualHostName' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("QueueArgs", "instanceId");
+            }
+            if ($.queueName == null) {
+                throw new MissingRequiredPropertyException("QueueArgs", "queueName");
+            }
+            if ($.virtualHostName == null) {
+                throw new MissingRequiredPropertyException("QueueArgs", "virtualHostName");
+            }
             return $;
         }
     }

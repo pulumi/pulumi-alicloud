@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ControlPolicyArgs build() {
-            $.controlPolicyName = Objects.requireNonNull($.controlPolicyName, "expected parameter 'controlPolicyName' to be non-null");
-            $.effectScope = Objects.requireNonNull($.effectScope, "expected parameter 'effectScope' to be non-null");
-            $.policyDocument = Objects.requireNonNull($.policyDocument, "expected parameter 'policyDocument' to be non-null");
+            if ($.controlPolicyName == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "controlPolicyName");
+            }
+            if ($.effectScope == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "effectScope");
+            }
+            if ($.policyDocument == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyArgs", "policyDocument");
+            }
             return $;
         }
     }

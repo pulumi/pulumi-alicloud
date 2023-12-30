@@ -5,6 +5,7 @@ package com.pulumi.alicloud.marketplace;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -338,9 +339,15 @@ public final class OrderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OrderArgs build() {
-            $.packageVersion = Objects.requireNonNull($.packageVersion, "expected parameter 'packageVersion' to be non-null");
-            $.pricingCycle = Objects.requireNonNull($.pricingCycle, "expected parameter 'pricingCycle' to be non-null");
-            $.productCode = Objects.requireNonNull($.productCode, "expected parameter 'productCode' to be non-null");
+            if ($.packageVersion == null) {
+                throw new MissingRequiredPropertyException("OrderArgs", "packageVersion");
+            }
+            if ($.pricingCycle == null) {
+                throw new MissingRequiredPropertyException("OrderArgs", "pricingCycle");
+            }
+            if ($.productCode == null) {
+                throw new MissingRequiredPropertyException("OrderArgs", "productCode");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess.inputs;
 import com.pulumi.alicloud.ess.inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class ScalingGroupVServerGroupsVserverGroupArgs extends com.pulumi.
         }
 
         public ScalingGroupVServerGroupsVserverGroupArgs build() {
-            $.loadbalancerId = Objects.requireNonNull($.loadbalancerId, "expected parameter 'loadbalancerId' to be non-null");
-            $.vserverAttributes = Objects.requireNonNull($.vserverAttributes, "expected parameter 'vserverAttributes' to be non-null");
+            if ($.loadbalancerId == null) {
+                throw new MissingRequiredPropertyException("ScalingGroupVServerGroupsVserverGroupArgs", "loadbalancerId");
+            }
+            if ($.vserverAttributes == null) {
+                throw new MissingRequiredPropertyException("ScalingGroupVServerGroupsVserverGroupArgs", "vserverAttributes");
+            }
             return $;
         }
     }

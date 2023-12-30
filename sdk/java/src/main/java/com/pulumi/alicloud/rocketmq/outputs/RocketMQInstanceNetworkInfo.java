@@ -7,6 +7,7 @@ import com.pulumi.alicloud.rocketmq.outputs.RocketMQInstanceNetworkInfoEndpoint;
 import com.pulumi.alicloud.rocketmq.outputs.RocketMQInstanceNetworkInfoInternetInfo;
 import com.pulumi.alicloud.rocketmq.outputs.RocketMQInstanceNetworkInfoVpcInfo;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nullable;
@@ -74,6 +75,7 @@ public final class RocketMQInstanceNetworkInfo {
 
         @CustomType.Setter
         public Builder endpoints(@Nullable List<RocketMQInstanceNetworkInfoEndpoint> endpoints) {
+
             this.endpoints = endpoints;
             return this;
         }
@@ -82,12 +84,18 @@ public final class RocketMQInstanceNetworkInfo {
         }
         @CustomType.Setter
         public Builder internetInfo(RocketMQInstanceNetworkInfoInternetInfo internetInfo) {
-            this.internetInfo = Objects.requireNonNull(internetInfo);
+            if (internetInfo == null) {
+              throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfo", "internetInfo");
+            }
+            this.internetInfo = internetInfo;
             return this;
         }
         @CustomType.Setter
         public Builder vpcInfo(RocketMQInstanceNetworkInfoVpcInfo vpcInfo) {
-            this.vpcInfo = Objects.requireNonNull(vpcInfo);
+            if (vpcInfo == null) {
+              throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfo", "vpcInfo");
+            }
+            this.vpcInfo = vpcInfo;
             return this;
         }
         public RocketMQInstanceNetworkInfo build() {

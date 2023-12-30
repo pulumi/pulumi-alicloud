@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class GetNotificationsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetNotificationsPlainArgs build() {
-            $.scalingGroupId = Objects.requireNonNull($.scalingGroupId, "expected parameter 'scalingGroupId' to be non-null");
+            if ($.scalingGroupId == null) {
+                throw new MissingRequiredPropertyException("GetNotificationsPlainArgs", "scalingGroupId");
+            }
             return $;
         }
     }

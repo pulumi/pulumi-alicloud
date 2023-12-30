@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesMaintenanceWindowArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1375,7 +1376,9 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ManagedKubernetesArgs build() {
-            $.workerVswitchIds = Objects.requireNonNull($.workerVswitchIds, "expected parameter 'workerVswitchIds' to be non-null");
+            if ($.workerVswitchIds == null) {
+                throw new MissingRequiredPropertyException("ManagedKubernetesArgs", "workerVswitchIds");
+            }
             return $;
         }
     }

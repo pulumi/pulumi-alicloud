@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudfirewall.inputs;
 import com.pulumi.alicloud.cloudfirewall.inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -310,9 +311,15 @@ public final class FirewallVpcFirewallPeerVpcArgs extends com.pulumi.resources.R
         }
 
         public FirewallVpcFirewallPeerVpcArgs build() {
-            $.peerVpcCidrTableLists = Objects.requireNonNull($.peerVpcCidrTableLists, "expected parameter 'peerVpcCidrTableLists' to be non-null");
-            $.regionNo = Objects.requireNonNull($.regionNo, "expected parameter 'regionNo' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.peerVpcCidrTableLists == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallPeerVpcArgs", "peerVpcCidrTableLists");
+            }
+            if ($.regionNo == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallPeerVpcArgs", "regionNo");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallPeerVpcArgs", "vpcId");
+            }
             return $;
         }
     }

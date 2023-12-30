@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.alicloud.alb.outputs.GetListenersListener;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -95,17 +96,24 @@ public final class GetListenersResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetListenersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetListenersResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -113,6 +121,7 @@ public final class GetListenersResult {
         }
         @CustomType.Setter
         public Builder listenerIds(@Nullable List<String> listenerIds) {
+
             this.listenerIds = listenerIds;
             return this;
         }
@@ -121,12 +130,16 @@ public final class GetListenersResult {
         }
         @CustomType.Setter
         public Builder listenerProtocol(@Nullable String listenerProtocol) {
+
             this.listenerProtocol = listenerProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder listeners(List<GetListenersListener> listeners) {
-            this.listeners = Objects.requireNonNull(listeners);
+            if (listeners == null) {
+              throw new MissingRequiredPropertyException("GetListenersResult", "listeners");
+            }
+            this.listeners = listeners;
             return this;
         }
         public Builder listeners(GetListenersListener... listeners) {
@@ -134,6 +147,7 @@ public final class GetListenersResult {
         }
         @CustomType.Setter
         public Builder loadBalancerIds(@Nullable List<String> loadBalancerIds) {
+
             this.loadBalancerIds = loadBalancerIds;
             return this;
         }
@@ -142,11 +156,13 @@ public final class GetListenersResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

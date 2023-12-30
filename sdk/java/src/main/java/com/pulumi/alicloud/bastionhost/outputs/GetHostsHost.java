@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost.outputs;
 
 import com.pulumi.alicloud.bastionhost.outputs.GetHostsHostProtocol;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,52 +199,82 @@ public final class GetHostsHost {
 
         @CustomType.Setter
         public Builder activeAddressType(String activeAddressType) {
-            this.activeAddressType = Objects.requireNonNull(activeAddressType);
+            if (activeAddressType == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "activeAddressType");
+            }
+            this.activeAddressType = activeAddressType;
             return this;
         }
         @CustomType.Setter
         public Builder comment(String comment) {
-            this.comment = Objects.requireNonNull(comment);
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "comment");
+            }
+            this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder hostId(String hostId) {
-            this.hostId = Objects.requireNonNull(hostId);
+            if (hostId == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "hostId");
+            }
+            this.hostId = hostId;
             return this;
         }
         @CustomType.Setter
         public Builder hostName(String hostName) {
-            this.hostName = Objects.requireNonNull(hostName);
+            if (hostName == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "hostName");
+            }
+            this.hostName = hostName;
             return this;
         }
         @CustomType.Setter
         public Builder hostPrivateAddress(String hostPrivateAddress) {
-            this.hostPrivateAddress = Objects.requireNonNull(hostPrivateAddress);
+            if (hostPrivateAddress == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "hostPrivateAddress");
+            }
+            this.hostPrivateAddress = hostPrivateAddress;
             return this;
         }
         @CustomType.Setter
         public Builder hostPublicAddress(String hostPublicAddress) {
-            this.hostPublicAddress = Objects.requireNonNull(hostPublicAddress);
+            if (hostPublicAddress == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "hostPublicAddress");
+            }
+            this.hostPublicAddress = hostPublicAddress;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder osType(String osType) {
-            this.osType = Objects.requireNonNull(osType);
+            if (osType == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "osType");
+            }
+            this.osType = osType;
             return this;
         }
         @CustomType.Setter
         public Builder protocols(List<GetHostsHostProtocol> protocols) {
-            this.protocols = Objects.requireNonNull(protocols);
+            if (protocols == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "protocols");
+            }
+            this.protocols = protocols;
             return this;
         }
         public Builder protocols(GetHostsHostProtocol... protocols) {
@@ -251,12 +282,18 @@ public final class GetHostsHost {
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "source");
+            }
+            this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder sourceInstanceId(String sourceInstanceId) {
-            this.sourceInstanceId = Objects.requireNonNull(sourceInstanceId);
+            if (sourceInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetHostsHost", "sourceInstanceId");
+            }
+            this.sourceInstanceId = sourceInstanceId;
             return this;
         }
         public GetHostsHost build() {

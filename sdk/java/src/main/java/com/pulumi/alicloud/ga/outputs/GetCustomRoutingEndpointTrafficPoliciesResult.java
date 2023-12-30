@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -155,17 +156,24 @@ public final class GetCustomRoutingEndpointTrafficPoliciesResult {
 
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesResult", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder customRoutingEndpointTrafficPolicies(List<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy> customRoutingEndpointTrafficPolicies) {
-            this.customRoutingEndpointTrafficPolicies = Objects.requireNonNull(customRoutingEndpointTrafficPolicies);
+            if (customRoutingEndpointTrafficPolicies == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesResult", "customRoutingEndpointTrafficPolicies");
+            }
+            this.customRoutingEndpointTrafficPolicies = customRoutingEndpointTrafficPolicies;
             return this;
         }
         public Builder customRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy... customRoutingEndpointTrafficPolicies) {
@@ -173,22 +181,30 @@ public final class GetCustomRoutingEndpointTrafficPoliciesResult {
         }
         @CustomType.Setter
         public Builder endpointGroupId(@Nullable String endpointGroupId) {
+
             this.endpointGroupId = endpointGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointId(@Nullable String endpointId) {
+
             this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -196,21 +212,25 @@ public final class GetCustomRoutingEndpointTrafficPoliciesResult {
         }
         @CustomType.Setter
         public Builder listenerId(@Nullable String listenerId) {
+
             this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }

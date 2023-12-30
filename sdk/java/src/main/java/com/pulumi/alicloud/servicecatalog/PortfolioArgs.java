@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicecatalog;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PortfolioArgs build() {
-            $.portfolioName = Objects.requireNonNull($.portfolioName, "expected parameter 'portfolioName' to be non-null");
-            $.providerName = Objects.requireNonNull($.providerName, "expected parameter 'providerName' to be non-null");
+            if ($.portfolioName == null) {
+                throw new MissingRequiredPropertyException("PortfolioArgs", "portfolioName");
+            }
+            if ($.providerName == null) {
+                throw new MissingRequiredPropertyException("PortfolioArgs", "providerName");
+            }
             return $;
         }
     }

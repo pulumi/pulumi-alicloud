@@ -7,6 +7,7 @@ import com.pulumi.alicloud.log.inputs.StoreIndexFieldSearchArgs;
 import com.pulumi.alicloud.log.inputs.StoreIndexFullTextArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -200,8 +201,12 @@ public final class StoreIndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StoreIndexArgs build() {
-            $.logstore = Objects.requireNonNull($.logstore, "expected parameter 'logstore' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.logstore == null) {
+                throw new MissingRequiredPropertyException("StoreIndexArgs", "logstore");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("StoreIndexArgs", "project");
+            }
             return $;
         }
     }

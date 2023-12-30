@@ -241,76 +241,91 @@ public final class ListenerXForwardedForConfig {
 
         @CustomType.Setter
         public Builder xForwardedForClientCertClientVerifyAlias(@Nullable String xForwardedForClientCertClientVerifyAlias) {
+
             this.xForwardedForClientCertClientVerifyAlias = xForwardedForClientCertClientVerifyAlias;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientCertClientVerifyEnabled(@Nullable Boolean xForwardedForClientCertClientVerifyEnabled) {
+
             this.xForwardedForClientCertClientVerifyEnabled = xForwardedForClientCertClientVerifyEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientCertFingerPrintAlias(@Nullable String xForwardedForClientCertFingerPrintAlias) {
+
             this.xForwardedForClientCertFingerPrintAlias = xForwardedForClientCertFingerPrintAlias;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientCertFingerPrintEnabled(@Nullable Boolean xForwardedForClientCertFingerPrintEnabled) {
+
             this.xForwardedForClientCertFingerPrintEnabled = xForwardedForClientCertFingerPrintEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientCertIssuerDnAlias(@Nullable String xForwardedForClientCertIssuerDnAlias) {
+
             this.xForwardedForClientCertIssuerDnAlias = xForwardedForClientCertIssuerDnAlias;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientCertIssuerDnEnabled(@Nullable Boolean xForwardedForClientCertIssuerDnEnabled) {
+
             this.xForwardedForClientCertIssuerDnEnabled = xForwardedForClientCertIssuerDnEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientCertSubjectDnAlias(@Nullable String xForwardedForClientCertSubjectDnAlias) {
+
             this.xForwardedForClientCertSubjectDnAlias = xForwardedForClientCertSubjectDnAlias;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientCertSubjectDnEnabled(@Nullable Boolean xForwardedForClientCertSubjectDnEnabled) {
+
             this.xForwardedForClientCertSubjectDnEnabled = xForwardedForClientCertSubjectDnEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientSourceIpsEnabled(@Nullable Boolean xForwardedForClientSourceIpsEnabled) {
+
             this.xForwardedForClientSourceIpsEnabled = xForwardedForClientSourceIpsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientSourceIpsTrusted(@Nullable String xForwardedForClientSourceIpsTrusted) {
+
             this.xForwardedForClientSourceIpsTrusted = xForwardedForClientSourceIpsTrusted;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForClientSrcPortEnabled(@Nullable Boolean xForwardedForClientSrcPortEnabled) {
+
             this.xForwardedForClientSrcPortEnabled = xForwardedForClientSrcPortEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForEnabled(@Nullable Boolean xForwardedForEnabled) {
+
             this.xForwardedForEnabled = xForwardedForEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForProtoEnabled(@Nullable Boolean xForwardedForProtoEnabled) {
+
             this.xForwardedForProtoEnabled = xForwardedForProtoEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForSlbIdEnabled(@Nullable Boolean xForwardedForSlbIdEnabled) {
+
             this.xForwardedForSlbIdEnabled = xForwardedForSlbIdEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForSlbPortEnabled(@Nullable Boolean xForwardedForSlbPortEnabled) {
+
             this.xForwardedForSlbPortEnabled = xForwardedForSlbPortEnabled;
             return this;
         }

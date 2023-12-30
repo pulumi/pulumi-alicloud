@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudauth.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetFaceConfigsConfig {
 
         @CustomType.Setter
         public Builder bizName(String bizName) {
-            this.bizName = Objects.requireNonNull(bizName);
+            if (bizName == null) {
+              throw new MissingRequiredPropertyException("GetFaceConfigsConfig", "bizName");
+            }
+            this.bizName = bizName;
             return this;
         }
         @CustomType.Setter
         public Builder bizType(String bizType) {
-            this.bizType = Objects.requireNonNull(bizType);
+            if (bizType == null) {
+              throw new MissingRequiredPropertyException("GetFaceConfigsConfig", "bizType");
+            }
+            this.bizType = bizType;
             return this;
         }
         @CustomType.Setter
         public Builder gmtUpdated(String gmtUpdated) {
-            this.gmtUpdated = Objects.requireNonNull(gmtUpdated);
+            if (gmtUpdated == null) {
+              throw new MissingRequiredPropertyException("GetFaceConfigsConfig", "gmtUpdated");
+            }
+            this.gmtUpdated = gmtUpdated;
             return this;
         }
         public GetFaceConfigsConfig build() {

@@ -9,6 +9,7 @@ import com.pulumi.alicloud.alb.inputs.LoadBalancerModificationProtectionConfigAr
 import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -657,11 +658,21 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LoadBalancerArgs build() {
-            $.addressType = Objects.requireNonNull($.addressType, "expected parameter 'addressType' to be non-null");
-            $.loadBalancerBillingConfig = Objects.requireNonNull($.loadBalancerBillingConfig, "expected parameter 'loadBalancerBillingConfig' to be non-null");
-            $.loadBalancerEdition = Objects.requireNonNull($.loadBalancerEdition, "expected parameter 'loadBalancerEdition' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.zoneMappings = Objects.requireNonNull($.zoneMappings, "expected parameter 'zoneMappings' to be non-null");
+            if ($.addressType == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "addressType");
+            }
+            if ($.loadBalancerBillingConfig == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "loadBalancerBillingConfig");
+            }
+            if ($.loadBalancerEdition == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "loadBalancerEdition");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "vpcId");
+            }
+            if ($.zoneMappings == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "zoneMappings");
+            }
             return $;
         }
     }

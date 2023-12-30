@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetInstanceEnginesInstanceEngineZoneId {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnginesInstanceEngineZoneId", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder subZoneIds(List<String> subZoneIds) {
-            this.subZoneIds = Objects.requireNonNull(subZoneIds);
+            if (subZoneIds == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnginesInstanceEngineZoneId", "subZoneIds");
+            }
+            this.subZoneIds = subZoneIds;
             return this;
         }
         public Builder subZoneIds(String... subZoneIds) {

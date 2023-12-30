@@ -6,6 +6,7 @@ package com.pulumi.alicloud.sae.outputs;
 import com.pulumi.alicloud.sae.outputs.GetApplicationScalingRulesRuleScalingRuleMetric;
 import com.pulumi.alicloud.sae.outputs.GetApplicationScalingRulesRuleScalingRuleTimer;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -144,27 +145,42 @@ public final class GetApplicationScalingRulesRule {
 
         @CustomType.Setter
         public Builder appId(String appId) {
-            this.appId = Objects.requireNonNull(appId);
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRule", "appId");
+            }
+            this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRule", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder scalingRuleEnable(Boolean scalingRuleEnable) {
-            this.scalingRuleEnable = Objects.requireNonNull(scalingRuleEnable);
+            if (scalingRuleEnable == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRule", "scalingRuleEnable");
+            }
+            this.scalingRuleEnable = scalingRuleEnable;
             return this;
         }
         @CustomType.Setter
         public Builder scalingRuleMetrics(List<GetApplicationScalingRulesRuleScalingRuleMetric> scalingRuleMetrics) {
-            this.scalingRuleMetrics = Objects.requireNonNull(scalingRuleMetrics);
+            if (scalingRuleMetrics == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRule", "scalingRuleMetrics");
+            }
+            this.scalingRuleMetrics = scalingRuleMetrics;
             return this;
         }
         public Builder scalingRuleMetrics(GetApplicationScalingRulesRuleScalingRuleMetric... scalingRuleMetrics) {
@@ -172,12 +188,18 @@ public final class GetApplicationScalingRulesRule {
         }
         @CustomType.Setter
         public Builder scalingRuleName(String scalingRuleName) {
-            this.scalingRuleName = Objects.requireNonNull(scalingRuleName);
+            if (scalingRuleName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRule", "scalingRuleName");
+            }
+            this.scalingRuleName = scalingRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder scalingRuleTimers(List<GetApplicationScalingRulesRuleScalingRuleTimer> scalingRuleTimers) {
-            this.scalingRuleTimers = Objects.requireNonNull(scalingRuleTimers);
+            if (scalingRuleTimers == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRule", "scalingRuleTimers");
+            }
+            this.scalingRuleTimers = scalingRuleTimers;
             return this;
         }
         public Builder scalingRuleTimers(GetApplicationScalingRulesRuleScalingRuleTimer... scalingRuleTimers) {
@@ -185,7 +207,10 @@ public final class GetApplicationScalingRulesRule {
         }
         @CustomType.Setter
         public Builder scalingRuleType(String scalingRuleType) {
-            this.scalingRuleType = Objects.requireNonNull(scalingRuleType);
+            if (scalingRuleType == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRule", "scalingRuleType");
+            }
+            this.scalingRuleType = scalingRuleType;
             return this;
         }
         public GetApplicationScalingRulesRule build() {

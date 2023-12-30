@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -506,8 +507,12 @@ public final class PhysicalConnectionArgs extends com.pulumi.resources.ResourceA
         }
 
         public PhysicalConnectionArgs build() {
-            $.accessPointId = Objects.requireNonNull($.accessPointId, "expected parameter 'accessPointId' to be non-null");
-            $.lineOperator = Objects.requireNonNull($.lineOperator, "expected parameter 'lineOperator' to be non-null");
+            if ($.accessPointId == null) {
+                throw new MissingRequiredPropertyException("PhysicalConnectionArgs", "accessPointId");
+            }
+            if ($.lineOperator == null) {
+                throw new MissingRequiredPropertyException("PhysicalConnectionArgs", "lineOperator");
+            }
             return $;
         }
     }

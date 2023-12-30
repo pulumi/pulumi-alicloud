@@ -5,6 +5,7 @@ package com.pulumi.alicloud.simpleapplicationserver;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -232,9 +233,15 @@ public final class CustomImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CustomImageArgs build() {
-            $.customImageName = Objects.requireNonNull($.customImageName, "expected parameter 'customImageName' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.systemSnapshotId = Objects.requireNonNull($.systemSnapshotId, "expected parameter 'systemSnapshotId' to be non-null");
+            if ($.customImageName == null) {
+                throw new MissingRequiredPropertyException("CustomImageArgs", "customImageName");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("CustomImageArgs", "instanceId");
+            }
+            if ($.systemSnapshotId == null) {
+                throw new MissingRequiredPropertyException("CustomImageArgs", "systemSnapshotId");
+            }
             return $;
         }
     }

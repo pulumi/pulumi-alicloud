@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oss.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -146,7 +147,9 @@ public final class GetBucketObjectsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetBucketObjectsPlainArgs build() {
-            $.bucketName = Objects.requireNonNull($.bucketName, "expected parameter 'bucketName' to be non-null");
+            if ($.bucketName == null) {
+                throw new MissingRequiredPropertyException("GetBucketObjectsPlainArgs", "bucketName");
+            }
             return $;
         }
     }

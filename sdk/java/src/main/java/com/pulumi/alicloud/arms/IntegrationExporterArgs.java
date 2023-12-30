@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class IntegrationExporterArgs extends com.pulumi.resources.Resource
         }
 
         public IntegrationExporterArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.integrationType = Objects.requireNonNull($.integrationType, "expected parameter 'integrationType' to be non-null");
-            $.param = Objects.requireNonNull($.param, "expected parameter 'param' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("IntegrationExporterArgs", "clusterId");
+            }
+            if ($.integrationType == null) {
+                throw new MissingRequiredPropertyException("IntegrationExporterArgs", "integrationType");
+            }
+            if ($.param == null) {
+                throw new MissingRequiredPropertyException("IntegrationExporterArgs", "param");
+            }
             return $;
         }
     }

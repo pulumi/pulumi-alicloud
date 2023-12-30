@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -86,22 +87,34 @@ public final class GetServerGroupsGroupStickySessionConfig {
 
         @CustomType.Setter
         public Builder cookie(String cookie) {
-            this.cookie = Objects.requireNonNull(cookie);
+            if (cookie == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupStickySessionConfig", "cookie");
+            }
+            this.cookie = cookie;
             return this;
         }
         @CustomType.Setter
         public Builder cookieTimeout(Integer cookieTimeout) {
-            this.cookieTimeout = Objects.requireNonNull(cookieTimeout);
+            if (cookieTimeout == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupStickySessionConfig", "cookieTimeout");
+            }
+            this.cookieTimeout = cookieTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder stickySessionEnabled(Boolean stickySessionEnabled) {
-            this.stickySessionEnabled = Objects.requireNonNull(stickySessionEnabled);
+            if (stickySessionEnabled == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupStickySessionConfig", "stickySessionEnabled");
+            }
+            this.stickySessionEnabled = stickySessionEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder stickySessionType(String stickySessionType) {
-            this.stickySessionType = Objects.requireNonNull(stickySessionType);
+            if (stickySessionType == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroupStickySessionConfig", "stickySessionType");
+            }
+            this.stickySessionType = stickySessionType;
             return this;
         }
         public GetServerGroupsGroupStickySessionConfig build() {

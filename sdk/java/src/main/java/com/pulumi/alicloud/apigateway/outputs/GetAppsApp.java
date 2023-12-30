@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -113,32 +114,50 @@ public final class GetAppsApp {
 
         @CustomType.Setter
         public Builder appCode(String appCode) {
-            this.appCode = Objects.requireNonNull(appCode);
+            if (appCode == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "appCode");
+            }
+            this.appCode = appCode;
             return this;
         }
         @CustomType.Setter
         public Builder createdTime(String createdTime) {
-            this.createdTime = Objects.requireNonNull(createdTime);
+            if (createdTime == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "createdTime");
+            }
+            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
-            this.modifiedTime = Objects.requireNonNull(modifiedTime);
+            if (modifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "modifiedTime");
+            }
+            this.modifiedTime = modifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetAppsApp build() {

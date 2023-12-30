@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -643,10 +644,18 @@ public final class ClientUserDefineRuleArgs extends com.pulumi.resources.Resourc
         }
 
         public ClientUserDefineRuleArgs build() {
-            $.actionType = Objects.requireNonNull($.actionType, "expected parameter 'actionType' to be non-null");
-            $.clientUserDefineRuleName = Objects.requireNonNull($.clientUserDefineRuleName, "expected parameter 'clientUserDefineRuleName' to be non-null");
-            $.platform = Objects.requireNonNull($.platform, "expected parameter 'platform' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.actionType == null) {
+                throw new MissingRequiredPropertyException("ClientUserDefineRuleArgs", "actionType");
+            }
+            if ($.clientUserDefineRuleName == null) {
+                throw new MissingRequiredPropertyException("ClientUserDefineRuleArgs", "clientUserDefineRuleName");
+            }
+            if ($.platform == null) {
+                throw new MissingRequiredPropertyException("ClientUserDefineRuleArgs", "platform");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ClientUserDefineRuleArgs", "type");
+            }
             return $;
         }
     }

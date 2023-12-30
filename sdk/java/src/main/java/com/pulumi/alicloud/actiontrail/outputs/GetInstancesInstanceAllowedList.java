@@ -6,6 +6,7 @@ package com.pulumi.alicloud.actiontrail.outputs;
 import com.pulumi.alicloud.actiontrail.outputs.GetInstancesInstanceAllowedListInternetList;
 import com.pulumi.alicloud.actiontrail.outputs.GetInstancesInstanceAllowedListVpcList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,12 +74,18 @@ public final class GetInstancesInstanceAllowedList {
 
         @CustomType.Setter
         public Builder deployType(String deployType) {
-            this.deployType = Objects.requireNonNull(deployType);
+            if (deployType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAllowedList", "deployType");
+            }
+            this.deployType = deployType;
             return this;
         }
         @CustomType.Setter
         public Builder internetLists(List<GetInstancesInstanceAllowedListInternetList> internetLists) {
-            this.internetLists = Objects.requireNonNull(internetLists);
+            if (internetLists == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAllowedList", "internetLists");
+            }
+            this.internetLists = internetLists;
             return this;
         }
         public Builder internetLists(GetInstancesInstanceAllowedListInternetList... internetLists) {
@@ -86,7 +93,10 @@ public final class GetInstancesInstanceAllowedList {
         }
         @CustomType.Setter
         public Builder vpcLists(List<GetInstancesInstanceAllowedListVpcList> vpcLists) {
-            this.vpcLists = Objects.requireNonNull(vpcLists);
+            if (vpcLists == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAllowedList", "vpcLists");
+            }
+            this.vpcLists = vpcLists;
             return this;
         }
         public Builder vpcLists(GetInstancesInstanceAllowedListVpcList... vpcLists) {

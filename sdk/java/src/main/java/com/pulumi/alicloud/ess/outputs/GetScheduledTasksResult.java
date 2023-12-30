@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.alicloud.ess.outputs.GetScheduledTasksTask;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -120,12 +121,18 @@ public final class GetScheduledTasksResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -133,12 +140,16 @@ public final class GetScheduledTasksResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -146,22 +157,28 @@ public final class GetScheduledTasksResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder scheduledAction(@Nullable String scheduledAction) {
+
             this.scheduledAction = scheduledAction;
             return this;
         }
         @CustomType.Setter
         public Builder scheduledTaskId(@Nullable String scheduledTaskId) {
+
             this.scheduledTaskId = scheduledTaskId;
             return this;
         }
         @CustomType.Setter
         public Builder tasks(List<GetScheduledTasksTask> tasks) {
-            this.tasks = Objects.requireNonNull(tasks);
+            if (tasks == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksResult", "tasks");
+            }
+            this.tasks = tasks;
             return this;
         }
         public Builder tasks(GetScheduledTasksTask... tasks) {

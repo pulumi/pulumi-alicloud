@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -156,9 +157,15 @@ public final class ListenerAclAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         public ListenerAclAttachmentArgs build() {
-            $.aclId = Objects.requireNonNull($.aclId, "expected parameter 'aclId' to be non-null");
-            $.aclType = Objects.requireNonNull($.aclType, "expected parameter 'aclType' to be non-null");
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
+            if ($.aclId == null) {
+                throw new MissingRequiredPropertyException("ListenerAclAttachmentArgs", "aclId");
+            }
+            if ($.aclType == null) {
+                throw new MissingRequiredPropertyException("ListenerAclAttachmentArgs", "aclType");
+            }
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("ListenerAclAttachmentArgs", "listenerId");
+            }
             return $;
         }
     }

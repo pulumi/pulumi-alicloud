@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.alicloud.alb.outputs.ListenerDefaultActionForwardGroupConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -57,12 +58,18 @@ public final class ListenerDefaultAction {
 
         @CustomType.Setter
         public Builder forwardGroupConfig(ListenerDefaultActionForwardGroupConfig forwardGroupConfig) {
-            this.forwardGroupConfig = Objects.requireNonNull(forwardGroupConfig);
+            if (forwardGroupConfig == null) {
+              throw new MissingRequiredPropertyException("ListenerDefaultAction", "forwardGroupConfig");
+            }
+            this.forwardGroupConfig = forwardGroupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ListenerDefaultAction", "type");
+            }
+            this.type = type;
             return this;
         }
         public ListenerDefaultAction build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dataworks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -130,7 +131,9 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FolderArgs build() {
-            $.folderPath = Objects.requireNonNull($.folderPath, "expected parameter 'folderPath' to be non-null");
+            if ($.folderPath == null) {
+                throw new MissingRequiredPropertyException("FolderArgs", "folderPath");
+            }
             return $;
         }
     }

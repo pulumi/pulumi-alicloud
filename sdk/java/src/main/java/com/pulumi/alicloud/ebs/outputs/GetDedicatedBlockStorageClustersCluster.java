@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ebs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -258,87 +259,138 @@ public final class GetDedicatedBlockStorageClustersCluster {
 
         @CustomType.Setter
         public Builder availableCapacity(String availableCapacity) {
-            this.availableCapacity = Objects.requireNonNull(availableCapacity);
+            if (availableCapacity == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "availableCapacity");
+            }
+            this.availableCapacity = availableCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedBlockStorageClusterId(String dedicatedBlockStorageClusterId) {
-            this.dedicatedBlockStorageClusterId = Objects.requireNonNull(dedicatedBlockStorageClusterId);
+            if (dedicatedBlockStorageClusterId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "dedicatedBlockStorageClusterId");
+            }
+            this.dedicatedBlockStorageClusterId = dedicatedBlockStorageClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedBlockStorageClusterName(String dedicatedBlockStorageClusterName) {
-            this.dedicatedBlockStorageClusterName = Objects.requireNonNull(dedicatedBlockStorageClusterName);
+            if (dedicatedBlockStorageClusterName == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "dedicatedBlockStorageClusterName");
+            }
+            this.dedicatedBlockStorageClusterName = dedicatedBlockStorageClusterName;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryCapacity(String deliveryCapacity) {
-            this.deliveryCapacity = Objects.requireNonNull(deliveryCapacity);
+            if (deliveryCapacity == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "deliveryCapacity");
+            }
+            this.deliveryCapacity = deliveryCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder performanceLevel(String performanceLevel) {
-            this.performanceLevel = Objects.requireNonNull(performanceLevel);
+            if (performanceLevel == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "performanceLevel");
+            }
+            this.performanceLevel = performanceLevel;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder supportedCategory(String supportedCategory) {
-            this.supportedCategory = Objects.requireNonNull(supportedCategory);
+            if (supportedCategory == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "supportedCategory");
+            }
+            this.supportedCategory = supportedCategory;
             return this;
         }
         @CustomType.Setter
         public Builder totalCapacity(String totalCapacity) {
-            this.totalCapacity = Objects.requireNonNull(totalCapacity);
+            if (totalCapacity == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "totalCapacity");
+            }
+            this.totalCapacity = totalCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder usedCapacity(String usedCapacity) {
-            this.usedCapacity = Objects.requireNonNull(usedCapacity);
+            if (usedCapacity == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "usedCapacity");
+            }
+            this.usedCapacity = usedCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedBlockStorageClustersCluster", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetDedicatedBlockStorageClustersCluster build() {

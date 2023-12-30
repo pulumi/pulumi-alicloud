@@ -6,6 +6,7 @@ package com.pulumi.alicloud.quotas;
 import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -523,12 +524,24 @@ public final class TemplateApplicationsArgs extends com.pulumi.resources.Resourc
         }
 
         public TemplateApplicationsArgs build() {
-            $.aliyunUids = Objects.requireNonNull($.aliyunUids, "expected parameter 'aliyunUids' to be non-null");
-            $.desireValue = Objects.requireNonNull($.desireValue, "expected parameter 'desireValue' to be non-null");
-            $.productCode = Objects.requireNonNull($.productCode, "expected parameter 'productCode' to be non-null");
-            $.quotaActionCode = Objects.requireNonNull($.quotaActionCode, "expected parameter 'quotaActionCode' to be non-null");
-            $.quotaCategory = Objects.requireNonNull($.quotaCategory, "expected parameter 'quotaCategory' to be non-null");
-            $.reason = Objects.requireNonNull($.reason, "expected parameter 'reason' to be non-null");
+            if ($.aliyunUids == null) {
+                throw new MissingRequiredPropertyException("TemplateApplicationsArgs", "aliyunUids");
+            }
+            if ($.desireValue == null) {
+                throw new MissingRequiredPropertyException("TemplateApplicationsArgs", "desireValue");
+            }
+            if ($.productCode == null) {
+                throw new MissingRequiredPropertyException("TemplateApplicationsArgs", "productCode");
+            }
+            if ($.quotaActionCode == null) {
+                throw new MissingRequiredPropertyException("TemplateApplicationsArgs", "quotaActionCode");
+            }
+            if ($.quotaCategory == null) {
+                throw new MissingRequiredPropertyException("TemplateApplicationsArgs", "quotaCategory");
+            }
+            if ($.reason == null) {
+                throw new MissingRequiredPropertyException("TemplateApplicationsArgs", "reason");
+            }
             return $;
         }
     }

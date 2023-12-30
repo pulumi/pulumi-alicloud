@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -686,12 +687,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.bandWidth = Objects.requireNonNull($.bandWidth, "expected parameter 'bandWidth' to be non-null");
-            $.cfwLog = Objects.requireNonNull($.cfwLog, "expected parameter 'cfwLog' to be non-null");
-            $.ipNumber = Objects.requireNonNull($.ipNumber, "expected parameter 'ipNumber' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.period = Objects.requireNonNull($.period, "expected parameter 'period' to be non-null");
-            $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
+            if ($.bandWidth == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "bandWidth");
+            }
+            if ($.cfwLog == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "cfwLog");
+            }
+            if ($.ipNumber == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "ipNumber");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
+            }
+            if ($.period == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "period");
+            }
+            if ($.spec == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "spec");
+            }
             return $;
         }
     }

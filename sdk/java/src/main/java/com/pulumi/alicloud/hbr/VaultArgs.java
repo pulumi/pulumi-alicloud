@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,7 +262,9 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VaultArgs build() {
-            $.vaultName = Objects.requireNonNull($.vaultName, "expected parameter 'vaultName' to be non-null");
+            if ($.vaultName == null) {
+                throw new MissingRequiredPropertyException("VaultArgs", "vaultName");
+            }
             return $;
         }
     }

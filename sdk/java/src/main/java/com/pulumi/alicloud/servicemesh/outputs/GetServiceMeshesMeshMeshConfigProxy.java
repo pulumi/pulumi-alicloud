@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetServiceMeshesMeshMeshConfigProxy {
 
         @CustomType.Setter
         public Builder clusterDomain(String clusterDomain) {
-            this.clusterDomain = Objects.requireNonNull(clusterDomain);
+            if (clusterDomain == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigProxy", "clusterDomain");
+            }
+            this.clusterDomain = clusterDomain;
             return this;
         }
         @CustomType.Setter
         public Builder limitCpu(String limitCpu) {
-            this.limitCpu = Objects.requireNonNull(limitCpu);
+            if (limitCpu == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigProxy", "limitCpu");
+            }
+            this.limitCpu = limitCpu;
             return this;
         }
         @CustomType.Setter
         public Builder limitMemory(String limitMemory) {
-            this.limitMemory = Objects.requireNonNull(limitMemory);
+            if (limitMemory == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigProxy", "limitMemory");
+            }
+            this.limitMemory = limitMemory;
             return this;
         }
         @CustomType.Setter
         public Builder requestCpu(String requestCpu) {
-            this.requestCpu = Objects.requireNonNull(requestCpu);
+            if (requestCpu == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigProxy", "requestCpu");
+            }
+            this.requestCpu = requestCpu;
             return this;
         }
         @CustomType.Setter
         public Builder requestMemory(String requestMemory) {
-            this.requestMemory = Objects.requireNonNull(requestMemory);
+            if (requestMemory == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigProxy", "requestMemory");
+            }
+            this.requestMemory = requestMemory;
             return this;
         }
         public GetServiceMeshesMeshMeshConfigProxy build() {

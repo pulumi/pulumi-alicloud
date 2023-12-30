@@ -6,6 +6,7 @@ package com.pulumi.alicloud.mongodb;
 import com.pulumi.alicloud.mongodb.inputs.ServerlessInstanceSecurityIpGroupArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -729,13 +730,27 @@ public final class ServerlessInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         public ServerlessInstanceArgs build() {
-            $.accountPassword = Objects.requireNonNull($.accountPassword, "expected parameter 'accountPassword' to be non-null");
-            $.capacityUnit = Objects.requireNonNull($.capacityUnit, "expected parameter 'capacityUnit' to be non-null");
-            $.dbInstanceStorage = Objects.requireNonNull($.dbInstanceStorage, "expected parameter 'dbInstanceStorage' to be non-null");
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.accountPassword == null) {
+                throw new MissingRequiredPropertyException("ServerlessInstanceArgs", "accountPassword");
+            }
+            if ($.capacityUnit == null) {
+                throw new MissingRequiredPropertyException("ServerlessInstanceArgs", "capacityUnit");
+            }
+            if ($.dbInstanceStorage == null) {
+                throw new MissingRequiredPropertyException("ServerlessInstanceArgs", "dbInstanceStorage");
+            }
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("ServerlessInstanceArgs", "engineVersion");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("ServerlessInstanceArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("ServerlessInstanceArgs", "vswitchId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ServerlessInstanceArgs", "zoneId");
+            }
             return $;
         }
     }

@@ -63,11 +63,13 @@ public final class SasTrailServiceTrail {
 
         @CustomType.Setter
         public Builder config(@Nullable String config) {
+
             this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable Integer updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }

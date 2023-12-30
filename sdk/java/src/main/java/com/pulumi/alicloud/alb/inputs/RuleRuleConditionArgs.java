@@ -14,6 +14,7 @@ import com.pulumi.alicloud.alb.inputs.RuleRuleConditionResponseStatusCodeConfigA
 import com.pulumi.alicloud.alb.inputs.RuleRuleConditionSourceIpConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -418,7 +419,9 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         public RuleRuleConditionArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("RuleRuleConditionArgs", "type");
+            }
             return $;
         }
     }

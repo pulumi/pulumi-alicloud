@@ -101,26 +101,31 @@ public final class ApplicationNasConfig {
 
         @CustomType.Setter
         public Builder mountDomain(@Nullable String mountDomain) {
+
             this.mountDomain = mountDomain;
             return this;
         }
         @CustomType.Setter
         public Builder mountPath(@Nullable String mountPath) {
+
             this.mountPath = mountPath;
             return this;
         }
         @CustomType.Setter
         public Builder nasId(@Nullable String nasId) {
+
             this.nasId = nasId;
             return this;
         }
         @CustomType.Setter
         public Builder nasPath(@Nullable String nasPath) {
+
             this.nasPath = nasPath;
             return this;
         }
         @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
+
             this.readOnly = readOnly;
             return this;
         }

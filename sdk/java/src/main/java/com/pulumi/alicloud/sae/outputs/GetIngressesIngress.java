@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetIngressesIngress {
 
         @CustomType.Setter
         public Builder certId(String certId) {
-            this.certId = Objects.requireNonNull(certId);
+            if (certId == null) {
+              throw new MissingRequiredPropertyException("GetIngressesIngress", "certId");
+            }
+            this.certId = certId;
             return this;
         }
         @CustomType.Setter
         public Builder defaultRule(String defaultRule) {
-            this.defaultRule = Objects.requireNonNull(defaultRule);
+            if (defaultRule == null) {
+              throw new MissingRequiredPropertyException("GetIngressesIngress", "defaultRule");
+            }
+            this.defaultRule = defaultRule;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetIngressesIngress", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIngressesIngress", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ingressId(String ingressId) {
-            this.ingressId = Objects.requireNonNull(ingressId);
+            if (ingressId == null) {
+              throw new MissingRequiredPropertyException("GetIngressesIngress", "ingressId");
+            }
+            this.ingressId = ingressId;
             return this;
         }
         @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
-            this.listenerPort = Objects.requireNonNull(listenerPort);
+            if (listenerPort == null) {
+              throw new MissingRequiredPropertyException("GetIngressesIngress", "listenerPort");
+            }
+            this.listenerPort = listenerPort;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetIngressesIngress", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder slbId(String slbId) {
-            this.slbId = Objects.requireNonNull(slbId);
+            if (slbId == null) {
+              throw new MissingRequiredPropertyException("GetIngressesIngress", "slbId");
+            }
+            this.slbId = slbId;
             return this;
         }
         public GetIngressesIngress build() {

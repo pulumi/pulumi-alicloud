@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ots.outputs;
 
 import com.pulumi.alicloud.ots.outputs.GetTunnelsTunnelChannel;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -186,7 +187,10 @@ public final class GetTunnelsTunnel {
 
         @CustomType.Setter
         public Builder channels(List<GetTunnelsTunnelChannel> channels) {
-            this.channels = Objects.requireNonNull(channels);
+            if (channels == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "channels");
+            }
+            this.channels = channels;
             return this;
         }
         public Builder channels(GetTunnelsTunnelChannel... channels) {
@@ -194,52 +198,82 @@ public final class GetTunnelsTunnel {
         }
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder expired(Boolean expired) {
-            this.expired = Objects.requireNonNull(expired);
+            if (expired == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "expired");
+            }
+            this.expired = expired;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder tableName(String tableName) {
-            this.tableName = Objects.requireNonNull(tableName);
+            if (tableName == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "tableName");
+            }
+            this.tableName = tableName;
             return this;
         }
         @CustomType.Setter
         public Builder tunnelId(String tunnelId) {
-            this.tunnelId = Objects.requireNonNull(tunnelId);
+            if (tunnelId == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "tunnelId");
+            }
+            this.tunnelId = tunnelId;
             return this;
         }
         @CustomType.Setter
         public Builder tunnelName(String tunnelName) {
-            this.tunnelName = Objects.requireNonNull(tunnelName);
+            if (tunnelName == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "tunnelName");
+            }
+            this.tunnelName = tunnelName;
             return this;
         }
         @CustomType.Setter
         public Builder tunnelRpo(Integer tunnelRpo) {
-            this.tunnelRpo = Objects.requireNonNull(tunnelRpo);
+            if (tunnelRpo == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "tunnelRpo");
+            }
+            this.tunnelRpo = tunnelRpo;
             return this;
         }
         @CustomType.Setter
         public Builder tunnelStage(String tunnelStage) {
-            this.tunnelStage = Objects.requireNonNull(tunnelStage);
+            if (tunnelStage == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "tunnelStage");
+            }
+            this.tunnelStage = tunnelStage;
             return this;
         }
         @CustomType.Setter
         public Builder tunnelType(String tunnelType) {
-            this.tunnelType = Objects.requireNonNull(tunnelType);
+            if (tunnelType == null) {
+              throw new MissingRequiredPropertyException("GetTunnelsTunnel", "tunnelType");
+            }
+            this.tunnelType = tunnelType;
             return this;
         }
         public GetTunnelsTunnel build() {

@@ -15,6 +15,7 @@ import com.pulumi.alicloud.log.inputs.AlertSeverityConfigurationArgs;
 import com.pulumi.alicloud.log.inputs.AlertTemplateConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1256,9 +1257,15 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AlertArgs build() {
-            $.alertDisplayname = Objects.requireNonNull($.alertDisplayname, "expected parameter 'alertDisplayname' to be non-null");
-            $.alertName = Objects.requireNonNull($.alertName, "expected parameter 'alertName' to be non-null");
-            $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
+            if ($.alertDisplayname == null) {
+                throw new MissingRequiredPropertyException("AlertArgs", "alertDisplayname");
+            }
+            if ($.alertName == null) {
+                throw new MissingRequiredPropertyException("AlertArgs", "alertName");
+            }
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("AlertArgs", "projectName");
+            }
             return $;
         }
     }

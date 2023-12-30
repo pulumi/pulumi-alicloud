@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.alicloud.cs.outputs.GetKubernetesAddonsAddon;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,7 +101,10 @@ public final class GetKubernetesAddonsResult {
 
         @CustomType.Setter
         public Builder addons(List<GetKubernetesAddonsAddon> addons) {
-            this.addons = Objects.requireNonNull(addons);
+            if (addons == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsResult", "addons");
+            }
+            this.addons = addons;
             return this;
         }
         public Builder addons(GetKubernetesAddonsAddon... addons) {
@@ -108,17 +112,26 @@ public final class GetKubernetesAddonsResult {
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -126,12 +139,16 @@ public final class GetKubernetesAddonsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {

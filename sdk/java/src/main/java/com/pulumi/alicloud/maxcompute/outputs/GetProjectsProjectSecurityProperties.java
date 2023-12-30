@@ -5,6 +5,7 @@ package com.pulumi.alicloud.maxcompute.outputs;
 
 import com.pulumi.alicloud.maxcompute.outputs.GetProjectsProjectSecurityPropertiesProjectProtection;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -127,37 +128,58 @@ public final class GetProjectsProjectSecurityProperties {
 
         @CustomType.Setter
         public Builder enableDownloadPrivilege(Boolean enableDownloadPrivilege) {
-            this.enableDownloadPrivilege = Objects.requireNonNull(enableDownloadPrivilege);
+            if (enableDownloadPrivilege == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSecurityProperties", "enableDownloadPrivilege");
+            }
+            this.enableDownloadPrivilege = enableDownloadPrivilege;
             return this;
         }
         @CustomType.Setter
         public Builder labelSecurity(Boolean labelSecurity) {
-            this.labelSecurity = Objects.requireNonNull(labelSecurity);
+            if (labelSecurity == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSecurityProperties", "labelSecurity");
+            }
+            this.labelSecurity = labelSecurity;
             return this;
         }
         @CustomType.Setter
         public Builder objectCreatorHasAccessPermission(Boolean objectCreatorHasAccessPermission) {
-            this.objectCreatorHasAccessPermission = Objects.requireNonNull(objectCreatorHasAccessPermission);
+            if (objectCreatorHasAccessPermission == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSecurityProperties", "objectCreatorHasAccessPermission");
+            }
+            this.objectCreatorHasAccessPermission = objectCreatorHasAccessPermission;
             return this;
         }
         @CustomType.Setter
         public Builder objectCreatorHasGrantPermission(Boolean objectCreatorHasGrantPermission) {
-            this.objectCreatorHasGrantPermission = Objects.requireNonNull(objectCreatorHasGrantPermission);
+            if (objectCreatorHasGrantPermission == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSecurityProperties", "objectCreatorHasGrantPermission");
+            }
+            this.objectCreatorHasGrantPermission = objectCreatorHasGrantPermission;
             return this;
         }
         @CustomType.Setter
         public Builder projectProtection(GetProjectsProjectSecurityPropertiesProjectProtection projectProtection) {
-            this.projectProtection = Objects.requireNonNull(projectProtection);
+            if (projectProtection == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSecurityProperties", "projectProtection");
+            }
+            this.projectProtection = projectProtection;
             return this;
         }
         @CustomType.Setter
         public Builder usingAcl(Boolean usingAcl) {
-            this.usingAcl = Objects.requireNonNull(usingAcl);
+            if (usingAcl == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSecurityProperties", "usingAcl");
+            }
+            this.usingAcl = usingAcl;
             return this;
         }
         @CustomType.Setter
         public Builder usingPolicy(Boolean usingPolicy) {
-            this.usingPolicy = Objects.requireNonNull(usingPolicy);
+            if (usingPolicy == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSecurityProperties", "usingPolicy");
+            }
+            this.usingPolicy = usingPolicy;
             return this;
         }
         public GetProjectsProjectSecurityProperties build() {

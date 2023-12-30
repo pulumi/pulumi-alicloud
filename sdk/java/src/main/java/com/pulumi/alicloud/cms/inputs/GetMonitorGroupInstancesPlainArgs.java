@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -77,7 +78,9 @@ public final class GetMonitorGroupInstancesPlainArgs extends com.pulumi.resource
         }
 
         public GetMonitorGroupInstancesPlainArgs build() {
-            $.ids = Objects.requireNonNull($.ids, "expected parameter 'ids' to be non-null");
+            if ($.ids == null) {
+                throw new MissingRequiredPropertyException("GetMonitorGroupInstancesPlainArgs", "ids");
+            }
             return $;
         }
     }

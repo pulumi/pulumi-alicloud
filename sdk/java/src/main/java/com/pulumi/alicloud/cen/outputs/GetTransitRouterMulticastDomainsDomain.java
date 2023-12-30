@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetTransitRouterMulticastDomainsDomain {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsDomain", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsDomain", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsDomain", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterMulticastDomainDescription(String transitRouterMulticastDomainDescription) {
-            this.transitRouterMulticastDomainDescription = Objects.requireNonNull(transitRouterMulticastDomainDescription);
+            if (transitRouterMulticastDomainDescription == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsDomain", "transitRouterMulticastDomainDescription");
+            }
+            this.transitRouterMulticastDomainDescription = transitRouterMulticastDomainDescription;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterMulticastDomainId(String transitRouterMulticastDomainId) {
-            this.transitRouterMulticastDomainId = Objects.requireNonNull(transitRouterMulticastDomainId);
+            if (transitRouterMulticastDomainId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsDomain", "transitRouterMulticastDomainId");
+            }
+            this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterMulticastDomainName(String transitRouterMulticastDomainName) {
-            this.transitRouterMulticastDomainName = Objects.requireNonNull(transitRouterMulticastDomainName);
+            if (transitRouterMulticastDomainName == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterMulticastDomainsDomain", "transitRouterMulticastDomainName");
+            }
+            this.transitRouterMulticastDomainName = transitRouterMulticastDomainName;
             return this;
         }
         public GetTransitRouterMulticastDomainsDomain build() {

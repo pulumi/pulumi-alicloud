@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.alicloud.slb.outputs.GetListenersSlbListener;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -107,37 +108,50 @@ public final class GetListenersResult {
 
         @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
+
             this.descriptionRegex = descriptionRegex;
             return this;
         }
         @CustomType.Setter
         public Builder frontendPort(@Nullable Integer frontendPort) {
+
             this.frontendPort = frontendPort;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetListenersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
-            this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetListenersResult", "loadBalancerId");
+            }
+            this.loadBalancerId = loadBalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
+
             this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder slbListeners(List<GetListenersSlbListener> slbListeners) {
-            this.slbListeners = Objects.requireNonNull(slbListeners);
+            if (slbListeners == null) {
+              throw new MissingRequiredPropertyException("GetListenersResult", "slbListeners");
+            }
+            this.slbListeners = slbListeners;
             return this;
         }
         public Builder slbListeners(GetListenersSlbListener... slbListeners) {

@@ -72,16 +72,19 @@ public final class InstanceUiProxyConnAddr {
 
         @CustomType.Setter
         public Builder connAddr(@Nullable String connAddr) {
+
             this.connAddr = connAddr;
             return this;
         }
         @CustomType.Setter
         public Builder connAddrPort(@Nullable String connAddrPort) {
+
             this.connAddrPort = connAddrPort;
             return this;
         }
         @CustomType.Setter
         public Builder netType(@Nullable String netType) {
+
             this.netType = netType;
             return this;
         }

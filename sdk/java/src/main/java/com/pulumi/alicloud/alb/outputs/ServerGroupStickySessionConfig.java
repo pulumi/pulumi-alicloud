@@ -94,21 +94,25 @@ public final class ServerGroupStickySessionConfig {
 
         @CustomType.Setter
         public Builder cookie(@Nullable String cookie) {
+
             this.cookie = cookie;
             return this;
         }
         @CustomType.Setter
         public Builder cookieTimeout(@Nullable Integer cookieTimeout) {
+
             this.cookieTimeout = cookieTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder stickySessionEnabled(@Nullable Boolean stickySessionEnabled) {
+
             this.stickySessionEnabled = stickySessionEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder stickySessionType(@Nullable String stickySessionType) {
+
             this.stickySessionType = stickySessionType;
             return this;
         }

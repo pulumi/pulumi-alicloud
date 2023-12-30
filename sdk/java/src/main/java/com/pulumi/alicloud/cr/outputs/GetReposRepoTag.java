@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetReposRepoTag {
 
         @CustomType.Setter
         public Builder digest(String digest) {
-            this.digest = Objects.requireNonNull(digest);
+            if (digest == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoTag", "digest");
+            }
+            this.digest = digest;
             return this;
         }
         @CustomType.Setter
         public Builder imageCreate(Integer imageCreate) {
-            this.imageCreate = Objects.requireNonNull(imageCreate);
+            if (imageCreate == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoTag", "imageCreate");
+            }
+            this.imageCreate = imageCreate;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoTag", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder imageSize(Integer imageSize) {
-            this.imageSize = Objects.requireNonNull(imageSize);
+            if (imageSize == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoTag", "imageSize");
+            }
+            this.imageSize = imageSize;
             return this;
         }
         @CustomType.Setter
         public Builder imageUpdate(Integer imageUpdate) {
-            this.imageUpdate = Objects.requireNonNull(imageUpdate);
+            if (imageUpdate == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoTag", "imageUpdate");
+            }
+            this.imageUpdate = imageUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoTag", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tag(String tag) {
-            this.tag = Objects.requireNonNull(tag);
+            if (tag == null) {
+              throw new MissingRequiredPropertyException("GetReposRepoTag", "tag");
+            }
+            this.tag = tag;
             return this;
         }
         public GetReposRepoTag build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -211,7 +212,9 @@ public final class GetModelsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetModelsPlainArgs build() {
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("GetModelsPlainArgs", "groupId");
+            }
             return $;
         }
     }

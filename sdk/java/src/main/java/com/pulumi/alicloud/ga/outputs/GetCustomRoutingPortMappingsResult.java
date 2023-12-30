@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetCustomRoutingPortMappingsCustomRoutingPortMapping;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -135,12 +136,18 @@ public final class GetCustomRoutingPortMappingsResult {
 
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsResult", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder customRoutingPortMappings(List<GetCustomRoutingPortMappingsCustomRoutingPortMapping> customRoutingPortMappings) {
-            this.customRoutingPortMappings = Objects.requireNonNull(customRoutingPortMappings);
+            if (customRoutingPortMappings == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsResult", "customRoutingPortMappings");
+            }
+            this.customRoutingPortMappings = customRoutingPortMappings;
             return this;
         }
         public Builder customRoutingPortMappings(GetCustomRoutingPortMappingsCustomRoutingPortMapping... customRoutingPortMappings) {
@@ -148,36 +155,45 @@ public final class GetCustomRoutingPortMappingsResult {
         }
         @CustomType.Setter
         public Builder endpointGroupId(@Nullable String endpointGroupId) {
+
             this.endpointGroupId = endpointGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingPortMappingsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(@Nullable String listenerId) {
+
             this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

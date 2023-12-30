@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class EnvCustomJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EnvCustomJobArgs build() {
-            $.configYaml = Objects.requireNonNull($.configYaml, "expected parameter 'configYaml' to be non-null");
-            $.envCustomJobName = Objects.requireNonNull($.envCustomJobName, "expected parameter 'envCustomJobName' to be non-null");
-            $.environmentId = Objects.requireNonNull($.environmentId, "expected parameter 'environmentId' to be non-null");
+            if ($.configYaml == null) {
+                throw new MissingRequiredPropertyException("EnvCustomJobArgs", "configYaml");
+            }
+            if ($.envCustomJobName == null) {
+                throw new MissingRequiredPropertyException("EnvCustomJobArgs", "envCustomJobName");
+            }
+            if ($.environmentId == null) {
+                throw new MissingRequiredPropertyException("EnvCustomJobArgs", "environmentId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -113,8 +114,12 @@ public final class ServiceTracingConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public ServiceTracingConfigArgs build() {
-            $.params = Objects.requireNonNull($.params, "expected parameter 'params' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.params == null) {
+                throw new MissingRequiredPropertyException("ServiceTracingConfigArgs", "params");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ServiceTracingConfigArgs", "type");
+            }
             return $;
         }
     }

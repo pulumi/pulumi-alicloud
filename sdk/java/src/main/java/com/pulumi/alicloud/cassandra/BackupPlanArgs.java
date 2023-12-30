@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cassandra;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -263,9 +264,15 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BackupPlanArgs build() {
-            $.backupTime = Objects.requireNonNull($.backupTime, "expected parameter 'backupTime' to be non-null");
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.dataCenterId = Objects.requireNonNull($.dataCenterId, "expected parameter 'dataCenterId' to be non-null");
+            if ($.backupTime == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "backupTime");
+            }
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "clusterId");
+            }
+            if ($.dataCenterId == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "dataCenterId");
+            }
             return $;
         }
     }

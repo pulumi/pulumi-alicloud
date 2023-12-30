@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -104,27 +105,38 @@ public final class EndpointGroupEndpointConfiguration {
 
         @CustomType.Setter
         public Builder enableClientipPreservation(@Nullable Boolean enableClientipPreservation) {
+
             this.enableClientipPreservation = enableClientipPreservation;
             return this;
         }
         @CustomType.Setter
         public Builder enableProxyProtocol(@Nullable Boolean enableProxyProtocol) {
+
             this.enableProxyProtocol = enableProxyProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("EndpointGroupEndpointConfiguration", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("EndpointGroupEndpointConfiguration", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("EndpointGroupEndpointConfiguration", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public EndpointGroupEndpointConfiguration build() {

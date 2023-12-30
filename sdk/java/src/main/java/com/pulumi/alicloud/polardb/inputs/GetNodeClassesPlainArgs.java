@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.polardb.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -254,7 +255,9 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetNodeClassesPlainArgs build() {
-            $.payType = Objects.requireNonNull($.payType, "expected parameter 'payType' to be non-null");
+            if ($.payType == null) {
+                throw new MissingRequiredPropertyException("GetNodeClassesPlainArgs", "payType");
+            }
             return $;
         }
     }

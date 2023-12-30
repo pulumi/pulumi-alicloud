@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class TransitRouteTableAggregationArgs extends com.pulumi.resources
         }
 
         public TransitRouteTableAggregationArgs build() {
-            $.transitRouteTableAggregationCidr = Objects.requireNonNull($.transitRouteTableAggregationCidr, "expected parameter 'transitRouteTableAggregationCidr' to be non-null");
-            $.transitRouteTableAggregationScope = Objects.requireNonNull($.transitRouteTableAggregationScope, "expected parameter 'transitRouteTableAggregationScope' to be non-null");
-            $.transitRouteTableId = Objects.requireNonNull($.transitRouteTableId, "expected parameter 'transitRouteTableId' to be non-null");
+            if ($.transitRouteTableAggregationCidr == null) {
+                throw new MissingRequiredPropertyException("TransitRouteTableAggregationArgs", "transitRouteTableAggregationCidr");
+            }
+            if ($.transitRouteTableAggregationScope == null) {
+                throw new MissingRequiredPropertyException("TransitRouteTableAggregationArgs", "transitRouteTableAggregationScope");
+            }
+            if ($.transitRouteTableId == null) {
+                throw new MissingRequiredPropertyException("TransitRouteTableAggregationArgs", "transitRouteTableId");
+            }
             return $;
         }
     }

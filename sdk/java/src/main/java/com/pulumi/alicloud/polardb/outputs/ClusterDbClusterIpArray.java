@@ -77,16 +77,19 @@ public final class ClusterDbClusterIpArray {
 
         @CustomType.Setter
         public Builder dbClusterIpArrayName(@Nullable String dbClusterIpArrayName) {
+
             this.dbClusterIpArrayName = dbClusterIpArrayName;
             return this;
         }
         @CustomType.Setter
         public Builder modifyMode(@Nullable String modifyMode) {
+
             this.modifyMode = modifyMode;
             return this;
         }
         @CustomType.Setter
         public Builder securityIps(@Nullable List<String> securityIps) {
+
             this.securityIps = securityIps;
             return this;
         }

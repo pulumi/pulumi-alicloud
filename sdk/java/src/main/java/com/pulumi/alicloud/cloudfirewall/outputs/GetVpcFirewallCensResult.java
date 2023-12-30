@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallCensCen;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -183,12 +184,16 @@ public final class GetVpcFirewallCensResult {
 
         @CustomType.Setter
         public Builder cenId(@Nullable String cenId) {
+
             this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder cens(List<GetVpcFirewallCensCen> cens) {
-            this.cens = Objects.requireNonNull(cens);
+            if (cens == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensResult", "cens");
+            }
+            this.cens = cens;
             return this;
         }
         public Builder cens(GetVpcFirewallCensCen... cens) {
@@ -196,12 +201,18 @@ public final class GetVpcFirewallCensResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -209,46 +220,55 @@ public final class GetVpcFirewallCensResult {
         }
         @CustomType.Setter
         public Builder lang(@Nullable String lang) {
+
             this.lang = lang;
             return this;
         }
         @CustomType.Setter
         public Builder memberUid(@Nullable String memberUid) {
+
             this.memberUid = memberUid;
             return this;
         }
         @CustomType.Setter
         public Builder networkInstanceId(@Nullable String networkInstanceId) {
+
             this.networkInstanceId = networkInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcFirewallId(@Nullable String vpcFirewallId) {
+
             this.vpcFirewallId = vpcFirewallId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcFirewallName(@Nullable String vpcFirewallName) {
+
             this.vpcFirewallName = vpcFirewallName;
             return this;
         }

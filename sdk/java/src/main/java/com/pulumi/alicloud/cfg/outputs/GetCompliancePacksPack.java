@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.GetCompliancePacksPackConfigRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -157,27 +158,42 @@ public final class GetCompliancePacksPack {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPack", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder compliancePackId(String compliancePackId) {
-            this.compliancePackId = Objects.requireNonNull(compliancePackId);
+            if (compliancePackId == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPack", "compliancePackId");
+            }
+            this.compliancePackId = compliancePackId;
             return this;
         }
         @CustomType.Setter
         public Builder compliancePackName(String compliancePackName) {
-            this.compliancePackName = Objects.requireNonNull(compliancePackName);
+            if (compliancePackName == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPack", "compliancePackName");
+            }
+            this.compliancePackName = compliancePackName;
             return this;
         }
         @CustomType.Setter
         public Builder compliancePackTemplateId(String compliancePackTemplateId) {
-            this.compliancePackTemplateId = Objects.requireNonNull(compliancePackTemplateId);
+            if (compliancePackTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPack", "compliancePackTemplateId");
+            }
+            this.compliancePackTemplateId = compliancePackTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder configRules(List<GetCompliancePacksPackConfigRule> configRules) {
-            this.configRules = Objects.requireNonNull(configRules);
+            if (configRules == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPack", "configRules");
+            }
+            this.configRules = configRules;
             return this;
         }
         public Builder configRules(GetCompliancePacksPackConfigRule... configRules) {
@@ -185,22 +201,34 @@ public final class GetCompliancePacksPack {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPack", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPack", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder riskLevel(Integer riskLevel) {
-            this.riskLevel = Objects.requireNonNull(riskLevel);
+            if (riskLevel == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPack", "riskLevel");
+            }
+            this.riskLevel = riskLevel;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPack", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetCompliancePacksPack build() {

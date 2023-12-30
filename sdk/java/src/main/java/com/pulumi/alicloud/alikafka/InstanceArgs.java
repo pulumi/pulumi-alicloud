@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alikafka;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -294,10 +295,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
      * 
      * @deprecated
-     * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+     * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
      * 
      */
-    @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+    @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
     @Import(name="topicQuota")
     private @Nullable Output<Integer> topicQuota;
 
@@ -308,10 +309,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
      * 
      * @deprecated
-     * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+     * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
      * 
      */
-    @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+    @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
     public Optional<Output<Integer>> topicQuota() {
         return Optional.ofNullable(this.topicQuota);
     }
@@ -797,10 +798,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+         * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
          * 
          */
-        @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+        @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
         public Builder topicQuota(@Nullable Output<Integer> topicQuota) {
             $.topicQuota = topicQuota;
             return this;
@@ -815,10 +816,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+         * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
          * 
          */
-        @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+        @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
         public Builder topicQuota(Integer topicQuota) {
             return topicQuota(Output.of(topicQuota));
         }
@@ -887,10 +888,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.deployType = Objects.requireNonNull($.deployType, "expected parameter 'deployType' to be non-null");
-            $.diskSize = Objects.requireNonNull($.diskSize, "expected parameter 'diskSize' to be non-null");
-            $.diskType = Objects.requireNonNull($.diskType, "expected parameter 'diskType' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.deployType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "deployType");
+            }
+            if ($.diskSize == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "diskSize");
+            }
+            if ($.diskType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "diskType");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

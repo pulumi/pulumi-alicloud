@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.alicloud.eci.outputs.GetImageCachesCach;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -148,7 +149,10 @@ public final class GetImageCachesResult {
 
         @CustomType.Setter
         public Builder caches(List<GetImageCachesCach> caches) {
-            this.caches = Objects.requireNonNull(caches);
+            if (caches == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesResult", "caches");
+            }
+            this.caches = caches;
             return this;
         }
         public Builder caches(GetImageCachesCach... caches) {
@@ -156,12 +160,18 @@ public final class GetImageCachesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -169,22 +179,28 @@ public final class GetImageCachesResult {
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder imageCacheName(@Nullable String imageCacheName) {
+
             this.imageCacheName = imageCacheName;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -192,16 +208,19 @@ public final class GetImageCachesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
+
             this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

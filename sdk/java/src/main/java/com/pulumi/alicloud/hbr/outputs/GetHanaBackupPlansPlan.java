@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -174,57 +175,90 @@ public final class GetHanaBackupPlansPlan {
 
         @CustomType.Setter
         public Builder backupPrefix(String backupPrefix) {
-            this.backupPrefix = Objects.requireNonNull(backupPrefix);
+            if (backupPrefix == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "backupPrefix");
+            }
+            this.backupPrefix = backupPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder backupType(String backupType) {
-            this.backupType = Objects.requireNonNull(backupType);
+            if (backupType == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "backupType");
+            }
+            this.backupType = backupType;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder databaseName(String databaseName) {
-            this.databaseName = Objects.requireNonNull(databaseName);
+            if (databaseName == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "databaseName");
+            }
+            this.databaseName = databaseName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pageTotal(String pageTotal) {
-            this.pageTotal = Objects.requireNonNull(pageTotal);
+            if (pageTotal == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "pageTotal");
+            }
+            this.pageTotal = pageTotal;
             return this;
         }
         @CustomType.Setter
         public Builder planId(String planId) {
-            this.planId = Objects.requireNonNull(planId);
+            if (planId == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "planId");
+            }
+            this.planId = planId;
             return this;
         }
         @CustomType.Setter
         public Builder planName(String planName) {
-            this.planName = Objects.requireNonNull(planName);
+            if (planName == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "planName");
+            }
+            this.planName = planName;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(String schedule) {
-            this.schedule = Objects.requireNonNull(schedule);
+            if (schedule == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "schedule");
+            }
+            this.schedule = schedule;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vaultId(String vaultId) {
-            this.vaultId = Objects.requireNonNull(vaultId);
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupPlansPlan", "vaultId");
+            }
+            this.vaultId = vaultId;
             return this;
         }
         public GetHanaBackupPlansPlan build() {

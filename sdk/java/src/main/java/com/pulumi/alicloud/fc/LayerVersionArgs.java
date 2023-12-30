@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -318,8 +319,12 @@ public final class LayerVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LayerVersionArgs build() {
-            $.compatibleRuntimes = Objects.requireNonNull($.compatibleRuntimes, "expected parameter 'compatibleRuntimes' to be non-null");
-            $.layerName = Objects.requireNonNull($.layerName, "expected parameter 'layerName' to be non-null");
+            if ($.compatibleRuntimes == null) {
+                throw new MissingRequiredPropertyException("LayerVersionArgs", "compatibleRuntimes");
+            }
+            if ($.layerName == null) {
+                throw new MissingRequiredPropertyException("LayerVersionArgs", "layerName");
+            }
             return $;
         }
     }

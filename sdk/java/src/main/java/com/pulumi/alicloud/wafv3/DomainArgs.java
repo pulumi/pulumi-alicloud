@@ -7,6 +7,7 @@ import com.pulumi.alicloud.wafv3.inputs.DomainListenArgs;
 import com.pulumi.alicloud.wafv3.inputs.DomainRedirectArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -226,10 +227,18 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.listen = Objects.requireNonNull($.listen, "expected parameter 'listen' to be non-null");
-            $.redirect = Objects.requireNonNull($.redirect, "expected parameter 'redirect' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "domain");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "instanceId");
+            }
+            if ($.listen == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "listen");
+            }
+            if ($.redirect == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "redirect");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.maxcompute.outputs;
 import com.pulumi.alicloud.maxcompute.outputs.GetProjectsProjectPropertiesEncryption;
 import com.pulumi.alicloud.maxcompute.outputs.GetProjectsProjectPropertiesTableLifecycle;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -143,42 +144,66 @@ public final class GetProjectsProjectProperties {
 
         @CustomType.Setter
         public Builder allowFullScan(Boolean allowFullScan) {
-            this.allowFullScan = Objects.requireNonNull(allowFullScan);
+            if (allowFullScan == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectProperties", "allowFullScan");
+            }
+            this.allowFullScan = allowFullScan;
             return this;
         }
         @CustomType.Setter
         public Builder enableDecimal2(Boolean enableDecimal2) {
-            this.enableDecimal2 = Objects.requireNonNull(enableDecimal2);
+            if (enableDecimal2 == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectProperties", "enableDecimal2");
+            }
+            this.enableDecimal2 = enableDecimal2;
             return this;
         }
         @CustomType.Setter
         public Builder encryption(GetProjectsProjectPropertiesEncryption encryption) {
-            this.encryption = Objects.requireNonNull(encryption);
+            if (encryption == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectProperties", "encryption");
+            }
+            this.encryption = encryption;
             return this;
         }
         @CustomType.Setter
         public Builder retentionDays(String retentionDays) {
-            this.retentionDays = Objects.requireNonNull(retentionDays);
+            if (retentionDays == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectProperties", "retentionDays");
+            }
+            this.retentionDays = retentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder sqlMeteringMax(String sqlMeteringMax) {
-            this.sqlMeteringMax = Objects.requireNonNull(sqlMeteringMax);
+            if (sqlMeteringMax == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectProperties", "sqlMeteringMax");
+            }
+            this.sqlMeteringMax = sqlMeteringMax;
             return this;
         }
         @CustomType.Setter
         public Builder tableLifecycle(GetProjectsProjectPropertiesTableLifecycle tableLifecycle) {
-            this.tableLifecycle = Objects.requireNonNull(tableLifecycle);
+            if (tableLifecycle == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectProperties", "tableLifecycle");
+            }
+            this.tableLifecycle = tableLifecycle;
             return this;
         }
         @CustomType.Setter
         public Builder timezone(String timezone) {
-            this.timezone = Objects.requireNonNull(timezone);
+            if (timezone == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectProperties", "timezone");
+            }
+            this.timezone = timezone;
             return this;
         }
         @CustomType.Setter
         public Builder typeSystem(String typeSystem) {
-            this.typeSystem = Objects.requireNonNull(typeSystem);
+            if (typeSystem == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectProperties", "typeSystem");
+            }
+            this.typeSystem = typeSystem;
             return this;
         }
         public GetProjectsProjectProperties build() {

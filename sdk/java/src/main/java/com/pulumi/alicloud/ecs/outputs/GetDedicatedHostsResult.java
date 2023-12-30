@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.alicloud.ecs.outputs.GetDedicatedHostsHost;
 import com.pulumi.alicloud.ecs.outputs.GetDedicatedHostsOperationLock;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -199,22 +200,28 @@ public final class GetDedicatedHostsResult {
 
         @CustomType.Setter
         public Builder dedicatedHostId(@Nullable String dedicatedHostId) {
+
             this.dedicatedHostId = dedicatedHostId;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostName(@Nullable String dedicatedHostName) {
+
             this.dedicatedHostName = dedicatedHostName;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostType(@Nullable String dedicatedHostType) {
+
             this.dedicatedHostType = dedicatedHostType;
             return this;
         }
         @CustomType.Setter
         public Builder hosts(List<GetDedicatedHostsHost> hosts) {
-            this.hosts = Objects.requireNonNull(hosts);
+            if (hosts == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsResult", "hosts");
+            }
+            this.hosts = hosts;
             return this;
         }
         public Builder hosts(GetDedicatedHostsHost... hosts) {
@@ -222,12 +229,18 @@ public final class GetDedicatedHostsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -235,12 +248,16 @@ public final class GetDedicatedHostsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -248,6 +265,7 @@ public final class GetDedicatedHostsResult {
         }
         @CustomType.Setter
         public Builder operationLocks(@Nullable List<GetDedicatedHostsOperationLock> operationLocks) {
+
             this.operationLocks = operationLocks;
             return this;
         }
@@ -256,26 +274,31 @@ public final class GetDedicatedHostsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

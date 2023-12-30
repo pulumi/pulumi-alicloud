@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -53,22 +54,34 @@ public final class GetAclsAclRelatedListener {
 
         @CustomType.Setter
         public Builder aclType(String aclType) {
-            this.aclType = Objects.requireNonNull(aclType);
+            if (aclType == null) {
+              throw new MissingRequiredPropertyException("GetAclsAclRelatedListener", "aclType");
+            }
+            this.aclType = aclType;
             return this;
         }
         @CustomType.Setter
         public Builder frontendPort(Integer frontendPort) {
-            this.frontendPort = Objects.requireNonNull(frontendPort);
+            if (frontendPort == null) {
+              throw new MissingRequiredPropertyException("GetAclsAclRelatedListener", "frontendPort");
+            }
+            this.frontendPort = frontendPort;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
-            this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetAclsAclRelatedListener", "loadBalancerId");
+            }
+            this.loadBalancerId = loadBalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetAclsAclRelatedListener", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         public GetAclsAclRelatedListener build() {

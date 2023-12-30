@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -228,77 +229,122 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
 
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder dropped(Integer dropped) {
-            this.dropped = Objects.requireNonNull(dropped);
+            if (dropped == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "dropped");
+            }
+            this.dropped = dropped;
             return this;
         }
         @CustomType.Setter
         public Builder errorCode(String errorCode) {
-            this.errorCode = Objects.requireNonNull(errorCode);
+            if (errorCode == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "errorCode");
+            }
+            this.errorCode = errorCode;
             return this;
         }
         @CustomType.Setter
         public Builder errorInfo(String errorInfo) {
-            this.errorInfo = Objects.requireNonNull(errorInfo);
+            if (errorInfo == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "errorInfo");
+            }
+            this.errorInfo = errorInfo;
             return this;
         }
         @CustomType.Setter
         public Builder exitCode(Integer exitCode) {
-            this.exitCode = Objects.requireNonNull(exitCode);
+            if (exitCode == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "exitCode");
+            }
+            this.exitCode = exitCode;
             return this;
         }
         @CustomType.Setter
         public Builder finishTime(String finishTime) {
-            this.finishTime = Objects.requireNonNull(finishTime);
+            if (finishTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "finishTime");
+            }
+            this.finishTime = finishTime;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceInvokeStatus(String instanceInvokeStatus) {
-            this.instanceInvokeStatus = Objects.requireNonNull(instanceInvokeStatus);
+            if (instanceInvokeStatus == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "instanceInvokeStatus");
+            }
+            this.instanceInvokeStatus = instanceInvokeStatus;
             return this;
         }
         @CustomType.Setter
         public Builder invocationStatus(String invocationStatus) {
-            this.invocationStatus = Objects.requireNonNull(invocationStatus);
+            if (invocationStatus == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "invocationStatus");
+            }
+            this.invocationStatus = invocationStatus;
             return this;
         }
         @CustomType.Setter
         public Builder output(String output) {
-            this.output = Objects.requireNonNull(output);
+            if (output == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "output");
+            }
+            this.output = output;
             return this;
         }
         @CustomType.Setter
         public Builder repeats(Integer repeats) {
-            this.repeats = Objects.requireNonNull(repeats);
+            if (repeats == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "repeats");
+            }
+            this.repeats = repeats;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder stopTime(String stopTime) {
-            this.stopTime = Objects.requireNonNull(stopTime);
+            if (stopTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "stopTime");
+            }
+            this.stopTime = stopTime;
             return this;
         }
         @CustomType.Setter
         public Builder timed(Boolean timed) {
-            this.timed = Objects.requireNonNull(timed);
+            if (timed == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "timed");
+            }
+            this.timed = timed;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsInvocationInvokeInstance", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetEcsInvocationsInvocationInvokeInstance build() {

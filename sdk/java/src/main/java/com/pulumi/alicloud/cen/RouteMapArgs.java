@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1208,11 +1209,21 @@ public final class RouteMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouteMapArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.cenRegionId = Objects.requireNonNull($.cenRegionId, "expected parameter 'cenRegionId' to be non-null");
-            $.mapResult = Objects.requireNonNull($.mapResult, "expected parameter 'mapResult' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.transmitDirection = Objects.requireNonNull($.transmitDirection, "expected parameter 'transmitDirection' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("RouteMapArgs", "cenId");
+            }
+            if ($.cenRegionId == null) {
+                throw new MissingRequiredPropertyException("RouteMapArgs", "cenRegionId");
+            }
+            if ($.mapResult == null) {
+                throw new MissingRequiredPropertyException("RouteMapArgs", "mapResult");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("RouteMapArgs", "priority");
+            }
+            if ($.transmitDirection == null) {
+                throw new MissingRequiredPropertyException("RouteMapArgs", "transmitDirection");
+            }
             return $;
         }
     }

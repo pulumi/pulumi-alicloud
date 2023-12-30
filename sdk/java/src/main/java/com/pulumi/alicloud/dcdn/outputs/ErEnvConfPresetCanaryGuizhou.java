@@ -73,6 +73,7 @@ public final class ErEnvConfPresetCanaryGuizhou {
 
         @CustomType.Setter
         public Builder allowedHosts(@Nullable List<String> allowedHosts) {
+
             this.allowedHosts = allowedHosts;
             return this;
         }
@@ -81,11 +82,13 @@ public final class ErEnvConfPresetCanaryGuizhou {
         }
         @CustomType.Setter
         public Builder codeRev(@Nullable String codeRev) {
+
             this.codeRev = codeRev;
             return this;
         }
         @CustomType.Setter
         public Builder specName(@Nullable String specName) {
+
             this.specName = specName;
             return this;
         }

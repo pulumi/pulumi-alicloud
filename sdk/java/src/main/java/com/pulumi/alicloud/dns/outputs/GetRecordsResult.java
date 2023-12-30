@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.alicloud.dns.outputs.GetRecordsRecord;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -169,22 +170,32 @@ public final class GetRecordsResult {
 
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetRecordsResult", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder hostRecordRegex(@Nullable String hostRecordRegex) {
+
             this.hostRecordRegex = hostRecordRegex;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRecordsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRecordsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -192,22 +203,28 @@ public final class GetRecordsResult {
         }
         @CustomType.Setter
         public Builder isLocked(@Nullable Boolean isLocked) {
+
             this.isLocked = isLocked;
             return this;
         }
         @CustomType.Setter
         public Builder line(@Nullable String line) {
+
             this.line = line;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder records(List<GetRecordsRecord> records) {
-            this.records = Objects.requireNonNull(records);
+            if (records == null) {
+              throw new MissingRequiredPropertyException("GetRecordsResult", "records");
+            }
+            this.records = records;
             return this;
         }
         public Builder records(GetRecordsRecord... records) {
@@ -215,17 +232,22 @@ public final class GetRecordsResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder urls(List<String> urls) {
-            this.urls = Objects.requireNonNull(urls);
+            if (urls == null) {
+              throw new MissingRequiredPropertyException("GetRecordsResult", "urls");
+            }
+            this.urls = urls;
             return this;
         }
         public Builder urls(String... urls) {
@@ -233,6 +255,7 @@ public final class GetRecordsResult {
         }
         @CustomType.Setter
         public Builder valueRegex(@Nullable String valueRegex) {
+
             this.valueRegex = valueRegex;
             return this;
         }

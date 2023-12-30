@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -87,22 +88,30 @@ public final class ClusterNodeGroupDataDisk {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroupDataDisk", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder performanceLevel(@Nullable String performanceLevel) {
+
             this.performanceLevel = performanceLevel;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroupDataDisk", "size");
+            }
+            this.size = size;
             return this;
         }
         public ClusterNodeGroupDataDisk build() {
